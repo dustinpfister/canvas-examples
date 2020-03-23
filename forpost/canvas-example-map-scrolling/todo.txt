@@ -1,0 +1,9 @@
+## Canvas Example Map Scrolling todo
+
+* (done) have a method that can clamp offset values for a canvas
+* (done) have a method that will return a cell position for a given x and y canvas position
+* (done) get cell method
+* (done) get a cell by canvas position
+* (done) selected cell index 
+
+* get movement deltas method for map.js

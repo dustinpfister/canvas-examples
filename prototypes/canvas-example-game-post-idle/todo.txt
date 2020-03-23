@@ -1,0 +1,19 @@
+## Post Idle Canvas Game Example
+
+* (done) start map.js
+* (done) start a g.createGridObject should create an array of cell objects
+* (done) start a g.createClearCellGrid method will create a new grid object with the given grid object that will contain blank cells with default values
+* (done) g.createClearCellGrid should set values such as x, y, and i for each cell
+* (done) cell type index value
+* (done) sand == 0, grass == 1 - 5, wood == 6 - 10, cell types for now ( sand is default )
+* (done) worth property of cell with default value of 0 ( sand worthless )
+* (done) render current grid to the canvas by starting a drawMap method
+* (done) place drawMap method in its own file called draw_map.js
+* (done) g.parseGridProps method that will parse grid properties so I do not have to repeat code
+* (done) app loop started
+* (done) scroll map with mouse events
+
+* can click a cell to select it
+
+* Just one resource called money
+* build things on the grid that make money

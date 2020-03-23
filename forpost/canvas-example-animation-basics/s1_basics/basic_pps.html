@@ -1,0 +1,50 @@
+<html>
+    <head>
+        <title>canvas example animation basics</title>
+    </head>
+    <body>
+        <canvas id="the-canvas" width="320" height="240"></canvas>
+        <script>
+// get canvas and context
+var canvas = document.getElementById('the-canvas'),
+ctx = canvas.getContext('2d');
+// some kind of state for the animation
+var x = 0,
+pps = 128,
+lt = new Date(),
+right = 1;
+// update method
+var update = function(){
+    // now and time and dx
+    var now = new Date(),
+    t = now - lt,
+    dx = t / 1000 * pps * right;
+    // update state
+    x += dx;
+    if (x >= canvas.width) {
+       x = canvas.width - (x - canvas.width);
+       right = -1;
+    }
+    if (x <= 0) {
+       x = Math.abs(x);
+       right = 1;
+    }
+    lt = now;
+};
+// Main APP loop
+var loop = function () {
+    //request next frame
+    requestAnimationFrame(loop);
+    update();
+    // draw
+    ctx.fillStyle = 'black';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = 'red';
+    ctx.beginPath();
+    ctx.arc(x, canvas.height / 2, 10, 0, Math.PI * 2);
+    ctx.fill();
+};
+loop();
+        </script>
+    </body>
+</html>

@@ -1,0 +1,30 @@
+<html>
+    <head>
+        <title>canvas star</title>
+    </head>
+    <body>
+        <canvas id="the-canvas" width="320" height="240"></canvas>
+        <script src="draw.js"></script>
+        <script src="star.js"></script>
+        <script>
+var canvas = document.getElementById('the-canvas'),
+ctx = canvas.getContext('2d');
+
+var star1 = starMod.create1({
+    radius: 60,
+    radiusInner: 30
+});
+var star2 = starMod.create2({
+    pointCount: 7,
+    radius: 60,
+    pointSkip: 3
+});
+
+ctx.lineWidth = 3;
+draw.background(ctx, canvas);
+ctx.strokeStyle = 'white';
+draw.points(ctx, star1, 80, canvas.height / 2);
+draw.points(ctx, star2, 240, canvas.height / 2);
+        </script>
+    </body>
+</html>
