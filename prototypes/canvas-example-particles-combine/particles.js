@@ -1,7 +1,7 @@
 
 var paricles = (function () {
 
-    var DEFAULT_POOL_SIZE = 10,
+    var DEFAULT_POOL_SIZE = 20,
     PARTICLE_MIN_RADIUS = 8,
     PARTICLE_MAX_RADIUS = 64,
     PARTICLE_MAX_LIFE = 3000;
@@ -25,6 +25,7 @@ var paricles = (function () {
         this.life = PARTICLE_MAX_LIFE; // life left in milliseconds when in explode mode
         this.radius = PARTICLE_MIN_RADIUS;
         this.per = 1;
+        this.total = 0;
     };
 
     Particle.prototype.combine = function (part) {
@@ -32,12 +33,17 @@ var paricles = (function () {
         this.points = this.points.map(function (e, i) {
                 return e + part.points[i];
             });
+
+        this.total = this.points.reduce(function (acc, n) {
+                return acc + n;
+            });
     };
 
     // Particle prototype methods for activating an deactivating a particle
     Particle.prototype.activate = function (side, canvas) {
         //this.bits = side === 1 ? '10' : '01';
         this.points = side === 1 ? [1, 0, 0, 0] : [0, 1, 0, 0];
+        this.total = 1;
         this.x = canvas.width / 2;
         this.y = side === 1 ? 0 : canvas.height - 1;
         this.heading = side === 1 ? randomHeading(45, 135) : randomHeading(225, 315);
@@ -49,6 +55,7 @@ var paricles = (function () {
     Particle.prototype.deactivate = function () {
         //this.bits = '00';
         this.points = [0, 0, 0, 0];
+        this.total = 0;
         this.x = -1;
         this.y = -1;
     };

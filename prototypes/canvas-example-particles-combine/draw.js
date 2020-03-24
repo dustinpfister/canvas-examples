@@ -2,11 +2,14 @@ var draw = (function () {
 
     var gradient;
 
-    var pointsToColor = function (points) {
+    var pointsToColor = function (part) {
 
-        var total = points.reduce(function (acc, n) {
-                return acc + n;
-            });
+        var points = part.points,
+        total = part.total;
+
+        //var total = points.reduce(function (acc, n) {
+        //        return acc + n;
+        //    });
 
         var r = (points[0] / total * 255).toFixed(2),
         g = (points[1] / total * 255).toFixed(2),
@@ -48,7 +51,7 @@ var draw = (function () {
             ctx.strokeStyle = 'white';
             while (i--) {
                 part = state.pool[i];
-                color = pointsToColor(part.points); ;
+                color = pointsToColor(part); ;
                 if (part.points.join('') != '0000') {
                     ctx.globalAlpha = 0.8;
                     ctx.beginPath();
