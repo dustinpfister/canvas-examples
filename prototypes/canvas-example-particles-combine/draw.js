@@ -25,13 +25,14 @@ var draw = (function () {
             ctx.strokeStyle = 'white';
             while (i--) {
                 var part = state.pool[i];
-                if (part.bits != '00') {
-                    var color = part.bits === '01' ? 'blue' : 'red';
-                    color = part.bits === '11' ? '#bf00bf' : color;
+                if (part.points.join('') != '0000') {
+                    //var color = part.bits === '01' ? 'blue' : 'red';
+                    //color = part.bits === '11' ? '#bf00bf' : color;
                     ctx.globalAlpha = 0.8;
-                    if (part.bits === '11') {
-                        ctx.globalAlpha = 1 - part.per;
-                    }
+                    var color = 'white';
+                    //if (part.bits === '11') {
+                    //    ctx.globalAlpha = 1 - part.per;
+                    //}
                     ctx.beginPath();
                     ctx.fillStyle = color;
                     ctx.arc(part.x, part.y, part.radius, 0, Math.PI * 2);
