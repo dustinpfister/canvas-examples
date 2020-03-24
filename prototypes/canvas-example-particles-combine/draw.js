@@ -2,6 +2,16 @@ var draw = (function () {
 
     var gradient;
 
+    var pointsToColor = function (points) {
+
+        if (points[0] >= 1) {
+            return 'blue';
+        }
+
+        return 'red';
+
+    };
+
     return {
 
         setGradient: function (state) {
@@ -21,18 +31,15 @@ var draw = (function () {
 
         pool: function (state) {
 
-            var i = state.pool.length;
+            var i = state.pool.length,
+            part,
+            color;
             ctx.strokeStyle = 'white';
             while (i--) {
-                var part = state.pool[i];
+                part = state.pool[i];
+                color = pointsToColor(part.points);;
                 if (part.points.join('') != '0000') {
-                    //var color = part.bits === '01' ? 'blue' : 'red';
-                    //color = part.bits === '11' ? '#bf00bf' : color;
                     ctx.globalAlpha = 0.8;
-                    var color = 'white';
-                    //if (part.bits === '11') {
-                    //    ctx.globalAlpha = 1 - part.per;
-                    //}
                     ctx.beginPath();
                     ctx.fillStyle = color;
                     ctx.arc(part.x, part.y, part.radius, 0, Math.PI * 2);
