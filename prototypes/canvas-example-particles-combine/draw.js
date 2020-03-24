@@ -4,11 +4,22 @@ var draw = (function () {
 
     var pointsToColor = function (points) {
 
-        if (points[0] >= 1) {
-            return 'blue';
-        }
+        var total = points.reduce(function (acc, n) {
+                return acc + n;
+            });
 
-        return 'red';
+        var r = (points[0] / total * 255).toFixed(2),
+        g = (points[1] / total * 255).toFixed(2),
+        b = (points[2] / total * 255).toFixed(2),
+        a = (points[3] / total).toFixed(2);
+
+        return 'rgba(' + r + ',' + g + ',' + b + ',1)';
+
+        //if (points[0] >= 1) {
+        //    return 'blue';
+        //}
+
+        //return 'red';
 
     };
 
@@ -37,7 +48,7 @@ var draw = (function () {
             ctx.strokeStyle = 'white';
             while (i--) {
                 part = state.pool[i];
-                color = pointsToColor(part.points);;
+                color = pointsToColor(part.points); ;
                 if (part.points.join('') != '0000') {
                     ctx.globalAlpha = 0.8;
                     ctx.beginPath();
