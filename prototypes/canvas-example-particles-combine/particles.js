@@ -1,7 +1,7 @@
 
 var paricles = (function () {
 
-    var DEFAULT_POOL_SIZE = 20,
+    var DEFAULT_POOL_SIZE = 40,
     PARTICLE_MIN_RADIUS = 8,
     PARTICLE_MAX_RADIUS = 64,
     PARTICLE_MAX_LIFE = 3000;
@@ -33,10 +33,13 @@ var paricles = (function () {
         this.points = this.points.map(function (e, i) {
                 return e + part.points[i];
             });
-
         this.total = this.points.reduce(function (acc, n) {
                 return acc + n;
             });
+        this.pps = 64 + this.total * 10;
+        if (this.pps > 512) {
+            this.pps = 512;
+        }
     };
 
     // Particle prototype methods for activating an deactivating a particle
@@ -47,7 +50,7 @@ var paricles = (function () {
         this.x = canvas.width / 2;
         this.y = side === 1 ? 0 : canvas.height - 1;
         this.heading = side === 1 ? randomHeading(45, 135) : randomHeading(225, 315);
-        this.pps = 128; //32 + 128 * Math.random();
+        this.pps = 64;
         this.life = PARTICLE_MAX_LIFE;
         this.radius = PARTICLE_MIN_RADIUS;
         this.per = 1;
@@ -153,7 +156,7 @@ var paricles = (function () {
                 ctx: opt.ctx || null,
                 pool: createPool(),
                 lastTime: new Date(), // last Tick
-                spawnRate: 250, // num of ms per spawn event
+                spawnRate: 100, // num of ms per spawn event
                 lastSpawn: 0, // ms sense last spawn
                 nextSide: 0
             };
