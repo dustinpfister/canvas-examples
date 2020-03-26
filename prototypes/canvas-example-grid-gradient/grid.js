@@ -52,11 +52,10 @@ Grid.prototype.update = function () {
     grid.resetCells();
     // increase color channel values for objects
     grid.objs.forEach(function (obj) {
-
-        obj.x += obj.cps * secs;
-
+        obj.x += Math.cos(obj.heading) * obj.cps * secs;
+        obj.y += Math.sin(obj.heading) * obj.cps * secs;
         obj.x = u.mod(obj.x, grid.gridWidth);
-
+        obj.y = u.mod(obj.y, grid.gridHeight);
         grid.cells.forEach(function (cell) {
             d = u.distance(cell.x, cell.y, obj.x, obj.y);
             if (d <= obj.radius) {
