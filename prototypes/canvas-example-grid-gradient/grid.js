@@ -11,6 +11,30 @@ var Grid = function (opt) {
     this.setCells(opt.forCell);
 };
 
+Grid.prototype.update = function () {
+
+    this.setCells();
+    this.setCells(function (cell, grid) {
+        var i = grid.objs.length,
+        d,
+        obj,
+        per,
+        c;
+        while (i--) {
+            obj = grid.objs[i];
+            d = Math.sqrt(Math.pow(cell.x - obj.x, 2) + Math.pow(cell.y - obj.y, 2));
+            if (d <= obj.radius) {
+                per = 1 - d / obj.radius;
+                c = cell.color;
+                c[0] = Math.floor(255 * per);
+                c[1] = 0;
+                c[2] = 0;
+            }
+        }
+    });
+
+};
+
 // set cell objects for each cell in the grid
 Grid.prototype.setCells = function (forCell) {
     this.cells = [];
