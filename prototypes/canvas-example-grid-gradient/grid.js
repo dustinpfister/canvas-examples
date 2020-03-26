@@ -1,17 +1,34 @@
 // GRID
 var Grid = function (opt) {
     opt = opt || {};
-    //this.cellSize = opt.cellSize === undefined ? 32 : opt.cellSize;
 
     this.gridWidth = opt.gridWidth || 7;
     this.gridHeight = opt.gridHeight || 6;
     this.cellWidth = opt.cellWidth || 7;
     this.cellHeight = opt.cellHeight || 6;
-    this.objs = opt.objs || [];
     this.cells = [];
     this.resetCells();
-
     this.lt = new Date();
+
+    this.objs = [];
+
+    var i = 3,
+    r,
+    g,
+    b;
+    while (i--) {
+        r = Math.random();
+        g = Math.random();
+        b = Math.random();
+        this.objs.push({
+            x: this.gridWidth * Math.random(),
+            y: this.gridHeight * Math.random(),
+            radius: 7,
+            power: [r, g, b],
+            cps: 4,
+            heading: Math.PI * 2 * Math.random()
+        });
+    }
 
     this.update();
 };
@@ -64,7 +81,6 @@ Grid.prototype.update = function () {
                 c[0] += Math.floor(255 * per * obj.power[0]);
                 c[1] += Math.floor(255 * per * obj.power[1]);
                 c[2] += Math.floor(255 * per * obj.power[2]);
-                //c[3] += per * obj.power[3];
             }
         });
     });
