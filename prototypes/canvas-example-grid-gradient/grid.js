@@ -22,7 +22,7 @@ Grid.prototype.setCells = function (forCell) {
             i: ci,
             y: Math.floor(ci / this.cellWidth),
             x: ci % this.cellWidth,
-            backgroundIndex: 0
+            color: [0, 0, 0, 1]
         };
         forCell(cellObj);
         this.cells.push(cellObj);
