@@ -9,7 +9,10 @@ var Grid = function (opt) {
     this.cellHeight = opt.cellHeight || 6;
     this.objs = opt.objs || [];
     this.cells = [];
-    this.resetCells()
+    this.resetCells();
+
+    this.lt = new Date();
+
     this.update();
 };
 
@@ -40,11 +43,20 @@ Grid.prototype.capCellColors = function () {
 
 Grid.prototype.update = function () {
 
-    var grid = this;
+    var grid = this,
+    now = new Date(),
+    t = now - grid.lt,
+    secs = t / 1000;
+
     // reset
     grid.resetCells();
     // increase color channel values for objects
     grid.objs.forEach(function (obj) {
+
+        obj.x += obj.cps * secs;
+
+        obj.x = u.mod(obj.x, grid.gridWidth);
+
         grid.cells.forEach(function (cell) {
             d = u.distance(cell.x, cell.y, obj.x, obj.y);
             if (d <= obj.radius) {
@@ -58,5 +70,7 @@ Grid.prototype.update = function () {
         });
     });
     grid.capCellColors();
+
+    grid.lt = now;
 
 };

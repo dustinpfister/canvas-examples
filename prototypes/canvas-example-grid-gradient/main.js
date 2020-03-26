@@ -14,17 +14,24 @@ var grid = new Grid({
                 x: 14,
                 y: 9,
                 radius: 10,
-                power: [1, 0, 0, 1]
+                power: [1, 0, 0, 1],
+                cps: 4,
             }, {
                 x: 17,
                 y: 10,
                 radius: 7,
-                power: [0, 0, 1, 1]
+                power: [0, 0, 1, 1],
+                cps: 8
             }
         ]
     });
 
-grid.update();
+var loop = function () {
+    requestAnimationFrame(loop);
+    grid.update();
+    draw.back(ctx, canvas);
+    draw.cells(ctx, grid);
 
-draw.back(ctx, canvas);
-draw.cells(ctx, grid);
+};
+
+loop();
