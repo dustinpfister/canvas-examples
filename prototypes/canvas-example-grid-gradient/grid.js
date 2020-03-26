@@ -10,16 +10,28 @@ var Grid = function (opt) {
     this.resetCells();
     this.lt = new Date();
 
+    // setup objects
     this.objs = [];
-
-    var i = 3,
+    var i = 9,
+    rand,
     r,
     g,
     b;
     while (i--) {
-        r = Math.random();
-        g = Math.random();
-        b = Math.random();
+        rand = Math.random() * 0.75 + 0.25;
+        r = rand;
+        g = 0;
+        b = 0;
+        if (u.mod(i, 2) === 0) {
+            r = 0;
+            g = 0;
+            b = rand;
+        }
+        if (u.mod(i, 3) === 0) {
+            r = 0;
+            g = rand;
+            b = 0;
+        }
         this.objs.push({
             x: this.gridWidth * Math.random(),
             y: this.gridHeight * Math.random(),
