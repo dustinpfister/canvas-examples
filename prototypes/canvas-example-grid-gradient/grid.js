@@ -7,6 +7,7 @@ var Grid = function (opt) {
     this.gridHeight = opt.gridHeight || 6;
     this.cellWidth = opt.cellWidth || 7;
     this.cellHeight = opt.cellHeight || 6;
+    this.objs = opt.objs || [];
     this.setCells(opt.forCell);
 };
 
@@ -24,7 +25,7 @@ Grid.prototype.setCells = function (forCell) {
             x: ci % this.gridWidth,
             color: [0, 0, 0, 1]
         };
-        forCell(cellObj);
+        forCell(cellObj, this);
         this.cells.push(cellObj);
         ci += 1;
     }

@@ -3,19 +3,36 @@ var canvas = document.getElementById('thecanvas'),
 ctx = canvas.getContext('2d');
 canvas.width = 320;
 canvas.height = 240;
+ctx.translate(0.5, 0.5);
 
-// creating a grid instance
 var grid = new Grid({
-        //cellSize: 32,
-        cellWidth: canvas.width / 10,
-        cellHeight: canvas.height / 10,
-        gridWidth: 10,
-        gridHeight: 10,
-        forCell: function (cell) {
-            var c = cell.color;
-            c[0] = 255;
-            c[1] = 255;
-            c[2] = 255;
+        cellWidth: canvas.width / 30,
+        cellHeight: canvas.height / 20,
+        gridWidth: 30,
+        gridHeight: 20,
+        objs: [{
+                x: 14,
+                y: 9,
+                radius: 10
+            }
+        ],
+        forCell: function (cell, grid) {
+            var i = grid.objs.length,
+            d,
+            obj,
+            per,
+            c;
+            while (i--) {
+                obj = grid.objs[i];
+                d = Math.sqrt(Math.pow(cell.x - obj.x, 2) + Math.pow(cell.y - obj.y, 2));
+                if (d <= obj.radius) {
+                    per = 1 - d / obj.radius;
+                    c = cell.color;
+                    c[0] = Math.floor(255 * per);
+                    c[1] = 0;
+                    c[2] = 0;
+                }
+            }
         }
     });
 
