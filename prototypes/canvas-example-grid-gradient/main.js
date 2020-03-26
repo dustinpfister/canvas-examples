@@ -13,7 +13,13 @@ var grid = new Grid({
         objs: [{
                 x: 14,
                 y: 9,
-                radius: 10
+                radius: 10,
+                power: 1
+            }, {
+                x: 18,
+                y: 11,
+                radius: 6,
+                power: 1
             }
         ]
     });

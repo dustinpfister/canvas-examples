@@ -8,40 +8,17 @@ var Grid = function (opt) {
     this.cellWidth = opt.cellWidth || 7;
     this.cellHeight = opt.cellHeight || 6;
     this.objs = opt.objs || [];
-    this.setCells(opt.forCell);
+    this.cells = [];
+    this.resetCells()
+    this.update();
 };
 
-Grid.prototype.update = function () {
-
-    this.setCells();
-    this.setCells(function (cell, grid) {
-        var i = grid.objs.length,
-        d,
-        obj,
-        per,
-        c;
-        while (i--) {
-            obj = grid.objs[i];
-            d = Math.sqrt(Math.pow(cell.x - obj.x, 2) + Math.pow(cell.y - obj.y, 2));
-            if (d <= obj.radius) {
-                per = 1 - d / obj.radius;
-                c = cell.color;
-                c[0] = Math.floor(255 * per);
-                c[1] = 0;
-                c[2] = 0;
-            }
-        }
-    });
-
-};
-
-// set cell objects for each cell in the grid
-Grid.prototype.setCells = function (forCell) {
+// setup reset cells
+Grid.prototype.resetCells = function () {
     this.cells = [];
     var ci = 0,
     cellObj,
     cLen = this.gridWidth * this.gridHeight;
-    forCell = forCell || function () {};
     while (ci < cLen) {
         cellObj = {
             i: ci,
@@ -49,8 +26,36 @@ Grid.prototype.setCells = function (forCell) {
             x: ci % this.gridWidth,
             color: [0, 0, 0, 1]
         };
-        forCell(cellObj, this);
         this.cells.push(cellObj);
         ci += 1;
     }
+};
+
+Grid.prototype.capCellColors = function () {
+    this.cells.forEach(function (cell) {
+        var c = cell.color;
+        c[0] = Math.floor(c[0] > 255 ? 255 : c[0]);
+    });
+}
+
+Grid.prototype.update = function () {
+
+    var grid = this;
+    // reset
+    grid.resetCells();
+    // increase color channel values for objects
+    grid.objs.forEach(function (obj) {
+        grid.cells.forEach(function (cell) {
+            var d = Math.sqrt(Math.pow(cell.x - obj.x, 2) + Math.pow(cell.y - obj.y, 2));
+            if (d <= obj.radius) {
+                var per = 1 - d / obj.radius;
+                var c = cell.color;
+                c[0] += Math.floor(255 * per);
+                c[1] = 0;
+                c[2] = 0;
+            }
+        });
+    });
+    grid.capCellColors();
+
 };
