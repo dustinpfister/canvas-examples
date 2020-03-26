@@ -70,6 +70,19 @@ Grid.prototype.capCellColors = function () {
     });
 }
 
+var upCellColor = function (grid, cell, obj, x, y) {
+
+    d = u.distance(cell.x, cell.y, x, y);
+    if (d <= obj.radius) {
+        var per = 1 - d / obj.radius;
+        var c = cell.color;
+        c[0] += Math.floor(255 * per * obj.power[0]);
+        c[1] += Math.floor(255 * per * obj.power[1]);
+        c[2] += Math.floor(255 * per * obj.power[2]);
+    }
+
+};
+
 Grid.prototype.update = function () {
 
     var grid = this,
@@ -86,14 +99,17 @@ Grid.prototype.update = function () {
         obj.x = u.mod(obj.x, grid.gridWidth);
         obj.y = u.mod(obj.y, grid.gridHeight);
         grid.cells.forEach(function (cell) {
-            d = u.distance(cell.x, cell.y, obj.x, obj.y);
-            if (d <= obj.radius) {
-                var per = 1 - d / obj.radius;
-                var c = cell.color;
-                c[0] += Math.floor(255 * per * obj.power[0]);
-                c[1] += Math.floor(255 * per * obj.power[1]);
-                c[2] += Math.floor(255 * per * obj.power[2]);
-            }
+
+            upCellColor(grid, cell, obj, obj.x - grid.gridWidth, obj.y);
+            upCellColor(grid, cell, obj, obj.x + grid.gridWidth, obj.y);
+            upCellColor(grid, cell, obj, obj.x, obj.y - grid.gridHeight);
+            upCellColor(grid, cell, obj, obj.x, obj.y + grid.gridHeight);
+            upCellColor(grid, cell, obj, obj.x - grid.gridWidth, obj.y - grid.gridHeight);
+            upCellColor(grid, cell, obj, obj.x + grid.gridWidth, obj.y + grid.gridHeight);
+            upCellColor(grid, cell, obj, obj.x - grid.gridWidth, obj.y + grid.gridHeight);
+            upCellColor(grid, cell, obj, obj.x + grid.gridWidth, obj.y - grid.gridHeight);
+
+            upCellColor(grid, cell, obj, obj.x, obj.y);
         });
     });
     grid.capCellColors();
