@@ -14,20 +14,17 @@ var grid = new Grid({
                 x: 14,
                 y: 9,
                 radius: 10,
-                power: [1,0,0,1]
+                power: [1, 0, 0, 1]
             }, {
                 x: 17,
                 y: 10,
                 radius: 7,
-                power: [0,0,1,1]
+                power: [0, 0, 1, 1]
             }
         ]
     });
 
 grid.update();
 
-// fill black
-ctx.fillStyle = 'black';
-ctx.fillRect(0, 0, canvas.width, canvas.height);
-
+draw.back(ctx, canvas);
 draw.cells(ctx, grid);
