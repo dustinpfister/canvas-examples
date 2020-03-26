@@ -46,7 +46,7 @@ Grid.prototype.update = function () {
     // increase color channel values for objects
     grid.objs.forEach(function (obj) {
         grid.cells.forEach(function (cell) {
-            var d = Math.sqrt(Math.pow(cell.x - obj.x, 2) + Math.pow(cell.y - obj.y, 2));
+            d = u.distance(cell.x, cell.y, obj.x, obj.y);
             if (d <= obj.radius) {
                 var per = 1 - d / obj.radius;
                 var c = cell.color;
