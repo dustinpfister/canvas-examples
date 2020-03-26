@@ -50,9 +50,10 @@ Grid.prototype.update = function () {
             if (d <= obj.radius) {
                 var per = 1 - d / obj.radius;
                 var c = cell.color;
-                c[0] += Math.floor(255 * per);
-                c[1] = 0;
-                c[2] = 0;
+                c[0] += Math.floor(255 * per * obj.power[0]);
+                c[1] += Math.floor(255 * per * obj.power[1]);
+                c[2] += Math.floor(255 * per * obj.power[2]);
+                //c[3] += per * obj.power[3];
             }
         });
     });

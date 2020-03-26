@@ -14,12 +14,12 @@ var grid = new Grid({
                 x: 14,
                 y: 9,
                 radius: 10,
-                power: 1
+                power: [1,0,0,1]
             }, {
-                x: 18,
-                y: 11,
-                radius: 6,
-                power: 1
+                x: 17,
+                y: 10,
+                radius: 7,
+                power: [0,0,1,1]
             }
         ]
     });
