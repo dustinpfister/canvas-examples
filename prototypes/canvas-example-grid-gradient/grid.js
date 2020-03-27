@@ -2,20 +2,23 @@
 
 var gradient = (function () {
 
+    // object updaters
     var objUpdaters = [
-
         function (grid, obj, secs) {
-
             var roll = Math.floor(Math.random() * 100) + 1;
-
             if (roll === 1) {
                 obj.radiusDir = obj.radiusDir === 1 ? -1 : 1;
             }
-
             obj.radius += 1 * secs * obj.radiusDir;
             obj.radius = obj.radius < 3 ? 3 : obj.radius;
             obj.radius = obj.radius > 10 ? 10 : obj.radius;
-
+        },
+        function (grid, obj, secs) {
+            obj.power = [0.75, 0.75, 0.75];
+            obj.radius = grid.gridHeight / 2;
+            obj.y = grid.gridHeight / 2;
+            obj.heading = 0;
+            obj.cps = 15;
         }
     ];
 
@@ -62,7 +65,7 @@ var gradient = (function () {
                 power: [r, g, b],
                 cps: 4,
                 heading: Math.PI * 2 * Math.random(),
-                objUpdaterIndex: 0,
+                objUpdaterIndex: i === 0 ? 1 : 0,
                 radiusDir: 1
             });
         }
