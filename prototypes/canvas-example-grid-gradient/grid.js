@@ -2,23 +2,27 @@
 
 var gradient = (function () {
 
-    // object updaters
+    // object update methods
     var objUpdaters = [
+        // radius changes, slow speed
         function (grid, obj, secs) {
-            var roll = Math.floor(Math.random() * 100) + 1;
+            var roll = Math.floor(Math.random() * 50) + 1;
             if (roll === 1) {
                 obj.radiusDir = obj.radiusDir === 1 ? -1 : 1;
             }
+            obj.power = [1, 0, 0];
             obj.radius += 1 * secs * obj.radiusDir;
             obj.radius = obj.radius < 3 ? 3 : obj.radius;
             obj.radius = obj.radius > 10 ? 10 : obj.radius;
+            obj.cps = 3;
         },
+        // heading changes, fast speed
         function (grid, obj, secs) {
-            obj.power = [0.75, 0.75, 0.75];
-            obj.radius = grid.gridHeight / 2;
-            obj.y = grid.gridHeight / 2;
-            obj.heading = 0;
-            obj.cps = 15;
+            obj.power = [0, 0, 1];
+            obj.heading += Math.PI / 180 * 20 * secs;
+            obj.heading = u.mod(obj.heading, Math.PI * 2);
+            obj.cps = 8;
+            obj.radius = 5;
         }
     ];
 
@@ -63,9 +67,10 @@ var gradient = (function () {
                 //radius: 3 + 3 * Math.random(),
                 radius: 5,
                 power: [r, g, b],
-                cps: 4,
+                cps: 2,
                 heading: Math.PI * 2 * Math.random(),
-                objUpdaterIndex: i === 0 ? 1 : 0,
+                //objUpdaterIndex: i === 0 ? 1 : 0,
+                objUpdaterIndex: u.mod(i, objUpdaters.length),
                 radiusDir: 1
             });
         }
