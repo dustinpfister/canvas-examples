@@ -5,18 +5,21 @@ canvas.width = 640;
 canvas.height = 480
 ctx.translate(0.5, 0.5);
 
-var grid = new Grid({
-        cellWidth: canvas.width / 32,
-        cellHeight: canvas.height / 24,
-        gridWidth: 32,
-        gridHeight: 24
+
+var w = 32,
+h = 24;
+var grad = new gradient.Grid({
+        cellWidth: canvas.width / w,
+        cellHeight: canvas.height / h,
+        gridWidth: w,
+        gridHeight: h
     });
 
 var loop = function () {
     requestAnimationFrame(loop);
-    grid.update();
+    grad.update();
     draw.back(ctx, canvas);
-    draw.cells(ctx, grid);
+    draw.cells(ctx, grad);
 
 };
 
