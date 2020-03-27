@@ -6,8 +6,8 @@ canvas.height = 480
 ctx.translate(0.5, 0.5);
 
 
-var w = 32,
-h = 24;
+var w = 24,
+h = 12;
 var grad = new gradient.Grid({
         cellWidth: canvas.width / w,
         cellHeight: canvas.height / h,
