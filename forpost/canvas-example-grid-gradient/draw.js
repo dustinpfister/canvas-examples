@@ -2,7 +2,7 @@ var draw = {};
 
 draw.back = function (ctx, canvas) {
     // fill black
-    ctx.fillStyle = 'white';
+    ctx.fillStyle = 'black';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 };
 
@@ -13,6 +13,7 @@ draw.cells = function (ctx, grid) {
     c,
     cLen = grid.cells.length;
     ctx.lineWidth = 3;
+    ctx.strokeStyle = 'black';
     while (ci < cLen) {
         cell = grid.cells[ci];
         c = cell.color;
@@ -22,7 +23,7 @@ draw.cells = function (ctx, grid) {
             cell.x * grid.cellWidth,
             cell.y * grid.cellHeight,
             grid.cellWidth, grid.cellHeight);
-        //ctx.stroke();
+        ctx.stroke();
         ctx.fill();
         ci += 1;
     }

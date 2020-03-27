@@ -27,6 +27,8 @@ var gradient = (function () {
         this.cellHeight = opt.cellHeight || 6;
         this.MIN_CPS = opt.MIN_CPS || 0.25;
         this.MAX_CPS = opt.MAX_CPS || 1.5;
+        this.MIN_RADIUS = opt.MIN_RADIUS || 3;
+        this.MAX_RADIUS = opt.MAX_RADIUS || 5;
         this.cells = [];
         this.resetCells();
         this.lt = new Date();
@@ -36,7 +38,7 @@ var gradient = (function () {
 
         // setup objects
         this.objs = [];
-        var i = 10,
+        var i = opt.objCount || 5,
         rand,
         r,
         g,
