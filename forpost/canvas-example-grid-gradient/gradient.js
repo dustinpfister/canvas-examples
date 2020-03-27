@@ -77,7 +77,7 @@ var gradient = (function () {
                 i: ci,
                 y: Math.floor(ci / this.gridWidth),
                 x: ci % this.gridWidth,
-                color: [0, 0, 0, 1]
+                color: [0, 0, 0, 0]
             };
             this.cells.push(cellObj);
             ci += 1;
@@ -88,6 +88,9 @@ var gradient = (function () {
         this.cells.forEach(function (cell) {
             var c = cell.color;
             c[0] = Math.floor(c[0] > 255 ? 255 : c[0]);
+            c[1] = Math.floor(c[1] > 255 ? 255 : c[1]);
+            c[2] = Math.floor(c[2] > 255 ? 255 : c[2]);
+            c[3] = c[3] > 1 ? 1 : c[3];
         });
     }
 
@@ -99,6 +102,7 @@ var gradient = (function () {
             c[0] += Math.floor(255 * per * obj.power[0]);
             c[1] += Math.floor(255 * per * obj.power[1]);
             c[2] += Math.floor(255 * per * obj.power[2]);
+            c[3] += per * obj.power[3];
         }
     };
 

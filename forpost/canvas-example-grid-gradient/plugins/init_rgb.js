@@ -20,7 +20,8 @@ gradient.load({
             obj.power = [r, g, b, 1];
 
             // do the same with updaters
-            obj.objUpdaterIndex = u.mod(i, grad.objUpdaters.length);
+            //obj.objUpdaterIndex = u.mod(i, grad.objUpdaters.length);
+			obj.objUpdaterIndex = 0;
         }
     }
 

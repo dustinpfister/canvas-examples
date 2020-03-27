@@ -8,8 +8,9 @@ gradient.load({
         randomColor: function (obj, grad, i) {
             var r = Math.random(),
             g = Math.random(),
-            b = Math.random();
-            obj.power = [r, g, b, 1];
+            b = Math.random(),
+            a = Math.random();
+            obj.power = [r, g, b, a];
         },
         randomHeading: function (obj, grad, i) {
             var r = Math.PI * 2 * Math.random();

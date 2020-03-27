@@ -6,7 +6,7 @@ canvas.height = 480
     ctx.translate(0.5, 0.5);
 
 var w = 24,
-h = 12;
+h = 16;
 var grad = new gradient.Grid({
         cellWidth: canvas.width / w,
         cellHeight: canvas.height / h,
@@ -16,7 +16,7 @@ var grad = new gradient.Grid({
         MIN_RADIUS: 3,
         MAX_RADIUS: 7,
         MAX_CPS: 5,
-        objCount: 5
+        objCount: 20
     });
 
 var loop = function () {
