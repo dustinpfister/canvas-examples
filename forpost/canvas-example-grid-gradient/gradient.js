@@ -92,7 +92,6 @@ var gradient = (function () {
     }
 
     var upCellColor = function (grid, cell, obj, x, y) {
-
         d = u.distance(cell.x, cell.y, x, y);
         if (d <= obj.radius) {
             var per = 1 - d / obj.radius;
@@ -101,7 +100,6 @@ var gradient = (function () {
             c[1] += Math.floor(255 * per * obj.power[1]);
             c[2] += Math.floor(255 * per * obj.power[2]);
         }
-
     };
 
     Grid.prototype.update = function () {
@@ -125,7 +123,6 @@ var gradient = (function () {
             obj.x = u.mod(obj.x, grid.gridWidth);
             obj.y = u.mod(obj.y, grid.gridHeight);
             grid.cells.forEach(function (cell) {
-
                 upCellColor(grid, cell, obj, obj.x - grid.gridWidth, obj.y);
                 upCellColor(grid, cell, obj, obj.x + grid.gridWidth, obj.y);
                 upCellColor(grid, cell, obj, obj.x, obj.y - grid.gridHeight);
@@ -134,7 +131,6 @@ var gradient = (function () {
                 upCellColor(grid, cell, obj, obj.x + grid.gridWidth, obj.y + grid.gridHeight);
                 upCellColor(grid, cell, obj, obj.x - grid.gridWidth, obj.y + grid.gridHeight);
                 upCellColor(grid, cell, obj, obj.x + grid.gridWidth, obj.y - grid.gridHeight);
-
                 upCellColor(grid, cell, obj, obj.x, obj.y);
             });
         });
@@ -147,12 +143,10 @@ var gradient = (function () {
     return {
         Grid: Grid,
         load: function (plug) {
-
             // load any init methods
             for (var key in plug.initMethods) {
                 initMethods[key] = plug.initMethods[key];
             }
-
             // load any update methods
             objUpdaters = objUpdaters.concat(plug.objUpdaters || []);
         }

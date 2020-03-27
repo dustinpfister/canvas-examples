@@ -16,7 +16,7 @@ var grad = new gradient.Grid({
         MIN_RADIUS: 3,
         MAX_RADIUS: 7,
         MAX_CPS: 5,
-        objCount: 10
+        objCount: 5
     });
 
 var loop = function () {
