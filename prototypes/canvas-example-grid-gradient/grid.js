@@ -6,9 +6,13 @@ var gradient = (function () {
 
         function (grid, obj, secs) {
 
-            var dr = Math.random() * 5 - 2.5 * secs;
+            var roll = Math.floor(Math.random() * 100) + 1;
 
-            obj.radius += dr;
+            if (roll === 1) {
+                obj.radiusDir = obj.radiusDir === 1 ? -1 : 1;
+            }
+
+            obj.radius += 1 * secs * obj.radiusDir;
             obj.radius = obj.radius < 3 ? 3 : obj.radius;
             obj.radius = obj.radius > 10 ? 10 : obj.radius;
 
@@ -28,7 +32,7 @@ var gradient = (function () {
 
         // setup objects
         this.objs = [];
-        var i = 1,
+        var i = 20,
         rand,
         r,
         g,
@@ -45,19 +49,21 @@ var gradient = (function () {
                 g = 0;
                 b = rand;
             }
-            if (u.mod(i, 5) === 0) {
-                r = 0.5;
-                g = 0.5;
-                b = 0.5;
+            if (u.mod(i, 3) === 0) {
+                r = 0;
+                g = rand;
+                b = 0;
             }
             this.objs.push({
                 x: this.gridWidth * Math.random(),
                 y: this.gridHeight * Math.random(),
-                radius: 3 + 3 * Math.random(),
+                //radius: 3 + 3 * Math.random(),
+                radius: 5,
                 power: [r, g, b],
                 cps: 4,
                 heading: Math.PI * 2 * Math.random(),
-                objUpdaterIndex: 0
+                objUpdaterIndex: 0,
+                radiusDir: 1
             });
         }
 
