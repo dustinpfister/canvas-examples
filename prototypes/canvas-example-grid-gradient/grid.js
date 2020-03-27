@@ -11,18 +11,24 @@ var gradient = (function () {
                 obj.radiusDir = obj.radiusDir === 1 ? -1 : 1;
             }
             obj.power = [1, 0, 0];
-            obj.radius += 1 * secs * obj.radiusDir;
-            obj.radius = obj.radius < 3 ? 3 : obj.radius;
+            obj.radius +=  1 * secs * obj.radiusDir;
+            obj.radius = obj.radius < 5 ? 5 : obj.radius;
             obj.radius = obj.radius > 10 ? 10 : obj.radius;
             obj.cps = 3;
         },
         // heading changes, fast speed
         function (grid, obj, secs) {
             obj.power = [0, 0, 1];
-            obj.heading += Math.PI / 180 * 20 * secs;
+            obj.heading += Math.PI / 180 * 5 * secs;
             obj.heading = u.mod(obj.heading, Math.PI * 2);
-            obj.cps = 8;
-            obj.radius = 5;
+            obj.cps = 15;
+            //obj.radius = 7;
+        },
+        // green, large size
+        function (grid, obj, secs) {
+            obj.power = [0, 1, 0];
+            obj.radius = 8;
+            obj.heading = 0;
         }
     ];
 
