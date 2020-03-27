@@ -5,6 +5,19 @@ var gradient = (function () {
     // object update methods
     var objUpdaters = [];
 
+    var initMethods = {
+        objDefaults: function (obj, grad, i) {
+            obj.x = 0;
+            obj.y = 0;
+            obj.radius = 5;
+            obj.power = [1, 1, 1, 1];
+            obj.cps = 0;
+            obj.heading = 1;
+            obj.objUpdaterIndex = 0;
+            obj.radiusDir = 1;
+        }
+    };
+
     var Grid = function (opt) {
         opt = opt || {};
 
@@ -12,9 +25,14 @@ var gradient = (function () {
         this.gridHeight = opt.gridHeight || 6;
         this.cellWidth = opt.cellWidth || 7;
         this.cellHeight = opt.cellHeight || 6;
+        this.MIN_CPS = opt.MIN_CPS || 0.25;
+        this.MAX_CPS = opt.MAX_CPS || 1.5;
         this.cells = [];
         this.resetCells();
         this.lt = new Date();
+
+        this.initMethods = initMethods;
+        this.objUpdaters = objUpdaters;
 
         // setup objects
         this.objs = [];
@@ -26,35 +44,32 @@ var gradient = (function () {
 
         // create objects
         while (i--) {
-
+            /*
             rand = Math.random() * 0.75 + 0.25;
             r = rand;
             g = 0;
             b = 0;
             if (u.mod(i, 2) === 0) {
-                r = 0;
-                g = 0;
-                b = rand;
+            r = 0;
+            g = 0;
+            b = rand;
             }
             if (u.mod(i, 3) === 0) {
-                r = 0;
-                g = rand;
-                b = 0;
+            r = 0;
+            g = rand;
+            b = 0;
+            }
+             */
+            var obj = {};
+            initMethods.objDefaults(obj, this, i);
+
+            if (opt.initMethod) {
+
+                initMethods[opt.initMethod](obj, this, i);
+
             }
 
-            this.objs.push({
-                x: this.gridWidth * Math.random(),
-                y: this.gridHeight * Math.random(),
-                //radius: 3 + 3 * Math.random(),
-                radius: 5,
-                power: [r, g, b],
-                cps: 2,
-                heading: Math.PI * 2 * Math.random(),
-                //objUpdaterIndex: i === 0 ? 1 : 0,
-                objUpdaterIndex: u.mod(i, objUpdaters.length),
-                //objUpdaterIndex:0,
-                radiusDir: 1
-            });
+            this.objs.push(obj);
         }
 
         this.update();
@@ -141,7 +156,13 @@ var gradient = (function () {
     return {
         Grid: Grid,
         load: function (plug) {
-            // load update methods
+
+            // load any init methods
+            for (var key in plug.initMethods) {
+                initMethods[key] = plug.initMethods[key];
+            }
+
+            // load any update methods
             objUpdaters = objUpdaters.concat(plug.objUpdaters || []);
         }
     };
