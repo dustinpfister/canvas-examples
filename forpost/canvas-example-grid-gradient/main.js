@@ -12,11 +12,11 @@ var grad = new gradient.Grid({
         cellHeight: canvas.height / h,
         gridWidth: w,
         gridHeight: h,
-        initMethod: ['random', 'rgb'],
+        initMethod: ['random', 'rgb', 'updatersStager'],
         MIN_RADIUS: 3,
         MAX_RADIUS: 7,
         MAX_CPS: 5,
-        objCount: 20
+        objCount: 15
     });
 
 var loop = function () {
@@ -24,7 +24,6 @@ var loop = function () {
     grad.update();
     draw.back(ctx, canvas);
     draw.cells(ctx, grad);
-
 };
 
 loop();

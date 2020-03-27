@@ -20,32 +20,27 @@ var gradient = (function () {
 
     var Grid = function (opt) {
         opt = opt || {};
-
         var grad = this;
-
-        this.gridWidth = opt.gridWidth || 7;
-        this.gridHeight = opt.gridHeight || 6;
-        this.cellWidth = opt.cellWidth || 7;
-        this.cellHeight = opt.cellHeight || 6;
-        this.MIN_CPS = opt.MIN_CPS || 0.25;
-        this.MAX_CPS = opt.MAX_CPS || 1.5;
-        this.MIN_RADIUS = opt.MIN_RADIUS || 3;
-        this.MAX_RADIUS = opt.MAX_RADIUS || 5;
-        this.cells = [];
-        this.resetCells();
-        this.lt = new Date();
-
-        this.initMethods = initMethods;
-        this.objUpdaters = objUpdaters;
-
+        grad.gridWidth = opt.gridWidth || 7;
+        grad.gridHeight = opt.gridHeight || 6;
+        grad.cellWidth = opt.cellWidth || 7;
+        grad.cellHeight = opt.cellHeight || 6;
+        grad.MIN_CPS = opt.MIN_CPS || 0.25;
+        grad.MAX_CPS = opt.MAX_CPS || 1.5;
+        grad.MIN_RADIUS = opt.MIN_RADIUS || 3;
+        grad.MAX_RADIUS = opt.MAX_RADIUS || 5;
+        grad.cells = [];
+        grad.resetCells();
+        grad.lt = new Date();
+        grad.initMethods = initMethods;
+        grad.objUpdaters = objUpdaters;
         // setup objects
-        this.objs = [];
+        grad.objs = [];
         var i = opt.objCount || 5,
         rand,
         r,
         g,
         b;
-
         // create objects With init method(s)
         while (i--) {
             var obj = {};
@@ -60,10 +55,10 @@ var gradient = (function () {
                     });
                 }
             }
-            this.objs.push(obj);
+            grad.objs.push(obj);
         }
         // update for the first time
-        this.update();
+        grad.update();
     };
 
     // setup reset cells
@@ -107,12 +102,10 @@ var gradient = (function () {
     };
 
     Grid.prototype.update = function () {
-
         var grid = this,
         now = new Date(),
         t = now - grid.lt,
         secs = t / 1000;
-
         // reset
         grid.resetCells();
         // increase color channel values for objects
@@ -138,10 +131,9 @@ var gradient = (function () {
                 upCellColor(grid, cell, obj, obj.x, obj.y);
             });
         });
+        // cap colors and set lt to now
         grid.capCellColors();
-
         grid.lt = now;
-
     };
 
     return {
