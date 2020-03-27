@@ -21,6 +21,8 @@ var gradient = (function () {
     var Grid = function (opt) {
         opt = opt || {};
 
+        var grad = this;
+
         this.gridWidth = opt.gridWidth || 7;
         this.gridHeight = opt.gridHeight || 6;
         this.cellWidth = opt.cellWidth || 7;
@@ -44,36 +46,23 @@ var gradient = (function () {
         g,
         b;
 
-        // create objects
+        // create objects With init method(s)
         while (i--) {
-            /*
-            rand = Math.random() * 0.75 + 0.25;
-            r = rand;
-            g = 0;
-            b = 0;
-            if (u.mod(i, 2) === 0) {
-            r = 0;
-            g = 0;
-            b = rand;
-            }
-            if (u.mod(i, 3) === 0) {
-            r = 0;
-            g = rand;
-            b = 0;
-            }
-             */
             var obj = {};
-            initMethods.objDefaults(obj, this, i);
-
+            initMethods.objDefaults(obj, grad, i);
             if (opt.initMethod) {
-
-                initMethods[opt.initMethod](obj, this, i);
-
+                if (typeof opt.initMethod === 'string') {
+                    initMethods[opt.initMethod](obj, grad, i);
+                }
+                if (typeof opt.initMethod === 'object') {
+                    opt.initMethod.forEach(function (initMethodKey) {
+                        initMethods[initMethodKey](obj, grad, i);
+                    });
+                }
             }
-
             this.objs.push(obj);
         }
-
+        // update for the first time
         this.update();
     };
 
