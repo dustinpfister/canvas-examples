@@ -6,25 +6,29 @@ var gradient = (function () {
     var objUpdaters = [
         // radius changes, slow speed
         function (grid, obj, secs) {
-            var roll = Math.floor(Math.random() * 50) + 1;
-            if (roll === 1) {
-                obj.radiusDir = obj.radiusDir === 1 ? -1 : 1;
+            if (obj.radius === 3 || obj.radius === 10) {
+                var roll = Math.floor(Math.random() * 50) + 1;
+                if (roll === 1) {
+                    obj.radiusDir = obj.radiusDir === 1 ? -1 : 1;
+                }
             }
             obj.radius += 1 * secs * obj.radiusDir;
-            obj.radius = obj.radius < 5 ? 5 : obj.radius;
+            obj.radius = obj.radius < 3 ? 3 : obj.radius;
             obj.radius = obj.radius > 10 ? 10 : obj.radius;
             obj.cps = 3;
         },
+        /*
         // heading changes, fast speed
         function (grid, obj, secs) {
-            obj.heading += Math.PI / 180 * 5 * secs;
-            obj.heading = u.mod(obj.heading, Math.PI * 2);
-            obj.cps = 15;
+        obj.heading += Math.PI / 180 * 5 * secs;
+        obj.heading = u.mod(obj.heading, Math.PI * 2);
+        obj.cps = 15;
         },
         // fixed position
         function (grid, obj, secs) {
-            obj.cps = 0;
+        obj.cps = 0;
         }
+         */
     ];
 
     var Grid = function (opt) {
@@ -40,7 +44,7 @@ var gradient = (function () {
 
         // setup objects
         this.objs = [];
-        var i = 40,
+        var i = 10,
         rand,
         r,
         g,
@@ -130,7 +134,10 @@ var gradient = (function () {
         // increase color channel values for objects
         grid.objs.forEach(function (obj) {
             // call updater
-            objUpdaters[obj.objUpdaterIndex](grid, obj, secs);
+            var updater = objUpdaters[obj.objUpdaterIndex];
+            if (updater) {
+                updater(grid, obj, secs);
+            }
             obj.x += Math.cos(obj.heading) * obj.cps * secs;
             obj.y += Math.sin(obj.heading) * obj.cps * secs;
             obj.x = u.mod(obj.x, grid.gridWidth);
