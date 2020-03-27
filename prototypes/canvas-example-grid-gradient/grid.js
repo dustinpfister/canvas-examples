@@ -12,7 +12,7 @@ var Grid = function (opt) {
 
     // setup objects
     this.objs = [];
-    var i = 9,
+    var i = 12,
     rand,
     r,
     g,

@@ -2,7 +2,7 @@ var draw = {};
 
 draw.back = function (ctx, canvas) {
     // fill black
-    ctx.fillStyle = 'black';
+    ctx.fillStyle = 'white';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 };
 
