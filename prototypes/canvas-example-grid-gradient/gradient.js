@@ -3,35 +3,7 @@
 var gradient = (function () {
 
     // object update methods
-    var objUpdaters = [
-        // radius changes, slow speed
-		/*
-        function (grid, obj, secs) {
-            if (obj.radius === 3 || obj.radius === 10) {
-                var roll = Math.floor(Math.random() * 50) + 1;
-                if (roll === 1) {
-                    obj.radiusDir = obj.radiusDir === 1 ? -1 : 1;
-                }
-            }
-            obj.radius += 1 * secs * obj.radiusDir;
-            obj.radius = obj.radius < 3 ? 3 : obj.radius;
-            obj.radius = obj.radius > 10 ? 10 : obj.radius;
-            obj.cps = 3;
-        },
-		*/
-        /*
-        // heading changes, fast speed
-        function (grid, obj, secs) {
-        obj.heading += Math.PI / 180 * 5 * secs;
-        obj.heading = u.mod(obj.heading, Math.PI * 2);
-        obj.cps = 15;
-        },
-        // fixed position
-        function (grid, obj, secs) {
-        obj.cps = 0;
-        }
-         */
-    ];
+    var objUpdaters = [];
 
     var Grid = function (opt) {
         opt = opt || {};
@@ -54,7 +26,7 @@ var gradient = (function () {
 
         // create objects
         while (i--) {
-			/*
+
             rand = Math.random() * 0.75 + 0.25;
             r = rand;
             g = 0;
@@ -69,13 +41,13 @@ var gradient = (function () {
                 g = rand;
                 b = 0;
             }
-			*/
+
             this.objs.push({
                 x: this.gridWidth * Math.random(),
                 y: this.gridHeight * Math.random(),
                 //radius: 3 + 3 * Math.random(),
                 radius: 5,
-                power: [0.5, 0.5, 0.5],
+                power: [r, g, b],
                 cps: 2,
                 heading: Math.PI * 2 * Math.random(),
                 //objUpdaterIndex: i === 0 ? 1 : 0,
