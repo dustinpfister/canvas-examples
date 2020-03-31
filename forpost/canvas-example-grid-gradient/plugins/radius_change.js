@@ -1,5 +1,4 @@
 gradient.load({
-
     objUpdaters: [
         // radius changes, slow speed
         function (grid, obj, secs) {

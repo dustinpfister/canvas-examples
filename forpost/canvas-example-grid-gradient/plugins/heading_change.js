@@ -1,5 +1,4 @@
 gradient.load({
-
     objUpdaters: [
         // heading changes, fast speed
         function (grid, obj, secs) {

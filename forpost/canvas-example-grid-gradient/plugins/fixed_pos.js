@@ -1,5 +1,4 @@
 gradient.load({
-
     objUpdaters: [
         // fixed position
         function (grid, obj, secs) {

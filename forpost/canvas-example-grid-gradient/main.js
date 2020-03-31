@@ -19,11 +19,18 @@ var grad = new gradient.Grid({
         objCount: 15
     });
 
+var lt = new Date(),
+target_fps = 12;
 var loop = function () {
+    var now = new Date(),
+    t = now - lt;
     requestAnimationFrame(loop);
-    grad.update();
-    draw.back(ctx, canvas);
-    draw.cells(ctx, grad);
+    if (t > 1000 / target_fps) {
+        grad.update();
+        draw.back(ctx, canvas);
+        draw.cells(ctx, grad);
+        lt = now;
+    }
 };
 
 loop();
