@@ -15,7 +15,7 @@ draw.world = function (sm) {
     ctx = sm.ctx,
     solar = sm.solar,
     i = 0,
-    world = solar.worlds[solar.currentWorld],
+    world = solar.currentWorld,
     land;
 
     // draw land

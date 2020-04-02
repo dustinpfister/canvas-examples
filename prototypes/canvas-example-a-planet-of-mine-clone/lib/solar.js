@@ -9,7 +9,8 @@ var solarMod = (function () {
             worlds.push(worldMod.create());
 
             return {
-                currentWorld: 0,
+                currentWorldIndex: 0,
+                currentWorld: worlds[0],
                 worlds: worlds
             };
 
