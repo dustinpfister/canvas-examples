@@ -8,6 +8,8 @@ var solarMod = (function () {
             canvas = document.createElement('canvas'),
             ctx = canvas.getContext('2d');
 
+            container.appendChild(canvas);
+
             canvas.width = 640;
             canvas.height = 480;
 

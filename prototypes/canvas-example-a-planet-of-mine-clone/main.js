@@ -15,3 +15,5 @@ var state = {
 };
 
 state[state.current]();
+draw.back(solar);
+draw.world(solar);
