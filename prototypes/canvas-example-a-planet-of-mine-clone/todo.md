@@ -1,28 +1,9 @@
 # canvas-example-a-planet-of-mine-clone todo list
 
-## utils
-* utls.js: utils lib started with bounding box, distance, and getCanvasRelative
-
-## main.js
-* main.js: solar state for swiching between worlds, setting the world to move to with the ship, ect
-* main.js: main.js can be used for event attachment
-* main.js canvas and context should be a part of the state object
-
-## draw.js
-* draw.js: generated sprite sheet for each item in worlds itemDataBase
-* draw.js: state object should be the main object
-
-## world.js
-* world.js: items have a onWorkerTick method that fires for each worker on each tick
-* world.js: ground types other then grass
-* world.js: certain items can only be placed on certin ground types
-* world.js: world objects have an solorPos object that is the position in the solar object
-
-## solar.js
-* solar.js: world, and solar modes
-* solar.js: clicking the canvas
-* solar.js: can move workers from freeArea to a land area that will take them, and back
-* solar.js: can move workers from land tile to land tile
+* can see the current status of each land section in the world
+* can see workers
+* can move workers around from one land section to another
+* can create new workers
 
 
 ## DONE

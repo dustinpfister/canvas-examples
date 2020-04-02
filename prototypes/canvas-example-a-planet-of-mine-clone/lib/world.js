@@ -36,30 +36,48 @@ var worldMod = (function () {
     // create a worker object
     var createWorkerObject = function () {
         return {
-            actionsPerTick: 1
+            actionsPerTick: 1,
+            pos: { // position relative to canvas
+                x: 0,
+                y: 0
+            }
         };
     }
 
     // create a land object
     var createLandObject = function (opt) {
         opt = opt || {};
+        opt.pos = opt.pos || {};
         return {
             itemIndex: opt.itemIndex === undefined ? null : opt.itemIndex,
             workers: [],
             maxWorkers: 0,
+            pos: {
+                x: opt.pos.x || 0,
+                y: opt.pos.y || 0
+            },
             groundType: opt.groundType || 'grass',
             solidCount: opt.solidCount || 0,
             liguidCount: opt.liguidCount || 0
         };
     };
 
+    // set the item index for the given land
     var setLandItem = function (land, itemIndex) {
-
         var item = itemDataBase[itemIndex];
-
         land.itemIndex = itemIndex;
         land.maxWorkers = item.maxWorkers;
+    };
 
+    // move a worker from one location to another
+    var moveWorker = function (fromArea, toArea) {
+        if (fromArea.workers.length === 0) {
+            return;
+        }
+        if (toArea.workers.length + 1 <= toArea.maxWorkers) {
+            var worker = fromArea.workers.pop();
+            land.workers.push(worker);
+        }
     };
 
     var createWorldLand = function (world) {
@@ -67,15 +85,20 @@ var worldMod = (function () {
         lands = [],
         i = 0;
         while (i < len) {
-            lands.push(createLandObject());
+            lands.push(createLandObject({
+                    pos: {
+                        x: i * (32 + 2),
+                        y: 32
+                    }
+                }));
             i += 1;
         }
 
         // start with a ship on land 0 with two workers
-        //lands[0].itemIndex = 0;
         setLandItem(lands[0], 0);
-        lands[0].workers.push(createWorkerObject());
-        lands[0].workers.push(createWorkerObject());
+
+        world.freeWorkers.push(createWorkerObject());
+        world.freeWorkers.push(createWorkerObject());
 
         return lands;
     };

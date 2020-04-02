@@ -16,17 +16,23 @@ draw.world = function (sm) {
     solar = sm.solar,
     i = 0,
     world = solar.worlds[solar.currentWorld],
-    x,
     land;
+
+    // draw land
     while (i < world.lands.length) {
         land = world.lands[i];
-        x = 32 + 32 * i;
-
         ctx.fillStyle = 'green';
-        ctx.fillRect(x, 32, 32, 32);
-
+        ctx.fillRect(land.pos.x, land.pos.y, 32, 128);
         i += 1;
     }
+
+    // draw free workers
+    world.freeWorkers.forEach(function (worker) {
+
+        ctx.fillStyle = 'red';
+        ctx.fillRect(worker.pos.x, worker.pos.x, 32, 32);
+
+    });
 
 };
 
