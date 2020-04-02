@@ -94,7 +94,3 @@ var worldMod = (function () {
 
 }
     ());
-
-var world = worldMod.create();
-
-console.log(world);
