@@ -39,7 +39,8 @@ sm.load({
                     }
                 } else {
                     // create new worker?
-                    console.log('new worker?');
+                    //console.log('new worker?');
+                    world.createWorker();
                 }
             }
 

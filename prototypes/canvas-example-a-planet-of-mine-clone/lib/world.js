@@ -121,7 +121,6 @@ var worldMod = (function () {
         createWorker(world);
         createWorker(world);
         createWorker(world);
-        createWorker(world);
 
         return lands;
     };
@@ -141,22 +140,30 @@ var worldMod = (function () {
                     },
                     maxWorkers: 3,
                     workers: [],
-                },
-                moveWoker: function (worker, newArea) {
-                    var i = worker.parent.workers.length;
-                    while (i--) {
-                        var w = worker.parent.workers[i];
-                        if (w === worker) {
-                            worker.parent.workers.splice(i, 1);
-                            worker.parent = newArea;
-                            worker.pos.x = newArea.pos.x;
-                            worker.pos.y = newArea.pos.y;
-                            newArea.workers.push(worker);
-                            break;
-                        }
+                }
+            };
+
+            // move a worker
+            world.moveWoker = function (worker, newArea) {
+                var i = worker.parent.workers.length;
+                while (i--) {
+                    var w = worker.parent.workers[i];
+                    if (w === worker) {
+                        worker.parent.workers.splice(i, 1);
+                        worker.parent = newArea;
+                        worker.pos.x = newArea.pos.x;
+                        worker.pos.y = newArea.pos.y;
+                        newArea.workers.push(worker);
+                        break;
                     }
                 }
             };
+
+            // create worker
+            world.createWorker = function () {
+                createWorker(world);
+            }
+
             world.lands = createWorldLand(world);
             return world;
         }
