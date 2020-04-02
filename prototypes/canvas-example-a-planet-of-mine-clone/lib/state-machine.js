@@ -70,6 +70,14 @@ var Machine = (function () {
             mode;
             pt.pos = getCanvasRelative(e);
 
+            pt.overlap = function (x, y, w, h) {
+                return boundingBox(pt.pos.x, pt.pos.y, 1, 1, x, y, w, h);
+            };
+
+            pt.distance = function (x, y) {
+                return distance(pt.pos.x, pt.pos.y, x, y);
+            };
+
             // prevent default
             e.preventDefault();
             // call top level if there
