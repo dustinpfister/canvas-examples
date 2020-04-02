@@ -52,10 +52,6 @@ sm.load({
                     var land = world.lands[i],
                     pos = land.pos;
                     if (pt.overlap(pos.x, pos.y, pos.w, pos.h)) {
-                        //world.moveWorker.pos.x = pos.x;
-                        //world.moveWorker.pos.y = pos.y;
-
-                        //land.workers.push(world.moveWorker);
 
                         world.moveWoker(world.moveWorker, land);
 

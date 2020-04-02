@@ -147,6 +147,8 @@ var worldMod = (function () {
                         if (w === worker) {
                             worker.parent.workers.splice(i, 1);
                             worker.parent = newArea;
+                            worker.pos.x = newArea.pos.x;
+                            worker.pos.y = newArea.pos.y;
                             newArea.workers.push(worker);
                             break;
                         }
