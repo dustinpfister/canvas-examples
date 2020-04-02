@@ -39,7 +39,9 @@ var worldMod = (function () {
             actionsPerTick: 1,
             pos: { // position relative to canvas
                 x: 0,
-                y: 0
+                y: 0,
+                w: 32,
+                h: 32
             }
         };
     }
