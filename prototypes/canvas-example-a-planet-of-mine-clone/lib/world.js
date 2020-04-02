@@ -34,10 +34,11 @@ var worldMod = (function () {
     ];
 
     // create a worker object
-    var createWorkerObject = function () {
+    var createWorkerObject = function (parent) {
 
         return {
             actionsPerTick: 1,
+            parent: parent,
             pos: { // position relative to canvas
                 x: 0,
                 y: 0,
@@ -92,7 +93,7 @@ var worldMod = (function () {
         var fw = world.freeWorkers,
         len = fw.workers.length;
         if (len < fw.maxWorkers) {
-            var worker = createWorkerObject();
+            var worker = createWorkerObject(fw);
             worker.pos.x = fw.pos.x + len * (32 + 1);
             worker.pos.y = fw.pos.y;
             fw.workers.push(worker);
