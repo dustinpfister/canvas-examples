@@ -3,15 +3,18 @@ var sm = Machine('gamearea');
 sm.load({
     name: 'game',
     bootState: true,
-    init: function (sm) {},
+    init: function (sm) {
+
+        sm.solar = solarMod.create();
+
+    },
     tick: function (sm) {
 
         var ctx = sm.ctx;
 
-        sm.solar = solarMod.create();
-
-        ctx.fillStyle = 'black';
-        ctx.fillRect(0, 0, sm.canvas.width, sm.canvas.height);
+        // draw background and world
+        draw.back(sm);
+        draw.world(sm);
 
     },
     userPointer: {

@@ -1,18 +1,19 @@
 var draw = {};
 
-draw.back = function (solar) {
+draw.back = function (sm) {
 
-    var canvas = solar.canvas,
-    ctx = solar.ctx;
+    var canvas = sm.canvas,
+    ctx = sm.ctx;
 
     ctx.fillStyle = 'black';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
 };
 
-draw.world = function (solar) {
-    var canvas = solar.canvas,
-    ctx = solar.ctx,
+draw.world = function (sm) {
+    var canvas = sm.canvas,
+    ctx = sm.ctx,
+    solar = sm.solar,
     i = 0,
     world = solar.worlds[solar.currentWorld],
     x,
