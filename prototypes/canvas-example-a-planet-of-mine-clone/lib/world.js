@@ -54,7 +54,9 @@ var worldMod = (function () {
             maxWorkers: 0,
             pos: {
                 x: opt.pos.x || 0,
-                y: opt.pos.y || 0
+                y: opt.pos.y || 0,
+                w: opt.pos.w || 64,
+                h: opt.pos.h || 128
             },
             groundType: opt.groundType || 'grass',
             solidCount: opt.solidCount || 0,
@@ -99,8 +101,10 @@ var worldMod = (function () {
         while (i < len) {
             lands.push(createLandObject({
                     pos: {
-                        x: i * (32 + 2),
-                        y: 32
+                        x: 32 + i * (64 + 2),
+                        y: 120,
+                        w: 64,
+                        h: 96
                     }
                 }));
             i += 1;

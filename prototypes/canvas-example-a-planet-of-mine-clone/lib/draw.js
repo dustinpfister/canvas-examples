@@ -22,7 +22,7 @@ draw.world = function (sm) {
     while (i < world.lands.length) {
         land = world.lands[i];
         ctx.fillStyle = 'green';
-        ctx.fillRect(land.pos.x, land.pos.y, 32, 128);
+        ctx.fillRect(land.pos.x, land.pos.y, land.pos.w, land.pos.h);
         i += 1;
     }
 
