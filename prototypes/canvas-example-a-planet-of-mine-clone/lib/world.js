@@ -127,6 +127,7 @@ var worldMod = (function () {
             var world = {
                 landCount: 4,
                 lands: [],
+                moveWorker: null,
                 freeWorkers: {
                     pos: {
                         x: 32,

@@ -19,12 +19,32 @@ sm.load({
     },
     userPointer: {
         start: function (pt, sm, e) {
-			/*
-            console.log(e.type, pt.pos.x, pt.pos.y);
-            console.log(pt.distance(0, 0));
-            console.log(pt.overlap(32, 32, 32, 32));
-			*/
 
+            var world = sm.solar.currentWorld,
+            fw = world.freeWorkers,
+            i = fw.workers.length;
+            while (i--) {
+                var worker = fw.workers[i],
+                pos = worker.pos;
+                if (pt.overlap(pos.x, pos.y, pos.w, pos.h)) {
+                    world.moveWorker = worker;
+                    break;
+                }
+            }
+
+        },
+        move: function (pt, sm, e) {
+            var world = sm.solar.currentWorld;
+
+            if (world.moveWorker) {
+                world.moveWorker.pos.x = pt.pos.x - 16;
+                world.moveWorker.pos.y = pt.pos.y - 16;
+            }
+
+        },
+        end: function (pt, sm, e) {
+            var world = sm.solar.currentWorld;
+            world.moveWorker = null;
         }
     }
 });
