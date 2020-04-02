@@ -6,8 +6,8 @@
 * (done) can place free workers on a land tile that will accept one
 * (done) can move workers around from one land section to another
 * debug draw method
-* can move land worker back to free worker section
-* can create new workers
+* (done) can move land worker back to free worker section
+* can create new workers by clicking freeWorkers when no workers are there
 
 
 ## DONE

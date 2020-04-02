@@ -62,6 +62,8 @@ sm.load({
         end: function (pt, sm, e) {
             var world = sm.solar.currentWorld;
 
+            world.moveWoker(world.moveWorker, world.moveWorker.parent);
+
             if (world.moveWorker) {
                 // over land with moveWorker?
                 var i = world.lands.length;
