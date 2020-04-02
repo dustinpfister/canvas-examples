@@ -18,6 +18,11 @@ draw.world = function (sm) {
     world = solar.currentWorld,
     land;
 
+    // draw freeWokers area
+    var pos = world.freeWorkers.pos;
+    ctx.fillStyle = 'grey';
+    ctx.fillRect(pos.x, pos.y, pos.w, pos.h);
+
     // draw land
     while (i < world.lands.length) {
         land = world.lands[i];
