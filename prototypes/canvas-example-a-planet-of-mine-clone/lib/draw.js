@@ -24,14 +24,15 @@ draw.world = function (sm) {
         ctx.fillStyle = 'green';
         ctx.fillRect(land.pos.x, land.pos.y, land.pos.w, land.pos.h);
 
+        i += 1;
+    }
 
+    world.lands.forEach(function (land) {
         land.workers.forEach(function (worker) {
             ctx.fillStyle = 'blue';
             ctx.fillRect(worker.pos.x, worker.pos.y, worker.pos.w, worker.pos.h);
         });
-
-        i += 1;
-    }
+    });
 
     // draw free workers
     world.freeWorkers.workers.forEach(function (worker) {
