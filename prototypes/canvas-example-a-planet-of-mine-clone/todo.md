@@ -5,10 +5,9 @@
 * (done) can move free workers
 * (done) can place free workers on a land tile that will accept one
 * (done) can move workers around from one land section to another
-* debug draw method
 * (done) can move land worker back to free worker section
 * can create new workers by clicking freeWorkers when no workers are there
-
+* debug draw method
 
 ## DONE
 * (done) draw.js: draw.js started with draw.back, and draw.solar methods

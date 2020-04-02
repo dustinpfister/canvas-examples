@@ -22,15 +22,24 @@ sm.load({
 
             var world = sm.solar.currentWorld;
 
-            // free worker?
-            var fw = world.freeWorkers,
-            i = fw.workers.length;
-            while (i--) {
-                var worker = fw.workers[i],
-                pos = worker.pos;
-                if (pt.overlap(pos.x, pos.y, pos.w, pos.h)) {
-                    world.moveWorker = worker;
-                    break;
+            // free worker area
+            var fw = world.freeWorkers;
+            if (pt.overlap(fw.pos.x, fw.pos.y, fw.pos.w, fw.pos.h)) {
+                var len = fw.workers.length;
+                if (len > 0) {
+                    // select free worker?
+                    var i = len;
+                    while (i--) {
+                        var worker = fw.workers[i],
+                        pos = worker.pos;
+                        if (pt.overlap(pos.x, pos.y, pos.w, pos.h)) {
+                            world.moveWorker = worker;
+                            break;
+                        }
+                    }
+                } else {
+                    // create new worker?
+                    console.log('new worker?');
                 }
             }
 
@@ -62,9 +71,10 @@ sm.load({
         end: function (pt, sm, e) {
             var world = sm.solar.currentWorld;
 
-            world.moveWoker(world.moveWorker, world.moveWorker.parent);
-
             if (world.moveWorker) {
+
+                world.moveWoker(world.moveWorker, world.moveWorker.parent);
+
                 // over land with moveWorker?
                 var i = world.lands.length;
                 while (i--) {
