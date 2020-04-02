@@ -1,5 +1,22 @@
 var Machine = (function () {
 
+    // TOOLS
+
+    // find out if the given to sets of
+    // box areas overlap or not
+    var boundingBox = function (x1, y1, w1, h1, x2, y2, w2, h2) {
+        return !(
+            (y1 + h1) < y2 ||
+            y1 > (y2 + h2) ||
+            (x1 + w1) < x2 ||
+            x1 > (x2 + w2));
+    };
+
+    // standard distance formula
+    var distance = function (x1, y1, x2, y2) {
+        return Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2));
+    };
+
     // PARSE arguments
 
     // Parse a container argument
@@ -83,7 +100,7 @@ var Machine = (function () {
     };
 
     // create a new state machine
-    return function (container, w, h) {
+    var api = function (container, w, h) {
 
         // state machine Object
         var sm = {
@@ -140,6 +157,13 @@ var Machine = (function () {
         return sm;
 
     };
+
+    // append tools so they can be used outside of the module if need be
+    api.boundingBox = boundingBox;
+    api.distance = distance;
+
+    // return the public API
+    return api;
 
 }
     ());
