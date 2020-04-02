@@ -97,8 +97,8 @@ var worldMod = (function () {
         // start with a ship on land 0 with two workers
         setLandItem(lands[0], 0);
 
-        world.freeWorkers.push(createWorkerObject());
-        world.freeWorkers.push(createWorkerObject());
+        world.freeWorkers.workers.push(createWorkerObject());
+        world.freeWorkers.workers.push(createWorkerObject());
 
         return lands;
     };
@@ -108,7 +108,10 @@ var worldMod = (function () {
             var world = {
                 landCount: 4,
                 lands: [],
-                freeWorkers: []
+                freeWorkers: {
+                    maxWorkers: 3,
+                    workers: [],
+                }
             };
             world.lands = createWorldLand(world);
             return world;

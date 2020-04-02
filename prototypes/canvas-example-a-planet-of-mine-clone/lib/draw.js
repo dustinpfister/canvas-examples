@@ -27,7 +27,7 @@ draw.world = function (sm) {
     }
 
     // draw free workers
-    world.freeWorkers.forEach(function (worker) {
+    world.freeWorkers.workers.forEach(function (worker) {
 
         ctx.fillStyle = 'red';
         ctx.fillRect(worker.pos.x, worker.pos.x, 32, 32);
