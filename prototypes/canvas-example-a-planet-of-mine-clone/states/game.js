@@ -19,7 +19,10 @@ sm.load({
     },
     userPointer: {
         start: function (pt, sm, e) {
-            console.log(e.type, pt.x, pt.y);
+            console.log(e.type, pt.pos.x, pt.pos.y);
+            console.log(pt.distance(0, 0));
+            console.log(pt.overlap(32, 32, 32, 32));
+
         }
     }
 });
