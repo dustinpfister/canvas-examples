@@ -135,7 +135,9 @@ var worldMod = (function () {
                 freeWorkers: {
                     pos: {
                         x: 32,
-                        y: 32
+                        y: 32,
+                        w: 100,
+                        h: 50
                     },
                     maxWorkers: 3,
                     workers: [],

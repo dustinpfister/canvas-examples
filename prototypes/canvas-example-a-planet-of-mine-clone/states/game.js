@@ -36,7 +36,7 @@ sm.load({
 
             // land worker?
             var li = world.lands.length;
-            lands:while (li--) {
+            lands: while (li--) {
                 var land = world.lands[li],
                 wi = land.workers.length;
                 while (wi--) {
@@ -69,12 +69,17 @@ sm.load({
                     var land = world.lands[i],
                     pos = land.pos;
                     if (pt.overlap(pos.x, pos.y, pos.w, pos.h)) {
-
                         world.moveWoker(world.moveWorker, land);
-
                         break;
                     }
                 }
+
+                // over freeWorkers
+                var pos = world.freeWorkers.pos;
+                if (pt.overlap(pos.x, pos.y, pos.w, pos.h)) {
+                    world.moveWoker(world.moveWorker, world.freeWorkers);
+                }
+
             }
 
             world.moveWorker = null;
