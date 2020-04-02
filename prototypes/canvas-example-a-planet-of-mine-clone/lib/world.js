@@ -35,6 +35,7 @@ var worldMod = (function () {
 
     // create a worker object
     var createWorkerObject = function () {
+
         return {
             actionsPerTick: 1,
             pos: { // position relative to canvas
@@ -74,15 +75,17 @@ var worldMod = (function () {
     };
 
     // move a worker from one location to another
+    /*
     var moveWorker = function (fromArea, toArea) {
-        if (fromArea.workers.length === 0) {
-            return;
-        }
-        if (toArea.workers.length + 1 <= toArea.maxWorkers) {
-            var worker = fromArea.workers.pop();
-            land.workers.push(worker);
-        }
+    if (fromArea.workers.length === 0) {
+    return;
+    }
+    if (toArea.workers.length + 1 <= toArea.maxWorkers) {
+    var worker = fromArea.workers.pop();
+    land.workers.push(worker);
+    }
     };
+     */
 
     // create a new worker
     var createWorker = function (world) {
