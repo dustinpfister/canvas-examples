@@ -2,7 +2,7 @@
 
 
 * (done) can see free workers
-* can move free workers
+* (done) can move free workers
 * can place free workers on a land tile that will accept one
 * can move workers around from one land section to another
 * can move land worker back to free worker section
