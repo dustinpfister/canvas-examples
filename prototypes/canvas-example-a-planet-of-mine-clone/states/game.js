@@ -20,8 +20,10 @@ sm.load({
     userPointer: {
         start: function (pt, sm, e) {
 
-            var world = sm.solar.currentWorld,
-            fw = world.freeWorkers,
+            var world = sm.solar.currentWorld;
+
+            // free worker?
+            var fw = world.freeWorkers,
             i = fw.workers.length;
             while (i--) {
                 var worker = fw.workers[i],
@@ -29,6 +31,21 @@ sm.load({
                 if (pt.overlap(pos.x, pos.y, pos.w, pos.h)) {
                     world.moveWorker = worker;
                     break;
+                }
+            }
+
+            // land worker?
+            var li = world.lands.length;
+            lands:while (li--) {
+                var land = world.lands[li],
+                wi = land.workers.length;
+                while (wi--) {
+                    var worker = land.workers[wi],
+                    pos = worker.pos;
+                    if (pt.overlap(pos.x, pos.y, pos.w, pos.h)) {
+                        world.moveWorker = worker;
+                        break lands;
+                    }
                 }
             }
 

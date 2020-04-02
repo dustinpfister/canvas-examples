@@ -24,6 +24,7 @@ draw.world = function (sm) {
         ctx.fillStyle = 'green';
         ctx.fillRect(land.pos.x, land.pos.y, land.pos.w, land.pos.h);
 
+
         land.workers.forEach(function (worker) {
             ctx.fillStyle = 'blue';
             ctx.fillRect(worker.pos.x, worker.pos.y, worker.pos.w, worker.pos.h);
