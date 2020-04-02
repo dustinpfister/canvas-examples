@@ -63,17 +63,20 @@ var Machine = (function () {
     // attach a canvas event
     var attachCanvasEvent = function (sm, DOMType, smType) {
         sm.canvas.addEventListener(DOMType, function (e) {
-            var pos = getCanvasRelative(e),
-            stateObj = sm.states[sm.currentState],
+
+            var stateObj = sm.states[sm.currentState],
+            pt = {}, // pointer API
             handler,
             mode;
+            pt.pos = getCanvasRelative(e);
+
             // prevent default
             e.preventDefault();
             // call top level if there
             if (stateObj.userPointer) {
                 handler = stateObj.userPointer[smType];
                 if (handler) {
-                    handler(pos, sm, e);
+                    handler(pt, sm, e);
                 }
             }
             // call for current mode if there
@@ -82,7 +85,7 @@ var Machine = (function () {
                 if (mode.userPointer) {
                     handler = mode.userPointer[smType];
                     if (handler) {
-                        handler(pos, sm, e);
+                        handler(pt, sm, e);
                     }
                 }
             }
