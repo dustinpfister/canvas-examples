@@ -30,7 +30,7 @@ draw.world = function (sm) {
     world.freeWorkers.workers.forEach(function (worker) {
 
         ctx.fillStyle = 'red';
-        ctx.fillRect(worker.pos.x, worker.pos.x, 32, 32);
+        ctx.fillRect(worker.pos.x, worker.pos.y, 32, 32);
 
     });
 

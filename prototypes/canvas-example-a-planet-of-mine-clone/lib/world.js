@@ -82,12 +82,14 @@ var worldMod = (function () {
 
     // create a new worker
     var createWorker = function (world) {
-
-        if (world.freeWorkers.workers.length < world.freeWorkers.maxWorkers) {
+        var fw = world.freeWorkers,
+        len = fw.workers.length;
+        if (len < fw.maxWorkers) {
             var worker = createWorkerObject();
-            world.freeWorkers.workers.push(worker);
+            worker.pos.x = fw.pos.x + len * (32 + 1);
+            worker.pos.y = fw.pos.y;
+            fw.workers.push(worker);
         }
-
     };
 
     var createWorldLand = function (world) {
@@ -107,6 +109,9 @@ var worldMod = (function () {
         // start with a ship on land 0 with two workers
         setLandItem(lands[0], 0);
         createWorker(world);
+        createWorker(world);
+        createWorker(world);
+        createWorker(world);
 
         return lands;
     };
@@ -117,6 +122,10 @@ var worldMod = (function () {
                 landCount: 4,
                 lands: [],
                 freeWorkers: {
+                    pos: {
+                        x: 32,
+                        y: 32
+                    },
                     maxWorkers: 3,
                     workers: [],
                 }
