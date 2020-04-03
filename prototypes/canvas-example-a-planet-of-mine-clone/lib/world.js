@@ -145,6 +145,7 @@ var worldMod = (function () {
 
             // move a worker
             world.moveWoker = function (worker, newArea) {
+                
                 var i = worker.parent.workers.length;
                 while (i--) {
                     var w = worker.parent.workers[i];
@@ -157,6 +158,7 @@ var worldMod = (function () {
                         break;
                     }
                 }
+                return true;
             };
 
             // create worker

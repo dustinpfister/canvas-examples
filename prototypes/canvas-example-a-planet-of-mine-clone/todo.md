@@ -2,7 +2,7 @@
 
 * workers get positioned when added to new area
 * workers will not move to newArea if newAreas workers length is equal to maxWorkers
-* draw.debug method
+* (done) draw.debug method
 
 ## DONE
 * (done) can see free workers

@@ -84,6 +84,11 @@ sm.load({
                     var land = world.lands[i],
                     pos = land.pos;
                     if (pt.overlap(pos.x, pos.y, pos.w, pos.h)) {
+
+                        if (land.workers.length + 1 > land.maxWorkers) {
+                            break;
+                        }
+
                         world.moveWoker(world.moveWorker, land);
                         break;
                     }
@@ -92,7 +97,9 @@ sm.load({
                 // over freeWorkers
                 var pos = world.freeWorkers.pos;
                 if (pt.overlap(pos.x, pos.y, pos.w, pos.h)) {
-                    world.moveWoker(world.moveWorker, world.freeWorkers);
+                    if (!(world.freeWorkers.length + 1 > world.freeWorkers.maxWorkers)) {
+                        world.moveWoker(world.moveWorker, world.freeWorkers);
+                    }
                 }
 
             }
