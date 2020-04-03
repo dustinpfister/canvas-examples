@@ -75,19 +75,6 @@ var worldMod = (function () {
         land.maxWorkers = item.maxWorkers;
     };
 
-    // move a worker from one location to another
-    /*
-    var moveWorker = function (fromArea, toArea) {
-    if (fromArea.workers.length === 0) {
-    return;
-    }
-    if (toArea.workers.length + 1 <= toArea.maxWorkers) {
-    var worker = fromArea.workers.pop();
-    land.workers.push(worker);
-    }
-    };
-     */
-
     // create a new worker
     var createWorker = function (world) {
         var fw = world.freeWorkers,
@@ -131,6 +118,8 @@ var worldMod = (function () {
 
         // start with a ship on land 0 with two workers
         setLandItem(lands[0], 0);
+        setLandItem(lands[1], 2);
+        setLandItem(lands[2], 2);
         createWorker(world);
         createWorker(world);
         createWorker(world);
