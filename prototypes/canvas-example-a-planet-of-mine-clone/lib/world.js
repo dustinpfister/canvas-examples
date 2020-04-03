@@ -13,7 +13,7 @@ var worldMod = (function () {
         }, {
             i: 2,
             desc: 'mine',
-            maxWorkers: 1,
+            maxWorkers: 3,
             getSolids: true
         }, {
             i: 3,
@@ -176,14 +176,20 @@ var worldMod = (function () {
             world.lands = createWorldLand(world);
 
             world.onTick = function () {
-
-                //console.log('world tick');
                 world.lands.forEach(function (land) {
-                    var item = itemDataBase[land.itemIndex] || {};
-                    if (item.getSolids && land.workers.length >= 1) {
+                    var item = itemDataBase[land.itemIndex] || {},
+                    workerCount = land.workers.length;
+                    if (item.getSolids && workerCount >= 1) {
 
-                        console.log('get Solids!');
-                        console.log(world.solar);
+                        if (land.solidCount > 0) {
+
+                            if (land.solidCount >= workerCount) {
+                                land.solidCount -= workerCount;
+                            } else {
+                                land.solidCount = 0;
+                            }
+                        }
+                        console.log(land.solidCount);
                     }
 
                 });
