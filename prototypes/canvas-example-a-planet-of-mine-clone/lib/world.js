@@ -13,7 +13,8 @@ var worldMod = (function () {
         }, {
             i: 2,
             desc: 'mine',
-            maxWorkers: 1
+            maxWorkers: 1,
+            getSolids: true
         }, {
             i: 3,
             desc: 'farm',
@@ -21,7 +22,8 @@ var worldMod = (function () {
         }, {
             i: 4,
             desc: 'well',
-            maxWorkers: 1
+            maxWorkers: 1,
+            getLiquids: true
         }, {
             i: 5,
             desc: 'trees',
@@ -174,7 +176,15 @@ var worldMod = (function () {
 
             world.onTick = function () {
 
-                console.log('world tick');
+                //console.log('world tick');
+                world.lands.forEach(function (land) {
+                    var item = itemDataBase[land.itemIndex] || {};
+                    if (item.getSolids && land.workers.length >= 1) {
+
+                        console.log('get Solids!');
+                    }
+
+                });
 
             };
 
