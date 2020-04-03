@@ -58,5 +58,7 @@ draw.debugLand = function (sm) {
     world.lands.forEach(function (land) {
         var pos = land.pos;
         ctx.fillText('workers: ' + land.workers.length + '/' + land.maxWorkers, pos.x, pos.y);
+        ctx.fillText('solids: ' + land.solidCount, pos.x, pos.y + 10);
+        ctx.fillText('liquids: ' + land.liquidCount, pos.x, pos.y + 20);
     });
 };

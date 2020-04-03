@@ -2,8 +2,8 @@
 
 * (done) main tickRate, and lt properties for solar object
 * (done) tick progress bar drawn
-* onTick method for world objects
-* onTick method called for all world objects in solar object for each tick
+* (done) onTick method for world objects
+* (done) onTick method called for all world objects in solar object for each tick
 * land tiles have a solid resources count
 * land tiles have a liquid resources count
 * each tick workers will mine liquid, solid, or other resource depending on the land tile item
