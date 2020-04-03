@@ -148,7 +148,6 @@ var worldMod = (function () {
 
             // move a worker
             world.moveWoker = function (worker, newArea) {
-
                 var i = worker.parent.workers.length;
                 while (i--) {
                     var w = worker.parent.workers[i];
@@ -167,9 +166,16 @@ var worldMod = (function () {
             // create worker
             world.createWorker = function () {
                 createWorker(world);
-            }
+            };
 
             world.lands = createWorldLand(world);
+
+            world.onTick = function () {
+
+                console.log('world tick');
+
+            };
+
             return world;
         }
     }

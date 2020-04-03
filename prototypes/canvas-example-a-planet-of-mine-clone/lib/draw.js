@@ -8,15 +8,12 @@ draw.back = function (sm) {
 };
 
 draw.tickProgress = function (sm) {
-
     var canvas = sm.canvas,
     ctx = sm.ctx,
     solar = sm.solar;
-
     ctx.fillStyle = 'white';
     ctx.fillRect(0, 0, canvas.width * solar.tPer, 10);
-
-}
+};
 
 draw.world = function (sm) {
     var canvas = sm.canvas,

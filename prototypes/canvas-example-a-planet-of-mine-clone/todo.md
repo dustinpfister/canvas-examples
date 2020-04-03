@@ -1,7 +1,7 @@
 # canvas-example-a-planet-of-mine-clone todo list
 
 * (done) main tickRate, and lt properties for solar object
-* tick progress bar drawn
+* (done) tick progress bar drawn
 * onTick method for world objects
 * onTick method called for all world objects in solar object for each tick
 * land tiles have a solid resources count

@@ -27,6 +27,11 @@ var solarMod = (function () {
 
             if (solar.tPer === 1) {
                 console.log('tick');
+                solar.worlds.forEach(function (world) {
+
+                    world.onTick();
+
+                });
                 solar.lt = now;
             }
 
