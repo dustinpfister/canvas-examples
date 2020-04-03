@@ -64,7 +64,7 @@ var worldMod = (function () {
             },
             groundType: opt.groundType || 'grass',
             solidCount: opt.solidCount || 0,
-            liquidCount: opt.liguidCount || 0
+            liquidCount: opt.liquidCount || 0
         };
     };
 
@@ -111,7 +111,9 @@ var worldMod = (function () {
                         y: 120,
                         w: 64,
                         h: 96
-                    }
+                    },
+                    solidCount: 10,
+                    liquidCount: 10
                 }));
             i += 1;
         }
