@@ -12,7 +12,9 @@ var solarMod = (function () {
                 currentWorldIndex: 0,
                 resources: {
                     solid: 0,
-                    liquid: 0
+                    liquid: 0,
+                    wood: 0,
+                    raspberries: 500
                 }
             };
 

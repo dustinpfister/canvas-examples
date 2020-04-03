@@ -53,9 +53,15 @@ draw.debugSolar = function (sm) {
     var canvas = sm.canvas,
     ctx = sm.ctx,
     solar = sm.solar;
+
+    var text = '';
+    Object.keys(solar.resources).forEach(function (resourceName) {
+        text += resourceName + ':' + solar.resources[resourceName] + '; ';
+    });
+
     ctx.fillStyle = 'white';
     ctx.textBaseline = 'top';
-    ctx.fillText('solids: ' + solar.resources.solid, 5, 15);
+    ctx.fillText(text, 5, 15);
 };
 
 // debug info for land
