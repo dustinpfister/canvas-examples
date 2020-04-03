@@ -118,6 +118,7 @@ var Machine = (function () {
             currentState: null,
             currentMode: null,
             game: {},
+            solar: {}, // solar object
             draw: {},
             states: {},
             canvas: null,

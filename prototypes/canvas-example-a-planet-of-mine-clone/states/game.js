@@ -12,6 +12,8 @@ sm.load({
 
         var ctx = sm.ctx;
 
+        solarMod.update(sm.solar);
+
         // draw background and world
         draw.back(sm);
         draw.world(sm);

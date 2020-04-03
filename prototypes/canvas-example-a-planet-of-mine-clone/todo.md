@@ -1,10 +1,15 @@
 # canvas-example-a-planet-of-mine-clone todo list
 
-* workers get positioned when added to new area
-* (done) workers will not move to newArea if newAreas workers length is equal to maxWorkers
-* (done) draw.debug method
+* main tickRate, and lt properties for solar object
+* tick progress bar drawn
+* land tiles have a solid resources count
+* land tiles have a liquid resources count
+* each tick workers will mine liquid, solid, or other resource depending on the land tile item
 
 ## DONE
+* (done) workers get positioned when added to new area
+* (done) workers will not move to newArea if newAreas workers length is equal to maxWorkers
+* (done) draw.debug method
 * (done) can see free workers
 * (done) can move free workers
 * (done) can place free workers on a land tile.
