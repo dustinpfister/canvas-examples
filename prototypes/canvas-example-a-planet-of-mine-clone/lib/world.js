@@ -100,6 +100,19 @@ var worldMod = (function () {
         }
     };
 
+    var positionWorkers = function (area) {
+        var dx = 0,
+        dy = 1;
+        if (area.groundType === 'freearea') {
+            dx = 1;
+            dy = 0;
+        }
+        area.workers.forEach(function (worker, i) {
+            worker.pos.x = area.pos.x + (i * 32 * dx);
+            worker.pos.y = area.pos.y + (i * 32 * dy);
+        });
+    };
+
     var createWorldLand = function (world) {
         var len = world.landCount || 8,
         lands = [],
@@ -138,6 +151,7 @@ var worldMod = (function () {
                         w: 100,
                         h: 50
                     },
+                    groundType: 'freearea',
                     maxWorkers: 3,
                     workers: [],
                 }
@@ -145,16 +159,16 @@ var worldMod = (function () {
 
             // move a worker
             world.moveWoker = function (worker, newArea) {
-                
+
                 var i = worker.parent.workers.length;
                 while (i--) {
                     var w = worker.parent.workers[i];
                     if (w === worker) {
                         worker.parent.workers.splice(i, 1);
+                        positionWorkers(worker.parent);
                         worker.parent = newArea;
-                        worker.pos.x = newArea.pos.x;
-                        worker.pos.y = newArea.pos.y;
                         newArea.workers.push(worker);
+                        positionWorkers(newArea);
                         break;
                     }
                 }

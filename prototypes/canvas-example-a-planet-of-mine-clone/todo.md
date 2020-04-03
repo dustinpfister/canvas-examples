@@ -1,7 +1,7 @@
 # canvas-example-a-planet-of-mine-clone todo list
 
 * workers get positioned when added to new area
-* workers will not move to newArea if newAreas workers length is equal to maxWorkers
+* (done) workers will not move to newArea if newAreas workers length is equal to maxWorkers
 * (done) draw.debug method
 
 ## DONE
