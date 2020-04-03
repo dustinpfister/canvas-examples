@@ -3,17 +3,21 @@ var solarMod = (function () {
     return {
 
         create: function () {
-            var worlds = [];
-            worlds.push(worldMod.create());
-            return {
+
+            var solar = {
                 lt: new Date(),
                 tickRate: 3000,
                 t: 0,
                 tPer: 0,
                 currentWorldIndex: 0,
-                currentWorld: worlds[0],
-                worlds: worlds
+                //currentWorld: worlds[0],
+                //worlds: worlds
             };
+
+            solar.worlds = [];
+            solar.worlds.push(worldMod.create(solar));
+            solar.currentWorld = solar.worlds[solar.currentWorldIndex];
+            return solar;
         },
 
         update: function (solar) {

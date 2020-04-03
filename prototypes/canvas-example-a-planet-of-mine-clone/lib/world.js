@@ -132,8 +132,9 @@ var worldMod = (function () {
     };
 
     return {
-        create: function () {
+        create: function (solar) {
             var world = {
+                solar: solar,
                 landCount: 4,
                 lands: [],
                 moveWorker: null,
@@ -182,6 +183,7 @@ var worldMod = (function () {
                     if (item.getSolids && land.workers.length >= 1) {
 
                         console.log('get Solids!');
+                        console.log(world.solar);
                     }
 
                 });
