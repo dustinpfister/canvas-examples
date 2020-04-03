@@ -1,14 +1,22 @@
 var draw = {};
 
 draw.back = function (sm) {
-
     var canvas = sm.canvas,
     ctx = sm.ctx;
-
     ctx.fillStyle = 'black';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
-
 };
+
+draw.tickProgress = function (sm) {
+
+    var canvas = sm.canvas,
+    ctx = sm.ctx,
+    solar = sm.solar;
+
+    ctx.fillStyle = 'white';
+    ctx.fillRect(0, 0, canvas.width * solar.tPer, 10);
+
+}
 
 draw.world = function (sm) {
     var canvas = sm.canvas,

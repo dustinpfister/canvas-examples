@@ -14,10 +14,10 @@ sm.load({
 
         solarMod.update(sm.solar);
 
-        // draw background and world
+        // draw background, world, and more
         draw.back(sm);
         draw.world(sm);
-        // draw debug info
+        draw.tickProgress(sm);
         draw.debugLand(sm);
 
     },
