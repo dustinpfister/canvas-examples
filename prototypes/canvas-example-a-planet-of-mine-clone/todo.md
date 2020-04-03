@@ -1,9 +1,7 @@
 # canvas-example-a-planet-of-mine-clone todo list
 
-* solar object property for current collected resources count
-
 ## DONE
-
+* (done) solar object property for current collected resources count
 * (done) main tickRate, and lt properties for solar object
 * (done) tick progress bar drawn
 * (done) onTick method for world objects

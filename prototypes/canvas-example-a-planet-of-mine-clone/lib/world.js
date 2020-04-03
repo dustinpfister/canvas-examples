@@ -176,6 +176,7 @@ var worldMod = (function () {
             world.lands = createWorldLand(world);
 
             world.onTick = function () {
+                var solar = world.solar;
                 world.lands.forEach(function (land) {
                     var item = itemDataBase[land.itemIndex] || {},
                     workerCount = land.workers.length;
@@ -185,11 +186,13 @@ var worldMod = (function () {
 
                             if (land.solidCount >= workerCount) {
                                 land.solidCount -= workerCount;
+                                solar.resources.solid += workerCount;
                             } else {
+                                solar.resources.solid += land.solidCount;
                                 land.solidCount = 0;
                             }
                         }
-                        console.log(land.solidCount);
+                        console.log(solar.resources.solid);
                     }
 
                 });

@@ -10,8 +10,10 @@ var solarMod = (function () {
                 t: 0,
                 tPer: 0,
                 currentWorldIndex: 0,
-                //currentWorld: worlds[0],
-                //worlds: worlds
+                resources: {
+                    solid: 0,
+                    liquid: 0
+                }
             };
 
             solar.worlds = [];
