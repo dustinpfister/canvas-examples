@@ -175,15 +175,14 @@ var worldMod = (function () {
 
             world.lands = createWorldLand(world);
 
+            // what to do for each tick
             world.onTick = function () {
                 var solar = world.solar;
                 world.lands.forEach(function (land) {
                     var item = itemDataBase[land.itemIndex] || {},
                     workerCount = land.workers.length;
                     if (item.getSolids && workerCount >= 1) {
-
                         if (land.solidCount > 0) {
-
                             if (land.solidCount >= workerCount) {
                                 land.solidCount -= workerCount;
                                 solar.resources.solid += workerCount;
@@ -193,7 +192,6 @@ var worldMod = (function () {
                             }
                         }
                     }
-
                 });
 
             };
