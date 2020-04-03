@@ -1,5 +1,18 @@
 # canvas-example-a-planet-of-mine-clone todo list
 
+* two resources that are gathered from land items ['wood', 'raspberries']
+* can gather wood resource from trees land item
+* can gather raspberries resource from berry bushes
+* more than one type of solid resource ['stone', 'coal']
+* gather liquid resources
+* more than one type of liquid resource ['oil', 'water']
+
+* starting raspberries count for solar object
+* workers require raspberries to continue living, raspberry count goes down for each worker pr tick
+* If A worker does not get enough raspberries it will die
+* gameOver property for solar object
+* if totalWorkerCount === 0 then solar.gameOver = true;
+
 ## DONE
 * (done) solar object property for current collected resources count
 * (done) main tickRate, and lt properties for solar object
