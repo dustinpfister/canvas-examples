@@ -192,7 +192,6 @@ var worldMod = (function () {
                                 land.solidCount = 0;
                             }
                         }
-                        console.log(solar.resources.solid);
                     }
 
                 });

@@ -19,6 +19,7 @@ sm.load({
         draw.world(sm);
         draw.tickProgress(sm);
         draw.debugLand(sm);
+        draw.debugSolar(sm);
 
     },
     userPointer: {

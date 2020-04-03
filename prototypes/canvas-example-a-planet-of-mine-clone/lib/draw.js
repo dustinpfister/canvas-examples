@@ -48,6 +48,17 @@ draw.world = function (sm) {
 
 draw.solar = function (sm) {};
 
+// debug info for solar object properties
+draw.debugSolar = function (sm) {
+    var canvas = sm.canvas,
+    ctx = sm.ctx,
+    solar = sm.solar;
+    ctx.fillStyle = 'white';
+    ctx.textBaseline = 'top';
+    ctx.fillText('solids: ' + solar.resources.solid, 5, 15);
+};
+
+// debug info for land
 draw.debugLand = function (sm) {
     var canvas = sm.canvas,
     ctx = sm.ctx,
