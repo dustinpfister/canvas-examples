@@ -1,15 +1,16 @@
 # canvas-example-a-planet-of-mine-clone todo list
 
-
-* (done) can see free workers
-* (done) can move free workers
-* (done) can place free workers on a land tile that will accept one
-* (done) can move workers around from one land section to another
-* (done) can move land worker back to free worker section
-* can create new workers by clicking freeWorkers when no workers are there
-* debug draw method
+* workers get positioned when added to new area
+* workers will not move to newArea if newAreas workers length is equal to maxWorkers
+* draw.debug method
 
 ## DONE
+* (done) can see free workers
+* (done) can move free workers
+* (done) can place free workers on a land tile.
+* (done) can move workers around from one land section to another
+* (done) can move land worker back to free worker section
+* (done) can create new workers by clicking freeWorkers when no workers are there
 * (done) draw.js: draw.js started with draw.back, and draw.solar methods
 * (done) solar.js: started the solorMod method that creates a collection of world objects
 * (done) main.js: the main.js file should have a state machine

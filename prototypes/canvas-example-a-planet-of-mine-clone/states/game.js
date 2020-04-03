@@ -15,6 +15,8 @@ sm.load({
         // draw background and world
         draw.back(sm);
         draw.world(sm);
+        // draw debug info
+        draw.debugLand(sm);
 
     },
     userPointer: {
