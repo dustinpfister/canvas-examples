@@ -6,9 +6,9 @@ var gradient = (function () {
     //var objUpdaters = [];
     var objUpdaters = {
         objDefaults: function (grid, obj, secs) {
-            obj.cps = 0;
-            //obj.heading += Math.PI / 180 * 5 * secs;
-            //obj.heading %= Math.PI * 2;
+            obj.cps = 1;
+            obj.heading += Math.PI / 180 * 5 * secs;
+            obj.heading %= Math.PI * 2;
         }
     };
 
@@ -24,7 +24,7 @@ var gradient = (function () {
             //obj.updaterList = ['objDefaults'];
             // default to all updaters in order of how they
             // appear in Object.keys
-            obj.updaterList = Object.keys(objUpdaters);
+            obj.updaterList = grad.updaters;
             obj.radiusDir = 1;
         }
     };
@@ -49,7 +49,7 @@ var gradient = (function () {
         grad.initMethods = initMethods;
 
         // updaters
-        grad.updaters = opt.updaters || ['objDefaults'];
+        grad.updaters = opt.updaters === undefined ? ['objDefaults'] : opt.updaters;
         grad.objUpdaters = objUpdaters;
 
         //grad.objUpdaters = objUpdaters;
