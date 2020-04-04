@@ -21,7 +21,7 @@ var gradient = (function () {
             obj.cps = 0;
             obj.heading = 1;
             //obj.objUpdaterIndex = 0;
-            obj.updaterList = ['objDefaults'];
+            obj.updaterList = [];
             obj.radiusDir = 1;
         }
     };
@@ -170,7 +170,11 @@ var gradient = (function () {
             for (var key in plug.initMethods) {
                 initMethods[key] = plug.initMethods[key];
             }
+
             // load any update methods
+            for (var key in plug.objUpdaters) {
+                objUpdaters[key] = plug.objUpdaters[key];
+            }
             //objUpdaters = objUpdaters.concat(plug.objUpdaters || []);
         }
     };
