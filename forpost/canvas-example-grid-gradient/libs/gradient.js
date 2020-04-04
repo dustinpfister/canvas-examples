@@ -3,7 +3,14 @@
 var gradient = (function () {
 
     // object update methods
-    var objUpdaters = [];
+    //var objUpdaters = [];
+    var objUpdaters = {
+        default: function (grid, obj, secs) {
+            obj.cps = 1;
+            obj.heading += Math.PI / 180 * 5 * secs;
+            obj.heading %= Math.PI * 2;
+        }
+    };
 
     var initMethods = {
         objDefaults: function (obj, grad, i) {
@@ -32,8 +39,11 @@ var gradient = (function () {
         grad.cells = [];
         grad.resetCells();
         grad.lt = new Date();
+		
+		
+		
         grad.initMethods = initMethods;
-        grad.objUpdaters = objUpdaters;
+        //grad.objUpdaters = objUpdaters;
         // setup objects
         grad.objs = [];
         var i = opt.objCount || 5,
@@ -45,12 +55,12 @@ var gradient = (function () {
         while (i--) {
             var obj = {};
             initMethods.objDefaults(obj, grad, i);
-            if (opt.initMethod) {
-                if (typeof opt.initMethod === 'string') {
-                    initMethods[opt.initMethod](obj, grad, i);
+            if (opt.init) {
+                if (typeof opt.init === 'string') {
+                    initMethods[opt.init](obj, grad, i);
                 }
-                if (typeof opt.initMethod === 'object') {
-                    opt.initMethod.forEach(function (initMethodKey) {
+                if (typeof opt.init === 'object') {
+                    opt.init.forEach(function (initMethodKey) {
                         initMethods[initMethodKey](obj, grad, i);
                     });
                 }
@@ -111,10 +121,12 @@ var gradient = (function () {
         // increase color channel values for objects
         grid.objs.forEach(function (obj) {
             // call updater
+            /*
             var updater = objUpdaters[obj.objUpdaterIndex];
             if (updater) {
-                updater(grid, obj, secs);
+            updater(grid, obj, secs);
             }
+             */
             obj.x += Math.cos(obj.heading) * obj.cps * secs;
             obj.y += Math.sin(obj.heading) * obj.cps * secs;
             obj.x = u.mod(obj.x, grid.gridWidth);
@@ -144,7 +156,7 @@ var gradient = (function () {
                 initMethods[key] = plug.initMethods[key];
             }
             // load any update methods
-            objUpdaters = objUpdaters.concat(plug.objUpdaters || []);
+            //objUpdaters = objUpdaters.concat(plug.objUpdaters || []);
         }
     };
 
