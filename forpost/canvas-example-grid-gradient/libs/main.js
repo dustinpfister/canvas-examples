@@ -12,11 +12,12 @@ var grad = new gradient.Grid({
         cellHeight: canvas.height / h,
         gridWidth: w,
         gridHeight: h,
-        initMethod: ['random', 'rgb', 'updatersStager'],
+        init: ['rgb', 'random'],
+        updaters: ['radiusGrow'],
         MIN_RADIUS: 3,
         MAX_RADIUS: 7,
         MAX_CPS: 5,
-        objCount: 15
+        objCount: 10
     });
 
 var lt = new Date(),
