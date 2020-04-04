@@ -5,7 +5,8 @@ var gradient = (function () {
     // object update methods
     //var objUpdaters = [];
     var objUpdaters = {
-        default: function (grid, obj, secs) {
+    default:
+        function (grid, obj, secs) {
             obj.cps = 1;
             obj.heading += Math.PI / 180 * 5 * secs;
             obj.heading %= Math.PI * 2;
@@ -39,9 +40,8 @@ var gradient = (function () {
         grad.cells = [];
         grad.resetCells();
         grad.lt = new Date();
-		
-		
-		
+
+        grad.init = opt.init || '';
         grad.initMethods = initMethods;
         //grad.objUpdaters = objUpdaters;
         // setup objects
