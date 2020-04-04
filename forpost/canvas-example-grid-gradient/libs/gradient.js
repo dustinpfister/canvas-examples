@@ -5,8 +5,7 @@ var gradient = (function () {
     // object update methods
     //var objUpdaters = [];
     var objUpdaters = {
-    default:
-        function (grid, obj, secs) {
+        objDefaults: function (grid, obj, secs) {
             obj.cps = 1;
             obj.heading += Math.PI / 180 * 5 * secs;
             obj.heading %= Math.PI * 2;
@@ -21,7 +20,8 @@ var gradient = (function () {
             obj.power = [1, 1, 1, 1];
             obj.cps = 0;
             obj.heading = 1;
-            obj.objUpdaterIndex = 0;
+            //obj.objUpdaterIndex = 0;
+            obj.updaterList = ['objDefaults'];
             obj.radiusDir = 1;
         }
     };
@@ -41,8 +41,14 @@ var gradient = (function () {
         grad.resetCells();
         grad.lt = new Date();
 
+        // init methods
         grad.init = opt.init || '';
         grad.initMethods = initMethods;
+
+        // updaters
+        grad.updaters = opt.updaters || ['objDefaults'];
+        grad.objUpdaters = objUpdaters;
+
         //grad.objUpdaters = objUpdaters;
         // setup objects
         grad.objs = [];
@@ -111,6 +117,12 @@ var gradient = (function () {
         }
     };
 
+    var applyUpdaterList = function (grid, obj, secs) {
+        obj.updaterList.forEach(function (updaterKey) {
+            objUpdaters[updaterKey](grid, obj, secs);
+        });
+    };
+
     Grid.prototype.update = function () {
         var grid = this,
         now = new Date(),
@@ -127,6 +139,9 @@ var gradient = (function () {
             updater(grid, obj, secs);
             }
              */
+
+            applyUpdaterList(grid, obj, secs);
+
             obj.x += Math.cos(obj.heading) * obj.cps * secs;
             obj.y += Math.sin(obj.heading) * obj.cps * secs;
             obj.x = u.mod(obj.x, grid.gridWidth);
