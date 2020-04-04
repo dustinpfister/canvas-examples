@@ -2,8 +2,8 @@
 var canvas = document.getElementById('thecanvas'),
 ctx = canvas.getContext('2d');
 canvas.width = 640;
-canvas.height = 480
-    ctx.translate(0.5, 0.5);
+canvas.height = 480;
+ctx.translate(0.5, 0.5);
 
 var w = 24,
 h = 16;
