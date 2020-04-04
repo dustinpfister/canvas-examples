@@ -1,13 +1,15 @@
 var draw = {};
 
+// draw background
 draw.back = function (ctx, canvas) {
-    // fill black
     ctx.fillStyle = 'black';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 };
 
 // draw Cells
-draw.cells = function (ctx, grid) {
+draw.cells = function (ctx, grid, xOffset, yOffset) {
+    xOffset = xOffset === undefined ? 0 : xOffset;
+    yOffset = yOffset === undefined ? 0 : yOffset;
     var ci = 0,
     cell,
     c,
@@ -20,8 +22,8 @@ draw.cells = function (ctx, grid) {
         ctx.fillStyle = 'rgba(' + c[0] + ',' + c[1] + ',' + c[2] + ',' + c[3] + ')';
         ctx.beginPath();
         ctx.rect(
-            cell.x * grid.cellWidth,
-            cell.y * grid.cellHeight,
+            cell.x * grid.cellWidth + xOffset,
+            cell.y * grid.cellHeight + yOffset,
             grid.cellWidth, grid.cellHeight);
         ctx.stroke();
         ctx.fill();
