@@ -16,6 +16,7 @@ var gradient = (function () {
         objDefaults: function (obj, grad, i) {
             obj.x = 0;
             obj.y = 0;
+            obj.i = i;
             obj.radius = 5;
             obj.power = [1, 1, 1, 1];
             obj.cps = 0;
