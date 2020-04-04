@@ -9,16 +9,13 @@ var w = 12,
 h = 12;
 
 var grad = new gradient.Grid({
-        cellWidth: 160 / w,
-        cellHeight: 160 / h,
-        gridWidth: w,
-        gridHeight: h,
+        cellWidth: 160 / 24,
+        cellHeight: 160 / 24,
+        gridWidth: 24,
+        gridHeight: 24,
         init: ['rgb', 'randomSpeed', 'randomHeading', 'randomPos'],
         updaters: ['radiusGrow'],
-        MIN_RADIUS: 3,
-        MAX_RADIUS: 7,
-        MAX_CPS: 5,
-        objCount: 4
+        objCount: 15
     });
 
 var grad2 = new gradient.Grid({
@@ -28,10 +25,7 @@ var grad2 = new gradient.Grid({
         gridHeight: h,
         init: ['random'],
         updaters: [],
-        MIN_RADIUS: 3,
-        MAX_RADIUS: 7,
-        MAX_CPS: 5,
-        objCount: 3
+        objCount: 5
     });
 
 var grad3 = new gradient.Grid({
@@ -41,10 +35,17 @@ var grad3 = new gradient.Grid({
         gridHeight: h,
         init: ['br'],
         updaters: ['br'],
-        MIN_RADIUS: 3,
-        MAX_RADIUS: 7,
-        MAX_CPS: 5,
         objCount: 10
+    });
+
+var grad4 = new gradient.Grid({
+        cellWidth: 160 / 8,
+        cellHeight: 160 / 8,
+        gridWidth: 8,
+        gridHeight: 8,
+        init: ['randomSpeed', 'randomHeading', 'randomPos'],
+        updaters: [],
+        objCount: 1
     });
 
 var lt = new Date(),
@@ -57,10 +58,12 @@ var loop = function () {
         grad.update();
         grad2.update();
         grad3.update();
+        grad4.update();
         draw.back(ctx, canvas);
         draw.cells(ctx, grad, 50, 50);
         draw.cells(ctx, grad2, 250, 50);
         draw.cells(ctx, grad3, 50, 250);
+        draw.cells(ctx, grad4, 250, 250);
         lt = now;
     }
 };
