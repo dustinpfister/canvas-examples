@@ -2,7 +2,6 @@ gradient.load({
     objUpdaters: {
         // radius changes, slow speed
         radiusGrow: function (grid, obj, secs) {
-            //obj.power = [1, 0, 0];
             if (obj.radius === 3 || obj.radius === 10) {
                 var roll = Math.floor(Math.random() * 50) + 1;
                 if (roll === 1) {

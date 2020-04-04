@@ -1,9 +1,6 @@
 gradient.load({
 
     initMethods: {
-        //updatersStager: function (obj, grad, i) {
-        //    obj.objUpdaterIndex = u.mod(i, grad.objUpdaters.length);
-        //},
         rgb: function (obj, grad, i) {
             // cycle r,g,b color power
             var rand = Math.random() * 0.75 + 0.25,
