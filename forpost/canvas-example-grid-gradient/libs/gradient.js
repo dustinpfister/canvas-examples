@@ -6,9 +6,9 @@ var gradient = (function () {
     //var objUpdaters = [];
     var objUpdaters = {
         objDefaults: function (grid, obj, secs) {
-            obj.cps = 1;
-            obj.heading += Math.PI / 180 * 5 * secs;
-            obj.heading %= Math.PI * 2;
+            obj.cps = 0;
+            //obj.heading += Math.PI / 180 * 5 * secs;
+            //obj.heading %= Math.PI * 2;
         }
     };
 
@@ -21,7 +21,10 @@ var gradient = (function () {
             obj.cps = 0;
             obj.heading = 1;
             //obj.objUpdaterIndex = 0;
-            obj.updaterList = [];
+            //obj.updaterList = ['objDefaults'];
+            // default to all updaters in order of how they
+            // appear in Object.keys
+            obj.updaterList = Object.keys(objUpdaters);
             obj.radiusDir = 1;
         }
     };
@@ -42,7 +45,7 @@ var gradient = (function () {
         grad.lt = new Date();
 
         // init methods
-        grad.init = opt.init || '';
+        grad.init = opt.init || ['objDefaults'];
         grad.initMethods = initMethods;
 
         // updaters
@@ -60,6 +63,7 @@ var gradient = (function () {
         // create objects With init method(s)
         while (i--) {
             var obj = {};
+            // ensure calling defaults at least once
             initMethods.objDefaults(obj, grad, i);
             if (opt.init) {
                 if (typeof opt.init === 'string') {
