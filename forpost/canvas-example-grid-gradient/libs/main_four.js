@@ -7,17 +7,18 @@ ctx.translate(0.5, 0.5);
 
 var w = 12,
 h = 12;
+
 var grad = new gradient.Grid({
         cellWidth: 160 / w,
         cellHeight: 160 / h,
         gridWidth: w,
         gridHeight: h,
-        init: ['randomColor'],
-        //updaters: [],
+        init: ['rgb', 'randomSpeed', 'randomHeading', 'randomPos'],
+        updaters: ['radiusGrow'],
         MIN_RADIUS: 3,
         MAX_RADIUS: 7,
         MAX_CPS: 5,
-        objCount: 3
+        objCount: 4
     });
 
 var grad2 = new gradient.Grid({
@@ -25,12 +26,12 @@ var grad2 = new gradient.Grid({
         cellHeight: 160 / h,
         gridWidth: w,
         gridHeight: h,
-        init: ['randomColor'],
+        init: ['random'],
         updaters: [],
         MIN_RADIUS: 3,
         MAX_RADIUS: 7,
         MAX_CPS: 5,
-        objCount: 1
+        objCount: 3
     });
 
 var lt = new Date(),
