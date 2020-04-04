@@ -3,7 +3,6 @@
 var gradient = (function () {
 
     // object update methods
-    //var objUpdaters = [];
     var objUpdaters = {
         objDefaults: function (grid, obj, secs) {
             obj.cps = 1;
@@ -12,6 +11,7 @@ var gradient = (function () {
         }
     };
 
+    // init methods
     var initMethods = {
         objDefaults: function (obj, grad, i) {
             obj.x = 0;
@@ -20,15 +20,12 @@ var gradient = (function () {
             obj.power = [1, 1, 1, 1];
             obj.cps = 0;
             obj.heading = 1;
-            //obj.objUpdaterIndex = 0;
-            //obj.updaterList = ['objDefaults'];
-            // default to all updaters in order of how they
-            // appear in Object.keys
-            obj.updaterList = grad.updaters;
             obj.radiusDir = 1;
+            obj.updaterList = grad.updaters;
         }
     };
 
+    // The Grid constructor
     var Grid = function (opt) {
         opt = opt || {};
         var grad = this;
@@ -52,7 +49,6 @@ var gradient = (function () {
         grad.updaters = opt.updaters === undefined ? ['objDefaults'] : opt.updaters;
         grad.objUpdaters = objUpdaters;
 
-        //grad.objUpdaters = objUpdaters;
         // setup objects
         grad.objs = [];
         var i = opt.objCount || 5,
@@ -127,6 +123,7 @@ var gradient = (function () {
         });
     };
 
+    // Main Grid update method
     Grid.prototype.update = function () {
         var grid = this,
         now = new Date(),
@@ -136,20 +133,14 @@ var gradient = (function () {
         grid.resetCells();
         // increase color channel values for objects
         grid.objs.forEach(function (obj) {
-            // call updater
-            /*
-            var updater = objUpdaters[obj.objUpdaterIndex];
-            if (updater) {
-            updater(grid, obj, secs);
-            }
-             */
-
+            // apply updater list for the object
             applyUpdaterList(grid, obj, secs);
-
+            // move object
             obj.x += Math.cos(obj.heading) * obj.cps * secs;
             obj.y += Math.sin(obj.heading) * obj.cps * secs;
             obj.x = u.mod(obj.x, grid.gridWidth);
             obj.y = u.mod(obj.y, grid.gridHeight);
+            // update cells
             grid.cells.forEach(function (cell) {
                 upCellColor(grid, cell, obj, obj.x - grid.gridWidth, obj.y);
                 upCellColor(grid, cell, obj, obj.x + grid.gridWidth, obj.y);
@@ -174,12 +165,10 @@ var gradient = (function () {
             for (var key in plug.initMethods) {
                 initMethods[key] = plug.initMethods[key];
             }
-
             // load any update methods
             for (var key in plug.objUpdaters) {
                 objUpdaters[key] = plug.objUpdaters[key];
             }
-            //objUpdaters = objUpdaters.concat(plug.objUpdaters || []);
         }
     };
 
