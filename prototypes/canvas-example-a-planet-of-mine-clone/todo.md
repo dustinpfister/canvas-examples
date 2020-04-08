@@ -28,7 +28,7 @@ If I am going to put a lot of time into this one I should maybe break things dow
 * separate tickRate for each land tile called an actionRate
 * workers harvest resources on land tiles by way of actionRate rather than rotation rate
 
-## 0.0 - The very basic idea working very poorly
+## (done) 0.0 - The very basic idea working very poorly
 * (done) solar object property for current collected resources count
 * (done) main tickRate, and lt properties for solar object
 * (done) tick progress bar drawn

@@ -37,7 +37,6 @@ var worldMod = (function () {
 
     // create a worker object
     var createWorkerObject = function (parent) {
-
         return {
             actionsPerTick: 1,
             parent: parent,
@@ -176,8 +175,7 @@ var worldMod = (function () {
             world.lands = createWorldLand(world);
 
             // what to do for each tick
-            world.onTick = function () {
-                var solar = world.solar;
+            world.onTick = function (solar, secs) {
                 world.lands.forEach(function (land) {
                     var item = itemDataBase[land.itemIndex] || {},
                     workerCount = land.workers.length;
