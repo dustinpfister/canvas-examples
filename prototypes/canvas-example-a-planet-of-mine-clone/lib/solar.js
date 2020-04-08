@@ -12,6 +12,7 @@ var solarMod = (function () {
                 tPer: 0,
                 currentWorldIndex: 0,
                 currentWorld: {},
+                exp: 0,
                 resources: {
                     solid: 0,
                     liquid: 0,

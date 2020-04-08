@@ -22,8 +22,8 @@ If I am going to put a lot of time into this one I should maybe break things dow
 * if totalWorkerCount === 0 then solar.gameOver = true;
 
 ## 0.1 - solarTickRate, rotationRate and actionRate
-* main solarTicks solar object property
-* have a tickRate for a world object called a rotation rate that defaults to 1 (same as solar rate)
+* (done) main solar.ticks solar object property
+* (done) have a tickRate for a world object called a rotationRate that defaults to 1 (same as solar rate)
 * new exp value for the solar object
 * each world has an exp value that is added to the solar exp value on each rotation
 * separate tickRate for each land tile called an actionRate defaults to say 3 (s actions ticks per rotation tick)

@@ -16,7 +16,7 @@ draw.tickProgress = function (sm) {
     ctx.fillRect(0, 0, canvas.width * solar.tPer, 10);
     ctx.fillStyle = 'green';
     ctx.fillRect(0, 10, canvas.width * world.rotationPer, 10);
-    
+
 };
 
 draw.world = function (sm) {
@@ -66,6 +66,7 @@ draw.debugSolar = function (sm) {
     ctx.fillStyle = 'white';
     ctx.textBaseline = 'top';
     ctx.fillText(text, 5, 15);
+    ctx.fillText('exp: ' + solar.exp, 5, 30);
 };
 
 // debug info for land
