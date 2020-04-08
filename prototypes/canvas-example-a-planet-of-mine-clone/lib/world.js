@@ -57,6 +57,7 @@ var worldMod = (function () {
             itemIndex: opt.itemIndex === undefined ? null : opt.itemIndex,
             workers: [],
             maxWorkers: 0,
+            actionRate: 3, // worker actions per rotation
             pos: {
                 x: opt.pos.x || 0,
                 y: opt.pos.y || 0,
@@ -198,16 +199,13 @@ var worldMod = (function () {
 
             // what to do on main solar tick progress
             world.onTickProgress = function (solar, ticks, tickProgress) {
-
                 world.rotationPer = (ticks + tickProgress) % world.rotationRate / world.rotationRate;
                 world.rotationPer = world.rotationPer >= 1 ? 1 : world.rotationPer;
-
                 if (tickProgress >= 1) {
                     console.log('yes');
                     // add world deltaEXP to main solar.exp
                     solar.exp += world.deltaEXP;
                 }
-
             };
 
             return world;

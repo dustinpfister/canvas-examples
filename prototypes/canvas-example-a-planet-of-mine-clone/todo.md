@@ -25,7 +25,7 @@ If I am going to put a lot of time into this one I should maybe break things dow
 * (done) main solar.ticks solar object property
 * (done) have a tickRate for a world object called a rotationRate that defaults to 1 (same as solar rate)
 * (done) new exp value for the solar object
-* each world has an exp value that is added to the solar exp value on each rotation
+* (done) each world has an exp value that is added to the solar exp value on each rotation
 * separate tickRate for each land tile called an actionRate defaults to say 3 (s actions ticks per rotation tick)
 * workers harvest resources on land tiles by way of actionRate rather than rotation rate
 
