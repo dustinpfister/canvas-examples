@@ -11,6 +11,7 @@ var solarMod = (function () {
                 t: 0,
                 tPer: 0,
                 currentWorldIndex: 0,
+                currentWorld: {},
                 resources: {
                     solid: 0,
                     liquid: 0,
@@ -33,11 +34,13 @@ var solarMod = (function () {
             solar.t = t;
             solar.tPer = t / solar.tickRate;
             solar.tPer = solar.tPer > 1 ? 1 : solar.tPer;
-            //solar.ticks = solar.ticks + solar.tPer;
+
+            // make sure current world, is also currentWorld Index
+            solar.currentWorld = solar.worlds[solar.currentWorldIndex];
 
             // for each world
             solar.worlds.forEach(function (world) {
-                world.onTickProgress(solar, solar.ticks, tPer);
+                world.onTickProgress(solar, solar.ticks, solar.tPer);
                 if (solar.tPer === 1) {
                     world.onTickEnd(solar, solar.ticks);
                 }
