@@ -175,7 +175,7 @@ var worldMod = (function () {
             world.lands = createWorldLand(world);
 
             // what to do for each tick
-            world.onTick = function (solar, secs) {
+            world.onTickEnd = function (solar, ticks) {
                 world.lands.forEach(function (land) {
                     var item = itemDataBase[land.itemIndex] || {},
                     workerCount = land.workers.length;

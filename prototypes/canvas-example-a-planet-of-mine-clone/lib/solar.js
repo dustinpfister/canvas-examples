@@ -7,6 +7,7 @@ var solarMod = (function () {
             var solar = {
                 lt: new Date(),
                 tickRate: 3000,
+                ticks: 0,
                 t: 0,
                 tPer: 0,
                 currentWorldIndex: 0,
@@ -33,10 +34,11 @@ var solarMod = (function () {
             solar.t = t;
             solar.tPer = t / solar.tickRate;
             solar.tPer = solar.tPer > 1 ? 1 : solar.tPer;
+            solar.ticks += solar.tPer;
 
             if (solar.tPer === 1) {
                 solar.worlds.forEach(function (world) {
-                    world.onTick(solar, secs);
+                    world.onTickEnd(solar, solar.ticks);
                 });
                 solar.lt = now;
             }
