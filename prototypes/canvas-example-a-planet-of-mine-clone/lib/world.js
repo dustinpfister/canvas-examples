@@ -137,6 +137,8 @@ var worldMod = (function () {
                 landCount: 4,
                 lands: [],
                 moveWorker: null,
+                rotationRate: 0.5,
+                rotationPer: 0,
                 freeWorkers: {
                     pos: {
                         x: 32,
@@ -196,7 +198,7 @@ var worldMod = (function () {
             // what to do on main solar tick progress
             world.onTickProgress = function (solar, ticks, tickProgress) {
 
-                //console.log(ticks, tickProgress);
+                world.rotationPer = (ticks + tickProgress) % world.rotationRate / world.rotationRate;
 
             };
 

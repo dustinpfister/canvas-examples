@@ -30,7 +30,6 @@ var solarMod = (function () {
 
             var now = new Date(),
             t = now - solar.lt;
-
             solar.t = t;
             solar.tPer = t / solar.tickRate;
             solar.tPer = solar.tPer > 1 ? 1 : solar.tPer;

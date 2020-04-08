@@ -10,9 +10,13 @@ draw.back = function (sm) {
 draw.tickProgress = function (sm) {
     var canvas = sm.canvas,
     ctx = sm.ctx,
-    solar = sm.solar;
+    solar = sm.solar,
+    world = solar.currentWorld;
     ctx.fillStyle = 'white';
     ctx.fillRect(0, 0, canvas.width * solar.tPer, 10);
+    ctx.fillStyle = 'green';
+    ctx.fillRect(0, 10, canvas.width * world.rotationPer, 10);
+    
 };
 
 draw.world = function (sm) {
