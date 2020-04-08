@@ -56,7 +56,8 @@ draw.solar = function (sm) {};
 draw.debugSolar = function (sm) {
     var canvas = sm.canvas,
     ctx = sm.ctx,
-    solar = sm.solar;
+    solar = sm.solar,
+    world = sm.currentWorld;
 
     var text = '';
     Object.keys(solar.resources).forEach(function (resourceName) {

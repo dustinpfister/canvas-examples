@@ -139,6 +139,7 @@ var worldMod = (function () {
                 moveWorker: null,
                 rotationRate: 1,
                 rotationPer: 0,
+                deltaEXP: 100,
                 freeWorkers: {
                     pos: {
                         x: 32,
@@ -199,6 +200,13 @@ var worldMod = (function () {
             world.onTickProgress = function (solar, ticks, tickProgress) {
 
                 world.rotationPer = (ticks + tickProgress) % world.rotationRate / world.rotationRate;
+                world.rotationPer = world.rotationPer >= 1 ? 1 : world.rotationPer;
+
+                if (tickProgress >= 1) {
+                    console.log('yes');
+                    // add world deltaEXP to main solar.exp
+                    solar.exp += world.deltaEXP;
+                }
 
             };
 

@@ -6,7 +6,7 @@ var solarMod = (function () {
 
             var solar = {
                 lt: new Date(),
-                tickRate: 3000,
+                tickRate: 10000,
                 ticks: 0,
                 t: 0,
                 tPer: 0,
