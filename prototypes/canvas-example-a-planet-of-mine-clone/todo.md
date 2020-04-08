@@ -1,19 +1,34 @@
 # canvas-example-a-planet-of-mine-clone todo list
 
-* two resources that are gathered from land items ['wood', 'raspberries']
-* can gather wood resource from trees land item
-* can gather raspberries resource from berry bushes
+If I am going to put a lot of time into this one I should maybe break things down into version numbers
+
+## 0.4 - Build menu
+* have a working build menu for all current items in the world item database
+
+## 0.3 - resources break down
 * more than one type of solid resource ['stone', 'coal']
 * gather liquid resources
 * more than one type of liquid resource ['oil', 'water']
 
+
+## 0.2 - Gathering raspberries, and worker food requirements
+* two resources that are gathered from land items ['wood', 'raspberries']
+* can gather wood resource from trees land item
+* can gather raspberries resource from berry bushes
 * starting raspberries count for solar object
-* workers require raspberries to continue living, raspberry count goes down for each worker pr tick
+* workers require raspberries to continue living, raspberry count goes down for each worker per rotation tick
 * If A worker does not get enough raspberries it will die
 * gameOver property for solar object
 * if totalWorkerCount === 0 then solar.gameOver = true;
 
-## DONE
+## 0.1 - rotationRate and actionRate
+* Current tickRate for a world is actually the rotation rate of the world now
+* new exp value for the solar object
+* each world has an exp value that is added to the solar exp value on each rotation
+* separate tickRate for each land tile called an actionRate
+* workers harvest resources on land tiles by way of actionRate rather than rotation rate
+
+## 0.0 - The very basic idea working very poorly
 * (done) solar object property for current collected resources count
 * (done) main tickRate, and lt properties for solar object
 * (done) tick progress bar drawn
