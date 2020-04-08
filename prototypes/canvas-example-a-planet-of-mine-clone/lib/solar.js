@@ -28,18 +28,24 @@ var solarMod = (function () {
         update: function (solar) {
 
             var now = new Date(),
-            t = now - solar.lt,
-            secs = t / 1000;
+            t = now - solar.lt;
 
             solar.t = t;
             solar.tPer = t / solar.tickRate;
             solar.tPer = solar.tPer > 1 ? 1 : solar.tPer;
-            solar.ticks += solar.tPer;
+            //solar.ticks = solar.ticks + solar.tPer;
 
-            if (solar.tPer === 1) {
-                solar.worlds.forEach(function (world) {
+            // for each world
+            solar.worlds.forEach(function (world) {
+                world.onTickProgress(solar, solar.ticks, tPer);
+                if (solar.tPer === 1) {
                     world.onTickEnd(solar, solar.ticks);
-                });
+                }
+            });
+
+            // if tPer === 1
+            if (solar.tPer === 1) {
+                solar.ticks += 1;
                 solar.lt = now;
             }
 

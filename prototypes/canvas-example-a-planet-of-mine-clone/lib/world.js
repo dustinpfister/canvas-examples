@@ -191,6 +191,12 @@ var worldMod = (function () {
                         }
                     }
                 });
+            };
+
+            // what to do on main solar tick progress
+            world.onTickProgress = function (solar, ticks, tickProgress) {
+
+                //console.log(ticks, tickProgress);
 
             };
 
