@@ -221,10 +221,15 @@ canvas.width = 640;
 canvas.height = 480;
 
 var state = kaboom.createState(3);
-state.pause = false;
+state.pause = true;
 
 canvas.addEventListener('mousedown', function (e) {
-    state.pause = !state.pause;
+    state.pause = false;
+});
+
+
+canvas.addEventListener('mouseup', function (e) {
+    state.pause = true;
 });
 
 canvas.addEventListener('mousemove', function (e) {
