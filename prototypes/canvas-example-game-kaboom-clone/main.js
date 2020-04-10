@@ -9,6 +9,45 @@ var kaboom = (function () {
         w: 32
     };
 
+    var LEVELS = {
+        1: {
+            bombPPS: 64,
+            bombCount: 10,
+            bomber: {
+                pps: 32,
+                changeRate: 0.5,
+                dropRate: 1
+            }
+        },
+        2: {
+            bombPPS: 128,
+            bombCount: 50,
+            bomber: {
+                pps: 64,
+                changeRate: 0.25,
+                dropRate: 1 / 2
+            }
+        },
+        3: {
+            bombPPS: 256,
+            bombCount: 100,
+            bomber: {
+                pps: 256,
+                changeRate: 0.125,
+                dropRate: 1 / 5
+            }
+        },
+        4: {
+            bombPPS: 512,
+            bombCount: 1000,
+            bomber: {
+                pps: 1024,
+                changeRate: 0.125,
+                dropRate: 1 / 10
+            }
+        }
+    };
+
     // clamp boundaries for the given objState and objConstant
     // (state.bomber, BOMBER and state.player, PLAYER)
     var clampBoundaries = function (objState, objConst) {
@@ -40,24 +79,26 @@ var kaboom = (function () {
         BOMBER: BOMBER,
         PLAYER: PLAYER,
 
-        createState: function () {
+        createState: function (level) {
+            level = level || 1;
+            levelObj = LEVELS[level];
             return {
                 lt: new Date(),
                 pause: false,
                 score: 0,
-                level: 1,
+                level: level,
 
                 bomber: {
                     x: 320,
                     dir: 1,
-                    pps: 32,
+                    pps: levelObj.bomber.pps,
                     changeTime: 0,
-                    changeRate: 0.5,
+                    changeRate: levelObj.bomber.changeRate,
                     dropTime: 0,
-                    dropRate: 1
+                    dropRate: levelObj.bomber.dropRate
                 },
-                bombPPS: 64,
-                bombCount: 10,
+                bombPPS: levelObj.bombPPS,
+                bombCount: levelObj.bombCount,
                 bombs: [],
                 player: {
                     x: 320,
@@ -122,7 +163,7 @@ document.getElementById('gamearea').appendChild(canvas);
 canvas.width = 640;
 canvas.height = 480;
 
-var state = kaboom.createState();
+var state = kaboom.createState(4);
 
 var loop = function () {
 
@@ -150,8 +191,11 @@ var loop = function () {
     ctx.font = '10px arial';
     ctx.textBaseline = 'top';
 
-    ctx.fillText('bombCount: ' + state.bombCount, 10, 10);
-    ctx.fillText('bomber: { x: ' + state.bomber.x + ', dir: ' + state.bomber.dir + ' }', 10, 20);
+    ctx.fillText('level: ' + state.level, 10, 10);
+    ctx.fillText('bombCount: ' + state.bombCount, 10, 20);
+    ctx.fillText('bomber: { x: ' + state.bomber.x +
+        ', dir: ' + state.bomber.dir +
+        ', pps: ' + state.bomber.pps + ' }', 10, 30);
 
 };
 
