@@ -122,7 +122,12 @@ var kaboom = (function () {
 
     // set the values for the current level / level change
     var setLevel = function (state, level) {
+        var maxLevel = Object.keys(LEVELS).length;
         state.level = level === undefined ? state.level : level;
+        state.level = state.level > maxLevel ? maxLevel : state.level;
+
+        console.log(state.level);
+
         levelObj = LEVELS[state.level];
         state.bomber.pps = levelObj.bomber.pps;
         state.bomber.changeRate = levelObj.bomber.changeRate;
@@ -138,7 +143,6 @@ var kaboom = (function () {
 
         createState: function (level) {
             level = level || 1;
-            levelObj = LEVELS[level];
             var state = {
                 lt: new Date(),
                 pause: false,
@@ -167,7 +171,7 @@ var kaboom = (function () {
                     pps: 1024
                 }
             };
-            setLevel(state);
+            setLevel(state, level);
             return state;
         },
 
@@ -246,7 +250,7 @@ document.getElementById('gamearea').appendChild(canvas);
 canvas.width = 640;
 canvas.height = 480;
 
-var state = kaboom.createState(4);
+var state = kaboom.createState(10);
 state.pause = true;
 
 canvas.addEventListener('mousedown', function (e) {
