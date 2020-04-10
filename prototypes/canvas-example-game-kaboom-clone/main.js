@@ -56,21 +56,21 @@ var kaboom = (function () {
             }
         },
         3: {
-            bombPPS: 256,
+            bombPPS: 128,
             bombCount: 50,
             bomber: {
-                pps: 256,
+                pps: 128,
                 changeRate: 0.125,
                 dropRate: 1 / 5
             }
         },
         4: {
-            bombPPS: 512,
+            bombPPS: 256,
             bombCount: 100,
             bomber: {
-                pps: 1024,
+                pps: 512,
                 changeRate: 0.125,
-                dropRate: 1 / 10
+                dropRate: 1 / 5
             }
         }
     };
@@ -214,6 +214,7 @@ var kaboom = (function () {
                         w: PLAYER.w,
                         h: PLAYER.h
                     }, bomb)) {
+                    state.score += 1 * state.level;
                     state.bombs.splice(i, 1);
                 }
 
@@ -236,7 +237,7 @@ document.getElementById('gamearea').appendChild(canvas);
 canvas.width = 640;
 canvas.height = 480;
 
-var state = kaboom.createState(3);
+var state = kaboom.createState(4);
 state.pause = true;
 
 canvas.addEventListener('mousedown', function (e) {
@@ -283,10 +284,18 @@ var loop = function () {
     ctx.fillStyle = 'lime';
     ctx.fillRect(state.player.x, kaboom.PLAYER.y, kaboom.PLAYER.w, kaboom.PLAYER.h);
 
+    // draw score
+    ctx.fillStyle = 'white';
+    ctx.font = '10px arial';
+    ctx.textBaseline = 'top';
+    ctx.textAlign = 'center';
+    ctx.fillText(state.score, 320, 20);
+
     // draw debug info
     ctx.fillStyle = 'white';
     ctx.font = '10px arial';
     ctx.textBaseline = 'top';
+    ctx.textAlign = 'left';
     ctx.fillText('level: ' + state.level, 10, 10);
     ctx.fillText('bombCount: ' + state.bombCount, 10, 20);
     ctx.fillText('bomber: { x: ' + state.bomber.x +
