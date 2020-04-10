@@ -2,10 +2,10 @@ var utils = {}
 // bounding box
 utils.bb = function (a, b) {
     return !(
-        (a.y + a.size) < b.y ||
-        a.y > (b.y + b.size) ||
-        (a.x + a.size) < b.x ||
-        a.x > (b.x + b.size));
+        (a.y + a.h) < b.y ||
+        a.y > (b.y + b.h) ||
+        (a.x + a.w) < b.x ||
+        a.x > (b.x + b.w));
 };
 
 utils.distance = function (x1, y1, x2, y2) {
@@ -31,8 +31,9 @@ var kaboom = (function () {
         w: 32
     },
     PLAYER = {
-        y: 400,
-        w: 64
+        y: 350,
+        w: 64,
+        h: 64
     };
 
     var LEVELS = {
@@ -184,6 +185,8 @@ var kaboom = (function () {
                     state.bombs.push({
                         x: bomber.x,
                         y: BOMBER.y,
+                        w: 32,
+                        h: 32,
                         pps: state.bombPPS
                     });
                 }
@@ -192,15 +195,28 @@ var kaboom = (function () {
                 bomber.dropTime %= bomber.dropRate
             }
 
-            // move bombs
+            // update bombs
             var i = state.bombs.length,
+            player = state.player,
             bomb;
             while (i--) {
                 bomb = state.bombs[i];
+                // move bomb
                 bomb.y += bomb.pps * secs;
                 if (bomb.y > 640) {
                     bomb.y = 640;
                 }
+
+                // hit player?
+                if (utils.bb({
+                        x: player.x,
+                        y: PLAYER.y,
+                        w: PLAYER.w,
+                        h: PLAYER.h
+                    }, bomb)) {
+                    state.bombs.splice(i, 1);
+                }
+
             }
 
             state.lt = now;
@@ -226,7 +242,6 @@ state.pause = true;
 canvas.addEventListener('mousedown', function (e) {
     state.pause = false;
 });
-
 
 canvas.addEventListener('mouseup', function (e) {
     state.pause = true;
@@ -266,7 +281,7 @@ var loop = function () {
 
     // draw player
     ctx.fillStyle = 'lime';
-    ctx.fillRect(state.player.x, kaboom.PLAYER.y - 64, kaboom.PLAYER.w, 64);
+    ctx.fillRect(state.player.x, kaboom.PLAYER.y, kaboom.PLAYER.w, kaboom.PLAYER.h);
 
     // draw debug info
     ctx.fillStyle = 'white';
