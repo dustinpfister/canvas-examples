@@ -103,15 +103,18 @@ var kaboom = (function () {
     // move the player
     var movePlayer = function (state, secs) {
         var player = state.player,
-        inputPos = player.inputPos;
+        inputPos = player.inputPos,
+
+        hw = PLAYER.w / 2,
+        x = inputPos.x - hw;
 
         player.dir = 0;
-        var d = utils.distance(player.x, PLAYER.y, inputPos.x, PLAYER.y);
-        dir = d < 32 ? d / 32 : 1;
-        if (inputPos.x < player.x) {
+        var d = utils.distance(player.x, PLAYER.y, x, PLAYER.y);
+        dir = d < hw ? d / hw : 1;
+        if (x < player.x) {
             player.dir = dir * -1;
         }
-        if (inputPos.x > player.x) {
+        if (x > player.x) {
             player.dir = dir;
         }
 
