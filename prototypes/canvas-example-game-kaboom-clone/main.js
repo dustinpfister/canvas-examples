@@ -5,7 +5,19 @@ var kaboom = (function () {
         w: 32
     },
     PLAYER = {
-        y: 400
+        y: 400,
+        w: 32
+    };
+
+    // clamp boundaries for the given objState and objConstant
+    // (state.bomber, BOMBER and state.player, PLAYER)
+    var clampBoundaries = function (objState, objConst) {
+        if (objState.x > 640 - objConst.w) {
+            objState.x = 640 - objConst.w;
+        }
+        if (objState.x < 0) {
+            objState.x = 0;
+        }
     };
 
     var moveBomber = function (state, secs) {
@@ -13,12 +25,7 @@ var kaboom = (function () {
         // move bomber by secs and bomber dir property
         bomber.x += bomber.pps * secs * bomber.dir;
         // boundaries
-        if (bomber.x > 640 - BOMBER.w) {
-            bomber.x = 640 - BOMBER.w;
-        }
-        if (bomber.x < 0) {
-            bomber.x = 0;
-        }
+        clampBoundaries(bomber, BOMBER);
         // update direction
         bomber.changeTime += secs;
         if (bomber.changeTime >= bomber.changeRate) {
@@ -41,7 +48,7 @@ var kaboom = (function () {
                 bomber: {
                     x: 320,
                     dir: 1,
-                    pps: 64,
+                    pps: 512,
                     changeTime: 0,
                     changeRate: 0.5
                 },
