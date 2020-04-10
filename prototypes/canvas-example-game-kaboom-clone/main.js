@@ -21,7 +21,7 @@ var kaboom = (function () {
         },
         2: {
             bombPPS: 128,
-            bombCount: 50,
+            bombCount: 20,
             bomber: {
                 pps: 64,
                 changeRate: 0.25,
@@ -30,7 +30,7 @@ var kaboom = (function () {
         },
         3: {
             bombPPS: 256,
-            bombCount: 100,
+            bombCount: 50,
             bomber: {
                 pps: 256,
                 changeRate: 0.125,
@@ -39,7 +39,7 @@ var kaboom = (function () {
         },
         4: {
             bombPPS: 512,
-            bombCount: 1000,
+            bombCount: 100,
             bomber: {
                 pps: 1024,
                 changeRate: 0.125,
@@ -102,7 +102,8 @@ var kaboom = (function () {
                 bombs: [],
                 player: {
                     x: 320,
-                    hp: 3
+                    hp: 3,
+                    pps: 1024
                 }
             };
         },
@@ -163,7 +164,7 @@ document.getElementById('gamearea').appendChild(canvas);
 canvas.width = 640;
 canvas.height = 480;
 
-var state = kaboom.createState(4);
+var state = kaboom.createState(1);
 
 var loop = function () {
 
@@ -196,6 +197,9 @@ var loop = function () {
     ctx.fillText('bomber: { x: ' + state.bomber.x +
         ', dir: ' + state.bomber.dir +
         ', pps: ' + state.bomber.pps + ' }', 10, 30);
+    ctx.fillText('player: { x: ' + state.player.x +
+        ', hp: ' + state.player.hp +
+        ', pps: ' + state.player.pps + ' }', 10, 40);
 
 };
 
