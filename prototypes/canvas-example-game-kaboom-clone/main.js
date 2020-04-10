@@ -8,6 +8,10 @@ utils.bb = function (a, b) {
         a.x > (b.x + b.size));
 };
 
+utils.distance = function (x1, y1, x2, y2) {
+    return Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2));
+};
+
 utils.getCanvasRelative = function (e) {
     var canvas = e.target,
     bx = canvas.getBoundingClientRect();
@@ -98,14 +102,17 @@ var kaboom = (function () {
 
     // move the player
     var movePlayer = function (state, secs) {
-        var player = state.player;
+        var player = state.player,
+        inputPos = player.inputPos;
 
         player.dir = 0;
-        if (player.inputPos.x < player.x) {
-            player.dir = -1;
+        var d = utils.distance(player.x, PLAYER.y, inputPos.x, PLAYER.y);
+        dir = d < 32 ? d / 32 : 1;
+        if (inputPos.x < player.x) {
+            player.dir = dir * -1;
         }
-        if (player.inputPos.x > player.x) {
-            player.dir = 1;
+        if (inputPos.x > player.x) {
+            player.dir = dir;
         }
 
         player.x += Math.floor(player.pps * secs * player.dir);
@@ -272,6 +279,7 @@ var loop = function () {
         ', pps: ' + state.bomber.pps + ' }', 10, 30);
     ctx.fillText('player: { x: ' + state.player.x +
         ', hp: ' + state.player.hp +
+        ', dir: ' + state.player.dir +
         ', pps: ' + state.player.pps + ' }', 10, 40);
 
 };
