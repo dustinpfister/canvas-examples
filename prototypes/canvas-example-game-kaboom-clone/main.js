@@ -105,10 +105,8 @@ var kaboom = (function () {
     var movePlayer = function (state, secs) {
         var player = state.player,
         inputPos = player.inputPos,
-
         hw = PLAYER.w / 2,
         x = inputPos.x - hw;
-
         player.dir = 0;
         var d = utils.distance(player.x, PLAYER.y, x, PLAYER.y);
         dir = d < hw ? d / hw : 1;
@@ -118,9 +116,19 @@ var kaboom = (function () {
         if (x > player.x) {
             player.dir = dir;
         }
-
         player.x += Math.floor(player.pps * secs * player.dir);
         clampBoundaries(player, PLAYER);
+    };
+
+    // set the values for the current level / level change
+    var setLevel = function (state, level) {
+        state.level = level === undefined ? state.level : level;
+        levelObj = LEVELS[state.level];
+        state.bomber.pps = levelObj.bomber.pps;
+        state.bomber.changeRate = levelObj.bomber.changeRate;
+        state.bomber.dropRate = levelObj.bomber.dropRate;
+        state.bombPPS = levelObj.bombPPS;
+        state.bombCount = levelObj.bombCount
     };
 
     var api = {
@@ -131,23 +139,22 @@ var kaboom = (function () {
         createState: function (level) {
             level = level || 1;
             levelObj = LEVELS[level];
-            return {
+            var state = {
                 lt: new Date(),
                 pause: false,
                 score: 0,
                 level: level,
-
                 bomber: {
                     x: 320,
                     dir: 1,
-                    pps: levelObj.bomber.pps,
+                    pps: 0,
                     changeTime: 0,
-                    changeRate: levelObj.bomber.changeRate,
+                    changeRate: 0.5,
                     dropTime: 0,
-                    dropRate: levelObj.bomber.dropRate
+                    dropRate: 1
                 },
-                bombPPS: levelObj.bombPPS,
-                bombCount: levelObj.bombCount,
+                bombPPS: 0,
+                bombCount: 0,
                 bombs: [],
                 player: {
                     x: 320,
@@ -160,6 +167,8 @@ var kaboom = (function () {
                     pps: 1024
                 }
             };
+            setLevel(state);
+            return state;
         },
 
         update: function (state) {
