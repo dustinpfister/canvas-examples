@@ -20,10 +20,11 @@ var kaboom = (function () {
         }
     };
 
+    // move the bomber
     var moveBomber = function (state, secs) {
         var bomber = state.bomber;
         // move bomber by secs and bomber dir property
-        bomber.x += bomber.pps * secs * bomber.dir;
+        bomber.x += Math.floor(bomber.pps * secs * bomber.dir);
         // boundaries
         clampBoundaries(bomber, BOMBER);
         // update direction
@@ -49,12 +50,13 @@ var kaboom = (function () {
                 bomber: {
                     x: 320,
                     dir: 1,
-                    pps: 512,
+                    pps: 32,
                     changeTime: 0,
                     changeRate: 0.5,
                     dropTime: 0,
                     dropRate: 1
                 },
+                bombPPS: 64,
                 bombCount: 10,
                 bombs: [],
                 player: {
@@ -86,7 +88,7 @@ var kaboom = (function () {
                     state.bombs.push({
                         x: bomber.x,
                         y: BOMBER.y,
-                        pps: 128
+                        pps: state.bombPPS
                     });
                 }
                 state.bombCount -= 1;
@@ -145,7 +147,11 @@ var loop = function () {
     }
 
     ctx.fillStyle = 'white';
-    ctx.fillText(state.bomber.changeTime, 10, 10);
+    ctx.font = '10px arial';
+    ctx.textBaseline = 'top';
+
+    ctx.fillText('bombCount: ' + state.bombCount, 10, 10);
+    ctx.fillText('bomber: { x: ' + state.bomber.x + ', dir: ' + state.bomber.dir + ' }', 10, 20);
 
 };
 
