@@ -1,3 +1,13 @@
+var utils = {}
+// bounding box
+utils.bb = function (a, b) {
+    return !(
+        (a.y + a.size) < b.y ||
+        a.y > (b.y + b.size) ||
+        (a.x + a.size) < b.x ||
+        a.x > (b.x + b.size));
+};
+
 var kaboom = (function () {
 
     var BOMBER = {
@@ -74,10 +84,12 @@ var kaboom = (function () {
         }
     };
 
-    return {
+    var api = {
 
         BOMBER: BOMBER,
         PLAYER: PLAYER,
+
+        playerDir: 0,
 
         createState: function (level) {
             level = level || 1;
@@ -153,7 +165,9 @@ var kaboom = (function () {
 
         }
 
-    }
+    };
+
+    return api;
 
 }
     ());
