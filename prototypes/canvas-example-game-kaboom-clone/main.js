@@ -8,6 +8,25 @@ var kaboom = (function () {
         y: 400
     };
 
+    var moveBomber = function (state, secs) {
+        var bomber = state.bomber;
+        // move bomber by secs and bomber dir property
+        bomber.x += bomber.pps * secs * bomber.dir;
+        // boundaries
+        if (bomber.x > 640 - BOMBER.w) {
+            bomber.x = 640 - BOMBER.w;
+        }
+        if (bomber.x < 0) {
+            bomber.x = 0;
+        }
+        // update direction
+        bomber.changeTime += secs;
+        if (bomber.changeTime >= bomber.changeRate) {
+            bomber.dir = 1 - Math.floor(Math.random() * 3);
+            bomber.changeTime %= bomber.changeRate;
+        }
+    };
+
     return {
 
         BOMBER: BOMBER,
@@ -46,19 +65,7 @@ var kaboom = (function () {
                 return;
             }
 
-            bomber.x += bomber.pps * secs * bomber.dir;
-            if (bomber.x > 640 - BOMBER.w) {
-                bomber.x = 640 - BOMBER.w;
-            }
-            if (bomber.x < 0) {
-                bomber.x = 0;
-            }
-
-            bomber.changeTime += secs;
-            if (bomber.changeTime >= bomber.changeRate) {
-                bomber.dir = 1 - Math.floor(Math.random() * 3);
-                bomber.changeTime %= bomber.changeRate;
-            }
+            moveBomber(state, secs);
 
             state.lt = now;
 
