@@ -45,13 +45,17 @@ var kaboom = (function () {
                 pause: false,
                 score: 0,
                 level: 1,
+
                 bomber: {
                     x: 320,
                     dir: 1,
                     pps: 512,
                     changeTime: 0,
-                    changeRate: 0.5
+                    changeRate: 0.5,
+                    dropTime: 0,
+                    dropRate: 1
                 },
+                bombCount: 10,
                 bombs: [],
                 player: {
                     x: 320,
@@ -72,7 +76,34 @@ var kaboom = (function () {
                 return;
             }
 
+            // move the bomber
             moveBomber(state, secs);
+
+            // drop bombs
+            bomber.dropTime += secs;
+            if (bomber.dropTime >= bomber.dropRate) {
+                if (state.bombCount > 0) {
+                    state.bombs.push({
+                        x: bomber.x,
+                        y: BOMBER.y,
+                        pps: 128
+                    });
+                }
+                state.bombCount -= 1;
+                state.bombCount = state.bombCount < 0 ? 0 : state.bombCount;
+                bomber.dropTime %= bomber.dropRate
+            }
+
+            // move bombs
+            var i = state.bombs.length,
+            bomb;
+            while (i--) {
+                bomb = state.bombs[i];
+                bomb.y += bomb.pps * secs;
+                if (bomb.y > 640) {
+                    bomb.y = 640;
+                }
+            }
 
             state.lt = now;
 
@@ -104,6 +135,14 @@ var loop = function () {
 
     ctx.fillStyle = 'black';
     ctx.fillRect(state.bomber.x, kaboom.BOMBER.y - 64, kaboom.BOMBER.w, 64);
+
+    var i = state.bombs.length,
+    bomb;
+    ctx.fillStyle = 'red';
+    while (i--) {
+        bomb = state.bombs[i];
+        ctx.fillRect(bomb.x, bomb.y, 32, 32);
+    }
 
     ctx.fillStyle = 'white';
     ctx.fillText(state.bomber.changeTime, 10, 10);
