@@ -84,12 +84,17 @@ var kaboom = (function () {
         }
     };
 
+    // move the player
+    var movePlayer = function (state, secs) {
+        var player = state.player;
+        player.x += Math.floor(player.pps * secs * player.dir);
+        clampBoundaries(player, PLAYER);
+    };
+
     var api = {
 
         BOMBER: BOMBER,
         PLAYER: PLAYER,
-
-        playerDir: 0,
 
         createState: function (level) {
             level = level || 1;
@@ -115,6 +120,7 @@ var kaboom = (function () {
                 player: {
                     x: 320,
                     hp: 3,
+                    dir: -1,
                     pps: 1024
                 }
             };
@@ -134,6 +140,7 @@ var kaboom = (function () {
 
             // move the bomber
             moveBomber(state, secs);
+            movePlayer(state, secs);
 
             // drop bombs
             bomber.dropTime += secs;
