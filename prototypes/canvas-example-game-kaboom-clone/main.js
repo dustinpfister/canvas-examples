@@ -8,6 +8,18 @@ utils.bb = function (a, b) {
         a.x > (b.x + b.size));
 };
 
+utils.getCanvasRelative = function (e) {
+    var canvas = e.target,
+    bx = canvas.getBoundingClientRect();
+    var x = (e.changedTouches ? e.changedTouches[0].clientX : e.clientX) - bx.left,
+    y = (e.changedTouches ? e.changedTouches[0].clientY : e.clientY) - bx.top;
+    return {
+        x: x,
+        y: y,
+        bx: bx
+    };
+};
+
 var kaboom = (function () {
 
     var BOMBER = {
@@ -87,6 +99,15 @@ var kaboom = (function () {
     // move the player
     var movePlayer = function (state, secs) {
         var player = state.player;
+
+        player.dir = 0;
+        if (player.inputPos.x < player.x) {
+            player.dir = -1;
+        }
+        if (player.inputPos.x > player.x) {
+            player.dir = 1;
+        }
+
         player.x += Math.floor(player.pps * secs * player.dir);
         clampBoundaries(player, PLAYER);
     };
@@ -119,6 +140,10 @@ var kaboom = (function () {
                 bombs: [],
                 player: {
                     x: 320,
+                    inputPos: {
+                        x: 320,
+                        y: 0
+                    },
                     hp: 3,
                     dir: -1,
                     pps: 1024
@@ -187,6 +212,25 @@ canvas.height = 480;
 
 var state = kaboom.createState(3);
 state.pause = false;
+
+canvas.addEventListener('mousemove', function (e) {
+    e.preventDefault();
+    var pos = utils.getCanvasRelative(e),
+    player = state.player;
+
+    player.inputPos = pos;
+
+    /*
+    player.dir = 0;
+    if (pos.x < player.x) {
+    player.dir = -1;
+    }
+    if (pos.x > player.x) {
+    player.dir = 1;
+    }
+     */
+
+});
 
 var loop = function () {
 
