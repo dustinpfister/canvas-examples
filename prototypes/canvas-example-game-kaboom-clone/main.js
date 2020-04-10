@@ -223,23 +223,15 @@ canvas.height = 480;
 var state = kaboom.createState(3);
 state.pause = false;
 
+canvas.addEventListener('mousedown', function (e) {
+    state.pause = !state.pause;
+});
+
 canvas.addEventListener('mousemove', function (e) {
     e.preventDefault();
     var pos = utils.getCanvasRelative(e),
     player = state.player;
-
     player.inputPos = pos;
-
-    /*
-    player.dir = 0;
-    if (pos.x < player.x) {
-    player.dir = -1;
-    }
-    if (pos.x > player.x) {
-    player.dir = 1;
-    }
-     */
-
 });
 
 var loop = function () {
