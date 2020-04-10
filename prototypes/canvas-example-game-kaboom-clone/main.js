@@ -22,7 +22,9 @@ var kaboom = (function () {
                 bomber: {
                     x: 320,
                     dir: 1,
-                    pps: 32
+                    pps: 64,
+                    changeTime: 0,
+                    changeRate: 0.5
                 },
                 bombs: [],
                 player: {
@@ -35,13 +37,30 @@ var kaboom = (function () {
         update: function (state) {
             var now = new Date(),
             t = now - state.lt,
-            secs = t / 1000;
+            secs = t / 1000,
+            bomber = state.bomber;
 
             // if pause set lt to now and return out of function
             if (state.pause) {
                 state.lt = now;
                 return;
             }
+
+            bomber.x += bomber.pps * secs * bomber.dir;
+            if (bomber.x > 640 - BOMBER.w) {
+                bomber.x = 640 - BOMBER.w;
+            }
+            if (bomber.x < 0) {
+                bomber.x = 0;
+            }
+
+            bomber.changeTime += secs;
+            if (bomber.changeTime >= bomber.changeRate) {
+                bomber.dir = 1 - Math.floor(Math.random() * 3);
+                bomber.changeTime %= bomber.changeRate;
+            }
+
+            state.lt = now;
 
         }
 
@@ -71,6 +90,9 @@ var loop = function () {
 
     ctx.fillStyle = 'black';
     ctx.fillRect(state.bomber.x, kaboom.BOMBER.y - 64, kaboom.BOMBER.w, 64);
+
+    ctx.fillStyle = 'white';
+    ctx.fillText(state.bomber.changeTime, 10, 10);
 
 };
 
