@@ -40,6 +40,21 @@ draw.score = function (ctx, state) {
     ctx.fillText(state.score, 320, 20);
 };
 
+// draw pause overlay
+draw.pauseOverlay = function (ctx, canvas, state) {
+
+    if (state.puaseTime > 0 || state.pauseTime === -1) {
+        ctx.fillStyle = 'rgba(0,0,0,0.5)';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = 'white';
+        ctx.font = '20px arial';
+        ctx.textBaseline = 'top';
+        ctx.textAlign = 'center';
+        ctx.fillText(state.pauseMessage, canvas.width / 2, 200);
+    }
+
+};
+
 // draw debug info
 draw.debug = function (ctx, state) {
     ctx.fillStyle = 'white';
