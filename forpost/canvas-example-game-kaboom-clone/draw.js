@@ -45,6 +45,13 @@ draw.ui = function (ctx, state) {
     var button = kaboom.BUTTON_PAUSE;
     ctx.fillStyle = 'white';
     ctx.fillRect(button.x, button.y, button.w, button.h);
+
+    if (state.gameOver) {
+        button = kaboom.BUTTON_NEW_GAME;
+        ctx.fillStyle = 'white';
+        ctx.fillRect(button.x, button.y, button.w, button.h);
+
+    }
 };
 
 // draw pause overlay

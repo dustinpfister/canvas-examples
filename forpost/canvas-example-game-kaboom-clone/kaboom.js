@@ -15,6 +15,12 @@ var kaboom = (function () {
         y: 432,
         w: 128,
         h: 32
+    },
+    BUTTON_NEW_GAME = {
+        x: 320 - 64,
+        y: 240 - 16,
+        w: 128,
+        h: 32
     };
 
     var LEVELS = {
@@ -221,7 +227,9 @@ var kaboom = (function () {
         state.bomber.dropRate = levelObj.bomber.dropRate;
         state.bombPPS = levelObj.bombPPS;
         state.bombCount = levelObj.bombCount;
-        state.gameOver = false;
+        //state.gameOver = false;
+        //state.player.hp = 3;
+        //state.pauseTime = 1;
     };
 
     var api = {
@@ -229,6 +237,7 @@ var kaboom = (function () {
         BOMBER: BOMBER,
         PLAYER: PLAYER,
         BUTTON_PAUSE: BUTTON_PAUSE,
+        BUTTON_NEW_GAME: BUTTON_NEW_GAME,
 
         createState: createState,
 
@@ -246,6 +255,10 @@ var kaboom = (function () {
                     return;
                 }
             }
+            if (state.gameOver && utils.bb(pos, BUTTON_NEW_GAME)) {
+                Object.assign(state, createState(1));
+            }
+
         },
 
         update: function (state) {

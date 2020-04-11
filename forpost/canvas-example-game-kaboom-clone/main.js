@@ -5,7 +5,7 @@ document.getElementById('gamearea').appendChild(canvas);
 canvas.width = 640;
 canvas.height = 480;
 
-var state = kaboom.createState(1);
+var state = kaboom.createState(4);
 //state.pauseTime = -1;
 
 canvas.addEventListener('mousedown', function (e) {
