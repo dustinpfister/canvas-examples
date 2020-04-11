@@ -5,7 +5,20 @@ document.getElementById('gamearea').appendChild(canvas);
 canvas.width = 640;
 canvas.height = 480;
 
-var state = kaboom.createState(4);
+/*
+Object.assign(kaboom.LEVELS, {
+    1: {
+        bombPPS: 64,
+        bombCount: 10,
+        bomber: {
+            pps: 32,
+            changeRate: 0.5,
+            dropRate: 1
+        }
+    }
+});
+*/
+var state = kaboom.createState(10);
 //state.pauseTime = -1;
 
 canvas.addEventListener('mousedown', function (e) {
