@@ -15,7 +15,7 @@
 * player gets 1 hp per 1000 points
 
 ## 0.2 - game over
-* player hp === 0 results in game over
+* (done) player hp === 0 results in game over
 * start new button displayed during game over
 * start new button will start a new game at level 1 when clicked
 

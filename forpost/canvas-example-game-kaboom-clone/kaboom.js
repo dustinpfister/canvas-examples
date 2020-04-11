@@ -104,20 +104,6 @@ var kaboom = (function () {
         }
     };
 
-    // set the values for the current level / level change
-    var setLevel = function (state, level) {
-        var maxLevel = Object.keys(LEVELS).length;
-        state.level = level === undefined ? state.level : level;
-        state.level = state.level > maxLevel ? maxLevel : state.level;
-        levelObj = LEVELS[state.level];
-        state.bomber.pps = levelObj.bomber.pps;
-        state.bomber.changeRate = levelObj.bomber.changeRate;
-        state.bomber.dropRate = levelObj.bomber.dropRate;
-        state.bombPPS = levelObj.bombPPS;
-        state.bombCount = levelObj.bombCount;
-        state.gameOver = false;
-    };
-
     // drop bombs helper
     var dropBombs = function (state, secs) {
         var bomber = state.bomber;
@@ -180,47 +166,64 @@ var kaboom = (function () {
         }
     };
 
+    // create a new state
+    var createState = function (level) {
+        level = level || 1;
+        var state = {
+            lt: new Date(),
+            //pause: false,
+            gameOver: false,
+            pauseTime: 1,
+            pauseMessage: 'paused',
+            score: 0,
+            level: level,
+            bomber: {
+                x: 320,
+                dir: 1,
+                pps: 0,
+                changeTime: 0,
+                changeRate: 0.5,
+                dropTime: 0,
+                dropRate: 1
+            },
+            bombPPS: 0,
+            bombCount: 0,
+            bombs: [],
+            player: {
+                x: 320,
+                inputPos: {
+                    x: 320,
+                    y: 0
+                },
+                hp: 3,
+                dir: -1,
+                pps: 1024
+            }
+        };
+        setLevel(state, level);
+        return state;
+    };
+
+    // set the values for the current level / level change
+    var setLevel = function (state, level) {
+        var maxLevel = Object.keys(LEVELS).length;
+        state.level = level === undefined ? state.level : level;
+        state.level = state.level > maxLevel ? maxLevel : state.level;
+        levelObj = LEVELS[state.level];
+        state.bomber.pps = levelObj.bomber.pps;
+        state.bomber.changeRate = levelObj.bomber.changeRate;
+        state.bomber.dropRate = levelObj.bomber.dropRate;
+        state.bombPPS = levelObj.bombPPS;
+        state.bombCount = levelObj.bombCount;
+        state.gameOver = false;
+    };
+
     var api = {
 
         BOMBER: BOMBER,
         PLAYER: PLAYER,
 
-        createState: function (level) {
-            level = level || 1;
-            var state = {
-                lt: new Date(),
-                //pause: false,
-                gameOver: false,
-                pauseTime: 1,
-                pauseMessage: 'paused',
-                score: 0,
-                level: level,
-                bomber: {
-                    x: 320,
-                    dir: 1,
-                    pps: 0,
-                    changeTime: 0,
-                    changeRate: 0.5,
-                    dropTime: 0,
-                    dropRate: 1
-                },
-                bombPPS: 0,
-                bombCount: 0,
-                bombs: [],
-                player: {
-                    x: 320,
-                    inputPos: {
-                        x: 320,
-                        y: 0
-                    },
-                    hp: 3,
-                    dir: -1,
-                    pps: 1024
-                }
-            };
-            setLevel(state, level);
-            return state;
-        },
+        createState: createState,
 
         update: function (state) {
             var now = new Date(),
