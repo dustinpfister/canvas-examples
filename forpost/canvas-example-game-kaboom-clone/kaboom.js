@@ -99,8 +99,8 @@ var kaboom = (function () {
     var moveBomb = function (bomb, secs) {
         // move bomb
         bomb.y += bomb.pps * secs;
-        if (bomb.y > 640) {
-            bomb.y = 640;
+        if (bomb.y > 480) {
+            bomb.y = 480;
         }
     };
 
@@ -150,7 +150,18 @@ var kaboom = (function () {
             state.score += 1 * state.level;
             state.bombs.splice(bombIndex, 1);
         }
+    };
 
+    // a bomb has reached the other side
+    var bombOut = function (state, bombIndex) {
+        var bomb = state.bombs[bombIndex],
+        player = state.player;
+        if (bomb) {
+            if (bomb.y === 480) {
+                player.hp -= 1;
+                state.bombs = [];
+            }
+        }
     };
 
     var api = {
@@ -217,6 +228,7 @@ var kaboom = (function () {
                 moveBomb(bomb, secs);
                 // hit player?
                 bombHit(state, i);
+                bombOut(state, i);
             }
             state.lt = now;
         }
