@@ -225,6 +225,19 @@ var kaboom = (function () {
 
         createState: createState,
 
+        pointerStart: function (state, e) {
+            var pos = utils.getCanvasRelative(e);
+            e.preventDefault();
+            if (state.pauseTime === -1 && !state.gameOver) {
+                state.pauseTime = 0;
+                return;
+            }
+            if (state.pauseTime === 0 && !state.gameOver) {
+                state.pauseTime = -1;
+                state.pauseMessage = 'paused';
+            }
+        },
+
         update: function (state) {
             var now = new Date(),
             t = now - state.lt,
@@ -240,7 +253,7 @@ var kaboom = (function () {
                 state.lt = now;
                 if (state.pauseTime > 0) {
                     state.pauseTime -= secs;
-                    state.pauseTime = state.puaseTime < 0 ? 0 : state.pauseTime;
+                    state.pauseTime = state.pauseTime < 0 ? 0 : state.pauseTime;
                 }
                 return;
             }

@@ -6,14 +6,18 @@ canvas.width = 640;
 canvas.height = 480;
 
 var state = kaboom.createState(1);
-state.pauseTime = -1;
+//state.pauseTime = -1;
 
 canvas.addEventListener('mousedown', function (e) {
-    state.pauseTime = 0;
+    //state.pauseTime = 0;
+
+    kaboom.pointerStart(state, e);
 });
 
 canvas.addEventListener('mouseup', function (e) {
-    state.pauseTime = -1;
+    //state.pauseTime = -1;
+
+
 });
 
 canvas.addEventListener('mousemove', function (e) {
