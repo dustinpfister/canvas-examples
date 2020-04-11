@@ -141,14 +141,16 @@ var kaboom = (function () {
     var bombHit = function (state, bombIndex) {
         var bomb = state.bombs[bombIndex],
         player = state.player;
-        if (utils.bb({
-                x: player.x,
-                y: PLAYER.y,
-                w: PLAYER.w,
-                h: PLAYER.h
-            }, bomb)) {
-            state.score += 1 * state.level;
-            state.bombs.splice(bombIndex, 1);
+        if (bomb) {
+            if (utils.bb({
+                    x: player.x,
+                    y: PLAYER.y,
+                    w: PLAYER.w,
+                    h: PLAYER.h
+                }, bomb)) {
+                state.score += 1 * state.level;
+                state.bombs.splice(bombIndex, 1);
+            }
         }
     };
 
@@ -161,6 +163,12 @@ var kaboom = (function () {
                 player.hp -= 1;
                 state.bombs = [];
             }
+        }
+    };
+
+    var levelOverCheck = function (state) {
+        if (state.bombCount === 0 && state.bombs.length === 0) {
+            setLevel(state, state.level += 1);
         }
     };
 
@@ -226,9 +234,10 @@ var kaboom = (function () {
                 bomb = state.bombs[i];
                 // move
                 moveBomb(bomb, secs);
-                // hit player?
+                // hit player, and bomb is out
                 bombHit(state, i);
                 bombOut(state, i);
+                levelOverCheck(state);
             }
             state.lt = now;
         }
