@@ -29,6 +29,15 @@ var loop = function () {
 
     kaboom.update(state);
 
+    draw.back(ctx, canvas);
+    draw.bomber(ctx, state);
+    draw.bombs(ctx, state);
+    draw.player(ctx, state);
+    draw.score(ctx, state);
+    draw.debug(ctx, state);
+
+    /*
+
     // draw background
     ctx.fillStyle = 'blue';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
@@ -44,8 +53,8 @@ var loop = function () {
     bomb;
     ctx.fillStyle = 'red';
     while (i--) {
-        bomb = state.bombs[i];
-        ctx.fillRect(bomb.x, bomb.y, 32, 32);
+    bomb = state.bombs[i];
+    ctx.fillRect(bomb.x, bomb.y, 32, 32);
     }
 
     // draw player
@@ -67,13 +76,13 @@ var loop = function () {
     ctx.fillText('level: ' + state.level, 10, 10);
     ctx.fillText('bombCount: ' + state.bombCount, 10, 20);
     ctx.fillText('bomber: { x: ' + state.bomber.x +
-        ', dir: ' + state.bomber.dir +
-        ', pps: ' + state.bomber.pps + ' }', 10, 30);
+    ', dir: ' + state.bomber.dir +
+    ', pps: ' + state.bomber.pps + ' }', 10, 30);
     ctx.fillText('player: { x: ' + state.player.x +
-        ', hp: ' + state.player.hp +
-        ', dir: ' + state.player.dir +
-        ', pps: ' + state.player.pps + ' }', 10, 40);
-
+    ', hp: ' + state.player.hp +
+    ', dir: ' + state.player.dir +
+    ', pps: ' + state.player.pps + ' }', 10, 40);
+     */
 };
 
 loop();
