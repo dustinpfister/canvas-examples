@@ -95,6 +95,15 @@ var kaboom = (function () {
         clampBoundaries(player, PLAYER);
     };
 
+    // move a bomb object
+    var moveBomb = function (bomb, secs) {
+        // move bomb
+        bomb.y += bomb.pps * secs;
+        if (bomb.y > 640) {
+            bomb.y = 640;
+        }
+    };
+
     // set the values for the current level / level change
     var setLevel = function (state, level) {
         var maxLevel = Object.keys(LEVELS).length;
@@ -193,11 +202,9 @@ var kaboom = (function () {
             bomb;
             while (i--) {
                 bomb = state.bombs[i];
-                // move bomb
-                bomb.y += bomb.pps * secs;
-                if (bomb.y > 640) {
-                    bomb.y = 640;
-                }
+
+                // move
+                moveBomb(bomb, secs);
 
                 // hit player?
                 if (utils.bb({
@@ -209,7 +216,6 @@ var kaboom = (function () {
                     state.score += 1 * state.level;
                     state.bombs.splice(i, 1);
                 }
-
             }
 
             state.lt = now;
