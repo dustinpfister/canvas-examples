@@ -100,15 +100,33 @@ var kaboom = (function () {
         var maxLevel = Object.keys(LEVELS).length;
         state.level = level === undefined ? state.level : level;
         state.level = state.level > maxLevel ? maxLevel : state.level;
-
-        console.log(state.level);
-
         levelObj = LEVELS[state.level];
         state.bomber.pps = levelObj.bomber.pps;
         state.bomber.changeRate = levelObj.bomber.changeRate;
         state.bomber.dropRate = levelObj.bomber.dropRate;
         state.bombPPS = levelObj.bombPPS;
         state.bombCount = levelObj.bombCount
+    };
+
+    // drop bombs helper
+    var dropBombs = function (state, secs) {
+        var bomber = state.bomber;
+        bomber.dropTime += secs;
+        if (bomber.dropTime >= bomber.dropRate) {
+            if (state.bombCount > 0) {
+                state.bombs.push({
+                    x: bomber.x,
+                    y: BOMBER.y,
+                    w: 32,
+                    h: 32,
+                    pps: state.bombPPS
+                });
+            }
+            state.bombCount -= 1;
+            state.bombCount = state.bombCount < 0 ? 0 : state.bombCount;
+            bomber.dropTime %= bomber.dropRate
+        }
+
     };
 
     var api = {
@@ -162,26 +180,12 @@ var kaboom = (function () {
                 return;
             }
 
-            // move the bomber
+            // movement
             moveBomber(state, secs);
             movePlayer(state, secs);
 
             // drop bombs
-            bomber.dropTime += secs;
-            if (bomber.dropTime >= bomber.dropRate) {
-                if (state.bombCount > 0) {
-                    state.bombs.push({
-                        x: bomber.x,
-                        y: BOMBER.y,
-                        w: 32,
-                        h: 32,
-                        pps: state.bombPPS
-                    });
-                }
-                state.bombCount -= 1;
-                state.bombCount = state.bombCount < 0 ? 0 : state.bombCount;
-                bomber.dropTime %= bomber.dropRate
-            }
+            dropBombs(state, secs);
 
             // update bombs
             var i = state.bombs.length,
