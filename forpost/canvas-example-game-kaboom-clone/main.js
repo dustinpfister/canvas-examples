@@ -38,6 +38,7 @@ var loop = function () {
     draw.bombs(ctx, state);
     draw.player(ctx, state);
     draw.score(ctx, state);
+    draw.ui(ctx, state);
     draw.pauseOverlay(ctx, canvas, state);
 
     draw.debug(ctx, state);

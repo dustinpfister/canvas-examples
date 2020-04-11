@@ -40,6 +40,13 @@ draw.score = function (ctx, state) {
     ctx.fillText(state.score, 320, 20);
 };
 
+draw.ui = function (ctx, state) {
+
+    var button = kaboom.BUTTON_PAUSE;
+    ctx.fillStyle = 'white';
+    ctx.fillRect(button.x, button.y, button.w, button.h);
+};
+
 // draw pause overlay
 draw.pauseOverlay = function (ctx, canvas, state) {
     if (state.puaseTime > 0 || state.pauseTime === -1) {
