@@ -9,6 +9,12 @@ var kaboom = (function () {
         y: 350,
         w: 64,
         h: 64
+    },
+    BUTTON_PAUSE = {
+        x: 0,
+        y: 0,
+        w: 32,
+        h: 32
     };
 
     var LEVELS = {
@@ -222,19 +228,14 @@ var kaboom = (function () {
 
         BOMBER: BOMBER,
         PLAYER: PLAYER,
+        BUTTON_PAUSE: BUTTON_PAUSE,
 
         createState: createState,
 
         pointerStart: function (state, e) {
-            var pos = utils.getCanvasRelative(e),
-            buttonPause = {
-                x: 0,
-                y: 0,
-                w: 32,
-                h: 32
-            };
+            var pos = utils.getCanvasRelative(e);
             e.preventDefault();
-            if (!state.gameOver && utils.bb(pos, buttonPause)) {
+            if (!state.gameOver && utils.bb(pos, BUTTON_PAUSE)) {
                 if (state.pauseTime === -1) {
                     state.pauseTime = 0;
                     return;
