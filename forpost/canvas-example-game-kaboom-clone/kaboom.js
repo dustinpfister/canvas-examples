@@ -227,9 +227,6 @@ var kaboom = (function () {
         state.bomber.dropRate = levelObj.bomber.dropRate;
         state.bombPPS = levelObj.bombPPS;
         state.bombCount = levelObj.bombCount;
-        //state.gameOver = false;
-        //state.player.hp = 3;
-        //state.pauseTime = 1;
     };
 
     var api = {
@@ -258,7 +255,6 @@ var kaboom = (function () {
             if (state.gameOver && utils.bb(pos, BUTTON_NEW_GAME)) {
                 Object.assign(state, createState(1));
             }
-
         },
 
         update: function (state) {
