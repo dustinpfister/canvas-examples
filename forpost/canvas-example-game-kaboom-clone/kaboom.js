@@ -114,7 +114,8 @@ var kaboom = (function () {
         state.bomber.changeRate = levelObj.bomber.changeRate;
         state.bomber.dropRate = levelObj.bomber.dropRate;
         state.bombPPS = levelObj.bombPPS;
-        state.bombCount = levelObj.bombCount
+        state.bombCount = levelObj.bombCount;
+        state.gameOver = false;
     };
 
     // drop bombs helper
@@ -161,6 +162,7 @@ var kaboom = (function () {
         if (bomb) {
             if (bomb.y === 480) {
                 player.hp -= 1;
+                player.hp = player.hp < 0 ? 0 : player.hp;
                 state.bombs = [];
             }
         }
@@ -169,6 +171,12 @@ var kaboom = (function () {
     var levelOverCheck = function (state) {
         if (state.bombCount === 0 && state.bombs.length === 0) {
             setLevel(state, state.level += 1);
+        }
+    };
+
+    var gameOverCheck = function (state) {
+        if (state.player.hp === 0) {
+            state.gameOver = true;
         }
     };
 
@@ -182,6 +190,7 @@ var kaboom = (function () {
             var state = {
                 lt: new Date(),
                 //pause: false,
+                gameOver: false,
                 pauseTime: 1,
                 pauseMessage: 'paused',
                 score: 0,
@@ -218,8 +227,12 @@ var kaboom = (function () {
             t = now - state.lt,
             secs = t / 1000,
             bomber = state.bomber;
-            // if pause set lt to now and return out of function
-            //if (state.pause) {
+            // if game over
+            if (state.gameOver) {
+                state.pauseTime = -1;
+                state.pauseMessage = 'Game Over';
+            }
+            // if pauseTime set lt to now and return out of function
             if (state.pauseTime === -1 || state.pauseTime > 0) {
                 state.lt = now;
                 if (state.pauseTime > 0) {
@@ -245,9 +258,9 @@ var kaboom = (function () {
                 bombHit(state, i);
                 bombOut(state, i);
             }
-
             // level over check
             levelOverCheck(state);
+            gameOverCheck(state);
             state.lt = now;
         }
 

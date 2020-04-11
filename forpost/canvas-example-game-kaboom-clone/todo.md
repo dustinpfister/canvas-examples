@@ -5,7 +5,7 @@
 * pause when next level starts
 * message displayed for any kind of pause event
 * (done) pauseTime state property (0 - no pause, > 0 is pause time, -1 is set pause)
-* pauseMessage property
+* (done) pauseMessage property
 
 ## 0.4 - keyboard and touch events
 * can move player object with keyboard events
