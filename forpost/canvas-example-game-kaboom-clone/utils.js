@@ -20,6 +20,8 @@ utils.getCanvasRelative = function (e) {
     return {
         x: x,
         y: y,
+        w: 1,
+        h: 1,
         bx: bx
     };
 };
