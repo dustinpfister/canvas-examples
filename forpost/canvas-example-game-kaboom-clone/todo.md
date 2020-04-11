@@ -4,7 +4,7 @@
 * bomb explosion animation and pause
 * pause when next level starts
 * message displayed for any kind of pause event
-* pauseTime state property (0 - no pause, > 0 is pause time, -1 is set pause)
+* (done) pauseTime state property (0 - no pause, > 0 is pause time, -1 is set pause)
 * pauseMessage property
 
 ## 0.4 - keyboard and touch events

@@ -181,7 +181,9 @@ var kaboom = (function () {
             level = level || 1;
             var state = {
                 lt: new Date(),
-                pause: false,
+                //pause: false,
+                pauseTime: 1,
+                pauseMessage: 'paused',
                 score: 0,
                 level: level,
                 bomber: {
@@ -217,8 +219,13 @@ var kaboom = (function () {
             secs = t / 1000,
             bomber = state.bomber;
             // if pause set lt to now and return out of function
-            if (state.pause) {
+            //if (state.pause) {
+            if (state.pauseTime === -1 || state.pauseTime > 0) {
                 state.lt = now;
+                if (state.pauseTime > 0) {
+                    state.pauseTime -= secs;
+                    state.pauseTime = state.puaseTime < 0 ? 0 : state.pauseTime;
+                }
                 return;
             }
             // movement
