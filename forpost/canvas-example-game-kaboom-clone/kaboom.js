@@ -11,9 +11,9 @@ var kaboom = (function () {
         h: 64
     },
     BUTTON_PAUSE = {
-        x: 0,
-        y: 0,
-        w: 32,
+        x: 16,
+        y: 432,
+        w: 128,
         h: 32
     };
 
