@@ -237,8 +237,10 @@ var kaboom = (function () {
                 // hit player, and bomb is out
                 bombHit(state, i);
                 bombOut(state, i);
-                levelOverCheck(state);
             }
+
+            // level over check
+            levelOverCheck(state);
             state.lt = now;
         }
 
