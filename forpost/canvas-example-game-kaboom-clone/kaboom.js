@@ -135,6 +135,21 @@ var kaboom = (function () {
             state.bombCount = state.bombCount < 0 ? 0 : state.bombCount;
             bomber.dropTime %= bomber.dropRate
         }
+    };
+
+    // if a bomb hits the player
+    var bombHit = function (state, bombIndex) {
+        var bomb = state.bombs[bombIndex],
+        player = state.player;
+        if (utils.bb({
+                x: player.x,
+                y: PLAYER.y,
+                w: PLAYER.w,
+                h: PLAYER.h
+            }, bomb)) {
+            state.score += 1 * state.level;
+            state.bombs.splice(bombIndex, 1);
+        }
 
     };
 
@@ -182,44 +197,28 @@ var kaboom = (function () {
             t = now - state.lt,
             secs = t / 1000,
             bomber = state.bomber;
-
             // if pause set lt to now and return out of function
             if (state.pause) {
                 state.lt = now;
                 return;
             }
-
             // movement
             moveBomber(state, secs);
             movePlayer(state, secs);
-
             // drop bombs
             dropBombs(state, secs);
-
             // update bombs
             var i = state.bombs.length,
             player = state.player,
             bomb;
             while (i--) {
                 bomb = state.bombs[i];
-
                 // move
                 moveBomb(bomb, secs);
-
                 // hit player?
-                if (utils.bb({
-                        x: player.x,
-                        y: PLAYER.y,
-                        w: PLAYER.w,
-                        h: PLAYER.h
-                    }, bomb)) {
-                    state.score += 1 * state.level;
-                    state.bombs.splice(i, 1);
-                }
+                bombHit(state, i);
             }
-
             state.lt = now;
-
         }
 
     };
