@@ -78,5 +78,6 @@ draw.debug = function (ctx, state) {
     ctx.fillText('player: { x: ' + state.player.x +
         ', hp: ' + state.player.hp +
         ', dir: ' + state.player.dir +
+        ', inputAI: ' + state.player.inputAI +
         ', pps: ' + state.player.pps + ' }', 10, 40);
 };

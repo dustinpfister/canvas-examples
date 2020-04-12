@@ -5,7 +5,7 @@ document.getElementById('gamearea').appendChild(canvas);
 canvas.width = 640;
 canvas.height = 480;
 
-var state = kaboom.createState(10);
+var state = kaboom.createState(1);
 
 canvas.addEventListener('mousedown', function (e) {
     state.player.inputPos.down = true;
@@ -28,6 +28,10 @@ window.addEventListener('keydown', function (e) {
     player = state.player;
 
     player.inputKeys[key] = true;
+
+    if (key === 'i') {
+        player.inputAI = !player.inputAI;
+    }
 
 });
 

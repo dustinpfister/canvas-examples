@@ -25,7 +25,7 @@ var kaboom = (function () {
 
     var LEVELS = {};
     var i = 1,
-    totalLevels = 7,
+    totalLevels = 10,
     per;
     while (i <= totalLevels) {
         per = (i - 1) / (totalLevels - 1);
@@ -40,7 +40,6 @@ var kaboom = (function () {
         };
         i += 1;
     }
-    console.log(LEVELS);
 
     // clamp boundaries for the given objState and objConstant
     // (state.bomber, BOMBER and state.player, PLAYER)
@@ -96,12 +95,15 @@ var kaboom = (function () {
         // AI Control
         if (player.inputAI) {
             var bomb = state.bombs[0];
+
             if (bomb) {
-                if (bomb.x < player.x) {
-                    player.dir = -1;
+                var d = utils.distance(player.x + 16, PLAYER.y, bomb.x, PLAYER.y);
+                dir = d < hw ? d / hw : 1;
+                if (bomb.x < player.x + 16) {
+                    player.dir = dir * -1;
                 }
-                if (bomb.x > player.x) {
-                    player.dir = 1;
+                if (bomb.x > player.x + 16) {
+                    player.dir = dir;
                 }
             }
         }
@@ -214,7 +216,7 @@ var kaboom = (function () {
                     a: false,
                     b: false
                 },
-                inputAI: true,
+                inputAI: false,
                 hp: 3,
                 dir: -1,
                 pps: 900
