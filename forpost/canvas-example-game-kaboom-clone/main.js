@@ -8,41 +8,35 @@ canvas.height = 480;
 var state = kaboom.createState(10);
 
 canvas.addEventListener('mousedown', function (e) {
+    state.player.inputPos.down = true;
     kaboom.pointerStart(state, e);
 });
 canvas.addEventListener('mousemove', function (e) {
     e.preventDefault();
     var pos = utils.getCanvasRelative(e),
     player = state.player;
-    player.inputPos = pos;
+    player.inputPos.x = pos.x;
+    player.inputPos.y = pos.y;
+});
+canvas.addEventListener('mouseup', function (e) {
+    state.player.inputPos.down = false;
 });
 
 window.addEventListener('keydown', function (e) {
 
     var key = e.key.toLowerCase(),
-    player = state.player,
-    pos = {
-        x: 0,
-        y: 0,
-        w: 1,
-        h: 1
-    };
+    player = state.player;
 
-    if (key === 'a') {
-        pos.x = 0;
-        player.inputPos = pos;
-    }
-
-    if (key === 'd') {
-        pos.x = 640;
-        player.inputPos = pos;
-    }
+    player.inputKeys[key] = true;
 
 });
 
 window.addEventListener('keyup', function (e) {
+    var key = e.key.toLowerCase(),
+    player = state.player;
 
-    state.player.inputPos.x = state.player.x;
+    player.inputKeys[key] = false;
+
 });
 
 var loop = function () {

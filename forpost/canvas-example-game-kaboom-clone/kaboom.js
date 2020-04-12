@@ -32,7 +32,7 @@ var kaboom = (function () {
             bombPPS: 64 + 300 * per,
             bombCount: 10 + 90 * per,
             bomber: {
-                pps: 32 + 900 * per,
+                pps: 32 + 850 * per,
                 changeRate: 0.5 - 0.3 * per,
                 dropRate: 1 / (Math.floor(5 * per) + 1)
             }
@@ -75,11 +75,21 @@ var kaboom = (function () {
         player.dir = 0;
         var d = utils.distance(player.x, PLAYER.y, x, PLAYER.y);
         dir = d < hw ? d / hw : 1;
-        if (x < player.x) {
-            player.dir = dir * -1;
+        // mouse
+        if (inputPos.down) {
+            if (x < player.x) {
+                player.dir = dir * -1;
+            }
+            if (x > player.x) {
+                player.dir = dir;
+            }
         }
-        if (x > player.x) {
-            player.dir = dir;
+        // keyboard
+        if (player.inputKeys.a) {
+            player.dir = -1;
+        }
+        if (player.inputKeys.d) {
+            player.dir = 1;
         }
         player.x += Math.floor(player.pps * secs * player.dir);
         clampBoundaries(player, PLAYER);
@@ -183,11 +193,16 @@ var kaboom = (function () {
                 x: 320,
                 inputPos: {
                     x: 320,
-                    y: 0
+                    y: 0,
+                    down: false
+                },
+                inputKeys: {
+                    a: false,
+                    b: false
                 },
                 hp: 3,
                 dir: -1,
-                pps: 1024
+                pps: 900
             }
         };
         setLevel(state, level);

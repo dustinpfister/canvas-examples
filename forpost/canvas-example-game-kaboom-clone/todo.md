@@ -8,7 +8,7 @@
 * (done) pauseMessage property
 
 ## 0.4 - keyboard and touch events
-* can move player object with keyboard events
+* (done) can move player object with keyboard events
 * can move player object with touch events
 
 ## 0.3 - health up
