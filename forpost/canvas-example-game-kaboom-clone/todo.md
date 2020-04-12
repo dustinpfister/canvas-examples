@@ -11,7 +11,8 @@
 * (done) can move player object with keyboard events
 * can move player object with touch events
 
-## 0.3 - health up
+## 0.3 - AI control and health up
+* have an AI control feature
 * player gets 1 hp per 1000 points
 
 ## 0.2 - game over

@@ -93,6 +93,18 @@ var kaboom = (function () {
         if (player.inputKeys.d) {
             player.dir = 1;
         }
+        // AI Control
+        if (player.inputAI) {
+            var bomb = state.bombs[0];
+            if (bomb) {
+                if (bomb.x < player.x) {
+                    player.dir = -1;
+                }
+                if (bomb.x > player.x) {
+                    player.dir = 1;
+                }
+            }
+        }
         player.x += Math.floor(player.pps * secs * player.dir);
         clampBoundaries(player, PLAYER);
     };
@@ -202,6 +214,7 @@ var kaboom = (function () {
                     a: false,
                     b: false
                 },
+                inputAI: true,
                 hp: 3,
                 dir: -1,
                 pps: 900
