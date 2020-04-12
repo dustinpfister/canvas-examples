@@ -205,6 +205,9 @@ var kaboom = (function () {
         state.bomber.dropRate = levelObj.bomber.dropRate;
         state.bombPPS = levelObj.bombPPS;
         state.bombCount = levelObj.bombCount;
+        state.pauseTime = 1;
+        state.bomber.dropTime = 0;
+        state.bomber.changeTime = 0;
     };
 
     var api = {
