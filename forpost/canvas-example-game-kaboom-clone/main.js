@@ -5,39 +5,44 @@ document.getElementById('gamearea').appendChild(canvas);
 canvas.width = 640;
 canvas.height = 480;
 
-/*
-Object.assign(kaboom.LEVELS, {
-    1: {
-        bombPPS: 64,
-        bombCount: 10,
-        bomber: {
-            pps: 32,
-            changeRate: 0.5,
-            dropRate: 1
-        }
-    }
-});
-*/
 var state = kaboom.createState(10);
-//state.pauseTime = -1;
 
 canvas.addEventListener('mousedown', function (e) {
-    //state.pauseTime = 0;
-
     kaboom.pointerStart(state, e);
 });
-
-canvas.addEventListener('mouseup', function (e) {
-    //state.pauseTime = -1;
-
-
-});
-
 canvas.addEventListener('mousemove', function (e) {
     e.preventDefault();
     var pos = utils.getCanvasRelative(e),
     player = state.player;
     player.inputPos = pos;
+});
+
+window.addEventListener('keydown', function (e) {
+
+    var key = e.key.toLowerCase(),
+    player = state.player,
+    pos = {
+        x: 0,
+        y: 0,
+        w: 1,
+        h: 1
+    };
+
+    if (key === 'a') {
+        pos.x = 0;
+        player.inputPos = pos;
+    }
+
+    if (key === 'd') {
+        pos.x = 640;
+        player.inputPos = pos;
+    }
+
+});
+
+window.addEventListener('keyup', function (e) {
+
+    state.player.inputPos.x = state.player.x;
 });
 
 var loop = function () {
