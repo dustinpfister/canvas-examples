@@ -23,32 +23,23 @@ canvas.addEventListener('mouseup', function (e) {
 });
 
 window.addEventListener('keydown', function (e) {
-
     var key = e.key.toLowerCase(),
     player = state.player;
-
     player.inputKeys[key] = true;
-
     if (key === 'i') {
         player.inputAI = !player.inputAI;
     }
-
 });
 
 window.addEventListener('keyup', function (e) {
     var key = e.key.toLowerCase(),
     player = state.player;
-
     player.inputKeys[key] = false;
-
 });
 
 var loop = function () {
-
     requestAnimationFrame(loop);
-
     kaboom.update(state);
-
     draw.back(ctx, canvas);
     draw.bomber(ctx, state);
     draw.bombs(ctx, state);
@@ -56,9 +47,7 @@ var loop = function () {
     draw.score(ctx, state);
     draw.ui(ctx, state);
     draw.pauseOverlay(ctx, canvas, state);
-
     draw.debug(ctx, state);
-
 };
 
 loop();
