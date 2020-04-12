@@ -25,11 +25,12 @@ var kaboom = (function () {
 
     var LEVELS = {};
     var i = 1,
+    totalLevels = 7,
     per;
-    while (i <= 7) {
-        per = (i - 1) / 6;
+    while (i <= totalLevels) {
+        per = (i - 1) / (totalLevels - 1);
         LEVELS[i] = {
-            bombPPS: 64 + 300 * per,
+            bombPPS: 64 + 236 * per,
             bombCount: 10 + 90 * per,
             bomber: {
                 pps: 32 + 850 * per,
@@ -39,6 +40,7 @@ var kaboom = (function () {
         };
         i += 1;
     }
+    console.log(LEVELS);
 
     // clamp boundaries for the given objState and objConstant
     // (state.bomber, BOMBER and state.player, PLAYER)
@@ -173,8 +175,8 @@ var kaboom = (function () {
             lt: new Date(),
             //pause: false,
             gameOver: false,
-            pauseTime: 1,
-            pauseMessage: 'paused',
+            pauseTime: 3,
+            pauseMessage: '',
             score: 0,
             level: level,
             bomber: {
@@ -206,6 +208,7 @@ var kaboom = (function () {
             }
         };
         setLevel(state, level);
+        state.pauseMessage = 'level: ' + state.level;
         return state;
     };
 
@@ -223,6 +226,7 @@ var kaboom = (function () {
         state.pauseTime = 1;
         state.bomber.dropTime = 0;
         state.bomber.changeTime = 0;
+        state.pauseMessage = 'level: ' + state.level;
     };
 
     var api = {

@@ -41,22 +41,19 @@ draw.score = function (ctx, state) {
 };
 
 draw.ui = function (ctx, state) {
-
     var button = kaboom.BUTTON_PAUSE;
     ctx.fillStyle = 'white';
     ctx.fillRect(button.x, button.y, button.w, button.h);
-
     if (state.gameOver) {
         button = kaboom.BUTTON_NEW_GAME;
         ctx.fillStyle = 'white';
         ctx.fillRect(button.x, button.y, button.w, button.h);
-
     }
 };
 
 // draw pause overlay
 draw.pauseOverlay = function (ctx, canvas, state) {
-    if (state.puaseTime > 0 || state.pauseTime === -1) {
+    if (state.pauseTime > 0 || state.pauseTime === -1) {
         ctx.fillStyle = 'rgba(0,0,0,0.5)';
         ctx.fillRect(0, 0, canvas.width, canvas.height);
         ctx.fillStyle = 'white';
