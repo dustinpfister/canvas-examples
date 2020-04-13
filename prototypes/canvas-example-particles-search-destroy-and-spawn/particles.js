@@ -36,11 +36,15 @@ var paricles = (function () {
 
     var poolMove = function (state, secs) {
         var i = state.pool.length,
+        canvas = state.canvas,
         part;
         while (i--) {
             part = state.pool[i];
             part.move(secs);
             u.clamp(part, state.canvas);
+            if (part.x === 0 || part.y === 0 || part.x === canvas.width - 1 || part.y === canvas.height - 1) {
+                part.heading = u.perToRadian(Math.random());
+            }
         }
     };
 

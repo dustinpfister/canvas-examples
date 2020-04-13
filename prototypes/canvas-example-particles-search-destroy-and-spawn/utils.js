@@ -28,9 +28,6 @@ u.clamp = function (obj, world) {
 };
 
 // percent to radian
-u.perToRadian = function (per, min, max) {
-    min = min === undefined ? 0 : min;
-    max = max === undefined ? 359 : max;
-    per = per === undefined ? 0 : per;
-    return Math.PI / 180 * (min + per * (max - min));
+u.perToRadian = function (per) {
+    return Math.PI * 2 * per;
 };
