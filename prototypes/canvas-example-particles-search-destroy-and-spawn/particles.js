@@ -10,8 +10,8 @@ var paricles = (function () {
         this.y = opt.y || 0;
         this.radius = opt.radius || 10;
         this.heading = opt.heading || 0;
-        this.pps = opt.pps || 32; // pixels per second
-        this.type = 'none';
+        this.pps = opt.pps || 16; // pixels per second
+        this.type = opt.type || 'none';
     };
 
     Particle.prototype.move = function (secs) {
@@ -32,6 +32,7 @@ var paricles = (function () {
                 }));
             i += 1;
         }
+        state.pool[0].type = 'hunter';
     };
 
     var poolMove = function (state, secs) {

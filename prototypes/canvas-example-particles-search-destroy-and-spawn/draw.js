@@ -1,7 +1,7 @@
 var draw = (function () {
 
     var drawPartBase = function (part) {
-        ctx.fillStyle = 'blue';
+        ctx.fillStyle = part.type === 'hunter' ? 'red' : 'blue';
         ctx.beginPath();
         ctx.arc(part.x, part.y, part.radius, 0, Math.PI * 2);
         ctx.fill();
