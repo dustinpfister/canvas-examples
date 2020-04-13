@@ -12,6 +12,8 @@ var paricles = (function () {
         this.heading = opt.heading || 0;
         this.pps = opt.pps || 16; // pixels per second
         this.type = opt.type || 'none';
+        this.hpMax = opt.hpMax || 100;
+        this.hp = this.hpMax / 2;
     };
 
     Particle.prototype.move = function (secs) {

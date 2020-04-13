@@ -17,6 +17,22 @@ var draw = (function () {
         ctx.stroke();
     };
 
+    var drawPartHealth = function (part) {
+        var x = part.x - part.radius,
+        y = part.y + part.radius + 3,
+        w = part.radius * 2,
+        h = part.radius / 2,
+        per = part.hp / part.hpMax;
+        ctx.fillStyle = 'rgba(128,128,128,1)';
+        ctx.beginPath();
+        ctx.rect(x, y, w, h);
+        ctx.fill();
+        ctx.fillStyle = 'rgba(0,255,0,1)';
+        ctx.beginPath();
+        ctx.rect(x, y, w * per, h);
+        ctx.fill();
+    };
+
     return {
 
         // draw background
@@ -40,6 +56,7 @@ var draw = (function () {
                 part = pool[i];
                 drawPartBase(part);
                 drawPartHeading(part);
+                drawPartHealth(part);
                 i += 1;
             }
         }
