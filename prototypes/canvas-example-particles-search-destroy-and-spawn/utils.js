@@ -11,10 +11,26 @@ u.mod = function mod(x, m) {
     return (x % m + m) % m;
 };
 
+// clamp the given object to the given world
+u.clamp = function (obj, world) {
+    if (obj.x < 0) {
+        obj.x = 0;
+    }
+    if (obj.y < 0) {
+        obj.y = 0;
+    }
+    if (obj.x >= world.width) {
+        obj.x = world.width - 1;
+    }
+    if (obj.y >= world.height) {
+        obj.y = world.height - 1;
+    }
+};
+
 // percent to radian
 u.perToRadian = function (per, min, max) {
     min = min === undefined ? 0 : min;
     max = max === undefined ? 359 : max;
-    per = per === undefined ? 0: per;
+    per = per === undefined ? 0 : per;
     return Math.PI / 180 * (min + per * (max - min));
 };

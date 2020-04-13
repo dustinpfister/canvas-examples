@@ -40,6 +40,7 @@ var paricles = (function () {
         while (i--) {
             part = state.pool[i];
             part.move(secs);
+            u.clamp(part, state.canvas);
         }
     };
 
