@@ -13,7 +13,9 @@ var paricles = (function () {
         this.pps = opt.pps || 16; // pixels per second
         this.type = opt.type || 'none';
         this.hpMax = opt.hpMax || 100;
-        this.hp = this.hpMax / 2;
+        this.hp = this.hpMax;
+        this.radiusAttack = 50;
+        this.dps = 50;
     };
 
     Particle.prototype.move = function (secs) {
@@ -51,6 +53,29 @@ var paricles = (function () {
         }
     };
 
+    var poolAttack = function (state, secs) {
+        var hi = state.pool.length,
+        hunter,
+        i,
+        part;
+        while (hi--) {
+            hunter = state.pool[hi];
+            if (hunter.type === 'hunter') {
+                i = state.pool.length;
+                while (i--) {
+                    part = state.pool[i];
+                    if (part.type === 'hunter') {
+                        continue;
+                    }
+                    if (u.distance(hunter.x, hunter.y, part.x, part.y) <= hunter.radiusAttack) {
+                        part.hp -= hunter.dps * secs;
+                        part.hp = part.hp < 0 ? 0 : part.hp;
+                    }
+                }
+            }
+        }
+    };
+
     // public API
     return {
         create: function (opt) {
@@ -68,11 +93,9 @@ var paricles = (function () {
             var now = new Date(),
             t = now - state.lt,
             secs = t / 1000;
-
             poolMove(state, secs);
-
+            poolAttack(state, secs);
             state.lt = now;
-
         }
     }
 
