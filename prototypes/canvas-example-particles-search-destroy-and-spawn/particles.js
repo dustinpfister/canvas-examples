@@ -17,12 +17,11 @@ var paricles = (function () {
         this.radiusAttack = 50;
         this.dps = 50;
     };
-
+    // attack and move prototype methods
     Particle.prototype.move = function (secs) {
         this.x += Math.cos(this.heading) * this.pps * secs;
         this.y += Math.sin(this.heading) * this.pps * secs;
     };
-
     Particle.prototype.attack = function (part, secs) {
         if (this.type === 'hunter' && part.type != 'hunter') {
             if (u.distance(this.x, this.y, part.x, part.y) <= this.radiusAttack) {
@@ -49,6 +48,7 @@ var paricles = (function () {
         state.pool[0].pps = 32;
     };
 
+    // move all parts
     var poolMove = function (state, secs) {
         var i = state.pool.length,
         canvas = state.canvas,
@@ -63,6 +63,7 @@ var paricles = (function () {
         }
     };
 
+    // hunters attack!
     var poolAttack = function (state, secs) {
         var hi = state.pool.length,
         hunter,
@@ -80,6 +81,7 @@ var paricles = (function () {
         }
     };
 
+    // purge dead particles
     var poolPurge = function (state) {
         var i = state.pool.length,
         part;
@@ -91,8 +93,8 @@ var paricles = (function () {
         }
     };
 
+    // spawn new particles
     var poolSpawn = function (state) {
-
         if (state.pool.length < PARTICLE_COUNT) {
             state.pool.push(new Particle({
                     x: canvas.width / 2,
@@ -100,7 +102,6 @@ var paricles = (function () {
                     heading: Math.PI * 2 * Math.random()
                 }));
         }
-
     };
 
     // public API
@@ -116,7 +117,6 @@ var paricles = (function () {
             return state;
         },
         update: function (state) {
-
             var now = new Date(),
             t = now - state.lt,
             secs = t / 1000;
