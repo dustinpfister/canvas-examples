@@ -8,6 +8,15 @@ var draw = (function () {
         ctx.stroke();
     };
 
+    var drawPartHeading = function (part) {
+        var x = Math.cos(part.heading) * part.radius * 2 + part.x,
+        y = Math.sin(part.heading) * part.radius * 2 + part.y;
+        ctx.beginPath();
+        ctx.moveTo(part.x, part.y);
+        ctx.lineTo(x, y);
+        ctx.stroke();
+    };
+
     return {
 
         // draw background
@@ -25,9 +34,12 @@ var draw = (function () {
             len = pool.length,
             part,
             i = 0;
+            ctx.lineWidth = 3;
+            ctx.strokeStyle = 'white';
             while (i < len) {
                 part = pool[i];
                 drawPartBase(part);
+                drawPartHeading(part);
                 i += 1;
             }
 
