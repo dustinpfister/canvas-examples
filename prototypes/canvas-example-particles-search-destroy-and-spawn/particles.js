@@ -46,6 +46,7 @@ var paricles = (function () {
             i += 1;
         }
         state.pool[0].type = 'hunter';
+        state.pool[0].pps = 32;
     };
 
     var poolMove = function (state, secs) {
@@ -79,6 +80,17 @@ var paricles = (function () {
         }
     };
 
+    var poolPurge = function (state) {
+        var i = state.pool.length,
+        part;
+        while (i--) {
+            part = state.pool[i];
+            if (part.hp <= 0) {
+                state.pool.splice(i, 1);
+            }
+        }
+    };
+
     // public API
     return {
         create: function (opt) {
@@ -98,6 +110,7 @@ var paricles = (function () {
             secs = t / 1000;
             poolMove(state, secs);
             poolAttack(state, secs);
+            poolPurge(state);
             state.lt = now;
         }
     }
