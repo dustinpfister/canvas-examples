@@ -33,6 +33,15 @@ var draw = (function () {
         ctx.fill();
     };
 
+    var drawPartAttackRange = function (part) {
+        if (part.type === 'hunter') {
+            ctx.fillStyle = 'rgba(255,0,0,0.5)';
+            ctx.beginPath();
+            ctx.arc(part.x, part.y, part.radiusAttack, 0, Math.PI * 2);
+            ctx.fill();
+        }
+    };
+
     return {
 
         // draw background
@@ -57,6 +66,7 @@ var draw = (function () {
                 drawPartBase(part);
                 drawPartHeading(part);
                 drawPartHealth(part);
+                drawPartAttackRange(part);
                 i += 1;
             }
         }
