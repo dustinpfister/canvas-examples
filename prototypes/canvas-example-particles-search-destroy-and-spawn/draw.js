@@ -42,7 +42,6 @@ var draw = (function () {
                 drawPartHeading(part);
                 i += 1;
             }
-
         }
 
     }

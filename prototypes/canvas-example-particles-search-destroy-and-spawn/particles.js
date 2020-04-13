@@ -14,7 +14,7 @@ var paricles = (function () {
         this.type = 'none';
     };
 
-    Particle.prototype.move = function (part, secs) {
+    Particle.prototype.move = function (secs) {
         this.x += Math.cos(this.heading) * this.pps * secs;
         this.y += Math.sin(this.heading) * this.pps * secs;
     };
@@ -34,18 +34,38 @@ var paricles = (function () {
         }
     };
 
+    var poolMove = function (state, secs) {
+        var i = state.pool.length,
+        part;
+        while (i--) {
+            part = state.pool[i];
+            part.move(secs);
+        }
+    };
+
     // public API
     return {
         create: function (opt) {
             var state = {
                 canvas: opt.canvas,
                 ctx: opt.ctx,
+                lt: new Date(),
                 pool: []
             };
             createPool(state);
             return state;
         },
-        update: function (state) {}
+        update: function (state) {
+
+            var now = new Date(),
+            t = now - state.lt,
+            secs = t / 1000;
+
+            poolMove(state, secs);
+
+            state.lt = now;
+
+        }
     }
 
 }
