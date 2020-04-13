@@ -18,17 +18,31 @@ var paricles = (function () {
         this.y += Math.sin(this.heading) * this.pps * secs;
     };
 
+    // create a pool of particles
+    var createPool = function (state) {
+        var i = 0,
+        canvas = state.canvas;
+        state.pool = [];
+        while (i < 10) {
+            state.pool.push(new Particle({
+                    x: canvas.width * Math.random(),
+                    y: canvas.height * Math.random(),
+                    heading: Math.PI * 2 * Math.random()
+                }));
+            i += 1;
+        }
+    };
+
     // public API
     return {
         create: function (opt) {
-
             var state = {
                 canvas: opt.canvas,
-                ctx: opt.ctx
+                ctx: opt.ctx,
+                pool: []
             };
-
+            createPool(state);
             return state;
-
         },
         update: function (state) {}
     }
