@@ -17,6 +17,7 @@ var state = paricles.create({
 var loop = function () {
     requestAnimationFrame(loop);
     draw.back(state);
+    draw.pool(state);
     paricles.update(state);
 
 };
