@@ -23,6 +23,15 @@ var paricles = (function () {
         this.y += Math.sin(this.heading) * this.pps * secs;
     };
 
+    Particle.prototype.attack = function (part, secs) {
+        if (this.type === 'hunter' && part.type != 'hunter') {
+            if (u.distance(this.x, this.y, part.x, part.y) <= this.radiusAttack) {
+                part.hp -= this.dps * secs;
+                part.hp = part.hp < 0 ? 0 : part.hp;
+            }
+        }
+    };
+
     // create a pool of particles
     var createPool = function (state) {
         var i = 0,
@@ -64,13 +73,7 @@ var paricles = (function () {
                 i = state.pool.length;
                 while (i--) {
                     part = state.pool[i];
-                    if (part.type === 'hunter') {
-                        continue;
-                    }
-                    if (u.distance(hunter.x, hunter.y, part.x, part.y) <= hunter.radiusAttack) {
-                        part.hp -= hunter.dps * secs;
-                        part.hp = part.hp < 0 ? 0 : part.hp;
-                    }
+                    hunter.attack(part, secs);
                 }
             }
         }
