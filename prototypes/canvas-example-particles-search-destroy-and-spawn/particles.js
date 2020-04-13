@@ -1,7 +1,7 @@
 
 var paricles = (function () {
-    // random reading
 
+    var PARTICLE_COUNT = 10;
 
     // Particle Class
     var Particle = function (opt) {
@@ -37,7 +37,7 @@ var paricles = (function () {
         var i = 0,
         canvas = state.canvas;
         state.pool = [];
-        while (i < 10) {
+        while (i < PARTICLE_COUNT) {
             state.pool.push(new Particle({
                     x: canvas.width * Math.random(),
                     y: canvas.height * Math.random(),
@@ -91,6 +91,18 @@ var paricles = (function () {
         }
     };
 
+    var poolSpawn = function (state) {
+
+        if (state.pool.length < PARTICLE_COUNT) {
+            state.pool.push(new Particle({
+                    x: canvas.width / 2,
+                    y: canvas.height / 2,
+                    heading: Math.PI * 2 * Math.random()
+                }));
+        }
+
+    };
+
     // public API
     return {
         create: function (opt) {
@@ -111,6 +123,7 @@ var paricles = (function () {
             poolMove(state, secs);
             poolAttack(state, secs);
             poolPurge(state);
+            poolSpawn(state);
             state.lt = now;
         }
     }
