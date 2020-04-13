@@ -8,6 +8,7 @@ var paricles = (function () {
         opt = opt || {};
         this.x = opt.x || 0;
         this.y = opt.y || 0;
+        this.radius = opt.radius || 10;
         this.heading = opt.heading || 0;
         this.pps = opt.pps || 32; // pixels per second
         this.type = 'none';

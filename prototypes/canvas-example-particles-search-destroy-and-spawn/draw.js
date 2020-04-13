@@ -1,5 +1,13 @@
 var draw = (function () {
 
+    var drawPartBase = function (part) {
+        ctx.fillStyle = 'blue';
+        ctx.beginPath();
+        ctx.arc(part.x, part.y, part.radius, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.stroke();
+    };
+
     return {
 
         // draw background
@@ -19,11 +27,7 @@ var draw = (function () {
             i = 0;
             while (i < len) {
                 part = pool[i];
-                ctx.fillStyle = 'blue';
-                ctx.beginPath();
-                ctx.arc(part.x, part.y, 5, 0, Math.PI * 2);
-                ctx.fill();
-                ctx.stroke();
+                drawPartBase(part);
                 i += 1;
             }
 
