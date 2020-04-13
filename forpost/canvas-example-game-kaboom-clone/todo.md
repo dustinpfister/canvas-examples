@@ -12,8 +12,9 @@
 * can move player object with touch events
 
 ## 0.3 - AI control and health up
-* have an AI control feature
+* (done) have an AI control feature
 * player gets 1 hp per 1000 points
+* make clampBoiners helper a util.js method
 
 ## 0.2 - game over
 * (done) player hp === 0 results in game over
