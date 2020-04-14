@@ -22,8 +22,8 @@ var world = (function () {
             var state = {
                 year: 0,
                 cells: [],
-                width: 16,
-                height: 16
+                width: 10,
+                height: 8
             };
             createCells(state);
             return state;

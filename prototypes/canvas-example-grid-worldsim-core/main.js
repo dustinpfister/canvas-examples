@@ -3,17 +3,16 @@ var canvas = document.createElement('canvas'),
 ctx = canvas.getContext('2d'),
 container = document.getElementById('gamearea') || document.body;
 container.appendChild(canvas);
-canvas.width = 320;
-canvas.height = 240;
+canvas.width = 640;
+canvas.height = 480;
 ctx.translate(0.5, 0.5);
 
 var state = world.create();
 
-console.log(state);
-
 var loop = function () {
-    requestAnimationFrame(loop);
+    //requestAnimationFrame(loop);
     draw.back(ctx, canvas);
+    draw.worldCells(ctx, state);
 
 };
 
