@@ -1,5 +1,11 @@
 var world = (function () {
 
+    var CELL_VALUES = {
+        sx: 32,
+        sy: 32,
+        size: 32
+    };
+
     // create cells for the world
     var createCells = function (state) {
         var i = 0,
@@ -18,6 +24,7 @@ var world = (function () {
 
     // the public API
     return {
+        CELL_VALUES: CELL_VALUES,
         create: function () {
             var state = {
                 year: 0,

@@ -1,11 +1,5 @@
 var draw = (function () {
 
-    var CELL_VALUES = {
-        sx: 32,
-        sy: 32,
-        size: 32
-    };
-
     return {
         // draw background
         back: function (ctx, canvas) {
@@ -21,9 +15,9 @@ var draw = (function () {
             while (i--) {
                 cell = state.cells[i];
                 ctx.fillStyle = 'green';
-                x = cell.x * CELL_VALUES.size + CELL_VALUES.sx;
-                y = cell.y * CELL_VALUES.size + CELL_VALUES.sy;
-                ctx.fillRect(x, y, CELL_VALUES.size, CELL_VALUES.size);
+                x = cell.x * world.CELL_VALUES.size + world.CELL_VALUES.sx;
+                y = cell.y * world.CELL_VALUES.size + world.CELL_VALUES.sy;
+                ctx.fillRect(x, y, world.CELL_VALUES.size, world.CELL_VALUES.size);
             }
         }
     }
