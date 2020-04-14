@@ -7,6 +7,10 @@ canvas.width = 320;
 canvas.height = 240;
 ctx.translate(0.5, 0.5);
 
+var state = world.create();
+
+console.log(state);
+
 var loop = function () {
     requestAnimationFrame(loop);
     draw.back(ctx, canvas);
