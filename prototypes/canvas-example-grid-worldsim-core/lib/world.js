@@ -6,31 +6,32 @@ var world = (function () {
         size: 32
     };
 
+    // hard coded initObjects
+    // this can be extend via a plug-in
     var init = {
-
         defaultValues: {
             before: function (state) {
                 console.log('defualt values before hook');
                 state.cells = [];
             },
             forCell: function (cell, state) {
-
                 cell.x = cell.i % state.width;
                 cell.y = Math.floor(cell.i / state.width);
-                cell.land = {};
-                cell.air = {};
-
+                console.log('default for cell: ');
+                console.log(cell);
             },
-            after: function (world) {}
+            after: function (world) {
+                console.log('default values after hook');
+            }
         }
-
     };
 
-    var callInitBeforeMethods = function (state) {
+    var callInitHookMethods = function (state, hookName) {
+        hookName = hookName || 'before';
         Object.keys(init).forEach(function (initObjKey) {
             var initObj = init[initObjKey];
-            if (initObj.before) {
-                initObj.before(state);
+            if (initObj[hookName]) {
+                initObj[hookName](state);
             }
         });
     };
@@ -40,9 +41,7 @@ var world = (function () {
         var i = 0,
         len = state.width * state.height,
         cell;
-
-        callInitBeforeMethods(state);
-
+        callInitHookMethods(state, 'before');
         // for each cell
         while (i < len) {
             cell = {};
@@ -52,6 +51,7 @@ var world = (function () {
             state.cells.push(cell);
             i += 1;
         }
+        callInitHookMethods(state, 'after');
     };
 
     // the public API
