@@ -12,7 +12,7 @@ var world = (function () {
         defaultValues: {
             before: function (state) {
                 console.log('defualt values before hook');
-                state.cells = [];
+                //state.cells = [];
             },
             forCell: function (state, cell) {
                 cell.x = cell.i % state.width;
@@ -25,14 +25,14 @@ var world = (function () {
         }
     };
 
-    var callInitHookMethods = function (state, hookName, cell) {
+    var callHook = function (state, initObjKey, hookName, cell) {
         hookName = hookName || 'before';
-        Object.keys(init).forEach(function (initObjKey) {
-            var initObj = init[initObjKey];
-            if (initObj[hookName]) {
-                initObj[hookName](state, cell);
-            }
-        });
+        initObjKey = initObjKey || 'defaultValues';
+        //Object.keys(init).forEach(function (initObjKey) {
+        var initObj = init[initObjKey];
+        if (initObj[hookName]) {
+            initObj[hookName](state, cell);
+        }
     };
 
     // create cells for the world
@@ -40,18 +40,24 @@ var world = (function () {
         var i = 0,
         len = state.width * state.height,
         cell;
-        // before
-        callInitHookMethods(state, 'before');
-        // for each cell
+
+        state.cells = [];
         while (i < len) {
             cell = {};
             cell.i = i;
-            callInitHookMethods(state, 'forCell', cell);
             state.cells.push(cell);
             i += 1;
         }
-        // after
-        callInitHookMethods(state, 'after');
+
+        Object.keys(init).forEach(function (initObjKey) {
+            callHook(state, initObjKey, 'before');
+            i = 0;
+            while (i < len) {
+                callHook(state, initObjKey, 'forCell', state.cells[i]);
+                i += 1;
+            }
+            callHook(state, initObjKey, 'after');
+        });
     };
 
     // the public API

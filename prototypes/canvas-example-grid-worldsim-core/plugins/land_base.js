@@ -16,11 +16,16 @@ world.load({
 
     // what do do when
     init: {
-        before: function (state) {},
-        forCell: function (state, cell) {
-            console.log('land_base');
+        before: function (state) {
+            console.log('land_base before hook');
+
         },
-        after: function (state) {}
+        forCell: function (state, cell) {
+            console.log('land_base forCell hook');
+        },
+        after: function (state) {
+            console.log('land_base after hook');
+        }
     },
 
     // what to do for each tick
