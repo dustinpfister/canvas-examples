@@ -17,6 +17,8 @@ var world = (function () {
             cell.i = i;
             cell.x = i % state.width;
             cell.y = Math.floor(i / state.width);
+            cell.land = {};
+            cell.air = {};
             state.cells.push(cell);
             i += 1;
         }
@@ -25,6 +27,8 @@ var world = (function () {
     // the public API
     return {
         CELL_VALUES: CELL_VALUES,
+
+        // create a world state object
         create: function () {
             var state = {
                 year: 0,
@@ -35,7 +39,16 @@ var world = (function () {
             createCells(state);
             return state;
         },
-        update: function () {}
+
+        // load plug-in
+        load: function (plug) {},
+
+        // tick year, and update world state for new year
+        tickYear: function (state) {
+
+            state.year += 1;
+
+        }
     }
 }
     ());

@@ -20,6 +20,7 @@ var draw = (function () {
                 ctx.fillRect(x, y, world.CELL_VALUES.size, world.CELL_VALUES.size);
             }
         }
+
     }
 }
     ());
