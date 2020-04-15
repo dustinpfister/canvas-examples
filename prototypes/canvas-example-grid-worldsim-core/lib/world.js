@@ -25,10 +25,10 @@ var world = (function () {
         }
     };
 
+    // call a hook
     var callHook = function (state, initObjKey, hookName, cell) {
         hookName = hookName || 'before';
         initObjKey = initObjKey || 'defaultValues';
-        //Object.keys(init).forEach(function (initObjKey) {
         var initObj = init[initObjKey];
         if (initObj[hookName]) {
             initObj[hookName](state, cell);
@@ -40,7 +40,7 @@ var world = (function () {
         var i = 0,
         len = state.width * state.height,
         cell;
-
+        // set up cells with just index prop
         state.cells = [];
         while (i < len) {
             cell = {};
@@ -48,7 +48,7 @@ var world = (function () {
             state.cells.push(cell);
             i += 1;
         }
-
+        // call init methods for each initObj
         Object.keys(init).forEach(function (initObjKey) {
             callHook(state, initObjKey, 'before');
             i = 0;
@@ -87,9 +87,7 @@ var world = (function () {
 
         // tick year, and update world state for new year
         tickYear: function (state) {
-
             state.year += 1;
-
         }
     }
 }
