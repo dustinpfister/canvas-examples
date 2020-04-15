@@ -6,19 +6,49 @@ var world = (function () {
         size: 32
     };
 
+    var init = {
+
+        defaultValues: {
+            before: function (state) {
+                console.log('defualt values before hook');
+                state.cells = [];
+            },
+            forCell: function (cell, state) {
+
+                cell.x = cell.i % state.width;
+                cell.y = Math.floor(cell.i / state.width);
+                cell.land = {};
+                cell.air = {};
+
+            },
+            after: function (world) {}
+        }
+
+    };
+
+    var callInitBeforeMethods = function (state) {
+        Object.keys(init).forEach(function (initObjKey) {
+            var initObj = init[initObjKey];
+            if (initObj.before) {
+                initObj.before(state);
+            }
+        });
+    };
+
     // create cells for the world
     var createCells = function (state) {
         var i = 0,
         len = state.width * state.height,
         cell;
-        state.cells = [];
+
+        callInitBeforeMethods(state);
+
+        // for each cell
         while (i < len) {
             cell = {};
             cell.i = i;
-            cell.x = i % state.width;
-            cell.y = Math.floor(i / state.width);
-            cell.land = {};
-            cell.air = {};
+            // make sure we have hard coded default values
+            init.defaultValues.forCell(cell, state);
             state.cells.push(cell);
             i += 1;
         }
