@@ -17,7 +17,9 @@ world.load({
     // what do do when
     init: {
         before: function (state) {},
-        forCell: function (state, cell) {},
+        forCell: function (state, cell) {
+            console.log('land_base');
+        },
         after: function (state) {}
     },
 

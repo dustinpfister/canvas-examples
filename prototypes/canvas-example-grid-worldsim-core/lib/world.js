@@ -56,6 +56,7 @@ var world = (function () {
 
     // the public API
     return {
+
         CELL_VALUES: CELL_VALUES,
 
         // create a world state object
@@ -71,7 +72,12 @@ var world = (function () {
         },
 
         // load plug-in
-        load: function (plug) {},
+        load: function (plug) {
+            // just ref it in for now as long as that works
+            if (plug.init) {
+                init[plug.key] = plug.init;
+            }
+        },
 
         // tick year, and update world state for new year
         tickYear: function (state) {
