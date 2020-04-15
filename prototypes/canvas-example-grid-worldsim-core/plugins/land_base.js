@@ -17,14 +17,14 @@ world.load({
     // what do do when
     init: {
         before: function (state) {},
-        forCell: function (cell, state) {},
+        forCell: function (state, cell) {},
         after: function (state) {}
     },
 
     // what to do for each tick
     forTick: {
         before: function (state) {},
-        forCell: function (cell, state) {},
+        forCell: function (state, cell) {},
         after: function (state) {}
     }
 

@@ -14,11 +14,10 @@ var world = (function () {
                 console.log('defualt values before hook');
                 state.cells = [];
             },
-            forCell: function (cell, state) {
+            forCell: function (state, cell) {
                 cell.x = cell.i % state.width;
                 cell.y = Math.floor(cell.i / state.width);
-                console.log('default for cell: ');
-                console.log(cell);
+                console.log('default values forCell: ' + JSON.stringify(cell));
             },
             after: function (world) {
                 console.log('default values after hook');
@@ -26,12 +25,12 @@ var world = (function () {
         }
     };
 
-    var callInitHookMethods = function (state, hookName) {
+    var callInitHookMethods = function (state, hookName, cell) {
         hookName = hookName || 'before';
         Object.keys(init).forEach(function (initObjKey) {
             var initObj = init[initObjKey];
             if (initObj[hookName]) {
-                initObj[hookName](state);
+                initObj[hookName](state, cell);
             }
         });
     };
@@ -41,16 +40,17 @@ var world = (function () {
         var i = 0,
         len = state.width * state.height,
         cell;
+        // before
         callInitHookMethods(state, 'before');
         // for each cell
         while (i < len) {
             cell = {};
             cell.i = i;
-            // make sure we have hard coded default values
-            init.defaultValues.forCell(cell, state);
+            callInitHookMethods(state, 'forCell', cell);
             state.cells.push(cell);
             i += 1;
         }
+        // after
         callInitHookMethods(state, 'after');
     };
 
