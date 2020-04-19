@@ -73,6 +73,8 @@ var world = (function () {
         create: function () {
             var state = {
                 year: 0,
+                lt: new Date(),
+                yearRate: 1,
                 cells: [],
                 width: 10,
                 height: 8
@@ -106,8 +108,36 @@ var world = (function () {
         },
 
         // tick year, and update world state for new year
-        tickYear: function (state) {
-            state.year += 1;
+        update: function (state) {
+
+            var now = new Date(),
+            t = now - state.lt,
+            years = 0,
+            secs = t / 1000;
+
+            if (secs >= state.yearRate) {
+                years = secs / state.yearRate;
+                state.year += years;
+                state.lt = now;
+
+                Object.keys(ticks).forEach(function (plugKey) {
+
+                    var tick = ticks[plugKey];
+                    if (tick.before) {
+                        tick.before(state, events, years);
+                    }
+                    if (tick.forCell) {
+                        state.cells.forEach(function (cell) {
+                            tick.forCell(state, events, years, cell);
+                        });
+                    }
+                    if (tick.after) {
+                        tick.after(state, events, years);
+                    }
+
+                });
+
+            }
         }
     }
 }

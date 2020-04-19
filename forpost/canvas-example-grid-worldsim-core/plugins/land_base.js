@@ -55,13 +55,21 @@ world.load({
 
     // what to do for each tick
     tick: {
-        before: function (state) {},
-        forCell: function (state, cell) {
-            if (cell.fert > 5) {
-                cell.fert -= 1;
+        before: function (state, events, years) {
+
+            console.log('before');
+
+        },
+        forCell: function (state, events, years, cell) {
+            if (cell.land.fert > 5) {
+                cell.land.fert -= 1;
             }
         },
-        after: function (state) {}
+        after: function (state) {
+
+            console.log('done');
+
+        }
     }
 
 });

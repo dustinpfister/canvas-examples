@@ -10,7 +10,10 @@ ctx.translate(0.5, 0.5);
 var state = world.create();
 
 var loop = function () {
-    //requestAnimationFrame(loop);
+    requestAnimationFrame(loop);
+
+    world.update(state);
+
     draw.back(ctx, canvas);
     draw.worldCells(ctx, state);
 
