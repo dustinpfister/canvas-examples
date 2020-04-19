@@ -1,7 +1,5 @@
 world.load({
-
     key: 'land_base',
-
     // events to add
     events: {
         // name of event
@@ -24,7 +22,6 @@ world.load({
             }
         }
     },
-
     // what do do when
     init: {
         before: function (state, events) {
@@ -52,9 +49,7 @@ world.load({
             });
         }
     },
-
     // what to do for each tick
-
     tick: {
         before: function (state, events, years) {},
         forCell: function (state, events, years, cell) {
@@ -64,5 +59,4 @@ world.load({
         },
         after: function (state) {}
     }
-
 });
