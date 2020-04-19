@@ -6,6 +6,8 @@ var world = (function () {
         size: 32
     };
 
+    var events = {};
+
     // hard coded initObjects
     // this can be extend via a plug-in
     var init = {
@@ -83,6 +85,17 @@ var world = (function () {
             if (plug.init) {
                 init[plug.key] = plug.init;
             }
+
+            if (plug.events) {
+                Object.keys(plug.events).forEach(function (eventKey) {
+                    events[eventKey] = plug.events[eventKey];
+                });
+            }
+
+            console.log('plugin: ' + plug.key + ' loaded.');
+            console.log(init);
+            console.log(events);
+
         },
 
         // tick year, and update world state for new year
