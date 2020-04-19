@@ -27,7 +27,7 @@ var world = (function () {
 
     // events and forTick objects
     var events = {};
-    var tick = {};
+    var ticks = {};
 
     // call a hook
     var callHook = function (state, initObjKey, hookName, cell) {
@@ -94,9 +94,14 @@ var world = (function () {
                 });
             }
 
+            if (plug.tick) {
+                ticks[plug.key] = plug.tick;
+            }
+
             console.log('plugin: ' + plug.key + ' loaded.');
             console.log(init);
             console.log(events);
+            console.log(ticks);
 
         },
 

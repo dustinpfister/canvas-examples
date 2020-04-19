@@ -54,7 +54,7 @@ world.load({
     },
 
     // what to do for each tick
-    forTick: {
+    tick: {
         before: function (state) {},
         forCell: function (state, cell) {
             if (cell.fert > 5) {
