@@ -5,7 +5,7 @@ world.load({
     // events to add
     events: {
         // name of event
-        inpact: {
+        fertup: {
             // what to do right away for the event when it starts
             init: function (state, x, y) {
                 var i = state.cells.length,
