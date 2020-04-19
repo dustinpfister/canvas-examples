@@ -16,8 +16,8 @@ world.load({
                     cell = state.cells[i];
                     d = u.distance(cell.x, cell.y, x, y);
                     per = 0;
-                    if (d <= 5) {
-                        per = (5 - d) / 5;
+                    if (d <= 3) {
+                        per = (3 - d) / 3;
                     }
                     cell.land.fert += Math.floor(10 * per);
                 }
@@ -38,7 +38,7 @@ world.load({
         after: function (state, events) {
             console.log('land_base after hook');
             // fertup events
-            var i = 5;
+            var i = 6;
             while (i--) {
                 var x = Math.floor(state.width * Math.random()),
                 y = Math.floor(state.height * Math.random());
