@@ -18,7 +18,7 @@ var draw = (function () {
             cell;
             while (i--) {
                 cell = state.cells[i];
-                per = cell.land.fert / 5;
+                per = 1 - (cell.land.fert / 10);
                 r = Math.floor(100 + 100 * per);
                 g = Math.floor(75 + 75 * per);
                 b = Math.floor(25 + 25 * per);
