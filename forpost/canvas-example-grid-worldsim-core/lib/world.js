@@ -6,26 +6,28 @@ var world = (function () {
         size: 32
     };
 
-    var events = {};
-
     // hard coded initObjects
     // this can be extend via a plug-in
     var init = {
         defaultValues: {
             before: function (state) {
-                console.log('defualt values before hook');
-                //state.cells = [];
+                //console.log('defualt values before hook');
+
             },
             forCell: function (state, events, cell) {
                 cell.x = cell.i % state.width;
                 cell.y = Math.floor(cell.i / state.width);
-                console.log('default values forCell: ' + JSON.stringify(cell));
+                //console.log('default values forCell: ' + JSON.stringify(cell));
             },
             after: function (state) {
-                console.log('default values after hook');
+                //console.log('default values after hook');
             }
         }
     };
+
+    // events and forTick objects
+    var events = {};
+    var tick = {};
 
     // call a hook
     var callHook = function (state, initObjKey, hookName, cell) {

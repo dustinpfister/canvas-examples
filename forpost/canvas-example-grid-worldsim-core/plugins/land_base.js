@@ -37,7 +37,6 @@ world.load({
         },
         after: function (state, events) {
             console.log('land_base after hook');
-
             // fertup events
             var i = 5;
             while (i--) {
@@ -51,15 +50,17 @@ world.load({
                     cell.land.fert = 10;
                 }
             });
-            console.log(state.cells)
-
         }
     },
 
     // what to do for each tick
     forTick: {
         before: function (state) {},
-        forCell: function (state, cell) {},
+        forCell: function (state, cell) {
+            if (cell.fert > 5) {
+                cell.fert -= 1;
+            }
+        },
         after: function (state) {}
     }
 
