@@ -7,10 +7,21 @@ world.load({
         // name of event
         inpact: {
             // what to do right away for the event when it starts
-            init: function (state, x, y) {},
-            // what to do for each year tick
-            // if this is an over time event
-            tick: function () {}
+            init: function (state, x, y) {
+                var i = state.cells.length,
+                d,
+                per,
+                cell;
+                while (i--) {
+                    cell = state.cells[i];
+                    d = u.distance(cell.x, cell.y, x, y);
+                    per = 0;
+                    if (d <= 5) {
+                        per = (5 - d) / 5;
+                    }
+                    cell.land.fert += Math.floor(10 * per);
+                }
+            }
         }
     },
 
@@ -18,10 +29,11 @@ world.load({
     init: {
         before: function (state) {
             console.log('land_base before hook');
-
         },
         forCell: function (state, cell) {
             console.log('land_base forCell hook');
+            var land = cell.land = {};
+            land.fert = 0;
         },
         after: function (state) {
             console.log('land_base after hook');
