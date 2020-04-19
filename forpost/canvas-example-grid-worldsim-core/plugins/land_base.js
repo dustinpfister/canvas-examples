@@ -54,22 +54,15 @@ world.load({
     },
 
     // what to do for each tick
+
     tick: {
-        before: function (state, events, years) {
-
-            console.log('before');
-
-        },
+        before: function (state, events, years) {},
         forCell: function (state, events, years, cell) {
             if (cell.land.fert > 5) {
                 cell.land.fert -= 1;
             }
         },
-        after: function (state) {
-
-            console.log('done');
-
-        }
+        after: function (state) {}
     }
 
 });
