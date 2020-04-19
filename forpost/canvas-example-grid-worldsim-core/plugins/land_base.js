@@ -37,7 +37,9 @@ world.load({
         },
         after: function (state, events) {
             console.log('land_base after hook');
-            console.log(events);
+
+            // fertup events
+            events.fertup.init(state, 0, 0);
 
         }
     },
