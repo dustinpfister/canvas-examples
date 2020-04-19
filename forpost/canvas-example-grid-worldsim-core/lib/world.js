@@ -16,12 +16,12 @@ var world = (function () {
                 console.log('defualt values before hook');
                 //state.cells = [];
             },
-            forCell: function (state, cell) {
+            forCell: function (state, events, cell) {
                 cell.x = cell.i % state.width;
                 cell.y = Math.floor(cell.i / state.width);
                 console.log('default values forCell: ' + JSON.stringify(cell));
             },
-            after: function (world) {
+            after: function (state) {
                 console.log('default values after hook');
             }
         }
@@ -33,7 +33,7 @@ var world = (function () {
         initObjKey = initObjKey || 'defaultValues';
         var initObj = init[initObjKey];
         if (initObj[hookName]) {
-            initObj[hookName](state, cell);
+            initObj[hookName](state, events, cell);
         }
     };
 

@@ -27,16 +27,18 @@ world.load({
 
     // what do do when
     init: {
-        before: function (state) {
+        before: function (state, events) {
             console.log('land_base before hook');
         },
-        forCell: function (state, cell) {
+        forCell: function (state, events, cell) {
             console.log('land_base forCell hook');
             var land = cell.land = {};
             land.fert = 0;
         },
-        after: function (state) {
+        after: function (state, events) {
             console.log('land_base after hook');
+            console.log(events);
+
         }
     },
 
