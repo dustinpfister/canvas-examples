@@ -4,20 +4,28 @@ var controlMod = (function () {
         var canvas = e.target,
         bx = canvas.getBoundingClientRect(),
         arr = [];
-
+        // mouse event
         if (e.type === 'mousedown' || e.type === 'mouseup' || e.type == 'mousemove') {
             return [{
-                x: e.clientX - bx.left,
-                y: e.clientY - bx.top,
-                bx: bx
-            }];
+                    x: e.clientX - bx.left,
+                    y: e.clientY - bx.top,
+                    bx: bx
+                }
+            ];
         }
-
-        return {
-            x: (e.changedTouches ? e.changedTouches[0].clientX : e.clientX) - bx.left,
-            y: (e.changedTouches ? e.changedTouches[0].clientY : e.clientY) - bx.top,
-            bx: bx
-        };
+        // touch
+        var i = 0,
+        touch;
+        while (i < e.changedTouches.length) {
+            touch = e.changedTouches[i];
+            arr.push({
+                x: touch.clientX - bx.left,
+                y: touch.clientY - bx.top,
+                bx: bx
+            });
+            i += 1;
+        }
+        return arr;
     };
 
     // fill an array
