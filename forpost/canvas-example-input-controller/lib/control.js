@@ -63,7 +63,7 @@ var controlMod = (function () {
         },
         pointerEnd: function (pos, input, e) {
             input.pointerDown = false;
-            input.pos = [];
+            input.pos = pos;
         }
     };
 
