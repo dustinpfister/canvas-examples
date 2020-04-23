@@ -1,5 +1,6 @@
 var controlMod = (function () {
 
+    // is mouse helper
     var isMouse = function (e) {
         return (e.type === 'mousedown' || e.type === 'mouseup' || e.type == 'mousemove');
     }
@@ -54,7 +55,12 @@ var controlMod = (function () {
             pointerDown: false,
             keys: {},
             pos: [],
-            keys: fill(255, false)
+            keys: fill(255, false),
+            userHanders: {
+                pointerStart: [],
+                pointerMove: [],
+                pointerEnd: []
+            }
         };
         return input;
     };
@@ -64,12 +70,18 @@ var controlMod = (function () {
         pointerStart: function (pos, input, e) {
             input.pointerDown = true;
             input.pos = pos;
+            input.userHanders.pointerStart.forEach(function (userHandler) {
+                userHandler.call(input, pos, input, e);
+            });
         },
         pointerMove: function (pos, input, e) {
             // update pos only if pointer is down
             if (input.pointerDown) {
                 input.pos = pos;
             }
+            input.userHanders.pointerMove.forEach(function (userHandler) {
+                userHandler.call(input, pos, input, e);
+            });
         },
         pointerEnd: function (pos, input, e) {
             if (isMouse(e)) {
@@ -83,6 +95,9 @@ var controlMod = (function () {
                     input.pos = pos;
                 }
             }
+            input.userHanders.pointerEnd.forEach(function (userHandler) {
+                userHandler.call(input, pos, input, e);
+            });
         }
     };
 
@@ -103,7 +118,7 @@ var controlMod = (function () {
         });
     };
 
-    return function (canvas, win) {
+    var api = function (canvas, win) {
         var input = createInputState(canvas, win || window);
         // mouse
         setPointerHandler(input, 'mousedown', 'pointerStart');
@@ -120,6 +135,13 @@ var controlMod = (function () {
         setKeyHandler(input, 'keyup');
         return input;
     };
+
+    // add a hander
+    api.add = function (input, type, hander) {
+        input.userHanders[type].push(hander);
+    };
+
+    return api;
 
 }
     ());
