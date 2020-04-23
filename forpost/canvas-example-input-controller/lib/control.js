@@ -67,23 +67,25 @@ var controlMod = (function () {
         return input;
     };
 
+    var callUserHanders = function (input, type, a, e) {
+        input.userHanders[type].forEach(function (userHandler) {
+            userHandler.call(input, a, input, e);
+        });
+    };
+
     // handers
     var handlers = {
         pointerStart: function (pos, input, e) {
             input.pointerDown = true;
             input.pos = pos;
-            input.userHanders.pointerStart.forEach(function (userHandler) {
-                userHandler.call(input, pos, input, e);
-            });
+            callUserHanders(input, 'pointerStart', pos, e);
         },
         pointerMove: function (pos, input, e) {
             // update pos only if pointer is down
             if (input.pointerDown) {
                 input.pos = pos;
             }
-            input.userHanders.pointerMove.forEach(function (userHandler) {
-                userHandler.call(input, pos, input, e);
-            });
+            callUserHanders(input, 'pointerMove', pos, e);
         },
         pointerEnd: function (pos, input, e) {
             if (isMouse(e)) {
@@ -97,9 +99,7 @@ var controlMod = (function () {
                     input.pos = pos;
                 }
             }
-            input.userHanders.pointerEnd.forEach(function (userHandler) {
-                userHandler.call(input, pos, input, e);
-            });
+            callUserHanders(input, 'pointerEnd', pos, e);
         }
     };
 
@@ -117,9 +117,7 @@ var controlMod = (function () {
     var setKeyHandler = function (input, DOMType) {
         input.win.addEventListener(DOMType, function (e) {
             input.keys[e.keyCode] = e.type === 'keydown';
-            input.userHanders[DOMType].forEach(function (userHandler) {
-                userHandler.call(input, input.keys, input, e);
-            });
+            callUserHanders(input, DOMType, input.keys, e);
         });
     };
 
@@ -129,12 +127,10 @@ var controlMod = (function () {
         setPointerHandler(input, 'mousedown', 'pointerStart');
         setPointerHandler(input, 'mousemove', 'pointerMove');
         setPointerHandler(input, 'mouseup', 'pointerEnd');
-
         // touch
         setPointerHandler(input, 'touchstart', 'pointerStart');
         setPointerHandler(input, 'touchmove', 'pointerMove');
         setPointerHandler(input, 'touchend', 'pointerEnd');
-
         // keyboard
         setKeyHandler(input, 'keydown');
         setKeyHandler(input, 'keyup');
