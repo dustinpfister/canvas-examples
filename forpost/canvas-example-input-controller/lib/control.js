@@ -16,6 +16,7 @@ var controlMod = (function () {
                     x: e.clientX - bx.left,
                     y: e.clientY - bx.top,
                     bx: bx,
+                    e: e,
                     touch: {}
                 }
             ];
@@ -29,6 +30,7 @@ var controlMod = (function () {
                 x: touch.clientX - bx.left,
                 y: touch.clientY - bx.top,
                 touch: touch,
+                e: e,
                 bx: bx
             });
             i += 1;
