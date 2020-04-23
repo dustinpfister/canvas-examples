@@ -1,5 +1,6 @@
 var controlMod = (function () {
 
+    // get a canvas relative position
     var getCanvasRelative = function (e) {
         var canvas = e.target,
         bx = canvas.getBoundingClientRect();
@@ -8,6 +9,15 @@ var controlMod = (function () {
             y: (e.changedTouches ? e.changedTouches[0].clientY : e.clientY) - bx.top,
             bx: bx
         };
+    };
+
+    // fill an array
+    var fill = function (count, val) {
+        return Array.apply(0, {
+            length: count
+        }).map(function () {
+            return val
+        })
     };
 
     var createInputState = function (canvas, win) {
@@ -20,7 +30,7 @@ var controlMod = (function () {
                 x: null,
                 y: null
             },
-            keys: []
+            keys: fill(255, false)
         };
         return input;
     };
@@ -56,6 +66,7 @@ var controlMod = (function () {
         });
     };
 
+    // set a key handler
     var setKeyHandler = function (input, DOMType) {
         input.win.addEventListener(DOMType, function (e) {
             input.keys[e.keyCode] = e.type === 'keydown';
