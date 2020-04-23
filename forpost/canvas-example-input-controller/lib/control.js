@@ -59,7 +59,9 @@ var controlMod = (function () {
             userHanders: {
                 pointerStart: [],
                 pointerMove: [],
-                pointerEnd: []
+                pointerEnd: [],
+                keydown: [],
+                keyup: []
             }
         };
         return input;
@@ -115,6 +117,9 @@ var controlMod = (function () {
     var setKeyHandler = function (input, DOMType) {
         input.win.addEventListener(DOMType, function (e) {
             input.keys[e.keyCode] = e.type === 'keydown';
+            input.userHanders[DOMType].forEach(function (userHandler) {
+                userHandler.call(input, input.keys, input, e);
+            });
         });
     };
 

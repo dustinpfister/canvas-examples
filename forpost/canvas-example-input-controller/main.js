@@ -10,6 +10,11 @@ controlMod.add(input, 'pointerStart', function (pos, input, e) {
     console.log(pos);
 });
 
+controlMod.add(input, 'keydown', function (keys, input, e) {
+    console.log('key down:');
+    console.log('keys[65]: ' + keys[65]);
+});
+
 // can pull in a loop
 var loop = function () {
     requestAnimationFrame(loop);
