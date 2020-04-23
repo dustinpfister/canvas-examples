@@ -9,7 +9,12 @@ draw.debugInput = function (ctx, input) {
     ctx.textBaseline = 'top';
     ctx.font = '10px arial';
     ctx.fillText('input.pointerDown: ' + input.pointerDown, 10, 10);
-    ctx.fillText('input.pos: ' + input.pos.x + ',' + input.pos.y, 10, 20);
+    var pos = input.pos.length >= 1 ? input.pos : [{
+                x: null,
+                y: null
+            }
+        ];
+    ctx.fillText('input.pos: ' + pos[0].x + ',' + pos[0].x, 10, 20);
     ctx.fillText('input.keys[87] (w): ' + input.keys[87], 10, 40);
     ctx.fillText('input.keys[65] (a): ' + input.keys[65], 10, 50);
     ctx.fillText('input.keys[83] (s): ' + input.keys[83], 10, 60);

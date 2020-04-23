@@ -1,9 +1,18 @@
 var controlMod = (function () {
 
-    // get a canvas relative position
-    var getCanvasRelative = function (e) {
+    var getCanvasRelativeArray = function (e) {
         var canvas = e.target,
-        bx = canvas.getBoundingClientRect();
+        bx = canvas.getBoundingClientRect(),
+        arr = [];
+
+        if (e.type === 'mousedown' || e.type === 'mouseup' || e.type == 'mousemove') {
+            return [{
+                x: e.clientX - bx.left,
+                y: e.clientY - bx.top,
+                bx: bx
+            }];
+        }
+
         return {
             x: (e.changedTouches ? e.changedTouches[0].clientX : e.clientX) - bx.left,
             y: (e.changedTouches ? e.changedTouches[0].clientY : e.clientY) - bx.top,
@@ -26,10 +35,7 @@ var controlMod = (function () {
             win: win,
             pointerDown: false,
             keys: {},
-            pos: {
-                x: null,
-                y: null
-            },
+            pos: [],
             keys: fill(255, false)
         };
         return input;
@@ -39,20 +45,17 @@ var controlMod = (function () {
     var handlers = {
         pointerStart: function (pos, input, e) {
             input.pointerDown = true;
-            input.pos.x = pos.x;
-            input.pos.y = pos.y;
+            input.pos = pos;
         },
         pointerMove: function (pos, input, e) {
             // update pos only if pointer is down
             if (input.pointerDown) {
-                input.pos.x = pos.x;
-                input.pos.y = pos.y;
+                input.pos = pos;
             }
         },
         pointerEnd: function (pos, input, e) {
             input.pointerDown = false;
-            input.pos.x = null;
-            input.pos.y = null;
+            input.pos = [];
         }
     };
 
@@ -60,7 +63,7 @@ var controlMod = (function () {
     var setPointerHandler = function (input, DOMType, type) {
         console.log(input.canvas);
         input.canvas.addEventListener(DOMType, function (e) {
-            var pos = getCanvasRelative(e);
+            var pos = getCanvasRelativeArray(e);
             e.preventDefault();
             handlers[type](pos, input, e);
         });
