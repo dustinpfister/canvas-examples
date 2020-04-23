@@ -1,11 +1,15 @@
 var controlMod = (function () {
 
+    var isMouse = function (e) {
+        return (e.type === 'mousedown' || e.type === 'mouseup' || e.type == 'mousemove');
+    }
+
     var getCanvasRelativeArray = function (e) {
         var canvas = e.target,
         bx = canvas.getBoundingClientRect(),
         arr = [];
         // mouse event
-        if (e.type === 'mousedown' || e.type === 'mouseup' || e.type == 'mousemove') {
+        if (isMouse(e)) {
             return [{
                     x: e.clientX - bx.left,
                     y: e.clientY - bx.top,
@@ -16,8 +20,8 @@ var controlMod = (function () {
         // touch
         var i = 0,
         touch;
-        while (i < e.changedTouches.length) {
-            touch = e.changedTouches[i];
+        while (i < e.targetTouches.length) {
+            touch = e.targetTouches[i];
             arr.push({
                 x: touch.clientX - bx.left,
                 y: touch.clientY - bx.top,
@@ -62,8 +66,17 @@ var controlMod = (function () {
             }
         },
         pointerEnd: function (pos, input, e) {
-            input.pointerDown = false;
-            input.pos = pos;
+            if (isMouse(e)) {
+                input.pointerDown = false;
+                input.pos = [];
+            } else {
+                if (e.targetTouches.length === 0) {
+                    input.pointerDown = false;
+                    input.pos = [];
+                } else {
+                    input.pos = pos;
+                }
+            }
         }
     };
 
