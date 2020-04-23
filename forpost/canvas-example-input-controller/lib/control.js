@@ -4,6 +4,8 @@ var controlMod = (function () {
         return (e.type === 'mousedown' || e.type === 'mouseup' || e.type == 'mousemove');
     }
 
+    // get am array of point objects relative to the canvas
+    // rather than the window object
     var getCanvasRelativeArray = function (e) {
         var canvas = e.target,
         bx = canvas.getBoundingClientRect(),
@@ -13,7 +15,8 @@ var controlMod = (function () {
             return [{
                     x: e.clientX - bx.left,
                     y: e.clientY - bx.top,
-                    bx: bx
+                    bx: bx,
+                    touch: {}
                 }
             ];
         }
@@ -25,6 +28,7 @@ var controlMod = (function () {
             arr.push({
                 x: touch.clientX - bx.left,
                 y: touch.clientY - bx.top,
+                touch: touch,
                 bx: bx
             });
             i += 1;
