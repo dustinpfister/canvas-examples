@@ -77,9 +77,11 @@ var game = (function () {
             state.spawnSecs %= SPAWN.rate;
             // player spawn
             if (state.pool.player.length < SPAWN.playerMax) {
-                var freeLands = getAreas(state, 2, true);
+                //var freeLands = getAreas(state, 2, true);
+                var freeLands = getBestTurretLands(state, 4);
                 if (freeLands.length >= 1) {
-                    var land = freeLands[Math.floor(Math.random() * freeLands.length)];
+                    //var land = freeLands[Math.floor(Math.random() * freeLands.length)];
+                    land = freeLands[0].cell;
                     land.clear = false;
                     state.pool.player.push({
                         x: land.x,
