@@ -9,8 +9,8 @@ var game = (function () {
 
     // SPAWN 'Constants'
     var SPAWN = {
-        rate: 3, // spawn rate in secs
-        playerMax: 3 // max player units
+        rate: 0.5, // spawn rate in secs
+        playerMax: 10 // max player units
     };
 
     // create the array of cell objects
@@ -34,9 +34,7 @@ var game = (function () {
     var getAreas = function (state, areaType, clear) {
         clear === undefined ? true : clear;
         return state.cells.filter(function (cell) {
-
-            return String(cell.areaType) === String(areaType);
-
+            return String(cell.areaType) === String(areaType) && clear === cell.clear;
         });
     };
 
