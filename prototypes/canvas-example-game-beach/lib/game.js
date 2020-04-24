@@ -118,7 +118,9 @@ var game = (function () {
             return utils.distance(cell.x, cell.y, target.x, target.y) <= range;
         }).filter(function (target) {
             return String(areaType) === String(target.areaType) && cell.i != target.i;
-        });
+        }).filter(function (target) {
+            return target.clear;
+        })
     }
 
     var moveBoats = function () {};
