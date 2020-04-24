@@ -31,22 +31,10 @@ var game = (function () {
         return cells;
     };
 
-    // create a new state
-    var create = function (opt) {
-        opt = opt || {};
-        opt.areaData = opt.areaData || '';
-        return {
-            cells: createCells(opt.areaData),
-            lt: new Date(),
-            spawnSecs: 0,
-            pool: {
-                player: [],
-                enemy: []
-            }
-        };
-    };
-
-    // get areas of type and clear status
+    // get areas of type and clear status (optional)
+    // clear === undefined (clear and not clear tiles)
+    // clear === true (only clear tiles)
+    // clear === false (only not clear tiles)
     var getAreas = function (state, areaType, clear) {
         return state.cells.filter(function (cell) {
             return String(cell.areaType) === String(areaType) && (clear === undefined ? true : clear === cell.clear);
@@ -56,14 +44,29 @@ var game = (function () {
     // return a list of objects with landIndex values sorted by
     // most amount of water tiles in the given range
     var getBestTurretLands = function (state, range) {
-
         var waterAreas = getAreas(state, 0);
-
         return getAreas(state, 2, true).map(function (cell) {
+            var count = 0;
+            waterAreas.forEach(function (waterCell) {
+                if (utils.distance(cell.x, cell.y, waterCell.x, waterCell.y) <= range) {
+                    count += 1;
+                }
+            });
             return {
                 i: cell.i,
-                waterCount: 0
+                cell: cell,
+                waterCount: count
             }
+        }).filter(function (obj) {
+            return obj.waterCount > 0;
+        }).sort(function (a, b) {
+            if (a.waterCount > b.waterCount) {
+                return -1;
+            }
+            if (a.waterCount < b.waterCount) {
+                return 1;
+            }
+            return 0;
         });
     };
 
@@ -94,7 +97,24 @@ var game = (function () {
     };
 
     // create a state object
-    api.create = create,
+    api.create = function (opt) {
+        opt = opt || {};
+        opt.areaData = opt.areaData || '';
+
+        var state = {
+            cells: createCells(opt.areaData),
+            lt: new Date(),
+            spawnSecs: 0,
+            pool: {
+                player: [],
+                enemy: []
+            }
+        };
+
+        console.log(getBestTurretLands(state, 3));
+
+        return state;
+    },
 
     // update a state object
     api.update = function (state) {
