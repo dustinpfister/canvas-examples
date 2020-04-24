@@ -10,5 +10,4 @@ var state = game.create({
 
 console.log(state);
 
-ctx.fillStyke = 'black';
-ctx.fillRect(0, 0, canvas.width, canvas.height);
+draw.back(ctx, canvas);
