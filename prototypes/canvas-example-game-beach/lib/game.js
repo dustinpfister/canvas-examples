@@ -60,7 +60,11 @@ var game = (function () {
                         y: 2.5
                     }
                 ],
-                enemey: []
+                enemy: [{
+                        x: 0,
+                        y: 0
+                    }
+                ]
             }
         };
     };
