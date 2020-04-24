@@ -48,18 +48,24 @@ var game = (function () {
 
     // get areas of type and clear status
     var getAreas = function (state, areaType, clear) {
-        clear === undefined ? true : clear;
         return state.cells.filter(function (cell) {
-            return String(cell.areaType) === String(areaType) && clear === cell.clear;
+            return String(cell.areaType) === String(areaType) && (clear === undefined ? true : clear === cell.clear);
         });
     };
 
-    // return a list of free lands sorted by most amount of land tiles
-    // in the given range
+    // return a list of objects with landIndex values sorted by
+    // most amount of water tiles in the given range
     var getBestTurretLands = function (state, range) {
-		
-		
-	};
+
+        var waterAreas = getAreas(state, 0);
+
+        return getAreas(state, 2, true).map(function (cell) {
+            return {
+                i: cell.i,
+                waterCount: 0
+            }
+        });
+    };
 
     // spawn units
     var spawn = function (state, secs) {
