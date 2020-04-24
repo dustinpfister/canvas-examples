@@ -23,11 +23,21 @@ var game = (function () {
                 i: i,
                 x: i % GRID.w,
                 y: Math.floor(i / GRID.w),
-                areaType: areaData[i] === undefined ? 0 : areaData[i]
+                areaType: areaData[i] === undefined ? 0 : areaData[i],
+                clear: true // nothing on it
             })
             i += 1;
         }
         return cells;
+    };
+
+    var getAreas = function (state, areaType, clear) {
+        clear === undefined ? true : clear;
+        return state.cells.filter(function (cell) {
+
+            return String(cell.areaType) === String(areaType);
+
+        });
     };
 
     var spawn = function (state, secs) {
@@ -36,6 +46,24 @@ var game = (function () {
         if (state.spawnSecs >= SPAWN.rate) {
             state.spawnSecs %= SPAWN.rate;
             console.log('spawn event');
+
+            if (state.pool.player.length < SPAWN.playerMax) {
+
+                var freeLands = getAreas(state, 2, true);
+                console.log(freeLands);
+
+                if (freeLands.length >= 1) {
+                    console.log('yes');
+                    var land = freeLands[Math.floor(Math.random() * freeLands.length)];
+                    land.clear = false;
+                    state.pool.player.push({
+                        x: land.x,
+                        y: land.y
+                    })
+                }
+
+            }
+
         }
 
     };
@@ -55,16 +83,8 @@ var game = (function () {
             lt: new Date(),
             spawnSecs: 0,
             pool: {
-                player: [{
-                        x: 2,
-                        y: 2.5
-                    }
-                ],
-                enemy: [{
-                        x: 0,
-                        y: 0
-                    }
-                ]
+                player: [],
+                enemy: []
             }
         };
     };

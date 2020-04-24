@@ -20,7 +20,6 @@ var draw = (function () {
     };
 
     var drawPool = function (ctx, state, poolName) {
-
         var i = state.pool[poolName].length,
         colors = {
             player: 'purple',
@@ -32,7 +31,6 @@ var draw = (function () {
             ctx.fillStyle = colors[poolName];
             ctx.fillRect(disp.x * cellSize, disp.y * cellSize, cellSize, cellSize);
         }
-
     };
 
     api.units = function (ctx, state) {
