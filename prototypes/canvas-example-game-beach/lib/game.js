@@ -68,6 +68,8 @@ var game = (function () {
 
         spawn(state, secs);
 
+        state.lt = now;
+
     };
 
     return api;
