@@ -9,8 +9,9 @@ var game = (function () {
 
     // SPAWN 'Constants'
     var SPAWN = {
-        rate: 3, // spawn rate in secs
-        playerMax: 10 // max player units
+        rate: 0.2, // spawn rate in secs
+        playerMax: 10, // max player units
+        enemyMax: 10
     };
 
     // create the array of cell objects
@@ -70,6 +71,13 @@ var game = (function () {
         });
     };
 
+    // get border waters
+    var getBorderWaters = function (state) {
+        return getAreas(state, 0, true).filter(function (cell) {
+            return cell.x === 0 || cell.y == 0;
+        });
+    };
+
     // spawn units
     var spawn = function (state, secs) {
         state.spawnSecs += secs;
@@ -79,13 +87,29 @@ var game = (function () {
             if (state.pool.player.length < SPAWN.playerMax) {
                 var freeLands = getBestTurretLands(state, 3);
                 if (freeLands.length >= 1) {
-                    land = freeLands[0].cell;
+                    var land = freeLands[0].cell;
                     land.clear = false;
                     state.pool.player.push({
                         x: land.x,
                         y: land.y
                     })
                 }
+            }
+            // enemy
+            if (state.pool.enemy.length < SPAWN.enemyMax) {
+
+                var waters = getBorderWaters(state);
+
+                if (waters.length >= 1) {
+
+                    var water = waters[Math.floor(waters.length * Math.random())];
+                    water.clear = false;
+                    state.pool.enemy.push({
+                        x: water.x,
+                        y: water.y
+                    });
+                }
+
             }
         }
     };
