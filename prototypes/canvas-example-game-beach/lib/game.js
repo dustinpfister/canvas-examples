@@ -9,7 +9,7 @@ var game = (function () {
 
     // SPAWN 'Constants'
     var SPAWN = {
-        rate: 0.5, // spawn rate in secs
+        rate: 3, // spawn rate in secs
         playerMax: 10 // max player units
     };
 
@@ -77,10 +77,8 @@ var game = (function () {
             state.spawnSecs %= SPAWN.rate;
             // player spawn
             if (state.pool.player.length < SPAWN.playerMax) {
-                //var freeLands = getAreas(state, 2, true);
-                var freeLands = getBestTurretLands(state, 4);
+                var freeLands = getBestTurretLands(state, 3);
                 if (freeLands.length >= 1) {
-                    //var land = freeLands[Math.floor(Math.random() * freeLands.length)];
                     land = freeLands[0].cell;
                     land.clear = false;
                     state.pool.player.push({
