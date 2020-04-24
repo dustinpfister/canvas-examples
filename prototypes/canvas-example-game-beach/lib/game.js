@@ -31,6 +31,7 @@ var game = (function () {
         return cells;
     };
 
+    // get areas of type and clear status
     var getAreas = function (state, areaType, clear) {
         clear === undefined ? true : clear;
         return state.cells.filter(function (cell) {
@@ -38,20 +39,15 @@ var game = (function () {
         });
     };
 
+    // spawn units
     var spawn = function (state, secs) {
-
         state.spawnSecs += secs;
         if (state.spawnSecs >= SPAWN.rate) {
             state.spawnSecs %= SPAWN.rate;
-            console.log('spawn event');
-
+            // player spawn
             if (state.pool.player.length < SPAWN.playerMax) {
-
                 var freeLands = getAreas(state, 2, true);
-                console.log(freeLands);
-
                 if (freeLands.length >= 1) {
-                    console.log('yes');
                     var land = freeLands[Math.floor(Math.random() * freeLands.length)];
                     land.clear = false;
                     state.pool.player.push({
@@ -59,11 +55,8 @@ var game = (function () {
                         y: land.y
                     })
                 }
-
             }
-
         }
-
     };
 
     // PUBLIC API
