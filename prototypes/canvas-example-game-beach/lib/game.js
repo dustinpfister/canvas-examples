@@ -26,10 +26,11 @@ var game = (function () {
     var api = {};
 
     api.create = function (opt) {
-
         opt = opt || {};
-        opt.areaData = opt.areaData || [];
-
+        opt.areaData = opt.areaData || '';
+        return {
+            cells: createCells(opt.areaData)
+        };
     };
 
     return api;
