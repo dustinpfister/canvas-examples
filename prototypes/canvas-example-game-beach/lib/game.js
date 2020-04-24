@@ -1,9 +1,9 @@
 var game = (function () {
 
     var GRID = {
-        w: 10,
-        h: 8,
-        cellSize: 32
+        w: 16,
+        h: 12,
+        cellSize: 16
     };
 
     // create the array of cell objects
@@ -23,7 +23,9 @@ var game = (function () {
         return cells;
     };
 
-    var api = {};
+    var api = {
+        GRID: GRID
+    };
 
     api.create = function (opt) {
         opt = opt || {};

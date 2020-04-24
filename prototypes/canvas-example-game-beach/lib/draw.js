@@ -8,10 +8,11 @@ draw.back = function (ctx, canvas) {
 draw.cells = function (ctx, state) {
     var i = state.cells.length,
     colors = ['blue', 'yellow', 'green'],
+    cellSize = game.GRID.cellSize,
     cell;
     while (i--) {
         cell = state.cells[i];
         ctx.fillStyle = colors[cell.areaType];
-        ctx.fillRect(cell.x * 16, cell.y * 16, 16, 16);
+        ctx.fillRect(cell.x * cellSize, cell.y * cellSize, cellSize, cellSize);
     }
 };
