@@ -54,8 +54,14 @@ var game = (function () {
             cells: createCells(opt.areaData),
             lt: new Date(),
             spawnSecs: 0,
-            playerPool: [],
-            enemyPool: []
+            pool: {
+                player: [{
+                        x: 2,
+                        y: 2.5
+                    }
+                ],
+                enemey: []
+            }
         };
     };
 

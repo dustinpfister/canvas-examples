@@ -16,3 +16,16 @@ draw.cells = function (ctx, state) {
         ctx.fillRect(cell.x * cellSize, cell.y * cellSize, cellSize, cellSize);
     }
 };
+
+draw.units = function (ctx, state) {
+
+    var i = state.pool.player.length,
+    colors = ['purple', 'red'],
+    cellSize = game.GRID.cellSize;
+    while (i--) {
+        disp = state.pool.player[i];
+        ctx.fillStyle = colors[0];
+        ctx.fillRect(disp.x * cellSize, disp.y * cellSize, cellSize, cellSize);
+    }
+
+};

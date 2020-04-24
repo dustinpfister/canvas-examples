@@ -25,11 +25,12 @@ console.log(state);
 
 var loop = function () {
     requestAnimationFrame(loop);
-	
-	game.update(state);
-	
+
+    game.update(state);
+
     draw.back(ctx, canvas);
     draw.cells(ctx, state);
+    draw.units(ctx, state);
 
 };
 loop();
