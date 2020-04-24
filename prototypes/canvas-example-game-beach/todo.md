@@ -2,7 +2,9 @@
 
 ## 0.2 - Turrets attack boats
 * game.js: new shot pool for shot display objects
-* game.js: turrets can attack ships if they are in range
+* game.js: turrets shoot at ships when they are in range
+* game.js: turret shots have splash damage, so some damage will happen even if the ship move out of range
+* game.js: turret shots will hurt any ships in splash range
 * game.js: ships are destroyed when hp === 0
 * draw.js: draw.shots method for drawing current state of shots
 
@@ -13,9 +15,9 @@
 * (done) game.js: update public method started
 * (done) game.js: spawn method for turrets
 * (done) game.js: areaType land area can have turrets on them
-* game.js: spawn method for boats
-* game.js: areaType water areas can have boats on them
-* game.js: boats move around, but only on water as they should
+* (done) game.js: spawn method for boats
+* (done) game.js: areaType water areas can have boats on them
+* (done) game.js: boats move around, but only on water as they should
 * (done) draw.js: draw.units method for drawing current state of units (boats and turrets)
 
 ## 0.0 - just the basics first
