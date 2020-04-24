@@ -31,6 +31,21 @@ var game = (function () {
         return cells;
     };
 
+    // create a new state
+    var create = function (opt) {
+        opt = opt || {};
+        opt.areaData = opt.areaData || '';
+        return {
+            cells: createCells(opt.areaData),
+            lt: new Date(),
+            spawnSecs: 0,
+            pool: {
+                player: [],
+                enemy: []
+            }
+        };
+    };
+
     // get areas of type and clear status
     var getAreas = function (state, areaType, clear) {
         clear === undefined ? true : clear;
@@ -38,6 +53,13 @@ var game = (function () {
             return String(cell.areaType) === String(areaType) && clear === cell.clear;
         });
     };
+
+    // return a list of free lands sorted by most amount of land tiles
+    // in the given range
+    var getBestTurretLands = function (state, range) {
+		
+		
+	};
 
     // spawn units
     var spawn = function (state, secs) {
@@ -66,31 +88,18 @@ var game = (function () {
     };
 
     // create a state object
-    api.create = function (opt) {
-        opt = opt || {};
-        opt.areaData = opt.areaData || '';
-        return {
-            cells: createCells(opt.areaData),
-            lt: new Date(),
-            spawnSecs: 0,
-            pool: {
-                player: [],
-                enemy: []
-            }
-        };
-    };
+    api.create = create,
 
     // update a state object
     api.update = function (state) {
-
+        // time
         var now = new Date(),
         t = now - state.lt,
         secs = t / 1000;
-
+        // spawn
         spawn(state, secs);
-
+        // set lt to now
         state.lt = now;
-
     };
 
     return api;
