@@ -32,6 +32,10 @@ var game = (function () {
         return cells;
     };
 
+    var getCell = function (state, x, y) {
+        return state.cells[GRID.w * y + x];
+    }
+
     // get areas of type and clear status (optional)
     // clear === undefined (clear and not clear tiles)
     // clear === true (only clear tiles)
@@ -40,6 +44,19 @@ var game = (function () {
         return state.cells.filter(function (cell) {
             return String(cell.areaType) === String(areaType) && (clear === undefined ? true : clear === cell.clear);
         });
+    };
+
+    // get cells near the cell
+    var getNear = function (state, cell, range, areaType) {
+        range = range || 1;
+        areaType = areaType === undefined ? 0 : areaType;
+        return state.cells.filter(function (target) {
+            return utils.distance(cell.x, cell.y, target.x, target.y) <= range;
+        }).filter(function (target) {
+            return String(areaType) === String(target.areaType) && cell.i != target.i;
+        }).filter(function (target) {
+            return target.clear;
+        })
     };
 
     // return a list of objects with landIndex values sorted by
@@ -103,27 +120,36 @@ var game = (function () {
                     water.clear = false;
                     state.pool.enemy.push({
                         x: water.x,
-                        y: water.y
+                        y: water.y,
+                        secs: 0,
+                        speed: 3
                     });
                 }
             }
         }
     };
 
-    // get cells near the cell
-    var getNear = function (state, cell, range, areaType) {
-        range = range || 1;
-        areaType = areaType === undefined ? 0 : areaType;
-        return state.cells.filter(function (target) {
-            return utils.distance(cell.x, cell.y, target.x, target.y) <= range;
-        }).filter(function (target) {
-            return String(areaType) === String(target.areaType) && cell.i != target.i;
-        }).filter(function (target) {
-            return target.clear;
-        })
-    }
+    var moveBoats = function (state, secs) {
 
-    var moveBoats = function () {};
+        var i = state.pool.enemy.length,
+        boat;
+        while (i--) {
+            boat = state.pool.enemy[i];
+            boat.secs += secs;
+            if (boat.secs >= boat.speed) {
+                boat.secs %= boat.speed;
+                var near = getNear(state, boat, 1.5, 0);
+                if (near.length >= 1) {
+                    var water = near[Math.floor(Math.random() * near.length)],
+                    current = getCell(state, boat.x, boat.y);
+                    current.clear = true;
+                    water.clear = false;
+                    boat.x = water.x;
+                    boat.y = water.y;
+                }
+            }
+        }
+    };
 
     // PUBLIC API
     var api = {
@@ -158,6 +184,7 @@ var game = (function () {
         secs = t / 1000;
         // spawn
         spawn(state, secs);
+        moveBoats(state, secs);
         // set lt to now
         state.lt = now;
     };
