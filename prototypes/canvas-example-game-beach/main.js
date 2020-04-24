@@ -21,8 +21,6 @@ var state = game.create({
         areaData: areaData
     });
 
-console.log(state);
-
 var loop = function () {
     requestAnimationFrame(loop);
 

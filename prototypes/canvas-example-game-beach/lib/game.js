@@ -9,9 +9,9 @@ var game = (function () {
 
     // SPAWN 'Constants'
     var SPAWN = {
-        rate: 0.2, // spawn rate in secs
+        rate: 3, // spawn rate in secs
         playerMax: 10, // max player units
-        enemyMax: 10
+        enemyMax: 3
     };
 
     // create the array of cell objects
@@ -74,7 +74,7 @@ var game = (function () {
     // get border waters
     var getBorderWaters = function (state) {
         return getAreas(state, 0, true).filter(function (cell) {
-            return cell.x === 0 || cell.y == 0;
+            return cell.x === 0 || cell.y == 0 || cell.x === GRID.w - 1 || cell.y === GRID.h - 1;
         });
     };
 
@@ -97,11 +97,8 @@ var game = (function () {
             }
             // enemy
             if (state.pool.enemy.length < SPAWN.enemyMax) {
-
                 var waters = getBorderWaters(state);
-
                 if (waters.length >= 1) {
-
                     var water = waters[Math.floor(waters.length * Math.random())];
                     water.clear = false;
                     state.pool.enemy.push({
@@ -109,10 +106,22 @@ var game = (function () {
                         y: water.y
                     });
                 }
-
             }
         }
     };
+
+    // get cells near the cell
+    var getNear = function (state, cell, range, areaType) {
+        range = range || 1;
+        areaType = areaType === undefined ? 0 : areaType;
+        return state.cells.filter(function (target) {
+            return utils.distance(cell.x, cell.y, target.x, target.y) <= range;
+        }).filter(function (target) {
+            return String(areaType) === String(target.areaType) && cell.i != target.i;
+        });
+    }
+
+    var moveBoats = function () {};
 
     // PUBLIC API
     var api = {
@@ -124,7 +133,6 @@ var game = (function () {
     api.create = function (opt) {
         opt = opt || {};
         opt.areaData = opt.areaData || '';
-
         var state = {
             cells: createCells(opt.areaData),
             lt: new Date(),
@@ -135,10 +143,10 @@ var game = (function () {
             }
         };
 
-        console.log(getBestTurretLands(state, 3));
+        console.log(getNear(state, state.cells[0], 1.5, 0))
 
         return state;
-    },
+    };
 
     // update a state object
     api.update = function (state) {
