@@ -11,3 +11,4 @@ var state = game.create({
 console.log(state);
 
 draw.back(ctx, canvas);
+draw.cells(ctx, state);
