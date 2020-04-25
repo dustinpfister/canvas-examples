@@ -30,6 +30,11 @@ var draw = (function () {
             disp = state.pool[poolName][i];
             ctx.fillStyle = colors[poolName];
             ctx.fillRect(disp.x * cellSize, disp.y * cellSize, cellSize, cellSize);
+            if (disp.hp != undefined) {
+                var per = disp.hp / disp.hpMax;
+                ctx.fillStyle = 'lime';
+                ctx.fillRect(disp.x * cellSize, disp.y * cellSize, cellSize * per, cellSize / 4);
+            }
         }
     };
 
