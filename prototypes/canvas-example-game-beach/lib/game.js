@@ -192,7 +192,7 @@ var game = (function () {
                     if (state.pool.shots.length < SPAWN.shotMax) {
                         var sx = turret.x + 0.5,
                         sy = turret.y + 0.5,
-                        tx = turret.x + 0.5,
+                        tx = target.x + 0.5,
                         ty = target.y + 0.5;
                         state.pool.shots.push({
                             x: sx,
@@ -203,8 +203,8 @@ var game = (function () {
                             ty: ty,
                             secs: 0,
                             d: utils.distance(sx, sy, tx, ty),
-                            h: Math.atan2(ty - sy, tx - sy),
-                            pps: 32
+                            h: Math.atan2(ty - sy, tx - sx),
+                            pps: 16
                         });
                     }
 
@@ -214,10 +214,23 @@ var game = (function () {
     };
 
     var updateShots = function (state, secs) {
-		
-		
-		
-	};
+
+        var i = state.pool.shots.length,
+        shot;
+        while (i--) {
+            shot = state.pool.shots[i];
+            shot.secs += secs;
+            var d = shot.pps * shot.secs;
+            d = d > shot.d ? shot.d : d;
+            shot.x = shot.sx + Math.cos(shot.h) * d;
+            shot.y = shot.sy + Math.sin(shot.h) * d;
+            if (d === shot.d) {
+
+                state.pool.shots.splice(i, 1);
+            }
+        }
+
+    };
 
     // PUBLIC API
     var api = {
