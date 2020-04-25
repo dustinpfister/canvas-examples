@@ -16,8 +16,8 @@ var game = (function () {
     };
 
     var TURRET = {
-        minAttackRange: 3,
-        maxAttackRage: 5,
+        minAttackRange: 4,
+        maxAttackRage: 6,
         maxInaccuracy: 3
     };
 
@@ -45,9 +45,7 @@ var game = (function () {
     };
 
     var getRandomCell = function (pool) {
-
         return pool[Math.floor(pool.length * Math.random())];
-
     };
 
     // get areas of type and clear status (optional)
@@ -123,6 +121,7 @@ var game = (function () {
                     state.pool.player.push({
                         x: land.x,
                         y: land.y,
+                        h: 0, // heading
                         attack: 5,
                         attackRange: TURRET.minAttackRange,
                         fireRate: 1,
@@ -204,6 +203,7 @@ var game = (function () {
                         ma = TURRET.maxInaccuracy,
                         tx = target.x + 0.5 + (-ma + ma * 2 * Math.random()) * (1 - turret.accuracy),
                         ty = target.y + 0.5 + (-ma + ma * 2 * Math.random()) * (1 - turret.accuracy);
+                        turret.h = Math.atan2(ty - sy, tx - sx);
                         state.pool.shots.push({
                             x: sx,
                             y: sy,
@@ -213,7 +213,7 @@ var game = (function () {
                             ty: ty,
                             secs: 0,
                             d: utils.distance(sx, sy, tx, ty),
-                            h: Math.atan2(ty - sy, tx - sx),
+                            h: turret.h,
                             pps: turret.shotPPS,
                             blastRadius: turret.shotBlastRadius,
                             attack: turret.shotAttack
