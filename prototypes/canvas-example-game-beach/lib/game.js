@@ -147,23 +147,8 @@ var game = (function () {
         }
     };
 
-    // purge dead units
-    var purge = function (state) {
-        var i = state.pool.enemy.length,
-        disp;
-        while (i--) {
-            disp = state.pool.enemy[i];
-            if (disp.hp === 0) {
-                var cell = getCell(state, disp.x, disp.y);
-                cell.clear = true;
-                state.pool.enemy.splice(i, 1);
-                state.kills += 1;
-            }
-        }
-    };
-
     // move boats
-    var moveBoats = function (state, secs) {
+    var updateBoats = function (state, secs) {
         var i = state.pool.enemy.length,
         boat;
         while (i--) {
@@ -180,6 +165,13 @@ var game = (function () {
                     boat.x = water.x;
                     boat.y = water.y;
                 }
+            }
+            // purge dead boats
+            if (boat.hp === 0) {
+                var cell = getCell(state, boat.x, boat.y);
+                cell.clear = true;
+                state.pool.enemy.splice(i, 1);
+                state.kills += 1;
             }
         }
     };
@@ -263,7 +255,6 @@ var game = (function () {
                 state.pool.shots.splice(i, 1);
             }
         }
-
     };
 
     // PUBLIC API
@@ -299,8 +290,8 @@ var game = (function () {
         secs = t / 1000;
         // spawn
         spawn(state, secs);
-        purge(state);
-        moveBoats(state, secs);
+        //purge(state);
+        updateBoats(state, secs);
         updateTurrets(state, secs);
         updateShots(state, secs);
         // update blasts
