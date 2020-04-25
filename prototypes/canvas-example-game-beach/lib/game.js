@@ -11,12 +11,13 @@ var game = (function () {
     var SPAWN = {
         rate: 0.5, // spawn rate in secs
         playerMax: 10, // max player units
-        enemyMax: 10,
+        enemyMax: 20,
         shotMax: 60
     };
 
     var TURRET = {
-        minAttackRange: 5
+        minAttackRange: 5,
+        maxInaccuracy: 2
     };
 
     // create the array of cell objects
@@ -121,10 +122,11 @@ var game = (function () {
                     state.pool.player.push({
                         x: land.x,
                         y: land.y,
-                        attack: 1,
+                        attack: 5,
                         attackRange: TURRET.minAttackRange,
-                        fireRate: 0.25,
-                        fireSecs: 0.25
+                        fireRate: 2,
+                        fireSecs: 1,
+                        accuracy: 0
                     })
                 }
             }
@@ -137,8 +139,8 @@ var game = (function () {
                     state.pool.enemy.push({
                         x: water.x,
                         y: water.y,
-                        hp: 10,
-                        hpMax: 10,
+                        hp: 100,
+                        hpMax: 100,
                         secs: 0,
                         speed: 3
                     });
@@ -194,8 +196,9 @@ var game = (function () {
                     if (state.pool.shots.length < SPAWN.shotMax) {
                         var sx = turret.x + 0.5,
                         sy = turret.y + 0.5,
-                        tx = target.x + 0.5 - 1 + 1 * 2 * Math.random(),
-                        ty = target.y + 0.5 - 1 + 1 * 2 * Math.random();
+                        ma = TURRET.maxInaccuracy,
+                        tx = target.x + 0.5 + (-ma + ma * 2 * Math.random()) * (1 - turret.accuracy),
+                        ty = target.y + 0.5 + (-ma + ma * 2 * Math.random()) * (1 - turret.accuracy);
                         state.pool.shots.push({
                             x: sx,
                             y: sy,
@@ -208,7 +211,7 @@ var game = (function () {
                             h: Math.atan2(ty - sy, tx - sx),
                             pps: 8,
                             blastRadius: 2,
-                            attack: 1
+                            attack: 50
                         });
                     }
                 }
@@ -227,7 +230,7 @@ var game = (function () {
             boat = state.pool.enemy[i];
             d = utils.distance(shot.x, shot.y, boat.x, boat.y);
             if (d <= shot.blastRadius) {
-                boat.hp -= shot.attack - d / shot.blastRadius * 0.95;
+                boat.hp -= shot.attack - d / shot.blastRadius;
                 boat.hp = boat.hp < 0 ? 0 : boat.hp;
             }
         }
