@@ -9,7 +9,7 @@ var game = (function () {
 
     // SPAWN 'Constants'
     var SPAWN = {
-        rate: 3, // spawn rate in secs
+        rate: 1, // spawn rate in secs
         playerMax: 10, // max player units
         enemyMax: 3
     };
@@ -108,7 +108,9 @@ var game = (function () {
                     land.clear = false;
                     state.pool.player.push({
                         x: land.x,
-                        y: land.y
+                        y: land.y,
+                        fireRate: 1,
+                        fireSecs: 1
                     })
                 }
             }
@@ -130,7 +132,6 @@ var game = (function () {
     };
 
     var moveBoats = function (state, secs) {
-
         var i = state.pool.enemy.length,
         boat;
         while (i--) {
@@ -151,6 +152,31 @@ var game = (function () {
         }
     };
 
+    var updateTurrets = function (state, secs) {
+
+        var i = state.pool.player.length,
+        turret;
+        while (i--) {
+            turret = state.pool.player[i];
+            turret.fireSecs -= secs;
+            if (turret.fireSecs <= 0) {
+
+                turret.fireSecs = turret.fireRate + Math.abs(turret.fireSecs) % turret.fireRate;
+
+                var targets = state.pool.enemy.filter(function (boat) {
+                        return utils.distance(boat.x, boat.y, turret.x, turret.y) <= 3;
+                    });
+                if (targets.length >= 1) {
+                    var target = targets[Math.floor(targets.length * Math.random())];
+                    console.log(target);
+                }
+            }
+
+        }
+
+    };
+    var updateShots = function (state, secs) {};
+
     // PUBLIC API
     var api = {
         GRID: GRID,
@@ -167,12 +193,10 @@ var game = (function () {
             spawnSecs: 0,
             pool: {
                 player: [],
-                enemy: []
+                enemy: [],
+                shots: []
             }
         };
-
-        console.log(getNear(state, state.cells[0], 1.5, 0))
-
         return state;
     };
 
@@ -185,6 +209,8 @@ var game = (function () {
         // spawn
         spawn(state, secs);
         moveBoats(state, secs);
+        updateTurrets(state, secs);
+        updateShots(state, secs);
         // set lt to now
         state.lt = now;
     };
