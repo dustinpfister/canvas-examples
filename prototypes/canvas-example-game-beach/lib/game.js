@@ -224,8 +224,7 @@ var game = (function () {
     };
 
     // shot blast
-    var blast = function (state, shot) {
-
+    var spawnBlast = function (state, shot) {
         var i = state.pool.enemy.length,
         boat,
         dam,
@@ -251,7 +250,7 @@ var game = (function () {
             shot.x = shot.sx + Math.cos(shot.h) * d;
             shot.y = shot.sy + Math.sin(shot.h) * d;
             if (d === shot.d) {
-                blast(state, shot);
+                spawnBlast(state, shot);
                 state.pool.shots.splice(i, 1);
             }
         }
