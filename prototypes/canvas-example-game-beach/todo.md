@@ -1,12 +1,11 @@
 # todo list for canvas-example-main-beach
 
 ## 0.2 - Turrets attack boats
-* game.js: new shot pool for shot display objects
-* game.js: turrets shoot at ships when they are in range
-* game.js: turret shots have splash damage, so some damage will happen even if the ship move out of range
-* game.js: turret shots will hurt any ships in splash range
+* (done) game.js: new shot pool for shot display objects
+* (done) game.js: turrets shoot at ships when they are in range
+* (done) game.js: turret shots have splash damage, so some damage will happen even if the ship move out of range
 * (done) game.js: ships are destroyed when hp === 0
-* draw.js: draw.shots method for drawing current state of shots
+* (done) draw.js: draw.shots method for drawing current state of shots
 
 ## 0.1 - Cell areaType, boats and turrets
 * (done) game.js: a area tile can have a water, beach, or land areaType index
