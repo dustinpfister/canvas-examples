@@ -147,6 +147,8 @@ var game = (function () {
         while (i--) {
             disp = state.pool.enemy[i];
             if (disp.hp === 0) {
+                var cell = getCell(state, disp.x, disp.y);
+                cell.clear = true;
                 state.pool.enemy.splice(i, 1);
             }
         }
