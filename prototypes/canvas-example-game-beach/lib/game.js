@@ -236,6 +236,7 @@ var game = (function () {
             x: shot.x,
             y: shot.y,
             secs: 0,
+            secsMax: 1,
             radius: shot.blastRadius
         });
     };
@@ -299,7 +300,7 @@ var game = (function () {
         while (i--) {
             var blast = state.pool.blasts[i];
             blast.secs += secs;
-            if (blast.secs >= 0.5) {
+            if (blast.secs >= blast.secsMax) {
                 state.pool.blasts.splice(i, 1);
             }
         }

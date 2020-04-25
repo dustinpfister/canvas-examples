@@ -60,11 +60,13 @@ var draw = (function () {
         var i = state.pool.blasts.length,
         cellSize = game.GRID.cellSize,
         blast;
-        ctx.fillStyle = 'rgba(255,255,0,0.3)';
         while (i--) {
             blast = state.pool.blasts[i];
+            var per = blast.secs / blast.secsMax;
+            per = per > 1 ? 1 : per;
             ctx.beginPath();
-            ctx.arc(blast.x * cellSize, blast.y * cellSize, blast.radius * cellSize, 0, Math.PI * 2);
+            ctx.fillStyle = 'rgba(255,128,0,' + (0.6 - (0.55 * per)) + ')';
+            ctx.arc(blast.x * cellSize, blast.y * cellSize, blast.radius * cellSize * per, 0, Math.PI * 2);
             ctx.fill();
         }
     };
