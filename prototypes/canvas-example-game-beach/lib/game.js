@@ -11,7 +11,7 @@ var game = (function () {
     var SPAWN = {
         rate: 0.5, // spawn rate in secs
         playerMax: 10, // max player units
-        enemyMax: 20,
+        enemyMax: 3,
         shotMax: 60
     };
 
@@ -126,7 +126,10 @@ var game = (function () {
                         attackRange: TURRET.minAttackRange,
                         fireRate: 2,
                         fireSecs: 1,
-                        accuracy: 0
+                        accuracy: 0,
+                        shotPPS: 32,
+                        shotBlastRadius: 0.5,
+                        shotAttack: 50
                     })
                 }
             }
@@ -209,9 +212,9 @@ var game = (function () {
                             secs: 0,
                             d: utils.distance(sx, sy, tx, ty),
                             h: Math.atan2(ty - sy, tx - sx),
-                            pps: 8,
-                            blastRadius: 2,
-                            attack: 50
+                            pps: turret.shotPPS,
+                            blastRadius: turret.shotBlastRadius,
+                            attack: turret.shotAttack
                         });
                     }
                 }
