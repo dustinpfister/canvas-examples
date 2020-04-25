@@ -60,7 +60,7 @@ var draw = (function () {
         var i = state.pool.blasts.length,
         cellSize = game.GRID.cellSize,
         blast;
-        ctx.fillStyle = 'rgba(255,255,255,0.25)';
+        ctx.fillStyle = 'rgba(255,255,0,0.3)';
         while (i--) {
             blast = state.pool.blasts[i];
             ctx.beginPath();

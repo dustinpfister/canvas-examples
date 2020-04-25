@@ -3,8 +3,11 @@
 ## 0.3 - Blast disp objects
 * (done) game.js: spawnBlast method pushes a blast object to a new blast pool
 * (done) draw.js: draw.blasts method
-* game.js: state.kills kill count
-* draw.js: draw.info to draw state info
+* (done) game.js: state.kills kill count
+* (done) draw.js: draw.info to draw state info
+* game.js: cap for blasts just like everything else
+* game.js: blasts expand from the center point to the blast radius
+* draw.js: draw.blasts transparency effect reaches zero as radius expands to max
 
 ## 0.2 - Turrets attack boats
 * (done) game.js: new shot pool for shot display objects
