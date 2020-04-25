@@ -31,6 +31,7 @@ var loop = function () {
     draw.units(ctx, state);
     draw.shots(ctx, state);
     draw.blasts(ctx, state);
+    draw.info(ctx, state);
 
 };
 loop();

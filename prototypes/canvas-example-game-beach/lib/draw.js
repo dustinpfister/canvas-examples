@@ -67,6 +67,14 @@ var draw = (function () {
             ctx.arc(blast.x * cellSize, blast.y * cellSize, blast.radius * cellSize, 0, Math.PI * 2);
             ctx.fill();
         }
+    };
+
+    api.info = function (ctx, state) {
+
+        ctx.fillStyle = 'white';
+        ctx.textBaseline = 'top';
+        ctx.font = '10px arial';
+        ctx.fillText('kills: ' + state.kills, 10, 10);
 
     };
 
