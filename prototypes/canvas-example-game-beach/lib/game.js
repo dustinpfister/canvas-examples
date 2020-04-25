@@ -16,8 +16,9 @@ var game = (function () {
     };
 
     var TURRET = {
-        minAttackRange: 5,
-        maxInaccuracy: 2
+        minAttackRange: 3
+        maxAttackRage: 5,
+        maxInaccuracy: 3
     };
 
     // create the array of cell objects
@@ -124,12 +125,12 @@ var game = (function () {
                         y: land.y,
                         attack: 5,
                         attackRange: TURRET.minAttackRange,
-                        fireRate: 2,
-                        fireSecs: 1,
+                        fireRate: 1,
+                        fireSecs: 0.1,
                         accuracy: 0,
-                        shotPPS: 32,
-                        shotBlastRadius: 0.5,
-                        shotAttack: 50
+                        shotPPS: 8,
+                        shotBlastRadius: 2,
+                        shotAttack: 5
                     })
                 }
             }
@@ -142,8 +143,8 @@ var game = (function () {
                     state.pool.enemy.push({
                         x: water.x,
                         y: water.y,
-                        hp: 100,
-                        hpMax: 100,
+                        hp: 10,
+                        hpMax: 10,
                         secs: 0,
                         speed: 3
                     });
@@ -188,6 +189,7 @@ var game = (function () {
         while (i--) {
             turret = state.pool.player[i];
             turret.fireSecs -= secs;
+            // fire
             if (turret.fireSecs <= 0) {
                 turret.fireSecs = turret.fireRate + Math.abs(turret.fireSecs) % turret.fireRate;
                 var targets = state.pool.enemy.filter(function (boat) {
@@ -231,9 +233,10 @@ var game = (function () {
         // apply damage
         while (i--) {
             boat = state.pool.enemy[i];
-            d = utils.distance(shot.x, shot.y, boat.x, boat.y);
+            d = utils.distance(shot.x, shot.y, boat.x + 0.5, boat.y + 0.5);
             if (d <= shot.blastRadius) {
-                boat.hp -= shot.attack - d / shot.blastRadius;
+                dam = shot.attack - d / shot.blastRadius * shot.attack;
+                boat.hp -= dam;
                 boat.hp = boat.hp < 0 ? 0 : boat.hp;
             }
         }

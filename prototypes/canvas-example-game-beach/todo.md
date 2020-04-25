@@ -1,13 +1,19 @@
 # todo list for canvas-example-main-beach
 
+## 0.4 - Upgrading Turrets
+* game.js: cap for blasts just like everything else
+* game.js: TURRET.maxLevel value
+* game.js: kill count for each turret
+* game.jsL kill count for turret increases level
+* game.js: turrets attackRange goes up from min to max in TURRET as level goes up
+
 ## 0.3 - Blast disp objects
 * (done) game.js: spawnBlast method pushes a blast object to a new blast pool
 * (done) draw.js: draw.blasts method
 * (done) game.js: state.kills kill count
 * (done) draw.js: draw.info to draw state info
-* game.js: cap for blasts just like everything else
-* game.js: blasts expand from the center point to the blast radius
-* draw.js: draw.blasts transparency effect reaches zero as radius expands to max
+* (done) game.js: blasts expand from the center point to the blast radius
+* (done) draw.js: draw.blasts transparency effect reaches zero as radius expands to max
 
 ## 0.2 - Turrets attack boats
 * (done) game.js: new shot pool for shot display objects
