@@ -11,7 +11,8 @@ var game = (function () {
     var SPAWN = {
         rate: 1, // spawn rate in secs
         playerMax: 10, // max player units
-        enemyMax: 3
+        enemyMax: 3,
+        shotMax: 10
     };
 
     // create the array of cell objects
@@ -186,6 +187,26 @@ var game = (function () {
                     // direct attack
                     target.hp -= turret.attack;
                     target.hp = target.hp < 0 ? 0 : target.hp;
+
+                    // push shot
+                    if (state.pool.shots.length < SPAWN.shotMax) {
+                        var sx = turret.x + 0.5,
+                        sy = turret.y + 0.5,
+                        tx = turret.x + 0.5,
+                        ty = target.y + 0.5;
+                        state.pool.shots.push({
+                            x: sx,
+                            y: sy,
+                            sx: sx,
+                            sy: sy,
+                            tx: tx,
+                            ty: ty,
+                            d: utils.distance(sx, sy, tx, ty),
+                            h: Math.atan2(ty - sy, tx - sy),
+                            pps: 32
+                        });
+                    }
+
                 }
             }
         }
