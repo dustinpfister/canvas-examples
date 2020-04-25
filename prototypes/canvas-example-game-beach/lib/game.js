@@ -157,6 +157,7 @@ var game = (function () {
                 var cell = getCell(state, disp.x, disp.y);
                 cell.clear = true;
                 state.pool.enemy.splice(i, 1);
+                state.kills += 1;
             }
         }
     };
@@ -279,6 +280,7 @@ var game = (function () {
             cells: createCells(opt.areaData),
             lt: new Date(),
             spawnSecs: 0,
+            kills: 0,
             pool: {
                 player: [],
                 enemy: [],

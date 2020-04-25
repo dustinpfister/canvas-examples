@@ -3,6 +3,8 @@
 ## 0.3 - Blast disp objects
 * (done) game.js: spawnBlast method pushes a blast object to a new blast pool
 * (done) draw.js: draw.blasts method
+* game.js: state.kills kill count
+* draw.js: draw.info to draw state info
 
 ## 0.2 - Turrets attack boats
 * (done) game.js: new shot pool for shot display objects
