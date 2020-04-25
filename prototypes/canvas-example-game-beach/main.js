@@ -29,6 +29,7 @@ var loop = function () {
     draw.back(ctx, canvas);
     draw.cells(ctx, state);
     draw.units(ctx, state);
+    draw.shots(ctx, state);
 
 };
 loop();

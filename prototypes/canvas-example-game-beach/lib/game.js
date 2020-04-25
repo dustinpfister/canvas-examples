@@ -11,8 +11,8 @@ var game = (function () {
     var SPAWN = {
         rate: 1, // spawn rate in secs
         playerMax: 10, // max player units
-        enemyMax: 3,
-        shotMax: 10
+        enemyMax: 5,
+        shotMax: 30
     };
 
     // create the array of cell objects
@@ -201,6 +201,7 @@ var game = (function () {
                             sy: sy,
                             tx: tx,
                             ty: ty,
+                            secs: 0,
                             d: utils.distance(sx, sy, tx, ty),
                             h: Math.atan2(ty - sy, tx - sy),
                             pps: 32
@@ -211,7 +212,12 @@ var game = (function () {
             }
         }
     };
-    var updateShots = function (state, secs) {};
+
+    var updateShots = function (state, secs) {
+		
+		
+		
+	};
 
     // PUBLIC API
     var api = {

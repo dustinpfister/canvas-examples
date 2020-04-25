@@ -43,6 +43,19 @@ var draw = (function () {
         drawPool(ctx, state, 'enemy');
     };
 
+    api.shots = function (ctx, state) {
+        var i = state.pool.shots.length,
+        cellSize = game.GRID.cellSize,
+        shot;
+        ctx.fillStyle = 'white';
+        while (i--) {
+            shot = state.pool.shots[i];
+            ctx.beginPath();
+            ctx.arc(shot.x * cellSize, shot.y * cellSize, 2, 0, Math.PI * 2);
+            ctx.fill();
+        }
+    };
+
     return api;
 
 }
