@@ -109,6 +109,7 @@ var game = (function () {
                     state.pool.player.push({
                         x: land.x,
                         y: land.y,
+                        attack: 1,
                         fireRate: 1,
                         fireSecs: 1
                     })
@@ -123,6 +124,8 @@ var game = (function () {
                     state.pool.enemy.push({
                         x: water.x,
                         y: water.y,
+                        hp: 10,
+                        hpMax: 10,
                         secs: 0,
                         speed: 3
                     });
@@ -168,7 +171,9 @@ var game = (function () {
                     });
                 if (targets.length >= 1) {
                     var target = targets[Math.floor(targets.length * Math.random())];
-                    console.log(target);
+                    target.hp -= turret.attack;
+                    target.hp = target.hp < 0 ? 0 : target.hp;
+                    console.log(target.hp);
                 }
             }
 
