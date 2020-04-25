@@ -11,12 +11,12 @@ var game = (function () {
     var SPAWN = {
         rate: 0.5, // spawn rate in secs
         playerMax: 10, // max player units
-        enemyMax: 3,
+        enemyMax: 10,
         shotMax: 60
     };
 
     var TURRET = {
-        minAttackRange: 3
+        minAttackRange: 3,
         maxAttackRage: 5,
         maxInaccuracy: 3
     };
