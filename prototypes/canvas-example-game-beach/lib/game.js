@@ -134,6 +134,17 @@ var game = (function () {
         }
     };
 
+    var purge = function (state) {
+        var i = state.pool.enemy.length,
+        disp;
+        while (i--) {
+            disp = state.pool.enemy[i];
+            if (disp.hp === 0) {
+                state.pool.enemy.splice(i, 1);
+            }
+        }
+    };
+
     var moveBoats = function (state, secs) {
         var i = state.pool.enemy.length,
         boat;
@@ -156,16 +167,13 @@ var game = (function () {
     };
 
     var updateTurrets = function (state, secs) {
-
         var i = state.pool.player.length,
         turret;
         while (i--) {
             turret = state.pool.player[i];
             turret.fireSecs -= secs;
             if (turret.fireSecs <= 0) {
-
                 turret.fireSecs = turret.fireRate + Math.abs(turret.fireSecs) % turret.fireRate;
-
                 var targets = state.pool.enemy.filter(function (boat) {
                         return utils.distance(boat.x, boat.y, turret.x, turret.y) <= 3;
                     });
@@ -173,12 +181,9 @@ var game = (function () {
                     var target = targets[Math.floor(targets.length * Math.random())];
                     target.hp -= turret.attack;
                     target.hp = target.hp < 0 ? 0 : target.hp;
-                    console.log(target.hp);
                 }
             }
-
         }
-
     };
     var updateShots = function (state, secs) {};
 
@@ -213,6 +218,7 @@ var game = (function () {
         secs = t / 1000;
         // spawn
         spawn(state, secs);
+        purge(state);
         moveBoats(state, secs);
         updateTurrets(state, secs);
         updateShots(state, secs);
