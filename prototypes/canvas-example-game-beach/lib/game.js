@@ -12,7 +12,7 @@ var game = (function () {
         rate: 0.5, // spawn rate in secs
         playerMax: 10, // max player units
         enemyMax: 10,
-        shotMax: 30
+        shotMax: 60
     };
 
     // create the array of cell objects
@@ -111,8 +111,8 @@ var game = (function () {
                         x: land.x,
                         y: land.y,
                         attack: 1,
-                        fireRate: 1,
-                        fireSecs: 1
+                        fireRate: 0.25,
+                        fireSecs: 0.25
                     })
                 }
             }
@@ -184,16 +184,12 @@ var game = (function () {
                 if (targets.length >= 1) {
                     var target = targets[Math.floor(targets.length * Math.random())];
 
-                    // direct attack
-                    //target.hp -= turret.attack;
-                    //target.hp = target.hp < 0 ? 0 : target.hp;
-
                     // push shot
                     if (state.pool.shots.length < SPAWN.shotMax) {
                         var sx = turret.x + 0.5,
                         sy = turret.y + 0.5,
-                        tx = target.x + 0.5,
-                        ty = target.y + 0.5;
+                        tx = target.x + 0.5 - 1 + 1 * 2 * Math.random(),
+                        ty = target.y + 0.5 - 1 + 1 * 2 * Math.random();
                         state.pool.shots.push({
                             x: sx,
                             y: sy,
@@ -205,8 +201,8 @@ var game = (function () {
                             d: utils.distance(sx, sy, tx, ty),
                             h: Math.atan2(ty - sy, tx - sx),
                             pps: 8,
-                            blastRadius: 3,
-                            attack: 5
+                            blastRadius: 1,
+                            attack: 1
                         });
                     }
 
@@ -220,12 +216,13 @@ var game = (function () {
 
         var i = state.pool.enemy.length,
         boat,
+        dam,
         d;
         while (i--) {
             boat = state.pool.enemy[i];
             d = utils.distance(shot.x, shot.y, boat.x, boat.y);
             if (d <= shot.blastRadius) {
-                boat.hp -= shot.attack - d * 0.95;
+                boat.hp -= shot.attack - d / shot.blastRadius * 0.95;
                 boat.hp = boat.hp < 0 ? 0 : boat.hp;
             }
         }
