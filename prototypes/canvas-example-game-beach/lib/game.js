@@ -214,7 +214,7 @@ var game = (function () {
                             d: utils.distance(sx, sy, tx, ty),
                             h: Math.atan2(ty - sy, tx - sx),
                             pps: 8,
-                            blastRadius: 1,
+                            blastRadius: 2,
                             attack: 1
                         });
                     }
@@ -229,6 +229,7 @@ var game = (function () {
         boat,
         dam,
         d;
+        // apply damage
         while (i--) {
             boat = state.pool.enemy[i];
             d = utils.distance(shot.x, shot.y, boat.x, boat.y);
@@ -237,6 +238,13 @@ var game = (function () {
                 boat.hp = boat.hp < 0 ? 0 : boat.hp;
             }
         }
+        // push blast
+        state.pool.blasts.push({
+            x: shot.x,
+            y: shot.y,
+            secs: 0,
+            radius: shot.blastRadius
+        });
     };
 
     var updateShots = function (state, secs) {
@@ -274,7 +282,8 @@ var game = (function () {
             pool: {
                 player: [],
                 enemy: [],
-                shots: []
+                shots: [],
+                blasts: []
             }
         };
         return state;
@@ -292,6 +301,15 @@ var game = (function () {
         moveBoats(state, secs);
         updateTurrets(state, secs);
         updateShots(state, secs);
+        // update blasts
+        var i = state.pool.blasts.length;
+        while (i--) {
+            var blast = state.pool.blasts[i];
+            blast.secs += secs;
+            if (blast.secs >= 0.5) {
+                state.pool.blasts.splice(i, 1);
+            }
+        }
         // set lt to now
         state.lt = now;
     };

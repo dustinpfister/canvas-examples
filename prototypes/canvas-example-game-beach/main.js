@@ -30,6 +30,7 @@ var loop = function () {
     draw.cells(ctx, state);
     draw.units(ctx, state);
     draw.shots(ctx, state);
+    draw.blasts(ctx, state);
 
 };
 loop();

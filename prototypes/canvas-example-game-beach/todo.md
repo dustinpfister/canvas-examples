@@ -1,5 +1,9 @@
 # todo list for canvas-example-main-beach
 
+## 0.3 - Blast disp objects
+* (done) game.js: spawnBlast method pushes a blast object to a new blast pool
+* (done) draw.js: draw.blasts method
+
 ## 0.2 - Turrets attack boats
 * (done) game.js: new shot pool for shot display objects
 * (done) game.js: turrets shoot at ships when they are in range

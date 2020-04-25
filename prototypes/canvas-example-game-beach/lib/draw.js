@@ -56,6 +56,20 @@ var draw = (function () {
         }
     };
 
+    api.blasts = function (ctx, state) {
+        var i = state.pool.blasts.length,
+        cellSize = game.GRID.cellSize,
+        blast;
+        ctx.fillStyle = 'rgba(255,255,255,0.25)';
+        while (i--) {
+            blast = state.pool.blasts[i];
+            ctx.beginPath();
+            ctx.arc(blast.x * cellSize, blast.y * cellSize, blast.radius * cellSize, 0, Math.PI * 2);
+            ctx.fill();
+        }
+
+    };
+
     return api;
 
 }
