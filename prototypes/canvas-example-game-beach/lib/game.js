@@ -37,9 +37,16 @@ var game = (function () {
         return cells;
     };
 
+    // get cell
     var getCell = function (state, x, y) {
         return state.cells[GRID.w * y + x];
-    }
+    };
+
+    var getRandomCell = function (pool) {
+
+        return pool[Math.floor(pool.length * Math.random())];
+
+    };
 
     // get areas of type and clear status (optional)
     // clear === undefined (clear and not clear tiles)
@@ -125,7 +132,7 @@ var game = (function () {
             if (state.pool.enemy.length < SPAWN.enemyMax) {
                 var waters = getBorderWaters(state);
                 if (waters.length >= 1) {
-                    var water = waters[Math.floor(waters.length * Math.random())];
+                    var water = getRandomCell(waters);
                     water.clear = false;
                     state.pool.enemy.push({
                         x: water.x,
@@ -165,7 +172,7 @@ var game = (function () {
                 boat.secs %= boat.speed;
                 var near = getNear(state, boat, 1.5, 0);
                 if (near.length >= 1) {
-                    var water = near[Math.floor(Math.random() * near.length)],
+                    var water = getRandomCell(near),
                     current = getCell(state, boat.x, boat.y);
                     current.clear = true;
                     water.clear = false;
@@ -189,8 +196,7 @@ var game = (function () {
                         return utils.distance(boat.x, boat.y, turret.x, turret.y) <= turret.attackRange;
                     });
                 if (targets.length >= 1) {
-                    var target = targets[Math.floor(targets.length * Math.random())];
-
+                    var target = getRandomCell(targets);
                     // push shot
                     if (state.pool.shots.length < SPAWN.shotMax) {
                         var sx = turret.x + 0.5,
@@ -212,7 +218,6 @@ var game = (function () {
                             attack: 1
                         });
                     }
-
                 }
             }
         }
