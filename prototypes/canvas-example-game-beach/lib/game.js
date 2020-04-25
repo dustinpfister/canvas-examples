@@ -15,6 +15,10 @@ var game = (function () {
         shotMax: 60
     };
 
+    var TURRET = {
+        minAttackRange: 5
+    };
+
     // create the array of cell objects
     var createCells = function (areaData) {
         var i = 0,
@@ -103,7 +107,7 @@ var game = (function () {
             state.spawnSecs %= SPAWN.rate;
             // player spawn
             if (state.pool.player.length < SPAWN.playerMax) {
-                var freeLands = getBestTurretLands(state, 3);
+                var freeLands = getBestTurretLands(state, TURRET.minAttackRange);
                 if (freeLands.length >= 1) {
                     var land = freeLands[0].cell;
                     land.clear = false;
@@ -111,6 +115,7 @@ var game = (function () {
                         x: land.x,
                         y: land.y,
                         attack: 1,
+                        attackRange: TURRET.minAttackRange,
                         fireRate: 0.25,
                         fireSecs: 0.25
                     })
@@ -179,7 +184,7 @@ var game = (function () {
             if (turret.fireSecs <= 0) {
                 turret.fireSecs = turret.fireRate + Math.abs(turret.fireSecs) % turret.fireRate;
                 var targets = state.pool.enemy.filter(function (boat) {
-                        return utils.distance(boat.x, boat.y, turret.x, turret.y) <= 3;
+                        return utils.distance(boat.x, boat.y, turret.x, turret.y) <= turret.attackRange;
                     });
                 if (targets.length >= 1) {
                     var target = targets[Math.floor(targets.length * Math.random())];
