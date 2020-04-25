@@ -134,6 +134,7 @@ var game = (function () {
         }
     };
 
+    // purge dead units
     var purge = function (state) {
         var i = state.pool.enemy.length,
         disp;
@@ -145,6 +146,7 @@ var game = (function () {
         }
     };
 
+    // move boats
     var moveBoats = function (state, secs) {
         var i = state.pool.enemy.length,
         boat;
@@ -166,6 +168,7 @@ var game = (function () {
         }
     };
 
+    // update player turrets
     var updateTurrets = function (state, secs) {
         var i = state.pool.player.length,
         turret;
@@ -179,6 +182,8 @@ var game = (function () {
                     });
                 if (targets.length >= 1) {
                     var target = targets[Math.floor(targets.length * Math.random())];
+
+                    // direct attack
                     target.hp -= turret.attack;
                     target.hp = target.hp < 0 ? 0 : target.hp;
                 }
