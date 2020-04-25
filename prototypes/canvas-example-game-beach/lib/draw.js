@@ -19,6 +19,7 @@ var draw = (function () {
         }
     };
 
+    // old simple draw pool method
     var drawPool = function (ctx, state, poolName) {
         var i = state.pool[poolName].length,
         colors = {
@@ -38,9 +39,31 @@ var draw = (function () {
         }
     };
 
+    // draw turrets method
+    var drawTurrets = function (ctx, state) {
+        var i = state.pool.player.length,
+        tur,
+        cellSize = game.GRID.cellSize;
+        ctx.fillStyle = 'pink';
+        while (i--) {
+            tur = state.pool.player[i];
+            ctx.save();
+            ctx.translate((tur.x + 0.5) * cellSize, (tur.y + 0.5) * cellSize);
+            ctx.rotate(tur.h);
+            ctx.beginPath();
+            ctx.moveTo(6, 0);
+            ctx.lineTo(6 * -1, 6 * -1);
+            ctx.lineTo(6 * -1, 6);
+            ctx.fill();
+            ctx.restore();
+        }
+
+    };
+
     api.units = function (ctx, state) {
-        drawPool(ctx, state, 'player');
         drawPool(ctx, state, 'enemy');
+        drawPool(ctx, state, 'player');
+        drawTurrets(ctx, state);
     };
 
     api.shots = function (ctx, state) {
@@ -72,12 +95,10 @@ var draw = (function () {
     };
 
     api.info = function (ctx, state) {
-
         ctx.fillStyle = 'white';
         ctx.textBaseline = 'top';
         ctx.font = '10px arial';
         ctx.fillText('kills: ' + state.kills, 10, 10);
-
     };
 
     return api;

@@ -12,7 +12,7 @@ var game = (function () {
         rate: 0.5, // spawn rate in secs
         playerMax: 10, // max player units
         enemyMax: 10,
-        shotMax: 60
+        shotMax: 1000
     };
 
     var TURRET = {
@@ -124,12 +124,12 @@ var game = (function () {
                         h: 0, // heading
                         attack: 5,
                         attackRange: TURRET.minAttackRange,
-                        fireRate: 1,
-                        fireSecs: 0.1,
-                        accuracy: 0,
-                        shotPPS: 8,
-                        shotBlastRadius: 2,
-                        shotAttack: 5
+                        fireRate: 0.2,
+                        fireSecs: 0.2,
+                        accuracy: 0.9,
+                        shotPPS: 4,
+                        shotBlastRadius: 1,
+                        shotAttack: 0.1
                     })
                 }
             }
