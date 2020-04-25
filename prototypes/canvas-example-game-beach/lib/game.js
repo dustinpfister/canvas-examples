@@ -9,9 +9,9 @@ var game = (function () {
 
     // SPAWN 'Constants'
     var SPAWN = {
-        rate: 1, // spawn rate in secs
+        rate: 0.5, // spawn rate in secs
         playerMax: 10, // max player units
-        enemyMax: 5,
+        enemyMax: 10,
         shotMax: 30
     };
 
@@ -185,8 +185,8 @@ var game = (function () {
                     var target = targets[Math.floor(targets.length * Math.random())];
 
                     // direct attack
-                    target.hp -= turret.attack;
-                    target.hp = target.hp < 0 ? 0 : target.hp;
+                    //target.hp -= turret.attack;
+                    //target.hp = target.hp < 0 ? 0 : target.hp;
 
                     // push shot
                     if (state.pool.shots.length < SPAWN.shotMax) {
@@ -204,7 +204,9 @@ var game = (function () {
                             secs: 0,
                             d: utils.distance(sx, sy, tx, ty),
                             h: Math.atan2(ty - sy, tx - sx),
-                            pps: 16
+                            pps: 8,
+                            blastRadius: 3,
+                            attack: 5
                         });
                     }
 
@@ -213,8 +215,23 @@ var game = (function () {
         }
     };
 
-    var updateShots = function (state, secs) {
+    // shot blast
+    var blast = function (state, shot) {
 
+        var i = state.pool.enemy.length,
+        boat,
+        d;
+        while (i--) {
+            boat = state.pool.enemy[i];
+            d = utils.distance(shot.x, shot.y, boat.x, boat.y);
+            if (d <= shot.blastRadius) {
+                boat.hp -= shot.attack - d * 0.95;
+                boat.hp = boat.hp < 0 ? 0 : boat.hp;
+            }
+        }
+    };
+
+    var updateShots = function (state, secs) {
         var i = state.pool.shots.length,
         shot;
         while (i--) {
@@ -225,7 +242,7 @@ var game = (function () {
             shot.x = shot.sx + Math.cos(shot.h) * d;
             shot.y = shot.sy + Math.sin(shot.h) * d;
             if (d === shot.d) {
-
+                blast(state, shot);
                 state.pool.shots.splice(i, 1);
             }
         }
