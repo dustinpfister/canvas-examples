@@ -21,17 +21,29 @@ var state = game.create({
         areaData: areaData
     });
 
+// frame rate capping for model
+// update and drawing so that this does
+// nit eat up as much CPU overhead
+var lt = new Date(),
+targetFPS = 24,
+targetDelay = 1000 / targetFPS;
 var loop = function () {
+
+    var now = new Date(),
+    t = now - lt;
+
     requestAnimationFrame(loop);
 
-    game.update(state);
-
-    draw.back(ctx, canvas);
-    draw.cells(ctx, state);
-    draw.units(ctx, state);
-    draw.shots(ctx, state);
-    draw.blasts(ctx, state);
-    draw.info(ctx, state);
+    if (t >= targetDelay) {
+        game.update(state);
+        draw.back(ctx, canvas);
+        draw.cells(ctx, state);
+        draw.units(ctx, state);
+        draw.shots(ctx, state);
+        draw.blasts(ctx, state);
+        draw.info(ctx, state);
+        lt = now;
+    }
 
 };
 loop();
