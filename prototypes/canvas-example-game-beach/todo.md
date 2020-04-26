@@ -1,7 +1,25 @@
 # todo list for canvas-example-main-beach
 
+## 0.7 - Advanced Turrets
+* game.js: fixed point system for setting turret values that is independent of the current turret level
+* game.js: fixed point system consists of an array of point values
+* game.js: The number of points for each element in the array of points, as well as the ratio is used to set certain base values that are then raised bu the level of the turret.
+
+## 0.6 - Advanced enemy spawning
+* game.js: Spawn method broken down into playerSpan, and enemySpawn methods
+* game.js: Enemies spawn at a rate this is independent of the rate that player turrets spawn
+* game.js: Wave system consisting of an array of arrays of boat objects, and arrays of boat objects getting pushed to a cache array from which boats are  spawned in at the new boatSpawnRate value
+* game.js: formula that sets hpMax value for each collection of boats by wave number, and boat collection number
+
+## 0.5 - Image loader
+* draw.js: image loader for draw.js
+* draw.js: new draw methods that make use of sheets
+* main.js: simple state machine for main with just load and run state
+* main.js: images loaded in load state, and game progress to run state when done
+* main.js: using new sprite sheets to skin game rather than just fillRect a plain color
+
 ## 0.4 - Upgrading Turrets
-* game.js: cap for blasts just like everything else
+* (done) game.js: cap for blasts just like everything else
 * game.js: TURRET.maxLevel value
 * game.js: kill count for each turret
 * game.jsL kill count for turret increases level

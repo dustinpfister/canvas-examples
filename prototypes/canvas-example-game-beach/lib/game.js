@@ -153,7 +153,7 @@ var game = (function () {
         }
     };
 
-    // move boats
+    // update boats
     var updateBoats = function (state, secs) {
         var i = state.pool.enemy.length,
         boat;
@@ -237,6 +237,7 @@ var game = (function () {
             d = utils.distance(shot.x, shot.y, boat.x + 0.5, boat.y + 0.5);
             if (d <= shot.blastRadius) {
                 dam = shot.attack - d / shot.blastRadius * shot.attack;
+                // attack but do not purge boat, that is done in updateBoats
                 boat.hp -= dam;
                 boat.hp = boat.hp < 0 ? 0 : boat.hp;
             }
@@ -253,6 +254,7 @@ var game = (function () {
         }
     };
 
+    // update shots in the shot pool
     var updateShots = function (state, secs) {
         var i = state.pool.shots.length,
         shot;
