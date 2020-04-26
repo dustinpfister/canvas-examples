@@ -1,5 +1,8 @@
 var game = (function () {
 
+    // HARD CODED SETTINGS
+    // ********** ********** ********** ********** **********
+
     // GRID 'Constants'
     var GRID = {
         w: 16,
@@ -21,6 +24,9 @@ var game = (function () {
         maxAttackRage: 6,
         maxInaccuracy: 3
     };
+
+    // CELLS create and get
+    // ********** ********** ********** ********** **********
 
     // create the array of cell objects
     var createCells = function (areaData) {
@@ -108,6 +114,9 @@ var game = (function () {
         });
     };
 
+    // SPAWN boats and turrets
+    // ********** ********** ********** ********** **********
+
     // spawn units
     var spawn = function (state, secs) {
         state.spawnSecs += secs;
@@ -152,6 +161,9 @@ var game = (function () {
             }
         }
     };
+
+    // UPDATE  boats and turrets
+    // ********** ********** ********** ********** **********
 
     // update boats
     var updateBoats = function (state, secs) {
@@ -225,6 +237,9 @@ var game = (function () {
         }
     };
 
+    // SHOTS ans BLASTS
+    // ********** ********** ********** ********** **********
+
     // shot blast
     var spawnBlast = function (state, shot) {
         var i = state.pool.enemy.length,
@@ -273,6 +288,8 @@ var game = (function () {
     };
 
     // PUBLIC API
+    // ********** ********** ********** ********** **********
+
     var api = {
         GRID: GRID,
         SPAWN: SPAWN
