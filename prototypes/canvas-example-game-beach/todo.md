@@ -18,12 +18,13 @@
 * main.js: images loaded in load state, and game progress to run state when done
 * main.js: using new sprite sheets to skin game rather than just fillRect a plain color
 
-## 0.4 - Upgrading Turrets
+## 0.4 - Upgrading Turrets by Kills
 * (done) game.js: cap for blasts just like everything else
-* game.js: TURRET.maxLevel value
+* game.js: TURRET.maxKillLevel value
 * game.js: kill count for each turret
-* game.jsL kill count for turret increases level
-* game.js: turrets attackRange goes up from min to max in TURRET as level goes up
+* game.jsL kill count for turret increases killLevel
+* game.js: turrets attackRange goes up from min to max in TURRET as killLevel goes up
+* game.js: turrets attack goes up to TURRET.maxAttack with killLevel
 
 ## 0.3 - Blast disp objects
 * (done) game.js: spawnBlast method pushes a blast object to a new blast pool

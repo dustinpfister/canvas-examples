@@ -20,6 +20,7 @@ var game = (function () {
     };
 
     var TURRET = {
+        maxKillLevel: 10,
         minAttackRange: 4,
         maxAttackRage: 6,
         maxInaccuracy: 3
@@ -114,6 +115,11 @@ var game = (function () {
         });
     };
 
+    // LEVEL UP LOGIC
+    // ********** ********** ********** ********** **********
+
+    var getKillLevel = function (disp) {};
+
     // SPAWN boats and turrets
     // ********** ********** ********** ********** **********
 
@@ -132,6 +138,7 @@ var game = (function () {
                         x: land.x,
                         y: land.y,
                         h: 0, // heading
+                        kills: 0,
                         attack: 5,
                         attackRange: TURRET.minAttackRange,
                         fireRate: 0.2,
@@ -139,7 +146,7 @@ var game = (function () {
                         accuracy: 0.9,
                         shotPPS: 4,
                         shotBlastRadius: 1,
-                        shotAttack: 0.1
+                        shotAttack: 1
                     })
                 }
             }
@@ -218,6 +225,7 @@ var game = (function () {
                         ty = target.y + 0.5 + (-ma + ma * 2 * Math.random()) * (1 - turret.accuracy);
                         turret.h = Math.atan2(ty - sy, tx - sx);
                         state.pool.shots.push({
+                            shotFrom: turret,
                             x: sx,
                             y: sy,
                             sx: sx,
@@ -255,6 +263,10 @@ var game = (function () {
                 // attack but do not purge boat, that is done in updateBoats
                 boat.hp -= dam;
                 boat.hp = boat.hp < 0 ? 0 : boat.hp;
+                // step kills for shotFrom if we have that value
+                if (boat.hp === 0 && shot.shotFrom != undefined) {
+                    shot.shotFrom.kills += 1;
+                }
             }
         }
         // push blast

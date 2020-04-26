@@ -44,9 +44,9 @@ var draw = (function () {
         var i = state.pool.player.length,
         tur,
         cellSize = game.GRID.cellSize;
-        ctx.fillStyle = 'pink';
         while (i--) {
             tur = state.pool.player[i];
+            ctx.fillStyle = 'pink';
             ctx.save();
             ctx.translate((tur.x + 0.5) * cellSize, (tur.y + 0.5) * cellSize);
             ctx.rotate(tur.h);
@@ -56,6 +56,12 @@ var draw = (function () {
             ctx.lineTo(6 * -1, 6);
             ctx.fill();
             ctx.restore();
+
+            // info
+            ctx.fillStyle = 'white';
+            ctx.textBaseline = 'top';
+            ctx.font = '8px arial';
+            ctx.fillText(tur.kills, tur.x * cellSize, tur.y * cellSize);
         }
 
     };
