@@ -61,7 +61,7 @@ var draw = (function () {
             ctx.fillStyle = 'white';
             ctx.textBaseline = 'top';
             ctx.font = '8px arial';
-            ctx.fillText(tur.kills, tur.x * cellSize, tur.y * cellSize);
+            ctx.fillText(tur.killLevel, tur.x * cellSize, tur.y * cellSize);
         }
 
     };
@@ -105,6 +105,10 @@ var draw = (function () {
         ctx.textBaseline = 'top';
         ctx.font = '10px arial';
         ctx.fillText('kills: ' + state.kills, 10, 10);
+        var tur = state.pool.player[0];
+        if (tur) {
+            ctx.fillText('turret: {kills: ' + tur.kills + ', killLevel: ' + tur.killLevel + ', killsToNext: '+ tur.killsToNext + '}', 10, 20);
+        }
     };
 
     return api;

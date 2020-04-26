@@ -118,7 +118,17 @@ var game = (function () {
     // LEVEL UP LOGIC
     // ********** ********** ********** ********** **********
 
-    var getKillLevel = function (disp) {};
+
+    var killLevel = {
+        set: function (disp) {
+            return Math.floor((1 + Math.sqrt(1 + 8 * disp.kills / 50)) / 2);
+        },
+        // XXX buggy
+        toNext: function (disp) {
+            var level = disp.killLevel;
+            return ((Math.pow(level, 2) - (level)) * disp.kills) / 2;
+        }
+    };
 
     // SPAWN boats and turrets
     // ********** ********** ********** ********** **********
@@ -134,11 +144,13 @@ var game = (function () {
                 if (freeLands.length >= 1) {
                     var land = freeLands[0].cell;
                     land.clear = false;
-                    state.pool.player.push({
+                    var turret = {
                         x: land.x,
                         y: land.y,
                         h: 0, // heading
-                        kills: 0,
+                        kills: 49,
+                        killLevel: 1,
+                        killsToNext: 0,
                         attack: 5,
                         attackRange: TURRET.minAttackRange,
                         fireRate: 0.2,
@@ -147,7 +159,10 @@ var game = (function () {
                         shotPPS: 4,
                         shotBlastRadius: 1,
                         shotAttack: 1
-                    })
+                    };
+                    turret.killLevel = killLevel.set(turret);
+                    turret.killsToNext = killLevel.toNext(turret);
+                    state.pool.player.push(turret);
                 }
             }
             // enemy
@@ -264,8 +279,12 @@ var game = (function () {
                 boat.hp -= dam;
                 boat.hp = boat.hp < 0 ? 0 : boat.hp;
                 // step kills for shotFrom if we have that value
-                if (boat.hp === 0 && shot.shotFrom != undefined) {
-                    shot.shotFrom.kills += 1;
+                var disp = shot.shotFrom;
+                if (boat.hp === 0 && disp != undefined) {
+
+                    disp.kills += 1;
+                    disp.killLevel = killLevel.set(disp);
+                    disp.killsToNext = killLevel.toNext(disp);
                 }
             }
         }
