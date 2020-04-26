@@ -12,7 +12,8 @@ var game = (function () {
         rate: 0.5, // spawn rate in secs
         playerMax: 10, // max player units
         enemyMax: 10,
-        shotMax: 1000
+        shotMax: 100,
+        blastMax: 50
     };
 
     var TURRET = {
@@ -241,13 +242,15 @@ var game = (function () {
             }
         }
         // push blast
-        state.pool.blasts.push({
-            x: shot.x,
-            y: shot.y,
-            secs: 0,
-            secsMax: 1,
-            radius: shot.blastRadius
-        });
+        if (state.pool.blasts.length < SPAWN.blastMax) {
+            state.pool.blasts.push({
+                x: shot.x,
+                y: shot.y,
+                secs: 0,
+                secsMax: 1,
+                radius: shot.blastRadius
+            });
+        }
     };
 
     var updateShots = function (state, secs) {
