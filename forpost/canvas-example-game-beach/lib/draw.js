@@ -57,6 +57,12 @@ var draw = (function () {
             ctx.fill();
             ctx.restore();
 
+            // attack range
+            ctx.strokeStyle = 'rgba(255,255,255,0.5)';
+            ctx.beginPath();
+            ctx.arc((tur.x + 0.5) * cellSize, (tur.y + 0.5) * cellSize, tur.attackRange * cellSize, 0, Math.PI * 2);
+            ctx.stroke();
+
             // info
             ctx.fillStyle = 'white';
             ctx.textBaseline = 'top';
