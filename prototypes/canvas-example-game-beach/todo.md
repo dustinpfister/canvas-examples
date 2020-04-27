@@ -27,9 +27,9 @@
 
 ## 0.4 - Upgrading Turrets by Kills
 * (done) game.js: cap for blasts just like everything else
-* game.js: TURRET.maxKillLevel value
-* game.js: kill count for each turret
-* game.jsL kill count for turret increases killLevel
+* (done) game.js: TURRET.maxKillLevel value
+* (done) game.js: kill count for each turret
+* (done) game.jsL kill count for turret increases killLevel
 * game.js: turrets attackRange goes up from min to max in TURRET as killLevel goes up
 * game.js: turrets attack goes up to TURRET.maxAttack with killLevel
 

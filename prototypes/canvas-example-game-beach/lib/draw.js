@@ -100,15 +100,31 @@ var draw = (function () {
         }
     };
 
-    api.info = function (ctx, state) {
+    // basic info that I would want no matter what
+    api.info = function (ctx, state, yi) {
         ctx.fillStyle = 'white';
         ctx.textBaseline = 'top';
         ctx.font = '10px arial';
-        ctx.fillText('kills: ' + state.kills, 10, 10);
-        var tur = state.pool.player[0];
-        if (tur) {
-			var kl = tur.killLevel;
-            ctx.fillText('turret: {kills: ' + tur.kills + ', killLevel: ' + kl.level + ', killsToNext: '+ kl.toNext + '}', 10, 20);
+        ctx.fillText('kills: ' + state.kills, 10, 10 * yi);
+    };
+
+    api.debugInfoTurrets = function (ctx, state, yi) {
+        var i = state.pool.player.length;
+        ctx.fillStyle = 'white';
+        //ctx.strokeStyle = 'black';
+        ctx.textBaseline = 'top';
+        ctx.font = '10px arial';
+        ctx.lineWidth = 1;
+        while (i--) {
+            var tur = state.pool.player[i];
+            if (tur) {
+                var kl = tur.killLevel,
+                text = 'turret: {kills: ' + tur.kills +
+                    ', killLevel: ' + kl.level + ', killsToNext: ' +
+                    kl.toNext + '}';
+                ctx.fillText(text, 10, 10 * (yi + i));
+                //ctx.strokeText(text, 10, 10 * (yi + i));
+            }
         }
     };
 

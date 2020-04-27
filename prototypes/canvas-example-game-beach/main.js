@@ -41,7 +41,9 @@ var loop = function () {
         draw.units(ctx, state);
         draw.shots(ctx, state);
         draw.blasts(ctx, state);
-        draw.info(ctx, state);
+        draw.info(ctx, state, 1);
+
+        draw.debugInfoTurrets(ctx, state, 2);
         lt = now;
     }
 
