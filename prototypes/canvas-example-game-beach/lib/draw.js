@@ -108,9 +108,9 @@ var draw = (function () {
         ctx.fillText('kills: ' + state.kills, 10, 10 * yi);
     };
 
-    api.debugInfoTurrets = function (ctx, state, yi) {
+    api.debugInfoTurrets = function (ctx, state, yi, op) {
         var i = state.pool.player.length;
-        ctx.fillStyle = 'white';
+        ctx.fillStyle = 'rgba(255,255,255,' + op + ')';
         ctx.textBaseline = 'top';
         ctx.font = '10px arial';
         ctx.lineWidth = 1;
@@ -118,9 +118,11 @@ var draw = (function () {
             var tur = state.pool.player[i];
             if (tur) {
                 var kl = tur.killLevel,
-                text = i + ') turret: {kills: ' + tur.kills +
-                    ', killLevel: ' + kl.level + ', killsToNext: ' +
-                    kl.toNext + '}';
+                text = i + ') turret: { ' +
+                    'kills: ' + tur.kills + ',' +
+                    'killLevel: ' + kl.level + ',' +
+                    'killsToNext: ' + kl.toNext +
+                    '}';
                 ctx.fillText(text, 10, 10 * (yi + i));
             }
         }

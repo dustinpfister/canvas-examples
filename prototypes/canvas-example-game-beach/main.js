@@ -42,9 +42,9 @@ var loop = function () {
         draw.shots(ctx, state);
         draw.blasts(ctx, state);
 
-        draw.back(ctx, canvas, 0.3);
+        draw.back(ctx, canvas, 0.5);
         draw.info(ctx, state, 1);
-        draw.debugInfoTurrets(ctx, state, 2);
+        draw.debugInfoTurrets(ctx, state, 2, 0.5);
         lt = now;
     }
 
