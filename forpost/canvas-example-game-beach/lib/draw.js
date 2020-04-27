@@ -125,12 +125,12 @@ var draw = (function () {
             if (tur) {
                 var kl = tur.killLevel,
                 text = i + ') turret: { ' +
-                    'k: ' + tur.kills + ',' +
-                    'kl: ' + kl.level + ',' +
+                    'k: ' + tur.kills + ', ' +
+                    'kl: ' + kl.level + ', ' +
                     //'killsToNext: ' + kl.toNext +
-                    'a: ' + tur.attack + ',' +
-                    'ar: ' + tur.attackRange  +
-                    '}';
+                    'at: ' + tur.attack + ', ' +
+                    'r: ' + tur.attackRange  +
+                    ' }';
                 ctx.fillText(text, 10, 10 * (yi + i));
             }
         }

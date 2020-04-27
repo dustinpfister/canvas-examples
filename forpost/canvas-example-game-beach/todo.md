@@ -33,7 +33,7 @@
 * (done) game.js: TURRET.maxKillLevel value
 * (done) game.js: kill count for each turret
 * (done) game.jsL kill count for turret increases killLevel
-* game.js: turrets attackRange goes up from min to max in TURRET as killLevel goes up
+* (done) game.js: turrets attackRange goes up from min to max in TURRET as killLevel goes up
 * game.js: turrets attack goes up to TURRET.maxAttack with killLevel
 
 ## 0.3 - Blast disp objects

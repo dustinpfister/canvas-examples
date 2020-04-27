@@ -21,6 +21,8 @@ var game = (function () {
 
     var TURRET = {
         maxKillLevel: 10,
+        minAttack: 1,
+        maxAttack: 10,
         minAttackRange: 3,
         maxAttackRange: 7,
         maxInaccuracy: 3
@@ -120,9 +122,14 @@ var game = (function () {
 
     // set values of the given turret object bu the current killLevel value
     var applyTurretKillLevel = function (tur) {
-        var per = tur.killLevel.level / TURRET.maxKillLevel;
-        var deltaRange = (TURRET.maxAttackRange - TURRET.minAttackRange) * per;
-        tur.attackRange = TURRET.minAttackRange + deltaRange;
+        var per = tur.killLevel.level / TURRET.maxKillLevel,
+        delta;
+        // attack
+        delta = (TURRET.maxAttack - TURRET.minAttack) * per;
+        tur.attack = TURRET.minAttack + delta;
+        // attack range
+        delta = (TURRET.maxAttackRange - TURRET.minAttackRange) * per;
+        tur.attackRange = TURRET.minAttackRange + delta;
     };
 
     // SPAWN boats and turrets
@@ -169,8 +176,8 @@ var game = (function () {
                     state.pool.enemy.push({
                         x: water.x,
                         y: water.y,
-                        hp: 10,
-                        hpMax: 10,
+                        hp: 50,
+                        hpMax: 50,
                         secs: 0,
                         speed: 3
                     });
