@@ -61,7 +61,7 @@ var draw = (function () {
             ctx.fillStyle = 'white';
             ctx.textBaseline = 'top';
             ctx.font = '8px arial';
-            ctx.fillText(tur.killLevel, tur.x * cellSize, tur.y * cellSize);
+            ctx.fillText(tur.killLevel.level, tur.x * cellSize, tur.y * cellSize);
         }
 
     };
@@ -107,7 +107,8 @@ var draw = (function () {
         ctx.fillText('kills: ' + state.kills, 10, 10);
         var tur = state.pool.player[0];
         if (tur) {
-            ctx.fillText('turret: {kills: ' + tur.kills + ', killLevel: ' + tur.killLevel + ', killsToNext: '+ tur.killsToNext + '}', 10, 20);
+			var kl = tur.killLevel;
+            ctx.fillText('turret: {kills: ' + tur.kills + ', killLevel: ' + kl.level + ', killsToNext: '+ kl.toNext + '}', 10, 20);
         }
     };
 
