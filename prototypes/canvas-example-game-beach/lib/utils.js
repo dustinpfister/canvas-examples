@@ -15,10 +15,10 @@ utils.XP = (function () {
         //return Math.pow(level, 2);
         return ((Math.pow(level, 2) - level) * 50) / 2;
     };
-
-    var parseByXP = function (xp) {
-        var l = set(xp),
-        level = Math.floor(l),
+    var parseByXP = function (xp, cap) {
+        var l = set(xp);
+        l = l > cap ? cap : l;
+        var level = Math.floor(l),
         forNext = XPto(level + 1);
         return {
             level: level,
@@ -28,10 +28,9 @@ utils.XP = (function () {
             toNext: forNext - xp
         };
     };
-
     return {
-        parseByLevel: function (l) {
-            return parseByXP(XPto(l));
+        parseByLevel: function (l, cap) {
+            return parseByXP(XPto(l, cap));
         },
         parseByXP: parseByXP
     };

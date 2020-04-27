@@ -145,7 +145,7 @@ var game = (function () {
                         shotBlastRadius: 1,
                         shotAttack: 2
                     };
-                    turret.killLevel = utils.XP.parseByXP(turret.kills);
+                    turret.killLevel = utils.XP.parseByXP(turret.kills, TURRET.maxKillLevel);
                     state.pool.player.push(turret);
                 }
             }
@@ -266,7 +266,7 @@ var game = (function () {
                 var disp = shot.shotFrom;
                 if (boat.hp === 0 && disp != undefined) {
                     disp.kills += 1;
-                    disp.killLevel = utils.XP.parseByXP(disp.kills);
+                    disp.killLevel = utils.XP.parseByXP(disp.kills, TURRET.maxKillLevel);
                 }
             }
         }
@@ -305,7 +305,8 @@ var game = (function () {
 
     var api = {
         GRID: GRID,
-        SPAWN: SPAWN
+        SPAWN: SPAWN,
+        TURRET: TURRET
     };
 
     // create a state object
