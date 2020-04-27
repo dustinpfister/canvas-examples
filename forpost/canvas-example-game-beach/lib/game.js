@@ -183,8 +183,8 @@ var game = (function () {
                     state.pool.enemy.push({
                         x: water.x,
                         y: water.y,
-                        hp: 50,
-                        hpMax: 50,
+                        hp: 10,
+                        hpMax: 10,
                         secs: 0,
                         speed: 3
                     });
