@@ -1,5 +1,12 @@
 # todo list for canvas-example-main-beach
 
+## 0.8 - Target lock
+* game.js: introduction of 'target lock'
+* game.js: Once a turret 'locks' onto a target, it will continue firring at it, until it is destroyed, goes out of range, ect.
+* game.js: introduce 'Random target locking' which is no different from what is going on now, only it will 'lock'
+* game.js: introduce 'weak target locking' where the weakest target in a in range group is selected, in addition there should be an additional condition for 'unlocking' from a target that is finding a weaker target in the in range group.
+* game.js: At least consider additional target lock options such as 'closest to grid location x,y locking', 'strong target locking', and so forth expanding this list as needed.
+
 ## 0.7 - Advanced Turrets
 * game.js: fixed point system for setting turret values that is independent of the current turret level
 * game.js: fixed point system consists of an array of point values
