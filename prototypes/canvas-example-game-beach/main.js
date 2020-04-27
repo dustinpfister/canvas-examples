@@ -36,13 +36,14 @@ var loop = function () {
 
     if (t >= targetDelay) {
         game.update(state);
-        draw.back(ctx, canvas);
+        draw.back(ctx, canvas, 1);
         draw.cells(ctx, state);
         draw.units(ctx, state);
         draw.shots(ctx, state);
         draw.blasts(ctx, state);
-        draw.info(ctx, state, 1);
 
+        draw.back(ctx, canvas, 0.3);
+        draw.info(ctx, state, 1);
         draw.debugInfoTurrets(ctx, state, 2);
         lt = now;
     }

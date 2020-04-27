@@ -2,8 +2,8 @@ var draw = (function () {
 
     var api = {};
 
-    api.back = function (ctx, canvas) {
-        ctx.fillStyle = 'black';
+    api.back = function (ctx, canvas, op) {
+        ctx.fillStyle = 'rgba(0,0,0,' + op + ')';
         ctx.fillRect(0, 0, canvas.width, canvas.height);
     };
 
