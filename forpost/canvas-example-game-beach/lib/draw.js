@@ -125,9 +125,11 @@ var draw = (function () {
             if (tur) {
                 var kl = tur.killLevel,
                 text = i + ') turret: { ' +
-                    'kills: ' + tur.kills + ',' +
-                    'killLevel: ' + kl.level + ',' +
-                    'killsToNext: ' + kl.toNext +
+                    'k: ' + tur.kills + ',' +
+                    'kl: ' + kl.level + ',' +
+                    //'killsToNext: ' + kl.toNext +
+                    'a: ' + tur.attack + ',' +
+                    'ar: ' + tur.attackRange  +
                     '}';
                 ctx.fillText(text, 10, 10 * (yi + i));
             }
