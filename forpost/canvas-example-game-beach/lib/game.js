@@ -292,6 +292,7 @@ var game = (function () {
                 if (boat.hp === 0 && disp != undefined) {
                     disp.kills += 1;
                     disp.killLevel = utils.XP.parseByXP(disp.kills, TURRET.maxKillLevel);
+                    applyTurretKillLevel(disp);
                 }
             }
         }
