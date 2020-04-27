@@ -133,7 +133,7 @@ var game = (function () {
                         x: land.x,
                         y: land.y,
                         h: 0, // heading
-                        kills: 0,
+                        kills: 2248,
                         killLevel: 1,
                         killsToNext: 0,
                         attack: 5,

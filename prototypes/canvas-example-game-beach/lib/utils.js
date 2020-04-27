@@ -24,8 +24,8 @@ utils.XP = (function () {
             level: level,
             levelFrac: l,
             xp: xp,
-            forNext: forNext,
-            toNext: forNext - xp
+            forNext: l === cap ? Infinity : forNext,
+            toNext: l === cap ? Infinity : forNext - xp
         };
     };
     return {
