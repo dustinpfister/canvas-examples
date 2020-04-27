@@ -1,5 +1,8 @@
 # todo list for canvas-example-main-beach
 
+## 0.9 - boat animation
+* boats make a smooth translation of movement from one cell to another
+
 ## 0.8 - Target lock
 * game.js: introduction of 'target lock'
 * game.js: Once a turret 'locks' onto a target, it will continue firring at it, until it is destroyed, goes out of range, ect.
