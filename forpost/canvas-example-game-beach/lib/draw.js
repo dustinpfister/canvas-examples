@@ -129,7 +129,8 @@ var draw = (function () {
                     'kl: ' + kl.level + ', ' +
                     //'killsToNext: ' + kl.toNext +
                     'at: ' + tur.attack + ', ' +
-                    'r: ' + tur.attackRange  +
+                    'r: ' + tur.attackRange + ', ' +
+                    'ac: ' + tur.accuracy +
                     ' }';
                 ctx.fillText(text, 10, 10 * (yi + i));
             }

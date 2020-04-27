@@ -25,7 +25,11 @@ var game = (function () {
         maxAttack: 10,
         minAttackRange: 3,
         maxAttackRange: 7,
-        maxInaccuracy: 3
+
+        minAccuracy: 0.4,
+        maxAccuracy: 0.9,
+
+        maxInaccuracy: 2
     };
 
     // CELLS create and get
@@ -130,6 +134,9 @@ var game = (function () {
         // attack range
         delta = (TURRET.maxAttackRange - TURRET.minAttackRange) * per;
         tur.attackRange = TURRET.minAttackRange + delta;
+        // accuracy
+        delta = (TURRET.maxAccuracy - TURRET.minAccuracy) * per;
+        tur.accuracy = TURRET.minAccuracy + delta;
     };
 
     // SPAWN boats and turrets
@@ -157,9 +164,9 @@ var game = (function () {
                         attackRange: TURRET.minAttackRange,
                         fireRate: 0.1,
                         fireSecs: 0.2,
-                        accuracy: 0.9,
+                        accuracy: 0.0,
                         shotPPS: 4,
-                        shotBlastRadius: 1,
+                        shotBlastRadius: 1.5,
                         shotAttack: 2
                     };
                     turret.killLevel = utils.XP.parseByXP(turret.kills, TURRET.maxKillLevel);
