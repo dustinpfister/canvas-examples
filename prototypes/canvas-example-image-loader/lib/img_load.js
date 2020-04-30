@@ -16,13 +16,16 @@ var imgLoad = (function () {
         count = 0;
         while (i < opt.fileCount) {
             img = new Image();
-            img.addEventListener('load', function (e) {
-                count += 1;
-                opt.onFileLoad(count / opt.fileCount, i, img, e);
-                if (count === opt.fileCount) {
-                    opt.onDone(imgArr);
-                }
-            });
+            (function (i) {
+                img.addEventListener('load', function (e) {
+                    count += 1;
+                    opt.onFileLoad(count / opt.fileCount, i, img, e);
+                    if (count === opt.fileCount) {
+                        opt.onDone(imgArr);
+                    }
+                });
+            }
+                (i));
             imgArr.push(img);
             img.src = opt.baseURL + i + opt.fileType;
             i += 1;
