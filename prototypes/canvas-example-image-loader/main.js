@@ -11,7 +11,17 @@ draw.back(ctx, canvas);
 
 var img = imgLoad({
         baseURL: './img/',
-        fileCount: 1
+        fileCount: 1,
+		onFileLoad: function(per,i){
+			
+			console.log(per, i);
+			
+		},
+		onDone: function(){
+			
+			console.log('files loaded');
+			
+		}
     });
 
 /*

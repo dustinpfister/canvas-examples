@@ -6,18 +6,23 @@ var imgLoad = (function () {
         opt.baseURL = opt.baseURL || '';
         opt.fileType = opt.fileType || '.png';
         opt.fileCount = opt.fileCount || 1;
+        opt.onFileLoad = opt.onFileLoad || function () {};
+        opt.onDone = opt.onDone || function () {};
+        opt.onError = opt.onError || function () {};
 
-        var img = new Image(),
-        n = 0;
+        var img,
+        i = 0,
+        count = 0;
 
+        img = new Image();
         img.addEventListener('load', function (e) {
-
-            console.log('load event');
-            console.log(e);
-
+            count += 1;
+            opt.onFileLoad(count / opt.fileCount, i, img, e);
+            if (count === opt.fileCount) {
+                opt.onDone();
+            }
         });
-
-        img.src = opt.baseURL + n + opt.fileType;
+        img.src = opt.baseURL + i + opt.fileType;
 
     };
 
