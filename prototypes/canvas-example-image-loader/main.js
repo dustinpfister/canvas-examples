@@ -9,11 +9,16 @@ ctx.translate(0.5, 0.5);
 
 var img = imgLoad({
         baseURL: './img/',
-        fileCount: 2,
+        fileCount: 3,
         onFileLoad: function (per, i, img, e) {
             console.log(per, i);
             console.log(img);
             console.log(e);
+        },
+        onError: function (e, i, img) {
+            console.log('Error loading image');
+            console.log(img);
+            draw.back(ctx, canvas);
         },
         onDone: function (imgArr) {
             console.log('files loaded');

@@ -19,10 +19,15 @@ var imgLoad = (function () {
             (function (i, img) {
                 img.addEventListener('load', function (e) {
                     count += 1;
+                    // call on file load method
                     opt.onFileLoad(count / opt.fileCount, i, img, e);
+                    // if last file call on done
                     if (count === opt.fileCount) {
                         opt.onDone(imgArr);
                     }
+                });
+                img.addEventListener('error', function (e) {
+                    opt.onError(e, i, img);
                 });
             }
                 (i, img));
