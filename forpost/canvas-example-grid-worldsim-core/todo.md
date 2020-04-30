@@ -1,12 +1,11 @@
 # todo list for canvas-example-worldsim-core
 
-* make tick.forCell method for land_base plug-in increase and decrease fert differently
 * make a land_plants plug-in that will spawn plants
-
 * cell_index plug-in that figures out the proper sheet and cell index values for each cell
 * draw module draws cells based on sheet and cell index values
 
 
+## 0.0.1 - The Basic idea working
 * (done) add support for ticks
 * (done) crude draw module improvement that shows status of fert land property
 * (done) add support for events

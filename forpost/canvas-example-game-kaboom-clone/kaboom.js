@@ -25,15 +25,15 @@ var kaboom = (function () {
 
     var LEVELS = {};
     var i = 1,
-    totalLevels = 10,
+    totalLevels = 30,
     per;
     while (i <= totalLevels) {
         per = (i - 1) / (totalLevels - 1);
         LEVELS[i] = {
-            bombPPS: 64 + 236 * per,
+            bombPPS: 64 + 300 * per, //64 + 236 * per,
             bombCount: 10 + 90 * per,
             bomber: {
-                pps: 32 + 850 * per,
+                pps: 32 + 950 * per, //32 + 850 * per,
                 changeRate: 0.5 - 0.3 * per,
                 dropRate: 1 / (Math.floor(5 * per) + 1)
             }

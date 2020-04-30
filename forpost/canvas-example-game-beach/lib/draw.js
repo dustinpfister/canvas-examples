@@ -58,7 +58,7 @@ var draw = (function () {
             ctx.restore();
 
             // attack range
-            ctx.strokeStyle = 'rgba(255,255,255,0.5)';
+            ctx.strokeStyle = 'rgba(255,255,255,0.2)';
             ctx.beginPath();
             ctx.arc((tur.x + 0.5) * cellSize, (tur.y + 0.5) * cellSize, tur.attackRange * cellSize, 0, Math.PI * 2);
             ctx.stroke();

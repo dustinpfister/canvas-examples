@@ -7,10 +7,19 @@ canvas.width = 320;
 canvas.height = 240;
 ctx.translate(0.5, 0.5);
 
+draw.back(ctx, canvas);
+
+var img = imgLoad({
+        baseURL: './img/',
+        fileCount: 1
+    });
+
+/*
 var loop = function () {
-    requestAnimationFrame(loop);
-    draw.back(ctx, canvas);
+requestAnimationFrame(loop);
+draw.back(ctx, canvas);
 
 };
 
 loop();
+*/

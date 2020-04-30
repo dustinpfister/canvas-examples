@@ -1,5 +1,3 @@
-# todo list for canvas-example-orbcraft
+# todo list for canvas-example-image-loader
 
-* start with a state machine for this project
-* have a grid
-* have a starting Orb class
+* start a basic example of the image loader

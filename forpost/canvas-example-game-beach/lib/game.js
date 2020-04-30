@@ -14,7 +14,7 @@ var game = (function () {
     var SPAWN = {
         rate: 0.5, // spawn rate in secs
         playerMax: 5, // max player units
-        enemyMax: 20,
+        enemyMax: 10,
         shotMax: 100,
         blastMax: 50
     };
@@ -183,8 +183,8 @@ var game = (function () {
                     state.pool.enemy.push({
                         x: water.x,
                         y: water.y,
-                        hp: 10,
-                        hpMax: 10,
+                        hp: 100,
+                        hpMax: 100,
                         secs: 0,
                         speed: 3
                     });
