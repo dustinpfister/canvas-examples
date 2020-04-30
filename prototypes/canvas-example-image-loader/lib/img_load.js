@@ -16,7 +16,7 @@ var imgLoad = (function () {
         count = 0;
         while (i < opt.fileCount) {
             img = new Image();
-            (function (i) {
+            (function (i, img) {
                 img.addEventListener('load', function (e) {
                     count += 1;
                     opt.onFileLoad(count / opt.fileCount, i, img, e);
@@ -25,7 +25,7 @@ var imgLoad = (function () {
                     }
                 });
             }
-                (i));
+                (i, img));
             imgArr.push(img);
             img.src = opt.baseURL + i + opt.fileType;
             i += 1;
