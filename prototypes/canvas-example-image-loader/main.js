@@ -9,7 +9,7 @@ ctx.translate(0.5, 0.5);
 
 var img = imgLoad({
         baseURL: './img/',
-        fileCount: 1,
+        fileCount: 2,
         onFileLoad: function (per, i) {
             console.log(per, i);
         },
@@ -18,6 +18,7 @@ var img = imgLoad({
             console.log(imgArr);
             draw.back(ctx, canvas);
             ctx.drawImage(imgArr[0], 0, 0);
+            ctx.drawImage(imgArr[1], 100, 0);
         }
     });
 

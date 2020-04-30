@@ -14,18 +14,20 @@ var imgLoad = (function () {
         imgArr = [],
         i = 0,
         count = 0;
-
-        img = new Image();
-        img.addEventListener('load', function (e) {
-            count += 1;
-            opt.onFileLoad(count / opt.fileCount, i, img, e);
-            if (count === opt.fileCount) {
-                opt.onDone(imgArr);
-            }
-        });
-        imgArr.push(img);
-        img.src = opt.baseURL + i + opt.fileType;
-
+        while (i < opt.fileCount) {
+            img = new Image();
+            img.addEventListener('load', function (e) {
+                count += 1;
+                opt.onFileLoad(count / opt.fileCount, i, img, e);
+                if (count === opt.fileCount) {
+                    opt.onDone(imgArr);
+                }
+            });
+            imgArr.push(img);
+            img.src = opt.baseURL + i + opt.fileType;
+            i += 1;
+        };
+        return imgArr;
     };
 
 }
