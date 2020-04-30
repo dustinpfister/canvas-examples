@@ -11,6 +11,7 @@ var imgLoad = (function () {
         opt.onError = opt.onError || function () {};
 
         var img,
+        imgArr = [],
         i = 0,
         count = 0;
 
@@ -19,9 +20,10 @@ var imgLoad = (function () {
             count += 1;
             opt.onFileLoad(count / opt.fileCount, i, img, e);
             if (count === opt.fileCount) {
-                opt.onDone();
+                opt.onDone(imgArr);
             }
         });
+        imgArr.push(img);
         img.src = opt.baseURL + i + opt.fileType;
 
     };
