@@ -1,7 +1,5 @@
 var imgLoad = (function () {
-
     return function (opt) {
-
         opt = opt || {};
         opt.baseURL = opt.baseURL || '';
         opt.fileType = opt.fileType || '.png';
@@ -9,7 +7,6 @@ var imgLoad = (function () {
         opt.onFileLoad = opt.onFileLoad || function () {};
         opt.onDone = opt.onDone || function () {};
         opt.onError = opt.onError || function () {};
-
         var img,
         imgArr = [],
         i = 0,
@@ -37,6 +34,5 @@ var imgLoad = (function () {
         };
         return imgArr;
     };
-
 }
     ());
