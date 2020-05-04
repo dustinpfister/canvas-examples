@@ -10,7 +10,9 @@ ctx.translate(0.5, 0.5);
 var img = imgLoad({
         baseURL: './img/',
         fileCount: 2,
-        onFileLoad: function (per, i, img, e) {},
+        onFileLoad: function (per, i, img, e) {
+            // update something like a loading bar here
+        },
         onError: function (e, i, img) {
             console.log('Error loading image');
             console.log(img);
