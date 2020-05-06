@@ -1,4 +1,11 @@
 var draw = {};
+
+draw.clear = function (canvas,ctx) {
+
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+};
+
 // draw a clock to a canvas
 draw.clockText = function (canvas, ctx, clock) {
     ctx.lineWidth = 1;
