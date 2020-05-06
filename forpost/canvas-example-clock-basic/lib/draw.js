@@ -1,17 +1,24 @@
+var draw = {};
 // draw a clock to a canvas
-var drawClockText = function (canvas, ctx, clock) {
+draw.clockText = function (canvas, ctx, clock) {
     ctx.lineWidth = 1;
     ctx.fillStyle = 'white';
     ctx.strokeStyle = 'black';
-    ctx.font = '30px arial';
+    ctx.font = '40px arial';
     ctx.textBaseline = 'middle';
     ctx.textAlign = 'center';
-    var text = (clock.dayPer * 100).toFixed(3) + '%';
-    ctx.fillText(text, canvas.width / 2, canvas.height / 2);
-    ctx.strokeText(text, canvas.width / 2, canvas.height / 2);
+    // percent done of day
+    var text = Math.floor(clock.dayPer * 100) + '%';
+    ctx.fillText(text, canvas.width / 2, canvas.height / 2 - 20);
+    ctx.strokeText(text, canvas.width / 2, canvas.height / 2 - 20);
+
+    // time
+    ctx.font = '20px arial';
+    ctx.fillText(clock.timeText, canvas.width / 2, canvas.height / 2 + 20);
+    ctx.strokeText(clock.timeText, canvas.width / 2, canvas.height / 2 + 20);
 };
 // draw day circle
-var drawClockDayCircle = function (canvas, ctx, clock) {
+draw.clockDayCircle = function (canvas, ctx, clock) {
     var r = Math.PI * 2 * clock.dayPer;
     ctx.lineWidth = 7;
     ctx.strokeStyle = 'grey';

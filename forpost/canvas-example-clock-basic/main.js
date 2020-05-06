@@ -13,8 +13,8 @@ canvas.height = 240;
 var loop = function (canvas) {
     var clock = clockMod.create(new Date());
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    drawClockText(canvas, ctx, clock);
-    drawClockDayCircle(canvas, ctx, clock);
+    draw.clockText(canvas, ctx, clock);
+    draw.clockDayCircle(canvas, ctx, clock);
 };
 
 
