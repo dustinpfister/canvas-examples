@@ -1,10 +1,10 @@
 ## canvas-example-clock-particles
 
 
-* distance transparency effect for particles
-* faceRadius value for clock object
-* use faceRadius in clock.js
-* use faceRadius in draw.js
+* (done) distance transparency effect for particles
+* (done) faceRadius value for clock object
+* (done) use faceRadius in clock.js
+* (done) use faceRadius in draw.js
 * face centered and scaled
 
 
