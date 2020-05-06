@@ -12,7 +12,6 @@ canvas.height = 240;
 var loop = function () {
     requestAnimationFrame(loop);
     var clock = clockMod.create(new Date());
-
     draw.clear(canvas, ctx);
     draw.hands(canvas, ctx, clock);
     draw.clockDayCircle(canvas, ctx, clock);
