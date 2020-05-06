@@ -1,13 +1,9 @@
 var clockMod = (function () {
-    // pad a value
-    var pad = function (a) {
-        return String('00' + a).slice(-2);
-    };
 
     var getTimeText = function (clock) {
-        return pad(clock.now.getHours()) + ' : ' +
-        pad(clock.now.getMinutes()) + ' : ' +
-        pad(clock.now.getSeconds());
+        return u.pad(clock.now.getHours()) + ' : ' +
+        u.pad(clock.now.getMinutes()) + ' : ' +
+        u.pad(clock.now.getSeconds());
     };
 
     var getDayStart = function (clock) {
