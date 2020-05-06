@@ -33,11 +33,14 @@ draw.pool = function (canvas, ctx, clock) {
     while (i--) {
         part = clock.pool[i];
         d = u.distance(part.x, part.y, 0, 0) / clock.faceRadius;
-        ctx.fillStyle = 'rgba(255,0,0,' + (1 - d.toFixed(2)) + ')';
         if (part.active) {
             ctx.beginPath();
             ctx.arc(part.x, part.y, 5, 0, Math.PI * 2);
+
+            ctx.fillStyle = 'rgba(255,0,0,' + (1 - d.toFixed(2)) + ')';
             ctx.fill();
+            ctx.strokeStyle = 'white';
+            ctx.stroke();
         }
     }
     ctx.restore();
