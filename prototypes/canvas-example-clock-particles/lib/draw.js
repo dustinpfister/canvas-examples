@@ -47,10 +47,10 @@ draw.clockDayCircle = function (canvas, ctx, clock) {
     ctx.lineWidth = 7;
     ctx.strokeStyle = 'grey';
     ctx.beginPath();
-    ctx.arc(canvas.width / 2, canvas.height / 2, (canvas.height - 50) / 2, 0, Math.PI * 2);
+    ctx.arc(canvas.width / 2, canvas.height / 2, clock.faceRadius, 0, Math.PI * 2);
     ctx.stroke();
     ctx.strokeStyle = 'red';
     ctx.beginPath();
-    ctx.arc(canvas.width / 2, canvas.height / 2, (canvas.height - 50) / 2, 0, r);
+    ctx.arc(canvas.width / 2, canvas.height / 2, clock.faceRadius, 0, r);
     ctx.stroke();
 };
