@@ -10,6 +10,11 @@ var clockMod = (function () {
         return new Date(clock.now.getFullYear(), clock.now.getMonth(), clock.now.getDate(), 0, 0, 0, 0)
     };
 
+    var setPart = function (part) {
+        part.pps = 16 + 16 * Math.random();
+        part.heading = Math.PI * 2 * Math.random();
+    };
+
     var createPool = function (count) {
         var i = 0,
         pool = [],
@@ -19,10 +24,11 @@ var clockMod = (function () {
                 i: i,
                 x: 0,
                 y: 0,
-                pps: 16 + 16 * Math.random(),
-                heading: Math.PI * 2 * Math.random(),
+                pps: 0,
+                heading: 0,
                 active: false
             };
+            setPart(part);
             pool.push(part);
             i += 1;
         }
