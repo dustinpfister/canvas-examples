@@ -14,6 +14,25 @@ var clockMod = (function () {
         return new Date(clock.now.getFullYear(), clock.now.getMonth(), clock.now.getDate(), 0, 0, 0, 0)
     };
 
+    var createPool = function (count) {
+        var i = 0,
+        pool = [],
+        part;
+        while (i < count) {
+            part = {
+                i: i,
+                x: 0,
+                y: 0,
+                pps: 16 + 16 * Math.random(),
+                heading: Math.PI * 2 * Math.random(),
+                active: false
+            };
+            pool.push(part);
+            i += 1;
+        }
+        return pool;
+    };
+
     var setClockPropsToNow = function (clock) {
         clock.timeText = getTimeText(clock);
         var dayStart = getDayStart(clock);
@@ -27,6 +46,7 @@ var clockMod = (function () {
             var clock = {};
             clock.now = now || new Date(0);
             setClockPropsToNow(clock);
+            clock.pool = createPool(100);
             return clock;
         },
 
