@@ -55,7 +55,7 @@ var clockMod = (function () {
             if (part.active) {
                 part.x += Math.cos(part.heading) * part.pps * secs;
                 part.y += Math.sin(part.heading) * part.pps * secs;
-                if (part.x < -80 || part.x > 80 || part.y < -80 || part.y > 80) {
+                if (u.distance(part.x, part.y, 0, 0) >= 80) {
                     part.x = 0;
                     part.y = 0;
                 }
