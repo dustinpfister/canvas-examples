@@ -15,7 +15,7 @@ draw.clockText = function (canvas, ctx, clock) {
     ctx.textBaseline = 'middle';
     ctx.textAlign = 'center';
     // percent done of day
-    var text = clock.poolTotalActive;// Math.floor(clock.dayPer * 100) + '%';
+    var text = clock.poolTotalActive; // Math.floor(clock.dayPer * 100) + '%';
     ctx.fillText(text, canvas.width / 2, canvas.height / 2 - 20);
     ctx.strokeText(text, canvas.width / 2, canvas.height / 2 - 20);
     // time
@@ -26,12 +26,14 @@ draw.clockText = function (canvas, ctx, clock) {
 
 draw.pool = function (canvas, ctx, clock) {
     var i = clock.pool.length,
+    d,
     part;
-    ctx.fillStyle = 'red';
     ctx.save();
     ctx.translate(canvas.width / 2, canvas.height / 2);
     while (i--) {
         part = clock.pool[i];
+        d = u.distance(part.x, part.y, 0, 0) / clock.faceRadius;
+        ctx.fillStyle = 'rgba(255,0,0,' + (1-d.toFixed(2)) + ')';
         if (part.active) {
             ctx.beginPath();
             ctx.arc(part.x, part.y, 5, 0, Math.PI * 2);
