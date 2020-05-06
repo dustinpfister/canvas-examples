@@ -14,7 +14,7 @@ var loop = function () {
     requestAnimationFrame(loop);
     clock = clockMod.update(clock, new Date());
     draw.clear(canvas, ctx);
-    //draw.hands(canvas, ctx, clock);
+    draw.pool(canvas, ctx, clock);
     draw.clockDayCircle(canvas, ctx, clock);
     draw.clockText(canvas, ctx, clock);
 };

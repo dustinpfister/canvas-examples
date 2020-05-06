@@ -39,14 +39,14 @@ var clockMod = (function () {
         part;
         while (i--) {
             part = clock.pool[i];
-            if (part.active) {
+            //if (part.active) {
                 part.x += Math.cos(part.heading) * part.pps * secs;
                 part.y += Math.sin(part.heading) * part.pps * secs;
-                if (part.x < -320 || part.x > 320 || part.y < -320 || part.y > 320) {
+                if (part.x < -80 || part.x > 80 || part.y < -80 || part.y > 80) {
                     part.x = 0;
                     part.y = 0;
                 }
-            }
+            //}
         }
 
     };
