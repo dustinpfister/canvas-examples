@@ -37,11 +37,11 @@ var clockMod = (function () {
         var len = clock.pool.length,
         i = len,
         part;
-        clock.totalActive = len * (Math.abs(0.5 - clock.dayPer) / 0.5);
+        clock.poolTotalActive = Math.floor(len * (1 - Math.abs(0.5 - clock.dayPer) / 0.5));
         while (i--) {
             part = clock.pool[i];
             part.active = false;
-            if (part.i <= clock.totalActive) {
+            if (part.i <= clock.poolTotalActive) {
                 part.active = true;
             }
         }
@@ -78,6 +78,7 @@ var clockMod = (function () {
             setClockPropsToNow(clock);
             clock.pool = createPool(100);
             clock.poolLastTick = now;
+            clock.poolTotalActive = 0;
             return clock;
         },
 

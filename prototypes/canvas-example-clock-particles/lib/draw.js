@@ -15,7 +15,7 @@ draw.clockText = function (canvas, ctx, clock) {
     ctx.textBaseline = 'middle';
     ctx.textAlign = 'center';
     // percent done of day
-    var text = Math.floor(clock.dayPer * 100) + '%';
+    var text = clock.poolTotalActive;// Math.floor(clock.dayPer * 100) + '%';
     ctx.fillText(text, canvas.width / 2, canvas.height / 2 - 20);
     ctx.strokeText(text, canvas.width / 2, canvas.height / 2 - 20);
     // time

@@ -12,6 +12,7 @@ canvas.height = 240;
 var clock = clockMod.create(new Date());
 var loop = function () {
     requestAnimationFrame(loop);
+    //clock = clockMod.update(clock, new Date(2020, 4, 6, 14, 0, 0, 0));
     clock = clockMod.update(clock, new Date());
     draw.clear(canvas, ctx);
     draw.pool(canvas, ctx, clock);
