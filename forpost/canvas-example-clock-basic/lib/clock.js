@@ -22,6 +22,7 @@ var clockMod = (function () {
             clock.timeText = getTimeText(clock);
             var dayStart = getDayStart(clock);
             clock.dayPer = (clock.now - dayStart) / 86400000;
+            clock.secPer = clock.now.getMilliseconds() / 1000;
             return clock;
         }
     }

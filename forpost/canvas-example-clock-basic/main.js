@@ -8,18 +8,17 @@ container.appendChild(canvas);
 canvas.width = 320;
 canvas.height = 240;
 
-
 // loop
 var loop = function (canvas) {
     var clock = clockMod.create(new Date());
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    draw.clockText(canvas, ctx, clock);
+    draw.hands(canvas, ctx, clock);
     draw.clockDayCircle(canvas, ctx, clock);
+    draw.clockText(canvas, ctx, clock);
 };
-
 
 // start loop
 loop(canvas);
 setInterval(function () {
     loop(canvas);
-}, 100);
+}, 33);

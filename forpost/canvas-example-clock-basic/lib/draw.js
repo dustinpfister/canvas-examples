@@ -11,12 +11,27 @@ draw.clockText = function (canvas, ctx, clock) {
     var text = Math.floor(clock.dayPer * 100) + '%';
     ctx.fillText(text, canvas.width / 2, canvas.height / 2 - 20);
     ctx.strokeText(text, canvas.width / 2, canvas.height / 2 - 20);
-
     // time
     ctx.font = '20px arial';
     ctx.fillText(clock.timeText, canvas.width / 2, canvas.height / 2 + 20);
     ctx.strokeText(clock.timeText, canvas.width / 2, canvas.height / 2 + 20);
 };
+
+draw.hands = function (canvas, ctx, clock) {
+
+    var r = Math.PI * 2 * clock.secPer,
+    radius = (canvas.height - 50) / 2,
+    cx = canvas.width / 2,
+    cy = canvas.height / 2;
+    ctx.strokeStyle = 'green';
+    ctx.lineWidth = 3;
+    ctx.beginPath();
+    ctx.moveTo(cx, cy);
+    ctx.lineTo(cx + Math.cos(r) * radius, cy + Math.sin(r) * radius);
+    ctx.stroke();
+
+};
+
 // draw day circle
 draw.clockDayCircle = function (canvas, ctx, clock) {
     var r = Math.PI * 2 * clock.dayPer;
