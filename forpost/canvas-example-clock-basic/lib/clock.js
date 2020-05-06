@@ -4,14 +4,25 @@ var clockMod = (function () {
         return String('00' + a).slice(-2);
     };
 
+    var getTimeText = function (clock) {
+        return pad(clock.now.getHours()) + ' : ' +
+        pad(clock.now.getMinutes()) + ' : ' +
+        pad(clock.now.getSeconds());
+    };
+
+    var getDayStart = function (clock) {
+        return new Date(clock.now.getFullYear(), clock.now.getMonth(), clock.now.getDate(), 0, 0, 0, 0)
+    };
+
+    // return a public method that creates a clock object
     return {
         create: function (date) {
-            var c = {};
-            c.now = date || new Date(0);
-            c.timeText = pad(c.now.getHours()) + ' : ' + pad(c.now.getMinutes()) + ' : ' + pad(c.now.getSeconds());
-            var dayStart = new Date(c.now.getFullYear(), c.now.getMonth(), c.now.getDate(), 0, 0, 0, 0);
-            c.dayPer = (c.now - dayStart) / 86400000;
-            return c;
+            var clock = {};
+            clock.now = date || new Date(0);
+            clock.timeText = getTimeText(clock);
+            var dayStart = getDayStart(clock);
+            clock.dayPer = (clock.now - dayStart) / 86400000;
+            return clock;
         }
     }
 
