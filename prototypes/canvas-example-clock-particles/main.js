@@ -9,9 +9,10 @@ canvas.width = 320;
 canvas.height = 240;
 
 // loop
+var clock = clockMod.create(new Date());
 var loop = function () {
     requestAnimationFrame(loop);
-    var clock = clockMod.create(new Date());
+    clock = clockMod.update(clock, new Date());
     draw.clear(canvas, ctx);
     //draw.hands(canvas, ctx, clock);
     draw.clockDayCircle(canvas, ctx, clock);

@@ -33,6 +33,24 @@ var clockMod = (function () {
         return pool;
     };
 
+    var movePool = function (clock, secs) {
+
+        var i = clock.pool.length,
+        part;
+        while (i--) {
+            part = clock.pool[i];
+            if (part.active) {
+                part.x += Math.cos(part.heading) * part.pps * secs;
+                part.y += Math.sin(part.heading) * part.pps * secs;
+                if (part.x < -320 || part.x > 320 || part.y < -320 || part.y > 320) {
+                    part.x = 0;
+                    part.y = 0;
+                }
+            }
+        }
+
+    };
+
     var setClockPropsToNow = function (clock) {
         clock.timeText = getTimeText(clock);
         var dayStart = getDayStart(clock);
@@ -47,12 +65,18 @@ var clockMod = (function () {
             clock.now = now || new Date(0);
             setClockPropsToNow(clock);
             clock.pool = createPool(100);
+            clock.poolLastTick = now;
             return clock;
         },
 
         update: function (clock, now) {
-            clock.now = date || new Date(0);
+            clock.now = now || new Date(0);
             setClockPropsToNow(clock);
+
+            var t = clock.now - clock.poolLastTick,
+            secs = t / 1000;
+            movePool(clock, secs);
+            clock.poolLastTick = clock.now;
             return clock;
         }
     }
