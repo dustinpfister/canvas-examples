@@ -78,7 +78,7 @@ var clockMod = (function () {
             var clock = {};
             clock.now = now || new Date(0);
             setClockPropsToNow(clock);
-            clock.pool = createPool(100);
+            clock.pool = createPool(240);
             clock.poolLastTick = now;
             clock.poolTotalActive = 0;
             clock.faceRadius = 100;
