@@ -25,22 +25,20 @@ draw.clockText = function (canvas, ctx, clock) {
 };
 
 draw.pool = function (canvas, ctx, clock) {
-
     var i = clock.pool.length,
     part;
     ctx.fillStyle = 'red';
-	ctx.save();
-	ctx.translate(canvas.width / 2, canvas.height / 2);
+    ctx.save();
+    ctx.translate(canvas.width / 2, canvas.height / 2);
     while (i--) {
         part = clock.pool[i];
-
-        ctx.beginPath();
-        ctx.arc(part.x, part.y, 5, 0, Math.PI * 2);
-        ctx.fill();
-
+        if (part.active) {
+            ctx.beginPath();
+            ctx.arc(part.x, part.y, 5, 0, Math.PI * 2);
+            ctx.fill();
+        }
     }
-	ctx.restore();
-
+    ctx.restore();
 };
 
 // draw day circle
