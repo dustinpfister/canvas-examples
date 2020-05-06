@@ -57,7 +57,7 @@ var clockMod = (function () {
             if (part.active) {
                 part.x += Math.cos(part.heading) * part.pps * secs;
                 part.y += Math.sin(part.heading) * part.pps * secs;
-                if (u.distance(part.x, part.y, 0, 0) >= 80) {
+                if (u.distance(part.x, part.y, 0, 0) >= clock.faceRadius) {
                     part.x = 0;
                     part.y = 0;
                 }
@@ -81,6 +81,7 @@ var clockMod = (function () {
             clock.pool = createPool(100);
             clock.poolLastTick = now;
             clock.poolTotalActive = 0;
+            clock.faceRadius = 100;
             return clock;
         },
 
