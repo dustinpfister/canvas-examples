@@ -33,22 +33,34 @@ var clockMod = (function () {
         return pool;
     };
 
-    var movePool = function (clock, secs) {
+    var setActivePoolParts = function (clock) {
+        var len = clock.pool.length,
+        i = len,
+        part;
+        clock.totalActive = len * (Math.abs(0.5 - clock.dayPer) / 0.5);
+        while (i--) {
+            part = clock.pool[i];
+            part.active = false;
+            if (part.i <= clock.totalActive) {
+                part.active = true;
+            }
+        }
+    };
 
+    var movePool = function (clock, secs) {
         var i = clock.pool.length,
         part;
         while (i--) {
             part = clock.pool[i];
-            //if (part.active) {
+            if (part.active) {
                 part.x += Math.cos(part.heading) * part.pps * secs;
                 part.y += Math.sin(part.heading) * part.pps * secs;
                 if (part.x < -80 || part.x > 80 || part.y < -80 || part.y > 80) {
                     part.x = 0;
                     part.y = 0;
                 }
-            //}
+            }
         }
-
     };
 
     var setClockPropsToNow = function (clock) {
@@ -75,6 +87,7 @@ var clockMod = (function () {
 
             var t = clock.now - clock.poolLastTick,
             secs = t / 1000;
+            setActivePoolParts(clock);
             movePool(clock, secs);
             clock.poolLastTick = clock.now;
             return clock;
