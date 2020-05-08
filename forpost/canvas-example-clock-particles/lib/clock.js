@@ -11,11 +11,14 @@ var clockMod = (function () {
     };
 
     var setPart = function (clock, part) {
-        part.pps = 16 + 16 * Math.random();
+        var weekPer = (clock.now.getDay()+1) / 7,
+        baseSpeed = 16 + 32 * weekPer,
+        deltaSpeed = 96 * weekPer * Math.random();
+        part.pps = baseSpeed + deltaSpeed;
         part.heading = Math.PI * 2 * Math.random();
     };
 
-    var createPool = function (count) {
+    var createPool = function (clock, count) {
         var i = 0,
         pool = [],
         part;
@@ -79,7 +82,7 @@ var clockMod = (function () {
             var clock = {};
             clock.now = now || new Date(0);
             setClockPropsToNow(clock);
-            clock.pool = createPool(240);
+            clock.pool = createPool(clock, 240);
             clock.poolLastTick = now;
             clock.poolTotalActive = 0;
             clock.faceRadius = 100;
@@ -87,9 +90,9 @@ var clockMod = (function () {
         },
 
         update: function (clock, now) {
-            clock.now = now || new Date(0);
+            //clock.now = new Date(2020, 4, 9, now.getHours(), now.getMinutes(), now.getSeconds(), now.getMilliseconds());
+            clock.now =now || new Date(0);
             setClockPropsToNow(clock);
-
             var t = clock.now - clock.poolLastTick,
             secs = t / 1000;
             setActivePoolParts(clock);
