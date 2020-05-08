@@ -10,7 +10,7 @@ var clockMod = (function () {
         return new Date(clock.now.getFullYear(), clock.now.getMonth(), clock.now.getDate(), 0, 0, 0, 0)
     };
 
-    var setPart = function (part) {
+    var setPart = function (clock, part) {
         part.pps = 16 + 16 * Math.random();
         part.heading = Math.PI * 2 * Math.random();
     };
@@ -28,7 +28,7 @@ var clockMod = (function () {
                 heading: 0,
                 active: false
             };
-            setPart(part);
+            setPart(clock, part);
             pool.push(part);
             i += 1;
         }
@@ -49,7 +49,7 @@ var clockMod = (function () {
         }
     };
 
-    var movePool = function (clock, secs) {
+    var updatePool = function (clock, secs) {
         var i = clock.pool.length,
         part;
         while (i--) {
@@ -92,7 +92,7 @@ var clockMod = (function () {
             var t = clock.now - clock.poolLastTick,
             secs = t / 1000;
             setActivePoolParts(clock);
-            movePool(clock, secs);
+            updatePool(clock, secs);
             clock.poolLastTick = clock.now;
             return clock;
         }
