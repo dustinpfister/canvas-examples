@@ -1,9 +1,9 @@
 ## canvas-example-clock-particles
 
-
-* particles increase in speed as we progress threw the current week
 * particles change color based on the time of year
 
+
+* (done) particles increase in speed as we progress threw the current week
 * (done) distance transparency effect for particles
 * (done) faceRadius value for clock object
 * (done) use faceRadius in clock.js
