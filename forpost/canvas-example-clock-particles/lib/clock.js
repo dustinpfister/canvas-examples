@@ -60,6 +60,7 @@ var clockMod = (function () {
                 if (u.distance(part.x, part.y, 0, 0) >= clock.faceRadius) {
                     part.x = 0;
                     part.y = 0;
+                    setPart(clock, part);
                 }
             }
         }
