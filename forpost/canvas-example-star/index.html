@@ -1,0 +1,49 @@
+<html>
+    <head>
+        <title>canvas star</title>
+    </head>
+    <body>
+        <canvas id="the-canvas" width="320" height="240"></canvas>
+        <script src="./lib/draw.js"></script>
+        <script src="./lib/star.js"></script>
+        <script>
+var canvas = document.getElementById('the-canvas'),
+ctx = canvas.getContext('2d');
+
+var pointCount = 5,
+inner = 20,
+deltaInner = 1;
+var loop = function () {
+
+    requestAnimationFrame(loop);
+
+    var star = starMod.create1({
+            pointCount: pointCount,
+            radius: 40,
+            radiusInner: inner
+        });
+
+    // step inner and point count
+    inner += deltaInner;
+    deltaInner = inner >= 80 ? -1 : deltaInner;
+    deltaInner = inner <= 20 ? 1 : deltaInner;
+    if (inner === 20) {
+        pointCount += 1;
+        pointCount = pointCount >= 20 ? 5 : pointCount;
+    }
+
+    // draw
+    ctx.lineWidth = 7;
+    draw.background(ctx, canvas);
+    ctx.strokeStyle = 'white';
+    ctx.fillStyle = 'green';
+    draw.points(ctx, star, canvas.width / 2, canvas.height / 2);
+    ctx.fill();
+
+};
+
+loop();
+
+        </script>
+    </body>
+</html>
