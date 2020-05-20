@@ -31,6 +31,10 @@ world.load({
             console.log('land_base forCell hook');
             var land = cell.land = {};
             land.fert = 0;
+            land.soil = {
+                rockPer: 1,
+                dirtPer: 0
+            };
         },
         after: function (state, events) {
             console.log('land_base after hook');
@@ -51,12 +55,12 @@ world.load({
     },
     // what to do for each tick
     tick: {
-        before: function (state, events, years) {},
-        forCell: function (state, events, years, cell) {
+        before: function (state, events, year) {},
+        forCell: function (state, events, year, cell) {
             if (cell.land.fert > 5) {
                 cell.land.fert -= 1;
             }
         },
-        after: function (state) {}
+        after: function (state, events, year) {}
     }
 });

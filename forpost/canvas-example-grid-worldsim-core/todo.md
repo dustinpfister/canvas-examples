@@ -12,8 +12,8 @@
 * pull all grid code out of world.js and into grid.js to help make world.js more fine grain
 
 ## 0.0.2 - land_base soil object, infoBar, years value init
-* world.years value should update as an init value
-* land_base plugin should add properties to land tiles other than just 'fert'
+* (done) world.years value should update as an init value
+* land_base plugin adds a soil object in place of just 'fert' value
 * land_base 'fert proprty should be done away with as it is to vague'
 
 ## 0.0.1 - The Basic idea working

@@ -107,7 +107,7 @@ var world = (function () {
 
         },
 
-        // tick year, and update world state for new year
+        // tick year, and update world state object for new year
         update: function (state) {
 
             var now = new Date(),
