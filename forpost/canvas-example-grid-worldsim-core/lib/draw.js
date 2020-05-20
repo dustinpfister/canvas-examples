@@ -27,6 +27,13 @@ var draw = (function () {
                 y = cell.y * world.CELL_VALUES.size + world.CELL_VALUES.sy;
                 ctx.fillRect(x, y, world.CELL_VALUES.size, world.CELL_VALUES.size);
             }
+        },
+
+        // draw the basic info bar of the world (year, plantCount)
+        infoBar: function (ctx, state) {
+            ctx.fillStyle = 'white';
+            ctx.textBaseline = 'top';
+            ctx.fillText('year: ' + state.year, 10, 10);
         }
 
     }

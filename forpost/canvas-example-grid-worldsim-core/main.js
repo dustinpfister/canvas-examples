@@ -16,6 +16,7 @@ var loop = function () {
 
     draw.back(ctx, canvas);
     draw.worldCells(ctx, state);
+    draw.infoBar(ctx, state);
 
 };
 
