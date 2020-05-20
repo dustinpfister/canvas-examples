@@ -43,7 +43,7 @@ world.load({
             while (i--) {
                 var x = Math.floor(state.width * Math.random()),
                 y = Math.floor(state.height * Math.random());
-                events.fertup.init(state, x, y);
+                //events.fertup.init(state, x, y);
             }
             // cap fert
             state.cells.forEach(function (cell) {
