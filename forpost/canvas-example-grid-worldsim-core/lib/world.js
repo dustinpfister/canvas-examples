@@ -124,15 +124,15 @@ var world = (function () {
 
                     var tick = ticks[plugKey];
                     if (tick.before) {
-                        tick.before(state, events, years);
+                        tick.before(state, events, state.year);
                     }
                     if (tick.forCell) {
                         state.cells.forEach(function (cell) {
-                            tick.forCell(state, events, years, cell);
+                            tick.forCell(state, events, state.year, cell);
                         });
                     }
                     if (tick.after) {
-                        tick.after(state, events, years);
+                        tick.after(state, events, state.year);
                     }
 
                 });
