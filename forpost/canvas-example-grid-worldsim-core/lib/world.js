@@ -116,9 +116,9 @@ var world = (function () {
             secs = t / 1000;
 
             if (secs >= state.yearRate) {
-                years = secs / state.yearRate;
+                years = Math.floor(secs / state.yearRate);
                 state.year += years;
-                state.lt = now;
+                state.lt = new Date(now - secs % state.yearRate * 1000);
 
                 Object.keys(ticks).forEach(function (plugKey) {
 
