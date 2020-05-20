@@ -11,17 +11,17 @@
 * independent grid.js file that is used in world.js
 * pull all grid code out of world.js and into grid.js to help make world.js more fine grain
 
-## 0.0.3 - improved event system
+## 0.0.2 - land_base soil object, infoBar, years value init, improved event system
+* (done) world.years value should update as an init value
+* (done) draw new info bar that displays current year for starters
 * when working out plug-ins events can be called from within init and tick by calling a main method rather than an init method
 * When an event is started it goes into an event pool
 * Each event should have an update method that is called each tick
 * An event should have a yearStart and yearEnd value
 * when an event reaches yearEnd value is is purged from the event pool
-
-## 0.0.2 - land_base soil object, infoBar, years value init
-* (done) world.years value should update as an init value
 * land_base plugin adds a soil object in place of just 'fert' value
 * land_base 'fert proprty should be done away with as it is to vague'
+* land_base 'fertup event' should be removed as it is outdated
 
 ## 0.0.1 - The Basic idea working
 * (done) add support for ticks
