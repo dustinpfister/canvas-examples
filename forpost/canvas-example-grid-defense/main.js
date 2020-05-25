@@ -1,5 +1,6 @@
 // SETUP CANVAS
 (function () {
+
     var state = {
         grid: new UnitGrid({
             xOffset: 15,
@@ -8,6 +9,7 @@
             cellWidth: 9
         })
     };
+	
     // create and append canvas element, and get 2d context
     var canvas = document.createElement('canvas'),
     ctx = canvas.getContext('2d'),

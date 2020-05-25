@@ -6,7 +6,7 @@ var Enemy = function (opt) {
     this.ticks = 0;
 };
 // update and enemy
-Enemy.prototype.update = function (ticks) 
+Enemy.prototype.update = function (ticks) {
     this.ticks += ticks;
     // move to next
     if (this.ticks >= this.ticksPerMove) {
