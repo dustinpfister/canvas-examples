@@ -23,6 +23,9 @@ var clockMod = (function () {
             var dayStart = getDayStart(clock);
             clock.dayPer = (clock.now - dayStart) / 86400000;
             clock.secPer = clock.now.getMilliseconds() / 1000;
+            clock.minPer = clock.now.getSeconds() / 60;
+            clock.hourPer = clock.now.getMinutes() / 60;
+            clock.AMPMPer = clock.now.getHours() % 12 / 12;
             return clock;
         }
     }

@@ -1,6 +1,6 @@
 var draw = {};
 
-draw.clear = function (canvas,ctx) {
+draw.clear = function (canvas, ctx) {
 
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
@@ -26,16 +26,18 @@ draw.clockText = function (canvas, ctx, clock) {
 
 draw.hands = function (canvas, ctx, clock) {
 
-    var r = Math.PI * 2 * clock.secPer,
-    radius = (canvas.height - 50) / 2,
-    cx = canvas.width / 2,
-    cy = canvas.height / 2;
-    ctx.strokeStyle = 'green';
-    ctx.lineWidth = 3;
-    ctx.beginPath();
-    ctx.moveTo(cx, cy);
-    ctx.lineTo(cx + Math.cos(r) * radius, cy + Math.sin(r) * radius);
-    ctx.stroke();
+    ctx.strokeStyle = 'rgba(0,0,0,0.5)';
+    'secPer,minPer,hourPer,AMPMPer'.split(',').forEach(function (perName, i) {
+        var r = Math.PI * 2 * clock[perName] - Math.PI / 2,
+        radius = (canvas.height - 50 - 100 * (i / 4)) / 2,
+        cx = canvas.width / 2,
+        cy = canvas.height / 2;
+        ctx.lineWidth = 3;
+        ctx.beginPath();
+        ctx.moveTo(cx, cy);
+        ctx.lineTo(cx + Math.cos(r) * radius, cy + Math.sin(r) * radius);
+        ctx.stroke();
+    });
 
 };
 
