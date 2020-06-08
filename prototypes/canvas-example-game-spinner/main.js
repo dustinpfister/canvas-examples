@@ -13,6 +13,6 @@ var spin = spinner.create({
 var loop = function () {
     requestAnimationFrame(loop);
     draw.background(ctx, canvas);
-    draw.sections(ctx, spinner);
+    draw.sections(ctx, spin);
 };
 loop();

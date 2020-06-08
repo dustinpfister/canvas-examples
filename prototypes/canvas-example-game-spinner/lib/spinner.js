@@ -8,8 +8,8 @@ var spinner = (function () {
         create: function (opt) {
             opt = opt || {};
             return {
-                cx: opt.x === undefined ? 0: opt.x,
-                cy: opt.y === undefined ? 0: opt.y,
+                cx: opt.cx === undefined ? 0: opt.cx,
+                cy: opt.cy === undefined ? 0: opt.cy,
                 RPS: {
                     current: 0,
                     start: 6,
