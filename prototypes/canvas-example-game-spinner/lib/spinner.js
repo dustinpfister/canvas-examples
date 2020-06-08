@@ -2,23 +2,40 @@ var spinner = (function () {
 
     var PI2 = Math.PI * 2;
 
+    var createSectionObject = function (opt) {
+        return {
+            background: opt.background || 'green',
+            value: opt.value === undefined ? null : opt.value
+        };
+    };
+
+    var createSections = function (opt) {
+
+        var sections = [];
+
+        return sections;
+
+    };
+
     return {
 
         // create a spinner state object
         create: function (opt) {
             opt = opt || {};
-            return {
-                cx: opt.cx === undefined ? 0: opt.cx,
-                cy: opt.cy === undefined ? 0: opt.cy,
+            var spin = {
+                cx: opt.cx === undefined ? 0 : opt.cx,
+                cy: opt.cy === undefined ? 0 : opt.cy,
                 RPS: {
                     current: 0,
                     start: 6,
                     lossPerSecond: 1
                 },
                 radian: 0,
-                sections: [1, 2, 3, 4, 5],
-                sectionIndices: [0, 1, 2, 3, 4]
-            }
+                sections: [],
+                sectionIndices: [0, 1, 0, 1, 2]
+            };
+            spin.sections = createSections(opt);
+            return spin;
         },
 
         // get current section value or object
