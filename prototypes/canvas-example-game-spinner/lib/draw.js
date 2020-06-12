@@ -24,12 +24,12 @@ var draw = (function () {
         while (i < len) {
             sectionIndex = spin.sectionIndices[i];
             section = spin.sections[sectionIndex];
-            r1 = getSectionRadian(spin, i);
-            r2 = getSectionRadian(spin, i + 1);
-            var x1 = spin.cx + Math.cos(r1) * 64,
-            y1 = spin.cy + Math.sin(r1) * 64,
-            x2 = spin.cx + Math.cos(r2) * 64,
-            y2 = spin.cy + Math.sin(r2) * 64;
+            var r1 = getSectionRadian(spin, i),
+            r2 = getSectionRadian(spin, i + 1),
+            x1 = spin.cx + Math.cos(r1) * 64,
+            y1 = spin.cy + Math.sin(r1) * 64;
+            //x2 = spin.cx + Math.cos(r2) * 128,
+            //y2 = spin.cy + Math.sin(r2) * 128;
             ctx.beginPath();
             ctx.moveTo(spin.cx, spin.cy);
             ctx.lineTo(x1, y1);
@@ -43,10 +43,10 @@ var draw = (function () {
     api.arrow = function (ctx, spin) {
 
         var x = spin.cx + Math.cos(spin.radian) * 64,
-        y = spin.cy + Math.sin(spin.radian) + 64;
+        y = spin.cy + Math.sin(spin.radian) * 64;
 
         ctx.strokeStyle = 'red';
-        ctx.lineWidth = 3;
+        ctx.lineWidth = 5;
         ctx.beginPath();
         ctx.moveTo(spin.cx, spin.cy);
         ctx.lineTo(x, y);
