@@ -10,11 +10,8 @@ var spinner = (function () {
     };
 
     var createSections = function (opt) {
-
         var sections = [];
-
         return sections;
-
     };
 
     return {

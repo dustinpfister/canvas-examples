@@ -1,6 +1,10 @@
 var draw = (function () {
+
     var api = {};
+
+    // public draw background
     api.background = function (ctx, canvas) {
+        ctx.fillStyle = 'black';
         ctx.fillRect(0, 0, canvas.width, canvas.height);
     };
 
@@ -8,6 +12,7 @@ var draw = (function () {
         return Math.PI * 2 / spin.sectionIndices.length * i;
     };
 
+    // public draw sections
     api.sections = function (ctx, spin) {
         var i = 0,
         r,
@@ -15,6 +20,7 @@ var draw = (function () {
         sectionIndex,
         section;
         ctx.strokeStyle = 'white';
+        ctx.lineWidth = 1;
         while (i < len) {
             sectionIndex = spin.sectionIndices[i];
             section = spin.sections[sectionIndex];
@@ -31,6 +37,21 @@ var draw = (function () {
             ctx.stroke();
             i += 1;
         }
+    };
+
+    // public draw arrow
+    api.arrow = function (ctx, spin) {
+
+        var x = spin.cx + Math.cos(spin.radian) * 64,
+        y = spin.cy + Math.sin(spin.radian) + 64;
+
+        ctx.strokeStyle = 'red';
+        ctx.lineWidth = 3;
+        ctx.beginPath();
+        ctx.moveTo(spin.cx, spin.cy);
+        ctx.lineTo(x, y);
+        ctx.stroke();
+
     };
 
     return api;

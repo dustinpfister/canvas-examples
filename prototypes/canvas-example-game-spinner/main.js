@@ -14,5 +14,6 @@ var loop = function () {
     requestAnimationFrame(loop);
     draw.background(ctx, canvas);
     draw.sections(ctx, spin);
+    draw.arrow(ctx, spin);
 };
 loop();
