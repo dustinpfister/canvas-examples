@@ -10,11 +10,23 @@ var spin = spinner.create({
         cy: canvas.height / 2
     });
 
+var lt = new Date();
 var loop = function () {
+    var now = new Date(),
+    t = now - lt,
+    secs = t / 1000;
     requestAnimationFrame(loop);
+    spinner.update(spin, secs);
     draw.background(ctx, canvas);
     draw.sections(ctx, spin);
     draw.arrow(ctx, spin);
     draw.info(ctx, spin);
+    lt = now;
 };
 loop();
+
+canvas.addEventListener('mousedown', function (e) {
+
+    spinner.startSpin(spin);
+
+});

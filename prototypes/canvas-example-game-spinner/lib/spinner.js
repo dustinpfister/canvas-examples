@@ -24,8 +24,8 @@ var spinner = (function () {
                 cy: opt.cy === undefined ? 0 : opt.cy,
                 RPS: {
                     current: 0,
-                    start: 6,
-                    lossPerSecond: 1
+                    start: [3,8],
+                    lossPerSecond: 2
                 },
                 radian: 0,
                 sections: [],
@@ -45,7 +45,7 @@ var spinner = (function () {
         // start spinning a spinner state object
         startSpin: function (spin) {
             var RPS = spin.RPS;
-            RPS.current = RPS.start;
+            RPS.current = RPS.start[0] + Math.random() * (RPS.start[1] - RPS.start[0]);
         },
 
         update: function (spin, secs) {
