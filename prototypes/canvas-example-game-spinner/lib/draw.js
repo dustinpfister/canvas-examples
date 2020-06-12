@@ -28,8 +28,6 @@ var draw = (function () {
             r2 = getSectionRadian(spin, i + 1),
             x1 = spin.cx + Math.cos(r1) * 64,
             y1 = spin.cy + Math.sin(r1) * 64;
-            //x2 = spin.cx + Math.cos(r2) * 128,
-            //y2 = spin.cy + Math.sin(r2) * 128;
             ctx.beginPath();
             ctx.moveTo(spin.cx, spin.cy);
             ctx.lineTo(x1, y1);
@@ -51,6 +49,7 @@ var draw = (function () {
         ctx.stroke();
     };
 
+    // draw info
     api.info = function (ctx, spin) {
         var x = spin.cx - 64,
         y = spin.cy + 64;
