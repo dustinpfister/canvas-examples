@@ -41,17 +41,22 @@ var draw = (function () {
 
     // public draw arrow
     api.arrow = function (ctx, spin) {
-
         var x = spin.cx + Math.cos(spin.radian) * 64,
         y = spin.cy + Math.sin(spin.radian) * 64;
-
         ctx.strokeStyle = 'red';
         ctx.lineWidth = 5;
         ctx.beginPath();
         ctx.moveTo(spin.cx, spin.cy);
         ctx.lineTo(x, y);
         ctx.stroke();
+    };
 
+    api.info = function (ctx, spin) {
+        var x = spin.cx - 64,
+        y = spin.cy + 64;
+        ctx.fillStyle = 'white';
+        ctx.textBaseline = 'top';
+        ctx.fillText('radian: ' + spin.radian, x, y + 20);
     };
 
     return api;

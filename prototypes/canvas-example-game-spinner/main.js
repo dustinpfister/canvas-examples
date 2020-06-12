@@ -15,5 +15,6 @@ var loop = function () {
     draw.background(ctx, canvas);
     draw.sections(ctx, spin);
     draw.arrow(ctx, spin);
+    draw.info(ctx, spin);
 };
 loop();
