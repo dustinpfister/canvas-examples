@@ -53,11 +53,11 @@ var draw = (function () {
     api.info = function (ctx, spin) {
         var x = spin.cx - 64,
         y = spin.cy + 64,
-        section = spinner.get(spin);
+        section = spin.currentSection;
         ctx.fillStyle = 'white';
         ctx.textBaseline = 'top';
         ctx.fillText('radian: ' + spin.radian, x, y + 20);
-		ctx.fillText('section: ' + section, x, y + 30);
+        ctx.fillText('section: ' + section, x, y + 30);
     };
 
     return api;

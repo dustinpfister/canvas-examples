@@ -9,6 +9,13 @@ var spinner = (function () {
         };
     };
 
+    // get current section value or object
+    var get = function (spin) {
+        var len = spin.sectionIndices.length,
+        index = spin.sectionIndices[Math.floor(spin.radian / PI2 * len)];
+        return spin.sections[index];
+    };
+
     return {
 
         // create a spinner state object
@@ -24,16 +31,10 @@ var spinner = (function () {
                 },
                 radian: 0,
                 sections: opt.sections || [1, 2, 3],
-                sectionIndices: opt.sectionIndices || [0, 1, 0, 1, 2]
+                sectionIndices: opt.sectionIndices || [0, 1, 0, 1, 2],
+                currentSection: null
             };
             return spin;
-        },
-
-        // get current section value or object
-        get: function (spin) {
-            var len = spin.sectionIndices.length,
-            index = spin.sectionIndices[Math.floor(spin.radian / PI2 * len)];
-            return spin.sections[index];
         },
 
         // start spinning a spinner state object
@@ -50,6 +51,7 @@ var spinner = (function () {
             spin.radian %= PI2;
             RPS.current -= RPS.lossPerSecond * secs;
             RPS.current = RPS.current < 0 ? 0 : RPS.current;
+            spin.currentSection = get(spin);
         }
 
     }
