@@ -52,10 +52,12 @@ var draw = (function () {
     // draw info
     api.info = function (ctx, spin) {
         var x = spin.cx - 64,
-        y = spin.cy + 64;
+        y = spin.cy + 64,
+        section = spinner.get(spin);
         ctx.fillStyle = 'white';
         ctx.textBaseline = 'top';
         ctx.fillText('radian: ' + spin.radian, x, y + 20);
+		ctx.fillText('section: ' + section, x, y + 30);
     };
 
     return api;

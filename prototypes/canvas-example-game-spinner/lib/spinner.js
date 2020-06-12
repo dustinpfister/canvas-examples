@@ -9,11 +9,6 @@ var spinner = (function () {
         };
     };
 
-    var createSections = function (opt) {
-        var sections = [];
-        return sections;
-    };
-
     return {
 
         // create a spinner state object
@@ -24,21 +19,20 @@ var spinner = (function () {
                 cy: opt.cy === undefined ? 0 : opt.cy,
                 RPS: {
                     current: 0,
-                    start: [3,8],
+                    start: [3, 8],
                     lossPerSecond: 2
                 },
                 radian: 0,
-                sections: [],
-                sectionIndices: [0, 1, 0, 1, 2]
+                sections: opt.sections || [1, 2, 3],
+                sectionIndices: opt.sectionIndices || [0, 1, 0, 1, 2]
             };
-            spin.sections = createSections(opt);
             return spin;
         },
 
         // get current section value or object
         get: function (spin) {
-            var len = sectionIndices.length,
-            index = Math.floor(spin.radian / PI2 * len);
+            var len = spin.sectionIndices.length,
+            index = spin.sectionIndices[Math.floor(spin.radian / PI2 * len)];
             return spin.sections[index];
         },
 
@@ -48,10 +42,12 @@ var spinner = (function () {
             RPS.current = RPS.start[0] + Math.random() * (RPS.start[1] - RPS.start[0]);
         },
 
+        // update a spinner object
         update: function (spin, secs) {
             var RPS = spin.RPS;
             // just step by RPS times secs
             spin.radian += RPS.current * secs;
+            spin.radian %= PI2;
             RPS.current -= RPS.lossPerSecond * secs;
             RPS.current = RPS.current < 0 ? 0 : RPS.current;
         }
