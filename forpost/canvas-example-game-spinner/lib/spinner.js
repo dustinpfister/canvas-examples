@@ -2,13 +2,6 @@ var spinner = (function () {
 
     var PI2 = Math.PI * 2;
 
-    var createSectionObject = function (opt) {
-        return {
-            background: opt.background || 'green',
-            value: opt.value === undefined ? null : opt.value
-        };
-    };
-
     // get current section value or object
     var get = function (spin) {
         var len = spin.sectionIndices.length,
