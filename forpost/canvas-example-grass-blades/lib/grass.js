@@ -7,7 +7,7 @@ var Grass = (function () {
             opt = opt || {};
             return {
                 maxBlades: opt.maxBlades || 10,
-                spawnRate: 1000,
+                spawnRate: opt.spawnRate || 300,
                 canvas: opt.canvas || {
                     width: 320,
                     heigh: 240
@@ -34,9 +34,10 @@ var Grass = (function () {
                         g: 100 + Math.floor(156 * Math.random()),
                         b: 100 + Math.floor(156 * Math.random()),
                         baseX: Math.floor(grass.canvas.width * Math.random()),
-                        turn: -90 + 180 * Math.random(),
+                        turn: -180 + 360 * Math.random(),
                         tMax: 1000 + Math.floor(20000 * Math.random()),
-                        ptCount: 10 + Math.floor(15 * Math.random())
+                        ptCount: 20 + Math.floor(30 * Math.random()),
+                        segLength: 5
                     }));
                 grass.t %= grass.spawnRate;
             }

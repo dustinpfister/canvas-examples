@@ -46,7 +46,7 @@ var Blade = (function () {
                     max: 20
                 },
                 turn: opt.turn === undefined ? 0 : opt.turn,
-                segLength: 10,
+                segLength: opt.segLength === undefined ? 10: opt.segLength,
                 points: [],
                 t: opt.t === undefined ? 0 : opt.t,
                 tMax: opt.tMax === undefined ? 0 : opt.tMax

@@ -8,7 +8,7 @@ canvas.height = 240;
 ctx.translate(0.5, 0.5);
 
 var g = Grass.create({
-        maxBlades: 50,
+        maxBlades: 75,
         canvas: canvas
     });
 
