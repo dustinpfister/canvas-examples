@@ -8,10 +8,9 @@ var draw = (function () {
             ctx.fillRect(0, 0, canvas.width, canvas.height);
         },
 
+        // draw a blade
         blade: function (ctx, blade) {
-
             ctx.strokeStyle = 'lime';
-
             var i = 1,
             per,
             len = blade.points.length,
