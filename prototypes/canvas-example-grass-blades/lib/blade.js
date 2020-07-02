@@ -28,7 +28,7 @@ var Blade = (function () {
         // create a blade
         create: function (opt) {
             opt = opt || {};
-            opt.ptCount = opt.ptCount || 21;
+            opt.ptCount = opt.ptCount || 24;
             opt.canvas = opt.canvas || {
                 width: 320,
                 heigh: 240
