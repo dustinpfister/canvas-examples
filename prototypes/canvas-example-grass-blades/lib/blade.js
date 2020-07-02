@@ -32,7 +32,11 @@ var Blade = (function () {
                     y: canvas.height,
                     x: opt.baseX
                 },
-                segLength: 10,
+                width: {
+                    min: 3,
+                    max: 20
+                },
+                segLength: 20,
                 points: [],
                 t: 0,
                 tMax: 3000

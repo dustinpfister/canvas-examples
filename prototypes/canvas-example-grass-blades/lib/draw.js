@@ -21,7 +21,7 @@ var draw = (function () {
                 ctx.moveTo(pt.x, pt.y);
                 pt = blade.points[i];
                 per = i / len;
-                ctx.lineWidth = Math.floor(1 + 10 - 10 * per);
+                ctx.lineWidth = Math.floor(blade.width.min + blade.width.max - blade.width.max * per);
                 ctx.lineTo(pt.x, pt.y);
                 ctx.stroke();
                 i += 1;
