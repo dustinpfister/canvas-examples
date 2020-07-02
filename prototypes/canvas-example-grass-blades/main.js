@@ -9,9 +9,12 @@ canvas.height = 240;
 //canvas.style.height = '100%';
 ctx.translate(0.5, 0.5);
 
+var bl = Blade.create();
+
 var loop = function () {
     requestAnimationFrame(loop);
     draw.background(ctx, canvas);
+    draw.blade(ctx, bl);
 
 };
 
