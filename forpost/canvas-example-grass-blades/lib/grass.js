@@ -37,7 +37,9 @@ var Grass = (function () {
                         turn: -180 + 360 * Math.random(),
                         tMax: 1000 + Math.floor(20000 * Math.random()),
                         ptCount: 20 + Math.floor(30 * Math.random()),
-                        segLength: 5
+                        segLength: 5,
+                        widthMin: 1,
+                        widthMax: 5
                     }));
                 grass.t %= grass.spawnRate;
             }

@@ -42,8 +42,8 @@ var Blade = (function () {
                 g: opt.g === undefined ? 255 : opt.g,
                 b: opt.g === undefined ? 0 : opt.b,
                 width: {
-                    min: 3,
-                    max: 20
+                    min: opt.widthMin || 3,
+                    max: opt.widthMax || 20
                 },
                 turn: opt.turn === undefined ? 0 : opt.turn,
                 segLength: opt.segLength === undefined ? 10: opt.segLength,
