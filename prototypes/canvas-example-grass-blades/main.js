@@ -16,6 +16,7 @@ turn: -20
  */
 
 var g = Grass.create({
+        maxBlades: 20,
         canvas: canvas
     });
 

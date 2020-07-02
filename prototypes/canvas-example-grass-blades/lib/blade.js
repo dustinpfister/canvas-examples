@@ -47,7 +47,7 @@ var Blade = (function () {
                 segLength: 10,
                 points: [],
                 t:0,
-                tMax: 10000
+                tMax: 3000
             };
             blade.points = createPoints(blade, opt.ptCount)
                 return blade;

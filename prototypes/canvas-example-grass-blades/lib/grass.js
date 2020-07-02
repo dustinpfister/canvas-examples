@@ -30,12 +30,17 @@ var Grass = (function () {
             });
 
             if (grass.t >= grass.spawnRate) {
-                if (grass.blades.length < grass.maxBlades) {
-                    grass.blades.push(Blade.create({
-                            baseX: Math.floor(grass.canvas.width * Math.random()),
-                            turn: -90 + 180 * Math.random()
-                        }));
+
+                if (grass.blades.length >= grass.maxBlades) {
+                    grass.blades.shift();
                 }
+
+                //if (grass.blades.length < grass.maxBlades) {
+                grass.blades.push(Blade.create({
+                        baseX: Math.floor(grass.canvas.width * Math.random()),
+                        turn: -90 + 180 * Math.random()
+                    }));
+                //}
                 grass.t %= grass.spawnRate;
             }
 
