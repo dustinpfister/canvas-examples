@@ -20,7 +20,6 @@ var Blade = (function () {
             i += 1;
         }
         return points;
-
     };
 
     // public API

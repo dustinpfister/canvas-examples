@@ -9,12 +9,6 @@ canvas.height = 240;
 //canvas.style.height = '100%';
 ctx.translate(0.5, 0.5);
 
-/*
-var bl = Blade.create({
-turn: -20
-});
- */
-
 var g = Grass.create({
         maxBlades: 50,
         canvas: canvas

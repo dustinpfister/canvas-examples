@@ -1,9 +1,8 @@
 
 var Grass = (function () {
-
     // public API
     return {
-        // create a state
+        // create a grass state
         create: function (opt) {
             opt = opt || {};
             return {
@@ -17,24 +16,19 @@ var Grass = (function () {
                 blades: []
             };
         },
-
+        // update grass
         update: function (grass, t) {
-
             grass.t += t;
-
             grass.blades.forEach(function (blade) {
-
                 blade.t += t;
                 blade.t = blade.t > blade.tMax ? blade.tMax : blade.t;
-
             });
-
             if (grass.t >= grass.spawnRate) {
-
+                // shift out old blade
                 if (grass.blades.length >= grass.maxBlades) {
                     grass.blades.shift();
                 }
-
+                // push new blade
                 grass.blades.push(Blade.create({
                         r: 100 + Math.floor(156 * Math.random()),
                         g: 100 + Math.floor(156 * Math.random()),
@@ -44,12 +38,9 @@ var Grass = (function () {
                         tMax: 1000 + Math.floor(20000 * Math.random()),
                         ptCount: 10 + Math.floor(15 * Math.random())
                     }));
-
                 grass.t %= grass.spawnRate;
             }
-
         }
-
     }
 
 }
