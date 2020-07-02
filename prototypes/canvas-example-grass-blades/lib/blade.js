@@ -39,6 +39,9 @@ var Blade = (function () {
                     y: canvas.height,
                     x: opt.baseX
                 },
+                r: opt.g === undefined ? 0 : opt.r,
+                g: opt.g === undefined ? 255 : opt.g,
+                b: opt.g === undefined ? 0 : opt.b,
                 width: {
                     min: 3,
                     max: 20
@@ -46,7 +49,7 @@ var Blade = (function () {
                 turn: opt.turn === undefined ? 0 : opt.turn,
                 segLength: 10,
                 points: [],
-                t:0,
+                t: 0,
                 tMax: 3000
             };
             blade.points = createPoints(blade, opt.ptCount)

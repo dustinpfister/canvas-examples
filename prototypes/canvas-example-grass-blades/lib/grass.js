@@ -37,6 +37,7 @@ var Grass = (function () {
 
                 //if (grass.blades.length < grass.maxBlades) {
                 grass.blades.push(Blade.create({
+                        g: 100 + Math.floor(156 * Math.random()),
                         baseX: Math.floor(grass.canvas.width * Math.random()),
                         turn: -90 + 180 * Math.random()
                     }));
