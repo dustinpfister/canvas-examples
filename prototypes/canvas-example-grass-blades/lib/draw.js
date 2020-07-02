@@ -1,11 +1,11 @@
 var draw = (function () {
 
-    var drawBlade = function (ctx, blade) {
-        ctx.strokeStyle = 'lime';
+    var drawBlade = function (ctx, blade, style) {
         var i = 1,
         per,
         len = Math.floor((blade.t / blade.tMax) * blade.points.length),
         pt = blade.points[0];
+        ctx.strokeStyle = style || 'lime';
         while (i < len) {
             ctx.beginPath();
             ctx.moveTo(pt.x, pt.y);
@@ -31,8 +31,9 @@ var draw = (function () {
 
         grass: function (ctx, grass) {
 
-            grass.blades.forEach(function (blade) {
-                drawBlade(ctx, blade);
+            grass.blades.forEach(function (blade, i) {
+                var style = 'rgba(0,255,0,' + (0.1 + 0.9 * (i / grass.blades.length)) + ')';
+                drawBlade(ctx, blade, style);
             })
 
         }
