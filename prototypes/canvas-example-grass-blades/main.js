@@ -9,14 +9,22 @@ canvas.height = 240;
 //canvas.style.height = '100%';
 ctx.translate(0.5, 0.5);
 
+/*
 var bl = Blade.create({
-        turn: -20
+turn: -20
+});
+ */
+
+var g = Grass.create({
+        canvas: canvas
     });
 
 var loop = function () {
     requestAnimationFrame(loop);
     draw.background(ctx, canvas);
-    draw.blade(ctx, bl);
+
+    Grass.update(g, 100);
+    draw.grass(ctx, g);
 
 };
 
