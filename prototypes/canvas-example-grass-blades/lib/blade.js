@@ -28,7 +28,7 @@ var Blade = (function () {
         // create a blade
         create: function (opt) {
             opt = opt || {};
-            opt.ptCount = opt.ptCount || 10;
+            opt.ptCount = opt.ptCount || 21;
             opt.canvas = opt.canvas || {
                 width: 320,
                 heigh: 240
@@ -44,10 +44,10 @@ var Blade = (function () {
                     max: 20
                 },
                 turn: opt.turn === undefined ? 0 : opt.turn,
-                segLength: 20,
+                segLength: 10,
                 points: [],
-                t: 0,
-                tMax: 3000
+                t:10000,
+                tMax: 10000
             };
             blade.points = createPoints(blade, opt.ptCount)
                 return blade;

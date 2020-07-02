@@ -13,7 +13,7 @@ var draw = (function () {
             ctx.strokeStyle = 'lime';
             var i = 1,
             per,
-            len = blade.points.length,
+            len = Math.floor((blade.t / blade.tMax) * blade.points.length),
             pt = blade.points[0];
             while (i < len) {
                 ctx.beginPath();
