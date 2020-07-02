@@ -4,12 +4,19 @@ var Blade = (function () {
     var createPoints = function (blade, ptCount) {
         var points = [],
         bp = blade.basePos,
-        i = 0;
+        i = 0,
+        a,
+        x = bp.x,
+        y = bp.y;
+        aDelta = Math.PI / 180 * blade.turn;
         while (i < ptCount) {
+            a = Math.PI * 1.5 + aDelta / (ptCount - 2) * i;
             points.push({
-                x: bp.x,
-                y: bp.y - blade.segLength * i
+                x: x,
+                y: y
             });
+            x += Math.cos(a) * blade.segLength;
+            y += Math.sin(a) * blade.segLength;
             i += 1;
         }
         return points;
@@ -36,6 +43,7 @@ var Blade = (function () {
                     min: 3,
                     max: 20
                 },
+                turn: opt.turn === undefined ? 0 : opt.turn,
                 segLength: 20,
                 points: [],
                 t: 0,
