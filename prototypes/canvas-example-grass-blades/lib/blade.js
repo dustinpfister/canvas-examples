@@ -49,8 +49,8 @@ var Blade = (function () {
                 turn: opt.turn === undefined ? 0 : opt.turn,
                 segLength: 10,
                 points: [],
-                t: 0,
-                tMax: 3000
+                t: opt.t === undefined ? 0 : opt.t,
+                tMax: opt.tMax === undefined ? 0 : opt.tMax
             };
             blade.points = createPoints(blade, opt.ptCount)
                 return blade;
