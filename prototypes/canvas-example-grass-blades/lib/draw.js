@@ -32,7 +32,7 @@ var draw = (function () {
         grass: function (ctx, grass) {
 
             grass.blades.forEach(function (blade, i) {
-                var style = 'rgba(0,' + blade.g + ',0,' + (0.1 + 0.9 * (i / grass.blades.length)) + ')';
+                var style = 'rgba(' + blade.r + ',' + blade.g + ',' + blade.b + ',' + (0.1 + 0.9 * (i / grass.blades.length)) + ')';
                 drawBlade(ctx, blade, style);
             })
 
