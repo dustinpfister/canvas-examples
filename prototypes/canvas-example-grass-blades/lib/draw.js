@@ -13,15 +13,19 @@ var draw = (function () {
             ctx.strokeStyle = 'lime';
 
             var i = 1,
+            per,
+            len = blade.points.length,
             pt = blade.points[0];
-            ctx.beginPath();
-            ctx.moveTo(pt.x, pt.y);
-            while (i < blade.points.length) {
+            while (i < len) {
+                ctx.beginPath();
+                ctx.moveTo(pt.x, pt.y);
                 pt = blade.points[i];
+                per = i / len;
+                ctx.lineWidth = Math.floor(1 + 10 - 10 * per);
                 ctx.lineTo(pt.x, pt.y);
+                ctx.stroke();
                 i += 1;
             }
-            ctx.stroke();
 
         }
 
