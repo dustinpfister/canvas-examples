@@ -10,7 +10,7 @@ ctx.translate(0.5, 0.5);
 
 var loop = function () {
     requestAnimationFrame(loop);
-    draw.background(state);
+    //draw.background(state);
 };
 
 loop();
