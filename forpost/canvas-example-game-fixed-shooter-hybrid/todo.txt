@@ -1,0 +1,3 @@
+## canvas example game fixed shooter hybrid
+
+* this canvas example will just be a simple fixed shooter hybrid game like Centipede (https://en.wikipedia.org/wiki/Centipede_(video_game))
