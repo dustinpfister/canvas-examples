@@ -5,3 +5,5 @@ canvas.height = 240;
 var state = game.create({
         canvas: canvas
     });
+
+draw.background(state);

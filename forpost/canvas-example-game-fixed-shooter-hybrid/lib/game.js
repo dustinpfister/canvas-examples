@@ -5,7 +5,7 @@ var game = (function () {
         height: 128,
         borderPer: 0.2
     };
-    BOARD.borderY = Math.floor(BORAD.height - BORAD.height * BORD.borderPer);
+    BOARD.borderY = Math.floor(BOARD.height - BOARD.height * BOARD.borderPer);
 
     return {
         create: function (opt) {
