@@ -5,9 +5,10 @@ var game = (function () {
         yOffset: 16,
         width: 128,
         height: 192,
-        borderPer: 0.2
+        playPer: 0.3
     };
-    BOARD.borderY = Math.floor(BOARD.height - BOARD.height * BOARD.borderPer);
+    BOARD.playY = Math.floor(BOARD.height - BOARD.height * BOARD.playPer);
+    BOARD.playHeight = BOARD.height - BOARD.playY;
 
     return {
         BOARD: BOARD,

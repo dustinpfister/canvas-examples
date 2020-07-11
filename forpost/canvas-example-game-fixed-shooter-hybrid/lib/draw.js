@@ -11,9 +11,16 @@ var draw = (function () {
             var canvas = state.canvas,
             ctx = state.ctx,
             BOARD = game.BOARD;
+            // draw base board
             ctx.strokeStyle = 'white';
             ctx.lineWidth = 3;
-            ctx.rect(BOARD.xOffset, BOARD.yOffset, BOARD.width, BOARD.height);
+            ctx.beginPath();
+            ctx.rect(0, 0, BOARD.width, BOARD.height);
+            ctx.stroke();
+            // draw player area
+            ctx.strokeStyle = 'green';
+            ctx.beginPath();
+            ctx.rect(0, BOARD.playY, BOARD.width, BOARD.playHeight);
             ctx.stroke();
         }
     };
