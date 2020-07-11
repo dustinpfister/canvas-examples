@@ -7,3 +7,4 @@ var state = game.create({
     });
 
 draw.background(state);
+draw.board(state);
