@@ -14,6 +14,10 @@ var unit = (function () {
 
     return {
         create: createBaseUnit,
+        createPlayer: function (opt) {
+            var player = createBaseUnit(opt);
+            return player;
+        },
         update: function (unit, secs) {
             secs = secs === undefined ? 0 : secs;
             unit.x += Math.cos(unit.heading) * unit.pps * secs;

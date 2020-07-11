@@ -1,4 +1,7 @@
-var canvas = document.getElementById('the-canvas'),
-ctx = canvas.getContext('2d');
+var canvas = document.getElementById('the-canvas');
 canvas.width = 320;
 canvas.height = 240;
+
+var state = game.create({
+        canvas: canvas
+    });
