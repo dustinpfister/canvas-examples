@@ -1,4 +1,4 @@
-var Unit = (function () {
+var unit = (function () {
 
     var createBaseUnit = function (opt) {
         opt = opt || {};
