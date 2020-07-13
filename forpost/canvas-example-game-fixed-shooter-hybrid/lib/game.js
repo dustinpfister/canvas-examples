@@ -16,7 +16,14 @@ var game = (function () {
             opt = opt || {};
             var state = {
                 canvas: opt.canvas,
-                ctx: opt.canvas.getContext('2d')
+                ctx: opt.canvas.getContext('2d'),
+                board: {
+                    x: 16,
+                    y: 16,
+                    w: 128,
+                    h: 192,
+                    playY: 192 + 16 - 64
+                }
             };
             state.player = {
                 x: 0,
