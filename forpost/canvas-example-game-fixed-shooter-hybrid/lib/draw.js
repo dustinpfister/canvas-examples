@@ -22,6 +22,17 @@ var draw = (function () {
             ctx.beginPath();
             ctx.rect(0, BOARD.playY, BOARD.width, BOARD.playHeight);
             ctx.stroke();
+        },
+
+        // draw the player display object
+        player: function (state) {
+            var canvas = state.canvas,
+            ctx = state.ctx,
+            pl = state.player;
+
+            ctx.fillStyle = 'blue';
+            ctx.fillRect(pl.x, pl.y, pl.w, pl.h);
+
         }
     };
 

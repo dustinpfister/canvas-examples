@@ -3,8 +3,8 @@
 this canvas example will just be a simple fixed shooter hybrid game like Centipede (https://en.wikipedia.org/wiki/Centipede_(video_game))
 
 
-* start the game.js file
-* game.js should define an area where the player can be
+* (done) start the game.js file
+* (done) game.js should define an area where the player can be
 * game.js should create and update an array of 'shot objects'
 * game.js should create and update an array of units that show up in the upper area
 * have a draw.js file that will render the player object, shots, and other units

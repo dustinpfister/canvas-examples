@@ -18,7 +18,12 @@ var game = (function () {
                 canvas: opt.canvas,
                 ctx: opt.canvas.getContext('2d')
             };
-            state.player = unit.createPlayer();
+            state.player = {
+                x: 0,
+                y: 0,
+                w: 16,
+                h: 16
+            }
             return state;
         }
     };
