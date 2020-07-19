@@ -25,14 +25,14 @@ var draw = (function () {
 
         // draw the player display object
         player: function (state) {
-            /*
+            
             var canvas = state.canvas,
             ctx = state.ctx,
             pl = state.player;
 
-            ctx.fillStyle = 'blue';
+            ctx.fillStyle = 'red';
             ctx.fillRect(pl.x, pl.y, pl.w, pl.h);
-             */
+            
 
         }
     };

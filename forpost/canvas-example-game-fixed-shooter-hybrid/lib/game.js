@@ -1,7 +1,6 @@
 var game = (function () {
 
     var createState = function (opt) {
-
         opt = opt || {};
         var state = {
             canvas: opt.canvas,
@@ -20,8 +19,8 @@ var game = (function () {
             }
         };
         state.player = {
-            x: 0,
-            y: 0,
+            x: state.playArea.x,
+            y: state.playArea.y,
             w: 16,
             h: 16
         }
