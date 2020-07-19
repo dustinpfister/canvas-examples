@@ -29,14 +29,25 @@ var game = (function () {
             x: 0,
             y: 0,
             w: 16,
-            h: 16
+            h: 16,
+            heading: Math.PI * 1.5,
+            pps: 32,
+            maxPPS: 32
         };
         centerPlayer(state);
         return state;
     };
 
     return {
-        create: createState
+        create: createState,
+        update: function (state, secs) {
+            var p = state.player,
+            pa = state.playArea;
+            p.x += Math.cos(p.heading) * p.pps * secs;
+            p.y += Math.sin(p.heading) * p.pps * secs;
+
+            utils.clamp(p, pa);
+        }
     };
 
 }

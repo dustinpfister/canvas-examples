@@ -6,6 +6,18 @@ var state = game.create({
         canvas: canvas
     });
 
-draw.background(state);
-draw.board(state);
-draw.player(state);
+var lt = new Date();
+var loop = function () {
+
+    var now = new Date(),
+    t = now - lt,
+    secs = t / 1000;
+
+    requestAnimationFrame(loop);
+    game.update(state, secs);
+    draw.background(state);
+    draw.board(state);
+    draw.player(state);
+    lt = now;
+};
+loop();
