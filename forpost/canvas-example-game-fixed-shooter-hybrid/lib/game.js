@@ -26,6 +26,20 @@ var game = (function () {
         }
     };
 
+    // return next inactive shot or false
+    var getInactiveShot = function (state) {
+        var p = state.player,
+        i = p.shots.length,
+        shot;
+        while (i--) {
+            shot = p.shots[i];
+            if (!shot.active) {
+                return shot;
+            }
+        }
+        return false;
+    };
+
     var updatePlayerShots = function (state, secs) {
         var i = 0,
         p = state.player,
@@ -81,10 +95,12 @@ var game = (function () {
         create: createState,
         playerFire: function (state) {
             var p = state.player,
-            shot = p.shots[0];
-            shot.active = true;
-            shot.x = p.x + p.w / 2 - shot.w / 2;
-            shot.y = p.y;
+            shot = getInactiveShot(state);
+            if (shot) {
+                shot.active = true;
+                shot.x = p.x + p.w / 2 - shot.w / 2;
+                shot.y = p.y;
+            }
         },
         update: function (state, secs) {
             var p = state.player,
