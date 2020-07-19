@@ -10,28 +10,29 @@ var draw = (function () {
         board: function (state) {
             var canvas = state.canvas,
             ctx = state.ctx,
-            BOARD = game.BOARD;
-            // draw base board
-            ctx.strokeStyle = 'white';
-            ctx.lineWidth = 3;
-            ctx.beginPath();
-            ctx.rect(0, 0, BOARD.width, BOARD.height);
-            ctx.stroke();
-            // draw player area
-            ctx.strokeStyle = 'green';
-            ctx.beginPath();
-            ctx.rect(0, BOARD.playY, BOARD.width, BOARD.playHeight);
-            ctx.stroke();
+            b = state.board,
+            pa = state.playArea;
+
+            // board
+            ctx.fillStyle = 'blue';
+            ctx.fillRect(b.x, b.y, b.w, b.h);
+
+            // play area
+            ctx.fillStyle = 'green';
+            ctx.fillRect(pa.x, pa.y, pa.w, pa.h);
+
         },
 
         // draw the player display object
         player: function (state) {
+            /*
             var canvas = state.canvas,
             ctx = state.ctx,
             pl = state.player;
 
             ctx.fillStyle = 'blue';
             ctx.fillRect(pl.x, pl.y, pl.w, pl.h);
+             */
 
         }
     };
