@@ -1,5 +1,12 @@
 var game = (function () {
 
+    var centerPlayer = function (state) {
+        var pa = state.playArea,
+        p = state.player;
+        p.x = pa.x + pa.w / 2 - p.w / 2;
+        p.y = pa.y + pa.h / 2 - p.h / 2;
+    };
+
     var createState = function (opt) {
         opt = opt || {};
         var state = {
@@ -19,13 +26,13 @@ var game = (function () {
             }
         };
         state.player = {
-            x: state.playArea.x,
-            y: state.playArea.y,
+            x: 0,
+            y: 0,
             w: 16,
             h: 16
-        }
+        };
+        centerPlayer(state);
         return state;
-
     };
 
     return {
