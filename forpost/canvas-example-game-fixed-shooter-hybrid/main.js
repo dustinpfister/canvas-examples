@@ -19,6 +19,7 @@ var loop = function () {
     draw.board(state);
     draw.player(state);
     draw.playerShots(state);
+    draw.enemies(state);
     lt = now;
 };
 loop();

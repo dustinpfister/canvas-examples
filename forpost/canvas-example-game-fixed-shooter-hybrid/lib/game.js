@@ -1,5 +1,6 @@
 var game = (function () {
 
+    // center the player
     var centerPlayer = function (state) {
         var pa = state.playArea,
         p = state.player;
@@ -7,6 +8,7 @@ var game = (function () {
         p.y = pa.y + pa.h / 2 - p.h / 2;
     };
 
+    // create player shot pool
     var createPlayerShotPool = function (state) {
         var i = 0,
         len = 10,
@@ -26,20 +28,21 @@ var game = (function () {
         }
     };
 
-    // return next inactive shot or false
-    var getInactiveShot = function (state) {
+    // get inactive pool object
+    var getInactive = function (pool) {
         var p = state.player,
-        i = p.shots.length,
-        shot;
+        i = pool.length,
+        obj;
         while (i--) {
-            shot = p.shots[i];
-            if (!shot.active) {
-                return shot;
+            obj = pool[i];
+            if (!obj.active) {
+                return obj;
             }
         }
         return false;
     };
 
+    // update player shots
     var updatePlayerShots = function (state, secs) {
         var i = 0,
         p = state.player,
@@ -58,6 +61,56 @@ var game = (function () {
         }
     };
 
+    // create enemies pool
+    var createEnemiesPool = function (state) {
+        var i = 0,
+        len = 10,
+        p = state.player;
+        state.enemies.pool = [];
+        while (i < len) {
+            state.enemies.pool.push({
+                x: 0,
+                y: 0,
+                w: 8,
+                h: 8,
+                pps: 32,
+                heading: 0,
+                active: false
+            })
+            i += 1;
+        }
+    };
+
+    var updateEnemies = function (state, secs) {
+        var es = state.enemies,
+        e;
+        es.secs += secs;
+
+        // spawn
+        if (es.secs >= es.spawnRate) {
+            es.secs %= es.spawnRate;
+            e = getInactive(es.pool);
+            if (e) {
+                e.x = state.board.x + state.board.w / 2;
+                e.y = state.board.y;
+                e.heading = Math.PI * Math.random();
+                e.active = true;
+            }
+        }
+
+        // move
+        var i = es.pool.length;
+        while (i--) {
+            e = es.pool[i];
+            e.x += Math.cos(e.heading) * e.pps * secs;
+            e.y += Math.sin(e.heading) * e.pps * secs;
+            if (!utils.bb(e, state.board)) {
+                e.active = false;
+            }
+        }
+    };
+
+    // create the state object
     var createState = function (opt) {
         opt = opt || {};
         var state = {
@@ -74,6 +127,11 @@ var game = (function () {
                 y: 144,
                 w: 128,
                 h: 64
+            },
+            enemies: {
+                pool: [],
+                spawnRate: 1,
+                secs: 0
             }
         };
         state.player = {
@@ -88,6 +146,7 @@ var game = (function () {
         };
         centerPlayer(state);
         createPlayerShotPool(state);
+        createEnemiesPool(state);
         return state;
     };
 
@@ -95,7 +154,7 @@ var game = (function () {
         create: createState,
         playerFire: function (state) {
             var p = state.player,
-            shot = getInactiveShot(state);
+            shot = getInactive(state.player.shots);
             if (shot) {
                 shot.active = true;
                 shot.x = p.x + p.w / 2 - shot.w / 2;
@@ -112,6 +171,9 @@ var game = (function () {
 
             // update shots
             updatePlayerShots(state, secs);
+
+            // update enemies
+            updateEnemies(state, secs);
 
         }
     };
