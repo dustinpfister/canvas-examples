@@ -16,7 +16,7 @@ var game = (function () {
                 x: 16,
                 y: 16,
                 w: 128,
-                h: 192
+                h: 128
             },
             playArea: {
                 x: 16,
@@ -31,7 +31,7 @@ var game = (function () {
             w: 16,
             h: 16,
             heading: Math.PI * 1.5,
-            pps: 32,
+            pps: 0,
             maxPPS: 32
         };
         centerPlayer(state);
