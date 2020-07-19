@@ -42,17 +42,34 @@ var game = (function () {
         return false;
     };
 
+    var hitCheck = function (obj, pool) {
+        var i = pool.length,
+        poolObj;
+        while (i--) {
+            poolObj = pool[i];
+            if (poolObj.active && utils.bb(obj, poolObj)) {
+                return poolObj;
+            }
+        }
+        return false;
+    };
+
     // update player shots
     var updatePlayerShots = function (state, secs) {
         var i = 0,
         p = state.player,
         shot,
+        e,
         len = p.shots.length;
         while (i < len) {
             shot = p.shots[i];
             if (shot.active) {
                 shot.x += Math.cos(shot.heading) * shot.pps * secs;
                 shot.y += Math.sin(shot.heading) * shot.pps * secs;
+                e = hitCheck(shot, state.enemies.pool);
+                if (e) {
+                    e.active = false;
+                }
                 if (!utils.bb(shot, state.playArea) && !utils.bb(shot, state.board)) {
                     shot.active = false;
                 }
@@ -85,7 +102,6 @@ var game = (function () {
         var es = state.enemies,
         e;
         es.secs += secs;
-
         // spawn
         if (es.secs >= es.spawnRate) {
             es.secs %= es.spawnRate;
@@ -97,7 +113,6 @@ var game = (function () {
                 e.active = true;
             }
         }
-
         // move
         var i = es.pool.length;
         while (i--) {
