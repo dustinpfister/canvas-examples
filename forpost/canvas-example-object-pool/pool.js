@@ -6,7 +6,8 @@ var Pool = (function () {
         var state = {
             pool: [],
             spawnRate: 0.1,
-            secs: 0
+            secs: 0,
+            colors: ['red', 'green', 'blue']
         };
         var i = 20;
         while (i--) {
@@ -17,6 +18,8 @@ var Pool = (function () {
                 h: 32,
                 heading: 0,
                 pps: 64,
+                alpha: 0.5,
+                fill: state.colors[i % state.colors.length],
                 active: false
             });
         }

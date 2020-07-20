@@ -15,6 +15,7 @@ draw.pool = function (ctx, state) {
         bx = state.pool[i];
         if (bx.active) {
             ctx.save();
+            ctx.fillStyle = bx.fill;
             ctx.translate(bx.x, bx.y);
             ctx.rotate(bx.heading);
             ctx.beginPath();
