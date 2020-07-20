@@ -25,7 +25,7 @@ var loop = function () {
 };
 loop();
 
-// KEYBOARD
+// KEYBOARD events
 var keys = {
     w: false,
     a: false,
@@ -79,3 +79,32 @@ window.addEventListener('keyup', function (e) {
     }
     keyUpdate();
 });
+
+var pointer = {
+    down: false,
+    x: 0,
+    y: 0
+}
+var pointStart = function (e) {
+    pointrer.down = true;
+};
+var pointMove = function (e) {
+    var pos = utils.getCanvasRelative(e),
+    p = state.player;
+    pointer.x = pos.x;
+    pointer.y = pos.y;
+
+    p.heading = Math.atan2(pointer.y - p.y, pointer.x - p.x);
+    p.pps = 32;
+
+};
+var pointEnd = function (e) {
+    var p = state.player;
+    pointer.down = false;
+    p.pps = 0;
+};
+
+// POINTER events
+canvas.addEventListener('moysedown', pointStart);
+canvas.addEventListener('mousemove', pointMove);
+canvas.addEventListener('mouseup', pointEnd);
