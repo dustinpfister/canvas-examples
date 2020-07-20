@@ -19,7 +19,7 @@ var Pool = (function () {
                 h: 32,
                 heading: 0,
                 pps: 64,
-                hcps: 90, // heading change per second in degrees
+                hcps: 0, // heading change per second in degrees
                 alpha: 0.5,
                 fill: state.colors[i % state.colors.length],
                 active: false
@@ -39,6 +39,7 @@ var Pool = (function () {
                 bx.y = canvas.height / 2;
                 bx.heading = Math.PI * 2 * Math.random();
                 bx.pps = 32 + 128 * Math.random();
+                bx.hcps = -45 + 90 * Math.random();
             }
             state.secs %= state.spawnRate;
         }
