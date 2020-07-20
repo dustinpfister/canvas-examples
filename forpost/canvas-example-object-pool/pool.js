@@ -4,6 +4,7 @@ var Pool = (function () {
     // create a pool
     var createPool = function () {
         var state = {
+            ver: '0.1.0',
             pool: [],
             spawnRate: 0.05,
             secs: 0,

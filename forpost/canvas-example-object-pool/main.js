@@ -20,6 +20,7 @@ var loop = function () {
     requestAnimationFrame(loop);
     draw.back(ctx, canvas);
     draw.pool(ctx, state);
+    draw.info(ctx, state);
     Pool.update(state, secs);
 
     lt = now;
