@@ -23,7 +23,7 @@ var game = (function () {
                 pps: 128,
                 heading: Math.PI * 1.5,
                 active: false
-            })
+            });
             i += 1;
         }
     };

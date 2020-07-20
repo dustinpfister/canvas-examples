@@ -1,4 +1,5 @@
-var utils = {}
+var utils = {};
+
 // bounding box
 utils.bb = function (a, b) {
     return !(
