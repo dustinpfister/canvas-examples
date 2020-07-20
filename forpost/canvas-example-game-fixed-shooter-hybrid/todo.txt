@@ -2,13 +2,18 @@
 
 this canvas example will just be a simple fixed shooter hybrid game like Centipede (https://en.wikipedia.org/wiki/Centipede_(video_game))
 
+## 0.2.0 - hit points
+* hit points for enemies
+* enemies take 3 hits to kill for now
+* new pkg.html for 0.2.0
+
 ## 0.1.0 - pointer events
 * (done) have kill count on screen
 * (done) add pointer event support
 * (done) auto fire for now
 * (done) random x for spawn locations
 * (done) display this version number, and all future numbers on screen
-* create pkg file for blog post
+* (done) create pkg file for blog post
 
 ## 0.0.0 - Just get the basic idea together
 * (done) start the game.js file
