@@ -1,6 +1,8 @@
-var canvas = document.getElementById('the-canvas');
+var container = document.getElementById('canvas-app'),
+canvas = document.createElement('canvas');
 canvas.width = 320;
 canvas.height = 240;
+container.appendChild(canvas);
 
 // CREATE STATE
 var state = game.create({
