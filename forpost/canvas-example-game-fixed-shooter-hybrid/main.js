@@ -87,7 +87,7 @@ var pointer = {
     down: false,
     x: 0,
     y: 0
-}
+};
 var pointStart = function (e) {
     pointer.down = true;
 };
