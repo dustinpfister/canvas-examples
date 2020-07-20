@@ -36,10 +36,10 @@ var Pool = (function () {
                 bx.x = canvas.width / 2;
                 bx.y = canvas.height / 2;
                 bx.heading = Math.PI * 2 * Math.random();
+                bx.pps = 32 + 128 * Math.random();
             }
             state.secs %= state.spawnRate;
         }
-
     };
 
     update = function (state, secs) {
