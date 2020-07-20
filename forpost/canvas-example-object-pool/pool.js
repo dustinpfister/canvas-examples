@@ -5,11 +5,11 @@ var Pool = (function () {
     var createPool = function () {
         var state = {
             pool: [],
-            spawnRate: 0.1,
+            spawnRate: 0.05,
             secs: 0,
             colors: ['red', 'green', 'blue']
         };
-        var i = 20;
+        var i = 50;
         while (i--) {
             state.pool.push({
                 x: 32,
