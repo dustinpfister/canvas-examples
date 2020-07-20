@@ -94,7 +94,7 @@ var game = (function () {
                 pps: 32,
                 heading: 0,
                 active: false
-            })
+            });
             i += 1;
         }
     };
