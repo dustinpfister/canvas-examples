@@ -9,13 +9,18 @@ draw.pool = function (ctx, state) {
     var i = state.pool.length,
     bx;
     ctx.fillStyle = 'white';
+    ctx.strokeStyle = 'black';
+    ctx.lineWidth = 3;
     while (i--) {
         bx = state.pool[i];
         if (bx.active) {
             ctx.save();
             ctx.translate(bx.x, bx.y);
             ctx.rotate(bx.heading);
-            ctx.fillRect(bx.w / 2 * -1, bx.h / 2 * -1, bx.w, bx.h);
+            ctx.beginPath();
+            ctx.rect(bx.w / 2 * -1, bx.h / 2 * -1, bx.w, bx.h);
+            ctx.fill();
+            ctx.stroke();
             ctx.restore();
         }
     }
