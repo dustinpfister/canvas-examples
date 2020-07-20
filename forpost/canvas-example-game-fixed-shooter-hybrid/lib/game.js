@@ -156,6 +156,8 @@ var game = (function () {
             w: 16,
             h: 16,
             shots: [],
+            lastShot: new Date(),
+            shotRate: 0.25,
             heading: Math.PI * 1.5,
             pps: 0,
             maxPPS: 32,
@@ -171,11 +173,15 @@ var game = (function () {
         create: createState,
         playerFire: function (state) {
             var p = state.player,
-            shot = getInactive(state.player.shots);
-            if (shot) {
+            now = new Date(),
+            shot = getInactive(state.player.shots),
+            t = now - p.lastShot,
+            secs = t / 1000;
+            if (shot && secs >= p.shotRate) {
                 shot.active = true;
                 shot.x = p.x + p.w / 2 - shot.w / 2;
                 shot.y = p.y;
+                p.lastShot = now;
             }
         },
         update: function (state, secs) {
