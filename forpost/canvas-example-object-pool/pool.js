@@ -19,6 +19,7 @@ var Pool = (function () {
                 h: 32,
                 heading: 0,
                 pps: 64,
+                lifespan: 3,
                 hcps: 0, // heading change per second in degrees
                 alpha: 0.5,
                 fill: state.colors[i % state.colors.length],
@@ -39,7 +40,8 @@ var Pool = (function () {
                 bx.y = canvas.height / 2;
                 bx.heading = Math.PI * 2 * Math.random();
                 bx.pps = 32 + 128 * Math.random();
-                bx.hcps = -45 + 90 * Math.random();
+                bx.hcps = -90 + 180 * Math.random();
+                bx.lifespan = 10;
             }
             state.secs %= state.spawnRate;
         }
@@ -55,6 +57,11 @@ var Pool = (function () {
                 bx.x += Math.cos(bx.heading) * bx.pps * secs;
                 bx.y += Math.sin(bx.heading) * bx.pps * secs;
                 bx.heading += Math.PI / 180 * bx.hcps * secs;
+                bx.lifespan -= secs;
+                bx.lifespan = bx.lifespan < 0 ? 0 : bx.lifespan;
+                if (bx.lifespan === 0) {
+                    bx.hcps = 0;
+                }
             }
             // set inactive if out of bounds
             checkBounds(bx, canvas);
