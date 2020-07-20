@@ -12,7 +12,11 @@ draw.pool = function (ctx, state) {
     while (i--) {
         bx = state.pool[i];
         if (bx.active) {
-            ctx.fillRect(bx.x, bx.y, bx.w, bx.h);
+            ctx.save();
+            ctx.translate(bx.x, bx.y);
+            ctx.rotate(bx.heading);
+            ctx.fillRect(bx.w / 2 * -1, bx.h / 2 * -1, bx.w, bx.h);
+            ctx.restore();
         }
     }
 };

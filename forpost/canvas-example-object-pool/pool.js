@@ -8,7 +8,7 @@ var Pool = (function () {
             spawnRate: 0.1,
             secs: 0
         };
-        var i = 10;
+        var i = 20;
         while (i--) {
             state.pool.push({
                 x: 32,
@@ -16,7 +16,7 @@ var Pool = (function () {
                 w: 32,
                 h: 32,
                 heading: 0,
-                pps: 128,
+                pps: 64,
                 active: false
             });
         }
@@ -30,8 +30,8 @@ var Pool = (function () {
             bx = getInactive(state.pool);
             if (bx) {
                 bx.active = true;
-                bx.x = canvas.width / 2 - bx.w / 2;
-                bx.y = canvas.height / 2 - bx.h / 2;
+                bx.x = canvas.width / 2;
+                bx.y = canvas.height / 2;
                 bx.heading = Math.PI * 2 * Math.random();
             }
             state.secs %= state.spawnRate;
