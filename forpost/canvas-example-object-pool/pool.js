@@ -24,7 +24,7 @@ var Pool = (function () {
     };
 
     var spawn = function (state, secs) {
-
+        var bx;
         state.secs += secs;
         if (state.secs >= state.spawnRate) {
             bx = getInactive(state.pool);
