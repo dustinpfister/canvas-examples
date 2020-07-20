@@ -18,6 +18,7 @@ var Pool = (function () {
                 h: 32,
                 heading: 0,
                 pps: 64,
+                hcps: 90, // heading change per second in degrees
                 alpha: 0.5,
                 fill: state.colors[i % state.colors.length],
                 active: false
@@ -51,6 +52,7 @@ var Pool = (function () {
                 // move
                 bx.x += Math.cos(bx.heading) * bx.pps * secs;
                 bx.y += Math.sin(bx.heading) * bx.pps * secs;
+                bx.heading += Math.PI / 180 * bx.hcps * secs;
             }
             // set inactive if out of bounds
             checkBounds(bx, canvas);
