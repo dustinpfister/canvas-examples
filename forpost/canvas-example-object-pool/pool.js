@@ -6,7 +6,7 @@ var Pool = (function () {
         var state = {
             ver: '0.1.0',
             pool: [],
-            spawnRate: 0.05,
+            spawnRate: 0.1,
             secs: 0,
             colors: ['red', 'green', 'blue']
         };
