@@ -99,6 +99,7 @@ var game = (function () {
         }
     };
 
+    // update enemies
     var updateEnemies = function (state, secs) {
         var es = state.enemies,
         e;
@@ -108,7 +109,7 @@ var game = (function () {
             es.secs %= es.spawnRate;
             e = getInactive(es.pool);
             if (e) {
-                e.x = state.board.x + state.board.w / 2;
+                e.x = state.board.x + state.board.w * Math.random();
                 e.y = state.board.y;
                 e.heading = Math.PI * Math.random();
                 e.active = true;

@@ -5,9 +5,10 @@ this canvas example will just be a simple fixed shooter hybrid game like Centipe
 ## 0.1.0 - pointer events
 * (done) have kill count on screen
 * (done) add pointer event support
-* auto fire for now
-* create pkg file for blog post
+* (done) auto fire for now
+* () random x for spawn locations
 * display this version number, and all future numbers on screen
+* create pkg file for blog post
 
 ## 0.0.0 - Just get the basic idea together
 * (done) start the game.js file

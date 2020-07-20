@@ -7,12 +7,7 @@ utils.bb = function (a, b) {
         (a.x + a.w) < b.x ||
         a.x > (b.x + b.w));
 };
-/*
-utils.distance = function (x1, y1, x2, y2) {
-    return Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2));
-};
-*/
-
+// clamp
 utils.clamp = function (obj, box) {
     var xMax = box.x + box.w - obj.w,
     yMax = box.y + box.h - obj.h;
@@ -21,7 +16,7 @@ utils.clamp = function (obj, box) {
     obj.x = obj.x < box.x ? box.x : obj.x;
     obj.y = obj.y < box.y ? box.y : obj.y;
 };
-
+// get canvas rel
 utils.getCanvasRelative = function (e) {
     var canvas = e.target,
     bx = canvas.getBoundingClientRect();
