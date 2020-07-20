@@ -80,22 +80,26 @@ window.addEventListener('keyup', function (e) {
     keyUpdate();
 });
 
+// POINTER events
 var pointer = {
     down: false,
     x: 0,
     y: 0
 }
 var pointStart = function (e) {
-    pointrer.down = true;
+    pointer.down = true;
 };
 var pointMove = function (e) {
     var pos = utils.getCanvasRelative(e),
+    per,
+    d,
     p = state.player;
     pointer.x = pos.x;
     pointer.y = pos.y;
-
-    p.heading = Math.atan2(pointer.y - p.y, pointer.x - p.x);
-    p.pps = 32;
+    if (pointer.down) {
+        p.heading = Math.atan2(pointer.y - p.y, pointer.x - p.x);
+        p.pps = 32;
+    }
 
 };
 var pointEnd = function (e) {
@@ -104,7 +108,9 @@ var pointEnd = function (e) {
     p.pps = 0;
 };
 
-// POINTER events
-canvas.addEventListener('moysedown', pointStart);
+canvas.addEventListener('mousedown', pointStart);
 canvas.addEventListener('mousemove', pointMove);
 canvas.addEventListener('mouseup', pointEnd);
+canvas.addEventListener('touchstart', pointStart);
+canvas.addEventListener('touchmove', pointMove);
+canvas.addEventListener('touchend', pointEnd);
