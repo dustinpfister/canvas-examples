@@ -64,7 +64,9 @@ var draw = (function () {
             sy = b.y + 16;
 
             ctx.fillStyle = 'white';
-            ctx.fillText(p.kills, sx, sy);
+            ctx.font = '10px courier';
+            ctx.fillText('kills: ' + p.kills, sx, sy);
+            ctx.fillText('v' + state.ver, sx, sy + 10);
 
         }
     };

@@ -6,7 +6,7 @@ this canvas example will just be a simple fixed shooter hybrid game like Centipe
 * (done) have kill count on screen
 * (done) add pointer event support
 * (done) auto fire for now
-* () random x for spawn locations
+* (done) random x for spawn locations
 * display this version number, and all future numbers on screen
 * create pkg file for blog post
 
