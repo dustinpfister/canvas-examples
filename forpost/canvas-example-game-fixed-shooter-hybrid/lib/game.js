@@ -69,6 +69,7 @@ var game = (function () {
                 e = hitCheck(shot, state.enemies.pool);
                 if (e) {
                     e.active = false;
+                    p.kills += 1;
                 }
                 if (!utils.bb(shot, state.playArea) && !utils.bb(shot, state.board)) {
                     shot.active = false;
@@ -157,7 +158,8 @@ var game = (function () {
             shots: [],
             heading: Math.PI * 1.5,
             pps: 0,
-            maxPPS: 32
+            maxPPS: 32,
+            kills: 0
         };
         centerPlayer(state);
         createPlayerShotPool(state);

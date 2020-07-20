@@ -20,6 +20,7 @@ var loop = function () {
     draw.player(state);
     draw.playerShots(state);
     draw.enemies(state);
+    draw.info(state);
     lt = now;
 };
 loop();

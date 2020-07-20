@@ -42,6 +42,7 @@ var draw = (function () {
             });
         },
 
+        // draw enemies
         enemies: function (state) {
             var canvas = state.canvas,
             ctx = state.ctx;
@@ -51,6 +52,20 @@ var draw = (function () {
                     ctx.fillRect(e.x, e.y, e.w, e.h);
                 }
             });
+        },
+
+        // info
+        info: function (state) {
+            var canvas = state.canvas,
+            ctx = state.ctx,
+            p = state.player,
+            b = state.board,
+            sx = b.x + b.w + 16,
+            sy = b.y + 16;
+
+            ctx.fillStyle = 'white';
+            ctx.fillText(p.kills, sx, sy);
+
         }
     };
 
