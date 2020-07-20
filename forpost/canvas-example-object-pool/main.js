@@ -8,37 +8,94 @@ container.appendChild(canvas);
 
 var state = {
     pool: [],
-    spawnRate: 1,
+    spawnRate: 0.1,
     secs: 0
 };
 
 var i = 10;
 while (i--) {
     state.pool.push({
-        x: 0,
-        y: 0,
+        x: 32,
+        y: 32,
         w: 32,
         h: 32,
         heading: 0,
-        pps: 32,
+        pps: 128,
         active: false
     });
 }
 
+var getInactive = function (pool) {
+    var p = state.player,
+    i = pool.length,
+    obj;
+    while (i--) {
+        obj = pool[i];
+        if (!obj.active) {
+            return obj;
+        }
+    }
+    return false;
+};
+
+var checkBounds = function (bx, canvas) {
+    if (bx.x >= canvas.width || bx.x < bx.w * -1 || bx.y > canvas.height || bx.y < bx.h * -1) {
+        bx.active = false;
+    }
+};
+
+var lt = new Date();
+
 var loop = function () {
-    requestAnimationFrame();
+
+    var now = new Date(),
+    t = now - lt,
+    secs = t / 1000;
+
+    requestAnimationFrame(loop);
 
     ctx.fillStyle = 'black';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-    var i = bx.pool.length,
-    b;
+    var i = state.pool.length,
+    bx;
+    ctx.fillStyle = 'white';
     while (i--) {
         bx = state.pool[i];
         if (bx.active) {
-            bx.fillRect(bx.x, bx.y, bx.w, bx.h);
+            ctx.fillRect(bx.x, bx.y, bx.w, bx.h);
         }
     }
+
+    var i = state.pool.length,
+    bx;
+    while (i--) {
+        bx = state.pool[i];
+
+        if (bx.active) {
+            // move
+            bx.x += Math.cos(bx.heading) * bx.pps * secs;
+            bx.y += Math.sin(bx.heading) * bx.pps * secs;
+        }
+
+        // set inactive if out of bounds
+        checkBounds(bx, canvas);
+    }
+
+    // spawn
+    state.secs += secs;
+    if (state.secs >= state.spawnRate) {
+        bx = getInactive(state.pool);
+        if (bx) {
+            bx.active = true;
+            bx.x = canvas.width / 2 - bx.w / 2;
+            bx.y = canvas.height / 2 - bx.h / 2;
+            bx.heading = Math.PI * 2 * Math.random();
+        }
+        state.secs %= state.spawnRate;
+    }
+
+    lt = now;
 
 };
 loop();
