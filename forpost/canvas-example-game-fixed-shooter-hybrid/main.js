@@ -51,10 +51,10 @@ var keyUpdate = function () {
     if (keys.w || keys.a || keys.s || keys.d) {
         state.player.pps = 32;
     }
-
-    if (keys.k) {
-        game.playerFire(state);
-    }
+    // auto fire only for now
+    //if (keys.k) {
+    //    game.playerFire(state);
+    //}
 
 };
 

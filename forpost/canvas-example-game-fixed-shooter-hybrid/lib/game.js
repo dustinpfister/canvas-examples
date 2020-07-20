@@ -169,28 +169,33 @@ var game = (function () {
         return state;
     };
 
+    var playerFire = function (state) {
+        var p = state.player,
+        now = new Date(),
+        shot = getInactive(state.player.shots),
+        t = now - p.lastShot,
+        secs = t / 1000;
+        if (shot && secs >= p.shotRate) {
+            shot.active = true;
+            shot.x = p.x + p.w / 2 - shot.w / 2;
+            shot.y = p.y;
+            p.lastShot = now;
+        }
+    };
+
     return {
         create: createState,
-        playerFire: function (state) {
-            var p = state.player,
-            now = new Date(),
-            shot = getInactive(state.player.shots),
-            t = now - p.lastShot,
-            secs = t / 1000;
-            if (shot && secs >= p.shotRate) {
-                shot.active = true;
-                shot.x = p.x + p.w / 2 - shot.w / 2;
-                shot.y = p.y;
-                p.lastShot = now;
-            }
-        },
+        playerFire: playerFire,
         update: function (state, secs) {
             var p = state.player,
             pa = state.playArea;
             p.x += Math.cos(p.heading) * p.pps * secs;
             p.y += Math.sin(p.heading) * p.pps * secs;
+
             // clamp player
             utils.clamp(p, pa);
+            // auto fire for now
+            playerFire(state);
 
             // update shots
             updatePlayerShots(state, secs);
