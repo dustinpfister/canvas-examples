@@ -2,15 +2,20 @@
 var Pool = (function () {
 
     // create a pool
-    var createPool = function () {
+    var createPool = function (opt) {
+        opt = opt || {};
         var state = {
             ver: '0.1.0',
+            canvas: opt.canvas || {
+                width: 320,
+                height: 240
+            },
             pool: [],
             spawnRate: 0.1,
             secs: 0,
             colors: ['red', 'green', 'blue']
         };
-        var i = 50;
+        var i = opt.count || 10;
         while (i--) {
             state.pool.push({
                 x: 32,
@@ -36,8 +41,8 @@ var Pool = (function () {
             bx = getInactive(state.pool);
             if (bx) {
                 bx.active = true;
-                bx.x = canvas.width / 2;
-                bx.y = canvas.height / 2;
+                bx.x = state.canvas.width / 2;
+                bx.y = state.canvas.height / 2;
                 bx.heading = Math.PI * 2 * Math.random();
                 bx.pps = 32 + 128 * Math.random();
                 bx.hcps = -90 + 180 * Math.random();

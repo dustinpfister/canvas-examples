@@ -7,7 +7,10 @@ canvas.height = 240;
 container.appendChild(canvas);
 
 // create a state with pool
-var state = Pool.create();
+var state = Pool.create({
+        canvas: canvas,
+        count: 100
+    });
 
 // LOOP
 var lt = new Date();
