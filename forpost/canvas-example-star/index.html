@@ -1,0 +1,31 @@
+<html>
+    <head>
+        <title>canvas star</title>
+    </head>
+    <body>
+        <canvas id="the-canvas" width="320" height="240"></canvas>
+        <script src="./lib/draw.js"></script>
+        <script src="./lib/star.js"></script>
+        <script>
+var canvas = document.getElementById('the-canvas'),
+ctx = canvas.getContext('2d');
+var loop = function () {
+
+    requestAnimationFrame(loop);
+
+    var star = starMod.create1({
+            pointCount: 5,
+            radius: 40,
+            radiusInner: 20,
+			radianAjust: Math.PI * 1.5
+        });
+		
+		ctx.fillStyle = 'green';
+		draw.points(ctx, star, 32, 32)
+};
+
+loop();
+
+        </script>
+    </body>
+</html>
