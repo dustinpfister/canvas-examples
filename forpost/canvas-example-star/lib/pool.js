@@ -1,5 +1,13 @@
 
 var pool = {};
+var distance = function (x1, y1, x2, y2) {
+    return Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2));
+};
+
+var bounds = function(state, obj){
+	
+	
+};
 
 pool.update = function (state, secs) {
     var i = state.pool.length,
@@ -10,6 +18,9 @@ pool.update = function (state, secs) {
 		// move by heading and pps
 		obj.x += Math.cos(obj.heading) * obj.pps * secs;
 		obj.y += Math.sin(obj.heading) * obj.pps * secs;
+		
+		bounds(state, obj);
+		
 		
         obj.points = starMod.create1({
                 pointCount: obj.pointCount,
