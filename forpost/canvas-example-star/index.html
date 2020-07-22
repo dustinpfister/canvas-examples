@@ -9,23 +9,58 @@
         <script>
 var canvas = document.getElementById('the-canvas'),
 ctx = canvas.getContext('2d');
-var loop = function () {
+ctx.translate(0.5,0.5);
 
-    requestAnimationFrame(loop);
-
-    var star = starMod.create1({
-            pointCount: 5,
+var update = function(state, secs){
+	
+	var i = state.pool.length,obj;
+	while(i--){
+		obj = state.pool[i];
+		obj.points = starMod.create1({
+            pointCount: obj.pointCount,
             radius: 40,
             radiusInner: 20,
-			radianAjust: Math.PI * 1.5
+            radianAjust: Math.PI * 1.5
         });
 		
-		ctx.fillStyle = 'green';
-		draw.points(ctx, star, 32, 32)
+	}
 };
 
-loop();
+var createState = function(){
 
+var state = {
+	pool : []
+};
+
+var i = 0;
+while(i < 10){
+	state.pool.push({
+		x: Math.random() * canvas.width,
+		y:Math.random() * canvas.height,
+		pointCount: 5 + Math.round(10 * Math.random()),
+		points:[]
+	});
+	
+	update(state, 0);
+	i += 1;
+}
+
+return state;
+
+};
+
+var state = createState();
+
+var loop = function () {
+    requestAnimationFrame(loop);
+
+	state.pool.forEach(function(obj){
+    ctx.fillStyle = 'green';
+	ctx.lineWidth = 3;
+    draw.points(ctx, obj.points, obj.x, obj.y);
+	});
+};
+loop();
         </script>
     </body>
 </html>
