@@ -8,9 +8,9 @@ pool.update = function (state, secs) {
         obj = state.pool[i];
         obj.points = starMod.create1({
                 pointCount: obj.pointCount,
-                radius: 40,
-                radiusInner: 20,
-                radianAjust: Math.PI * 1.5
+                radius: obj.r1,
+                radiusInner: obj.r2,
+                radianAjust: obj.heading
             });
     }
 };
@@ -24,7 +24,10 @@ pool.createState = function () {
         state.pool.push({
             x: Math.random() * canvas.width,
             y: Math.random() * canvas.height,
-            pointCount: 5 + Math.round(10 * Math.random()),
+            pointCount: 5 + Math.round(5 * Math.random()),
+            r1: 30 + Math.round(20 * Math.random()),
+            r2: 10 + Math.round(10 * Math.random()),
+            heading: Math.PI * 2 * Math.random(),
             points: []
         });
         pool.update(state, 0);
