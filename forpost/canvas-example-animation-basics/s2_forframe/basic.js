@@ -29,8 +29,26 @@ var opt = {
 };
 
 // create an animation method
-var ani = FF(opt);
+var ani = FF(opt),
+frame = 0,
+maxFrame = 50,
+FPS = 24,
+lt = new Date();
 
-var bx = ani(25, 50).bx;
-draw.back(ctx, canvas)
-draw.bx(ctx, bx);
+var loop = function () {
+    var now = new Date(),
+    t = now - lt,
+    secs = t / 1000,
+    bx;
+
+    requestAnimationFrame(loop);
+
+    bx = ani(Math.floor(frame), maxFrame).bx;
+    draw.back(ctx, canvas)
+    draw.bx(ctx, bx);
+    frame += FPS * secs;
+    frame %= maxFrame;
+    lt = now;
+
+};
+loop();
