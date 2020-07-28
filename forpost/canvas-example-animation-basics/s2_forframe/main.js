@@ -35,7 +35,7 @@ var loop = function () {
     requestAnimationFrame(loop);
 
     api = forFrame(Math.floor(frame), maxFrame);
-    draw.back(ctx, canvas)
+    draw.back(ctx, canvas);
     draw.bx(ctx, api.ani.bx);
     draw.info(ctx, api.ani);
     frame += FPS * secs;
