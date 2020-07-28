@@ -2,7 +2,9 @@ var FF = function (opt) {
 
     var api = {};
     opt = opt || {};
-    api.ani = {};
+    api.ani = {
+        ver: opt.ver || '0.0.0'
+    };
     api.forFrame = opt.forFrame || function () {};
 
     // set the main percent and bias values for api
@@ -33,9 +35,11 @@ var FF = function (opt) {
         // wrap frame index
         frame = frame > maxFrame ? frame % maxFrame : frame;
         frame = frame < 0 ? maxFrame - Math.abs(frame) % maxFrame : frame;
+        api.ani.frame = frame;
+        api.ani.maxFrame = maxFrame;
         // call forFrame with parsed frame and maxFrame
         forFrame(frame, maxFrame);
         // return just the animation object
-        return api.ani;
+        return api;
     };
 };

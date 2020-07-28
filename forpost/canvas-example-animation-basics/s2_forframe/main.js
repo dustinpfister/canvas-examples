@@ -1,10 +1,9 @@
-
-
 var canvas = document.getElementById('the-canvas'),
 ctx = canvas.getContext('2d');
 ctx.translate(0.5, 0.5);
 
 var opt = {
+    ver: '0.0.0',
     forFrame: function (api, f, mf) {
         var bx = api.ani.bx = {
             w: 32,
@@ -16,7 +15,8 @@ var opt = {
 };
 
 // create an animation method
-var ani = FF(opt),
+var forFrame = FF(opt),
+api,
 frame = 0,
 maxFrame = 50,
 FPS = 24,
@@ -30,9 +30,10 @@ var loop = function () {
 
     requestAnimationFrame(loop);
 
-    bx = ani(Math.floor(frame), maxFrame).bx;
+    api = forFrame(Math.floor(frame), maxFrame);
     draw.back(ctx, canvas)
-    draw.bx(ctx, bx);
+    draw.bx(ctx, api.ani.bx);
+    draw.info(ctx, api.ani);
     frame += FPS * secs;
     frame %= maxFrame;
     lt = now;
