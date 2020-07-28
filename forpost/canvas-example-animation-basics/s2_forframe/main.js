@@ -1,6 +1,10 @@
-var canvas = document.getElementById('the-canvas'),
+var container = document.getElementById('canvas-app'),
+canvas = document.createElement('canvas'),
 ctx = canvas.getContext('2d');
 ctx.translate(0.5, 0.5);
+canvas.width = 320;
+canvas.height = 240;
+container.appendChild(canvas);
 
 var opt = {
     ver: '0.0.0',
