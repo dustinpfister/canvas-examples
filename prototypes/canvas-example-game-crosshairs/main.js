@@ -23,7 +23,10 @@ var loop = function () {
     t = now - lt,
     secs = t / 1000;
     requestAnimationFrame(loop);
+
     crossMod.update(cross, secs);
+    mapMod.clampOffset(map, cross.offset);
+
     draw.back(ctx, canvas);
     draw.map(ctx, map, cross);
     draw.cross(ctx, cross);

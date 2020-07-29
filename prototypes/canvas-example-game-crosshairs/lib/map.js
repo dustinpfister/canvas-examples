@@ -3,14 +3,12 @@ var mapMod = (function () {
     return {
 
         create: function () {
-
             var map = {
                 cellSize: 32,
                 cellWidth: 8,
                 cellHeight: 8,
                 cells: []
             };
-
             var i = 0,
             x,
             y,
@@ -23,9 +21,16 @@ var mapMod = (function () {
                 });
                 i += 1;
             }
-
-console.log(map);
             return map;
+        },
+
+        clampOffset: function (map, offset) {
+
+            offset.x = offset.x > 0 ? 0 : offset.x;
+            offset.y = offset.y > 0 ? 0 : offset.y;
+
+            offset.x = offset.x < map.cellWidth * map.cellSize * -1 ? map.cellWidth * map.cellSize * -1 : offset.x;
+			offset.y = offset.y < map.cellHeight * map.cellSize * -1 ? map.cellHeight * map.cellSize * -1 : offset.y;
 
         }
 
