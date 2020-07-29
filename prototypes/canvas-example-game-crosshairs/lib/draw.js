@@ -25,7 +25,7 @@ var draw = (function () {
         },
 
         info: function (ctx, cross) {
-            ctx.fillStyle = 'white';
+            ctx.fillStyle = 'lime';
             ctx.textBaseline = 'top';
             ctx.font = '10px courier';
             ctx.fillText(cross.offset.x + ',' + cross.offset.y, 10, 10);
