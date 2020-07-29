@@ -13,7 +13,7 @@
 * (done) have a hp and max hp value for each map cell
 * (done) clicking on a cell lowers hp
 * (done) display cells hp
-* have a percent killed display
+* (done) have a percent killed display
 * create a pkg.html for 'v0.1.0'
 
 ## 0.0.0 - basic idea working
