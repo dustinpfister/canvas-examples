@@ -33,7 +33,7 @@ var crossMod = (function () {
                 userDown: false,
                 pps: opt.pps || 128,
                 radiusInner: opt.radiusInner || (240 / 4),
-                radiusOuter: opt.radiusOuter ||  (240 / 2.125),
+                radiusOuter: opt.radiusOuter || (240 / 2.125),
                 center: {
                     x: opt.cx || (320 / 2),
                     y: opt.cy || (240 / 2)
@@ -79,6 +79,7 @@ var crossMod = (function () {
 
         createEvent: function (cross, eventType) {
             return function (e) {
+                e.preventDefault();
                 var pos = utils.getCanvasRelative(e);
                 if (eventType === 'start') {
                     cross.userDown = true;
