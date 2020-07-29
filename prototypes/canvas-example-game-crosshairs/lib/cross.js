@@ -30,7 +30,7 @@ var crossMod = (function () {
             return {
                 ver: '0.0.0',
                 userDown: false,
-                pps: 32,
+                pps: 128,
                 radiusInner: canvas.height / 4,
                 radiusOuter: canvas.height / 2.125,
                 center: {

@@ -1,8 +1,10 @@
 # todo list for canvas-example-game-crosshairs
 
 ## 0.1.0 - Add a basic map.js
-* add a map.js module that will be effected by cross.js
+* (done) start a map.js module that will be effected by cross.js
 * (done) start event will move cross hairs to the location
+* draw map.js according to the offset value of the cross object
+* read secs value in main app loop
 * display 'v0.1.0' in the canvas
 * create a pkg.html for 'v0.1.0'
 

@@ -13,12 +13,17 @@ canvas.addEventListener('mousedown', crossMod.createEvent(cross, 'start'));
 canvas.addEventListener('mouseup', crossMod.createEvent(cross, 'end'));
 canvas.addEventListener('mousemove', crossMod.createEvent(cross, 'move'));
 
+var lt = new Date();
 var loop = function () {
+    var now = new Date(),
+    t = now - lt,
+    secs = t / 1000;
     requestAnimationFrame(loop);
-    crossMod.update(cross, 0.1);
+    crossMod.update(cross, secs);
     draw.back(ctx, canvas);
     draw.cross(ctx, cross);
     draw.info(ctx, cross);
+    lt = now;
 };
 
 loop();
