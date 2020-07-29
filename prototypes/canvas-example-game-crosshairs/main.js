@@ -7,7 +7,8 @@ canvas.width = 320;
 canvas.height = 240;
 ctx.translate(0.5, 0.5);
 
-var cross = crossMod.create(canvas);
+var cross = crossMod.create(canvas),
+map = mapMod.create();
 
 canvas.addEventListener('mousedown', crossMod.createEvent(cross, 'start'));
 canvas.addEventListener('mouseup', crossMod.createEvent(cross, 'end'));
@@ -21,6 +22,7 @@ var loop = function () {
     requestAnimationFrame(loop);
     crossMod.update(cross, secs);
     draw.back(ctx, canvas);
+    draw.map(ctx, map, cross);
     draw.cross(ctx, cross);
     draw.info(ctx, cross);
     lt = now;

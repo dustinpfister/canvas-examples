@@ -6,17 +6,17 @@ var mapMod = (function () {
 
             var map = {
                 cellSize: 32,
-                cellWidth: 120,
-                cellHeight: 120,
+                cellWidth: 80,
+                cellHeight: 60,
                 cells: []
             };
 
             var i = 0,
             x,
             y,
-            len = map.celWidth * map.cellHeight;
+            len = map.cellWidth * map.cellHeight;
             while (i < len) {
-                cells.push({
+                map.cells.push({
                     i: i,
                     x: i % map.cellWidth,
                     y: Math.floor(i / map.cellWidth)
@@ -24,9 +24,10 @@ var mapMod = (function () {
                 i += 1;
             }
 
+console.log(map);
             return map;
 
-        };
+        }
 
     }
 

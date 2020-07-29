@@ -20,8 +20,8 @@ var crossMod = (function () {
         d2 = d1 - cross.radiusInner,
         per = d2 / diff;
         if (d1 > cross.radiusInner) {
-            cross.offset.x += Math.cos(ch.heading + Math.PI) * cross.offset.pps * per * secs;
-            cross.offset.y += Math.sin(ch.heading + Math.PI) * cross.offset.pps * per * secs;
+            cross.offset.x += Math.cos(ch.heading) * cross.offset.pps * per * secs;
+            cross.offset.y += Math.sin(ch.heading) * cross.offset.pps * per * secs;
         }
     };
 
@@ -46,7 +46,7 @@ var crossMod = (function () {
                 offset: {
                     x: 0,
                     y: 0,
-                    pps: 16
+                    pps: 256
                 }
             };
         },

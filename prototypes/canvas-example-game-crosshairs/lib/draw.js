@@ -24,6 +24,21 @@ var draw = (function () {
 
         },
 
+        map: function (ctx, map, cross) {
+
+            ctx.strokeStyle = 'red';
+            ctx.lineWidth = 3;
+            map.cells.forEach(function (cell) {
+                var x = cell.x * map.cellSize + cross.offset.x,
+                y = cell.y * map.cellSize + cross.offset.y;
+                ctx.beginPath();
+                ctx.rect(x, y, map.cellSize, map.cellSize);
+                ctx.stroke();
+                ctx.closePath();
+            });
+
+        },
+
         info: function (ctx, cross) {
             ctx.fillStyle = 'lime';
             ctx.textBaseline = 'top';
