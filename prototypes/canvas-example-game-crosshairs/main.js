@@ -9,11 +9,13 @@ ctx.translate(0.5, 0.5);
 
 var cross = crossMod.create(canvas);
 
-
+canvas.addEventListener('mousedown', crossMod.createEvent(cross, 'start'));
+canvas.addEventListener('mouseup', crossMod.createEvent(cross, 'end'));
+canvas.addEventListener('mousemove', crossMod.createEvent(cross, 'move'));
 
 var loop = function () {
     requestAnimationFrame(loop);
-	crossMod.update(cross, 0.1);
+    crossMod.update(cross, 0.1);
     draw.back(ctx, canvas);
     draw.cross(ctx, cross);
     draw.info(ctx, cross);

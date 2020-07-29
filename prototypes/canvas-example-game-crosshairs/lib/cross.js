@@ -27,15 +27,29 @@ var crossMod = (function () {
             secs = secs || 0;
             var ch = cross.crosshairs,
             center = cross.center;
-
             // move back to innerRdaius if in outer area and userDown is false
             if (utils.distance(ch.x, ch.y, center.x, center.y) >= cross.radiusInner && !cross.userDown) {
                 ch.heading = Math.atan2(center.y - ch.y, center.x - ch.x);
                 ch.x += Math.cos(ch.heading) * cross.pps * secs;
                 ch.y += Math.sin(ch.heading) * cross.pps * secs;
             }
-
         },
+
+        createEvent: function (cross, eventType) {
+            return function (e) {
+                var pos = utils.getCanvasRelative(e);
+                if (eventType === 'start') {
+                    cross.userDown = true;
+                }
+                if (eventType === 'end') {
+                    cross.userDown = false;
+                }
+                if (eventType === 'move' && cross.userDown) {
+                    cross.crosshairs.x = pos.x;
+                    cross.crosshairs.y = pos.y;
+                }
+            };
+        }
 
     }
 }
