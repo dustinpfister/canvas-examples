@@ -7,7 +7,7 @@
 * (done) real secs value in main app loop
 * (done) full options for crossMod.create
 * (done) make starting position in center of map
-* can not leave map
+* (done) can not leave map
 * (done) display 'v0.1.0' in the canvas
 * create a pkg.html for 'v0.1.0'
 
