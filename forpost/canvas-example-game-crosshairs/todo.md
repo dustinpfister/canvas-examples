@@ -14,7 +14,7 @@
 * (done) clicking on a cell lowers hp
 * (done) display cells hp
 * (done) have a percent killed display
-* create a pkg.html for 'v0.1.0'
+* (done) create a pkg.html for 'v0.1.0'
 
 ## 0.0.0 - basic idea working
 * (done) have a cross.js file started that will be used to create and update a crosshairs state object
