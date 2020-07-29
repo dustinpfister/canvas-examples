@@ -6,8 +6,8 @@ var mapMod = (function () {
 
             var map = {
                 cellSize: 32,
-                cellWidth: 80,
-                cellHeight: 60,
+                cellWidth: 8,
+                cellHeight: 8,
                 cells: []
             };
 

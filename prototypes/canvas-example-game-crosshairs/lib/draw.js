@@ -29,8 +29,8 @@ var draw = (function () {
             ctx.strokeStyle = 'red';
             ctx.lineWidth = 3;
             map.cells.forEach(function (cell) {
-                var x = cell.x * map.cellSize + cross.offset.x,
-                y = cell.y * map.cellSize + cross.offset.y;
+                var x = cell.x * map.cellSize + cross.offset.x + (320 / 2),
+                y = cell.y * map.cellSize + cross.offset.y + (240 / 2);
                 ctx.beginPath();
                 ctx.rect(x, y, map.cellSize, map.cellSize);
                 ctx.stroke();

@@ -7,8 +7,11 @@ canvas.width = 320;
 canvas.height = 240;
 ctx.translate(0.5, 0.5);
 
-var cross = crossMod.create(canvas),
-map = mapMod.create();
+var map = mapMod.create(),
+cross = crossMod.create({
+        offsetX: 0,
+        offsetY: 0
+    });
 
 canvas.addEventListener('mousedown', crossMod.createEvent(cross, 'start'));
 canvas.addEventListener('mouseup', crossMod.createEvent(cross, 'end'));

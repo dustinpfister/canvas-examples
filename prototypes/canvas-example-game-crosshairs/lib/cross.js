@@ -26,26 +26,27 @@ var crossMod = (function () {
     };
 
     return {
-        create: function (canvas) {
+        create: function (opt) {
+            opt = opt || {};
             return {
-                ver: '0.0.0',
+                ver: '0.1.0',
                 userDown: false,
-                pps: 128,
-                radiusInner: canvas.height / 4,
-                radiusOuter: canvas.height / 2.125,
+                pps: opt.pps || 128,
+                radiusInner: opt.radiusInner || (240 / 4),
+                radiusOuter: opt.radiusOuter ||  (240 / 2.125),
                 center: {
-                    x: canvas.width / 2,
-                    y: canvas.height / 2
+                    x: opt.cx || (320 / 2),
+                    y: opt.cy || (240 / 2)
                 },
                 crosshairs: {
-                    x: 0,
-                    y: 0,
+                    x: 320 / 2,
+                    y: 240 / 2,
                     heading: 0,
                     radius: 16
                 },
                 offset: {
-                    x: 0,
-                    y: 0,
+                    x: opt.offsetX || 0,
+                    y: opt.offsetY || 0,
                     pps: 256
                 }
             };

@@ -3,9 +3,12 @@
 ## 0.1.0 - Add a basic map.js
 * (done) start a map.js module that will be effected by cross.js
 * (done) start event will move cross hairs to the location
-* draw map.js according to the offset value of the cross object
-* read secs value in main app loop
-* display 'v0.1.0' in the canvas
+* (done) draw map.js according to the offset value of the cross object
+* (done) real secs value in main app loop
+* full options for crossMod.create
+* make starting position in center of map
+* can not leave map
+* (done) display 'v0.1.0' in the canvas
 * create a pkg.html for 'v0.1.0'
 
 ## 0.0.0 - basic idea working
