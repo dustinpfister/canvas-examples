@@ -28,6 +28,7 @@ var crossMod = (function () {
     return {
         create: function (canvas) {
             return {
+                ver: '0.0.0',
                 userDown: false,
                 pps: 32,
                 radiusInner: canvas.height / 4,
