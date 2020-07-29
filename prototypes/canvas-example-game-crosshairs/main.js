@@ -9,8 +9,8 @@ ctx.translate(0.5, 0.5);
 
 var map = mapMod.create(),
 cross = crossMod.create({
-        offsetX: 0,
-        offsetY: 0
+        offsetX: map.cellWidth * map.cellSize / 2 * -1,
+        offsetY: map.cellHeight * map.cellSize / 2 * -1,
     });
 
 canvas.addEventListener('mousedown', crossMod.createEvent(cross, 'start'));
