@@ -9,21 +9,22 @@ ctx.translate(0.5, 0.5);
 
 var map = mapMod.create(),
 cross = crossMod.create({
-        offsetX: 0,//map.cellWidth * map.cellSize / 2 * -1,
-        offsetY: 0//map.cellHeight * map.cellSize / 2 * -1,
+        offsetX: 0, //map.cellWidth * map.cellSize / 2 * -1,
+        offsetY: 0 //map.cellHeight * map.cellSize / 2 * -1,
     });
 
 canvas.addEventListener('mousedown', crossMod.createEvent(cross, 'start'));
 canvas.addEventListener('mouseup', crossMod.createEvent(cross, 'end'));
 canvas.addEventListener('mousemove', crossMod.createEvent(cross, 'move'));
 
+// attack!
 canvas.addEventListener('mousedown', function (e) {
-
     var pos = utils.getCanvasRelative(e),
     cell = mapMod.getWithCross(map, cross, pos.x, pos.y);
-
-    console.log(cell);
-
+    if (cell) {
+        cell.HP -= 5;
+        cell.HP = cell.HP < 0 ? 0 : cell.HP
+    }
 });
 
 var lt = new Date();
