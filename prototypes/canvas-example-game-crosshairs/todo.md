@@ -9,6 +9,10 @@
 * (done) make starting position in center of map
 * (done) can not leave map
 * (done) display 'v0.1.0' in the canvas
+* (done) getting cells by clicking on them
+* have a hp and max hp value for each map cell
+* clicking on a cell lowers hp
+* display cells hp
 * create a pkg.html for 'v0.1.0'
 
 ## 0.0.0 - basic idea working

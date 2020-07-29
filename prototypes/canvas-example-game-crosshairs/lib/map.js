@@ -21,7 +21,9 @@ var mapMod = (function () {
                 map.cells.push({
                     i: i,
                     x: i % map.cellWidth,
-                    y: Math.floor(i / map.cellWidth)
+                    y: Math.floor(i / map.cellWidth),
+                    HP: 100,
+                    maxHP: 100
                 });
                 i += 1;
             }
@@ -36,20 +38,9 @@ var mapMod = (function () {
         },
 
         getWithCross: function (map, cross, canvasX, canvasY) {
-
             var x = canvasX - cross.center.x + Math.abs(cross.offset.x),
             y = canvasY - cross.center.y + Math.abs(cross.offset.y);
-
             return get(map, Math.floor(x / map.cellSize), Math.floor(y / map.cellSize));
-
-            /*
-            return {
-            x: Math.floor(x / map.cellSize),
-            y: Math.floor(y / map.cellSize),
-
-            };
-             */
-
         }
 
     }
