@@ -13,6 +13,7 @@ var loop = function () {
     requestAnimationFrame(loop);
     draw.back(ctx, canvas);
     draw.cross(ctx, cross);
+    draw.info(ctx, cross);
 
 };
 
