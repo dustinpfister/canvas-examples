@@ -17,15 +17,22 @@ canvas.addEventListener('mousedown', crossMod.createEvent(cross, 'start'));
 canvas.addEventListener('mouseup', crossMod.createEvent(cross, 'end'));
 canvas.addEventListener('mousemove', crossMod.createEvent(cross, 'move'));
 
+canvas.addEventListener('touchstart', crossMod.createEvent(cross, 'start'));
+canvas.addEventListener('touchend', crossMod.createEvent(cross, 'end'));
+canvas.addEventListener('touchmove', crossMod.createEvent(cross, 'move'));
+
 // attack!
-canvas.addEventListener('mousedown', function (e) {
+var attack = function (e) {
     var pos = utils.getCanvasRelative(e),
     cell = mapMod.getWithCross(map, cross, pos.x, pos.y);
+    e.preventDefault();
     if (cell) {
         cell.HP -= 5;
         cell.HP = cell.HP < 0 ? 0 : cell.HP
     }
-});
+};
+canvas.addEventListener('mousedown', attack);
+canvas.addEventListener('touchstart', attack);
 
 var lt = new Date();
 var loop = function () {
