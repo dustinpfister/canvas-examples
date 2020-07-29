@@ -28,7 +28,13 @@ var attack = function (e) {
     e.preventDefault();
     if (cell) {
         cell.HP -= 5;
-        cell.HP = cell.HP < 0 ? 0 : cell.HP
+        cell.HP = cell.HP < 0 ? 0 : cell.HP;
+        // percent killed
+        map.percentKilled = 0;
+        map.cells.forEach(function (cell) {
+            map.percentKilled += cell.HP / cell.maxHP;
+        });
+        map.percentKilled /= map.cells.length;
     }
 };
 canvas.addEventListener('mousedown', attack);
@@ -47,7 +53,7 @@ var loop = function () {
     draw.back(ctx, canvas);
     draw.map(ctx, map, cross);
     draw.cross(ctx, cross);
-    draw.info(ctx, cross);
+    draw.info(ctx, cross, map);
     lt = now;
 };
 

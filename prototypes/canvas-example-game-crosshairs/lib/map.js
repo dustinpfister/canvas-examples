@@ -11,7 +11,8 @@ var mapMod = (function () {
                 cellSize: 32,
                 cellWidth: 32,
                 cellHeight: 16,
-                cells: []
+                cells: [],
+                percentKilled: 0
             };
             var i = 0,
             x,
