@@ -3,7 +3,13 @@ var crossMod = (function () {
     var isInOuter = function (cross) {
         var ch = cross.crosshairs,
         center = cross.center;
-        return utils.distance(ch.x, ch.y, center.x, center.y) >= cross.radiusInner
+        return utils.distance(ch.x, ch.y, center.x, center.y) >= cross.radiusInner;
+    };
+
+    var isOutOfBounds = function (cross) {
+        var ch = cross.crosshairs,
+        center = cross.center;
+        return utils.distance(ch.x, ch.y, center.x, center.y) >= cross.radiusOuter;
     };
 
     return {
@@ -34,12 +40,20 @@ var crossMod = (function () {
             secs = secs || 0;
             var ch = cross.crosshairs,
             center = cross.center;
+
+            ch.heading = Math.atan2(center.y - ch.y, center.x - ch.x);
+
             // move back to innerRdaius if in outer area and userDown is false
             if (isInOuter(cross) && !cross.userDown) {
-                ch.heading = Math.atan2(center.y - ch.y, center.x - ch.x);
                 ch.x += Math.cos(ch.heading) * cross.pps * secs;
                 ch.y += Math.sin(ch.heading) * cross.pps * secs;
             }
+
+            if (isOutOfBounds(cross)) {
+                ch.x = center.x + Math.cos(ch.heading + Math.PI) * cross.radiusOuter;
+                ch.y = center.y + Math.sin(ch.heading + Math.PI) * cross.radiusOuter;
+            }
+
         },
 
         createEvent: function (cross, eventType) {
