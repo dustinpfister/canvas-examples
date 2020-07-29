@@ -1,5 +1,9 @@
 var mapMod = (function () {
 
+    var get = function (map, x, y) {
+        return map.cells[y * map.cellWidth + x];
+    };
+
     return {
 
         create: function () {
@@ -36,10 +40,15 @@ var mapMod = (function () {
             var x = canvasX - cross.center.x + Math.abs(cross.offset.x),
             y = canvasY - cross.center.y + Math.abs(cross.offset.y);
 
+            return get(map, Math.floor(x / map.cellSize), Math.floor(y / map.cellSize));
+
+            /*
             return {
-                x: Math.floor(x / map.cellSize),
-                y: Math.floor(y / map.cellSize)
+            x: Math.floor(x / map.cellSize),
+            y: Math.floor(y / map.cellSize),
+
             };
+             */
 
         }
 
