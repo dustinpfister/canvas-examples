@@ -15,7 +15,7 @@ var draw = (function () {
             ctx.stroke();
 
             ctx.beginPath();
-            ctx.arc(cross.center.x, cross.center.y, cross.radiusOutter, 0, Math.PI * 2);
+            ctx.arc(cross.center.x, cross.center.y, cross.radiusOuter, 0, Math.PI * 2);
             ctx.stroke();
 
             ctx.beginPath();
