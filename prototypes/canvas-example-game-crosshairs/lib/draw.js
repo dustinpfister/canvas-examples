@@ -28,7 +28,9 @@ var draw = (function () {
             ctx.fillStyle = 'lime';
             ctx.textBaseline = 'top';
             ctx.font = '10px courier';
-            ctx.fillText(cross.offset.x + ',' + cross.offset.y, 10, 10);
+
+            ctx.fillText('v' + cross.ver, 10, 10);
+            ctx.fillText(cross.offset.x + ',' + cross.offset.y, 10, 20);
         }
     }
 }

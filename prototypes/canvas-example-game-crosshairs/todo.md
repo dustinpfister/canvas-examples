@@ -2,7 +2,7 @@
 
 ## 0.1.0 - Add a basic map.js
 * add a map.js module that will be effected by cross.js
-* start event will move cross hairs to the location
+* (done) start event will move cross hairs to the location
 * display 'v0.1.0' in the canvas
 * create a pkg.html for 'v0.1.0'
 
