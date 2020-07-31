@@ -52,13 +52,13 @@ var draw = (function () {
             });
         },
         // draw info
-        info: function (ctx, cross, map) {
+        info: function (ctx, game) {
             ctx.fillStyle = 'lime';
             ctx.textBaseline = 'top';
             ctx.font = '10px courier';
-            ctx.fillText('v' + cross.ver, 10, 10);
-            ctx.fillText(cross.offset.x + ',' + cross.offset.y, 10, 20);
-            ctx.fillText(map.percentKilled, 10, 30);
+            ctx.fillText('v' + game.ver, 10, 10);
+            ctx.fillText(game.cross.offset.x + ',' + game.cross.offset.y, 10, 20);
+            ctx.fillText(game.map.percentKilled, 10, 30);
         }
     }
 }

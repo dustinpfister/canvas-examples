@@ -5,6 +5,7 @@ var gameMod = (function () {
         create: function (canvas) {
 
             var game = {
+                ver: '0.2.0',
                 canvas: canvas,
                 map: mapMod.create(),
                 cross: {}

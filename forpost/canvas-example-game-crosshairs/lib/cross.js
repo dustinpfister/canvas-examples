@@ -29,7 +29,6 @@ var crossMod = (function () {
         create: function (opt) {
             opt = opt || {};
             return {
-                ver: '0.1.0',
                 userDown: false,
                 pps: opt.pps || 128,
                 radiusInner: opt.radiusInner || (240 / 4),

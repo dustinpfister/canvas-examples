@@ -21,7 +21,7 @@ var loop = function () {
     draw.back(ctx, canvas);
     draw.map(ctx, game.map, game.cross);
     draw.cross(ctx, game.cross);
-    draw.info(ctx, game.cross, game.map);
+    draw.info(ctx, game);
     lt = now;
 };
 
