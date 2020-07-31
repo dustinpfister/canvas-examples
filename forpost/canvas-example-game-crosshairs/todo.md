@@ -5,7 +5,9 @@
 * start a game.js module that will sever as a central state module for cross, map, and pool object state collections created with the new pool.js module.
 * use the object pool module to create a pool of objects for Shots.
 * have shots come from the sides of the canvas to the cross hairs point.
-* make the cross hairs object look more like, well... a cross hairs.
+* (done) make the cross hairs object look more like, well... a cross hairs.
+* make the ver property part of the game object, and make sure it is '0.2.0'
+* make a new pkg.html
 
 ## 0.1.0 - Add a basic map.js
 * (done) start a map.js module that will be effected by cross.js

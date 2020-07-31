@@ -1,4 +1,19 @@
 var draw = (function () {
+
+    var drawCrossCircles = function () {
+        ctx.strokeStyle = 'white';
+        ctx.lineWidth = 3;
+        ctx.beginPath();
+        ctx.arc(cross.center.x, cross.center.y, cross.radiusInner, 0, Math.PI * 2);
+        ctx.stroke();
+        ctx.beginPath();
+        ctx.arc(cross.center.x, cross.center.y, cross.radiusOuter, 0, Math.PI * 2);
+        ctx.stroke();
+        ctx.beginPath();
+        ctx.arc(cross.crosshairs.x, cross.crosshairs.y, cross.crosshairs.radius, 0, Math.PI * 2);
+        ctx.stroke();
+    };
+
     return {
         // draw background
         back: function (ctx, canvas) {
@@ -7,17 +22,18 @@ var draw = (function () {
         },
         // draw cross hairs
         cross: function (ctx, cross) {
-            ctx.strokeStyle = 'white';
-            ctx.lineWidth = 3;
+            var ch = cross.crosshairs;
+            drawCrossCircles(ctx, cross);
+            ctx.strokeStyle = 'rgba(200,0,0,0.5)';
             ctx.beginPath();
-            ctx.arc(cross.center.x, cross.center.y, cross.radiusInner, 0, Math.PI * 2);
+            ctx.moveTo(ch.x, ch.y - ch.radius * 1.5);
+            ctx.lineTo(ch.x, ch.y + ch.radius * 1.5);
             ctx.stroke();
             ctx.beginPath();
-            ctx.arc(cross.center.x, cross.center.y, cross.radiusOuter, 0, Math.PI * 2);
+            ctx.moveTo(ch.x - ch.radius * 1.5, ch.y);
+            ctx.lineTo(ch.x + ch.radius * 1.5, ch.y);
             ctx.stroke();
-            ctx.beginPath();
-            ctx.arc(cross.crosshairs.x, cross.crosshairs.y, cross.crosshairs.radius, 0, Math.PI * 2);
-            ctx.stroke();
+
         },
         // draw map
         map: function (ctx, map, cross) {
