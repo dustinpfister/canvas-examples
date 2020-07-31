@@ -1,6 +1,6 @@
 var draw = (function () {
 
-    var drawCrossCircles = function () {
+    var drawCrossCircles = function (ctx, cross) {
         ctx.strokeStyle = 'white';
         ctx.lineWidth = 3;
         ctx.beginPath();
