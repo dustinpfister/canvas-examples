@@ -1,12 +1,28 @@
 # todo list for canvas-example-game-crosshairs
 
+## 0.4.0 - Enmy firs and health
+* to make the game more interesting there are units on the map that fire back
+* game.HP, and game.maxHP properties will be needed
+* game.gameOver state
+* just click screen to start over for now untill I get into a state machine for this.
+
+## 0.3.0 - Weapons module
+* start a weapons module that will be used to create and update a weapon object
+* accuracy property of a weapon object defines a radius where a shot will hit
+* gunCount property defines the number of guns there are where shots come from [1, 2, or 4]
+* shotsPerSecond property that should speak for itself
+* a weapon can have a max and min level as level incresses so does weapon and shot stats
+
 ## 0.2.0 - Object Pool, and game Modules
 * start a pool.js module that will serve as the Object pool module for this canvas example
 * (done) start a game.js module that will sever as a central state module for cross, map, and pool object state collections created with the new pool.js module.
 * use the object pool module to create a pool of objects for Shots.
+* use the object pool module to create a pool of Explosions
 * have shots come from the sides of the canvas to the cross hairs point.
+* and explosion happens when a shot hits the target area
 * (done) make the cross hairs object look more like, well... a cross hairs.
-* make the ver property part of the game object, and make sure it is '0.2.0'
+* make it so that shots will only fire when clicking in the inner radius of the cross object
+* (done) make the ver property part of the game object, and make sure it is '0.2.0'
 * make a new pkg.html
 
 ## 0.1.0 - Add a basic map.js
