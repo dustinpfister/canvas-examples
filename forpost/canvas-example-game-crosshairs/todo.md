@@ -1,5 +1,12 @@
 # todo list for canvas-example-game-crosshairs
 
+## 0.2.0 - Object Pool, and game Modules
+* start a pool.js module that will serve as the Object pool module for this canvas example
+* start a game.js module that will sever as a central state module for cross, map, and pool object state collections created with the new pool.js module.
+* use the object pool module to create a pool of objects for Shots.
+* have shots come from the sides of the canvas to the cross hairs point.
+* make the cross hairs object look more like, well... a cross hairs.
+
 ## 0.1.0 - Add a basic map.js
 * (done) start a map.js module that will be effected by cross.js
 * (done) start event will move cross hairs to the location
