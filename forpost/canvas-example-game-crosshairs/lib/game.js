@@ -3,7 +3,8 @@ var gameMod = (function () {
     var shotOptions = {
         count: 20,
         spawn: function (shot, game) {
-            var ch = game.cross.crosshairs,
+            var offset = game.cross.offset,
+            ch = game.cross.crosshairs,
             d;
             shot.x = game.canvas.width;
             shot.y = game.canvas.height;
@@ -11,7 +12,12 @@ var gameMod = (function () {
             d = utils.distance(shot.x, shot.y, ch.x, ch.y);
             shot.pps = 256;
             shot.lifespan = d / shot.pps;
-
+            shot.offset = offset;
+        },
+        purge: function (shot, game) {
+			console.log(shot);
+            var cell = mapMod.getWithCanvasPointAndOffset(game.map, shot.x, shot.y, shot.offset.x, shot.offset.y);
+            console.log(cell);
         },
         update: function (shot, game, secs) {
             shot.x += Math.cos(shot.heading) * shot.pps * secs;

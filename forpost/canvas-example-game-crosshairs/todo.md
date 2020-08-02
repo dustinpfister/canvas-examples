@@ -29,9 +29,9 @@
 * (done) make the cross hairs object look more like, well... a cross hairs.
 * (done) make the ver property part of the game object, and make sure it is '0.2.0'
 * (done) new draw method for shots
-
-* click and hold should cause continues fire
+* (done) click and hold should cause continues fire
 * (done) shots should move to target area when clicked
+
 * make it so that shots will only fire when clicking in the inner radius of the cross object
 * damage happens when a shot hits a target area (and only when)
 * make a new pkg.html
