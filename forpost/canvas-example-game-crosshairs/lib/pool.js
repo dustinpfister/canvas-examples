@@ -16,6 +16,9 @@ var poolMod = (function () {
                     heading: 0,
                     pps: 32,
                     lifespan: 3,
+                    spawn: opt.spawn || function (obj) {
+                        obj.active = true;
+                    },
                     update: opt.update || function (obj, secs) {
                         obj.x += obj.pps * secs;
                         obj.lifespan -= secs;
@@ -24,6 +27,18 @@ var poolMod = (function () {
                 i += 1;
             }
             return pool;
+        },
+
+        spawn: function (pool) {
+            var i = pool.length,
+            obj;
+            while (i--) {
+                obj = pool[i];
+                if (!obj.active) {
+                    obj.active = true;
+                    obj.spawn.call(obj, obj);
+                }
+            }
         },
 
         update: function (pool, secs) {

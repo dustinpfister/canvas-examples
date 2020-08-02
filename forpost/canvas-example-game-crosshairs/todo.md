@@ -23,6 +23,8 @@
 * damage happens when a shot hits a target area (and only when)
 * (done) make the cross hairs object look more like, well... a cross hairs.
 * make it so that shots will only fire when clicking in the inner radius of the cross object
+* new draw method for shots
+* new draw method for explosions
 * (done) make the ver property part of the game object, and make sure it is '0.2.0'
 * make a new pkg.html
 
