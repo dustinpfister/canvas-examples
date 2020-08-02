@@ -6,6 +6,8 @@ var gameMod = (function () {
             shot.heading = Math.PI;
             shot.x = game.canvas.width;
             shot.y = game.canvas.height / 2;
+            shot.lifespan = 1;
+            shot.pps = 128
         },
         update: function (shot, game, secs) {
             shot.x += Math.cos(shot.heading) * shot.pps * secs;
@@ -23,7 +25,9 @@ var gameMod = (function () {
                 canvas: canvas,
                 map: mapMod.create(),
                 cross: {},
-                shots: poolMod.create(shotOptions)
+                shots: poolMod.create(shotOptions),
+                shotRate: 0.25,
+                shotSecs: 0
             };
 
             game.cross = crossMod.create({
@@ -62,8 +66,10 @@ var gameMod = (function () {
 
             game.canvas.addEventListener('mousedown', function (e) {
                 var pos = utils.getCanvasRelative(e);
-                poolMod.spawn(game.shots, game);
-
+                if (game.shotSecs >= game.shotRate) {
+                    poolMod.spawn(game.shots, game);
+                    game.shotSecs = 0;
+                }
             });
 
             return game;
@@ -74,6 +80,8 @@ var gameMod = (function () {
             crossMod.update(game.cross, secs);
             mapMod.clampOffset(game.map, game.cross.offset);
             poolMod.update(game.shots, game, secs);
+            game.shotSecs += secs;
+            game.shotSecs = game.shotSecs >= game.shotRate ? game.shotRate : game.shotSecs;
         }
 
     }

@@ -38,6 +38,7 @@ var poolMod = (function () {
                     obj.active = true;
                     obj.spawn.call(obj, obj, game);
                     console.log('pool object active!');
+                    break;
                 }
             }
         },
