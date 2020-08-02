@@ -29,14 +29,14 @@ var poolMod = (function () {
             return pool;
         },
 
-        spawn: function (pool) {
+        spawn: function (pool, game) {
             var i = pool.length,
             obj;
             while (i--) {
                 obj = pool[i];
                 if (!obj.active) {
                     obj.active = true;
-                    obj.spawn.call(obj, obj);
+                    obj.spawn.call(obj, obj, game);
                     console.log('pool object active!');
                 }
             }

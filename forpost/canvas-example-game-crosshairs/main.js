@@ -7,7 +7,9 @@ canvas.width = 320;
 canvas.height = 240;
 ctx.translate(0.5, 0.5);
 
-var game = gameMod.create(canvas);
+var game = gameMod.create({
+        canvas: canvas
+    });
 
 var lt = new Date();
 var loop = function () {
@@ -21,6 +23,7 @@ var loop = function () {
     draw.back(ctx, canvas);
     draw.map(ctx, game.map, game.cross);
     draw.cross(ctx, game.cross);
+    draw.shots(ctx, game);
     draw.info(ctx, game);
     lt = now;
 };

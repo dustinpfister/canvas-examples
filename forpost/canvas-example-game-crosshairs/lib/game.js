@@ -4,6 +4,8 @@ var gameMod = (function () {
         count: 5,
         spawn: function (shot, game) {
             shot.heading = Math.PI;
+            shot.x = game.canvas.width;
+            shot.y = game.canvas.height / 2;
         },
         update: function (shot, game, secs) {
             shot.x += Math.cos(shot.heading) * shot.pps * secs;
@@ -14,8 +16,8 @@ var gameMod = (function () {
 
     return {
 
-        create: function (canvas) {
-
+        create: function (opt) {
+            opt = opt || {};
             var game = {
                 ver: '0.2.0',
                 canvas: canvas,

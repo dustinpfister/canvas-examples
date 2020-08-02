@@ -51,6 +51,22 @@ var draw = (function () {
                 ctx.closePath();
             });
         },
+        shots: function (ctx, game) {
+            var shots = game.shots,
+            i = shots.length,
+            shot;
+            while (i--) {
+                shot = shots[i];
+                ctx.fillStyle = 'white';
+                ctx.strokeStyle = 'black';
+                if (shot.active) {
+                    ctx.beginPath();
+                    ctx.arc(shot.x, shot.y, shot.radius, 0, Math.PI * 2);
+                    ctx.fill();
+                    ctx.stroke();
+                }
+            }
+        },
         // draw info
         info: function (ctx, game) {
             ctx.fillStyle = 'rgba(0,0,0,0.4)';
