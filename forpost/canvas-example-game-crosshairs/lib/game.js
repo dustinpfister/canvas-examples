@@ -1,11 +1,11 @@
 var gameMod = (function () {
 
     var shotOptions = {
-        count: 20,
-        spawn: function (shot) {
+        count: 5,
+        spawn: function (shot, game) {
             shot.heading = Math.PI;
         },
-        update: function (shot, secs) {
+        update: function (shot, game, secs) {
             shot.x += Math.cos(shot.heading) * shot.pps * secs;
             shot.y += Math.sin(shot.heading) * shot.pps * secs;
             shot.lifespan -= secs;
