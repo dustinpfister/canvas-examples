@@ -14,12 +14,13 @@
 * a weapon can have a max and min level as level incresses so does weapon and shot stats
 
 ## 0.2.0 - Object Pool, and game Modules
-* start a pool.js module that will serve as the Object pool module for this canvas example
+* (done) start a pool.js module that will serve as the Object pool module for this canvas example
 * (done) start a game.js module that will sever as a central state module for cross, map, and pool object state collections created with the new pool.js module.
 * use the object pool module to create a pool of objects for Shots.
 * use the object pool module to create a pool of Explosions
 * have shots come from the sides of the canvas to the cross hairs point.
 * and explosion happens when a shot hits the target area
+* damage happens when a shot hits a target area (and only when)
 * (done) make the cross hairs object look more like, well... a cross hairs.
 * make it so that shots will only fire when clicking in the inner radius of the cross object
 * (done) make the ver property part of the game object, and make sure it is '0.2.0'

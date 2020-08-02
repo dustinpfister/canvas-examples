@@ -53,12 +53,14 @@ var draw = (function () {
         },
         // draw info
         info: function (ctx, game) {
-            ctx.fillStyle = 'lime';
+            ctx.fillStyle = 'rgba(0,0,0,0.4)';
+            ctx.fillRect(0, 0, game.canvas.width, game.canvas.height);
+            ctx.fillStyle = 'yellow';
             ctx.textBaseline = 'top';
             ctx.font = '10px courier';
             ctx.fillText('v' + game.ver, 10, 10);
-            ctx.fillText(game.cross.offset.x + ',' + game.cross.offset.y, 10, 20);
-            ctx.fillText(game.map.percentKilled, 10, 30);
+            ctx.fillText('pos: ' + game.cross.offset.x.toFixed(2) + ',' + game.cross.offset.y.toFixed(2), 10, 20);
+            ctx.fillText('percent kiled: ' + game.map.percentKilled, 10, 30);
         }
     }
 }
