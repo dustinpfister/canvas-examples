@@ -1,7 +1,7 @@
 var gameMod = (function () {
 
     var shotOptions = {
-        count: 5,
+        count: 20,
         spawn: function (shot, game) {
             var ch = game.cross.crosshairs,
             d;
@@ -9,8 +9,8 @@ var gameMod = (function () {
             shot.y = game.canvas.height;
             shot.heading = Math.atan2(ch.y - shot.y, ch.x - shot.x);
             d = utils.distance(shot.x, shot.y, ch.x, ch.y);
-            shot.pps = 128;
-            shot.lifespan = d /shot.pps;
+            shot.pps = 256;
+            shot.lifespan = d / shot.pps;
 
         },
         update: function (shot, game, secs) {
@@ -30,8 +30,9 @@ var gameMod = (function () {
                 map: mapMod.create(),
                 cross: {},
                 shots: poolMod.create(shotOptions),
-                shotRate: 0.25,
-                shotSecs: 0
+                shotRate: 0.125,
+                shotSecs: 0,
+                userDown: false
             };
 
             game.cross = crossMod.create({
@@ -69,11 +70,15 @@ var gameMod = (function () {
              */
 
             game.canvas.addEventListener('mousedown', function (e) {
-                var pos = utils.getCanvasRelative(e);
-                if (game.shotSecs >= game.shotRate) {
-                    poolMod.spawn(game.shots, game);
-                    game.shotSecs = 0;
-                }
+                //var pos = utils.getCanvasRelative(e);
+                //if (game.shotSecs >= game.shotRate) {
+                //    poolMod.spawn(game.shots, game);
+                //    game.shotSecs = 0;
+                //}
+                game.userDown = true;
+            });
+            game.canvas.addEventListener('mouseup', function (e) {
+                game.userDown = false;
             });
 
             return game;
@@ -86,6 +91,10 @@ var gameMod = (function () {
             poolMod.update(game.shots, game, secs);
             game.shotSecs += secs;
             game.shotSecs = game.shotSecs >= game.shotRate ? game.shotRate : game.shotSecs;
+            if (game.shotSecs >= game.shotRate && game.userDown) {
+                poolMod.spawn(game.shots, game);
+                game.shotSecs = 0;
+            }
         }
 
     }

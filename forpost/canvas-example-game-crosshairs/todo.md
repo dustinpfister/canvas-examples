@@ -31,7 +31,7 @@
 * (done) new draw method for shots
 
 * click and hold should cause continues fire
-* shots should move to target area when clicked
+* (done) shots should move to target area when clicked
 * make it so that shots will only fire when clicking in the inner radius of the cross object
 * damage happens when a shot hits a target area (and only when)
 * make a new pkg.html

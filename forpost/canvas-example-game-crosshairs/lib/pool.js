@@ -37,7 +37,6 @@ var poolMod = (function () {
                 if (!obj.active) {
                     obj.active = true;
                     obj.spawn.call(obj, obj, game);
-                    console.log('pool object active!');
                     break;
                 }
             }
@@ -53,7 +52,6 @@ var poolMod = (function () {
                     obj.lifespan = obj.lifespan < 0 ? 0 : obj.lifespan;
                     if (obj.lifespan === 0) {
                         obj.active = false;
-                        console.log('pool object inactive!');
                     }
                 }
             }
