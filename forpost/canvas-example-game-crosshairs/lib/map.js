@@ -42,12 +42,6 @@ var mapMod = (function () {
             var x = canvasX - 160 + Math.abs(offsetX),
             y = canvasY - 120 + Math.abs(offsetY);
             return get(map, Math.floor(x / map.cellSize), Math.floor(y / map.cellSize));
-        },
-
-        getWithCross: function (map, cross, canvasX, canvasY) {
-            var x = canvasX - cross.center.x + Math.abs(cross.offset.x),
-            y = canvasY - cross.center.y + Math.abs(cross.offset.y);
-            return get(map, Math.floor(x / map.cellSize), Math.floor(y / map.cellSize));
         }
 
     }

@@ -15,9 +15,19 @@ var gameMod = (function () {
             shot.offset = offset;
         },
         purge: function (shot, game) {
-			console.log(shot);
+            console.log(shot);
             var cell = mapMod.getWithCanvasPointAndOffset(game.map, shot.x, shot.y, shot.offset.x, shot.offset.y);
             console.log(cell);
+            if (cell) {
+                cell.HP -= 5;
+                cell.HP = cell.HP < 0 ? 0 : cell.HP;
+                // percent killed
+                game.map.percentKilled = 0;
+                game.map.cells.forEach(function (cell) {
+                    game.map.percentKilled += cell.HP / cell.maxHP;
+                });
+                game.map.percentKilled /= game.map.cells.length;
+            }
         },
         update: function (shot, game, secs) {
             shot.x += Math.cos(shot.heading) * shot.pps * secs;
@@ -54,36 +64,12 @@ var gameMod = (function () {
             game.canvas.addEventListener('touchend', crossMod.createEvent(game.cross, 'end'));
             game.canvas.addEventListener('touchmove', crossMod.createEvent(game.cross, 'move'));
 
-            // attack!
-            /*
-            var attack = function (e) {
-            var pos = utils.getCanvasRelative(e),
-            cell = mapMod.getWithCross(game.map, game.cross, pos.x, pos.y);
-            e.preventDefault();
-            if (cell) {
-            cell.HP -= 5;
-            cell.HP = cell.HP < 0 ? 0 : cell.HP;
-            // percent killed
-            game.map.percentKilled = 0;
-            game.map.cells.forEach(function (cell) {
-            game.map.percentKilled += cell.HP / cell.maxHP;
-            });
-            game.map.percentKilled /= game.map.cells.length;
-            }
-            };
-            game.canvas.addEventListener('mousedown', attack);
-            game.canvas.addEventListener('touchstart', attack);
-             */
-
             game.canvas.addEventListener('mousedown', function (e) {
-                //var pos = utils.getCanvasRelative(e);
-                //if (game.shotSecs >= game.shotRate) {
-                //    poolMod.spawn(game.shots, game);
-                //    game.shotSecs = 0;
-                //}
+                e.preventDefault();
                 game.userDown = true;
             });
             game.canvas.addEventListener('mouseup', function (e) {
+                e.preventDefault();
                 game.userDown = false;
             });
 
