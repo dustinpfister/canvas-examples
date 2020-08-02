@@ -12,7 +12,7 @@ var poolMod = (function () {
                     active: false,
                     x: 0,
                     y: 0,
-                    radius: 32,
+                    radius: 8,
                     heading: 0,
                     pps: 32,
                     lifespan: opt.lifespan || 3,

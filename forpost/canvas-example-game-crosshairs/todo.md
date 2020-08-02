@@ -1,31 +1,39 @@
 # todo list for canvas-example-game-crosshairs
 
-## 0.4.0 - Enmy firs and health
+## 0.5.0 - Enmy firs and health
 * to make the game more interesting there are units on the map that fire back
 * game.HP, and game.maxHP properties will be needed
 * game.gameOver state
 * just click screen to start over for now untill I get into a state machine for this.
 
-## 0.3.0 - Weapons module
+## 0.4.0 - Weapons module
 * start a weapons module that will be used to create and update a weapon object
 * accuracy property of a weapon object defines a radius where a shot will hit
 * gunCount property defines the number of guns there are where shots come from [1, 2, or 4]
 * shotsPerSecond property that should speak for itself
 * a weapon can have a max and min level as level incresses so does weapon and shot stats
+* make sure ver is 0.4.0 and make a pkg.html
 
-## 0.2.0 - Object Pool, and game Modules
+## 0.3.0 - Explosions
+* use the object pool module to create a pool of Explosions
+* explosion happens when a shot hits the target area
+* splash damage
+* new draw method for explosions
+* make sure ver is 0.3.0 and make a pkg.html
+
+## 0.2.0 - Object Pool, shots, and a game Module
 * (done) start a pool.js module that will serve as the Object pool module for this canvas example
 * (done) start a game.js module that will sever as a central state module for cross, map, and pool object state collections created with the new pool.js module.
-* use the object pool module to create a pool of objects for Shots.
-* use the object pool module to create a pool of Explosions
-* have shots come from the sides of the canvas to the cross hairs point.
-* and explosion happens when a shot hits the target area
-* damage happens when a shot hits a target area (and only when)
+* (done) use the object pool module to create a pool of objects for Shots.
+* (done) have shots come from the sides of the canvas to the cross hairs point.
 * (done) make the cross hairs object look more like, well... a cross hairs.
-* make it so that shots will only fire when clicking in the inner radius of the cross object
-* new draw method for shots
-* new draw method for explosions
 * (done) make the ver property part of the game object, and make sure it is '0.2.0'
+* (done) new draw method for shots
+
+* click and hold should cause continues fire
+* shots should move to target area when clicked
+* make it so that shots will only fire when clicking in the inner radius of the cross object
+* damage happens when a shot hits a target area (and only when)
 * make a new pkg.html
 
 ## 0.1.0 - Add a basic map.js

@@ -3,11 +3,15 @@ var gameMod = (function () {
     var shotOptions = {
         count: 5,
         spawn: function (shot, game) {
-            shot.heading = Math.PI;
+            var ch = game.cross.crosshairs,
+            d;
             shot.x = game.canvas.width;
-            shot.y = game.canvas.height / 2;
-            shot.lifespan = 1;
-            shot.pps = 128
+            shot.y = game.canvas.height;
+            shot.heading = Math.atan2(ch.y - shot.y, ch.x - shot.x);
+            d = utils.distance(shot.x, shot.y, ch.x, ch.y);
+            shot.pps = 128;
+            shot.lifespan = d /shot.pps;
+
         },
         update: function (shot, game, secs) {
             shot.x += Math.cos(shot.heading) * shot.pps * secs;
