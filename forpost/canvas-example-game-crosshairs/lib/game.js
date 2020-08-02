@@ -2,6 +2,9 @@ var gameMod = (function () {
 
     var shotOptions = {
         count: 20,
+        spawn: function (shot) {
+            shot.heading = Math.PI;
+        },
         update: function (shot, secs) {
             shot.x += Math.cos(shot.heading) * shot.pps * secs;
             shot.y += Math.sin(shot.heading) * shot.pps * secs;
@@ -57,7 +60,7 @@ var gameMod = (function () {
 
             game.canvas.addEventListener('mousedown', function (e) {
                 var pos = utils.getCanvasRelative(e);
-                poolMod.spawn(game.shots);
+                poolMod.spawn(game.shots, game);
 
             });
 
@@ -68,7 +71,7 @@ var gameMod = (function () {
         update: function (game, secs) {
             crossMod.update(game.cross, secs);
             mapMod.clampOffset(game.map, game.cross.offset);
-            poolMod.update(game.shots, secs);
+            poolMod.update(game.shots, game, secs);
         }
 
     }

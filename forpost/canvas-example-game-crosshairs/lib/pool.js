@@ -16,10 +16,10 @@ var poolMod = (function () {
                     heading: 0,
                     pps: 32,
                     lifespan: 3,
-                    spawn: opt.spawn || function (obj) {
+                    spawn: opt.spawn || function (obj, state) {
                         obj.active = true;
                     },
-                    update: opt.update || function (obj, secs) {
+                    update: opt.update || function (obj, state, secs) {
                         obj.x += obj.pps * secs;
                         obj.lifespan -= secs;
                     }
@@ -37,6 +37,7 @@ var poolMod = (function () {
                 if (!obj.active) {
                     obj.active = true;
                     obj.spawn.call(obj, obj);
+                    console.log('pool object active!');
                 }
             }
         },
@@ -51,6 +52,7 @@ var poolMod = (function () {
                     obj.lifespan = obj.lifespan < 0 ? 0 : obj.lifespan;
                     if (obj.lifespan === 0) {
                         obj.active = false;
+                        console.log('pool object inactive!');
                     }
                 }
             }
