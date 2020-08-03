@@ -22,3 +22,9 @@ draw.back = function (ctx, canvas) {
     ctx.fillStyle = 'black';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 };
+draw.ver = function(ctx,canvas, ani){
+   ctx.fillStyle = 'white';
+   ctx.textBaseline = 'top';
+   ctx.font = '10px courier';
+   ctx.fillText('v' + ani.ver, 10, canvas.height - 15);
+};

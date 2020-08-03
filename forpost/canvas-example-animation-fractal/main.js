@@ -7,6 +7,7 @@ ctx.translate(0.5, 0.5);
 container.appendChild(canvas);
 
 var opt = {
+    ver: '0.0.0',
     forFrame: function (api, f, mf) {
         var bxArr = api.ani.bxArr = [];
         var i = 0,
@@ -42,12 +43,12 @@ var ani = FF(opt);
 var frame = 0;
 var loop = function () {
     requestAnimationFrame(loop);
-    draw.back(ctx, canvas)
-    draw.bxArr(ctx, ani(frame, 200));
-
+    var state = ani(frame, 200);
+    draw.back(ctx, canvas);
+    draw.bxArr(ctx, state);
+    draw.ver(ctx, canvas, state);
     frame += 1;
     frame %= 200;
-
 };
 
 loop();

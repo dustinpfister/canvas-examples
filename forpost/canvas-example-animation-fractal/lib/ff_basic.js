@@ -1,7 +1,9 @@
 var FF = function (opt) {
     var api = {};
     opt = opt || {};
-    api.ani = {};
+    api.ani = {
+       ver: opt.ver || '0.0.a'
+    };
     api.forFrame = opt.forFrame || function () {};
     var setMainPerAndBias = function (api) {
         api.per = api.frameIndex / api.maxFrame;
