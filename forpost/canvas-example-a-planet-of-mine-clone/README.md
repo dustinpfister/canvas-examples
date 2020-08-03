@@ -1,3 +1,3 @@
 # canvas-example-a-planet-of-mine-clone
 
-This canvas example aims to be a clone of the game 'a planet of mine'. As of this writing the code is still pretty buggy, I might clean it up or not as i try to put more effort into these canvas-examples.
+This canvas example aims to be a clone of the game 'a planet of mine' to which I have wrote a [blog post on where I write about the source code in depth](https://dustinpfister.github.io/2020/04/03/canvas-example-a-planet-of-mine-clone/). As of this writing the code is still pretty buggy, I might clean it up or not as I try to put more effort into these canvas-examples.
