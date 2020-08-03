@@ -85,3 +85,12 @@ draw.debugLand = function (sm) {
         ctx.fillText('liquids: ' + land.liquidCount, pos.x, pos.y + 20);
     });
 };
+
+draw.ver = function (sm) {
+    var ctx = sm.ctx;
+    ctx.fillStyle = 'white';
+    ctx.textBaseline = 'top';
+    ctx.font = '10px arial';
+    ctx.fillText('v' + sm.ver, 10, sm.canvas.height - 15);
+
+};
