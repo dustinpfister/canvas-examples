@@ -1,4 +1,4 @@
-var sm = Machine('gamearea');
+var sm = Machine('canvas-app');
 
 sm.load({
     name: 'game',

@@ -2,16 +2,16 @@
 
 If I am going to put a lot of time into this one I should maybe break things down into version numbers
 
-## 0.4.0 - Build menu
+## 0.3.0 - Build menu
 * have a working build menu for all current items in the world item database
 
-## 0.3.0 - resources break down
+## 0.2.0 - resources break down
 * more than one type of solid resource ['stone', 'coal']
 * gather liquid resources
 * more than one type of liquid resource ['oil', 'water']
 
 
-## 0.2.0 - Gathering raspberries, and worker food requirements
+## 0.1.0 - Gathering raspberries, and worker food requirements
 * two resources that are gathered from land items ['wood', 'raspberries']
 * can gather wood resource from trees land item
 * can gather raspberries resource from berry bushes
@@ -20,16 +20,14 @@ If I am going to put a lot of time into this one I should maybe break things dow
 * If A worker does not get enough raspberries it will die
 * gameOver property for solar object
 * if totalWorkerCount === 0 then solar.gameOver = true;
-
-## 0.1.0 - solarTickRate, rotationRate and actionRate
-* (done) main solar.ticks solar object property
-* (done) have a tickRate for a world object called a rotationRate that defaults to 1 (same as solar rate)
-* (done) new exp value for the solar object
-* (done) each world has an exp value that is added to the solar exp value on each rotation
 * separate tickRate for each land tile called an actionRate defaults to say 3 (s actions ticks per rotation tick)
 * workers harvest resources on land tiles by way of actionRate rather than rotation rate
 
 ## (done) 0.0.0 - The very basic idea working very poorly
+* (done) main solar.ticks solar object property
+* (done) have a tickRate for a world object called a rotationRate that defaults to 1 (same as solar rate)
+* (done) new exp value for the solar object
+* (done) each world has an exp value that is added to the solar exp value on each rotation
 * (done) solar object property for current collected resources count
 * (done) main tickRate, and lt properties for solar object
 * (done) tick progress bar drawn
