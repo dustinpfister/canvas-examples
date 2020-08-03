@@ -2,4 +2,4 @@
 
 ## 0.0.0
  * (done) basic fractal example working
- * pkg.html with 0.0.0 displayed
+ * (done) pkg.html with 0.0.0 displayed
