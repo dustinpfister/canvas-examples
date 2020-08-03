@@ -2,6 +2,7 @@ var gameMod = (function () {
 
     var shotOptions = {
         count: 20,
+        // when a shot becomes active
         spawn: function (shot, game) {
             var offset = game.cross.offset,
             ch = game.cross.crosshairs,
@@ -14,10 +15,9 @@ var gameMod = (function () {
             shot.lifespan = d / shot.pps;
             shot.offset = offset;
         },
+        // when a shot becomes inactive
         purge: function (shot, game) {
-            console.log(shot);
             var cell = mapMod.getWithCanvasPointAndOffset(game.map, shot.x, shot.y, shot.offset.x, shot.offset.y);
-            console.log(cell);
             if (cell) {
                 cell.HP -= 5;
                 cell.HP = cell.HP < 0 ? 0 : cell.HP;
@@ -29,6 +29,7 @@ var gameMod = (function () {
                 game.map.percentKilled /= game.map.cells.length;
             }
         },
+        // update method for a shot
         update: function (shot, game, secs) {
             shot.x += Math.cos(shot.heading) * shot.pps * secs;
             shot.y += Math.sin(shot.heading) * shot.pps * secs;
@@ -83,7 +84,7 @@ var gameMod = (function () {
             poolMod.update(game.shots, game, secs);
             game.shotSecs += secs;
             game.shotSecs = game.shotSecs >= game.shotRate ? game.shotRate : game.shotSecs;
-            if (game.shotSecs >= game.shotRate && game.userDown) {
+            if (game.shotSecs >= game.shotRate && game.userDown && crossMod.isInInner(game.cross)) {
                 poolMod.spawn(game.shots, game);
                 game.shotSecs = 0;
             }

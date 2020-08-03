@@ -1,5 +1,11 @@
 var crossMod = (function () {
 
+    var isInInner = function (cross) {
+        var ch = cross.crosshairs,
+        center = cross.center;
+        return utils.distance(ch.x, ch.y, center.x, center.y) < cross.radiusInner;
+    };
+
     var isInOuter = function (cross) {
         var ch = cross.crosshairs,
         center = cross.center;
@@ -26,6 +32,8 @@ var crossMod = (function () {
     };
 
     return {
+        isInInner: isInInner,
+        isInOuter: isInOuter,
         create: function (opt) {
             opt = opt || {};
             return {
