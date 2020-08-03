@@ -1,6 +1,6 @@
 # todo list for canvas-example-game-crosshairs
 
-## 0.5.0 - Enmy firs and health
+## 0.5.0 - Enemy fire and health
 * to make the game more interesting there are units on the map that fire back
 * game.HP, and game.maxHP properties will be needed
 * game.gameOver state
@@ -11,13 +11,13 @@
 * accuracy property of a weapon object defines a radius where a shot will hit
 * gunCount property defines the number of guns there are where shots come from [1, 2, or 4]
 * shotsPerSecond property that should speak for itself
-* a weapon can have a max and min level as level incresses so does weapon and shot stats
+* a weapon can have a max and min level as level increases so does weapon and shot stats
 * make sure ver is 0.4.0 and make a pkg.html
 
 ## 0.3.0 - Explosions
 * use the object pool module to create a pool of Explosions
 * explosion happens when a shot hits the target area
-* splash damage
+* splash damage to all cells in the map where the explosion happens
 * new draw method for explosions
 * make sure ver is 0.3.0 and make a pkg.html
 
@@ -34,7 +34,7 @@
 * (done) damage happens when a shot hits a target area (and only when)
 * (done) make it so that shots will only fire when clicking in the inner radius of the cross object
 * (done) touch support for shooting
-* make a new pkg_0_2_0.html
+* (done) make a new pkg_0_2_0.html
 
 ## 0.1.0 - Add a basic map.js
 * (done) start a map.js module that will be effected by cross.js
