@@ -54,3 +54,4 @@ If I am going to put a lot of time into this one I should maybe break things dow
 * (done) world.js: createWorker helper for creating a worker object
 * (done) world.js: starting item database of [ ship, house, mine, farm, well, trees, berries]
 * (done) world.js: items have a maxWorker property that defines the number of workers a land tile can have
+* (done) start a pkg.html with 0.0.0 displayed

@@ -47,7 +47,7 @@ var worldMod = (function () {
                 h: 32
             }
         };
-    }
+    };
 
     // create a land object
     var createLandObject = function (opt) {
@@ -209,7 +209,7 @@ var worldMod = (function () {
 
             return world;
         }
-    }
+    };
 
 }
     ());

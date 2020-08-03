@@ -54,7 +54,7 @@ var solarMod = (function () {
 
         }
 
-    }
+    };
 
 }
-    ())
+    ());
