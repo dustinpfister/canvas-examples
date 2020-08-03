@@ -73,6 +73,14 @@ var gameMod = (function () {
                 e.preventDefault();
                 game.userDown = false;
             });
+            game.canvas.addEventListener('touchstart', function (e) {
+                e.preventDefault();
+                game.userDown = true;
+            });
+            game.canvas.addEventListener('touchend', function (e) {
+                e.preventDefault();
+                game.userDown = false;
+            });
 
             return game;
 
