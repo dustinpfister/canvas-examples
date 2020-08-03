@@ -33,8 +33,8 @@
 * (done) shots should move to target area when clicked
 * (done) damage happens when a shot hits a target area (and only when)
 * (done) make it so that shots will only fire when clicking in the inner radius of the cross object
-* touch support for shooting
-* make a new pkg.html
+* (done) touch support for shooting
+* make a new pkg_0_2_0.html
 
 ## 0.1.0 - Add a basic map.js
 * (done) start a map.js module that will be effected by cross.js

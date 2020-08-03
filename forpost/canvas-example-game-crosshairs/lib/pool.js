@@ -24,7 +24,7 @@ var poolMod = (function () {
                         obj.x += obj.pps * secs;
                         obj.lifespan -= secs;
                     }
-                })
+                });
                 i += 1;
             }
             return pool;
