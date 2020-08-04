@@ -48,9 +48,13 @@ var gameMod = (function () {
     // Explosion Options
     var explosionOptions = {
         count: 20,
-        spawn: function (ex, game, opt) {
-            ex.x = opt.x;
-            ex.y = opt.y;
+        spawn: function (ex, game, shot) {
+            ex.x = shot.x;
+            ex.y = shot.y;
+            ex.data.offset = {
+                x: shot.offset.x,
+                y: shot.offset.y
+            };
             ex.data.radiusEnd = 32;
             ex.data.explosionTime = 0.6;
             ex.lifespan = ex.data.explosionTime;
@@ -58,27 +62,13 @@ var gameMod = (function () {
         purge: function (ex, game) {},
         update: function (ex, game, secs) {
             ex.radius = ex.data.radiusEnd * (ex.data.explosionTime - ex.lifespan) / ex.data.explosionTime;
-
-            var x = 0,
-            y = 0;
-
-            //??? trying to work this out now
-            var targets = mapMod.getAllFromPointAndRadius(game.map, x, y, 3);
-            targets.cells.forEach(function (cell, i) {
-                cell.HP -= 10 * (1 - (targets.dists[i] / 3)) * secs;
-            });
-
-            /*
-            console.log('testing new map get method:');
-            var targets = mapMod.getAllFromPointAndRadius(game.map, 0, 0, 2);
-            targets.cells.forEach(function (cell, i) {
-
-            cell.HP -= 10 * targets.dists[i]
-
-            });
-            console.log(targets);
-             */
-
+            var cell = mapMod.getWithCanvasPointAndOffset(game.map, ex.x, ex.y, ex.data.offset.x, ex.data.offset.y);
+            if (cell) {
+                var targets = mapMod.getAllFromPointAndRadius(game.map, cell.x, cell.y, 3);
+                targets.cells.forEach(function (cell, i) {
+                    cell.HP -= 10 * (1 - (targets.dists[i] / 3)) * secs;
+                });
+            }
             ex.lifespan -= secs;
         }
     };
