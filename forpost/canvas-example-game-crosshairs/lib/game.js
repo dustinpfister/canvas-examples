@@ -40,9 +40,9 @@ var gameMod = (function () {
                 x: shot.offset.x,
                 y: shot.offset.y
             };
-            ex.data.radiusEnd = game.map.cellSize * 3;
+            ex.data.radiusEnd = game.map.cellSize * 5;
             ex.data.explosionTime = 0.6;
-            ex.data.maxDPS = 20;
+            ex.data.maxDPS = 150;
             ex.lifespan = ex.data.explosionTime;
         },
         purge: function (ex, game) {},
@@ -55,6 +55,7 @@ var gameMod = (function () {
                 var targets = mapMod.getAllFromPointAndRadius(game.map, cell.x, cell.y, blastRadius);
                 targets.cells.forEach(function (cell, i) {
                     cell.HP -= ex.data.maxDPS * (1 - (targets.dists[i] / blastRadius)) * secs;
+                    cell.HP = cell.HP < 0 ? 0 : cell.HP;
                 });
                 // percent killed
                 game.map.percentRemain = 0;
