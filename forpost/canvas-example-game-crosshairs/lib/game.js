@@ -22,17 +22,20 @@ var gameMod = (function () {
             poolMod.spawn(game.explosions, game, shot);
 
             // !! damage should be done with new explosion objects
+            /*
             var cell = mapMod.getWithCanvasPointAndOffset(game.map, shot.x, shot.y, shot.offset.x, shot.offset.y);
             if (cell) {
-                cell.HP -= 5;
-                cell.HP = cell.HP < 0 ? 0 : cell.HP;
-                // percent killed
-                game.map.percentKilled = 0;
-                game.map.cells.forEach(function (cell) {
-                    game.map.percentKilled += cell.HP / cell.maxHP;
-                });
-                game.map.percentKilled /= game.map.cells.length;
+            cell.HP -= 5;
+            cell.HP = cell.HP < 0 ? 0 : cell.HP;
+            // percent killed
+            game.map.percentKilled = 0;
+            game.map.cells.forEach(function (cell) {
+            game.map.percentKilled += cell.HP / cell.maxHP;
+            });
+            game.map.percentKilled /= game.map.cells.length;
             }
+             */
+
         },
         // update method for a shot
         update: function (shot, game, secs) {
@@ -55,6 +58,27 @@ var gameMod = (function () {
         purge: function (ex, game) {},
         update: function (ex, game, secs) {
             ex.radius = ex.data.radiusEnd * (ex.data.explosionTime - ex.lifespan) / ex.data.explosionTime;
+
+            var x = 0,
+            y = 0;
+
+            //??? trying to work this out now
+            var targets = mapMod.getAllFromPointAndRadius(game.map, x, y, 3);
+            targets.cells.forEach(function (cell, i) {
+                cell.HP -= 10 * (1 - (targets.dists[i] / 3)) * secs;
+            });
+
+            /*
+            console.log('testing new map get method:');
+            var targets = mapMod.getAllFromPointAndRadius(game.map, 0, 0, 2);
+            targets.cells.forEach(function (cell, i) {
+
+            cell.HP -= 10 * targets.dists[i]
+
+            });
+            console.log(targets);
+             */
+
             ex.lifespan -= secs;
         }
     };
@@ -74,15 +98,6 @@ var gameMod = (function () {
                 shotSecs: 0,
                 userDown: false
             };
-
-            console.log('testing new map get method:');
-            var targets = mapMod.getAllFromPointAndRadius(game.map, 0, 0, 2);
-            targets.cells.forEach(function (cell, i) {
-
-                cell.HP -= 10 * targets.dists[i]
-
-            });
-            console.log(targets);
 
             game.cross = crossMod.create({
                     offsetX: game.map.cellWidth * game.map.cellSize / 2 * -1,
