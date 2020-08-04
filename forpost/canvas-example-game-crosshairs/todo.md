@@ -23,7 +23,7 @@
 * The game is about just racking up a total all time damage count.
 * make sure ver is 0.6.0 and make a pkg.html
 
-## 0.4.0 - Weapons and power ups
+## 0.4.0 - Weapons
 * (done) have an array of weapon objects in game.js
 * (done) game starts with weapon index 0
 * (done) weaponIndex is used to set current Weapon object, and the current weapond object is used to set stats for shots and other relevant stats.
@@ -34,11 +34,8 @@
 * shotsPerSecond property that should speak for itself
 * Weapon splash radius property defines the blast radius of a shot
 * a weapon can have a max and min level as level increases so does weapon and shot stats
-* create a powerUp object pool.
-* power ups will some times pop up when a cell is killed
-* have a weapon change power up
-* have a weapon level up power up
-* a powerup can be gathered by clicking or touching it at any time anywhere, and will not trigger a shot
+* have a button to loop threw weapons
+* clicking or touching the weapon switch button will not result in movement or firing a shot
 * make sure ver is 0.4.0 and make a pkg.html
 
 ## 0.3.0 - Explosions
