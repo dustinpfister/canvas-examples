@@ -21,6 +21,7 @@
 * There are cells in the map where even if everything is dead cells will regenerate
 * Cells grow back by way of what is going on in neighboring cells
 * The game is about just racking up a total all time damage count.
+* see about fixing the bug where shots are tie to the canvas rather than the map (what happens when shooting and moving)
 * make sure ver is 0.6.0 and make a pkg.html
 
 ## 0.4.0 - Weapons
@@ -30,12 +31,10 @@
 * (done) display name of current weapon
 * (done) transparent effect for blasts
 * (done) accuracy property of a weapon object defines a radius where a shot will hit within
-* gunCount property defines the number of guns there are where shots come from [1, 2, or 4]
-* Weapon splash radius property defines the blast radius of a shot
-* a weapon can have a max and min level as level increases so does weapon and shot stats
+* (done) gunCount property defines the number of guns there are where shots come from [1, 2, or 4]
+* (done) Weapon splash radius property defines the blast radius of a shot
 * have a button to loop threw weapons
 * clicking or touching the weapon switch button will not result in movement or firing a shot
-* see about fixing the bug where shots are tie to the canvas rather than the map (what happens when shooting and moving)
 * make sure ver is 0.4.0 and make a pkg.html
 
 ## 0.3.0 - Explosions
