@@ -25,6 +25,7 @@ var loop = function () {
     draw.explosions(ctx, game);
     draw.cross(ctx, game.cross);
     draw.shots(ctx, game);
+    draw.buttons(ctx);
     draw.info(ctx, game);
     lt = now;
 };

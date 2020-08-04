@@ -33,7 +33,6 @@ var draw = (function () {
             ctx.moveTo(ch.x - ch.radius * 1.5, ch.y);
             ctx.lineTo(ch.x + ch.radius * 1.5, ch.y);
             ctx.stroke();
-
         },
         // draw map
         map: function (ctx, map, cross) {
@@ -85,6 +84,17 @@ var draw = (function () {
                     ctx.stroke();
                 }
             }
+        },
+        buttons: function (ctx) {
+            ctx.fillStyle = 'red';
+            ctx.strokeStyle = 'white';
+            Object.keys(gameMod.buttons).forEach(function (key) {
+                var b = gameMod.buttons[key];
+                ctx.beginPath();
+                ctx.arc(b.x, b.y, b.r, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.stroke();
+            });
         },
         // draw info
         info: function (ctx, game) {
