@@ -118,6 +118,13 @@ var gameMod = (function () {
 
     return {
         Weapons: Weapons,
+        Buttons: {
+            changeWeapon: {
+                x: 300,
+                y: 32,
+                r: 16
+            }
+        },
         create: function (opt) {
             opt = opt || {};
             var game = {
