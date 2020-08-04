@@ -1,5 +1,6 @@
 var gameMod = (function () {
 
+    // SHOT Object Options
     var shotOptions = {
         count: 20,
         // when a shot becomes active
@@ -37,6 +38,14 @@ var gameMod = (function () {
         }
     };
 
+    // Explosion Options
+    var explosionOptions = {
+        count: 20,
+        spawn: function () {},
+        purge: function () {},
+        update: function () {}
+    };
+
     return {
 
         create: function (opt) {
@@ -47,6 +56,7 @@ var gameMod = (function () {
                 map: mapMod.create(),
                 cross: {},
                 shots: poolMod.create(shotOptions),
+                explosions: poolMod.create(explosionOptions),
                 shotRate: 0.125,
                 shotSecs: 0,
                 userDown: false

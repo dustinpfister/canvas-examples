@@ -4,7 +4,7 @@
 * start an autoplay AI for this canvas example like that if flappy collection idle
 * A player at any time can take over auto play by just clicking or touching the canvas
 * after a moment of inactivity a timeout bar will start
-* once the timeout bar compleates the game will return to auto play mode.
+* once the timeout bar completes the game will return to auto play mode.
 * make sure ver is 0.7.0 and make a pkg.html
 
 ## 0.6.0 - continuous regeneration
@@ -30,10 +30,12 @@
 * make sure ver is 0.4.0 and make a pkg.html
 
 ## 0.3.0 - Explosions
-* use the object pool module to create a pool of Explosions
-* explosion happens when a shot hits the target area
-* splash damage to all cells in the map where the explosion happens
+* use the object pool module to create a pool of Explosions in game.js
+* and explosion happens when a shot hits the target area.
+* and exploitation starts at zero radius, and then expands outward to a total radius
+* A DPS value is applied to each cell in the current radius, and is effected by distance from the center of the explosion.
 * new draw method for explosions
+* health bars drawn for each cell that has less then full HP, and fixed color backgrounds
 * make sure ver is 0.3.0 and make a pkg.html
 
 ## 0.2.0 - Object Pool, shots, and a game Module
