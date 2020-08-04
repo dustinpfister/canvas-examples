@@ -7,25 +7,33 @@ var gameMod = (function () {
             pps: 512,
             shotRate: 0.125,
             blastRadius: 2,
-            maxDPS: 25
+            maxDPS: 25,
+            accuracy: 0.75,
+            hitRadius: 16
         }, {
             name: 'Blaster',
             pps: 256,
             shotRate: 0.125,
             blastRadius: 1,
-            maxDPS: 10
+            maxDPS: 10,
+            accuracy: 0.9,
+            hitRadius: 16
         }, {
             name: 'Cannon',
             pps: 256,
             shotRate: 1.5,
             blastRadius: 4,
-            maxDPS: 150
+            maxDPS: 150,
+            accuracy: 0.5,
+            hitRadius: 32
         }, {
             name: 'Atom',
             pps: 256,
             shotRate: 3,
             blastRadius: 10,
-            maxDPS: 250
+            maxDPS: 250,
+            accuracy: 0.9,
+            hitRadius: 32
         }
     ];
 
@@ -111,7 +119,7 @@ var gameMod = (function () {
                 explosions: poolMod.create(explosionOptions),
                 shotRate: 1,
                 shotSecs: 0,
-                weaponIndex: 3,
+                weaponIndex: 0,
                 userDown: false
             };
 

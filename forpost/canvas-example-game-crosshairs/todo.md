@@ -26,12 +26,11 @@
 ## 0.4.0 - Weapons
 * (done) have an array of weapon objects in game.js
 * (done) game starts with weapon index 0
-* (done) weaponIndex is used to set current Weapon object, and the current weapond object is used to set stats for shots and other relevant stats.
+* (done) weaponIndex is used to set current Weapon object, and the current weapon object is used to set stats for shots and other relevant stats.
 * (done) display name of current weapon
 * (done) transparent effect for blasts
 * accuracy property of a weapon object defines a radius where a shot will hit within
 * gunCount property defines the number of guns there are where shots come from [1, 2, or 4]
-* shotsPerSecond property that should speak for itself
 * Weapon splash radius property defines the blast radius of a shot
 * a weapon can have a max and min level as level increases so does weapon and shot stats
 * have a button to loop threw weapons
