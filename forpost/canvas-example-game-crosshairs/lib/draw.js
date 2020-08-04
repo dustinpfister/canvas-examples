@@ -93,7 +93,7 @@ var draw = (function () {
             ctx.fillText('v' + game.ver, 10, 10);
             ctx.fillText('pos: ' + game.cross.offset.x.toFixed(2) + ',' + game.cross.offset.y.toFixed(2), 10, 20);
             ctx.fillText('percent remain: ' + game.map.percentRemain, 10, 30);
-            ctx.fillText('shotSecs: ' + game.shotSecs, 10, 40);
+            //ctx.fillText('shotSecs: ' + game.shotSecs, 10, 40);
         }
     }
 }

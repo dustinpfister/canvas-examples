@@ -12,6 +12,7 @@ utils.getCanvasRelative = function (e) {
         bx: bx
     };
 };
+/*
 utils.logOnce = function () {
     var fired = false;
     return function (mess) {
@@ -21,3 +22,4 @@ utils.logOnce = function () {
         }
     }
 };
+*/

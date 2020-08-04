@@ -1,6 +1,6 @@
 var gameMod = (function () {
 
-    var debug = utils.logOnce();
+    //var debug = utils.logOnce();
 
     // SHOT Object Options
     var shotOptions = {
@@ -50,7 +50,6 @@ var gameMod = (function () {
             ex.radius = ex.data.radiusEnd * (ex.data.explosionTime - ex.lifespan) / ex.data.explosionTime;
             var cell = mapMod.getWithCanvasPointAndOffset(game.map, ex.x, ex.y, ex.data.offset.x, ex.data.offset.y),
             blastRadius = Math.ceil((ex.radius + 0.01) / game.map.cellSize);
-            debug(blastRadius);
             if (cell) {
                 var targets = mapMod.getAllFromPointAndRadius(game.map, cell.x, cell.y, blastRadius);
                 targets.cells.forEach(function (cell, i) {
