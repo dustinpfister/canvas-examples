@@ -36,6 +36,7 @@
 * a weapon can have a max and min level as level increases so does weapon and shot stats
 * have a button to loop threw weapons
 * clicking or touching the weapon switch button will not result in movement or firing a shot
+* see about fixing the bug where shots are tie to the canvas rather than the map (what happens when shooting and moving)
 * make sure ver is 0.4.0 and make a pkg.html
 
 ## 0.3.0 - Explosions

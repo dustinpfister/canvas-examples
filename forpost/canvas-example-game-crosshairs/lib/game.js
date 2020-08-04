@@ -16,10 +16,16 @@ var gameMod = (function () {
             maxDPS: 10
         }, {
             name: 'Cannon',
-            pps: 128,
+            pps: 256,
             shotRate: 1.5,
             blastRadius: 4,
             maxDPS: 150
+        }, {
+            name: 'Atom',
+            pps: 256,
+            shotRate: 3,
+            blastRadius: 10,
+            maxDPS: 250
         }
     ];
 
@@ -29,7 +35,7 @@ var gameMod = (function () {
         // when a shot becomes active
         spawn: function (shot, game, opt) {
             var offset = game.cross.offset,
-            w = Weapons[0],
+            w = Weapons[game.weaponIndex],
             ch = game.cross.crosshairs,
             d;
             shot.x = game.canvas.width;
@@ -105,7 +111,7 @@ var gameMod = (function () {
                 explosions: poolMod.create(explosionOptions),
                 shotRate: 1,
                 shotSecs: 0,
-                weaponIndex: 0,
+                weaponIndex: 3,
                 userDown: false
             };
 
