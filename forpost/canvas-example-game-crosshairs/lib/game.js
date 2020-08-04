@@ -2,19 +2,35 @@ var gameMod = (function () {
 
     //var debug = utils.logOnce();
 
+    var Weapons = [{
+            name: 'blaster',
+            pps: 512,
+            shotRate: 0.125,
+            blastRadius: 1,
+            maxDPS: 10
+        }, {
+            name: 'cannon',
+            pps: 256,
+            shotRate: 1.5,
+            blastRadius: 4,
+            maxDPS: 150
+        }
+    ];
+
     // SHOT Object Options
     var shotOptions = {
         count: 20,
         // when a shot becomes active
         spawn: function (shot, game, opt) {
             var offset = game.cross.offset,
+            w = Weapons[0],
             ch = game.cross.crosshairs,
             d;
             shot.x = game.canvas.width;
             shot.y = game.canvas.height;
             shot.heading = Math.atan2(ch.y - shot.y, ch.x - shot.x);
             d = utils.distance(shot.x, shot.y, ch.x, ch.y);
-            shot.pps = 256;
+            shot.pps = w.pps;
             shot.lifespan = d / shot.pps;
             shot.offset = offset;
         },
@@ -34,15 +50,16 @@ var gameMod = (function () {
     var explosionOptions = {
         count: 20,
         spawn: function (ex, game, shot) {
+            var w = Weapons[game.weaponIndex];
             ex.x = shot.x;
             ex.y = shot.y;
             ex.data.offset = {
                 x: shot.offset.x,
                 y: shot.offset.y
             };
-            ex.data.radiusEnd = game.map.cellSize * 4;
+            ex.data.radiusEnd = game.map.cellSize * w.blastRadius;
             ex.data.explosionTime = 0.6;
-            ex.data.maxDPS = 50;
+            ex.data.maxDPS = w.maxDPS; ;
             ex.lifespan = ex.data.explosionTime;
         },
         purge: function (ex, game) {},
@@ -72,7 +89,7 @@ var gameMod = (function () {
         create: function (opt) {
             opt = opt || {};
             var game = {
-                ver: '0.3.0',
+                ver: '0.4.0',
                 canvas: canvas,
                 map: mapMod.create(),
                 cross: {},
@@ -80,6 +97,7 @@ var gameMod = (function () {
                 explosions: poolMod.create(explosionOptions),
                 shotRate: 1,
                 shotSecs: 0,
+                weaponIndex: 0,
                 userDown: false
             };
 
@@ -118,6 +136,9 @@ var gameMod = (function () {
         },
 
         update: function (game, secs) {
+
+            game.shotRate = Weapons[game.weaponIndex].shotRate;
+
             crossMod.update(game.cross, secs);
             mapMod.clampOffset(game.map, game.cross.offset);
             poolMod.update(game.shots, game, secs);

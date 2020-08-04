@@ -22,8 +22,9 @@
 * make sure ver is 0.5.0 and make a pkg.html
 
 ## 0.4.0 - Weapons and power ups
-* have an array of weapon objects in game.js
-* game starts with weapon index 0
+* (done) have an array of weapon objects in game.js
+* (done) game starts with weapon index 0
+* (done) weaponIndex is used to set current Weapon object, and the current weapond object is used to set stats for shots and other relevant stats.
 * accuracy property of a weapon object defines a radius where a shot will hit within
 * gunCount property defines the number of guns there are where shots come from [1, 2, or 4]
 * shotsPerSecond property that should speak for itself
