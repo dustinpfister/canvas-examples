@@ -16,7 +16,7 @@ var gameMod = (function () {
             pps: 512,
             shotRate: 0.125,
             blastRadius: 2,
-            maxDPS: 25,
+            maxDPS: 5,
             accuracy: 0.5,
             hitRadius: 64,
             gunCount: 4
@@ -129,7 +129,7 @@ var gameMod = (function () {
                 explosions: poolMod.create(explosionOptions),
                 shotRate: 1,
                 shotSecs: 0,
-                weaponIndex: 2,
+                weaponIndex: 1,
                 userDown: false
             };
 
@@ -181,7 +181,7 @@ var gameMod = (function () {
                 var i = 0,
                 radian;
                 while (i < w.gunCount) {
-                    radian = Math.PI * 2 / w.gunCount * i;
+                    radian = Math.PI * 2 / 4 * i + Math.PI / 4;
                     poolMod.spawn(game.shots, game, radian);
                     i += 1;
                 }
