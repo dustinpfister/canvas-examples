@@ -57,7 +57,7 @@ var ballCollection = b.createBallCollection({
     });
 
 var loop = function () {
-    var i
+    var i;
     requestAnimationFrame(loop);
     // black background
     ctx.fillStyle = 'black';
