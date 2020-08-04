@@ -3,14 +3,20 @@ var gameMod = (function () {
     //var debug = utils.logOnce();
 
     var Weapons = [{
-            name: 'blaster',
+            name: 'Assult blaster',
             pps: 512,
+            shotRate: 0.125,
+            blastRadius: 2,
+            maxDPS: 25
+        }, {
+            name: 'blaster',
+            pps: 256,
             shotRate: 0.125,
             blastRadius: 1,
             maxDPS: 10
         }, {
             name: 'cannon',
-            pps: 256,
+            pps: 128,
             shotRate: 1.5,
             blastRadius: 4,
             maxDPS: 150
@@ -97,7 +103,7 @@ var gameMod = (function () {
                 explosions: poolMod.create(explosionOptions),
                 shotRate: 1,
                 shotSecs: 0,
-                weaponIndex: 1,
+                weaponIndex: 0,
                 userDown: false
             };
 
