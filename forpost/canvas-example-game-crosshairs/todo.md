@@ -37,8 +37,8 @@
 * (done) A DPS value is applied to each cell in the current radius, and is effected by distance from the center of the explosion.
 * (done) new draw method for explosions
 * (done) percentKiled renamed to percentRemain
-* fix issue with explosion radius and damage
-* health bars drawn for each cell that has less then full HP, and fixed color backgrounds
+* (done) fix issue with explosion radius and damage
+* use a maxDPS explosion object property to figure DPS
 * make sure ver is 0.3.0 and make a pkg.html
 
 ## 0.2.0 - Object Pool, shots, and a game Module
