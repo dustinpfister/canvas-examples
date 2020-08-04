@@ -18,7 +18,6 @@ var gameMod = (function () {
         },
         // when a shot becomes inactive
         purge: function (shot, game) {
-            // spawn and explosion
             poolMod.spawn(game.explosions, game, shot);
         },
         // update method for a shot
@@ -52,6 +51,12 @@ var gameMod = (function () {
                 targets.cells.forEach(function (cell, i) {
                     cell.HP -= 10 * (1 - (targets.dists[i] / 3)) * secs;
                 });
+                // percent killed
+                game.map.percentRemain = 0;
+                game.map.cells.forEach(function (cell) {
+                    game.map.percentRemain += cell.HP / cell.maxHP;
+                });
+                game.map.percentRemain /= game.map.cells.length;
             }
             ex.lifespan -= secs;
         }
