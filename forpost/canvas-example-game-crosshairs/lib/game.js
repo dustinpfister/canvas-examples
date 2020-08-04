@@ -8,8 +8,8 @@ var gameMod = (function () {
             shotRate: 0.125,
             blastRadius: 1,
             maxDPS: 10,
-            accuracy: 0.2,
-            hitRadius: 128
+            accuracy: 0.75,
+            hitRadius: 64
         },{
             name: 'Assault Blaster',
             pps: 512,
@@ -17,15 +17,15 @@ var gameMod = (function () {
             blastRadius: 2,
             maxDPS: 25,
             accuracy: 0.5,
-            hitRadius: 32
+            hitRadius: 64
         },  {
             name: 'Cannon',
             pps: 256,
-            shotRate: 1.5,
-            blastRadius: 4,
+            shotRate: 0.5,
+            blastRadius: 3,
             maxDPS: 150,
-            accuracy: 0.5,
-            hitRadius: 32
+            accuracy: 0.25,
+            hitRadius: 64
         }, {
             name: 'Atom',
             pps: 256,
@@ -33,7 +33,7 @@ var gameMod = (function () {
             blastRadius: 10,
             maxDPS: 250,
             accuracy: 0.9,
-            hitRadius: 32
+            hitRadius: 128
         }
     ];
 
@@ -46,8 +46,9 @@ var gameMod = (function () {
             w = Weapons[game.weaponIndex],
             ch = game.cross.crosshairs,
             r = Math.random() * (Math.PI * 2),
-            x = ch.x + Math.cos(r) * w.hitRadius * (1 - w.accuracy),
-            y = ch.y + Math.sin(r) * w.hitRadius * (1 - w.accuracy),
+			d = w.hitRadius * (1 - w.accuracy) * Math.random(),
+            x = ch.x + Math.cos(r) * d,
+            y = ch.y + Math.sin(r) * d,
             d;
             shot.x = game.canvas.width;
             shot.y = game.canvas.height;
@@ -122,7 +123,7 @@ var gameMod = (function () {
                 explosions: poolMod.create(explosionOptions),
                 shotRate: 1,
                 shotSecs: 0,
-                weaponIndex: 0,
+                weaponIndex: 1,
                 userDown: false
             };
 
