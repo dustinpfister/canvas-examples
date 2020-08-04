@@ -29,7 +29,7 @@
 * (done) weaponIndex is used to set current Weapon object, and the current weapon object is used to set stats for shots and other relevant stats.
 * (done) display name of current weapon
 * (done) transparent effect for blasts
-* accuracy property of a weapon object defines a radius where a shot will hit within
+* (done) accuracy property of a weapon object defines a radius where a shot will hit within
 * gunCount property defines the number of guns there are where shots come from [1, 2, or 4]
 * Weapon splash radius property defines the blast radius of a shot
 * a weapon can have a max and min level as level increases so does weapon and shot stats
