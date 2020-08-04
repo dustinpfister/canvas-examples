@@ -67,6 +67,22 @@ var draw = (function () {
                 }
             }
         },
+        explosions: function (ctx, game) {
+            var exps = game.explosions,
+            i = exps.length,
+            ex;
+            while (i--) {
+                ex = exps[i];
+                ctx.fillStyle = 'yellow';
+                ctx.strokeStyle = 'black';
+                if (ex.active) {
+                    ctx.beginPath();
+                    ctx.arc(ex.x, ex.y, ex.radius, 0, Math.PI * 2);
+                    ctx.fill();
+                    ctx.stroke();
+                }
+            }
+        },
         // draw info
         info: function (ctx, game) {
             ctx.fillStyle = 'rgba(0,0,0,0.4)';

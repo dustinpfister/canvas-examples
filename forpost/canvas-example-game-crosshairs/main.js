@@ -22,6 +22,7 @@ var loop = function () {
 
     draw.back(ctx, canvas);
     draw.map(ctx, game.map, game.cross);
+    draw.explosions(ctx, game);
     draw.cross(ctx, game.cross);
     draw.shots(ctx, game);
     draw.info(ctx, game);

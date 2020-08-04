@@ -18,6 +18,10 @@ var gameMod = (function () {
         },
         // when a shot becomes inactive
         purge: function (shot, game) {
+
+            poolMod.spawn(game.explosions, game, shot);
+
+            // !! damage should be done with new explosion objects
             var cell = mapMod.getWithCanvasPointAndOffset(game.map, shot.x, shot.y, shot.offset.x, shot.offset.y);
             if (cell) {
                 cell.HP -= 5;
@@ -42,17 +46,13 @@ var gameMod = (function () {
     var explosionOptions = {
         count: 20,
         spawn: function (ex, game, opt) {
-
             ex.x = opt.x;
             ex.y = opt.y;
-            ex.lifespan = 3;
-
+            ex.lifespan = 1;
         },
         purge: function (ex, game) {},
         update: function (ex, game, secs) {
-
             ex.lifespan -= secs;
-
         }
     };
 
@@ -110,6 +110,7 @@ var gameMod = (function () {
             crossMod.update(game.cross, secs);
             mapMod.clampOffset(game.map, game.cross.offset);
             poolMod.update(game.shots, game, secs);
+            poolMod.update(game.explosions, game, secs);
             game.shotSecs += secs;
             game.shotSecs = game.shotSecs >= game.shotRate ? game.shotRate : game.shotSecs;
             if (game.shotSecs >= game.shotRate && game.userDown && crossMod.isInInner(game.cross)) {
