@@ -1,32 +1,34 @@
 # todo list for canvas-example-game-crosshairs
 
-## 0.7.0 - autoplay AI
-* start an autoplay AI for this canvas example like that if flappy collection idle
-* A player at any time can take over auto play by just clicking or touching the canvas
-* after a moment of inactivity a timeout bar will start
-* once the timeout bar completes the game will return to auto play mode.
-* make sure ver is 0.7.0 and make a pkg.html
 
-## 0.6.0 - continuous regeneration
-* The content of map cells continuously regenerates
-* There are cells in the map where even if everything is dead cells will regenerate
-* Cells grow back by way of what is going on in neighboring cells
-* The game is about just racking up a total all time damage count.
-* make sure ver is 0.6.0 and make a pkg.html
-
-## 0.5.0 - Enemy fire and health
+## 0.7.0 - Enemy fire and health
 * to make the game more interesting there are units on the map that fire back
 * game.HP, and game.maxHP properties will be needed
 * game.gameOver state
 * just click screen to start over for now until I get into a state machine for this.
 * make sure ver is 0.5.0 and make a pkg.html
 
+
+## 0.6.0 - autoplay AI
+* start an autoplay AI for this canvas example like that if flappy collection idle
+* A player at any time can take over auto play by just clicking or touching the canvas
+* after a moment of inactivity a timeout bar will start
+* once the timeout bar completes the game will return to auto play mode.
+* make sure ver is 0.7.0 and make a pkg.html
+
+## 0.5.0 - continuous regeneration
+* The content of map cells continuously regenerates
+* There are cells in the map where even if everything is dead cells will regenerate
+* Cells grow back by way of what is going on in neighboring cells
+* The game is about just racking up a total all time damage count.
+* make sure ver is 0.6.0 and make a pkg.html
+
 ## 0.4.0 - Weapons and power ups
 * (done) have an array of weapon objects in game.js
 * (done) game starts with weapon index 0
 * (done) weaponIndex is used to set current Weapon object, and the current weapond object is used to set stats for shots and other relevant stats.
 * (done) display name of current weapon
-* transparent effect for blasts
+* (done) transparent effect for blasts
 * accuracy property of a weapon object defines a radius where a shot will hit within
 * gunCount property defines the number of guns there are where shots come from [1, 2, or 4]
 * shotsPerSecond property that should speak for itself
