@@ -38,7 +38,10 @@ b.createBallCollection = function (opt) {
         balls.push(ball);
         i += 1;
     }
-    return balls;
+    return {
+        ver: '0.0.0',
+        balls: balls
+    };
 };
 
 b.moveBallObject = function (ball, canvas) {

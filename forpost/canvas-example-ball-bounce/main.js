@@ -1,6 +1,6 @@
 
 // draw a ball object
-var drawBallObject = function (ball, ctx) {
+var drawBallObject = function (ctx, ball) {
     var x,
     y;
     // draw ball
@@ -21,12 +21,15 @@ var drawBallObject = function (ball, ctx) {
 };
 
 // draw ball collection
-var drawBallCollection = function (balls, ctx) {
-    balls.forEach(function (ball) {
-        drawBallObject(ball, ctx);
+var drawBallCollection = function (ctx, canvas, ballCollection) {
+    ballCollection.balls.forEach(function (ball) {
+        drawBallObject(ctx, ball);
     });
+    ctx.fillStyle = 'white';
+    ctx.textBaseline = 'top';
+    ctx.font = '10px courier';
+    ctx.fillText('v' + ballCollection.ver, 10, canvas.height - 15);
 };
-
 
 // create and append canvas element, and get 2d context
 var canvas = document.createElement('canvas'),
@@ -40,7 +43,7 @@ canvas.height = 240;
 ctx.translate(0.5, 0.5);
 
 // create ball collection
-var balls = b.createBallCollection({
+var ballCollection = b.createBallCollection({
         count: 4,
         r: 20,
         d: 1,
@@ -60,11 +63,11 @@ var loop = function () {
     ctx.fillStyle = 'black';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
     // draw balls
-    drawBallCollection(balls, ctx);
+    drawBallCollection(ctx, canvas, ballCollection);
     // move all
     i = 0;
-    while (i < balls.length) {
-        b.moveBallObject(balls[i], canvas);
+    while (i < ballCollection.balls.length) {
+        b.moveBallObject(ballCollection.balls[i], canvas);
         i += 1;
     }
 };
