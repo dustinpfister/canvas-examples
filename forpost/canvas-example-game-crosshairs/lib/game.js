@@ -1,5 +1,7 @@
 var gameMod = (function () {
 
+    var debug = utils.logOnce();
+
     // SHOT Object Options
     var shotOptions = {
         count: 20,
@@ -38,18 +40,20 @@ var gameMod = (function () {
                 x: shot.offset.x,
                 y: shot.offset.y
             };
-            ex.data.radiusEnd = 32;
+            ex.data.radiusEnd = game.map.cellSize * 3;
             ex.data.explosionTime = 0.6;
             ex.lifespan = ex.data.explosionTime;
         },
         purge: function (ex, game) {},
         update: function (ex, game, secs) {
             ex.radius = ex.data.radiusEnd * (ex.data.explosionTime - ex.lifespan) / ex.data.explosionTime;
-            var cell = mapMod.getWithCanvasPointAndOffset(game.map, ex.x, ex.y, ex.data.offset.x, ex.data.offset.y);
+            var cell = mapMod.getWithCanvasPointAndOffset(game.map, ex.x, ex.y, ex.data.offset.x, ex.data.offset.y),
+            blastRadius = Math.ceil((ex.radius + 0.01) / game.map.cellSize);
+            debug(blastRadius);
             if (cell) {
-                var targets = mapMod.getAllFromPointAndRadius(game.map, cell.x, cell.y, 3);
+                var targets = mapMod.getAllFromPointAndRadius(game.map, cell.x, cell.y, blastRadius);
                 targets.cells.forEach(function (cell, i) {
-                    cell.HP -= 10 * (1 - (targets.dists[i] / 3)) * secs;
+                    cell.HP -= 10 * (1 - (targets.dists[i] / blastRadius)) * secs;
                 });
                 // percent killed
                 game.map.percentRemain = 0;
