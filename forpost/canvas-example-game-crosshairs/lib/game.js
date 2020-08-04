@@ -3,19 +3,19 @@ var gameMod = (function () {
     //var debug = utils.logOnce();
 
     var Weapons = [{
-            name: 'Assult blaster',
+            name: 'Assault Blaster',
             pps: 512,
             shotRate: 0.125,
             blastRadius: 2,
             maxDPS: 25
         }, {
-            name: 'blaster',
+            name: 'Blaster',
             pps: 256,
             shotRate: 0.125,
             blastRadius: 1,
             maxDPS: 10
         }, {
-            name: 'cannon',
+            name: 'Cannon',
             pps: 128,
             shotRate: 1.5,
             blastRadius: 4,
@@ -67,10 +67,12 @@ var gameMod = (function () {
             ex.data.explosionTime = 0.6;
             ex.data.maxDPS = w.maxDPS; ;
             ex.lifespan = ex.data.explosionTime;
+            ex.per = 0;
         },
         purge: function (ex, game) {},
         update: function (ex, game, secs) {
-            ex.radius = ex.data.radiusEnd * (ex.data.explosionTime - ex.lifespan) / ex.data.explosionTime;
+            ex.per = (ex.data.explosionTime - ex.lifespan) / ex.data.explosionTime;
+            ex.radius = ex.data.radiusEnd * ex.per;
             var cell = mapMod.getWithCanvasPointAndOffset(game.map, ex.x, ex.y, ex.data.offset.x, ex.data.offset.y),
             blastRadius = Math.ceil((ex.radius + 0.01) / game.map.cellSize);
             if (cell) {

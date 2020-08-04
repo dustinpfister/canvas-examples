@@ -70,11 +70,14 @@ var draw = (function () {
         explosions: function (ctx, game) {
             var exps = game.explosions,
             i = exps.length,
+            alpha = 0.5,
             ex;
             while (i--) {
                 ex = exps[i];
-                ctx.fillStyle = 'yellow';
-                ctx.strokeStyle = 'black';
+                alpha = 1 - ex.per;
+                ctx.fillStyle = 'rgba(255,255,0,' + alpha + ')';
+                ctx.strokeStyle = 'rgba(0,0,0,' + alpha + ')';
+
                 if (ex.active) {
                     ctx.beginPath();
                     ctx.arc(ex.x, ex.y, ex.radius, 0, Math.PI * 2);
