@@ -48,10 +48,13 @@ var gameMod = (function () {
         spawn: function (ex, game, opt) {
             ex.x = opt.x;
             ex.y = opt.y;
-            ex.lifespan = 1;
+            ex.data.radiusEnd = 32;
+            ex.data.explosionTime = 0.6;
+            ex.lifespan = ex.data.explosionTime;
         },
         purge: function (ex, game) {},
         update: function (ex, game, secs) {
+            ex.radius = ex.data.radiusEnd * (ex.data.explosionTime - ex.lifespan) / ex.data.explosionTime;
             ex.lifespan -= secs;
         }
     };
