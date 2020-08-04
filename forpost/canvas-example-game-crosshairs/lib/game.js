@@ -4,7 +4,7 @@ var gameMod = (function () {
     var shotOptions = {
         count: 20,
         // when a shot becomes active
-        spawn: function (shot, game) {
+        spawn: function (shot, game, opt) {
             var offset = game.cross.offset,
             ch = game.cross.crosshairs,
             d;
@@ -41,9 +41,19 @@ var gameMod = (function () {
     // Explosion Options
     var explosionOptions = {
         count: 20,
-        spawn: function () {},
-        purge: function () {},
-        update: function () {}
+        spawn: function (ex, game, opt) {
+
+            ex.x = opt.x;
+            ex.y = opt.y;
+            ex.lifespan = 3;
+
+        },
+        purge: function (ex, game) {},
+        update: function (ex, game, secs) {
+
+            ex.lifespan -= secs;
+
+        }
     };
 
     return {

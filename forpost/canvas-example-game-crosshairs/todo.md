@@ -30,8 +30,8 @@
 * make sure ver is 0.4.0 and make a pkg.html
 
 ## 0.3.0 - Explosions
-* use the object pool module to create a pool of Explosions in game.js
-* and explosion happens when a shot hits the target area.
+* (done) use the object pool module to create a pool of Explosions in game.js
+* an explosion happens when a shot hits the target area.
 * and exploitation starts at zero radius, and then expands outward to a total radius
 * A DPS value is applied to each cell in the current radius, and is effected by distance from the center of the explosion.
 * new draw method for explosions
