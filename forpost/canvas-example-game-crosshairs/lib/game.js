@@ -18,24 +18,8 @@ var gameMod = (function () {
         },
         // when a shot becomes inactive
         purge: function (shot, game) {
-
+            // spawn and explosion
             poolMod.spawn(game.explosions, game, shot);
-
-            // !! damage should be done with new explosion objects
-            /*
-            var cell = mapMod.getWithCanvasPointAndOffset(game.map, shot.x, shot.y, shot.offset.x, shot.offset.y);
-            if (cell) {
-            cell.HP -= 5;
-            cell.HP = cell.HP < 0 ? 0 : cell.HP;
-            // percent killed
-            game.map.percentKilled = 0;
-            game.map.cells.forEach(function (cell) {
-            game.map.percentKilled += cell.HP / cell.maxHP;
-            });
-            game.map.percentKilled /= game.map.cells.length;
-            }
-             */
-
         },
         // update method for a shot
         update: function (shot, game, secs) {
