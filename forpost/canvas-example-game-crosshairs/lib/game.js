@@ -40,9 +40,9 @@ var gameMod = (function () {
                 x: shot.offset.x,
                 y: shot.offset.y
             };
-            ex.data.radiusEnd = game.map.cellSize * 5;
+            ex.data.radiusEnd = game.map.cellSize * 4;
             ex.data.explosionTime = 0.6;
-            ex.data.maxDPS = 150;
+            ex.data.maxDPS = 50;
             ex.lifespan = ex.data.explosionTime;
         },
         purge: function (ex, game) {},
@@ -79,7 +79,7 @@ var gameMod = (function () {
                 cross: {},
                 shots: poolMod.create(shotOptions),
                 explosions: poolMod.create(explosionOptions),
-                shotRate: 0.125,
+                shotRate: 1,
                 shotSecs: 0,
                 userDown: false
             };

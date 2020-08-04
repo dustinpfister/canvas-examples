@@ -39,7 +39,7 @@
 * (done) percentKiled renamed to percentRemain
 * (done) fix issue with explosion radius and damage
 * (done) use a maxDPS explosion object property to figure DPS
-* fix issue where cell HP is going below zero
+* (done) fix issue where cell HP is going below zero
 * make sure ver is 0.3.0 and make a pkg.html
 
 ## 0.2.0 - Object Pool, shots, and a game Module
