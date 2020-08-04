@@ -21,12 +21,19 @@
 * just click screen to start over for now until I get into a state machine for this.
 * make sure ver is 0.5.0 and make a pkg.html
 
-## 0.4.0 - Weapons module
-* start a weapons module that will be used to create and update a weapon object
-* accuracy property of a weapon object defines a radius where a shot will hit
+## 0.4.0 - Weapons and power ups
+* have an array of weapon objects in game.js
+* game starts with weapon index 0
+* accuracy property of a weapon object defines a radius where a shot will hit within
 * gunCount property defines the number of guns there are where shots come from [1, 2, or 4]
 * shotsPerSecond property that should speak for itself
+* Weapon splash radius property defines the blast radius of a shot
 * a weapon can have a max and min level as level increases so does weapon and shot stats
+* create a powerUp object pool.
+* power ups will some times pop up when a cell is killed
+* have a weapon change power up
+* have a weapon level up power up
+* a powerup can be gathered by clicking or touching it at any time anywhere, and will not trigger a shot
 * make sure ver is 0.4.0 and make a pkg.html
 
 ## 0.3.0 - Explosions
@@ -40,7 +47,7 @@
 * (done) fix issue with explosion radius and damage
 * (done) use a maxDPS explosion object property to figure DPS
 * (done) fix issue where cell HP is going below zero
-* make sure ver is 0.3.0 and make a pkg.html
+* (done) make sure ver is 0.3.0 and make a pkg.html
 
 ## 0.2.0 - Object Pool, shots, and a game Module
 * (done) start a pool.js module that will serve as the Object pool module for this canvas example
