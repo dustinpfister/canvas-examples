@@ -3,22 +3,22 @@ var gameMod = (function () {
     //var debug = utils.logOnce();
 
     var Weapons = [{
-            name: 'Assault Blaster',
-            pps: 512,
-            shotRate: 0.125,
-            blastRadius: 2,
-            maxDPS: 25,
-            accuracy: 0.75,
-            hitRadius: 16
-        }, {
             name: 'Blaster',
             pps: 256,
             shotRate: 0.125,
             blastRadius: 1,
             maxDPS: 10,
-            accuracy: 0.9,
-            hitRadius: 16
-        }, {
+            accuracy: 0.2,
+            hitRadius: 128
+        },{
+            name: 'Assault Blaster',
+            pps: 512,
+            shotRate: 0.125,
+            blastRadius: 2,
+            maxDPS: 25,
+            accuracy: 0.5,
+            hitRadius: 32
+        },  {
             name: 'Cannon',
             pps: 256,
             shotRate: 1.5,
@@ -45,10 +45,13 @@ var gameMod = (function () {
             var offset = game.cross.offset,
             w = Weapons[game.weaponIndex],
             ch = game.cross.crosshairs,
+            r = Math.random() * (Math.PI * 2),
+            x = ch.x + Math.cos(r) * w.hitRadius * (1 - w.accuracy),
+            y = ch.y + Math.sin(r) * w.hitRadius * (1 - w.accuracy),
             d;
             shot.x = game.canvas.width;
             shot.y = game.canvas.height;
-            shot.heading = Math.atan2(ch.y - shot.y, ch.x - shot.x);
+            shot.heading = Math.atan2(y - shot.y, x - shot.x);
             d = utils.distance(shot.x, shot.y, ch.x, ch.y);
             shot.pps = w.pps;
             shot.lifespan = d / shot.pps;
