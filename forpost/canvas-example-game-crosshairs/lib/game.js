@@ -45,7 +45,7 @@ var gameMod = (function () {
     var shotOptions = {
         count: 20,
         // when a shot becomes active
-        spawn: function (shot, game, opt) {
+        spawn: function (shot, game, radian) {
             var offset = game.cross.offset,
             w = Weapons[game.weaponIndex],
             ch = game.cross.crosshairs,
@@ -54,8 +54,10 @@ var gameMod = (function () {
             x = ch.x + Math.cos(r) * d,
             y = ch.y + Math.sin(r) * d,
             d;
-            shot.x = game.canvas.width;
-            shot.y = game.canvas.height;
+            //shot.x = game.canvas.width;
+            //shot.y = game.canvas.height;
+            shot.x = x + Math.cos(radian) * game.canvas.width;
+            shot.y = y + Math.sin(radian) * game.canvas.width;
             shot.heading = Math.atan2(y - shot.y, x - shot.x);
             d = utils.distance(shot.x, shot.y, x, y);
             shot.pps = w.pps;
@@ -127,7 +129,7 @@ var gameMod = (function () {
                 explosions: poolMod.create(explosionOptions),
                 shotRate: 1,
                 shotSecs: 0,
-                weaponIndex: 1,
+                weaponIndex: 2,
                 userDown: false
             };
 
@@ -166,7 +168,7 @@ var gameMod = (function () {
         },
 
         update: function (game, secs) {
-
+            var w = Weapons[game.weaponIndex];
             game.shotRate = Weapons[game.weaponIndex].shotRate;
 
             crossMod.update(game.cross, secs);
@@ -176,7 +178,13 @@ var gameMod = (function () {
             game.shotSecs += secs;
             game.shotSecs = game.shotSecs >= game.shotRate ? game.shotRate : game.shotSecs;
             if (game.shotSecs >= game.shotRate && game.userDown && crossMod.isInInner(game.cross)) {
-                poolMod.spawn(game.shots, game);
+                var i = 0,
+                radian;
+                while (i < w.gunCount) {
+                    radian = Math.PI * 2 / w.gunCount * i;
+                    poolMod.spawn(game.shots, game, radian);
+                    i += 1;
+                }
                 game.shotSecs = 0;
             }
         }
