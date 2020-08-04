@@ -85,7 +85,7 @@ var gameMod = (function () {
     };
 
     return {
-
+        Weapons: Weapons,
         create: function (opt) {
             opt = opt || {};
             var game = {
@@ -97,7 +97,7 @@ var gameMod = (function () {
                 explosions: poolMod.create(explosionOptions),
                 shotRate: 1,
                 shotSecs: 0,
-                weaponIndex: 0,
+                weaponIndex: 1,
                 userDown: false
             };
 
