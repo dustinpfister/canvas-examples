@@ -38,6 +38,28 @@ var mapMod = (function () {
             offset.y = offset.y < map.cellHeight * map.cellSize * -1 ? map.cellHeight * map.cellSize * -1 : offset.y;
         },
 
+        // get all cells from a given cell position, and radius from that position
+        getAllFromPointAndRadius: function (map, x, y, r) {
+            //??? just do it the stupid way for now
+            var i = map.cells.length,
+            d,
+            cell,
+            cells = [],
+            dists = [];
+            while (i--) {
+                cell = map.cells[i];
+                d = utils.distance(cell.x, cell.y, x, y);
+                if (d <= r) {
+                    cells.push(cell);
+                    dists.push(d);
+                }
+            }
+            return {
+                cells: cells,
+                dists: dists
+            };
+        },
+
         getWithCanvasPointAndOffset: function (map, canvasX, canvasY, offsetX, offsetY) {
             var x = canvasX - 160 + Math.abs(offsetX),
             y = canvasY - 120 + Math.abs(offsetY);

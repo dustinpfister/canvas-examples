@@ -75,6 +75,15 @@ var gameMod = (function () {
                 userDown: false
             };
 
+            console.log('testing new map get method:');
+            var targets = mapMod.getAllFromPointAndRadius(game.map, 0, 0, 2);
+            targets.cells.forEach(function (cell, i) {
+
+                cell.HP -= 10 * targets.dists[i]
+
+            });
+            console.log(targets);
+
             game.cross = crossMod.create({
                     offsetX: game.map.cellWidth * game.map.cellSize / 2 * -1,
                     offsetY: game.map.cellHeight * game.map.cellSize / 2 * -1,
