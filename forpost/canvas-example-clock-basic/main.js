@@ -16,6 +16,7 @@ var loop = function () {
     draw.hands(canvas, ctx, clock);
     draw.clockDayCircle(canvas, ctx, clock);
     draw.clockText(canvas, ctx, clock);
+    draw.info(ctx, canvas, clock);
 };
 // start loop
 loop();

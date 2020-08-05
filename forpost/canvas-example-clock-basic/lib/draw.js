@@ -25,7 +25,6 @@ draw.clockText = function (canvas, ctx, clock) {
 };
 
 draw.hands = function (canvas, ctx, clock) {
-
     ctx.strokeStyle = 'rgba(0,0,0,0.5)';
     'secPer,minPer,hourPer,AMPMPer'.split(',').forEach(function (perName, i) {
         var r = Math.PI * 2 * clock[perName] - Math.PI / 2,
@@ -38,6 +37,15 @@ draw.hands = function (canvas, ctx, clock) {
         ctx.lineTo(cx + Math.cos(r) * radius, cy + Math.sin(r) * radius);
         ctx.stroke();
     });
+};
+
+draw.info = function (ctx, canvas, clock) {
+
+    ctx.fillStyle = 'grey';
+    ctx.textBaseline = 'top';
+    ctx.font = '10px courier';
+    ctx.textAlign = 'left';
+    ctx.fillText('v' + clock.ver, 10, 10);
 
 };
 

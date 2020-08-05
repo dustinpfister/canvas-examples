@@ -17,7 +17,9 @@ var clockMod = (function () {
     // return a public method that creates a clock object
     return {
         create: function (date) {
-            var clock = {};
+            var clock = {
+                ver: '0.0.0'
+            };
             clock.now = date || new Date(0);
             clock.timeText = getTimeText(clock);
             var dayStart = getDayStart(clock);
