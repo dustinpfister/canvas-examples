@@ -4,6 +4,16 @@ var mapMod = (function () {
         return map.cells[y * map.cellWidth + x];
     };
 
+    var autoHeal = function (cell, secs) {
+        cell.autoHeal.secs += secs;
+        if (cell.autoHeal.secs >= cell.autoHeal.rate) {
+            cell.autoHeal.secs %= cell.autoHeal.rate;
+            cell.HP += cell.autoHeal.amount;
+            cell.HP = cell.HP > cell.maxHP ? cell.maxHP : cell.HP;
+		
+        }
+    };
+
     return {
 
         create: function () {
@@ -24,7 +34,12 @@ var mapMod = (function () {
                     x: i % map.cellWidth,
                     y: Math.floor(i / map.cellWidth),
                     HP: 100,
-                    maxHP: 100
+                    maxHP: 100,
+                    autoHeal: {
+                        rate: 1,
+                        amount: 10,
+                        secs: 0
+                    }
                 });
                 i += 1;
             }
@@ -64,8 +79,16 @@ var mapMod = (function () {
             var x = canvasX - 160 + Math.abs(offsetX),
             y = canvasY - 120 + Math.abs(offsetY);
             return get(map, Math.floor(x / map.cellSize), Math.floor(y / map.cellSize));
-        }
+        },
 
+        update: function (map, secs) {
+            var i = map.cells.length,
+            cell;
+            while (i--) {
+                cell = map.cells[i];
+                autoHeal(cell, secs);
+            }
+        }
     }
 
 }

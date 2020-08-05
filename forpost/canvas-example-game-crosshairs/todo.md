@@ -24,8 +24,12 @@
 * map cells have a damagePer property that is a number between 0 and 1 where 0 is the lowest current damage value in the map, and 1 is the highest.
 * the damagePer property is used as one way to determine the cellType when regenerating cells.
 
-## 0.5.0 - continuous regeneration
-* The content of map cells continuously regenerates
+## 0.5.0 - continuous regeneration and autoHeal
+* add an update method to the mapMod.
+* add an autoHeal Object with a rate property for each cell in map.js
+* cells will ausoHeal up to full health as part of the maps update loop.
+
+* The content of map cells continuously heals and regenerates
 * There are cells in the map where even if everything is dead cells will regenerate
 * Cells grow back by way of what is going on in neighboring cells
 * The game is about just racking up a total all time damage count.

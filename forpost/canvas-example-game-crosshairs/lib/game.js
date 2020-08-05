@@ -150,7 +150,7 @@ var gameMod = (function () {
         create: function (opt) {
             opt = opt || {};
             var game = {
-                ver: '0.4.0',
+                ver: '0.5.0',
                 canvas: canvas,
                 map: mapMod.create(),
                 cross: {},
@@ -189,10 +189,17 @@ var gameMod = (function () {
             var w = Weapons[game.weaponIndex];
             game.shotRate = Weapons[game.weaponIndex].shotRate;
 
+            // cross object
             crossMod.update(game.cross, secs);
+
+            // map
             mapMod.clampOffset(game.map, game.cross.offset);
+            mapMod.update(game.map, secs);
+
+            // updare pools
             poolMod.update(game.shots, game, secs);
             poolMod.update(game.explosions, game, secs);
+
             game.shotSecs += secs;
             game.shotSecs = game.shotSecs >= game.shotRate ? game.shotRate : game.shotSecs;
 
