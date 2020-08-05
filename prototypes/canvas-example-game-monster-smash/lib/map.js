@@ -1,5 +1,4 @@
-// UTILS
-var map = (function () {
+var mapMod = (function () {
 
     var api = {};
 
@@ -18,8 +17,7 @@ var map = (function () {
         return cells;
     };
 
-    ap.create = function (opt) {
-
+    api.create = function (opt) {
         opt = opt || {};
         var map = {
             w: opt.w || 10,
@@ -29,7 +27,6 @@ var map = (function () {
         map.cells = createCells(map);
         return map;
     }
-
     return api;
 
 }
