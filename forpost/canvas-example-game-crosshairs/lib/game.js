@@ -184,7 +184,7 @@ var gameMod = (function () {
             poolMod.update(game.explosions, game, secs);
             game.shotSecs += secs;
             game.shotSecs = game.shotSecs >= game.shotRate ? game.shotRate : game.shotSecs;
-            if (game.shotSecs >= game.shotRate && game.userDown && crossMod.isInInner(game.cross)) {
+            if (game.shotSecs >= game.shotRate && game.userDown && crossMod.isInInner(game.cross) && game.cross.userDown) {
                 var i = 0,
                 radian;
                 while (i < w.gunCount) {

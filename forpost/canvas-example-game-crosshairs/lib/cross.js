@@ -64,6 +64,14 @@ var crossMod = (function () {
             var ch = cross.crosshairs,
             center = cross.center;
             ch.heading = Math.atan2(center.y - ch.y, center.x - ch.x);
+
+            // set bounds
+            if (isOutOfBounds(cross)) {
+                ch.x = center.x;
+                ch.y = center.y;
+                cross.userDown = false;
+            }
+
             if (isInOuter(cross)) {
                 // move back to innerRdaius if in outer area and userDown is false
                 if (!cross.userDown) {
@@ -73,28 +81,24 @@ var crossMod = (function () {
                 // apply changes to offset
                 moveOffset(cross, secs);
             }
-            // set bounds
-            if (isOutOfBounds(cross)) {
-                ch.x = center.x + Math.cos(ch.heading + Math.PI) * cross.radiusOuter;
-                ch.y = center.y + Math.sin(ch.heading + Math.PI) * cross.radiusOuter;
-            }
         },
 
         createEvent: function (cross, eventType) {
             return function (e) {
+                var ch = cross.crosshairs;
                 e.preventDefault();
                 var pos = utils.getCanvasRelative(e);
                 if (eventType === 'start') {
                     cross.userDown = true;
-                    cross.crosshairs.x = pos.x;
-                    cross.crosshairs.y = pos.y;
+                    ch.x = pos.x;
+                    ch.y = pos.y;
                 }
                 if (eventType === 'end') {
                     cross.userDown = false;
                 }
                 if (eventType === 'move' && cross.userDown) {
-                    cross.crosshairs.x = pos.x;
-                    cross.crosshairs.y = pos.y;
+                    ch.x = pos.x;
+                    ch.y = pos.y;
                 }
             };
         }
