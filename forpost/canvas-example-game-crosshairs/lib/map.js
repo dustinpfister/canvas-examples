@@ -4,13 +4,13 @@ var mapMod = (function () {
         return map.cells[y * map.cellWidth + x];
     };
 
+    // auto heal a cell
     var autoHeal = function (cell, secs) {
         cell.autoHeal.secs += secs;
         if (cell.autoHeal.secs >= cell.autoHeal.rate) {
             cell.autoHeal.secs %= cell.autoHeal.rate;
             cell.HP += cell.autoHeal.amount;
             cell.HP = cell.HP > cell.maxHP ? cell.maxHP : cell.HP;
-		
         }
     };
 
