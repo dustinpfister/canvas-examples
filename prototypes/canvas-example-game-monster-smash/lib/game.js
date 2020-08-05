@@ -4,7 +4,11 @@ var gameMod = (function () {
 
     api.create = function (opt) {
         opt = opt || {};
-        var game = {};
+        var game = {
+            mode: 'map',
+            maps: []
+        };
+        game.maps.push(mapMod.create());
         return game;
     }
     return api;
