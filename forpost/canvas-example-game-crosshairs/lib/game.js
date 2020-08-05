@@ -158,7 +158,7 @@ var gameMod = (function () {
                 explosions: poolMod.create(explosionOptions),
                 shotRate: 1,
                 shotSecs: 0,
-                weaponIndex: 1,
+                weaponIndex: 0,
                 userDown: false
             };
 

@@ -96,9 +96,11 @@ var crossMod = (function () {
                 if (eventType === 'end') {
                     cross.userDown = false;
                 }
-                if (eventType === 'move' && cross.userDown) {
-                    ch.x = pos.x;
-                    ch.y = pos.y;
+                if (eventType === 'move') {
+                    if (cross.userDown) {
+                        ch.x = pos.x;
+                        ch.y = pos.y;
+                    }
                 }
             };
         }
