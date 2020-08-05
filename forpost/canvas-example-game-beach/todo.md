@@ -28,7 +28,7 @@
 * main.js: images loaded in load state, and game progress to run state when done
 * main.js: using new sprite sheets to skin game rather than just fillRect a plain color
 
-## 0.4 - Upgrading Turrets by Kills
+## 0.4.0 - Upgrading Turrets by Kills
 * (done) game.js: cap for blasts just like everything else
 * (done) game.js: TURRET.maxKillLevel value
 * (done) game.js: kill count for each turret
@@ -37,7 +37,7 @@
 * (done) game.js: turrets attack goes up to TURRET.maxAttack with killLevel
 * (done) game.js: accuracy goes up with kill level
 
-## 0.3 - Blast disp objects
+## 0.3.0 - Blast disp objects
 * (done) game.js: spawnBlast method pushes a blast object to a new blast pool
 * (done) draw.js: draw.blasts method
 * (done) game.js: state.kills kill count
@@ -45,14 +45,14 @@
 * (done) game.js: blasts expand from the center point to the blast radius
 * (done) draw.js: draw.blasts transparency effect reaches zero as radius expands to max
 
-## 0.2 - Turrets attack boats
+## 0.2.0 - Turrets attack boats
 * (done) game.js: new shot pool for shot display objects
 * (done) game.js: turrets shoot at ships when they are in range
 * (done) game.js: turret shots have splash damage, so some damage will happen even if the ship move out of range
 * (done) game.js: ships are destroyed when hp === 0
 * (done) draw.js: draw.shots method for drawing current state of shots
 
-## 0.1 - Cell areaType, boats and turrets
+## 0.1.0 - Cell areaType, boats and turrets
 * (done) game.js: a area tile can have a water, beach, or land areaType index
 * (done) game.js: a new playerPool state property for player display objects (turrets)
 * (done) game.js: a new enemyPool state property for enemy display objects (boats)

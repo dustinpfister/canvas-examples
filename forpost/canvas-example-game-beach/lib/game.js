@@ -340,6 +340,7 @@ var game = (function () {
         opt = opt || {};
         opt.areaData = opt.areaData || '';
         var state = {
+            ver: '0.4.0',
             cells: createCells(opt.areaData),
             lt: new Date(),
             spawnSecs: 0,
@@ -349,6 +350,10 @@ var game = (function () {
                 enemy: [],
                 shots: [],
                 blasts: []
+            },
+            mapOffset: {
+                x: 32,
+                y: 32
             }
         };
         return state;

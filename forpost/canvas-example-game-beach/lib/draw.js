@@ -15,7 +15,7 @@ var draw = (function () {
         while (i--) {
             cell = state.cells[i];
             ctx.fillStyle = colors[cell.areaType];
-            ctx.fillRect(cell.x * cellSize, cell.y * cellSize, cellSize, cellSize);
+            ctx.fillRect(state.mapOffset.x + cell.x * cellSize, state.mapOffset.y + cell.y * cellSize, cellSize, cellSize);
         }
     };
 
@@ -30,11 +30,11 @@ var draw = (function () {
         while (i--) {
             disp = state.pool[poolName][i];
             ctx.fillStyle = colors[poolName];
-            ctx.fillRect(disp.x * cellSize, disp.y * cellSize, cellSize, cellSize);
+            ctx.fillRect(state.mapOffset.x + disp.x * cellSize, state.mapOffset.y + disp.y * cellSize, cellSize, cellSize);
             if (disp.hp != undefined) {
                 var per = disp.hp / disp.hpMax;
                 ctx.fillStyle = 'lime';
-                ctx.fillRect(disp.x * cellSize, disp.y * cellSize, cellSize * per, cellSize / 4);
+                ctx.fillRect(state.mapOffset.x + disp.x * cellSize, state.mapOffset.y + disp.y * cellSize, cellSize * per, cellSize / 4);
             }
         }
     };
@@ -48,7 +48,7 @@ var draw = (function () {
             tur = state.pool.player[i];
             ctx.fillStyle = 'pink';
             ctx.save();
-            ctx.translate((tur.x + 0.5) * cellSize, (tur.y + 0.5) * cellSize);
+            ctx.translate(state.mapOffset.x +(tur.x + 0.5) * cellSize, state.mapOffset.y +(tur.y + 0.5) * cellSize);
             ctx.rotate(tur.h);
             ctx.beginPath();
             ctx.moveTo(6, 0);
@@ -60,14 +60,14 @@ var draw = (function () {
             // attack range
             ctx.strokeStyle = 'rgba(255,255,255,0.2)';
             ctx.beginPath();
-            ctx.arc((tur.x + 0.5) * cellSize, (tur.y + 0.5) * cellSize, tur.attackRange * cellSize, 0, Math.PI * 2);
+            ctx.arc(state.mapOffset.x +(tur.x + 0.5) * cellSize, state.mapOffset.y +(tur.y + 0.5) * cellSize, tur.attackRange * cellSize, 0, Math.PI * 2);
             ctx.stroke();
 
             // info
             ctx.fillStyle = 'white';
             ctx.textBaseline = 'top';
             ctx.font = '8px arial';
-            ctx.fillText(tur.killLevel.level, tur.x * cellSize, tur.y * cellSize);
+            ctx.fillText(tur.killLevel.level, state.mapOffset.x +tur.x * cellSize, state.mapOffset.y +tur.y * cellSize);
         }
 
     };
@@ -86,7 +86,7 @@ var draw = (function () {
         while (i--) {
             shot = state.pool.shots[i];
             ctx.beginPath();
-            ctx.arc(shot.x * cellSize, shot.y * cellSize, 2, 0, Math.PI * 2);
+            ctx.arc(state.mapOffset.x + shot.x * cellSize, state.mapOffset.y +shot.y * cellSize, 2, 0, Math.PI * 2);
             ctx.fill();
         }
     };
@@ -101,7 +101,7 @@ var draw = (function () {
             per = per > 1 ? 1 : per;
             ctx.beginPath();
             ctx.fillStyle = 'rgba(255,128,0,' + (0.6 - (0.55 * per)) + ')';
-            ctx.arc(blast.x * cellSize, blast.y * cellSize, blast.radius * cellSize * per, 0, Math.PI * 2);
+            ctx.arc(state.mapOffset.x +blast.x * cellSize, state.mapOffset.y +blast.y * cellSize, blast.radius * cellSize * per, 0, Math.PI * 2);
             ctx.fill();
         }
     };
