@@ -10,4 +10,4 @@
 
 ## 0.0.0 - Basic idea
 * (done) Basic idea of grass blades working
-* make a pkg_0_0_0.html
+* (done) make a pkg_0_0_0.html
