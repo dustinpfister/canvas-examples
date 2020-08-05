@@ -21,6 +21,7 @@ var loop = function () {
     draw.background(ctx, canvas);
     Grass.update(g, t);
     draw.grass(ctx, g);
+    draw.info(ctx, canvas, g);
     lt = now;
 };
 loop();

@@ -29,13 +29,20 @@ var draw = (function () {
         // draw a blade
         blade: drawBlade,
 
+        // draw grass
         grass: function (ctx, grass) {
-
             grass.blades.forEach(function (blade, i) {
                 var style = 'rgba(' + blade.r + ',' + blade.g + ',' + blade.b + ',' + (0.1 + 0.9 * (i / grass.blades.length)) + ')';
                 drawBlade(ctx, blade, style);
             })
+        },
 
+        info: function (ctx, canvas, grass) {
+            ctx.fillStyle = 'grey';
+            ctx.textBaseline = 'top';
+            ctx.font = '10px courier';
+            ctx.textAlign = 'left';
+            ctx.fillText('v' + grass.ver, 10, canvas.height - 15);
         }
 
     }
