@@ -34,7 +34,7 @@
 * (done) gunCount property defines the number of guns there are where shots come from [1, 2, or 4]
 * (done) Weapon splash radius property defines the blast radius of a shot
 * (done) have a button to loop threw weapons
-* make it so clicking outside of the cross does nothing
+* (done) make it so clicking outside of the cross does nothing aside from centering cross hairs
 * clicking or touching the weapon switch button will not result in movement or firing a shot
 * make sure ver is 0.4.0 and make a pkg.html
 

@@ -76,6 +76,20 @@ var gameMod = (function () {
         }
     };
 
+    var userPointerStart = function (game) {
+        return function (e) {
+            e.preventDefault();
+            game.userDown = true;
+        };
+    };
+
+    var userPointerEnd = function (game) {
+        return function (e) {
+            e.preventDefault();
+            game.userDown = false;
+        };
+    };
+
     // Explosion Options
     var explosionOptions = {
         count: 20,
@@ -153,22 +167,10 @@ var gameMod = (function () {
             game.canvas.addEventListener('touchend', crossMod.createEvent(game.cross, 'end'));
             game.canvas.addEventListener('touchmove', crossMod.createEvent(game.cross, 'move'));
 
-            game.canvas.addEventListener('mousedown', function (e) {
-                e.preventDefault();
-                game.userDown = true;
-            });
-            game.canvas.addEventListener('mouseup', function (e) {
-                e.preventDefault();
-                game.userDown = false;
-            });
-            game.canvas.addEventListener('touchstart', function (e) {
-                e.preventDefault();
-                game.userDown = true;
-            });
-            game.canvas.addEventListener('touchend', function (e) {
-                e.preventDefault();
-                game.userDown = false;
-            });
+            game.canvas.addEventListener('mousedown', userPointerStart(game));
+            game.canvas.addEventListener('mouseup', userPointerEnd(game));
+            game.canvas.addEventListener('touchstart', userPointerStart(game));
+            game.canvas.addEventListener('touchend', userPointerEnd(game));
 
             return game;
 
