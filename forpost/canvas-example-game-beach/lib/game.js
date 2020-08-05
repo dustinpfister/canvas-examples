@@ -47,7 +47,7 @@ var game = (function () {
                 y: Math.floor(i / GRID.w),
                 areaType: areaData[i] === undefined ? 0 : areaData[i],
                 clear: true // nothing on it
-            })
+            });
             i += 1;
         }
         return cells;
