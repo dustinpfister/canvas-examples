@@ -11,7 +11,8 @@ draw.stateStatusInfo = function (ctx, state) {
     ctx.textAlign = 'left';
     ctx.fillText('money: ' + state.money.toFixed(2) +
         ', manual: ' + state.gatherRate.manual +
-        ', auto: ' + state.gatherRate.auto, 10, 10);
+        ', auto: ' + state.gatherRate.auto, 10, 20);
+    ctx.fillText('v' + state.ver, 10, 10);
 };
 
 draw.tickProgressBar = function (ctx, canvas, state) {
@@ -30,7 +31,7 @@ draw.debugUpgrades = function (ctx, state) {
     ctx.textBaseline = 'top';
     ctx.textAlign = 'left';
     state.US.forEach(function (uc, i) {
-        ctx.fillText('upgrade: ' + uc.dispName + ', level: ' + uc.level, 10, 20 + 10 * i);
+        ctx.fillText('upgrade: ' + uc.dispName + ', level: ' + uc.level, 10, 30 + 10 * i);
     });
 };
 

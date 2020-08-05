@@ -25,7 +25,7 @@ var game = (function () {
                 state.autoGatherActive = false;
                 if (level >= 1) {
                     state.autoGatherActive = true;
-                    state.gatherRate.auto = level + Math.floor(Math.pow(1.025, level) - 1);;
+                    state.gatherRate.auto = level + Math.floor(Math.pow(1.025, level) - 1); ;
                 }
 
             }
@@ -85,6 +85,7 @@ var game = (function () {
     // create and return a new game save state with the given upgradeData
     var createNewState = function (upgradeData) {
         return {
+            ver: '0.0.0',
             money: 0,
             tickRate: 3000,
             lastTick: new Date(),
