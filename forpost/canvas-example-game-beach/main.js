@@ -1,8 +1,10 @@
-var canvas = document.getElementById('the-canvas'),
+var container = document.getElementById('canvas-app'),
+canvas = document.createElement('canvas'),
 ctx = canvas.getContext('2d');
 canvas.width = 320;
 canvas.height = 240;
 ctx.translate(0.5, 0.5);
+container.appendChild(canvas);
 
 var areaData = '' +
     '0000000000000000' +
