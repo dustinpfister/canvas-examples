@@ -3,16 +3,7 @@
 * loading state from local storage
 
 
-
-
-
-
-
-
-
-
-
-## DONE
+## 0.0.0 - basic idea
 
 * (done) make clicking an upgrade button work
 * (done) cost of upgrade displayed in button label
@@ -44,3 +35,4 @@
 * (done) use breakdown method for setting current cost
 * (done) work out how an upgrade will effect something
 * (done) main set upgrade state level function
+* make a pkg.html with '0.0.0' displayed in the canvas
