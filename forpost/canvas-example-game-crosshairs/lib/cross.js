@@ -85,9 +85,9 @@ var crossMod = (function () {
 
         createEvent: function (cross, eventType) {
             return function (e) {
-                var ch = cross.crosshairs;
+                var pos = utils.getCanvasRelative(e),
+                ch = cross.crosshairs;
                 e.preventDefault();
-                var pos = utils.getCanvasRelative(e);
                 if (eventType === 'start') {
                     cross.userDown = true;
                     ch.x = pos.x;

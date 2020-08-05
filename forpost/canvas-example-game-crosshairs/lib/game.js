@@ -78,8 +78,16 @@ var gameMod = (function () {
 
     var userPointerStart = function (game) {
         return function (e) {
+            var pos = utils.getCanvasRelative(e);
             e.preventDefault();
             game.userDown = true;
+            // cycle weapons
+            var b = gameMod.buttons.changeWeapon,
+            d = utils.distance(pos.x, pos.y, b.x, b.y);
+            if (d < b.r) {
+                game.weaponIndex += 1;
+                game.weaponIndex %= Weapons.length;
+            }
         };
     };
 
@@ -159,14 +167,15 @@ var gameMod = (function () {
                     offsetY: game.map.cellHeight * game.map.cellSize / 2 * -1,
                 });
 
+            // cross events
             game.canvas.addEventListener('mousedown', crossMod.createEvent(game.cross, 'start'));
             game.canvas.addEventListener('mouseup', crossMod.createEvent(game.cross, 'end'));
             game.canvas.addEventListener('mousemove', crossMod.createEvent(game.cross, 'move'));
-
             game.canvas.addEventListener('touchstart', crossMod.createEvent(game.cross, 'start'));
             game.canvas.addEventListener('touchend', crossMod.createEvent(game.cross, 'end'));
             game.canvas.addEventListener('touchmove', crossMod.createEvent(game.cross, 'move'));
 
+            // main game events
             game.canvas.addEventListener('mousedown', userPointerStart(game));
             game.canvas.addEventListener('mouseup', userPointerEnd(game));
             game.canvas.addEventListener('touchstart', userPointerStart(game));
@@ -186,6 +195,8 @@ var gameMod = (function () {
             poolMod.update(game.explosions, game, secs);
             game.shotSecs += secs;
             game.shotSecs = game.shotSecs >= game.shotRate ? game.shotRate : game.shotSecs;
+
+            // shoot
             if (game.shotSecs >= game.shotRate && game.userDown && crossMod.isInInner(game.cross) && game.cross.userDown) {
                 var i = 0,
                 radian;
