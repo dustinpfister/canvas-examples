@@ -48,7 +48,7 @@ var draw = (function () {
             tur = state.pool.player[i];
             ctx.fillStyle = 'pink';
             ctx.save();
-            ctx.translate(state.mapOffset.x +(tur.x + 0.5) * cellSize, state.mapOffset.y +(tur.y + 0.5) * cellSize);
+            ctx.translate(state.mapOffset.x + (tur.x + 0.5) * cellSize, state.mapOffset.y + (tur.y + 0.5) * cellSize);
             ctx.rotate(tur.h);
             ctx.beginPath();
             ctx.moveTo(6, 0);
@@ -60,14 +60,14 @@ var draw = (function () {
             // attack range
             ctx.strokeStyle = 'rgba(255,255,255,0.2)';
             ctx.beginPath();
-            ctx.arc(state.mapOffset.x +(tur.x + 0.5) * cellSize, state.mapOffset.y +(tur.y + 0.5) * cellSize, tur.attackRange * cellSize, 0, Math.PI * 2);
+            ctx.arc(state.mapOffset.x + (tur.x + 0.5) * cellSize, state.mapOffset.y + (tur.y + 0.5) * cellSize, tur.attackRange * cellSize, 0, Math.PI * 2);
             ctx.stroke();
 
             // info
             ctx.fillStyle = 'white';
             ctx.textBaseline = 'top';
             ctx.font = '8px arial';
-            ctx.fillText(tur.killLevel.level, state.mapOffset.x +tur.x * cellSize, state.mapOffset.y +tur.y * cellSize);
+            ctx.fillText(tur.killLevel.level, state.mapOffset.x + tur.x * cellSize, state.mapOffset.y + tur.y * cellSize);
         }
 
     };
@@ -86,7 +86,7 @@ var draw = (function () {
         while (i--) {
             shot = state.pool.shots[i];
             ctx.beginPath();
-            ctx.arc(state.mapOffset.x + shot.x * cellSize, state.mapOffset.y +shot.y * cellSize, 2, 0, Math.PI * 2);
+            ctx.arc(state.mapOffset.x + shot.x * cellSize, state.mapOffset.y + shot.y * cellSize, 2, 0, Math.PI * 2);
             ctx.fill();
         }
     };
@@ -101,7 +101,7 @@ var draw = (function () {
             per = per > 1 ? 1 : per;
             ctx.beginPath();
             ctx.fillStyle = 'rgba(255,128,0,' + (0.6 - (0.55 * per)) + ')';
-            ctx.arc(state.mapOffset.x +blast.x * cellSize, state.mapOffset.y +blast.y * cellSize, blast.radius * cellSize * per, 0, Math.PI * 2);
+            ctx.arc(state.mapOffset.x + blast.x * cellSize, state.mapOffset.y + blast.y * cellSize, blast.radius * cellSize * per, 0, Math.PI * 2);
             ctx.fill();
         }
     };
@@ -111,7 +111,8 @@ var draw = (function () {
         ctx.fillStyle = 'white';
         ctx.textBaseline = 'top';
         ctx.font = '10px arial';
-        ctx.fillText('kills: ' + state.kills, 10, 10 * yi);
+        ctx.fillText('v' + state.ver, 10, 10 * yi);
+        ctx.fillText('kills: ' + state.kills, 10, 20 * yi);
     };
 
     api.debugInfoTurrets = function (ctx, state, yi, op) {

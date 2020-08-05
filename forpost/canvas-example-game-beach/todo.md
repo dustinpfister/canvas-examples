@@ -36,6 +36,7 @@
 * (done) game.js: turrets attackRange goes up from min to max in TURRET as killLevel goes up
 * (done) game.js: turrets attack goes up to TURRET.maxAttack with killLevel
 * (done) game.js: accuracy goes up with kill level
+* make a pkg_0_4_0.html file
 
 ## 0.3.0 - Blast disp objects
 * (done) game.js: spawnBlast method pushes a blast object to a new blast pool
