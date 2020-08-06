@@ -30,3 +30,12 @@ draw.cells = function (ctx, grid, xOffset, yOffset) {
         ci += 1;
     }
 };
+
+// draw info
+draw.info = function (ctx, canvas, grid) {
+    ctx.fillStyle = 'grey';
+    ctx.textBaseline = 'top';
+    ctx.textAlign = 'left';
+    ctx.font = '15px courier';
+    ctx.fillText('v' + grid.ver, 10, canvas.height - 20);
+};

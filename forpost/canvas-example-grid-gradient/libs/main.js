@@ -34,6 +34,7 @@
             grad.update();
             draw.back(ctx, canvas);
             draw.cells(ctx, grad);
+            draw.info(ctx, canvas, grad);
             lt = now;
         }
     };
