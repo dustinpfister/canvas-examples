@@ -105,7 +105,7 @@ var gradient = (function () {
             c[2] = Math.floor(c[2] > 255 ? 255 : c[2]);
             c[3] = c[3] > 1 ? 1 : c[3];
         });
-    }
+    };
 
     var upCellColor = function (grid, cell, obj, x, y) {
         d = u.distance(cell.x, cell.y, x, y);
