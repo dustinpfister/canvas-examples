@@ -149,9 +149,9 @@ var mapMod = (function () {
                     i: i,
                     x: i % map.cellWidth,
                     y: Math.floor(i / map.cellWidth),
-                    HP: 0,
+                    HP: 50,
                     maxHP: 100,
-                    active: false,
+                    active: true,
                     autoHeal: {
                         rate: 0.5,
                         amount: 1,
