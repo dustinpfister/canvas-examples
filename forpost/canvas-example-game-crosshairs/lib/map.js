@@ -6,20 +6,32 @@ var mapMod = (function () {
             HP: {
                 min: 50,
                 max: 75
+            },
+            autoHeal: {
+                rate: 0.1,
+                amount: 2
             }
         }, {
             i: 1,
             type: 'tree',
             HP: {
-                min: 80,
-                max: 100
+                min: 100,
+                max: 150
+            },
+            autoHeal: {
+                rate: 1,
+                amount: 5
             }
         }, {
             i: 2,
             type: 'rock',
             HP: {
-                min: 120,
-                max: 150
+                min: 200,
+                max: 250
+            },
+            autoHeal: {
+                rate: 3,
+                amount: 50
             }
         },
 
@@ -29,8 +41,14 @@ var mapMod = (function () {
         opt = opt || {};
         cell.type = cellTypes[typeIndex];
         cell.typeIndex = typeIndex;
+
+        // HP
         cell.maxHP = cell.type.HP.min + Math.round((cell.type.HP.max - cell.type.HP.min) * Math.random());
         cell.HP = opt.HP === undefined ? cell.maxHP : opt.HP;
+
+        // autoHeal
+        cell.autoHeal.rate = cell.type.autoHeal.rate;
+        cell.autoHeal.amount = cell.type.autoHeal.amount;
     };
 
     var getHighestDamageCell = function (map) {
@@ -180,7 +198,7 @@ var mapMod = (function () {
                 cells: [],
                 percentRemain: 1,
                 gen: { // global cell generate values
-                    rate: 3,
+                    rate: 1,
                     secs: 0,
                     count: 2,
                     startCells: [0, 31, 480, 511]
