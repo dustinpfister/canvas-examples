@@ -71,6 +71,11 @@ var mapMod = (function () {
         return getAllCellActiveState(map, false, condition_gen_cell);
     };
 
+    var popRandomCell = function (cells) {
+        var i = Math.floor(Math.random() * cells.length);
+        return cells.splice(i, 1)[0];
+    };
+
     // generate new cells by way of given secs amount
     var gen = function (map, secs) {
 
@@ -86,15 +91,12 @@ var mapMod = (function () {
             if (cells.length - i < 0) {
                 i = cells.length;
             }
-
             if (i > 0) {
                 while (i--) {
-
-                    cell = cells[i];
+                    cell = popRandomCell(cells);
                     cell.active = true;
-
+                    cell.HP = 1;
                 }
-
             }
 
         }
@@ -112,7 +114,7 @@ var mapMod = (function () {
                 gen: { // global cell generate values
                     rate: 1,
                     secs: 0,
-                    count: 2
+                    count: 3
                 }
             };
             var i = 0,
@@ -136,13 +138,14 @@ var mapMod = (function () {
                 i += 1;
             }
 
+            /*
             var cells = getBorderCells(map, get(map, 16, 8));
             cells.forEach(function (cell) {
-                cell.active = false;
+            cell.active = false;
             });
-
+            get(map, 16, 8).active = false;
+             */
             // generate
-            gen(map, 1);
 
             return map;
         },
@@ -196,6 +199,8 @@ var mapMod = (function () {
                     autoHeal(cell, secs);
                 }
             }
+
+            gen(map, secs);
         }
     }
 
