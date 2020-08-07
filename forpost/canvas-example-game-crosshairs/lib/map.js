@@ -34,6 +34,17 @@ var mapMod = (function () {
         return cells;
     };
 
+    var getBorderCellsActiveCount = function (map, cell, active) {
+        active === undefined ? true : active;
+        var borderCells = getBorderCells(map, cell);
+        return borderCells.reduce(function (acc, cell) {
+            acc = typeof acc === 'object' ? Number(acc.active === active) : acc;
+            return acc += Number(cell.active == active);
+        });
+    };
+
+    // get all cells with an active state of true or false, and also filter farther with an
+    // optional condition
     var getAllCellActiveState = function (map, active, condition) {
         active = active === undefined ? true : active;
         condition = condition === undefined ? function (cell) {
@@ -83,25 +94,15 @@ var mapMod = (function () {
             cells.forEach(function (cell) {
                 cell.active = false;
             });
-            get(map, 16, 8).active = false;
 
             var condition = function (cell) {
                 var borderCells = getBorderCells(map, cell);
-
-                var activeCount = borderCells.reduce(function (acc, cell) {
-                        acc = typeof acc === 'object' ? Number(acc.active) : acc;
-                        return acc += Number(cell.active);
-                    });
-
-                return activeCount >= 1;
+                return getBorderCellsActiveCount(map, cell, true) >= 1;
             };
-
             var genAt = getAllCellActiveState(map, false, condition);
 
             genAt.forEach(function (cell) {
-
-                cell.active = true;
-
+                cell.active = false;
             });
 
             console.log(genAt);
