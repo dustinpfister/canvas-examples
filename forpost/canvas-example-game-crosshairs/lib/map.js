@@ -1,5 +1,16 @@
 var mapMod = (function () {
 
+    var cellTypes = [{
+            i: 0,
+            type: 'grass',
+            HP: {
+                min: 100,
+                max: 500
+            }
+        }
+    ];
+
+    // get cell method
     var get = function (map, x, y) {
         if (x < 0 || y < 0) {
             return undefined;

@@ -155,7 +155,7 @@ var gameMod = (function () {
         create: function (opt) {
             opt = opt || {};
             var game = {
-                ver: '0.5.0',
+                ver: '0.6.0',
                 canvas: canvas,
                 map: mapMod.create(),
                 cross: {},
