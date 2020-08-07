@@ -154,6 +154,7 @@ var mapMod = (function () {
         }
     };
 
+    // PUBLIC API
     return {
 
         create: function () {
@@ -192,7 +193,8 @@ var mapMod = (function () {
                         amount: 1,
                         secs: 0
                     },
-                    damage: 0
+                    damage: 0,
+                    damagePer: 0 // damage relative to highest damaged cell
                 };
                 setCellType(cell, 0);
                 map.cells.push(cell);
@@ -256,7 +258,7 @@ var mapMod = (function () {
                     autoHeal(cell, secs);
                 }
 
-                //
+                cell.damagePer = cell.damage / map.highDamageCell;
             }
 
             gen(map, secs);

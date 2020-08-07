@@ -52,7 +52,7 @@ var draw = (function () {
 
                 ctx.fillStyle = 'yellow';
                 ctx.font = '10px courier';
-                ctx.fillText(Math.floor(cell.damage), x, y)
+                ctx.fillText(Math.floor(cell.damagePer * 100), x, y)
             });
         },
         shots: function (ctx, game) {
@@ -113,7 +113,7 @@ var draw = (function () {
             ctx.fillText('percent remain: ' + game.map.percentRemain, 10, 30);
             ctx.fillText('weapon: ' + gameMod.Weapons[game.weaponIndex].name, 10, 40);
             ctx.fillText('damage: ' + Math.floor(game.totalDamage), 10, 50);
-			ctx.fillText('high damage cell: ' + Math.floor(game.map.highDamageCell), 10, 60);
+            ctx.fillText('high damage cell: ' + Math.floor(game.map.highDamageCell), 10, 60);
         }
     }
 }
