@@ -113,6 +113,7 @@ var draw = (function () {
             ctx.fillText('percent remain: ' + game.map.percentRemain, 10, 30);
             ctx.fillText('weapon: ' + gameMod.Weapons[game.weaponIndex].name, 10, 40);
             ctx.fillText('damage: ' + Math.floor(game.totalDamage), 10, 50);
+			ctx.fillText('high damage cell: ' + Math.floor(game.map.highDamageCell), 10, 60);
         }
     }
 }

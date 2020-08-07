@@ -17,6 +17,12 @@ var mapMod = (function () {
         cell.HP = opt.HP === undefined ? cell.maxHP : opt.HP;
     };
 
+    var getHighestDamageCell = function (map) {
+        return Math.max.apply(null, map.cells.map(function (cell) {
+                return cell.damage;
+            }));
+    };
+
     // get cell method
     var get = function (map, x, y) {
         if (x < 0 || y < 0) {
@@ -162,7 +168,8 @@ var mapMod = (function () {
                     secs: 0,
                     count: 4,
                     startCells: [0, 31, 480, 511]
-                }
+                },
+                highDamageCell: 0
             };
             var i = 0,
             cell,
@@ -233,16 +240,23 @@ var mapMod = (function () {
         update: function (map, secs) {
             var i = map.cells.length,
             cell;
+
+            map.highDamageCell = getHighestDamageCell(map);
             while (i--) {
                 cell = map.cells[i];
 
+                // if HP is bellow or equal to zero set cell inactive
                 if (cell.HP <= 0) {
                     cell.active = false;
                 }
 
+                // if cell is active
                 if (cell.active) {
+                    // apply auto heal
                     autoHeal(cell, secs);
                 }
+
+                //
             }
 
             gen(map, secs);
