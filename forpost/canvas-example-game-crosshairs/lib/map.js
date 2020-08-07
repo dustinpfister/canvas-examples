@@ -10,7 +10,10 @@ var mapMod = (function () {
         }
     ];
 
-    var setCellType = function (cell, typeIndex) {};
+    var setCellType = function (cell, typeIndex) {
+        cell.type = cellTypes[typeIndex];
+        cell.maxHP = cell.type.HP.min + Math.round((cell.type.HP.max - cell.type.HP.min) * Math.random());
+    };
 
     // get cell method
     var get = function (map, x, y) {
@@ -119,6 +122,7 @@ var mapMod = (function () {
                     cell = popRandomCell(cells);
                     cell.active = true;
                     cell.HP = 1;
+                    setCellType(cell, 0);
                 }
             } else {
 
@@ -129,6 +133,7 @@ var mapMod = (function () {
 
                     cell.active = true;
                     cell.HP = 1;
+                    setCellType(cell, 0);
 
                 }
 
