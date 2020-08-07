@@ -1,6 +1,12 @@
 var mapMod = (function () {
 
     var get = function (map, x, y) {
+        if (x < 0 || y < 0) {
+            return undefined;
+        }
+        if (x >= map.cellWidth || y >= map.cellHeight) {
+            return undefined;
+        }
         return map.cells[y * map.cellWidth + x];
     };
 
@@ -22,6 +28,9 @@ var mapMod = (function () {
         r,
         x,
         y;
+        if (!cell) {
+            return [];
+        }
         while (i--) {
             r = Math.PI * 2 / 8 * i;
             x = Math.round(cell.x + Math.cos(r));
@@ -30,6 +39,7 @@ var mapMod = (function () {
             if (borderCell) {
                 cells.push(borderCell);
             }
+
         }
         return cells;
     };
@@ -102,7 +112,7 @@ var mapMod = (function () {
                 cells = getAllCellActiveState(map, true);
                 if (cells.length === 0) {
 
-                    cell = map.cells[map.gen.startCells[0]];
+                    cell = get(map, 0, 0); //map.cells[67];
 
                     cell.active = true;
                     cell.HP = 1;
@@ -124,9 +134,9 @@ var mapMod = (function () {
                 cells: [],
                 percentRemain: 1,
                 gen: { // global cell generate values
-                    rate: 5,
+                    rate: 1,
                     secs: 0,
-                    count: 2,
+                    count: 4,
                     startCells: [0]
                 }
             };
@@ -151,14 +161,9 @@ var mapMod = (function () {
                 i += 1;
             }
 
-            /*
-            var cells = getBorderCells(map, get(map, 16, 8));
-            cells.forEach(function (cell) {
-            cell.active = false;
-            });
-            get(map, 16, 8).active = false;
-             */
-            // generate
+            var cells = getBorderCells(map, get(map, -1, 1));
+
+            console.log(get(map, 32, 0));
 
             return map;
         },
