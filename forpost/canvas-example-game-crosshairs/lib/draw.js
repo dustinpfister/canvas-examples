@@ -14,7 +14,17 @@ var draw = (function () {
         ctx.stroke();
     };
 
-    var cellTypeColors = ['lime', 'blue'];
+    var drawCellHealthBar = function (ctx, map, cell, cross) {
+
+        var x = cell.x * map.cellSize + cross.offset.x + (320 / 2),
+        y = cell.y * map.cellSize + cross.offset.y + (240 / 2);
+
+        ctx.fillStyle = 'rgba(0,255,0,0.5)';
+        ctx.fillRect(x, y, map.cellSize * (cell.HP / cell.maxHP), 5);
+
+    };
+
+    var cellTypeColors = ['green', 'blue'];
 
     return {
         // draw background
@@ -57,6 +67,8 @@ var draw = (function () {
                 ctx.fill();
                 ctx.closePath();
                 //ctx.globalAlpha = 1;
+
+                drawCellHealthBar(ctx, map, cell, cross);
 
                 ctx.fillStyle = 'white';
                 ctx.font = '10px courier';

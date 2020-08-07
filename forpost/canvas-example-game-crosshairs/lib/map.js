@@ -11,8 +11,8 @@ var mapMod = (function () {
             i: 1,
             type: 'tree',
             HP: {
-                min: 250,
-                max: 500
+                min: 500,
+                max: 1000
             }
         },
 
@@ -200,8 +200,8 @@ var mapMod = (function () {
                     typeName: cellTypes[0].name,
                     type: cellTypes[0],
                     autoHeal: {
-                        rate: 0.5,
-                        amount: 1,
+                        rate: 1,
+                        amount: 5,
                         secs: 0
                     },
                     damage: 0,
