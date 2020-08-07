@@ -83,8 +83,28 @@ var mapMod = (function () {
             cells.forEach(function (cell) {
                 cell.active = false;
             });
-			
-			console.log(getAllCellActiveState(map, false));
+            get(map, 16, 8).active = false;
+
+            var condition = function (cell) {
+                var borderCells = getBorderCells(map, cell);
+
+                var activeCount = borderCells.reduce(function (acc, cell) {
+                        acc = typeof acc === 'object' ? Number(acc.active) : acc;
+                        return acc += Number(cell.active);
+                    });
+
+                return activeCount >= 1;
+            };
+
+            var genAt = getAllCellActiveState(map, false, condition);
+
+            genAt.forEach(function (cell) {
+
+                cell.active = true;
+
+            });
+
+            console.log(genAt);
 
             return map;
         },
