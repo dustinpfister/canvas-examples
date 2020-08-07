@@ -97,6 +97,18 @@ var mapMod = (function () {
                     cell.active = true;
                     cell.HP = 1;
                 }
+            } else {
+
+                cells = getAllCellActiveState(map, true);
+                if (cells.length === 0) {
+
+                    cell = map.cells[map.gen.startCells[0]];
+
+                    cell.active = true;
+                    cell.HP = 1;
+
+                }
+
             }
 
         }
@@ -112,9 +124,10 @@ var mapMod = (function () {
                 cells: [],
                 percentRemain: 1,
                 gen: { // global cell generate values
-                    rate: 1,
+                    rate: 5,
                     secs: 0,
-                    count: 3
+                    count: 2,
+                    startCells: [0]
                 }
             };
             var i = 0,
@@ -126,9 +139,9 @@ var mapMod = (function () {
                     i: i,
                     x: i % map.cellWidth,
                     y: Math.floor(i / map.cellWidth),
-                    HP: 100,
+                    HP: 0,
                     maxHP: 100,
-                    active: true,
+                    active: false,
                     autoHeal: {
                         rate: 0.5,
                         amount: 1,

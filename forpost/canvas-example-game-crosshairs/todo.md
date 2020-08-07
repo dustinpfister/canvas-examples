@@ -34,13 +34,10 @@
 * (done) update draw method to display inactive cells as gray in color
 * (done) have a helper method that will return all cells around a given cell
 * (done) have a helper method that will return all inactive cells, and can also be used with an additional argument that can be used as a way to define additional conditions that apply when producing a list of inactive cells.
+* (done) work out a gen method that will act as a way to make inactive cells active again
+* (done) the gen method should only generate new cells at inactive cells that have at least one active cell around it\
+* (done) There are cells in the map where even if everything is dead cells will regenerate
 
-* work out a gen method that will act as a way to make inactive cells active again
-* the gen method should only generate new cells at inactive cells that have at least one active cell around it
-* in the event that there are no active cells in the whole map there should be a way to spawn new starting locations
-
-* There are cells in the map where even if everything is dead cells will regenerate
-* Cells grow back by way of what is going on in neighboring cells
 * Have a total all time damage count as part of the main game state object.
 * see about fixing the bug where shots are tie to the canvas rather than the map (what happens when shooting and moving)
 * make sure ver is 0.5.0 and make a pkg.html
