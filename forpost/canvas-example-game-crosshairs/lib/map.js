@@ -60,9 +60,44 @@ var mapMod = (function () {
         });
     };
 
+    // condition for gen cells
     var condition_gen_cell = function (map, cell) {
         var borderCells = getBorderCells(map, cell);
         return getBorderCellsActiveCount(map, cell, true) >= 1;
+    };
+
+    // get all potential gen cells
+    var getGenCells = function (map) {
+        return getAllCellActiveState(map, false, condition_gen_cell);
+    };
+
+    // generate new cells by way of given secs amount
+    var gen = function (map, secs) {
+
+        var cells,
+        cell,
+        i;
+
+        map.gen.secs += secs;
+        if (map.gen.secs >= map.gen.rate) {
+            map.gen.secs %= map.gen.rate;
+            cells = getGenCells(map);
+            i = map.gen.count;
+            if (cells.length - i < 0) {
+                i = cells.length;
+            }
+
+            if (i > 0) {
+                while (i--) {
+
+                    cell = cells[i];
+                    cell.active = true;
+
+                }
+
+            }
+
+        }
     };
 
     return {
@@ -73,7 +108,12 @@ var mapMod = (function () {
                 cellWidth: 32,
                 cellHeight: 16,
                 cells: [],
-                percentRemain: 1
+                percentRemain: 1,
+                gen: { // global cell generate values
+                    rate: 1,
+                    secs: 0,
+                    count: 2
+                }
             };
             var i = 0,
             x,
@@ -101,13 +141,8 @@ var mapMod = (function () {
                 cell.active = false;
             });
 
-            var genAt = getAllCellActiveState(map, false, condition_gen_cell);
-
-            genAt.forEach(function (cell) {
-                cell.active = false;
-            });
-
-            console.log(genAt);
+            // generate
+            gen(map, 1);
 
             return map;
         },
