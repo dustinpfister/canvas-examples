@@ -124,11 +124,13 @@ var gameMod = (function () {
             if (cell) {
                 var targets = mapMod.getAllFromPointAndRadius(game.map, cell.x, cell.y, blastRadius);
                 targets.cells.forEach(function (cell, i) {
-
-                    var damage = ex.data.maxDPS * (1 - (targets.dists[i] / blastRadius)) * secs;
-                    game.totalDamage += damage;
-                    cell.HP -= damage;
-                    cell.HP = cell.HP < 0 ? 0 : cell.HP;
+                    var damage;
+                    if (cell.active) {
+                        damage = ex.data.maxDPS * (1 - (targets.dists[i] / blastRadius)) * secs;
+                        game.totalDamage += damage;
+                        cell.HP -= damage;
+                        cell.HP = cell.HP < 0 ? 0 : cell.HP;
+                    }
                 });
                 // percent killed
                 game.map.percentRemain = 0;
