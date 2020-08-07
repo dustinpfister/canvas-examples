@@ -10,6 +10,8 @@ var mapMod = (function () {
         }
     ];
 
+    var setCellType = function (cell, typeIndex) {};
+
     // get cell method
     var get = function (map, x, y) {
         if (x < 0 || y < 0) {
@@ -152,23 +154,29 @@ var mapMod = (function () {
                 }
             };
             var i = 0,
+            cell,
             x,
             y,
             len = map.cellWidth * map.cellHeight;
             while (i < len) {
-                map.cells.push({
+                cell = {
                     i: i,
                     x: i % map.cellWidth,
                     y: Math.floor(i / map.cellWidth),
                     HP: 50,
                     maxHP: 100,
                     active: true,
+                    typeIndex: 0,
+                    typeName: cellTypes[0].name,
+                    type: cellTypes[0],
                     autoHeal: {
                         rate: 0.5,
                         amount: 1,
                         secs: 0
                     }
-                });
+                };
+                setCellType(cell, 0);
+                map.cells.push(cell);
                 i += 1;
             }
 
