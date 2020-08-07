@@ -4,15 +4,15 @@ var mapMod = (function () {
             i: 0,
             type: 'grass',
             HP: {
-                min: 250,
-                max: 750
+                min: 100,
+                max: 150
             }
         }, {
             i: 1,
             type: 'tree',
             HP: {
-                min: 1000,
-                max: 1500
+                min: 250,
+                max: 500
             }
         },
 
@@ -21,6 +21,10 @@ var mapMod = (function () {
     var setCellType = function (cell, typeIndex, opt) {
         opt = opt || {};
         cell.type = cellTypes[typeIndex];
+        if (typeIndex != 0) {
+            console.log(typeIndex);
+        }
+        cell.typeIndex = typeIndex;
         cell.maxHP = cell.type.HP.min + Math.round((cell.type.HP.max - cell.type.HP.min) * Math.random());
         cell.HP = opt.HP === undefined ? cell.maxHP : opt.HP;
     };
@@ -138,8 +142,8 @@ var mapMod = (function () {
                     cell = popRandomCell(cells);
                     cell.active = true;
                     cell.HP = 1;
-                    Math.floor(cell.damagePer * cellTypes.length);
-                    setCellType(cell, 0, {
+
+                    setCellType(cell, Math.round(cell.damagePer * (cellTypes.length - 1)), {
                         HP: 1
                     });
                 }
@@ -172,7 +176,7 @@ var mapMod = (function () {
                 cells: [],
                 percentRemain: 1,
                 gen: { // global cell generate values
-                    rate: 5,
+                    rate: 1,
                     secs: 0,
                     count: 4,
                     startCells: [0, 31, 480, 511]
