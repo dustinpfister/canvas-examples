@@ -34,6 +34,7 @@ var mapMod = (function () {
         return cells;
     };
 
+    // get the count of active border cells for the given cell and active status
     var getBorderCellsActiveCount = function (map, cell, active) {
         active === undefined ? true : active;
         var borderCells = getBorderCells(map, cell);
@@ -52,11 +53,16 @@ var mapMod = (function () {
         }
          : condition;
         return map.cells.filter(function (cell) {
-            if (cell.active === active && condition(cell)) {
+            if (cell.active === active && condition(map, cell)) {
                 return true;
             }
             return false;
         });
+    };
+
+    var condition_gen_cell = function (map, cell) {
+        var borderCells = getBorderCells(map, cell);
+        return getBorderCellsActiveCount(map, cell, true) >= 1;
     };
 
     return {
@@ -95,11 +101,7 @@ var mapMod = (function () {
                 cell.active = false;
             });
 
-            var condition = function (cell) {
-                var borderCells = getBorderCells(map, cell);
-                return getBorderCellsActiveCount(map, cell, true) >= 1;
-            };
-            var genAt = getAllCellActiveState(map, false, condition);
+            var genAt = getAllCellActiveState(map, false, condition_gen_cell);
 
             genAt.forEach(function (cell) {
                 cell.active = false;

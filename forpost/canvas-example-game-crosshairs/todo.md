@@ -32,9 +32,9 @@
 * (done) cells only autoHeal if active
 * (done) if cell.HP <= 0 then a cell will become inactive
 * (done) update draw method to display inactive cells as gray in color
+* (done) have a helper method that will return all cells around a given cell
+* (done) have a helper method that will return all inactive cells, and can also be used with an additional argument that can be used as a way to define additional conditions that apply when producing a list of inactive cells.
 
-* have a helper method that will return a cells around a given cell
-* have a helper method that will return all inactive cells, and can also be used with an additional argument that can be used as a way to define additional conditions that apply when producing a list of inactive cells.
 * work out a gen method that will act as a way to make inactive cells active again
 * the gen method should only generate new cells at inactive cells that have at least one active cell around it
 * in the event that there are no active cells in the whole map there should be a way to spawn new starting locations
