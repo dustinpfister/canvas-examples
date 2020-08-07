@@ -34,6 +34,20 @@ var mapMod = (function () {
         return cells;
     };
 
+    var getAllCellActiveState = function (map, active, condition) {
+        active = active === undefined ? true : active;
+        condition = condition === undefined ? function (cell) {
+            return true;
+        }
+         : condition;
+        return map.cells.filter(function (cell) {
+            if (cell.active === active && condition(cell)) {
+                return true;
+            }
+            return false;
+        });
+    };
+
     return {
 
         create: function () {
@@ -67,10 +81,10 @@ var mapMod = (function () {
 
             var cells = getBorderCells(map, get(map, 16, 8));
             cells.forEach(function (cell) {
-
                 cell.active = false;
-
             });
+			
+			console.log(getAllCellActiveState(map, false));
 
             return map;
         },
