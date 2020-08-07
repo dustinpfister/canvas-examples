@@ -25,14 +25,22 @@
 * the damagePer property is used as one way to determine the cellType when regenerating cells.
 
 ## 0.5.0 - continuous regeneration and autoHeal
-* add an update method to the mapMod.
-* add an autoHeal Object with a rate property for each cell in map.js
-* cells will ausoHeal up to full health as part of the maps update loop.
+* (done) add an update method to the mapMod.
+* (done) add an autoHeal Object with a rate property for each cell in map.js
+* (done) cells will ausoHeal up to full health as part of the maps update loop.
 
-* The content of map cells continuously heals and regenerates
+* a map cell has an active property that means that something is there in play if true
+* cells only autoHeal if active
+* if cell.HP <= 0 then a cell will become inactive
+* update draw method to display inactive cells as gray in color
+
+* work out a gen method that will act as a way to make inactive cells active again
+* the gen method should only generate new cells at inactive cells that have at least one active cell around it
+* in the event that there are no active cells in the whole map there should be a way to spawn new starting locations
+
 * There are cells in the map where even if everything is dead cells will regenerate
 * Cells grow back by way of what is going on in neighboring cells
-* The game is about just racking up a total all time damage count.
+* Have a total all time damage count as part of the main game state object.
 * see about fixing the bug where shots are tie to the canvas rather than the map (what happens when shooting and moving)
 * make sure ver is 0.5.0 and make a pkg.html
 

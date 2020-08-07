@@ -35,9 +35,10 @@ var mapMod = (function () {
                     y: Math.floor(i / map.cellWidth),
                     HP: 100,
                     maxHP: 100,
+                    active: true,
                     autoHeal: {
-                        rate: 1,
-                        amount: 10,
+                        rate: 0.5,
+                        amount: 1,
                         secs: 0
                     }
                 });
@@ -86,7 +87,10 @@ var mapMod = (function () {
             cell;
             while (i--) {
                 cell = map.cells[i];
-                autoHeal(cell, secs);
+
+                if (map.active) {
+                    autoHeal(cell, secs);
+                }
             }
         }
     }
