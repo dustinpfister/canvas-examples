@@ -112,7 +112,7 @@ var mapMod = (function () {
                 cells = getAllCellActiveState(map, true);
                 if (cells.length === 0) {
 
-                    cell = get(map, 0, 0); //map.cells[67];
+                    cell = map.cells[map.gen.startCells[Math.floor(Math.random() * map.gen.startCells.length)]];
 
                     cell.active = true;
                     cell.HP = 1;
@@ -134,10 +134,10 @@ var mapMod = (function () {
                 cells: [],
                 percentRemain: 1,
                 gen: { // global cell generate values
-                    rate: 1,
+                    rate: 5,
                     secs: 0,
                     count: 4,
-                    startCells: [0]
+                    startCells: [0, 31, 480, 511]
                 }
             };
             var i = 0,
@@ -160,10 +160,6 @@ var mapMod = (function () {
                 });
                 i += 1;
             }
-
-            var cells = getBorderCells(map, get(map, -1, 1));
-
-            console.log(get(map, 32, 0));
 
             return map;
         },
