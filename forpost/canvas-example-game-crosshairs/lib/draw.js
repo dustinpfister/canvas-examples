@@ -41,11 +41,12 @@ var draw = (function () {
             map.cells.forEach(function (cell) {
                 var x = cell.x * map.cellSize + cross.offset.x + (320 / 2),
                 y = cell.y * map.cellSize + cross.offset.y + (240 / 2),
-                per = cell.HP / cell.maxHP;
+                per = cell.HP / cell.maxHP,
+                color = 'rgba(0,200,0,' + per.toFixed(2) + ')';
                 ctx.beginPath();
                 ctx.rect(x, y, map.cellSize, map.cellSize);
                 ctx.stroke();
-                ctx.fillStyle = 'rgba(0,200,0,' + per.toFixed(2) + ')';
+                ctx.fillStyle = cell.active ? color : '#606060';
                 ctx.fill();
                 ctx.closePath();
             });
