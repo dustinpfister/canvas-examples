@@ -23,6 +23,8 @@
 * map cells have a damage property that holds the total amount of damage that has happened to it over time.
 * map cells have a damagePer property that is a number between 0 and 1 where 0 is the lowest current damage value in the map, and 1 is the highest.
 * the damagePer property is used as one way to determine the cellType when regenerating cells.
+* see about fixing the bug where shots are tied to the canvas rather than the map (what happens when shooting and moving)
+* make sure ver is 0.6.0 and make a pkg.html
 
 ## 0.5.0 - continuous regeneration and autoHeal
 * (done) add an update method to the mapMod.
@@ -38,8 +40,8 @@
 * (done) the gen method should only generate new cells at inactive cells that have at least one active cell around it\
 * (done) There are cells in the map where even if everything is dead cells will regenerate
 
+* fix bug where cells are regenerating where they should not be
 * Have a total all time damage count as part of the main game state object.
-* see about fixing the bug where shots are tie to the canvas rather than the map (what happens when shooting and moving)
 * make sure ver is 0.5.0 and make a pkg.html
 
 ## 0.4.0 - Weapons
