@@ -41,7 +41,7 @@
 * (done) There are cells in the map where even if everything is dead cells will regenerate
 * (done) fix bug where cells are regenerating where they should not be
 * (done) Have a total all time damage count as part of the main game state object.
-* make sure ver is 0.5.0 and make a pkg.html
+* (done) make sure ver is 0.5.0 and make a pkg.html
 
 ## 0.4.0 - Weapons
 * (done) have an array of weapon objects in game.js
