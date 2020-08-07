@@ -7,7 +7,15 @@ var mapMod = (function () {
                 min: 250,
                 max: 750
             }
-        }
+        }, {
+            i: 1,
+            type: 'tree',
+            HP: {
+                min: 1000,
+                max: 1500
+            }
+        },
+
     ];
 
     var setCellType = function (cell, typeIndex, opt) {
@@ -130,6 +138,7 @@ var mapMod = (function () {
                     cell = popRandomCell(cells);
                     cell.active = true;
                     cell.HP = 1;
+                    Math.floor(cell.damagePer * cellTypes.length);
                     setCellType(cell, 0, {
                         HP: 1
                     });
@@ -138,9 +147,7 @@ var mapMod = (function () {
 
                 cells = getAllCellActiveState(map, true);
                 if (cells.length === 0) {
-
                     cell = map.cells[map.gen.startCells[Math.floor(Math.random() * map.gen.startCells.length)]];
-
                     cell.active = true;
                     cell.HP = 1;
                     setCellType(cell, 0, {
@@ -258,7 +265,12 @@ var mapMod = (function () {
                     autoHeal(cell, secs);
                 }
 
-                cell.damagePer = cell.damage / map.highDamageCell;
+                // figure damage percent
+                if (cell.damage === 0) {
+                    damagePer = 0;
+                } else {
+                    cell.damagePer = cell.damage / map.highDamageCell;
+                }
             }
 
             gen(map, secs);
