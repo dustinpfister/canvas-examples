@@ -124,7 +124,10 @@ var gameMod = (function () {
             if (cell) {
                 var targets = mapMod.getAllFromPointAndRadius(game.map, cell.x, cell.y, blastRadius);
                 targets.cells.forEach(function (cell, i) {
-                    cell.HP -= ex.data.maxDPS * (1 - (targets.dists[i] / blastRadius)) * secs;
+
+                    var damage = ex.data.maxDPS * (1 - (targets.dists[i] / blastRadius)) * secs;
+                    game.totalDamage += damage;
+                    cell.HP -= damage;
                     cell.HP = cell.HP < 0 ? 0 : cell.HP;
                 });
                 // percent killed
@@ -159,6 +162,7 @@ var gameMod = (function () {
                 shotRate: 1,
                 shotSecs: 0,
                 weaponIndex: 0,
+                totalDamage: 0,
                 userDown: false
             };
 

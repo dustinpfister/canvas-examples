@@ -108,6 +108,7 @@ var draw = (function () {
             ctx.fillText('pos: ' + game.cross.offset.x.toFixed(2) + ',' + game.cross.offset.y.toFixed(2), 10, 20);
             ctx.fillText('percent remain: ' + game.map.percentRemain, 10, 30);
             ctx.fillText('weapon: ' + gameMod.Weapons[game.weaponIndex].name, 10, 40);
+            ctx.fillText('damage: ' + Math.floor(game.totalDamage), 10, 50);
         }
     }
 }
