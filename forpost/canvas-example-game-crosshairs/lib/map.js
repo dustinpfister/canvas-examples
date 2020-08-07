@@ -14,6 +14,26 @@ var mapMod = (function () {
         }
     };
 
+    // get border cells helper
+    var getBorderCells = function (map, cell) {
+        var i = 8,
+        borderCell,
+        cells = [],
+        r,
+        x,
+        y;
+        while (i--) {
+            r = Math.PI * 2 / 8 * i;
+            x = Math.round(cell.x + Math.cos(r));
+            y = Math.round(cell.y + Math.sin(r));
+            borderCell = get(map, x, y);
+            if (borderCell) {
+                cells.push(borderCell);
+            }
+        }
+        return cells;
+    };
+
     return {
 
         create: function () {
@@ -44,6 +64,14 @@ var mapMod = (function () {
                 });
                 i += 1;
             }
+
+            var cells = getBorderCells(map, get(map, 16, 8));
+            cells.forEach(function (cell) {
+
+                cell.active = false;
+
+            });
+
             return map;
         },
 

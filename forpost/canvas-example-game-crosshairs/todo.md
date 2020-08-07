@@ -28,12 +28,13 @@
 * (done) add an update method to the mapMod.
 * (done) add an autoHeal Object with a rate property for each cell in map.js
 * (done) cells will ausoHeal up to full health as part of the maps update loop.
+* (done) a map cell has an active property that means that something is there in play if true
+* (done) cells only autoHeal if active
+* (done) if cell.HP <= 0 then a cell will become inactive
+* (done) update draw method to display inactive cells as gray in color
 
-* a map cell has an active property that means that something is there in play if true
-* cells only autoHeal if active
-* if cell.HP <= 0 then a cell will become inactive
-* update draw method to display inactive cells as gray in color
-
+* have a helper method that will return a cells around a given cell
+* have a helper method that will return all inactive cells, and can also be used with an additional argument that can be used as a way to define additional conditions that apply when producing a list of inactive cells.
 * work out a gen method that will act as a way to make inactive cells active again
 * the gen method should only generate new cells at inactive cells that have at least one active cell around it
 * in the event that there are no active cells in the whole map there should be a way to spawn new starting locations
