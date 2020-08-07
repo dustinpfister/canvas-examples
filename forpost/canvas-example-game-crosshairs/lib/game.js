@@ -128,6 +128,7 @@ var gameMod = (function () {
                     if (cell.active) {
                         damage = ex.data.maxDPS * (1 - (targets.dists[i] / blastRadius)) * secs;
                         game.totalDamage += damage;
+                        cell.damage += damage;
                         cell.HP -= damage;
                         cell.HP = cell.HP < 0 ? 0 : cell.HP;
                     }

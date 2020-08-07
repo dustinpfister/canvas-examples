@@ -17,9 +17,10 @@
 * make sure ver is 0.7.0 and make a pkg.html
 
 ## 0.6.0 - cellIndex, cellTypes, and cell.damage
-* have a cellTypes array that will hold an array of 'cellType' objects.
-* a cellType object has values like maxHp, autoHealRate, ect.
-* map cells have a cellIndex value that will set the current type of cell in the cellTypes array.
+* (done) have a cellTypes array that will hold an array of 'cellType' objects.
+* (done) a cellType object has values that are used to set HP
+* (done) map cells have a cellIndex value that will set the current type of cell in the cellTypes array.
+
 * map cells have a damage property that holds the total amount of damage that has happened to it over time.
 * map cells have a damagePer property that is a number between 0 and 1 where 0 is the lowest current damage value in the map, and 1 is the highest.
 * the damagePer property is used as one way to determine the cellType when regenerating cells.

@@ -49,6 +49,10 @@ var draw = (function () {
                 ctx.fillStyle = cell.active ? color : '#606060';
                 ctx.fill();
                 ctx.closePath();
+
+                ctx.fillStyle = 'yellow';
+                ctx.font = '10px courier';
+                ctx.fillText(Math.floor(cell.damage), x, y)
             });
         },
         shots: function (ctx, game) {
