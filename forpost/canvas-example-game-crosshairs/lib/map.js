@@ -88,7 +88,11 @@ var mapMod = (function () {
             while (i--) {
                 cell = map.cells[i];
 
-                if (map.active) {
+                if (cell.HP <= 0) {
+                    cell.active = false;
+                }
+
+                if (cell.active) {
                     autoHeal(cell, secs);
                 }
             }
