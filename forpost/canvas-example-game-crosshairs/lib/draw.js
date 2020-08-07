@@ -24,7 +24,7 @@ var draw = (function () {
 
     };
 
-    var cellTypeColors = ['green', 'blue'];
+    var cellTypeColors = ['green', 'blue', 'red'];
 
     return {
         // draw background
