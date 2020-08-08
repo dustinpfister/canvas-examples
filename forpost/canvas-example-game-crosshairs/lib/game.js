@@ -163,6 +163,25 @@ var gameMod = (function () {
         }
     };
 
+    // AUTOPLAY
+    var autoPlay = {
+        modes: ['shoot', 'move'],
+        update: function (game, secs) {
+
+            game.autoPlay.delay -= secs;
+            if (game.userDown) {
+                game.autoPlay.delay = game.autoPlay.maxDelay;
+            }
+            game.autoPlay.delay = game.autoPlay.delay < 0 ? 0 : game.autoPlay.delay;
+            if (game.autoPlay.delay === 0) {
+                var ch = game.cross.crosshairs;
+                ch.x = game.cross.center.x;
+                ch.y = game.cross.center.y;
+                shoot(game);
+            }
+        }
+    }
+
     return {
         Weapons: Weapons,
         buttons: {
@@ -188,7 +207,8 @@ var gameMod = (function () {
                 userDown: false,
                 autoPlay: {
                     delay: 3,
-                    maxDelay: 3
+                    maxDelay: 3,
+                    mode: 0
                 }
             };
 
@@ -232,17 +252,7 @@ var gameMod = (function () {
             }
 
             // AutoPlay
-            game.autoPlay.delay -= secs;
-            if (game.userDown) {
-                game.autoPlay.delay = game.autoPlay.maxDelay;
-            }
-            game.autoPlay.delay = game.autoPlay.delay < 0 ? 0 : game.autoPlay.delay;
-            if (game.autoPlay.delay === 0) {
-                var ch = game.cross.crosshairs;
-                ch.x = game.cross.center.x;
-                ch.y = game.cross.center.y;
-                shoot(game);
-            }
+            autoPlay.update(game, secs);
 
         }
 
