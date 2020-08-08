@@ -31,25 +31,46 @@
 * atom skill
 * damage skill
 
-## 0.x.0 - Pixel graphics
-* have a system for creating pixle graphics in place of solid colors for map cells
-
-## 0.9.0 - Enemy fire and health
+## 0.x.0 - Enemy fire and health
 * to make the game more interesting there are units on the map that fire back
 * game.HP, and game.maxHP properties will be needed
 * game.gameOver state
 * just click screen to start over for now until I get into a state machine for this.
-* make sure ver is 0.9.0 and make a pkg.html
 
-
-## 0.8.0 - state machine
+## 0.x.0 - state machine
 * start a state machine that will serve as a single central state object
 * all canvas input is handled by the state machine
 * autoPlay state
 * manualPlay state
 * remove event handers from game.js and make them part of state
 * get damage bonus in manual play state
-* make sure ver is 0.8.0 and make a pkg.html
+
+
+## 0.8.0 - Pixel graphics
+* have a system for creating pixle graphics in place of solid colors for map cells
+* generate sheets for each cell type
+* SheetIndex for cells based on cellType, and cell index in sheet based on HP (forNow)
+* a Sheet for shots
+* a Sheet for crossHairs
+* I am thinking some kind of string system like this (maybe)
+'0000000010000000' + 
+'0000000010000000' + 
+'00000000a0000000' + 
+'0000000000000000' + 
+'0000000000000000' + 
+'0000000000000000' + 
+'0000000000000000' + 
+'0000000000000000' + 
+'0000000000000000' + 
+'0000000000000000' + 
+'0000000000000000' + 
+'0000000000000000' + 
+'0000000000000000' + 
+'0000000000000000' + 
+'0000000000000000' + 
+'0000000000000000' + 
+
+* (done) make sure ver is 0.8.0 and make a pkg.html
 
 ## 0.7.0 - autoplay AI
 * (done) update percent remain on each tick
@@ -60,7 +81,7 @@
 * (done) work out problem with cross.userDown
 * (done) worked out a temp fix for AI movement problem
 * (done) AI changes weapons
-* make sure ver is 0.7.0 and make a pkg.html
+* (done) make sure ver is 0.7.0 and make a pkg.html
 
 
 ## 0.6.0 - cellIndex, cellTypes, and cell.damage
@@ -101,7 +122,7 @@
 * (done) have a button to loop threw weapons
 * (done) make it so clicking outside of the cross does nothing aside from centering cross hairs
 * (done) clicking or touching the weapon switch button will not result in movement or firing a shot
-* make sure ver is 0.4.0 and make a pkg.html
+* (done) make sure ver is 0.4.0 and make a pkg.html
 
 ## 0.3.0 - Explosions
 * (done) use the object pool module to create a pool of Explosions in game.js

@@ -306,7 +306,7 @@ var gameMod = (function () {
         create: function (opt) {
             opt = opt || {};
             var game = {
-                ver: '0.7.0',
+                ver: '0.8.0',
                 canvas: canvas,
                 map: mapMod.create(),
                 cross: {},
