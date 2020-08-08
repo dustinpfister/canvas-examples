@@ -190,6 +190,8 @@ var mapMod = (function () {
     // PUBLIC API
     return {
 
+        getAllCellActiveState: getAllCellActiveState,
+
         create: function () {
             var map = {
                 cellSize: 32,
@@ -306,11 +308,6 @@ var mapMod = (function () {
             map.percentRemain /= map.cells.length;
 
             gen(map, secs);
-
-            // percent killed
-            //map.cells.forEach(function (cell) {
-
-            //});
         }
     }
 

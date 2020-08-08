@@ -38,14 +38,14 @@
 * manualPlay state
 * remove event handers from game.js and make them part of state
 * get damage bonus in manual play state
+* see about fixing the bug where shots are tied to the canvas rather than the map (what happens when shooting and moving)
+* make sure ver is 0.8.0 and make a pkg.html
 
 ## 0.7.0 - autoplay AI
 * (done) update percent remain on each tick
 * (done) start an autoplay AI for this canvas example like that if flappy collection idle
-* A player at any time can take over auto play by just clicking or touching the canvas
-* after a moment of inactivity a timeout bar will start
-* once the timeout bar completes the game will return to auto play mode.
-* see about fixing the bug where shots are tied to the canvas rather than the map (what happens when shooting and moving)
+* (done) A player at any time can take over auto play by just clicking or touching the canvas
+* AI selects random targets that are active
 * make sure ver is 0.7.0 and make a pkg.html
 
 
