@@ -196,7 +196,13 @@ var gameMod = (function () {
                 if (ap.mode === 'shoot') {
                     ch.x = game.cross.center.x;
                     ch.y = game.cross.center.y;
+
                     shoot(game);
+                    ap.shootTime -= secs;
+                    if (ap.shootTime <= 0) {
+                        ap.mode = 'move';
+                        autoPlay.setRandomTarget(game);
+                    }
                 }
 
                 if (ap.mode === 'move') {
@@ -216,8 +222,8 @@ var gameMod = (function () {
                         ch.y = game.cross.center.y + Math.sin(a) * delta;
                     }
                     if (d === 0) {
-                        //ap.mode = 'shoot';
-						autoPlay.setRandomTarget(game);
+                        ap.shootTime = ap.maxShootTime;
+                        ap.mode = 'shoot';
                     }
 
                 }
@@ -251,8 +257,9 @@ var gameMod = (function () {
                 autoPlay: {
                     delay: 0,
                     maxDelay: 3,
-                    //modeIndex: 0,
                     mode: 'move',
+                    shootTime: 3,
+                    maxShootTime: 3,
                     target: {
                         x: -16,
                         y: -16
