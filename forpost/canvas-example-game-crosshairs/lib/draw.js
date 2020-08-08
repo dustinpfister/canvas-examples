@@ -134,7 +134,8 @@ var draw = (function () {
             ctx.fillText('weapon: ' + gameMod.Weapons[game.weaponIndex].name, 10, 40);
             ctx.fillText('damage: ' + Math.floor(game.totalDamage), 10, 50);
             ctx.fillText('high damage cell: ' + Math.floor(game.map.highDamageCell), 10, 60);
-            ctx.fillText('game.cross.userDown: ' + game.cross.userDown, 10, 70);
+            ctx.fillText('autoPlay active: ' + game.autoPlay.active, 10, 70);
+			ctx.fillText('autoPlay delay: ' + game.autoPlay.delay.toFixed(2), 10, 80);
         }
     }
 }

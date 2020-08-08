@@ -107,7 +107,6 @@ var gameMod = (function () {
         return function (e) {
             e.preventDefault();
             cross(e);
-            game.userDown = false;
         };
     };
 
@@ -172,7 +171,12 @@ var gameMod = (function () {
                 shotSecs: 0,
                 weaponIndex: 0,
                 totalDamage: 0,
-                userDown: false
+                userDown: false,
+                autoPlay: {
+                    active: true,
+                    delay: 0,
+                    maxDelay: 10
+                }
             };
 
             game.cross = crossMod.create({
@@ -223,6 +227,18 @@ var gameMod = (function () {
                 }
                 game.shotSecs = 0;
             }
+
+            // AutoPlay
+            game.autoPlay.active = false;
+            game.autoPlay.delay -= secs;
+            if (game.userDown) {
+                game.autoPlay.delay = game.autoPlay.maxDelay;
+            }
+            game.autoPlay.delay = game.autoPlay.delay < 0 ? 0 : game.autoPlay.delay;
+            if (game.autoPlay.delay === 0) {
+                game.autoPlay.active = true;
+            }
+
         }
 
     }
