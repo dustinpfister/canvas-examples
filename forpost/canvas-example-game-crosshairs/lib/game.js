@@ -187,7 +187,6 @@ var gameMod = (function () {
                 totalDamage: 0,
                 userDown: false,
                 autoPlay: {
-                    //active: true,
                     delay: 0,
                     maxDelay: 10
                 }
@@ -197,8 +196,6 @@ var gameMod = (function () {
                     offsetX: game.map.cellWidth * game.map.cellSize / 2 * -1,
                     offsetY: game.map.cellHeight * game.map.cellSize / 2 * -1,
                 });
-
-            // cross events
 
             // main game events
             game.canvas.addEventListener('mousedown', userPointerStart(game));
@@ -213,7 +210,6 @@ var gameMod = (function () {
         },
 
         update: function (game, secs) {
-            //var w = Weapons[game.weaponIndex];
             game.shotRate = Weapons[game.weaponIndex].shotRate;
 
             // cross object
@@ -231,31 +227,17 @@ var gameMod = (function () {
             game.shotSecs = game.shotSecs >= game.shotRate ? game.shotRate : game.shotSecs;
 
             // shoot
-			/*
-            if (game.shotSecs >= game.shotRate && crossMod.isInInner(game.cross) && game.cross.userDown) {
-                var i = 0,
-                radian;
-                while (i < w.gunCount) {
-                    radian = Math.PI * 2 / 4 * i + Math.PI / 4;
-                    poolMod.spawn(game.shots, game, radian);
-                    i += 1;
-                }
-                game.shotSecs = 0;
-            }
-			*/
-			if (crossMod.isInInner(game.cross) && game.cross.userDown) {
+            if (crossMod.isInInner(game.cross) && game.cross.userDown) {
                 shoot(game);
             }
 
             // AutoPlay
-            //game.autoPlay.active = false;
             game.autoPlay.delay -= secs;
             if (game.userDown) {
                 game.autoPlay.delay = game.autoPlay.maxDelay;
             }
             game.autoPlay.delay = game.autoPlay.delay < 0 ? 0 : game.autoPlay.delay;
             if (game.autoPlay.delay === 0) {
-                //game.autoPlay.active = true;
             }
 
         }
