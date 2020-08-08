@@ -187,8 +187,8 @@ var gameMod = (function () {
                 totalDamage: 0,
                 userDown: false,
                 autoPlay: {
-                    delay: 0,
-                    maxDelay: 10
+                    delay: 3,
+                    maxDelay: 3
                 }
             };
 
@@ -238,6 +238,10 @@ var gameMod = (function () {
             }
             game.autoPlay.delay = game.autoPlay.delay < 0 ? 0 : game.autoPlay.delay;
             if (game.autoPlay.delay === 0) {
+                var ch = game.cross.crosshairs;
+                ch.x = game.cross.center.x;
+                ch.y = game.cross.center.y;
+                shoot(game);
             }
 
         }
