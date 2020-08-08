@@ -32,7 +32,7 @@ var gameMod = (function () {
         }, {
             name: 'Atom',
             pps: 256,
-            shotRate: 3,
+            shotRate: 1,
             blastRadius: 10,
             maxDPS: 250,
             accuracy: 0.9,
@@ -132,12 +132,6 @@ var gameMod = (function () {
                     }
                     cell.damage += damage;
                 });
-                // percent killed
-                game.map.percentRemain = 0;
-                game.map.cells.forEach(function (cell) {
-                    game.map.percentRemain += cell.HP / cell.maxHP;
-                });
-                game.map.percentRemain /= game.map.cells.length;
             }
             ex.lifespan -= secs;
         }

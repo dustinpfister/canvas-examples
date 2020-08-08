@@ -31,6 +31,7 @@
 * get damage bonus in manual play state
 
 ## 0.7.0 - autoplay AI
+* update percent remain on each tick
 * start an autoplay AI for this canvas example like that if flappy collection idle
 * A player at any time can take over auto play by just clicking or touching the canvas
 * after a moment of inactivity a timeout bar will start

@@ -277,6 +277,7 @@ var mapMod = (function () {
             cell;
 
             map.highDamageCell = getHighestDamageCell(map);
+            map.percentRemain = 0;
             while (i--) {
                 cell = map.cells[i];
 
@@ -289,6 +290,8 @@ var mapMod = (function () {
                 if (cell.active) {
                     // apply auto heal
                     autoHeal(cell, secs);
+
+                    map.percentRemain += cell.HP / cell.maxHP;
                 }
 
                 // figure damage percent
@@ -297,9 +300,17 @@ var mapMod = (function () {
                 } else {
                     cell.damagePer = cell.damage / map.highDamageCell;
                 }
+
             }
 
+            map.percentRemain /= map.cells.length;
+
             gen(map, secs);
+
+            // percent killed
+            //map.cells.forEach(function (cell) {
+
+            //});
         }
     }
 
