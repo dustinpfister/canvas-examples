@@ -149,6 +149,20 @@ var gameMod = (function () {
         }
     };
 
+    var shoot = function (game) {
+        var w = Weapons[game.weaponIndex];
+        if (game.shotSecs >= game.shotRate) {
+            var i = 0,
+            radian;
+            while (i < w.gunCount) {
+                radian = Math.PI * 2 / 4 * i + Math.PI / 4;
+                poolMod.spawn(game.shots, game, radian);
+                i += 1;
+            }
+            game.shotSecs = 0;
+        }
+    };
+
     return {
         Weapons: Weapons,
         buttons: {
@@ -199,7 +213,7 @@ var gameMod = (function () {
         },
 
         update: function (game, secs) {
-            var w = Weapons[game.weaponIndex];
+            //var w = Weapons[game.weaponIndex];
             game.shotRate = Weapons[game.weaponIndex].shotRate;
 
             // cross object
@@ -217,6 +231,7 @@ var gameMod = (function () {
             game.shotSecs = game.shotSecs >= game.shotRate ? game.shotRate : game.shotSecs;
 
             // shoot
+			/*
             if (game.shotSecs >= game.shotRate && crossMod.isInInner(game.cross) && game.cross.userDown) {
                 var i = 0,
                 radian;
@@ -226,6 +241,10 @@ var gameMod = (function () {
                     i += 1;
                 }
                 game.shotSecs = 0;
+            }
+			*/
+			if (crossMod.isInInner(game.cross) && game.cross.userDown) {
+                shoot(game);
             }
 
             // AutoPlay
