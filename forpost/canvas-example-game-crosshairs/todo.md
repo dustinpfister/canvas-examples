@@ -1,13 +1,34 @@
 # todo list for canvas-example-game-crosshairs
 
+## 0.x.0 - Skill Point system
+* have a skillPoint module that will create a skills state object
+* add a skillManager state that is used to set skill points to skills
+* add draw methods for skillManager
+* number of skill points based off of totalDamage of game object
+* blaster skill
+* assault-blaster skill
+* cannon skill
+* atom skill
+* damage skill
 
-## 0.8.0 - Enemy fire and health
+## 0.x.0 - Pixel graphics
+* have a system for creating pixle graphics in place of solid colors for map cells
+
+## 0.9.0 - Enemy fire and health
 * to make the game more interesting there are units on the map that fire back
 * game.HP, and game.maxHP properties will be needed
 * game.gameOver state
 * just click screen to start over for now until I get into a state machine for this.
-* make sure ver is 0.8.0 and make a pkg.html
+* make sure ver is 0.9.0 and make a pkg.html
 
+
+## 0.8.0 - state machine
+* start a state machine that will serve as a single central state object
+* all canvas input is handled by the state machine
+* autoPlay state
+* manualPlay state
+* remove event handers from game.js and make them part of state
+* get damage bonus in manual play state
 
 ## 0.7.0 - autoplay AI
 * start an autoplay AI for this canvas example like that if flappy collection idle
@@ -16,6 +37,7 @@
 * once the timeout bar completes the game will return to auto play mode.
 * see about fixing the bug where shots are tied to the canvas rather than the map (what happens when shooting and moving)
 * make sure ver is 0.7.0 and make a pkg.html
+
 
 ## 0.6.0 - cellIndex, cellTypes, and cell.damage
 * (done) have a cellTypes array that will hold an array of 'cellType' objects.
