@@ -169,9 +169,7 @@ var gameMod = (function () {
 
     // AUTOPLAY
     var autoPlay = {
-        //modes: ['shoot', 'move'],
         setRandomTarget: function (game) {
-
             var ch = game.cross.crosshairs,
             os = game.cross.offset,
             ap = game.autoPlay,
@@ -179,16 +177,13 @@ var gameMod = (function () {
             activeCells = mapMod.getAllCellActiveState(map, true),
             x = Math.floor(map.cellWidth * Math.random()),
             y = Math.floor(map.cellHeight * Math.random());
-
             if (activeCells.length >= 1) {
                 var cell = activeCells[Math.floor(activeCells.length * Math.random())];
                 x = cell.x;
                 y = cell.y;
             }
-
             ap.target.x = (map.cellSize / 2 + (map.cellSize * x)) * -1;
             ap.target.y = (map.cellSize / 2 + (map.cellSize * y)) * -1;
-
         },
 
         setByPercentRemain: function (game) {
@@ -197,6 +192,73 @@ var gameMod = (function () {
             if (map.percentRemain < 0.4) {
                 ap.mode = 'move';
             }
+        },
+
+        modes: {
+
+            // AI Move mode
+            move: function (game, secs) {
+
+                var ch = game.cross.crosshairs,
+                os = game.cross.offset,
+                ap = game.autoPlay,
+                map = game.map,
+                a = Math.atan2(os.y - ap.target.y, os.x - ap.target.x),
+                cross = game.cross,
+                d = utils.distance(os.x, os.y, ap.target.x, ap.target.y),
+                delta = game.cross.radiusOuter - 1;
+                maxDelta = cross.radiusInner + cross.radiusDiff - 1,
+                minDelta = cross.radiusInner + 5,
+                slowDownDist = map.cellSize * 4,
+                // !!! know bug where AI movement does not work as desired might
+                // is temp fixed by setting a minDist, might still cause problems
+                // with very low frame rates
+                minDist = map.cellSize / 2,
+                per = 0;
+
+                if (d < slowDownDist) {
+                    per = 1 - d / slowDownDist;
+                }
+
+                ap.target.d = d;
+
+                delta = maxDelta - (maxDelta - minDelta) * per;
+
+                if (d < minDist) {
+                    // set right to target
+                    os.x = ap.target.x;
+                    os.y = ap.target.y;
+                    // done
+                    ap.shootTime = ap.maxShootTime;
+                    autoPlay.setRandomTarget(game);
+                    ap.mode = 'shoot';
+                } else {
+                    // !!! know bug where AI movement does not work as desired might
+                    // be fixed here by way of a tempX and Y maybe
+                    ch.x = game.cross.center.x + Math.cos(a) * delta;
+                    ch.y = game.cross.center.y + Math.sin(a) * delta;
+                }
+
+            },
+
+            shoot: function (game, secs) {
+
+                var ch = game.cross.crosshairs,
+                os = game.cross.offset,
+                ap = game.autoPlay,
+                map = game.map;
+
+                ch.x = game.cross.center.x;
+                ch.y = game.cross.center.y;
+                shoot(game);
+                ap.shootTime -= secs;
+                if (ap.shootTime <= 0) {
+                    ap.mode = 'move';
+                    autoPlay.setRandomTarget(game);
+                }
+
+            }
+
         },
 
         update: function (game, secs) {
@@ -218,56 +280,7 @@ var gameMod = (function () {
 
                 autoPlay.setByPercentRemain(game);
 
-                // if shoot mode
-                if (ap.mode === 'shoot') {
-                    ch.x = game.cross.center.x;
-                    ch.y = game.cross.center.y;
-                    shoot(game);
-                    ap.shootTime -= secs;
-                    if (ap.shootTime <= 0) {
-                        ap.mode = 'move';
-                        autoPlay.setRandomTarget(game);
-                    }
-                }
-
-                if (ap.mode === 'move') {
-                    var a = Math.atan2(os.y - ap.target.y, os.x - ap.target.x),
-                    cross = game.cross,
-                    d = utils.distance(os.x, os.y, ap.target.x, ap.target.y),
-                    delta = game.cross.radiusOuter - 1;
-                    maxDelta = cross.radiusInner + cross.radiusDiff - 1,
-                    minDelta = cross.radiusInner + 5,
-                    slowDownDist = map.cellSize * 4,
-                    // !!! know bug where AI movement does not work as desired might
-                    // is temp fixed by setting a minDist, might still cause problems
-                    // with very low frame rates
-                    minDist = map.cellSize / 2,
-                    per = 0;
-
-                    if (d < slowDownDist) {
-                        per = 1 - d / slowDownDist;
-                    }
-
-                    ap.target.d = d;
-
-                    delta = maxDelta - (maxDelta - minDelta) * per;
-
-                    if (d < minDist) {
-                        // set right to target
-                        os.x = ap.target.x;
-                        os.y = ap.target.y;
-                        // done
-                        ap.shootTime = ap.maxShootTime;
-                        autoPlay.setRandomTarget(game);
-                        ap.mode = 'shoot';
-                    } else {
-                        // !!! know bug where AI movement does not work as desired might
-                        // be fixed here by way of a tempX and Y maybe
-                        ch.x = game.cross.center.x + Math.cos(a) * delta;
-                        ch.y = game.cross.center.y + Math.sin(a) * delta;
-                    }
-
-                }
+                autoPlay.modes[ap.mode](game, secs);
 
             }
         }
