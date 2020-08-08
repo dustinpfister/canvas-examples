@@ -165,7 +165,20 @@ var gameMod = (function () {
 
     // AUTOPLAY
     var autoPlay = {
-        modes: ['shoot', 'move'],
+        //modes: ['shoot', 'move'],
+        setRandomTarget: function (game) {
+
+            var ch = game.cross.crosshairs,
+            os = game.cross.offset,
+            ap = game.autoPlay,
+            map = game.map,
+            x = Math.floor(map.cellWidth * Math.random()),
+            y = Math.floor(map.cellHeight * Math.random());
+
+            ap.target.x = (map.cellSize / 2 + (map.cellSize * x)) * -1;
+            ap.target.y = (map.cellSize / 2 + (map.cellSize * y)) * -1;
+
+        },
         update: function (game, secs) {
 
             var ch = game.cross.crosshairs,
@@ -203,8 +216,8 @@ var gameMod = (function () {
                         ch.y = game.cross.center.y + Math.sin(a) * delta;
                     }
                     if (d === 0) {
-
-                        ap.mode = 'shoot';
+                        //ap.mode = 'shoot';
+						autoPlay.setRandomTarget(game);
                     }
 
                 }
