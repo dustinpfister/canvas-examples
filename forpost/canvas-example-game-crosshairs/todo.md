@@ -1,5 +1,14 @@
 # todo list for canvas-example-game-crosshairs
 
+## 0.x.0 - save state
+
+## 0.x.0 - keyboard events
+* add keyboard events
+* use numbers for setting current weapon
+* +/- keys for looping threw weapons
+* wasd keys for movement
+* space/k fires current weapon
+
 ## 0.x.0 - Skill Point system
 * have a skillPoint module that will create a skills state object
 * add a skillManager state that is used to set skill points to skills
