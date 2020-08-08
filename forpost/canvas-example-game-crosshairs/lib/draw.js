@@ -130,7 +130,7 @@ var draw = (function () {
             ctx.font = '10px courier';
             ctx.fillText('v' + game.ver, 10, 10);
             ctx.fillText('pos: ' + game.cross.offset.x.toFixed(2) + ',' + game.cross.offset.y.toFixed(2), 10, 20);
-            ctx.fillText('percent remain: ' + game.map.percentRemain, 10, 30);
+            ctx.fillText('percent remain: ' + Number(game.map.percentRemain * 100).toFixed(2), 10, 30);
             ctx.fillText('weapon: ' + gameMod.Weapons[game.weaponIndex].name, 10, 40);
             ctx.fillText('damage: ' + Math.floor(game.totalDamage), 10, 50);
             ctx.fillText('high damage cell: ' + Math.floor(game.map.highDamageCell), 10, 60);
