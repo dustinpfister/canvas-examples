@@ -46,8 +46,12 @@
 * (done) start an autoplay AI for this canvas example like that if flappy collection idle
 * (done) A player at any time can take over auto play by just clicking or touching the canvas
 * (done) AI selects random targets that are active
+* (done) AI will shoot less depending on percentRemaining value
 * AI changes weapons
-* AI will shoot less depending on percentRemaining value
+* totalKill Behavior where the AI will use atom weapon only, and will not stop until Behavior Change
+* moveOnly Behavior where the AI will only move around until Behavior Change
+* blaster Behavior where the AI will only use blaster weapon until Behavior Change
+* AttackArea Behavior where AI will attack a random area until Behavior Change
 * make sure ver is 0.7.0 and make a pkg.html
 
 
