@@ -186,11 +186,21 @@ var gameMod = (function () {
             ap.target.y = (map.cellSize / 2 + (map.cellSize * y)) * -1;
 
         },
+
+        setByPercentRemain: function (game) {
+            var map = game.map,
+            ap = game.autoPlay;
+            if (map.percentRemain < 0.4) {
+                ap.mode = 'move';
+            }
+        },
+
         update: function (game, secs) {
 
             var ch = game.cross.crosshairs,
             os = game.cross.offset,
-            ap = game.autoPlay;
+            ap = game.autoPlay,
+            map = game.map;
 
             game.autoPlay.delay -= secs;
             if (game.userDown) {
@@ -199,11 +209,12 @@ var gameMod = (function () {
             game.autoPlay.delay = game.autoPlay.delay < 0 ? 0 : game.autoPlay.delay;
             if (game.autoPlay.delay === 0) {
 
+                autoPlay.setByPercentRemain(game);
+
                 // if shoot mode
                 if (ap.mode === 'shoot') {
                     ch.x = game.cross.center.x;
                     ch.y = game.cross.center.y;
-
                     shoot(game);
                     ap.shootTime -= secs;
                     if (ap.shootTime <= 0) {
@@ -213,11 +224,9 @@ var gameMod = (function () {
                 }
 
                 if (ap.mode === 'move') {
-
                     var a = Math.atan2(os.y - ap.target.y, os.x - ap.target.x),
                     d = utils.distance(os.x, os.y, ap.target.x, ap.target.y),
                     delta = game.cross.radiusOuter - 1;
-
                     if (d < 32) {
                         delta = game.cross.radiusInner + 32 * (d / 32) + 5;
                     }
@@ -230,10 +239,11 @@ var gameMod = (function () {
                     }
                     if (d === 0) {
                         ap.shootTime = ap.maxShootTime;
+                        autoPlay.setRandomTarget(game);
                         ap.mode = 'shoot';
                     }
-
                 }
+
             }
         }
     }

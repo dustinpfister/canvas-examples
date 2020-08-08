@@ -45,7 +45,9 @@
 * (done) update percent remain on each tick
 * (done) start an autoplay AI for this canvas example like that if flappy collection idle
 * (done) A player at any time can take over auto play by just clicking or touching the canvas
-* AI selects random targets that are active
+* (done) AI selects random targets that are active
+* AI changes weapons
+* AI will shoot less depending on percentRemaining value
 * make sure ver is 0.7.0 and make a pkg.html
 
 
