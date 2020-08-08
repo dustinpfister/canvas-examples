@@ -172,8 +172,15 @@ var gameMod = (function () {
             os = game.cross.offset,
             ap = game.autoPlay,
             map = game.map,
+            activeCells = mapMod.getAllCellActiveState(map, true),
             x = Math.floor(map.cellWidth * Math.random()),
             y = Math.floor(map.cellHeight * Math.random());
+
+            if (activeCells.length >= 1) {
+                var cell = activeCells[Math.floor(activeCells.length * Math.random())];
+                x = cell.x;
+                y = cell.y;
+            }
 
             ap.target.x = (map.cellSize / 2 + (map.cellSize * x)) * -1;
             ap.target.y = (map.cellSize / 2 + (map.cellSize * y)) * -1;
@@ -251,11 +258,11 @@ var gameMod = (function () {
                 explosions: poolMod.create(explosionOptions),
                 shotRate: 1,
                 shotSecs: 0,
-                weaponIndex: 0,
+                weaponIndex: 3,
                 totalDamage: 0,
                 userDown: false,
                 autoPlay: {
-                    delay: 10,
+                    delay: 0,
                     maxDelay: 10,
                     mode: 'move',
                     shootTime: 5,
@@ -266,6 +273,7 @@ var gameMod = (function () {
                     }
                 }
             };
+            autoPlay.setRandomTarget(game);
 
             game.cross = crossMod.create({
                     offsetX: game.map.cellWidth * game.map.cellSize / 2 * -1,
