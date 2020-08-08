@@ -191,7 +191,8 @@ var gameMod = (function () {
             ap = game.autoPlay;
 
             // set weapon Index
-            game.weaponIndex = Math.floor((Weapons.length-1) * utils.logPer(map.percentRemain, 10));
+            game.weaponIndex = Math.floor((Weapons.length) * utils.logPer(map.percentRemain, 2));
+            game.weaponIndex = game.weaponIndex >= Weapons.length ? Weapons.length - 1 : game.weaponIndex;
 
             // stay on move mode if
             if (map.percentRemain < 0) {
