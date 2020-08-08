@@ -4,6 +4,12 @@
 * see about fixing issue where shots are tied to the canvas rather than the map (what happens when shooting and moving)
 * it seems that the AI can get stuck when Frame Rates are real low
 
+## 0.x.0 - More advanced AI
+* totalKill Behavior where the AI will use atom weapon only, and will not stop until Behavior Change
+* moveOnly Behavior where the AI will only move around until Behavior Change
+* blaster Behavior where the AI will only use blaster weapon until Behavior Change
+* AttackArea Behavior where AI will attack a random area until Behavior Change
+
 ## 0.x.0 - save state
 * work out a system for save states
 
@@ -53,11 +59,7 @@
 * (done) AI will shoot less depending on percentRemaining value
 * (done) work out problem with cross.userDown
 * (done) worked out a temp fix for AI movement problem
-* AI changes weapons
-* totalKill Behavior where the AI will use atom weapon only, and will not stop until Behavior Change
-* moveOnly Behavior where the AI will only move around until Behavior Change
-* blaster Behavior where the AI will only use blaster weapon until Behavior Change
-* AttackArea Behavior where AI will attack a random area until Behavior Change
+* (done) AI changes weapons
 * make sure ver is 0.7.0 and make a pkg.html
 
 
