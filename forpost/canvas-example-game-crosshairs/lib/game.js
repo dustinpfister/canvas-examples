@@ -292,7 +292,7 @@ var gameMod = (function () {
 
             }
         }
-    }
+    };
 
     return {
         Weapons: Weapons,
