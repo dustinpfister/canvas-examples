@@ -230,17 +230,22 @@ var gameMod = (function () {
                     delta = game.cross.radiusOuter - 1;
                     maxDelta = cross.radiusInner + cross.radiusDiff - 1,
                     minDelta = cross.radiusInner + 5,
+                    slowDownDist = map.cellSize * 4,
+                    // !!! know bug where AI movement does not work as desired might
+                    // is temp fixed by setting a minDist, might still cause problems
+                    // with very low frame rates
+                    minDist = map.cellSize / 2,
                     per = 0;
 
-                    if (d < 32) {
-                        per = 1 - d / 32;
+                    if (d < slowDownDist) {
+                        per = 1 - d / slowDownDist;
                     }
 
                     ap.target.d = d;
 
                     delta = maxDelta - (maxDelta - minDelta) * per;
 
-                    if (d < 1) {
+                    if (d < minDist) {
                         // set right to target
                         os.x = ap.target.x;
                         os.y = ap.target.y;

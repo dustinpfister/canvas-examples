@@ -12,7 +12,7 @@ var game = gameMod.create({
     });
 
 var lt = new Date(),
-FPS_target = 20;
+FPS_target = 30;
 var loop = function () {
     var now = new Date(),
     t = now - lt,

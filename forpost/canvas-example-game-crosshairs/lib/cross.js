@@ -22,7 +22,7 @@ var crossMod = (function () {
         var ch = cross.crosshairs,
         center = cross.center,
         per = {
-            min: 0.01,
+            min: 0.1,
             max: 1,
             current: 0.1
         },
