@@ -255,11 +255,11 @@ var gameMod = (function () {
                 totalDamage: 0,
                 userDown: false,
                 autoPlay: {
-                    delay: 0,
-                    maxDelay: 3,
+                    delay: 10,
+                    maxDelay: 10,
                     mode: 'move',
-                    shootTime: 3,
-                    maxShootTime: 3,
+                    shootTime: 5,
+                    maxShootTime: 5,
                     target: {
                         x: -16,
                         y: -16
