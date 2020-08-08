@@ -173,7 +173,7 @@ var gameMod = (function () {
                 totalDamage: 0,
                 userDown: false,
                 autoPlay: {
-                    active: true,
+                    //active: true,
                     delay: 0,
                     maxDelay: 10
                 }
@@ -209,7 +209,7 @@ var gameMod = (function () {
             mapMod.clampOffset(game.map, game.cross.offset);
             mapMod.update(game.map, secs);
 
-            // updare pools
+            // update pools
             poolMod.update(game.shots, game, secs);
             poolMod.update(game.explosions, game, secs);
 
@@ -229,14 +229,14 @@ var gameMod = (function () {
             }
 
             // AutoPlay
-            game.autoPlay.active = false;
+            //game.autoPlay.active = false;
             game.autoPlay.delay -= secs;
             if (game.userDown) {
                 game.autoPlay.delay = game.autoPlay.maxDelay;
             }
             game.autoPlay.delay = game.autoPlay.delay < 0 ? 0 : game.autoPlay.delay;
             if (game.autoPlay.delay === 0) {
-                game.autoPlay.active = true;
+                //game.autoPlay.active = true;
             }
 
         }

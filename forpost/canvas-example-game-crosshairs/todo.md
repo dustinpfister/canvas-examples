@@ -41,7 +41,7 @@
 
 ## 0.7.0 - autoplay AI
 * (done) update percent remain on each tick
-* start an autoplay AI for this canvas example like that if flappy collection idle
+* (done) start an autoplay AI for this canvas example like that if flappy collection idle
 * A player at any time can take over auto play by just clicking or touching the canvas
 * after a moment of inactivity a timeout bar will start
 * once the timeout bar completes the game will return to auto play mode.
