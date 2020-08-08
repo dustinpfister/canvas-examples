@@ -136,6 +136,7 @@ var draw = (function () {
             ctx.fillText('high damage cell: ' + Math.floor(game.map.highDamageCell), 10, 60);
             ctx.fillText('autoPlay delay: ' + game.autoPlay.delay.toFixed(2), 10, 70);
             ctx.fillText('autoPlay target: ' + game.autoPlay.target.x + ' , ' + game.autoPlay.target.y, 10, 80);
+            ctx.fillText('autoPlay target dist: ' + game.autoPlay.target.d, 10, 90);
         }
     }
 }

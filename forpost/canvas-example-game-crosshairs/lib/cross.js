@@ -36,11 +36,12 @@ var crossMod = (function () {
         isInOuter: isInOuter,
         create: function (opt) {
             opt = opt || {};
-            return {
+            var cross = {
                 userDown: false,
                 pps: opt.pps || 128,
                 radiusInner: opt.radiusInner || (240 / 4),
                 radiusOuter: opt.radiusOuter || (240 / 2.125),
+                radiusDiff: 0,
                 center: {
                     x: opt.cx || (320 / 2),
                     y: opt.cy || (240 / 2)
@@ -57,6 +58,8 @@ var crossMod = (function () {
                     pps: 256
                 }
             };
+            cross.radiusDiff = cross.radiusOuter - cross.radiusInner;
+            return cross;
         },
 
         update: function (cross, secs) {

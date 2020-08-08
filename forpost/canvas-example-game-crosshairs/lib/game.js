@@ -225,18 +225,33 @@ var gameMod = (function () {
 
                 if (ap.mode === 'move') {
                     var a = Math.atan2(os.y - ap.target.y, os.x - ap.target.x),
+                    cross = game.cross,
                     d = utils.distance(os.x, os.y, ap.target.x, ap.target.y),
                     delta = game.cross.radiusOuter - 1;
-                    if (d < 32) {
-                        delta = game.cross.radiusInner + 32 * (d / 32) + 5;
-                    }
-                    if (d < 1) {
+                    maxDelta = cross.radiusInner + cross.radiusDiff - 1,
+                    minDelta = cross.radiusInner + cross.radiusDiff / 2,
+                    per = 0;
+
+                    ap.target.d = d;
+
+                    //if (d < 100) {
+                    //delta = (cross.radiusInner + cross.radiusDiff - 1) - cross.radiusDiff * (1 - d / 100);
+                    //}
+					
+					
+					if(d < 100){
+						per = 1 - d / 100;
+					}
+					
+                    delta = maxDelta - (maxDelta - minDelta) * per;
+                    if (d < 5) {
                         os.x = ap.target.x;
                         os.y = ap.target.y;
                     } else {
                         ch.x = game.cross.center.x + Math.cos(a) * delta;
                         ch.y = game.cross.center.y + Math.sin(a) * delta;
                     }
+
                     if (d === 0) {
                         ap.shootTime = ap.maxShootTime;
                         autoPlay.setRandomTarget(game);

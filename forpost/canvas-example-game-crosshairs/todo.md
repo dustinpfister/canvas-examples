@@ -1,6 +1,11 @@
 # todo list for canvas-example-game-crosshairs
 
+## 0.x.x - Bug fixes
+* see about fixing issue where shots are tied to the canvas rather than the map (what happens when shooting and moving)
+* it seems that the AI can get stuck when Frame Rates are real low
+
 ## 0.x.0 - save state
+* work out a system for save states
 
 ## 0.x.0 - keyboard events
 * add keyboard events
@@ -38,7 +43,6 @@
 * manualPlay state
 * remove event handers from game.js and make them part of state
 * get damage bonus in manual play state
-* see about fixing the bug where shots are tied to the canvas rather than the map (what happens when shooting and moving)
 * make sure ver is 0.8.0 and make a pkg.html
 
 ## 0.7.0 - autoplay AI
