@@ -230,7 +230,7 @@ var gameMod = (function () {
                     delta = game.cross.radiusOuter - 1;
                     maxDelta = cross.radiusInner + cross.radiusDiff - 1,
                     minDelta = cross.radiusInner + cross.radiusDiff / 2,
-                    per = 0;
+                    per = 1;
 
                     ap.target.d = d;
 
@@ -239,11 +239,14 @@ var gameMod = (function () {
                     //}
 					
 					
-					if(d < 100){
-						per = 1 - d / 100;
-					}
+					//if(d < 32){
+					//	per = 1;//1 - d / 32;
+					//}
 					
                     delta = maxDelta - (maxDelta - minDelta) * per;
+					
+					//console.log(secs);
+					
                     if (d < 5) {
                         os.x = ap.target.x;
                         os.y = ap.target.y;

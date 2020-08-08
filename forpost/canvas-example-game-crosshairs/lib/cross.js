@@ -18,17 +18,20 @@ var crossMod = (function () {
         return utils.distance(ch.x, ch.y, center.x, center.y) >= cross.radiusOuter;
     };
 
+    // !!! know bug where AI movement does not work as desired had to do with this
+    // at One point.
     var moveOffset = function (cross, secs) {
         var ch = cross.crosshairs,
         center = cross.center,
-        d1 = utils.distance(ch.x, ch.y, center.x, center.y),
-        diff = cross.radiusOuter - cross.radiusInner,
-        d2 = d1 - cross.radiusInner,
-        per = d2 / diff;
-        if (d1 > cross.radiusInner) {
-            cross.offset.x += Math.cos(ch.heading) * cross.offset.pps * per * secs;
-            cross.offset.y += Math.sin(ch.heading) * cross.offset.pps * per * secs;
-        }
+        per = {
+            min: 0.2,
+            max: 1,
+            current: 0.1
+        },
+        d = utils.distance(ch.x, ch.y, center.x, center.y) - cross.radiusInner;
+        per.current = per.min + (per.max - per.min) * (d / cross.radiusDiff);
+        cross.offset.x += Math.cos(ch.heading) * cross.offset.pps * per.current * secs;
+        cross.offset.y += Math.sin(ch.heading) * cross.offset.pps * per.current * secs;
     };
 
     return {
