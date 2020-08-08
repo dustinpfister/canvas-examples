@@ -77,9 +77,11 @@ var gameMod = (function () {
     };
 
     var userPointerStart = function (game) {
+        var cross = crossMod.createEvent(game.cross, 'start');
         return function (e) {
             var pos = utils.getCanvasRelative(e);
             e.preventDefault();
+            cross(e);
             game.userDown = true;
             // cycle weapons
             var b = gameMod.buttons.changeWeapon,
@@ -92,8 +94,19 @@ var gameMod = (function () {
     };
 
     var userPointerEnd = function (game) {
+        var cross = crossMod.createEvent(game.cross, 'end');
         return function (e) {
             e.preventDefault();
+            cross(e);
+            game.userDown = false;
+        };
+    };
+
+    var userPointerMove = function (game) {
+        var cross = crossMod.createEvent(game.cross, 'move');
+        return function (e) {
+            e.preventDefault();
+            cross(e);
             game.userDown = false;
         };
     };
@@ -168,17 +181,13 @@ var gameMod = (function () {
                 });
 
             // cross events
-            game.canvas.addEventListener('mousedown', crossMod.createEvent(game.cross, 'start'));
-            game.canvas.addEventListener('mouseup', crossMod.createEvent(game.cross, 'end'));
-            game.canvas.addEventListener('mousemove', crossMod.createEvent(game.cross, 'move'));
-            game.canvas.addEventListener('touchstart', crossMod.createEvent(game.cross, 'start'));
-            game.canvas.addEventListener('touchend', crossMod.createEvent(game.cross, 'end'));
-            game.canvas.addEventListener('touchmove', crossMod.createEvent(game.cross, 'move'));
 
             // main game events
             game.canvas.addEventListener('mousedown', userPointerStart(game));
+            game.canvas.addEventListener('mousemove', userPointerMove(game));
             game.canvas.addEventListener('mouseup', userPointerEnd(game));
             game.canvas.addEventListener('touchstart', userPointerStart(game));
+            game.canvas.addEventListener('touchmove', userPointerMove(game));
             game.canvas.addEventListener('touchend', userPointerEnd(game));
 
             return game;
@@ -204,7 +213,7 @@ var gameMod = (function () {
             game.shotSecs = game.shotSecs >= game.shotRate ? game.shotRate : game.shotSecs;
 
             // shoot
-            if (game.shotSecs >= game.shotRate && game.userDown && crossMod.isInInner(game.cross) && game.cross.userDown) {
+            if (game.shotSecs >= game.shotRate && crossMod.isInInner(game.cross) && game.cross.userDown) {
                 var i = 0,
                 radian;
                 while (i < w.gunCount) {
