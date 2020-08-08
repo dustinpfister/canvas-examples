@@ -51,6 +51,7 @@
 * (done) A player at any time can take over auto play by just clicking or touching the canvas
 * (done) AI selects random targets that are active
 * (done) AI will shoot less depending on percentRemaining value
+* work out problem with cross.userDown
 * AI changes weapons
 * totalKill Behavior where the AI will use atom weapon only, and will not stop until Behavior Change
 * moveOnly Behavior where the AI will only move around until Behavior Change
