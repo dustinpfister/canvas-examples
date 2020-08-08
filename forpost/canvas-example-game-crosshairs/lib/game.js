@@ -81,6 +81,10 @@ var gameMod = (function () {
         return function (e) {
             var pos = utils.getCanvasRelative(e);
             e.preventDefault();
+
+            // enable cross move back feature
+            game.cross.moveBackEnabled = true;
+
             cross(e);
             game.userDown = true;
             // cycle weapons
@@ -208,6 +212,9 @@ var gameMod = (function () {
             }
             game.autoPlay.delay = game.autoPlay.delay < 0 ? 0 : game.autoPlay.delay;
             if (game.autoPlay.delay === 0) {
+
+                // disable cross move back
+                game.cross.moveBackEnabled = false;
 
                 autoPlay.setByPercentRemain(game);
 
