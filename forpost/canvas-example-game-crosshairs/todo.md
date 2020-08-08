@@ -14,7 +14,6 @@
 * A player at any time can take over auto play by just clicking or touching the canvas
 * after a moment of inactivity a timeout bar will start
 * once the timeout bar completes the game will return to auto play mode.
-
 * see about fixing the bug where shots are tied to the canvas rather than the map (what happens when shooting and moving)
 * make sure ver is 0.7.0 and make a pkg.html
 
@@ -25,7 +24,7 @@
 * (done) map cells have a damage property that holds the total amount of damage that has happened to it over time.
 * (done) map cells have a damagePer property that is a number between 0 and 1 where 0 is the lowest current damage value in the map, and 1 is the highest.
 * (done) the damagePer property is used as one way to determine the cellType when regenerating cells.
-* make sure ver is 0.6.0 and make a pkg.html
+* (done) make sure ver is 0.6.0 and make a pkg.html
 
 ## 0.5.0 - continuous regeneration and autoHeal
 * (done) add an update method to the mapMod.
