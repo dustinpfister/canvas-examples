@@ -12,14 +12,22 @@ utils.getCanvasRelative = function (e) {
         bx: bx
     };
 };
+
+utils.logPer = function (per, high) {
+    high = high === undefined ? 2 : high;
+    per = per < 0 ? 0 : per;
+    per = per > 1 ? 1 : per;
+    return Math.log((1 + high - 2) + per) / Math.log(high);
+};
+
 /*
 utils.logOnce = function () {
-    var fired = false;
-    return function (mess) {
-        if (!fired) {
-            console.log(mess);
-            fired = true;
-        }
-    }
+var fired = false;
+return function (mess) {
+if (!fired) {
+console.log(mess);
+fired = true;
+}
+}
 };
 */

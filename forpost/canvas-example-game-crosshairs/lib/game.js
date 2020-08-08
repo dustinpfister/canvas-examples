@@ -189,7 +189,12 @@ var gameMod = (function () {
         setByPercentRemain: function (game) {
             var map = game.map,
             ap = game.autoPlay;
-            if (map.percentRemain < 0.4) {
+
+            // set weapon Index
+            game.weaponIndex = Math.floor((Weapons.length-1) * utils.logPer(map.percentRemain, 10));
+
+            // stay on move mode if
+            if (map.percentRemain < 0) {
                 ap.mode = 'move';
             }
         },
@@ -278,8 +283,10 @@ var gameMod = (function () {
                 // disable cross move back
                 game.cross.moveBackEnabled = false;
 
+                // set by percent remain?
                 autoPlay.setByPercentRemain(game);
 
+                // apply current mode
                 autoPlay.modes[ap.mode](game, secs);
 
             }
