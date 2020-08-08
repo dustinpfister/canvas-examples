@@ -168,16 +168,46 @@ var gameMod = (function () {
         modes: ['shoot', 'move'],
         update: function (game, secs) {
 
+            var ch = game.cross.crosshairs,
+            os = game.cross.offset,
+            ap = game.autoPlay;
+
             game.autoPlay.delay -= secs;
             if (game.userDown) {
                 game.autoPlay.delay = game.autoPlay.maxDelay;
             }
             game.autoPlay.delay = game.autoPlay.delay < 0 ? 0 : game.autoPlay.delay;
             if (game.autoPlay.delay === 0) {
-                var ch = game.cross.crosshairs;
-                ch.x = game.cross.center.x;
-                ch.y = game.cross.center.y;
-                shoot(game);
+
+                // if shoot mode
+                if (ap.mode === 'shoot') {
+                    ch.x = game.cross.center.x;
+                    ch.y = game.cross.center.y;
+                    shoot(game);
+                }
+
+                if (ap.mode === 'move') {
+
+                    var a = Math.atan2(os.y - ap.target.y, os.x - ap.target.x),
+                    d = utils.distance(os.x, os.y, ap.target.x, ap.target.y),
+                    delta = game.cross.radiusOuter - 1;
+
+                    if (d < 32) {
+                        delta = game.cross.radiusInner + 32 * (d / 32) + 5;
+                    }
+                    if (d < 1) {
+                        os.x = ap.target.x;
+                        os.y = ap.target.y;
+                    } else {
+                        ch.x = game.cross.center.x + Math.cos(a) * delta;
+                        ch.y = game.cross.center.y + Math.sin(a) * delta;
+                    }
+                    if (d === 0) {
+
+                        ap.mode = 'shoot';
+                    }
+
+                }
             }
         }
     }
@@ -206,9 +236,14 @@ var gameMod = (function () {
                 totalDamage: 0,
                 userDown: false,
                 autoPlay: {
-                    delay: 3,
+                    delay: 0,
                     maxDelay: 3,
-                    mode: 0
+                    //modeIndex: 0,
+                    mode: 'move',
+                    target: {
+                        x: -16,
+                        y: -16
+                    }
                 }
             };
 
