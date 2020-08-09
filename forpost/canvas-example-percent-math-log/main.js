@@ -53,7 +53,8 @@ draw.info = function (ctx, state) {
 
     ctx.fillStyle = 'white';
     ctx.textBaseline = 'top';
-    ctx.fillText('a: ' + state.a.toFixed(2), 10, 10);
+    ctx.fillText('v' + state.ver, 10, 10);
+    ctx.fillText('a: ' + state.a.toFixed(2), 10, 20);
 
 };
 
@@ -66,6 +67,7 @@ canvas.height = 240;
 ctx.translate(0.5, 0.5);
 
 var state = {
+    ver: '0.0.0',
     a: 2,
     b: 10,
     maxHigh: 5,
