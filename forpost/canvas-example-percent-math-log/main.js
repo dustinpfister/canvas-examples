@@ -54,6 +54,19 @@ draw.points = function (ctx, points) {
     }
     ctx.stroke();
 };
+draw.logPerPoints = function (ctx, state) {
+
+    draw.box(ctx, state.box);
+    draw.points(ctx, state.points);
+    ctx.strokeStyle = 'lime';
+    draw.points(ctx, state.points.map(function (point) {
+            return {
+                x: point.x,
+                y: point.perY
+            }
+        }));
+    draw.currentPoint(ctx, state);
+};
 draw.currentPoint = function (ctx, state) {
     var cp = state.currentPoint;
     ctx.strokeStyle = 'white';
@@ -67,7 +80,7 @@ draw.info = function (ctx, state) {
     ctx.fillStyle = 'white';
     ctx.textBaseline = 'top';
     ctx.fillText('v' + state.ver, 10, 10);
-    ctx.fillText('a: ' + state.a.toFixed(2), 10, 20);
+    ctx.fillText('a: ' + state.a.toFixed(2) + ', b: ' + state.b.toFixed(2), 10, 20);
     ctx.fillText('current: ' + Math.floor(cp.x) + ',' + Math.floor(cp.y), 10, 30);
 
 };
@@ -83,8 +96,8 @@ ctx.translate(0.5, 0.5);
 var state = {
     ver: '0.1.0',
     points: [],
-    a: 2,
-    b: 2,
+    a: 2.5,
+    b: 3,
     maxHigh: 5,
     bias: 0,
     per: 0,
@@ -116,10 +129,7 @@ var loop = function () {
     state.currentPoint = state.points[Math.floor(state.bias * (state.points.length - 1))];
 
     draw.back(ctx, canvas);
-    draw.box(ctx, state.box);
-
-    draw.points(ctx, state.points);
-    draw.currentPoint(ctx, state);
+    draw.logPerPoints(ctx, state);
     draw.info(ctx, state);
 
     update(state);
