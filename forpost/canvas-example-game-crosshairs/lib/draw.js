@@ -24,7 +24,9 @@ var draw = (function () {
 
     };
 
-    var cellTypeColors = ['green', 'blue', 'red'];
+    var cellTypeColors = ['green', 'blue', 'red'],
+    sheets = genSheets.sheets;
+    console.log(sheets);
 
     return {
         // draw background
@@ -54,21 +56,21 @@ var draw = (function () {
                 var x = cell.x * map.cellSize + cross.offset.x + (320 / 2),
                 y = cell.y * map.cellSize + cross.offset.y + (240 / 2),
                 per = cell.HP / cell.maxHP;
-                //color = 'rgba(0,200,0,' + per.toFixed(2) + ')';
-                //ctx.globalAlpha = per;
+
+                /*
                 ctx.beginPath();
                 ctx.rect(x, y, map.cellSize, map.cellSize);
                 ctx.stroke();
-                //ctx.fillStyle = cell.active ? color : '#606060';
                 ctx.fillStyle = cellTypeColors[cell.typeIndex];
                 if (!cell.active) {
-                    ctx.fillStyle = '#606060';
+                ctx.fillStyle = '#606060';
                 }
                 ctx.fill();
                 ctx.closePath();
-                //ctx.globalAlpha = 1;
+                 */
+                ctx.drawImage(sheets[0].canvas, 0, 0, 32, 32, x, y, map.cellSize, map.cellSize);
 
-                drawCellHealthBar(ctx, map, cell, cross);
+                //drawCellHealthBar(ctx, map, cell, cross);
 
                 ctx.fillStyle = 'white';
                 ctx.font = '10px courier';
