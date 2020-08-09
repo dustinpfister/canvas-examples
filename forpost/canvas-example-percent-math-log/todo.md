@@ -3,8 +3,8 @@
 ## 0.1.0 - single logPer line, per line, and moving boxes
 * (done) append per and logPer properties to each point in createLogPerPoints
 * (done) have straight line and logPer line x and y values for each point
-* have boxes that move by way of pps
-* boxes that move by pps have pps change by way of per and logPer values in point array
+* (done) have boxes that move by way of pps
+* (done) boxes that move by pps have pps change by way of per and logPer values in point array
 * (done) draw white circle around current point
 
 ## 0.0.0 - basic idea

@@ -146,13 +146,20 @@ var update = function (state) {
 };
 
 var moveBox = function (box, state, secs) {
-
-    box.x += Math.cos(box.heading) * box.pps * secs;
-    box.y += Math.sin(box.heading) * box.pps * secs;
-
     if (box.x > canvas.width + box.w) {
-        box.x = box.x % canvas.width * -1;
+        box.x = box.w * -1;
     }
+    if (box.x < box.w * -1) {
+        box.x = canvas.width + box.w;
+    }
+    if (box.y > canvas.height + box.h) {
+        box.y = box.h* -1;
+    }
+    if (box.y < box.h * -1) {
+        box.y = canvas.height + box.h;
+    }
+    box.x += Math.cos(box.heading) * box.pps * secs;
+    box.y += Math.sin(box.heading - Math.PI / 2) * box.pps * secs;
 
 };
 
