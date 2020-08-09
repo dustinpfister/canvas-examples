@@ -2,7 +2,8 @@
 
 ## 0.x.x - Bug fixes
 * see about fixing issue where shots are tied to the canvas rather than the map (what happens when shooting and moving)
-* it seems that the AI can get stuck when Frame Rates are real low
+* it seems that the AI can get stuck when Frame Rates are real low (partial fix)
+* there might be a problem with two much damage being applied when the user leave the game for a while
 
 ## 0.x.0 - More advanced AI
 * totalKill Behavior where the AI will use atom weapon only, and will not stop until Behavior Change

@@ -31,12 +31,10 @@ utils.createLogPerPoints = function (a, b, sx, sy, w, h, len) {
 };
 
 var draw = {};
-
 draw.back = function (ctx, canvas) {
     ctx.fillStyle = 'black';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 };
-
 draw.box = function (ctx, box, style) {
     ctx.fillStyle = style || 'grey';
     ctx.strokeStyle = '#afafaf';
@@ -46,7 +44,6 @@ draw.box = function (ctx, box, style) {
     ctx.stroke();
     ctx.strokeStyle = 'red';
 };
-
 draw.points = function (ctx, points) {
     ctx.lineWidth = 3;
     ctx.beginPath();
@@ -79,7 +76,6 @@ draw.currentPoints = function (ctx, state) {
     ctx.beginPath();
     ctx.arc(cp.x, cp.perY, 5, 0, Math.PI * 2);
     ctx.stroke();
-
 };
 draw.info = function (ctx, state) {
     var cp = state.currentPoint;

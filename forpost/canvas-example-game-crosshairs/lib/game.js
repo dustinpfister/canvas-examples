@@ -140,6 +140,7 @@ var gameMod = (function () {
             if (cell) {
                 var targets = mapMod.getAllFromPointAndRadius(game.map, cell.x, cell.y, blastRadius);
                 targets.cells.forEach(function (cell, i) {
+                    // apply damage
                     var damage = ex.data.maxDPS * (1 - (targets.dists[i] / blastRadius)) * secs;
                     if (cell.active) {
                         game.totalDamage += damage;
@@ -318,14 +319,15 @@ var gameMod = (function () {
                 totalDamage: 0,
                 userDown: false,
                 autoPlay: {
-                    delay: 0,
+                    delay: 10,
                     maxDelay: 10,
                     mode: 'move',
                     shootTime: 5,
                     maxShootTime: 5,
                     target: {
                         x: -16,
-                        y: -16
+                        y: -16,
+                        d: 0
                     }
                 }
             };
