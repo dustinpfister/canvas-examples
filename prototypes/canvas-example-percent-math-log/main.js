@@ -25,7 +25,20 @@ utils.createLogPerPoints = function (a, b, sx, sy, w, h, len) {
     return points;
 };
 
-var drawPoints = function (points) {
+var draw = {};
+
+draw.back = function (ctx, canvas) {
+    ctx.fillStyle = 'black';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+};
+
+draw.box = function (ctx, box) {
+    ctx.fillStyle = 'grey';
+    ctx.fillRect(box.x, box.y, box.w, box.h);
+    ctx.strokeStyle = 'red';
+};
+
+draw.points = function (ctx, points) {
     ctx.lineWidth = 3;
     ctx.beginPath();
     ctx.moveTo(points[0].x, points[0].y);
@@ -36,6 +49,13 @@ var drawPoints = function (points) {
     }
     ctx.stroke();
 };
+draw.info = function (ctx, state) {
+
+    ctx.fillStyle = 'white';
+    ctx.textBaseline = 'top';
+    ctx.fillText('a: ' + state.a.toFixed(2), 10, 10);
+
+};
 
 var canvas = document.createElement('canvas'),
 ctx = canvas.getContext('2d'),
@@ -45,41 +65,38 @@ canvas.width = 320;
 canvas.height = 240;
 ctx.translate(0.5, 0.5);
 
-var a = 2,
-b = 10,
-maxHigh = 5,
-bias, per,
-i = 0,
-box = {
-    x: 60,
-    y: 20,
-    w: 200,
-    h: 200
+var state = {
+    a: 2,
+    b: 10,
+    maxHigh: 5,
+    bias: 0,
+    per: 0,
+    i: 0,
+    box: {
+        x: 60,
+        y: 20,
+        w: 200,
+        h: 200
+    }
 };
 var loop = function () {
 
-    var points = utils.createLogPerPoints(a, b, box.x, box.y, box.w, box.h, 100);
+    var points = utils.createLogPerPoints(state.a, state.b, state.box.x, state.box.y, state.box.w, state.box.h, 100);
 
     requestAnimationFrame(loop);
 
-    ctx.fillStyle = 'black';
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-    ctx.fillStyle = 'grey';
-    ctx.fillRect(box.x, box.y, box.w, box.h);
-    ctx.strokeStyle = 'red';
+    draw.back(ctx, canvas);
+    draw.box(ctx, state.box);
 
-    drawPoints(points);
+    draw.points(ctx, points);
+    draw.info(ctx, state);
 
-    ctx.fillStyle = 'white';
-    ctx.textBaseline = 'top';
-    ctx.fillText('a: ' + a.toFixed(2), 10, 10);
-
-    i += 1;
-    i %= 1000;
-    per = i / 1000;
-    bias = 1 - Math.abs(0.5 - per) / 0.5;
-    a = 2 + 3 * bias;
-    b = a;
+    state.i += 1;
+    state.i %= 1000;
+    state.per = state.i / 1000;
+    state.bias = 1 - Math.abs(0.5 - state.per) / 0.5;
+    state.a = 2 + 3 * state.bias;
+    state.b = state.a;
 };
 
 loop();
