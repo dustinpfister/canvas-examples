@@ -109,6 +109,9 @@ var state = {
     per: 0,
     i: 0,
     iMax: 250,
+    IPS: 10,
+    lt: new Date(),
+    FPS: 20,
     currentPoint: {},
     backBox: {
         x: 60,
@@ -136,18 +139,18 @@ var state = {
 
 state.points = utils.createLogPerPoints(state.a, state.b, state.backBox.x, state.backBox.y, state.backBox.w, state.backBox.h, 100);
 
-var update = function (state) {
+var update = function (state, secs) {
 
     var cp = state.currentPoint;
-    state.i += 1;
+    state.i += state.IPS * secs;
     state.i %= state.iMax;
     state.per = state.i / state.iMax;
     state.bias = 1 - Math.abs(0.5 - state.per) / 0.5;
     state.boxLogPer.pps = 512 * cp.logPer;
     state.boxPer.pps = 512 * cp.per;
-    state.boxLogPer.heading = state.boxPer.heading = Math.PI / 20 * state.bias;
-    moveBox(state.boxLogPer, state, 0.02);
-    moveBox(state.boxPer, state, 0.02);
+    //state.boxLogPer.heading = state.boxPer.heading = Math.PI / 20 * state.bias;
+    moveBox(state.boxLogPer, state, secs);
+    moveBox(state.boxPer, state, secs);
 };
 
 var moveBox = function (box, state, secs) {
@@ -169,6 +172,10 @@ var moveBox = function (box, state, secs) {
 
 var loop = function () {
 
+    var now = new Date(),
+    t = now - state.lt,
+    secs = t / 1000;
+
     requestAnimationFrame(loop);
 
     state.currentPoint = state.points[Math.floor(state.bias * (state.points.length - 1))];
@@ -179,7 +186,9 @@ var loop = function () {
     draw.box(ctx, state.boxPer, 'lime');
     draw.info(ctx, state);
 
-    update(state);
+    update(state, secs);
+
+    state.lt = now;
 };
 
 loop();
