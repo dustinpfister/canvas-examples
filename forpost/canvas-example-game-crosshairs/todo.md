@@ -3,7 +3,7 @@
 ## 0.x.x - Bug fixes
 * see about fixing issue where shots are tied to the canvas rather than the map (what happens when shooting and moving)
 * it seems that the AI can get stuck when Frame Rates are real low (partial fix)
-* there might be a problem with two much damage being applied when the user leave the game for a while
+
 
 ## 0.x.0 - More advanced AI
 * totalKill Behavior where the AI will use atom weapon only, and will not stop until Behavior Change
@@ -48,6 +48,7 @@
 
 
 ## 0.8.0 - Pixel graphics
+* (done) hardSet.maxSecs value put in to limit the secs value in updates which fix a bug where to much damage was being applied
 * have a system for creating pixle graphics in place of solid colors for map cells
 * generate sheets for each cell type
 * SheetIndex for cells based on cellType, and cell index in sheet based on HP (forNow)

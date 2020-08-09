@@ -1,6 +1,9 @@
 var gameMod = (function () {
 
-    //var debug = utils.logOnce();
+    // hard coded settings
+    var hardSet = {
+        maxSecs: 0.25 // max seconds foe sec value used in updaes
+    };
 
     var Weapons = [{
             name: 'Blaster',
@@ -270,28 +273,32 @@ var gameMod = (function () {
 
         update: function (game, secs) {
 
-            var ch = game.cross.crosshairs,
-            os = game.cross.offset,
-            ap = game.autoPlay,
-            map = game.map;
+            if (game.autoPlay.enabled) {
 
-            game.autoPlay.delay -= secs;
-            if (game.userDown) {
-                game.autoPlay.delay = game.autoPlay.maxDelay;
+                var ch = game.cross.crosshairs,
+                os = game.cross.offset,
+                ap = game.autoPlay,
+                map = game.map;
+
+                game.autoPlay.delay -= secs;
+                if (game.userDown) {
+                    game.autoPlay.delay = game.autoPlay.maxDelay;
+                }
+                game.autoPlay.delay = game.autoPlay.delay < 0 ? 0 : game.autoPlay.delay;
+                if (game.autoPlay.delay === 0) {
+
+                    // disable cross move back
+                    game.cross.moveBackEnabled = false;
+
+                    // set by percent remain?
+                    autoPlay.setByPercentRemain(game);
+
+                    // apply current mode
+                    autoPlay.modes[ap.mode](game, secs);
+
+                }
             }
-            game.autoPlay.delay = game.autoPlay.delay < 0 ? 0 : game.autoPlay.delay;
-            if (game.autoPlay.delay === 0) {
 
-                // disable cross move back
-                game.cross.moveBackEnabled = false;
-
-                // set by percent remain?
-                autoPlay.setByPercentRemain(game);
-
-                // apply current mode
-                autoPlay.modes[ap.mode](game, secs);
-
-            }
         }
     };
 
@@ -319,6 +326,7 @@ var gameMod = (function () {
                 totalDamage: 0,
                 userDown: false,
                 autoPlay: {
+                    enabled: false,
                     delay: 10,
                     maxDelay: 10,
                     mode: 'move',
@@ -351,6 +359,10 @@ var gameMod = (function () {
         },
 
         update: function (game, secs) {
+
+            // do not let secs go over hard coded max secs value
+            secs = secs > hardSet.maxSecs ? hardSet.maxSecs : secs;
+
             game.shotRate = Weapons[game.weaponIndex].shotRate;
 
             // cross object
