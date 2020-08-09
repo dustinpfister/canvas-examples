@@ -24,7 +24,6 @@ var genSheets = (function () {
     var i = 0,
     s;
     while (i < sheet.cellWidth) {
-
         ctx.save();
         ctx.translate(16 + 32 * i, 16);
         s = 28 - 14 * (i / sheet.cellWidth);
