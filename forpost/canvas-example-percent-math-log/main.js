@@ -111,7 +111,7 @@ var state = {
     iMax: 250,
     IPS: 10,
     lt: new Date(),
-    FPS: 20,
+    FPS: 30,
     currentPoint: {},
     backBox: {
         x: 60,
@@ -178,17 +178,16 @@ var loop = function () {
 
     requestAnimationFrame(loop);
 
-    state.currentPoint = state.points[Math.floor(state.bias * (state.points.length - 1))];
-
-    draw.back(ctx, canvas);
-    draw.logPerPoints(ctx, state);
-    draw.box(ctx, state.boxLogPer, 'red');
-    draw.box(ctx, state.boxPer, 'lime');
-    draw.info(ctx, state);
-
-    update(state, secs);
-
-    state.lt = now;
+    if (t >= 1000 / state.FPS) {
+        state.currentPoint = state.points[Math.floor(state.bias * (state.points.length - 1))];
+        draw.back(ctx, canvas);
+        draw.logPerPoints(ctx, state);
+        draw.box(ctx, state.boxLogPer, 'red');
+        draw.box(ctx, state.boxPer, 'lime');
+        draw.info(ctx, state);
+        update(state, secs);
+        state.lt = now;
+    }
 };
 
 loop();
