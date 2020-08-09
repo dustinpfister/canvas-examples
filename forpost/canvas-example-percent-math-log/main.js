@@ -100,9 +100,10 @@ ctx.translate(0.5, 0.5);
 
 var state = {
     ver: '0.1.0',
+    canvas: canvas,
     points: [],
-    a: 2.5,
-    b: 3,
+    a: 2.2,
+    b: 2.5,
     maxHigh: 5,
     bias: 0,
     per: 0,
@@ -116,7 +117,7 @@ var state = {
     },
     boxPer: {
         x: 0,
-        y: 0,
+        y: 64,
         w: 32,
         h: 32,
         heading: 0,
@@ -124,7 +125,7 @@ var state = {
     },
     boxLogPer: {
         x: 0,
-        y: 32,
+        y: 128,
         w: 32,
         h: 32,
         heading: 0,
@@ -144,10 +145,27 @@ var update = function (state) {
     //state.b = state.a;
 };
 
+var moveBox = function (box, state, secs) {
+
+    box.x += Math.cos(box.heading) * box.pps * secs;
+    box.y += Math.sin(box.heading) * box.pps * secs;
+
+    if (box.x > canvas.width + box.w) {
+        box.x = box.x % canvas.width * -1;
+    }
+
+};
+
 var loop = function () {
 
     requestAnimationFrame(loop);
-    state.currentPoint = state.points[Math.floor(state.bias * (state.points.length - 1))];
+
+    var cp = state.currentPoint = state.points[Math.floor(state.bias * (state.points.length - 1))];
+    state.boxLogPer.pps = 512 * cp.logPer;
+    state.boxPer.pps = 512 * cp.per;
+
+    moveBox(state.boxLogPer, state, 0.02);
+    moveBox(state.boxPer, state, 0.02);
 
     draw.back(ctx, canvas);
     draw.logPerPoints(ctx, state);
