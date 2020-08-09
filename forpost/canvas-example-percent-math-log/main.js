@@ -137,12 +137,16 @@ state.points = utils.createLogPerPoints(state.a, state.b, state.backBox.x, state
 
 var update = function (state) {
 
+    var cp = state.currentPoint;
     state.i += 1;
-    state.i %= 120;
-    state.per = state.i / 120;
+    state.i %= 1000;
+    state.per = state.i / 1000;
     state.bias = 1 - Math.abs(0.5 - state.per) / 0.5;
-    //state.a = 2 + 3 * state.bias;
-    //state.b = state.a;
+    state.boxLogPer.pps = 512 * cp.logPer;
+    state.boxPer.pps = 512 * cp.per;
+    state.boxLogPer.heading = state.boxPer.heading = Math.PI / 20 * state.bias;
+    moveBox(state.boxLogPer, state, 0.02);
+    moveBox(state.boxPer, state, 0.02);
 };
 
 var moveBox = function (box, state, secs) {
@@ -153,26 +157,20 @@ var moveBox = function (box, state, secs) {
         box.x = canvas.width + box.w;
     }
     if (box.y > canvas.height + box.h) {
-        box.y = box.h* -1;
+        box.y = box.h * -1;
     }
     if (box.y < box.h * -1) {
         box.y = canvas.height + box.h;
     }
     box.x += Math.cos(box.heading) * box.pps * secs;
-    box.y += Math.sin(box.heading - Math.PI / 2) * box.pps * secs;
-
+    box.y += Math.sin(box.heading) * box.pps * secs;
 };
 
 var loop = function () {
 
     requestAnimationFrame(loop);
 
-    var cp = state.currentPoint = state.points[Math.floor(state.bias * (state.points.length - 1))];
-    state.boxLogPer.pps = 512 * cp.logPer;
-    state.boxPer.pps = 512 * cp.per;
-
-    moveBox(state.boxLogPer, state, 0.02);
-    moveBox(state.boxPer, state, 0.02);
+    state.currentPoint = state.points[Math.floor(state.bias * (state.points.length - 1))];
 
     draw.back(ctx, canvas);
     draw.logPerPoints(ctx, state);
