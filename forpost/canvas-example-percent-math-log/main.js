@@ -49,8 +49,15 @@ draw.points = function (ctx, points) {
     }
     ctx.stroke();
 };
-draw.info = function (ctx, state) {
+draw.currentPoint = function (ctx, state) {
+    var cp = state.currentPoint;
+    ctx.strokeStyle = 'white';
+    ctx.beginPath();
+    ctx.arc(cp.x, cp.y, 5, 0, Math.PI * 2);
+    ctx.stroke();
 
+};
+draw.info = function (ctx, state) {
     ctx.fillStyle = 'white';
     ctx.textBaseline = 'top';
     ctx.fillText('v' + state.ver, 10, 10);
@@ -67,13 +74,15 @@ canvas.height = 240;
 ctx.translate(0.5, 0.5);
 
 var state = {
-    ver: '0.0.0',
+    ver: '0.1.0',
+    points: [],
     a: 2,
     b: 10,
     maxHigh: 5,
     bias: 0,
     per: 0,
     i: 0,
+    currentPoint: {},
     box: {
         x: 60,
         y: 20,
@@ -81,24 +90,32 @@ var state = {
         h: 200
     }
 };
+
+state.points = utils.createLogPerPoints(state.a, state.b, state.box.x, state.box.y, state.box.w, state.box.h, 100);
+
+var update = function (state) {
+
+    state.i += 1;
+    state.i %= 120;
+    state.per = state.i / 120;
+    state.bias = 1 - Math.abs(0.5 - state.per) / 0.5;
+    //state.a = 2 + 3 * state.bias;
+    //state.b = state.a;
+};
+
 var loop = function () {
 
-    var points = utils.createLogPerPoints(state.a, state.b, state.box.x, state.box.y, state.box.w, state.box.h, 100);
-
     requestAnimationFrame(loop);
+    state.currentPoint = state.points[Math.floor(state.bias * (state.points.length - 1))];
 
     draw.back(ctx, canvas);
     draw.box(ctx, state.box);
 
-    draw.points(ctx, points);
+    draw.points(ctx, state.points);
+    draw.currentPoint(ctx, state);
     draw.info(ctx, state);
 
-    state.i += 1;
-    state.i %= 1000;
-    state.per = state.i / 1000;
-    state.bias = 1 - Math.abs(0.5 - state.per) / 0.5;
-    state.a = 2 + 3 * state.bias;
-    state.b = state.a;
+    update(state);
 };
 
 loop();
