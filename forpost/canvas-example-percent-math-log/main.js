@@ -55,7 +55,6 @@ draw.points = function (ctx, points) {
     ctx.stroke();
 };
 draw.logPerPoints = function (ctx, state) {
-
     draw.box(ctx, state.box);
     draw.points(ctx, state.points);
     ctx.strokeStyle = 'lime';
@@ -65,13 +64,16 @@ draw.logPerPoints = function (ctx, state) {
                 y: point.perY
             }
         }));
-    draw.currentPoint(ctx, state);
+    draw.currentPoints(ctx, state);
 };
-draw.currentPoint = function (ctx, state) {
+draw.currentPoints = function (ctx, state) {
     var cp = state.currentPoint;
     ctx.strokeStyle = 'white';
     ctx.beginPath();
     ctx.arc(cp.x, cp.y, 5, 0, Math.PI * 2);
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.arc(cp.x, cp.perY, 5, 0, Math.PI * 2);
     ctx.stroke();
 
 };
@@ -82,7 +84,6 @@ draw.info = function (ctx, state) {
     ctx.fillText('v' + state.ver, 10, 10);
     ctx.fillText('a: ' + state.a.toFixed(2) + ', b: ' + state.b.toFixed(2), 10, 20);
     ctx.fillText('current: ' + Math.floor(cp.x) + ',' + Math.floor(cp.y), 10, 30);
-
 };
 
 var canvas = document.createElement('canvas'),
