@@ -18,11 +18,22 @@ var genSheets = (function () {
     sheet.cellSize = 32;
 
     ctx.fillStyle = '#008800';
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.fillRect(-1, -1, canvas.width+1, canvas.height+1);
     ctx.strokeStyle = 'lime';
-    ctx.beginPath();
-    ctx.rect(2, 2, 28, 28);
-    ctx.stroke();
+
+    var i = 0,
+    s;
+    while (i < sheet.cellWidth) {
+
+        ctx.save();
+        ctx.translate(16 + 32 * i, 16);
+        s = 28 - 14 * (i / sheet.cellWidth);
+        ctx.beginPath();
+        ctx.rect(-14, -14, s, s);
+        ctx.stroke();
+        ctx.restore();
+        i += 1;
+    }
 
     sheets.push(sheet);
     return {

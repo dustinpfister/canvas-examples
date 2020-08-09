@@ -68,7 +68,7 @@ var draw = (function () {
                 ctx.fill();
                 ctx.closePath();
                  */
-                ctx.drawImage(sheets[0].canvas, 0, 0, 32, 32, x, y, map.cellSize, map.cellSize);
+                ctx.drawImage(sheets[0].canvas, 32 * 0, 0, 32, 32, x, y, map.cellSize, map.cellSize);
 
                 //drawCellHealthBar(ctx, map, cell, cross);
 
