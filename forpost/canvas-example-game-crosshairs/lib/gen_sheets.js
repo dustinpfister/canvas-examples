@@ -1,26 +1,29 @@
 var genSheets = (function () {
 
-    var sheets = [];
-    var sheet = {},
-    canvas = document.createElement('canvas'),
-    ctx = canvas.getContext('2d');
-    canvas.width = 32 * 10;
-    canvas.height = 32 * 1;
-    ctx.translate(0.5, 0.5);
-
-    sheet.canvas = canvas;
-    sheet.cellType = {
-        type: 'grass',
-        i: 0
+    var createSheet = function (cellSize, cw, ch) {
+        var sheet = {},
+        canvas = document.createElement('canvas'),
+        ctx = canvas.getContext('2d');
+        canvas.width = cellSize * cw;
+        canvas.height = cellSize * ch;
+        ctx.translate(0.5, 0.5);
+        sheet.canvas = canvas;
+        sheet.ctx = ctx;
+        sheet.cellWidth = cw;
+        sheet.cellHeight = ch;
+        sheet.cellSize = cellSize;
+        return sheet;
     };
-    sheet.cellWidth = 10;
-    sheet.cellHeight = 1;
-    sheet.cellSize = 32;
+
+    var sheets = [];
+
+    var sheet = createSheet(32, 10, 1),
+    canvas = sheet.canvas,
+    ctx = sheet.ctx;
 
     ctx.fillStyle = '#008800';
-    ctx.fillRect(-1, -1, canvas.width+1, canvas.height+1);
+    ctx.fillRect(-1, -1, canvas.width + 1, canvas.height + 1);
     ctx.strokeStyle = 'lime';
-
     var i = 0,
     s;
     while (i < sheet.cellWidth) {
