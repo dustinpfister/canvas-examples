@@ -11,14 +11,19 @@ utils.createLogPerPoints = function (a, b, sx, sy, w, h, len) {
     i = 0,
     x,
     y,
-    per;
+    per,
+    logPer;
     while (i < len) {
         per = i / len;
+        logPer = utils.logPer(per, a, b);
         x = sx + w / (len - 1) * i;
-        y = sy + h - utils.logPer(per, a, b) * h;
+        y = sy + h - logPer * h;
         points.push({
             x: x,
-            y: y
+            y: y,
+            per: per,
+            logPer: logPer,
+            perY: sy + h - h * per
         });
         i += 1;
     }
@@ -58,10 +63,12 @@ draw.currentPoint = function (ctx, state) {
 
 };
 draw.info = function (ctx, state) {
+    var cp = state.currentPoint;
     ctx.fillStyle = 'white';
     ctx.textBaseline = 'top';
     ctx.fillText('v' + state.ver, 10, 10);
     ctx.fillText('a: ' + state.a.toFixed(2), 10, 20);
+    ctx.fillText('current: ' + Math.floor(cp.x) + ',' + Math.floor(cp.y), 10, 30);
 
 };
 
@@ -77,7 +84,7 @@ var state = {
     ver: '0.1.0',
     points: [],
     a: 2,
-    b: 10,
+    b: 2,
     maxHigh: 5,
     bias: 0,
     per: 0,
