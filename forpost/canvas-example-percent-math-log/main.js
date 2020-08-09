@@ -55,7 +55,7 @@ draw.points = function (ctx, points) {
     ctx.stroke();
 };
 draw.logPerPoints = function (ctx, state) {
-    draw.box(ctx, state.box);
+    draw.box(ctx, state.backBox);
     draw.points(ctx, state.points);
     ctx.strokeStyle = 'lime';
     draw.points(ctx, state.points.map(function (point) {
@@ -104,7 +104,7 @@ var state = {
     per: 0,
     i: 0,
     currentPoint: {},
-    box: {
+    backBox: {
         x: 60,
         y: 20,
         w: 200,
@@ -112,7 +112,7 @@ var state = {
     }
 };
 
-state.points = utils.createLogPerPoints(state.a, state.b, state.box.x, state.box.y, state.box.w, state.box.h, 100);
+state.points = utils.createLogPerPoints(state.a, state.b, state.backBox.x, state.backBox.y, state.backBox.w, state.backBox.h, 100);
 
 var update = function (state) {
 
