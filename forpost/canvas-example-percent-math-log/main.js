@@ -37,9 +37,13 @@ draw.back = function (ctx, canvas) {
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 };
 
-draw.box = function (ctx, box) {
-    ctx.fillStyle = 'grey';
-    ctx.fillRect(box.x, box.y, box.w, box.h);
+draw.box = function (ctx, box, style) {
+    ctx.fillStyle = style || 'grey';
+    ctx.strokeStyle = '#afafaf';
+    ctx.beginPath();
+    ctx.rect(box.x, box.y, box.w, box.h);
+    ctx.fill();
+    ctx.stroke();
     ctx.strokeStyle = 'red';
 };
 
@@ -79,7 +83,7 @@ draw.currentPoints = function (ctx, state) {
 };
 draw.info = function (ctx, state) {
     var cp = state.currentPoint;
-    ctx.fillStyle = 'white';
+    ctx.fillStyle = 'rgba(255,255,255,1)';
     ctx.textBaseline = 'top';
     ctx.fillText('v' + state.ver, 10, 10);
     ctx.fillText('a: ' + state.a.toFixed(2) + ', b: ' + state.b.toFixed(2), 10, 20);
@@ -109,6 +113,22 @@ var state = {
         y: 20,
         w: 200,
         h: 200
+    },
+    boxPer: {
+        x: 0,
+        y: 0,
+        w: 32,
+        h: 32,
+        heading: 0,
+        pps: 0
+    },
+    boxLogPer: {
+        x: 0,
+        y: 32,
+        w: 32,
+        h: 32,
+        heading: 0,
+        pps: 0
     }
 };
 
@@ -131,6 +151,8 @@ var loop = function () {
 
     draw.back(ctx, canvas);
     draw.logPerPoints(ctx, state);
+    draw.box(ctx, state.boxLogPer, 'red');
+    draw.box(ctx, state.boxPer, 'lime');
     draw.info(ctx, state);
 
     update(state);
