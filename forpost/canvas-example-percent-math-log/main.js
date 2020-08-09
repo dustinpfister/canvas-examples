@@ -108,6 +108,7 @@ var state = {
     bias: 0,
     per: 0,
     i: 0,
+    iMax: 250,
     currentPoint: {},
     backBox: {
         x: 60,
@@ -139,8 +140,8 @@ var update = function (state) {
 
     var cp = state.currentPoint;
     state.i += 1;
-    state.i %= 1000;
-    state.per = state.i / 1000;
+    state.i %= state.iMax;
+    state.per = state.i / state.iMax;
     state.bias = 1 - Math.abs(0.5 - state.per) / 0.5;
     state.boxLogPer.pps = 512 * cp.logPer;
     state.boxPer.pps = 512 * cp.per;
