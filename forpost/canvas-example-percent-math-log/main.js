@@ -90,7 +90,10 @@ draw.info = function (ctx, state) {
     ctx.fillText('current: ' + Math.floor(cp.x) + ',' + Math.floor(cp.y), 10, 30);
 };
 
-var createState = function (canvas) {
+
+var demo = {};
+
+demo.createState = function (canvas) {
     var state = {
         ver: '0.1.0',
         canvas: canvas,
@@ -133,7 +136,7 @@ var createState = function (canvas) {
     return state;
 };
 
-var update = function (state, secs) {
+demo.update = function (state, secs) {
 
     var cp = state.currentPoint;
     state.i += state.IPS * secs;
@@ -143,11 +146,11 @@ var update = function (state, secs) {
     state.boxLogPer.pps = 512 * cp.logPer;
     state.boxPer.pps = 512 * cp.per;
     //state.boxLogPer.heading = state.boxPer.heading = Math.PI / 20 * state.bias;
-    moveBox(state.boxLogPer, state, secs);
-    moveBox(state.boxPer, state, secs);
+    demo.moveBox(state.boxLogPer, state, secs);
+    demo.moveBox(state.boxPer, state, secs);
 };
 
-var moveBox = function (box, state, secs) {
+demo.moveBox = function (box, state, secs) {
     if (box.x > canvas.width + box.w) {
         box.x = box.w * -1;
     }
@@ -173,7 +176,7 @@ canvas.width = 320;
 canvas.height = 240;
 ctx.translate(0.5, 0.5);
 
-var state = createState(canvas);
+var state = demo.createState(canvas);
 var loop = function () {
 
     var now = new Date(),
@@ -189,7 +192,7 @@ var loop = function () {
         draw.box(ctx, state.boxLogPer, 'red');
         draw.box(ctx, state.boxPer, 'lime');
         draw.info(ctx, state);
-        update(state, secs);
+        demo.update(state, secs);
         state.lt = now;
     }
 };
