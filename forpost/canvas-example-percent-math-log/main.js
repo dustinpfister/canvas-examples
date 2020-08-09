@@ -90,54 +90,48 @@ draw.info = function (ctx, state) {
     ctx.fillText('current: ' + Math.floor(cp.x) + ',' + Math.floor(cp.y), 10, 30);
 };
 
-var canvas = document.createElement('canvas'),
-ctx = canvas.getContext('2d'),
-container = document.getElementById('canvas-app') || document.body;
-container.appendChild(canvas);
-canvas.width = 320;
-canvas.height = 240;
-ctx.translate(0.5, 0.5);
-
-var state = {
-    ver: '0.1.0',
-    canvas: canvas,
-    points: [],
-    a: 2.2,
-    b: 2.5,
-    maxHigh: 5,
-    bias: 0,
-    per: 0,
-    i: 0,
-    iMax: 250,
-    IPS: 10,
-    lt: new Date(),
-    FPS: 30,
-    currentPoint: {},
-    backBox: {
-        x: 60,
-        y: 20,
-        w: 200,
-        h: 200
-    },
-    boxPer: {
-        x: 0,
-        y: 64,
-        w: 32,
-        h: 32,
-        heading: 0,
-        pps: 0
-    },
-    boxLogPer: {
-        x: 0,
-        y: 128,
-        w: 32,
-        h: 32,
-        heading: 0,
-        pps: 0
-    }
+var createState = function (canvas) {
+    var state = {
+        ver: '0.1.0',
+        canvas: canvas,
+        points: [],
+        a: 2.2,
+        b: 2.5,
+        maxHigh: 5,
+        bias: 0,
+        per: 0,
+        i: 0,
+        iMax: 250,
+        IPS: 10,
+        lt: new Date(),
+        FPS: 30,
+        currentPoint: {},
+        backBox: {
+            x: 60,
+            y: 20,
+            w: 200,
+            h: 200
+        },
+        boxPer: {
+            x: 0,
+            y: 64,
+            w: 32,
+            h: 32,
+            heading: 0,
+            pps: 0
+        },
+        boxLogPer: {
+            x: 0,
+            y: 128,
+            w: 32,
+            h: 32,
+            heading: 0,
+            pps: 0
+        }
+    };
+    state.points = utils.createLogPerPoints(state.a, state.b, state.backBox.x, state.backBox.y, state.backBox.w, state.backBox.h, 100);
+    return state;
 };
-
-state.points = utils.createLogPerPoints(state.a, state.b, state.backBox.x, state.backBox.y, state.backBox.w, state.backBox.h, 100);
 
 var update = function (state, secs) {
 
@@ -170,6 +164,16 @@ var moveBox = function (box, state, secs) {
     box.y += Math.sin(box.heading) * box.pps * secs;
 };
 
+
+var canvas = document.createElement('canvas'),
+ctx = canvas.getContext('2d'),
+container = document.getElementById('canvas-app') || document.body;
+container.appendChild(canvas);
+canvas.width = 320;
+canvas.height = 240;
+ctx.translate(0.5, 0.5);
+
+var state = createState(canvas);
 var loop = function () {
 
     var now = new Date(),
