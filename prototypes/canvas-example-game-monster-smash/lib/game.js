@@ -21,11 +21,9 @@ var gameMod = (function () {
 
     // start game helper
     var setupGame = function (game) {
-
         game.mapIndex = 0;
         var map = game.maps[game.mapIndex];
         map.cells[0].unit = game.player;
-
     };
 
     // create a new game state
