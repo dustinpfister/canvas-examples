@@ -7,8 +7,11 @@
 * (done) have a basic map.js module that creates a map object of cells that can be formed into a grid
 * (done) have a game.js module that where 1 map objects are created as part of the state
 * (done) have a createUnit method in game.js that will create and return a base unit object
+* (done) have a player object in game.js create with base stats, but also all player stats
 
-* have a player object in game.js create with base stats, but also all player stats
+* have player object start in map index 0, and have that map index as the starting index
+* draw the player object in the map
+* add mouse, and touch events first, and have them move the player object
 
 * have a monsters object pool in game.js
 * have a weapons array with one weapon object that is used by monsters and player

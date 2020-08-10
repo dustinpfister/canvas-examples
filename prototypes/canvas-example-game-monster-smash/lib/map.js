@@ -10,7 +10,8 @@ var mapMod = (function () {
             cells.push({
                 i: i,
                 x: i % map.w,
-                y: Math.floor(i / map.w)
+                y: Math.floor(i / map.w),
+                unit: false // reference to current unit here or false if empty
             });
             i += 1;
         }
