@@ -191,14 +191,40 @@ var breakout = (function () {
         };
     };
 
+    var pointerHandlers = {
+        start: function (state, e) {
+            state.input.pointerDown = true;
+        },
+        move: function (state, e) {
+            // just need to update state.input.pos in main hander
+            // put we can expand here later of needed
+        },
+        end: function (state, e) {
+            state.input.pointerDown = false;
+            state.input.left = false;
+            state.input.right = false;
+        }
+    };
+
+    var createPointerHandler = function (state, type) {
+        return function (e) {
+            var pos = state.input.pos = util.getCanvasRelative(e);
+            e.preventDefault();
+            pointerHandlers[type](state, e, pos);
+        };
+    };
+
     var api = {};
 
     // create a new game state
     api.createNewState = function (canvas) {
+
         canvas = canvas || {
             width: 320,
             height: 240
         };
+
+        // create the state object
         var state = {
             ver: '0.1.0',
             score: 0,
@@ -213,7 +239,38 @@ var breakout = (function () {
             blocks: [],
             paddle: {}
         };
+
+        // set game for first time
         setGame(state);
+
+        // attach pointer handlers
+        canvas.addEventListener('mousedown', createPointerHandler(state, 'start'));
+        canvas.addEventListener('mousemove', createPointerHandler(state, 'move'));
+        canvas.addEventListener('mouseup', createPointerHandler(state, 'end'));
+        canvas.addEventListener('touchstart', createPointerHandler(state, 'start'));
+        canvas.addEventListener('touchmove', createPointerHandler(state, 'move'));
+        canvas.addEventListener('touchend', createPointerHandler(state, 'end'));
+
+        // keyboard handlers
+        window.addEventListener('keydown', function (e) {
+            var key = e.key.toLowerCase();
+            if (key === 'a') {
+                state.input.left = true;
+            }
+            if (key === 'd') {
+                state.input.right = true;
+            }
+        });
+        window.addEventListener('keyup', function (e) {
+            var key = e.key.toLowerCase();
+            if (key === 'a') {
+                state.input.left = false;
+            }
+            if (key === 'd') {
+                state.input.right = false;
+            }
+        });
+
         return state;
     };
 
