@@ -8,9 +8,9 @@
 * (done) have a game.js module that where 1 map objects are created as part of the state
 * (done) have a createUnit method in game.js that will create and return a base unit object
 * (done) have a player object in game.js create with base stats, but also all player stats
+* (done) have player object start in map index 0, and have that map index as the starting index
+* (done) draw the player object in the map
 
-* have player object start in map index 0, and have that map index as the starting index
-* draw the player object in the map
 * add mouse, and touch events first, and have them move the player object
 
 * have a monsters object pool in game.js

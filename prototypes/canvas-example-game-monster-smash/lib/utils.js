@@ -17,3 +17,13 @@ utils.clamp = function (obj, box) {
     obj.x = obj.x < box.x ? box.x : obj.x;
     obj.y = obj.y < box.y ? box.y : obj.y;
 };
+
+utils.getCanvasRelative = function (e) {
+    var canvas = e.target,
+    bx = canvas.getBoundingClientRect();
+    return {
+        x: (e.changedTouches ? e.changedTouches[0].clientX : e.clientX) - bx.left,
+        y: (e.changedTouches ? e.changedTouches[0].clientY : e.clientY) - bx.top,
+        bx: bx
+    };
+};

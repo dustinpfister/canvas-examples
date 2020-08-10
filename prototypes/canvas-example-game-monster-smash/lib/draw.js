@@ -16,7 +16,6 @@ var draw = (function () {
             var canvas = sm.canvas,
             ctx = sm.ctx,
             map = sm.game.maps[sm.game.mapIndex];
-
             var cs = map.cellSize,
             i = 0,
             x,
@@ -27,26 +26,32 @@ var draw = (function () {
                 cell = map.cells[i];
                 x = map.margin.x + cell.x * cs;
                 y = map.margin.y + cell.y * cs;
-
+                // draw base cell
                 ctx.fillStyle = 'green';
                 ctx.beginPath();
                 ctx.rect(x, y, 32, 32);
                 ctx.fill();
                 ctx.stroke();
-
+                // if we have a unit
                 if (cell.unit) {
-
                     ctx.fillStyle = unitColors[cell.unit.sheetIndex];
                     ctx.beginPath();
                     ctx.rect(x, y, 32, 32);
                     ctx.fill();
                     ctx.stroke();
-
                 }
-
                 i += 1;
             }
+        },
+
+        info: function (sm) {
+            var ctx = sm.ctx;
+            ctx.fillStyle = 'white';
+            ctx.font = '10px courier';
+            ctx.textBaseline = 'top';
+            ctx.fillText(sm.input.pointerDown, 10, 10);
         }
+
     }
 }
     ());
