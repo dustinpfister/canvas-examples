@@ -13,7 +13,7 @@ console.log(game);
 var loop = function () {
     requestAnimationFrame(loop);
     draw.back(ctx, canvas);
-
+    draw.map(ctx, game.maps[0]);
 };
 
 loop();

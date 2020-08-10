@@ -20,8 +20,13 @@ var mapMod = (function () {
     api.create = function (opt) {
         opt = opt || {};
         var map = {
-            w: opt.w || 10,
-            h: opt.h || 8,
+            w: opt.w || 9,
+            h: opt.h || 7,
+            cellSize: 32,
+            margin: {
+                x: 5,
+                y: 5
+            },
             cells: []
         };
         map.cells = createCells(map);
