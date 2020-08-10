@@ -49,7 +49,7 @@ var breakout = (function () {
         paddle.x += paddle.pps * secs * d;
         // bounds
         if (paddle.x + paddle.w > state.canvas.width) {
-            paddle.x = canvas.width - paddle.w;
+            paddle.x = state.canvas.width - paddle.w;
         }
         if (paddle.x < 0) {
             paddle.x = 0;
@@ -226,7 +226,7 @@ var breakout = (function () {
 
         // create the state object
         var state = {
-            ver: '0.1.0',
+            ver: '0.1.1',
             score: 0,
             input: {
                 pointerDown: false,

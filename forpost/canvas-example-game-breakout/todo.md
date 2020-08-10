@@ -10,6 +10,10 @@
 * will return to title state when the player looses
 * make a new pkg_0_2_0.html
 
+## 0.1.1 - Fix canvas undefined bug
+* (done) fix bug canvas undefined bug when paddle hits a wall
+* (done) make new pkg_0_1_1.html file
+
 ## 0.1.0 - basic idea working
 * (done) add pointer (mouse + touch) support
 * (done) add FPS Capping
