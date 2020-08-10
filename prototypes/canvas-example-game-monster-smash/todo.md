@@ -11,7 +11,8 @@
 * (done) have player object start in map index 0, and have that map index as the starting index
 * (done) draw the player object in the map
 
-* add mouse, and touch events first, and have them move the player object
+* add mouse, and touch events first.
+* move the player object with pointer events
 
 * have a monsters object pool in game.js
 * have a weapons array with one weapon object that is used by monsters and player

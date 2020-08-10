@@ -50,7 +50,8 @@ var draw = (function () {
             ctx.fillStyle = 'white';
             ctx.font = '10px courier';
             ctx.textBaseline = 'top';
-            ctx.fillText(sm.input.pointerDown, 10, 10);
+            var pos = sm.input.pos;
+            ctx.fillText('pointerDown: ' + sm.input.pointerDown + ' pos: ' + pos.x + ',' + pos.y, 10, 10);
             ctx.fillText('v' + sm.ver, 1, canvas.height - 11);
         }
 
