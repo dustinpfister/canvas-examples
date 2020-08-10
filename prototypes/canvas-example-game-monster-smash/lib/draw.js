@@ -1,13 +1,19 @@
 var draw = (function () {
     return {
         // draw background
-        back: function (ctx, canvas) {
+        back: function (sm) {
+            var canvas = sm.canvas,
+            ctx = sm.ctx;
             ctx.fillStyle = 'black';
             ctx.fillRect(0, 0, canvas.width, canvas.height);
         },
 
         // draw a map
-        map: function (ctx, map) {
+        map: function (sm) {
+            var canvas = sm.canvas,
+            ctx = sm.ctx,
+            map = sm.game.maps[sm.game.mapIndex];
+
             var cs = map.cellSize,
             i = 0,
             x,
