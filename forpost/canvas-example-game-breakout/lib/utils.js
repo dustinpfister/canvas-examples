@@ -22,4 +22,4 @@ util.distance = function (x1, y1, x2, y2) {
 // normalize angle method
 util.angleNormalize = function (a, scale) {
     return util.mod(a, scale || util.TAU);
-}
+};
