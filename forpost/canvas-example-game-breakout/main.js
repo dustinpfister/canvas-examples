@@ -40,6 +40,6 @@ var loop = function () {
     draw.blocks(ctx, state);
     draw.paddle(ctx, state);
     draw.balls(ctx, state);
-    draw.info(ctx, state);
+    draw.info(ctx, canvas, state);
 };
 loop();

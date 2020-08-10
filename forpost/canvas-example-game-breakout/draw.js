@@ -41,9 +41,10 @@ draw.balls = function (ctx, state) {
     });
 };
 
-draw.info = function (ctx, state) {
+draw.info = function (ctx, canvas, state) {
     ctx.fillStyle = 'white';
-    ctx.font = '15px arial';
+    ctx.font = '10px arial';
     ctx.textBaseline = 'top';
-    ctx.fillText(state.score, 10, 10);
+    ctx.fillText('v' + state.ver, 5, canvas.height - 15);
+    ctx.fillText(state.score, 5, 5);
 };

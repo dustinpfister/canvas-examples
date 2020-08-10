@@ -200,6 +200,7 @@ var breakout = (function () {
             height: 240
         };
         var state = {
+            ver: '0.0.0',
             score: 0,
             input: {
                 left: false,
