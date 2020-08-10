@@ -32,11 +32,14 @@ window.addEventListener('keyup', function (e) {
 
 var pointerHandlers = {
     start: function (state, e) {
-        state.pointerDown = true;
+        state.input.pointerDown = true;
     },
-    move: function (state, e) {},
+    move: function (state, e) {
+        // just need to update state.input.pos in main hander
+        // put we can expand here later of needed
+    },
     end: function (state, e) {
-        state.pointerDown = false;
+        state.input.pointerDown = false;
         state.input.left = false;
         state.input.right = false;
     }
@@ -45,6 +48,7 @@ var pointerHandlers = {
 var createPointerHandler = function (state, type) {
     return function (e) {
         var pos = state.input.pos = util.getCanvasRelative(e);
+        e.preventDefault();
         pointerHandlers[type](state, e, pos);
     };
 };
@@ -52,10 +56,8 @@ var createPointerHandler = function (state, type) {
 canvas.addEventListener('mousedown', createPointerHandler(state, 'start'));
 canvas.addEventListener('mousemove', createPointerHandler(state, 'move'));
 canvas.addEventListener('mouseup', createPointerHandler(state, 'end'));
-
-
 canvas.addEventListener('touchstart', createPointerHandler(state, 'start'));
-canvas.addEventListener('tocuhmove', createPointerHandler(state, 'move'));
+canvas.addEventListener('touchmove', createPointerHandler(state, 'move'));
 canvas.addEventListener('touchend', createPointerHandler(state, 'end'));
 
 var lt = new Date();

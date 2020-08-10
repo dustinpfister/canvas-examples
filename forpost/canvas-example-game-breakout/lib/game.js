@@ -220,7 +220,7 @@ var breakout = (function () {
     // Pointer movement helper
     var pointerMove = function (state) {
         var pos = state.input.pos;
-        if (state.pointerDown) {
+        if (state.input.pointerDown) {
             state.input.left = false;
             state.input.right = false;
             if (pos.x < state.paddle.x + state.paddle.w / 3) {
