@@ -204,6 +204,7 @@ var breakout = (function () {
             score: 0,
             input: {
                 pointerDown: false,
+                pos: {},
                 left: false,
                 right: false
             },
@@ -216,12 +217,30 @@ var breakout = (function () {
         return state;
     };
 
+    var pointerMove = function (state) {
+        var pos = state.input.pos;
+        if (state.pointerDown) {
+            state.input.left = false;
+            state.input.right = false;
+            if (pos.x < state.paddle.x) {
+                state.input.left = true;
+                state.input.right = false;
+            }
+
+            if (pos.x > state.paddle.x + state.paddle.w) {
+                state.input.left = false;
+                state.input.right = true;
+            }
+        }
+    };
+
     // update the given state object with the given amount of time
     // passed sense last update in seconds
     api.update = function (state, secs) {
 
         movePaddle(state, secs);
         moveBalls(state, secs);
+        pointerMove(state);
 
     };
 

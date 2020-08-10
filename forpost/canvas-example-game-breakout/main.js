@@ -30,29 +30,11 @@ window.addEventListener('keyup', function (e) {
     }
 });
 
-var pointerMove = function (state, pos) {
-    state.input.left = false;
-    state.input.right = false;
-    if (pos.x < state.paddle.x) {
-        state.input.left = true;
-        state.input.right = false;
-    }
 
-    if (pos.x > state.paddle.x + state.paddle.w) {
-        state.input.left = false;
-        state.input.right = true;
-    }
-};
 
 var pointerHandlers = {
     start: function (state, e, pos) {
         state.pointerDown = true;
-        pointerMove(state, pos);
-    },
-    move: function (state, e, pos) {
-        if (state.pointerDown) {
-            pointerMove(state, pos);
-        }
     },
     end: function (state, e) {
         state.pointerDown = false;
@@ -63,13 +45,12 @@ var pointerHandlers = {
 
 var createPointerHandler = function (state, type) {
     return function (e) {
-        var pos = util.getCanvasRelative(e);
+        var pos = state.input.pos = util.getCanvasRelative(e);
         pointerHandlers[type](state, e, pos);
     };
 };
 
 canvas.addEventListener('mousedown', createPointerHandler(state, 'start'));
-canvas.addEventListener('mousemove', createPointerHandler(state, 'move'));
 canvas.addEventListener('mouseup', createPointerHandler(state, 'end'));
 
 var lt = new Date();
