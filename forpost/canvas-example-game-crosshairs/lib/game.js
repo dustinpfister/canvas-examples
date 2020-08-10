@@ -326,7 +326,7 @@ var gameMod = (function () {
                 totalDamage: 0,
                 userDown: false,
                 autoPlay: {
-                    enabled: false,
+                    enabled: true,
                     delay: 10,
                     maxDelay: 10,
                     mode: 'move',

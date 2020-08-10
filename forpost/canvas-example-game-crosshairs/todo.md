@@ -50,8 +50,8 @@
 ## 0.8.0 - Pixel graphics
 * (done) hardSet.maxSecs value put in to limit the secs value in updates which fix a bug where to much damage was being applied
 * (done) have a system for creating pixle graphics in place of solid colors for map cells
-* generate sheets for each cell type
-* SheetIndex for cells based on cellType, and cell index in sheet based on HP (forNow)
+* (done) generate sheets for each cell type
+* (done) SheetIndex for cells based on cellType, and cell index in sheet based on HP (forNow)
 * a Sheet for shots
 * a Sheet for crossHairs
 * I am thinking some kind of string system like this (maybe)
