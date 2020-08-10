@@ -30,6 +30,44 @@ window.addEventListener('keyup', function (e) {
     }
 });
 
+var pointerMove = function (state, pos) {
+    if (pos.x < canvas.width / 2) {
+        state.input.left = true;
+        state.input.right = false;
+    } else {
+        state.input.left = false;
+        state.input.right = true;
+    }
+};
+
+var pointerHandlers = {
+    start: function (state, e, pos) {
+        state.pointerDown = true;
+        pointerMove(state, pos);
+    },
+    move: function (state, e, pos) {
+        if (state.pointerDown) {
+            pointerMove(state, pos);
+        }
+    },
+    end: function (state, e) {
+        state.pointerDown = false;
+        state.input.left = false;
+        state.input.right = false;
+    }
+};
+
+var createPointerHandler = function (state, type) {
+    return function (e) {
+        var pos = util.getCanvasRelative(e);
+        pointerHandlers[type](state, e, pos);
+    };
+};
+
+canvas.addEventListener('mousedown', createPointerHandler(state, 'start'));
+canvas.addEventListener('mousemove', createPointerHandler(state, 'move'));
+canvas.addEventListener('mouseend', createPointerHandler(state, 'end'));
+
 var lt = new Date();
 var loop = function () {
     var now = new Date();

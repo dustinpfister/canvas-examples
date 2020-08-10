@@ -1,7 +1,11 @@
 # todo list for canvas-example-game-breakout  - basic example
 
-## 0.0.0 - basic idea working
 
+## 0.1.0 - basic idea working
+* add pointer (mouse + touch) support
+* make a pkg_0_1_0.html
+
+## 0.0.0 - basic idea working
 * (done) git hit detection working for paddle
 * (done) get ball bounds and deflection working
 * (done) git hit detection working for blocks

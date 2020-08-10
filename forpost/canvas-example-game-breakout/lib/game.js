@@ -200,9 +200,10 @@ var breakout = (function () {
             height: 240
         };
         var state = {
-            ver: '0.0.0',
+            ver: '0.1.0',
             score: 0,
             input: {
+                pointerDown: false,
                 left: false,
                 right: false
             },
