@@ -24,7 +24,9 @@
 
     var pointerHanders = {
         start: function (sm, e) {
+            var pos = sm.input.pos;
             sm.input.pointerDown = true;
+            gameMod.getCellByPointer(sm.game, pos.x, pos.y)
         },
         move: function (sm, e) {},
         end: function (sm, e) {
