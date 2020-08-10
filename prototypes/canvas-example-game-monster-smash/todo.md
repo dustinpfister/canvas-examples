@@ -1,13 +1,15 @@
 # todo list for canvas-example-monster-smash
 
+## 0.1.0 - more than one map
+* the center map is the starting map that is a safe zone for the player where no monsters are
 
 ## 0.0.0 - basic idea of a maps, and a player, and monster objects.
+* (done) have a basic map.js module that creates a map object of cells that can be formed into a grid
+* (done) have a game.js module that where 1 map objects are created as part of the state
+* (done) have a createUnit method in game.js that will create and return a base unit object
 
-* have a basic map.js module that creates a map object of cells that can be formed into a grid
-* have a game.js module that where 1 map objects are created as part of the state
-* have a createUnit method in game.js that will create and return a base unit object
-* the center map is the starting map that is a safe zone for the player where no monsters are
-* have a player object in game.js
+* have a player object in game.js create with base stats, but also all player stats
+
 * have a monsters object pool in game.js
 * have a weapons array with one weapon object that is used by monsters and player
 * leaving the center map into any other the other maps is a map where monster objects are

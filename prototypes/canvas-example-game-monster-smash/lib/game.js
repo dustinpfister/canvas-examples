@@ -9,6 +9,12 @@ var gameMod = (function () {
         }
     };
 
+    var createPlayerUnit = function () {
+        var player = createBaseUnit();
+        player.active = true;
+        return player;
+    };
+
     var api = {};
 
     // create a new game state
@@ -17,7 +23,8 @@ var gameMod = (function () {
         var game = {
             mode: 'map',
             maps: [],
-            mapIndex: 0
+            mapIndex: 0,
+            player: createPlayerUnit()
         };
         game.maps.push(mapMod.create());
         return game;
