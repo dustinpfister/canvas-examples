@@ -26,7 +26,6 @@ var draw = (function () {
 
     var cellTypeColors = ['green', 'blue', 'red'],
     sheets = genSheets.sheets;
-    console.log(sheets);
 
     return {
         // draw background
@@ -69,7 +68,7 @@ var draw = (function () {
                 ctx.closePath();
                  */
                 if (cell.active) {
-                    ctx.drawImage(sheets[0].canvas, 32 * Math.floor(9 - cell.HP / cell.maxHP * 9), 0, 32, 32, x, y, map.cellSize, map.cellSize);
+                    ctx.drawImage(sheets[cell.typeIndex].canvas, 32 * Math.floor(9 - cell.HP / cell.maxHP * 9), 0, 32, 32, x, y, map.cellSize, map.cellSize);
 
                 }
 
