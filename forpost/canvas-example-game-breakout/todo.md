@@ -2,7 +2,8 @@
 
 
 ## 0.1.0 - basic idea working
-* add pointer (mouse + touch) support
+* (done) add pointer (mouse + touch) support
+* add FPS Capping
 * make a pkg_0_1_0.html
 
 ## 0.0.0 - basic idea working
