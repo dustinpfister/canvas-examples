@@ -30,12 +30,11 @@ window.addEventListener('keyup', function (e) {
     }
 });
 
-
-
 var pointerHandlers = {
-    start: function (state, e, pos) {
+    start: function (state, e) {
         state.pointerDown = true;
     },
+    move: function (state, e) {},
     end: function (state, e) {
         state.pointerDown = false;
         state.input.left = false;
@@ -51,7 +50,13 @@ var createPointerHandler = function (state, type) {
 };
 
 canvas.addEventListener('mousedown', createPointerHandler(state, 'start'));
+canvas.addEventListener('mousemove', createPointerHandler(state, 'move'));
 canvas.addEventListener('mouseup', createPointerHandler(state, 'end'));
+
+
+canvas.addEventListener('touchstart', createPointerHandler(state, 'start'));
+canvas.addEventListener('tocuhmove', createPointerHandler(state, 'move'));
+canvas.addEventListener('touchend', createPointerHandler(state, 'end'));
 
 var lt = new Date();
 var loop = function () {

@@ -217,17 +217,17 @@ var breakout = (function () {
         return state;
     };
 
+    // Pointer movement helper
     var pointerMove = function (state) {
         var pos = state.input.pos;
         if (state.pointerDown) {
             state.input.left = false;
             state.input.right = false;
-            if (pos.x < state.paddle.x) {
+            if (pos.x < state.paddle.x + state.paddle.w / 3) {
                 state.input.left = true;
                 state.input.right = false;
             }
-
-            if (pos.x > state.paddle.x + state.paddle.w) {
+            if (pos.x > state.paddle.x + state.paddle.w - state.paddle.w / 3) {
                 state.input.left = false;
                 state.input.right = true;
             }
@@ -237,11 +237,9 @@ var breakout = (function () {
     // update the given state object with the given amount of time
     // passed sense last update in seconds
     api.update = function (state, secs) {
-
         movePaddle(state, secs);
         moveBalls(state, secs);
         pointerMove(state);
-
     };
 
     return api;
