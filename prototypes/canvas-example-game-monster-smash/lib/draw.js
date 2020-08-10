@@ -45,11 +45,13 @@ var draw = (function () {
         },
 
         info: function (sm) {
-            var ctx = sm.ctx;
+            var ctx = sm.ctx,
+            canvas = sm.canvas;
             ctx.fillStyle = 'white';
             ctx.font = '10px courier';
             ctx.textBaseline = 'top';
             ctx.fillText(sm.input.pointerDown, 10, 10);
+            ctx.fillText('v' + sm.ver, 1, canvas.height - 11);
         }
 
     }

@@ -9,6 +9,7 @@
     ctx.translate(0.5, 0.5);
 
     var sm = {
+        ver: '0.0.0',
         game: gameMod.create(),
         canvas: canvas,
         ctx: ctx,
@@ -25,8 +26,7 @@
         start: function (sm, e) {
             sm.input.pointerDown = true;
         },
-        move: function (sm, e) {
-        },
+        move: function (sm, e) {},
         end: function (sm, e) {
             sm.input.pointerDown = false;
         }
