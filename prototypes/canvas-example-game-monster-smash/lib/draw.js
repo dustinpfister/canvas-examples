@@ -54,7 +54,8 @@ var draw = (function () {
             ctx.fillText('pointerDown: ' + sm.input.pointerDown + ' pos: ' + pos.x + ',' + pos.y, 10, 10);
             var cell = sm.game.targetCell;
             var target = cell ? cell.x + ',' + cell.y : false;
-            ctx.fillText('target: ' + target, 10, 20);
+
+            //ctx.fillText('target: ' + target, 10, 20);
 
             ctx.fillText('v' + sm.ver, 1, canvas.height - 11);
         }
