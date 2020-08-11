@@ -26,7 +26,11 @@
         start: function (sm, e) {
             var pos = sm.input.pos;
             sm.input.pointerDown = true;
-            mapMod.getCellByPointer(sm.game.maps[sm.game.mapIndex], pos.x, pos.y);
+
+            var cell = mapMod.getCellByPointer(sm.game.maps[sm.game.mapIndex], pos.x, pos.y);
+            if (cell) {
+                sm.game.targetCell = cell;
+            }
         },
         move: function (sm, e) {},
         end: function (sm, e) {

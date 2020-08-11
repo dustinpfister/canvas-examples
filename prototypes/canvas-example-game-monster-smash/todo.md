@@ -11,6 +11,7 @@
 * (done) have player object start in map index 0, and have that map index as the starting index
 * (done) draw the player object in the map
 * (done) add mouse, and touch events first.
+* (done) new map get cell methods
 
 * move the player object with pointer events
 

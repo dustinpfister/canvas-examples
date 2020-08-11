@@ -33,6 +33,7 @@ var gameMod = (function () {
             mode: 'map',
             maps: [],
             mapIndex: 0,
+            targetCell: false, // a reference to the current target cell to move to, or false
             player: createPlayerUnit()
         };
         game.maps.push(mapMod.create());
