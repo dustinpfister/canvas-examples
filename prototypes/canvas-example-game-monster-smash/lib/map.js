@@ -18,6 +18,14 @@ var mapMod = (function () {
         return cells;
     };
 
+    // return a cell at the given position, or false for out of bounds values
+    api.get = function (map, x, y) {
+        if (x < 0 || y < 0 || x >= map.w || y >= map.h) {
+            return false;
+        }
+        return map.cells[y * map.w + x];
+    };
+
     // get a cell in the current map is any by way of the
     // a canvas relative x and y pos
     api.getCellByPointer = function (map, x, y) {
@@ -25,7 +33,7 @@ var mapMod = (function () {
         var cx = Math.floor((x - map.margin.x) / map.cellSize),
         cy = Math.floor((y - map.margin.y) / map.cellSize);
 
-        console.log(cx, cy);
+        console.log(api.get(map, cx, cy));
 
     };
 
