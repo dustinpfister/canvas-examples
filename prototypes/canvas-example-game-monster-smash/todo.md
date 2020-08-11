@@ -30,4 +30,4 @@
 * (done) new map get cell methods
 * (done) gameMod update method started
 * (done) move the player object with pointer events
-* make a pkg_0_0_0.html
+* (done) make a pkg_0_0_0.html

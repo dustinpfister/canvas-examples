@@ -9,7 +9,7 @@
     ctx.translate(0.5, 0.5);
 
     var sm = {
-        ver: '0.0.0',
+        ver: '0.1.0',
         game: gameMod.create(),
         canvas: canvas,
         ctx: ctx,
