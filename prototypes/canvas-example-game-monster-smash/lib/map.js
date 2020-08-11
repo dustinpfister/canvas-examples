@@ -18,6 +18,17 @@ var mapMod = (function () {
         return cells;
     };
 
+    // get a cell in the current map is any by way of the
+    // a canvas relative x and y pos
+    api.getCellByPointer = function (map, x, y) {
+
+        var cx = Math.floor((x - map.margin.x) / map.cellSize),
+        cy = Math.floor((y - map.margin.y) / map.cellSize);
+
+        console.log(cx, cy);
+
+    };
+
     api.create = function (opt) {
         opt = opt || {};
         var map = {
