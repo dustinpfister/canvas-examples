@@ -18,7 +18,7 @@ var gameMod = (function () {
         return player;
     };
 
-    var moveUnit = function (game, unit, x, y) {
+    var placeUnit = function (game, unit, x, y) {
 
         var map = game.maps[game.mapIndex];
 
@@ -44,8 +44,7 @@ var gameMod = (function () {
         game.mapIndex = 0;
         var map = game.maps[game.mapIndex];
 
-        map.cells[11].unit = game.player;
-        game.player.currentCell = map.cells[11];
+        placeUnit(game, game.player, 0, 0);
     };
 
     var api = {};
@@ -78,7 +77,7 @@ var gameMod = (function () {
             var cx = Math.round(cell.x + Math.cos(radian)),
             cy = Math.round(cell.y + Math.sin(radian));
 
-            moveUnit(game, game.player, cx, cy);
+            placeUnit(game, game.player, cx, cy);
 
             game.targetCell = false;
 
