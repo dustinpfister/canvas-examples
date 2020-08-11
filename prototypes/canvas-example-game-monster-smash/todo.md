@@ -1,9 +1,25 @@
 # todo list for canvas-example-monster-smash
 
-## 0.1.0 - more than one map
+## 0.x.0 - more than one map
 * the center map is the starting map that is a safe zone for the player where no monsters are
+* leaving the center map into any other the other maps is a map where monster objects are
+* there are two 'modes' in game.js 'map', and 'battle'
 
-## 0.0.0 - basic idea of a maps, and a player, and monster objects.
+
+## 0.x.0 - weapons
+* have a weapons array with one weapon object that is used by monsters and player
+* if the player object overlaps a monster object that results in the game going from 'map' to 'battle' mode
+* if the player wins in 'battle' mode the game goes back to 'map' mode at the same location
+* if the player looses 'battle' mode the player returns to the home map location
+
+## 0.1.0 - enemy unit pool
+* have a monsters object pool in game.js
+* place monsters in map
+* monsters move with player moves
+* a monster at the same cell as player results in instance kill of monster (for now)
+* monsters spawn back in
+
+## 0.0.0 - starting modules together, and player object movement
 * (done) have a basic map.js module that creates a map object of cells that can be formed into a grid
 * (done) have a game.js module that where 1 map objects are created as part of the state
 * (done) have a createUnit method in game.js that will create and return a base unit object
@@ -12,14 +28,6 @@
 * (done) draw the player object in the map
 * (done) add mouse, and touch events first.
 * (done) new map get cell methods
-
-* gameMod update method started
-* move the player object with pointer events
-
-* have a monsters object pool in game.js
-* have a weapons array with one weapon object that is used by monsters and player
-* leaving the center map into any other the other maps is a map where monster objects are
-* there are two 'modes' in game.js 'map', and 'battle'
-* if the player object overlaps a monster object that results in the game going from 'map' to 'battle' mode
-* if the player wins in 'battle' mode the game goes back to 'map' mode at the same location
-* if the player looses 'battle' mode the player returns to the home map location
+* (done) gameMod update method started
+* (done) move the player object with pointer events
+* make a pkg_0_0_0.html
