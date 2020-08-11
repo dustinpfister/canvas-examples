@@ -6,6 +6,7 @@ var gameMod = (function () {
             maxHP: 100,
             weaponIndex: 0,
             sheetIndex: 1,
+            currentCell: false,
             active: false
         }
     };
@@ -17,14 +18,37 @@ var gameMod = (function () {
         return player;
     };
 
-    var api = {};
+    var moveUnit = function (game, unit, x, y) {
+
+        var map = game.maps[game.mapIndex];
+
+        var newCell = mapMod.get(map, x, y);
+
+        if (newCell) {
+
+            // clear old position if any
+            if (unit.currentCell) {
+                map.cells[unit.currentCell.i].unit = false;
+            }
+
+            // update to new location
+            unit.currentCell = newCell; // unit ref to cell
+            map.cells[unit.currentCell.i].unit = unit; // map ref to unit
+
+        }
+
+    }
 
     // start game helper
     var setupGame = function (game) {
         game.mapIndex = 0;
         var map = game.maps[game.mapIndex];
-        map.cells[0].unit = game.player;
+
+        map.cells[11].unit = game.player;
+        game.player.currentCell = map.cells[11];
     };
+
+    var api = {};
 
     // create a new game state
     api.create = function (opt) {
@@ -37,10 +61,29 @@ var gameMod = (function () {
             player: createPlayerUnit()
         };
         game.maps.push(mapMod.create());
-
         setupGame(game)
-
         return game;
+    };
+
+    api.update = function (game, secs) {
+
+        var cell,
+        target;
+
+        if (target = game.targetCell) {
+
+            var cell = game.player.currentCell,
+            radian = utils.angleToPoint(cell.x, cell.y, target.x, target.y);
+
+            var cx = Math.round(cell.x + Math.cos(radian)),
+            cy = Math.round(cell.y + Math.sin(radian));
+
+            moveUnit(game, game.player, cx, cy);
+
+            game.targetCell = false;
+
+        }
+
     };
 
     return api;

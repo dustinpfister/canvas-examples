@@ -13,6 +13,7 @@
 * (done) add mouse, and touch events first.
 * (done) new map get cell methods
 
+* gameMod update method started
 * move the player object with pointer events
 
 * have a monsters object pool in game.js

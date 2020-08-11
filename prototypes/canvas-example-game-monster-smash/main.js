@@ -22,17 +22,17 @@
         }
     };
 
-    console.log(utils.angleToPoint(100, 100, 0, 100, 360));
-
     var pointerHanders = {
         start: function (sm, e) {
             var pos = sm.input.pos;
             sm.input.pointerDown = true;
 
             var cell = mapMod.getCellByPointer(sm.game.maps[sm.game.mapIndex], pos.x, pos.y);
+
             if (cell) {
                 sm.game.targetCell = cell;
             }
+
         },
         move: function (sm, e) {},
         end: function (sm, e) {
@@ -53,6 +53,9 @@
 
     var loop = function () {
         requestAnimationFrame(loop);
+
+        gameMod.update(sm.game);
+
         draw.back(sm);
         draw.map(sm);
         draw.info(sm);
