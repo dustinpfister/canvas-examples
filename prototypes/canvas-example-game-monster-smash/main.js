@@ -22,6 +22,8 @@
         }
     };
 
+    console.log(utils.angleToPoint(100, 100, 0, 100, 360));
+
     var pointerHanders = {
         start: function (sm, e) {
             var pos = sm.input.pos;
