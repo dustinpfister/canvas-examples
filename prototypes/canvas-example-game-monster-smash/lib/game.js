@@ -30,7 +30,7 @@ var gameMod = (function () {
             unit.currentCell = newCell; // unit ref to cell
             map.cells[unit.currentCell.i].unit = unit; // map ref to unit
         }
-    }
+    };
 
     // start game helper
     var setupGame = function (game) {
@@ -53,7 +53,7 @@ var gameMod = (function () {
             player: createPlayerUnit()
         };
         game.maps.push(mapMod.create());
-        setupGame(game)
+        setupGame(game);
         return game;
     };
 

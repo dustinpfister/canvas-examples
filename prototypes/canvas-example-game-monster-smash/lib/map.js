@@ -48,7 +48,7 @@ var mapMod = (function () {
         };
         map.cells = createCells(map);
         return map;
-    }
+    };
     return api;
 
 }
