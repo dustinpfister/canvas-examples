@@ -44,10 +44,14 @@ var gameMod = (function () {
     };
     var spawnEnemy = function (game) {
         var map = getCurrentMap(game),
+        e,
         spawnCell = map.cells[map.spawnCells[0]], // just index 0 for now
         activeCount = getActiveCount(game, game.enemyPool);
         if (activeCount < map.spawnLimit && spawnCell.unit === false) {
-            placeUnit(game, getNextInactive(game), spawnCell.x, spawnCell.y);
+            e = getNextInactive(game, game.enemyPool);
+            if (e) {
+                placeUnit(game, e, spawnCell.x, spawnCell.y);
+            }
         }
     };
     // get next inactive
@@ -73,6 +77,9 @@ var gameMod = (function () {
     var placeUnit = function (game, unit, x, y) {
         var map = getCurrentMap(game);
         var newCell = mapMod.get(map, x, y);
+        if (!unit) {
+            return;
+        }
         if (newCell) {
             // clear old position if any
             if (unit.currentCell) {

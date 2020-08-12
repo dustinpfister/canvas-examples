@@ -40,7 +40,7 @@ var mapMod = (function () {
             w: opt.w || 9,
             h: opt.h || 7,
             cellSize: 32,
-            spawnLimit: opt.spawnLimit || 10,
+            spawnLimit: opt.spawnLimit || 2,
             spawnCells: opt.spawnCells || [0], // cell index values where enemies can spawn
             margin: {
                 x: 5,
