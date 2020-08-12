@@ -46,7 +46,7 @@ var gameMod = (function () {
         var map = getCurrentMap(game),
         spawnCell = map.cells[map.spawnCells[0]], // just index 0 for now
         activeCount = getActiveCount(game, game.enemyPool);
-        if (activeCount < 2 && spawnCell.unit === false) {
+        if (activeCount < map.spawnLimit && spawnCell.unit === false) {
             placeUnit(game, getNextInactive(game), spawnCell.x, spawnCell.y);
         }
     };
@@ -143,7 +143,7 @@ var gameMod = (function () {
             targetCell: false, // a reference to the current target cell to move to, or false
             player: createPlayerUnit(),
             kills: 0,
-            enemyPool: createEnemyUnitPool(10)
+            enemyPool: createEnemyUnitPool(5)
         };
         game.maps.push(mapMod.create());
         setupGame(game);
