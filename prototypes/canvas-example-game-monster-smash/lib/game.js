@@ -59,9 +59,10 @@ var gameMod = (function () {
     };
 
     // remove a unit from any map location it may be at
+    // this will not destroy the object if it is part of a pool, or reference elsewhere
     var removeUnit = function (game, unit) {
         unit.active = false;
-        map.cells[unit.currentCell.i] = false;
+        getCurrentMap(game).cells[unit.currentCell.i].unit = false;
         unit.currentCell = false;
     };
 
@@ -70,6 +71,13 @@ var gameMod = (function () {
         game.mapIndex = 0;
         var map = getCurrentMap(game);
         placeUnit(game, game.player, 0, 0);
+		 
+		
+		
+        placeUnit(game, game.enemyPool[0], 5, 5);
+        removeUnit(game, game.enemyPool[0]);
+        placeUnit(game, game.enemyPool[0], 2, 5);
+
     };
 
     var api = {};
@@ -86,9 +94,6 @@ var gameMod = (function () {
             enemyPool: createEnemyUnitPool(10)
         };
         game.maps.push(mapMod.create());
-
-        placeUnit(game, game.enemyPool[0], 5, 5);
-
         setupGame(game);
         return game;
     };
