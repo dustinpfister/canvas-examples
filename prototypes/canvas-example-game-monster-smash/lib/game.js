@@ -119,7 +119,6 @@ var gameMod = (function () {
                 radian = utils.angleToPoint(cell.x, cell.y, target.x, target.y);
                 var cx = Math.round(cell.x + Math.cos(radian)),
                 cy = Math.round(cell.y + Math.sin(radian));
-
                 // get location before moving to it
                 var newCell = mapMod.get(map, cx, cy);
                 // if no unit just move there

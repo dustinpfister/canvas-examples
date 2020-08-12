@@ -12,10 +12,10 @@
 * if the player looses 'battle' mode the player returns to the home map location
 
 ## 0.1.0 - enemy unit pool
-* have a monsters object pool in game.js
-* place monsters in map
+* (done) have a monsters object pool in game.js
+* (done) place monsters in map
+* (done) a monster at the same cell as player results in instance kill of monster (for now)
 * monsters move with player moves
-* a monster at the same cell as player results in instance kill of monster (for now)
 * monsters spawn back in
 * make a pkg_0_1_0.html
 
