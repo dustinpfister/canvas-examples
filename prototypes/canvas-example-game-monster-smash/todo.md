@@ -5,7 +5,6 @@
 * leaving the center map into any other the other maps is a map where monster objects are
 * there are two 'modes' in game.js 'map', and 'battle'
 
-
 ## 0.x.0 - weapons
 * have a weapons array with one weapon object that is used by monsters and player
 * if the player object overlaps a monster object that results in the game going from 'map' to 'battle' mode
@@ -18,6 +17,7 @@
 * monsters move with player moves
 * a monster at the same cell as player results in instance kill of monster (for now)
 * monsters spawn back in
+* make a pkg_0_1_0.html
 
 ## 0.0.0 - starting modules together, and player object movement
 * (done) have a basic map.js module that creates a map object of cells that can be formed into a grid
