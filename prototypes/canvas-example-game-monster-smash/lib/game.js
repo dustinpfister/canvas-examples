@@ -48,6 +48,13 @@ var gameMod = (function () {
         }
     };
 
+    // remove a unit from any map location it may be at
+    var removeUnit = function (game, unit) {
+        unit.active = false;
+        map.cells[unit.currentCell.i] = false;
+        unit.currentCell = false;
+    };
+
     // start game helper
     var setupGame = function (game) {
         game.mapIndex = 0;
