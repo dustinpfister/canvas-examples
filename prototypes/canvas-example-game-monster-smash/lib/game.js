@@ -26,6 +26,16 @@ var gameMod = (function () {
         return player;
     };
 
+    var createEnemyUnitPool = function (size) {
+        var pool = [];
+        var i = 0;
+        while (i < size) {
+            pool.push(createEnemyUnit());
+            i += 1;
+        }
+        return pool;
+    };
+
     // get the current map
     var getCurrentMap = function (game) {
         return game.maps[game.mapIndex];
@@ -73,11 +83,11 @@ var gameMod = (function () {
             mapIndex: 0,
             targetCell: false, // a reference to the current target cell to move to, or false
             player: createPlayerUnit(),
-            enemyUnitPool: []
+            enemyPool: createEnemyUnitPool(10)
         };
         game.maps.push(mapMod.create());
 
-        placeUnit(game, createEnemyUnit(), 5, 5);
+        placeUnit(game, game.enemyPool[0], 5, 5);
 
         setupGame(game);
         return game;
