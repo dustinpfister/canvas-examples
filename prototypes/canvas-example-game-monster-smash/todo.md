@@ -1,15 +1,20 @@
 # todo list for canvas-example-monster-smash
 
-## 0.x.0 - more than one map
-* the center map is the starting map that is a safe zone for the player where no monsters are
-* leaving the center map into any other the other maps is a map where monster objects are
-* there are two 'modes' in game.js 'map', and 'battle'
 
 ## 0.x.0 - weapons
 * have a weapons array with one weapon object that is used by monsters and player
 * if the player object overlaps a monster object that results in the game going from 'map' to 'battle' mode
 * if the player wins in 'battle' mode the game goes back to 'map' mode at the same location
 * if the player looses 'battle' mode the player returns to the home map location
+
+## 0.x.0 - more than one map
+* the center map is the starting map that is a safe zone for the player where no monsters are
+* leaving the center map into any other the other maps is a map where monster objects are
+* there are two 'modes' in game.js 'map', and 'battle'
+
+## 0.3.0 - Battle mode
+* when a player and enemy object are at the same map pos then the game will enter 'battle mode'
+* in battle mode the player and enemy will attack each other one turn at a time
 
 ## 0.2.0 - Enemy sight
 * enemy units have a sight prop that is the radius that the unit can see
