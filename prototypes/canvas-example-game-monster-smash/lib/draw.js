@@ -53,12 +53,8 @@ var draw = (function () {
             ctx.font = '10px courier';
             ctx.textBaseline = 'top';
             var pos = sm.input.pos;
-            ctx.fillText('pointerDown: ' + sm.input.pointerDown + ' pos: ' + pos.x + ',' + pos.y, 10, 10);
-            var cell = sm.game.targetCell;
-            var target = cell ? cell.x + ',' + cell.y : false;
-
-            //ctx.fillText('target: ' + target, 10, 20);
-
+            ctx.fillText('pointerDown: ' + sm.input.pointerDown + ' pos: ' + pos.x + ',' + pos.y, 5, 5);
+            ctx.fillText('kills: ' + sm.game.kills, 5, 15);
             ctx.fillText('v' + sm.ver, 1, canvas.height - 11);
         }
 

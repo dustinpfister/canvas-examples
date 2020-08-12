@@ -71,12 +71,9 @@ var gameMod = (function () {
         game.mapIndex = 0;
         var map = getCurrentMap(game);
         placeUnit(game, game.player, 0, 0);
-		 
-		
-		
+
         placeUnit(game, game.enemyPool[0], 5, 5);
-        removeUnit(game, game.enemyPool[0]);
-        placeUnit(game, game.enemyPool[0], 2, 5);
+        placeUnit(game, game.enemyPool[1], 2, 5);
 
     };
 
@@ -91,6 +88,7 @@ var gameMod = (function () {
             mapIndex: 0,
             targetCell: false, // a reference to the current target cell to move to, or false
             player: createPlayerUnit(),
+            kills: 0,
             enemyPool: createEnemyUnitPool(10)
         };
         game.maps.push(mapMod.create());
@@ -100,6 +98,7 @@ var gameMod = (function () {
     // update a game state object
     api.update = function (game, secs) {
         var cell,
+        map = getCurrentMap(game),
         radian,
         target;
         // move player
@@ -109,7 +108,17 @@ var gameMod = (function () {
                 radian = utils.angleToPoint(cell.x, cell.y, target.x, target.y);
                 var cx = Math.round(cell.x + Math.cos(radian)),
                 cy = Math.round(cell.y + Math.sin(radian));
-                placeUnit(game, game.player, cx, cy);
+
+                // get location before moving to it
+                var newCell = mapMod.get(map, cx, cy);
+                // if no unit just move there
+                if (!newCell.unit) {
+                    placeUnit(game, game.player, cx, cy);
+                } else {
+                    // else there is an enemy there
+                    game.kills += 1; // just step a kill count for now
+                    placeUnit(game, game.player, cx, cy);
+                }
                 game.targetCell = false;
             }
         }
