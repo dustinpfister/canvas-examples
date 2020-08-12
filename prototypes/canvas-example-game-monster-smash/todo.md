@@ -15,8 +15,8 @@
 * (done) have a monsters object pool in game.js
 * (done) place monsters in map
 * (done) a monster at the same cell as player results in instance kill of monster (for now)
-* monsters move with player moves
-* monsters spawn back in
+* (done) monsters move with player moves
+* monsters spawn back in based on map setting
 * make a pkg_0_1_0.html
 
 ## 0.0.0 - starting modules together, and player object movement

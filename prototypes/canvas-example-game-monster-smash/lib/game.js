@@ -25,8 +25,7 @@ var gameMod = (function () {
         player.sheetIndex = 0; // player sheet
         return player;
     };
-
-    // create enemey pool
+    // create enemy pool
     var createEnemyUnitPool = function (size) {
         var pool = [];
         var i = 0;
@@ -35,6 +34,17 @@ var gameMod = (function () {
             i += 1;
         }
         return pool;
+    };
+    var getActiveCount = function (game, pool) {
+        pool = pool || game.enemyPool;
+        return pool.reduce(function (acc, obj) {
+            acc = typeof acc === 'object' ? !!acc.active : acc;
+            return acc + !!obj.active;
+        });
+    };
+    var spawnEnemy = function (game) {
+        var map = getCurrentMap(game),
+        spawnCell = map.spawnCells[0]; // just index 0 for now
     };
     // get next inactive
     var getNextInactive = function (game, pool) {
