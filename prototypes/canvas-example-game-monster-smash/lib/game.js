@@ -46,11 +46,14 @@ var gameMod = (function () {
         var map = getCurrentMap(game),
         e,
         spawnCell = map.cells[map.spawnCells[0]], // just index 0 for now
-        activeCount = getActiveCount(game, game.enemyPool);
-        if (activeCount < map.spawnLimit && spawnCell.unit === false) {
-            e = getNextInactive(game, game.enemyPool);
-            if (e) {
-                placeUnit(game, e, spawnCell.x, spawnCell.y);
+        activeCount;
+        if (map.spawnEnabled) {
+            activeCount = getActiveCount(game, game.enemyPool);
+            if (activeCount < map.spawnLimit && spawnCell.unit === false) {
+                e = getNextInactive(game, game.enemyPool);
+                if (e) {
+                    placeUnit(game, e, spawnCell.x, spawnCell.y);
+                }
             }
         }
     };
@@ -152,7 +155,9 @@ var gameMod = (function () {
             kills: 0,
             enemyPool: createEnemyUnitPool(5)
         };
-        game.maps.push(mapMod.create());
+        game.maps.push(mapMod.create({
+                spawnEnabled: true
+            }));
         setupGame(game);
 
         return game;
