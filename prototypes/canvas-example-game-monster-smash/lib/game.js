@@ -26,6 +26,7 @@ var gameMod = (function () {
         return player;
     };
 
+    // create enemey pool
     var createEnemyUnitPool = function (size) {
         var pool = [];
         var i = 0;
@@ -34,6 +35,19 @@ var gameMod = (function () {
             i += 1;
         }
         return pool;
+    };
+    // get next inactive
+    var getNextInactive = function (game, pool) {
+        pool = pool || game.enemyPool;
+        var i = 0,
+        len = pool.length;
+        while (i < len) {
+            if (!pool[i].active) {
+                return pool[i];
+            }
+            i += 1;
+        }
+        return false;
     };
 
     // get the current map
@@ -71,14 +85,11 @@ var gameMod = (function () {
         game.mapIndex = 0;
         var map = getCurrentMap(game);
         placeUnit(game, game.player, 0, 0);
-
-        placeUnit(game, game.enemyPool[0], 5, 5);
-        placeUnit(game, game.enemyPool[1], 2, 5);
-
+        placeUnit(game, getNextInactive(game), 5, 5);
+        placeUnit(game, getNextInactive(game), 2, 5);
     };
 
     var api = {};
-
     // create a new game state
     api.create = function (opt) {
         opt = opt || {};

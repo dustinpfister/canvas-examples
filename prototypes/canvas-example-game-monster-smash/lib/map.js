@@ -26,7 +26,7 @@ var mapMod = (function () {
         return map.cells[y * map.w + x];
     };
 
-    // get a cell in the current map by way of 
+    // get a cell in the current map by way of
     // a canvas relative x and y pixel pos
     api.getCellByPointer = function (map, x, y) {
         var cx = Math.floor((x - map.margin.x) / map.cellSize),
@@ -40,6 +40,7 @@ var mapMod = (function () {
             w: opt.w || 9,
             h: opt.h || 7,
             cellSize: 32,
+            spawnCells: opt.spawnCells || [0], // cell index values where enemies can spawn
             margin: {
                 x: 5,
                 y: 5
