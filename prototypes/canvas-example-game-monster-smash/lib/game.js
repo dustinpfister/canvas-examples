@@ -89,6 +89,23 @@ var gameMod = (function () {
         placeUnit(game, getNextInactive(game), 2, 5);
     };
 
+    var moveEnemies = function (game) {
+        var i = 0,
+        cell,
+        radian,
+        e,
+        p = game.player,
+        len = game.enemyPool.length;
+        while (i < len) {
+            e = game.enemyPool[i];
+            if (e.active) {
+                cell = e.currentCell;
+                radian = utils.angleToPoint(cell.x, cell.y, p.currentCell.x, p.currentCell.y);
+            }
+            i += 1;
+        }
+    };
+
     var api = {};
     // create a new game state
     api.create = function (opt) {
@@ -104,6 +121,7 @@ var gameMod = (function () {
         };
         game.maps.push(mapMod.create());
         setupGame(game);
+
         return game;
     };
     // update a game state object
@@ -112,6 +130,12 @@ var gameMod = (function () {
         map = getCurrentMap(game),
         radian,
         target;
+
+
+        // move active enemies
+        moveEnemies(game);
+
+
         // move player
         if (target = game.targetCell) {
             cell = game.player.currentCell;
@@ -121,6 +145,7 @@ var gameMod = (function () {
                 cy = Math.round(cell.y + Math.sin(radian));
                 // get location before moving to it
                 var newCell = mapMod.get(map, cx, cy);
+
                 // if no unit just move there
                 if (!newCell.unit) {
                     placeUnit(game, game.player, cx, cy);
@@ -132,7 +157,9 @@ var gameMod = (function () {
                 game.targetCell = false;
             }
         }
+
     };
+
     // return the public api
     return api;
 }
