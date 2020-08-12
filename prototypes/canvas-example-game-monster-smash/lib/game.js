@@ -27,9 +27,14 @@ var gameMod = (function () {
         return player;
     };
 
+    // get the current map
+    var getCurrentMap = function (game) {
+        return game.maps[game.mapIndex];
+    };
+
     // place a unit at a current map location
     var placeUnit = function (game, unit, x, y) {
-        var map = game.maps[game.mapIndex];
+        var map = getCurrentMap(game);
         var newCell = mapMod.get(map, x, y);
         if (newCell) {
             // clear old position if any
@@ -45,8 +50,7 @@ var gameMod = (function () {
     // start game helper
     var setupGame = function (game) {
         game.mapIndex = 0;
-        var map = game.maps[game.mapIndex];
-
+        var map = getCurrentMap(game);
         placeUnit(game, game.player, 0, 0);
     };
 
