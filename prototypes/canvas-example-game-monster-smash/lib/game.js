@@ -93,6 +93,7 @@ var gameMod = (function () {
         var i = 0,
         cell,
         radian,
+        map = getCurrentMap(game),
         e,
         p = game.player,
         len = game.enemyPool.length;
@@ -101,6 +102,17 @@ var gameMod = (function () {
             if (e.active) {
                 cell = e.currentCell;
                 radian = utils.angleToPoint(cell.x, cell.y, p.currentCell.x, p.currentCell.y);
+                var cx = Math.round(cell.x + Math.cos(radian)),
+                cy = Math.round(cell.y + Math.sin(radian));
+
+                // get location before moving to it
+                var newCell = mapMod.get(map, cx, cy);
+
+                // if no unit just move there
+                if (!newCell.unit) {
+                    placeUnit(game, e, cx, cy);
+                }
+
             }
             i += 1;
         }
@@ -131,11 +143,6 @@ var gameMod = (function () {
         radian,
         target;
 
-
-        // move active enemies
-        moveEnemies(game);
-
-
         // move player
         if (target = game.targetCell) {
             cell = game.player.currentCell;
@@ -143,6 +150,7 @@ var gameMod = (function () {
                 radian = utils.angleToPoint(cell.x, cell.y, target.x, target.y);
                 var cx = Math.round(cell.x + Math.cos(radian)),
                 cy = Math.round(cell.y + Math.sin(radian));
+
                 // get location before moving to it
                 var newCell = mapMod.get(map, cx, cy);
 
@@ -151,10 +159,15 @@ var gameMod = (function () {
                     placeUnit(game, game.player, cx, cy);
                 } else {
                     // else there is an enemy there
+                    var e = newCell.unit;
+                    e.active = false;
+                    removeUnit(game, e)
                     game.kills += 1; // just step a kill count for now
                     placeUnit(game, game.player, cx, cy);
                 }
                 game.targetCell = false;
+                // move active enemies
+                moveEnemies(game);
             }
         }
 
