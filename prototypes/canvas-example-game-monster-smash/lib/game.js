@@ -1,16 +1,25 @@
 var gameMod = (function () {
 
+    // create a base unit object
     var createBaseUnit = function () {
         return {
             HP: 100,
             maxHP: 100,
             weaponIndex: 0,
-            sheetIndex: 1,
+            sheetIndex: 0,
             currentCell: false,
             active: false
         }
     };
 
+    // create an enemy Unit Object
+    var createEnemyUnit = function () {
+        var enemy = createBaseUnit();
+        enemy.sheetIndex = 1;
+        return enemy;
+    };
+
+    // create a player unit
     var createPlayerUnit = function () {
         var player = createBaseUnit();
         player.active = true;
@@ -18,6 +27,7 @@ var gameMod = (function () {
         return player;
     };
 
+    // place a unit at a current map location
     var placeUnit = function (game, unit, x, y) {
         var map = game.maps[game.mapIndex];
         var newCell = mapMod.get(map, x, y);
