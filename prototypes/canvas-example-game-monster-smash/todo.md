@@ -11,12 +11,18 @@
 * if the player wins in 'battle' mode the game goes back to 'map' mode at the same location
 * if the player looses 'battle' mode the player returns to the home map location
 
+## 0.2.0 - Enemy sight
+* enemy units have a sight prop that is the radius that the unit can see
+* if the player object is in sight of the enemy it will move to it
+* if the player object is not in sight of the enemy it will move at random
+* make a pkg_0_2_0.html
+
 ## 0.1.0 - enemy unit pool
 * (done) have a monsters object pool in game.js
 * (done) place monsters in map
 * (done) a monster at the same cell as player results in instance kill of monster (for now)
 * (done) monsters move with player moves
-* monsters spawn back in based on map setting
+* (done) monsters spawn back in based on map setting
 * make a pkg_0_1_0.html
 
 ## 0.0.0 - starting modules together, and player object movement
