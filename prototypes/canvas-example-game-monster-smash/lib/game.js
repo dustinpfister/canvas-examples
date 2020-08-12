@@ -44,7 +44,11 @@ var gameMod = (function () {
     };
     var spawnEnemy = function (game) {
         var map = getCurrentMap(game),
-        spawnCell = map.spawnCells[0]; // just index 0 for now
+        spawnCell = map.cells[map.spawnCells[0]], // just index 0 for now
+        activeCount = getActiveCount(game, game.enemyPool);
+        if (activeCount < 2 && spawnCell.unit === false) {
+            placeUnit(game, getNextInactive(game), spawnCell.x, spawnCell.y);
+        }
     };
     // get next inactive
     var getNextInactive = function (game, pool) {
@@ -178,6 +182,7 @@ var gameMod = (function () {
                 game.targetCell = false;
                 // move active enemies
                 moveEnemies(game);
+                spawnEnemy(game);
             }
         }
 
