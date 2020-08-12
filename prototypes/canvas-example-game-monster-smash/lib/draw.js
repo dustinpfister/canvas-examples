@@ -34,11 +34,13 @@ var draw = (function () {
                 ctx.stroke();
                 // if we have a unit
                 if (cell.unit) {
-                    ctx.fillStyle = unitColors[cell.unit.sheetIndex];
-                    ctx.beginPath();
-                    ctx.rect(x, y, 32, 32);
-                    ctx.fill();
-                    ctx.stroke();
+                    if (cell.unit.active) {
+                        ctx.fillStyle = unitColors[cell.unit.sheetIndex];
+                        ctx.beginPath();
+                        ctx.rect(x, y, 32, 32);
+                        ctx.fill();
+                        ctx.stroke();
+                    }
                 }
                 i += 1;
             }

@@ -22,7 +22,6 @@ var gameMod = (function () {
     // create a player unit
     var createPlayerUnit = function () {
         var player = createBaseUnit();
-        player.active = true;
         player.sheetIndex = 0; // player sheet
         return player;
     };
@@ -41,6 +40,8 @@ var gameMod = (function () {
             if (unit.currentCell) {
                 map.cells[unit.currentCell.i].unit = false;
             }
+            // make sure the unit is active
+            unit.active = true;
             // update to new location
             unit.currentCell = newCell; // unit ref to cell
             map.cells[unit.currentCell.i].unit = unit; // map ref to unit
@@ -64,19 +65,21 @@ var gameMod = (function () {
             maps: [],
             mapIndex: 0,
             targetCell: false, // a reference to the current target cell to move to, or false
-            player: createPlayerUnit()
+            player: createPlayerUnit(),
+            enemyUnitPool: []
         };
         game.maps.push(mapMod.create());
+
+        placeUnit(game, createEnemyUnit(), 5, 5);
+
         setupGame(game);
         return game;
     };
-
+    // update a game state object
     api.update = function (game, secs) {
-
         var cell,
         radian,
         target;
-
         // move player
         if (target = game.targetCell) {
             cell = game.player.currentCell;
@@ -89,8 +92,7 @@ var gameMod = (function () {
             }
         }
     };
-
+    // return the public api
     return api;
-
 }
     ());
