@@ -16,6 +16,7 @@ var gameMod = (function () {
     var createEnemyUnit = function () {
         var enemy = createBaseUnit();
         enemy.sheetIndex = 1;
+        enemy.sight = 3; // sight radius in cells
         return enemy;
     };
 
@@ -119,24 +120,28 @@ var gameMod = (function () {
         radian,
         map = getCurrentMap(game),
         e,
+        cx,
+        cy,
         p = game.player,
         len = game.enemyPool.length;
         while (i < len) {
             e = game.enemyPool[i];
             if (e.active) {
-                cell = e.currentCell;
-                radian = utils.angleToPoint(cell.x, cell.y, p.currentCell.x, p.currentCell.y);
-                var cx = Math.round(cell.x + Math.cos(radian)),
-                cy = Math.round(cell.y + Math.sin(radian));
 
+                cell = e.currentCell;
+                if (utils.distance(cell.x, cell.y, p.currentCell.x, p.currentCell.y) <= e.sight) {
+                    radian = utils.angleToPoint(cell.x, cell.y, p.currentCell.x, p.currentCell.y);
+                } else {
+                    radian = 0;
+                }
+                cx = Math.round(cell.x + Math.cos(radian));
+                cy = Math.round(cell.y + Math.sin(radian));
                 // get location before moving to it
                 var newCell = mapMod.get(map, cx, cy);
-
                 // if no unit just move there
                 if (!newCell.unit) {
                     placeUnit(game, e, cx, cy);
                 }
-
             }
             i += 1;
         }
