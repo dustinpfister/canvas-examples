@@ -127,7 +127,6 @@ var gameMod = (function () {
         while (i < len) {
             e = game.enemyPool[i];
             if (e.active) {
-
                 cell = e.currentCell;
                 if (utils.distance(cell.x, cell.y, p.currentCell.x, p.currentCell.y) <= e.sight) {
                     radian = utils.angleToPoint(cell.x, cell.y, p.currentCell.x, p.currentCell.y);
@@ -181,10 +180,8 @@ var gameMod = (function () {
                 radian = utils.angleToPoint(cell.x, cell.y, target.x, target.y);
                 var cx = Math.round(cell.x + Math.cos(radian)),
                 cy = Math.round(cell.y + Math.sin(radian));
-
                 // get location before moving to it
                 var newCell = mapMod.get(map, cx, cy);
-
                 // if no unit just move there
                 if (!newCell.unit) {
                     placeUnit(game, game.player, cx, cy);
@@ -199,6 +196,7 @@ var gameMod = (function () {
                 game.targetCell = false;
                 // move active enemies
                 moveEnemies(game);
+                // enemies might spawn per turn
                 spawnEnemy(game);
             }
         }

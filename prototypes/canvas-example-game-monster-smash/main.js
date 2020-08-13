@@ -37,6 +37,7 @@
         move: function (sm, e) {},
         end: function (sm, e) {
             sm.input.pointerDown = false;
+            loop();
         }
     };
 
@@ -52,7 +53,7 @@
     canvas.addEventListener('mouseup', createPointerHandler(sm, 'end'));
 
     var loop = function () {
-        requestAnimationFrame(loop);
+        //requestAnimationFrame(loop);
 
         gameMod.update(sm.game);
 

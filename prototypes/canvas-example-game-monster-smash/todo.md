@@ -19,7 +19,7 @@
 ## 0.2.0 - Enemy sight
 * (done) enemy units have a sight prop that is the radius that the unit can see
 * (done) if the player object is in sight of the enemy it will move to it
-* if the player object is not in sight of the enemy it will move at random
+* (done) if the player object is not in sight of the enemy it will move at random
 * make a pkg_0_2_0.html
 
 ## 0.1.0 - enemy unit pool
