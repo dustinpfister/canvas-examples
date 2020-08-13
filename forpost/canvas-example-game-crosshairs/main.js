@@ -9,8 +9,82 @@
     canvas.height = 240;
     ctx.translate(0.5, 0.5);
 
+    var states = {
+
+        game: {
+
+            pointerStart: function (sm, e) {
+
+                var pos = utils.getCanvasRelative(e);
+                // enable cross move back feature
+                sm.game.cross.moveBackEnabled = true;
+
+                crossMod.userAction(sm.game.cross, 'start', e);
+
+                sm.game.userDown = true;
+                // cycle weapons
+                var b = gameMod.buttons.changeWeapon,
+                d = utils.distance(pos.x, pos.y, b.x, b.y);
+                if (d < b.r) {
+                    sm.game.weaponIndex += 1;
+                    sm.game.weaponIndex %= gameMod.Weapons.length;
+                }
+                /*
+                var cross = crossMod.createEvent(game.cross, 'start');
+                return function (e) {
+                var pos = utils.getCanvasRelative(e);
+                e.preventDefault();
+
+                // enable cross move back feature
+                game.cross.moveBackEnabled = true;
+
+                cross(e);
+                game.userDown = true;
+                // cycle weapons
+                var b = gameMod.buttons.changeWeapon,
+                d = utils.distance(pos.x, pos.y, b.x, b.y);
+                if (d < b.r) {
+                game.weaponIndex += 1;
+                game.weaponIndex %= Weapons.length;
+                }
+                };
+                 */
+            },
+
+            pointerEnd: function (em, e) {
+
+                crossMod.userAction(sm.game.cross, 'end', e);
+
+                sm.game.userDown = false;
+                /*
+                var cross = crossMod.createEvent(game.cross, 'end');
+                return function (e) {
+                e.preventDefault();
+                cross(e);
+                game.userDown = false;
+                };
+                 */
+            },
+
+            pointerMove: function (sm, e) {
+
+                crossMod.userAction(sm.game.cross, 'move', e);
+                /*
+                var cross = crossMod.createEvent(game.cross, 'move');
+                return function (e) {
+                e.preventDefault();
+                cross(e);
+                };
+                 */
+            }
+
+        }
+
+    };
+
     var sm = {
         canvas: canvas,
+        currentState: 'game',
         ctx: ctx,
         game: gameMod.create({
             canvas: canvas
@@ -28,14 +102,17 @@
         start: function (sm, e) {
             var pos = sm.input.pos;
             sm.input.pointerDown = true;
-            console.log('start');
+            //console.log('start');
+            states[sm.currentState].pointerStart(sm, e);
         },
         move: function (sm, e) {
-            console.log('move');
+            //console.log('move');
+            states[sm.currentState].pointerMove(sm, e);
         },
         end: function (sm, e) {
             sm.input.pointerDown = false;
-            console.log('end');
+            //console.log('end');
+            states[sm.currentState].pointerEnd(sm, e);
         }
     };
 
@@ -67,8 +144,8 @@
             draw.buttons(ctx);
             draw.ver(ctx, sm.game);
             //draw.statBar(ctx, sm.game);
-            //draw.info(ctx, sm.game);
-            draw.debugAutoPlay(ctx, sm.game);
+            draw.info(ctx, sm.game);
+            //draw.debugAutoPlay(ctx, sm.game);
             lt = now;
         }
     };

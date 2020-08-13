@@ -79,6 +79,7 @@ var gameMod = (function () {
         }
     };
 
+/*
     var userPointerStart = function (game) {
         var cross = crossMod.createEvent(game.cross, 'start');
         return function (e) {
@@ -116,6 +117,7 @@ var gameMod = (function () {
             cross(e);
         };
     };
+	*/
 
     // Explosion Options
     var explosionOptions = {
@@ -361,13 +363,14 @@ var gameMod = (function () {
                 });
 
             // main game events
+			/*
             game.canvas.addEventListener('mousedown', userPointerStart(game));
             game.canvas.addEventListener('mousemove', userPointerMove(game));
             game.canvas.addEventListener('mouseup', userPointerEnd(game));
             game.canvas.addEventListener('touchstart', userPointerStart(game));
             game.canvas.addEventListener('touchmove', userPointerMove(game));
             game.canvas.addEventListener('touchend', userPointerEnd(game));
-
+*/
             return game;
 
         },

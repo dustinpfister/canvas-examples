@@ -88,6 +88,28 @@ var crossMod = (function () {
             }
         },
 
+        userAction: function (cross, eventType, e) {
+
+            var pos = utils.getCanvasRelative(e),
+            ch = cross.crosshairs;
+            //e.preventDefault();
+            if (eventType === 'start') {
+                cross.userDown = true;
+                ch.x = pos.x;
+                ch.y = pos.y;
+            }
+            if (eventType === 'end') {
+                cross.userDown = false;
+            }
+            if (eventType === 'move') {
+                if (cross.userDown) {
+                    ch.x = pos.x;
+                    ch.y = pos.y;
+                }
+            }
+
+        },
+
         createEvent: function (cross, eventType) {
             return function (e) {
                 var pos = utils.getCanvasRelative(e),
