@@ -2,14 +2,27 @@
 
 ## 0.x.x - Bug fixes
 * see about fixing issue where shots are tied to the canvas rather than the map (what happens when shooting and moving)
-* it seems that the AI can get stuck when Frame Rates are real low (partial fix)
+* (partial fix) it seems that the AI can get stuck when Frame Rates are real low
+
+## 0.x.0 - Enemy fire and health
+* to make the game more interesting there are units on the map that fire back
+* game.HP, and game.maxHP properties will be needed
+* game.gameOver state
+* just click screen to start over for now until I get into a state machine for this.
 
 
 ## 0.x.0 - More advanced AI
+* AI can be turned off and on in AutoPlay Options menu
 * totalKill Behavior where the AI will use atom weapon only, and will not stop until Behavior Change
 * moveOnly Behavior where the AI will only move around until Behavior Change
 * blaster Behavior where the AI will only use blaster weapon until Behavior Change
 * AttackArea Behavior where AI will attack a random area until Behavior Change
+
+## 0.x.0 - autoPlay options menu
+* have an autoPlay menu that can be used to set various settings for the AI of the game
+* player can set the behavior to use
+* player can set perCent kill setting
+* make many options unlock able and upgradeable in skill point menu
 
 ## 0.x.0 - save state
 * work out a system for save states
@@ -23,7 +36,7 @@
 
 ## 0.x.0 - Skill Point system
 * have a skillPoint module that will create a skills state object
-* add a skillManager state that is used to set skill points to skills
+* add a skillManager menu state that is used to set skill points to skills
 * add draw methods for skillManager
 * number of skill points based off of totalDamage of game object
 * blaster skill
@@ -32,11 +45,12 @@
 * atom skill
 * damage skill
 
-## 0.x.0 - Enemy fire and health
-* to make the game more interesting there are units on the map that fire back
-* game.HP, and game.maxHP properties will be needed
-* game.gameOver state
-* just click screen to start over for now until I get into a state machine for this.
+## 0.x.0 - CellTypes upgrade based on total damage of cell
+* cellType can still be set by damagePer, but the level of the cell type can be set by total damage
+* cellHP rate goes up a little higher then DPS goes up for the player
+
+## 0.x.0 - level up system for player based on total damage as EXP
+* start and exp system that uses total damage as experience points
 
 ## 0.x.0 - state machine
 * start a state machine that will serve as a single central state object
@@ -45,7 +59,6 @@
 * manualPlay state
 * remove event handers from game.js and make them part of state
 * get damage bonus in manual play state
-
 
 ## 0.8.0 - Pixel graphics
 * (done) hardSet.maxSecs value put in to limit the secs value in updates which fix a bug where to much damage was being applied
