@@ -326,8 +326,8 @@ var gameMod = (function () {
         create: function (opt) {
             opt = opt || {};
             var game = {
-                ver: '0.8.0',
-                canvas: canvas,
+                ver: '0.9.0',
+                canvas: opt.canvas,
                 map: mapMod.create(),
                 cross: {},
                 shots: poolMod.create(shotOptions),

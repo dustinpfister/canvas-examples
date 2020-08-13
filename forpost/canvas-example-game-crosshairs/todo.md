@@ -10,6 +10,12 @@
 * game.gameOver state
 * just click screen to start over for now until I get into a state machine for this.
 
+## 0.x.0 - Manual and auto play damage bonus
+* have a damage bonus in manual play state
+* have a separate bonus rate in autoPlay mode
+* make it so the bonus rate in autoPlay IS LOWER then the manual bonus
+* make it so manual and auto play bonuses are upgradeable in skill point menu
+* have a system where the bonus will no longer be in effect after a period of time, so that it makes sense to allow the game to return to auto play
 
 ## 0.x.0 - More advanced AI
 * AI can be turned off and on in AutoPlay Options menu
@@ -52,13 +58,11 @@
 ## 0.x.0 - level up system for player based on total damage as EXP
 * start and exp system that uses total damage as experience points
 
-## 0.x.0 - state machine
+## 0.9.0 - state machine
 * start a state machine that will serve as a single central state object
 * all canvas input is handled by the state machine
-* autoPlay state
-* manualPlay state
+* have a main game state for the current update loop in main.js
 * remove event handers from game.js and make them part of state
-* get damage bonus in manual play state
 
 ## 0.8.0 - Pixel graphics
 * (done) hardSet.maxSecs value put in to limit the secs value in updates which fix a bug where to much damage was being applied

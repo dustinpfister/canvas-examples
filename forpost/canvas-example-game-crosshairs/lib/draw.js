@@ -21,7 +21,7 @@ var draw = (function () {
         ctx.fillRect(x, y, map.cellSize * (cell.HP / cell.maxHP), 5);
     };
 
-    var setupDebug = function (ctx) {
+    var setupDebug = function (ctx, game) {
         ctx.fillStyle = 'rgba(0,0,0,0.4)';
         ctx.fillRect(0, 0, game.canvas.width, game.canvas.height);
         ctx.fillStyle = 'yellow';
@@ -146,7 +146,7 @@ var draw = (function () {
         },
         // draw info
         info: function (ctx, game) {
-            setupDebug(ctx);
+            setupDebug(ctx, game);
             ctx.fillText('v' + game.ver, 10, 10);
             ctx.fillText('pos: ' + game.cross.offset.x.toFixed(2) + ',' + game.cross.offset.y.toFixed(2), 10, 20);
             ctx.fillText('percent remain: ' + Number(game.map.percentRemain * 100).toFixed(2), 10, 30);
@@ -156,7 +156,7 @@ var draw = (function () {
         },
         debugAutoPlay: function (ctx, game) {
             var ap = game.autoPlay;
-            setupDebug(ctx);
+            setupDebug(ctx, game);
             ctx.fillText('autoPlay delay: ' + ap.delay.toFixed(2), 10, 10);
             ctx.fillText('autoPlay target: ' + ap.target.x + ' , ' + ap.target.y, 10, 20);
             ctx.fillText('autoPlay target dist: ' + ap.target.d, 10, 30);
