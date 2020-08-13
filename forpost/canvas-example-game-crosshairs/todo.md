@@ -52,27 +52,8 @@
 * (done) have a system for creating pixle graphics in place of solid colors for map cells
 * (done) generate sheets for each cell type
 * (done) SheetIndex for cells based on cellType, and cell index in sheet based on HP (forNow)
-* a Sheet for shots
-* a Sheet for crossHairs
-* I am thinking some kind of string system like this (maybe)
-'0000000010000000' + 
-'0000000010000000' + 
-'00000000a0000000' + 
-'0000000000000000' + 
-'0000000000000000' + 
-'0000000000000000' + 
-'0000000000000000' + 
-'0000000000000000' + 
-'0000000000000000' + 
-'0000000000000000' + 
-'0000000000000000' + 
-'0000000000000000' + 
-'0000000000000000' + 
-'0000000000000000' + 
-'0000000000000000' + 
-'0000000000000000' + 
-
-* (done) make sure ver is 0.8.0 and make a pkg.html
+* (done) more advanced AI settings that help set different behaviors
+* make sure ver is 0.8.0 and make a pkg.html
 
 ## 0.7.0 - autoplay AI
 * (done) update percent remain on each tick

@@ -200,6 +200,7 @@ var gameMod = (function () {
             // set AI values based on ap.behavior value
             if (ap.behavior === 'cannon') {
                 game.weaponIndex = 2;
+                ap.maxShootTime = 3;
             }
             if (ap.behavior === 'total-kill') {
                 game.weaponIndex = Weapons.length - 1;

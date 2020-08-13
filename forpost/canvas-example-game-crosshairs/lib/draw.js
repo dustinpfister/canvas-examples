@@ -15,13 +15,18 @@ var draw = (function () {
     };
 
     var drawCellHealthBar = function (ctx, map, cell, cross) {
-
         var x = cell.x * map.cellSize + cross.offset.x + (320 / 2),
         y = cell.y * map.cellSize + cross.offset.y + (240 / 2);
-
         ctx.fillStyle = 'rgba(0,255,0,0.5)';
         ctx.fillRect(x, y, map.cellSize * (cell.HP / cell.maxHP), 5);
+    };
 
+    var setupDebug = function (ctx) {
+        ctx.fillStyle = 'rgba(0,0,0,0.4)';
+        ctx.fillRect(0, 0, game.canvas.width, game.canvas.height);
+        ctx.fillStyle = 'yellow';
+        ctx.textBaseline = 'top';
+        ctx.font = '10px courier';
     };
 
     var cellTypeColors = ['green', 'blue', 'red'],
@@ -141,20 +146,23 @@ var draw = (function () {
         },
         // draw info
         info: function (ctx, game) {
-            ctx.fillStyle = 'rgba(0,0,0,0.4)';
-            ctx.fillRect(0, 0, game.canvas.width, game.canvas.height);
-            ctx.fillStyle = 'yellow';
-            ctx.textBaseline = 'top';
-            ctx.font = '10px courier';
+            setupDebug(ctx);
             ctx.fillText('v' + game.ver, 10, 10);
             ctx.fillText('pos: ' + game.cross.offset.x.toFixed(2) + ',' + game.cross.offset.y.toFixed(2), 10, 20);
             ctx.fillText('percent remain: ' + Number(game.map.percentRemain * 100).toFixed(2), 10, 30);
             ctx.fillText('weapon: ' + gameMod.Weapons[game.weaponIndex].name, 10, 40);
             ctx.fillText('damage: ' + Math.floor(game.totalDamage), 10, 50);
             ctx.fillText('high damage cell: ' + Math.floor(game.map.highDamageCell), 10, 60);
-            ctx.fillText('autoPlay delay: ' + game.autoPlay.delay.toFixed(2), 10, 70);
-            ctx.fillText('autoPlay target: ' + game.autoPlay.target.x + ' , ' + game.autoPlay.target.y, 10, 80);
-            ctx.fillText('autoPlay target dist: ' + game.autoPlay.target.d, 10, 90);
+        },
+        debugAutoPlay: function (ctx, game) {
+            var ap = game.autoPlay;
+            setupDebug(ctx);
+            ctx.fillText('autoPlay delay: ' + ap.delay.toFixed(2), 10, 10);
+            ctx.fillText('autoPlay target: ' + ap.target.x + ' , ' + ap.target.y, 10, 20);
+            ctx.fillText('autoPlay target dist: ' + ap.target.d, 10, 30);
+            ctx.fillText('autoPlay behavior: ' + ap.behavior, 10, 40);
+            ctx.fillText('autoPlay mode: ' + ap.mode, 10, 50);
+            ctx.fillText('autoPlay stopAtPercentRemain: ' + ap.stopAtPercentRemain, 10, 60);
         }
     }
 }

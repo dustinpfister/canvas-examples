@@ -31,7 +31,8 @@ var loop = function () {
         draw.shots(ctx, game);
         draw.buttons(ctx);
         //draw.statBar(ctx, game);
-        draw.info(ctx, game);
+        //draw.info(ctx, game);
+        draw.debugAutoPlay(ctx, game);
         lt = now;
 
     }
