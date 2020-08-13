@@ -194,12 +194,23 @@ var gameMod = (function () {
             var map = game.map,
             ap = game.autoPlay;
 
-            // set weapon Index
-            //game.weaponIndex = Math.floor((Weapons.length) * utils.logPer(map.percentRemain, 2));
-            //game.weaponIndex = game.weaponIndex >= Weapons.length ? Weapons.length - 1 : game.weaponIndex;
-            game.weaponIndex = Weapons.length - 1;
+            // hard coded default for weapon index
+            game.weaponIndex = 0;
+
+            // set AI values based on ap.behavior value
+            if (ap.behavior === 'cannon') {
+                game.weaponIndex = 2;
+            }
+            if (ap.behavior === 'total-kill') {
+                game.weaponIndex = Weapons.length - 1;
+                ap.stopAtPercentRemain = 0;
+            }
+            if (ap.behavior === 'weapon-switch') {
+                game.weaponIndex = Math.floor((Weapons.length) * utils.logPer(map.percentRemain, 2));
+            }
+            game.weaponIndex = game.weaponIndex >= Weapons.length ? Weapons.length - 1 : game.weaponIndex;
             // stay on move mode if
-            if (map.percentRemain < 0) {
+            if (map.percentRemain < ap.stopAtPercentRemain) {
                 ap.mode = 'move';
             }
         },
@@ -327,7 +338,9 @@ var gameMod = (function () {
                 userDown: false,
                 autoPlay: {
                     enabled: true,
-                    delay: 10,
+                    behavior: 'cannon',
+                    stopAtPercentRemain: 0,
+                    delay: 0,
                     maxDelay: 10,
                     mode: 'move',
                     shootTime: 5,
