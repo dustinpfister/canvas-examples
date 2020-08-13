@@ -132,7 +132,7 @@ var gameMod = (function () {
                 if (utils.distance(cell.x, cell.y, p.currentCell.x, p.currentCell.y) <= e.sight) {
                     radian = utils.angleToPoint(cell.x, cell.y, p.currentCell.x, p.currentCell.y);
                 } else {
-                    radian = 0;
+                    radian = Math.PI * 2 * Math.random();
                 }
                 cx = Math.round(cell.x + Math.cos(radian));
                 cy = Math.round(cell.y + Math.sin(radian));
