@@ -14,8 +14,41 @@
         ctx: ctx,
         game: gameMod.create({
             canvas: canvas
-        })
+        }),
+        input: {
+            pointerDown: false,
+            pos: {
+                x: 0,
+                y: 0
+            }
+        }
     };
+
+    var pointerHanders = {
+        start: function (sm, e) {
+            var pos = sm.input.pos;
+            sm.input.pointerDown = true;
+            console.log('start');
+        },
+        move: function (sm, e) {
+            console.log('move');
+        },
+        end: function (sm, e) {
+            sm.input.pointerDown = false;
+            console.log('end');
+        }
+    };
+
+    var createPointerHandler = function (sm, type) {
+        return function (e) {
+            sm.input.pos = utils.getCanvasRelative(e);
+            pointerHanders[type](sm, e);
+        };
+    };
+
+    canvas.addEventListener('mousedown', createPointerHandler(sm, 'start'));
+    canvas.addEventListener('mousemove', createPointerHandler(sm, 'move'));
+    canvas.addEventListener('mouseup', createPointerHandler(sm, 'end'));
 
     var lt = new Date(),
     FPS_target = 30;

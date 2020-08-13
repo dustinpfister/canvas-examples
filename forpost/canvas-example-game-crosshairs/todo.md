@@ -59,10 +59,14 @@
 * start and exp system that uses total damage as experience points
 
 ## 0.9.0 - state machine
-* start a state machine that will serve as a single central state object
-* all canvas input is handled by the state machine
+* (done) now Have everything inside an IIFE in main.js, and fixed a few problems using globals in game.js, and draw.js
+* (done) start a state machine that will serve as a single central state object
+* all canvas input is handled by the state machine rather than game.js
 * have a main game state for the current update loop in main.js
-* remove event handers from game.js and make them part of state
+* start a general 'options' state that can be used to set just debug screens for now
+* be able to switch from 'game' and 'options' states threw the GUI
+* 'ver' should now be a property of the state machine object rather than game.js
+* make a pkg_0_9_0.html
 
 ## 0.8.0 - Pixel graphics
 * (done) hardSet.maxSecs value put in to limit the secs value in updates which fix a bug where to much damage was being applied
