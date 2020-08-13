@@ -66,7 +66,7 @@
 * (done) generate sheets for each cell type
 * (done) SheetIndex for cells based on cellType, and cell index in sheet based on HP (forNow)
 * (done) more advanced AI settings that help set different behaviors
-* make sure ver is 0.8.0 and make a pkg.html
+* (done) make sure ver is 0.8.0 and make a pkg.html
 
 ## 0.7.0 - autoplay AI
 * (done) update percent remain on each tick
