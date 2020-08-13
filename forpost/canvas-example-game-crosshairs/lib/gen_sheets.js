@@ -41,7 +41,7 @@ var genSheets = (function () {
         var sheet = createSheet(32, 10, 1),
         canvas = sheet.canvas,
         ctx = sheet.ctx;
-        drawBasicBox(sheet, fill, '#afafaf');
+        drawBasicBox(sheet, fill, '#000000');
         sheets.push(sheet);
     });
 

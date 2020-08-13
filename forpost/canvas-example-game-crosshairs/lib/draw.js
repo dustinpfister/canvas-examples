@@ -79,7 +79,7 @@ var draw = (function () {
 
                 //drawCellHealthBar(ctx, map, cell, cross);
 
-                ctx.fillStyle = 'white';
+                ctx.fillStyle = '#00ff00';
                 ctx.font = '10px courier';
                 ctx.fillText(Math.floor(cell.damagePer * 100), x, y)
             });
@@ -163,6 +163,10 @@ var draw = (function () {
             ctx.fillText('autoPlay behavior: ' + ap.behavior, 10, 40);
             ctx.fillText('autoPlay mode: ' + ap.mode, 10, 50);
             ctx.fillText('autoPlay stopAtPercentRemain: ' + ap.stopAtPercentRemain, 10, 60);
+        },
+        ver: function (ctx, game) {
+            ctx.fillStyle = '#dfdfdf';
+            ctx.fillText('v' + game.ver, 10, game.canvas.height - 15);
         }
     }
 }

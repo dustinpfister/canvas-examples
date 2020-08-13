@@ -30,6 +30,7 @@ var loop = function () {
         draw.cross(ctx, game.cross);
         draw.shots(ctx, game);
         draw.buttons(ctx);
+        draw.ver(ctx, game);
         //draw.statBar(ctx, game);
         //draw.info(ctx, game);
         draw.debugAutoPlay(ctx, game);
