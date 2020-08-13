@@ -187,7 +187,7 @@ var gameMod = (function () {
                     // else there is an enemy there
                     var e = newCell.unit;
                     e.active = false;
-                    removeUnit(game, e)
+                    removeUnit(game, e);
                     game.kills += 1; // just step a kill count for now
                     placeUnit(game, game.player, cx, cy);
                 }
