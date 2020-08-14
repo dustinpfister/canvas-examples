@@ -24,7 +24,7 @@
                     x: 32,
                     y: 32,
                     r: 16,
-                    options: ['general', 'none'],
+                    options: ['general', 'none', 'weapon'],
                     currentOption: 0
                 }
             },
@@ -114,7 +114,7 @@
     var sm = {
         ver: '0.10.0',
         canvas: canvas,
-        debugMode: 'none',
+        debugMode: 'weapon',
         currentState: 'game',
         ctx: ctx,
         game: gameMod.create({

@@ -43,6 +43,17 @@ var draw = (function () {
             ctx.fillText('weapon: ' + gameMod.Weapons[game.weaponIndex].name, 10, 30);
             ctx.fillText('damage: ' + Math.floor(game.totalDamage), 10, 40);
             ctx.fillText('high damage cell: ' + Math.floor(game.map.highDamageCell), 10, 50);
+        },
+        weapon: function (sm) {
+            var ctx = sm.ctx,
+            canvas = sm.canvas,
+            game = sm.game;
+            setupDebug(ctx, sm.game);
+            var w = gameMod.Weapons[game.weaponIndex];
+            ctx.fillText('Current weapon: ', 10, 10);
+            ctx.fillText('name: ' + w.name, 10, 20);
+            ctx.fillText('maxDPS: ' + w.maxDPS, 10, 30);
+            ctx.fillText('accuracy: ' + w.accuracy, 10, 40);
         }
     };
 
