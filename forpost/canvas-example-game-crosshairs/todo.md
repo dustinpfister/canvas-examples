@@ -61,8 +61,11 @@
 * cellType can still be set by damagePer, but the level of the cell type can be set by total damage
 * cellHP rate goes up a little higher then DPS goes up for the player
 
-## 0.x.0 - level up system for player based on total damage as EXP
-* start and exp system that uses total damage as experience points
+## 0.10.0 - level up system for player based on total damage as EXP
+* start a exp system that uses total damage as experience points
+* display totalDamage, and current level in game state as part of fixed display rather than debug menu
+* for now just have level set accuracy of all weapons
+* make a pkg_0_10_0.html
 
 ## 0.9.0 - state machine
 * (done) now Have everything inside an IIFE in main.js, and fixed a few problems using globals in game.js, and draw.js
