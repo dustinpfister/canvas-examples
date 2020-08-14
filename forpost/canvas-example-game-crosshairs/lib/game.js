@@ -280,8 +280,8 @@ var gameMod = (function () {
         Weapons: Weapons,
         buttons: {
             changeWeapon: {
-                x: 280,
-                y: 32,
+                x: 290,
+                y: 210,
                 r: 16
             }
         },
