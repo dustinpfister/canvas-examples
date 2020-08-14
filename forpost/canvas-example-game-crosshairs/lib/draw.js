@@ -37,6 +37,7 @@ var draw = (function () {
             var ctx = sm.ctx,
             canvas = sm.canvas,
             game = sm.game;
+            setupDebug(ctx, sm.game);
             ctx.fillText('pos: ' + game.cross.offset.x.toFixed(2) + ',' + game.cross.offset.y.toFixed(2), 10, 10);
             ctx.fillText('percent remain: ' + Number(game.map.percentRemain * 100).toFixed(2), 10, 20);
             ctx.fillText('weapon: ' + gameMod.Weapons[game.weaponIndex].name, 10, 30);
@@ -152,7 +153,6 @@ var draw = (function () {
             }
         },
         debug: function (sm) {
-            setupDebug(sm.ctx, sm.game);
             debugModes[sm.debugMode](sm, sm.ctx, sm.canvas);
         },
         ver: function (ctx, sm) {
