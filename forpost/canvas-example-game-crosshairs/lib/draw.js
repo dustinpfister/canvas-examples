@@ -149,27 +149,8 @@ var draw = (function () {
                 ctx.fillText(game.autoPlay.delay.toFixed(2), 0, 20);
             }
         },
-        // draw info
-        info: function (ctx, game) {
-            setupDebug(ctx, game);
-            ctx.fillText('pos: ' + game.cross.offset.x.toFixed(2) + ',' + game.cross.offset.y.toFixed(2), 10, 10);
-            ctx.fillText('percent remain: ' + Number(game.map.percentRemain * 100).toFixed(2), 10, 20);
-            ctx.fillText('weapon: ' + gameMod.Weapons[game.weaponIndex].name, 10, 30);
-            ctx.fillText('damage: ' + Math.floor(game.totalDamage), 10, 40);
-            ctx.fillText('high damage cell: ' + Math.floor(game.map.highDamageCell), 10, 50);
-        },
-        debugAutoPlay: function (ctx, game) {
-            var ap = game.autoPlay;
-            setupDebug(ctx, game);
-            ctx.fillText('autoPlay delay: ' + ap.delay.toFixed(2), 10, 10);
-            ctx.fillText('autoPlay target: ' + ap.target.x + ' , ' + ap.target.y, 10, 20);
-            ctx.fillText('autoPlay target dist: ' + ap.target.d, 10, 30);
-            ctx.fillText('autoPlay behavior: ' + ap.behavior, 10, 40);
-            ctx.fillText('autoPlay mode: ' + ap.mode, 10, 50);
-            ctx.fillText('autoPlay stopAtPercentRemain: ' + ap.stopAtPercentRemain, 10, 60);
-        },
         debug: function (sm) {
-
+            setupDebug(sm.ctx, sm.game);
             debugModes[sm.debugMode](sm, sm.ctx, sm.canvas);
         },
         ver: function (ctx, sm) {

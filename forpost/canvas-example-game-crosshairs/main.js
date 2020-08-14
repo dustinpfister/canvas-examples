@@ -70,8 +70,6 @@
                 draw.debug(sm);
 
                 //draw.statBar(ctx, sm.game);
-                //draw.info(ctx, sm.game);
-                //draw.debugAutoPlay(ctx, sm.game);
 
             },
             pointerStart: function (sm, e) {
