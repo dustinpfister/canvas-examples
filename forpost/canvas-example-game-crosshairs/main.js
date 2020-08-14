@@ -19,6 +19,13 @@
                     x: 300,
                     y: 20,
                     r: 10
+                },
+                debugMode: {
+                    x: 32,
+                    y: 32,
+                    r: 16,
+                    options: ['none', 'general'],
+                    currentOption: 0
                 }
             },
 
