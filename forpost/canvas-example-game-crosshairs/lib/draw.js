@@ -160,12 +160,16 @@ var draw = (function () {
         },
         damageBar: function (ctx, game) {
             var text = 'dmg: ' + Math.floor(game.totalDamage) + ' level: ' + game.levelObj.level;
-            ctx.fillStyle = 'rgba(0,0,0,0.5)';
+            // progress bar
+            ctx.fillStyle = 'rgba(0,0,0,0.3)';
+            ctx.fillRect(0, 0, game.canvas.width, 14);
+            ctx.fillStyle = 'rgba(0,64,255,0.4)';
+            ctx.fillRect(0, 0, game.canvas.width * game.levelObj.per, 14);
+            // text
+            ctx.fillStyle = 'white';
             ctx.font = '10px arial';
             ctx.textBaseline = 'top';
             ctx.textAlign = 'center';
-            ctx.fillRect(0, 0, game.canvas.width, 14);
-            ctx.fillStyle = 'white';
             ctx.fillText(text, game.canvas.width / 2, 2);
         },
         debug: function (sm) {
