@@ -115,7 +115,7 @@
     };
 
     var sm = {
-        ver: '0.9.0',
+        ver: '0.10.0',
         canvas: canvas,
         debugMode: 'general',
         currentState: 'game',

@@ -62,9 +62,14 @@
 * cellHP rate goes up a little higher then DPS goes up for the player
 
 ## 0.10.0 - level up system for player based on total damage as EXP
-* start a exp system that uses total damage as experience points
-* display totalDamage, and current level in game state as part of fixed display rather than debug menu
-* for now just have level set accuracy of all weapons
+* make an exp_system.js module
+* have a game.level property
+* use the exp_system module to set, and update game.level
+* display game.level in game state as part of fixed display rather than debug menu
+* display totalDamage in game state as part of fixed display rather than debug menu
+* have game.level set accuracy of all weapons
+* have game.level set DPS for all weapons
+* new debug mode for weapons
 * make a pkg_0_10_0.html
 
 ## 0.9.0 - state machine
@@ -75,7 +80,7 @@
 * (done) start a general 'options' state that can be used to set just debug screens for now
 * (done) be able to switch from 'game' and 'options' states threw the GUI
 * (done) 'ver' should now be a property of the state machine object rather than game.js
-* make a pkg_0_9_0.html
+* (done) make a pkg_0_9_0.html
 
 ## 0.8.0 - Pixel graphics
 * (done) hardSet.maxSecs value put in to limit the secs value in updates which fix a bug where to much damage was being applied
