@@ -34,9 +34,7 @@
                 var state = states[sm.currentState];
                 draw.back(ctx, canvas);
                 draw.buttons(ctx, state.buttons);
-
                 draw.debug(sm);
-
             },
 
             // events
@@ -45,11 +43,19 @@
                 buttons = state.buttons;
 
                 var pos = utils.getCanvasRelative(e);
-                b = buttons.toGame;
+                var b = buttons.toGame,
                 d = utils.distance(pos.x, pos.y, b.x, b.y);
                 if (d < b.r) {
                     sm.currentState = 'game';
                 }
+
+                b = buttons.debugMode;
+                d = utils.distance(pos.x, pos.y, b.x, b.y);
+                if (d < b.r) {
+                    b.currentOption += 1;
+                    b.currentOption = b.currentOption >= b.options.length ? 0 : b.currentOption;
+                }
+
             },
             pointerMove: function () {},
             pointerEnd: function () {}
