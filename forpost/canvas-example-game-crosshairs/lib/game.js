@@ -268,7 +268,7 @@ var gameMod = (function () {
                 }
             }
 
-            game.levelObj = XP.parseByXP(game.totalDamage, 100);
+            game.levelObj = XP.parseByXP(game.totalDamage, 100, 10000);
 
         }
     };
@@ -318,7 +318,7 @@ var gameMod = (function () {
                 }
             };
             // set game level object for first time
-            game.levelObj = XP.parseByXP(game.totalDamage, 100);
+            game.levelObj = XP.parseByXP(game.totalDamage, 100, 10000);
             // first autoPlay target
             autoPlay.setRandomTarget(game);
             // create cross object
