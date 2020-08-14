@@ -104,11 +104,11 @@ var draw = (function () {
                 }
             }
         },
-        buttons: function (ctx) {
+        buttons: function (ctx, buttons) {
             ctx.fillStyle = 'red';
             ctx.strokeStyle = 'white';
-            Object.keys(gameMod.buttons).forEach(function (key) {
-                var b = gameMod.buttons[key];
+            Object.keys(buttons).forEach(function (key) {
+                var b = buttons[key];
                 ctx.beginPath();
                 ctx.arc(b.x, b.y, b.r, 0, Math.PI * 2);
                 ctx.fill();
