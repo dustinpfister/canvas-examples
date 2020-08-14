@@ -64,7 +64,8 @@ draw.navCircle = function (pm, ctx, canvas) {
 
 draw.debugInfo = function (pm, pt, ctx, canvas) {
     ctx.fillStyle = 'white';
-    ctx.fillText(Math.floor(pt.x) + ', ' + Math.floor(pt.y), 10, 10);
+    ctx.fillText('pos: ' + Math.floor(pt.x) + ', ' + Math.floor(pt.y), 10, 10);
+    ctx.fillText('delta: ' + pm.delta, 10, 20);
 };
 
 draw.ver = function (ctx, pm) {
