@@ -51,6 +51,12 @@
 * atom skill
 * damage skill
 
+## 0.x.0 - Buttons
+* buttons should be part of the state machine rather than the game module
+* make a standard module or class for creating and updating button objects
+* use new button standard for options and change weapon buttons in game state
+* use new button standard for options menu bttons
+
 ## 0.x.0 - CellTypes upgrade based on total damage of cell
 * cellType can still be set by damagePer, but the level of the cell type can be set by total damage
 * cellHP rate goes up a little higher then DPS goes up for the player
