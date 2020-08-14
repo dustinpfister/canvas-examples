@@ -7,12 +7,10 @@ var PM = (function () {
     // get canvas relative point
     var getCanvasRelative = function (e) {
         var canvas = e.target,
-        bx = canvas.getBoundingClientRect(),
-        x = e.clientX - bx.left,
-        y = e.clientY - bx.top;
+        bx = canvas.getBoundingClientRect();
         return {
-            x: x,
-            y: y,
+            x: (e.changedTouches ? e.changedTouches[0].clientX : e.clientX) - bx.left,
+            y: (e.changedTouches ? e.changedTouches[0].clientY : e.clientY) - bx.top,
             bx: bx
         };
     };

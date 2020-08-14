@@ -36,3 +36,12 @@ canvas.addEventListener('mousemove', function (e) {
 canvas.addEventListener('mouseup', function (e) {
     PM.onPointerEnd(pm, e);
 });
+canvas.addEventListener('touchstart', function (e) {
+    PM.onPointerStart(pm, e);
+});
+canvas.addEventListener('touchmove', function (e) {
+    PM.onPointerMove(pm, e);
+});
+canvas.addEventListener('touchend', function (e) {
+    PM.onPointerEnd(pm, e);
+});
