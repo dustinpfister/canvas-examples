@@ -156,6 +156,7 @@
     var createPointerHandler = function (sm, type) {
         return function (e) {
             sm.input.pos = utils.getCanvasRelative(e);
+            e.preventDefault();
             pointerHanders[type](sm, e);
         };
     };
