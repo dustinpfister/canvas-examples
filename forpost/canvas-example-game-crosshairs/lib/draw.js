@@ -157,6 +157,7 @@ var draw = (function () {
         },
         ver: function (ctx, sm) {
             ctx.fillStyle = '#dfdfdf';
+            ctx.textAlign = 'left';
             ctx.fillText('v' + sm.ver, 10, sm.canvas.height - 15);
         }
     }
