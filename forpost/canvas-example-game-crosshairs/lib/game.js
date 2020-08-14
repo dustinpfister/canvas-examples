@@ -16,6 +16,10 @@ var gameMod = (function () {
             accuracy: 0.75,
             hitRadius: 64,
             gunCount: 1,
+            level: {
+                maxDPS_base: 10,
+                maxDPS_perLevel: 5
+            }
         }, {
             name: 'Assault Blaster',
             pps: 512,
@@ -24,25 +28,37 @@ var gameMod = (function () {
             maxDPS: 5,
             accuracy: 0.5,
             hitRadius: 64,
-            gunCount: 4
+            gunCount: 4,
+            level: {
+                maxDPS_base: 5,
+                maxDPS_perLevel: 6
+            }
         }, {
             name: 'Cannon',
             pps: 256,
             shotRate: 0.5,
             blastRadius: 3,
-            maxDPS: 150,
+            maxDPS: 20,
             accuracy: 0.25,
             hitRadius: 64,
-            gunCount: 2
+            gunCount: 2,
+            level: {
+                maxDPS_base: 20,
+                maxDPS_perLevel: 30
+            }
         }, {
             name: 'Atom',
             pps: 256,
             shotRate: 1,
             blastRadius: 10,
-            maxDPS: 250,
+            maxDPS: 75,
             accuracy: 0.9,
             hitRadius: 128,
-            gunCount: 1
+            gunCount: 1,
+            level: {
+                maxDPS_base: 75,
+                maxDPS_perLevel: 50
+            }
         }
     ];
 
