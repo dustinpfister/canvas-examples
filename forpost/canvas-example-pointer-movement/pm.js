@@ -22,6 +22,7 @@ var PM = (function () {
     // new Pointer Movement State Object
     api.newPM = function () {
         return {
+            ver: '0.0.0',
             down: false,
             angle: 0,
             dist: 0,
@@ -62,9 +63,6 @@ var PM = (function () {
 
     // when a pointer action starts
     api.onPointerStart = function (pm, e) {
-		
-		console.log('yes we are getting this far at least');
-		
         var pos = getCanvasRelative(e);
         pm.down = true;
         pm.sp = {

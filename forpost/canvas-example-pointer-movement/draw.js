@@ -3,13 +3,13 @@ var draw = {};
 draw.background = function (pm, ctx, canvas) {
     ctx.fillStyle = 'black';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
-}
+};
 draw.PTGridlines = function (pt, ctx, canvas) {
     var cellX = -1,
     cellY = -1,
     x,
     y;
-    ctx.strokeStyle = 'white';
+    ctx.strokeStyle = 'gray';
     ctx.lineWidth = 1;
     while (cellX < 11) {
         x = cellX * 32 - pt.x % 32;
@@ -65,4 +65,12 @@ draw.navCircle = function (pm, ctx, canvas) {
 draw.debugInfo = function (pm, pt, ctx, canvas) {
     ctx.fillStyle = 'white';
     ctx.fillText(pt.x + ', ' + pt.y, 10, 10);
-}
+};
+
+draw.ver = function (ctx, pm) {
+    ctx.fillStyle = 'white';
+    ctx.font = '10px courier';
+    ctx.textBaseline = 'top';
+    ctx.textAlign = 'left';
+    ctx.fillText('v' + pm.ver, 5, canvas.height - 15);
+};
