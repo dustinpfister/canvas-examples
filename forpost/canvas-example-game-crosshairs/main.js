@@ -12,7 +12,24 @@
     var states = {
 
         game: {
+            update: function (sm, secs) {
 
+                // update game state
+                gameMod.update(sm.game, secs);
+
+                // draw
+                draw.back(ctx, canvas);
+                draw.map(ctx, sm.game.map, sm.game.cross);
+                draw.explosions(ctx, sm.game);
+                draw.cross(ctx, sm.game.cross);
+                draw.shots(ctx, sm.game);
+                draw.buttons(ctx);
+                draw.ver(ctx, sm.game);
+                //draw.statBar(ctx, sm.game);
+                draw.info(ctx, sm.game);
+                //draw.debugAutoPlay(ctx, sm.game);
+
+            },
             pointerStart: function (sm, e) {
                 var pos = utils.getCanvasRelative(e);
                 // enable cross move back feature
@@ -27,16 +44,13 @@
                     sm.game.weaponIndex %= gameMod.Weapons.length;
                 }
             },
-
             pointerEnd: function (em, e) {
                 crossMod.userAction(sm.game.cross, 'end', e);
                 sm.game.userDown = false;
             },
-
             pointerMove: function (sm, e) {
                 crossMod.userAction(sm.game.cross, 'move', e);
             }
-
         }
 
     };
@@ -94,17 +108,9 @@
         secs = t / 1000;
         requestAnimationFrame(loop);
         if (t >= 1000 / FPS_target) {
-            gameMod.update(sm.game, secs);
-            draw.back(ctx, canvas);
-            draw.map(ctx, sm.game.map, sm.game.cross);
-            draw.explosions(ctx, sm.game);
-            draw.cross(ctx, sm.game.cross);
-            draw.shots(ctx, sm.game);
-            draw.buttons(ctx);
-            draw.ver(ctx, sm.game);
-            //draw.statBar(ctx, sm.game);
-            draw.info(ctx, sm.game);
-            //draw.debugAutoPlay(ctx, sm.game);
+
+            states[sm.currentState].update(sm, secs);
+
             lt = now;
         }
     };
