@@ -247,31 +247,28 @@ var gameMod = (function () {
 
         update: function (game, secs) {
 
+            // if autoplay
             if (game.autoPlay.enabled) {
-
                 var ch = game.cross.crosshairs,
                 os = game.cross.offset,
                 ap = game.autoPlay,
                 map = game.map;
-
                 game.autoPlay.delay -= secs;
                 if (game.userDown) {
                     game.autoPlay.delay = game.autoPlay.maxDelay;
                 }
                 game.autoPlay.delay = game.autoPlay.delay < 0 ? 0 : game.autoPlay.delay;
                 if (game.autoPlay.delay === 0) {
-
                     // disable cross move back
                     game.cross.moveBackEnabled = false;
-
                     // set by percent remain?
                     autoPlay.setByPercentRemain(game);
-
                     // apply current mode
                     autoPlay.modes[ap.mode](game, secs);
-
                 }
             }
+
+            game.levelObj = XP.parseByXP(game.totalDamage, 100);
 
         }
     };
@@ -293,7 +290,7 @@ var gameMod = (function () {
         create: function (opt) {
             opt = opt || {};
             var game = {
-                level: 1,
+                levelObj: {},
                 canvas: opt.canvas,
                 map: mapMod.create(),
                 cross: {},
@@ -320,7 +317,11 @@ var gameMod = (function () {
                     }
                 }
             };
+            // set game level object for first time
+            game.levelObj = XP.parseByXP(game.totalDamage, 100);
+            // first autoPlay target
             autoPlay.setRandomTarget(game);
+            // create cross object
             game.cross = crossMod.create({
                     offsetX: game.map.cellWidth * game.map.cellSize / 2 * -1,
                     offsetY: game.map.cellHeight * game.map.cellSize / 2 * -1,

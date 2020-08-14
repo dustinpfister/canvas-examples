@@ -140,7 +140,7 @@ var draw = (function () {
             });
         },
         damageBar: function (ctx, game) {
-			var text = Math.floor(game.totalDamage);
+            var text = 'dmg: ' + Math.floor(game.totalDamage) + ' level: ' + game.levelObj.level;
             ctx.fillStyle = 'rgba(0,0,0,0.5)';
             ctx.font = '10px arial';
             ctx.textBaseline = 'top';

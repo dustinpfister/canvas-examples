@@ -75,9 +75,9 @@
                 draw.cross(ctx, sm.game.cross);
                 draw.shots(ctx, sm.game);
                 draw.buttons(ctx, gameMod.buttons);
-				
-				draw.damageBar(ctx, sm.game);
-				
+
+                draw.damageBar(ctx, sm.game);
+
                 draw.ver(ctx, sm);
 
                 draw.debug(sm);
