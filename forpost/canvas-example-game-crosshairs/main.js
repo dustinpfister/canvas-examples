@@ -34,6 +34,9 @@
                 var state = states[sm.currentState];
                 draw.back(ctx, canvas);
                 draw.buttons(ctx, state.buttons);
+
+                draw.debug(sm);
+
             },
 
             // events
@@ -108,7 +111,7 @@
         ver: '0.9.0',
         canvas: canvas,
         debugMode: 'general',
-        currentState: 'game',
+        currentState: 'options',
         ctx: ctx,
         game: gameMod.create({
             canvas: canvas

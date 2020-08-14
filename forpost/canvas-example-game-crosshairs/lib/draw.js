@@ -23,6 +23,8 @@ var draw = (function () {
 
     var setupDebug = function (ctx, game) {
         ctx.fillStyle = 'rgba(0,0,0,0.4)';
+        ctx.textBaseline = 'top';
+        ctx.textAlign = 'left';
         ctx.fillRect(0, 0, game.canvas.width, game.canvas.height);
         ctx.fillStyle = 'yellow';
         ctx.textBaseline = 'top';
