@@ -31,10 +31,15 @@
 
             // events
             pointerStart: function (sm, e) {
-
                 var state = states[sm.currentState],
                 buttons = state.buttons;
 
+                var pos = utils.getCanvasRelative(e);
+                b = buttons.toGame;
+                d = utils.distance(pos.x, pos.y, b.x, b.y);
+                if (d < b.r) {
+                    sm.currentState = 'game';
+                }
             },
             pointerMove: function () {},
             pointerEnd: function () {}
