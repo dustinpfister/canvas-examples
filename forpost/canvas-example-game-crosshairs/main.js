@@ -106,7 +106,7 @@
     var sm = {
         ver: '0.9.0',
         canvas: canvas,
-        currentState: 'game',
+        currentState: 'options',
         ctx: ctx,
         game: gameMod.create({
             canvas: canvas

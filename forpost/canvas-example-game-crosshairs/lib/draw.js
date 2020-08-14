@@ -113,6 +113,13 @@ var draw = (function () {
                 ctx.arc(b.x, b.y, b.r, 0, Math.PI * 2);
                 ctx.fill();
                 ctx.stroke();
+                if (b.options) {
+                    var str = b.options[b.currentOption || 0];
+                    ctx.textBaseline = 'middle';
+                    ctx.textAlign = 'center';
+                    ctx.fillStyle = 'white';
+                    ctx.fillText(str, b.x, b.y);
+                }
             });
         },
         // draw info
