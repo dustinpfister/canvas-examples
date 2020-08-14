@@ -53,7 +53,7 @@ var gameMod = (function () {
             blastRadius: 10,
             maxDPS: 75,
             accuracy: 0.9,
-            hitRadius: 128,
+            hitRadius: 75,
             gunCount: 1,
             level: {
                 maxDPS_base: 75,
@@ -67,6 +67,7 @@ var gameMod = (function () {
         Weapons.forEach(function (weapon) {
             var lv = weapon.level;
             weapon.maxDPS = lv.maxDPS_base + lv.maxDPS_perLevel * level;
+            weapon.accuracy = 0.95 - 0.9 * (1 - level / hardSet.levelCap);
         });
     };
 
