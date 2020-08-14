@@ -69,9 +69,9 @@
 * (done) start a state machine that will serve as a single central state object
 * (done) all canvas input is handled by the state machine rather than game.js
 * (done) have a main game state for the current update loop in main.js
-* start a general 'options' state that can be used to set just debug screens for now
+* (done) start a general 'options' state that can be used to set just debug screens for now
 * (done) be able to switch from 'game' and 'options' states threw the GUI
-* 'ver' should now be a property of the state machine object rather than game.js
+* (done) 'ver' should now be a property of the state machine object rather than game.js
 * make a pkg_0_9_0.html
 
 ## 0.8.0 - Pixel graphics
