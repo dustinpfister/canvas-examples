@@ -62,6 +62,14 @@ var gameMod = (function () {
         }
     ];
 
+    var setWeaponsToLevel = function (game) {
+        var level = game.levelObj.level;
+        Weapons.forEach(function (weapon) {
+            var lv = weapon.level;
+            weapon.maxDPS = lv.maxDPS_base + lv.maxDPS_perLevel * level;
+        });
+    };
+
     // SHOT Object Options
     var shotOptions = {
         count: 20,
@@ -375,6 +383,7 @@ var gameMod = (function () {
 
             // update level object
             game.levelObj = XP.parseByXP(game.totalDamage, hardSet.levelCap, hardSet.deltaNext);
+            setWeaponsToLevel(game);
 
         }
 
