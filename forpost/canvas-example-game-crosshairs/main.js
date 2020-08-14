@@ -24,7 +24,7 @@
                     x: 32,
                     y: 32,
                     r: 16,
-                    options: ['none', 'general'],
+                    options: ['general', 'none'],
                     currentOption: 0
                 }
             },
@@ -54,6 +54,7 @@
                 if (d < b.r) {
                     b.currentOption += 1;
                     b.currentOption = b.currentOption >= b.options.length ? 0 : b.currentOption;
+                    sm.debugMode = b.options[b.currentOption];
                 }
 
             },
@@ -117,7 +118,7 @@
         ver: '0.9.0',
         canvas: canvas,
         debugMode: 'general',
-        currentState: 'options',
+        currentState: 'game',
         ctx: ctx,
         game: gameMod.create({
             canvas: canvas
