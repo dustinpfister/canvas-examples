@@ -60,6 +60,7 @@ var draw = (function () {
             ctx.fillText('Current level: ' + lv.level, 10, 10);
             ctx.fillText('forNext level: ' + lv.forNext, 10, 20);
             ctx.fillText('toNext level: ' + lv.toNext, 10, 30);
+            ctx.fillText('per: ' + lv.per.toFixed(2), 10, 40);
 
         }
     };

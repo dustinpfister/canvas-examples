@@ -21,11 +21,13 @@ var XP = (function () {
         l = l > cap ? cap : l;
         var level = Math.floor(l),
         forNext = getXPtoLevel(level + 1, deltaNext);
+        forNext = l === cap ? Infinity : forNext;
         return {
             level: level,
             levelFrac: l,
             xp: xp,
-            forNext: l === cap ? Infinity : forNext,
+            per: xp / forNext,
+            forNext: forNext,
             toNext: l === cap ? Infinity : forNext - xp
         };
     };
