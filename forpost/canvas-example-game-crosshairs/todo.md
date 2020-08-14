@@ -71,7 +71,7 @@
 * (done) have game.level set DPS for all weapons
 * (done) new debug mode for current weapon
 * (done) new debug mode for level
-* progress bar for draw.damageBar
+* (done) progress bar for draw.damageBar
 * make a pkg_0_10_0.html
 
 ## 0.9.0 - state machine
