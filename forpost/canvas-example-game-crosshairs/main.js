@@ -12,12 +12,30 @@
     var states = {
 
         options: {
-            update: function () {
+
+            // button objects for the state
+            buttons: {
+                toGame: {
+                    x: 300,
+                    y: 20,
+                    r: 10
+                }
+            },
+
+            // for each update tick
+            update: function (sm, secs) {
 
                 draw.back(ctx, canvas);
 
             },
-            pointerStart: function () {},
+
+            // events
+            pointerStart: function (sm, e) {
+
+                var state = states[sm.currentState],
+                buttons = state.buttons;
+
+            },
             pointerMove: function () {},
             pointerEnd: function () {}
         },
