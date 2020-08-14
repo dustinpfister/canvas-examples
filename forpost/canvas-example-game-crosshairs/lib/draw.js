@@ -149,20 +149,6 @@ var draw = (function () {
             ctx.fillStyle = 'white';
             ctx.fillText(text, game.canvas.width / 2, 2);
         },
-        /*
-        statBar: function (ctx, game) {
-        ctx.fillStyle = 'yellow';
-        ctx.textBaseline = 'top';
-        ctx.font = '10px courier';
-        ctx.fillText('damage: ' + Math.floor(game.totalDamage), 0, 0);
-        ctx.fillText('weapon: ' + gameMod.Weapons[game.weaponIndex].name, 0, 10);
-        if (game.autoPlay.delay === 0) {
-        ctx.fillText('autoPlay in effect', 0, 20);
-        } else {
-        ctx.fillText(game.autoPlay.delay.toFixed(2), 0, 20);
-        }
-        },
-         */
         debug: function (sm) {
             debugModes[sm.debugMode](sm, sm.ctx, sm.canvas);
         },

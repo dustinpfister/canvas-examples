@@ -74,16 +74,10 @@
                 draw.explosions(ctx, sm.game);
                 draw.cross(ctx, sm.game.cross);
                 draw.shots(ctx, sm.game);
-                draw.buttons(ctx, gameMod.buttons);
-
                 draw.damageBar(ctx, sm.game);
-
+                draw.buttons(ctx, gameMod.buttons);
                 draw.ver(ctx, sm);
-
                 draw.debug(sm);
-
-                //draw.statBar(ctx, sm.game);
-
             },
             pointerStart: function (sm, e) {
                 var pos = utils.getCanvasRelative(e);
@@ -161,10 +155,10 @@
         };
     };
 
+    // attach for mouse and touch
     canvas.addEventListener('mousedown', createPointerHandler(sm, 'start'));
     canvas.addEventListener('mousemove', createPointerHandler(sm, 'move'));
     canvas.addEventListener('mouseup', createPointerHandler(sm, 'end'));
-
     canvas.addEventListener('touchstart', createPointerHandler(sm, 'start'));
     canvas.addEventListener('touchmove', createPointerHandler(sm, 'move'));
     canvas.addEventListener('touchend', createPointerHandler(sm, 'end'));
