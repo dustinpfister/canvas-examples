@@ -25,6 +25,7 @@ var PM = (function () {
             angle: 0,
             dist: 0,
             PPS: 0,
+            maxPPS: 128,
             sp: { // start point
                 x: -1,
                 y: -1
@@ -48,7 +49,7 @@ var PM = (function () {
             var per = pm.dist / 64;
             per = per > 1 ? 1 : per;
             per = per < 0 ? 0 : per;
-            pm.PPS = per * 3;
+            pm.PPS = per * pm.maxPPS;
             pm.angle = Math.atan2(pm.cp.y - pm.sp.y, pm.cp.x - pm.sp.x);
         }
     };

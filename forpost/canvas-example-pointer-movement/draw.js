@@ -52,8 +52,8 @@ draw.navCircle = function (pm, ctx, canvas) {
         ctx.moveTo(cx, cy);
         ctx.lineTo(x, y);
         ctx.stroke();
-        // draw delta circle
-        per = pm.delta / 3;
+        // draw PPS circle
+        per = pm.PPS / pm.maxPPS;
         x = Math.cos(a) * min * per + cx;
         y = Math.sin(a) * min * per + cy;
         ctx.beginPath();
@@ -65,7 +65,7 @@ draw.navCircle = function (pm, ctx, canvas) {
 draw.debugInfo = function (pm, pt, ctx, canvas) {
     ctx.fillStyle = 'white';
     ctx.fillText('pos: ' + Math.floor(pt.x) + ', ' + Math.floor(pt.y), 10, 10);
-    ctx.fillText('PPS: ' + pm.PPS, 10, 20);
+    ctx.fillText('PPS: ' + pm.PPS.toFixed(2), 10, 20);
 };
 
 draw.ver = function (ctx, pm) {
