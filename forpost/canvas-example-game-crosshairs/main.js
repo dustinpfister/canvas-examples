@@ -24,9 +24,9 @@
 
             // for each update tick
             update: function (sm, secs) {
-
+                var state = states[sm.currentState];
                 draw.back(ctx, canvas);
-
+                draw.buttons(ctx, state.buttons);
             },
 
             // events
