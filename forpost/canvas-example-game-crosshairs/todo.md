@@ -67,8 +67,8 @@
 * (done) use the exp_system module to set, and update game.levelObj
 * (done) display game.level in game state as part of fixed display rather than debug menu
 * (done) display totalDamage in game state as part of fixed display rather than debug menu
-* have game.level set accuracy of all weapons
-* have game.level set DPS for all weapons
+* (done) have game.level set accuracy of all weapons
+* (done) have game.level set DPS for all weapons
 * (done) new debug mode for current weapon
 * new debug mode for level
 * make a pkg_0_10_0.html
