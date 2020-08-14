@@ -127,17 +127,15 @@ var draw = (function () {
             } else {
                 ctx.fillText(game.autoPlay.delay.toFixed(2), 0, 20);
             }
-            ctx.fillText('v' + game.ver, 0, game.canvas.height - 10);
         },
         // draw info
         info: function (ctx, game) {
             setupDebug(ctx, game);
-            ctx.fillText('v' + game.ver, 10, 10);
-            ctx.fillText('pos: ' + game.cross.offset.x.toFixed(2) + ',' + game.cross.offset.y.toFixed(2), 10, 20);
-            ctx.fillText('percent remain: ' + Number(game.map.percentRemain * 100).toFixed(2), 10, 30);
-            ctx.fillText('weapon: ' + gameMod.Weapons[game.weaponIndex].name, 10, 40);
-            ctx.fillText('damage: ' + Math.floor(game.totalDamage), 10, 50);
-            ctx.fillText('high damage cell: ' + Math.floor(game.map.highDamageCell), 10, 60);
+            ctx.fillText('pos: ' + game.cross.offset.x.toFixed(2) + ',' + game.cross.offset.y.toFixed(2), 10, 10);
+            ctx.fillText('percent remain: ' + Number(game.map.percentRemain * 100).toFixed(2), 10, 20);
+            ctx.fillText('weapon: ' + gameMod.Weapons[game.weaponIndex].name, 10, 30);
+            ctx.fillText('damage: ' + Math.floor(game.totalDamage), 10, 40);
+            ctx.fillText('high damage cell: ' + Math.floor(game.map.highDamageCell), 10, 50);
         },
         debugAutoPlay: function (ctx, game) {
             var ap = game.autoPlay;
@@ -149,9 +147,9 @@ var draw = (function () {
             ctx.fillText('autoPlay mode: ' + ap.mode, 10, 50);
             ctx.fillText('autoPlay stopAtPercentRemain: ' + ap.stopAtPercentRemain, 10, 60);
         },
-        ver: function (ctx, game) {
+        ver: function (ctx, sm) {
             ctx.fillStyle = '#dfdfdf';
-            ctx.fillText('v' + game.ver, 10, game.canvas.height - 15);
+            ctx.fillText('v' + sm.ver, 10, sm.canvas.height - 15);
         }
     }
 }

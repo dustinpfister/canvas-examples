@@ -293,7 +293,7 @@ var gameMod = (function () {
         create: function (opt) {
             opt = opt || {};
             var game = {
-                ver: '0.9.0',
+                //ver: '0.9.0',
                 canvas: opt.canvas,
                 map: mapMod.create(),
                 cross: {},
