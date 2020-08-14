@@ -11,6 +11,17 @@
 
     var states = {
 
+        options: {
+            update: function () {
+
+                draw.back(ctx, canvas);
+
+            },
+            pointerStart: function () {},
+            pointerMove: function () {},
+            pointerEnd: function () {}
+        },
+
         game: {
             update: function (sm, secs) {
 
