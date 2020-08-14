@@ -54,6 +54,13 @@
                     sm.game.weaponIndex += 1;
                     sm.game.weaponIndex %= gameMod.Weapons.length;
                 }
+
+                b = gameMod.buttons.options;
+                d = utils.distance(pos.x, pos.y, b.x, b.y);
+                if (d < b.r) {
+                    sm.currentState = 'options';
+                }
+
             },
             pointerEnd: function (em, e) {
                 crossMod.userAction(sm.game.cross, 'end', e);
