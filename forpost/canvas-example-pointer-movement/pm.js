@@ -24,7 +24,7 @@ var PM = (function () {
             down: false,
             angle: 0,
             dist: 0,
-            delta: 0,
+            PPS: 0,
             sp: { // start point
                 x: -1,
                 y: -1
@@ -39,7 +39,7 @@ var PM = (function () {
     // update the pm based on startPoint, and currentPoint
     api.updatePM = function (pm) {
         pm.dist = 0;
-        pm.delta = 0;
+        pm.PPS = 0;
         pm.angle = 0;
         if (pm.cp.x >= 0 && pm.cp.y >= 0) {
             pm.dist = distance(pm.sp.x, pm.sp.y, pm.cp.x, pm.cp.y);
@@ -48,7 +48,7 @@ var PM = (function () {
             var per = pm.dist / 64;
             per = per > 1 ? 1 : per;
             per = per < 0 ? 0 : per;
-            pm.delta = per * 3;
+            pm.PPS = per * 3;
             pm.angle = Math.atan2(pm.cp.y - pm.sp.y, pm.cp.x - pm.sp.x);
         }
     };
@@ -56,8 +56,8 @@ var PM = (function () {
     // step a point by the current values of the pm
     api.stepPointByPM = function (pm, pt, secs) {
         secs = secs === undefined ? 1 : secs;
-        pt.x += Math.cos(pm.angle) * pm.delta * secs;
-        pt.y += Math.sin(pm.angle) * pm.delta * secs;
+        pt.x += Math.cos(pm.angle) * pm.PPS * secs;
+        pt.y += Math.sin(pm.angle) * pm.PPS * secs;
     };
 
     // when a pointer action starts
