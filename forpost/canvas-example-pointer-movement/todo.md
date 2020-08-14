@@ -7,5 +7,5 @@
 * (done) make use of secs argument in main.js
 * (done) update debug info to display delta
 * (done) change delta to PPS
-* can set PPS by way of argument when creating PM
+* (done) can set PPS by way of argument when creating PM
 * create a pkg_0_0_0.html file
