@@ -66,8 +66,11 @@
                 draw.shots(ctx, sm.game);
                 draw.buttons(ctx, gameMod.buttons);
                 draw.ver(ctx, sm);
+
+                draw.debug(sm);
+
                 //draw.statBar(ctx, sm.game);
-                draw.info(ctx, sm.game);
+                //draw.info(ctx, sm.game);
                 //draw.debugAutoPlay(ctx, sm.game);
 
             },
@@ -106,7 +109,8 @@
     var sm = {
         ver: '0.9.0',
         canvas: canvas,
-        currentState: 'options',
+        debugMode: 'general',
+        currentState: 'game',
         ctx: ctx,
         game: gameMod.create({
             canvas: canvas

@@ -29,6 +29,20 @@ var draw = (function () {
         ctx.font = '10px courier';
     };
 
+    var debugModes = {
+        none: function (sm) {},
+        general: function (sm) {
+            var ctx = sm.ctx,
+            canvas = sm.canvas,
+            game = sm.game;
+            ctx.fillText('pos: ' + game.cross.offset.x.toFixed(2) + ',' + game.cross.offset.y.toFixed(2), 10, 10);
+            ctx.fillText('percent remain: ' + Number(game.map.percentRemain * 100).toFixed(2), 10, 20);
+            ctx.fillText('weapon: ' + gameMod.Weapons[game.weaponIndex].name, 10, 30);
+            ctx.fillText('damage: ' + Math.floor(game.totalDamage), 10, 40);
+            ctx.fillText('high damage cell: ' + Math.floor(game.map.highDamageCell), 10, 50);
+        }
+    };
+
     var cellTypeColors = ['green', 'blue', 'red'],
     sheets = genSheets.sheets;
 
@@ -153,6 +167,10 @@ var draw = (function () {
             ctx.fillText('autoPlay behavior: ' + ap.behavior, 10, 40);
             ctx.fillText('autoPlay mode: ' + ap.mode, 10, 50);
             ctx.fillText('autoPlay stopAtPercentRemain: ' + ap.stopAtPercentRemain, 10, 60);
+        },
+        debug: function (sm) {
+
+            debugModes[sm.debugMode](sm, sm.ctx, sm.canvas);
         },
         ver: function (ctx, sm) {
             ctx.fillStyle = '#dfdfdf';
