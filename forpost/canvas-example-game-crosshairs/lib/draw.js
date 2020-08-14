@@ -17,7 +17,7 @@ var draw = (function () {
     var drawCellHealthBar = function (ctx, map, cell, cross) {
         var x = cell.x * map.cellSize + cross.offset.x + (320 / 2),
         y = cell.y * map.cellSize + cross.offset.y + (240 / 2);
-        ctx.fillStyle = 'rgba(0,255,0,0.5)';
+        ctx.fillStyle = 'rgba(0,255,0,0.4)';
         ctx.fillRect(x, y, map.cellSize * (cell.HP / cell.maxHP), 5);
     };
 
@@ -60,25 +60,10 @@ var draw = (function () {
                 var x = cell.x * map.cellSize + cross.offset.x + (320 / 2),
                 y = cell.y * map.cellSize + cross.offset.y + (240 / 2),
                 per = cell.HP / cell.maxHP;
-
-                /*
-                ctx.beginPath();
-                ctx.rect(x, y, map.cellSize, map.cellSize);
-                ctx.stroke();
-                ctx.fillStyle = cellTypeColors[cell.typeIndex];
-                if (!cell.active) {
-                ctx.fillStyle = '#606060';
-                }
-                ctx.fill();
-                ctx.closePath();
-                 */
                 if (cell.active) {
                     ctx.drawImage(sheets[cell.typeIndex].canvas, 32 * Math.floor(9 - cell.HP / cell.maxHP * 9), 0, 32, 32, x, y, map.cellSize, map.cellSize);
-
                 }
-
-                //drawCellHealthBar(ctx, map, cell, cross);
-
+                drawCellHealthBar(ctx, map, cell, cross);
                 ctx.fillStyle = '#00ff00';
                 ctx.font = '10px courier';
                 ctx.fillText(Math.floor(cell.damagePer * 100), x, y)

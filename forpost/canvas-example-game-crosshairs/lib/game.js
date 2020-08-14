@@ -79,46 +79,6 @@ var gameMod = (function () {
         }
     };
 
-/*
-    var userPointerStart = function (game) {
-        var cross = crossMod.createEvent(game.cross, 'start');
-        return function (e) {
-            var pos = utils.getCanvasRelative(e);
-            e.preventDefault();
-
-            // enable cross move back feature
-            game.cross.moveBackEnabled = true;
-
-            cross(e);
-            game.userDown = true;
-            // cycle weapons
-            var b = gameMod.buttons.changeWeapon,
-            d = utils.distance(pos.x, pos.y, b.x, b.y);
-            if (d < b.r) {
-                game.weaponIndex += 1;
-                game.weaponIndex %= Weapons.length;
-            }
-        };
-    };
-
-    var userPointerEnd = function (game) {
-        var cross = crossMod.createEvent(game.cross, 'end');
-        return function (e) {
-            e.preventDefault();
-            cross(e);
-            game.userDown = false;
-        };
-    };
-
-    var userPointerMove = function (game) {
-        var cross = crossMod.createEvent(game.cross, 'move');
-        return function (e) {
-            e.preventDefault();
-            cross(e);
-        };
-    };
-	*/
-
     // Explosion Options
     var explosionOptions = {
         count: 20,
@@ -356,23 +316,11 @@ var gameMod = (function () {
                 }
             };
             autoPlay.setRandomTarget(game);
-
             game.cross = crossMod.create({
                     offsetX: game.map.cellWidth * game.map.cellSize / 2 * -1,
                     offsetY: game.map.cellHeight * game.map.cellSize / 2 * -1,
                 });
-
-            // main game events
-			/*
-            game.canvas.addEventListener('mousedown', userPointerStart(game));
-            game.canvas.addEventListener('mousemove', userPointerMove(game));
-            game.canvas.addEventListener('mouseup', userPointerEnd(game));
-            game.canvas.addEventListener('touchstart', userPointerStart(game));
-            game.canvas.addEventListener('touchmove', userPointerMove(game));
-            game.canvas.addEventListener('touchend', userPointerEnd(game));
-*/
             return game;
-
         },
 
         update: function (game, secs) {

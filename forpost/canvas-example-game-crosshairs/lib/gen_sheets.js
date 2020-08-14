@@ -37,31 +37,13 @@ var genSheets = (function () {
 
     var sheets = [];
 
-    ['#008800', '#000088', '#880000'].forEach(function (fill) {
+    ['#005500', '#000088', '#880000'].forEach(function (fill) {
         var sheet = createSheet(32, 10, 1),
         canvas = sheet.canvas,
         ctx = sheet.ctx;
         drawBasicBox(sheet, fill, '#000000');
         sheets.push(sheet);
     });
-
-    /*
-    ctx.fillStyle = '#008800';
-    ctx.fillRect(-1, -1, canvas.width + 1, canvas.height + 1);
-    ctx.strokeStyle = 'lime';
-    var i = 0,
-    s;
-    while (i < sheet.cellWidth) {
-    ctx.save();
-    ctx.translate(16 + 32 * i, 16);
-    s = 28 - 14 * (i / sheet.cellWidth);
-    ctx.beginPath();
-    ctx.rect(-14, -14, s, s);
-    ctx.stroke();
-    ctx.restore();
-    i += 1;
-    }
-     */
 
     return {
         sheets: sheets
