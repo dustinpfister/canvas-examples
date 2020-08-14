@@ -2,6 +2,8 @@
 
 ## 0.1.0 - autoMove
 * start a autoMove script that will use the pm to move around when there is no user input
+* use e.preventDefault() in event handlers
+* Math.log style control between min and maxPPS
 * create a pkg_0_1_0.html
 
 ## 0.0.0 - basic idea working
