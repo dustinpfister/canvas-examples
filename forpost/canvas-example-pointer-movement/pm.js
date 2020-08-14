@@ -54,9 +54,10 @@ var PM = (function () {
     };
 
     // step a point by the current values of the pm
-    api.stepPointByPM = function (pm, pt) {
-        pt.x += Math.cos(pm.angle) * pm.delta;
-        pt.y += Math.sin(pm.angle) * pm.delta;
+    api.stepPointByPM = function (pm, pt, secs) {
+        secs = secs === undefined ? 1 : secs;
+        pt.x += Math.cos(pm.angle) * pm.delta * secs;
+        pt.y += Math.sin(pm.angle) * pm.delta * secs;
     };
 
     // when a pointer action starts

@@ -18,7 +18,9 @@ var pt = {
 var loop = function () {
     requestAnimationFrame(loop);
     PM.updatePM(pm);
-    PM.stepPointByPM(pm, pt);
+
+    PM.stepPointByPM(pm, pt, 1);
+
     draw.background(pm, ctx, canvas);
     draw.PTGridlines(pt, ctx, canvas);
     draw.navCircle(pm, ctx, canvas);
