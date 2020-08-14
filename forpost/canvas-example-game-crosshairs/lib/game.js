@@ -2,7 +2,9 @@ var gameMod = (function () {
 
     // hard coded settings
     var hardSet = {
-        maxSecs: 0.25 // max seconds foe sec value used in updaes
+        maxSecs: 0.25, // max seconds foe sec value used in updates
+        deltaNext: 10000, // deltaNext and levelCap
+        levelCap: 100
     };
 
     var Weapons = [{
@@ -267,9 +269,6 @@ var gameMod = (function () {
                     autoPlay.modes[ap.mode](game, secs);
                 }
             }
-
-            game.levelObj = XP.parseByXP(game.totalDamage, 100, 10000);
-
         }
     };
 
@@ -318,7 +317,7 @@ var gameMod = (function () {
                 }
             };
             // set game level object for first time
-            game.levelObj = XP.parseByXP(game.totalDamage, 100, 10000);
+            game.levelObj = XP.parseByXP(game.totalDamage, hardSet.levelCap, hardSet.deltaNext);
             // first autoPlay target
             autoPlay.setRandomTarget(game);
             // create cross object
@@ -357,6 +356,9 @@ var gameMod = (function () {
 
             // AutoPlay
             autoPlay.update(game, secs);
+
+            // update level object
+            game.levelObj = XP.parseByXP(game.totalDamage, hardSet.levelCap, hardSet.deltaNext);
 
         }
 
