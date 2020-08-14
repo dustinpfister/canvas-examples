@@ -62,14 +62,15 @@
 * cellHP rate goes up a little higher then DPS goes up for the player
 
 ## 0.10.0 - level up system for player based on total damage as EXP
-* make an exp_system.js module
-* have a game.level property
-* use the exp_system module to set, and update game.level
-* display game.level in game state as part of fixed display rather than debug menu
-* display totalDamage in game state as part of fixed display rather than debug menu
+* (done) make an exp_system.js module
+* (done) have a game.levelObj property
+* (done) use the exp_system module to set, and update game.levelObj
+* (done) display game.level in game state as part of fixed display rather than debug menu
+* (done) display totalDamage in game state as part of fixed display rather than debug menu
 * have game.level set accuracy of all weapons
 * have game.level set DPS for all weapons
 * new debug mode for weapons
+* new debug mode for level
 * make a pkg_0_10_0.html
 
 ## 0.9.0 - state machine

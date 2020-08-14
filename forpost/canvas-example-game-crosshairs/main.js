@@ -165,6 +165,10 @@
     canvas.addEventListener('mousemove', createPointerHandler(sm, 'move'));
     canvas.addEventListener('mouseup', createPointerHandler(sm, 'end'));
 
+    canvas.addEventListener('touchstart', createPointerHandler(sm, 'start'));
+    canvas.addEventListener('touchmove', createPointerHandler(sm, 'move'));
+    canvas.addEventListener('touchend', createPointerHandler(sm, 'end'));
+
     var lt = new Date(),
     FPS_target = 30;
     var loop = function () {
@@ -173,13 +177,10 @@
         secs = t / 1000;
         requestAnimationFrame(loop);
         if (t >= 1000 / FPS_target) {
-
             states[sm.currentState].update(sm, secs);
-
             lt = now;
         }
     };
-
     loop();
 
 }
