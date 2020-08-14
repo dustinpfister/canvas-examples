@@ -75,6 +75,9 @@
                 draw.cross(ctx, sm.game.cross);
                 draw.shots(ctx, sm.game);
                 draw.buttons(ctx, gameMod.buttons);
+				
+				draw.damageBar(ctx, sm.game);
+				
                 draw.ver(ctx, sm);
 
                 draw.debug(sm);
@@ -117,7 +120,7 @@
     var sm = {
         ver: '0.10.0',
         canvas: canvas,
-        debugMode: 'general',
+        debugMode: 'none',
         currentState: 'game',
         ctx: ctx,
         game: gameMod.create({
