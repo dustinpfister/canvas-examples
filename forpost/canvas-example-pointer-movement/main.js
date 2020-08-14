@@ -7,7 +7,9 @@ canvas.width = 320;
 canvas.height = 240;
 ctx.translate(0.5, 0.5);
 
-var pm = PM.newPM();
+var pm = PM.newPM({
+        maxPPS: 256
+    });
 
 // a point
 var pt = {

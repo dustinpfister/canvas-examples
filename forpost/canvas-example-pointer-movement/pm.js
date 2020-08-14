@@ -18,14 +18,15 @@ var PM = (function () {
     var api = {};
 
     // new Pointer Movement State Object
-    api.newPM = function () {
+    api.newPM = function (opt) {
+        opt = opt || {};
         return {
             ver: '0.0.0',
             down: false,
             angle: 0,
             dist: 0,
             PPS: 0,
-            maxPPS: 128,
+            maxPPS: opt.maxPPS === undefined ? 128 : opt.maxPPS,
             sp: { // start point
                 x: -1,
                 y: -1
