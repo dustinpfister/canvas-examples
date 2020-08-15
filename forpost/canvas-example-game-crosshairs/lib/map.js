@@ -42,6 +42,8 @@ var mapMod = (function () {
         cell.type = cellTypes[typeIndex];
         cell.typeIndex = typeIndex;
 
+        cell.active = true;
+
         // HP
         cell.maxHP = cell.type.HP.min + Math.round((cell.type.HP.max - cell.type.HP.min) * Math.random());
         cell.HP = opt.HP === undefined ? cell.maxHP : opt.HP;
@@ -158,22 +160,21 @@ var mapMod = (function () {
                 i = cells.length;
             }
             if (i > 0) {
+                // activate 1 to map.gen.count cells
                 while (i--) {
                     cell = popRandomCell(cells);
-                    cell.active = true;
-                    cell.HP = 1;
                     setCellType(cell, Math.round(cell.damagePer * (cellTypes.length - 1)), {
-                        HP: 1
+                        //HP: 1
                     });
                 }
             } else {
+                // if no active cells
                 cells = getAllCellActiveState(map, true);
                 if (cells.length === 0) {
                     cell = map.cells[map.gen.startCells[Math.floor(Math.random() * map.gen.startCells.length)]];
-                    cell.active = true;
                     cell.HP = 1;
                     setCellType(cell, 0, {
-                        HP: 1
+                        //HP: 1
                     });
                 }
             }

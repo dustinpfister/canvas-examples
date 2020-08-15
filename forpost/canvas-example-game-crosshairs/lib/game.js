@@ -326,7 +326,7 @@ var gameMod = (function () {
                 totalDamage: 0,
                 userDown: false,
                 autoPlay: {
-                    enabled: true,
+                    enabled: false,
                     behavior: 'cannon',
                     stopAtPercentRemain: 0,
                     delay: 5,
