@@ -221,7 +221,6 @@ var mapMod = (function () {
                     HP: 50,
                     maxHP: 100,
                     active: true,
-                    levelObj: {},
                     typeIndex: 0,
                     typeName: cellTypes[0].name,
                     type: cellTypes[0],
@@ -231,7 +230,8 @@ var mapMod = (function () {
                         secs: 0
                     },
                     damage: 0,
-                    damagePer: 0 // damage relative to highest damaged cell
+                    damagePer: 0, // damage relative to highest damaged cell
+                    levelObj: XP.parseByXP(0, map.cellLevel.cap, map.cellLevel.deltaNext)
                 };
                 setCellType(cell, 0);
                 map.cells.push(cell);
