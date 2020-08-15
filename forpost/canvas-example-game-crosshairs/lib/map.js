@@ -193,6 +193,10 @@ var mapMod = (function () {
                 cellWidth: 32,
                 cellHeight: 16,
                 cells: [],
+                cellLevel: {
+                    cap: 100,
+                    deltaNext: 50
+                },
                 percentRemain: 1,
                 gen: { // global cell generate values
                     rate: 1,
@@ -295,7 +299,7 @@ var mapMod = (function () {
                     // apply auto heal
                     autoHeal(cell, secs);
                     // update level
-                    cell.levelObj = XP.parseByXP(cell.damage, 100, 50);
+                    cell.levelObj = XP.parseByXP(cell.damage, map.cellLevel.cap, map.cellLevel.deltaNext);
                     // update percentRemain
                     map.percentRemain += cell.HP / cell.maxHP;
                 }
