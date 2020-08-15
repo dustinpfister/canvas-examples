@@ -298,8 +298,6 @@ var mapMod = (function () {
                 if (cell.active) {
                     // apply auto heal
                     autoHeal(cell, secs);
-                    // update level
-                    cell.levelObj = XP.parseByXP(cell.damage, map.cellLevel.cap, map.cellLevel.deltaNext);
                     // update percentRemain
                     map.percentRemain += cell.HP / cell.maxHP;
                 }
@@ -308,6 +306,8 @@ var mapMod = (function () {
                 if (cell.damage != 0) {
                     cell.damagePer = cell.damage / map.highDamageCell;
                 }
+                // update level
+                cell.levelObj = XP.parseByXP(cell.damage, map.cellLevel.cap, map.cellLevel.deltaNext);
 
             }
             // figure percentRemain by diving tabulated total by total cells
