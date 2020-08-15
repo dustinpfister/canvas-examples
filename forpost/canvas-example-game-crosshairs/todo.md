@@ -66,8 +66,8 @@
 * (done) lower values for cells so they do not get to hard to fast
 * (done) display a progress bar to AI control
 * (done) use a general drawBar helper to draw all these different bars
+* (done) display basic info about the current weapon including name, and maxDPS
 * display basic info about any cell that is over the cross hairs
-* display basic info about the current weapon including name, and maxDPS
 * weaponBar for shotDelay
 * cross hairs display changes depending on move or shoot area
 * display 'change weapon' on change weapon button
