@@ -1,8 +1,9 @@
 # todo list for canvas-example-game-crosshairs
 
-## 0.x.x - Bug fixes
+## 0.x.x - Bug fixes and concerns
 * see about fixing issue where shots are tied to the canvas rather than the map (what happens when shooting and moving)
 * (partial fix) it seems that the AI can get stuck when Frame Rates are real low
+* should I have a map.totalDamage property?
 
 ## 0.x.0 - Set map values by page text content
 * set map values by page text content
@@ -71,8 +72,7 @@
 * (done) cap and deltaNext values for cell.levelObj is set by new map.cellLevelCap and map.cellDeltaNext values
 * (done) cell.levelObj of the cell is set by cell.damage and new map values
 * (done) cell.maxHP is set by cellType and level
-* have a map.totalDamage property
-* have a new map debug mode to display new map.totalDamage value as well as other map values
+* (done) have a new map debug mode to display new map.totalDamage value as well as other map values
 * make a pkg_0_11_0.html
 
 ## 0.10.0 - level up system for player based on total damage as EXP
