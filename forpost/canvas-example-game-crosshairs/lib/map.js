@@ -272,12 +272,19 @@ var mapMod = (function () {
             return get(map, Math.floor(x / map.cellSize), Math.floor(y / map.cellSize));
         },
 
-        update: function (map, secs) {
-            var i = map.cells.length,
+        update: function (map, secs, opt) {
+
+            var i,
             cell;
+
+            opt = opt || {};
+            opt.totalDamage = opt.totalDamage || 0;
 
             map.highDamageCell = getHighestDamageCell(map);
             map.percentRemain = 0;
+
+            // update cells
+            i = map.cells.length;
             while (i--) {
                 cell = map.cells[i];
 
@@ -290,6 +297,9 @@ var mapMod = (function () {
                 if (cell.active) {
                     // apply auto heal
                     autoHeal(cell, secs);
+                    // update level
+                    cell.levelObj = XP.parseByXP(opt.totalDamage, 100, 50);
+                    // update percentRemain
                     map.percentRemain += cell.HP / cell.maxHP;
                 }
 
@@ -299,7 +309,7 @@ var mapMod = (function () {
                 }
 
             }
-
+            // figure percentRemain by diving tabulated total by total cells
             map.percentRemain /= map.cells.length;
 
             gen(map, secs);
