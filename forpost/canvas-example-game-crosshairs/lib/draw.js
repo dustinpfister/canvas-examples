@@ -22,15 +22,17 @@ var draw = (function () {
     // draw the inner and outer cross circles
     var drawCrossCircles = function (ctx, cross) {
         ctx.strokeStyle = 'rgba(255,255,255,0.4)';
-        ctx.fillStyle = 'rgba(255,0,0,0.3)';
+        ctx.fillStyle = 'rgba(255,0,0,0.4)';
         ctx.lineWidth = 3;
         ctx.beginPath();
         ctx.arc(cross.center.x, cross.center.y, cross.radiusInner, 0, Math.PI * 2);
         ctx.stroke();
         ctx.fill();
+        ctx.fillStyle = 'rgba(0,0,0,0.2)';
         ctx.beginPath();
         ctx.arc(cross.center.x, cross.center.y, cross.radiusOuter, 0, Math.PI * 2);
         ctx.stroke();
+        ctx.fill();
         ctx.beginPath();
         ctx.arc(cross.crosshairs.x, cross.crosshairs.y, cross.crosshairs.radius, 0, Math.PI * 2);
         ctx.stroke();
@@ -59,6 +61,18 @@ var draw = (function () {
     var drawAutoPlayDelayBar = function (ctx, game) {
         var ap = game.autoPlay;
         drawBar(ctx, game, ap.delay / ap.maxDelay, Math.PI * 2 - Math.PI / 4, Math.PI / 4, 'cyan');
+    };
+
+    // draw the current weapon info
+    var drawWeaponInfo = function (ctx, game) {
+        var center = game.cross.center;
+        var w = gameMod.Weapons[game.weaponIndex];
+        ctx.fillStyle = '#ff6060';
+        ctx.font = '10px courier';
+        ctx.textAlign = 'center';
+        ctx.fillText('Weapon: ' + w.name, center.x, center.y + 70);
+        ctx.fillText('maxDPS: ' + w.maxDPS, center.x, center.y + 80);
+
     };
 
     // draw a health bar for a cell
@@ -160,6 +174,8 @@ var draw = (function () {
 
             // draw the cross hairs
             drawCrossHairs(ctx, game.cross);
+
+            drawWeaponInfo(ctx, game);
 
         },
         // draw map

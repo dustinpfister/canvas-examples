@@ -65,7 +65,7 @@
 * (done) display a percent remaining bar in cross hairs area
 * (done) lower values for cells so they do not get to hard to fast
 * (done) display a progress bar to AI control
-* use a general drawBar helper to draw all these different bars
+* (done) use a general drawBar helper to draw all these different bars
 * display basic info about any cell that is over the cross hairs
 * display basic info about the current weapon including name, and maxDPS
 * weaponBar for shotDelay
