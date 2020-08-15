@@ -30,6 +30,20 @@ var draw = (function () {
         ctx.stroke();
     };
 
+    var drawPercentRemainBar = function (ctx, game) {
+        var cross = game.cross,
+        center = cross.center,
+        map = game.map;
+        ctx.strokeStyle = 'gray';
+        ctx.beginPath();
+        ctx.arc(center.x, center.y, cross.radiusInner + 5, Math.PI, Math.PI + Math.PI * 0.5);
+        ctx.stroke();
+        ctx.strokeStyle = 'lime';
+        ctx.beginPath();
+        ctx.arc(center.x, center.y, cross.radiusInner + 5, Math.PI, Math.PI + Math.PI * 0.5 * map.percentRemain);
+        ctx.stroke();
+    };
+
     // draw a health bar for a cell
     var drawCellHealthBar = function (ctx, map, cell, cross) {
         var x = cell.x * map.cellSize + cross.offset.x + (320 / 2),
@@ -108,25 +122,14 @@ var draw = (function () {
         // draw cross hairs
         cross: function (ctx, game) {
 
-            var cross = game.cross,
-            center = cross.center,
-            map = game.map;
-
             // draw basic circles
-            drawCrossCircles(ctx, cross);
+            drawCrossCircles(ctx, game.cross);
 
             // percentRemian bar
-            ctx.strokeStyle = 'gray';
-            ctx.beginPath();
-            ctx.arc(center.x, center.y, cross.radiusInner + 5, Math.PI, Math.PI + Math.PI * 0.5);
-            ctx.stroke();
-            ctx.strokeStyle = 'lime';
-            ctx.beginPath();
-            ctx.arc(center.x, center.y, cross.radiusInner + 5, Math.PI, Math.PI + Math.PI * 0.5 * map.percentRemain);
-            ctx.stroke();
+            drawPercentRemainBar(ctx, game);
 
             // draw the cross hairs
-            drawCrossHairs(ctx, cross);
+            drawCrossHairs(ctx, game.cross);
 
         },
         // draw map
