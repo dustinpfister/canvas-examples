@@ -4,9 +4,9 @@ var mapMod = (function () {
             i: 0,
             type: 'grass',
             HP: {
-                min: 50,
-                max: 75,
-                base: 1
+                min: 25,
+                max: 50,
+                base: 1.05
             },
             autoHeal: {
                 rate: 0.1,
@@ -16,8 +16,8 @@ var mapMod = (function () {
             i: 1,
             type: 'tree',
             HP: {
-                min: 100,
-                max: 150,
+                min: 65,
+                max: 80,
                 base: 1.25
             },
             autoHeal: {
@@ -28,9 +28,9 @@ var mapMod = (function () {
             i: 2,
             type: 'rock',
             HP: {
-                min: 200,
-                max: 250,
-                base: 2
+                min: 100,
+                max: 150,
+                base: 1.75
             },
             autoHeal: {
                 rate: 3,

@@ -62,11 +62,12 @@
 * use new button standard for options menu buttons
 
 ## 0.12.0 - Cross hairs display II
+* (done) display a percent remaining bar in cross hairs area
 * cross hairs display changes depending on move or shoot area
-* display a percent remaining bar in cross hairs area
 * display a progress bar to AI control
 * display basic info about any cell that is over the cross hairs
 * display 'change weapon' on change weapon button
+* tweak values for cells so they do not get to hard to fast
 * make a pkg_0_12_0.html
 
 ## 0.11.0 - CellTypes upgrade based on total damage of cell
