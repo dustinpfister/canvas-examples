@@ -83,9 +83,11 @@ var draw = (function () {
     };
 
     var cellLevel = function (ctx, cell, x, y) {
-        ctx.fillStyle = 'rgba(255,255,255,0.2)';
-        ctx.font = '7px courier';
-        ctx.fillText('L' + Math.floor(cell.levelObj.level), x + 3, y + 3);
+        if (cell.active) {
+            ctx.fillStyle = 'rgba(255,255,255,0.2)';
+            ctx.font = '7px courier';
+            ctx.fillText('L' + Math.floor(cell.levelObj.level), x + 3, y + 3);
+        }
     };
 
     var cellDebug = function (ctx, cell, x, y) {
