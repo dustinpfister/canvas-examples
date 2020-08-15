@@ -18,7 +18,7 @@ var mapMod = (function () {
             HP: {
                 min: 65,
                 max: 80,
-                base: 1.25
+                base: 1.1
             },
             autoHeal: {
                 rate: 1,
@@ -30,7 +30,7 @@ var mapMod = (function () {
             HP: {
                 min: 100,
                 max: 150,
-                base: 1.75
+                base: 1.25
             },
             autoHeal: {
                 rate: 3,

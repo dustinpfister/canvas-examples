@@ -53,7 +53,7 @@ var draw = (function () {
         var cross = game.cross,
         center = cross.center,
         map = game.map;
-        drawBar(ctx, game, map.percentRemain, Math.PI, Math.PI / 2, 'lime');
+        drawBar(ctx, game, map.percentRemain, Math.PI, Math.PI / 2, getHpColor(map.percentRemain));
     };
 
     var drawAutoPlayDelayBar = function (ctx, game) {
