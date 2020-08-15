@@ -58,10 +58,13 @@
 * use new button standard for options menu buttons
 
 ## 0.11.0 - CellTypes upgrade based on total damage of cell
-* use new exp system to set a levelObj for each cell in the map.
+* (done) use new exp system to set a levelObj for each cell in the map.
+* display current level rather than damage per for each cell
 * cap and deltaNext values for cell.levelObj is set by cellType values
 * cell.levelObj of the cell is set by totalDamage and cellType values
 * cellHP rate goes up a little lower then DPS goes up for the player
+* have a map.totalDamage property
+* use map.totalDamage over game.totalDamage
 * make a pkg_0_11_0.html
 
 ## 0.10.0 - level up system for player based on total damage as EXP

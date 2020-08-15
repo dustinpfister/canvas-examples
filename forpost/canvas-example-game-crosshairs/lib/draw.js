@@ -102,7 +102,8 @@ var draw = (function () {
                 drawCellHealthBar(ctx, map, cell, cross);
                 ctx.fillStyle = '#00ff00';
                 ctx.font = '10px courier';
-                ctx.fillText(Math.floor(cell.damagePer * 100), x, y)
+                //ctx.fillText(Math.floor(cell.damagePer * 100), x, y);
+                ctx.fillText(Math.floor(cell.levelObj.level), x, y);
             });
         },
         shots: function (ctx, game) {
