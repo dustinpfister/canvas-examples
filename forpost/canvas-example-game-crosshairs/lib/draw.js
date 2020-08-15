@@ -44,6 +44,21 @@ var draw = (function () {
         ctx.stroke();
     };
 
+    var drawAutoPlayDelayBar = function (ctx, game) {
+        var cross = game.cross,
+        center = cross.center,
+        ap = game.autoPlay,
+        per = ap.delay / ap.maxDelay;
+        ctx.strokeStyle = 'gray';
+        ctx.beginPath();
+        ctx.arc(center.x, center.y, cross.radiusInner + 5, 0, Math.PI * 0.5);
+        ctx.stroke();
+        ctx.strokeStyle = 'cyan';
+        ctx.beginPath();
+        ctx.arc(center.x, center.y, cross.radiusInner + 5, 0, Math.PI * 0.5 * per);
+        ctx.stroke();
+    };
+
     // draw a health bar for a cell
     var drawCellHealthBar = function (ctx, map, cell, cross) {
         var x = cell.x * map.cellSize + cross.offset.x + (320 / 2),
@@ -127,6 +142,8 @@ var draw = (function () {
 
             // percentRemian bar
             drawPercentRemainBar(ctx, game);
+
+            drawAutoPlayDelayBar(ctx, game);
 
             // draw the cross hairs
             drawCrossHairs(ctx, game.cross);
