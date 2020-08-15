@@ -326,8 +326,8 @@ var gameMod = (function () {
                 totalDamage: 0,
                 userDown: false,
                 autoPlay: {
-                    enabled: false,
-                    behavior: 'cannon',
+                    enabled: true,
+                    behavior: 'total-kill',
                     stopAtPercentRemain: 0,
                     delay: 5,
                     maxDelay: 5,
