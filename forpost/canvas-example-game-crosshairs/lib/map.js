@@ -185,7 +185,6 @@ var mapMod = (function () {
                 cells = getAllCellActiveState(map, true);
                 if (cells.length === 0) {
                     cell = map.cells[map.gen.startCells[Math.floor(Math.random() * map.gen.startCells.length)]];
-                    //cell.HP = 1;
                     setCellType(cell, 0);
                 }
             }

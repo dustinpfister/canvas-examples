@@ -24,7 +24,7 @@
                     x: 32,
                     y: 32,
                     r: 16,
-                    options: ['general', 'none', 'weapon', 'level'],
+                    options: ['general', 'none', 'weapon', 'level', 'map'],
                     currentOption: 0
                 }
             },

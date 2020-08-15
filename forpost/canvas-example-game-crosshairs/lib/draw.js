@@ -70,7 +70,12 @@ var draw = (function () {
             ctx.fillText('forNext level: ' + lv.forNext, 10, 20);
             ctx.fillText('toNext level: ' + lv.toNext, 10, 30);
             ctx.fillText('per: ' + lv.per.toFixed(2), 10, 40);
-
+        },
+        map: function (sm) {
+            var ctx = sm.ctx,
+            map = sm.game.map;
+            setupDebug(ctx, sm.game);
+            ctx.fillText('map.percentRemain: ' + map.percentRemain, 10, 10);
         }
     };
 

@@ -70,7 +70,7 @@
 * (done) display current level rather than damage per for each cell
 * (done) cap and deltaNext values for cell.levelObj is set by new map.cellLevelCap and map.cellDeltaNext values
 * (done) cell.levelObj of the cell is set by cell.damage and new map values
-* cell.maxHP is set by cellType and level
+* (done) cell.maxHP is set by cellType and level
 * have a map.totalDamage property
 * have a new map debug mode to display new map.totalDamage value as well as other map values
 * make a pkg_0_11_0.html
