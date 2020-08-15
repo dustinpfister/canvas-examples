@@ -1,5 +1,6 @@
 var draw = (function () {
 
+    // draw the inner and outer cross circles
     var drawCrossCircles = function (ctx, cross) {
         ctx.strokeStyle = 'rgba(255,255,255,0.4)';
         ctx.fillStyle = 'rgba(255,0,0,0.3)';
@@ -16,6 +17,20 @@ var draw = (function () {
         ctx.stroke();
     };
 
+    var drawCrossHairs = function (ctx, cross) {
+        var ch = cross.crosshairs;
+        ctx.strokeStyle = 'rgba(200,0,0,0.5)';
+        ctx.beginPath();
+        ctx.moveTo(ch.x, ch.y - ch.radius * 1.5);
+        ctx.lineTo(ch.x, ch.y + ch.radius * 1.5);
+        ctx.stroke();
+        ctx.beginPath();
+        ctx.moveTo(ch.x - ch.radius * 1.5, ch.y);
+        ctx.lineTo(ch.x + ch.radius * 1.5, ch.y);
+        ctx.stroke();
+    };
+
+    // draw a health bar for a cell
     var drawCellHealthBar = function (ctx, map, cell, cross) {
         var x = cell.x * map.cellSize + cross.offset.x + (320 / 2),
         y = cell.y * map.cellSize + cross.offset.y + (240 / 2);
@@ -91,18 +106,28 @@ var draw = (function () {
             ctx.fillRect(0, 0, canvas.width, canvas.height);
         },
         // draw cross hairs
-        cross: function (ctx, cross) {
-            var ch = cross.crosshairs;
+        cross: function (ctx, game) {
+
+            var cross = game.cross,
+            center = cross.center,
+            map = game.map;
+
+            // draw basic circles
             drawCrossCircles(ctx, cross);
-            ctx.strokeStyle = 'rgba(200,0,0,0.5)';
+
+            // percentRemian bar
+            ctx.strokeStyle = 'gray';
             ctx.beginPath();
-            ctx.moveTo(ch.x, ch.y - ch.radius * 1.5);
-            ctx.lineTo(ch.x, ch.y + ch.radius * 1.5);
+            ctx.arc(center.x, center.y, cross.radiusInner + 5, Math.PI, Math.PI + Math.PI * 0.5);
             ctx.stroke();
+            ctx.strokeStyle = 'lime';
             ctx.beginPath();
-            ctx.moveTo(ch.x - ch.radius * 1.5, ch.y);
-            ctx.lineTo(ch.x + ch.radius * 1.5, ch.y);
+            ctx.arc(center.x, center.y, cross.radiusInner + 5, Math.PI, Math.PI + Math.PI * 0.5 * map.percentRemain);
             ctx.stroke();
+
+            // draw the cross hairs
+            drawCrossHairs(ctx, cross);
+
         },
         // draw map
         map: function (ctx, map, cross) {

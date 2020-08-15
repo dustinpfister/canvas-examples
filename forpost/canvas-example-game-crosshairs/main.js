@@ -72,7 +72,7 @@
                 draw.back(ctx, canvas);
                 draw.map(ctx, sm.game.map, sm.game.cross);
                 draw.explosions(ctx, sm.game);
-                draw.cross(ctx, sm.game.cross);
+                draw.cross(ctx, sm.game);
                 draw.shots(ctx, sm.game);
                 draw.damageBar(ctx, sm.game);
                 draw.buttons(ctx, gameMod.buttons);
