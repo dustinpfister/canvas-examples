@@ -9,7 +9,7 @@ var draw = (function () {
         ctx.stroke();
         ctx.strokeStyle = fill || 'lime';
         ctx.beginPath();
-        ctx.arc(center.x, center.y, cross.radiusInner + 5, rStart, (rStart + rLength) * per);
+        ctx.arc(center.x, center.y, cross.radiusInner + 5, rStart, rStart + rLength * per);
         ctx.stroke();
     };
 
