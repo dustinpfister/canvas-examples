@@ -178,9 +178,7 @@ var mapMod = (function () {
                 // activate 1 to map.gen.count cells
                 while (i--) {
                     cell = popRandomCell(cells);
-                    setCellType(cell, Math.round(cell.damagePer * (cellTypes.length - 1)), {
-                        //HP: 1
-                    });
+                    setCellType(cell, Math.round(cell.damagePer * (cellTypes.length - 1)));
                 }
             } else {
                 // if no active cells
@@ -188,9 +186,7 @@ var mapMod = (function () {
                 if (cells.length === 0) {
                     cell = map.cells[map.gen.startCells[Math.floor(Math.random() * map.gen.startCells.length)]];
                     //cell.HP = 1;
-                    setCellType(cell, 0, {
-                        //HP: 1
-                    });
+                    setCellType(cell, 0);
                 }
             }
         }
