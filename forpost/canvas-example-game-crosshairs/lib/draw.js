@@ -82,6 +82,12 @@ var draw = (function () {
         ctx.font = '10px courier';
     };
 
+    var cellLevel = function (ctx, cell, x, y) {
+        ctx.fillStyle = 'rgba(255,255,255,0.2)';
+        ctx.font = '7px courier';
+        ctx.fillText('L' + Math.floor(cell.levelObj.level), x + 3, y + 3);
+    };
+
     var cellDebug = function (ctx, cell, x, y) {
         ctx.fillStyle = '#00ff00';
         ctx.font = '8px courier';
@@ -168,6 +174,7 @@ var draw = (function () {
                         drawCellHealthBar(ctx, map, cell, cross);
                     }
                 }
+                cellLevel(ctx, cell, x, y);
                 //cellDebug(ctx, cell, x, y);
             });
         },
