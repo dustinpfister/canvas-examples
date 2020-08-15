@@ -112,9 +112,9 @@
     };
 
     var sm = {
-        ver: '0.11.0',
+        ver: '0.12.0',
         canvas: canvas,
-        debugMode: 'weapon',
+        debugMode: 'none',
         currentState: 'game',
         ctx: ctx,
         game: gameMod.create({

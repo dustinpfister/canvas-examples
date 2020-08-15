@@ -61,10 +61,13 @@
 * use new button standard for options and change weapon buttons in game state
 * use new button standard for options menu buttons
 
-## 0.x.0 - advanced cross hairs display
+## 0.12.0 - Cross hairs display II
 * cross hairs display changes depending on move or shoot area
 * display a percent remaining bar in cross hairs area
+* display a progress bar to AI control
 * display basic info about any cell that is over the cross hairs
+* display 'change weapon' on change weapon button
+* make a pkg_0_12_0.html
 
 ## 0.11.0 - CellTypes upgrade based on total damage of cell
 * (done) use new exp system to set a levelObj for each cell in the map.
@@ -73,7 +76,7 @@
 * (done) cell.levelObj of the cell is set by cell.damage and new map values
 * (done) cell.maxHP is set by cellType and level
 * (done) have a new map debug mode to display new map.totalDamage value as well as other map values
-* make a pkg_0_11_0.html
+* (done) make a pkg_0_11_0.html
 
 ## 0.10.0 - level up system for player based on total damage as EXP
 * (done) make an exp_system.js module

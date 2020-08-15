@@ -1,11 +1,13 @@
 var draw = (function () {
 
     var drawCrossCircles = function (ctx, cross) {
-        ctx.strokeStyle = 'white';
+        ctx.strokeStyle = 'rgba(255,255,255,0.4)';
+        ctx.fillStyle = 'rgba(255,0,0,0.3)';
         ctx.lineWidth = 3;
         ctx.beginPath();
         ctx.arc(cross.center.x, cross.center.y, cross.radiusInner, 0, Math.PI * 2);
         ctx.stroke();
+        ctx.fill();
         ctx.beginPath();
         ctx.arc(cross.center.x, cross.center.y, cross.radiusOuter, 0, Math.PI * 2);
         ctx.stroke();
