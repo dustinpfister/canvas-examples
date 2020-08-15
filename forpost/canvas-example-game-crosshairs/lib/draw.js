@@ -31,6 +31,14 @@ var draw = (function () {
         ctx.font = '10px courier';
     };
 
+    var cellDebug = function (ctx, cell, x, y) {
+        ctx.fillStyle = '#00ff00';
+        ctx.font = '8px courier';
+        ctx.fillText('L' + Math.floor(cell.levelObj.level), x, y);
+        ctx.fillText(Math.floor(cell.damagePer * 100) + '%', x, y + 8);
+        ctx.fillText(Math.floor(cell.damage), x, y + 16);
+    };
+
     var debugModes = {
         none: function (sm) {},
         general: function (sm) {
@@ -100,11 +108,7 @@ var draw = (function () {
                     ctx.drawImage(sheets[cell.typeIndex].canvas, 32 * Math.floor(9 - cell.HP / cell.maxHP * 9), 0, 32, 32, x, y, map.cellSize, map.cellSize);
                 }
                 drawCellHealthBar(ctx, map, cell, cross);
-                ctx.fillStyle = '#00ff00';
-                ctx.font = '8px courier';
-                ctx.fillText('L'+Math.floor(cell.levelObj.level), x, y);
-                ctx.fillText(Math.floor(cell.damagePer * 100) + '%', x, y + 8);
-                ctx.fillText(Math.floor(cell.damage), x, y + 16);
+                cellDebug(ctx, cell, x, y);
             });
         },
         shots: function (ctx, game) {

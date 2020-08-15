@@ -60,7 +60,7 @@
 ## 0.11.0 - CellTypes upgrade based on total damage of cell
 * (done) use new exp system to set a levelObj for each cell in the map.
 * (done) display current level rather than damage per for each cell
-* cap and deltaNext values for cell.levelObj is set by new map.cellLevelCap and map.cellDeltaNext values
+* (done) cap and deltaNext values for cell.levelObj is set by new map.cellLevelCap and map.cellDeltaNext values
 * cell.levelObj of the cell is set by cell.damage and new map values
 * cellHP rate goes up a little lower then DPS goes up for the player
 * have a map.totalDamage property
