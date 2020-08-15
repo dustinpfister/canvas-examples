@@ -5,7 +5,8 @@ var mapMod = (function () {
             type: 'grass',
             HP: {
                 min: 50,
-                max: 75
+                max: 75,
+                base: 1
             },
             autoHeal: {
                 rate: 0.1,
@@ -16,7 +17,8 @@ var mapMod = (function () {
             type: 'tree',
             HP: {
                 min: 100,
-                max: 150
+                max: 150,
+                base: 1.25
             },
             autoHeal: {
                 rate: 1,
@@ -27,7 +29,8 @@ var mapMod = (function () {
             type: 'rock',
             HP: {
                 min: 200,
-                max: 250
+                max: 250,
+                base: 2
             },
             autoHeal: {
                 rate: 3,
@@ -37,15 +40,27 @@ var mapMod = (function () {
 
     ];
 
+    // set a cell as a given type index
     var setCellType = function (cell, typeIndex, opt) {
+
+        var level = cell.levelObj.level,
+        min,
+        max;
+
         opt = opt || {};
+
+        // set type and type index by way o given type index
         cell.type = cellTypes[typeIndex];
         cell.typeIndex = typeIndex;
 
-        cell.active = true;
+        // active flag should typically be set to true
+        cell.active = opt.active === undefined ? true : opt.active;
 
         // HP
-        cell.maxHP = cell.type.HP.min + Math.round((cell.type.HP.max - cell.type.HP.min) * Math.random());
+        //cell.maxHP = cell.type.HP.min + Math.round((cell.type.HP.max - cell.type.HP.min) * Math.random());
+        min = Math.pow(level, cell.type.HP.base) * cell.type.HP.min;
+        max = Math.pow(level, cell.type.HP.base) * cell.type.HP.max;
+        cell.maxHP = min + Math.round((max - min) * Math.random());
         cell.HP = opt.HP === undefined ? cell.maxHP : opt.HP;
 
         // autoHeal
@@ -172,7 +187,7 @@ var mapMod = (function () {
                 cells = getAllCellActiveState(map, true);
                 if (cells.length === 0) {
                     cell = map.cells[map.gen.startCells[Math.floor(Math.random() * map.gen.startCells.length)]];
-                    cell.HP = 1;
+                    //cell.HP = 1;
                     setCellType(cell, 0, {
                         //HP: 1
                     });
