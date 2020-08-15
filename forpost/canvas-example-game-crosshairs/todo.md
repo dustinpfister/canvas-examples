@@ -54,6 +54,11 @@
 * atom skill
 * damage skill
 
+## 0.x.0 - advanced cross hairs display
+* cross hairs display changes depending on move or shoot area
+* display a percent remaining bar in cross hairs area
+* display basic info about any cell that is over the cross hairs
+
 ## 0.x.0 - Buttons
 * buttons should be part of the state machine rather than the game module
 * make a standard module or class for creating and updating button objects
