@@ -272,13 +272,10 @@ var mapMod = (function () {
             return get(map, Math.floor(x / map.cellSize), Math.floor(y / map.cellSize));
         },
 
-        update: function (map, secs, opt) {
+        update: function (map, secs) {
 
             var i,
             cell;
-
-            opt = opt || {};
-            opt.totalDamage = opt.totalDamage || 0;
 
             map.highDamageCell = getHighestDamageCell(map);
             map.percentRemain = 0;
@@ -298,7 +295,7 @@ var mapMod = (function () {
                     // apply auto heal
                     autoHeal(cell, secs);
                     // update level
-                    cell.levelObj = XP.parseByXP(opt.totalDamage, 100, 50);
+                    cell.levelObj = XP.parseByXP(cell.damage, 100, 50);
                     // update percentRemain
                     map.percentRemain += cell.HP / cell.maxHP;
                 }

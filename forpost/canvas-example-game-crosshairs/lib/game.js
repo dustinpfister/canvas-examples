@@ -40,7 +40,7 @@ var gameMod = (function () {
             blastRadius: 3,
             maxDPS: 20,
             accuracy: 0.25,
-            hitRadius: 64,
+            hitRadius: 32,
             gunCount: 2,
             level: {
                 maxDPS_base: 20,
@@ -53,7 +53,7 @@ var gameMod = (function () {
             blastRadius: 10,
             maxDPS: 75,
             accuracy: 0.9,
-            hitRadius: 75,
+            hitRadius: 64,
             gunCount: 1,
             level: {
                 maxDPS_base: 75,
