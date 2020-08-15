@@ -4,6 +4,9 @@
 * see about fixing issue where shots are tied to the canvas rather than the map (what happens when shooting and moving)
 * (partial fix) it seems that the AI can get stuck when Frame Rates are real low
 
+## 0.x.0 - Set map values by page text content
+* set map values by page text content
+
 ## 0.x.0 - Enemy fire and health
 * to make the game more interesting there are units on the map that fire back
 * game.HP, and game.maxHP properties will be needed
@@ -61,10 +64,10 @@
 * (done) use new exp system to set a levelObj for each cell in the map.
 * (done) display current level rather than damage per for each cell
 * (done) cap and deltaNext values for cell.levelObj is set by new map.cellLevelCap and map.cellDeltaNext values
-* cell.levelObj of the cell is set by cell.damage and new map values
-* cellHP rate goes up a little lower then DPS goes up for the player
+* (done) cell.levelObj of the cell is set by cell.damage and new map values
+* cell.maxHP is set by cellType and level
 * have a map.totalDamage property
-* use map.totalDamage over game.totalDamage
+* have a new map debug mode to display new map.totalDamage value as well as other map values
 * make a pkg_0_11_0.html
 
 ## 0.10.0 - level up system for player based on total damage as EXP

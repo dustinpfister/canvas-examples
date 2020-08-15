@@ -37,6 +37,7 @@ var draw = (function () {
         ctx.fillText('L' + Math.floor(cell.levelObj.level), x, y);
         ctx.fillText(Math.floor(cell.damagePer * 100) + '%', x, y + 8);
         ctx.fillText(Math.floor(cell.damage), x, y + 16);
+        ctx.fillText(Math.floor(cell.maxHP), x, y + 24);
     };
 
     var debugModes = {
