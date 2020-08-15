@@ -146,11 +146,9 @@ var mapMod = (function () {
 
     // generate new cells by way of given secs amount
     var gen = function (map, secs) {
-
         var cells,
         cell,
         i;
-
         map.gen.secs += secs;
         if (map.gen.secs >= map.gen.rate) {
             map.gen.secs %= map.gen.rate;
@@ -164,13 +162,11 @@ var mapMod = (function () {
                     cell = popRandomCell(cells);
                     cell.active = true;
                     cell.HP = 1;
-
                     setCellType(cell, Math.round(cell.damagePer * (cellTypes.length - 1)), {
                         HP: 1
                     });
                 }
             } else {
-
                 cells = getAllCellActiveState(map, true);
                 if (cells.length === 0) {
                     cell = map.cells[map.gen.startCells[Math.floor(Math.random() * map.gen.startCells.length)]];
@@ -179,11 +175,8 @@ var mapMod = (function () {
                     setCellType(cell, 0, {
                         HP: 1
                     });
-
                 }
-
             }
-
         }
     };
 
@@ -193,6 +186,8 @@ var mapMod = (function () {
         getAllCellActiveState: getAllCellActiveState,
 
         create: function () {
+
+            // create map object
             var map = {
                 cellSize: 32,
                 cellWidth: 32,
@@ -207,6 +202,8 @@ var mapMod = (function () {
                 },
                 highDamageCell: 0
             };
+
+            // setup cells for first time
             var i = 0,
             cell,
             x,
@@ -220,6 +217,7 @@ var mapMod = (function () {
                     HP: 50,
                     maxHP: 100,
                     active: true,
+                    levelObj: {},
                     typeIndex: 0,
                     typeName: cellTypes[0].name,
                     type: cellTypes[0],
@@ -292,14 +290,11 @@ var mapMod = (function () {
                 if (cell.active) {
                     // apply auto heal
                     autoHeal(cell, secs);
-
                     map.percentRemain += cell.HP / cell.maxHP;
                 }
 
                 // figure damage percent
-                if (cell.damage === 0) {
-                    damagePer = 0;
-                } else {
+                if (cell.damage != 0) {
                     cell.damagePer = cell.damage / map.highDamageCell;
                 }
 

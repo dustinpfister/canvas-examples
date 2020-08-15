@@ -57,9 +57,12 @@
 * use new button standard for options and change weapon buttons in game state
 * use new button standard for options menu buttons
 
-## 0.x.0 - CellTypes upgrade based on total damage of cell
-* cellType can still be set by damagePer, but the level of the cell type can be set by total damage
-* cellHP rate goes up a little higher then DPS goes up for the player
+## 0.11.0 - CellTypes upgrade based on total damage of cell
+* use new exp system to set a levelObj for each cell in the map.
+* cap and deltaNext values for cell.levelObj is set by cellType values
+* cell.levelObj of the cell is set by totalDamage and cellType values
+* cellHP rate goes up a little lower then DPS goes up for the player
+* make a pkg_0_11_0.html
 
 ## 0.10.0 - level up system for player based on total damage as EXP
 * (done) make an exp_system.js module
@@ -72,7 +75,7 @@
 * (done) new debug mode for current weapon
 * (done) new debug mode for level
 * (done) progress bar for draw.damageBar
-* make a pkg_0_10_0.html
+* (done) make a pkg_0_10_0.html
 
 ## 0.9.0 - state machine
 * (done) now Have everything inside an IIFE in main.js, and fixed a few problems using globals in game.js, and draw.js

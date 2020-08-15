@@ -112,7 +112,7 @@
     };
 
     var sm = {
-        ver: '0.10.0',
+        ver: '0.11.0',
         canvas: canvas,
         debugMode: 'weapon',
         currentState: 'game',
