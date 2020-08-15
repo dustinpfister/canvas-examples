@@ -1,5 +1,11 @@
 var draw = (function () {
 
+    var hpColors = ['red', 'orange', 'lime'];
+
+    var getHpColor = function (per) {
+        return hpColors[Math.floor((hpColors.length - 0.01) * per)];
+    };
+
     var drawBar = function (ctx, game, per, rStart, rLength, fill) {
         var cross = game.cross,
         center = cross.center;
@@ -59,8 +65,11 @@ var draw = (function () {
     var drawCellHealthBar = function (ctx, map, cell, cross) {
         var x = cell.x * map.cellSize + cross.offset.x + (320 / 2),
         y = cell.y * map.cellSize + cross.offset.y + (240 / 2);
-        ctx.fillStyle = 'rgba(0,255,0,0.4)';
+        //ctx.fillStyle = 'rgba(0,255,0,0.4)';
+        ctx.fillStyle = getHpColor(cell.HP / cell.maxHP);
+        ctx.globalAlpha = 0.5;
         ctx.fillRect(x, y, map.cellSize * (cell.HP / cell.maxHP), 5);
+        ctx.globalAlpha = 1;
     };
 
     var setupDebug = function (ctx, game) {
