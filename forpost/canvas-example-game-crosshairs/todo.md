@@ -64,9 +64,12 @@
 ## 0.12.0 - Cross hairs display II
 * (done) display a percent remaining bar in cross hairs area
 * (done) lower values for cells so they do not get to hard to fast
-* cross hairs display changes depending on move or shoot area
-* display a progress bar to AI control
+* (done) display a progress bar to AI control
+* use a general drawBar helper to draw all these different bars
 * display basic info about any cell that is over the cross hairs
+* display basic info about the current weapon including name, and maxDPS
+* weaponBar for shotDelay
+* cross hairs display changes depending on move or shoot area
 * display 'change weapon' on change weapon button
 * make a pkg_0_12_0.html
 

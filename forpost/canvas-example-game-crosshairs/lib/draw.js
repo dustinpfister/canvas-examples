@@ -1,5 +1,18 @@
 var draw = (function () {
 
+    var drawBar = function (ctx, game, per, rStart, rLength, fill) {
+        var cross = game.cross,
+        center = cross.center;
+        ctx.strokeStyle = 'gray';
+        ctx.beginPath();
+        ctx.arc(center.x, center.y, cross.radiusInner + 5, rStart, rStart + rLength);
+        ctx.stroke();
+        ctx.strokeStyle = fill || 'lime';
+        ctx.beginPath();
+        ctx.arc(center.x, center.y, cross.radiusInner + 5, rStart, (rStart + rLength) * per);
+        ctx.stroke();
+    };
+
     // draw the inner and outer cross circles
     var drawCrossCircles = function (ctx, cross) {
         ctx.strokeStyle = 'rgba(255,255,255,0.4)';
@@ -34,29 +47,12 @@ var draw = (function () {
         var cross = game.cross,
         center = cross.center,
         map = game.map;
-        ctx.strokeStyle = 'gray';
-        ctx.beginPath();
-        ctx.arc(center.x, center.y, cross.radiusInner + 5, Math.PI, Math.PI + Math.PI * 0.5);
-        ctx.stroke();
-        ctx.strokeStyle = 'lime';
-        ctx.beginPath();
-        ctx.arc(center.x, center.y, cross.radiusInner + 5, Math.PI, Math.PI + Math.PI * 0.5 * map.percentRemain);
-        ctx.stroke();
+        drawBar(ctx, game, map.percentRemain, Math.PI, Math.PI / 2, 'lime');
     };
 
     var drawAutoPlayDelayBar = function (ctx, game) {
-        var cross = game.cross,
-        center = cross.center,
-        ap = game.autoPlay,
-        per = ap.delay / ap.maxDelay;
-        ctx.strokeStyle = 'gray';
-        ctx.beginPath();
-        ctx.arc(center.x, center.y, cross.radiusInner + 5, 0, Math.PI * 0.5);
-        ctx.stroke();
-        ctx.strokeStyle = 'cyan';
-        ctx.beginPath();
-        ctx.arc(center.x, center.y, cross.radiusInner + 5, 0, Math.PI * 0.5 * per);
-        ctx.stroke();
+        var ap = game.autoPlay;
+        drawBar(ctx, game, ap.delay / ap.maxDelay, 0, Math.PI / 2, 'cyan');
     };
 
     // draw a health bar for a cell
