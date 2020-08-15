@@ -52,7 +52,7 @@ var draw = (function () {
 
     var drawAutoPlayDelayBar = function (ctx, game) {
         var ap = game.autoPlay;
-        drawBar(ctx, game, ap.delay / ap.maxDelay, 0, Math.PI / 2, 'cyan');
+        drawBar(ctx, game, ap.delay / ap.maxDelay, Math.PI * 2 - Math.PI / 4, Math.PI / 4, 'cyan');
     };
 
     // draw a health bar for a cell
@@ -155,9 +155,11 @@ var draw = (function () {
                 per = cell.HP / cell.maxHP;
                 if (cell.active) {
                     ctx.drawImage(sheets[cell.typeIndex].canvas, 32 * Math.floor(9 - cell.HP / cell.maxHP * 9), 0, 32, 32, x, y, map.cellSize, map.cellSize);
+                    if (per < 1) {
+                        drawCellHealthBar(ctx, map, cell, cross);
+                    }
                 }
-                drawCellHealthBar(ctx, map, cell, cross);
-                cellDebug(ctx, cell, x, y);
+                //cellDebug(ctx, cell, x, y);
             });
         },
         shots: function (ctx, game) {
