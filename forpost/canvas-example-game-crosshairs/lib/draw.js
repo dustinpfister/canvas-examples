@@ -301,6 +301,9 @@ var draw = (function () {
                 if (b.type === 'basic') {
                     ctx.fillText(b.label, b.x, b.y);
                 }
+                if (b.type === 'toggle') {
+                    ctx.fillText(b.label, b.x, b.y);
+                }
             });
         },
         debug: function (sm) {

@@ -84,7 +84,7 @@
                 }),
                 autoPlay: buttonMod.create({
                     label: 'Auto Play',
-                    //type: 'toggle',
+                    type: 'toggle',
                     fontSize: 8,
                     x: 25,
                     y: 175,
