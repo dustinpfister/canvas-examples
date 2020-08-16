@@ -20,14 +20,15 @@ var buttonMod = (function () {
                 y: opt.y === undefined ? 0 : opt.y,
                 r: opt.r === undefined ? 16 : opt.r,
                 label: opt.label || '',
-                type: opt.type || 'basic'
+                type: opt.type || 'basic',
+                onClick: opt.onClick || function () {}
             };
             setupType(button, opt);
             return button;
         },
 
         // check the given button collection
-        pointerCheckCollection: function (collection, point) {
+        pointerCheckCollection: function (collection, point, api) {
             var keys = Object.keys(collection),
             i = keys.length,
             button,
@@ -37,7 +38,8 @@ var buttonMod = (function () {
                 d = utils.distance(point.x, point.y, button.x, button.y);
                 if (d < button.r) {
                     //sm.currentState = 'game';
-                    console.log(button.label);
+                    //console.log(button.label);
+                    button.onClick(button, api);
                 }
             }
         }

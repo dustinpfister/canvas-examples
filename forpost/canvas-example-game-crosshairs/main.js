@@ -19,7 +19,11 @@
                     label: 'game',
                     x: 25,
                     y: 200,
-                    r: 10
+                    r: 10,
+                    onClick: function (button) {
+                        // set state to game
+                        sm.currentState = 'game';
+                    }
                 }),
                 debugMode: buttonMod.create({
                     x: 100,
@@ -45,7 +49,7 @@
 
                 var pos = utils.getCanvasRelative(e);
 
-                buttonMod.pointerCheckCollection(state.buttons, pos);
+                buttonMod.pointerCheckCollection(state.buttons, pos, sm);
 
                 /*
 
