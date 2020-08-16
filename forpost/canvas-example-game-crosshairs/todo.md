@@ -12,6 +12,14 @@
 * (partial fix) it seems that the AI can get stuck when Frame Rates are real low
 * should I have a map.totalDamage property?
 
+## 0.x.0 - UI animations
+* Work out animation feature for buttons
+* Animated cross object in game state
+
+## 0.x.0 - Hold fire button
+* add a holdFire 'toggle' button
+* have a different display in the center of cross when holdFire is on
+
 ## 0.x.0 - Cross hairs display III
 * cross hairs display changes depending on move or shoot area
 
@@ -85,8 +93,6 @@
 * (done) have a 'toggle' buttonType that has an 'on' and 'off' state with labels for each
 * (done) add an autoPlay 'toggle' button in options state to turn autoPlay on and off
 * (done) small 8x8 map size
-* add a holdFire 'toggle' button
-* have a different display in the center of cross when holdFire is on
 * make a pkg_0_13_0.html
 
 ## 0.12.0 - Cross hairs display II
@@ -103,7 +109,7 @@
 * (done) display white bx around current cell
 * (done) make damage bar a bar around the outer edge
 * (done) fill color of inactive cells based on cell.dmagePer
-* make a pkg_0_12_0.html
+* (done) make a pkg_0_12_0.html
 
 ## 0.11.0 - CellTypes upgrade based on total damage of cell
 * (done) use new exp system to set a levelObj for each cell in the map.
