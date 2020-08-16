@@ -197,7 +197,7 @@ var draw = (function () {
                 ctx.fillText(Math.floor(cell.damage) + ' (' + Math.round(cell.damagePer * 100) + '%)', x, y + 30);
 
                 // draw target cell
-                ctx.strokeStyle = 'rgba(255,255,255,0.2)';
+                ctx.strokeStyle = 'rgba(255,255,255,0.4)';
                 ctx.lineWidth = 3;
                 ctx.strokeRect(cell.x * map.cellSize + cross.offset.x + (320 / 2), cell.y * map.cellSize + cross.offset.y + (240 / 2), map.cellSize, map.cellSize);
             }
@@ -215,10 +215,20 @@ var draw = (function () {
                 y = cell.y * map.cellSize + cross.offset.y + (240 / 2),
                 per = cell.HP / cell.maxHP;
                 if (cell.active) {
+                    // for active cell
                     ctx.drawImage(sheets[cell.typeIndex].canvas, 32 * Math.floor(9 - cell.HP / cell.maxHP * 9), 0, 32, 32, x, y, map.cellSize, map.cellSize);
                     if (per < 1) {
                         drawCellHealthBar(ctx, map, cell, cross);
                     }
+                } else {
+                    // for inactive cell
+                    ctx.lineWidth = 1;
+                    ctx.strokeStyle = 'rgba(0,128,128, 0.4)';
+                    ctx.fillStyle = 'rgba(0,64,64, 0.4)';
+                    ctx.beginPath();
+                    ctx.rect(x, y, map.cellSize, map.cellSize);
+                    ctx.fill();
+                    ctx.stroke();
                 }
                 cellLevel(ctx, cell, x, y);
                 //cellDebug(ctx, cell, x, y);
