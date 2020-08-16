@@ -5,6 +5,9 @@
 * (partial fix) it seems that the AI can get stuck when Frame Rates are real low
 * should I have a map.totalDamage property?
 
+## 0.x.0 - Cross hairs display III
+* cross hairs display changes depending on move or shoot area
+
 ## 0.x.0 - Set map values by page text content
 * set map values by page text content
 
@@ -74,8 +77,7 @@
 * (done) have options button display 'options'
 * (done) display white bx around current cell
 * (done) make damage bar a bar around the outer edge
-* fill color of inactive cells based on cell.dmagePer
-* cross hairs display changes depending on move or shoot area
+* (done) fill color of inactive cells based on cell.dmagePer
 * make a pkg_0_12_0.html
 
 ## 0.11.0 - CellTypes upgrade based on total damage of cell
