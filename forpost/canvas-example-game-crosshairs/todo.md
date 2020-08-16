@@ -73,8 +73,9 @@
 * (done) move options button to lower left
 * (done) have options button display 'options'
 * (done) display white bx around current cell
+* (done) make damage bar a bar around the outer edge
+* fill color of inactive cells based on cell.dmagePer
 * cross hairs display changes depending on move or shoot area
-* make damage bar a bar around the outer edge
 * make a pkg_0_12_0.html
 
 ## 0.11.0 - CellTypes upgrade based on total damage of cell

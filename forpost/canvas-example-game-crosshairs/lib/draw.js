@@ -105,16 +105,16 @@ var draw = (function () {
             ctx.fillText('L' + Math.floor(cell.levelObj.level), x + 3, y + 3);
         }
     };
-
+    /*
     var cellDebug = function (ctx, cell, x, y) {
-        ctx.fillStyle = '#00ff00';
-        ctx.font = '8px courier';
-        ctx.fillText('L' + Math.floor(cell.levelObj.level), x, y);
-        ctx.fillText(Math.floor(cell.damagePer * 100) + '%', x, y + 8);
-        ctx.fillText(Math.floor(cell.damage), x, y + 16);
-        ctx.fillText(Math.floor(cell.maxHP), x, y + 24);
+    ctx.fillStyle = '#00ff00';
+    ctx.font = '8px courier';
+    ctx.fillText('L' + Math.floor(cell.levelObj.level), x, y);
+    ctx.fillText(Math.floor(cell.damagePer * 100) + '%', x, y + 8);
+    ctx.fillText(Math.floor(cell.damage), x, y + 16);
+    ctx.fillText(Math.floor(cell.maxHP), x, y + 24);
     };
-
+     */
     var debugModes = {
         none: function (sm) {},
         general: function (sm) {
@@ -233,8 +233,9 @@ var draw = (function () {
                 } else {
                     // for inactive cell
                     ctx.lineWidth = 1;
+                    var c = 50 + Math.round(200 * cell.damagePer);
                     ctx.strokeStyle = 'rgba(0,128,128, 0.4)';
-                    ctx.fillStyle = 'rgba(0,64,64, 0.4)';
+                    ctx.fillStyle = 'rgba(0,' + c + ',' + c + ', 0.7)';
                     ctx.beginPath();
                     ctx.rect(x, y, map.cellSize, map.cellSize);
                     ctx.fill();
@@ -302,20 +303,22 @@ var draw = (function () {
                 }
             });
         },
+        /*
         damageBar: function (ctx, game) {
-            var text = 'dmg: ' + Math.floor(game.totalDamage) + ' level: ' + game.levelObj.level;
-            // progress bar
-            ctx.fillStyle = 'rgba(0,0,0,0.3)';
-            ctx.fillRect(0, 0, game.canvas.width, 14);
-            ctx.fillStyle = 'rgba(0,64,255,0.4)';
-            ctx.fillRect(0, 0, game.canvas.width * game.levelObj.per, 14);
-            // text
-            ctx.fillStyle = 'white';
-            ctx.font = '10px arial';
-            ctx.textBaseline = 'top';
-            ctx.textAlign = 'center';
-            ctx.fillText(text, game.canvas.width / 2, 2);
+        var text = 'dmg: ' + Math.floor(game.totalDamage) + ' level: ' + game.levelObj.level;
+        // progress bar
+        ctx.fillStyle = 'rgba(0,0,0,0.3)';
+        ctx.fillRect(0, 0, game.canvas.width, 14);
+        ctx.fillStyle = 'rgba(0,64,255,0.4)';
+        ctx.fillRect(0, 0, game.canvas.width * game.levelObj.per, 14);
+        // text
+        ctx.fillStyle = 'white';
+        ctx.font = '10px arial';
+        ctx.textBaseline = 'top';
+        ctx.textAlign = 'center';
+        ctx.fillText(text, game.canvas.width / 2, 2);
         },
+         */
         debug: function (sm) {
             debugModes[sm.debugMode](sm, sm.ctx, sm.canvas);
         },
