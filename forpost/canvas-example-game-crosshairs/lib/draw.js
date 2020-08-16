@@ -169,10 +169,10 @@ var draw = (function () {
             // draw basic circles
             drawCrossCircles(ctx, game.cross);
 
-            // percentRemian bar
+            // bars
             drawPercentRemainBar(ctx, game);
-
             drawAutoPlayDelayBar(ctx, game);
+            drawBar(ctx, game, game.shotSecs / game.shotRate, Math.PI * 0.33, Math.PI * 0.33, 'red');
 
             // draw the cross hairs
             drawCrossHairs(ctx, game.cross);
@@ -180,10 +180,11 @@ var draw = (function () {
             // weapon info
             drawWeaponInfo(ctx, game);
 
+            // draw cell info
             var cross = game.cross,
             ch = game.cross.crosshairs,
             cell = mapMod.getWithCanvasPointAndOffset(game.map, ch.x, ch.y, cross.offset.x, cross.offset.y),
-            x = cross.center.x + cross.radiusOuter- 40,
+            x = cross.center.x + cross.radiusOuter - 40,
             y = cross.center.y - 20;
             if (cell) {
                 ctx.fillStyle = 'white';
