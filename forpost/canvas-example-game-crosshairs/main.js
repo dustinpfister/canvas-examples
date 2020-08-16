@@ -74,7 +74,7 @@
                 changeWeapon: buttonMod.create({
                     label: 'Next Weapon',
                     fontSize: 8,
-                    x: 290,
+                    x: 280,
                     y: 210,
                     r: 16,
                     onClick: function (button, sm) {

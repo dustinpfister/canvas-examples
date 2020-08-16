@@ -82,10 +82,10 @@
 * (done) use new button standard for options and change weapon buttons in game state
 * (done) make 'game' button in options state a 'basic' type
 * (done) make the debug button a 'option' type button
-* have a 'toggle' buttonType that has an 'on' and 'off' state with labels for each
-* add an autoPlay 'toggle' button in options state to turn autoPlay on and off
-* add a holdFire 'toggle' button
+* (done) have a 'toggle' buttonType that has an 'on' and 'off' state with labels for each
+* (done) add an autoPlay 'toggle' button in options state to turn autoPlay on and off
 * (done) small 8x8 map size
+* add a holdFire 'toggle' button
 * have a different display in the center of cross when holdFire is on
 * make a pkg_0_13_0.html
 
