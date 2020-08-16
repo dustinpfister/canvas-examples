@@ -182,16 +182,18 @@ var draw = (function () {
 
             var cross = game.cross,
             ch = game.cross.crosshairs,
-            cell = mapMod.getWithCanvasPointAndOffset(game.map, ch.x, ch.y, cross.offset.x, cross.offset.y);
+            cell = mapMod.getWithCanvasPointAndOffset(game.map, ch.x, ch.y, cross.offset.x, cross.offset.y),
+            x = cross.center.x + cross.radiusOuter- 40,
+            y = cross.center.y - 20;
             if (cell) {
                 ctx.fillStyle = 'white';
                 ctx.textBaseline = 'top';
                 ctx.textAlign = 'left';
-                ctx.font = '10px courier';
-                ctx.fillText(cell.x + ',' + cell.y, 10, 60);
-                ctx.fillText(cell.levelObj.level, 10, 70);
-                ctx.fillText(Math.floor(cell.HP) + '/' + Math.floor(cell.maxHP), 10, 80);
-                ctx.fillText(cell.damage, 10, 90);
+                ctx.font = '8px courier';
+                ctx.fillText(cell.x + ',' + cell.y, x, y);
+                ctx.fillText(cell.levelObj.level, x, y + 10);
+                ctx.fillText(Math.floor(cell.HP) + '/' + Math.floor(cell.maxHP), x, y + 20);
+                ctx.fillText(Math.floor(cell.damage) + ' (' + Math.round(cell.damagePer * 100) + '%)', x, y + 30);
             }
 
         },
