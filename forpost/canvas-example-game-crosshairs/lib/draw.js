@@ -62,7 +62,7 @@ var draw = (function () {
 
     var drawAutoPlayDelayBar = function (ctx, game) {
         var ap = game.autoPlay;
-        drawBar(ctx, game, ap.delay / ap.maxDelay, Math.PI * 2 - Math.PI / 4, Math.PI / 4, 'cyan');
+        drawBar(ctx, game, ap.delay / ap.maxDelay, 0, Math.PI / 4, 'cyan');
     };
 
     // draw the current weapon info
@@ -100,7 +100,7 @@ var draw = (function () {
 
     var cellLevel = function (ctx, cell, x, y) {
         if (cell.active) {
-            ctx.fillStyle = 'rgba(255,255,255,0.2)';
+            ctx.fillStyle = 'rgba(255,255,255,0.5)';
             ctx.font = '7px courier';
             ctx.fillText('L' + Math.floor(cell.levelObj.level), x + 3, y + 3);
         }
@@ -172,25 +172,35 @@ var draw = (function () {
             drawCrossCircles(ctx, game.cross);
 
             // bars
-            drawPercentRemainBar(ctx, game);
-            drawAutoPlayDelayBar(ctx, game);
-            drawBar(ctx, game, game.shotSecs / game.shotRate, Math.PI * 0.33, Math.PI * 0.33, 'red');
+            drawPercentRemainBar(ctx, game); // percentRemain
+            drawAutoPlayDelayBar(ctx, game); // autoPlay delay
+            drawBar(ctx, game, game.shotSecs / game.shotRate, Math.PI * 0.33, Math.PI * 0.33, 'red'); // shotRate
+            drawBar(ctx, game, game.levelObj.per, Math.PI * 1.69, Math.PI * 0.3, 'blue'); // next level
 
             // weapon info
             drawWeaponInfo(ctx, game);
 
-            // draw cell info
+            // draw cell and level info
             var cross = game.cross,
             map = game.map,
             ch = game.cross.crosshairs,
             cell = mapMod.getWithCanvasPointAndOffset(game.map, ch.x, ch.y, cross.offset.x, cross.offset.y),
-            x = cross.center.x + cross.radiusOuter - 40,
-            y = cross.center.y - 20;
+            x = cross.center.x + cross.radiusOuter - 45,
+            y = cross.center.y;
+
+            // text atyle for info
+            ctx.fillStyle = 'white';
+            ctx.textBaseline = 'top';
+            ctx.textAlign = 'left';
+            ctx.font = '8px arial';
+
+            // level info
+            ctx.fillText('level: ' + game.levelObj.level, x, y - 40);
+            ctx.fillText('xp: ' + Math.floor(game.levelObj.xp), x, y - 30);
+            ctx.fillText('next: ' + Math.floor(game.levelObj.toNext), x, y - 20);
+
+            // cell info
             if (cell) {
-                ctx.fillStyle = 'white';
-                ctx.textBaseline = 'top';
-                ctx.textAlign = 'left';
-                ctx.font = '8px courier';
                 ctx.fillText(cell.x + ',' + cell.y, x, y);
                 ctx.fillText(cell.levelObj.level, x, y + 10);
                 ctx.fillText(Math.floor(cell.HP) + '/' + Math.floor(cell.maxHP), x, y + 20);

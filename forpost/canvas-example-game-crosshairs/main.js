@@ -75,7 +75,7 @@
                 draw.explosions(ctx, sm.game);
                 draw.cross(ctx, sm.game);
                 draw.shots(ctx, sm.game);
-                draw.damageBar(ctx, sm.game);
+                //draw.damageBar(ctx, sm.game);
                 draw.buttons(ctx, gameMod.buttons);
                 draw.ver(ctx, sm);
                 draw.debug(sm);

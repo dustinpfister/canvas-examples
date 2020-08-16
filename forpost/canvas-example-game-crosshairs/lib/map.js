@@ -210,7 +210,7 @@ var mapMod = (function () {
                 },
                 percentRemain: 1,
                 gen: { // global cell generate values
-                    rate: 1,
+                    rate: 2,
                     secs: 0,
                     count: 2,
                     startCells: [0, 31, 480, 511]
