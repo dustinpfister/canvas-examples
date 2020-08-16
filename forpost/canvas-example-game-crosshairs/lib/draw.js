@@ -177,7 +177,22 @@ var draw = (function () {
             // draw the cross hairs
             drawCrossHairs(ctx, game.cross);
 
+            // weapon info
             drawWeaponInfo(ctx, game);
+
+            var cross = game.cross,
+            ch = game.cross.crosshairs,
+            cell = mapMod.getWithCanvasPointAndOffset(game.map, ch.x, ch.y, cross.offset.x, cross.offset.y);
+            if (cell) {
+                ctx.fillStyle = 'white';
+                ctx.textBaseline = 'top';
+                ctx.textAlign = 'left';
+                ctx.font = '10px courier';
+                ctx.fillText(cell.x + ',' + cell.y, 10, 60);
+                ctx.fillText(cell.levelObj.level, 10, 70);
+                ctx.fillText(Math.floor(cell.HP) + '/' + Math.floor(cell.maxHP), 10, 80);
+                ctx.fillText(cell.damage, 10, 90);
+            }
 
         },
         // draw map
