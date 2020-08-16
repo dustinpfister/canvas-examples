@@ -90,6 +90,7 @@
 * (done) option object for mapMod.create added
 * (done) mapMod.create opt can be used to set cellWidth and cellHeight of a map object
 * (done) mapMod.create opt can be used to set values for levelCap and deltaNext for cells
+* can use opt of create method to set cell regen values
 * use the XP system to create a levelObj for the map object in game.js called game.mapLevelObj
 * game map level sets cellLevel cap and deltaNext values
 * game map level sets gen rate and count

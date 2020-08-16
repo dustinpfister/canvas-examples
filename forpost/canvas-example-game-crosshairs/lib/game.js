@@ -305,10 +305,13 @@ var gameMod = (function () {
                 levelObj: {},
                 canvas: opt.canvas,
                 map: mapMod.create({
-                    cellWidth: 24,
-                    cellHeight: 16,
+                    cellWidth: 9,
+                    cellHeight: 6,
                     cellLevelCap: 20,
-                    cellDeltaNext: 250
+                    cellDeltaNext: 250,
+                    genRate: 3,
+                    genCount: 2,
+                    startCells: [22,31]
                 }),
                 cross: {},
                 shots: poolMod.create(shotOptions),

@@ -212,15 +212,16 @@ var mapMod = (function () {
                 },
                 percentRemain: 1,
                 gen: { // global cell generate values
-                    rate: 0.2,
+                    rate: opt.genRate || 0.2,
                     secs: 0,
-                    count: 6,
+                    count: opt.genCount || 6,
                     // start cells for 32 x 16
                     // startCells: [0, 31, 480, 511] // corner cells
                     // startCells: [239, 240, 271, 272]// center cells
                     // startCells: [239, 240, 271, 272]
                     // 8 * 8 start cells
-                    startCells: [27, 28, 35, 36, 0, 63, 56, 7]
+                    // [27, 28, 35, 36, 0, 63, 56, 7]
+                    startCells: opt.startCells || [0]
                 },
                 highDamageCell: 0
             };
