@@ -17,13 +17,13 @@
             buttons: {
                 toGame: {
                     label: 'Game',
-                    x: 300,
-                    y: 20,
+                    x: 25,
+                    y: 200,
                     r: 10
                 },
                 debugMode: {
-                    x: 32,
-                    y: 32,
+                    x: 100,
+                    y: 120,
                     r: 16,
                     options: ['none', 'general', 'weapon', 'level', 'map'],
                     currentOption: 0

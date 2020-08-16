@@ -303,8 +303,8 @@ var gameMod = (function () {
             options: {
                 label: 'options',
                 fontSize: 10,
-                x: 300,
-                y: 20,
+                x: 25,
+                y: 200,
                 r: 10
             },
             changeWeapon: {
