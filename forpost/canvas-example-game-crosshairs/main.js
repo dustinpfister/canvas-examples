@@ -81,6 +81,18 @@
                         sm.game.weaponIndex += 1;
                         sm.game.weaponIndex %= gameMod.Weapons.length;
                     }
+                }),
+                autoPlay: buttonMod.create({
+                    label: 'Auto Play',
+                    fontSize: 8,
+                    x: 25,
+                    y: 175,
+                    r: 10,
+                    onClick: function (button, sm) {
+                        console.log(button.label);
+                        //sm.game.weaponIndex += 1;
+                        //sm.game.weaponIndex %= gameMod.Weapons.length;
+                    }
                 })
             },
 
@@ -129,7 +141,7 @@
         ver: '0.13.0',
         canvas: canvas,
         debugMode: 'none',
-        currentState: 'options',
+        currentState: 'game',
         ctx: ctx,
         game: gameMod.create({
             canvas: canvas

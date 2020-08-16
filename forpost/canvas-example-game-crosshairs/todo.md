@@ -75,17 +75,18 @@
 * map level effects starting HP values for cells
 
 ## 0.13.0 - Buttons
-* make a standard module or class for creating and updating button objects
-* have a 'basic' buttonType that will just preform an action when clicked and displays a static label
+* (done) make a standard module or class for creating and updating button objects
+* (done) have a 'basic' buttonType that will just preform an action when clicked and displays a static label
+* (done) have a 'option' buttonType that runs threw a list of options when clicked
+* (done) all buttons should be part of the state machine rather than the game module
+* (done) use new button standard for options and change weapon buttons in game state
+* (done) make 'game' button in options state a 'basic' type
+* (done) make the debug button a 'option' type button
 * have a 'toggle' buttonType that has an 'on' and 'off' state with labels for each
-* have a 'option' buttonType that runs threw a list of options when clicked
-* all buttons should be part of the state machine rather than the game module
-* use new button standard for options and change weapon buttons in game state
-* make 'game' button in options state a 'basic' type
-* make the debug button a 'option' type button
 * add an autoPlay 'toggle' button in options state to turn autoPlay on and off
 * add a holdFire 'toggle' button
 * (done) small 8x8 map size
+* have a different display in the center of cross when holdFire is on
 * make a pkg_0_13_0.html
 
 ## 0.12.0 - Cross hairs display II
