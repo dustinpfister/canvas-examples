@@ -36,8 +36,7 @@ var mapMod = (function () {
                 rate: 3,
                 amount: 50
             }
-        },
-
+        }
     ];
 
     // set a cell as a given type index
