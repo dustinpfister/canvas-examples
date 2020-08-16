@@ -4,8 +4,8 @@ var mapMod = (function () {
             i: 0,
             type: 'grass',
             HP: {
-                min: 10,
-                max: 20,
+                min: 5,
+                max: 10,
                 base: 1.05
             },
             autoHeal: {
@@ -16,8 +16,8 @@ var mapMod = (function () {
             i: 1,
             type: 'tree',
             HP: {
-                min: 40,
-                max: 60,
+                min: 20,
+                max: 30,
                 base: 1.08
             },
             autoHeal: {
@@ -28,8 +28,8 @@ var mapMod = (function () {
             i: 2,
             type: 'rock',
             HP: {
-                min: 70,
-                max: 100,
+                min: 35,
+                max: 50,
                 base: 1.15
             },
             autoHeal: {
@@ -205,15 +205,17 @@ var mapMod = (function () {
                 cellHeight: 16,
                 cells: [],
                 cellLevel: {
-                    cap: 100,
-                    deltaNext: 100
+                    cap: 5,
+                    deltaNext: 200
                 },
                 percentRemain: 1,
                 gen: { // global cell generate values
-                    rate: 0.5,
+                    rate: 3,
                     secs: 0,
-                    count: 6,
-                    startCells: [0, 31, 480, 511]
+                    count: 2,
+                    // startCells: [0, 31, 480, 511] // corner cells
+                    // startCells: [239, 240, 271, 272]// center cells
+                    startCells: [239, 240, 271, 272]
                 },
                 highDamageCell: 0
             };

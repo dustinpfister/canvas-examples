@@ -58,6 +58,12 @@
 * atom skill
 * damage skill
 
+## 0.x.0 - Map level
+* use the XP system to create a levelObj for the map object
+* map level sets cellLevel cap and deltaNext values
+* map level sets gen rate and count
+* map level sets cellType values for hp min, max, and base
+
 ## 0.x.0 - Buttons
 * buttons should be part of the state machine rather than the game module
 * make a standard module or class for creating and updating button objects

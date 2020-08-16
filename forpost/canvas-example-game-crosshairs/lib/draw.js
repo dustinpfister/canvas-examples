@@ -201,10 +201,10 @@ var draw = (function () {
 
             // cell info
             if (cell) {
-                ctx.fillText(cell.x + ',' + cell.y, x, y);
-                ctx.fillText(cell.levelObj.level, x, y + 10);
-                ctx.fillText(Math.floor(cell.HP) + '/' + Math.floor(cell.maxHP), x, y + 20);
-                ctx.fillText(Math.floor(cell.damage) + ' (' + Math.round(cell.damagePer * 100) + '%)', x, y + 30);
+                ctx.fillText('pos: ' + cell.i + ' (' + cell.x + ',' + cell.y + ')', x, y);
+                ctx.fillText('lv:' + cell.levelObj.level, x, y + 10);
+                ctx.fillText('hp:' + Math.floor(cell.HP) + '/' + Math.floor(cell.maxHP), x, y + 20);
+                ctx.fillText('dam: ' + Math.floor(cell.damage) + ' (' + Math.round(cell.damagePer * 100) + '%)', x, y + 30);
 
                 // draw target cell
                 ctx.strokeStyle = 'rgba(255,255,255,0.4)';
