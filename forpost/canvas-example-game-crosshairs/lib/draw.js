@@ -140,9 +140,11 @@ var draw = (function () {
             lv = sm.game.levelObj;
             setupDebug(ctx, sm.game);
             ctx.fillText('Current level: ' + lv.level, 10, 10);
-            ctx.fillText('forNext level: ' + lv.forNext, 10, 20);
-            ctx.fillText('toNext level: ' + lv.toNext, 10, 30);
-            ctx.fillText('per: ' + lv.per.toFixed(2), 10, 40);
+            ctx.fillText('xp: ' + lv.xp, 10, 20);
+            ctx.fillText('forNext level: ' + lv.forNext, 10, 30);
+            ctx.fillText('toNext level: ' + lv.toNext, 10, 40);
+            ctx.fillText('per: ' + lv.per.toFixed(2), 10, 50);
+            ctx.fillText('forLast: ' + lv.forLast, 10, 60);
         },
         map: function (sm) {
             var ctx = sm.ctx,

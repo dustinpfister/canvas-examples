@@ -23,13 +23,15 @@ var XP = (function () {
         forNext = getXPtoLevel(level + 1, deltaNext);
         forNext = l === cap ? Infinity : forNext;
         var toNext = l === cap ? Infinity : forNext - xp;
+        var forLast = getXPtoLevel(level, deltaNext);
         return {
             level: level,
             levelFrac: l,
             xp: xp,
-            per: xp / forNext,
+            per: (xp - forLast) / (forNext - forLast),
             forNext: forNext,
-            toNext: toNext
+            toNext: toNext,
+            forLast: forLast
         };
     };
     return {
