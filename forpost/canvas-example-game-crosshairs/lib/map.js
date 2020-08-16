@@ -201,8 +201,8 @@ var mapMod = (function () {
             // create map object
             var map = {
                 cellSize: 32,
-                cellWidth: 32,
-                cellHeight: 16,
+                cellWidth: 8,
+                cellHeight: 8,
                 cells: [],
                 cellLevel: {
                     cap: 5,
@@ -210,12 +210,15 @@ var mapMod = (function () {
                 },
                 percentRemain: 1,
                 gen: { // global cell generate values
-                    rate: 3,
+                    rate: 0.5,
                     secs: 0,
                     count: 2,
+                    // start cells for 32 x 16
                     // startCells: [0, 31, 480, 511] // corner cells
                     // startCells: [239, 240, 271, 272]// center cells
-                    startCells: [239, 240, 271, 272]
+                    // startCells: [239, 240, 271, 272]
+                    // 8 * 8 start cells
+                    startCells: [27, 28, 35, 36, 0, 63, 56, 7]
                 },
                 highDamageCell: 0
             };

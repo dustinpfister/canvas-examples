@@ -48,6 +48,7 @@
 * space/k fires current weapon
 
 ## 0.x.0 - Skill Point system
+* add a 'upgrade' button type to the buttons module
 * have a skillPoint module that will create a skills state object
 * add a skillManager menu state that is used to set skill points to skills
 * add draw methods for skillManager
@@ -63,12 +64,20 @@
 * map level sets cellLevel cap and deltaNext values
 * map level sets gen rate and count
 * map level sets cellType values for hp min, max, and base
+* map level sets map size [8x8, 16x8, 16x16, 32x16]
 
-## 0.x.0 - Buttons
-* buttons should be part of the state machine rather than the game module
+## 0.13.0 - Buttons
 * make a standard module or class for creating and updating button objects
+* have a 'basic' buttonType that will just preform an action when clicked and displays a static label
+* have a 'toggle' buttonType that has an 'on' and 'off' state with labels for each
+* have a 'option' buttonType that runs threw a list of options when clicked
+* all buttons should be part of the state machine rather than the game module
 * use new button standard for options and change weapon buttons in game state
-* use new button standard for options menu buttons
+* make 'game' button in options state a 'basic' type
+* make the dubug button a 'option' type button
+* add an autoPlay 'toggle' button in options state to turn autoPlay on and off
+* (done) small 8x8 map size
+* make a pkg_0_13_0.html
 
 ## 0.12.0 - Cross hairs display II
 * (done) display a percent remaining bar in cross hairs area
