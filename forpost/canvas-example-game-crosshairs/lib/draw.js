@@ -174,14 +174,12 @@ var draw = (function () {
             drawAutoPlayDelayBar(ctx, game);
             drawBar(ctx, game, game.shotSecs / game.shotRate, Math.PI * 0.33, Math.PI * 0.33, 'red');
 
-            // draw the cross hairs
-            drawCrossHairs(ctx, game.cross);
-
             // weapon info
             drawWeaponInfo(ctx, game);
 
             // draw cell info
             var cross = game.cross,
+            map = game.map,
             ch = game.cross.crosshairs,
             cell = mapMod.getWithCanvasPointAndOffset(game.map, ch.x, ch.y, cross.offset.x, cross.offset.y),
             x = cross.center.x + cross.radiusOuter - 40,
@@ -195,7 +193,14 @@ var draw = (function () {
                 ctx.fillText(cell.levelObj.level, x, y + 10);
                 ctx.fillText(Math.floor(cell.HP) + '/' + Math.floor(cell.maxHP), x, y + 20);
                 ctx.fillText(Math.floor(cell.damage) + ' (' + Math.round(cell.damagePer * 100) + '%)', x, y + 30);
+
+                // draw target cell
+                ctx.strokeStyle = 'rgba(255,255,255,0.2)';
+                ctx.strokeRect(cell.x * map.cellSize + cross.offset.x + (320 / 2), cell.y * map.cellSize + cross.offset.y + (240 / 2), map.cellSize, map.cellSize);
             }
+
+            // draw the cross hairs
+            drawCrossHairs(ctx, game.cross);
 
         },
         // draw map

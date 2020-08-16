@@ -67,10 +67,14 @@
 * (done) display a progress bar to AI control
 * (done) use a general drawBar helper to draw all these different bars
 * (done) display basic info about the current weapon including name, and maxDPS
-* display basic info about any cell that is over the cross hairs
-* weaponBar for shotDelay
+* (done) display basic info about any cell that is over the cross hairs
+* (done) weaponBar for shotDelay
 * cross hairs display changes depending on move or shoot area
 * display 'change weapon' on change weapon button
+* move options button to lower left
+* have options button display 'options'
+* make damage bar a bar around the outer edge
+* display white bx around current cell
 * make a pkg_0_12_0.html
 
 ## 0.11.0 - CellTypes upgrade based on total damage of cell
