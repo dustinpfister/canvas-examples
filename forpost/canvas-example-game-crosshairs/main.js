@@ -48,28 +48,10 @@
             // events
             pointerStart: function (sm, e) {
                 var state = states[sm.currentState],
-                buttons = state.buttons;
-
-                var pos = utils.getCanvasRelative(e);
-
+                buttons = state.buttons,
+                pos = utils.getCanvasRelative(e);
+                // check buttons for options state
                 buttonMod.pointerCheckCollection(state.buttons, pos, sm);
-
-                /*
-
-                var b = buttons.toGame,
-                d = utils.distance(pos.x, pos.y, b.x, b.y);
-                if (d < b.r) {
-                sm.currentState = 'game';
-                }
-
-                b = buttons.debugMode;
-                d = utils.distance(pos.x, pos.y, b.x, b.y);
-                if (d < b.r) {
-                b.currentOption += 1;
-                b.currentOption = b.currentOption >= b.options.length ? 0 : b.currentOption;
-                sm.debugMode = b.options[b.currentOption];
-                }
-                 */
 
             },
             pointerMove: function () {},
@@ -77,8 +59,33 @@
         },
 
         game: {
-            update: function (sm, secs) {
 
+            buttons: {
+                options: buttonMod.create({
+                    label: 'options',
+                    fontSize: 10,
+                    x: 25,
+                    y: 200,
+                    r: 10,
+                    onClick: function (button, sm) {
+                        sm.currentState = 'options';
+                    }
+                }),
+                changeWeapon: buttonMod.create({
+                    label: 'Next Weapon',
+                    fontSize: 8,
+                    x: 290,
+                    y: 210,
+                    r: 16,
+                    onClick: function (button, sm) {
+                        sm.game.weaponIndex += 1;
+                        sm.game.weaponIndex %= gameMod.Weapons.length;
+                    }
+                })
+            },
+
+            update: function (sm, secs) {
+                var state = states[sm.currentState];
                 // update game state
                 gameMod.update(sm.game, secs);
 
@@ -89,29 +96,22 @@
                 draw.cross(ctx, sm.game);
                 draw.shots(ctx, sm.game);
                 //draw.damageBar(ctx, sm.game);
-                draw.buttons(ctx, gameMod.buttons);
+                draw.buttons(ctx, state.buttons);
                 draw.ver(ctx, sm);
                 draw.debug(sm);
             },
             pointerStart: function (sm, e) {
-                var pos = utils.getCanvasRelative(e);
+
+                var state = states[sm.currentState],
+                buttons = state.buttons,
+                pos = utils.getCanvasRelative(e);
                 // enable cross move back feature
                 sm.game.cross.moveBackEnabled = true;
                 crossMod.userAction(sm.game.cross, 'start', e);
                 sm.game.userDown = true;
-                // cycle weapons
-                var b = gameMod.buttons.changeWeapon,
-                d = utils.distance(pos.x, pos.y, b.x, b.y);
-                if (d < b.r) {
-                    sm.game.weaponIndex += 1;
-                    sm.game.weaponIndex %= gameMod.Weapons.length;
-                }
 
-                b = gameMod.buttons.options;
-                d = utils.distance(pos.x, pos.y, b.x, b.y);
-                if (d < b.r) {
-                    sm.currentState = 'options';
-                }
+                // check buttons for game state
+                buttonMod.pointerCheckCollection(state.buttons, pos, sm);
 
             },
             pointerEnd: function (em, e) {

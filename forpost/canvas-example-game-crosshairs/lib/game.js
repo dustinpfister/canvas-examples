@@ -299,6 +299,7 @@ var gameMod = (function () {
 
     return {
         Weapons: Weapons,
+		/*
         buttons: {
             options: {
                 label: 'options',
@@ -315,6 +316,7 @@ var gameMod = (function () {
                 r: 16
             }
         },
+		*/
         create: function (opt) {
             opt = opt || {};
             var game = {
