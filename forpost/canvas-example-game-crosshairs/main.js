@@ -16,6 +16,7 @@
             // button objects for the state
             buttons: {
                 toGame: {
+                    label: 'Game',
                     x: 300,
                     y: 20,
                     r: 10
@@ -24,7 +25,7 @@
                     x: 32,
                     y: 32,
                     r: 16,
-                    options: ['general', 'none', 'weapon', 'level', 'map'],
+                    options: ['none', 'general', 'weapon', 'level', 'map'],
                     currentOption: 0
                 }
             },

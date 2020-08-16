@@ -74,7 +74,7 @@
 * move options button to lower left
 * have options button display 'options'
 * make damage bar a bar around the outer edge
-* display white bx around current cell
+* (done) display white bx around current cell
 * make a pkg_0_12_0.html
 
 ## 0.11.0 - CellTypes upgrade based on total damage of cell

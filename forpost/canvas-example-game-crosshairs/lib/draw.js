@@ -72,8 +72,8 @@ var draw = (function () {
         ctx.fillStyle = '#ff6060';
         ctx.font = '10px courier';
         ctx.textAlign = 'center';
-        ctx.fillText('Weapon: ' + w.name, center.x, center.y + 70);
-        ctx.fillText('maxDPS: ' + w.maxDPS, center.x, center.y + 80);
+        ctx.fillText('Weapon: ' + w.name, center.x, center.y + 75);
+        ctx.fillText('maxDPS: ' + w.maxDPS, center.x, center.y + 85);
 
     };
 
@@ -270,20 +270,25 @@ var draw = (function () {
             }
         },
         buttons: function (ctx, buttons) {
-            ctx.fillStyle = 'red';
-            ctx.strokeStyle = 'white';
             Object.keys(buttons).forEach(function (key) {
                 var b = buttons[key];
+                ctx.fillStyle = 'red';
+                ctx.strokeStyle = 'gray';
+                ctx.lineWidth = 1;
                 ctx.beginPath();
                 ctx.arc(b.x, b.y, b.r, 0, Math.PI * 2);
                 ctx.fill();
                 ctx.stroke();
+                ctx.textBaseline = 'middle';
+                ctx.textAlign = 'center';
+                ctx.fillStyle = 'white';
+                ctx.font = (b.fontSize || 10) + 'px arial';
                 if (b.options) {
                     var str = b.options[b.currentOption || 0];
-                    ctx.textBaseline = 'middle';
-                    ctx.textAlign = 'center';
-                    ctx.fillStyle = 'white';
                     ctx.fillText(str, b.x, b.y);
+                }
+                if (b.label) {
+                    ctx.fillText(b.label, b.x, b.y);
                 }
             });
         },

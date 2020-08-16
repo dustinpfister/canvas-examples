@@ -301,11 +301,15 @@ var gameMod = (function () {
         Weapons: Weapons,
         buttons: {
             options: {
+                label: 'options',
+                fontSize: 10,
                 x: 300,
                 y: 20,
                 r: 10
             },
             changeWeapon: {
+                label: 'Next Weapon',
+                fontSize: 8,
                 x: 290,
                 y: 210,
                 r: 16
