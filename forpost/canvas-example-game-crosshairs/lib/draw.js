@@ -284,6 +284,9 @@ var draw = (function () {
             Object.keys(buttons).forEach(function (key) {
                 var b = buttons[key];
                 ctx.fillStyle = 'red';
+                if (b.type === 'toggle' && b.bool) {
+                    ctx.fillStyle = 'lime';
+                }
                 ctx.strokeStyle = 'gray';
                 ctx.lineWidth = 1;
                 ctx.beginPath();

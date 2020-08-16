@@ -89,10 +89,16 @@
                     x: 25,
                     y: 175,
                     r: 10,
+                    bool: true,
                     onClick: function (button, sm) {
                         var ap = sm.game.autoPlay;
-                        ap.enabled = !ap.enabled;
                         ap.delay = ap.maxDelay;
+                    },
+                    onActive: function (button, sm) {
+                        sm.game.autoPlay.enabled = button.bool;
+                    },
+                    onInactive: function (button, sm) {
+                        sm.game.autoPlay.enabled = button.bool;
                     }
                 })
             },
