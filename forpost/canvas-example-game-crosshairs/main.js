@@ -20,7 +20,7 @@
                     x: 25,
                     y: 200,
                     r: 10,
-                    onClick: function (button) {
+                    onClick: function (button, sm) {
                         // set state to game
                         sm.currentState = 'game';
                     }
@@ -30,7 +30,10 @@
                     y: 120,
                     r: 16,
                     type: 'options',
-                    options: ['none', 'general', 'weapon', 'level', 'map']
+                    options: ['none', 'general', 'weapon', 'level', 'map'],
+                    onClick: function (button, sm) {
+                        sm.debugMode = button.options[button.currentOption];
+                    }
                 })
             },
 

@@ -10,6 +10,14 @@ var buttonMod = (function () {
         }
     };
 
+    var beforeOnClick = {
+        basic: function () {},
+        options: function (button) {
+            button.currentOption += 1;
+            button.currentOption = button.currentOption >= button.options.length ? 0 : button.currentOption;
+        }
+    };
+
     return {
 
         // create a single button
@@ -37,8 +45,7 @@ var buttonMod = (function () {
                 button = collection[keys[i]];
                 d = utils.distance(point.x, point.y, button.x, button.y);
                 if (d < button.r) {
-                    //sm.currentState = 'game';
-                    //console.log(button.label);
+                    beforeOnClick[button.type](button);
                     button.onClick(button, api);
                 }
             }

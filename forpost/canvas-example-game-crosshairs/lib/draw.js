@@ -294,11 +294,11 @@ var draw = (function () {
                 ctx.textAlign = 'center';
                 ctx.fillStyle = 'white';
                 ctx.font = (b.fontSize || 10) + 'px arial';
-                if (b.options) {
+                if (b.type === 'options') {
                     var str = b.options[b.currentOption || 0];
                     ctx.fillText(str, b.x, b.y);
                 }
-                if (b.label) {
+                if (b.type === 'basic') {
                     ctx.fillText(b.label, b.x, b.y);
                 }
             });
