@@ -207,14 +207,14 @@ var mapMod = (function () {
                 cellHeight: opt.cellHeight || 8,
                 cells: [],
                 cellLevel: {
-                    cap: 5,
-                    deltaNext: 200
+                    cap: opt.cellLevelCap || 10,
+                    deltaNext: opt.cellDeltaNext || 200
                 },
                 percentRemain: 1,
                 gen: { // global cell generate values
-                    rate: 1,
+                    rate: 0.2,
                     secs: 0,
-                    count: 2,
+                    count: 6,
                     // start cells for 32 x 16
                     // startCells: [0, 31, 480, 511] // corner cells
                     // startCells: [239, 240, 271, 272]// center cells

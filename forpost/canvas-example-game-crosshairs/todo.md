@@ -61,6 +61,12 @@
 ## 0.x.0 - save state
 * work out a system for save states
 
+## 0.x.0 - Mana System
+* add a mana system to be used in game.js
+* all shots of all weapons will cost a certin amount of mana
+* if the player is out of mana they can not fire any shots
+* Mana will restore over time
+
 ## 0.x.0 - keyboard events
 * add keyboard events
 * use numbers for setting current weapon
@@ -81,14 +87,15 @@
 * damage skill
 
 ## 0.14.0 - Map level
-* option object for mapMod.create added
-* mapMod.create opt can be used to set cellWidth and cellHeight of a map object
-* use the XP system to create a levelObj for the map object
-* map level sets cellLevel cap and deltaNext values
-* map level sets gen rate and count
-* map level sets cellType values for hp min, max, and base
-* map level sets map size [8x8, 16x8, 16x16, 32x16]
-* map level effects starting HP values for cells
+* (done) option object for mapMod.create added
+* (done) mapMod.create opt can be used to set cellWidth and cellHeight of a map object
+* (done) mapMod.create opt can be used to set values for levelCap and deltaNext for cells
+* use the XP system to create a levelObj for the map object in game.js called game.mapLevelObj
+* game map level sets cellLevel cap and deltaNext values
+* game map level sets gen rate and count
+* game map level sets cellType values for hp min, max, and base
+* game map level sets map size [8x8, 16x8, 16x16, 32x16]
+* game map level effects starting HP values for cells
 
 ## 0.13.0 - Buttons
 * (done) make a standard module or class for creating and updating button objects
