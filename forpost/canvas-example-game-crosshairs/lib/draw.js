@@ -9,6 +9,7 @@ var draw = (function () {
     var drawBar = function (ctx, game, per, rStart, rLength, fill) {
         var cross = game.cross,
         center = cross.center;
+        ctx.lineWidth = 3;
         ctx.strokeStyle = 'gray';
         ctx.beginPath();
         ctx.arc(center.x, center.y, cross.radiusInner + 5, rStart, rStart + rLength);
@@ -23,7 +24,7 @@ var draw = (function () {
     var drawCrossCircles = function (ctx, cross) {
         ctx.strokeStyle = 'rgba(255,255,255,0.4)';
         ctx.fillStyle = 'rgba(255,0,0,0.4)';
-        ctx.lineWidth = 3;
+        ctx.lineWidth = 1;
         ctx.beginPath();
         ctx.arc(cross.center.x, cross.center.y, cross.radiusInner, 0, Math.PI * 2);
         ctx.stroke();
@@ -41,6 +42,7 @@ var draw = (function () {
     var drawCrossHairs = function (ctx, cross) {
         var ch = cross.crosshairs;
         ctx.strokeStyle = 'rgba(200,0,0,0.5)';
+        ctx.lineWidth = 2;
         ctx.beginPath();
         ctx.moveTo(ch.x, ch.y - ch.radius * 1.5);
         ctx.lineTo(ch.x, ch.y + ch.radius * 1.5);
@@ -196,6 +198,7 @@ var draw = (function () {
 
                 // draw target cell
                 ctx.strokeStyle = 'rgba(255,255,255,0.2)';
+                ctx.lineWidth = 3;
                 ctx.strokeRect(cell.x * map.cellSize + cross.offset.x + (320 / 2), cell.y * map.cellSize + cross.offset.y + (240 / 2), map.cellSize, map.cellSize);
             }
 
