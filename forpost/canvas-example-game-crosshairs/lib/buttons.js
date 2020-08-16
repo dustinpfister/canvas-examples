@@ -6,6 +6,7 @@ var buttonMod = (function () {
         if (button.type === 'options') {
             button.options = opt.options || [];
             button.currentOption = 0;
+            button.label = button.options[0];
         }
     };
 
@@ -26,12 +27,18 @@ var buttonMod = (function () {
         },
 
         // check the given button collection
-        pointerCheckCollection: function (collection) {
+        pointerCheckCollection: function (collection, point) {
             var keys = Object.keys(collection),
             i = keys.length,
-            button;
+            button,
+            d;
             while (i--) {
                 button = collection[keys[i]];
+                d = utils.distance(point.x, point.y, button.x, button.y);
+                if (d < button.r) {
+                    //sm.currentState = 'game';
+                    console.log(button.label);
+                }
             }
         }
     };

@@ -44,19 +44,25 @@
                 buttons = state.buttons;
 
                 var pos = utils.getCanvasRelative(e);
+
+                buttonMod.pointerCheckCollection(state.buttons, pos);
+
+                /*
+
                 var b = buttons.toGame,
                 d = utils.distance(pos.x, pos.y, b.x, b.y);
                 if (d < b.r) {
-                    sm.currentState = 'game';
+                sm.currentState = 'game';
                 }
 
                 b = buttons.debugMode;
                 d = utils.distance(pos.x, pos.y, b.x, b.y);
                 if (d < b.r) {
-                    b.currentOption += 1;
-                    b.currentOption = b.currentOption >= b.options.length ? 0 : b.currentOption;
-                    sm.debugMode = b.options[b.currentOption];
+                b.currentOption += 1;
+                b.currentOption = b.currentOption >= b.options.length ? 0 : b.currentOption;
+                sm.debugMode = b.options[b.currentOption];
                 }
+                 */
 
             },
             pointerMove: function () {},
