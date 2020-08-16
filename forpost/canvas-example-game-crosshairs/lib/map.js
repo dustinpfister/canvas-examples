@@ -9,8 +9,8 @@ var mapMod = (function () {
                 base: 1.05
             },
             autoHeal: {
-                rate: 0.1,
-                amount: 2
+                rate: 0.5,
+                amount: 1
             }
         }, {
             i: 1,
@@ -210,9 +210,9 @@ var mapMod = (function () {
                 },
                 percentRemain: 1,
                 gen: { // global cell generate values
-                    rate: 0.5,
+                    rate: 1,
                     secs: 0,
-                    count: 6,
+                    count: 2,
                     // start cells for 32 x 16
                     // startCells: [0, 31, 480, 511] // corner cells
                     // startCells: [239, 240, 271, 272]// center cells

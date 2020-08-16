@@ -15,12 +15,12 @@
 
             // button objects for the state
             buttons: {
-                toGame: {
-                    label: 'Game',
+                toGame: buttonMod.create({
+                    label: 'game',
                     x: 25,
                     y: 200,
                     r: 10
-                },
+                }),
                 debugMode: {
                     x: 100,
                     y: 120,

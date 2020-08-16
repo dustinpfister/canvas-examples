@@ -1,9 +1,10 @@
 // UTILS
 var utils = {};
-
+// get distance between two points
 utils.distance = function (x1, y1, x2, y2) {
     return Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2));
 };
+// get a canvas relative point
 utils.getCanvasRelative = function (e) {
     var canvas = e.target,
     bx = canvas.getBoundingClientRect();
@@ -13,7 +14,7 @@ utils.getCanvasRelative = function (e) {
         bx: bx
     };
 };
-
+// return a percent value from another percent value
 utils.logPer = function (per, high) {
     high = high === undefined ? 2 : high;
     per = per < 0 ? 0 : per;

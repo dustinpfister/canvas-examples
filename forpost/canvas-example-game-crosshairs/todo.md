@@ -82,8 +82,9 @@
 * all buttons should be part of the state machine rather than the game module
 * use new button standard for options and change weapon buttons in game state
 * make 'game' button in options state a 'basic' type
-* make the dubug button a 'option' type button
+* make the debug button a 'option' type button
 * add an autoPlay 'toggle' button in options state to turn autoPlay on and off
+* add a holdFire 'toggle' button
 * (done) small 8x8 map size
 * make a pkg_0_13_0.html
 

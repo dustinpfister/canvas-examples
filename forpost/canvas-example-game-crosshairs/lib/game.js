@@ -2,7 +2,7 @@ var gameMod = (function () {
 
     // hard coded settings
     var hardSet = {
-        maxSecs: 0.25, // max seconds foe sec value used in updates
+        maxSecs: 0.25, // max seconds for sec value used in updates
         deltaNext: 10000, // deltaNext and levelCap
         levelCap: 100
     };
@@ -43,8 +43,8 @@ var gameMod = (function () {
             hitRadius: 32,
             gunCount: 2,
             level: {
-                maxDPS_base: 20,
-                maxDPS_perLevel: 30
+                maxDPS_base: 15,
+                maxDPS_perLevel: 10
             }
         }, {
             name: 'Atom',
@@ -331,7 +331,7 @@ var gameMod = (function () {
                 userDown: false,
                 autoPlay: {
                     enabled: true,
-                    behavior: 'total-kill',
+                    behavior: 'cannon',
                     stopAtPercentRemain: 0,
                     delay: 5,
                     maxDelay: 5,
