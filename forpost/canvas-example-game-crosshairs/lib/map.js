@@ -212,7 +212,7 @@ var mapMod = (function () {
                 gen: { // global cell generate values
                     rate: 0.5,
                     secs: 0,
-                    count: 2,
+                    count: 6,
                     // start cells for 32 x 16
                     // startCells: [0, 31, 480, 511] // corner cells
                     // startCells: [239, 240, 271, 272]// center cells

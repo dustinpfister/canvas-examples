@@ -1,7 +1,14 @@
 # todo list for canvas-example-game-crosshairs
 
+## First Game
+* start first game based off of this source code
+* game should be placed in the header of my website as a way to just throw this in peoples faces on any page
+* make a feature that uses the text of a page to set map level
+* make cool custom sprite sheets for cells, and all other aspects of the look and feel of the game
+
 ## 0.x.x - Bug fixes and concerns
 * see about fixing issue where shots are tied to the canvas rather than the map (what happens when shooting and moving)
+* Shots that hit outside of map should still cause damage to shots in the map that are in the blast radius
 * (partial fix) it seems that the AI can get stuck when Frame Rates are real low
 * should I have a map.totalDamage property?
 
@@ -65,6 +72,7 @@
 * map level sets gen rate and count
 * map level sets cellType values for hp min, max, and base
 * map level sets map size [8x8, 16x8, 16x16, 32x16]
+* map level effects starting HP values for cells
 
 ## 0.13.0 - Buttons
 * make a standard module or class for creating and updating button objects
