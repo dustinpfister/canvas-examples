@@ -299,24 +299,6 @@ var gameMod = (function () {
 
     return {
         Weapons: Weapons,
-		/*
-        buttons: {
-            options: {
-                label: 'options',
-                fontSize: 10,
-                x: 25,
-                y: 200,
-                r: 10
-            },
-            changeWeapon: {
-                label: 'Next Weapon',
-                fontSize: 8,
-                x: 290,
-                y: 210,
-                r: 16
-            }
-        },
-		*/
         create: function (opt) {
             opt = opt || {};
             var game = {
