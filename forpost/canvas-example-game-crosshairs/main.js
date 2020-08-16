@@ -21,13 +21,13 @@
                     y: 200,
                     r: 10
                 }),
-                debugMode: {
+                debugMode: buttonMod.create({
                     x: 100,
                     y: 120,
                     r: 16,
-                    options: ['none', 'general', 'weapon', 'level', 'map'],
-                    currentOption: 0
-                }
+                    type: 'options',
+                    options: ['none', 'general', 'weapon', 'level', 'map']
+                })
             },
 
             // for each update tick
@@ -116,7 +116,7 @@
         ver: '0.13.0',
         canvas: canvas,
         debugMode: 'none',
-        currentState: 'game',
+        currentState: 'options',
         ctx: ctx,
         game: gameMod.create({
             canvas: canvas
