@@ -27,10 +27,16 @@
 * set map values by page text content
 
 ## 0.x.0 - Enemy fire and health
-* to make the game more interesting there are units on the map that fire back
+* to make the game more interesting there are enemy units on the map that fire back
 * game.HP, and game.maxHP properties will be needed
 * game.gameOver state
-* just click screen to start over for now until I get into a state machine for this.
+* In game over state player can reset and enter the game state
+
+## 0.x.0 - Enemy disp objects
+* use pool.js to create a pool of display objects to be used as enemies that move sround the map
+* have an enemies object for each cell type
+* enemies spawn from active cells that have a enemies.spawn bool set to true
+* enemies move from cell to cell
 
 ## 0.x.0 - Manual and auto play damage bonus
 * have a damage bonus in manual play state
@@ -74,7 +80,9 @@
 * atom skill
 * damage skill
 
-## 0.x.0 - Map level
+## 0.14.0 - Map level
+* option object for mapMod.create added
+* mapMod.create opt can be used to set cellWidth and cellHeight of a map object
 * use the XP system to create a levelObj for the map object
 * map level sets cellLevel cap and deltaNext values
 * map level sets gen rate and count
@@ -93,7 +101,7 @@
 * (done) have a 'toggle' buttonType that has an 'on' and 'off' state with labels for each
 * (done) add an autoPlay 'toggle' button in options state to turn autoPlay on and off
 * (done) small 8x8 map size
-* make a pkg_0_13_0.html
+* (done) make a pkg_0_13_0.html
 
 ## 0.12.0 - Cross hairs display II
 * (done) display a percent remaining bar in cross hairs area

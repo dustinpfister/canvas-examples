@@ -304,7 +304,10 @@ var gameMod = (function () {
             var game = {
                 levelObj: {},
                 canvas: opt.canvas,
-                map: mapMod.create(),
+                map: mapMod.create({
+                    cellWidth: 24,
+                    cellHeight: 16
+                }),
                 cross: {},
                 shots: poolMod.create(shotOptions),
                 explosions: poolMod.create(explosionOptions),

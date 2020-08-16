@@ -196,13 +196,15 @@ var mapMod = (function () {
 
         getAllCellActiveState: getAllCellActiveState,
 
-        create: function () {
+        create: function (opt) {
+
+            opt = opt || {};
 
             // create map object
             var map = {
                 cellSize: 32,
-                cellWidth: 8,
-                cellHeight: 8,
+                cellWidth: opt.cellWidth || 8,
+                cellHeight: opt.cellHeight || 8,
                 cells: [],
                 cellLevel: {
                     cap: 5,
