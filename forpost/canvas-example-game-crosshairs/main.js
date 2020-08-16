@@ -84,14 +84,15 @@
                 }),
                 autoPlay: buttonMod.create({
                     label: 'Auto Play',
+                    //type: 'toggle',
                     fontSize: 8,
                     x: 25,
                     y: 175,
                     r: 10,
                     onClick: function (button, sm) {
-                        console.log(button.label);
-                        //sm.game.weaponIndex += 1;
-                        //sm.game.weaponIndex %= gameMod.Weapons.length;
+                        var ap = sm.game.autoPlay;
+                        ap.enabled = !ap.enabled;
+                        ap.delay = ap.maxDelay;
                     }
                 })
             },
