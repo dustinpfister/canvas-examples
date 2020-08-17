@@ -101,7 +101,7 @@
 * (done) mapMod.create opt can be used to set values for levelCap and deltaNext for cells
 * (done) can use opt of create method to set cell regeneration values
 * (done) use the XP system to create a levelObj for the map object in game.js called game.mapLevelObj
-* game map level sets cellLevel cap and deltaNext values
+* (done) game map level sets cellLevel cap and deltaNext values
 * game map level sets gen rate and count
 * game map level sets cellType values for hp min, max, and base
 * game map level sets map size [8x8, 16x8, 16x16, 32x16]

@@ -309,7 +309,6 @@ var gameMod = (function () {
     var setMap = function (game, xp, deltaNext, levelCap) {
         levelCap = levelCap || 50;
         if (xp >= 0 || deltaNext) {
-            console.log(xp);
             game.mapLevelObj = XP.parseByXP(xp, levelCap, deltaNext);
         }
         // create the map
@@ -321,8 +320,8 @@ var gameMod = (function () {
                 cellHeight: size.h,
                 cellLevelCap: 5 + Math.floor(capPer * 95),
                 cellDeltaNext: 1000 - Math.round(capPer * 750),
-                genRate: 3,
-                genCount: 2,
+                genRate: 10 - 9.5 * capPer,
+                genCount: 1 + Math.floor(6 * capPer),
                 startCells: [0]
             });
     };
