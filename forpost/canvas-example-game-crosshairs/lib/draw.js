@@ -204,14 +204,14 @@ var draw = (function () {
             ctx.font = '8px arial';
 
             // level info
-            ctx.fillText('level: ' + game.levelObj.level, x, y - 40);
+            ctx.fillText('level: ' + game.levelObj.level + ' (' + Math.round(game.levelObj.per * 100) + '%)', x, y - 40);
             ctx.fillText('xp: ' + Math.floor(game.levelObj.xp), x, y - 30);
             ctx.fillText('next: ' + Math.floor(game.levelObj.toNext), x, y - 20);
 
             // cell info
             if (cell) {
                 ctx.fillText('pos: ' + cell.i + ' (' + cell.x + ',' + cell.y + ')', x, y);
-                ctx.fillText('lv:' + cell.levelObj.level, x, y + 10);
+                ctx.fillText('lv:' + cell.levelObj.level + ' (' + Math.round(cell.levelObj.per * 100) + '%)', x, y + 10);
                 ctx.fillText('hp:' + Math.floor(cell.HP) + '/' + Math.floor(cell.maxHP), x, y + 20);
                 ctx.fillText('dam: ' + Math.floor(cell.damage) + ' (' + Math.round(cell.damagePer * 100) + '%)', x, y + 30);
 

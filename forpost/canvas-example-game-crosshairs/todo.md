@@ -87,12 +87,16 @@
 * atom skill
 * damage skill
 
-## 0.x.0 - Map menu state
-* start a new state that can be used to change map settings
 
 ## 0.x.0 - Map starting damage
 * have a blastRadius helper that will cause a starting blast radius for a map area
 * starting damage blastRadius count, damage, and radius range effected by map level
+
+## 0.x.0 - Map menu state
+* start a new state that can be used to change map settings
+* game map level effects starting HP values for cells
+* game map level sets cellType values for hp min, max, and base
+
 
 ## 0.14.0 - Map level
 * (done) fix bug where XP system returns level zero when given 0 xp with parseByXP
@@ -102,12 +106,11 @@
 * (done) can use opt of create method to set cell regeneration values
 * (done) use the XP system to create a levelObj for the map object in game.js called game.mapLevelObj
 * (done) game map level sets cellLevel cap and deltaNext values
-* game map level sets gen rate and count
-* game map level sets cellType values for hp min, max, and base
-* game map level sets map size [8x8, 16x8, 16x16, 32x16]
-* game map level effects starting HP values for cells
-* new game.setMap method to setUp a new map for a game object
-* for now just giving number literals as XP until I have a better system
+* (done) game map level sets gen rate and count
+* (done) game map level sets map size [8x8, 16x8, 16x16, 32x16]
+* (done) new game.setMap method to setUp a new map for a game object
+* (done) for now just giving number literals as XP until I have a better system
+* make a pkg_0_14_0.html
 
 ## 0.13.0 - Buttons
 * (done) make a standard module or class for creating and updating button objects
