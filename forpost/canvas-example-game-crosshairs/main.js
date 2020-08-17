@@ -147,7 +147,7 @@
     var sm = {
         ver: '0.14.0',
         canvas: canvas,
-        debugMode: 'none',
+        debugMode: 'map',
         currentState: 'game',
         ctx: ctx,
         game: gameMod.create({

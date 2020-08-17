@@ -150,9 +150,12 @@ var draw = (function () {
         },
         map: function (sm) {
             var ctx = sm.ctx,
-            map = sm.game.map;
-            setupDebug(ctx, sm.game);
-            ctx.fillText('map.percentRemain: ' + map.percentRemain, 10, 10);
+            game = sm.game,
+            map = game.map;
+            setupDebug(ctx, game);
+            ctx.fillText('map level: ' + game.mapLevelObj.level, 10, 10);
+            ctx.fillText('map.percentRemain: ' + map.percentRemain.toFixed(2), 10, 100);
+
         }
     };
 

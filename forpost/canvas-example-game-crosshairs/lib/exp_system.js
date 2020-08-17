@@ -19,6 +19,7 @@ var XP = (function () {
         deltaNext = deltaNext === undefined ? DEFAULTS.deltaNext : deltaNext;
         var l = set(xp, deltaNext);
         l = l > cap ? cap : l;
+        l = l <= 0 ? 1 : l;
         var level = Math.floor(l),
         forNext = getXPtoLevel(level + 1, deltaNext);
         forNext = l === cap ? Infinity : forNext;

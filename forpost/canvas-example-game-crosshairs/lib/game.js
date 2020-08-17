@@ -351,7 +351,7 @@ var gameMod = (function () {
             };
             // set game and map level objects for first time
             game.levelObj = XP.parseByXP(game.totalDamage, hardSet.levelCap, hardSet.deltaNext);
-            setMap(game, opt.mapXP === undefined ? 0 : opt.mapDeltaNext || 50, opt.mapLevelCap || 50);
+            setMap(game, opt.mapXP === undefined ? 0 : opt.mapDeltaNext || 0, opt.mapLevelCap || 50);
             // first autoPlay target
             autoPlay.setRandomTarget(game);
             // create cross object

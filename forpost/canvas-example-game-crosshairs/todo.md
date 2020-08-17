@@ -6,6 +6,7 @@
 * make a feature that uses the text of a page to set map level
 * make cool custom sprite sheets for cells, and all other aspects of the look and feel of the game
 
+
 ## 0.x.x - Bug fixes and concerns
 * see about fixing issue where shots are tied to the canvas rather than the map (what happens when shooting and moving)
 * Shots that hit outside of map should still cause damage to shots in the map that are in the blast radius
@@ -94,6 +95,7 @@
 * starting damage blastRadius count, damage, and radius range effected by map level
 
 ## 0.14.0 - Map level
+* (done) fix bug where XP system returns level zero when given 0 xp with parseByXP
 * (done) option object for mapMod.create added
 * (done) mapMod.create opt can be used to set cellWidth and cellHeight of a map object
 * (done) mapMod.create opt can be used to set values for levelCap and deltaNext for cells
