@@ -110,6 +110,7 @@
 * (done) game map level sets map size [8x8, 16x8, 16x16, 32x16]
 * (done) new game.setMap method to setUp a new map for a game object
 * (done) for now just giving number literals as XP until I have a better system
+* (done) percent values for levels displayed in UI
 * make a pkg_0_14_0.html
 
 ## 0.13.0 - Buttons
