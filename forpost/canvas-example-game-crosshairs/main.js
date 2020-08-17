@@ -151,7 +151,10 @@
         currentState: 'game',
         ctx: ctx,
         game: gameMod.create({
-            canvas: canvas
+            canvas: canvas,
+            mapXP: 10000,
+            mapDeltaNext: 50,
+            mapLevelCap: 10
         }),
         input: {
             pointerDown: false,

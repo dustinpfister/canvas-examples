@@ -309,12 +309,13 @@ var gameMod = (function () {
     var setMap = function (game, xp, deltaNext, levelCap) {
         levelCap = levelCap || 50;
         if (xp >= 0 || deltaNext) {
-            game.mapLevelObj = XP.parseByXP(levelCap, xp, deltaNext);
+            console.log(xp);
+            game.mapLevelObj = XP.parseByXP(xp, levelCap, deltaNext);
         }
         // create the map
         var mapL = game.mapLevelObj,
         capPer = mapL.level / levelCap;
-        var size = mapSizes[Math.floor(capPer) * (mapSizes.length-1)];
+        var size = mapSizes[Math.floor(capPer) * (mapSizes.length - 1)];
         game.map = mapMod.create({
                 cellWidth: size.w,
                 cellHeight: size.h,
@@ -364,7 +365,7 @@ var gameMod = (function () {
             };
             // set game and map level objects for first time
             game.levelObj = XP.parseByXP(game.totalDamage, hardSet.levelCap, hardSet.deltaNext);
-            setMap(game, opt.mapXP === undefined ? 0 : opt.mapDeltaNext || 0, opt.mapLevelCap || 50);
+            setMap(game, opt.mapXP === undefined ? 0 : opt.mapXP || 0, opt.mapDeltaNext, opt.mapLevelCap || 50);
             // first autoPlay target
             autoPlay.setRandomTarget(game);
             // create cross object
