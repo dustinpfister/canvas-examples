@@ -302,7 +302,8 @@ var gameMod = (function () {
         create: function (opt) {
             opt = opt || {};
             var game = {
-                levelObj: {},
+                levelObj: {}, // main level object for the player
+                mapLevelObj: {}, // level object for the map
                 canvas: opt.canvas,
                 map: mapMod.create({
                     cellWidth: 9,
@@ -311,7 +312,7 @@ var gameMod = (function () {
                     cellDeltaNext: 250,
                     genRate: 3,
                     genCount: 2,
-                    startCells: [22,31]
+                    startCells: [22, 31]
                 }),
                 cross: {},
                 shots: poolMod.create(shotOptions),
@@ -337,8 +338,9 @@ var gameMod = (function () {
                     }
                 }
             };
-            // set game level object for first time
+            // set game and map level objects for first time
             game.levelObj = XP.parseByXP(game.totalDamage, hardSet.levelCap, hardSet.deltaNext);
+            game.mapLevelObj = XP.parseByXP(100, 10, 50);
             // first autoPlay target
             autoPlay.setRandomTarget(game);
             // create cross object
