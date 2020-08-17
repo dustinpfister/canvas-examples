@@ -297,8 +297,17 @@ var gameMod = (function () {
         }
     };
 
+    // setup the map object for a game object based on current mapLevelObj settings,
+    // and change the settings if needed
+    var setMap = function (game, xp, deltaNext, levelCap) {
+        if (xp >= 0 || deltaNext) {
+            game.mapLevelObj = XP.parseByXP(levelCap || 100, xp, deltaNext);
+        }
+    };
+
     return {
         Weapons: Weapons,
+
         create: function (opt) {
             opt = opt || {};
             var game = {
@@ -340,7 +349,7 @@ var gameMod = (function () {
             };
             // set game and map level objects for first time
             game.levelObj = XP.parseByXP(game.totalDamage, hardSet.levelCap, hardSet.deltaNext);
-            game.mapLevelObj = XP.parseByXP(100, 10, 50);
+            setMap(game, opt.mapXP === undefined ? 0: opt.mapDeltaNext || 50, opt.mapLevelCap || 50);
             // first autoPlay target
             autoPlay.setRandomTarget(game);
             // create cross object
