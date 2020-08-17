@@ -86,6 +86,13 @@
 * atom skill
 * damage skill
 
+## 0.x.0 - Map menu state
+* start a new state that can be used to change map settings
+
+## 0.x.0 - Map starting damage
+* have a blastRadius helper that will cause a starting blast radius for a map area
+* starting damage blastRadius count, damage, and radius range effected by map level
+
 ## 0.14.0 - Map level
 * (done) option object for mapMod.create added
 * (done) mapMod.create opt can be used to set cellWidth and cellHeight of a map object
