@@ -299,19 +299,26 @@ var gameMod = (function () {
 
     // setup the map object for a game object based on current mapLevelObj settings,
     // and change the settings if needed
+    var mapSizes = ['8x8', '16x8', '16x16', '32x16'].map(function (str) {
+        var a = str.split('x');
+        return {
+            w: a[0],
+            h: a[1]
+        };
+    });
     var setMap = function (game, xp, deltaNext, levelCap) {
         if (xp >= 0 || deltaNext) {
             game.mapLevelObj = XP.parseByXP(levelCap || 100, xp, deltaNext);
         }
         // create the map
         game.map = mapMod.create({
-                cellWidth: 4,
-                cellHeight: 4,
+                cellWidth: 6,
+                cellHeight: 6,
                 cellLevelCap: 20,
                 cellDeltaNext: 250,
                 genRate: 3,
                 genCount: 2,
-                startCells: [22, 31]
+                startCells: [0]
             });
     };
 
