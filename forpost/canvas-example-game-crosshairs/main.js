@@ -152,7 +152,7 @@
         ctx: ctx,
         game: gameMod.create({
             canvas: canvas,
-            mapXP: 10000,
+            mapXP: 0,
             mapDeltaNext: 50,
             mapLevelCap: 10
         }),

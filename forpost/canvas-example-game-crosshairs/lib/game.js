@@ -319,8 +319,8 @@ var gameMod = (function () {
         game.map = mapMod.create({
                 cellWidth: size.w,
                 cellHeight: size.h,
-                cellLevelCap: 20,
-                cellDeltaNext: 250,
+                cellLevelCap: 5 + Math.floor(capPer * 95),
+                cellDeltaNext: 1000 - Math.round(capPer * 750),
                 genRate: 3,
                 genCount: 2,
                 startCells: [0]
