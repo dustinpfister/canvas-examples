@@ -303,6 +303,16 @@ var gameMod = (function () {
         if (xp >= 0 || deltaNext) {
             game.mapLevelObj = XP.parseByXP(levelCap || 100, xp, deltaNext);
         }
+        // create the map
+        game.map = mapMod.create({
+                cellWidth: 4,
+                cellHeight: 4,
+                cellLevelCap: 20,
+                cellDeltaNext: 250,
+                genRate: 3,
+                genCount: 2,
+                startCells: [22, 31]
+            });
     };
 
     return {
@@ -316,15 +326,7 @@ var gameMod = (function () {
                 levelObj: {}, // main level object for the player
                 mapLevelObj: {}, // level object for the map
                 canvas: opt.canvas,
-                map: mapMod.create({
-                    cellWidth: 9,
-                    cellHeight: 6,
-                    cellLevelCap: 20,
-                    cellDeltaNext: 250,
-                    genRate: 3,
-                    genCount: 2,
-                    startCells: [22, 31]
-                }),
+                map: {},
                 cross: {},
                 shots: poolMod.create(shotOptions),
                 explosions: poolMod.create(explosionOptions),
