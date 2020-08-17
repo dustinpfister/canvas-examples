@@ -154,6 +154,8 @@ var draw = (function () {
             map = game.map;
             setupDebug(ctx, game);
             ctx.fillText('map level: ' + game.mapLevelObj.level, 10, 10);
+            ctx.fillText('map size: ' + map.cellWidth + 'x' + map.cellHeight, 10, 20);
+
             ctx.fillText('map.percentRemain: ' + map.percentRemain.toFixed(2), 10, 100);
 
         }

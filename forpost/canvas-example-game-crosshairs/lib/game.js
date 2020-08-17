@@ -307,11 +307,14 @@ var gameMod = (function () {
         };
     });
     var setMap = function (game, xp, deltaNext, levelCap) {
+        levelCap = levelCap || 50;
         if (xp >= 0 || deltaNext) {
-            game.mapLevelObj = XP.parseByXP(levelCap || 100, xp, deltaNext);
+            game.mapLevelObj = XP.parseByXP(levelCap, xp, deltaNext);
         }
         // create the map
-        var size = mapSizes[0];
+        var mapL = game.mapLevelObj,
+        capPer = mapL.level / levelCap;
+        var size = mapSizes[Math.floor(capPer) * (mapSizes.length-1)];
         game.map = mapMod.create({
                 cellWidth: size.w,
                 cellHeight: size.h,
