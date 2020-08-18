@@ -40,7 +40,6 @@ var XP = (function () {
             l = l === undefined ? DEFAULTS.level : l;
             deltaNext = deltaNext === undefined ? DEFAULTS.deltaNext : deltaNext;
             var xp = getXPtoLevel(l, deltaNext);
-            console.log(xp);
             return parseByXP(xp, cap, deltaNext);
         },
         parseByXP: parseByXP

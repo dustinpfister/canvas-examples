@@ -169,12 +169,45 @@
                         sm.currentState = 'options';
                     }
                 }),
+                levelUp: buttonMod.create({
+                    label: 'Level +',
+                    x: 160 - 30,
+                    y: 180,
+                    r: 20,
+                    onClick: function (button, sm) {
+                        var level = sm.game.mapLevelObj.level,
+                        cap = 10,
+                        deltaNext = 50;
+                        level += 1;
+                        gameMod.setMap(sm.game, XP.parseByLevel(level, cap, deltaNext).xp, deltaNext, cap);
+                    }
+                }),
+                levelDown: buttonMod.create({
+                    label: 'Level -',
+                    x: 160 + 30,
+                    y: 180,
+                    r: 20,
+                    onClick: function (button, sm) {
+                        var level = sm.game.mapLevelObj.level,
+                        cap = 10,
+                        deltaNext = 50;
+                        level -= 1;
+                        gameMod.setMap(sm.game, XP.parseByLevel(level, cap, deltaNext).xp, deltaNext, cap);
+                    }
+                })
 
             },
             update: function (sm, secs) {
-                var state = states[sm.currentState];
+                var state = states[sm.currentState],
+                game = sm.game,
+                mapLevelObj = game.mapLevelObj;
                 draw.back(ctx, canvas);
                 draw.buttons(ctx, state.buttons);
+
+                // draw mapLevel info
+                ctx.textAlign = 'center';
+                ctx.fillText(mapLevelObj.level, 160, 120);
+
                 draw.ver(ctx, sm);
                 draw.debug(sm);
             },
@@ -195,11 +228,11 @@
         ver: '0.15.0',
         canvas: canvas,
         debugMode: 'none',
-        currentState: 'options',
+        currentState: 'map',
         ctx: ctx,
         game: gameMod.create({
             canvas: canvas,
-            mapXP: 10000,
+            mapXP: 0,
             mapDeltaNext: 50,
             mapLevelCap: 10
         }),

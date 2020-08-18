@@ -324,6 +324,8 @@ var gameMod = (function () {
                 genCount: 1 + Math.floor(6 * capPer),
                 startCells: [0]
             });
+			
+		console.log(game.mapLevelObj);
     };
 
     return {

@@ -111,10 +111,12 @@
 
 ## 0.15.0 - Map menu state
 * (done) start a new state that will be used to change map settings
-* have a button in the options menu that will chnage current state to map state
-* have a return to options menu that will return to game without applying any changes
-* can set mapLevel from 1 to level cap
-* display visually the damage
+* (done) have a button in the options menu that will change current state to map state
+* (done) have a return to options menu that will return to game without applying any changes
+* have levelUp and levelDown buttons
+* display the current map level
+* display additional info about the map level
+* can set mapLevel from 1 to level cap and back again
 * have a start new map button that will return to game state, but with new map settings
 
 ## 0.14.0 - Map level
