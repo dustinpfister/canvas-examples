@@ -109,13 +109,13 @@
 * damage skill
 
 ## 0.16.0 - Map starting damage
+* (done) fixed a bug where the AI goes after a cell that is no longer there when going from a lage map to a smaller one.
+* (done) new poolMod.inactivate all
+* (done) inactivate all shot pool objects on map change
+* (done) inactive all explosion pool objects
 * have a blastRadius helper that will cause a starting blast radius for a map area
 * starting damage blastRadius count, damage, and radius range effected by map level
 * create an array of start index values for maps other than [0] in game.js setMap method
-* (done) fixed a bug where the AI goes after a cell that is no longer there when going from a lage map to a smaller one.
-* new poolMod.inactivate all
-* inactivate all shot pool objects on map chnage
-* inactive all explosion pool objects
 * make a pkg_0_16_0.html
 
 ## 0.15.0 - Map menu state

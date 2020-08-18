@@ -41,38 +41,30 @@ var mapMod = (function () {
 
     // set a cell as a given type index
     var setCellType = function (cell, typeIndex, opt) {
-
         var level = cell.levelObj.level,
         min,
         max;
-
         opt = opt || {};
-
         // set type and type index by way o given type index
         cell.type = cellTypes[typeIndex];
         cell.typeIndex = typeIndex;
-
         // active flag should typically be set to true
         cell.active = opt.active === undefined ? true : opt.active;
-
         // HP
         //cell.maxHP = cell.type.HP.min + Math.round((cell.type.HP.max - cell.type.HP.min) * Math.random());
         min = Math.pow(level, cell.type.HP.base) * cell.type.HP.min;
         max = Math.pow(level, cell.type.HP.base) * cell.type.HP.max;
         cell.maxHP = min + Math.round((max - min) * Math.random());
         cell.HP = opt.HP === undefined ? cell.maxHP : opt.HP;
-
         // autoHeal
         cell.autoHeal.rate = cell.type.autoHeal.rate;
         cell.autoHeal.amount = cell.type.autoHeal.amount;
     };
-
     var getHighestDamageCell = function (map) {
         return Math.max.apply(null, map.cells.map(function (cell) {
                 return cell.damage;
             }));
     };
-
     // get cell method
     var get = function (map, x, y) {
         if (x < 0 || y < 0) {
@@ -83,7 +75,6 @@ var mapMod = (function () {
         }
         return map.cells[y * map.cellWidth + x];
     };
-
     // auto heal a cell
     var autoHeal = function (cell, secs) {
         cell.autoHeal.secs += secs;
@@ -93,7 +84,6 @@ var mapMod = (function () {
             cell.HP = cell.HP > cell.maxHP ? cell.maxHP : cell.HP;
         }
     };
-
     // get border cells helper
     var getBorderCells = function (map, cell) {
         var i = 8,
@@ -113,11 +103,9 @@ var mapMod = (function () {
             if (borderCell) {
                 cells.push(borderCell);
             }
-
         }
         return cells;
     };
-
     // get the count of active border cells for the given cell and active status
     var getBorderCellsActiveCount = function (map, cell, active) {
         active === undefined ? true : active;
@@ -127,7 +115,6 @@ var mapMod = (function () {
             return acc += Number(cell.active == active);
         });
     };
-
     // get all cells with an active state of true or false, and also filter farther with an
     // optional condition
     var getAllCellActiveState = function (map, active, condition) {
@@ -143,23 +130,19 @@ var mapMod = (function () {
             return false;
         });
     };
-
     // condition for gen cells
     var condition_gen_cell = function (map, cell) {
         var borderCells = getBorderCells(map, cell);
         return getBorderCellsActiveCount(map, cell, true) >= 1;
     };
-
     // get all potential gen cells
     var getGenCells = function (map) {
         return getAllCellActiveState(map, false, condition_gen_cell);
     };
-
     var popRandomCell = function (cells) {
         var i = Math.floor(Math.random() * cells.length);
         return cells.splice(i, 1)[0];
     };
-
     // generate new cells by way of given secs amount
     var gen = function (map, secs) {
         var cells,
@@ -189,16 +172,11 @@ var mapMod = (function () {
             }
         }
     };
-
     // PUBLIC API
     return {
-
         getAllCellActiveState: getAllCellActiveState,
-
         create: function (opt) {
-
             opt = opt || {};
-
             // create map object
             var map = {
                 cellSize: 32,
@@ -224,7 +202,6 @@ var mapMod = (function () {
                 },
                 highDamageCell: 0
             };
-
             // setup cells for first time
             var i = 0,
             cell,
@@ -255,17 +232,14 @@ var mapMod = (function () {
                 map.cells.push(cell);
                 i += 1;
             }
-
             return map;
         },
-
         clampOffset: function (map, offset) {
             offset.x = offset.x > 0 ? 0 : offset.x;
             offset.y = offset.y > 0 ? 0 : offset.y;
             offset.x = offset.x < map.cellWidth * map.cellSize * -1 ? map.cellWidth * map.cellSize * -1 : offset.x;
             offset.y = offset.y < map.cellHeight * map.cellSize * -1 ? map.cellHeight * map.cellSize * -1 : offset.y;
         },
-
         // get all cells from a given cell position, and radius from that position
         getAllFromPointAndRadius: function (map, x, y, r) {
             //??? just do it the stupid way for now
@@ -287,31 +261,24 @@ var mapMod = (function () {
                 dists: dists
             };
         },
-
         getWithCanvasPointAndOffset: function (map, canvasX, canvasY, offsetX, offsetY) {
             var x = canvasX - 160 + Math.abs(offsetX),
             y = canvasY - 120 + Math.abs(offsetY);
             return get(map, Math.floor(x / map.cellSize), Math.floor(y / map.cellSize));
         },
-
         update: function (map, secs) {
-
             var i,
             cell;
-
             map.highDamageCell = getHighestDamageCell(map);
             map.percentRemain = 0;
-
             // update cells
             i = map.cells.length;
             while (i--) {
                 cell = map.cells[i];
-
                 // if HP is bellow or equal to zero set cell inactive
                 if (cell.HP <= 0) {
                     cell.active = false;
                 }
-
                 // if cell is active
                 if (cell.active) {
                     // apply auto heal
@@ -319,21 +286,17 @@ var mapMod = (function () {
                     // update percentRemain
                     map.percentRemain += cell.HP / cell.maxHP;
                 }
-
                 // figure damage percent
                 if (cell.damage != 0) {
                     cell.damagePer = cell.damage / map.highDamageCell;
                 }
                 // update level
                 cell.levelObj = XP.parseByXP(cell.damage, map.cellLevel.cap, map.cellLevel.deltaNext);
-
             }
             // figure percentRemain by diving tabulated total by total cells
             map.percentRemain /= map.cells.length;
-
             gen(map, secs);
         }
     }
-
 }
     ());
