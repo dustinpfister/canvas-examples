@@ -179,7 +179,8 @@
                         cap = 10,
                         deltaNext = 50;
                         level += 1;
-                        gameMod.setMap(sm.game, XP.parseByLevel(level, cap, deltaNext).xp, deltaNext, cap);
+                        var xp = XP.parseByLevel(level, cap, deltaNext).xp;
+                        gameMod.setMap(sm.game, xp, deltaNext, cap);
                     }
                 }),
                 levelDown: buttonMod.create({
@@ -192,7 +193,8 @@
                         cap = 10,
                         deltaNext = 50;
                         level -= 1;
-                        gameMod.setMap(sm.game, XP.parseByLevel(level, cap, deltaNext).xp, deltaNext, cap);
+                        var xp = XP.parseByLevel(level, cap, deltaNext).xp;
+                        gameMod.setMap(sm.game, xp, deltaNext, cap);
                     }
                 })
 
@@ -206,7 +208,8 @@
 
                 // draw mapLevel info
                 ctx.textAlign = 'center';
-                ctx.fillText(mapLevelObj.level, 160, 120);
+                ctx.fillText('mapLevel: ' + mapLevelObj.level, 160, 110);
+                ctx.fillText('size: ' + game.map.cellWidth + ' x ' + game.map.cellHeight , 160, 120);
 
                 draw.ver(ctx, sm);
                 draw.debug(sm);
