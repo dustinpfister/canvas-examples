@@ -26,8 +26,18 @@
                         sm.currentState = 'game';
                     }
                 }),
+                toGame: buttonMod.create({
+                    label: 'MAP MENU',
+                    x: 125,
+                    y: 120,
+                    r: 16,
+                    onClick: function (button, sm) {
+                        // set state to map
+                        sm.currentState = 'map';
+                    }
+                }),
                 debugMode: buttonMod.create({
-                    x: 100,
+                    x: 185,
                     y: 120,
                     r: 16,
                     type: 'options',
@@ -166,7 +176,7 @@
         ver: '0.15.0',
         canvas: canvas,
         debugMode: 'none',
-        currentState: 'map',
+        currentState: 'options',
         ctx: ctx,
         game: gameMod.create({
             canvas: canvas,

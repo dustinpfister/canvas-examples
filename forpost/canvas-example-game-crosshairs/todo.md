@@ -110,11 +110,12 @@
 * starting damage blastRadius count, damage, and radius range effected by map level
 
 ## 0.15.0 - Map menu state
-* start a new state that can be used to change map settings
+* (done) start a new state that will be used to change map settings
+* have a button in the options menu that will chnage current state to map state
+* have a return to options menu that will return to game without applying any changes
 * can set mapLevel from 1 to level cap
 * display visually the damage
 * have a start new map button that will return to game state, but with new map settings
-* have a return to game menu that will return to game with
 
 ## 0.14.0 - Map level
 * (done) fix bug where XP system returns level zero when given 0 xp with parseByXP
