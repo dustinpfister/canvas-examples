@@ -181,6 +181,7 @@
                         level += 1;
                         var xp = XP.parseByLevel(level, cap, deltaNext).xp;
                         gameMod.setMap(sm.game, xp, deltaNext, cap);
+                        crossMod.center(sm.game.cross, sm.game.map.cellWidth, sm.game.map.cellHeight);
                     }
                 }),
                 levelDown: buttonMod.create({
@@ -195,6 +196,7 @@
                         level -= 1;
                         var xp = XP.parseByLevel(level, cap, deltaNext).xp;
                         gameMod.setMap(sm.game, xp, deltaNext, cap);
+                        crossMod.center(sm.game.cross, sm.game.map.cellWidth, sm.game.map.cellHeight);
                     }
                 })
 
@@ -217,7 +219,6 @@
             pointerEnd: function (em, e) {},
             pointerMove: function (sm, e) {}
         }
-
     };
 
     var sm = {
