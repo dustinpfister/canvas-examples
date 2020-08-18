@@ -35,6 +35,7 @@ var crossMod = (function () {
     return {
         isInInner: isInInner,
         isInOuter: isInOuter,
+        // create a new cross
         create: function (opt) {
             opt = opt || {};
             var cross = {
@@ -63,20 +64,18 @@ var crossMod = (function () {
             cross.radiusDiff = cross.radiusOuter - cross.radiusInner;
             return cross;
         },
-
+        // update the cross
         update: function (cross, secs) {
             secs = secs || 0;
             var ch = cross.crosshairs,
             center = cross.center;
             ch.heading = Math.atan2(center.y - ch.y, center.x - ch.x);
-
             // set bounds
             if (isOutOfBounds(cross)) {
                 ch.x = center.x;
                 ch.y = center.y;
                 cross.userDown = false;
             }
-
             if (isInOuter(cross)) {
                 // move back to innerRdaius if in outer area and userDown is false
                 if (!cross.userDown && cross.moveBackEnabled) {
@@ -87,7 +86,7 @@ var crossMod = (function () {
                 moveOffset(cross, secs);
             }
         },
-
+        // user pointer action
         userAction: function (cross, eventType, e) {
             var pos = utils.getCanvasRelative(e),
             ch = cross.crosshairs;
@@ -106,8 +105,16 @@ var crossMod = (function () {
                     ch.y = pos.y;
                 }
             }
+        },
+        // center a cross
+        center: function (cross, cw, ch, cs, n) {
+            cw = cw || 8;
+            ch = ch || 8;
+            cs = cs === undefined ? 32 : cs;
+            n = n == undefined ? -1 : n;
+            cross.offset.x = cw * cs / 2 * n;
+            cross.offset.y = ch * cs / 2 * n;
         }
-
-    }
+    };
 }
     ());

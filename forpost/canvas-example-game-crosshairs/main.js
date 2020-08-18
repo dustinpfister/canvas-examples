@@ -224,7 +224,7 @@
         ver: '0.15.0',
         canvas: canvas,
         debugMode: 'none',
-        currentState: 'map',
+        currentState: 'game',
         ctx: ctx,
         game: gameMod.create({
             canvas: canvas,

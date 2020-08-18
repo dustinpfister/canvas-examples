@@ -368,10 +368,8 @@ var gameMod = (function () {
             // first autoPlay target
             autoPlay.setRandomTarget(game);
             // create cross object
-            game.cross = crossMod.create({
-                    offsetX: game.map.cellWidth * game.map.cellSize / 2 * -1,
-                    offsetY: game.map.cellHeight * game.map.cellSize / 2 * -1,
-                });
+            game.cross = crossMod.create();
+            crossMod.center(game.cross, game.map.cellWidth, game.map.cellHeight);
             return game;
         },
 
