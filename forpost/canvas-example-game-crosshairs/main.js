@@ -26,7 +26,7 @@
                         sm.currentState = 'game';
                     }
                 }),
-                toGame: buttonMod.create({
+                toMap: buttonMod.create({
                     label: 'MAP MENU',
                     x: 125,
                     y: 120,
@@ -157,7 +157,20 @@
 
         // MAP STATE
         map: {
-            buttons: {},
+            buttons: {
+
+                toOptions: buttonMod.create({
+                    label: 'Options',
+                    x: 25,
+                    y: 200,
+                    r: 10,
+                    onClick: function (button, sm) {
+                        // set state to options
+                        sm.currentState = 'options';
+                    }
+                }),
+
+            },
             update: function (sm, secs) {
                 var state = states[sm.currentState];
                 draw.back(ctx, canvas);
@@ -165,7 +178,13 @@
                 draw.ver(ctx, sm);
                 draw.debug(sm);
             },
-            pointerStart: function (sm, e) {},
+            pointerStart: function (sm, e) {
+                var state = states[sm.currentState],
+                buttons = state.buttons,
+                pos = utils.getCanvasRelative(e);
+                // check buttons for map state
+                buttonMod.pointerCheckCollection(state.buttons, pos, sm);
+            },
             pointerEnd: function (em, e) {},
             pointerMove: function (sm, e) {}
         }
