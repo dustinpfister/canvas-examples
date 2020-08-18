@@ -20,9 +20,6 @@
 * cross hairs object will have an animation when entering, or leaving the game state
 * buttons will have a similar animation when entering and leaving sates
 
-## 0.x.0 - Hold fire button
-* add a holdFire 'toggle' button
-* have a different display in the center of cross when holdFire is on
 
 ## 0.x.0 - Cross hairs display III
 * cross hairs display changes depending on move or shoot area
@@ -78,7 +75,25 @@
 * wasd keys for movement
 * space/k fires current weapon
 
-## 0.x.0 - Skill Point system
+## 0.x.0 - Sprite Sheet Graphics II
+
+## 0.x.0 - Hold fire button
+* add a holdFire 'toggle' button
+* have a different display in the center of cross when holdFire is on
+
+## 0.x.0 - cheat/debug system
+* start a new cheat system module
+* cheat system can be used in the UI to unlock all weapons (without effecting level)
+* cheat system can be used to set main game.LevelObj by level value
+* cheat system can be used to set a starting damage value for a map
+
+## 0.x.0 - game.levelObj used to unlock sills and other features
+* All weapons aside from 'blaster' locked at game level 1
+* map level restricted to only level 1 at game level 1 in map menu
+* all skills locked at game level 1
+* as game level goes up, items unlock
+
+## 0.x.0 - Upgrade buttons, and Skill Point system I
 * add a 'upgrade' button type to the buttons module
 * have a skillPoint module that will create a skills state object
 * add a skillManager menu state that is used to set skill points to skills
@@ -90,16 +105,16 @@
 * atom skill
 * damage skill
 
-
 ## 0.x.0 - Map starting damage
 * have a blastRadius helper that will cause a starting blast radius for a map area
 * starting damage blastRadius count, damage, and radius range effected by map level
 
-## 0.x.0 - Map menu state
+## 0.15.0 - Map menu state
 * start a new state that can be used to change map settings
-* game map level effects starting HP values for cells
-* game map level sets cellType values for hp min, max, and base
-
+* can set mapLevel from 1 to level cap
+* display visually the damage
+* have a start new map button that will return to game state, but with new map settings
+* have a return to game menu that will return to game with
 
 ## 0.14.0 - Map level
 * (done) fix bug where XP system returns level zero when given 0 xp with parseByXP
@@ -177,7 +192,7 @@
 * (done) 'ver' should now be a property of the state machine object rather than game.js
 * (done) make a pkg_0_9_0.html
 
-## 0.8.0 - Pixel graphics
+## 0.8.0 - sprite sheet graphics I
 * (done) hardSet.maxSecs value put in to limit the secs value in updates which fix a bug where to much damage was being applied
 * (done) have a system for creating pixle graphics in place of solid colors for map cells
 * (done) generate sheets for each cell type
@@ -195,7 +210,6 @@
 * (done) worked out a temp fix for AI movement problem
 * (done) AI changes weapons
 * (done) make sure ver is 0.7.0 and make a pkg.html
-
 
 ## 0.6.0 - cellIndex, cellTypes, and cell.damage
 * (done) have a cellTypes array that will hold an array of 'cellType' objects.
