@@ -108,6 +108,7 @@
 ## 0.x.0 - Map starting damage
 * have a blastRadius helper that will cause a starting blast radius for a map area
 * starting damage blastRadius count, damage, and radius range effected by map level
+* create an array of start index values for maps other than [0] in game.js setMap method
 
 ## 0.15.0 - Map menu state
 * (done) start a new state that will be used to change map settings
@@ -119,8 +120,8 @@
 * (done) can set mapLevel from 1 to level cap and back again
 * (done) fixed bug with map size
 * (done) display max cell level cap and deltaNext
-* display map cell growth info
-* have cross centered over new map
+* (done) display map cell growth info
+* (done) have cross centered over new map
 * make a pkg_0_15_0.html
 
 ## 0.14.0 - Map level
