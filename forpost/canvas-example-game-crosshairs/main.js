@@ -222,7 +222,7 @@
     };
 
     var sm = {
-        ver: '0.15.0',
+        ver: '0.16.0',
         canvas: canvas,
         debugMode: 'none',
         currentState: 'game',

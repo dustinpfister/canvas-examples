@@ -108,10 +108,11 @@
 * atom skill
 * damage skill
 
-## 0.x.0 - Map starting damage
+## 0.16.0 - Map starting damage
 * have a blastRadius helper that will cause a starting blast radius for a map area
 * starting damage blastRadius count, damage, and radius range effected by map level
 * create an array of start index values for maps other than [0] in game.js setMap method
+* see about fixing a bug where the AI goes after a cell that is no longer there when going from a lage map to a smaller one.
 
 
 ## 0.15.0 - Map menu state

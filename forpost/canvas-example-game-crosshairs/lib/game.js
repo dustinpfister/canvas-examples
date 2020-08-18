@@ -169,14 +169,18 @@ var gameMod = (function () {
             map = game.map,
             activeCells = mapMod.getAllCellActiveState(map, true),
             x = Math.floor(map.cellWidth * Math.random()),
-            y = Math.floor(map.cellHeight * Math.random());
+            y = Math.floor(map.cellHeight * Math.random()),
+            cell;
+
             if (activeCells.length >= 1) {
-                var cell = activeCells[Math.floor(activeCells.length * Math.random())];
+                //cell = activeCells[Math.floor(activeCells.length * Math.random())];
+                cell = map.cells[map.cells.length - 1];
                 x = cell.x;
                 y = cell.y;
             }
             ap.target.x = (map.cellSize / 2 + (map.cellSize * x)) * -1;
             ap.target.y = (map.cellSize / 2 + (map.cellSize * y)) * -1;
+
         },
 
         setByPercentRemain: function (game) {
@@ -221,9 +225,6 @@ var gameMod = (function () {
                 maxDelta = cross.radiusInner + cross.radiusDiff - 1,
                 minDelta = cross.radiusInner + 5,
                 slowDownDist = map.cellSize * 4,
-                // !!! know bug where AI movement does not work as desired might
-                // is temp fixed by setting a minDist, might still cause problems
-                // with very low frame rates
                 minDist = map.cellSize / 2,
                 per = 0;
 
@@ -244,8 +245,6 @@ var gameMod = (function () {
                     autoPlay.setRandomTarget(game);
                     ap.mode = 'shoot';
                 } else {
-                    // !!! know bug where AI movement does not work as desired might
-                    // be fixed here by way of a tempX and Y maybe
                     ch.x = game.cross.center.x + Math.cos(a) * delta;
                     ch.y = game.cross.center.y + Math.sin(a) * delta;
                 }
@@ -350,7 +349,7 @@ var gameMod = (function () {
                     enabled: true,
                     behavior: 'cannon',
                     stopAtPercentRemain: 0,
-                    delay: 5,
+                    delay: 0,
                     maxDelay: 5,
                     mode: 'move',
                     shootTime: 5,
