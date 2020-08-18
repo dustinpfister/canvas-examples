@@ -6,20 +6,19 @@
 * make a feature that uses the text of a page to set map level
 * make cool custom sprite sheets for cells, and all other aspects of the look and feel of the game
 
-
 ## 0.x.x - Bug fixes and concerns
 * pull out all instances of the utils.getCanvasRelative method from files other than main.js
 * see about fixing issue where shots are tied to the canvas rather than the map (what happens when shooting and moving)
 * Shots that hit outside of map should still cause damage to shots in the map that are in the blast radius
 * (partial fix) it seems that the AI can get stuck when Frame Rates are real low
-* should I have a map.totalDamage property?
+* cancel all shots and explosions when changing maps
+* should I have a map.totalDamage property? If so why?
 
 ## 0.x.0 - UI animations
 * Work out animation feature for buttons
 * Animated cross object in game state
 * cross hairs object will have an animation when entering, or leaving the game state
 * buttons will have a similar animation when entering and leaving sates
-
 
 ## 0.x.0 - Cross hairs display III
 * cross hairs display changes depending on move or shoot area
@@ -76,6 +75,10 @@
 * space/k fires current weapon
 
 ## 0.x.0 - Sprite Sheet Graphics II
+* create new system for sprite sheets that involves something like what I worked out in my image-limits canvas example
+* have a system where a number index is used for a 16*16 area of a 32*32 cell
+* use base 64 to encode the numbers for a single 'color-layer'
+* can have more than one color layer
 
 ## 0.x.0 - Hold fire button
 * add a holdFire 'toggle' button
@@ -109,6 +112,7 @@
 * have a blastRadius helper that will cause a starting blast radius for a map area
 * starting damage blastRadius count, damage, and radius range effected by map level
 * create an array of start index values for maps other than [0] in game.js setMap method
+
 
 ## 0.15.0 - Map menu state
 * (done) start a new state that will be used to change map settings
