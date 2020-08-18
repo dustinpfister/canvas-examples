@@ -214,6 +214,7 @@
                 ctx.fillText('Max Cell Level : ' + map.cellLevel.cap, 160, 100);
                 ctx.fillText('Level Up Rate : ' + map.cellLevel.deltaNext, 160, 110);
                 ctx.fillText('Cell Gen Rate : ' + map.gen.rate.toFixed(2), 160, 120);
+                ctx.fillText('Cell Gen Count : ' + map.gen.count, 160, 130);
 
                 draw.ver(ctx, sm);
                 draw.debug(sm);

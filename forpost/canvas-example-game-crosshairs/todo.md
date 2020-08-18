@@ -119,6 +119,7 @@
 * (done) can set mapLevel from 1 to level cap and back again
 * (done) fixed bug with map size
 * (done) display max cell level cap and deltaNext
+* display map cell growth info
 * have cross centered over new map
 * make a pkg_0_15_0.html
 
