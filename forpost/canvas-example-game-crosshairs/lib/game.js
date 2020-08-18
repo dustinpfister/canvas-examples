@@ -323,6 +323,9 @@ var gameMod = (function () {
                 genCount: 1 + Math.floor(6 * capPer),
                 startCells: [0]
             });
+
+        // make sure autoPlay has a new target
+        autoPlay.setRandomTarget(game);
     };
 
     return {
