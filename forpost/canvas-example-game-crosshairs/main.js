@@ -13,7 +13,6 @@
 
         // OPTIONS STATE
         options: {
-
             // button objects for the state
             buttons: {
                 toGame: buttonMod.create({
@@ -47,7 +46,6 @@
                     }
                 })
             },
-
             // for each update tick
             update: function (sm, secs) {
                 var state = states[sm.currentState];
@@ -56,7 +54,6 @@
                 draw.ver(ctx, sm);
                 draw.debug(sm);
             },
-
             // events
             pointerStart: function (sm, e) {
                 var state = states[sm.currentState],
@@ -64,7 +61,6 @@
                 pos = utils.getCanvasRelative(e);
                 // check buttons for options state
                 buttonMod.pointerCheckCollection(state.buttons, pos, sm);
-
             },
             pointerMove: function () {},
             pointerEnd: function () {}
@@ -72,7 +68,6 @@
 
         // GAME STATE
         game: {
-
             buttons: {
                 options: buttonMod.create({
                     label: 'options',
@@ -115,12 +110,10 @@
                     }
                 })
             },
-
             update: function (sm, secs) {
                 var state = states[sm.currentState];
                 // update game state
                 gameMod.update(sm.game, secs);
-
                 // draw
                 draw.back(ctx, canvas);
                 draw.map(ctx, sm.game.map, sm.game.cross);
@@ -133,7 +126,6 @@
                 draw.debug(sm);
             },
             pointerStart: function (sm, e) {
-
                 var state = states[sm.currentState],
                 buttons = state.buttons,
                 pos = utils.getCanvasRelative(e);
@@ -141,10 +133,8 @@
                 sm.game.cross.moveBackEnabled = true;
                 crossMod.userAction(sm.game.cross, 'start', e);
                 sm.game.userDown = true;
-
                 // check buttons for game state
                 buttonMod.pointerCheckCollection(state.buttons, pos, sm);
-
             },
             pointerEnd: function (em, e) {
                 crossMod.userAction(sm.game.cross, 'end', e);
@@ -158,7 +148,6 @@
         // MAP STATE
         map: {
             buttons: {
-
                 toOptions: buttonMod.create({
                     label: 'Options',
                     x: 25,
@@ -197,7 +186,6 @@
                         gameMod.setMap(sm.game, xp, deltaNext, cap);
                     }
                 })
-
             },
             update: function (sm, secs) {
                 var state = states[sm.currentState];

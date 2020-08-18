@@ -329,6 +329,10 @@ var gameMod = (function () {
 
         // center cross hairs
         crossMod.center(game.cross, game.map.cellWidth, game.map.cellHeight);
+
+        // set all shots and explosions to inactive state
+        poolMod.setActiveStateForAll(game.shots, false);
+        poolMod.setActiveStateForAll(game.explosions, false);
     };
 
     return {

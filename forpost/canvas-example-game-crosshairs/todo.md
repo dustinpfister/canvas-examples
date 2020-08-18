@@ -112,8 +112,11 @@
 * have a blastRadius helper that will cause a starting blast radius for a map area
 * starting damage blastRadius count, damage, and radius range effected by map level
 * create an array of start index values for maps other than [0] in game.js setMap method
-* see about fixing a bug where the AI goes after a cell that is no longer there when going from a lage map to a smaller one.
-
+* (done) fixed a bug where the AI goes after a cell that is no longer there when going from a lage map to a smaller one.
+* new poolMod.inactivate all
+* inactivate all shot pool objects on map chnage
+* inactive all explosion pool objects
+* make a pkg_0_16_0.html
 
 ## 0.15.0 - Map menu state
 * (done) start a new state that will be used to change map settings
@@ -127,7 +130,7 @@
 * (done) display max cell level cap and deltaNext
 * (done) display map cell growth info
 * (done) have cross centered over new map
-* make a pkg_0_15_0.html
+* (done) make a pkg_0_15_0.html
 
 ## 0.14.0 - Map level
 * (done) fix bug where XP system returns level zero when given 0 xp with parseByXP

@@ -58,6 +58,16 @@ var poolMod = (function () {
                     }
                 }
             }
+        },
+        // set all to inActive or active state
+        setActiveStateForAll: function (pool, bool) {
+            bool = bool === undefined ? false : bool;
+            var i = pool.length,
+            obj;
+            while (i--) {
+                obj = pool[i];
+                obj.active = bool;
+            }
         }
 
     }
