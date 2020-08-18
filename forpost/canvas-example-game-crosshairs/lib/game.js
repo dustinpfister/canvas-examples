@@ -314,7 +314,7 @@ var gameMod = (function () {
         // create the map
         var mapL = game.mapLevelObj,
         capPer = mapL.level / levelCap;
-        var size = mapSizes[Math.floor(capPer) * (mapSizes.length - 1)];
+        var size = mapSizes[Math.floor(capPer * (mapSizes.length - 1))];
         game.map = mapMod.create({
                 cellWidth: size.w,
                 cellHeight: size.h,
@@ -324,8 +324,6 @@ var gameMod = (function () {
                 genCount: 1 + Math.floor(6 * capPer),
                 startCells: [0]
             });
-			
-		console.log(game.mapLevelObj);
     };
 
     return {

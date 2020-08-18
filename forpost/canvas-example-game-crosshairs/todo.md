@@ -113,11 +113,14 @@
 * (done) start a new state that will be used to change map settings
 * (done) have a button in the options menu that will change current state to map state
 * (done) have a return to options menu that will return to game without applying any changes
-* have levelUp and levelDown buttons
-* display the current map level
-* display additional info about the map level
-* can set mapLevel from 1 to level cap and back again
-* have a start new map button that will return to game state, but with new map settings
+* (done) have levelUp and levelDown buttons
+* (done) display the current map level
+* (done) display size of map
+* (done) can set mapLevel from 1 to level cap and back again
+* (done) fixed bug with map size
+* (done) display max cell level cap and deltaNext
+* have cross centered over new map
+* make a pkg_0_15_0.html
 
 ## 0.14.0 - Map level
 * (done) fix bug where XP system returns level zero when given 0 xp with parseByXP

@@ -176,7 +176,7 @@
                     r: 20,
                     onClick: function (button, sm) {
                         var level = sm.game.mapLevelObj.level,
-                        cap = 10,
+                        cap = 20,
                         deltaNext = 50;
                         level += 1;
                         var xp = XP.parseByLevel(level, cap, deltaNext).xp;
@@ -190,7 +190,7 @@
                     r: 20,
                     onClick: function (button, sm) {
                         var level = sm.game.mapLevelObj.level,
-                        cap = 10,
+                        cap = 20,
                         deltaNext = 50;
                         level -= 1;
                         var xp = XP.parseByLevel(level, cap, deltaNext).xp;
@@ -202,14 +202,18 @@
             update: function (sm, secs) {
                 var state = states[sm.currentState],
                 game = sm.game,
+                map = game.map,
                 mapLevelObj = game.mapLevelObj;
                 draw.back(ctx, canvas);
                 draw.buttons(ctx, state.buttons);
 
                 // draw mapLevel info
                 ctx.textAlign = 'center';
-                ctx.fillText('mapLevel: ' + mapLevelObj.level, 160, 110);
-                ctx.fillText('size: ' + game.map.cellWidth + ' x ' + game.map.cellHeight , 160, 120);
+                ctx.fillText('mapLevel : ' + mapLevelObj.level, 160, 80);
+                ctx.fillText('size : ' + map.cellWidth + ' x ' + map.cellHeight, 160, 90);
+                ctx.fillText('Max Cell Level : ' + map.cellLevel.cap, 160, 100);
+                ctx.fillText('Level Up Rate : ' + map.cellLevel.deltaNext, 160, 110);
+                ctx.fillText('Cell Gen Rate : ' + map.gen.rate.toFixed(2), 160, 120);
 
                 draw.ver(ctx, sm);
                 draw.debug(sm);
