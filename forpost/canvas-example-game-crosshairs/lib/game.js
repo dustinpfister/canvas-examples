@@ -173,8 +173,8 @@ var gameMod = (function () {
             cell;
 
             if (activeCells.length >= 1) {
-                //cell = activeCells[Math.floor(activeCells.length * Math.random())];
-                cell = map.cells[map.cells.length - 1];
+                cell = activeCells[Math.floor(activeCells.length * Math.random())];
+                //cell = map.cells[map.cells.length - 1];
                 x = cell.x;
                 y = cell.y;
             }
@@ -326,6 +326,9 @@ var gameMod = (function () {
 
         // make sure autoPlay has a new target
         autoPlay.setRandomTarget(game);
+
+        // center cross hairs
+        crossMod.center(game.cross, game.map.cellWidth, game.map.cellHeight);
     };
 
     return {
@@ -352,7 +355,7 @@ var gameMod = (function () {
                     enabled: true,
                     behavior: 'cannon',
                     stopAtPercentRemain: 0,
-                    delay: 0,
+                    delay: 5,
                     maxDelay: 5,
                     mode: 'move',
                     shootTime: 5,
@@ -364,14 +367,19 @@ var gameMod = (function () {
                     }
                 }
             };
-            // set game and map level objects for first time
+
+            // setup game level object
             game.levelObj = XP.parseByXP(game.totalDamage, hardSet.levelCap, hardSet.deltaNext);
-            setMap(game, opt.mapXP === undefined ? 0 : opt.mapXP || 0, opt.mapDeltaNext, opt.mapLevelCap || 50);
-            // first autoPlay target
-            autoPlay.setRandomTarget(game);
+
             // create cross object
             game.cross = crossMod.create();
-            crossMod.center(game.cross, game.map.cellWidth, game.map.cellHeight);
+
+            // set up map
+            setMap(game, opt.mapXP === undefined ? 0 : opt.mapXP || 0, opt.mapDeltaNext, opt.mapLevelCap || 50);
+
+            // first autoPlay target
+            autoPlay.setRandomTarget(game);
+
             return game;
         },
 
