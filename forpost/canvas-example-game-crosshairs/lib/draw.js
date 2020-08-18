@@ -318,6 +318,19 @@ var draw = (function () {
                 }
             });
         },
+        mapInfo: function (ctx, game) {
+            var map = game.map,
+            mapLevelObj = game.mapLevelObj;
+            // draw mapLevel info
+            ctx.textAlign = 'center';
+            ctx.fillText('mapLevel : ' + mapLevelObj.level, 160, 80);
+            ctx.fillText('size : ' + map.cellWidth + ' x ' + map.cellHeight, 160, 90);
+            ctx.fillText('Max Cell Level : ' + map.cellLevel.cap, 160, 100);
+            ctx.fillText('Level Up Rate : ' + map.cellLevel.deltaNext, 160, 110);
+            ctx.fillText('Cell Gen Rate : ' + map.gen.rate.toFixed(2), 160, 120);
+            ctx.fillText('Cell Gen Count : ' + map.gen.count, 160, 130);
+
+        },
         debug: function (sm) {
             debugModes[sm.debugMode](sm, sm.ctx, sm.canvas);
         },
