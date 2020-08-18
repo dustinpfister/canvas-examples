@@ -8,6 +8,7 @@
 
 
 ## 0.x.x - Bug fixes and concerns
+* pull out all instances of the utils.getCanvasRelative method from files other than main.js
 * see about fixing issue where shots are tied to the canvas rather than the map (what happens when shooting and moving)
 * Shots that hit outside of map should still cause damage to shots in the map that are in the blast radius
 * (partial fix) it seems that the AI can get stuck when Frame Rates are real low
@@ -16,6 +17,8 @@
 ## 0.x.0 - UI animations
 * Work out animation feature for buttons
 * Animated cross object in game state
+* cross hairs object will have an animation when entering, or leaving the game state
+* buttons will have a similar animation when entering and leaving sates
 
 ## 0.x.0 - Hold fire button
 * add a holdFire 'toggle' button
@@ -111,7 +114,7 @@
 * (done) new game.setMap method to setUp a new map for a game object
 * (done) for now just giving number literals as XP until I have a better system
 * (done) percent values for levels displayed in UI
-* make a pkg_0_14_0.html
+* (done) make a pkg_0_14_0.html
 
 ## 0.13.0 - Buttons
 * (done) make a standard module or class for creating and updating button objects
