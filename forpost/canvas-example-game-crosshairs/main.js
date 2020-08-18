@@ -11,6 +11,7 @@
 
     var states = {
 
+        // OPTIONS STATE
         options: {
 
             // button objects for the state
@@ -42,6 +43,7 @@
                 var state = states[sm.currentState];
                 draw.back(ctx, canvas);
                 draw.buttons(ctx, state.buttons);
+                draw.ver(ctx, sm);
                 draw.debug(sm);
             },
 
@@ -58,6 +60,7 @@
             pointerEnd: function () {}
         },
 
+        // GAME STATE
         game: {
 
             buttons: {
@@ -140,6 +143,21 @@
             pointerMove: function (sm, e) {
                 crossMod.userAction(sm.game.cross, 'move', e);
             }
+        },
+
+        // MAP STATE
+        map: {
+            buttons: {},
+            update: function (sm, secs) {
+                var state = states[sm.currentState];
+                draw.back(ctx, canvas);
+                draw.buttons(ctx, state.buttons);
+                draw.ver(ctx, sm);
+                draw.debug(sm);
+            },
+            pointerStart: function (sm, e) {},
+            pointerEnd: function (em, e) {},
+            pointerMove: function (sm, e) {}
         }
 
     };
@@ -147,8 +165,8 @@
     var sm = {
         ver: '0.15.0',
         canvas: canvas,
-        debugMode: 'map',
-        currentState: 'game',
+        debugMode: 'none',
+        currentState: 'map',
         ctx: ctx,
         game: gameMod.create({
             canvas: canvas,
