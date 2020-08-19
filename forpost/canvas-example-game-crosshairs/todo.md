@@ -97,17 +97,14 @@
 * all skills locked at game level 1
 * as game level goes up, items unlock
 
-## 0.x.0 - Upgrade buttons, and Skill Point system I
+## 0.17.0 - Upgrade buttons, and Skill Point system I
 * add a 'upgrade' button type to the buttons module
-* have a skillPoint module that will create a skills state object
+* have a skillPoint object in game.js that will store the current state of skills
 * add a skillManager menu state that is used to set skill points to skills
 * add draw methods for skillManager
-* number of skill points based off of totalDamage of game object
-* blaster skill
-* assault-blaster skill
-* cannon skill
-* atom skill
-* damage skill
+* number of skill points based off of game.levelObj
+* can place skill points into each weapon
+* make a pkg_0_17_0.html
 
 ## 0.16.0 - Map starting damage
 * (done) fixed a bug where the AI goes after a cell that is no longer there when going from a lage map to a smaller one.
@@ -116,7 +113,7 @@
 * (done) inactive all explosion pool objects
 * (done) have a blastRadius helper that will cause a starting blast radius for a map area
 * (done) starting damage blastRadius count, damage, and radius range effected by map level
-* make a pkg_0_16_0.html
+* (done) make a pkg_0_16_0.html
 
 ## 0.15.0 - Map menu state
 * (done) start a new state that will be used to change map settings
