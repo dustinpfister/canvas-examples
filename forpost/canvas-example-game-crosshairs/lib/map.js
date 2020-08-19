@@ -45,6 +45,7 @@ var mapMod = (function () {
         min,
         max;
         opt = opt || {};
+        typeIndex = typeIndex === undefined ? Math.round(cell.damagePer * (cellTypes.length - 1)) : typeIndex;
         // set type and type index by way o given type index
         cell.type = cellTypes[typeIndex];
         cell.typeIndex = typeIndex;
@@ -160,14 +161,16 @@ var mapMod = (function () {
                 // activate 1 to map.gen.count cells
                 while (i--) {
                     cell = popRandomCell(cells);
-                    setCellType(cell, Math.round(cell.damagePer * (cellTypes.length - 1)));
+                    //setCellType(cell, Math.round(cell.damagePer * (cellTypes.length - 1)));
+                    setCellType(cell);
                 }
             } else {
                 // if no active cells
                 cells = getAllCellActiveState(map, true);
                 if (cells.length === 0) {
                     cell = map.cells[map.gen.startCells[Math.floor(Math.random() * map.gen.startCells.length)]];
-                    setCellType(cell, 0);
+                    //setCellType(cell, 0);
+                    setCellType(cell);
                 }
             }
         }
@@ -176,14 +179,15 @@ var mapMod = (function () {
     var blastArea = function (map, x, y, r, maxDamage) {
         var cx,
         cy = y - r,
+        d,
         cell;
         while (cy < y + r) {
             cx = x - r;
             while (cx < x + r) {
                 cell = get(map, cx, cy);
-                if (cell) {
-                    console.log(cell);
-                    cell.damage = (1 - utils.distance(cx, cy, x, y) / r) * maxDamage;
+                d = utils.distance(cx, cy, x, y);
+                if (cell && d <= r) {
+                    cell.damage = (1 - d / r) * maxDamage;
                 }
                 cx += 1;
             }
@@ -250,7 +254,7 @@ var mapMod = (function () {
                 map.cells.push(cell);
                 i += 1;
             }
-            blastArea(map, 2, 2, 3, 100);
+            blastArea(map, 4, 2, 5, 25);
             return map;
         },
         clampOffset: function (map, offset) {
