@@ -57,8 +57,8 @@ var gameMod = (function () {
             hitRadius: 64,
             gunCount: 1,
             level: {
-                maxDPS_base: 75,
-                maxDPS_perLevel: 50,
+                maxDPS_base: 25,
+                maxDPS_perLevel: 25,
                 maxDPS_baseStart: 1.25,
                 maxDPS_baseSPDelta: 0.05
             }
@@ -402,6 +402,8 @@ var gameMod = (function () {
 
             // first autoPlay target
             autoPlay.setRandomTarget(game);
+
+            Weapons[3].maxDPS = createDPSObject(game, Weapons[3], 0);
 
             return game;
         },

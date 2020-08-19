@@ -233,7 +233,7 @@
         ver: '0.17.0',
         canvas: canvas,
         debugMode: 'none',
-        currentState: 'skillManager',
+        currentState: 'game', //'skillManager',
         ctx: ctx,
         game: gameMod.create({
             canvas: canvas,
