@@ -254,8 +254,13 @@ var mapMod = (function () {
                 map.cells.push(cell);
                 i += 1;
             }
+
             // start damage
-            blastArea(map, 4, 2, 5, 25);
+            var rMin = opt.startBlastRMin || map.cellWidth / 4,
+            rMax = opt.startBlastRMax || map.cellWidth / 2,
+            r = rMin + Math.round((rMax - rMin) * Math.random());
+            blastArea(map, 2, 2, r, 10);
+
             // starting types
             i = 0;
             while (i < len) {
