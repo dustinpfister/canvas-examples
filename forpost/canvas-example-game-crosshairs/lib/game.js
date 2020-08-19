@@ -65,12 +65,12 @@ var gameMod = (function () {
             accuracy: 0.9,
             hitRadius: 64,
             gunCount: 1,
-            skillPoints: 0,
+            skillPoints: 1000,
             level: {
                 maxDPS_base: 50,
                 maxDPS_perLevel: 25,
-                maxDPS_baseStart: 1.25,
-                maxDPS_baseSPDelta: 0.05
+                maxDPS_baseStart: 1.05,
+                maxDPS_baseSPDelta: 0.025
             }
         }
     ];
@@ -87,7 +87,9 @@ var gameMod = (function () {
             baseSPDelta: wepLV.maxDPS_baseSPDelta,
             sp: sp, // skill points
             valueOf: function () {
-                var base = this.baseStart + this.baseSPDelta * this.i;
+                //var base = this.baseStart + this.baseSPDelta * this.sp;
+                // https://gamedev.stackexchange.com/questions/89723/how-can-i-come-up-with-a-simple-diminishing-return-equation
+                var base = this.baseStart + (1 - 1 / (1 + this.sp)) * this.baseSPDelta;
                 return this.start + this.i * this.lin + Math.pow(base, this.i);
             }
         };
@@ -383,7 +385,7 @@ var gameMod = (function () {
                 shotRate: 1,
                 shotSecs: 0,
                 weaponIndex: 3,
-                totalDamage: 0,
+                totalDamage: 100000000,
                 userDown: false,
                 autoPlay: {
                     enabled: true,
