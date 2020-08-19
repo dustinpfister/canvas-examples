@@ -316,6 +316,9 @@ var gameMod = (function () {
                 cellDeltaNext: 1000 - Math.round(capPer * 750),
                 genRate: 10 - 9.5 * capPer,
                 genCount: 1 + Math.floor(6 * capPer),
+                blastRMin: 2,
+                blastRMax: 2 + Math.floor(size.w / 6 * capPer),
+                blastCount: 3 + Math.round(17 * capPer),
                 startCells: [0]
             });
 

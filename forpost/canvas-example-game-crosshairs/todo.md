@@ -7,6 +7,7 @@
 * make cool custom sprite sheets for cells, and all other aspects of the look and feel of the game
 
 ## 0.x.x - Bug fixes and concerns
+* create an array of start index values for maps other than [0] in game.js setMap method
 * pull out all instances of the utils.getCanvasRelative method from files other than main.js
 * see about fixing issue where shots are tied to the canvas rather than the map (what happens when shooting and moving)
 * Shots that hit outside of map should still cause damage to shots in the map that are in the blast radius
@@ -113,9 +114,8 @@
 * (done) new poolMod.inactivate all
 * (done) inactivate all shot pool objects on map change
 * (done) inactive all explosion pool objects
-* have a blastRadius helper that will cause a starting blast radius for a map area
+* (done) have a blastRadius helper that will cause a starting blast radius for a map area
 * starting damage blastRadius count, damage, and radius range effected by map level
-* create an array of start index values for maps other than [0] in game.js setMap method
 * make a pkg_0_16_0.html
 
 ## 0.15.0 - Map menu state

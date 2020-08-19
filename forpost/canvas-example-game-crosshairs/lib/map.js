@@ -274,7 +274,7 @@ var mapMod = (function () {
 
 
             // start damage
-            startBlasts(map);
+            startBlasts(map, opt);
 
             // starting types
             i = 0;
