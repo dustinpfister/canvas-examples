@@ -172,6 +172,24 @@ var mapMod = (function () {
             }
         }
     };
+    // STARTING DAMAGE
+    var blastArea = function (map, x, y, r, maxDamage) {
+        var cx,
+        cy = y - r,
+        cell;
+        while (cy < y + r) {
+            cx = x - r;
+            while (cx < x + r) {
+                cell = get(map, cx, cy);
+                if (cell) {
+                    console.log(cell);
+                    cell.damage = (1 - utils.distance(cx, cy, x, y) / r) * maxDamage;
+                }
+                cx += 1;
+            }
+            cy += 1;
+        }
+    };
     // PUBLIC API
     return {
         getAllCellActiveState: getAllCellActiveState,
@@ -215,7 +233,7 @@ var mapMod = (function () {
                     y: Math.floor(i / map.cellWidth),
                     HP: 50,
                     maxHP: 100,
-                    active: true,
+                    active: false,
                     typeIndex: 0,
                     typeName: cellTypes[0].name,
                     type: cellTypes[0],
@@ -228,10 +246,11 @@ var mapMod = (function () {
                     damagePer: 0, // damage relative to highest damaged cell
                     levelObj: XP.parseByXP(0, map.cellLevel.cap, map.cellLevel.deltaNext)
                 };
-                setCellType(cell, 0);
+                //setCellType(cell, 0);
                 map.cells.push(cell);
                 i += 1;
             }
+            blastArea(map, 2, 2, 3, 100);
             return map;
         },
         clampOffset: function (map, offset) {

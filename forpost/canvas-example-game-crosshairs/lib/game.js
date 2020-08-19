@@ -248,16 +248,13 @@ var gameMod = (function () {
                     ch.x = game.cross.center.x + Math.cos(a) * delta;
                     ch.y = game.cross.center.y + Math.sin(a) * delta;
                 }
-
             },
 
             shoot: function (game, secs) {
-
                 var ch = game.cross.crosshairs,
                 os = game.cross.offset,
                 ap = game.autoPlay,
                 map = game.map;
-
                 ch.x = game.cross.center.x;
                 ch.y = game.cross.center.y;
                 shoot(game);
@@ -266,9 +263,7 @@ var gameMod = (function () {
                     ap.mode = 'move';
                     autoPlay.setRandomTarget(game);
                 }
-
             }
-
         },
 
         update: function (game, secs) {
@@ -357,7 +352,7 @@ var gameMod = (function () {
                 userDown: false,
                 autoPlay: {
                     enabled: true,
-                    behavior: 'cannon',
+                    behavior: 'total-kill',
                     stopAtPercentRemain: 0,
                     delay: 5,
                     maxDelay: 5,
