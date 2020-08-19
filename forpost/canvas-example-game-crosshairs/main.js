@@ -145,6 +145,28 @@
             }
         },
 
+        skillManager: {
+
+            buttons: {},
+
+            update: function (sm, secs) {
+                var state = states[sm.currentState];
+                draw.back(ctx, canvas);
+                draw.buttons(ctx, state.buttons);
+                draw.ver(ctx, sm);
+                draw.debug(sm);
+            },
+            pointerStart: function (sm, e) {
+                var state = states[sm.currentState],
+                buttons = state.buttons,
+                pos = utils.getCanvasRelative(e);
+                // check buttons for skillManager state
+                buttonMod.pointerCheckCollection(state.buttons, pos, sm);
+            },
+            pointerEnd: function (em, e) {},
+            pointerMove: function (sm, e) {}
+        },
+
         // MAP STATE
         map: {
             buttons: {
@@ -211,7 +233,7 @@
         ver: '0.17.0',
         canvas: canvas,
         debugMode: 'none',
-        currentState: 'game',
+        currentState: 'skillManager',
         ctx: ctx,
         game: gameMod.create({
             canvas: canvas,
