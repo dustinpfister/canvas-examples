@@ -194,6 +194,23 @@ var mapMod = (function () {
         }
         api.update(map, 0);
     };
+    var startBlasts = function (map, opt) {
+        opt = opt || {};
+        var rMin = opt.blastRMin || map.cellWidth / 4,
+        rMax = opt.blastRMax || map.cellWidth / 2,
+        r = rMin + Math.round((rMax - rMin) * Math.random()),
+        blastCount = opt.blastCount === undefined ? 10 : opt.blastCount,
+        maxDamage = opt.blastMaxDamage || 10,
+        x,
+        y,
+        i = 0;
+        while (i < blastCount) {
+            x = Math.floor(map.cellWidth * Math.random());
+            y = Math.floor(map.cellHeight * Math.random());
+            blastArea(map, x, y, r, maxDamage);
+            i += 1;
+        }
+    };
     // PUBLIC API
     var api = {
         getAllCellActiveState: getAllCellActiveState,
@@ -255,21 +272,9 @@ var mapMod = (function () {
                 i += 1;
             }
 
+
             // start damage
-            var rMin = opt.blastRMin || map.cellWidth / 4,
-            rMax = opt.blastRMax || map.cellWidth / 2,
-            r = rMin + Math.round((rMax - rMin) * Math.random()),
-            blastCount = opt.blastCount === undefined ? 10 : opt.blastCount,
-            maxDamage = opt.blastMaxDamage || 10,
-            x,
-            y,
-            i = 0;
-            while (i < blastCount) {
-                x = Math.floor(map.cellWidth * Math.random());
-                y = Math.floor(map.cellHeight * Math.random());
-                blastArea(map, x, y, r, maxDamage);
-                i += 1;
-            }
+            startBlasts(map);
 
             // starting types
             i = 0;
