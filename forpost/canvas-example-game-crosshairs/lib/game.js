@@ -57,7 +57,7 @@ var gameMod = (function () {
             hitRadius: 64,
             gunCount: 1,
             level: {
-                maxDPS_base: 25,
+                maxDPS_base: 50,
                 maxDPS_perLevel: 25,
                 maxDPS_baseStart: 1.25,
                 maxDPS_baseSPDelta: 0.05
@@ -69,7 +69,7 @@ var gameMod = (function () {
         var level = game.levelObj.level;
         Weapons.forEach(function (weapon) {
             var lv = weapon.level;
-            weapon.maxDPS = lv.maxDPS_base + lv.maxDPS_perLevel * level;
+            //weapon.maxDPS = lv.maxDPS_base + lv.maxDPS_perLevel * level;
             weapon.accuracy = 0.95 - 0.9 * (1 - level / hardSet.levelCap);
         });
     };
@@ -86,7 +86,7 @@ var gameMod = (function () {
             baseSPDelta: wepLV.maxDPS_baseSPDelta,
             sp: sp, // skill points
             valueOf: function () {
-                var base = this.baseStart + this.baseSPDleta * this.i;
+                var base = this.baseStart + this.baseSPDelta * this.i;
                 return this.start + this.i * this.lin + Math.pow(base, this.i);
             }
         };
