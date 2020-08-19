@@ -7,6 +7,7 @@ var gameMod = (function () {
         levelCap: 100
     };
 
+    // WEAPONS
     var Weapons = [{
             name: 'Blaster',
             pps: 256,
@@ -57,7 +58,9 @@ var gameMod = (function () {
             gunCount: 1,
             level: {
                 maxDPS_base: 75,
-                maxDPS_perLevel: 50
+                maxDPS_perLevel: 50,
+                maxDPS_baseStart: 1.25,
+                maxDPS_baseSPDelta: 0.05
             }
         }
     ];
@@ -69,6 +72,24 @@ var gameMod = (function () {
             weapon.maxDPS = lv.maxDPS_base + lv.maxDPS_perLevel * level;
             weapon.accuracy = 0.95 - 0.9 * (1 - level / hardSet.levelCap);
         });
+    };
+
+    // SKILL POINTS
+    var createDPSObject = function (game, weaponObj, sp) {
+        var level = game.levelObj.level,
+        wepLV = weaponObj.level;
+        return {
+            i: level,
+            start: wepLV.maxDPS_base,
+            lin: wepLV.maxDPS_perLevel,
+            baseStart: wepLV.maxDPS_baseStart,
+            baseSPDelta: wepLV.maxDPS_baseSPDelta,
+            sp: sp, // skill points
+            valueOf: function () {
+                var base = this.baseStart + this.baseSPDleta * this.i;
+                return this.start + this.i * this.lin + Math.pow(base, this.i);
+            }
+        };
     };
 
     // SHOT Object Options
