@@ -41,6 +41,7 @@ var mapMod = (function () {
 
     // set a cell as a given type index
     var setCellType = function (cell, typeIndex, opt) {
+
         var level = cell.levelObj.level,
         min,
         max;
@@ -161,7 +162,6 @@ var mapMod = (function () {
                 // activate 1 to map.gen.count cells
                 while (i--) {
                     cell = popRandomCell(cells);
-                    //setCellType(cell, Math.round(cell.damagePer * (cellTypes.length - 1)));
                     setCellType(cell);
                 }
             } else {
@@ -169,7 +169,6 @@ var mapMod = (function () {
                 cells = getAllCellActiveState(map, true);
                 if (cells.length === 0) {
                     cell = map.cells[map.gen.startCells[Math.floor(Math.random() * map.gen.startCells.length)]];
-                    //setCellType(cell, 0);
                     setCellType(cell);
                 }
             }
@@ -193,9 +192,10 @@ var mapMod = (function () {
             }
             cy += 1;
         }
+        api.update(map, 0);
     };
     // PUBLIC API
-    return {
+    var api = {
         getAllCellActiveState: getAllCellActiveState,
         create: function (opt) {
             opt = opt || {};
@@ -254,7 +254,15 @@ var mapMod = (function () {
                 map.cells.push(cell);
                 i += 1;
             }
+            // start damage
             blastArea(map, 4, 2, 5, 25);
+            // starting types
+            i = 0;
+            while (i < len) {
+                cell = map.cells[i];
+                setCellType(cell);
+                i += 1;
+            }
             return map;
         },
         clampOffset: function (map, offset) {
@@ -320,6 +328,7 @@ var mapMod = (function () {
             map.percentRemain /= map.cells.length;
             gen(map, secs);
         }
-    }
+    };
+    return api;
 }
     ());
