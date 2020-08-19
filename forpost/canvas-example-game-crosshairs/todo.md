@@ -115,7 +115,7 @@
 * (done) inactivate all shot pool objects on map change
 * (done) inactive all explosion pool objects
 * (done) have a blastRadius helper that will cause a starting blast radius for a map area
-* starting damage blastRadius count, damage, and radius range effected by map level
+* (done) starting damage blastRadius count, damage, and radius range effected by map level
 * make a pkg_0_16_0.html
 
 ## 0.15.0 - Map menu state
