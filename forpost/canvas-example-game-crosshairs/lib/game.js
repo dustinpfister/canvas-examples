@@ -17,9 +17,12 @@ var gameMod = (function () {
             accuracy: 0.75,
             hitRadius: 64,
             gunCount: 1,
+            skillPoints: 0,
             level: {
                 maxDPS_base: 10,
-                maxDPS_perLevel: 5
+                maxDPS_perLevel: 5,
+                maxDPS_baseStart: 1,
+                maxDPS_baseSPDelta: 1.01
             }
         }, {
             name: 'Assault Blaster',
@@ -30,9 +33,12 @@ var gameMod = (function () {
             accuracy: 0.5,
             hitRadius: 64,
             gunCount: 4,
+            skillPoints: 0,
             level: {
                 maxDPS_base: 5,
-                maxDPS_perLevel: 6
+                maxDPS_perLevel: 6,
+                maxDPS_baseStart: 1,
+                maxDPS_baseSPDelta: 0
             }
         }, {
             name: 'Cannon',
@@ -43,9 +49,12 @@ var gameMod = (function () {
             accuracy: 0.25,
             hitRadius: 32,
             gunCount: 2,
+            skillPoints: 0,
             level: {
                 maxDPS_base: 15,
-                maxDPS_perLevel: 10
+                maxDPS_perLevel: 10,
+                maxDPS_baseStart: 1,
+                maxDPS_baseSPDelta: 0
             }
         }, {
             name: 'Atom',
@@ -56,6 +65,7 @@ var gameMod = (function () {
             accuracy: 0.9,
             hitRadius: 64,
             gunCount: 1,
+            skillPoints: 0,
             level: {
                 maxDPS_base: 50,
                 maxDPS_perLevel: 25,
@@ -64,15 +74,6 @@ var gameMod = (function () {
             }
         }
     ];
-
-    var setWeaponsToLevel = function (game) {
-        var level = game.levelObj.level;
-        Weapons.forEach(function (weapon) {
-            var lv = weapon.level;
-            //weapon.maxDPS = lv.maxDPS_base + lv.maxDPS_perLevel * level;
-            weapon.accuracy = 0.95 - 0.9 * (1 - level / hardSet.levelCap);
-        });
-    };
 
     // SKILL POINTS
     var createDPSObject = function (game, weaponObj, sp) {
@@ -90,6 +91,16 @@ var gameMod = (function () {
                 return this.start + this.i * this.lin + Math.pow(base, this.i);
             }
         };
+    };
+
+    var setWeaponsToLevel = function (game) {
+        var level = game.levelObj.level;
+        Weapons.forEach(function (weapon) {
+            var lv = weapon.level;
+            //weapon.maxDPS = lv.maxDPS_base + lv.maxDPS_perLevel * level;
+            weapon.maxDPS = createDPSObject(game, weapon, weapon.skillPoints);
+            weapon.accuracy = 0.95 - 0.9 * (1 - level / hardSet.levelCap);
+        });
     };
 
     // SHOT Object Options
@@ -403,7 +414,8 @@ var gameMod = (function () {
             // first autoPlay target
             autoPlay.setRandomTarget(game);
 
-            Weapons[3].maxDPS = createDPSObject(game, Weapons[3], 0);
+            // set weapons to level for first time
+            setWeaponsToLevel(game);
 
             return game;
         },
@@ -439,6 +451,7 @@ var gameMod = (function () {
 
             // update level object
             game.levelObj = XP.parseByXP(game.totalDamage, hardSet.levelCap, hardSet.deltaNext);
+
             setWeaponsToLevel(game);
 
         }
