@@ -367,6 +367,24 @@ var gameMod = (function () {
                 levelObj: {}, // main level object for the player
                 mapLevelObj: {}, // level object for the map
                 canvas: opt.canvas,
+                skillPoints: {
+                    total: 0,
+                    free: 0
+                },
+                skills: {
+                    weapon_0: {
+                        points: 0
+                    },
+                    weapon_1: {
+                        points: 0
+                    },
+                    weapon_2: {
+                        points: 0
+                    },
+                    weapon_3: {
+                        points: 0
+                    },
+                },
                 map: {},
                 cross: {},
                 shots: poolMod.create(shotOptions),
