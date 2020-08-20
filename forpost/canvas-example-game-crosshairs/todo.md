@@ -16,13 +16,6 @@
 * should I have a map.totalDamage property? If so why?
 * a weapons object should be part of the game state, have a deepClone solution to clone the hard coded weapons object in game.js
 
-## 0.x.0 - keyboard events
-* add keyboard events
-* use numbers for setting current weapon
-* +/- keys for looping threw weapons
-* wasd keys for movement
-* space/k fires current weapon
-
 ## 0.x.0 - UI animations
 * Work out animation feature for buttons
 * Animated cross object in game state
@@ -105,11 +98,19 @@
 * skill reset button results main free skill points to total skill points
 * add skill point buttons for all weapons
 
-## 0.x.0 - Mana System
+## 0.x.0 - keyboard events
+* add keyboard events
+* use numbers for setting current weapon
+* +/- keys for looping threw weapons
+* wasd keys for movement
+* space/k fires current weapon
+
+## 0.18.0 - Mana System
 * add a mana system to be used in game.js
 * all shots of all weapons will cost a certin amount of mana
 * if the player is out of mana they can not fire any shots
 * Mana will restore over time
+* make a pkg_0_18_0.html
 
 ## 0.17.0 - Upgrade buttons, and Skill Point system I
 * (done) have a createDPSObject that will be used to set DPS for a weapon
@@ -125,7 +126,7 @@
 * (done) add new info prop for buttons
 * (done) new skill point values applied to weapons on each upgrade action
 * (done) display skill point value and weapon DPS for each weapon button
-* make a pkg_0_17_0.html
+* (done) make a pkg_0_17_0.html
 
 ## 0.16.0 - Map starting damage
 * (done) fixed a bug where the AI goes after a cell that is no longer there when going from a large map to a smaller one.
