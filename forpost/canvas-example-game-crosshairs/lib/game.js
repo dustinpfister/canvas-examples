@@ -353,6 +353,7 @@ var gameMod = (function () {
                 blastRMin: 2,
                 blastRMax: 2 + Math.floor(size.w / 6 * capPer),
                 blastCount: 3 + Math.round(17 * capPer),
+                blastMaxDamage: 10 + 1000 * capPer,
                 startCells: [0],
                 startingCellDamage: startingCellDamage
             });
