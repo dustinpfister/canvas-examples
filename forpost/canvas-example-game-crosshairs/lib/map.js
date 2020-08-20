@@ -186,7 +186,7 @@ var mapMod = (function () {
                 cell = get(map, cx, cy);
                 d = utils.distance(cx, cy, x, y);
                 if (cell && d <= r) {
-                    cell.damage = (1 - d / r) * maxDamage;
+                    cell.damage += (1 - d / r) * maxDamage;
                 }
                 cx += 1;
             }
@@ -263,7 +263,7 @@ var mapMod = (function () {
                         amount: 5,
                         secs: 0
                     },
-                    damage: 0,
+                    damage: opt.startingCellDamage || 0,
                     damagePer: 0, // damage relative to highest damaged cell
                     levelObj: XP.parseByXP(0, map.cellLevel.cap, map.cellLevel.deltaNext)
                 };
@@ -271,6 +271,8 @@ var mapMod = (function () {
                 map.cells.push(cell);
                 i += 1;
             }
+            // call an update to make sure certain values like damage per are set
+            api.update(map, 0);
 
             // start damage
             startBlasts(map, opt);

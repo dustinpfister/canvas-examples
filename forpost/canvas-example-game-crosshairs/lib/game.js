@@ -334,7 +334,7 @@ var gameMod = (function () {
             h: a[1]
         };
     });
-    var setMap = function (game, xp, deltaNext, levelCap) {
+    var setMap = function (game, xp, deltaNext, levelCap, startingCellDamage) {
         levelCap = levelCap || 50;
         if (xp >= 0 || deltaNext) {
             game.mapLevelObj = XP.parseByXP(xp, levelCap, deltaNext);
@@ -353,7 +353,8 @@ var gameMod = (function () {
                 blastRMin: 2,
                 blastRMax: 2 + Math.floor(size.w / 6 * capPer),
                 blastCount: 3 + Math.round(17 * capPer),
-                startCells: [0]
+                startCells: [0],
+                startingCellDamage: startingCellDamage
             });
 
         // make sure autoPlay has a new target
@@ -411,7 +412,7 @@ var gameMod = (function () {
             game.cross = crossMod.create();
 
             // set up map
-            setMap(game, opt.mapXP === undefined ? 0 : opt.mapXP || 0, opt.mapDeltaNext, opt.mapLevelCap || 50);
+            setMap(game, opt.mapXP === undefined ? 0 : opt.mapXP || 0, opt.mapDeltaNext, opt.mapLevelCap || 50, opt.startingCellDamage);
 
             // first autoPlay target
             autoPlay.setRandomTarget(game);
