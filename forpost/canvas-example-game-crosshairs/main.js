@@ -203,7 +203,9 @@
                 var state = states[sm.currentState];
                 draw.back(ctx, canvas);
 
-                state.buttons.weaponAtom.info = sm.game.skills.weapon_3.points;
+                var sp = sm.game.skills.weapon_3.points,
+                w = gameMod.Weapons[3];
+                state.buttons.weaponAtom.info = sp + ' ' + Math.floor(w.maxDPS);
 
                 draw.buttons(ctx, state.buttons);
                 draw.ver(ctx, sm);
