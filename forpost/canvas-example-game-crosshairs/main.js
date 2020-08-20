@@ -173,11 +173,16 @@
                     x: 100,
                     y: 120,
                     r: 16,
-                    onUpgrade: function (button, api) {
-                        //
-                        console.log('up');
+                    data: {
+                        weaponIndex: 3
                     },
-                    onDowngrade: function (button, api) {
+                    onUpgrade: function (button, sm) {
+                        //
+                        var wi = button.data.weaponIndex;
+                        console.log('up');
+                        console.log(wi);
+                    },
+                    onDowngrade: function (button, sm) {
                         //
                         console.log('down');
                     },

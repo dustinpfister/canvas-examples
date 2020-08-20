@@ -62,6 +62,7 @@ var buttonMod = (function () {
                 r: opt.r === undefined ? 16 : opt.r,
                 label: opt.label || '',
                 type: opt.type || 'basic',
+                data: opt.data || {},
                 onClick: opt.onClick || function () {}
             };
             setupType(button, opt);
