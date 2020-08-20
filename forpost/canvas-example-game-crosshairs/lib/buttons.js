@@ -14,27 +14,30 @@ var buttonMod = (function () {
             button.onActive = opt.onActive || function () {};
             button.onInactive = opt.onInactive || function () {};
         }
+        // setup a 'upgrade' type
+        if (button.type === 'upgrade') {}
     };
 
     var beforeOnClick = {
-        basic: function (button, api) {},
-        options: function (button, api) {
+        basic: function (button, api, point) {},
+        options: function (button, api, point) {
             button.currentOption += 1;
             button.currentOption = button.currentOption >= button.options.length ? 0 : button.currentOption;
         },
-        toggle: function (button, api) {
+        toggle: function (button, api, point) {
             button.bool = !button.bool;
-        }
+        },
+        upgrade: function (button, api, point) {}
     };
 
     var afterOnClick = {
-        basic: function (button, api) {},
-        options: function (button, api) {},
-        toggle: function (button, api) {
+        basic: function (button, api, point) {},
+        options: function (button, api, point) {},
+        toggle: function (button, api, point) {
             if (button.bool) {
-                button.onActive(button, api);
+                button.onActive(button, api, point);
             } else {
-                button.onInactive(button, api);
+                button.onInactive(button, api, point);
             }
         }
     };
@@ -66,9 +69,9 @@ var buttonMod = (function () {
                 button = collection[keys[i]];
                 d = utils.distance(point.x, point.y, button.x, button.y);
                 if (d < button.r) {
-                    beforeOnClick[button.type](button, api);
-                    button.onClick(button, api);
-                    afterOnClick[button.type](button, api)
+                    beforeOnClick[button.type](button, api, point);
+                    button.onClick(button, api, point);
+                    afterOnClick[button.type](button, api, point)
                 }
             }
         }

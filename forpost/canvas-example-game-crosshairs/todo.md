@@ -14,6 +14,7 @@
 * (partial fix) it seems that the AI can get stuck when Frame Rates are real low
 * cancel all shots and explosions when changing maps
 * should I have a map.totalDamage property? If so why?
+* a weapons object should be part of the game state, have a deepClone solution to clone the hard coded weapons object in game.js
 
 ## 0.x.0 - UI animations
 * Work out animation feature for buttons
@@ -98,6 +99,7 @@
 * as game level goes up, items unlock
 
 ## 0.17.0 - Upgrade buttons, and Skill Point system I
+* (done) have a createDPSObject that will be used to set DPS for a weapon
 * add a 'upgrade' button type to the buttons module
 * have a skillPoint object in game.js that will store the current state of skills
 * add a skillManager menu state in main.js that is used to set skill points to skills
