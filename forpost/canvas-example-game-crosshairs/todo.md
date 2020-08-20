@@ -114,10 +114,12 @@
 * (done) update draw methods for skillManager
 * (done) weapon upgrade buttons change state of skill point values in game object
 * (done) add new info prop for buttons
-* new skill point values applied to weapons on each upgrade action
+* (done) new skill point values applied to weapons on each upgrade action
 * (done) display skill point value and weapon DPS for each weapon button
 * number of skill points based off of game.levelObj
-* skill reset button
+* have a gameMode.skillSet method that will be used by upgrade buttons
+* skill points deduct from a total free skill point value
+* skill reset button results main free skill points to total skill points
 * make a pkg_0_17_0.html
 
 ## 0.16.0 - Map starting damage

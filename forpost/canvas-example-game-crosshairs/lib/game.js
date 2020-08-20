@@ -365,21 +365,21 @@ var gameMod = (function () {
                 mapLevelObj: {}, // level object for the map
                 canvas: opt.canvas,
                 skillPoints: {
-                    total: 0,
-                    free: 0
+                    total: 100,
+                    free: 50
                 },
                 skills: {
                     weapon_0: {
-                        points: 10000
+                        points: 0
                     },
                     weapon_1: {
-                        points: 10000
+                        points: 0
                     },
                     weapon_2: {
-                        points: 10000
+                        points: 0
                     },
                     weapon_3: {
-                        points: 10
+                        points: 50
                     },
                 },
                 map: {},
