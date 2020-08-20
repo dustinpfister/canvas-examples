@@ -18,3 +18,11 @@ draw.buttonLayout = function (ctx, blObj) {
         ctx.fillText(b.label || '', b.x + b.w / 2, b.y + b.h / 2);
     }
 };
+
+draw.ver = function (ctx, canvas, state) {
+    ctx.fillStyle = 'white';
+    ctx.textBaseline = 'top';
+    ctx.textAlign = 'left';
+    ctx.font = '10px arial';
+    ctx.fillText('v' + state.ver, 5, canvas.height - 15);
+};
