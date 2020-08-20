@@ -1,6 +1,3 @@
-# todo list for canvas-examples
+## todo list for canvas-examples
 
-* start making packages that will be embedded into blog posts.
-
-* create package for canvas-example-grid
-* create package for canvas-example-star
+Todo lists seem to work well for me when it comes to projects, so maybe they will work okay for writing. it is worth a shot at least.
