@@ -237,7 +237,7 @@
         ctx: ctx,
         game: gameMod.create({
             canvas: canvas,
-            totalDamage: 10000000,
+            totalDamage: 1000000000,
             startingCellDamage: 0,
             mapXP: 0,
             mapDeltaNext: 50,

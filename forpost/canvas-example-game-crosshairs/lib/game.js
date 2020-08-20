@@ -17,12 +17,11 @@ var gameMod = (function () {
             accuracy: 0.75,
             hitRadius: 64,
             gunCount: 1,
-            skillPoints: 0,
             level: {
                 maxDPS_base: 10,
                 maxDPS_perLevel: 5,
-                maxDPS_baseStart: 1,
-                maxDPS_baseSPDelta: 1.01
+                maxDPS_baseStart: 1.0125,
+                maxDPS_baseSPDelta: 0.05
             }
         }, {
             name: 'Assault Blaster',
@@ -33,12 +32,11 @@ var gameMod = (function () {
             accuracy: 0.5,
             hitRadius: 64,
             gunCount: 4,
-            skillPoints: 0,
             level: {
                 maxDPS_base: 5,
                 maxDPS_perLevel: 6,
-                maxDPS_baseStart: 1,
-                maxDPS_baseSPDelta: 0
+                maxDPS_baseStart: 1.0125,
+                maxDPS_baseSPDelta: 0.0525
             }
         }, {
             name: 'Cannon',
@@ -49,12 +47,11 @@ var gameMod = (function () {
             accuracy: 0.25,
             hitRadius: 32,
             gunCount: 2,
-            skillPoints: 0,
             level: {
                 maxDPS_base: 15,
                 maxDPS_perLevel: 10,
-                maxDPS_baseStart: 1,
-                maxDPS_baseSPDelta: 0
+                maxDPS_baseStart: 1.0125,
+                maxDPS_baseSPDelta: 0.07
             }
         }, {
             name: 'Atom',
@@ -65,7 +62,6 @@ var gameMod = (function () {
             accuracy: 0.9,
             hitRadius: 64,
             gunCount: 1,
-            skillPoints: 0,
             level: {
                 maxDPS_base: 50,
                 maxDPS_perLevel: 25,
@@ -374,13 +370,13 @@ var gameMod = (function () {
                 },
                 skills: {
                     weapon_0: {
-                        points: 0
+                        points: 10000
                     },
                     weapon_1: {
-                        points: 0
+                        points: 10000
                     },
                     weapon_2: {
-                        points: 0
+                        points: 10000
                     },
                     weapon_3: {
                         points: 10000
