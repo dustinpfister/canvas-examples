@@ -108,9 +108,13 @@
 * (done) add a 'to options' button in skillManager state
 * (done) add a 'to skillManager' button in options menu
 * (done) have a skillPoint object in game.js that will store the current state of skills
-* add a 'upgrade' button type to the buttons module
-* upgrade buttons have a + and - action area depending on where they are clicked
-* add draw methods for skillManager
+* (done) add a data object for buttons
+* (done) add a 'upgrade' button type to the buttons module
+* (done) upgrade buttons have a + and - action area depending on where they are clicked
+* (done) update draw methods for skillManager
+* weapon upgrade buttons change state of skill point values in game object
+* new skill point values applied to weapons on each upgrade action
+* display skill point value and weapon DPS for each weapon button
 * number of skill points based off of game.levelObj
 * can place skill points into each weapon
 * make a pkg_0_17_0.html
