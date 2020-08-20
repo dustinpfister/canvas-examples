@@ -316,6 +316,9 @@ var draw = (function () {
                 if (b.type === 'toggle') {
                     ctx.fillText(b.label, b.x, b.y);
                 }
+                if (b.type === 'upgrade') {
+                    ctx.fillText(b.label, b.x, b.y);
+                }
             });
         },
         mapInfo: function (ctx, game) {

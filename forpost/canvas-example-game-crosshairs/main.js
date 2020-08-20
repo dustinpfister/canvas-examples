@@ -166,9 +166,27 @@
                         // set state to options
                         sm.currentState = 'options';
                     }
+                }),
+                weaponAtom: buttonMod.create({
+                    label: 'Atom',
+                    type: 'upgrade',
+                    x: 100,
+                    y: 120,
+                    r: 16,
+                    onUpgrade: function (button, api) {
+                        //
+                        console.log('up');
+                    },
+                    onDowngrade: function (button, api) {
+                        //
+                        console.log('down');
+                    },
+                    onClick: function (button, sm) {
+                        //
+                        console.log('upgrade click');
+                    }
                 })
             },
-
             update: function (sm, secs) {
                 var state = states[sm.currentState];
                 draw.back(ctx, canvas);
