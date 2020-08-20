@@ -379,7 +379,7 @@ var gameMod = (function () {
                         points: 10000
                     },
                     weapon_3: {
-                        points: 10000
+                        points: 10
                     },
                 },
                 map: {},

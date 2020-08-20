@@ -113,11 +113,11 @@
 * (done) upgrade buttons have a + and - action area depending on where they are clicked
 * (done) update draw methods for skillManager
 * (done) weapon upgrade buttons change state of skill point values in game object
-* add new info prop for buttons
+* (done) add new info prop for buttons
 * new skill point values applied to weapons on each upgrade action
-* display skill point value and weapon DPS for each weapon button
+* (done) display skill point value and weapon DPS for each weapon button
 * number of skill points based off of game.levelObj
-* can place skill points into each weapon
+* skill reset button
 * make a pkg_0_17_0.html
 
 ## 0.16.0 - Map starting damage

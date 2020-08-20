@@ -196,6 +196,7 @@
                     onClick: function (button, sm) {
                         //
                         console.log('upgrade click');
+
                     }
                 })
             },
@@ -206,6 +207,8 @@
                 var sp = sm.game.skills.weapon_3.points,
                 w = gameMod.Weapons[3];
                 state.buttons.weaponAtom.info = sp + ' ' + Math.floor(w.maxDPS);
+
+                gameMod.update(sm.game, 0);
 
                 draw.buttons(ctx, state.buttons);
                 draw.ver(ctx, sm);
@@ -288,11 +291,11 @@
         ver: '0.17.0',
         canvas: canvas,
         debugMode: 'none',
-        currentState: 'skillManager', //'skillManager',
+        currentState: 'game', //'skillManager',
         ctx: ctx,
         game: gameMod.create({
             canvas: canvas,
-            totalDamage: 0,
+            totalDamage: 100000000,
             startingCellDamage: 0,
             mapXP: 0,
             mapDeltaNext: 50,
