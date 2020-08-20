@@ -182,7 +182,6 @@
                         skill = sm.game.skills['weapon_' + wi];
                         console.log('up');
                         skill.points += 1;
-                        //button.info = skill.points;
                         console.log(skill);
                     },
                     onDowngrade: function (button, sm) {
@@ -191,12 +190,9 @@
                         console.log('down');
                         skill.points -= 1;
                         console.log(skill);
-                        //button.info = skill.points;
                     },
                     onClick: function (button, sm) {
                         //
-                        console.log('upgrade click');
-
                     }
                 })
             },
@@ -204,6 +200,7 @@
                 var state = states[sm.currentState];
                 draw.back(ctx, canvas);
 
+               //??? JUST working with ATOM for now.
                 var sp = sm.game.skills.weapon_3.points,
                 w = gameMod.Weapons[3];
                 state.buttons.weaponAtom.info = sp + ' ' + Math.floor(w.maxDPS);
@@ -295,7 +292,7 @@
         ctx: ctx,
         game: gameMod.create({
             canvas: canvas,
-            totalDamage: 100000000,
+            totalDamage: 0,
             startingCellDamage: 0,
             mapXP: 0,
             mapDeltaNext: 50,
