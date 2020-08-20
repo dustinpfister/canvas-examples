@@ -185,8 +185,12 @@
                         console.log(skill);
                     },
                     onDowngrade: function (button, sm) {
-                        //
-                        console.log('down');
+                        
+                        var wi = button.data.weaponIndex,
+                        skill = sm.game.skills['weapon_' + wi];
+                        console.log('up');
+                        skill.points -= 1;
+                        console.log(skill);
                     },
                     onClick: function (button, sm) {
                         //
