@@ -19,6 +19,15 @@ draw.buttonLayout = function (ctx, blObj) {
     }
 };
 
+draw.circle = function (ctx, canvas, state) {
+    ctx.fillStyle = 'green';
+    ctx.beginPath();
+    ctx.arc(state.cx, state.cy, state.radius, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.stroke();
+
+};
+
 draw.info = function (ctx, canvas, state) {
     ctx.fillStyle = 'white';
     ctx.textBaseline = 'top';
