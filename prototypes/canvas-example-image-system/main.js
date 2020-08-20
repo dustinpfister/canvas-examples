@@ -16,7 +16,8 @@ var fromBase36 = function (str) {
     return parseInt(str, 36).toString(2);
 };
 
-var str = IMG.stringFromIndex(Math.pow(2,16), 2, 4 * 4);
+
+var str = IMG.stringFromIndex(parseInt('1111111111111111', 2), 2, 4 * 4);
 
 console.log(str);
 console.log(toBase36(str));
