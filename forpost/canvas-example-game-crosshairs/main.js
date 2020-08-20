@@ -146,8 +146,18 @@
         },
 
         skillManager: {
-
-            buttons: {},
+            buttons: {
+                toOptions: buttonMod.create({
+                    label: 'Options',
+                    x: 25,
+                    y: 200,
+                    r: 10,
+                    onClick: function (button, sm) {
+                        // set state to options
+                        sm.currentState = 'options';
+                    }
+                })
+            },
 
             update: function (sm, secs) {
                 var state = states[sm.currentState];
@@ -233,11 +243,11 @@
         ver: '0.17.0',
         canvas: canvas,
         debugMode: 'none',
-        currentState: 'game', //'skillManager',
+        currentState: 'skillManager', //'skillManager',
         ctx: ctx,
         game: gameMod.create({
             canvas: canvas,
-            totalDamage: 1000000000,
+            totalDamage: 0,
             startingCellDamage: 0,
             mapXP: 0,
             mapDeltaNext: 50,

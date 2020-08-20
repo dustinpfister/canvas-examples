@@ -101,6 +101,8 @@
 ## 0.17.0 - Upgrade buttons, and Skill Point system I
 * (done) have a createDPSObject that will be used to set DPS for a weapon
 * (done) start a skillManager menu state in main.js that will be used to set skill points to skills
+* add a 'to options' button in skillManager state
+* add a 'to skillManager' button in options menu
 * (done) have a skillPoint object in game.js that will store the current state of skills
 * add a 'upgrade' button type to the buttons module
 * upgrade buttons have a + and - action area depending on where they are clicked
