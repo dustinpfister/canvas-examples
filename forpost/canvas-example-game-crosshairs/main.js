@@ -25,9 +25,19 @@
                         sm.currentState = 'game';
                     }
                 }),
+                toSkillsManager: buttonMod.create({
+                    label: 'Skills',
+                    x: 100,
+                    y: 120,
+                    r: 16,
+                    onClick: function (button, sm) {
+                        // set state to map
+                        sm.currentState = 'skillManager';
+                    }
+                }),
                 toMap: buttonMod.create({
-                    label: 'MAP MENU',
-                    x: 125,
+                    label: 'Map',
+                    x: 100 + 40,
                     y: 120,
                     r: 16,
                     onClick: function (button, sm) {
@@ -36,7 +46,7 @@
                     }
                 }),
                 debugMode: buttonMod.create({
-                    x: 185,
+                    x: 100 + 80,
                     y: 120,
                     r: 16,
                     type: 'options',
