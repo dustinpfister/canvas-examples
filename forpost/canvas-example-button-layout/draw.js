@@ -19,6 +19,14 @@ draw.buttonLayout = function (ctx, blObj) {
     }
 };
 
+draw.info = function (ctx, canvas, state) {
+    ctx.fillStyle = 'white';
+    ctx.textBaseline = 'top';
+    ctx.textAlign = 'left';
+    ctx.font = '10px arial';
+    ctx.fillText('i= ' + state.i, 10, 10);
+};
+
 draw.ver = function (ctx, canvas, state) {
     ctx.fillStyle = 'white';
     ctx.textBaseline = 'top';
