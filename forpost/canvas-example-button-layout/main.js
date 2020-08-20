@@ -7,7 +7,12 @@ canvas.height = 240;
 
 var state = {
     ver: '0.0.0',
-    i: 0
+    i: 0,
+    iMax: 10
+};
+
+var wrapIndex = function (state) {
+    state.i = u.mod(state.i, state.iMax);
 };
 
 // create button layout
@@ -21,6 +26,7 @@ var blObj = u.mkButtonLayout({
                 label: 'i+',
                 onAction: function (pos, opt, button, e) {
                     state.i += 1;
+                    wrapIndex(state);
                 }
             }, {
                 x: canvas.height / 2 + 48,
@@ -30,6 +36,7 @@ var blObj = u.mkButtonLayout({
                 label: 'i-',
                 onAction: function (pos, opt, button, e) {
                     state.i -= 1;
+                    wrapIndex(state);
                 }
             }
         ]
