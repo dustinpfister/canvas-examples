@@ -15,7 +15,10 @@ var buttonMod = (function () {
             button.onInactive = opt.onInactive || function () {};
         }
         // setup a 'upgrade' type
-        if (button.type === 'upgrade') {}
+        if (button.type === 'upgrade') {
+            button.onUpgrade = opt.onUpgrade || function () {};
+            button.onDowngrade = opt.onDowngrade || function () {};
+        }
     };
 
     var beforeOnClick = {
@@ -27,7 +30,14 @@ var buttonMod = (function () {
         toggle: function (button, api, point) {
             button.bool = !button.bool;
         },
-        upgrade: function (button, api, point) {}
+        upgrade: function (button, api, point) {
+            if (point.y < button.y) {
+                button.onUpgrade(button, api, point);
+            }
+            if (point.y > button.y) {
+                button.onDowngrade(button, api, point);
+            }
+        }
     };
 
     var afterOnClick = {

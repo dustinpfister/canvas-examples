@@ -69,6 +69,10 @@
 * if the player is out of mana they can not fire any shots
 * Mana will restore over time
 
+## 0.x.0 - Level Graphs and updated level up system
+* have a level graph system like what I worked out in 'percent-math-log' canvas example
+* apply what it is that I have worked out in that example to have a better system for handling leveling up
+
 ## 0.x.0 - keyboard events
 * add keyboard events
 * use numbers for setting current weapon
@@ -101,8 +105,8 @@
 ## 0.17.0 - Upgrade buttons, and Skill Point system I
 * (done) have a createDPSObject that will be used to set DPS for a weapon
 * (done) start a skillManager menu state in main.js that will be used to set skill points to skills
-* add a 'to options' button in skillManager state
-* add a 'to skillManager' button in options menu
+* (done) add a 'to options' button in skillManager state
+* (done) add a 'to skillManager' button in options menu
 * (done) have a skillPoint object in game.js that will store the current state of skills
 * add a 'upgrade' button type to the buttons module
 * upgrade buttons have a + and - action area depending on where they are clicked
@@ -112,7 +116,7 @@
 * make a pkg_0_17_0.html
 
 ## 0.16.0 - Map starting damage
-* (done) fixed a bug where the AI goes after a cell that is no longer there when going from a lage map to a smaller one.
+* (done) fixed a bug where the AI goes after a cell that is no longer there when going from a large map to a smaller one.
 * (done) new poolMod.inactivate all
 * (done) inactivate all shot pool objects on map change
 * (done) inactive all explosion pool objects
