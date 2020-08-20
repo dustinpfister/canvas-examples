@@ -272,7 +272,6 @@ var mapMod = (function () {
                 i += 1;
             }
 
-
             // start damage
             startBlasts(map, opt);
 
@@ -343,6 +342,7 @@ var mapMod = (function () {
                 }
                 // update level
                 cell.levelObj = XP.parseByXP(cell.damage, map.cellLevel.cap, map.cellLevel.deltaNext);
+
             }
             // figure percentRemain by diving tabulated total by total cells
             map.percentRemain /= map.cells.length;

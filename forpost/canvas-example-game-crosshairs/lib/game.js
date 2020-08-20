@@ -65,12 +65,12 @@ var gameMod = (function () {
             accuracy: 0.9,
             hitRadius: 64,
             gunCount: 1,
-            skillPoints: 1000,
+            skillPoints: 0,
             level: {
                 maxDPS_base: 50,
                 maxDPS_perLevel: 25,
-                maxDPS_baseStart: 1.05,
-                maxDPS_baseSPDelta: 0.025
+                maxDPS_baseStart: 1.0125,
+                maxDPS_baseSPDelta: 0.085
             }
         }
     ];
@@ -385,7 +385,7 @@ var gameMod = (function () {
                 shotRate: 1,
                 shotSecs: 0,
                 weaponIndex: 3,
-                totalDamage: 100000000,
+                totalDamage: opt.totalDamage || 0,
                 userDown: false,
                 autoPlay: {
                     enabled: true,

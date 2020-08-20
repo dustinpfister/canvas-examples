@@ -73,7 +73,7 @@ var draw = (function () {
         ctx.font = '10px courier';
         ctx.textAlign = 'center';
         ctx.fillText('Weapon: ' + w.name, center.x, center.y + 75);
-        ctx.fillText('maxDPS: ' + w.maxDPS, center.x, center.y + 85);
+        ctx.fillText('maxDPS: ' + Number(w.maxDPS).toFixed(2), center.x, center.y + 85);
 
     };
 
