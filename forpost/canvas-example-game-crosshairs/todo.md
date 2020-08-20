@@ -16,6 +16,13 @@
 * should I have a map.totalDamage property? If so why?
 * a weapons object should be part of the game state, have a deepClone solution to clone the hard coded weapons object in game.js
 
+## 0.x.0 - keyboard events
+* add keyboard events
+* use numbers for setting current weapon
+* +/- keys for looping threw weapons
+* wasd keys for movement
+* space/k fires current weapon
+
 ## 0.x.0 - UI animations
 * Work out animation feature for buttons
 * Animated cross object in game state
@@ -60,25 +67,9 @@
 * player can set perCent kill setting
 * make many options unlock able and upgradeable in skill point menu
 
-## 0.x.0 - save state
-* work out a system for save states
-
-## 0.x.0 - Mana System
-* add a mana system to be used in game.js
-* all shots of all weapons will cost a certin amount of mana
-* if the player is out of mana they can not fire any shots
-* Mana will restore over time
-
 ## 0.x.0 - Level Graphs and updated level up system
 * have a level graph system like what I worked out in 'percent-math-log' canvas example
 * apply what it is that I have worked out in that example to have a better system for handling leveling up
-
-## 0.x.0 - keyboard events
-* add keyboard events
-* use numbers for setting current weapon
-* +/- keys for looping threw weapons
-* wasd keys for movement
-* space/k fires current weapon
 
 ## 0.x.0 - Sprite Sheet Graphics II
 * create new system for sprite sheets that involves something like what I worked out in my image-limits canvas example
@@ -102,6 +93,24 @@
 * all skills locked at game level 1
 * as game level goes up, items unlock
 
+## 0.x.0 - save state
+* work out a system for save states
+* game.totalDamage should be part of the save state
+* skill point allocation should be part of the save state
+
+## 0.x.0 - Skill Point System II
+* number of skill points based off of game.levelObj
+* have a gameMode.skillSet method that will be used by upgrade buttons
+* skill points deduct from a total free skill point value
+* skill reset button results main free skill points to total skill points
+* add skill point buttons for all weapons
+
+## 0.x.0 - Mana System
+* add a mana system to be used in game.js
+* all shots of all weapons will cost a certin amount of mana
+* if the player is out of mana they can not fire any shots
+* Mana will restore over time
+
 ## 0.17.0 - Upgrade buttons, and Skill Point system I
 * (done) have a createDPSObject that will be used to set DPS for a weapon
 * (done) start a skillManager menu state in main.js that will be used to set skill points to skills
@@ -116,10 +125,6 @@
 * (done) add new info prop for buttons
 * (done) new skill point values applied to weapons on each upgrade action
 * (done) display skill point value and weapon DPS for each weapon button
-* number of skill points based off of game.levelObj
-* have a gameMode.skillSet method that will be used by upgrade buttons
-* skill points deduct from a total free skill point value
-* skill reset button results main free skill points to total skill points
 * make a pkg_0_17_0.html
 
 ## 0.16.0 - Map starting damage
