@@ -205,7 +205,6 @@ var gameMod = (function () {
             x = Math.floor(map.cellWidth * Math.random()),
             y = Math.floor(map.cellHeight * Math.random()),
             cell;
-
             if (activeCells.length >= 1) {
                 cell = activeCells[Math.floor(activeCells.length * Math.random())];
                 //cell = map.cells[map.cells.length - 1];
@@ -214,16 +213,13 @@ var gameMod = (function () {
             }
             ap.target.x = (map.cellSize / 2 + (map.cellSize * x)) * -1;
             ap.target.y = (map.cellSize / 2 + (map.cellSize * y)) * -1;
-
         },
 
         setByPercentRemain: function (game) {
             var map = game.map,
             ap = game.autoPlay;
-
             // hard coded default for weapon index
             game.weaponIndex = 0;
-
             // set AI values based on ap.behavior value
             if (ap.behavior === 'cannon') {
                 game.weaponIndex = 2;
@@ -247,7 +243,6 @@ var gameMod = (function () {
 
             // AI Move mode
             move: function (game, secs) {
-
                 var ch = game.cross.crosshairs,
                 os = game.cross.offset,
                 ap = game.autoPlay,
@@ -261,15 +256,11 @@ var gameMod = (function () {
                 slowDownDist = map.cellSize * 4,
                 minDist = map.cellSize / 2,
                 per = 0;
-
                 if (d < slowDownDist) {
                     per = 1 - d / slowDownDist;
                 }
-
                 ap.target.d = d;
-
                 delta = maxDelta - (maxDelta - minDelta) * per;
-
                 if (d < minDist) {
                     // set right to target
                     os.x = ap.target.x;
@@ -301,7 +292,6 @@ var gameMod = (function () {
         },
 
         update: function (game, secs) {
-
             // if autoplay
             if (game.autoPlay.enabled) {
                 var ch = game.cross.crosshairs,
@@ -357,13 +347,10 @@ var gameMod = (function () {
                 startCells: [0],
                 startingCellDamage: startingCellDamage
             });
-
         // make sure autoPlay has a new target
         autoPlay.setRandomTarget(game);
-
         // center cross hairs
         crossMod.center(game.cross, game.map.cellWidth, game.map.cellHeight);
-
         // set all shots and explosions to inactive state
         poolMod.setActiveStateForAll(game.shots, false);
         poolMod.setActiveStateForAll(game.explosions, false);
@@ -405,59 +392,44 @@ var gameMod = (function () {
                     }
                 }
             };
-
             // setup game level object
             game.levelObj = XP.parseByXP(game.totalDamage, hardSet.levelCap, hardSet.deltaNext);
-
             // create cross object
             game.cross = crossMod.create();
-
             // set up map
             setMap(game, opt.mapXP === undefined ? 0 : opt.mapXP || 0, opt.mapDeltaNext, opt.mapLevelCap || 50, opt.startingCellDamage);
-
             // first autoPlay target
             autoPlay.setRandomTarget(game);
-
             // set weapons to level for first time
             setWeaponsToLevel(game);
-
             return game;
         },
 
         update: function (game, secs) {
-
             // do not let secs go over hard coded max secs value
             secs = secs > hardSet.maxSecs ? hardSet.maxSecs : secs;
-
+            // set shot rate based on current weapon
             game.shotRate = Weapons[game.weaponIndex].shotRate;
-
             // cross object
             crossMod.update(game.cross, secs);
-
             // map
             mapMod.clampOffset(game.map, game.cross.offset);
             mapMod.update(game.map, secs);
-
             // update pools
             poolMod.update(game.shots, game, secs);
             poolMod.update(game.explosions, game, secs);
-
+            // shoot
             game.shotSecs += secs;
             game.shotSecs = game.shotSecs >= game.shotRate ? game.shotRate : game.shotSecs;
-
-            // shoot
             if (crossMod.isInInner(game.cross) && game.cross.userDown) {
                 shoot(game);
             }
-
             // AutoPlay
             autoPlay.update(game, secs);
-
             // update level object
             game.levelObj = XP.parseByXP(game.totalDamage, hardSet.levelCap, hardSet.deltaNext);
-
+            // apply game.level to weapons
             setWeaponsToLevel(game);
-
         }
 
     }
