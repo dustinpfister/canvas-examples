@@ -97,10 +97,11 @@ var gameMod = (function () {
 
     var setWeaponsToLevel = function (game) {
         var level = game.levelObj.level;
-        Weapons.forEach(function (weapon) {
-            var lv = weapon.level;
+        Weapons.forEach(function (weapon, i) {
+            var lv = weapon.level,
+            sp = game.skills['weapon_' + i].points;
             //weapon.maxDPS = lv.maxDPS_base + lv.maxDPS_perLevel * level;
-            weapon.maxDPS = createDPSObject(game, weapon, weapon.skillPoints);
+            weapon.maxDPS = createDPSObject(game, weapon, sp);
             weapon.accuracy = 0.95 - 0.9 * (1 - level / hardSet.levelCap);
         });
     };
@@ -382,7 +383,7 @@ var gameMod = (function () {
                         points: 0
                     },
                     weapon_3: {
-                        points: 0
+                        points: 10000
                     },
                 },
                 map: {},
