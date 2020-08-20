@@ -172,7 +172,7 @@
                     type: 'upgrade',
                     x: 100,
                     y: 120,
-                    r: 16,
+                    r: 25,
                     data: {
                         weaponIndex: 3
                     },
@@ -182,15 +182,16 @@
                         skill = sm.game.skills['weapon_' + wi];
                         console.log('up');
                         skill.points += 1;
+                        //button.info = skill.points;
                         console.log(skill);
                     },
                     onDowngrade: function (button, sm) {
-                        
                         var wi = button.data.weaponIndex,
                         skill = sm.game.skills['weapon_' + wi];
-                        console.log('up');
+                        console.log('down');
                         skill.points -= 1;
                         console.log(skill);
+                        //button.info = skill.points;
                     },
                     onClick: function (button, sm) {
                         //
@@ -201,6 +202,9 @@
             update: function (sm, secs) {
                 var state = states[sm.currentState];
                 draw.back(ctx, canvas);
+
+                state.buttons.weaponAtom.info = sm.game.skills.weapon_3.points;
+
                 draw.buttons(ctx, state.buttons);
                 draw.ver(ctx, sm);
                 draw.debug(sm);

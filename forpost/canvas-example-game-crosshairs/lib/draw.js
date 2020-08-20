@@ -318,6 +318,8 @@ var draw = (function () {
                 }
                 if (b.type === 'upgrade') {
                     ctx.fillText(b.label, b.x, b.y);
+                    ctx.font = '8px courier';
+                    ctx.fillText(b.info, b.x, b.y + 10);
                 }
             });
         },

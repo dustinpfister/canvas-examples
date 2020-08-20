@@ -61,6 +61,7 @@ var buttonMod = (function () {
                 y: opt.y === undefined ? 0 : opt.y,
                 r: opt.r === undefined ? 16 : opt.r,
                 label: opt.label || '',
+                info: opt.info || '',
                 type: opt.type || 'basic',
                 data: opt.data || {},
                 onClick: opt.onClick || function () {}
