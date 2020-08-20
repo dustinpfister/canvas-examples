@@ -1,5 +1,4 @@
 var buttonMod = (function () {
-
     // setup a button object depending on type
     var setupType = function (button, opt) {
         // setup for 'options' type
@@ -20,9 +19,9 @@ var buttonMod = (function () {
             button.onDowngrade = opt.onDowngrade || function () {};
         }
     };
-
+    // what to do before a button click for each type
     var beforeOnClick = {
-        basic: function (button, api, point) {},
+        basic: function () {},
         options: function (button, api, point) {
             button.currentOption += 1;
             button.currentOption = button.currentOption >= button.options.length ? 0 : button.currentOption;
@@ -39,21 +38,21 @@ var buttonMod = (function () {
             }
         }
     };
-
+    // what to do after a click for each type
     var afterOnClick = {
-        basic: function (button, api, point) {},
-        options: function (button, api, point) {},
+        basic: function () {},
+        options: function () {},
         toggle: function (button, api, point) {
             if (button.bool) {
                 button.onActive(button, api, point);
             } else {
                 button.onInactive(button, api, point);
             }
-        }
+        },
+        upgrade: function () {}
     };
 
     return {
-
         // create a single button
         create: function (opt) {
             opt = opt || {};
@@ -68,7 +67,6 @@ var buttonMod = (function () {
             setupType(button, opt);
             return button;
         },
-
         // check the given button collection
         pointerCheckCollection: function (collection, point, api) {
             var keys = Object.keys(collection),
