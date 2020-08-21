@@ -35,7 +35,7 @@ var createDPSObject = function (level, weaponObj, sp) {
             baseSP = Math.pow(this.baseStart + decay * this.baseSPDelta, this.sp * decay),
             linSP = this.sp * this.lin,
             linLevel = level * this.lin;
-            return (1 - decay); //this.start + (linSP + baseSP + linLevel) * decay;
+            return this.start + (linSP + baseSP) * decay + linLevel;
         }
     };
 };
@@ -45,14 +45,18 @@ levelCap = 10,
 dpsValues = [];
 while (level < levelCap) {
     weapons.forEach(function (weapon) {
-        weapon.maxDPS = createDPSObject(level, weapon, 10000);
-        dpsValues.push(Number(weapon.maxDPS));
+        weapon.maxDPS = createDPSObject(level, weapon, 100);
+        dpsValues.push(Math.floor(weapon.maxDPS));
     });
     level += 1;
 }
-var dpsMax = Math.max.apply(dpsValues);
-console.log(dpsValues);
+var dpsMax = Math.max.apply(null, dpsValues);
+var dpsPerValues = dpsValues.map(function (maxDPS) {
 
+        return maxDPS / dpsMax;
+
+    });
+console.log(dpsPerValues);
 var loop = function () {
     requestAnimationFrame(loop);
     draw.back(ctx, canvas);
