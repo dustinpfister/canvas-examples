@@ -3,7 +3,7 @@ var gameMod = (function () {
     // hard coded settings
     var hardSet = {
         maxSecs: 0.25, // max seconds for sec value used in updates
-        deltaNext: 10000, // deltaNext and levelCap
+        deltaNext: 100000, // deltaNext and levelCap
         levelCap: 100
     };
 
@@ -18,7 +18,7 @@ var gameMod = (function () {
             hitRadius: 64,
             gunCount: 1,
             level: {
-                maxDPS_base: 10,
+                maxDPS_start: 10,
                 maxDPS_perLevel: 5,
                 maxDPS_baseStart: 1.0125,
                 maxDPS_baseSPDelta: 0.05
@@ -48,7 +48,7 @@ var gameMod = (function () {
             hitRadius: 32,
             gunCount: 2,
             level: {
-                maxDPS_base: 15,
+                maxDPS_start: 15,
                 maxDPS_perLevel: 10,
                 maxDPS_baseStart: 1.0125,
                 maxDPS_baseSPDelta: 0.07
@@ -63,10 +63,10 @@ var gameMod = (function () {
             hitRadius: 64,
             gunCount: 1,
             level: {
-                maxDPS_base: 50,
-                maxDPS_perLevel: 25,
-                maxDPS_baseStart: 1.0125,
-                maxDPS_baseSPDelta: 0.085
+                maxDPS_start: 50,
+                maxDPS_perLevel: 1,
+                maxDPS_baseStart: 1.025,
+                maxDPS_baseSPDelta: 0.125
             }
         }
     ];
@@ -77,7 +77,7 @@ var gameMod = (function () {
         wepLV = weaponObj.level;
         return {
             i: level,
-            start: wepLV.maxDPS_base,
+            start: wepLV.maxDPS_start,
             lin: wepLV.maxDPS_perLevel,
             baseStart: wepLV.maxDPS_baseStart,
             baseSPDelta: wepLV.maxDPS_baseSPDelta,
@@ -85,8 +85,10 @@ var gameMod = (function () {
             valueOf: function () {
                 //var base = this.baseStart + this.baseSPDelta * this.sp;
                 // https://gamedev.stackexchange.com/questions/89723/how-can-i-come-up-with-a-simple-diminishing-return-equation
-                var base = this.baseStart + (1 - 1 / (1 + this.sp)) * this.baseSPDelta;
-                return this.start + this.i * this.lin + Math.pow(base, this.i);
+                var baseSP = Math.pow(this.baseStart + (1 - 1 / (1 + this.sp)) * this.baseSPDelta, this.sp),
+                linSP = this.sp * this.lin,
+                linLevel = level * this.lin;
+                return this.start + linSP + baseSP + linLevel;
             }
         };
     };
@@ -379,7 +381,7 @@ var gameMod = (function () {
                         points: 0
                     },
                     weapon_3: {
-                        points: 50
+                        points: 0
                     },
                 },
                 map: {},

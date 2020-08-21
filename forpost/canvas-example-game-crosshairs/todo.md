@@ -106,6 +106,7 @@
 * space/k fires current weapon
 
 ## 0.18.0 - Mana System
+* skill point gains are way to trivial at low levels
 * add a mana system to be used in game.js
 * all shots of all weapons will cost a certin amount of mana
 * if the player is out of mana they can not fire any shots
