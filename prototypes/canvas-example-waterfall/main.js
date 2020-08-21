@@ -7,6 +7,7 @@ canvas.height = 240;
 ctx.translate(0.5, 0.5);
 
 var sm = {
+    ver: '0.0.0',
     canvas: canvas,
     ctx: ctx,
     ballSpawnRate: 0.05,
@@ -44,7 +45,6 @@ var loop = function () {
     var now = new Date(),
     t = now - lt,
     secs = t / 1000;
-
     sm.ballSecs += secs;
     if (sm.ballSecs >= sm.ballSpawnRate) {
         poolMod.spawn(sm.balls, sm);
@@ -54,6 +54,7 @@ var loop = function () {
     poolMod.update(sm.balls, sm, secs);
     draw.back(ctx, canvas);
     draw.waterBalls(sm);
+    draw.ver(sm);
     lt = now;
 };
 loop();

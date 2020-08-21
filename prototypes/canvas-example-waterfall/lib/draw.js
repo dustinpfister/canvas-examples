@@ -15,6 +15,15 @@ var draw = (function () {
                     ctx.fill();
                 }
             });
+        },
+        ver: function (sm) {
+            var canvas = sm.canvas,
+            ctx = sm.ctx;
+            ctx.fillStyle = 'white';
+            ctx.textBaseline = 'top';
+            ctx.textAlign = 'left';
+            ctx.font = '10px arial';
+            ctx.fillText('v' + sm.ver, 2, canvas.height - 12);
         }
     }
 }
