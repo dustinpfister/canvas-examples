@@ -11,10 +11,25 @@ var sm = {
     ctx: ctx,
     balls: poolMod.create({
         count: 50,
+        data: {
+            turnAtX: 100
+        },
+        pps: 128,
         spawn: function (obj, state) {
             console.log(state);
             obj.x = canvas.width;
             obj.y = 20;
+            obj.heading = Math.PI;
+
+        },
+        update: function (obj, sm, secs) {
+            obj.x += Math.cos(obj.heading) * obj.pps * secs;
+            obj.y += Math.sin(obj.heading) * obj.pps * secs;
+            if (obj.x <= obj.data.turnAtX) {
+                obj.x = obj.data.turnAtX;
+                obj.heading = Math.PI / 2;
+	
+            }
         }
     })
 };
