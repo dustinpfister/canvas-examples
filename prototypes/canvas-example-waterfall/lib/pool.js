@@ -20,7 +20,7 @@ var poolMod = (function () {
                     spawn: opt.spawn || function (obj, state) {},
                     purge: opt.purge || function (obj, state) {},
                     update: opt.update || function (obj, state, secs) {
-                        obj.x += obj.pps * secs;
+                        //obj.x += obj.pps * secs;
                         obj.lifespan -= secs;
                     }
                 });
@@ -29,14 +29,15 @@ var poolMod = (function () {
             return pool;
         },
 
-        spawn: function (pool, game, opt) {
+        spawn: function (pool, state, opt) {
             var i = pool.length,
             obj;
             while (i--) {
                 obj = pool[i];
                 if (!obj.active) {
+
                     obj.active = true;
-                    obj.spawn.call(obj, obj, game, opt);
+                    obj.spawn.call(obj, obj, state, opt);
                     break;
                 }
             }
@@ -57,6 +58,7 @@ var poolMod = (function () {
                 }
             }
         },
+
         // set all to inActive or active state
         setActiveStateForAll: function (pool, bool) {
             bool = bool === undefined ? false : bool;

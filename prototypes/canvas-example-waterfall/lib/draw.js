@@ -8,12 +8,12 @@ var draw = (function () {
         waterBalls: function (sm) {
             var ctx = sm.ctx;
             sm.balls.forEach(function (ball) {
-                //if (ball.active) {
+                if (ball.active) {
                     ctx.beginPath();
                     ctx.fillStyle = 'blue';
-                    ctx.arc(10, 10, ball.radius, 0, Math.PI * 2);
+                    ctx.arc(ball.x, ball.y, ball.radius, 0, Math.PI * 2);
                     ctx.fill();
-                //}
+                }
             });
         }
     }

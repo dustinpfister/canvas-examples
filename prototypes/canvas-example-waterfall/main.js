@@ -9,11 +9,17 @@ ctx.translate(0.5, 0.5);
 var sm = {
     canvas: canvas,
     ctx: ctx,
-    spawn: function () {},
     balls: poolMod.create({
-        count: 50
+        count: 50,
+        spawn: function (obj, state) {
+            console.log(state);
+            obj.x = canvas.width;
+            obj.y = 20;
+        }
     })
 };
+
+poolMod.spawn(sm.balls, sm);
 
 var lt = new Date();
 var loop = function () {
@@ -21,7 +27,7 @@ var loop = function () {
     t = now - lt,
     secs = t / 1000;
     requestAnimationFrame(loop);
-    poolMod.update(sm.balls, secs);
+    poolMod.update(sm.balls, sm, secs);
     draw.back(ctx, canvas);
     draw.waterBalls(sm);
     lt = now;
