@@ -1,3 +1,9 @@
+var utils = {};
+
+utils.clone = function (obj) {
+    return JSON.parse(JSON.stringify(obj));
+};
+
 var poolMod = (function () {
 
     return {
@@ -16,7 +22,7 @@ var poolMod = (function () {
                     heading: 0,
                     pps: opt.pps || 32,
                     lifespan: opt.lifespan || 3,
-                    data: opt.data || {},
+                    data: utils.clone(opt.data) || {},
                     spawn: opt.spawn || function (obj, state) {},
                     purge: opt.purge || function (obj, state) {},
                     update: opt.update || function (obj, state, secs) {
