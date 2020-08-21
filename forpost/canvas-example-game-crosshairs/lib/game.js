@@ -64,9 +64,9 @@ var gameMod = (function () {
             gunCount: 1,
             level: {
                 maxDPS_start: 50,
-                maxDPS_perLevel: 1,
+                maxDPS_perLevel: 5,
                 maxDPS_baseStart: 1.025,
-                maxDPS_baseSPDelta: 0.125
+                maxDPS_baseSPDelta: 0.0125
             }
         }
     ];
@@ -85,10 +85,11 @@ var gameMod = (function () {
             valueOf: function () {
                 //var base = this.baseStart + this.baseSPDelta * this.sp;
                 // https://gamedev.stackexchange.com/questions/89723/how-can-i-come-up-with-a-simple-diminishing-return-equation
-                var baseSP = Math.pow(this.baseStart + (1 - 1 / (1 + this.sp)) * this.baseSPDelta, this.sp),
+                var decay = (1 - 1 / (1 + this.sp)),
+                baseSP = Math.pow(this.baseStart + decay * this.baseSPDelta, this.sp * decay),
                 linSP = this.sp * this.lin,
                 linLevel = level * this.lin;
-                return this.start + linSP + baseSP + linLevel;
+                return this.start + (linSP + baseSP + linLevel) * decay;
             }
         };
     };
