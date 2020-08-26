@@ -17,6 +17,7 @@ var gameMod = (function () {
             accuracy: 0.75,
             hitRadius: 64,
             gunCount: 1,
+            manaCost: 2,
             level: {
                 maxDPS_start: 10,
                 maxDPS_perLevel: 5,
@@ -32,8 +33,9 @@ var gameMod = (function () {
             accuracy: 0.5,
             hitRadius: 64,
             gunCount: 4,
+            manaCost: 5,
             level: {
-                maxDPS_base: 5,
+                maxDPS_start: 5,
                 maxDPS_perLevel: 6,
                 maxDPS_baseStart: 1.0125,
                 maxDPS_baseSPDelta: 0.0525
@@ -47,6 +49,7 @@ var gameMod = (function () {
             accuracy: 0.25,
             hitRadius: 32,
             gunCount: 2,
+            manaCost: 10,
             level: {
                 maxDPS_start: 15,
                 maxDPS_perLevel: 10,
@@ -62,6 +65,7 @@ var gameMod = (function () {
             accuracy: 0.9,
             hitRadius: 64,
             gunCount: 1,
+            manaCost: 75,
             level: {
                 maxDPS_start: 50,
                 maxDPS_perLevel: 5,
@@ -180,9 +184,11 @@ var gameMod = (function () {
         }
     };
 
+    // shoot the current weapon
     var shoot = function (game) {
         var w = Weapons[game.weaponIndex];
-        if (game.shotSecs >= game.shotRate) {
+        // check shot rate and mana
+        if (game.shotSecs >= game.shotRate && game.mana.current >= w.manaCost) {
             var i = 0,
             radian;
             while (i < w.gunCount) {
@@ -191,6 +197,8 @@ var gameMod = (function () {
                 i += 1;
             }
             game.shotSecs = 0;
+            // deduct mana
+            game.mana.current -= w.manaCost;
         }
     };
 
