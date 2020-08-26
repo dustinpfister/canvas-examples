@@ -387,7 +387,8 @@ var gameMod = (function () {
                 },
                 mana: {
                     current: 50,
-                    max: 100
+                    max: 100,
+                    mps: 10
                 },
                 map: {},
                 cross: {},
@@ -452,6 +453,10 @@ var gameMod = (function () {
             game.levelObj = XP.parseByXP(game.totalDamage, hardSet.levelCap, hardSet.deltaNext);
             // apply game.level to weapons
             setWeaponsToLevel(game);
+
+            // regenerate mana
+            game.mana.current += game.mana.mps * secs;
+            game.mana.current = game.mana.current > game.mana.max ? game.mana.max : game.mana.current;
         }
 
     }
