@@ -385,6 +385,10 @@ var gameMod = (function () {
                         points: 0
                     },
                 },
+                mana: {
+                    current: 50,
+                    max: 100
+                },
                 map: {},
                 cross: {},
                 shots: poolMod.create(shotOptions),
