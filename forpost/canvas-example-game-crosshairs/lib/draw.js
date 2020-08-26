@@ -183,8 +183,9 @@ var draw = (function () {
             // bars
             drawPercentRemainBar(ctx, game); // percentRemain
             drawAutoPlayDelayBar(ctx, game); // autoPlay delay
-            drawBar(ctx, game, game.shotSecs / game.shotRate, Math.PI * 0.33, Math.PI * 0.33, 'red'); // shotRate
             drawBar(ctx, game, game.levelObj.per, Math.PI * 1.69, Math.PI * 0.3, 'blue'); // next level
+            drawBar(ctx, game, game.shotSecs / game.shotRate, Math.PI * 0.33, Math.PI * 0.15, 'red'); // shotRate
+            drawBar(ctx, game, game.mana.current / game.mana.max, Math.PI * 0.5, Math.PI * 0.15, 'purple');
 
             // weapon info
             drawWeaponInfo(ctx, game);
