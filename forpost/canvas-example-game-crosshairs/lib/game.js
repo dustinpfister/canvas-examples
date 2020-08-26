@@ -65,7 +65,7 @@ var gameMod = (function () {
             accuracy: 0.9,
             hitRadius: 64,
             gunCount: 1,
-            manaCost: 75,
+            manaCost: 35,
             level: {
                 maxDPS_start: 50,
                 maxDPS_perLevel: 5,

@@ -108,8 +108,8 @@
 ## 0.18.0 - Mana System
 * (done) skill point gains are way to trivial at low levels
 * (done) add a mana object to be used in game.js
-* all shots of all weapons will cost a certain amount of mana
-* if the player is out of mana they can not fire any shots
+* (done) all weapons will cost a certain amount of mana
+* (done) if the player does not have enough mana to fire the current weapon it will not fire
 * (done) mana bar in UI
 * Mana will restore over time
 * make a pkg_0_18_0.html
