@@ -285,7 +285,7 @@
     };
 
     var sm = {
-        ver: '0.18.0',
+        ver: '0.19.0',
         canvas: canvas,
         debugMode: 'none',
         currentState: 'game', //'skillManager',

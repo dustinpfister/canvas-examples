@@ -70,6 +70,13 @@
 * use base 64 to encode the numbers for a single 'color-layer'
 * can have more than one color layer
 
+## 0.x.0 - keyboard events
+* add keyboard events
+* use numbers for setting current weapon
+* +/- keys for looping threw weapons
+* wasd keys for movement
+* space/k fires current weapon
+
 ## 0.x.0 - Hold fire button
 * add a holdFire 'toggle' button
 * have a different display in the center of cross when holdFire is on
@@ -91,19 +98,14 @@
 * game.totalDamage should be part of the save state
 * skill point allocation should be part of the save state
 
-## 0.x.0 - Skill Point System II
-* number of skill points based off of game.levelObj
+## 0.19.0 - Skill Point System II
+* used new xp.js that was worked out for js-javascript-example-skill-point-system
+* number of skill points based off of game.levelObj state
 * have a gameMode.skillSet method that will be used by upgrade buttons
 * skill points deduct from a total free skill point value
 * skill reset button results main free skill points to total skill points
 * add skill point buttons for all weapons
-
-## 0.x.0 - keyboard events
-* add keyboard events
-* use numbers for setting current weapon
-* +/- keys for looping threw weapons
-* wasd keys for movement
-* space/k fires current weapon
+* make a pkg_0_19_0.html
 
 ## 0.18.0 - Mana System
 * (done) skill point gains are way to trivial at low levels
@@ -113,7 +115,7 @@
 * (done) mana bar in UI
 * (done) Mana will restore over time
 * (done) max mana, and mps will go up with level
-* make a pkg_0_18_0.html
+* (done) make a pkg_0_18_0.html
 
 ## 0.17.0 - Upgrade buttons, and Skill Point system I
 * (done) have a createDPSObject that will be used to set DPS for a weapon
