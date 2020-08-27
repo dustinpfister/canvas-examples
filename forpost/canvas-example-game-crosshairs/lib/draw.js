@@ -202,7 +202,7 @@ var draw = (function () {
             ctx.fillText('level: ' + game.levelObj.level + ' (' + Math.round(game.levelObj.per * 100) + '%)', x, y - 50);
             ctx.fillText('xp: ' + Math.floor(game.levelObj.xp), x, y - 40);
             ctx.fillText('next: ' + Math.floor(game.levelObj.toNext), x, y - 30);
-            ctx.fillText('mps: ' + game.mana.mps, x, y - 20);
+            ctx.fillText('mana: ' + Math.floor(game.mana.current) + '/' + Math.floor(game.mana.max) + ' (' + game.mana.mps + '/s)', x, y - 20);
             // cell info
             if (cell) {
                 ctx.fillText('pos: ' + cell.i + ' (' + cell.x + ',' + cell.y + ')', x, y);
