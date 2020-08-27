@@ -176,20 +176,16 @@ var draw = (function () {
         },
         // draw cross hairs
         cross: function (ctx, game) {
-
             // draw basic circles
             drawCrossCircles(ctx, game.cross);
-
             // bars
             drawPercentRemainBar(ctx, game); // percentRemain
             drawAutoPlayDelayBar(ctx, game); // autoPlay delay
             drawBar(ctx, game, game.levelObj.per, Math.PI * 1.69, Math.PI * 0.3, 'blue'); // next level
             drawBar(ctx, game, game.shotSecs / game.shotRate, Math.PI * 0.33, Math.PI * 0.15, 'red'); // shotRate
             drawBar(ctx, game, game.mana.current / game.mana.max, Math.PI * 0.5, Math.PI * 0.15, 'purple');
-
             // weapon info
             drawWeaponInfo(ctx, game);
-
             // draw cell and level info
             var cross = game.cross,
             map = game.map,
@@ -197,34 +193,29 @@ var draw = (function () {
             cell = mapMod.getWithCanvasPointAndOffset(game.map, ch.x, ch.y, cross.offset.x, cross.offset.y),
             x = cross.center.x + cross.radiusOuter - 45,
             y = cross.center.y;
-
-            // text atyle for info
+            // text style for info
             ctx.fillStyle = 'white';
             ctx.textBaseline = 'top';
             ctx.textAlign = 'left';
             ctx.font = '8px arial';
-
-            // level info
-            ctx.fillText('level: ' + game.levelObj.level + ' (' + Math.round(game.levelObj.per * 100) + '%)', x, y - 40);
-            ctx.fillText('xp: ' + Math.floor(game.levelObj.xp), x, y - 30);
-            ctx.fillText('next: ' + Math.floor(game.levelObj.toNext), x, y - 20);
-
+            // main game level info
+            ctx.fillText('level: ' + game.levelObj.level + ' (' + Math.round(game.levelObj.per * 100) + '%)', x, y - 50);
+            ctx.fillText('xp: ' + Math.floor(game.levelObj.xp), x, y - 40);
+            ctx.fillText('next: ' + Math.floor(game.levelObj.toNext), x, y - 30);
+            ctx.fillText('mps: ' + game.mana.mps, x, y - 20);
             // cell info
             if (cell) {
                 ctx.fillText('pos: ' + cell.i + ' (' + cell.x + ',' + cell.y + ')', x, y);
                 ctx.fillText('lv:' + cell.levelObj.level + ' (' + Math.round(cell.levelObj.per * 100) + '%)', x, y + 10);
                 ctx.fillText('hp:' + Math.floor(cell.HP) + '/' + Math.floor(cell.maxHP), x, y + 20);
                 ctx.fillText('dam: ' + Math.floor(cell.damage) + ' (' + Math.round(cell.damagePer * 100) + '%)', x, y + 30);
-
                 // draw target cell
                 ctx.strokeStyle = 'rgba(255,255,255,0.4)';
                 ctx.lineWidth = 3;
                 ctx.strokeRect(cell.x * map.cellSize + cross.offset.x + (320 / 2), cell.y * map.cellSize + cross.offset.y + (240 / 2), map.cellSize, map.cellSize);
             }
-
             // draw the cross hairs
             drawCrossHairs(ctx, game.cross);
-
         },
         // draw map
         map: function (ctx, map, cross) {
@@ -281,7 +272,6 @@ var draw = (function () {
                 alpha = 1 - ex.per;
                 ctx.fillStyle = 'rgba(255,255,0,' + alpha + ')';
                 ctx.strokeStyle = 'rgba(0,0,0,' + alpha + ')';
-
                 if (ex.active) {
                     ctx.beginPath();
                     ctx.arc(ex.x, ex.y, ex.radius, 0, Math.PI * 2);
@@ -335,7 +325,6 @@ var draw = (function () {
             ctx.fillText('Level Up Rate : ' + map.cellLevel.deltaNext, 160, 110);
             ctx.fillText('Cell Gen Rate : ' + map.gen.rate.toFixed(2), 160, 120);
             ctx.fillText('Cell Gen Count : ' + map.gen.count, 160, 130);
-
         },
         debug: function (sm) {
             debugModes[sm.debugMode](sm, sm.ctx, sm.canvas);

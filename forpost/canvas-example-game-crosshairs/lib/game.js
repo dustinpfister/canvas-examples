@@ -413,7 +413,7 @@ var gameMod = (function () {
                     max: 100,
                     mps: 10,
                     level: {
-                        mpsStart: 10,
+                        mpsStart: 9,
                         mpsPerLevel: 1,
                         maxStart: 100,
                         maxPerLevel: 10
