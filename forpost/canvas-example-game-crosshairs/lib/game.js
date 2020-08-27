@@ -364,6 +364,21 @@ var gameMod = (function () {
         poolMod.setActiveStateForAll(game.explosions, false);
     };
 
+    var setManaToLevel = function (game) {
+
+        /*
+        level: {
+        mpsStart: 10,
+        mpsPerLevel: 1,
+        maxStart: 100,
+        maxPerLevel: 10
+        }
+         */
+        var level = game.levelObj.level,
+        mLv = game.mana.level;
+        game.mana.mps = mLv.mpsStart + mLv.mpsPerLevel * level;
+    };
+
     return {
         Weapons: Weapons,
 
@@ -396,7 +411,13 @@ var gameMod = (function () {
                 mana: {
                     current: 50,
                     max: 100,
-                    mps: 10
+                    mps: 10,
+                    level: {
+                        mpsStart: 10,
+                        mpsPerLevel: 1,
+                        maxStart: 100,
+                        maxPerLevel: 10
+                    }
                 },
                 map: {},
                 cross: {},
@@ -459,8 +480,11 @@ var gameMod = (function () {
             autoPlay.update(game, secs);
             // update level object
             game.levelObj = XP.parseByXP(game.totalDamage, hardSet.levelCap, hardSet.deltaNext);
+
             // apply game.level to weapons
             setWeaponsToLevel(game);
+
+            setManaToLevel(game);
 
             // regenerate mana
             game.mana.current += game.mana.mps * secs;
