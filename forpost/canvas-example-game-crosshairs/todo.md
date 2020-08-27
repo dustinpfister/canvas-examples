@@ -112,7 +112,7 @@
 * (done) if the player does not have enough mana to fire the current weapon it will not fire
 * (done) mana bar in UI
 * (done) Mana will restore over time
-* max mana, and mps will go up with level
+* (done) max mana, and mps will go up with level
 * make a pkg_0_18_0.html
 
 ## 0.17.0 - Upgrade buttons, and Skill Point system I
