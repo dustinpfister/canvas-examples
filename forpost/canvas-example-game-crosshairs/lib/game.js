@@ -365,18 +365,12 @@ var gameMod = (function () {
     };
 
     var setManaToLevel = function (game) {
-
-        /*
-        level: {
-        mpsStart: 10,
-        mpsPerLevel: 1,
-        maxStart: 100,
-        maxPerLevel: 10
-        }
-         */
         var level = game.levelObj.level,
         mLv = game.mana.level;
+        // MPS
         game.mana.mps = mLv.mpsStart + mLv.mpsPerLevel * level;
+        // MAX mana
+        game.mana.max = mLv.maxStart + mLv.maxPerLevel * level;
     };
 
     return {
@@ -415,7 +409,7 @@ var gameMod = (function () {
                     level: {
                         mpsStart: 9,
                         mpsPerLevel: 1,
-                        maxStart: 100,
+                        maxStart: 90,
                         maxPerLevel: 10
                     }
                 },
