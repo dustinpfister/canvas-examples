@@ -4,7 +4,11 @@ var states = {
     // game state
     game: {
         // for each update tick
-        update: function (sm, secs) {},
+        update: function (sm, secs) {
+
+            draw.back(ctx, canvas);
+            draw.cursor(sm);
+        },
         // events
         pointerStart: function (sm, e) {},
         pointerMove: function () {},
@@ -43,10 +47,14 @@ var pointerHanders = {
     start: function (sm, e) {
         var pos = sm.input.pos;
         sm.input.pointerDown = true;
+        sm.input.pos = utils.getCanvasRelative(e);
         states[sm.currentState].pointerStart(sm, e);
     },
     move: function (sm, e) {
-        states[sm.currentState].pointerMove(sm, e);
+        if (sm.input.pointerDown) {
+            sm.input.pos = utils.getCanvasRelative(e);
+            states[sm.currentState].pointerMove(sm, e);
+        }
     },
     end: function (sm, e) {
         sm.input.pointerDown = false;
@@ -56,17 +64,29 @@ var pointerHanders = {
 
 var createPointerHandler = function (sm, type) {
     return function (e) {
-        sm.input.pos = utils.getCanvasRelative(e);
         e.preventDefault();
         pointerHanders[type](sm, e);
     };
 };
 
-// main app loop
+// attach for mouse and touch
+canvas.addEventListener('mousedown', createPointerHandler(sm, 'start'));
+canvas.addEventListener('mousemove', createPointerHandler(sm, 'move'));
+canvas.addEventListener('mouseup', createPointerHandler(sm, 'end'));
+canvas.addEventListener('touchstart', createPointerHandler(sm, 'start'));
+canvas.addEventListener('touchmove', createPointerHandler(sm, 'move'));
+canvas.addEventListener('touchend', createPointerHandler(sm, 'end'));
+
+var lt = new Date(),
+FPS_target = 30;
 var loop = function () {
+    var now = new Date(),
+    t = now - lt,
+    secs = t / 1000;
     requestAnimationFrame(loop);
-    draw.back(ctx, canvas);
-
+    if (t >= 1000 / FPS_target) {
+        states[sm.currentState].update(sm, secs);
+        lt = now;
+    }
 };
-
 loop();
