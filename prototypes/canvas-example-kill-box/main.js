@@ -8,6 +8,7 @@ var states = {
 
             draw.back(ctx, canvas);
             draw.cursor(sm);
+            draw.ver(sm);
         },
         // events
         pointerStart: function (sm, e) {},

@@ -26,8 +26,8 @@
 * (done) start a /lib/pool.js
 * (done) start a main.js file
 * (done) have a basic state machine in main.js
-* have pointer input working
-* have a draw.cursor method
-* draw current cursor position displayed
-* display version
+* (done) have pointer input working
+* (done) have a draw.cursor method
+* (done) draw current cursor position displayed
+* (done) display version in canvas
 * make a /pkg/pkg_0.0.0.html file
