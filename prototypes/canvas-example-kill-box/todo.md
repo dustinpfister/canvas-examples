@@ -25,7 +25,7 @@
 * player units spawn
 
 ## 0.2.0 - Have a map.js for gameMod
-* add a map.js file to the project
+* (done) add a map.js file to the project
 * make it so that map.js is used as part of the game state
 * make it so we have starting player units in the map at fixed locations
 * have some starting enemy units at the top

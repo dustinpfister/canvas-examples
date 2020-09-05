@@ -31,7 +31,13 @@ var gameMod = (function () {
             var game = {
                 enemies: [],
                 playerUnits: [],
-                shots: []
+                shots: [],
+                map: mapMod.create({
+                    margin: {
+                        x: 0,
+                        y: 0
+                    }
+                })
             };
             game.enemies = poolMod.create(enemyPoolOptions);
             game.playerUnits = poolMod.create(playerPoolOptions);

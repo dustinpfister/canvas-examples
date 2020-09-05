@@ -41,7 +41,7 @@ var mapMod = (function () {
             spawnEnabled: opt.spawnEnabled || false,
             spawnLimit: opt.spawnLimit || 2,
             spawnCells: opt.spawnCells || [0], // cell index values where enemies can spawn
-            margin: {
+            margin: opt.margin || {
                 x: 5,
                 y: 5
             },
