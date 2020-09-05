@@ -1,20 +1,23 @@
 var gameMod = (function () {
 
+    var placeUnitInMap = function (game, unit, pos) {
+        var map = game.map,
+        cell = mapMod.get(map, pos.x, pos.y);
+        unit.x = map.margin.x + map.cellSize * cell.x;
+        unit.y = map.margin.y + map.cellSize * cell.y;
+    };
+
     var enemyPoolOptions = {
         count: 5,
         spawn: function (enemy, game, spawnOptions) {
-            var map = game.map;
-            enemy.x = map.margin.x;
-            enemy.y = map.margin.y;
+            placeUnitInMap(game, enemy, spawnOptions.cellPos);
         }
     };
 
     var playerPoolOptions = {
         count: 5,
-        spawn: function (enemy, game, spawnOptions) {
-            var map = game.map;
-            enemy.x = map.margin.x;
-            enemy.y = map.margin.y;
+        spawn: function (playerUnit, game, spawnOptions) {
+            placeUnitInMap(game, playerUnit, spawnOptions.cellPos);
         }
     };
 
@@ -22,10 +25,8 @@ var gameMod = (function () {
         count: 10,
         w: 5,
         h: 5,
-        spawn: function (enemy, game, spawnOptions) {
-            var map = game.map;
-            enemy.x = map.margin.x;
-            enemy.y = map.margin.y;
+        spawn: function (shot, game, spawnOptions) {
+            placeUnitInMap(game, shot, spawnOptions.cellPos);
         }
     };
 
@@ -48,11 +49,13 @@ var gameMod = (function () {
             console.log(game);
             var spawnOptions = {
                 cellPos: {
-                    x: 0,
+                    x: 3,
                     y: 0
                 }
             };
             poolMod.spawn(game.enemies, game, spawnOptions);
+            spawnOptions.cellPos.x = 0;
+            spawnOptions.cellPos.y = 0;
             poolMod.spawn(game.playerUnits, game, spawnOptions);
             poolMod.spawn(game.shots, game, spawnOptions);
             return game;
