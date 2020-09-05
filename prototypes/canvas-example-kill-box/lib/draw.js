@@ -5,6 +5,16 @@ var draw = (function () {
             ctx.fillStyle = 'black';
             ctx.fillRect(0, 0, canvas.width, canvas.height);
         },
+        units: function (sm, poolName, fill) {
+            var pool = sm.game[poolName],
+            unit,
+            i = pool.length;
+            while (i--) {
+                unit = pool[i];
+                ctx.fillStyle = fill || 'white';
+                ctx.fillRect(unit.x, unit.y, unit.w, unit.h);
+            }
+        },
         // draw pointer cursor
         cursor: function (sm) {
             var ctx = sm.ctx;

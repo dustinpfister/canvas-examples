@@ -11,9 +11,11 @@
 * make it so that map.js is used as part of the game state
 
 ## 0.1.0 - unit pools.
-* will need an enemy unit pool.
+* (done) will need an enemy unit pool.
 * will need a player unit pool.
 * will need a shots unit pool.
+* will need a method for drawing units
+* will need a method for drawing shots.
 * enemies will spawn from starting location.
 * enemies will select a player unit to attack
 * enemies attack player units

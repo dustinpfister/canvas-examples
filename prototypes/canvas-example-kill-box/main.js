@@ -7,6 +7,8 @@ var states = {
         update: function (sm, secs) {
 
             draw.back(ctx, canvas);
+
+            draw.units(sm, 'enemies', 'red');
             draw.cursor(sm);
             draw.ver(sm);
         },

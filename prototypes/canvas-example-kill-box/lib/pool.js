@@ -12,7 +12,7 @@ var poolMod = (function () {
                     x: opt.x === undefined ? 0 : opt.x,
                     y: opt.y === undefined ? 0 : opt.y,
                     w: opt.w === undefined ? 32 : opt.w,
-                    h: opt.h === undefined ? 32 : opt.h
+                    h: opt.h === undefined ? 32 : opt.h,
                     heading: opt.heading === undefined ? 0 : opt.heading,
                     pps: 32,
                     lifespan: opt.lifespan || 3,

@@ -6,11 +6,11 @@ var gameMod = (function () {
 
     return {
         create: function (opt) {
-
-            return {
+            var game = {
                 enemies: poolMod.create(enemyPoolOptions)
             };
-
+            console.log(game);
+            return game;
         }
     }
 }
