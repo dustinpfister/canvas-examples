@@ -34,8 +34,8 @@ var gameMod = (function () {
                 shots: [],
                 map: mapMod.create({
                     margin: {
-                        x: 0,
-                        y: 0
+                        x: 10,
+                        y: 10
                     }
                 })
             };

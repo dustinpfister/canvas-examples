@@ -17,6 +17,31 @@ var draw = (function () {
                 }
             }
         },
+        // draw a map
+        map: function (sm) {
+            var canvas = sm.canvas,
+            ctx = sm.ctx,
+            map = sm.game.map;
+            var cs = map.cellSize,
+            i = 0,
+            x,
+            y,
+            len = map.cells.length,
+            cell;
+            while (i < len) {
+                cell = map.cells[i];
+                x = map.margin.x + cell.x * cs;
+                y = map.margin.y + cell.y * cs;
+                // draw cell
+                ctx.fillStyle = 'green';
+                ctx.strokeStyle = 'white';
+                ctx.beginPath();
+                ctx.rect(x, y, 32, 32);
+                ctx.fill();
+                ctx.stroke();
+                i += 1;
+            }
+        },
         // draw pointer cursor
         cursor: function (sm) {
             var ctx = sm.ctx;

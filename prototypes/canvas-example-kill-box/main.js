@@ -8,6 +8,7 @@ var states = {
             // DRAW for game state
             // draw background
             draw.back(ctx, canvas);
+            draw.map(sm);
             // draw pools
             draw.pool(sm, 'enemies', 'red');
             draw.pool(sm, 'playerUnits', 'blue');
