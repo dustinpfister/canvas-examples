@@ -34,7 +34,7 @@ ctx.translate(0.5, 0.5);
 
 // Main State Machine Object
 var sm = {
-    ver: '0.1.0',
+    ver: '0.2.0',
     canvas: canvas,
     ctx: ctx,
     currentState: 'game',
