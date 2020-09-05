@@ -18,7 +18,7 @@
 * (done) only draw active units
 * (done) will need a player unit pool.
 * (done) will need a shots unit pool.
-* make a pkg_0.1.0.html
+* (done) make a pkg_0.1.0.html
 
 ## 0.0.0 - starting state machine
 * (done) start a lib/utils.js file
