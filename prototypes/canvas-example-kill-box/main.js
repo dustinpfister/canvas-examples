@@ -5,10 +5,14 @@ var states = {
     game: {
         // for each update tick
         update: function (sm, secs) {
-
+            // DRAW for game state
+            // draw background
             draw.back(ctx, canvas);
-
-            draw.units(sm, 'enemies', 'red');
+            // draw pools
+            draw.pool(sm, 'enemies', 'red');
+            draw.pool(sm, 'playerUnits', 'blue');
+            draw.pool(sm, 'shots', 'white');
+            // cursor and version
             draw.cursor(sm);
             draw.ver(sm);
         },

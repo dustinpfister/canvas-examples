@@ -5,7 +5,7 @@ var draw = (function () {
             ctx.fillStyle = 'black';
             ctx.fillRect(0, 0, canvas.width, canvas.height);
         },
-        units: function (sm, poolName, fill) {
+        pool: function (sm, poolName, fill) {
             var pool = sm.game[poolName],
             unit,
             i = pool.length;

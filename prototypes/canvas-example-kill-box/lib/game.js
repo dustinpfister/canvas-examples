@@ -18,6 +18,8 @@ var gameMod = (function () {
 
     var shotPoolOptions = {
         count: 10,
+        w: 5,
+        h: 5,
         spawn: function (enemy) {
             enemy.x = 0;
             enemy.y = 0;
