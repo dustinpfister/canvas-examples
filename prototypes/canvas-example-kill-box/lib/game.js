@@ -1,7 +1,7 @@
-var game = (function () {
+var gameMod = (function () {
 
     return {
-        create: function () {
+        create: function (opt) {
 
             return {
             };
