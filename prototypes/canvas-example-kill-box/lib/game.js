@@ -1,7 +1,7 @@
 var gameMod = (function () {
 
     var enemyPoolOptions = {
-        count: 20,
+        count: 5,
         spawn: function (enemy) {
             enemy.x = 128;
             enemy.y = 0;
@@ -9,22 +9,35 @@ var gameMod = (function () {
     };
 
     var playerPoolOptions = {
-        count: 20,
+        count: 5,
         spawn: function (enemy) {
             enemy.x = 128;
             enemy.y = 200;
         }
     };
 
+    var shotPoolOptions = {
+        count: 10,
+        spawn: function (enemy) {
+            enemy.x = 0;
+            enemy.y = 0;
+        }
+    };
+
     return {
         create: function (opt) {
             var game = {
-                enemies: []
+                enemies: [],
+                playerUnits: [],
+                shots: []
             };
             game.enemies = poolMod.create(enemyPoolOptions);
             game.playerUnits = poolMod.create(playerPoolOptions);
+            game.shots = poolMod.create(shotPoolOptions);
             console.log(game);
             poolMod.spawn(game.enemies);
+            poolMod.spawn(game.playerUnits);
+            poolMod.spawn(game.shots);
             return game;
         }
     }
