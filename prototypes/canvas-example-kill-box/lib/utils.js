@@ -1,5 +1,5 @@
 // UTILS
-var u = {};
+var utils = {};
 // bounding box
 utils.boundingBox = function (a, b) {
     return !(
