@@ -28,14 +28,14 @@ var poolMod = (function () {
             return pool;
         },
         // spawn the next inactive object in the given pool
-        spawn: function (pool, game, opt) {
+        spawn: function (pool, state, opt) {
             var i = pool.length,
             obj;
             while (i--) {
                 obj = pool[i];
                 if (!obj.active) {
                     obj.active = true;
-                    obj.spawn.call(obj, obj, game, opt);
+                    obj.spawn.call(obj, obj, state, opt);
                     return obj;
                 }
             }

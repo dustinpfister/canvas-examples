@@ -2,17 +2,19 @@ var gameMod = (function () {
 
     var enemyPoolOptions = {
         count: 5,
-        spawn: function (enemy) {
-            enemy.x = 128;
-            enemy.y = 0;
+        spawn: function (enemy, game, spawnOptions) {
+            var map = game.map;
+            enemy.x = map.margin.x;
+            enemy.y = map.margin.y;
         }
     };
 
     var playerPoolOptions = {
         count: 5,
-        spawn: function (enemy) {
-            enemy.x = 128;
-            enemy.y = 200;
+        spawn: function (enemy, game, spawnOptions) {
+            var map = game.map;
+            enemy.x = map.margin.x;
+            enemy.y = map.margin.y;
         }
     };
 
@@ -20,9 +22,10 @@ var gameMod = (function () {
         count: 10,
         w: 5,
         h: 5,
-        spawn: function (enemy) {
-            enemy.x = 0;
-            enemy.y = 0;
+        spawn: function (enemy, game, spawnOptions) {
+            var map = game.map;
+            enemy.x = map.margin.x;
+            enemy.y = map.margin.y;
         }
     };
 
@@ -43,9 +46,15 @@ var gameMod = (function () {
             game.playerUnits = poolMod.create(playerPoolOptions);
             game.shots = poolMod.create(shotPoolOptions);
             console.log(game);
-            poolMod.spawn(game.enemies);
-            poolMod.spawn(game.playerUnits);
-            poolMod.spawn(game.shots);
+            var spawnOptions = {
+                cellPos: {
+                    x: 0,
+                    y: 0
+                }
+            };
+            poolMod.spawn(game.enemies, game, spawnOptions);
+            poolMod.spawn(game.playerUnits, game, spawnOptions);
+            poolMod.spawn(game.shots, game, spawnOptions);
             return game;
         }
     }
