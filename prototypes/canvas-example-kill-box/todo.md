@@ -28,8 +28,8 @@
 * (done) add a map.js file to the project
 * (done) make it so that map.js is used as part of the game state
 * (done) draw.map method
-* make it so we have starting player units in the map at fixed locations
-* have some starting enemy units at the top
+* (done) make it so we have starting player units in the map at fixed locations
+* (done) have some starting enemy units at the top
 * make a pkg_0.2.0.html
 
 ## 0.1.0 - unit pools.
