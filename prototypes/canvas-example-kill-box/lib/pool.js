@@ -9,10 +9,11 @@ var poolMod = (function () {
             while (i < opt.count) {
                 pool.push({
                     active: false,
-                    x: 0,
-                    y: 0,
-                    radius: 8,
-                    heading: 0,
+                    x: opt.x === undefined ? 0 : opt.x,
+                    y: opt.y === undefined ? 0 : opt.y,
+                    w: opt.w === undefined ? 32 : opt.w,
+                    h: opt.h === undefined ? 32 : opt.h
+                    heading: opt.heading === undefined ? 0 : opt.heading,
                     pps: 32,
                     lifespan: opt.lifespan || 3,
                     data: {},
@@ -21,7 +22,6 @@ var poolMod = (function () {
                     },
                     purge: opt.purge || function (obj, state) {},
                     update: opt.update || function (obj, state, secs) {
-                        obj.x += obj.pps * secs;
                         obj.lifespan -= secs;
                     }
                 });
