@@ -2,9 +2,11 @@
 
 ## 0.3.0 - Path detection
 * make use of the path detection that was worke done in the post I wrote on it
+* enemies will spawn from starting location.
+* enemies will select a player unit to attack
 * enemies move to player unit target
 * enemies will fire at player units in range
-* place units in map
+* player units attack enemy units in range
 
 ## 0.2.0 - Have a map.js for gameMod
 * add a map.js file to the project
@@ -15,12 +17,8 @@
 * (done) will need a method for drawing units
 * (done) only draw active units
 * (done) will need a player unit pool.
-* will need a shots unit pool.
-* will need a method for drawing shots.
-* enemies will spawn from starting location.
-* enemies will select a player unit to attack
-* enemies attack player units
-* player units attack enemy units
+* (done) will need a shots unit pool.
+* make a pkg_0.1.0.html
 
 ## 0.0.0 - starting state machine
 * (done) start a lib/utils.js file
