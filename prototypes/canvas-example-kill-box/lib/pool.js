@@ -17,9 +17,7 @@ var poolMod = (function () {
                     pps: 32,
                     lifespan: opt.lifespan || 3,
                     data: {},
-                    spawn: opt.spawn || function (obj, state) {
-                        obj.active = true;
-                    },
+                    spawn: opt.spawn || function (obj, state) {},
                     purge: opt.purge || function (obj, state) {},
                     update: opt.update || function (obj, state, secs) {
                         obj.lifespan -= secs;
@@ -38,9 +36,10 @@ var poolMod = (function () {
                 if (!obj.active) {
                     obj.active = true;
                     obj.spawn.call(obj, obj, game, opt);
-                    break;
+                    return obj;
                 }
             }
+            return false;
         },
         // update a pool object by a secs value
         update: function (pool, secs, state) {

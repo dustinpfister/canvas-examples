@@ -11,8 +11,10 @@ var draw = (function () {
             i = pool.length;
             while (i--) {
                 unit = pool[i];
-                ctx.fillStyle = fill || 'white';
-                ctx.fillRect(unit.x, unit.y, unit.w, unit.h);
+                if (unit.active) {
+                    ctx.fillStyle = fill || 'white';
+                    ctx.fillRect(unit.x, unit.y, unit.w, unit.h);
+                }
             }
         },
         // draw pointer cursor
