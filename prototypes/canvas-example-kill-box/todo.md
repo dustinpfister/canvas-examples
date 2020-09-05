@@ -1,9 +1,16 @@
 # todo list for canvas-example-kill-box
 
+## 0.5.0 - Blocks and shot deflection
+* have starting player units behind blocks
+* outgoing shots fired from a unit will not be deflected by a block as long as the block is within on cell length of the unit that fired it.
+* if a shot is more than one cell length away from the unit that fired it, blocks can potentially stop a shot
+* The percentage chance of a block deflecting a shot as it passes over it is set by the angle at which it is moving
+
 ## 0.4.0 - Path detection
-* make use of the path detection that was worke done in the post I wrote on it
+* make use of the path detection that was work done in the post I wrote on it
 * enemies will spawn from starting location.
 * enemies will select a player unit to attack
+* have some starting blocks at certin locations that will set the tile as not walkable
 * enemies move to player unit target
 * enemies will fire at player units in range
 * player units attack enemy units in range
