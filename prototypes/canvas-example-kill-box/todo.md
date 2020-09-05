@@ -30,4 +30,4 @@
 * (done) have a draw.cursor method
 * (done) draw current cursor position displayed
 * (done) display version in canvas
-* make a /pkg/pkg_0.0.0.html file
+* (done) make a /pkg/pkg_0.0.0.html file
