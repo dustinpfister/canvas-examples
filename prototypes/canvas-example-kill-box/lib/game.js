@@ -8,11 +8,21 @@ var gameMod = (function () {
         }
     };
 
+    var playerPoolOptions = {
+        count: 20,
+        spawn: function (enemy) {
+            enemy.x = 128;
+            enemy.y = 200;
+        }
+    };
+
     return {
         create: function (opt) {
             var game = {
-                enemies: poolMod.create(enemyPoolOptions)
+                enemies: []
             };
+            game.enemies = poolMod.create(enemyPoolOptions);
+            game.playerUnits = poolMod.create(playerPoolOptions);
             console.log(game);
             poolMod.spawn(game.enemies);
             return game;

@@ -13,7 +13,7 @@
 ## 0.1.0 - unit pools.
 * (done) will need an enemy unit pool.
 * (done) will need a method for drawing units
-* only draw active units
+* (done) only draw active units
 * will need a player unit pool.
 * will need a shots unit pool.
 * will need a method for drawing shots.
