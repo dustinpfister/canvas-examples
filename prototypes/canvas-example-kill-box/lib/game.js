@@ -54,9 +54,11 @@ var gameMod = (function () {
                 }
             };
             poolMod.spawn(game.enemies, game, spawnOptions);
-            spawnOptions.cellPos.x = 0;
-            spawnOptions.cellPos.y = 0;
+            spawnOptions.cellPos.x = 7;
+            spawnOptions.cellPos.y = 6;
             poolMod.spawn(game.playerUnits, game, spawnOptions);
+            spawnOptions.cellPos.x = 1;
+            spawnOptions.cellPos.y = 1;
             poolMod.spawn(game.shots, game, spawnOptions);
             return game;
         }
