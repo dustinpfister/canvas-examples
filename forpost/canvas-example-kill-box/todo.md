@@ -17,8 +17,8 @@
 * make a pkg_0.4.0.html
 
 ## 0.3.0 - Units attack each other
-* enemy units attack player units in range and the same goes for player units
 * all units start with max hp of 100 for now
+* enemy units attack player units in range and the same goes for player units
 * when a unit gets hit it will loose hp
 * when a unit losses all hp it will be set inactive
 * enemy units spawn
