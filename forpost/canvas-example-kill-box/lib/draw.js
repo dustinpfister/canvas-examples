@@ -33,8 +33,8 @@ var draw = (function () {
                 x = map.margin.x + cell.x * cs;
                 y = map.margin.y + cell.y * cs;
                 // draw cell
-                ctx.fillStyle = 'green';
-                ctx.strokeStyle = 'white';
+                ctx.fillStyle = '#008800';
+                ctx.strokeStyle = '#005500';
                 ctx.beginPath();
                 ctx.rect(x, y, 32, 32);
                 ctx.fill();
