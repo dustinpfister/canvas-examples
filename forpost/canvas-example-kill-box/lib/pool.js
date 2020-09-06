@@ -14,7 +14,7 @@ var poolMod = (function () {
                     w: opt.w === undefined ? 32 : opt.w,
                     h: opt.h === undefined ? 32 : opt.h,
                     heading: opt.heading === undefined ? 0 : opt.heading,
-                    pps: 32,
+                    pps: opt.pps === undefined ? 32 : opt.pps,
                     lifespan: opt.lifespan || 3,
                     data: {},
                     spawn: opt.spawn || function (obj, state) {},

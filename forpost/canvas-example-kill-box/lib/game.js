@@ -30,23 +30,27 @@ var gameMod = (function () {
         }
     };
 
+    // create a new base game object
+    var createBaseGameObject = function (opt) {
+        return {
+            enemies: [],
+            playerUnits: [],
+            shots: [],
+            map: mapMod.create({
+                margin: {
+                    x: 10,
+                    y: 10
+                }
+            })
+        };
+    };
+
     return {
         create: function (opt) {
-            var game = {
-                enemies: [],
-                playerUnits: [],
-                shots: [],
-                map: mapMod.create({
-                    margin: {
-                        x: 10,
-                        y: 10
-                    }
-                })
-            };
+            var game = createBaseGameObject(opt);
             game.enemies = poolMod.create(enemyPoolOptions);
             game.playerUnits = poolMod.create(playerPoolOptions);
             game.shots = poolMod.create(shotPoolOptions);
-            console.log(game);
             var spawnOptions = {
                 cellPos: {
                     x: 3,
