@@ -45,12 +45,16 @@ var gameMod = (function () {
         };
     };
 
+    var createObjectPools = function (game) {
+        game.enemies = poolMod.create(enemyPoolOptions);
+        game.playerUnits = poolMod.create(playerPoolOptions);
+        game.shots = poolMod.create(shotPoolOptions);
+    };
+
     return {
         create: function (opt) {
             var game = createBaseGameObject(opt);
-            game.enemies = poolMod.create(enemyPoolOptions);
-            game.playerUnits = poolMod.create(playerPoolOptions);
-            game.shots = poolMod.create(shotPoolOptions);
+            createObjectPools(game);
             var spawnOptions = {
                 cellPos: {
                     x: 3,
