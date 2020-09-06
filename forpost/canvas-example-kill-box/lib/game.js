@@ -25,11 +25,22 @@ var gameMod = (function () {
         cell = mapMod.get(map, pos.x, pos.y);
         unit.x = map.margin.x + map.cellSize * cell.x;
         unit.y = map.margin.y + map.cellSize * cell.y;
+        console.log(unit);
+    };
+    // just create a blank base unit Object
+    var createBaseUnit = function () {
+        return {
+            HP: {
+                current: 100,
+                max: 100
+            }
+        };
     };
     // Enemy object pool options
     var enemyPoolOptions = {
         count: 5,
         spawn: function (enemy, game, spawnOptions) {
+            enemy.data = createBaseUnit();
             placeUnitInMap(game, enemy, spawnOptions.cellPos);
         }
     };
@@ -37,6 +48,7 @@ var gameMod = (function () {
     var playerPoolOptions = {
         count: 5,
         spawn: function (playerUnit, game, spawnOptions) {
+            playerUnit.data = createBaseUnit();
             placeUnitInMap(game, playerUnit, spawnOptions.cellPos);
         }
     };
@@ -46,6 +58,7 @@ var gameMod = (function () {
         w: 5,
         h: 5,
         spawn: function (shot, game, spawnOptions) {
+            shot.data = createBaseUnit();
             placeUnitInMap(game, shot, spawnOptions.cellPos);
         }
     };
