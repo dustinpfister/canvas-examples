@@ -23,11 +23,7 @@ var gameMod = (function () {
                     SPEffectMax: 50,
                     levelEffectMax: 40,
                     baseValue: 10
-                },
-                maxDPS_start: 10,
-                maxDPS_perLevel: 5,
-                maxDPS_baseStart: 1.0125,
-                maxDPS_baseSPDelta: 0.05
+                }
             }
         }, {
             name: 'Assault Blaster',
@@ -44,11 +40,7 @@ var gameMod = (function () {
                     SPEffectMax: 70,
                     levelEffectMax: 25,
                     baseValue: 5
-                },
-                maxDPS_start: 5,
-                maxDPS_perLevel: 6,
-                maxDPS_baseStart: 1.0125,
-                maxDPS_baseSPDelta: 0.0525
+                }
             }
         }, {
             name: 'Cannon',
@@ -65,11 +57,7 @@ var gameMod = (function () {
                     SPEffectMax: 300,
                     levelEffectMax: 180,
                     baseValue: 20
-                },
-                maxDPS_start: 15,
-                maxDPS_perLevel: 10,
-                maxDPS_baseStart: 1.0125,
-                maxDPS_baseSPDelta: 0.07
+                }
             }
         }, {
             name: 'Atom',
@@ -86,39 +74,12 @@ var gameMod = (function () {
                     SPEffectMax: 500,
                     levelEffectMax: 450,
                     baseValue: 50
-                },
-                maxDPS_start: 50,
-                maxDPS_perLevel: 5,
-                maxDPS_baseStart: 1.025,
-                maxDPS_baseSPDelta: 0.0125
+                }
             }
         }
     ];
-    /*
-    // SKILL POINTS
-    var createDPSObject = function (game, weaponObj, sp) {
-    var level = game.levelObj.level,
-    wepLV = weaponObj.level;
-    return {
-    i: level,
-    start: wepLV.maxDPS_start,
-    lin: wepLV.maxDPS_perLevel,
-    baseStart: wepLV.maxDPS_baseStart,
-    baseSPDelta: wepLV.maxDPS_baseSPDelta,
-    sp: sp, // skill points
-    valueOf: function () {
-    //var base = this.baseStart + this.baseSPDelta * this.sp;
-    // https://gamedev.stackexchange.com/questions/89723/how-can-i-come-up-with-a-simple-diminishing-return-equation
-    var decay = (1 - 1 / (1 + this.sp)),
-    baseSP = Math.pow(this.baseStart + decay * this.baseSPDelta, this.sp * decay),
-    linSP = this.sp * this.lin,
-    linLevel = level * this.lin;
-    return this.start + (linSP + baseSP + linLevel) * decay;
-    }
-    };
-    };
-     */
 
+    // SKILL POINTS
     var setWeaponsToLevel = function (game) {
         var level = game.levelObj.level;
         Weapons.forEach(function (weapon, i) {
