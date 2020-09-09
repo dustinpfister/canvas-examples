@@ -165,9 +165,9 @@
                 draw.back(ctx, canvas);
 
                 //??? JUST working with ATOM for now.
-                var sp = sm.game.skills.weapon_3.points,
-                w = gameMod.Weapons[3];
-                state.buttons.weaponAtom.info = sp + ' ' + Math.floor(w.maxDPS);
+                //var sp = sm.game.skills.weapon_3.points,
+                //w = gameMod.Weapons[3];
+                //state.buttons.weaponAtom.info = sp + ' ' + Math.floor(w.maxDPS);
 
                 gameMod.update(sm.game, 0);
 

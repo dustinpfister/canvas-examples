@@ -494,9 +494,7 @@ var gameMod = (function () {
         // create skill buttons to be used in the skill manager state
         createSkillButtons: function () {
 
-            var buttons = {};
-
-            return {
+            var buttons = {
                 toOptions: buttonMod.create({
                     label: 'Options',
                     x: 25,
@@ -506,15 +504,18 @@ var gameMod = (function () {
                         // set state to options
                         sm.currentState = 'options';
                     }
-                }),
-                weaponAtom: buttonMod.create({
+                })
+            };
+
+            buttons.weaponAtom = buttonMod.create({
                     label: 'Atom',
                     type: 'upgrade',
                     x: 100,
                     y: 120,
                     r: 25,
                     data: {
-                        weaponIndex: 3
+                        weaponIndex: 3,
+                        weapon: gameMod.Weapons[3]
                     },
                     onUpgrade: function (button, sm) {
                         //
@@ -533,9 +534,12 @@ var gameMod = (function () {
                     },
                     onClick: function (button, sm) {
                         //
+                        var sp = sm.game.skills['weapon_' + button.data.weaponIndex].points,
+                        w = button.data.weapon;
+                        button.info = sp + ' ' + Math.floor(w.maxDPS);
                     }
-                })
-            };
+                });
+            return buttons;
 
         }
 

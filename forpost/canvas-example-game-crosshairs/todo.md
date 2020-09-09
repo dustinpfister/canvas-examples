@@ -105,10 +105,11 @@
 * (done) have the setWeaponToLevel helper set the weapon value for each object in the weapon.level object
 * number of skill points based off of game.levelObj state
 * have a gameMod.skillSet method that will be used by upgrade buttons
-* have a gameMod.createSkillButtons method that can be used in main.js to create a collection of buttons for each upgrade
+* (done) have a gameMod.createSkillButtons method that can be used in main.js to create a collection of buttons for each upgrade
+* add skill point buttons for all weapons
+
 * skill points deduct from a total free skill point value
 * skill reset button results main free skill points to total skill points
-* add skill point buttons for all weapons
 * make a pkg_0_19_0.html
 
 ## 0.18.0 - Mana System
