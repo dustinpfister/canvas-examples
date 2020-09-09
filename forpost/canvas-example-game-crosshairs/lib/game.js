@@ -507,38 +507,42 @@ var gameMod = (function () {
                 })
             };
 
-            buttons.weaponAtom = buttonMod.create({
-                    label: 'Atom',
-                    type: 'upgrade',
-                    x: 100,
-                    y: 120,
-                    r: 25,
-                    data: {
-                        weaponIndex: 3,
-                        weapon: gameMod.Weapons[3]
-                    },
-                    onUpgrade: function (button, sm) {
-                        //
-                        var wi = button.data.weaponIndex,
-                        skill = sm.game.skills['weapon_' + wi];
-                        console.log('up');
-                        skill.points += 1;
-                        console.log(skill);
-                    },
-                    onDowngrade: function (button, sm) {
-                        var wi = button.data.weaponIndex,
-                        skill = sm.game.skills['weapon_' + wi];
-                        console.log('down');
-                        skill.points -= 1;
-                        console.log(skill);
-                    },
-                    onClick: function (button, sm) {
-                        //
-                        var sp = sm.game.skills['weapon_' + button.data.weaponIndex].points,
-                        w = button.data.weapon;
-                        button.info = sp + ' ' + Math.floor(w.maxDPS);
-                    }
-                });
+            Weapons.forEach(function (weapon, weaponIndex) {
+
+                buttons['weapon_' + weaponIndex] = buttonMod.create({
+                        label: weapon.name,
+                        type: 'upgrade',
+                        x: 50 + 60 * weaponIndex,
+                        y: 120,
+                        r: 25,
+                        data: {
+                            weaponIndex: weaponIndex,
+                            weapon: weapon
+                        },
+                        onUpgrade: function (button, sm) {
+                            //
+                            var wi = button.data.weaponIndex,
+                            skill = sm.game.skills['weapon_' + wi];
+                            console.log('up');
+                            skill.points += 1;
+                            console.log(skill);
+                        },
+                        onDowngrade: function (button, sm) {
+                            var wi = button.data.weaponIndex,
+                            skill = sm.game.skills['weapon_' + wi];
+                            console.log('down');
+                            skill.points -= 1;
+                            console.log(skill);
+                        },
+                        onClick: function (button, sm) {
+                            //
+                            var sp = sm.game.skills['weapon_' + button.data.weaponIndex].points,
+                            w = button.data.weapon;
+                            button.info = sp + ' ' + Math.floor(w.maxDPS);
+                        }
+                    });
+
+            });
             return buttons;
 
         }
