@@ -17,8 +17,9 @@
 * make a pkg_0.4.0.html
 
 ## 0.3.0 - Units attack each other
-* createBaseUnitObject helper method that contains values like HP, weapon, ect
-* all units start with max hp of 100 for now
+* (done) createBaseUnitObject helper method that contains values like HP, weapon, ect
+* (done) all units start with max hp of 100 for now
+* start a gameMode.update method
 * enemy units attack player units in range and the same goes for player units
 * when a unit gets hit it will loose hp
 * when a unit losses all hp it will be set inactive
