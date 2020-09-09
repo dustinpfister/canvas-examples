@@ -156,51 +156,15 @@
         },
 
         skillManager: {
-            buttons: {
-                toOptions: buttonMod.create({
-                    label: 'Options',
-                    x: 25,
-                    y: 200,
-                    r: 10,
-                    onClick: function (button, sm) {
-                        // set state to options
-                        sm.currentState = 'options';
-                    }
-                }),
-                weaponAtom: buttonMod.create({
-                    label: 'Atom',
-                    type: 'upgrade',
-                    x: 100,
-                    y: 120,
-                    r: 25,
-                    data: {
-                        weaponIndex: 3
-                    },
-                    onUpgrade: function (button, sm) {
-                        //
-                        var wi = button.data.weaponIndex,
-                        skill = sm.game.skills['weapon_' + wi];
-                        console.log('up');
-                        skill.points += 1;
-                        console.log(skill);
-                    },
-                    onDowngrade: function (button, sm) {
-                        var wi = button.data.weaponIndex,
-                        skill = sm.game.skills['weapon_' + wi];
-                        console.log('down');
-                        skill.points -= 1;
-                        console.log(skill);
-                    },
-                    onClick: function (button, sm) {
-                        //
-                    }
-                })
-            },
+
+            // use createSkillButtons gameMod method for buttons here
+            buttons: gameMod.createSkillButtons(),
+
             update: function (sm, secs) {
                 var state = states[sm.currentState];
                 draw.back(ctx, canvas);
 
-               //??? JUST working with ATOM for now.
+                //??? JUST working with ATOM for now.
                 var sp = sm.game.skills.weapon_3.points,
                 w = gameMod.Weapons[3];
                 state.buttons.weaponAtom.info = sp + ' ' + Math.floor(w.maxDPS);

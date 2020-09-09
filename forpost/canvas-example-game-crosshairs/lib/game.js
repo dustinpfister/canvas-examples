@@ -382,6 +382,7 @@ var gameMod = (function () {
 
         setMap: setMap,
 
+        // create a new game state object
         create: function (opt) {
             opt = opt || {};
             var game = {
@@ -455,6 +456,7 @@ var gameMod = (function () {
             return game;
         },
 
+        // update a game state object
         update: function (game, secs) {
             // do not let secs go over hard coded max secs value
             secs = secs > hardSet.maxSecs ? hardSet.maxSecs : secs;
@@ -487,6 +489,54 @@ var gameMod = (function () {
             // regenerate mana
             game.mana.current += game.mana.mps * secs;
             game.mana.current = game.mana.current > game.mana.max ? game.mana.max : game.mana.current;
+        },
+
+        // create skill buttons to be used in the skill manager state
+        createSkillButtons: function () {
+
+            var buttons = {};
+
+            return {
+                toOptions: buttonMod.create({
+                    label: 'Options',
+                    x: 25,
+                    y: 200,
+                    r: 10,
+                    onClick: function (button, sm) {
+                        // set state to options
+                        sm.currentState = 'options';
+                    }
+                }),
+                weaponAtom: buttonMod.create({
+                    label: 'Atom',
+                    type: 'upgrade',
+                    x: 100,
+                    y: 120,
+                    r: 25,
+                    data: {
+                        weaponIndex: 3
+                    },
+                    onUpgrade: function (button, sm) {
+                        //
+                        var wi = button.data.weaponIndex,
+                        skill = sm.game.skills['weapon_' + wi];
+                        console.log('up');
+                        skill.points += 1;
+                        console.log(skill);
+                    },
+                    onDowngrade: function (button, sm) {
+                        var wi = button.data.weaponIndex,
+                        skill = sm.game.skills['weapon_' + wi];
+                        console.log('down');
+                        skill.points -= 1;
+                        console.log(skill);
+                    },
+                    onClick: function (button, sm) {
+                        //
+                    }
+                })
+            };
+
         }
 
     }
