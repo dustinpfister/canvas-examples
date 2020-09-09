@@ -99,7 +99,8 @@
 * skill point allocation should be part of the save state
 
 ## 0.19.0 - Skill Point System II
-* used new xp.js that was worked out for js-javascript-example-skill-point-system
+* (done) update exp_system to new xp.js that was worked out for js-javascript-example-skill-point-system
+* use the applySkillPoints method of exp_system.js to set the value of maxDPS for weapons
 * number of skill points based off of game.levelObj state
 * have a gameMode.skillSet method that will be used by upgrade buttons
 * skill points deduct from a total free skill point value
