@@ -27,7 +27,7 @@ var gameMod = (function () {
                 manaCost: {
                     SPEffectMax: 0,
                     levelEffectMax: 0,
-                    baseValue: 1
+                    baseValue: 2
                 }
             }
         }, {
@@ -105,11 +105,11 @@ var gameMod = (function () {
         Weapons.forEach(function (weapon, i) {
             var lv = weapon.level,
             sp = game.skills['weapon_' + i].points;
-            //weapon.maxDPS = lv.maxDPS_base + lv.maxDPS_perLevel * level;
-            //weapon.maxDPS = createDPSObject(game, weapon, sp);
             // use The applySkillPoints method in XP
-            weapon.maxDPS = XP.applySkillPoints(game.levelObj, sp, weapon.level.maxDPS);
-            weapon.accuracy = 0.95 - 0.9 * (1 - level / hardSet.levelCap);
+            Object.keys(weapon.level).forEach(function (weaponStatName) {
+                weapon[weaponStatName] = XP.applySkillPoints(game.levelObj, sp, weapon.level[weaponStatName]);
+                weapon.accuracy = 0.95 - 0.9 * (1 - level / hardSet.levelCap);
+            });
         });
     };
 

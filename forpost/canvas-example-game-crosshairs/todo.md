@@ -101,7 +101,7 @@
 ## 0.19.0 - Skill Point System II
 * (done) update exp_system to new xp.js that was worked out for js-javascript-example-skill-point-system
 * (done) use the applySkillPoints method of exp_system.js to set the value of maxDPS for weapons
-* have a level object for manaCost for each weapon
+* (done) have a level object for manaCost for each weapon
 * have the setWeaponToLevel helper set the weapon value for each object in the weapon.level object
 * number of skill points based off of game.levelObj state
 * have a gameMode.skillSet method that will be used by upgrade buttons
