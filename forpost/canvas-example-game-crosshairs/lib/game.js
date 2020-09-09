@@ -74,7 +74,7 @@ var gameMod = (function () {
             }
         }
     ];
-
+/*
     // SKILL POINTS
     var createDPSObject = function (game, weaponObj, sp) {
         var level = game.levelObj.level,
@@ -97,6 +97,7 @@ var gameMod = (function () {
             }
         };
     };
+	*/
 
     var setWeaponsToLevel = function (game) {
         var level = game.levelObj.level;
@@ -104,7 +105,12 @@ var gameMod = (function () {
             var lv = weapon.level,
             sp = game.skills['weapon_' + i].points;
             //weapon.maxDPS = lv.maxDPS_base + lv.maxDPS_perLevel * level;
-            weapon.maxDPS = createDPSObject(game, weapon, sp);
+            //weapon.maxDPS = createDPSObject(game, weapon, sp);
+            weapon.maxDPS = XP.applySkillPoints(game.levelObj, sp, {
+                    SPEffectMax: 500,
+                    levelEffectMax: 450,
+                    baseValue: 50
+                });
             weapon.accuracy = 0.95 - 0.9 * (1 - level / hardSet.levelCap);
         });
     };
