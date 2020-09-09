@@ -1,6 +1,6 @@
 # canvas-examples
 
-This is all the source code for my collection of [posts on canvas examples](https://dustinpfister.github.io/2020/03/23/canvas-example/) for each canvas example in the forPost folder there should be a corresponding blog post in which I write about each canvas example in detail. 
+This is all the source code for my collection of [posts on canvas examples](https://dustinpfister.github.io/2020/03/23/canvas-example/) for each canvas example in the forPost folder there should be a corresponding blog post in which I write about a given canvas example in detail. 
 
 ## The forPost, and prototype Folders
 
