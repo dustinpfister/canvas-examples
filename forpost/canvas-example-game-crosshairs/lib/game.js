@@ -19,6 +19,11 @@ var gameMod = (function () {
             gunCount: 1,
             manaCost: 1,
             level: {
+                maxDPS: {
+                    SPEffectMax: 500,
+                    levelEffectMax: 450,
+                    baseValue: 50
+                },
                 maxDPS_start: 10,
                 maxDPS_perLevel: 5,
                 maxDPS_baseStart: 1.0125,
@@ -35,6 +40,11 @@ var gameMod = (function () {
             gunCount: 4,
             manaCost: 5,
             level: {
+                maxDPS: {
+                    SPEffectMax: 500,
+                    levelEffectMax: 450,
+                    baseValue: 50
+                },
                 maxDPS_start: 5,
                 maxDPS_perLevel: 6,
                 maxDPS_baseStart: 1.0125,
@@ -51,6 +61,11 @@ var gameMod = (function () {
             gunCount: 2,
             manaCost: 10,
             level: {
+                maxDPS: {
+                    SPEffectMax: 500,
+                    levelEffectMax: 450,
+                    baseValue: 50
+                },
                 maxDPS_start: 15,
                 maxDPS_perLevel: 10,
                 maxDPS_baseStart: 1.0125,
@@ -67,6 +82,11 @@ var gameMod = (function () {
             gunCount: 1,
             manaCost: 35,
             level: {
+                maxDPS: {
+                    SPEffectMax: 500,
+                    levelEffectMax: 450,
+                    baseValue: 50
+                },
                 maxDPS_start: 50,
                 maxDPS_perLevel: 5,
                 maxDPS_baseStart: 1.025,
@@ -74,30 +94,30 @@ var gameMod = (function () {
             }
         }
     ];
-/*
+    /*
     // SKILL POINTS
     var createDPSObject = function (game, weaponObj, sp) {
-        var level = game.levelObj.level,
-        wepLV = weaponObj.level;
-        return {
-            i: level,
-            start: wepLV.maxDPS_start,
-            lin: wepLV.maxDPS_perLevel,
-            baseStart: wepLV.maxDPS_baseStart,
-            baseSPDelta: wepLV.maxDPS_baseSPDelta,
-            sp: sp, // skill points
-            valueOf: function () {
-                //var base = this.baseStart + this.baseSPDelta * this.sp;
-                // https://gamedev.stackexchange.com/questions/89723/how-can-i-come-up-with-a-simple-diminishing-return-equation
-                var decay = (1 - 1 / (1 + this.sp)),
-                baseSP = Math.pow(this.baseStart + decay * this.baseSPDelta, this.sp * decay),
-                linSP = this.sp * this.lin,
-                linLevel = level * this.lin;
-                return this.start + (linSP + baseSP + linLevel) * decay;
-            }
-        };
+    var level = game.levelObj.level,
+    wepLV = weaponObj.level;
+    return {
+    i: level,
+    start: wepLV.maxDPS_start,
+    lin: wepLV.maxDPS_perLevel,
+    baseStart: wepLV.maxDPS_baseStart,
+    baseSPDelta: wepLV.maxDPS_baseSPDelta,
+    sp: sp, // skill points
+    valueOf: function () {
+    //var base = this.baseStart + this.baseSPDelta * this.sp;
+    // https://gamedev.stackexchange.com/questions/89723/how-can-i-come-up-with-a-simple-diminishing-return-equation
+    var decay = (1 - 1 / (1 + this.sp)),
+    baseSP = Math.pow(this.baseStart + decay * this.baseSPDelta, this.sp * decay),
+    linSP = this.sp * this.lin,
+    linLevel = level * this.lin;
+    return this.start + (linSP + baseSP + linLevel) * decay;
+    }
     };
-	*/
+    };
+     */
 
     var setWeaponsToLevel = function (game) {
         var level = game.levelObj.level;
@@ -106,11 +126,8 @@ var gameMod = (function () {
             sp = game.skills['weapon_' + i].points;
             //weapon.maxDPS = lv.maxDPS_base + lv.maxDPS_perLevel * level;
             //weapon.maxDPS = createDPSObject(game, weapon, sp);
-            weapon.maxDPS = XP.applySkillPoints(game.levelObj, sp, {
-                    SPEffectMax: 500,
-                    levelEffectMax: 450,
-                    baseValue: 50
-                });
+            // use The applySkillPoints method in XP
+            weapon.maxDPS = XP.applySkillPoints(game.levelObj, sp, weapon.level.maxDPS);
             weapon.accuracy = 0.95 - 0.9 * (1 - level / hardSet.levelCap);
         });
     };
