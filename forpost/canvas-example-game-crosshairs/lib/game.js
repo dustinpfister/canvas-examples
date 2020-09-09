@@ -23,6 +23,11 @@ var gameMod = (function () {
                     SPEffectMax: 50,
                     levelEffectMax: 40,
                     baseValue: 10
+                },
+                manaCost: {
+                    SPEffectMax: 0,
+                    levelEffectMax: 0,
+                    baseValue: 1
                 }
             }
         }, {
@@ -39,6 +44,11 @@ var gameMod = (function () {
                 maxDPS: {
                     SPEffectMax: 70,
                     levelEffectMax: 25,
+                    baseValue: 5
+                },
+                manaCost: {
+                    SPEffectMax: 0,
+                    levelEffectMax: 0,
                     baseValue: 5
                 }
             }
@@ -57,6 +67,11 @@ var gameMod = (function () {
                     SPEffectMax: 300,
                     levelEffectMax: 180,
                     baseValue: 20
+                },
+                manaCost: {
+                    SPEffectMax: 0,
+                    levelEffectMax: 0,
+                    baseValue: 10
                 }
             }
         }, {
@@ -74,6 +89,11 @@ var gameMod = (function () {
                     SPEffectMax: 500,
                     levelEffectMax: 450,
                     baseValue: 50
+                },
+                manaCost: {
+                    SPEffectMax: 0,
+                    levelEffectMax: 0,
+                    baseValue: 35
                 }
             }
         }
