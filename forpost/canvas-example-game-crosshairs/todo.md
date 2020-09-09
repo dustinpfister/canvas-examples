@@ -103,11 +103,11 @@
 * (done) use the applySkillPoints method of exp_system.js to set the value of maxDPS for weapons
 * (done) have a level object for manaCost for each weapon
 * (done) have the setWeaponToLevel helper set the weapon value for each object in the weapon.level object
+* (done) have a gameMod.createSkillButtons method that can be used in main.js to create a collection of buttons for each upgrade
+* (done) add skill point buttons for all weapons
+
 * number of skill points based off of game.levelObj state
 * have a gameMod.skillSet method that will be used by upgrade buttons
-* (done) have a gameMod.createSkillButtons method that can be used in main.js to create a collection of buttons for each upgrade
-* add skill point buttons for all weapons
-
 * skill points deduct from a total free skill point value
 * skill reset button results main free skill points to total skill points
 * make a pkg_0_19_0.html
