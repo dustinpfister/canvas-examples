@@ -105,6 +105,9 @@
 * (done) have the setWeaponToLevel helper set the weapon value for each object in the weapon.level object
 * (done) have a gameMod.createSkillButtons method that can be used in main.js to create a collection of buttons for each upgrade
 * (done) add skill point buttons for all weapons
+* add init state for state machine
+* create sm.game in init state
+* make sure Current skill points and maxDPS values are displayed for each button before they are clicked for the first time
 
 * number of skill points based off of game.levelObj state
 * have a gameMod.skillSet method that will be used by upgrade buttons

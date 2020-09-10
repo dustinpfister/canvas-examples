@@ -11,6 +11,31 @@
 
     var states = {
 
+        init: {
+            // for each update tick
+            update: function (sm, secs) {
+                sm.game = gameMod.create({
+                        canvas: canvas,
+                        totalDamage: 0,
+                        startingCellDamage: 0,
+                        mapXP: 0,
+                        mapDeltaNext: 50,
+                        mapLevelCap: 10
+                    });
+                sm.currentState = 'game';
+            },
+            // events
+            pointerStart: function (sm, e) {
+                var state = states[sm.currentState],
+                buttons = state.buttons,
+                pos = utils.getCanvasRelative(e);
+                // check buttons for options state
+                buttonMod.pointerCheckCollection(state.buttons, pos, sm);
+            },
+            pointerMove: function () {},
+            pointerEnd: function () {}
+        },
+
         // OPTIONS STATE
         options: {
             // button objects for the state
@@ -252,16 +277,9 @@
         ver: '0.19.0',
         canvas: canvas,
         debugMode: 'none',
-        currentState: 'game', //'skillManager',
+        currentState: 'init',
         ctx: ctx,
-        game: gameMod.create({
-            canvas: canvas,
-            totalDamage: 0,
-            startingCellDamage: 0,
-            mapXP: 0,
-            mapDeltaNext: 50,
-            mapLevelCap: 10
-        }),
+        game: {},
         input: {
             pointerDown: false,
             pos: {
