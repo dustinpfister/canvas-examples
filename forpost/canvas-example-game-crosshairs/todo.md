@@ -107,7 +107,7 @@
 * (done) add skill point buttons for all weapons
 * (done) add init state for state machine
 * (done) create sm.game in init state
-* make sure Current skill points and maxDPS values are displayed for each button before they are clicked for the first time
+* (done) make sure Current skill points and maxDPS values are displayed for each button before they are clicked for the first time
 
 * number of skill points based off of game.levelObj state
 * have a gameMod.skillSet method that will be used by upgrade buttons

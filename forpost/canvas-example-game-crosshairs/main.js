@@ -14,6 +14,7 @@
         init: {
             // for each update tick
             update: function (sm, secs) {
+                // create game object
                 sm.game = gameMod.create({
                         canvas: canvas,
                         totalDamage: 0,
@@ -277,9 +278,9 @@
     var sm = {
         ver: '0.19.0',
         canvas: canvas,
+        ctx: ctx,
         debugMode: 'none',
         currentState: 'init',
-        ctx: ctx,
         game: {},
         input: {
             pointerDown: false,
