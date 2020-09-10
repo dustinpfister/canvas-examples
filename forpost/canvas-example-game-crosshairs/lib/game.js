@@ -492,7 +492,7 @@ var gameMod = (function () {
         },
 
         // create skill buttons to be used in the skill manager state
-        createSkillButtons: function () {
+        createSkillButtons: function (sm) {
 
             var buttons = {
                 toOptions: buttonMod.create({
@@ -505,6 +505,12 @@ var gameMod = (function () {
                         sm.currentState = 'options';
                     }
                 })
+            };
+
+            var updateButtonDisplay = function (sm, button) {
+                var sp = sm.game.skills['weapon_' + button.data.weaponIndex].points,
+                w = button.data.weapon;
+                button.info = sp + ' ' + Math.floor(w.maxDPS);
             };
 
             Weapons.forEach(function (weapon, weaponIndex) {
@@ -535,10 +541,7 @@ var gameMod = (function () {
                             console.log(skill);
                         },
                         onClick: function (button, sm) {
-                            //
-                            var sp = sm.game.skills['weapon_' + button.data.weaponIndex].points,
-                            w = button.data.weapon;
-                            button.info = sp + ' ' + Math.floor(w.maxDPS);
+                            updateButtonDisplay(sm, button);
                         }
                     });
 

@@ -22,6 +22,7 @@
                         mapDeltaNext: 50,
                         mapLevelCap: 10
                     });
+                states.skillManager.buttons = gameMod.createSkillButtons();
                 sm.currentState = 'game';
             },
             // events
@@ -183,7 +184,7 @@
         skillManager: {
 
             // use createSkillButtons gameMod method for buttons here
-            buttons: gameMod.createSkillButtons(),
+            buttons: {},
 
             update: function (sm, secs) {
                 var state = states[sm.currentState];
