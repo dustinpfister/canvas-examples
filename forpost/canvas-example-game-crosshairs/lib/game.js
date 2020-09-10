@@ -515,7 +515,7 @@ var gameMod = (function () {
 
             Weapons.forEach(function (weapon, weaponIndex) {
 
-                buttons['weapon_' + weaponIndex] = buttonMod.create({
+                var button = buttonMod.create({
                         label: weapon.name,
                         type: 'upgrade',
                         x: 50 + 60 * weaponIndex,
@@ -544,6 +544,11 @@ var gameMod = (function () {
                             updateButtonDisplay(sm, button);
                         }
                     });
+
+                // set button to its index
+                buttons['weapon_' + weaponIndex] = button;
+                // update button display for first time
+                updateButtonDisplay(sm, button);
 
             });
             return buttons;

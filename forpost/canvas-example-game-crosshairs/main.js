@@ -22,7 +22,7 @@
                         mapDeltaNext: 50,
                         mapLevelCap: 10
                     });
-                states.skillManager.buttons = gameMod.createSkillButtons();
+                states.skillManager.buttons = gameMod.createSkillButtons(sm);
                 sm.currentState = 'game';
             },
             // events
