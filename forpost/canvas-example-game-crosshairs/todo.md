@@ -94,7 +94,6 @@
 * as game level goes up, items unlock
 
 ## 0.20.0 - save states I
-* work out a system for save states
 * game.totalDamage should be part of the save state
 * skill point allocation in game.skills should be part of the save state
 * gameMod.createSave public method for creating a save state string

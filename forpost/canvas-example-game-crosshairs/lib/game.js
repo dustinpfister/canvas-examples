@@ -395,9 +395,25 @@ var gameMod = (function () {
         });
         game.skillPoints.free = game.skillPoints.total - total;
     };
+    // set total skill points base on game.levelObj
     var setSkillPointTotal = function (game) {
         game.skillPoints.total = (game.levelObj.level - 1) * 5;
         setFreeFromSkills(game);
+    };
+
+    // SAVE STATES
+
+    // create a save string from a game object
+    var createSaveString = function (game) {
+        // total damage
+        var damage = Math.floor(Number(game.totalDamage)),
+        str = damage.toString(36) + ';';
+        // skill points
+        Object.keys(game.skills).forEach(function (skillKey) {
+            str += game.skills[skillKey].points.toString(36) + '-';
+        });
+        str += ';';
+        return str;
     };
 
     var api = {};
@@ -428,7 +444,7 @@ var gameMod = (function () {
                 },
                 weapon_3: {
                     points: 0
-                },
+                }
             },
             mana: {
                 current: 50,
@@ -479,6 +495,7 @@ var gameMod = (function () {
         // reset skills for now
         resetSkills(game);
         setSkillPointTotal(game);
+
         return game;
     };
 
@@ -592,6 +609,9 @@ var gameMod = (function () {
                     },
                     onClick: function (button, sm) {
                         updateButtonDisplay(sm, button);
+
+                        console.log(createSaveString(sm.game));
+
                     }
                 });
             // set button to its index
