@@ -491,7 +491,19 @@ var gameMod = (function () {
         game.mana.current = game.mana.current > game.mana.max ? game.mana.max : game.mana.current;
     };
 
-    // create skill buttons to be used in the skill manager state
+    // CREATE SKILL BUTTONS to be used in the skill manager state
+    // update button display helper
+    var updateButtonDisplay = function (sm, button) {
+        var sp = sm.game.skills['weapon_' + button.data.weaponIndex].points,
+        w = button.data.weapon;
+        button.info = sp + ' ' + Math.floor(w.maxDPS);
+    };
+    // set a skills sp value
+    var setSkill = function(sm, skillKey, spValue){
+        var skill = sm.game.skills[skillKey];
+        skill.points = spValue;
+    }
+    // public createSkillButton method
     api.createSkillButtons = function (sm) {
         // start with a buttons object
         var buttons = {
@@ -506,12 +518,7 @@ var gameMod = (function () {
                 }
             })
         };
-        // update button display helper
-        var updateButtonDisplay = function (sm, button) {
-            var sp = sm.game.skills['weapon_' + button.data.weaponIndex].points,
-            w = button.data.weapon;
-            button.info = sp + ' ' + Math.floor(w.maxDPS);
-        };
+
         // have a button for each weapon
         Weapons.forEach(function (weapon, weaponIndex) {
             var button = buttonMod.create({
@@ -526,13 +533,18 @@ var gameMod = (function () {
                     },
                     onUpgrade: function (button, sm) {
                         var wi = button.data.weaponIndex,
-                        skill = sm.game.skills['weapon_' + wi];
-                        skill.points += 1;
+                        skillKey = 'weapon_' + wi,
+                        skill = sm.game.skills[skillKey];
+                        setSkill(sm, skillKey, skill.points += 1);
                     },
                     onDowngrade: function (button, sm) {
+                        //var wi = button.data.weaponIndex,
+                        //skill = sm.game.skills['weapon_' + wi];
+                        //skill.points -= 1;
                         var wi = button.data.weaponIndex,
-                        skill = sm.game.skills['weapon_' + wi];
-                        skill.points -= 1;
+                        skillKey = 'weapon_' + wi,
+                        skill = sm.game.skills[skillKey];
+                        setSkill(sm, skillKey, skill.points -= 1);
                     },
                     onClick: function (button, sm) {
                         updateButtonDisplay(sm, button);
