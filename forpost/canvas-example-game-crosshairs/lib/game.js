@@ -377,13 +377,13 @@ var gameMod = (function () {
         game.mana.max = mLv.maxStart + mLv.maxPerLevel * level;
     };
 
-    return {
-        Weapons: Weapons,
+    var api = {};
+        api.Weapons = Weapons;
 
-        setMap: setMap,
+        api.setMap = setMap;
 
         // create a new game state object
-        create: function (opt) {
+        api.create = function (opt) {
             opt = opt || {};
             var game = {
                 levelObj: {}, // main level object for the player
@@ -454,10 +454,10 @@ var gameMod = (function () {
             // set weapons to level for first time
             setWeaponsToLevel(game);
             return game;
-        },
+        };
 
         // update a game state object
-        update: function (game, secs) {
+        api.update = function (game, secs) {
             // do not let secs go over hard coded max secs value
             secs = secs > hardSet.maxSecs ? hardSet.maxSecs : secs;
             // set shot rate based on current weapon
@@ -492,7 +492,7 @@ var gameMod = (function () {
         },
 
         // create skill buttons to be used in the skill manager state
-        createSkillButtons: function (sm) {
+        api.createSkillButtons = function (sm) {
 
             var buttons = {
                 toOptions: buttonMod.create({
@@ -526,7 +526,6 @@ var gameMod = (function () {
                             weapon: weapon
                         },
                         onUpgrade: function (button, sm) {
-                            //
                             var wi = button.data.weaponIndex,
                             skill = sm.game.skills['weapon_' + wi];
                             console.log('up');
@@ -552,10 +551,9 @@ var gameMod = (function () {
 
             });
             return buttons;
+        };
 
-        }
-
-    }
+    return api;
 
 }
     ());

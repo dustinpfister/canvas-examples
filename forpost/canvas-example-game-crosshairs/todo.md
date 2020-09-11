@@ -98,6 +98,8 @@
 * game.totalDamage should be part of the save state
 * skill point allocation should be part of the save state
 
+
+
 ## 0.19.0 - Skill Point System II
 * (done) update exp_system to new xp.js that was worked out for js-javascript-example-skill-point-system
 * (done) use the applySkillPoints method of exp_system.js to set the value of maxDPS for weapons
@@ -109,10 +111,12 @@
 * (done) create sm.game in init state
 * (done) make sure Current skill points and maxDPS values are displayed for each button before they are clicked for the first time
 
-* number of skill points based off of game.levelObj state
-* have a gameMod.skillSet method that will be used by upgrade buttons
+* (done) break the public API object down in gameMod so that public methods are defined as api.publicMethod
+* have a skillSet helper method in gameMod that will be used by upgrade buttons
+
 * skill points deduct from a total free skill point value
 * skill reset button results main free skill points to total skill points
+* number of skill points based off of game.levelObj state
 * make a pkg_0_19_0.html
 
 ## 0.18.0 - Mana System
