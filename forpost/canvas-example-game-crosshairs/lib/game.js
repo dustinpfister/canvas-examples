@@ -378,180 +378,174 @@ var gameMod = (function () {
     };
 
     var api = {};
-        api.Weapons = Weapons;
+    api.Weapons = Weapons;
 
-        api.setMap = setMap;
+    api.setMap = setMap;
 
-        // create a new game state object
-        api.create = function (opt) {
-            opt = opt || {};
-            var game = {
-                levelObj: {}, // main level object for the player
-                mapLevelObj: {}, // level object for the map
-                canvas: opt.canvas,
-                skillPoints: {
-                    total: 100,
-                    free: 50
+    // create a new game state object
+    api.create = function (opt) {
+        opt = opt || {};
+        var game = {
+            levelObj: {}, // main level object for the player
+            mapLevelObj: {}, // level object for the map
+            canvas: opt.canvas,
+            skillPoints: {
+                total: 100,
+                free: 50
+            },
+            skills: {
+                weapon_0: {
+                    points: 0
                 },
-                skills: {
-                    weapon_0: {
-                        points: 0
-                    },
-                    weapon_1: {
-                        points: 0
-                    },
-                    weapon_2: {
-                        points: 0
-                    },
-                    weapon_3: {
-                        points: 0
-                    },
+                weapon_1: {
+                    points: 0
                 },
-                mana: {
-                    current: 50,
-                    max: 100,
-                    mps: 10,
-                    level: {
-                        mpsStart: 9,
-                        mpsPerLevel: 1,
-                        maxStart: 90,
-                        maxPerLevel: 10
-                    }
+                weapon_2: {
+                    points: 0
                 },
-                map: {},
-                cross: {},
-                shots: poolMod.create(shotOptions),
-                explosions: poolMod.create(explosionOptions),
-                shotRate: 1,
-                shotSecs: 0,
-                weaponIndex: 3,
-                totalDamage: opt.totalDamage || 0,
-                userDown: false,
-                autoPlay: {
-                    enabled: true,
-                    behavior: 'total-kill',
-                    stopAtPercentRemain: 0,
-                    delay: 5,
-                    maxDelay: 5,
-                    mode: 'move',
-                    shootTime: 5,
-                    maxShootTime: 5,
-                    target: {
-                        x: -16,
-                        y: -16,
-                        d: 0
-                    }
+                weapon_3: {
+                    points: 0
+                },
+            },
+            mana: {
+                current: 50,
+                max: 100,
+                mps: 10,
+                level: {
+                    mpsStart: 9,
+                    mpsPerLevel: 1,
+                    maxStart: 90,
+                    maxPerLevel: 10
                 }
-            };
-            // setup game level object
-            game.levelObj = XP.parseByXP(game.totalDamage, hardSet.levelCap, hardSet.deltaNext);
-            // create cross object
-            game.cross = crossMod.create();
-            // set up map
-            setMap(game, opt.mapXP === undefined ? 0 : opt.mapXP || 0, opt.mapDeltaNext, opt.mapLevelCap || 50, opt.startingCellDamage);
-            // first autoPlay target
-            autoPlay.setRandomTarget(game);
-            // set weapons to level for first time
-            setWeaponsToLevel(game);
-            return game;
-        };
-
-        // update a game state object
-        api.update = function (game, secs) {
-            // do not let secs go over hard coded max secs value
-            secs = secs > hardSet.maxSecs ? hardSet.maxSecs : secs;
-            // set shot rate based on current weapon
-            game.shotRate = Weapons[game.weaponIndex].shotRate;
-            // cross object
-            crossMod.update(game.cross, secs);
-            // map
-            mapMod.clampOffset(game.map, game.cross.offset);
-            mapMod.update(game.map, secs);
-            // update pools
-            poolMod.update(game.shots, game, secs);
-            poolMod.update(game.explosions, game, secs);
-            // shoot
-            game.shotSecs += secs;
-            game.shotSecs = game.shotSecs >= game.shotRate ? game.shotRate : game.shotSecs;
-            if (crossMod.isInInner(game.cross) && game.cross.userDown) {
-                shoot(game);
+            },
+            map: {},
+            cross: {},
+            shots: poolMod.create(shotOptions),
+            explosions: poolMod.create(explosionOptions),
+            shotRate: 1,
+            shotSecs: 0,
+            weaponIndex: 3,
+            totalDamage: opt.totalDamage || 0,
+            userDown: false,
+            autoPlay: {
+                enabled: true,
+                behavior: 'total-kill',
+                stopAtPercentRemain: 0,
+                delay: 5,
+                maxDelay: 5,
+                mode: 'move',
+                shootTime: 5,
+                maxShootTime: 5,
+                target: {
+                    x: -16,
+                    y: -16,
+                    d: 0
+                }
             }
-            // AutoPlay
-            autoPlay.update(game, secs);
-            // update level object
-            game.levelObj = XP.parseByXP(game.totalDamage, hardSet.levelCap, hardSet.deltaNext);
-
-            // apply game.level to weapons
-            setWeaponsToLevel(game);
-
-            setManaToLevel(game);
-
-            // regenerate mana
-            game.mana.current += game.mana.mps * secs;
-            game.mana.current = game.mana.current > game.mana.max ? game.mana.max : game.mana.current;
-        },
-
-        // create skill buttons to be used in the skill manager state
-        api.createSkillButtons = function (sm) {
-
-            var buttons = {
-                toOptions: buttonMod.create({
-                    label: 'Options',
-                    x: 25,
-                    y: 200,
-                    r: 10,
-                    onClick: function (button, sm) {
-                        // set state to options
-                        sm.currentState = 'options';
-                    }
-                })
-            };
-
-            var updateButtonDisplay = function (sm, button) {
-                var sp = sm.game.skills['weapon_' + button.data.weaponIndex].points,
-                w = button.data.weapon;
-                button.info = sp + ' ' + Math.floor(w.maxDPS);
-            };
-
-            Weapons.forEach(function (weapon, weaponIndex) {
-
-                var button = buttonMod.create({
-                        label: weapon.name,
-                        type: 'upgrade',
-                        x: 50 + 60 * weaponIndex,
-                        y: 120,
-                        r: 25,
-                        data: {
-                            weaponIndex: weaponIndex,
-                            weapon: weapon
-                        },
-                        onUpgrade: function (button, sm) {
-                            var wi = button.data.weaponIndex,
-                            skill = sm.game.skills['weapon_' + wi];
-                            console.log('up');
-                            skill.points += 1;
-                            console.log(skill);
-                        },
-                        onDowngrade: function (button, sm) {
-                            var wi = button.data.weaponIndex,
-                            skill = sm.game.skills['weapon_' + wi];
-                            console.log('down');
-                            skill.points -= 1;
-                            console.log(skill);
-                        },
-                        onClick: function (button, sm) {
-                            updateButtonDisplay(sm, button);
-                        }
-                    });
-
-                // set button to its index
-                buttons['weapon_' + weaponIndex] = button;
-                // update button display for first time
-                updateButtonDisplay(sm, button);
-
-            });
-            return buttons;
         };
+        // setup game level object
+        game.levelObj = XP.parseByXP(game.totalDamage, hardSet.levelCap, hardSet.deltaNext);
+        // create cross object
+        game.cross = crossMod.create();
+        // set up map
+        setMap(game, opt.mapXP === undefined ? 0 : opt.mapXP || 0, opt.mapDeltaNext, opt.mapLevelCap || 50, opt.startingCellDamage);
+        // first autoPlay target
+        autoPlay.setRandomTarget(game);
+        // set weapons to level for first time
+        setWeaponsToLevel(game);
+        return game;
+    };
+
+    // update a game state object
+    api.update = function (game, secs) {
+        // do not let secs go over hard coded max secs value
+        secs = secs > hardSet.maxSecs ? hardSet.maxSecs : secs;
+        // set shot rate based on current weapon
+        game.shotRate = Weapons[game.weaponIndex].shotRate;
+        // cross object
+        crossMod.update(game.cross, secs);
+        // map
+        mapMod.clampOffset(game.map, game.cross.offset);
+        mapMod.update(game.map, secs);
+        // update pools
+        poolMod.update(game.shots, game, secs);
+        poolMod.update(game.explosions, game, secs);
+        // shoot
+        game.shotSecs += secs;
+        game.shotSecs = game.shotSecs >= game.shotRate ? game.shotRate : game.shotSecs;
+        if (crossMod.isInInner(game.cross) && game.cross.userDown) {
+            shoot(game);
+        }
+        // AutoPlay
+        autoPlay.update(game, secs);
+        // update level object
+        game.levelObj = XP.parseByXP(game.totalDamage, hardSet.levelCap, hardSet.deltaNext);
+
+        // apply game.level to weapons
+        setWeaponsToLevel(game);
+
+        setManaToLevel(game);
+
+        // regenerate mana
+        game.mana.current += game.mana.mps * secs;
+        game.mana.current = game.mana.current > game.mana.max ? game.mana.max : game.mana.current;
+    };
+
+    // create skill buttons to be used in the skill manager state
+    api.createSkillButtons = function (sm) {
+        // start with a buttons object
+        var buttons = {
+            toOptions: buttonMod.create({
+                label: 'Options',
+                x: 25,
+                y: 200,
+                r: 10,
+                onClick: function (button, sm) {
+                    // set state to options
+                    sm.currentState = 'options';
+                }
+            })
+        };
+        // update button display helper
+        var updateButtonDisplay = function (sm, button) {
+            var sp = sm.game.skills['weapon_' + button.data.weaponIndex].points,
+            w = button.data.weapon;
+            button.info = sp + ' ' + Math.floor(w.maxDPS);
+        };
+        // have a button for each weapon
+        Weapons.forEach(function (weapon, weaponIndex) {
+            var button = buttonMod.create({
+                    label: weapon.name,
+                    type: 'upgrade',
+                    x: 50 + 60 * weaponIndex,
+                    y: 120,
+                    r: 25,
+                    data: {
+                        weaponIndex: weaponIndex,
+                        weapon: weapon
+                    },
+                    onUpgrade: function (button, sm) {
+                        var wi = button.data.weaponIndex,
+                        skill = sm.game.skills['weapon_' + wi];
+                        skill.points += 1;
+                    },
+                    onDowngrade: function (button, sm) {
+                        var wi = button.data.weaponIndex,
+                        skill = sm.game.skills['weapon_' + wi];
+                        skill.points -= 1;
+                    },
+                    onClick: function (button, sm) {
+                        updateButtonDisplay(sm, button);
+                    }
+                });
+            // set button to its index
+            buttons['weapon_' + weaponIndex] = button;
+            // update button display for first time
+            updateButtonDisplay(sm, button);
+
+        });
+        return buttons;
+    };
 
     return api;
 
