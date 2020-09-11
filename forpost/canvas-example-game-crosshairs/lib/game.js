@@ -499,11 +499,14 @@ var gameMod = (function () {
         button.info = sp + ' ' + Math.floor(w.maxDPS);
     };
     // set a skills sp value
-    var setSkill = function(sm, skillKey, spValue){
+    var setSkill = function (sm, skillKey, spValue) {
         var skill = sm.game.skills[skillKey],
+        skillPoints = sm.game.skillPoints,
         delta = spValue - skill.points;
-console.log(delta);
-        skill.points += delta;
+        if (skillPoints.free - delta >= 0) {
+            skillPoints.free -= delta
+            skill.points += delta;
+        }
     };
     // public createSkillButton method
     api.createSkillButtons = function (sm) {
