@@ -3,7 +3,7 @@ var gameMod = (function () {
     // hard coded settings
     var hardSet = {
         maxSecs: 0.25, // max seconds for sec value used in updates
-        deltaNext: 100000, // deltaNext and levelCap
+        deltaNext: 1000,//100000, // deltaNext and levelCap
         levelCap: 100
     };
 
@@ -385,7 +385,7 @@ var gameMod = (function () {
         });
         game.skillPoints.free = game.skillPoints.total;
     };
-
+    // set free skill points value from total of skills
     var setFreeFromSkills = function (game) {
         var total = 0;
         Object.keys(game.skills).forEach(function (skillKey) {
@@ -393,6 +393,10 @@ var gameMod = (function () {
             total += skill.points;
         });
         game.skillPoints.free = game.skillPoints.total - total;
+    };
+    var setSkillPointTotal = function (game) {
+        game.skillPoints.total = (game.levelObj.level - 1) * 5;
+        setFreeFromSkills(game);
     };
 
     var api = {};
@@ -473,6 +477,7 @@ var gameMod = (function () {
         setWeaponsToLevel(game);
         // reset skills for now
         resetSkills(game);
+        setSkillPointTotal(game);
         return game;
     };
 
@@ -504,11 +509,13 @@ var gameMod = (function () {
         // apply game.level to weapons
         setWeaponsToLevel(game);
 
+        // Mana
         setManaToLevel(game);
-
-        // regenerate mana
         game.mana.current += game.mana.mps * secs;
         game.mana.current = game.mana.current > game.mana.max ? game.mana.max : game.mana.current;
+
+        // skill points
+        setSkillPointTotal(game);
     };
 
     // CREATE SKILL BUTTONS to be used in the skill manager state

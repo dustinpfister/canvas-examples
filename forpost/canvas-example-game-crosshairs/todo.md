@@ -114,7 +114,7 @@
 * (done) skill points deduct from a total free skill point value
 * (done) if there are not enough free skill points the skill will not be increased
 * (done) skillsReset helper in gameMod that will reset all skills to 0 and set skillPoints.free to skillPoints.total
-* setFreeFromSkills helper that will set the game.skillPoints.free value from the game.skills object
+* (done) setFreeFromSkills helper that will set the game.skillPoints.free value from the game.skills object
 * skill reset button results main free skill points to total skill points
 
 * number of skill points based off of game.levelObj state
