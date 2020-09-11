@@ -380,10 +380,19 @@ var gameMod = (function () {
     // reset skills helper
     var resetSkills = function (game) {
         Object.keys(game.skills).forEach(function (skillKey) {
-            var skill = game.skills[skillKey]
-                skill.points = 0;
+            var skill = game.skills[skillKey];
+            skill.points = 0;
         });
         game.skillPoints.free = game.skillPoints.total;
+    };
+
+    var setFreeFromSkills = function (game) {
+        var total = 0;
+        Object.keys(game.skills).forEach(function (skillKey) {
+            var skill = game.skills[skillKey];
+            total += skill.points;
+        });
+        game.skillPoints.free = game.skillPoints.total - total;
     };
 
     var api = {};
