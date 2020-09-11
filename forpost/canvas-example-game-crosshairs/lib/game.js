@@ -3,7 +3,7 @@ var gameMod = (function () {
     // hard coded settings
     var hardSet = {
         maxSecs: 0.25, // max seconds for sec value used in updates
-        deltaNext: 1000,//100000, // deltaNext and levelCap
+        deltaNext: 1000, //100000, // deltaNext and levelCap
         levelCap: 100
     };
 
@@ -384,6 +384,7 @@ var gameMod = (function () {
             skill.points = 0;
         });
         game.skillPoints.free = game.skillPoints.total;
+        setWeaponsToLevel(game);
     };
     // set free skill points value from total of skills
     var setFreeFromSkills = function (game) {
@@ -547,6 +548,22 @@ var gameMod = (function () {
                 onClick: function (button, sm) {
                     // set state to options
                     sm.currentState = 'options';
+                }
+            }),
+            resetSkills: buttonMod.create({
+                label: 'Reset',
+                x: 75,
+                y: 200,
+                r: 10,
+                onClick: function (button, sm) {
+                    // set state to options
+                    //sm.currentState = 'options';
+                    resetSkills(sm.game);
+
+                    Weapons.forEach(function (weapon, weaponIndex) {
+                        var button = buttons['weapon_' + weaponIndex];
+                        updateButtonDisplay(sm, button);
+                    });
                 }
             })
         };

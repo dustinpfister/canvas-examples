@@ -17,7 +17,7 @@
                 // create game object
                 sm.game = gameMod.create({
                         canvas: canvas,
-                        totalDamage: 0,
+                        totalDamage: 2000,
                         startingCellDamage: 0,
                         mapXP: 0,
                         mapDeltaNext: 50,
