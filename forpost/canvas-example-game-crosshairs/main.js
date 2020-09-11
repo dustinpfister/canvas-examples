@@ -277,7 +277,7 @@
     };
 
     var sm = {
-        ver: '0.19.0',
+        ver: '0.20.0',
         canvas: canvas,
         ctx: ctx,
         debugMode: 'none',

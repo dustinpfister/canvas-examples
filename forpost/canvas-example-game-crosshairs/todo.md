@@ -93,10 +93,15 @@
 * all skills locked at game level 1
 * as game level goes up, items unlock
 
-## 0.x.0 - save state
+## 0.20.0 - save states I
 * work out a system for save states
 * game.totalDamage should be part of the save state
-* skill point allocation should be part of the save state
+* skill point allocation in game.skills should be part of the save state
+* gameMod.createSave public method for creating a save state string
+* gameMod.create can accept a saveString as an argument and create a new game state from that
+* have game autoSave on each frame tick for now
+* use the init state in main.js as a place to check for a saveString via local storage
+* have a clearSave button in options
 
 ## 0.19.0 - Skill Point System II
 * (done) update exp_system to new xp.js that was worked out for js-javascript-example-skill-point-system
