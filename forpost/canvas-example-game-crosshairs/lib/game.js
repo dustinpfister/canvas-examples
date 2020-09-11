@@ -377,6 +377,15 @@ var gameMod = (function () {
         game.mana.max = mLv.maxStart + mLv.maxPerLevel * level;
     };
 
+    // reset skills helper
+    var resetSkills = function (game) {
+        Object.keys(game.skills).forEach(function (skillKey) {
+            var skill = game.skills[skillKey]
+                skill.points = 0;
+        });
+        game.skillPoints.free = game.skillPoints.total;
+    };
+
     var api = {};
     api.Weapons = Weapons;
 
@@ -453,6 +462,8 @@ var gameMod = (function () {
         autoPlay.setRandomTarget(game);
         // set weapons to level for first time
         setWeaponsToLevel(game);
+        // reset skills for now
+        resetSkills(game);
         return game;
     };
 
@@ -498,14 +509,6 @@ var gameMod = (function () {
         w = button.data.weapon;
         button.info = sp + ' ' + Math.floor(w.maxDPS);
     };
-    // reset skills helper
-    var resetSkills = function (sm) {
-        Object.keys(sm.game.skills).forEach(function (skillKey) {
-            var skill = sm.game.skills[skillKey]
-                skill.points = 0;
-        });
-        sm.game.skillPoints.free = sm.game.skillPoints.total;
-    };
     // set a skills sp value
     var setSkill = function (sm, skillKey, spValue) {
         var skill = sm.game.skills[skillKey],
@@ -532,7 +535,6 @@ var gameMod = (function () {
             })
         };
 
-        resetSkills(sm);
         // have a button for each weapon
         Weapons.forEach(function (weapon, weaponIndex) {
             var button = buttonMod.create({
