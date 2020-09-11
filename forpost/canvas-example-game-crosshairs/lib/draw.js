@@ -74,7 +74,6 @@ var draw = (function () {
         ctx.textAlign = 'center';
         ctx.fillText('Weapon: ' + w.name, center.x, center.y + 75);
         ctx.fillText('maxDPS: ' + Number(w.maxDPS).toFixed(2), center.x, center.y + 85);
-
     };
 
     // draw a health bar for a cell
@@ -328,6 +327,12 @@ var draw = (function () {
         },
         debug: function (sm) {
             debugModes[sm.debugMode](sm, sm.ctx, sm.canvas);
+        },
+        skillPointInfo: function(ctx, sm){
+            var skillPoints = sm.game.skillPoints;
+            ctx.fillStyle = 'white';
+            ctx.textAlign = 'left';
+            ctx.fillText('skillPoints: ' + skillPoints.free + '/' + skillPoints.total, 10,10);
         },
         ver: function (ctx, sm) {
             ctx.fillStyle = '#dfdfdf';

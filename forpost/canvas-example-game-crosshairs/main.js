@@ -199,6 +199,7 @@
                 gameMod.update(sm.game, 0);
 
                 draw.buttons(ctx, state.buttons);
+                draw.skillPointInfo(ctx, sm);
                 draw.ver(ctx, sm);
                 draw.debug(sm);
             },
