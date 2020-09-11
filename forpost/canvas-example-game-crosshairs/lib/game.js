@@ -500,9 +500,11 @@ var gameMod = (function () {
     };
     // set a skills sp value
     var setSkill = function(sm, skillKey, spValue){
-        var skill = sm.game.skills[skillKey];
-        skill.points = spValue;
-    }
+        var skill = sm.game.skills[skillKey],
+        delta = spValue - skill.points;
+console.log(delta);
+        skill.points += delta;
+    };
     // public createSkillButton method
     api.createSkillButtons = function (sm) {
         // start with a buttons object
@@ -535,16 +537,13 @@ var gameMod = (function () {
                         var wi = button.data.weaponIndex,
                         skillKey = 'weapon_' + wi,
                         skill = sm.game.skills[skillKey];
-                        setSkill(sm, skillKey, skill.points += 1);
+                        setSkill(sm, skillKey, skill.points + 1);
                     },
                     onDowngrade: function (button, sm) {
-                        //var wi = button.data.weaponIndex,
-                        //skill = sm.game.skills['weapon_' + wi];
-                        //skill.points -= 1;
                         var wi = button.data.weaponIndex,
                         skillKey = 'weapon_' + wi,
                         skill = sm.game.skills[skillKey];
-                        setSkill(sm, skillKey, skill.points -= 1);
+                        setSkill(sm, skillKey, skill.points - 1);
                     },
                     onClick: function (button, sm) {
                         updateButtonDisplay(sm, button);

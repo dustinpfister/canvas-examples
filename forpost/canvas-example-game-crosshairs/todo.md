@@ -112,9 +112,10 @@
 * (done) make sure Current skill points and maxDPS values are displayed for each button before they are clicked for the first time
 
 * (done) break the public API object down in gameMod so that public methods are defined as api.publicMethod
-* have a skillSet helper method in gameMod that will be used by upgrade buttons
-
+* (done) have a skillSet helper method in gameMod that will be used by upgrade buttons
 * skill points deduct from a total free skill point value
+* display free skill points in skillManager state
+
 * skill reset button results main free skill points to total skill points
 * number of skill points based off of game.levelObj state
 * make a pkg_0_19_0.html
