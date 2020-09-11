@@ -509,12 +509,10 @@ var gameMod = (function () {
 
         // apply game.level to weapons
         setWeaponsToLevel(game);
-
         // Mana
         setManaToLevel(game);
         game.mana.current += game.mana.mps * secs;
         game.mana.current = game.mana.current > game.mana.max ? game.mana.max : game.mana.current;
-
         // skill points
         setSkillPointTotal(game);
     };
@@ -532,7 +530,7 @@ var gameMod = (function () {
         skillPoints = sm.game.skillPoints,
         delta = spValue - skill.points;
         if (skillPoints.free - delta >= 0 && skill.points + delta >= 0) {
-            skillPoints.free -= delta
+            skillPoints.free -= delta;
             skill.points += delta;
         }
     };

@@ -118,7 +118,7 @@
 * (done) number of skill points based off of game.levelObj state
 * (done) skill points just go up by 5 for each level for now
 * (done) skill reset button results main free skill points to total skill points
-* make a pkg_0_19_0.html
+* (done) make a pkg_0_19_0.html
 
 ## 0.18.0 - Mana System
 * (done) skill point gains are way to trivial at low levels
