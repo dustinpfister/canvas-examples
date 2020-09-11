@@ -416,6 +416,12 @@ var gameMod = (function () {
         return str;
     };
 
+    // apply a save string to the given game object
+    var applySaveString = function (game, saveStr) {
+        var damage = saveStr.match(/\w+/);
+        console.log(parseInt(damage, 36));
+    };
+
     var api = {};
     api.Weapons = Weapons;
 
@@ -610,7 +616,9 @@ var gameMod = (function () {
                     onClick: function (button, sm) {
                         updateButtonDisplay(sm, button);
 
-                        console.log(createSaveString(sm.game));
+                        var saveStr = createSaveString(sm.game);
+                        console.log(saveStr);
+                        applySaveString(sm.game, saveStr);
 
                     }
                 });
