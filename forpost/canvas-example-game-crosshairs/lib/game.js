@@ -503,7 +503,7 @@ var gameMod = (function () {
         var skill = sm.game.skills[skillKey],
         skillPoints = sm.game.skillPoints,
         delta = spValue - skill.points;
-        if (skillPoints.free - delta >= 0) {
+        if (skillPoints.free - delta >= 0 && skill.points + delta >= 0) {
             skillPoints.free -= delta
             skill.points += delta;
         }
