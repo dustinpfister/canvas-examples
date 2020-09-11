@@ -117,7 +117,7 @@
 * (done) setFreeFromSkills helper that will set the game.skillPoints.free value from the game.skills object
 * (done) number of skill points based off of game.levelObj state
 * (done) skill points just go up by 5 for each level for now
-* skill reset button results main free skill points to total skill points
+* (done) skill reset button results main free skill points to total skill points
 * make a pkg_0_19_0.html
 
 ## 0.18.0 - Mana System
