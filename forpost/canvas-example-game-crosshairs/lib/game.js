@@ -498,6 +498,14 @@ var gameMod = (function () {
         w = button.data.weapon;
         button.info = sp + ' ' + Math.floor(w.maxDPS);
     };
+    // reset skills helper
+    var resetSkills = function (sm) {
+        Object.keys(sm.game.skills).forEach(function (skillKey) {
+            var skill = sm.game.skills[skillKey]
+                skill.points = 0;
+        });
+        sm.game.skillPoints.free = sm.game.skillPoints.total;
+    };
     // set a skills sp value
     var setSkill = function (sm, skillKey, spValue) {
         var skill = sm.game.skills[skillKey],
@@ -524,6 +532,7 @@ var gameMod = (function () {
             })
         };
 
+        resetSkills(sm);
         // have a button for each weapon
         Weapons.forEach(function (weapon, weaponIndex) {
             var button = buttonMod.create({

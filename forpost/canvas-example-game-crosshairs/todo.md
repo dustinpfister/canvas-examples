@@ -111,11 +111,15 @@
 * (done) break the public API object down in gameMod so that public methods are defined as api.publicMethod
 * (done) have a skillSet helper method in gameMod that will be used by upgrade buttons
 * (done) display free skill points in skillManager state
-* skill points deduct from a total free skill point value
-* if there are not enough skill points the skill will not be increased
+* (done) skill points deduct from a total free skill point value
+* (done) if there are not enough free skill points the skill will not be increased
 
+* skillsReset helper in gameMod that will reset all skills to 0 and set skillPoints.free to skillPoints.total
+* setFreeFromSkills helper that will set the game.skillPoints.free value from the game.skills object
 * skill reset button results main free skill points to total skill points
+
 * number of skill points based off of game.levelObj state
+* skill points just go up by 5 for each level for now
 * make a pkg_0_19_0.html
 
 ## 0.18.0 - Mana System
