@@ -481,6 +481,11 @@ var gameMod = (function () {
         var game = {
             levelObj: {}, // main level object for the player
             mapLevelObj: {}, // level object for the map
+            mapXP: opt.mapXP === undefined ? 0 : opt.mapXP,
+            mapDeltaNext: opt.mapDeltaNext || 50,
+            mapLevelCap: opt.mapLevelCap || 50,
+            startingCellDamage: opt.startingCellDamage || 0,
+            map: {},
             canvas: opt.canvas,
             skillPoints: {
                 total: 100,
@@ -511,7 +516,6 @@ var gameMod = (function () {
                     maxPerLevel: 10
                 }
             },
-            map: {},
             cross: {},
             shots: poolMod.create(shotOptions),
             explosions: poolMod.create(explosionOptions),
@@ -541,9 +545,7 @@ var gameMod = (function () {
         // create cross object
         game.cross = crossMod.create();
         // set up map
-        setMap(game, opt.mapXP === undefined ? 0 : opt.mapXP || 0, opt.mapDeltaNext, opt.mapLevelCap || 50, opt.startingCellDamage);
-        // first autoPlay target
-        autoPlay.setRandomTarget(game);
+        setMap(game, game.mapXP, game.mapDeltaNext, game.mapLevelCap, game.startingCellDamage);
         // set weapons to level for first time
         setWeaponsToLevel(game);
         // reset skills for now
@@ -553,6 +555,9 @@ var gameMod = (function () {
         if (opt.saveString) {
             api.applySaveString(game, opt.saveString);
         }
+
+        // first autoPlay target
+        autoPlay.setRandomTarget(game);
 
         return game;
     };
