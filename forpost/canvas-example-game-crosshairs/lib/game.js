@@ -431,6 +431,10 @@ var gameMod = (function () {
 
                 console.log(level);
 
+                // set up map
+                var xp = XP.parseByLevel(level, game.mapLevelCap, game.mapDeltaNext).xp;
+                setMap(game, xp, game.mapDeltaNext, game.mapLevelCap, game.startingCellDamage);
+
             }
         }
     };
