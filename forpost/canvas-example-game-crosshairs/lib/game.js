@@ -535,6 +535,10 @@ var gameMod = (function () {
         // reset skills for now
         resetSkills(game);
         setSkillPointTotal(game);
+        // save string
+        if (opt.saveString) {
+            applySaveString(game, opt.saveString);
+        }
 
         return game;
     };
@@ -652,7 +656,7 @@ var gameMod = (function () {
 
                         var saveStr = createSaveString(sm.game);
                         console.log(saveStr);
-                        applySaveString(sm.game, saveStr);
+                        //applySaveString(sm.game, saveStr);
 
                     }
                 });

@@ -21,7 +21,8 @@
                         startingCellDamage: 0,
                         mapXP: 0,
                         mapDeltaNext: 50,
-                        mapLevelCap: 10
+                        mapLevelCap: 10,
+                        saveString: 'v0.epz.'
                     });
                 states.skillManager.buttons = gameMod.createSkillButtons(sm);
                 sm.currentState = 'game';

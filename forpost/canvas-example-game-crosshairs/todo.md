@@ -94,14 +94,9 @@
 * as game level goes up, items unlock
 
 ## 0.20.0 - save states I
-* have support for more than one version of a save string, so the very first field of the save should be a value that indicates what method to use to load the save
-```
-var saveStrV0 = 'v0.3000.'; // v0 save that just stores xp
-var saveStrV1 = 'v1.3000.0-1-0-4.'; // v1 save that stores xp and skillPoints for each weapon
-```
-
-* game.totalDamage should be part of the save state
-* skill point allocation in game.skills should be part of the save state
+* (done) have support for more than one version of a save string, so the very first field of the save should be a value that indicates what method to use to load the save
+* (done) v0 save string (var saveStrV0 = 'v0.3000.'; // v0 save that just stores xp)
+* v1 save string (var saveStrV1 = 'v1.3000.0-1-0-4.'; // v1 save that stores xp and skillPoints for each weapon)
 * gameMod.createSave public method for creating a save state string
 * gameMod.create can accept a saveString as an argument and create a new game state from that
 * have game autoSave on each frame tick for now
