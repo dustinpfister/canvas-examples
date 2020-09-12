@@ -409,7 +409,7 @@ var gameMod = (function () {
     // create a save string from a game object
     var saveStringVersions = {
         v0: ['damage'],
-        v1: ['damage', 'skills']
+        v1: ['damage', 'mapIndex']// damage, mapIndex, and skillPoints
     };
     var saveStringParts = {
         damage: {
@@ -419,6 +419,18 @@ var gameMod = (function () {
             },
             apply: function (game, partString) {
                 game.totalDamage = parseInt(partString, 36);
+            }
+        },
+        mapIndex: {
+            encode: function (game) {
+                return Number(game.mapLevelObj.level).toString(36);
+            },
+            apply: function (game, partString) {
+
+                var level = parseInt(partString, 36);
+
+                console.log(level);
+
             }
         }
     };

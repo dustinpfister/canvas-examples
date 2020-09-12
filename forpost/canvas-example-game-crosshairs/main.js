@@ -154,7 +154,7 @@
                 gameMod.update(sm.game, secs);
 
                 // auto save
-                localStorage.setItem('game-crosshairs-save-0', gameMod.createSaveString(sm.game, 'v0'));
+                localStorage.setItem('game-crosshairs-save-0', gameMod.createSaveString(sm.game, 'v1'));
 
                 // draw
                 draw.back(ctx, canvas);
