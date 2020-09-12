@@ -7,6 +7,9 @@ var gameMod = (function () {
         levelCap: 100
     };
 
+    // public API
+    var api = {};
+
     // WEAPONS
     var Weapons = [{
             name: 'Blaster',
@@ -419,7 +422,7 @@ var gameMod = (function () {
             }
         }
     };
-    var createSaveString = function (game, ver) {
+    api.createSaveString = function (game, ver) {
         ver = ver || 'v0';
         var str = '';
         saveStringVersions[ver].forEach(function (partKey) {
@@ -440,7 +443,7 @@ var gameMod = (function () {
     };
 
     // apply a save string to the given game object
-    var applySaveString = function (game, saveStr) {
+    api.applySaveString = function (game, saveStr) {
         var parts = saveStr.split('.').map(function (part) {
                 return part.replace(/\;/, '');
             });
@@ -456,7 +459,6 @@ var gameMod = (function () {
          */
     };
 
-    var api = {};
     api.Weapons = Weapons;
 
     api.setMap = setMap;
@@ -537,7 +539,7 @@ var gameMod = (function () {
         setSkillPointTotal(game);
         // save string
         if (opt.saveString) {
-            applySaveString(game, opt.saveString);
+            api.applySaveString(game, opt.saveString);
         }
 
         return game;
@@ -654,9 +656,8 @@ var gameMod = (function () {
                     onClick: function (button, sm) {
                         updateButtonDisplay(sm, button);
 
-                        var saveStr = createSaveString(sm.game);
+                        var saveStr = api.createSaveString(sm.game);
                         console.log(saveStr);
-                        //applySaveString(sm.game, saveStr);
 
                     }
                 });

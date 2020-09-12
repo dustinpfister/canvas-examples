@@ -97,9 +97,10 @@
 * (done) have support for more than one version of a save string, so the very first field of the save should be a value that indicates what method to use to load the save
 * (done) v0 save string (var saveStrV0 = 'v0.3000.'; // v0 save that just stores xp)
 * v1 save string (var saveStrV1 = 'v1.3000.0-1-0-4.'; // v1 save that stores xp and skillPoints for each weapon)
-* gameMod.createSave public method for creating a save state string
-* gameMod.create can accept a saveString as an argument and create a new game state from that
-* have game autoSave on each frame tick for now
+* (done) gameMod.createSaveString public method for creating a save state string
+* (done) gameMod.applySaveString public method for applying a save string
+* (done) gameMod.create can accept a saveString as an argument and create a new game state from that
+* have game autoSave on each frame tick for now in game state
 * use the init state in main.js as a place to check for a saveString via local storage
 * have a clearSave button in options
 
