@@ -414,10 +414,8 @@ var gameMod = (function () {
                 var damage = Math.floor(Number(game.totalDamage));
                 return damage.toString(36);
             },
-            apply: function (game) {
-                var parts = saveStr.split('.');
-                var damage = parts[1].replace(/\;/, '');
-                console.log(parseInt(damage, 36));
+            apply: function (game, partString) {
+                game.totalDamage = parseInt(partString, 36);
             }
         }
     };
@@ -447,14 +445,15 @@ var gameMod = (function () {
                 return part.replace(/\;/, '');
             });
         var ver = parts[0];
-		
-		console.log(ver);
+        saveStringVersions[ver].forEach(function (partKey, i) {
+            saveStringParts[partKey].apply(game, parts[1 + i])
+        });
 
-            /*
-            var parts = saveStr.split('.');
-            var damage = parts[1].replace(/\;/, '');
-            console.log(parseInt(damage, 36));
-             */
+        /*
+        var parts = saveStr.split('.');
+        var damage = parts[1].replace(/\;/, '');
+        console.log(parseInt(damage, 36));
+         */
     };
 
     var api = {};
