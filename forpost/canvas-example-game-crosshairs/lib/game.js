@@ -404,22 +404,57 @@ var gameMod = (function () {
     // SAVE STATES
 
     // create a save string from a game object
-    var createSaveString = function (game) {
+    var saveStringVersions = {
+        v0: ['damage'],
+        v1: ['damage', 'skills']
+    };
+    var saveStringParts = {
+        damage: {
+            encode: function (game) {
+                var damage = Math.floor(Number(game.totalDamage));
+                return damage.toString(36);
+            },
+            apply: function (game) {
+                var parts = saveStr.split('.');
+                var damage = parts[1].replace(/\;/, '');
+                console.log(parseInt(damage, 36));
+            }
+        }
+    };
+    var createSaveString = function (game, ver) {
+        ver = ver || 'v0';
+        var str = '';
+        saveStringVersions[ver].forEach(function (partKey) {
+            str += saveStringParts[partKey].encode(game) + '.';
+        });
+        return ver + '.' + str;
+        /*
         // total damage
         var damage = Math.floor(Number(game.totalDamage)),
-        str = damage.toString(36) + ';';
+        str = damage.toString(36) + '.';
         // skill points
         Object.keys(game.skills).forEach(function (skillKey) {
-            str += game.skills[skillKey].points.toString(36) + '-';
+        str += game.skills[skillKey].points.toString(36) + '-';
         });
         str += ';';
-        return str;
+        return ver + '.' + str;
+         */
     };
 
     // apply a save string to the given game object
     var applySaveString = function (game, saveStr) {
-        var damage = saveStr.match(/\w+/);
-        console.log(parseInt(damage, 36));
+        var parts = saveStr.split('.').map(function (part) {
+                return part.replace(/\;/, '');
+            });
+        var ver = parts[0];
+		
+		console.log(ver);
+
+            /*
+            var parts = saveStr.split('.');
+            var damage = parts[1].replace(/\;/, '');
+            console.log(parseInt(damage, 36));
+             */
     };
 
     var api = {};
