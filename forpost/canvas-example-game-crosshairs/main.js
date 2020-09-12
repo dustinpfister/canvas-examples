@@ -17,12 +17,12 @@
                 // create game object
                 sm.game = gameMod.create({
                         canvas: canvas,
-                        totalDamage: 3800,
+                        totalDamage: 0,
                         startingCellDamage: 0,
                         mapXP: 0,
                         mapDeltaNext: 50,
                         mapLevelCap: 10,
-                        saveString: 'v0.epz.'
+                        saveString: localStorage.getItem('game-crosshairs-save-0') //'v0.epz.'
                     });
                 states.skillManager.buttons = gameMod.createSkillButtons(sm);
                 sm.currentState = 'game';
@@ -152,6 +152,10 @@
                 var state = states[sm.currentState];
                 // update game state
                 gameMod.update(sm.game, secs);
+
+                // auto save
+                localStorage.setItem('game-crosshairs-save-0', gameMod.createSaveString(sm.game, 'v0'));
+
                 // draw
                 draw.back(ctx, canvas);
                 draw.map(ctx, sm.game.map, sm.game.cross);
