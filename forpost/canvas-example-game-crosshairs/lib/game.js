@@ -3,8 +3,8 @@ var gameMod = (function () {
     // hard coded settings
     var hardSet = {
         maxSecs: 0.25, // max seconds for sec value used in updates
-        deltaNext: 1000, //100000, // deltaNext and levelCap
-        levelCap: 100
+        deltaNext: 5000, //100000, // deltaNext and levelCap
+        levelCap: 1000
     };
 
     // public API

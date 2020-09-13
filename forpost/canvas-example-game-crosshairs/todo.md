@@ -101,9 +101,9 @@
 * (done) gameMod.create can accept a saveString as an argument and create a new game state from that
 * (done) have game autoSave via localStorage on each frame tick for now in game state
 * (done) use the init state in main.js as a place to check for a saveString via local storage
+* (done) fix map state so that the map level is set to what is set in a v1 save string
 * v1 save string (var saveStrV1 = 'v1.3000.3.0-1-0-4.'; // v1 save that stores xp, mapIndex, and skillPoints for each weapon)
 * have a clearSave button in options
-* fix map state so that the map level is set to what is set in a v1 save string
 * make a pkg_0_20_0.html
 
 ## 0.19.0 - Skill Point System II
