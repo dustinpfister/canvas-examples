@@ -1,14 +1,16 @@
 var gameMod = (function () {
 
+    // public API object to be returned to gameMod
+    var api = {};
+
     // hard coded settings
     var hardSet = {
-        maxSecs: 0.25, // max seconds for sec value used in updates
-        deltaNext: 5000, //100000, // deltaNext and levelCap
+        // max seconds for sec value used in updates
+        maxSecs: 0.25,
+        // deltaNext and levelCap for main game.levelObj
+        deltaNext: 5000,
         levelCap: 1000
     };
-
-    // public API
-    var api = {};
 
     // WEAPONS
     var Weapons = [{
