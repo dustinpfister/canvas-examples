@@ -448,9 +448,13 @@ var gameMod = (function () {
                 return str;
             },
             apply: function (game, partString) {
-
                 console.log('applying skill point string:');
                 console.log(partString);
+                resetSkills(game);
+                partString.match(/\w+/g).forEach(function (sp, i) {
+                    game.skills['weapon_' + i].points = Number(parseInt(sp, 36));
+                });
+                setFreeFromSkills(game);
             }
         },
     };
