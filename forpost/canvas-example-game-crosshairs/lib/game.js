@@ -465,19 +465,7 @@ var gameMod = (function () {
             str += saveStringParts[partKey].encode(game) + '.';
         });
         return ver + '.' + str;
-        /*
-        // total damage
-        var damage = Math.floor(Number(game.totalDamage)),
-        str = damage.toString(36) + '.';
-        // skill points
-        Object.keys(game.skills).forEach(function (skillKey) {
-        str += game.skills[skillKey].points.toString(36) + '-';
-        });
-        str += ';';
-        return ver + '.' + str;
-         */
     };
-
     // apply a save string to the given game object
     api.applySaveString = function (game, saveStr) {
         var parts = saveStr.split('.').map(function (part) {
@@ -487,12 +475,6 @@ var gameMod = (function () {
         saveStringVersions[ver].forEach(function (partKey, i) {
             saveStringParts[partKey].apply(game, parts[1 + i])
         });
-
-        /*
-        var parts = saveStr.split('.');
-        var damage = parts[1].replace(/\;/, '');
-        console.log(parseInt(damage, 36));
-         */
     };
 
     api.Weapons = Weapons;
