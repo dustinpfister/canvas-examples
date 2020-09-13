@@ -21,7 +21,7 @@
                         startingCellDamage: 0,
                         mapXP: 0,
                         mapDeltaNext: 50,
-                        mapLevelCap: 10,
+                        mapLevelCap: 20,
                         saveString: localStorage.getItem('game-crosshairs-save-0') //'v0.epz.'
                     });
                 states.skillManager.buttons = gameMod.createSkillButtons(sm);
@@ -238,12 +238,24 @@
                     y: 180,
                     r: 20,
                     onClick: function (button, sm) {
-                        var level = sm.game.mapLevelObj.level,
+                        var level = sm.game.mapLevelObj.level;
+						level += 1;
+                        sm.game.mapXP = XP.parseByLevel(level, sm.game.mapLevelCap, sm.game.mapDeltaNext).xp;
+                        gameMod.setMap(sm.game, sm.game.mapXP, sm.game.mapDeltaNext, sm.game.mapLevelCap);
+						/*
                         cap = 20,
                         deltaNext = 50;
                         level += 1;
-                        var xp = XP.parseByLevel(level, cap, deltaNext).xp;
-                        gameMod.setMap(sm.game, xp, deltaNext, cap);
+						*/
+						/*
+						
+						
+            mapDeltaNext: opt.mapDeltaNext || 50,
+            mapLevelCap: opt.mapLevelCap || 50,
+            startingCellDamage: opt.startingCellDamage || 0,
+						
+						*/
+						
                     }
                 }),
                 levelDown: buttonMod.create({
@@ -252,12 +264,19 @@
                     y: 180,
                     r: 20,
                     onClick: function (button, sm) {
+						
+                        var level = sm.game.mapLevelObj.level;
+						level -= 1;
+                        sm.game.mapXP = XP.parseByLevel(level, sm.game.mapLevelCap, sm.game.mapDeltaNext).xp;
+                        gameMod.setMap(sm.game, sm.game.mapXP, sm.game.mapDeltaNext, sm.game.mapLevelCap);
+						/*
                         var level = sm.game.mapLevelObj.level,
                         cap = 20,
                         deltaNext = 50;
                         level -= 1;
                         var xp = XP.parseByLevel(level, cap, deltaNext).xp;
                         gameMod.setMap(sm.game, xp, deltaNext, cap);
+						*/
                     }
                 })
             },
