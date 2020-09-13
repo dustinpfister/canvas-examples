@@ -419,6 +419,7 @@ var gameMod = (function () {
             },
             apply: function (game, partString) {
                 game.totalDamage = parseInt(partString, 36);
+                console.log('applying damage: ' + game.totalDamage);
             }
         },
         mapIndex: {
@@ -426,15 +427,11 @@ var gameMod = (function () {
                 return Number(game.mapLevelObj.level).toString(36);
             },
             apply: function (game, partString) {
-
+                // set up map level from saveString part which should be a base36 level number
                 var level = parseInt(partString, 36);
-
-                console.log(level);
-
-                // set up map
-                var xp = XP.parseByLevel(level, game.mapLevelCap, game.mapDeltaNext).xp;
-                setMap(game, xp, game.mapDeltaNext, game.mapLevelCap, game.startingCellDamage);
-
+                game.mapXP = XP.parseByLevel(level, game.mapLevelCap, game.mapDeltaNext).xp;
+                setMap(game, game.mapXP, game.mapDeltaNext, game.mapLevelCap, game.startingCellDamage);
+                console.log('applying map level: ' + level);
             }
         }
     };
