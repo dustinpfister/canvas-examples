@@ -214,6 +214,8 @@
                 pos = utils.getCanvasRelative(e);
                 // check buttons for skillManager state
                 buttonMod.pointerCheckCollection(state.buttons, pos, sm);
+
+                localStorage.setItem('game-crosshairs-save-0', gameMod.createSaveString(sm.game));
             },
             pointerEnd: function (em, e) {},
             pointerMove: function (sm, e) {}
