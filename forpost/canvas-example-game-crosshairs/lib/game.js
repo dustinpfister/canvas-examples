@@ -411,7 +411,7 @@ var gameMod = (function () {
     // create a save string from a game object
     var saveStringVersions = {
         v0: ['damage'],
-        v1: ['damage', 'mapIndex']// damage, mapIndex, and skillPoints
+        v1: ['damage', 'mapIndex', 'skillPoints']// damage, mapIndex, and skillPoints
     };
     var saveStringParts = {
         damage: {
@@ -435,7 +435,22 @@ var gameMod = (function () {
                 setMap(game, game.mapXP, game.mapDeltaNext, game.mapLevelCap, game.startingCellDamage);
                 console.log('applying map level: ' + level);
             }
-        }
+        },
+        skillPoints: {
+            encode: function (game) {
+                var str = '';
+                // skill points
+                Object.keys(game.skills).forEach(function (skillKey) {
+                    str += game.skills[skillKey].points.toString(36) + '-';
+                });
+                return str;
+            },
+            apply: function (game, partString) {
+
+                console.log('applying skill point string:');
+                console.log(partString);
+            }
+        },
     };
     api.createSaveString = function (game, ver) {
         ver = ver || 'v0';
@@ -676,7 +691,7 @@ var gameMod = (function () {
                     onClick: function (button, sm) {
                         updateButtonDisplay(sm, button);
 
-                        var saveStr = api.createSaveString(sm.game);
+                        var saveStr = api.createSaveString(sm.game, 'v1');
                         console.log(saveStr);
 
                     }
