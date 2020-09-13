@@ -413,7 +413,7 @@ var gameMod = (function () {
     // create a save string from a game object
     var saveStringVersions = {
         v0: ['damage'],
-        v1: ['damage', 'mapIndex', 'skillPoints']// damage, mapIndex, and skillPoints
+        v1: ['damage', 'mapIndex', 'skillPoints']
     };
     var saveStringParts = {
         damage: {
