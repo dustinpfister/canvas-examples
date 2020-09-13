@@ -9,6 +9,14 @@
     canvas.height = 240;
     ctx.translate(0.5, 0.5);
 
+    // save string helpers
+    var saveStateString = function (sm) {
+        localStorage.setItem('game-crosshairs-save-0', gameMod.createSaveString(sm.game));
+    };
+    var loadStateString = function () {
+        return 'v0.a.'; //localStorage.getItem('game-crosshairs-save-0') //'v0.epz.'
+    };
+
     var states = {
 
         init: {
@@ -22,7 +30,7 @@
                         mapXP: 0,
                         mapDeltaNext: 50,
                         mapLevelCap: 20,
-                        saveString: localStorage.getItem('game-crosshairs-save-0') //'v0.epz.'
+                        saveString: loadStateString()
                     });
                 states.skillManager.buttons = gameMod.createSkillButtons(sm);
                 sm.currentState = 'game';
@@ -154,7 +162,7 @@
                 gameMod.update(sm.game, secs);
 
                 // auto save
-                localStorage.setItem('game-crosshairs-save-0', gameMod.createSaveString(sm.game));
+                saveStateString(sm);
 
                 // draw
                 draw.back(ctx, canvas);
@@ -215,7 +223,7 @@
                 // check buttons for skillManager state
                 buttonMod.pointerCheckCollection(state.buttons, pos, sm);
 
-                localStorage.setItem('game-crosshairs-save-0', gameMod.createSaveString(sm.game));
+                saveStateString(sm);
             },
             pointerEnd: function (em, e) {},
             pointerMove: function (sm, e) {}
