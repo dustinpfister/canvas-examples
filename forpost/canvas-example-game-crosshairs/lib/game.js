@@ -422,8 +422,11 @@ var gameMod = (function () {
                 return damage.toString(36);
             },
             apply: function (game, partString) {
-                game.totalDamage = parseInt(partString, 36);
-                console.log('applying damage: ' + game.totalDamage);
+                var damage = parseInt(partString, 36);
+                if (damage > 0) {
+                    game.totalDamage = damage;
+                    console.log('applying damage: ' + game.totalDamage);
+                }
             }
         },
         mapIndex: {
@@ -433,9 +436,11 @@ var gameMod = (function () {
             apply: function (game, partString) {
                 // set up map level from saveString part which should be a base36 level number
                 var level = parseInt(partString, 36);
-                game.mapXP = XP.parseByLevel(level, game.mapLevelCap, game.mapDeltaNext).xp;
-                setMap(game, game.mapXP, game.mapDeltaNext, game.mapLevelCap, game.startingCellDamage);
-                console.log('applying map level: ' + level);
+                if (level >= 1) {
+                    game.mapXP = XP.parseByLevel(level, game.mapLevelCap, game.mapDeltaNext).xp;
+                    setMap(game, game.mapXP, game.mapDeltaNext, game.mapLevelCap, game.startingCellDamage);
+                    console.log('applying map level: ' + level);
+                }
             }
         },
         skillPoints: {
@@ -448,11 +453,11 @@ var gameMod = (function () {
                 return str;
             },
             apply: function (game, partString) {
-                console.log('applying skill point string:');
-                console.log(partString);
                 resetSkills(game);
                 var match = partString.match(/\w+/g);
                 if (match) {
+                    console.log('applying skill point string:');
+                    console.log(partString);
                     match.forEach(function (sp, i) {
                         game.skills['weapon_' + i].points = Number(parseInt(sp, 36));
                     });
