@@ -9,7 +9,9 @@ var gameMod = (function () {
         maxSecs: 0.25,
         // deltaNext and levelCap for main game.levelObj
         deltaNext: 5000,
-        levelCap: 1000
+        levelCap: 1000,
+        // save string
+        saveStringVer: 'v1'
     };
 
     // WEAPONS
@@ -453,7 +455,7 @@ var gameMod = (function () {
         },
     };
     api.createSaveString = function (game, ver) {
-        ver = ver || 'v0';
+        ver = ver || hardSet.saveStringVer;
         var str = '';
         saveStringVersions[ver].forEach(function (partKey) {
             str += saveStringParts[partKey].encode(game) + '.';
@@ -691,7 +693,7 @@ var gameMod = (function () {
                     onClick: function (button, sm) {
                         updateButtonDisplay(sm, button);
 
-                        var saveStr = api.createSaveString(sm.game, 'v1');
+                        var saveStr = api.createSaveString(sm.game);
                         console.log(saveStr);
 
                     }
