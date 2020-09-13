@@ -454,13 +454,15 @@ var gameMod = (function () {
             },
             apply: function (game, partString) {
                 resetSkills(game);
-                var match = partString.match(/\w+/g);
-                if (match) {
-                    console.log('applying skill point string:');
-                    console.log(partString);
-                    match.forEach(function (sp, i) {
-                        game.skills['weapon_' + i].points = Number(parseInt(sp, 36));
-                    });
+                if (partString) {
+                    var match = partString.match(/\w+/g);
+                    if (match) {
+                        console.log('applying skill point string:');
+                        console.log(partString);
+                        match.forEach(function (sp, i) {
+                            game.skills['weapon_' + i].points = Number(parseInt(sp, 36));
+                        });
+                    }
                 }
                 setFreeFromSkills(game);
             }

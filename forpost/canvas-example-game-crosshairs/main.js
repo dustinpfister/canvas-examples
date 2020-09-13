@@ -14,7 +14,8 @@
         localStorage.setItem('game-crosshairs-save-0', gameMod.createSaveString(sm.game));
     };
     var loadStateString = function () {
-        return 'v0.a.'; //localStorage.getItem('game-crosshairs-save-0') //'v0.epz.'
+        //return 'v0.0';
+        return localStorage.getItem('game-crosshairs-save-0') //'v0.epz.'
     };
 
     var states = {
