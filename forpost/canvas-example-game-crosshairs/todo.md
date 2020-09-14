@@ -7,7 +7,7 @@
 * make cool custom sprite sheets for cells, and all other aspects of the look and feel of the game
 
 ## 0.x.x - Bug fixes and concerns
-* create an array of start index values for maps other than [0] in game.js setMap method
+* create an array of start index values for spawn cells maps other than [0] in game.js setMap method
 * pull out all instances of the utils.getCanvasRelative method from files other than main.js
 * see about fixing issue where shots are tied to the canvas rather than the map (what happens when shooting and moving)
 * Shots that hit outside of map should still cause damage to shots in the map that are in the blast radius

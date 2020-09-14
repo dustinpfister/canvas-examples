@@ -182,17 +182,19 @@
                 pos = utils.getCanvasRelative(e);
                 // enable cross move back feature
                 sm.game.cross.moveBackEnabled = true;
-                crossMod.userAction(sm.game.cross, 'start', e);
+                crossMod.userAction(sm.game.cross, 'start', pos);
                 sm.game.userDown = true;
                 // check buttons for game state
                 buttonMod.pointerCheckCollection(state.buttons, pos, sm);
             },
             pointerEnd: function (em, e) {
-                crossMod.userAction(sm.game.cross, 'end', e);
+                var pos = utils.getCanvasRelative(e);
+                crossMod.userAction(sm.game.cross, 'end', pos);
                 sm.game.userDown = false;
             },
             pointerMove: function (sm, e) {
-                crossMod.userAction(sm.game.cross, 'move', e);
+                var pos = utils.getCanvasRelative(e);
+                crossMod.userAction(sm.game.cross, 'move', pos);
             }
         },
 

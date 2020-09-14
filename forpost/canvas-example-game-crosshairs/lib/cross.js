@@ -87,9 +87,8 @@ var crossMod = (function () {
             }
         },
         // user pointer action
-        userAction: function (cross, eventType, e) {
-            var pos = utils.getCanvasRelative(e),
-            ch = cross.crosshairs;
+        userAction: function (cross, eventType, pos) {
+            var ch = cross.crosshairs;
             //e.preventDefault();
             if (eventType === 'start') {
                 cross.userDown = true;
