@@ -104,16 +104,6 @@ var draw = (function () {
             ctx.fillText('L' + Math.floor(cell.levelObj.level), x + 3, y + 3);
         }
     };
-    /*
-    var cellDebug = function (ctx, cell, x, y) {
-    ctx.fillStyle = '#00ff00';
-    ctx.font = '8px courier';
-    ctx.fillText('L' + Math.floor(cell.levelObj.level), x, y);
-    ctx.fillText(Math.floor(cell.damagePer * 100) + '%', x, y + 8);
-    ctx.fillText(Math.floor(cell.damage), x, y + 16);
-    ctx.fillText(Math.floor(cell.maxHP), x, y + 24);
-    };
-     */
     var debugModes = {
         none: function (sm) {},
         general: function (sm) {
@@ -245,24 +235,6 @@ var draw = (function () {
                 //cellDebug(ctx, cell, x, y);
             });
         },
-        /*
-        shots: function (ctx, game) {
-        var shots = game.shots,
-        i = shots.length,
-        shot;
-        while (i--) {
-        shot = shots[i];
-        ctx.fillStyle = 'white';
-        ctx.strokeStyle = 'black';
-        if (shot.active) {
-        ctx.beginPath();
-        ctx.arc(shot.x, shot.y, shot.radius, 0, Math.PI * 2);
-        ctx.fill();
-        ctx.stroke();
-        }
-        }
-        },
-         */
         shots: function (ctx, game) {
             var shots = game.shots,
             offset = game.cross.offset,
@@ -284,26 +256,6 @@ var draw = (function () {
                 }
             }
         },
-        /*
-        explosions: function (ctx, game) {
-        var exps = game.explosions,
-        i = exps.length,
-        alpha = 0.5,
-        ex;
-        while (i--) {
-        ex = exps[i];
-        alpha = 1 - ex.per;
-        ctx.fillStyle = 'rgba(255,255,0,' + alpha + ')';
-        ctx.strokeStyle = 'rgba(0,0,0,' + alpha + ')';
-        if (ex.active) {
-        ctx.beginPath();
-        ctx.arc(ex.x, ex.y, ex.radius, 0, Math.PI * 2);
-        ctx.fill();
-        ctx.stroke();
-        }
-        }
-        },
-         */
         explosions: function (ctx, game) {
             var exps = game.explosions,
             offset = game.cross.offset,

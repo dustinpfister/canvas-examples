@@ -124,27 +124,6 @@ var gameMod = (function () {
     var shotOptions = {
         count: 20,
         // when a shot becomes active
-        /*
-        spawn: function (shot, game, radian) {
-        var offset = game.cross.offset,
-        w = Weapons[game.weaponIndex],
-        ch = game.cross.crosshairs,
-        r = Math.random() * (Math.PI * 2),
-        d = w.hitRadius * (1 - w.accuracy) * Math.random(),
-        x = ch.x + Math.cos(r) * d,
-        y = ch.y + Math.sin(r) * d,
-        d;
-        //shot.x = game.canvas.width;
-        //shot.y = game.canvas.height;
-        shot.x = x + Math.cos(radian) * game.canvas.width;
-        shot.y = y + Math.sin(radian) * game.canvas.width;
-        shot.heading = Math.atan2(y - shot.y, x - shot.x);
-        d = utils.distance(shot.x, shot.y, x, y);
-        shot.pps = w.pps;
-        shot.lifespan = d / shot.pps;
-        shot.offset = offset;
-        },
-         */
         spawn: function (shot, game, radian) {
             var offset = game.cross.offset,
             w = Weapons[game.weaponIndex],
@@ -156,15 +135,12 @@ var gameMod = (function () {
             x = Math.abs(offset.x) + ch.x + Math.cos(r) - center.x,
             y = Math.abs(offset.y) + ch.y + Math.sin(r) - center.y;
 
-            //shot.x = game.canvas.width;
-            //shot.y = game.canvas.height;
             shot.x = x + Math.cos(radian) * game.canvas.width;
             shot.y = y + Math.sin(radian) * game.canvas.width;
             shot.heading = Math.atan2(y - shot.y, x - shot.x);
             d = utils.distance(shot.x, shot.y, x, y);
             shot.pps = w.pps;
             shot.lifespan = d / shot.pps;
-            //shot.offset = offset;
         },
         // when a shot becomes inactive
         purge: function (shot, game) {
@@ -181,23 +157,6 @@ var gameMod = (function () {
     // Explosion Options
     var explosionOptions = {
         count: 20,
-        /*
-        spawn: function (ex, game, shot) {
-        var w = Weapons[game.weaponIndex];
-        ex.x = shot.x;
-        ex.y = shot.y;
-        ex.data.offset = {
-        x: shot.offset.x,
-        y: shot.offset.y
-        };
-        ex.data.radiusEnd = game.map.cellSize * w.blastRadius;
-        ex.data.explosionTime = 0.6;
-        ex.data.maxDPS = w.maxDPS; ;
-        ex.lifespan = ex.data.explosionTime;
-        ex.per = 0;
-        },
-         */
-
         spawn: function (ex, game, shot) {
             var w = Weapons[game.weaponIndex];
             ex.x = shot.x;
@@ -210,32 +169,10 @@ var gameMod = (function () {
         },
 
         purge: function (ex, game) {},
-        /*
-        update: function (ex, game, secs) {
-        ex.per = (ex.data.explosionTime - ex.lifespan) / ex.data.explosionTime;
-        ex.radius = ex.data.radiusEnd * ex.per;
-        var cell = mapMod.getWithCanvasPointAndOffset(game.map, ex.x, ex.y, ex.data.offset.x, ex.data.offset.y),
-        blastRadius = Math.ceil((ex.radius + 0.01) / game.map.cellSize);
-        if (cell) {
-        var targets = mapMod.getAllFromPointAndRadius(game.map, cell.x, cell.y, blastRadius);
-        targets.cells.forEach(function (cell, i) {
-        // apply damage
-        var damage = ex.data.maxDPS * (1 - (targets.dists[i] / blastRadius)) * secs;
-        if (cell.active) {
-        game.totalDamage += damage;
-        cell.HP -= damage;
-        cell.HP = cell.HP < 0 ? 0 : cell.HP;
-        }
-        cell.damage += damage;
-        });
-        }
-        ex.lifespan -= secs;
-        }
-         */
+        
         update: function (ex, game, secs) {
             ex.per = (ex.data.explosionTime - ex.lifespan) / ex.data.explosionTime;
             ex.radius = ex.data.radiusEnd * ex.per;
-            //var cell = mapMod.getWithCanvasPointAndOffset(game.map, ex.x, ex.y, 0, 0),
             cell = mapMod.get(game.map, Math.floor(ex.x / game.map.cellSize), Math.floor(ex.y / game.map.cellSize)),
             blastRadius = Math.ceil((ex.radius + 0.01) / game.map.cellSize);
             if (cell) {
