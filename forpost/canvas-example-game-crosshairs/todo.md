@@ -133,8 +133,8 @@
 * (done) pull out all instances of the utils.getCanvasRelative method from files other than main.js
 * (done) draw.map, and draw.shots should both use the cross.offset object
 * (done) shots should be tied to the map rather than the canvas element
-
-* Shots that hit outside of map should still cause damage to shots in the map that are in the blast radius
+* (done) Shots that hit outside of map should still cause damage to shots in the map that are in the blast radius
+* (done) remove old expression for weapon accuracy
 * make a pkg_0_20_0.html
 
 ## 0.19.0 - Skill Point System II
