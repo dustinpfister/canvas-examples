@@ -132,8 +132,8 @@ var gameMod = (function () {
             offset = game.cross.offset,
             r = Math.random() * (Math.PI * 2),
             d = w.hitRadius * (1 - w.accuracy) * Math.random(),
-            x = Math.abs(offset.x) + ch.x + Math.cos(r) - center.x,
-            y = Math.abs(offset.y) + ch.y + Math.sin(r) - center.y;
+            x = Math.abs(offset.x) + ch.x + Math.cos(r) * d - center.x,
+            y = Math.abs(offset.y) + ch.y + Math.sin(r) * d - center.y;
 
             shot.x = x + Math.cos(radian) * game.canvas.width;
             shot.y = y + Math.sin(radian) * game.canvas.width;
@@ -169,25 +169,28 @@ var gameMod = (function () {
         },
 
         purge: function (ex, game) {},
-        
+
         update: function (ex, game, secs) {
             ex.per = (ex.data.explosionTime - ex.lifespan) / ex.data.explosionTime;
             ex.radius = ex.data.radiusEnd * ex.per;
-            cell = mapMod.get(game.map, Math.floor(ex.x / game.map.cellSize), Math.floor(ex.y / game.map.cellSize)),
+            cellPos = {
+                x: Math.floor(ex.x / game.map.cellSize),
+                y: Math.floor(ex.y / game.map.cellSize)
+            },
             blastRadius = Math.ceil((ex.radius + 0.01) / game.map.cellSize);
-            if (cell) {
-                var targets = mapMod.getAllFromPointAndRadius(game.map, cell.x, cell.y, blastRadius);
-                targets.cells.forEach(function (cell, i) {
-                    // apply damage
-                    var damage = ex.data.maxDPS * (1 - (targets.dists[i] / blastRadius)) * secs;
+            var targets = mapMod.getAllFromPointAndRadius(game.map, cellPos.x, cellPos.y, blastRadius);
+            targets.cells.forEach(function (cell, i) {
+                // apply damage
+                var damage = ex.data.maxDPS * (1 - (targets.dists[i] / blastRadius)) * secs;
+                if (cell) {
                     if (cell.active) {
                         game.totalDamage += damage;
                         cell.HP -= damage;
                         cell.HP = cell.HP < 0 ? 0 : cell.HP;
                     }
                     cell.damage += damage;
-                });
-            }
+                }
+            });
             ex.lifespan -= secs;
         }
     };

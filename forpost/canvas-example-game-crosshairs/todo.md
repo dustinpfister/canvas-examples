@@ -6,11 +6,8 @@
 * make a feature that uses the text of a page to set map level
 * make cool custom sprite sheets for cells, and all other aspects of the look and feel of the game
 
-## 0.x.0 - fix shot movement bug
-
-## 0.x.x - Bug fixes and concerns
+## Known Bugs, concerns, ect
 * create an array of start index values for spawn cells maps other than [0] in game.js setMap method
-* Shots that hit outside of map should still cause damage to shots in the map that are in the blast radius
 * (partial fix) it seems that the AI can get stuck when Frame Rates are real low
 * cancel all shots and explosions when changing maps
 * should I have a map.totalDamage property? If so why?
@@ -135,7 +132,9 @@
 * (done) saveState helper in main.js
 * (done) pull out all instances of the utils.getCanvasRelative method from files other than main.js
 * (done) draw.map, and draw.shots should both use the cross.offset object
-* (done) shots should be tied to the map rather than the canvas element 
+* (done) shots should be tied to the map rather than the canvas element
+
+* Shots that hit outside of map should still cause damage to shots in the map that are in the blast radius
 * make a pkg_0_20_0.html
 
 ## 0.19.0 - Skill Point System II
