@@ -8,7 +8,7 @@
 
 ## 0.x.x - Bug fixes and concerns
 * create an array of start index values for spawn cells maps other than [0] in game.js setMap method
-* pull out all instances of the utils.getCanvasRelative method from files other than main.js
+
 * see about fixing issue where shots are tied to the canvas rather than the map (what happens when shooting and moving)
 * Shots that hit outside of map should still cause damage to shots in the map that are in the blast radius
 * (partial fix) it seems that the AI can get stuck when Frame Rates are real low
@@ -21,6 +21,12 @@
 * Animated cross object in game state
 * cross hairs object will have an animation when entering, or leaving the game state
 * buttons will have a similar animation when entering and leaving sates
+
+## 0.x.0 - Custom in canvas logging
+* create a utils.createLogger method that will return a custom logger
+* use utils.createLogger in main.js and make it part of the sm object as sm.log
+* use sm.log to log messages for skill point changes in skill manager
+* use utils.createLogger in game.js and make an instance of it part of the game Object as game.log
 
 ## 0.x.0 - Cross hairs display III
 * cross hairs display changes depending on move or shoot area
@@ -70,6 +76,29 @@
 * use base 64 to encode the numbers for a single 'color-layer'
 * can have more than one color layer
 
+## 0.x.0 - Skill Point System IV - improved skill point upgrade button
+* can press hold and move up a certain distance at which point skillPoints will go up and down based on distance from button.
+* as distance from buttonYCenter goes up to buttonYCenter + 100 the skill point value goes from current to current + free skill points.
+* as distance from buttonYCenter goes down to butterYcneter - 100 the skill point values goes from current to zero.
+* add a 'base values' skill
+* have a 'maxDPS' skill that will increase over all maxDPS for all weapons
+* have one or more 'mana' skills
+
+## 0.x.0 - Skill Point system III - improve menu
+* Have skill point categories beyond just 'Weapon' which is the current set of skills
+* have a new menu system for skillManager that involves scrolling up and now for category and left and right for skill
+* one skill on screen in skillManager at a time
+* have the usual button for investing skill points
+* have a graph that shows the effect of the skill points relative to what the base line is
+* have an area where there is a brief description of what the skill upgrade does
+* have an area where all relevant stats are displayed
+* add a 'map' category
+* have a 'cell regenerate rate' skill
+* have a 'cell regenerate count' skill
+* have a 'cell maxHP' skill
+* have a 'cell autoHeal rate' skill
+* have a 'cell autoHeal amount' skill
+
 ## 0.x.0 - keyboard events
 * add keyboard events
 * use numbers for setting current weapon
@@ -104,6 +133,7 @@
 * (done) fix map state so that the map level is set to what is set in a v1 save string
 * (done) v1 save string (var saveStrV1 = 'v1.3000.3.0-1-0-4.'; // v1 save that stores xp, mapIndex, and skillPoints for each weapon)
 * (done) saveState helper in main.js
+* (done) pull out all instances of the utils.getCanvasRelative method from files other than main.js
 * make a pkg_0_20_0.html
 
 ## 0.19.0 - Skill Point System II
