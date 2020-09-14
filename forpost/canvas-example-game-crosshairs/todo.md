@@ -7,8 +7,6 @@
 * make cool custom sprite sheets for cells, and all other aspects of the look and feel of the game
 
 ## 0.x.0 - fix shot movement bug
-* draw.map, and draw.shots should both use the cross.offset object
-* shots should be tied to the map rather than the canvas element 
 
 ## 0.x.x - Bug fixes and concerns
 * create an array of start index values for spawn cells maps other than [0] in game.js setMap method
@@ -136,6 +134,8 @@
 * (done) v1 save string (var saveStrV1 = 'v1.3000.3.0-1-0-4.'; // v1 save that stores xp, mapIndex, and skillPoints for each weapon)
 * (done) saveState helper in main.js
 * (done) pull out all instances of the utils.getCanvasRelative method from files other than main.js
+* (done) draw.map, and draw.shots should both use the cross.offset object
+* (done) shots should be tied to the map rather than the canvas element 
 * make a pkg_0_20_0.html
 
 ## 0.19.0 - Skill Point System II
