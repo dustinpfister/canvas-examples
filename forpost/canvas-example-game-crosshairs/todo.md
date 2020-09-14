@@ -7,11 +7,10 @@
 * make cool custom sprite sheets for cells, and all other aspects of the look and feel of the game
 
 ## Known Bugs, concerns, ect
+* do away with number literals in draw.js for the center of the canvas, cross.center should be used
 * create an array of start index values for spawn cells maps other than [0] in game.js setMap method
 * (partial fix) it seems that the AI can get stuck when Frame Rates are real low
-* cancel all shots and explosions when changing maps
 * should I have a map.totalDamage property? If so why?
-* a weapons object should be part of the game state, have a deepClone solution to clone the hard coded weapons object in game.js
 
 ## 0.x.0 - UI animations
 * Work out animation feature for buttons
@@ -135,6 +134,9 @@
 * (done) shots should be tied to the map rather than the canvas element
 * (done) Shots that hit outside of map should still cause damage to shots in the map that are in the blast radius
 * (done) remove old expression for weapon accuracy
+* (done) use new skill point system to set accuracy for atom weapon
+
+* a weapons object should be part of the game state, have a deepClone solution to clone the hard coded weapons object in game.js
 * make a pkg_0_20_0.html
 
 ## 0.19.0 - Skill Point System II
