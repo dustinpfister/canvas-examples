@@ -6,10 +6,12 @@
 * make a feature that uses the text of a page to set map level
 * make cool custom sprite sheets for cells, and all other aspects of the look and feel of the game
 
+## 0.x.0 - fix shot movement bug
+* draw.map, and draw.shots should both use the cross.offset object
+* shots should be tied to the map rather than the canvas element 
+
 ## 0.x.x - Bug fixes and concerns
 * create an array of start index values for spawn cells maps other than [0] in game.js setMap method
-
-* see about fixing issue where shots are tied to the canvas rather than the map (what happens when shooting and moving)
 * Shots that hit outside of map should still cause damage to shots in the map that are in the blast radius
 * (partial fix) it seems that the AI can get stuck when Frame Rates are real low
 * cancel all shots and explosions when changing maps

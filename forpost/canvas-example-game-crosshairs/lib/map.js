@@ -213,6 +213,7 @@ var mapMod = (function () {
     };
     // PUBLIC API
     var api = {
+		get: get,
         getAllCellActiveState: getAllCellActiveState,
         create: function (opt) {
             opt = opt || {};

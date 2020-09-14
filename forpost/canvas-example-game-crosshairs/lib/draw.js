@@ -245,8 +245,29 @@ var draw = (function () {
                 //cellDebug(ctx, cell, x, y);
             });
         },
+        /*
+        shots: function (ctx, game) {
+        var shots = game.shots,
+        i = shots.length,
+        shot;
+        while (i--) {
+        shot = shots[i];
+        ctx.fillStyle = 'white';
+        ctx.strokeStyle = 'black';
+        if (shot.active) {
+        ctx.beginPath();
+        ctx.arc(shot.x, shot.y, shot.radius, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.stroke();
+        }
+        }
+        },
+         */
         shots: function (ctx, game) {
             var shots = game.shots,
+            offset = game.cross.offset,
+            x,
+            y,
             i = shots.length,
             shot;
             while (i--) {
@@ -255,15 +276,40 @@ var draw = (function () {
                 ctx.strokeStyle = 'black';
                 if (shot.active) {
                     ctx.beginPath();
-                    ctx.arc(shot.x, shot.y, shot.radius, 0, Math.PI * 2);
+                    x = shot.x + offset.x + (320 / 2);
+                    y = shot.y + offset.y + (240 / 2);
+                    ctx.arc(x, y, shot.radius, 0, Math.PI * 2);
                     ctx.fill();
                     ctx.stroke();
                 }
             }
         },
+        /*
+        explosions: function (ctx, game) {
+        var exps = game.explosions,
+        i = exps.length,
+        alpha = 0.5,
+        ex;
+        while (i--) {
+        ex = exps[i];
+        alpha = 1 - ex.per;
+        ctx.fillStyle = 'rgba(255,255,0,' + alpha + ')';
+        ctx.strokeStyle = 'rgba(0,0,0,' + alpha + ')';
+        if (ex.active) {
+        ctx.beginPath();
+        ctx.arc(ex.x, ex.y, ex.radius, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.stroke();
+        }
+        }
+        },
+         */
         explosions: function (ctx, game) {
             var exps = game.explosions,
+            offset = game.cross.offset,
             i = exps.length,
+            x,
+            y,
             alpha = 0.5,
             ex;
             while (i--) {
@@ -273,7 +319,10 @@ var draw = (function () {
                 ctx.strokeStyle = 'rgba(0,0,0,' + alpha + ')';
                 if (ex.active) {
                     ctx.beginPath();
-                    ctx.arc(ex.x, ex.y, ex.radius, 0, Math.PI * 2);
+
+                    x = ex.x + offset.x + (320 / 2);
+                    y = ex.y + offset.y + (240 / 2);
+                    ctx.arc(x, y, ex.radius, 0, Math.PI * 2);
                     ctx.fill();
                     ctx.stroke();
                 }
@@ -328,11 +377,11 @@ var draw = (function () {
         debug: function (sm) {
             debugModes[sm.debugMode](sm, sm.ctx, sm.canvas);
         },
-        skillPointInfo: function(ctx, sm){
+        skillPointInfo: function (ctx, sm) {
             var skillPoints = sm.game.skillPoints;
             ctx.fillStyle = 'white';
             ctx.textAlign = 'left';
-            ctx.fillText('skillPoints: ' + skillPoints.free + '/' + skillPoints.total, 10,10);
+            ctx.fillText('skillPoints: ' + skillPoints.free + '/' + skillPoints.total, 10, 10);
         },
         ver: function (ctx, sm) {
             ctx.fillStyle = '#dfdfdf';
