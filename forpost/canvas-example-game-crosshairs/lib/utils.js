@@ -11,15 +11,3 @@ utils.logPer = function (per, high) {
     per = per > 1 ? 1 : per;
     return Math.log((1 + high - 2) + per) / Math.log(high);
 };
-
-/*
-utils.logOnce = function () {
-var fired = false;
-return function (mess) {
-if (!fired) {
-console.log(mess);
-fired = true;
-}
-}
-};
-*/
