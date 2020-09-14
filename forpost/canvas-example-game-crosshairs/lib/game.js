@@ -688,10 +688,6 @@ var gameMod = (function () {
                     },
                     onClick: function (button, sm) {
                         updateButtonDisplay(sm, button);
-
-                        var saveStr = api.createSaveString(sm.game);
-                        console.log(saveStr);
-
                     }
                 });
             // set button to its index
