@@ -18,6 +18,17 @@
         return localStorage.getItem('game-crosshairs-save-0') //'v0.epz.'
     };
 
+    // get a canvas relative point
+    var getCanvasRelative = function (e) {
+        var canvas = e.target,
+        bx = canvas.getBoundingClientRect();
+        return {
+            x: (e.changedTouches ? e.changedTouches[0].clientX : e.clientX) - bx.left,
+            y: (e.changedTouches ? e.changedTouches[0].clientY : e.clientY) - bx.top,
+            bx: bx
+        };
+    };
+
     var states = {
 
         init: {
@@ -40,7 +51,7 @@
             pointerStart: function (sm, e) {
                 var state = states[sm.currentState],
                 buttons = state.buttons,
-                pos = utils.getCanvasRelative(e);
+                pos = getCanvasRelative(e);
                 // check buttons for options state
                 buttonMod.pointerCheckCollection(state.buttons, pos, sm);
             },
@@ -105,7 +116,7 @@
             pointerStart: function (sm, e) {
                 var state = states[sm.currentState],
                 buttons = state.buttons,
-                pos = utils.getCanvasRelative(e);
+                pos = getCanvasRelative(e);
                 // check buttons for options state
                 buttonMod.pointerCheckCollection(state.buttons, pos, sm);
             },
@@ -179,7 +190,7 @@
             pointerStart: function (sm, e) {
                 var state = states[sm.currentState],
                 buttons = state.buttons,
-                pos = utils.getCanvasRelative(e);
+                pos = getCanvasRelative(e);
                 // enable cross move back feature
                 sm.game.cross.moveBackEnabled = true;
                 crossMod.userAction(sm.game.cross, 'start', pos);
@@ -188,12 +199,12 @@
                 buttonMod.pointerCheckCollection(state.buttons, pos, sm);
             },
             pointerEnd: function (em, e) {
-                var pos = utils.getCanvasRelative(e);
+                var pos = getCanvasRelative(e);
                 crossMod.userAction(sm.game.cross, 'end', pos);
                 sm.game.userDown = false;
             },
             pointerMove: function (sm, e) {
-                var pos = utils.getCanvasRelative(e);
+                var pos = getCanvasRelative(e);
                 crossMod.userAction(sm.game.cross, 'move', pos);
             }
         },
@@ -222,7 +233,7 @@
             pointerStart: function (sm, e) {
                 var state = states[sm.currentState],
                 buttons = state.buttons,
-                pos = utils.getCanvasRelative(e);
+                pos = getCanvasRelative(e);
                 // check buttons for skillManager state
                 buttonMod.pointerCheckCollection(state.buttons, pos, sm);
 
@@ -281,7 +292,7 @@
             pointerStart: function (sm, e) {
                 var state = states[sm.currentState],
                 buttons = state.buttons,
-                pos = utils.getCanvasRelative(e);
+                pos = getCanvasRelative(e);
                 // check buttons for map state
                 buttonMod.pointerCheckCollection(state.buttons, pos, sm);
             },
@@ -326,7 +337,7 @@
 
     var createPointerHandler = function (sm, type) {
         return function (e) {
-            sm.input.pos = utils.getCanvasRelative(e);
+            sm.input.pos = getCanvasRelative(e);
             e.preventDefault();
             pointerHanders[type](sm, e);
         };
