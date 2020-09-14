@@ -101,6 +101,11 @@ var gameMod = (function () {
                     SPEffectMax: 0,
                     levelEffectMax: 0,
                     baseValue: 35
+                },
+                accuracy: {
+                    SPEffectMax: 0.75,
+                    levelEffectMax: 0.25,
+                    baseValue: 0
                 }
             }
         }
@@ -115,7 +120,6 @@ var gameMod = (function () {
             // use The applySkillPoints method in XP
             Object.keys(weapon.level).forEach(function (weaponStatName) {
                 weapon[weaponStatName] = XP.applySkillPoints(game.levelObj, sp, weapon.level[weaponStatName]);
-                //weapon.accuracy = 0.95 - 0.9 * (1 - level / hardSet.levelCap);
             });
         });
     };

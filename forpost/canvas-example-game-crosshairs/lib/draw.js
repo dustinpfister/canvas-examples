@@ -124,7 +124,7 @@ var draw = (function () {
             ctx.fillText('Current weapon: ', 10, 10);
             ctx.fillText('name: ' + w.name, 10, 20);
             ctx.fillText('maxDPS: ' + w.maxDPS, 10, 30);
-            ctx.fillText('accuracy: ' + w.accuracy.toFixed(2), 10, 40);
+            ctx.fillText('accuracy: ' + Number(w.accuracy).toFixed(2), 10, 40);
         },
         level: function (sm) {
             var ctx = sm.ctx,
