@@ -112,7 +112,7 @@
 * cheat system can be used to set main game.LevelObj by level value
 * cheat system can be used to set a starting damage value for a map
 
-## 0.x.0 - game.levelObj used to unlock sills and other features
+## 0.21.0 - game.levelObj used to unlock sills and other features
 * All weapons aside from 'blaster' locked at game level 1
 * map level restricted to only level 1 at game level 1 in map menu
 * all skills locked at game level 1
@@ -139,8 +139,7 @@
 * (done) a weapons object should be part of the game state, use deepClone to clone the hard coded weapons object in game.js
 * (done) make sure that the new game.weapons object is what is used both in and out of gameMod
 * (done) rename Weapons to WeaponDefaults
-
-* make a pkg_0_20_0.html
+* (done) make a pkg_0_20_0.html
 
 ## 0.19.0 - Skill Point System II
 * (done) update exp_system to new xp.js that was worked out for js-javascript-example-skill-point-system
