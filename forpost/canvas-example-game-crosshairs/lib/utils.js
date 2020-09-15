@@ -11,3 +11,7 @@ utils.logPer = function (per, high) {
     per = per > 1 ? 1 : per;
     return Math.log((1 + high - 2) + per) / Math.log(high);
 };
+// deep clone an object
+utils.deepClone = function (obj) {
+    return JSON.parse(JSON.stringify(obj));
+}
