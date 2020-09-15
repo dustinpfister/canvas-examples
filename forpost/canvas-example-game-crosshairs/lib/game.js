@@ -15,7 +15,7 @@ var gameMod = (function () {
     };
 
     // WEAPONS
-    var Weapons = [{
+    var WeaponsDefaults = [{
             name: 'Blaster',
             pps: 256,
             shotRate: 0.125,
@@ -491,7 +491,7 @@ var gameMod = (function () {
         });
     };
 
-    api.Weapons = Weapons;
+    api.WeaponsDefaults = WeaponsDefaults;
 
     api.setMap = setMap;
 
@@ -560,8 +560,8 @@ var gameMod = (function () {
                 }
             }
         };
-        // clone hard coded Weapons to game.weapons
-        game.weapons = utils.deepClone(Weapons);
+        // clone hard coded weapons defaults to game.weapons
+        game.weapons = utils.deepClone(WeaponsDefaults);
         console.log(game.weapons);
         // setup game level object
         game.levelObj = XP.parseByXP(game.totalDamage, hardSet.levelCap, hardSet.deltaNext);
