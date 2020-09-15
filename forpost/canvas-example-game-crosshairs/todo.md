@@ -135,7 +135,6 @@
 * (done) Shots that hit outside of map should still cause damage to shots in the map that are in the blast radius
 * (done) remove old expression for weapon accuracy
 * (done) use new skill point system to set accuracy for atom weapon
-
 * (done) add a utils.deepClone method
 * (done) a weapons object should be part of the game state, use deepClone to clone the hard coded weapons object in game.js
 * (done) make sure that the new game.weapons object is what is used both in and out of gameMod

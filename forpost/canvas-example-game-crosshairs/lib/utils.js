@@ -14,4 +14,4 @@ utils.logPer = function (per, high) {
 // deep clone an object
 utils.deepClone = function (obj) {
     return JSON.parse(JSON.stringify(obj));
-}
+};
