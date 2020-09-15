@@ -114,7 +114,7 @@ var gameMod = (function () {
     // SKILL POINTS
     var setWeaponsToLevel = function (game) {
         var level = game.levelObj.level;
-        Weapons.forEach(function (weapon, i) {
+        game.weapons.forEach(function (weapon, i) {
             var lv = weapon.level,
             sp = game.skills['weapon_' + i].points;
             // use The applySkillPoints method in XP
@@ -130,7 +130,7 @@ var gameMod = (function () {
         // when a shot becomes active
         spawn: function (shot, game, radian) {
             var offset = game.cross.offset,
-            w = Weapons[game.weaponIndex],
+            w = game.weapons[game.weaponIndex],
             ch = game.cross.crosshairs,
             center = game.cross.center,
             offset = game.cross.offset,
@@ -162,7 +162,7 @@ var gameMod = (function () {
     var explosionOptions = {
         count: 20,
         spawn: function (ex, game, shot) {
-            var w = Weapons[game.weaponIndex];
+            var w = game.weapons[game.weaponIndex];
             ex.x = shot.x;
             ex.y = shot.y;
             ex.data.radiusEnd = game.map.cellSize * w.blastRadius;
@@ -201,7 +201,7 @@ var gameMod = (function () {
 
     // shoot the current weapon
     var shoot = function (game) {
-        var w = Weapons[game.weaponIndex];
+        var w = game.weapons[game.weaponIndex];
         // check shot rate and mana
         if (game.shotSecs >= game.shotRate && game.mana.current >= w.manaCost) {
             var i = 0,
@@ -249,13 +249,13 @@ var gameMod = (function () {
                 ap.maxShootTime = 3;
             }
             if (ap.behavior === 'total-kill') {
-                game.weaponIndex = Weapons.length - 1;
+                game.weaponIndex = game.weapons.length - 1;
                 ap.stopAtPercentRemain = 0;
             }
             if (ap.behavior === 'weapon-switch') {
-                game.weaponIndex = Math.floor((Weapons.length) * utils.logPer(map.percentRemain, 2));
+                game.weaponIndex = Math.floor((game.weapons.length) * utils.logPer(map.percentRemain, 2));
             }
-            game.weaponIndex = game.weaponIndex >= Weapons.length ? Weapons.length - 1 : game.weaponIndex;
+            game.weaponIndex = game.weaponIndex >= game.weapons.length ? game.weapons.length - 1 : game.weaponIndex;
             // stay on move mode if
             if (map.percentRemain < ap.stopAtPercentRemain) {
                 ap.mode = 'move';
@@ -590,7 +590,7 @@ var gameMod = (function () {
         // do not let secs go over hard coded max secs value
         secs = secs > hardSet.maxSecs ? hardSet.maxSecs : secs;
         // set shot rate based on current weapon
-        game.shotRate = Weapons[game.weaponIndex].shotRate;
+        game.shotRate = game.weapons[game.weaponIndex].shotRate;
         // cross object
         crossMod.update(game.cross, secs);
         // map
@@ -661,7 +661,7 @@ var gameMod = (function () {
                     //sm.currentState = 'options';
                     resetSkills(sm.game);
 
-                    Weapons.forEach(function (weapon, weaponIndex) {
+                    sm.game.weapons.forEach(function (weapon, weaponIndex) {
                         var button = buttons['weapon_' + weaponIndex];
                         updateButtonDisplay(sm, button);
                     });
@@ -670,7 +670,7 @@ var gameMod = (function () {
         };
 
         // have a button for each weapon
-        Weapons.forEach(function (weapon, weaponIndex) {
+        sm.game.weapons.forEach(function (weapon, weaponIndex) {
             var button = buttonMod.create({
                     label: weapon.name,
                     type: 'upgrade',

@@ -137,7 +137,9 @@
 * (done) use new skill point system to set accuracy for atom weapon
 
 * (done) add a utils.deepClone method
-* a weapons object should be part of the game state, use deepClone to clone the hard coded weapons object in game.js
+* (done) a weapons object should be part of the game state, use deepClone to clone the hard coded weapons object in game.js
+* make sure that the new game.weapons object is what is used both in and out of gameMod
+* rename Weapons to WeaponDefaults
 
 * make a pkg_0_20_0.html
 

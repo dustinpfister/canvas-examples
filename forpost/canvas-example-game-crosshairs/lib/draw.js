@@ -68,7 +68,7 @@ var draw = (function () {
     // draw the current weapon info
     var drawWeaponInfo = function (ctx, game) {
         var center = game.cross.center;
-        var w = gameMod.Weapons[game.weaponIndex];
+        var w = game.weapons[game.weaponIndex];
         ctx.fillStyle = '#ff6060';
         ctx.font = '10px courier';
         ctx.textAlign = 'center';
@@ -113,14 +113,14 @@ var draw = (function () {
             setupDebug(ctx, sm.game);
             ctx.fillText('pos: ' + game.cross.offset.x.toFixed(2) + ',' + game.cross.offset.y.toFixed(2), 10, 10);
             ctx.fillText('percent remain: ' + Number(game.map.percentRemain * 100).toFixed(2), 10, 20);
-            ctx.fillText('weapon: ' + gameMod.Weapons[game.weaponIndex].name, 10, 30);
+            ctx.fillText('weapon: ' + sm.game.weapons[game.weaponIndex].name, 10, 30);
             ctx.fillText('damage: ' + Math.floor(game.totalDamage), 10, 40);
             ctx.fillText('high damage cell: ' + Math.floor(game.map.highDamageCell), 10, 50);
         },
         weapon: function (sm) {
             var ctx = sm.ctx;
             setupDebug(ctx, sm.game);
-            var w = gameMod.Weapons[sm.game.weaponIndex];
+            var w = sm.game.weapons[sm.game.weaponIndex];
             ctx.fillText('Current weapon: ', 10, 10);
             ctx.fillText('name: ' + w.name, 10, 20);
             ctx.fillText('maxDPS: ' + w.maxDPS, 10, 30);
