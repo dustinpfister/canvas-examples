@@ -560,6 +560,9 @@ var gameMod = (function () {
                 }
             }
         };
+        // clone hard coded Weapons to game.weapons
+        game.weapons = utils.deepClone(Weapons);
+        console.log(game.weapons);
         // setup game level object
         game.levelObj = XP.parseByXP(game.totalDamage, hardSet.levelCap, hardSet.deltaNext);
         // create cross object
