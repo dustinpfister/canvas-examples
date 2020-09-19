@@ -3,7 +3,13 @@
 ## 0.2.0 - save states
 * have a save state for the process of the game
 
-## 0.1.0 - game.startTime, distance object, player movement, power ups
+## 0.2.0 - power ups
+* Add an object pool for power ups
+* power ups will start at the top of the canvas and move down to the player ship
+* if the player ship comes in contact with a power up it will get that power up
+* have a first starting power up that will incress pps for a fixed amount of time
+
+## 0.1.0 - game.startTime, distance object, player movement
 * (done) have a game.startTime property that is the time that the player started playing
 * (done) have an game.distObj where each key is a PPS speed and each value is a number of seconds passed moving at that speed.
 * (done) figure distance based on this distObj of speeds and seconds
@@ -11,12 +17,6 @@
 * (done) have a fixed array of pps speeds in hardCode
 * (done) have game.pps set by index of pps speeds in hardCode via a game.ppsIndex
 * (done) player can just move the ship left and right as it moves up
-
-* Add an object pool for power ups
-* power ups will start at the top of the canvas and move down to the player ship
-* if the player ship comes in contact with a power up it will get that power up
-* have a first starting power up that will incress pps for a fixed amount of time
-
 * create a pkg_0_1_0.html
 
 ## 0.0.0 - basic idea
