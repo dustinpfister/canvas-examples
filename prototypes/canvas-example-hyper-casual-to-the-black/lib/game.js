@@ -15,9 +15,11 @@ var gameMod = (function () {
         var game = {
             pps: opt.pps || hardCode.pps.start,
             distance: opt.distance === undefined ? 0 : opt.distance,
-            target: opt.target === undefined ? hardCode.maxDistance : opt.target,
-            timeUnit: 'years',
-            timeToTarget: 0
+            target: {
+                distance: opt.targetDistance === undefined ? hardCode.maxDistance : targetDistance,
+                timeUnit: 'years',
+                ETA: 0
+            }
         };
         api.update(game, 0);
         return game;
@@ -49,8 +51,8 @@ var gameMod = (function () {
     }
 
     api.update = function(game, secs){
-        var secsToTarget = timeToDistance(game, hardCode.maxDistance);
-        game.timeToTarget = secsToX(secsToTarget, game.timeUnit);
+        var secsToTarget = timeToDistance(game, game.target.distance);
+        game.ETA = secsToX(secsToTarget, game.target.timeUnit);
     };
 
     return api;
