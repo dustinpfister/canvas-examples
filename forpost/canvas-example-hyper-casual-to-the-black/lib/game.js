@@ -15,8 +15,9 @@ var gameMod = (function () {
         var game = {
             canvas: opt.canvas || {width: 320, height: 240},
             pps: opt.pps || hardCode.pps.start,
-            distance: opt.distance === undefined ? 0 : opt.distance,
+            distance: 0, //opt.distance === undefined ? 0 : opt.distance,
             gamePer: 0,
+            startTime: opt.startTime || new Date(),
             target: {
                 distance: opt.targetDistance === undefined ? hardCode.maxDistance : targetDistance,
                 timeUnit: opt.targetTimeUnit === undefined ? 'years' : opt.targetTimeUnit,
@@ -28,15 +29,7 @@ var gameMod = (function () {
                 w: 32,
                 h: 32
             },
-            distanceObj : {
-                32: 1000,
-                64: 1000,
-                valueOf: function(){
-                   var speeds = Object.keys(this);
-                   
-                }
-                
-            }
+            distObj: opt.distObj || {}
         };
         api.update(game, 0);
         return game;
@@ -59,6 +52,29 @@ var gameMod = (function () {
         return secs;
     };
 
+    // set state distance based on startTime
+    // and distObj of PPS and time key pairs
+    var setDistance = function(game, now){
+        // before I credit I first need to know the amount of time
+        // and distance thus far
+        var storedSecs = 0,
+        storedDist = 0;
+        Object.keys(game.distObj).forEach(function(pps){
+            var secs = game.distObj[pps];
+            storedSecs += secs;
+            storedDist += Number(pps) * secs;
+        });
+        // now I can subtract storedSecs from secs and
+        // use that to set Delta distance for current PPS
+        var secs = (now - game.startTime) / 1000 - storedSecs,
+        deltaDist = game.pps * secs;
+        // update distObj for current PPS
+        var current = game.distObj[game.pps];
+        game.distObj[game.pps] = current === undefined ? secs : current + secs; 
+        // now I can set distance
+        game.distance = storedDist + deltaDist;
+    };
+
     var timeToDistance = function(game, distance){
         if(game.distance < distance){
             var secs = (distance - game.distance) / game.pps;
@@ -70,7 +86,8 @@ var gameMod = (function () {
     api.update = function(game, secs){
 
         // distance
-        game.distance = game.distance + game.pps * secs;
+        //game.distance = game.distance + game.pps * secs;
+        setDistance(game, new Date());
         game.distance = game.distance > hardCode.maxDistance ? hardCode.maxDistance : game.distance;
         game.gamePer = game.distance / hardCode.maxDistance;
 

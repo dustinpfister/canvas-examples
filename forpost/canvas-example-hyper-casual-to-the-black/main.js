@@ -12,7 +12,12 @@ var state = {
     lt: new Date(),
     game : gameMod.create({
         canvas: canvas,
-        pps: 1024,
+        startTime: new Date(1983, 4, 6, 10, 5),
+        distObj:{
+                32: 900000000,
+                64: 100000000
+        },
+        pps: 128,
         distance: 0,
         targetTimeUnit: 'years'
     })
