@@ -52,7 +52,7 @@ var gameMod = (function () {
 
     api.update = function(game, secs){
         var secsToTarget = timeToDistance(game, game.target.distance);
-        game.ETA = secsToX(secsToTarget, game.target.timeUnit);
+        game.target.ETA = secsToX(secsToTarget, game.target.timeUnit);
     };
 
     return api;

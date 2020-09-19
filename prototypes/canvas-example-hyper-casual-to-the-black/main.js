@@ -12,10 +12,12 @@ var game = gameMod.create({
 });
 
 console.log(game);
+console.log(game.target.ETA);
 
 var loop = function () {
     requestAnimationFrame(loop);
     draw.back(ctx, canvas);
+    draw.textETA(ctx, game, 10, 10);
 };
 
 loop();
