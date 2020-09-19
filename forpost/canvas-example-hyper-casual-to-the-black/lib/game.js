@@ -2,10 +2,7 @@ var gameMod = (function () {
 
     var hardCode = {
        maxDistance: 1000000000000,
-       pps: {
-           start: 32,
-           cap: 2048
-       }
+       ppsArray: [32, 64, 128, 256, 512, 1024, 2048]
     };
 
     var api = {};
@@ -14,7 +11,8 @@ var gameMod = (function () {
         opt = opt || {};
         var game = {
             canvas: opt.canvas || {width: 320, height: 240},
-            pps: opt.pps || hardCode.pps.start,
+            ppsIndex: opt.ppsIndex === undefined ? 0: opt.ppsIndex,
+            pps: hardCode.ppsArray[opt.ppsIndex === undefined ? 0: opt.ppsIndex],//opt.pps || hardCode.ppsArray[0],
             distance: 0, //opt.distance === undefined ? 0 : opt.distance,
             gamePer: 0,
             startTime: opt.startTime || new Date(),

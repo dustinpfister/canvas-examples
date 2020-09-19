@@ -11,10 +11,12 @@
 * have a first starting power up that will incress pps for a fixed amount of time
 
 ## 0.1.0 - game.startTime and distance object
-* have a game.startTime property that is the time that the player started playing
-* have an array where each key is a PPS speed and each value is a distance moved at that speed
-* figure distance based on this object of speeds and distances
-* display current pps
+* (done) have a game.startTime property that is the time that the player started playing
+* (done) have an game.distObj where each key is a PPS speed and each value is a number of seconds passed moving at that speed.
+* (done) figure distance based on this distObj of speeds and seconds
+* (done) display current pps
+* have a fixed array of pps speeds in hardCode
+* have game.pps set by index of pps speeds in hardCode via a game.ppsIndex;
 * create a pkg_0_1_0.html
 
 ## 0.0.0 - basic idea
