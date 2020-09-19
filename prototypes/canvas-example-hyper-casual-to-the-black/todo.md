@@ -13,8 +13,9 @@
 * figure distance based on this array of speeds
 
 ## 0.0.0 - basic idea
-* fixed single axis display object for the player ship
-* grid display moving based on game.distance
+* (done) grid display moving based on game.distance
 * (done) have a method for finding the amount of time it will take to get to a distance at current PPS
 * (done) have a helper method for converting a second amount to minutes, hours, days, and years
 * (done) have distance incress by secs value in main app update loop
+* display object for the player ship
+* color of background goes from white background to black background based on percentage of distance over maxDistance

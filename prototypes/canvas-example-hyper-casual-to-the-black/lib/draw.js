@@ -7,13 +7,14 @@ var draw = (function () {
     };
 
     // background helpers
-    var backgroundSolid = function(ctx, canvas){
-        ctx.fillStyle = 'black';
+    var backgroundSolid = function(ctx, game, canvas){
+        var c = Math.round(128 - game.gamePer * 128);
+        ctx.fillStyle = 'rgba(0,'+c+','+c+',1)';
         ctx.fillRect(0, 0, canvas.width, canvas.height);
     };
     var backgroundGrid = function(ctx, game, canvas){
         ctx.lineWidth = 3;
-        ctx.strokeStyle = 'red';
+        ctx.strokeStyle = '#5a5a5a';
         var cellW = Math.floor(canvas.width / 32) + 2,
         cellH = Math.floor(canvas.height / 32) + 2;
         var x, y, i=0, len = cellW * cellH,
@@ -31,7 +32,7 @@ var draw = (function () {
     return {
         // draw background
         back: function (ctx, game, canvas) {
-            backgroundSolid(ctx, canvas);
+            backgroundSolid(ctx, game, canvas);
             backgroundGrid(ctx, game, canvas);
         },
         textETA: function(ctx, game, x, y){

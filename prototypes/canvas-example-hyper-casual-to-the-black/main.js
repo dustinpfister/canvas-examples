@@ -11,7 +11,7 @@ ctx.translate(0.5, 0.5);
 var state = {
     lt: new Date(),
     game : gameMod.create({
-        pps: 2048,
+        pps: 1024,
         distance: 0,
         targetTimeUnit: 'years'
     })

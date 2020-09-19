@@ -15,6 +15,7 @@ var gameMod = (function () {
         var game = {
             pps: opt.pps || hardCode.pps.start,
             distance: opt.distance === undefined ? 0 : opt.distance,
+            gamePer: 0,
             target: {
                 distance: opt.targetDistance === undefined ? hardCode.maxDistance : targetDistance,
                 timeUnit: opt.targetTimeUnit === undefined ? 'years' : opt.targetTimeUnit,
@@ -60,6 +61,8 @@ var gameMod = (function () {
 
         // distance
         game.distance = game.distance + game.pps * secs;
+        game.distance = game.distance > hardCode.maxDistance ? hardCode.maxDistance : game.distance;
+        game.gamePer = game.distance / hardCode.maxDistance;
 
         // target
         var secsToTarget = timeToDistance(game, game.target.distance);
