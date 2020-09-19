@@ -19,6 +19,12 @@ var gameMod = (function () {
                 distance: opt.targetDistance === undefined ? hardCode.maxDistance : targetDistance,
                 timeUnit: opt.targetTimeUnit === undefined ? 'years' : opt.targetTimeUnit,
                 ETA: 0
+            },
+            playerShip: {
+                x: 0,
+                y: 0,
+                w: 32,
+                h: 32
             }
         };
         api.update(game, 0);
