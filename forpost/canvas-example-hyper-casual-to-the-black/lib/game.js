@@ -21,6 +21,10 @@ var gameMod = (function () {
                 timeUnit: opt.targetTimeUnit === undefined ? 'years' : opt.targetTimeUnit,
                 ETA: 0
             },
+            input: {
+                right: false,
+                left: false
+            },
             playerShip: {
                 x: 0,
                 y: 0,
@@ -93,7 +97,13 @@ var gameMod = (function () {
         game.target.ETA = secsToX(secsToTarget, game.target.timeUnit);
 
         // player display object
-        game.playerShip.x = game.canvas.width / 2 - 16;
+        var xPPS = 0;
+        xPPS = game.input.right ? xPPS + 10: xPPS;
+        xPPS = game.input.left ? xPPS - 10: xPPS;
+        //game.playerShip.x = game.canvas.width / 2 - 16;
+        game.playerShip.x += xPPS * secs;
+        game.playerShip.x = game.playerShip.x < 0 ? 0 : game.playerShip.x;
+        game.playerShip.x = game.playerShip.x > game.canvas.width - game.playerShip.w ? game.canvas.width - game.playerShip.w : game.playerShip.x;
         game.playerShip.y = game.canvas.height - 64;
     };
 
