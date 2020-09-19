@@ -31,7 +31,6 @@ var gameMod = (function () {
             },
             distObj: opt.distObj || {}
         };
-        api.update(game, 0);
         return game;
     };
 
@@ -83,11 +82,11 @@ var gameMod = (function () {
         return 0;
     };
 
-    api.update = function(game, secs){
+    api.update = function(game, secs, now){
 
         // distance
         //game.distance = game.distance + game.pps * secs;
-        setDistance(game, new Date());
+        setDistance(game, now);
         game.distance = game.distance > hardCode.maxDistance ? hardCode.maxDistance : game.distance;
         game.gamePer = game.distance / hardCode.maxDistance;
 

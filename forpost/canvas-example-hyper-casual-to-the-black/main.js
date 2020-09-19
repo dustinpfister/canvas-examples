@@ -14,8 +14,8 @@ var state = {
         canvas: canvas,
         startTime: new Date(1983, 4, 6, 10, 5),
         distObj:{
-                32: 900000000,
-                64: 100000000
+                //32: 900000000,
+                //64: 100000000
         },
         pps: 128,
         distance: 0,
@@ -28,7 +28,7 @@ var loop = function () {
     t = now - state.lt,
     secs =  t / 1000;
     requestAnimationFrame(loop);
-    gameMod.update(state.game, secs);
+    gameMod.update(state.game, secs, now);
     draw.back(ctx, state.game, canvas);
     draw.playerShip(ctx, state.game);
     draw.textDistance(ctx, state.game, 10, 10);
