@@ -13,7 +13,9 @@
 ## 0.1.0 - game.startTime and distance object
 * have a game.startTime property that is the time that the player started playing
 * have an array where each key is a PPS speed and each value is a distance moved at that speed
-* figure distance based on this array of speeds
+* figure distance based on this object of speeds and distances
+* display current pps
+* create a pkg_0_1_0.html
 
 ## 0.0.0 - basic idea
 * (done) grid display moving based on game.distance
@@ -23,4 +25,4 @@
 * (done) display object for the player ship
 * (done) color of background goes from white background to black background based on percentage of distance over maxDistance
 * (done) draw.ver method
-* create a pkg_0_0_0.html file
+* (done) create a pkg_0_0_0.html file

@@ -52,6 +52,11 @@ var draw = (function () {
             setBasicText(ctx);
             ctx.fillText(text, x, y);
         },
+        textPPS: function(ctx, game, x, y){
+            var text = 'PPS: ' + game.pps;
+            setBasicText(ctx);
+            ctx.fillText(text, x, y);
+        },
         textDistance: function(ctx, game, x, y){
             var text = 'Distance: ' + Math.floor(game.distance);
             setBasicText(ctx);
