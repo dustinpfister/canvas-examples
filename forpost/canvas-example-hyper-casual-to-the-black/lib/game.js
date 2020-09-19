@@ -27,6 +27,15 @@ var gameMod = (function () {
                 y: 0,
                 w: 32,
                 h: 32
+            },
+            distanceObj : {
+                32: 1000,
+                64: 1000,
+                valueOf: function(){
+                   var speeds = Object.keys(this);
+                   
+                }
+                
             }
         };
         api.update(game, 0);
