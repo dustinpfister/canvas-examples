@@ -16,10 +16,28 @@ var gameMod = (function () {
             pps: opt.pps || hardCode.pps.start,
             distance: opt.distance === undefined ? 0 : opt.distance,
             target: opt.target === undefined ? hardCode.maxDistance : opt.target,
+            timeUnit: 'years',
             timeToTarget: 0
         };
         api.update(game, 0);
         return game;
+    };
+
+    var secsToX = function(secs, x){
+        x = x === undefined ? 'days' : x;
+        if(x === 'minutes'){
+            return secs / 60;
+        }
+        if(x === 'hours'){
+            return secs / 60 / 60;
+        }
+        if(x === 'days'){
+            return secs / 60 / 60 / 24;
+        }
+        if(x === 'years'){
+            return secs / 60 / 60 / 24 / 365.25;
+        }
+        return secs;
     };
 
     var timeToDistance = function(game, distance){
@@ -31,7 +49,8 @@ var gameMod = (function () {
     }
 
     api.update = function(game, secs){
-        game.timeToTarget = timeToDistance(game, hardCode.maxDistance);
+        var secsToTarget = timeToDistance(game, hardCode.maxDistance);
+        game.timeToTarget = secsToX(secsToTarget, game.timeUnit);
     };
 
     return api;
