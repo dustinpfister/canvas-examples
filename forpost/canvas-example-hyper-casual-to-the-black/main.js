@@ -18,7 +18,7 @@ var state = {
                 //64: 100000000
         },
         //pps: 128,
-        ppsIndex:6, //6,
+        ppsIndex:7, //6,
         distance: 0,
         targetTimeUnit: 'years'
     })

@@ -15,8 +15,8 @@
 * (done) have an game.distObj where each key is a PPS speed and each value is a number of seconds passed moving at that speed.
 * (done) figure distance based on this distObj of speeds and seconds
 * (done) display current pps
-* have a fixed array of pps speeds in hardCode
-* have game.pps set by index of pps speeds in hardCode via a game.ppsIndex;
+* (done) have a fixed array of pps speeds in hardCode
+* (done) have game.pps set by index of pps speeds in hardCode via a game.ppsIndex;
 * create a pkg_0_1_0.html
 
 ## 0.0.0 - basic idea

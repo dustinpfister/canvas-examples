@@ -2,7 +2,7 @@ var gameMod = (function () {
 
     var hardCode = {
        maxDistance: Number.MAX_SAFE_INTEGER, //1000000000000,
-       ppsArray: [32, 64, 128, 256, 512, 1024, 2048]
+       ppsArray: [32, 64, 128, 256, 512, 1024, 2048, 4096]
     };
 
     var api = {};
