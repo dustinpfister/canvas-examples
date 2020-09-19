@@ -12,7 +12,12 @@ var draw = (function () {
             ctx.fillRect(0, 0, canvas.width, canvas.height);
         },
         textETA: function(ctx, game, x, y){
-            var text = Math.floor(game.target.ETA) + ' ' + game.target.timeUnit;
+            var text = 'Target ETA: ' + Math.floor(game.target.ETA) + ' ' + game.target.timeUnit;
+            setBasicText(ctx);
+            ctx.fillText(text, x, y);
+        },
+        textDistance: function(ctx, game, x, y){
+            var text = 'Distance: ' + Math.floor(game.distance);
             setBasicText(ctx);
             ctx.fillText(text, x, y);
         }

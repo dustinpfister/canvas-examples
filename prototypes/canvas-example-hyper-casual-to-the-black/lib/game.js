@@ -51,6 +51,11 @@ var gameMod = (function () {
     }
 
     api.update = function(game, secs){
+
+        // distance
+        game.distance = game.distance + game.pps * secs;
+
+        // target
         var secsToTarget = timeToDistance(game, game.target.distance);
         game.target.ETA = secsToX(secsToTarget, game.target.timeUnit);
     };

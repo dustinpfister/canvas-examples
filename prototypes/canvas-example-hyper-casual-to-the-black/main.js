@@ -11,7 +11,7 @@ ctx.translate(0.5, 0.5);
 var state = {
     lt: new Date(),
     game : gameMod.create({
-        pps: 8,
+        pps: 100,
         distance: 0
     })
 };
@@ -24,7 +24,9 @@ var loop = function () {
     gameMod.update(state.game, secs);
 
     draw.back(ctx, canvas);
-    draw.textETA(ctx, state.game, 10, 10);
+    draw.textDistance(ctx, state.game, 10, 10);
+    draw.textETA(ctx, state.game, 10, 20);
+    state.lt = now;
 };
 
 loop();
