@@ -15,7 +15,7 @@ var gameMod = (function () {
         var game = {
             pps: opt.pps || hardCode.pps.start,
             distance: opt.distance === undefined ? 0 : opt.distance,
-            target: opt.target === undefined ? hardCode.maxDistance : opt.target
+            target: opt.target === undefined ? hardCode.maxDistance : opt.target,
             timeToTarget: 0
         };
         return game;
