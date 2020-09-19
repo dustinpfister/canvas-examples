@@ -17,7 +17,7 @@ var gameMod = (function () {
             distance: opt.distance === undefined ? 0 : opt.distance,
             target: {
                 distance: opt.targetDistance === undefined ? hardCode.maxDistance : targetDistance,
-                timeUnit: 'years',
+                timeUnit: opt.targetTimeUnit === undefined ? 'years' : opt.targetTimeUnit,
                 ETA: 0
             }
         };

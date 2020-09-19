@@ -12,7 +12,7 @@ var draw = (function () {
             ctx.fillRect(0, 0, canvas.width, canvas.height);
         },
         textETA: function(ctx, game, x, y){
-            var text = 'Target ETA: ' + Math.floor(game.target.ETA) + ' ' + game.target.timeUnit;
+            var text = 'Target ETA: ' + Number(game.target.ETA).toFixed(2) + ' ' + game.target.timeUnit;
             setBasicText(ctx);
             ctx.fillText(text, x, y);
         },
