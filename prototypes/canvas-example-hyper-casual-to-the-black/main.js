@@ -7,17 +7,24 @@ canvas.width = 320;
 canvas.height = 240;
 ctx.translate(0.5, 0.5);
 
-var game = gameMod.create({
-    distance: 0
-});
 
-console.log(game);
-console.log(game.target.ETA);
-
+var state = {
+    lt: new Date(),
+    game : gameMod.create({
+        pps: 8,
+        distance: 0
+    })
+};
 var loop = function () {
+    var now = new Date(),
+    t = now - state.lt,
+    secs =  t / 1000;
     requestAnimationFrame(loop);
+
+    gameMod.update(state.game, secs);
+
     draw.back(ctx, canvas);
-    draw.textETA(ctx, game, 10, 10);
+    draw.textETA(ctx, state.game, 10, 10);
 };
 
 loop();
