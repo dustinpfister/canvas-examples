@@ -7,6 +7,11 @@ var gameMod = (function () {
 
     var api = {};
 
+    var centerShip = function(game){
+        var ship = game.playerShip;
+        ship.x = game.canvas.width / 2 - ship.w / 2;
+    };
+
     api.create = function(opt){
         opt = opt || {};
         var game = {
@@ -33,6 +38,7 @@ var gameMod = (function () {
             },
             distObj: opt.distObj || {}
         };
+        centerShip(game);
         return game;
     };
 

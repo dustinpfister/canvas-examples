@@ -10,8 +10,8 @@
 * (done) display current pps
 * (done) have a fixed array of pps speeds in hardCode
 * (done) have game.pps set by index of pps speeds in hardCode via a game.ppsIndex
+* (done) player can just move the ship left and right as it moves up
 
-* player can just move the ship left and right as it moves up
 * Add an object pool for power ups
 * power ups will start at the top of the canvas and move down to the player ship
 * if the player ship comes in contact with a power up it will get that power up
