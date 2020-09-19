@@ -59,7 +59,12 @@ var draw = (function () {
         },
         playerShip: function(ctx, game){
             drawObject(ctx, game.playerShip, game, 'box');
-        }
+        },
+        ver: function(ctx, state, x, y){
+            var text = 'v' + state.ver;
+            setBasicText(ctx);
+            ctx.fillText(text, x, y);
+        },
     }
 }
     ());

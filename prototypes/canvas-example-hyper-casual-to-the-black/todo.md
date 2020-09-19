@@ -1,5 +1,8 @@
 # todo list for canvas-example-hyper-casual-to-the-black
 
+## 0.3.0 - save states
+* have a save state for the process of the game
+
 ## 0.2.0 - player power ups I
 * player can just move the ship left and right as it moves up
 * Add an object pool for power ups
@@ -17,5 +20,7 @@
 * (done) have a method for finding the amount of time it will take to get to a distance at current PPS
 * (done) have a helper method for converting a second amount to minutes, hours, days, and years
 * (done) have distance incress by secs value in main app update loop
-* display object for the player ship
-* color of background goes from white background to black background based on percentage of distance over maxDistance
+* (done) display object for the player ship
+* (done) color of background goes from white background to black background based on percentage of distance over maxDistance
+* (done) draw.ver method
+* create a pkg_0_0_0.html file
