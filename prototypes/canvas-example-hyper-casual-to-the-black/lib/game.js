@@ -56,7 +56,7 @@ var gameMod = (function () {
             return secs;
         }
         return 0;
-    }
+    };
 
     api.update = function(game, secs){
 
