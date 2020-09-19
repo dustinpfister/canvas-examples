@@ -1,22 +1,22 @@
 # todo list for canvas-example-hyper-casual-to-the-black
 
-## 0.3.0 - save states
+## 0.2.0 - save states
 * have a save state for the process of the game
 
-## 0.2.0 - player power ups I
+## 0.1.0 - game.startTime, distance object, player movement, power ups
+* (done) have a game.startTime property that is the time that the player started playing
+* (done) have an game.distObj where each key is a PPS speed and each value is a number of seconds passed moving at that speed.
+* (done) figure distance based on this distObj of speeds and seconds
+* (done) display current pps
+* (done) have a fixed array of pps speeds in hardCode
+* (done) have game.pps set by index of pps speeds in hardCode via a game.ppsIndex
+
 * player can just move the ship left and right as it moves up
 * Add an object pool for power ups
 * power ups will start at the top of the canvas and move down to the player ship
 * if the player ship comes in contact with a power up it will get that power up
 * have a first starting power up that will incress pps for a fixed amount of time
 
-## 0.1.0 - game.startTime and distance object
-* (done) have a game.startTime property that is the time that the player started playing
-* (done) have an game.distObj where each key is a PPS speed and each value is a number of seconds passed moving at that speed.
-* (done) figure distance based on this distObj of speeds and seconds
-* (done) display current pps
-* (done) have a fixed array of pps speeds in hardCode
-* (done) have game.pps set by index of pps speeds in hardCode via a game.ppsIndex;
 * create a pkg_0_1_0.html
 
 ## 0.0.0 - basic idea
