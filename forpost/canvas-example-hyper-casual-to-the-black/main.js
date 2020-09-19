@@ -53,14 +53,31 @@ var getCanvasRelative = function (e) {
         bx: bx
     };
 };
-var onPointer = function(e){
+var setInputs = function(pos){
+    if(pos.x < canvas.width / 2){
+        state.game.input.left = true;
+        state.game.input.right = false;
+    }else{
+        state.game.input.left = false;
+        state.game.input.right = true;
+    }
+};
+var onPointerStart = function(e){
+    var pos = state.pointerPos = getCanvasRelative(e);
     state.pointerDown = true;
-    state.pointerPos = getCanvasRelative(e);
-    console.log(state.pointerPos);
+    setInputs(pos);
+};
+var onPointerMove = function(e){
+    var pos = state.pointerPos = getCanvasRelative(e);
+    if(state.pointerDown){
+        setInputs(pos);
+    }
 };
 var onPointerStop = function(e){
     state.pointerDown = false;
+    state.game.input.left = false;
+    state.game.input.right = false;
 };
-canvas.addEventListener('mousedown', onPointer);
-canvas.addEventListener('mousemove', onPointer);
-canvas.addEventListener('mousedup', onPointerStop);
+canvas.addEventListener('mousedown', onPointerStart);
+canvas.addEventListener('mousemove', onPointerMove);
+canvas.addEventListener('mouseup', onPointerStop);

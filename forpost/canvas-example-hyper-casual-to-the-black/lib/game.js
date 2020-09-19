@@ -98,8 +98,8 @@ var gameMod = (function () {
 
         // player display object
         var xPPS = 0;
-        xPPS = game.input.right ? xPPS + 10: xPPS;
-        xPPS = game.input.left ? xPPS - 10: xPPS;
+        xPPS = game.input.right ? xPPS + 32: xPPS;
+        xPPS = game.input.left ? xPPS - 32: xPPS;
         //game.playerShip.x = game.canvas.width / 2 - 16;
         game.playerShip.x += xPPS * secs;
         game.playerShip.x = game.playerShip.x < 0 ? 0 : game.playerShip.x;
