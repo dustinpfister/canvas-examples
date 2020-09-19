@@ -18,20 +18,21 @@ var gameMod = (function () {
             target: opt.target === undefined ? hardCode.maxDistance : opt.target,
             timeToTarget: 0
         };
+        api.update(game, 0);
         return game;
     };
 
-var timeToDistance = function(game, distance){
+    var timeToDistance = function(game, distance){
+        if(game.distance < distance){
+            var secs = (distance - game.distance) / game.pps;
+            return secs;
+        }
+        return 0;
+    }
 
-
-
-return 0;
-
-}
-
-api.update = function(game){
-    
-};
+    api.update = function(game, secs){
+        game.timeToTarget = timeToDistance(game, hardCode.maxDistance);
+    };
 
     return api;
 }

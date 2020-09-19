@@ -8,7 +8,7 @@ canvas.height = 240;
 ctx.translate(0.5, 0.5);
 
 var game = gameMod.create({
-    distance: 100
+    distance: 0
 });
 
 console.log(game);
