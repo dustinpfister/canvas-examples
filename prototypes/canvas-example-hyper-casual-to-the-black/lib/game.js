@@ -13,6 +13,7 @@ var gameMod = (function () {
     api.create = function(opt){
         opt = opt || {};
         var game = {
+            canvas: opt.canvas || {width: 320, height: 240},
             pps: opt.pps || hardCode.pps.start,
             distance: opt.distance === undefined ? 0 : opt.distance,
             gamePer: 0,
@@ -67,6 +68,10 @@ var gameMod = (function () {
         // target
         var secsToTarget = timeToDistance(game, game.target.distance);
         game.target.ETA = secsToX(secsToTarget, game.target.timeUnit);
+
+        // player display object
+        game.playerShip.x = game.canvas.width / 2 - 16;
+        game.playerShip.y = game.canvas.height - 64;
     };
 
     return api;

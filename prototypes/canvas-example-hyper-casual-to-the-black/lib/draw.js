@@ -29,6 +29,18 @@ var draw = (function () {
         }
     };
 
+    var objectMethods = {
+        box: function(ctx, obj, game){
+            ctx.fillStyle = 'green';
+            ctx.fillRect(obj.x, obj.y, obj.w, obj.h);
+        }
+    };
+
+    var drawObject = function(ctx, obj, game, method){
+        method = method || 'box';
+        objectMethods[method](ctx, obj, game);
+    };
+
     return {
         // draw background
         back: function (ctx, game, canvas) {
@@ -44,6 +56,9 @@ var draw = (function () {
             var text = 'Distance: ' + Math.floor(game.distance);
             setBasicText(ctx);
             ctx.fillText(text, x, y);
+        },
+        playerShip: function(ctx, game){
+            drawObject(ctx, game.playerShip, game, 'box');
         }
     }
 }
