@@ -8,11 +8,11 @@ container.appendChild(canvas);
 
 /*
 var checkBounds = function (obj, canvas) {
-    if (obj.x >= canvas.width || obj.x < obj.w * -1 || obj.y > canvas.height || obj.y < obj.h * -1) {
-        obj.active = false;
-    }
+if (obj.x >= canvas.width || obj.x < obj.w * -1 || obj.y > canvas.height || obj.y < obj.h * -1) {
+obj.active = false;
+}
 };
-*/
+ */
 
 var boundingBox = function (x1, y1, w1, h1, x2, y2, w2, h2) {
     return !(
@@ -50,6 +50,9 @@ var state = {
                     if (boundingBox(bx.x, bx.y, bx.y, bx.h, obj.x, obj.y, obj.y, obj.h)) {
                         bx.data.hp.current -= obj.data.damage;
                         bx.data.hp.current = bx.data.hp.current < 0 ? 0 : bx.data.hp.current;
+                        if (bx.data.hp.current === 0) {
+                            bx.lifespan = 0;
+                        }
                         obj.lifespan = 0;
                     }
                 }
@@ -58,7 +61,7 @@ var state = {
     }),
     // box pool
     boxes: poolMod.create({
-        count: 3,
+        count: 10,
         data: {
             colors: ['red', 'green', 'blue']
         },
