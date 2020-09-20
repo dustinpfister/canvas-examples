@@ -43,11 +43,11 @@ var state = {
             poolMod.moveByPPS(obj, secs);
             state.boxes.objects.forEach(function (bx) {
                 // if not shooter box
-                if (bx != obj.data.shooter) {
+                if (bx != obj.data.shooter && bx.active) {
                     if (boundingBox(bx.x, bx.y, bx.y, bx.h, obj.x, obj.y, obj.y, obj.h)) {
 
                         //console.log('hit');
-                        bx.data.hp -= obj.data.damage;
+                        bx.data.hp -= 1; //obj.data.damage;
                         bx.data.hp = bx.data.hp < 0 ? 0 : bx.data.hp;
                         obj.lifespan = 0;
 
