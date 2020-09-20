@@ -19,14 +19,14 @@ var state = {
     secs: 0,
     spawnRate: 0.1,
     shots: poolMod.create({
-        count: 30,
-        pps: 128,
+        count: 100,
+        pps: 256,
         w: 8,
         h: 8,
         spawn: function (obj, pool, state, opt) {
             obj.x = opt.x;
             obj.y = opt.y;
-            obj.heading = Math.PI * 1.5;
+            obj.heading = opt.heading;
             obj.lifespan = 3;
         },
         update: function (obj, pool, state, secs) {
@@ -50,7 +50,7 @@ var state = {
             obj.data.fill = pool.data.colors[obj.i % pool.data.colors.length];
             obj.data.weapon = {
                 secs: 0,
-                shotRate: 0.5,
+                shotRate: 0.25,
                 damage: 1
             };
 
@@ -67,7 +67,8 @@ var state = {
                 if (w.secs >= w.shotRate) {
                     poolMod.spawn(state.shots, state, {
                         x: obj.x,
-                        y: obj.y
+                        y: obj.y,
+                        heading: obj.heading
                     });
                     w.secs %= w.shotRate;
                 }
