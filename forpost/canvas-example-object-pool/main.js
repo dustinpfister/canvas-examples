@@ -12,6 +12,14 @@ var checkBounds = function (obj, canvas) {
     }
 };
 
+var boundingBox = function (x1, y1, w1, h1, x2, y2, w2, h2) {
+    return !(
+        (y1 + h1) < y2 ||
+        y1 > (y2 + h2) ||
+        (x1 + w1) < x2 ||
+        x1 > (x2 + w2));
+};
+
 // create a state with pool
 var state = {
     ver: '0.3.0',
@@ -28,9 +36,21 @@ var state = {
             obj.y = opt.y;
             obj.heading = opt.heading;
             obj.lifespan = 3;
+            obj.data.shooter = opt.shooter;
         },
         update: function (obj, pool, state, secs) {
             poolMod.moveByPPS(obj, secs);
+            state.boxes.objects.forEach(function (bx) {
+                // if not shooter box
+                if (bx != obj.data.shooter) {
+                    if (boundingBox(bx.x, bx.y, bx.y, bx.h, obj.x, obj.y, obj.y, obj.h)) {
+
+                        console.log('hit');
+                        obj.lifespan = 0;
+
+                    }
+                }
+            })
         }
     }),
     boxes: poolMod.create({
@@ -72,7 +92,8 @@ var state = {
                     poolMod.spawn(state.shots, state, {
                         x: obj.x,
                         y: obj.y,
-                        heading: obj.heading
+                        heading: obj.heading,
+                        shooter: obj
                     });
                     w.secs %= w.shotRate;
                 }
