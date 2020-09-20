@@ -6,11 +6,13 @@ canvas.width = 320;
 canvas.height = 240;
 container.appendChild(canvas);
 
+/*
 var checkBounds = function (obj, canvas) {
     if (obj.x >= canvas.width || obj.x < obj.w * -1 || obj.y > canvas.height || obj.y < obj.h * -1) {
         obj.active = false;
     }
 };
+*/
 
 var boundingBox = function (x1, y1, w1, h1, x2, y2, w2, h2) {
     return !(
@@ -26,6 +28,7 @@ var state = {
     canvas: canvas,
     secs: 0,
     spawnRate: 0.1,
+    // shot pool
     shots: poolMod.create({
         count: 100,
         pps: 256,
@@ -48,12 +51,12 @@ var state = {
                         bx.data.hp.current -= obj.data.damage;
                         bx.data.hp.current = bx.data.hp.current < 0 ? 0 : bx.data.hp.current;
                         obj.lifespan = 0;
-
                     }
                 }
             })
         }
     }),
+    // box pool
     boxes: poolMod.create({
         count: 3,
         data: {
@@ -65,8 +68,7 @@ var state = {
             obj.heading = Math.PI * 2 * Math.random();
             obj.pps = 32 + 128 * Math.random();
             obj.hcps = -90 + 180 * Math.random();
-            obj.lifespan = 10;
-
+            obj.lifespan = 300;
             // data
             obj.data.fill = pool.data.colors[obj.i % pool.data.colors.length];
             obj.data.weapon = {
@@ -78,14 +80,12 @@ var state = {
                 current: 10,
                 max: 10
             };
-
         },
         update: function (obj, pool, state, secs) {
             if (obj.active) {
                 // move
                 poolMod.moveByPPS(obj, secs);
                 obj.heading += Math.PI / 180 * obj.hcps * secs;
-
                 // shoot
                 var w = obj.data.weapon;
                 w.secs += secs;
