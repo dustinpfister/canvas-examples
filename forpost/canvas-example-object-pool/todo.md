@@ -6,8 +6,11 @@
 * new draw method for particles
 
 ### 0.x.0 - hit points and shots
-* add hit point, and max hit point values for the 'box' pool objects via the data property
+* add hit point, and max hit point values for the 'boxes' pool via the data property
+* have a boundingBox method in main.js for hit detection
 * have a 'shot' pool that will be a pool of objects that will hit 'box' pool objects
+* boxes can no longer purge based on going out of bounds, but lifespan will still apply
+* boxes can purge if hp <= 0
 * new draw methods for shots
 
 ### 0.2.0 - custom spawn, and updater methods
@@ -21,7 +24,7 @@
 * (done) have a pool.data.colors array
 * (done) make use of global pool.data.colors to set color for spawned objects
 * (done) pool ref as argument in spawn, update, and purge
-* make a pkg_0_2_0.html file
+* (done) make a pkg_0_2_0.html file
 
 ### 0.1.0 - colors and cool movement
 * (done) heading per second change value

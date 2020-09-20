@@ -14,13 +14,20 @@ var checkBounds = function (obj, canvas) {
 
 // create a state with pool
 var state = {
-    ver: '0.2.0',
+    ver: '0.3.0',
     canvas: canvas,
     secs: 0,
     spawnRate: 0.1,
-
+    shots: poolMod.create({
+        count: 30,
+        spawn: function (obj, pool, state, opt) {
+            obj.x = opt.x;
+            obj.y = opt.y;
+            obj.heading = Math.PI * 1.5;
+        }
+    }),
     boxes: poolMod.create({
-        count: 5,
+        count: 10,
         data: {
             colors: ['red', 'green', 'blue'],
         },
@@ -39,6 +46,13 @@ var state = {
                 obj.x += Math.cos(obj.heading) * obj.pps * secs;
                 obj.y += Math.sin(obj.heading) * obj.pps * secs;
                 obj.heading += Math.PI / 180 * obj.hcps * secs;
+
+                // shoot
+                poolMod.spawn(state.shots, state, {
+                    x: obj.x,
+                    y: obj.y
+                });
+
             }
             checkBounds(obj, state.canvas);
         }
@@ -55,6 +69,8 @@ var loop = function () {
 
     requestAnimationFrame(loop);
     draw.back(ctx, canvas);
+
+    draw.pool(ctx, state.shots);
     draw.pool(ctx, state.boxes);
     draw.ver(ctx, state);
     poolMod.update(state.boxes, secs, state);
