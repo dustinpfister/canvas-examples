@@ -11,11 +11,10 @@
 * (done) the pool should be a property of the pool object as pool.objects
 * (done) spawn, update, and purge methods should ne part of a pool object
 * (done) getInactive should be a private helper in poolMod, I should not have to use in in the custom spawn method
-* lifespan should deduct in poolMod.update
-
-* global pool.data object
-* have a pool.data.colors array
-* make use of global pool.data.colors to set color for spawned objects
+* (done) lifespan should deduct in poolMod.update
+* (done) global pool.data object
+* (done) have a pool.data.colors array
+* (done) make use of global pool.data.colors to set color for spawned objects
 
 * add hit point, and max hit point values for the 'box' pool objects via the data property
 * have a 'shot' pool that will be a pool of objects that will hit 'box' pool objects
