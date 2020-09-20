@@ -31,7 +31,7 @@ var state = {
     // shot pool
     shots: poolMod.create({
         count: 100,
-        pps: 256,
+        pps: 32,
         w: 8,
         h: 8,
         spawn: function (obj, pool, state, opt) {
@@ -47,7 +47,7 @@ var state = {
             state.boxes.objects.forEach(function (bx) {
                 // if not shooter box
                 if (bx != obj.data.shooter && bx.active) {
-                    if (boundingBox(bx.x, bx.y, bx.y, bx.h, obj.x, obj.y, obj.y, obj.h)) {
+                    if (boundingBox(bx.x, bx.y, bx.w, bx.h, obj.x, obj.y, obj.w, obj.h)) {
                         bx.data.hp.current -= obj.data.damage;
                         bx.data.hp.current = bx.data.hp.current < 0 ? 0 : bx.data.hp.current;
                         if (bx.data.hp.current === 0) {
@@ -85,7 +85,7 @@ var state = {
             obj.data.fill = pool.data.colors[obj.i % pool.data.colors.length];
             obj.data.weapon = {
                 secs: 0,
-                shotRate: 0.1,
+                shotRate: 1,
                 damage: 1
             };
             obj.data.hp = {
