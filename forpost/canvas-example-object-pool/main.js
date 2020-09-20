@@ -24,7 +24,7 @@ var state = {
         data: {
             colors: ['red', 'green', 'blue'],
         },
-        spawn: function (obj, pool, state) {
+        spawn: function (obj, pool, state, opt) {
             obj.x = state.canvas.width / 2;
             obj.y = state.canvas.height / 2;
             obj.heading = Math.PI * 2 * Math.random();

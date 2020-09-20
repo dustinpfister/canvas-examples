@@ -45,10 +45,12 @@ var poolMod = (function () {
     // spawn the next inactive object in the given pool
     api.spawn = function (pool, state, opt) {
         var obj = getInactive(pool);
+        state = state || {};
+        opt = opt || {};
         if (obj) {
             if (!obj.active) {
                 obj.active = true;
-                pool.spawn.call(pool, obj, pool, state);
+                pool.spawn.call(pool, obj, pool, state, opt);
                 return obj;
             }
         }
