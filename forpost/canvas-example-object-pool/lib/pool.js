@@ -21,7 +21,12 @@ var poolMod = (function () {
         opt.count = opt.count || 10;
         var i = 0,
         pool = {
-            objects: []
+            objects: [],
+            spawn: opt.spawn || function (obj, state) {},
+            purge: opt.purge || function (obj, state) {},
+            update: opt.update || function (obj, state, secs) {
+                obj.lifespan -= secs;
+            }
         };
         while (i < opt.count) {
             pool.objects.push({
@@ -33,12 +38,7 @@ var poolMod = (function () {
                 heading: opt.heading === undefined ? 0 : opt.heading,
                 pps: opt.pps === undefined ? 32 : opt.pps,
                 lifespan: opt.lifespan || 3,
-                data: opt.data || {},
-                spawn: opt.spawn || function (obj, state) {},
-                purge: opt.purge || function (obj, state) {},
-                update: opt.update || function (obj, state, secs) {
-                    obj.lifespan -= secs;
-                }
+                data: opt.data || {}
             });
             i += 1;
         }
@@ -51,7 +51,7 @@ var poolMod = (function () {
         if (obj) {
             if (!obj.active) {
                 //obj.active = true;
-                obj.spawn.call(obj, obj, state, opt);
+                pool.spawn.call(obj, obj, state, opt);
                 return obj;
             }
         }
@@ -65,11 +65,11 @@ var poolMod = (function () {
         while (i--) {
             obj = pool.objects[i];
             if (obj.active) {
-                obj.update(obj, state, secs);
+                pool.update(obj, state, secs);
                 obj.lifespan = obj.lifespan < 0 ? 0 : obj.lifespan;
                 if (obj.lifespan === 0) {
                     obj.active = false;
-                    obj.purge.call(obj, obj, state);
+                    pool.purge.call(obj, obj, state);
                 }
             }
         }
