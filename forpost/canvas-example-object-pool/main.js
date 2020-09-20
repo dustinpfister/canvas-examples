@@ -20,12 +20,11 @@ var state = {
     spawnRate: 0.1,
     boxes: poolMod.create({
         //canvas: canvas,
-        count: 100,
+        count: 5,
         spawn: function (obj, state, opt) {
 
-
             if (state.secs >= state.spawnRate) {
-				
+
                 bx = poolMod.getInactive(state.boxes);
                 if (bx) {
                     bx.active = true;

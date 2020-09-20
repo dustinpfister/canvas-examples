@@ -34,7 +34,7 @@ var poolMod = (function () {
             while (i--) {
                 obj = pool[i];
                 if (!obj.active) {
-                    obj.active = true;
+                    //obj.active = true;
                     obj.spawn.call(obj, obj, state, opt);
                     return obj;
                 }

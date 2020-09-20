@@ -6,8 +6,6 @@ draw.back = function (ctx, canvas) {
 };
 
 draw.pool = function (ctx, pool) {
-	
-	
     var i = pool.length,
     bx;
     ctx.fillStyle = 'white';
