@@ -3,7 +3,7 @@ var poolMod = (function () {
     var api = {};
 
     // get next inactive object in the given pool
-    api.getInactive = function (pool) {
+    var getInactive = function (pool) {
         var i = pool.objects.length,
         obj;
         while (i--) {
@@ -47,7 +47,7 @@ var poolMod = (function () {
 
     // spawn the next inactive object in the given pool
     api.spawn = function (pool, state, opt) {
-        var obj = api.getInactive(pool);
+        var obj = getInactive(pool);
         if (obj) {
             if (!obj.active) {
                 obj.active = true;
