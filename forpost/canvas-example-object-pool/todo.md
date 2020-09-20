@@ -20,6 +20,7 @@
 * (done) global pool.data object
 * (done) have a pool.data.colors array
 * (done) make use of global pool.data.colors to set color for spawned objects
+* make a pkg_0_2_0.html file
 
 ### 0.1.0 - colors and cool movement
 * (done) heading per second change value
