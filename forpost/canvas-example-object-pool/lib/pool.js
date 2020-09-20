@@ -1,105 +1,73 @@
-
-var Pool = (function () {
-
-    // create a pool
-    var createPool = function (opt) {
-        opt = opt || {};
-        var state = {
-            canvas: opt.canvas || {
-                width: 320,
-                height: 240
-            },
-            pool: [],
-            spawnRate: 0.1,
-            secs: 0,
-            colors: ['red', 'green', 'blue']
-        };
-        var i = opt.count || 10;
-        while (i--) {
-            state.pool.push({
-                x: 32,
-                y: 32,
-                w: 32,
-                h: 32,
-                heading: 0,
-                pps: 64,
-                lifespan: 3,
-                hcps: 0, // heading change per second in degrees
-                alpha: 0.5,
-                fill: state.colors[i % state.colors.length],
-                active: false
-            });
-        }
-        return state;
-    };
-
-    var spawn = function (state, secs) {
-        var bx;
-        state.secs += secs;
-        if (state.secs >= state.spawnRate) {
-            bx = getInactive(state.pool);
-            if (bx) {
-                bx.active = true;
-                bx.x = state.canvas.width / 2;
-                bx.y = state.canvas.height / 2;
-                bx.heading = Math.PI * 2 * Math.random();
-                bx.pps = 32 + 128 * Math.random();
-                bx.hcps = -90 + 180 * Math.random();
-                bx.lifespan = 10;
+var poolMod = (function () {
+    return {
+        // create a new pool
+        create: function (opt) {
+            opt = opt || {};
+            opt.count = opt.count || 10;
+            var i = 0,
+            pool = [];
+            while (i < opt.count) {
+                pool.push({
+                    active: false,
+                    x: opt.x === undefined ? 0 : opt.x,
+                    y: opt.y === undefined ? 0 : opt.y,
+                    w: opt.w === undefined ? 32 : opt.w,
+                    h: opt.h === undefined ? 32 : opt.h,
+                    heading: opt.heading === undefined ? 0 : opt.heading,
+                    pps: opt.pps === undefined ? 32 : opt.pps,
+                    lifespan: opt.lifespan || 3,
+                    data: opt.data || {},
+                    spawn: opt.spawn || function (obj, state) {},
+                    purge: opt.purge || function (obj, state) {},
+                    update: opt.update || function (obj, state, secs) {
+                        obj.lifespan -= secs;
+                    }
+                });
+                i += 1;
             }
-            state.secs %= state.spawnRate;
-        }
-    };
-
-    update = function (state, secs) {
-        var i = state.pool.length,
-        bx;
-        while (i--) {
-            bx = state.pool[i];
-            if (bx.active) {
-                // move
-                bx.x += Math.cos(bx.heading) * bx.pps * secs;
-                bx.y += Math.sin(bx.heading) * bx.pps * secs;
-                bx.heading += Math.PI / 180 * bx.hcps * secs;
-                bx.lifespan -= secs;
-                bx.lifespan = bx.lifespan < 0 ? 0 : bx.lifespan;
-                if (bx.lifespan === 0) {
-                    bx.hcps = 0;
+            return pool;
+        },
+        // spawn the next inactive object in the given pool
+        spawn: function (pool, state, opt) {
+            var i = pool.length,
+            obj;
+            while (i--) {
+                obj = pool[i];
+                if (!obj.active) {
+                    obj.active = true;
+                    obj.spawn.call(obj, obj, state, opt);
+                    return obj;
                 }
             }
-            // set inactive if out of bounds
-            checkBounds(bx, canvas);
-        }
-        // spawn
-        spawn(state, secs);
-    };
-
-    // get an inactive object or return false
-    var getInactive = function (pool) {
-        var p = state.player,
-        i = pool.length,
-        obj;
-        while (i--) {
-            obj = pool[i];
-            if (!obj.active) {
-                return obj;
+            return false;
+        },
+        // update a pool object by a secs value
+        update: function (pool, secs, state) {
+            var i = pool.length,
+            obj;
+            state = state || {}; // your projects state object
+            while (i--) {
+                obj = pool[i];
+                if (obj.active) {
+                    obj.update(obj, state, secs);
+                    obj.lifespan = obj.lifespan < 0 ? 0 : obj.lifespan;
+                    if (obj.lifespan === 0) {
+                        obj.active = false;
+                        obj.purge.call(obj, obj, state);
+                    }
+                }
+            }
+        },
+        // set all to inActive or active state
+        setActiveStateForAll: function (pool, bool) {
+            bool = bool === undefined ? false : bool;
+            var i = pool.length,
+            obj;
+            while (i--) {
+                obj = pool[i];
+                obj.active = bool;
             }
         }
-        return false;
-    };
-
-    // check bounds with the given object and set it inactive if it is out
-    var checkBounds = function (bx, canvas) {
-        if (bx.x >= canvas.width || bx.x < bx.w * -1 || bx.y > canvas.height || bx.y < bx.h * -1) {
-            bx.active = false;
-        }
-    };
-
-    // public
-    return {
-        create: createPool,
-        update: update
     }
-
 }
     ());

@@ -6,6 +6,8 @@ draw.back = function (ctx, canvas) {
 };
 
 draw.pool = function (ctx, state) {
+	
+	/*
     var i = state.pool.length,
     bx;
     ctx.fillStyle = 'white';
@@ -26,6 +28,7 @@ draw.pool = function (ctx, state) {
             ctx.restore();
         }
     }
+	*/
 };
 
 draw.ver = function (ctx, state) {

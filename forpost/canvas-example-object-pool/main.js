@@ -9,8 +9,8 @@ container.appendChild(canvas);
 // create a state with pool
 var state = {
     ver: '0.2.0',
-    boxes: Pool.create({
-        canvas: canvas,
+    boxes: poolMod.create({
+        //canvas: canvas,
         count: 100
     })
 };
@@ -27,7 +27,7 @@ var loop = function () {
     draw.back(ctx, canvas);
     draw.pool(ctx, state.boxes);
     draw.ver(ctx, state);
-    Pool.update(state.boxes, secs);
+    poolMod.update(state.boxes, secs);
 
     lt = now;
 
