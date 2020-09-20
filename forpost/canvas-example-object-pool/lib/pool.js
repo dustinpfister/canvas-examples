@@ -2,6 +2,19 @@ var poolMod = (function () {
 
     var api = {};
 
+    // get next inactive object in the given pool
+    api.getInactive = function (pool) {
+        var i = pool.length,
+        obj;
+        while (i--) {
+            obj = pool[i];
+            if (!obj.active) {
+                return obj;
+            }
+        }
+        return false;
+    };
+
     // create a new pool
     api.create = function (opt) {
         opt = opt || {};
@@ -32,10 +45,8 @@ var poolMod = (function () {
 
     // spawn the next inactive object in the given pool
     api.spawn = function (pool, state, opt) {
-        var i = pool.length,
-        obj;
-        while (i--) {
-            obj = pool[i];
+        var obj = api.getInactive(pool);
+        if (obj) {
             if (!obj.active) {
                 //obj.active = true;
                 obj.spawn.call(obj, obj, state, opt);
@@ -71,18 +82,6 @@ var poolMod = (function () {
             obj = pool[i];
             obj.active = bool;
         }
-    };
-
-    api.getInactive = function (pool) {
-        var i = pool.length,
-        obj;
-        while (i--) {
-            obj = pool[i];
-            if (!obj.active) {
-                return obj;
-            }
-        }
-        return false;
     };
 
     return api;
