@@ -66,17 +66,26 @@ var state = {
             colors: ['red', 'green', 'blue']
         },
         spawn: function (obj, pool, state, opt) {
-            obj.x = state.canvas.width / 2;
-            obj.y = state.canvas.height / 2;
+
+            //obj.x = state.canvas.width / 2;
+            //obj.y = state.canvas.height / 2;
+            obj.x = state.canvas.width * Math.random();
+            obj.y = state.canvas.height * Math.random();
             obj.heading = Math.PI * 2 * Math.random();
+
+            //obj.x = state.canvas.width / 2;
+            //obj.y = state.canvas.height + 200;
+            //obj.heading = Math.PI * 1.5;
+
             obj.pps = 32 + 128 * Math.random();
-            obj.hcps = -90 + 180 * Math.random();
+            var dir = Math.random() < 0.5 ? -1 : 1;
+            obj.hcps = (90 + 90 * Math.random()) * dir; //-180; //-10 + 40 * Math.random();
             obj.lifespan = 300;
             // data
             obj.data.fill = pool.data.colors[obj.i % pool.data.colors.length];
             obj.data.weapon = {
                 secs: 0,
-                shotRate: 0.5,
+                shotRate: 0.1,
                 damage: 1
             };
             obj.data.hp = {
