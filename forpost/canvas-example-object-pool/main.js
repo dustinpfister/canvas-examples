@@ -53,6 +53,10 @@ var state = {
                 shotRate: 0.25,
                 damage: 1
             };
+            obj.data.hp = {
+                current: 10,
+                max: 10
+            };
 
         },
         update: function (obj, pool, state, secs) {

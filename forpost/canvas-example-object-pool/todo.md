@@ -8,14 +8,17 @@
 ### 0.x.0 - hit points and shots
 * (done) have a 'shot' pool that will be a pool of objects that will hit 'box' pool objects
 * (done) new poolPod.moveByPPS method
-* have a box.data.weapon object for each Box
-* have a box.data.weapon.secs, and box.data.weapon.shotRate properties that are used to set the rate of fire
-* have a box.data.weapon.damage property that will be the hit point damage
+* (done) have a box.data.weapon object for each Box
+* (done) have a box.data.weapon.secs, and box.data.weapon.shotRate properties that are used to set the rate of fire
+* (done) have a box.data.weapon.damage property that will be the hit point damage
+
 * add hit point, and max hit point values for the 'boxes' pool via the data property
+* display hp bars for display objects that have them in draw.pool
 * have a boundingBox method in main.js for hit detection
 * boxes can no longer purge based on going out of bounds, but lifespan will still apply
 * boxes can purge if hp <= 0
-* new draw methods for shots
+
+* make a pkg_0_3_0.html file
 
 ### 0.2.0 - custom spawn, and updater methods
 * (done) use the pool.js file I worked out for canvas-example-kill-box

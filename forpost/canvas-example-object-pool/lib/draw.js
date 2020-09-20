@@ -24,6 +24,12 @@ draw.pool = function (ctx, pool) {
             ctx.fill();
             ctx.stroke();
             ctx.restore();
+
+            if (obj.data.hp) {
+                var per = obj.data.hp.current / obj.data.hp.max;
+                ctx.fillStyle = 'lime';
+                ctx.fillRect(obj.x - 16, obj.y, 32 * per, 4);
+            }
         }
     }
 };
