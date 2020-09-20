@@ -45,7 +45,6 @@ var state = {
                 // if not shooter box
                 if (bx != obj.data.shooter && bx.active) {
                     if (boundingBox(bx.x, bx.y, bx.y, bx.h, obj.x, obj.y, obj.y, obj.h)) {
-                        console.log('hit');
                         bx.data.hp.current -= obj.data.damage;
                         bx.data.hp.current = bx.data.hp.current < 0 ? 0 : bx.data.hp.current;
                         obj.lifespan = 0;
@@ -100,9 +99,7 @@ var state = {
                     });
                     w.secs %= w.shotRate;
                 }
-
             }
-            checkBounds(obj, state.canvas);
         }
     })
 };

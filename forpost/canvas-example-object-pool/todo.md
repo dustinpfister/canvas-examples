@@ -11,10 +11,9 @@
 * (done) have a box.data.weapon object for each Box
 * (done) have a box.data.weapon.secs, and box.data.weapon.shotRate properties that are used to set the rate of fire
 * (done) have a box.data.weapon.damage property that will be the hit point damage
-
-* add hit point, and max hit point values for the 'boxes' pool via the data property
-* display hp bars for display objects that have them in draw.pool
-* have a boundingBox method in main.js for hit detection
+* (done) add hit point, and max hit point values for the 'boxes' pool via the data property
+* (done) display hp bars for display objects that have them in draw.pool
+* (done) have a boundingBox method in main.js for hit detection
 * boxes can no longer purge based on going out of bounds, but lifespan will still apply
 * boxes can purge if hp <= 0
 
