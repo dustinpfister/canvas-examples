@@ -48,7 +48,7 @@ var poolMod = (function () {
         if (obj) {
             if (!obj.active) {
                 obj.active = true;
-                pool.spawn.call(obj, obj, state, opt);
+                pool.spawn.call(pool, obj, pool, state);
                 return obj;
             }
         }
@@ -62,12 +62,12 @@ var poolMod = (function () {
         while (i--) {
             obj = pool.objects[i];
             if (obj.active) {
-                pool.update(obj, state, secs);
+                pool.update.call(pool, obj, pool, state, secs);
                 obj.lifespan -= secs;
                 obj.lifespan = obj.lifespan < 0 ? 0 : obj.lifespan;
                 if (obj.lifespan === 0) {
                     obj.active = false;
-                    pool.purge.call(obj, obj, state);
+                    pool.purge.call(pool, obj, pool, state);
                 }
             }
         }

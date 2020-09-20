@@ -6,9 +6,9 @@ canvas.width = 320;
 canvas.height = 240;
 container.appendChild(canvas);
 
-var checkBounds = function (bx, canvas) {
-    if (bx.x >= canvas.width || bx.x < bx.w * -1 || bx.y > canvas.height || bx.y < bx.h * -1) {
-        bx.active = false;
+var checkBounds = function (obj, canvas) {
+    if (obj.x >= canvas.width || obj.x < obj.w * -1 || obj.y > canvas.height || obj.y < obj.h * -1) {
+        obj.active = false;
     }
 };
 
@@ -24,23 +24,23 @@ var state = {
         data: {
             colors: ['red', 'green', 'blue'],
         },
-        spawn: function (bx, state, opt) {
-            bx.x = state.canvas.width / 2;
-            bx.y = state.canvas.height / 2;
-            bx.heading = Math.PI * 2 * Math.random();
-            bx.pps = 32 + 128 * Math.random();
-            bx.hcps = -90 + 180 * Math.random();
-            bx.lifespan = 10;
-            bx.fill = state.boxes.data.colors[bx.i % state.boxes.data.colors.length]
+        spawn: function (obj, pool, state) {
+            obj.x = state.canvas.width / 2;
+            obj.y = state.canvas.height / 2;
+            obj.heading = Math.PI * 2 * Math.random();
+            obj.pps = 32 + 128 * Math.random();
+            obj.hcps = -90 + 180 * Math.random();
+            obj.lifespan = 10;
+            obj.fill = pool.data.colors[obj.i % pool.data.colors.length]
         },
-        update: function (bx, state, secs) {
-            if (bx.active) {
+        update: function (obj, pool, state, secs) {
+            if (obj.active) {
                 // move
-                bx.x += Math.cos(bx.heading) * bx.pps * secs;
-                bx.y += Math.sin(bx.heading) * bx.pps * secs;
-                bx.heading += Math.PI / 180 * bx.hcps * secs;
+                obj.x += Math.cos(obj.heading) * obj.pps * secs;
+                obj.y += Math.sin(obj.heading) * obj.pps * secs;
+                obj.heading += Math.PI / 180 * obj.hcps * secs;
             }
-            checkBounds(bx, state.canvas);
+            checkBounds(obj, state.canvas);
         }
     })
 };
