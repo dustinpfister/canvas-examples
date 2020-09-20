@@ -1,11 +1,11 @@
 ## canvas-example-object-pool
 
-### 0.x.0 - Particles pool
+### 0.4.0 - Particles pool
 * add a 'practices' pool.
 * when a 'box' object becomes inactive, 'particles' shot out from the point where it happened
-* new draw method for particles
+make a pkg_0_4_0.html file
 
-### 0.x.0 - hit points and shots
+### 0.3.0 - hit points and shots
 * (done) have a 'shot' pool that will be a pool of objects that will hit 'box' pool objects
 * (done) new poolPod.moveByPPS method
 * (done) have a box.data.weapon object for each Box
@@ -16,7 +16,7 @@
 * (done) have a boundingBox method in main.js for hit detection
 * (done) boxes can no longer purge based on going out of bounds, but lifespan will still apply
 * (done) boxes can purge if hp <= 0
-* make a pkg_0_3_0.html file
+* (done) make a pkg_0_3_0.html file
 
 ### 0.2.0 - custom spawn, and updater methods
 * (done) use the pool.js file I worked out for canvas-example-kill-box

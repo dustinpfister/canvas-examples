@@ -24,7 +24,7 @@ var boundingBox = function (x1, y1, w1, h1, x2, y2, w2, h2) {
 
 // create a state with pool
 var state = {
-    ver: '0.3.0',
+    ver: '0.4.0',
     canvas: canvas,
     secs: 0,
     spawnRate: 0.1,
