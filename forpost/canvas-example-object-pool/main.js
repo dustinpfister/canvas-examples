@@ -19,15 +19,16 @@ var state = {
     secs: 0,
     spawnRate: 0.1,
     shots: poolMod.create({
-        count: 30,
+        count: 1,
         spawn: function (obj, pool, state, opt) {
             obj.x = opt.x;
             obj.y = opt.y;
             obj.heading = Math.PI * 1.5;
+            obj.lifespan = 3;
         }
     }),
     boxes: poolMod.create({
-        count: 10,
+        count: 3,
         data: {
             colors: ['red', 'green', 'blue'],
         },
@@ -74,6 +75,7 @@ var loop = function () {
     draw.pool(ctx, state.boxes);
     draw.ver(ctx, state);
     poolMod.update(state.boxes, secs, state);
+    poolMod.update(state.shots, secs, state);
 
     state.secs += secs;
     if (state.secs >= state.spawnRate) {

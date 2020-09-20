@@ -21,9 +21,9 @@ var poolMod = (function () {
         pool = {
             objects: [],
             data: opt.data || {},
-            spawn: opt.spawn || function (obj, state) {},
-            purge: opt.purge || function (obj, state) {},
-            update: opt.update || function (obj, state, secs) {}
+            spawn: opt.spawn || function (obj, pool, state, opt) {},
+            purge: opt.purge || function (obj, pool, state) {},
+            update: opt.update || function (obj, pool, state, secs) {}
         };
         while (i < opt.count) {
             pool.objects.push({
