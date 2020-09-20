@@ -7,6 +7,12 @@
 
 ### 0.2.0 - custom spawn, and updater methods
 * (done) use the pool.js file I worked out for canvas-example-kill-box
+* getInactive should be a private helper in poolMod, I should not have to use in in the custom spawn method
+* poolMod.create should return a pool object rather than just an array
+* the pool should be a property of the pool object as pool.objects
+* spawn, update, and purge methods should ne part of a pool object
+
+
 * add hit point, and max hit point values for the 'box' pool objects via the data property
 * have a 'shot' pool that will be a pool of objects that will hit 'box' pool objects
 * have a 'powerUp' pool that will increase stats of the box pool objects

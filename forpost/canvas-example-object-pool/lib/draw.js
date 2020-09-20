@@ -6,13 +6,13 @@ draw.back = function (ctx, canvas) {
 };
 
 draw.pool = function (ctx, pool) {
-    var i = pool.length,
+    var i = pool.objects.length,
     bx;
     ctx.fillStyle = 'white';
     ctx.strokeStyle = 'black';
     ctx.lineWidth = 3;
     while (i--) {
-        bx = pool[i];
+        bx = pool.objects[i];
         if (bx.active) {
             ctx.save();
             ctx.fillStyle = bx.fill;

@@ -4,10 +4,10 @@ var poolMod = (function () {
 
     // get next inactive object in the given pool
     api.getInactive = function (pool) {
-        var i = pool.length,
+        var i = pool.objects.length,
         obj;
         while (i--) {
-            obj = pool[i];
+            obj = pool.objects[i];
             if (!obj.active) {
                 return obj;
             }
@@ -20,9 +20,11 @@ var poolMod = (function () {
         opt = opt || {};
         opt.count = opt.count || 10;
         var i = 0,
-        pool = [];
+        pool = {
+            objects: []
+        };
         while (i < opt.count) {
-            pool.push({
+            pool.objects.push({
                 active: false,
                 x: opt.x === undefined ? 0 : opt.x,
                 y: opt.y === undefined ? 0 : opt.y,
@@ -57,11 +59,11 @@ var poolMod = (function () {
     };
     // update a pool object by a secs value
     api.update = function (pool, secs, state) {
-        var i = pool.length,
+        var i = pool.objects.length,
         obj;
         state = state || {}; // your projects state object
         while (i--) {
-            obj = pool[i];
+            obj = pool.objects[i];
             if (obj.active) {
                 obj.update(obj, state, secs);
                 obj.lifespan = obj.lifespan < 0 ? 0 : obj.lifespan;
@@ -76,10 +78,10 @@ var poolMod = (function () {
     // set all to inActive or active state
     api.setActiveStateForAll = function (pool, bool) {
         bool = bool === undefined ? false : bool;
-        var i = pool.length,
+        var i = pool.objects.length,
         obj;
         while (i--) {
-            obj = pool[i];
+            obj = pool.objects[i];
             obj.active = bool;
         }
     };
