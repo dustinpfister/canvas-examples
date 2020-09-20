@@ -117,12 +117,14 @@ var state = {
 };
 
 // LOOP
-var lt = new Date();
+var lt = new Date(),
+maxSecs = 0.1;
 var loop = function () {
 
     var now = new Date(),
     t = now - lt,
     secs = t / 1000;
+    secs = secs > maxSecs ? maxSecs : secs;
 
     requestAnimationFrame(loop);
     draw.back(ctx, canvas);

@@ -15,8 +15,7 @@
 * (done) display hp bars for display objects that have them in draw.pool
 * (done) have a boundingBox method in main.js for hit detection
 * (done) boxes can no longer purge based on going out of bounds, but lifespan will still apply
-* boxes can purge if hp <= 0
-
+* (done) boxes can purge if hp <= 0
 * make a pkg_0_3_0.html file
 
 ### 0.2.0 - custom spawn, and updater methods
