@@ -45,10 +45,9 @@ var state = {
                 // if not shooter box
                 if (bx != obj.data.shooter && bx.active) {
                     if (boundingBox(bx.x, bx.y, bx.y, bx.h, obj.x, obj.y, obj.y, obj.h)) {
-
-                        //console.log('hit');
-                        bx.data.hp -= 1; //obj.data.damage;
-                        bx.data.hp = bx.data.hp < 0 ? 0 : bx.data.hp;
+                        console.log('hit');
+                        bx.data.hp.current -= obj.data.damage;
+                        bx.data.hp.current = bx.data.hp.current < 0 ? 0 : bx.data.hp.current;
                         obj.lifespan = 0;
 
                     }
@@ -73,12 +72,12 @@ var state = {
             obj.data.fill = pool.data.colors[obj.i % pool.data.colors.length];
             obj.data.weapon = {
                 secs: 0,
-                shotRate: 0.25,
+                shotRate: 0.5,
                 damage: 1
             };
             obj.data.hp = {
-                current: 100,
-                max: 100
+                current: 10,
+                max: 10
             };
 
         },

@@ -29,6 +29,7 @@ draw.pool = function (ctx, pool) {
                 var per = obj.data.hp.current / obj.data.hp.max;
                 ctx.fillStyle = 'lime';
                 ctx.fillRect(obj.x - 16, obj.y, 32 * per, 4);
+                //ctx.fillText(obj.data.hp.current, obj.x, obj.y);
             }
         }
     }
