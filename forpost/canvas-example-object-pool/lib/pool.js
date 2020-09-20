@@ -36,7 +36,7 @@ var poolMod = (function () {
                 heading: opt.heading === undefined ? 0 : opt.heading,
                 pps: opt.pps === undefined ? 32 : opt.pps,
                 lifespan: opt.lifespan || 3,
-                data: opt.data || {}
+                data: {}
             });
             i += 1;
         }

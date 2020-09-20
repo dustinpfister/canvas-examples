@@ -7,20 +7,20 @@ draw.back = function (ctx, canvas) {
 
 draw.pool = function (ctx, pool) {
     var i = pool.objects.length,
-    bx;
+    obj;
     ctx.fillStyle = 'white';
     ctx.strokeStyle = 'black';
     ctx.lineWidth = 3;
     while (i--) {
-        bx = pool.objects[i];
-        if (bx.active) {
+        obj = pool.objects[i];
+        if (obj.active) {
             ctx.save();
-            ctx.fillStyle = bx.fill;
-            ctx.globalAlpha = bx.alpha;
-            ctx.translate(bx.x, bx.y);
-            ctx.rotate(bx.heading);
+            ctx.fillStyle = obj.data.fill || 'white';
+            ctx.globalAlpha = obj.data.alpha || 1;
+            ctx.translate(obj.x, obj.y);
+            ctx.rotate(obj.heading);
             ctx.beginPath();
-            ctx.rect(bx.w / 2 * -1, bx.h / 2 * -1, bx.w, bx.h);
+            ctx.rect(obj.w / 2 * -1, obj.h / 2 * -1, obj.w, obj.h);
             ctx.fill();
             ctx.stroke();
             ctx.restore();

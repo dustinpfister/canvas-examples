@@ -33,7 +33,7 @@ var state = {
     boxes: poolMod.create({
         count: 3,
         data: {
-            colors: ['red', 'green', 'blue'],
+            colors: ['red', 'green', 'blue']
         },
         spawn: function (obj, pool, state, opt) {
             obj.x = state.canvas.width / 2;
@@ -42,7 +42,7 @@ var state = {
             obj.pps = 32 + 128 * Math.random();
             obj.hcps = -90 + 180 * Math.random();
             obj.lifespan = 10;
-            obj.fill = pool.data.colors[obj.i % pool.data.colors.length]
+            obj.data.fill = pool.data.colors[obj.i % pool.data.colors.length]
         },
         update: function (obj, pool, state, secs) {
             if (obj.active) {
