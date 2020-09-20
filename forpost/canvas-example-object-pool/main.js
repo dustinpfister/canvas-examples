@@ -21,22 +21,14 @@ var state = {
     boxes: poolMod.create({
         //canvas: canvas,
         count: 5,
-        spawn: function (obj, state, opt) {
+        spawn: function (bx, state, opt) {
 
-            if (state.secs >= state.spawnRate) {
-
-                bx = poolMod.getInactive(state.boxes);
-                if (bx) {
-                    bx.active = true;
-                    bx.x = state.canvas.width / 2;
-                    bx.y = state.canvas.height / 2;
-                    bx.heading = Math.PI * 2 * Math.random();
-                    bx.pps = 32 + 128 * Math.random();
-                    bx.hcps = -90 + 180 * Math.random();
-                    bx.lifespan = 10;
-                }
-                state.secs %= state.spawnRate;
-            }
+            bx.x = state.canvas.width / 2;
+            bx.y = state.canvas.height / 2;
+            bx.heading = Math.PI * 2 * Math.random();
+            bx.pps = 32 + 128 * Math.random();
+            bx.hcps = -90 + 180 * Math.random();
+            bx.lifespan = 10;
 
         },
         update: function (bx, state, secs) {
@@ -68,10 +60,13 @@ var loop = function () {
     draw.back(ctx, canvas);
     draw.pool(ctx, state.boxes);
     draw.ver(ctx, state);
-    state.secs += secs;
     poolMod.update(state.boxes, secs, state);
-    poolMod.spawn(state.boxes, state);
 
+    state.secs += secs;
+    if (state.secs >= state.spawnRate) {
+        poolMod.spawn(state.boxes, state);
+        state.secs %= state.spawnRate;
+    }
     lt = now;
 
 };

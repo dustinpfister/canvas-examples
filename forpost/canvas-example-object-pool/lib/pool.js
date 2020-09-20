@@ -50,7 +50,7 @@ var poolMod = (function () {
         var obj = api.getInactive(pool);
         if (obj) {
             if (!obj.active) {
-                //obj.active = true;
+                obj.active = true;
                 pool.spawn.call(obj, obj, state, opt);
                 return obj;
             }

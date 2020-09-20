@@ -13,7 +13,9 @@
 
 * getInactive should be a private helper in poolMod, I should not have to use in in the custom spawn method
 
-
+* global pool.data object
+* have a pool.data.colors array
+* make use of global pool.data.colors to set color for spawned objects
 
 * add hit point, and max hit point values for the 'box' pool objects via the data property
 * have a 'shot' pool that will be a pool of objects that will hit 'box' pool objects
