@@ -6,7 +6,7 @@
 * new draw method for particles
 
 ### 0.2.0 - custom spawn, and updater methods
-* use the pool.js file I worked out for canvas-example-kill-box
+* (done) use the pool.js file I worked out for canvas-example-kill-box
 * add hit point, and max hit point values for the 'box' pool objects via the data property
 * have a 'shot' pool that will be a pool of objects that will hit 'box' pool objects
 * have a 'powerUp' pool that will increase stats of the box pool objects
