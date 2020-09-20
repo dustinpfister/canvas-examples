@@ -1,9 +1,14 @@
 ## canvas-example-object-pool
 
-### 0.3.0 - Particles pool
+### 0.x.0 - Particles pool
 * add a 'practices' pool.
 * when a 'box' object becomes inactive, 'particles' shot out from the point where it happened
 * new draw method for particles
+
+### 0.x.0 - hit points and shots
+* add hit point, and max hit point values for the 'box' pool objects via the data property
+* have a 'shot' pool that will be a pool of objects that will hit 'box' pool objects
+* new draw methods for shots
 
 ### 0.2.0 - custom spawn, and updater methods
 * (done) use the pool.js file I worked out for canvas-example-kill-box
@@ -15,11 +20,6 @@
 * (done) global pool.data object
 * (done) have a pool.data.colors array
 * (done) make use of global pool.data.colors to set color for spawned objects
-
-* add hit point, and max hit point values for the 'box' pool objects via the data property
-* have a 'shot' pool that will be a pool of objects that will hit 'box' pool objects
-* have a 'powerUp' pool that will increase stats of the box pool objects
-* new draw methods for shots and power ups
 
 ### 0.1.0 - colors and cool movement
 * (done) heading per second change value

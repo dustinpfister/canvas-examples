@@ -1,7 +1,6 @@
 var poolMod = (function () {
-
+    // Public API
     var api = {};
-
     // get next inactive object in the given pool
     var getInactive = function (pool) {
         var i = pool.objects.length,
@@ -14,7 +13,6 @@ var poolMod = (function () {
         }
         return false;
     };
-
     // create a new pool
     api.create = function (opt) {
         opt = opt || {};
@@ -44,7 +42,6 @@ var poolMod = (function () {
         }
         return pool;
     };
-
     // spawn the next inactive object in the given pool
     api.spawn = function (pool, state, opt) {
         var obj = getInactive(pool);
@@ -75,7 +72,6 @@ var poolMod = (function () {
             }
         }
     };
-
     // set all to inActive or active state
     api.setActiveStateForAll = function (pool, bool) {
         bool = bool === undefined ? false : bool;
@@ -86,7 +82,7 @@ var poolMod = (function () {
             obj.active = bool;
         }
     };
-
+    // return public method
     return api;
 }
     ());
