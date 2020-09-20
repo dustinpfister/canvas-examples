@@ -44,8 +44,7 @@ var state = {
         update: function (obj, pool, state, secs) {
             if (obj.active) {
                 // move
-                obj.x += Math.cos(obj.heading) * obj.pps * secs;
-                obj.y += Math.sin(obj.heading) * obj.pps * secs;
+				poolMod.moveByPPS(obj, secs);
                 obj.heading += Math.PI / 180 * obj.hcps * secs;
 
                 // shoot

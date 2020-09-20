@@ -84,6 +84,11 @@ var poolMod = (function () {
             obj.active = bool;
         }
     };
+    // move the given object by its current heading and pps
+    api.moveByPPS = function (obj, secs) {
+        obj.x += Math.cos(obj.heading) * obj.pps * secs;
+        obj.y += Math.sin(obj.heading) * obj.pps * secs;
+    };
     // return public method
     return api;
 }

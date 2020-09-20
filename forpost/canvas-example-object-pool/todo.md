@@ -6,9 +6,10 @@
 * new draw method for particles
 
 ### 0.x.0 - hit points and shots
+* (done) have a 'shot' pool that will be a pool of objects that will hit 'box' pool objects
+* new poolPod.moveByPPS method
 * add hit point, and max hit point values for the 'boxes' pool via the data property
 * have a boundingBox method in main.js for hit detection
-* have a 'shot' pool that will be a pool of objects that will hit 'box' pool objects
 * boxes can no longer purge based on going out of bounds, but lifespan will still apply
 * boxes can purge if hp <= 0
 * new draw methods for shots
