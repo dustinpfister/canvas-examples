@@ -67,6 +67,18 @@ var poolMod = (function () {
                 obj = pool[i];
                 obj.active = bool;
             }
+        },
+
+        getInactive : function (pool) {
+            var i = pool.length,
+            obj;
+            while (i--) {
+                obj = pool[i];
+                if (!obj.active) {
+                    return obj;
+                }
+            }
+            return false;
         }
     }
 }
