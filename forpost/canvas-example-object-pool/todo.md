@@ -6,10 +6,7 @@
 * new draw method for particles
 
 ### 0.2.0 - custom spawn, and updater methods
-* Be able to define a custom spawn method for a pool by way of the create options object
-* Be able to define custom updater methods that will fire on each update method
-* call the existing pool the 'box' pool
-* have a data property of an object pool object for custom properties depending on the nature of the pool.
+* use the pool.js file I worked out for canvas-example-kill-box
 * add hit point, and max hit point values for the 'box' pool objects via the data property
 * have a 'shot' pool that will be a pool of objects that will hit 'box' pool objects
 * have a 'powerUp' pool that will increase stats of the box pool objects
@@ -24,6 +21,7 @@
 * (done) when lifespan reaches 0 hcps = 0
 * (done) have a create options object for the main create method
 * (done) fix bug where global canvas element is being referenced in the spawn method
+* make a /pkg folder and rename pkg.html to pkg_0
 
 ### 0.0.0 - basic idea
 * (done) basic idea working
