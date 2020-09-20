@@ -21,7 +21,7 @@
 * (done) when lifespan reaches 0 hcps = 0
 * (done) have a create options object for the main create method
 * (done) fix bug where global canvas element is being referenced in the spawn method
-* make a /pkg folder and rename pkg.html to pkg_0
+* (done) make a /pkg folder and rename pkg.html to pkg_0_1_0.html
 
 ### 0.0.0 - basic idea
 * (done) basic idea working

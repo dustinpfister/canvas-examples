@@ -7,10 +7,13 @@ canvas.height = 240;
 container.appendChild(canvas);
 
 // create a state with pool
-var state = Pool.create({
+var state = {
+    ver: '0.2.0',
+    boxes: Pool.create({
         canvas: canvas,
         count: 100
-    });
+    })
+};
 
 // LOOP
 var lt = new Date();
@@ -22,9 +25,9 @@ var loop = function () {
 
     requestAnimationFrame(loop);
     draw.back(ctx, canvas);
-    draw.pool(ctx, state);
-    draw.info(ctx, state);
-    Pool.update(state, secs);
+    draw.pool(ctx, state.boxes);
+    draw.ver(ctx, state);
+    Pool.update(state.boxes, secs);
 
     lt = now;
 

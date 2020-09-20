@@ -28,7 +28,7 @@ draw.pool = function (ctx, state) {
     }
 };
 
-draw.info = function (ctx, state) {
+draw.ver = function (ctx, state) {
     ctx.font = '10px couriter';
     ctx.fillStyle = 'white';
     ctx.fillText('v' + state.ver, 5, 15);

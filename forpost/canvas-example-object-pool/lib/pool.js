@@ -5,7 +5,6 @@ var Pool = (function () {
     var createPool = function (opt) {
         opt = opt || {};
         var state = {
-            ver: '0.1.0',
             canvas: opt.canvas || {
                 width: 320,
                 height: 240
