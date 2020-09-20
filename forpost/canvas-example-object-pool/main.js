@@ -37,6 +37,7 @@ var state = {
             obj.heading = opt.heading;
             obj.lifespan = 3;
             obj.data.shooter = opt.shooter;
+            obj.data.damage = opt.damage;
         },
         update: function (obj, pool, state, secs) {
             poolMod.moveByPPS(obj, secs);
@@ -45,7 +46,9 @@ var state = {
                 if (bx != obj.data.shooter) {
                     if (boundingBox(bx.x, bx.y, bx.y, bx.h, obj.x, obj.y, obj.y, obj.h)) {
 
-                        console.log('hit');
+                        //console.log('hit');
+                        bx.data.hp -= obj.data.damage;
+                        bx.data.hp = bx.data.hp < 0 ? 0 : bx.data.hp;
                         obj.lifespan = 0;
 
                     }
@@ -74,8 +77,8 @@ var state = {
                 damage: 1
             };
             obj.data.hp = {
-                current: 10,
-                max: 10
+                current: 100,
+                max: 100
             };
 
         },
@@ -93,7 +96,8 @@ var state = {
                         x: obj.x,
                         y: obj.y,
                         heading: obj.heading,
-                        shooter: obj
+                        shooter: obj,
+                        damage: w.damage
                     });
                     w.secs %= w.shotRate;
                 }
