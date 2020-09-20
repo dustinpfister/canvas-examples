@@ -20,6 +20,9 @@ var state = {
     spawnRate: 0.1,
     shots: poolMod.create({
         count: 30,
+        pps: 128,
+        w: 8,
+        h: 8,
         spawn: function (obj, pool, state, opt) {
             obj.x = opt.x;
             obj.y = opt.y;
@@ -86,8 +89,9 @@ var loop = function () {
     requestAnimationFrame(loop);
     draw.back(ctx, canvas);
 
-    draw.pool(ctx, state.shots);
     draw.pool(ctx, state.boxes);
+    draw.pool(ctx, state.shots);
+
     draw.ver(ctx, state);
     poolMod.update(state.boxes, secs, state);
     poolMod.update(state.shots, secs, state);
