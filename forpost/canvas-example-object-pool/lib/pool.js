@@ -24,9 +24,7 @@ var poolMod = (function () {
             objects: [],
             spawn: opt.spawn || function (obj, state) {},
             purge: opt.purge || function (obj, state) {},
-            update: opt.update || function (obj, state, secs) {
-                obj.lifespan -= secs;
-            }
+            update: opt.update || function (obj, state, secs) {}
         };
         while (i < opt.count) {
             pool.objects.push({
@@ -66,6 +64,7 @@ var poolMod = (function () {
             obj = pool.objects[i];
             if (obj.active) {
                 pool.update(obj, state, secs);
+                obj.lifespan -= secs;
                 obj.lifespan = obj.lifespan < 0 ? 0 : obj.lifespan;
                 if (obj.lifespan === 0) {
                     obj.active = false;

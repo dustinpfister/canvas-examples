@@ -10,8 +10,8 @@
 * (done) poolMod.create should return a pool object rather than just an array
 * (done) the pool should be a property of the pool object as pool.objects
 * (done) spawn, update, and purge methods should ne part of a pool object
-
-* getInactive should be a private helper in poolMod, I should not have to use in in the custom spawn method
+* (done) getInactive should be a private helper in poolMod, I should not have to use in in the custom spawn method
+* lifespan should deduct in poolMod.update
 
 * global pool.data object
 * have a pool.data.colors array

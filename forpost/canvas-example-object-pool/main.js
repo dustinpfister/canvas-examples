@@ -28,7 +28,7 @@ var state = {
             bx.heading = Math.PI * 2 * Math.random();
             bx.pps = 32 + 128 * Math.random();
             bx.hcps = -90 + 180 * Math.random();
-            bx.lifespan = 10;
+            bx.lifespan = 1;
 
         },
         update: function (bx, state, secs) {
@@ -37,11 +37,6 @@ var state = {
                 bx.x += Math.cos(bx.heading) * bx.pps * secs;
                 bx.y += Math.sin(bx.heading) * bx.pps * secs;
                 bx.heading += Math.PI / 180 * bx.hcps * secs;
-                bx.lifespan -= secs;
-                bx.lifespan = bx.lifespan < 0 ? 0 : bx.lifespan;
-                if (bx.lifespan === 0) {
-                    bx.hcps = 0;
-                }
             }
             checkBounds(bx, state.canvas);
         }
