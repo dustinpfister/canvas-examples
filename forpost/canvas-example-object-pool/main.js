@@ -25,6 +25,9 @@ var state = {
             obj.y = opt.y;
             obj.heading = Math.PI * 1.5;
             obj.lifespan = 3;
+        },
+        update: function (obj, pool, state, secs) {
+            poolMod.moveByPPS(obj, secs);
         }
     }),
     boxes: poolMod.create({
@@ -44,7 +47,7 @@ var state = {
         update: function (obj, pool, state, secs) {
             if (obj.active) {
                 // move
-				poolMod.moveByPPS(obj, secs);
+                poolMod.moveByPPS(obj, secs);
                 obj.heading += Math.PI / 180 * obj.hcps * secs;
 
                 // shoot
