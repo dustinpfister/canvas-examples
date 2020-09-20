@@ -19,7 +19,7 @@ var state = {
     secs: 0,
     spawnRate: 0.1,
     shots: poolMod.create({
-        count: 1,
+        count: 30,
         spawn: function (obj, pool, state, opt) {
             obj.x = opt.x;
             obj.y = opt.y;
@@ -42,7 +42,15 @@ var state = {
             obj.pps = 32 + 128 * Math.random();
             obj.hcps = -90 + 180 * Math.random();
             obj.lifespan = 10;
-            obj.data.fill = pool.data.colors[obj.i % pool.data.colors.length]
+
+            // data
+            obj.data.fill = pool.data.colors[obj.i % pool.data.colors.length];
+            obj.data.weapon = {
+                secs: 0,
+                shotRate: 0.5,
+                damage: 1
+            };
+
         },
         update: function (obj, pool, state, secs) {
             if (obj.active) {
@@ -51,10 +59,15 @@ var state = {
                 obj.heading += Math.PI / 180 * obj.hcps * secs;
 
                 // shoot
-                poolMod.spawn(state.shots, state, {
-                    x: obj.x,
-                    y: obj.y
-                });
+                var w = obj.data.weapon;
+                w.secs += secs;
+                if (w.secs >= w.shotRate) {
+                    poolMod.spawn(state.shots, state, {
+                        x: obj.x,
+                        y: obj.y
+                    });
+                    w.secs %= w.shotRate;
+                }
 
             }
             checkBounds(obj, state.canvas);
