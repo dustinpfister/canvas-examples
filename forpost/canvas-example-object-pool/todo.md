@@ -1,5 +1,12 @@
 ## canvas-example-object-pool
 
+### 0.5.0 - poolMod.wrap and poolMod.clamp methods
+* have a poolMod.clamp method that will clamp display objects to the boundaries of a canvas element
+* have a poolMod.wrap method that will cause a display object to wrap around the boundaries of the canvas element, that is that if a display object goes off one side it will then end up coming back around again from th other side
+* make chances to the example that demo the use of these methods by having to kinds of box object, one that is clamped to the canvas, and another that wraps around it.
+* make the two types of display objects two different set colors so they can clearly be identified from each other
+* have a onBoundsHit pool method that will fire each time a display object of the pool hits the bounderies of the canvas
+
 ### 0.4.0 - Particles pool
 * (done) Make checkBounds a public methods of poolMod
 * (done) have a boundingBox public method of poolMod for now
