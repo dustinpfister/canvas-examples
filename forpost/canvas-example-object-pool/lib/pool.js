@@ -97,7 +97,17 @@ var poolMod = (function () {
         }
         return true;
     };
-
+    // bounding box
+    var boundingBox = function (x1, y1, w1, h1, x2, y2, w2, h2) {
+        return !(
+            (y1 + h1) < y2 ||
+            y1 > (y2 + h2) ||
+            (x1 + w1) < x2 ||
+            x1 > (x2 + w2));
+    };
+    api.boundingBox = function (a, b) {
+        return boundingBox(a.x, a.y, a.w, a.h, b.x, b.y, b.w, b.h);
+    };
     // return public method
     return api;
 }

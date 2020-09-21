@@ -6,22 +6,6 @@ canvas.width = 320;
 canvas.height = 240;
 container.appendChild(canvas);
 
-/*
-var checkBounds = function (obj, canvas) {
-if (obj.x >= canvas.width || obj.x < obj.w * -1 || obj.y > canvas.height || obj.y < obj.h * -1) {
-obj.active = false;
-}
-};
- */
-
-var boundingBox = function (x1, y1, w1, h1, x2, y2, w2, h2) {
-    return !(
-        (y1 + h1) < y2 ||
-        y1 > (y2 + h2) ||
-        (x1 + w1) < x2 ||
-        x1 > (x2 + w2));
-};
-
 // create a state with pool
 var state = {
     ver: '0.4.0',
@@ -47,7 +31,7 @@ var state = {
             state.boxes.objects.forEach(function (bx) {
                 // if not shooter box
                 if (bx != obj.data.shooter && bx.active) {
-                    if (boundingBox(bx.x, bx.y, bx.w, bx.h, obj.x, obj.y, obj.w, obj.h)) {
+                    if (poolMod.boundingBox(bx, obj)) {
                         bx.data.hp.current -= obj.data.damage;
                         bx.data.hp.current = bx.data.hp.current < 0 ? 0 : bx.data.hp.current;
                         if (bx.data.hp.current === 0) {
@@ -67,19 +51,13 @@ var state = {
         },
         spawn: function (obj, pool, state, opt) {
 
-            //obj.x = state.canvas.width / 2;
-            //obj.y = state.canvas.height / 2;
             obj.x = state.canvas.width * Math.random();
             obj.y = state.canvas.height * Math.random();
             obj.heading = Math.PI * 2 * Math.random();
 
-            //obj.x = state.canvas.width / 2;
-            //obj.y = state.canvas.height + 200;
-            //obj.heading = Math.PI * 1.5;
-
             obj.pps = 32 + 128 * Math.random();
             var dir = Math.random() < 0.5 ? -1 : 1;
-            obj.hcps = (90 + 90 * Math.random()) * dir; //-180; //-10 + 40 * Math.random();
+            obj.hcps = (90 + 90 * Math.random()) * dir;
             obj.lifespan = 300;
             // data
             obj.data.fill = pool.data.colors[obj.i % pool.data.colors.length];
