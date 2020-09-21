@@ -1,8 +1,10 @@
 ## canvas-example-object-pool
 
 ### 0.4.0 - Particles pool
-* add a 'particles' pool that will be used to create objects that will be used each time a box object is purged.
-* when a 'box' object becomes inactive (purged), 4 'particles' objects shoot out from the point where it happened
+* add a 'particles' pool that will be used to create objects that will be used each time a 'box' object is purged.
+* when a 'box' object becomes inactive (purged), 4 'particle' objects shoot out from the point where it happened
+* when a 'box' object becomes active (spawn), 4 'particle' objects will come to the point where it will spawn, and the spaen of the box will happen when they come together.
+* a set of four 'partilce' objects can move in relation to values in a nested object in the pool.data object of the partilces pool object
 * Make checkBounds a public methods of poolMod
 * have a boundingBox public method of poolMod for now
 * make a pkg_0_4_0.html file

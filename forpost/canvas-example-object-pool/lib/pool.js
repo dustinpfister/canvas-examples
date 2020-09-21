@@ -89,6 +89,15 @@ var poolMod = (function () {
         obj.x += Math.cos(obj.heading) * obj.pps * secs;
         obj.y += Math.sin(obj.heading) * obj.pps * secs;
     };
+    // check bounds for the given display object and canvas and return true if the object
+    // is out of bounds and false if it is not.
+    api.checkBounds = function (obj, canvas) {
+        if (obj.x >= canvas.width || obj.x < obj.w * -1 || obj.y > canvas.height || obj.y < obj.h * -1) {
+            return false;
+        }
+        return true;
+    };
+
     // return public method
     return api;
 }
