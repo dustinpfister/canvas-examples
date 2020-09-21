@@ -2,11 +2,12 @@
 
 ### 0.4.0 - Particles pool
 * (done) Make checkBounds a public methods of poolMod
+* (done) have a boundingBox public method of poolMod for now
+* start a utils.js, add bounding box to it, and have poolMod.bounding box use that rather than the internal boundingBox helper
 * add a 'particles' pool that will be used to create objects that will be used each time a 'box' object is purged.
 * when a 'box' object becomes inactive (purged), 4 'particle' objects shoot out from the point where it happened
 * when a 'box' object becomes active (spawn), 4 'particle' objects will come to the point where it will spawn, and the spaen of the box will happen when they come together.
 * a set of four 'particle' objects can move in relation to values in a nested object in the pool.data object of the partilces pool object
-* have a boundingBox public method of poolMod for now
 * make a pkg_0_4_0.html file
 
 ### 0.3.0 - hit points and shots
