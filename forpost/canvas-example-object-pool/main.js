@@ -98,22 +98,20 @@ var state = {
 var lt = new Date(),
 maxSecs = 0.1;
 var loop = function () {
-
     var now = new Date(),
     t = now - lt,
     secs = t / 1000;
     secs = secs > maxSecs ? maxSecs : secs;
-
     requestAnimationFrame(loop);
-    draw.back(ctx, canvas);
-
-    draw.pool(ctx, state.boxes);
-    draw.pool(ctx, state.shots);
-
-    draw.ver(ctx, state);
+    // update
     poolMod.update(state.boxes, secs, state);
     poolMod.update(state.shots, secs, state);
-
+    // draw
+    draw.back(ctx, canvas);
+    draw.pool(ctx, state.boxes);
+    draw.pool(ctx, state.shots);
+    draw.ver(ctx, state);
+    // step secs
     state.secs += secs;
     if (state.secs >= state.spawnRate) {
         poolMod.spawn(state.boxes, state);
