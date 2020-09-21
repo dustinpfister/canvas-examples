@@ -1,9 +1,11 @@
 ## canvas-example-object-pool
 
 ### 0.4.0 - Particles pool
-* add a 'practices' pool.
-* when a 'box' object becomes inactive, 'particles' shot out from the point where it happened
-make a pkg_0_4_0.html file
+* add a 'particles' pool that will be used to create objects that will be used each time a box object is purged.
+* when a 'box' object becomes inactive (purged), 4 'particles' objects shoot out from the point where it happened
+* Make checkBounds a public methods of poolMod
+* have a boundingBox public method of poolMod for now
+* make a pkg_0_4_0.html file
 
 ### 0.3.0 - hit points and shots
 * (done) have a 'shot' pool that will be a pool of objects that will hit 'box' pool objects
