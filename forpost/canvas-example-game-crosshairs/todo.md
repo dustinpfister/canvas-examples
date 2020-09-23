@@ -120,7 +120,8 @@
 * Use game level to unlock maps from level 5 to levelCap - Math.round(levelCap * 0.90)
 
 ## 0.21.0 - game.levelObj used to unlock weapons and sills
-* All weapons aside from 'blaster' locked at game level 1
+* (done) All weapons aside from 'blaster' have a w.locked = true at game level 1
+* The autoPlay AI will select the highest unlocked weapon
 * locked skills are grayed out in skill manager state
 * display game level required to unlock a skill
 * all skills aside from blaster locked at game level 1

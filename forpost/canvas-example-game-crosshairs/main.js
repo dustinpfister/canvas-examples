@@ -145,7 +145,7 @@
                     r: 16,
                     onClick: function (button, sm) {
                         sm.game.weaponIndex += 1;
-                        sm.game.weaponIndex %= gameMod.Weapons.length;
+                        sm.game.weaponIndex %= sm.game.weapons.length;
                     }
                 }),
                 autoPlay: buttonMod.create({
