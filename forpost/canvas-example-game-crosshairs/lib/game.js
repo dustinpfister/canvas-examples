@@ -254,18 +254,9 @@ var gameMod = (function () {
         setByPercentRemain: function (game) {
             var map = game.map,
             ap = game.autoPlay;
-            // hard coded default for weapon index
-            game.weaponIndex = 0;
 
-            var wi = game.weapons.length,
-            w;
-            while (wi--) {
-                w = game.weapons[wi];
-                if (!w.locked) {
-                    game.weaponIndex = wi;
-                    break;
-                }
-            }
+            // hard coded default for weapon index
+            game.weaponIndex = game.highWeaponIndex;
 
             // set AI values based on ap.behavior value
             /*
@@ -567,7 +558,8 @@ var gameMod = (function () {
             explosions: poolMod.create(explosionOptions),
             shotRate: 1,
             shotSecs: 0,
-            weaponIndex: 0,
+            weaponIndex: 0, // the current weapon index
+            highWeaponIndex: 0, // highest unlocked weapon index
             totalDamage: opt.totalDamage || 0,
             userDown: false,
             autoPlay: {
@@ -642,6 +634,18 @@ var gameMod = (function () {
         game.mana.current = game.mana.current > game.mana.max ? game.mana.max : game.mana.current;
         // skill points
         setSkillPointTotal(game);
+
+        // find high weapon index
+        var wi = game.weapons.length,
+        w;
+        while (wi--) {
+            w = game.weapons[wi];
+            if (!w.locked) {
+                game.highWeaponIndex = wi;
+                break;
+            }
+        }
+
     };
 
     // CREATE SKILL BUTTONS to be used in the skill manager state

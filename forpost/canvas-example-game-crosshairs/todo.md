@@ -121,7 +121,11 @@
 
 ## 0.21.0 - game.levelObj used to unlock weapons and sills
 * (done) All weapons aside from 'blaster' have a w.locked = true at game level 1
-* The autoPlay AI will select the highest unlocked weapon
+* (done) The autoPlay AI will select the highest unlocked weapon
+* have a game.highWeaponIndex property
+* game.highWeaponIndex property set in main loop
+* game.highWeaponIndex used in autoPlay AI
+* game.highWeaponIndex used in nextWeapon button
 * locked skills are grayed out in skill manager state
 * display game level required to unlock a skill
 * all skills aside from blaster locked at game level 1
