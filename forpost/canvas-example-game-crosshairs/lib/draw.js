@@ -125,6 +125,8 @@ var draw = (function () {
             ctx.fillText('name: ' + w.name, 10, 20);
             ctx.fillText('maxDPS: ' + w.maxDPS, 10, 30);
             ctx.fillText('accuracy: ' + Number(w.accuracy).toFixed(2), 10, 40);
+            ctx.fillText('locked: ' + w.locked, 10, 50);
+            ctx.fillText('unLockAt: ' + w.unLockAt, 10, 60);
         },
         level: function (sm) {
             var ctx = sm.ctx,

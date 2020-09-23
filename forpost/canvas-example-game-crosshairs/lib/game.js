@@ -42,7 +42,7 @@ var gameMod = (function () {
         }, {
             name: 'Assault Blaster',
             locked: true,
-            unLockAt: 1,
+            unLockAt: 5,
             pps: 512,
             shotRate: 0.125,
             blastRadius: 2,
@@ -66,7 +66,7 @@ var gameMod = (function () {
         }, {
             name: 'Cannon',
             locked: true,
-            unLockAt: 1,
+            unLockAt: 15,
             pps: 256,
             shotRate: 0.5,
             blastRadius: 3,
@@ -90,7 +90,7 @@ var gameMod = (function () {
         }, {
             name: 'Atom',
             locked: true,
-            unLockAt: 1,
+            unLockAt: 50,
             pps: 128,
             shotRate: 1,
             blastRadius: 10,
