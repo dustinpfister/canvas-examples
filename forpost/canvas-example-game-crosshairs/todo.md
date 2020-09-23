@@ -112,6 +112,9 @@
 * cheat system can be used to set main game.LevelObj by level value
 * cheat system can be used to set a starting damage value for a map
 
+## 0.x.0 - ETA to Level x
+* have a method that figures average DPS over the past minute
+
 ## 0.x.0 - game.levelObj used to unlock maps
 * map level restricted to only level 1 at game level 1 in map menu
 * Use game level to unlock maps from level 5 to levelCap - Math.round(levelCap * 0.90)
