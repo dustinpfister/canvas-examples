@@ -14,8 +14,8 @@
         localStorage.setItem('game-crosshairs-save-0', gameMod.createSaveString(sm.game));
     };
     var loadStateString = function () {
-        return 'v1.10000.1.0-0-0-0-.';
-        //return localStorage.getItem('game-crosshairs-save-0') //'v0.epz.'
+        //return 'v1.0.1.0-0-0-0-.';
+        return localStorage.getItem('game-crosshairs-save-0') //'v0.epz.'
     };
 
     // get a canvas relative point
