@@ -112,11 +112,17 @@
 * cheat system can be used to set main game.LevelObj by level value
 * cheat system can be used to set a starting damage value for a map
 
-## 0.21.0 - game.levelObj used to unlock sills and other features
-* All weapons aside from 'blaster' locked at game level 1
+## 0.x.0 - game.levelObj used to unlock maps
 * map level restricted to only level 1 at game level 1 in map menu
-* all skills locked at game level 1
-* as game level goes up, items unlock
+* Use game level to unlock maps from level 5 to levelCap - Math.round(levelCap * 0.90)
+
+## 0.21.0 - game.levelObj used to unlock weapons and sills
+* All weapons aside from 'blaster' locked at game level 1
+* locked skills are grayed out in skill manager state
+* display game level required to unlock a skill
+* all skills aside from blaster locked at game level 1
+* as game level goes up, weapons and skills unlock
+* make a pkg_0_21_0.html
 
 ## 0.20.0 - save states I
 * (done) have support for more than one version of a save string, so the very first field of the save should be a value that indicates what method to use to load the save
