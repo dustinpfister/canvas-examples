@@ -129,6 +129,11 @@ var gameMod = (function () {
             Object.keys(weapon.level).forEach(function (weaponStatName) {
                 weapon[weaponStatName] = XP.applySkillPoints(game.levelObj, sp, weapon.level[weaponStatName]);
             });
+            weapon.locked = true;
+            // set lock property of weapon
+            if (level >= weapon.unLockAt) {
+                weapon.locked = false;
+            }
         });
     };
 
@@ -549,7 +554,7 @@ var gameMod = (function () {
             explosions: poolMod.create(explosionOptions),
             shotRate: 1,
             shotSecs: 0,
-            weaponIndex: 3,
+            weaponIndex: 0,
             totalDamage: opt.totalDamage || 0,
             userDown: false,
             autoPlay: {
@@ -570,7 +575,6 @@ var gameMod = (function () {
         };
         // clone hard coded weapons defaults to game.weapons
         game.weapons = utils.deepClone(WeaponsDefaults);
-        console.log(game.weapons);
         // setup game level object
         game.levelObj = XP.parseByXP(game.totalDamage, hardSet.levelCap, hardSet.deltaNext);
         // create cross object
@@ -586,7 +590,6 @@ var gameMod = (function () {
         if (opt.saveString) {
             api.applySaveString(game, opt.saveString);
         }
-
         // first autoPlay target
         autoPlay.setRandomTarget(game);
 
