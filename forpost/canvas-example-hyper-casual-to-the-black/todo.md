@@ -17,7 +17,7 @@
 * (done) have a fixed array of pps speeds in hardCode
 * (done) have game.pps set by index of pps speeds in hardCode via a game.ppsIndex
 * (done) player can just move the ship left and right as it moves up
-* create a pkg_0_1_0.html
+* (done) create a pkg_0_1_0.html
 
 ## 0.0.0 - basic idea
 * (done) grid display moving based on game.distance
