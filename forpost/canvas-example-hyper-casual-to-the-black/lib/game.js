@@ -10,9 +10,10 @@ var gameMod = (function () {
         spawn: function (pu, pool, game, opt) {
             console.log('spawn');
             pu.x = 0;
-            pu.y = game.canvas.height - pu.h;
+            pu.y =  pu.h * -1;
             pu.heading = Math.PI * 0.5;
             pu.pps = 64;
+            pu.lifespan = 1;
 
         },
         purge: function (pu, pool, game) {},
@@ -62,7 +63,7 @@ var gameMod = (function () {
             powerUps: {
                 pool: poolMod.create(powerUpOptions),
                 secs: 0,
-                spawnRate: 3
+                spawnRate: .250
             },
             distObj: opt.distObj || {}
         };
@@ -143,12 +144,13 @@ var gameMod = (function () {
 
         // power ups
         var pow = game.powerUps;
+        // spawn
         pow.secs += secs;
         if (pow.secs >= pow.spawnRate) {
             poolMod.spawn(pow.pool, game, {});
             pow.secs %= pow.spawnRate;
-
         }
+        poolMod.update(pow.pool, secs, game);
     };
 
     return api;
