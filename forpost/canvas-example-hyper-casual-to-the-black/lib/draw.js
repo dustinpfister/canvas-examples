@@ -85,10 +85,11 @@ var draw = (function () {
                     ctx.save();
                     ctx.fillStyle = obj.data.fill || 'white';
                     ctx.globalAlpha = obj.data.alpha || 1;
-                    ctx.translate(obj.x, obj.y);
+                    //ctx.translate(obj.x, obj.y);
                     //ctx.rotate(obj.heading);
                     ctx.beginPath();
-                    ctx.rect(obj.w / 2 * -1, obj.h / 2 * -1, obj.w, obj.h);
+                    //ctx.rect(obj.w / 2 * -1, obj.h / 2 * -1, obj.w, obj.h);
+                    ctx.rect(obj.x, obj.y, obj.w, obj.h);
                     ctx.fill();
                     ctx.stroke();
                     ctx.restore();

@@ -7,6 +7,8 @@ var gameMod = (function () {
 
     var powerUpOptions = {
         count: 5,
+        w: 16,
+        h: 16,
         spawn: function (pu, pool, game, opt) {
             console.log('spawn');
             pu.x = 0;
@@ -21,7 +23,7 @@ var gameMod = (function () {
         update: function (pu, pool, game, secs) {
             poolMod.moveByPPS(pu, secs);
             pu.lifespan = 1;
-            if (pu.y >= game.canvas.height - pu.h) {
+            if (pu.y >= game.canvas.height) {
                 pu.lifespan = 0;
             }
         }
@@ -64,7 +66,7 @@ var gameMod = (function () {
             powerUps: {
                 pool: poolMod.create(powerUpOptions),
                 secs: 0,
-                spawnRate: .250
+                spawnRate: 1
             },
             distObj: opt.distObj || {}
         };
