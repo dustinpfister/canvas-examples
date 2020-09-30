@@ -27,10 +27,10 @@ var gameMod = (function () {
             }
             // hits player object
             if (poolMod.boundingBox(pu, game.playerShip)) {
-                if (game.powerUps.stack.length < 5) {
+                if (game.powerUps.stack.length < 6) {
                     game.powerUps.stack.push({
                         secs: 0,
-                        maxSecs: 3,
+                        maxSecs: 10,
                         ppsIndex: 1
                     });
                     console.log('power up');
@@ -171,6 +171,19 @@ var gameMod = (function () {
         }
         // update
         poolMod.update(pow.pool, secs, game);
+        // update stack
+        var i = pow.stack.length,
+        stackItem;
+        game.ppsIndex = 0;
+        while (i--) {
+            stackItem = pow.stack[i];
+            stackItem.secs += secs;
+            if (stackItem.secs >= stackItem.maxSecs) {
+                pow.stack.splice(i, 1);
+            } else {
+                game.ppsIndex += 1;
+            }
+        }
     };
 
     return api;
