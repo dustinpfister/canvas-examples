@@ -5,7 +5,7 @@ var gameMod = (function () {
         ppsArray: [32, 64, 128, 256, 512, 1024, 2048, 4096]
     };
 
-    var powerUpOptions= {
+    var powerUpOptions = {
         count: 5,
         spawn: function (pu, game, opt) {
 
@@ -59,7 +59,11 @@ var gameMod = (function () {
                 w: 32,
                 h: 32
             },
-            powerUps: poolMod.create(powerUpOptions),
+            powerUps: {
+                pool: poolMod.create(powerUpOptions),
+                secs: 0,
+                spawnRate: 3
+            },
             distObj: opt.distObj || {}
         };
         console.log(game.powerUps);
@@ -136,6 +140,14 @@ var gameMod = (function () {
         game.playerShip.x = game.playerShip.x < 0 ? 0 : game.playerShip.x;
         game.playerShip.x = game.playerShip.x > game.canvas.width - game.playerShip.w ? game.canvas.width - game.playerShip.w : game.playerShip.x;
         game.playerShip.y = game.canvas.height - 64;
+
+        // power ups
+        var pow = game.powerUps;
+        pow.secs += secs;
+        if (pow.secs >= pow.spawnRate) {
+            console.log('spawn');
+            pow.secs %= pow.spawnRate;
+        }
     };
 
     return api;
