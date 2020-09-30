@@ -11,7 +11,7 @@ var gameMod = (function () {
         h: 16,
         spawn: function (pu, pool, game, opt) {
             console.log('spawn');
-            pu.x = 0;
+            pu.x = game.playerShip.x + 16 - 8;
             pu.y = pu.h * -1;
             pu.heading = Math.PI * 0.5;
             pu.pps = 64;
@@ -23,8 +23,15 @@ var gameMod = (function () {
         update: function (pu, pool, game, secs) {
             poolMod.moveByPPS(pu, secs);
             pu.lifespan = 1;
+            // if power up reaches other side of canvas
             if (pu.y >= game.canvas.height) {
                 pu.lifespan = 0;
+            }
+            // hits player object
+            if (poolMod.boundingBox(pu, game.playerShip)) {
+
+                console.log('hit!');
+
             }
         }
     };
@@ -153,6 +160,7 @@ var gameMod = (function () {
             poolMod.spawn(pow.pool, game, {});
             pow.secs %= pow.spawnRate;
         }
+        // update
         poolMod.update(pow.pool, secs, game);
     };
 

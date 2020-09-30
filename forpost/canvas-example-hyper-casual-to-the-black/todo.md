@@ -8,8 +8,8 @@
 
 ## 0.2.0 - power ups I
 * (done) Add an object pool for power ups
-* power ups will start at the top of the canvas and move down to where the player ship is
-* if the power up reaches the bottom of the canvas it will be come inactive in the pool and be ready for reuse
+* (done) power ups will start at the top of the canvas and move down to where the player ship is
+* (done) if the power up reaches the bottom of the canvas it will be come inactive in the pool and be ready for reuse
 * power ups should never spawn over the ships current location
 * if the player ship comes in contact with a power up it will get that power up
 * have a 'boost' starting power up that will increase pps for a fixed amount of time
