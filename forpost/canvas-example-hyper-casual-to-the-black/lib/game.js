@@ -27,7 +27,15 @@ var gameMod = (function () {
             }
             // hits player object
             if (poolMod.boundingBox(pu, game.playerShip)) {
-                console.log('hit!');
+                if (game.powerUps.stack.length < 5) {
+                    game.powerUps.stack.push({
+                        secs: 0,
+                        maxSecs: 3,
+                        ppsIndex: 1
+                    });
+                    console.log('power up');
+                    console.log(game.powerUps.stack);
+                }
                 pu.lifespan = 0;
             }
         }
@@ -69,6 +77,7 @@ var gameMod = (function () {
             },
             powerUps: {
                 pool: poolMod.create(powerUpOptions),
+                stack: [],
                 secs: 0,
                 spawnRate: 0.1
             },
@@ -128,6 +137,9 @@ var gameMod = (function () {
     };
 
     api.update = function (game, secs, now) {
+
+        // speed
+        game.pps = hardCode.ppsArray[game.ppsIndex];
 
         // distance
         //game.distance = game.distance + game.pps * secs;
