@@ -6,20 +6,18 @@ var gameMod = (function () {
     };
 
     var powerUpOptions = {
-        count: 5,
+        count: 100,
         w: 16,
         h: 16,
         spawn: function (pu, pool, game, opt) {
-            console.log('spawn');
-            pu.x = game.playerShip.x + 16 - 8;
+            var ps = game.playerShip;
+            pu.x = utils.mod(ps.x + ps.w + Math.floor((canvas.width - ps.w - pu.w) * Math.random()), canvas.width);
             pu.y = pu.h * -1;
             pu.heading = Math.PI * 0.5;
-            pu.pps = 64;
+            pu.pps = 128;
             pu.lifespan = 1;
         },
-        purge: function (pu, pool, game) {
-            console.log('purge');
-        },
+        purge: function (pu, pool, game) {},
         update: function (pu, pool, game, secs) {
             poolMod.moveByPPS(pu, secs);
             pu.lifespan = 1;
@@ -29,9 +27,8 @@ var gameMod = (function () {
             }
             // hits player object
             if (poolMod.boundingBox(pu, game.playerShip)) {
-
                 console.log('hit!');
-
+                pu.lifespan = 0;
             }
         }
     };
@@ -73,7 +70,7 @@ var gameMod = (function () {
             powerUps: {
                 pool: poolMod.create(powerUpOptions),
                 secs: 0,
-                spawnRate: 1
+                spawnRate: 0.1
             },
             distObj: opt.distObj || {}
         };
