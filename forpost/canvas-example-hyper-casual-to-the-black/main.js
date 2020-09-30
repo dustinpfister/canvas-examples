@@ -8,7 +8,7 @@ canvas.height = 240;
 ctx.translate(0.5, 0.5);
 // main state object
 var state = {
-    ver: '0.1.0',
+    ver: '0.2.0',
     lt: new Date(),
     pointerDown: false,
     pointerPos: {},

@@ -1,13 +1,19 @@
 # todo list for canvas-example-hyper-casual-to-the-black
 
-## 0.2.0 - save states
+## 0.x.0 - save states
 * have a save state for the process of the game
 
-## 0.2.0 - power ups
-* Add an object pool for power ups
-* power ups will start at the top of the canvas and move down to the player ship
+## 0.x.0 - auto play
+* add a simple auto play feature for this that will take over after a period of inactivity
+
+## 0.2.0 - power ups I
+* (done) Add an object pool for power ups
+* power ups will start at the top of the canvas and move down to where the player ship is
+* if the power up reaches the bottom of the canvas it will be come inactive in the pool and be ready for reuse
+* power ups should never spawn over the ships current location
 * if the player ship comes in contact with a power up it will get that power up
-* have a first starting power up that will incress pps for a fixed amount of time
+* have a 'boost' starting power up that will increase pps for a fixed amount of time
+* make it so 'boost' power ups can be stacked
 
 ## 0.1.0 - game.startTime, distance object, player movement
 * (done) have a game.startTime property that is the time that the player started playing
