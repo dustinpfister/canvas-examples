@@ -12,8 +12,9 @@
 * (done) if the power up reaches the bottom of the canvas it will be come inactive in the pool and be ready for reuse
 * (done) if the player ship comes in contact with a power up it will get that power up
 * (done) power ups should never spawn over the ships current location
-* have a 'boost' starting power up that will increase pps for a fixed amount of time
-* make it so 'boost' power ups can be stacked to to a stack max
+* (done) have a 'boost' starting power up that will increase pps for a fixed amount of time
+* (done) make it so 'boost' power ups can be stacked to to a stack max
+* create a pkg_0_2_0.html
 
 ## 0.1.0 - game.startTime, distance object, player movement
 * (done) have a game.startTime property that is the time that the player started playing

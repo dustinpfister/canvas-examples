@@ -6,7 +6,7 @@ var gameMod = (function () {
     };
 
     var powerUpOptions = {
-        count: 100,
+        count: 5,
         w: 16,
         h: 16,
         spawn: function (pu, pool, game, opt) {
@@ -14,7 +14,7 @@ var gameMod = (function () {
             pu.x = utils.mod(ps.x + ps.w + 1 + Math.floor((canvas.width - ps.w - pu.w - 2) * Math.random()), canvas.width);
             pu.y = pu.h * -1;
             pu.heading = Math.PI * 0.5;
-            pu.pps = 128;
+            pu.pps = 64;
             pu.lifespan = 1;
         },
         purge: function (pu, pool, game) {},
@@ -79,7 +79,7 @@ var gameMod = (function () {
                 pool: poolMod.create(powerUpOptions),
                 stack: [],
                 secs: 0,
-                spawnRate: 0.1
+                spawnRate: 3
             },
             distObj: opt.distObj || {}
         };
