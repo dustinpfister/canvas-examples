@@ -10,18 +10,20 @@ var gameMod = (function () {
         spawn: function (pu, pool, game, opt) {
             console.log('spawn');
             pu.x = 0;
-            pu.y =  pu.h * -1;
+            pu.y = pu.h * -1;
             pu.heading = Math.PI * 0.5;
             pu.pps = 64;
             pu.lifespan = 1;
 
         },
-        purge: function (pu, pool, game) {},
+        purge: function (pu, pool, game) {
+            console.log('purge');
+        },
         update: function (pu, pool, game, secs) {
             poolMod.moveByPPS(pu, secs);
             pu.lifespan = 1;
             if (pu.y >= game.canvas.height - pu.h) {
-                pu.active = false;
+                pu.lifespan = 0;
             }
         }
     };
