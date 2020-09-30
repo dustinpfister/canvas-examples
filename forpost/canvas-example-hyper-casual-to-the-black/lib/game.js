@@ -1,23 +1,46 @@
 var gameMod = (function () {
 
     var hardCode = {
-       maxDistance: Number.MAX_SAFE_INTEGER, //1000000000000,
-       ppsArray: [32, 64, 128, 256, 512, 1024, 2048, 4096]
+        maxDistance: Number.MAX_SAFE_INTEGER, //1000000000000,
+        ppsArray: [32, 64, 128, 256, 512, 1024, 2048, 4096]
+    };
+
+    var powerUpOptions= {
+        count: 5,
+        spawn: function (pu, game, opt) {
+
+            pu.x = 0;
+            pu.y = game.canvas.height - pu.h;
+            pu.heading = Math.PI * 0.5;
+            pu.pps = 64;
+
+        },
+        purge: function (pu, game) {},
+        update: function (pu, game, secs) {
+            poolMod.moveByPPS(pu, secs);
+            pu.lifespan = 1;
+            if (pu.y >= game.canvas.height - pu.h) {
+                pu.active = false;
+            }
+        }
     };
 
     var api = {};
 
-    var centerShip = function(game){
+    var centerShip = function (game) {
         var ship = game.playerShip;
         ship.x = game.canvas.width / 2 - ship.w / 2;
     };
 
-    api.create = function(opt){
+    api.create = function (opt) {
         opt = opt || {};
         var game = {
-            canvas: opt.canvas || {width: 320, height: 240},
-            ppsIndex: opt.ppsIndex === undefined ? 0: opt.ppsIndex,
-            pps: hardCode.ppsArray[opt.ppsIndex === undefined ? 0: opt.ppsIndex],//opt.pps || hardCode.ppsArray[0],
+            canvas: opt.canvas || {
+                width: 320,
+                height: 240
+            },
+            ppsIndex: opt.ppsIndex === undefined ? 0 : opt.ppsIndex,
+            pps: hardCode.ppsArray[opt.ppsIndex === undefined ? 0 : opt.ppsIndex], //opt.pps || hardCode.ppsArray[0],
             distance: 0, //opt.distance === undefined ? 0 : opt.distance,
             gamePer: 0,
             startTime: opt.startTime || new Date(),
@@ -36,24 +59,26 @@ var gameMod = (function () {
                 w: 32,
                 h: 32
             },
+            powerUps: poolMod.create(powerUpOptions),
             distObj: opt.distObj || {}
         };
+        console.log(game.powerUps);
         centerShip(game);
         return game;
     };
 
-    var secsToX = function(secs, x){
+    var secsToX = function (secs, x) {
         x = x === undefined ? 'days' : x;
-        if(x === 'minutes'){
+        if (x === 'minutes') {
             return secs / 60;
         }
-        if(x === 'hours'){
+        if (x === 'hours') {
             return secs / 60 / 60;
         }
-        if(x === 'days'){
+        if (x === 'days') {
             return secs / 60 / 60 / 24;
         }
-        if(x === 'years'){
+        if (x === 'years') {
             return secs / 60 / 60 / 24 / 365.25;
         }
         return secs;
@@ -61,12 +86,12 @@ var gameMod = (function () {
 
     // set state distance based on startTime
     // and distObj of PPS and time key pairs
-    var setDistance = function(game, now){
+    var setDistance = function (game, now) {
         // before I credit I first need to know the amount of time
         // and distance thus far
         var storedSecs = 0,
         storedDist = 0;
-        Object.keys(game.distObj).forEach(function(pps){
+        Object.keys(game.distObj).forEach(function (pps) {
             var secs = game.distObj[pps];
             storedSecs += secs;
             storedDist += Number(pps) * secs;
@@ -77,20 +102,20 @@ var gameMod = (function () {
         deltaDist = game.pps * secs;
         // update distObj for current PPS
         var current = game.distObj[game.pps];
-        game.distObj[game.pps] = current === undefined ? secs : current + secs; 
+        game.distObj[game.pps] = current === undefined ? secs : current + secs;
         // now I can set distance
         game.distance = storedDist + deltaDist;
     };
 
-    var timeToDistance = function(game, distance){
-        if(game.distance < distance){
+    var timeToDistance = function (game, distance) {
+        if (game.distance < distance) {
             var secs = (distance - game.distance) / game.pps;
             return secs;
         }
         return 0;
     };
 
-    api.update = function(game, secs, now){
+    api.update = function (game, secs, now) {
 
         // distance
         //game.distance = game.distance + game.pps * secs;
@@ -104,8 +129,8 @@ var gameMod = (function () {
 
         // player display object
         var xPPS = 0;
-        xPPS = game.input.right ? xPPS + 32: xPPS;
-        xPPS = game.input.left ? xPPS - 32: xPPS;
+        xPPS = game.input.right ? xPPS + 32 : xPPS;
+        xPPS = game.input.left ? xPPS - 32 : xPPS;
         //game.playerShip.x = game.canvas.width / 2 - 16;
         game.playerShip.x += xPPS * secs;
         game.playerShip.x = game.playerShip.x < 0 ? 0 : game.playerShip.x;
