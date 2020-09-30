@@ -11,7 +11,7 @@ var gameMod = (function () {
         h: 16,
         spawn: function (pu, pool, game, opt) {
             var ps = game.playerShip;
-            pu.x = utils.mod(ps.x + ps.w + Math.floor((canvas.width - ps.w - pu.w) * Math.random()), canvas.width);
+            pu.x = utils.mod(ps.x + ps.w + 1 + Math.floor((canvas.width - ps.w - pu.w - 2) * Math.random()), canvas.width);
             pu.y = pu.h * -1;
             pu.heading = Math.PI * 0.5;
             pu.pps = 128;
