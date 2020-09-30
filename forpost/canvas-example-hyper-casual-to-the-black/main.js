@@ -12,15 +12,15 @@ var state = {
     lt: new Date(),
     pointerDown: false,
     pointerPos: {},
-    game : gameMod.create({
+    game: gameMod.create({
         canvas: canvas,
         startTime: new Date(), // new Date(1983, 4, 6, 10, 5),
-        distObj:{
-                //32: 900000000,
-                //64: 100000000
+        distObj: {
+            //32: 900000000,
+            //64: 100000000
         },
         //pps: 128,
-        ppsIndex:0, //6,
+        ppsIndex: 0, //6,
         distance: 0,
         targetTimeUnit: 'years'
     })
@@ -29,7 +29,7 @@ var state = {
 var loop = function () {
     var now = new Date(),
     t = now - state.lt,
-    secs =  t / 1000;
+    secs = t / 1000;
     requestAnimationFrame(loop);
     gameMod.update(state.game, secs, now);
     draw.back(ctx, state.game, canvas);
@@ -37,6 +37,7 @@ var loop = function () {
     draw.textDistance(ctx, state.game, 10, 10);
     draw.textPPS(ctx, state.game, 10, 20);
     draw.textETA(ctx, state.game, 10, 30);
+    draw.pool(ctx, state.game.powerUps.pool);
     draw.ver(ctx, state, 2, canvas.height - 12);
     state.lt = now;
 };
@@ -53,27 +54,27 @@ var getCanvasRelative = function (e) {
         bx: bx
     };
 };
-var setInputs = function(pos){
-    if(pos.x < canvas.width / 2){
+var setInputs = function (pos) {
+    if (pos.x < canvas.width / 2) {
         state.game.input.left = true;
         state.game.input.right = false;
-    }else{
+    } else {
         state.game.input.left = false;
         state.game.input.right = true;
     }
 };
-var onPointerStart = function(e){
+var onPointerStart = function (e) {
     var pos = state.pointerPos = getCanvasRelative(e);
     state.pointerDown = true;
     setInputs(pos);
 };
-var onPointerMove = function(e){
+var onPointerMove = function (e) {
     var pos = state.pointerPos = getCanvasRelative(e);
-    if(state.pointerDown){
+    if (state.pointerDown) {
         setInputs(pos);
     }
 };
-var onPointerStop = function(e){
+var onPointerStop = function (e) {
     state.pointerDown = false;
     state.game.input.left = false;
     state.game.input.right = false;

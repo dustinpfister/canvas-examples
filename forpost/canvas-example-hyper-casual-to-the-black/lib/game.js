@@ -14,7 +14,6 @@ var gameMod = (function () {
             pu.heading = Math.PI * 0.5;
             pu.pps = 64;
             pu.lifespan = 1;
-
         },
         purge: function (pu, pool, game) {
             console.log('purge');
