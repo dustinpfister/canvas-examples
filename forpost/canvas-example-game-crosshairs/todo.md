@@ -126,10 +126,10 @@
 * (done) game.highWeaponIndex property set in gameMod.update loop
 * (done) game.highWeaponIndex used in autoPlay AI
 * (done) game.highWeaponIndex used in nextWeapon button
+* (done) all skills aside from blaster locked at game level 1
+* (done) as game level goes up, weapons and skills unlock
 * locked skills are grayed out in skill manager state
 * display game level required to unlock a skill
-* all skills aside from blaster locked at game level 1
-* as game level goes up, weapons and skills unlock
 * make a pkg_0_21_0.html
 
 ## 0.20.0 - save states I
