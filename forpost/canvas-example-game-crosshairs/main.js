@@ -44,6 +44,7 @@
                         mapLevelCap: 20,
                         saveString: loadStateString()
                     });
+                // createing skill manager buttons
                 states.skillManager.buttons = gameMod.createSkillButtons(sm);
                 sm.currentState = 'game';
             },
@@ -218,11 +219,7 @@
                 var state = states[sm.currentState];
                 draw.back(ctx, canvas);
 
-                //??? JUST working with ATOM for now.
-                //var sp = sm.game.skills.weapon_3.points,
-                //w = gameMod.Weapons[3];
-                //state.buttons.weaponAtom.info = sp + ' ' + Math.floor(w.maxDPS);
-
+                // update game but with zero seconds
                 gameMod.update(sm.game, 0);
 
                 draw.buttons(ctx, state.buttons);
