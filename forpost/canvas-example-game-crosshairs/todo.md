@@ -114,10 +114,19 @@
 
 ## 0.x.0 - ETA to Level x
 * have a method that figures average DPS over the past minute
+* display this ETA in the info section for leveing
 
 ## 0.x.0 - game.levelObj used to unlock maps
 * map level restricted to only level 1 at game level 1 in map menu
 * Use game level to unlock maps from level 5 to levelCap - Math.round(levelCap * 0.90)
+
+## 0.22.0 - Improved skill point system.
+* improved button system that allows for button animations, and events
+* one skill point button on the canvas at a time
+* player can move from one skill to the next by scrolling
+* locked skills are grayed out in skill manager state
+* display game level required to unlock a skill
+* make a pkg_0_22_0.html file
 
 ## 0.21.0 - game.levelObj used to unlock weapons and sills
 * (done) All weapons aside from 'blaster' have a w.locked = true at game level 1
@@ -128,8 +137,6 @@
 * (done) game.highWeaponIndex used in nextWeapon button
 * (done) all skills aside from blaster locked at game level 1
 * (done) as game level goes up, weapons and skills unlock
-* locked skills are grayed out in skill manager state
-* display game level required to unlock a skill
 * make a pkg_0_21_0.html
 
 ## 0.20.0 - save states I
