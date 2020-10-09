@@ -299,7 +299,7 @@
     };
 
     var sm = {
-        ver: '0.21.0',
+        ver: '0.22.0',
         canvas: canvas,
         ctx: ctx,
         debugMode: 'none',

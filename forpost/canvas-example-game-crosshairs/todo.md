@@ -120,12 +120,15 @@
 * map level restricted to only level 1 at game level 1 in map menu
 * Use game level to unlock maps from level 5 to levelCap - Math.round(levelCap * 0.90)
 
-## 0.22.0 - Improved skill point system.
-* improved button system that allows for button animations, and events
+## 0.23.0 - Improved skill point system.
 * one skill point button on the canvas at a time
 * player can move from one skill to the next by scrolling
 * locked skills are grayed out in skill manager state
 * display game level required to unlock a skill
+* make a pkg_0_23_0.html file
+
+## 0.22.0 - Improved Button system.
+* improved button system that allows for button animations, and events
 * make a pkg_0_22_0.html file
 
 ## 0.21.0 - game.levelObj used to unlock weapons and sills
