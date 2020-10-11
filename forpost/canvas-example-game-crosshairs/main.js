@@ -136,6 +136,9 @@
                     r: 10,
                     onClick: function (button, sm) {
                         sm.currentState = 'options';
+                    },
+                    onFrame: function(button, sm, frame){
+                        console.log(button.label);
                     }
                 }),
                 changeWeapon: buttonMod.create({

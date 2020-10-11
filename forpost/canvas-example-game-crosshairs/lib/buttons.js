@@ -68,12 +68,13 @@ var buttonMod = (function () {
                 type: opt.type || 'basic',
                 data: opt.data || {},
                 frame: {
-                    state: 'out',
-                    current: 30,
+                    state: 'in',
+                    current: 0,
                     max: opt.maxFrame || 30,
                     FPS: 24
                 },
-                onClick: opt.onClick || function () {}
+                onClick: opt.onClick || function () {},
+                onFrame: opt.onFrame || function () {}
             };
             setupType(button, opt);
             return button;
@@ -97,7 +98,7 @@ var buttonMod = (function () {
     };
 
     // update a single button
-    api.update = function(button, secs, api){
+    api.update = function(button, secs, gameAPI){
 
         var fr = button.frame;
         // if button state is 'in'
@@ -106,15 +107,17 @@ var buttonMod = (function () {
             fr.current = fr.current > fr.max ? fr.max: fr.current;
             fr.state = fr.current === fr.max ? 'rest' : fr.state;
             
-            console.log(button.label, fr.current);
+            button.onFrame(button, gameAPI, fr);
+
         }
         // if button state is 'in'
         if(fr.state === 'out'){
             fr.current -= fr.FPS * secs;
             fr.current = fr.current < 0 ? 0: fr.current;
             fr.state = fr.current === 0 ? 'in' : fr.state;
+                       
+            button.onFrame(button, gameAPI, fr);
             
-            console.log(button.label, fr.current);
         }
 
     };

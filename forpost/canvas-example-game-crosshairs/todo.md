@@ -133,7 +133,7 @@
 * (done) will need a frame object for each button that cas a current, max, FPS, and state properties
 * (done) the frame.state property goes from in to rest state
 * (done) the 'onClick' event for a button will still fire when the button is first clicked
-* the frame.state property goes from out to in state
+* (done) the frame.state property goes from out to in state
 
 * a 'onFrame' event will fire for each frame starting from frame 0 to a maxFrame property of the button
 * a 'onOutEnd' event will fire when a button animation finishes going out of the canvas.
