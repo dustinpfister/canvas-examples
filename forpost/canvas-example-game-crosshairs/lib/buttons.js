@@ -74,7 +74,11 @@ var buttonMod = (function () {
                     FPS: 24
                 },
                 onClick: opt.onClick || function () {},
-                onFrame: opt.onFrame || function () {}
+                onFrame: opt.onFrame || function () {},
+                onOutStart: opt.onOutStart || function () {},
+                onOutEnd: opt.onOutEnd || function () {},
+                onInStart: opt.onInStart || function () {},
+                onInEnd: opt.onInEnd || function () {}
             };
             setupType(button, opt);
             return button;
@@ -99,27 +103,34 @@ var buttonMod = (function () {
 
     // update a single button
     api.update = function(button, secs, gameAPI){
-
         var fr = button.frame;
         // if button state is 'in'
         if(fr.state === 'in'){
+            if(fr.current === 0){
+                button.onInStart(button, gameAPI);
+            }
             fr.current += fr.FPS * secs;
             fr.current = fr.current > fr.max ? fr.max: fr.current;
-            fr.state = fr.current === fr.max ? 'rest' : fr.state;
-            
             button.onFrame(button, gameAPI, fr);
-
+            if(fr.current === fr.max){
+                fr.state = 'rest';
+                button.onInEnd(button, gameAPI);
+            }
         }
         // if button state is 'in'
         if(fr.state === 'out'){
+            if(fr.current === fr.max){
+                button.onOutStart(button, gameAPI);
+            }
             fr.current -= fr.FPS * secs;
             fr.current = fr.current < 0 ? 0: fr.current;
-            fr.state = fr.current === 0 ? 'in' : fr.state;
-                       
             button.onFrame(button, gameAPI, fr);
+            if(fr.current === 0){
+                fr.state = 'rest';
+                button.onOutEnd(button, gameAPI);
+            }
             
         }
-
     };
 
     // update a button collection

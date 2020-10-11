@@ -138,7 +138,13 @@
                         sm.currentState = 'options';
                     },
                     onFrame: function(button, sm, frame){
-                        console.log(button.label);
+                        console.log(button.label, frame.current);
+                    },
+                    onInStart: function(button, sm){
+                        console.log(button.label, 'in start');
+                    },
+                    onInEnd: function(button, sm){
+                        console.log(button.label, 'in end');
                     }
                 }),
                 changeWeapon: buttonMod.create({
