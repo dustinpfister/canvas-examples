@@ -69,8 +69,8 @@ var buttonMod = (function () {
                 data: opt.data || {},
                 frame: {
                     state: 'in',
-                    frame: 0,
-                    maxFrame: opt.maxFrame || 30,
+                    current: 0,
+                    max: opt.maxFrame || 30,
                     FPS: 24
                 },
                 onClick: opt.onClick || function () {}
@@ -98,7 +98,17 @@ var buttonMod = (function () {
 
     // update a single button
     api.update = function(button, secs, api){
-        //console.log(button.type);
+
+        var fr = button.frame;
+        // if button state is 'in'
+        if(fr.state === 'in'){
+            fr.current += fr.FPS * secs;
+            fr.current = fr.current > fr.max ? fr.max: fr.current;
+            fr.state = fr.current === fr.max ? 'rest' : fr.state;
+            
+            console.log(button.label, fr.current);
+        }
+
     };
 
     // update a button collection

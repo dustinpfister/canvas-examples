@@ -130,9 +130,10 @@
 ## 0.22.0 - Improved Button system (events and animations).
 * (done) I will want a buttonMod.update method for updating a button object for the sake of supporting animations
 * (done) buttonMod.updateCollection method
+* (done) will need a frame object for each button that cas a current, max, FPS, and state properties
 
-* will need a frame object for each button that cas a current, max, and dir properties
 * the frame.state property is used to set the direction or rest state of the animation.
+
 * the 'onClick' event for a button will stil fire when the button is first clicked
 * a 'onFrame' event will fire for each frame starting from frame 0 to a maxFrame property of the button
 * a 'onOutEnd' event will fire when a button animation finishes going out of the canvas.
