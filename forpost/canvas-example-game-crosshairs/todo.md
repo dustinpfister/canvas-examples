@@ -139,10 +139,7 @@
 * (done) a 'onInEnd' event will fire when a button animation finishes going into the canvas.
 * (done) a 'onOutStart' event
 * (done) on 'onInStart' event
-
-* onClick events set frame.state to the 'out' state
-* onOutEnd events set frame.state to the 'in' state
-* onInEnd events set the frame.state to the 'rest' state 
+* (done) onClick events set frame.state to the 'out' state
 
 * use new button system to have animatade buttons for the main game state
 * the game state options button will move in and stop when in in state

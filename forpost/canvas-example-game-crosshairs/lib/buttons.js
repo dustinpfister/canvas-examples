@@ -96,7 +96,9 @@ var buttonMod = (function () {
                 if (d < button.r) {
                     beforeOnClick[button.type](button, gameAPI, point);
                     button.onClick(button, gameAPI, point);
-                    afterOnClick[button.type](button, gameAPI, point)
+                    afterOnClick[button.type](button, gameAPI, point);
+                    button.frame.state = 'out';
+                    button.frame.current = button.frame.max;
                 }
             }
     };
