@@ -67,6 +67,12 @@ var buttonMod = (function () {
                 info: opt.info || '',
                 type: opt.type || 'basic',
                 data: opt.data || {},
+                frame: {
+                    state: 'in',
+                    frame: 0,
+                    maxFrame: opt.maxFrame || 30,
+                    FPS: 24
+                },
                 onClick: opt.onClick || function () {}
             };
             setupType(button, opt);
