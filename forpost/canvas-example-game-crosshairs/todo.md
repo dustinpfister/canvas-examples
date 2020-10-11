@@ -128,7 +128,26 @@
 * make a pkg_0_23_0.html file
 
 ## 0.22.0 - Improved Button system.
-* improved button system that allows for button animations, and events
+* improved button system that allows for button events, and animations
+* I will want a buttonMod.update method for updating a button object for the sake of supporting animations
+
+* will need a frame object for each button that cas a current, max, and dir properties
+* the frame.state property is used to set the direction or rest state of the animation.
+* the 'onClick' event for a button will stil fire when the button is first clicked
+* a 'onFrame' event will fire for each frame starting from frame 0 to a maxFrame property of the button
+* a 'onOutEnd' event will fire when a button animation finishes going out of the canvas.
+* a 'onInEnd' event will fire when a button animation finishes going into the canvas.
+* a 'onOutStart' event
+* on 'onInStart' event
+* onClick events set frame.state to the 'out' state
+* onOutEnd events set frame.state to the 'in' state
+* onInEnd events set the frame.state to the 'rest' state 
+
+* use new button system to have animatade buttons for the main game state
+* the game state options button will move in and stop when in in state
+* the game state options button will move out, stop, and switch to options state by way of new 'onOutEnd' event
+* use new button events for all buttons in game state
+
 * make a pkg_0_22_0.html file
 
 ## 0.21.0 - game.levelObj used to unlock weapons and sills
