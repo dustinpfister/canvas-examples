@@ -135,7 +135,7 @@
                     y: 200,
                     r: 10,
                     onClick: function (button, sm) {
-                        sm.currentState = 'options';
+                        //sm.currentState = 'options';
                     },
                     onFrame: function(button, sm, frame){
                         console.log(button.label, frame.current);
@@ -145,6 +145,13 @@
                     },
                     onInEnd: function(button, sm){
                         console.log(button.label, 'in end');
+                    },
+                    onOutStart: function(button, sm){
+                        console.log(button.label, 'out start');
+                    },
+                    onOutEnd: function(button, sm){
+                        console.log(button.label, 'out end');
+                        sm.currentState = 'options';
                     }
                 }),
                 changeWeapon: buttonMod.create({
