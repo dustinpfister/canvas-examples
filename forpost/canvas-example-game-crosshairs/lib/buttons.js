@@ -68,8 +68,8 @@ var buttonMod = (function () {
                 type: opt.type || 'basic',
                 data: opt.data || {},
                 frame: {
-                    state: 'in',
-                    current: 0,
+                    state: 'out',
+                    current: 30,
                     max: opt.maxFrame || 30,
                     FPS: 24
                 },
@@ -105,6 +105,14 @@ var buttonMod = (function () {
             fr.current += fr.FPS * secs;
             fr.current = fr.current > fr.max ? fr.max: fr.current;
             fr.state = fr.current === fr.max ? 'rest' : fr.state;
+            
+            console.log(button.label, fr.current);
+        }
+        // if button state is 'in'
+        if(fr.state === 'out'){
+            fr.current -= fr.FPS * secs;
+            fr.current = fr.current < 0 ? 0: fr.current;
+            fr.state = fr.current === 0 ? 'in' : fr.state;
             
             console.log(button.label, fr.current);
         }
