@@ -52,9 +52,12 @@ var buttonMod = (function () {
         upgrade: function () {}
     };
 
-    return {
-        // create a single button
-        create: function (opt) {
+    // the Public API
+
+    var api = {};
+
+    // create a new Button
+    api.create = function (opt) {
             opt = opt || {};
             var button = {
                 x: opt.x === undefined ? 0 : opt.x,
@@ -68,9 +71,10 @@ var buttonMod = (function () {
             };
             setupType(button, opt);
             return button;
-        },
-        // check the given button collection
-        pointerCheckCollection: function (collection, point, api) {
+    };
+
+    // check the given button collection
+    api.pointerCheckCollection = function (collection, point, api) {
             var keys = Object.keys(collection),
             i = keys.length,
             button,
@@ -84,7 +88,9 @@ var buttonMod = (function () {
                     afterOnClick[button.type](button, api, point)
                 }
             }
-        }
     };
+
+    return api;
+
 }
     ());
