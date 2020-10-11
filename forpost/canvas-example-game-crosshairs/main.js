@@ -171,8 +171,10 @@
             },
             update: function (sm, secs) {
                 var state = states[sm.currentState];
+
                 // update game state
                 gameMod.update(sm.game, secs);
+                buttonMod.updateCollection(state.buttons, secs, sm);
 
                 // auto save
                 saveStateString(sm);
@@ -183,6 +185,7 @@
                 draw.explosions(ctx, sm.game);
                 draw.cross(ctx, sm.game);
                 draw.shots(ctx, sm.game);
+
                 //draw.damageBar(ctx, sm.game);
                 draw.buttons(ctx, state.buttons);
                 draw.ver(ctx, sm);

@@ -74,7 +74,7 @@ var buttonMod = (function () {
     };
 
     // check the given button collection
-    api.pointerCheckCollection = function (collection, point, api) {
+    api.pointerCheckCollection = function (collection, point, gameAPI) {
             var keys = Object.keys(collection),
             i = keys.length,
             button,
@@ -83,11 +83,27 @@ var buttonMod = (function () {
                 button = collection[keys[i]];
                 d = utils.distance(point.x, point.y, button.x, button.y);
                 if (d < button.r) {
-                    beforeOnClick[button.type](button, api, point);
-                    button.onClick(button, api, point);
-                    afterOnClick[button.type](button, api, point)
+                    beforeOnClick[button.type](button, gameAPI, point);
+                    button.onClick(button, gameAPI, point);
+                    afterOnClick[button.type](button, gameAPI, point)
                 }
             }
+    };
+
+    // update a single button
+    api.update = function(button, secs, api){
+        //console.log(button.type);
+    };
+
+    // update a button collection
+    api.updateCollection = function(collection, secs, gameAPI){
+
+        var keys = Object.keys(collection),
+        i = keys.length;
+        while (i--) {
+            api.update(collection[keys[i]], secs, gameAPI);
+        }
+
     };
 
     return api;
