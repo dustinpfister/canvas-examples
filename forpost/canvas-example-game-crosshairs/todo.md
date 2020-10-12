@@ -1,22 +1,15 @@
 # todo list for canvas-example-game-crosshairs
 
 ## First Game
-* start first game based off of this source code
-* game should be placed in the header of my website as a way to just throw this in peoples faces on any page
-* make a feature that uses the text of a page to set map level
-* make cool custom sprite sheets for cells, and all other aspects of the look and feel of the game
+* start first game based off of this source code by adding some kind of THEME
+* make custom sprite sheets for cells, and all other aspects of the look and feel of the game
+* first game should be created in ITS OWN REPOSATORY rather than being a folder or branch of canvas-examples
 
 ## Known Bugs, concerns, ect
 * do away with number literals in draw.js for the center of the canvas, cross.center should be used
 * create an array of start index values for spawn cells maps other than [0] in game.js setMap method
 * (partial fix) it seems that the AI can get stuck when Frame Rates are real low
 * should I have a map.totalDamage property? If so why?
-
-## 0.x.0 - UI animations
-* Work out animation feature for buttons
-* Animated cross object in game state
-* cross hairs object will have an animation when entering, or leaving the game state
-* buttons will have a similar animation when entering and leaving sates
 
 ## 0.x.0 - Custom in canvas logging
 * create a utils.createLogger method that will return a custom logger
@@ -72,29 +65,6 @@
 * use base 64 to encode the numbers for a single 'color-layer'
 * can have more than one color layer
 
-## 0.x.0 - Skill Point System IV - improved skill point upgrade button
-* can press hold and move up a certain distance at which point skillPoints will go up and down based on distance from button.
-* as distance from buttonYCenter goes up to buttonYCenter + 100 the skill point value goes from current to current + free skill points.
-* as distance from buttonYCenter goes down to butterYcneter - 100 the skill point values goes from current to zero.
-* add a 'base values' skill
-* have a 'maxDPS' skill that will increase over all maxDPS for all weapons
-* have one or more 'mana' skills
-
-## 0.x.0 - Skill Point system III - improve menu
-* Have skill point categories beyond just 'Weapon' which is the current set of skills
-* have a new menu system for skillManager that involves scrolling up and now for category and left and right for skill
-* one skill on screen in skillManager at a time
-* have the usual button for investing skill points
-* have a graph that shows the effect of the skill points relative to what the base line is
-* have an area where there is a brief description of what the skill upgrade does
-* have an area where all relevant stats are displayed
-* add a 'map' category
-* have a 'cell regenerate rate' skill
-* have a 'cell regenerate count' skill
-* have a 'cell maxHP' skill
-* have a 'cell autoHeal rate' skill
-* have a 'cell autoHeal amount' skill
-
 ## 0.x.0 - keyboard events
 * add keyboard events
 * use numbers for setting current weapon
@@ -120,12 +90,41 @@
 * map level restricted to only level 1 at game level 1 in map menu
 * Use game level to unlock maps from level 5 to levelCap - Math.round(levelCap * 0.90)
 
-## 0.x.0 - Improved skill point system.
+## 0.x.0 - Additional Cross Animation, UI animations
+* Animated cross object in game state with button events
+* cross hairs object will have an animation when entering, or leaving the game state with button collection
+
+## 0.x.0 - Skill Point System IV - improved skill point upgrade button
+* can press hold and move up a certain distance at which point skillPoints will go up and down based on distance from button.
+* as distance from buttonYCenter goes up to buttonYCenter + 100 the skill point value goes from current to current + free skill points.
+* as distance from buttonYCenter goes down to butterYcneter - 100 the skill point values goes from current to zero.
+* add a 'base values' skill
+* have a 'maxDPS' skill that will increase over all maxDPS for all weapons
+* have one or more 'mana' skills
+
+## 0.x.0 - Skill Point system III - improve menu
+* Have skill point categories beyond just 'Weapon' which is the current set of skills
+* have a new menu system for skillManager that involves scrolling up and now for category and left and right for skill
+* one skill on screen in skillManager at a time
+* have the usual button for investing skill points
+* have a graph that shows the effect of the skill points relative to what the base line is
+* have an area where there is a brief description of what the skill upgrade does
+* have an area where all relevant stats are displayed
+* add a 'map' category
+* have a 'cell regenerate rate' skill
+* have a 'cell regenerate count' skill
+* have a 'cell maxHP' skill
+* have a 'cell autoHeal rate' skill
+* have a 'cell autoHeal amount' skill
 * one skill point button on the canvas at a time
 * player can move from one skill to the next by scrolling
 * locked skills are grayed out in skill manager state
 * display game level required to unlock a skill
 
+## 0.x.0 - Animated Weapons button
+* current weapon text displayed in change Weapon button
+* the text of next weapon is displayed to the right left of the next weapon Button
+* when the change weapon button is clicked the text of the next weapon moves to the location of the next weapon button, and the text of the previous weapon moves away.
 
 ## 0.23.0 - Create Button Collection method
 * have a buttonMod.createCollection method that will create and return a button collection object rather than just one button.
