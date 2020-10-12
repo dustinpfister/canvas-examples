@@ -120,11 +120,23 @@
 * map level restricted to only level 1 at game level 1 in map menu
 * Use game level to unlock maps from level 5 to levelCap - Math.round(levelCap * 0.90)
 
-## 0.23.0 - Improved skill point system.
+## 0.x.0 - Improved skill point system.
 * one skill point button on the canvas at a time
 * player can move from one skill to the next by scrolling
 * locked skills are grayed out in skill manager state
 * display game level required to unlock a skill
+
+
+## 0.23.0 - Create Button Collection method
+* have a buttonMod.createCollection method that will create and return a button collection object rather than just one button.
+* a collection object should be an Array, or at least an Array Like object
+* a collection object should have a collection.activeIndex property that is the index of a button that is currently active (was clicked, touched, ect by the player)
+* a method can be called in any button event that will set the current button as the active index for the collection
+* a method can be called in any button that will cause the 'out' process to happen for all buttons in the layout
+* there should be Events for Collections such as onAllOut that will fire when all buttons in the collection are out of the canvas.
+* use the new button collection for the game state
+* use the onAllOut event for the collection in game state to change state from game to options
+* make all buttons in the game state move out with the options button
 * make a pkg_0_23_0.html file
 
 ## 0.22.0 - Improved Button system (events and animations).
@@ -141,10 +153,8 @@
 * (done) on 'onInStart' event
 * (done) onClick events set frame.state to the 'out' state
 
-* use new button system to have animatade buttons for the main game state
-* the game state options button will move in and stop when in in state
+* use new button system to have animated button for the main game states options button
 * the game state options button will move out, stop, and switch to options state by way of new 'onOutEnd' event
-* use new button events for all buttons in game state
 
 * make a pkg_0_22_0.html file
 
