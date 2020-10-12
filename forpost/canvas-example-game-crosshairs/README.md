@@ -1,0 +1,3 @@
+# canvas-example-game-crosshairs
+
+This canvas example is the first example that I have started pouring a fair amount of time and effort into. Typically with many of these canvas examples I just quickly throw together a basic idea for something together in a few hours, or at most a day or two before moving on to the next idea. I of course wanted to break that pattern at some point and thus far I have done so with this project.
