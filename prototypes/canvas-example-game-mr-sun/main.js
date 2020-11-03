@@ -29,7 +29,7 @@ var states = {
             // setup sections
             var i = 0,
             sections = [],
-            total = 10,
+            total = 19,
             radian, 
             radius = 100,
             cx = sm.canvas.width / 2,
@@ -59,6 +59,13 @@ var states = {
             ctx.beginPath();
             ctx.arc(sun.x, sun.y, sun.radius, 0, Math.PI * 2 );
             ctx.fill();
+            // draw sections
+            game.sections.forEach(function(section){
+                ctx.fillStyle = 'blue';
+                ctx.beginPath();
+                ctx.arc(section.x, section.y, section.radius, 0, Math.PI * 2 );
+                ctx.fill();
+            });
         },
         // events
         pointerStart: function (sm, pos, e) {
