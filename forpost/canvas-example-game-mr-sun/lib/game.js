@@ -14,6 +14,10 @@ var gameMod = (function(){
         game.sectionRadius = opt.sectionRadius || 16;
         game.worldRadius = opt.worldRadius || 100;
 
+        game.secs = 0;
+        game.year = 0;
+        game.yearRate = 1;
+
         // sun object
         game.sun = {
             radius: 16,
@@ -69,6 +73,15 @@ var gameMod = (function(){
         game.sun.y = pos.y;
         boundToCircle(game.sun, game.centerX, game.centerY, game.worldRadius - ajust);
         api.updateSections(sm.game);
+    };
+    // update method
+    api.update = function(game, secs){
+        game.secs += secs;
+        var deltaYears = game.secs / game.yearRate;
+        if(deltaYears >= 1){
+            game.years += deltaYears;
+            game.secs %= game.yearRate;
+        }
     };
     // return the Public API
     return api;
