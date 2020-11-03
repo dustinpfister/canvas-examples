@@ -55,6 +55,14 @@ var gameMod = (function(){
             section.per = per;
         });
     };
+    // move sun
+    api.moveSun = function(game, pos){
+        var ajust = game.sun.radius + game.sectionRadius;
+        game.sun.x = pos.x;
+        game.sun.y = pos.y;
+        utils.boundToCircle(game.sun, game.centerX, game.centerY, game.worldRadius - ajust);
+        api.updateSections(sm.game);
+    };
     // return the Public API
     return api;
 

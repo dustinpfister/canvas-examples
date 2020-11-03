@@ -25,11 +25,7 @@ var states = {
         pointerMove: function (sm, pos, e) {
             var sun = sm.game.sun;
             if(sm.input.pointerDown){
-                sun.x = pos.x;
-                sun.y = pos.y;
-                var ajust = sm.game.sun.radius + sm.game.sectionRadius;
-                utils.boundToCircle(sun, sm.game.centerX, sm.game.centerY, sm.game.worldRadius - ajust);
-                gameMod.updateSections(sm.game);
+                gameMod.moveSun(sm.game, pos);
             }
         },
         pointerEnd: function () {}
