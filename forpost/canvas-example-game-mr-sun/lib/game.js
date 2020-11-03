@@ -5,9 +5,23 @@ var gameMod = (function(){
             name: 'energy',
             create: function(game, opt){
                  console.log('create ' + this.name);
+                game.sections = game.sections.map(function(section){
+                    section.energy = 0;
+                    return section;
+                });
+                game.data = game.data || {};
+                game.data.energy = {
+                    maxEnergyDelta: 1
+                };
             },
             onDeltaYear: function(game, deltaYears){
-                console.log('deltaYears: ' + deltaYears);
+                var maxEnergyDelta = game.data.energy.maxEnergyDelta;
+                game.sections = game.sections.map(function(section){
+                    var energyDelta = maxEnergyDelta * section.per * deltaYears;
+                    section.energy = section.energy + energyDelta;
+                    section.energy = Number(section.energy.toFixed(2));
+                    return section;
+                });
             }
         }
     };
