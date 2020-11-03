@@ -2,8 +2,8 @@ var canvas = document.createElement('canvas'),
 ctx = canvas.getContext('2d'),
 container = document.getElementById('canvas-app') || document.body;
 container.appendChild(canvas);
-canvas.width = 640;
-canvas.height = 480;
+canvas.width = 320;
+canvas.height = 240;
 ctx.translate(0.5, 0.5);
  
 var states = {
@@ -12,8 +12,8 @@ var states = {
             // setup sun object
             sm.game = gameMod.create({
                 canvas: sm.canvas,
-                sectionCount: 25,
-                worldRadius: 140
+                sectionCount: 19,
+                worldRadius: 100
             });
         },
         // for each update tick
