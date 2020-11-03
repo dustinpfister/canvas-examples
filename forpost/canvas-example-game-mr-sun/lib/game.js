@@ -1,4 +1,25 @@
 var gameMod = (function(){
+
+    var plugs = {
+        energy: {
+            name: 'energy',
+            create: function(game){
+                 console.log('create ' + this.name);
+            },
+            onDeltaYear: function(game, deltaYears){
+            }
+        }
+    };
+
+    var usePlugs = function(game, method, args){
+        method = method || 'create';
+        args = args || [game]
+        Object.keys(plugs).forEach(function(plugKey){
+            var plugObj = plugs[plugKey];
+            plugObj[method].apply(plugObj, args);
+        });
+    };
+
     // public API
     var api = {};
     // create a new game state object
@@ -43,6 +64,7 @@ var gameMod = (function(){
             i += 1;
         }
         game.sections = sections;
+        usePlugs(game, 'create', [game, opt])
         gameMod.updateSections(game);
         return game;
     };
@@ -82,6 +104,8 @@ var gameMod = (function(){
             game.year	 += deltaYears;
             game.secs %= game.yearRate;
         }
+    };
+    api.load = function(plugObj){
     };
     // return the Public API
     return api;
