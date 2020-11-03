@@ -1,4 +1,3 @@
-
 var getCanvasRelative = function (e) {
     var canvas = e.target,
     bx = canvas.getBoundingClientRect();
@@ -8,7 +7,7 @@ var getCanvasRelative = function (e) {
         bx: bx
     };
 };
-
+ 
 var canvas = document.createElement('canvas'),
 ctx = canvas.getContext('2d'),
 container = document.getElementById('canvas-app') || document.body;
@@ -16,16 +15,27 @@ container.appendChild(canvas);
 canvas.width = 320;
 canvas.height = 240;
 ctx.translate(0.5, 0.5);
-
+ 
 var states = {
     game: {
+        init: function(sm){
+            var game = sm.game;
+            game.sun.x = sm.canvas.width / 2;
+            game.sun.y = sm.canvas.height / 2;
+        },
         // for each update tick
         update: function (sm, secs) {
             var state = states[sm.currentState];
-
-ctx.fillStyle = 'black';
-ctx.fillRect(0,0,canvas.width, canvas.height);
-
+            var game = sm.game;
+            var sun = game.sun;
+            // draw background
+            ctx.fillStyle = 'black';
+            ctx.fillRect(0,0,canvas.width, canvas.height);
+            // draw sun
+            ctx.fillStyle = 'yellow';
+            ctx.beginPath();
+            ctx.arc(sun.x, sun.y, sun.radius, 0, Math.PI * 2 );
+            ctx.fill();
         },
         // events
         pointerStart: function (sm, pos, e) {
@@ -37,13 +47,19 @@ ctx.fillRect(0,0,canvas.width, canvas.height);
         pointerEnd: function () {}
     }
 };
-
+ 
 var sm = {
     ver: '0.0.0',
     canvas: canvas,
     currentState: 'game',
     ctx: ctx,
-    game: {},
+    game: {
+        sun: {
+            x: 0,
+            y: 0,
+            radius: 16
+        }
+    },
     input: {
         pointerDown: false,
         pos: {
@@ -53,6 +69,7 @@ var sm = {
     }
 };
  
+// Pointer Events
 var pointerHanders = {
     start: function (sm, pos, e) {
         var pos = sm.input.pos;
@@ -67,7 +84,6 @@ var pointerHanders = {
         states[sm.currentState].pointerEnd(sm, pos, e);
     }
 };
- 
 var createPointerHandler = function (sm, type) {
     return function (e) {
         var pos = getCanvasRelative(e);
@@ -85,6 +101,10 @@ canvas.addEventListener('touchstart', createPointerHandler(sm, 'start'));
 canvas.addEventListener('touchmove', createPointerHandler(sm, 'move'));
 canvas.addEventListener('touchend', createPointerHandler(sm, 'end'));
  
+// init current state
+states[sm.currentState].init(sm);
+ 
+// loop
 var lt = new Date(),
 FPS_target = 30;
 var loop = function () {
