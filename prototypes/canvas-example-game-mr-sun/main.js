@@ -11,19 +11,6 @@ var getCanvasRelative = function (e) {
 var distance = function (x1, y1, x2, y2) {
     return Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2));
 };
-
-var updateSections = function(game){
-    var sun = game.sun;
-    game.sections.forEach(function(section){
-        var ajust = section.radius + sun.radius;
-        var d = distance(section.x, section.y, sun.x, sun.y) - ajust;
-        var per = d / (200 - ajust * 2);
-        per = per > 1 ? 1: per;
-        per = per < 0 ? 0: per;
-        per = 1 - per;
-        section.per = per;
-    });
-};
  
 var canvas = document.createElement('canvas'),
 ctx = canvas.getContext('2d'),
@@ -37,33 +24,7 @@ var states = {
     game: {
         init: function(sm){
             // setup sun object
-            var game = sm.game;
-            game.sun = {
-                radius: 16
-            };
-            game.sun.x = sm.canvas.width / 2;
-            game.sun.y = sm.canvas.height / 2;
-            // setup sections
-            var i = 0,
-            sections = [],
-            total = 19,
-            radian, 
-            radius = 100,
-            cx = sm.canvas.width / 2,
-            cy = sm.canvas.height / 2;
-            while(i < total){
-                radian = Math.PI * 2 / total * i;
-                sections.push({
-                    x: Math.cos(radian) * radius + cx,
-                    y: Math.sin(radian) * radius + cy,
-                    radius: 16,
-                    per: 1
-                });
-                i += 1;
-            }
-            game.sections = sections;
-            updateSections(game);
-            console.log(game.sections);
+            sm.game = gameMod.create(sm);
         },
         // for each update tick
         update: function (sm, secs) {
@@ -102,7 +63,7 @@ var states = {
             if(sm.input.pointerDown){
                 sun.x = pos.x;
                 sun.y = pos.y;
-                updateSections(sm.game);
+                gameMod.updateSections(sm.game);
             }
         },
         pointerEnd: function () {}
