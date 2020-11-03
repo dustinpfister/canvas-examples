@@ -5,20 +5,23 @@ var gameMod = (function(){
     api.create = function(opt){
         opt = opt || {};
         opt.canvas = opt.canvas || {width: 320, height: 240 };
+ 
         var game = {};
+        game.centerX = opt.centerX || opt.canvas.width / 2;
+        game.centerY = opt.centerY || opt.canvas.height / 2;
         game.sun = {
             radius: 16
         };
-        game.sun.x = opt.canvas.width / 2;
-        game.sun.y = opt.canvas.height / 2;
+        game.sun.x = game.centerX;
+        game.sun.y = game.centerY;
         // setup sections
         var i = 0,
         sections = [],
         total = 19,
         radian, 
         radius = 100,
-        cx = opt.canvas.width / 2,
-        cy = opt.canvas.height / 2;
+        cx = game.centerX,
+        cy = game.centerY;
         while(i < total){
             radian = Math.PI * 2 / total * i;
             sections.push({
