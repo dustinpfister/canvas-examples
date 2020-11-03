@@ -19,9 +19,32 @@ ctx.translate(0.5, 0.5);
 var states = {
     game: {
         init: function(sm){
+            // setup sun object
             var game = sm.game;
+            game.sun = {
+                radius: 16
+            };
             game.sun.x = sm.canvas.width / 2;
             game.sun.y = sm.canvas.height / 2;
+            // setup sections
+            var i = 0,
+            sections = [],
+            total = 10,
+            radian, 
+            radius = 100,
+            cx = sm.canvas.width / 2,
+            cy = sm.canvas.height / 2;
+            while(i < total){
+                radian = Math.PI * 2 / total * i;
+                sections.push({
+                    x: Math.cos(radian) * radius + cx,
+                    y: Math.sin(radian) * radius + cy,
+                    radius: 16
+                });
+                i += 1;
+            }
+            game.sections = sections;
+            console.log(game.sections);
         },
         // for each update tick
         update: function (sm, secs) {
@@ -53,13 +76,7 @@ var sm = {
     canvas: canvas,
     currentState: 'game',
     ctx: ctx,
-    game: {
-        sun: {
-            x: 0,
-            y: 0,
-            radius: 16
-        }
-    },
+    game: {},
     input: {
         pointerDown: false,
         pos: {

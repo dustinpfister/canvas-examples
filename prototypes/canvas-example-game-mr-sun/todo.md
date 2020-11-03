@@ -1,9 +1,8 @@
 # canvas-example-mr-sun
 
 ## 0.0.0 - Basic idea working
-
-* start with a basic state machine with event support
-* have a circle 'sun' display object in the center of the canvas
+* (done) start with a basic state machine with event support
+* (done) have a circle 'sun' display object in the center of the canvas
 * have a number of 'section' display objects around the edge of an outer circle around the 'sun'
 * the 'sun' object can be moved from the center to any point inside the outer circle
 * each 'section' object has a percent value that is effected by the distance between the 'section' and the 'sun'
