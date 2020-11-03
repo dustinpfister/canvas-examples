@@ -21,6 +21,7 @@ var states = {
             draw.back(sm);
             draw.sections(sm);
             draw.sun(sm);
+            draw.ver(sm);
         },
         // events
         pointerStart: function (sm, pos, e) {},

@@ -11,4 +11,5 @@
 * (done) create a draw.js module for this example
 * (done) start a utils.js module
 * (done) make it so the sun can not leave inner radius
+* display version number in canvas
 * make a pkg_0_0_0.html

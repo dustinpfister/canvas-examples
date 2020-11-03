@@ -1,19 +1,19 @@
-var draw = (function(){
+var draw = (function () {
     // public API
     var api = {};
     // draw background
-    api.back = function(sm){
+    api.back = function (sm) {
         sm.ctx.fillStyle = '#202020';
-        sm.ctx.fillRect(0,0,sm.canvas.width, sm.canvas.height);
+        sm.ctx.fillRect(0, 0, sm.canvas.width, sm.canvas.height);
     };
     // draw sections
-    api.sections = function(sm){
+    api.sections = function (sm) {
         var ctx = sm.ctx;
-        sm.game.sections.forEach(function(section){
+        sm.game.sections.forEach(function (section) {
             var b = 50 + Math.round(section.per * 128);
             ctx.fillStyle = 'rgb(0,0,' + b + ')';
             ctx.beginPath();
-            ctx.arc(section.x, section.y, section.radius, 0, Math.PI * 2 );
+            ctx.arc(section.x, section.y, section.radius, 0, Math.PI * 2);
             ctx.fill();
             ctx.fillStyle = 'white';
             ctx.textAlign = 'center';
@@ -23,13 +23,23 @@ var draw = (function(){
         });
     };
     // draw sun
-    api.sun = function(sm){
+    api.sun = function (sm) {
         var sun = sm.game.sun;
         sm.ctx.fillStyle = 'yellow';
         sm.ctx.beginPath();
-        sm.ctx.arc(sun.x, sun.y, sun.radius, 0, Math.PI * 2 );
+        sm.ctx.arc(sun.x, sun.y, sun.radius, 0, Math.PI * 2);
         sm.ctx.fill();
+    };
+    // draw version number
+    api.ver = function (sm) {
+        var ctx = sm.ctx;
+        ctx.fillStyle = 'white';
+        ctx.textAlign = 'left';
+        ctx.textBaseline = 'top';
+        ctx.font = '10px courier';
+        ctx.fillText('v' + sm.ver, 10, sm.canvas.height - 15);
     };
     // return the Public API
     return api;
-}());
+}
+    ());
