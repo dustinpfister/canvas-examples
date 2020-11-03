@@ -12,7 +12,7 @@ var gameMod = (function(){
         game.centerX = opt.centerX || opt.canvas.width / 2;
         game.centerY = opt.centerY || opt.canvas.height / 2;
         game.sectionRadius = opt.sectionRadius || 16;
-        game.worldRadius = 100;
+        game.worldRadius = opt.worldRadius || 100;
 
         // sun object
         game.sun = {
@@ -24,7 +24,7 @@ var gameMod = (function(){
         // setup sections
         var i = 0,
         sections = [],
-        total = 19,
+        total = opt.sectionCount || 20,
         radian,	
         cx = game.centerX,
         cy = game.centerY;

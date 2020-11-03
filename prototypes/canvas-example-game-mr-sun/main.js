@@ -11,7 +11,9 @@ var states = {
         init: function(sm){
             // setup sun object
             sm.game = gameMod.create({
-                canvas: sm.canvas
+                canvas: sm.canvas,
+                sectionCount: 15,
+                worldRadius: 80
             });
         },
         // for each update tick
