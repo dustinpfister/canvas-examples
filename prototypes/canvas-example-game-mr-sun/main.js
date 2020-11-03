@@ -15,10 +15,12 @@ var distance = function (x1, y1, x2, y2) {
 var updateSections = function(game){
     var sun = game.sun;
     game.sections.forEach(function(section){
-        var d = distance(section.x, section.y, sun.x, sun.y);
-        var per = d / 100;
-        per = per > 100 ? 100: per;
-        per = 100 - per;
+        var ajust = section.radius + sun.radius;
+        var d = distance(section.x, section.y, sun.x, sun.y) - ajust;
+        var per = d / (200 - ajust * 2);
+        per = per > 1 ? 1: per;
+        per = per < 0 ? 0: per;
+        per = 1 - per;
         section.per = per;
     });
 };
@@ -73,10 +75,16 @@ var states = {
             ctx.fillRect(0,0,canvas.width, canvas.height);
             // draw sections
             game.sections.forEach(function(section){
-                ctx.fillStyle = 'blue';
+                var b = 50 + Math.round(section.per * 128);
+                ctx.fillStyle = 'rgb(0,0,' + b + ')';
                 ctx.beginPath();
                 ctx.arc(section.x, section.y, section.radius, 0, Math.PI * 2 );
                 ctx.fill();
+                ctx.fillStyle = 'white';
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
+                ctx.font = '10px arial';
+                ctx.fillText(Math.round(section.per * 100), section.x, section.y);
             });
             // draw sun
             ctx.fillStyle = 'yellow';
