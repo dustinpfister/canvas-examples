@@ -4,12 +4,12 @@
 * (done) have a game.year propery that will reflect the current game year
 * (done) have a gameMod.update method that will be called in each frame tick for the game state in main.js
 * (done) have a game.yearRate propery that will be used to set the rate at which years will go by in secs
+* (done) plugObj.create method defines what happens when a game Object is created
+* (done) plugObj.onDetaYear method of a plugin defines what is to happen yeach time game.year goes up
+* (done) just have a energy plug-in for now that will append an energy property for each section.
+* (done) the energy property will go up for each year, at a rate that is effected by section.per ( sun position )
 * have a gameMod.load method that can be used to load a plugin for the game module
 * a plugin is a call of the gameMod.load method, to which the first agument if a plug-in object
-* plugObj.create method defines what happens when a game Object is created
-* plugObj.onDetaYear method of a plugin defines what is to happen yeach time game.year goes up
-* just have a energy plug-in for now that will append an energy property for each section.
-* the energy property will go up for each year, at a rate that is effected by section.per ( sun position )
 
 ## 0.0.0 - Basic idea working
 * (done) start with a basic state machine with event support
