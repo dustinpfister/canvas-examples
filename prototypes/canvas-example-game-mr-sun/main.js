@@ -28,36 +28,12 @@ var states = {
         },
         // for each update tick
         update: function (sm, secs) {
-            var state = states[sm.currentState];
-            var game = sm.game;
-            var sun = game.sun;
-            // draw background
-            ctx.fillStyle = 'black';
-            ctx.fillRect(0,0,canvas.width, canvas.height);
-            // draw sections
-            game.sections.forEach(function(section){
-                var b = 50 + Math.round(section.per * 128);
-                ctx.fillStyle = 'rgb(0,0,' + b + ')';
-                ctx.beginPath();
-                ctx.arc(section.x, section.y, section.radius, 0, Math.PI * 2 );
-                ctx.fill();
-                ctx.fillStyle = 'white';
-                ctx.textAlign = 'center';
-                ctx.textBaseline = 'middle';
-                ctx.font = '10px arial';
-                ctx.fillText(Math.round(section.per * 100), section.x, section.y);
-            });
-            // draw sun
-            ctx.fillStyle = 'yellow';
-            ctx.beginPath();
-            ctx.arc(sun.x, sun.y, sun.radius, 0, Math.PI * 2 );
-            ctx.fill();
+            draw.back(sm);
+            draw.sections(sm);
+            draw.sun(sm);
         },
         // events
-        pointerStart: function (sm, pos, e) {
-            var state = states[sm.currentState];
-            console.log(pos);
-        },
+        pointerStart: function (sm, pos, e) {},
         pointerMove: function (sm, pos, e) {
             var sun = sm.game.sun;
             if(sm.input.pointerDown){

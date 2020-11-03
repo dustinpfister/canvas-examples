@@ -29,7 +29,6 @@ var gameMod = (function(){
         }
         game.sections = sections;
         gameMod.updateSections(game);
-        console.log(game.sections);
         return game;
     };
     // update sections
