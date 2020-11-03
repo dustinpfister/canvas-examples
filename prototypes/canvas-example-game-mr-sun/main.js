@@ -7,6 +7,21 @@ var getCanvasRelative = function (e) {
         bx: bx
     };
 };
+
+var distance = function (x1, y1, x2, y2) {
+    return Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2));
+};
+
+var updateSections = function(game){
+    var sun = game.sun;
+    game.sections.forEach(function(section){
+        var d = distance(section.x, section.y, sun.x, sun.y);
+        var per = d / 100;
+        per = per > 100 ? 100: per;
+        per = 100 - per;
+        section.per = per;
+    });
+};
  
 var canvas = document.createElement('canvas'),
 ctx = canvas.getContext('2d'),
@@ -39,11 +54,13 @@ var states = {
                 sections.push({
                     x: Math.cos(radian) * radius + cx,
                     y: Math.sin(radian) * radius + cy,
-                    radius: 16
+                    radius: 16,
+                    per: 1
                 });
                 i += 1;
             }
             game.sections = sections;
+            updateSections(game);
             console.log(game.sections);
         },
         // for each update tick
@@ -73,9 +90,11 @@ var states = {
             console.log(pos);
         },
         pointerMove: function (sm, pos, e) {
+            var sun = sm.game.sun;
             if(sm.input.pointerDown){
-                sm.game.sun.x = pos.x;
-                sm.game.sun.y = pos.y;
+                sun.x = pos.x;
+                sun.y = pos.y;
+                updateSections(sm.game);
             }
         },
         pointerEnd: function () {}
