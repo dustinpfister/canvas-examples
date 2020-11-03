@@ -54,11 +54,6 @@ var states = {
             // draw background
             ctx.fillStyle = 'black';
             ctx.fillRect(0,0,canvas.width, canvas.height);
-            // draw sun
-            ctx.fillStyle = 'yellow';
-            ctx.beginPath();
-            ctx.arc(sun.x, sun.y, sun.radius, 0, Math.PI * 2 );
-            ctx.fill();
             // draw sections
             game.sections.forEach(function(section){
                 ctx.fillStyle = 'blue';
@@ -66,14 +61,23 @@ var states = {
                 ctx.arc(section.x, section.y, section.radius, 0, Math.PI * 2 );
                 ctx.fill();
             });
+            // draw sun
+            ctx.fillStyle = 'yellow';
+            ctx.beginPath();
+            ctx.arc(sun.x, sun.y, sun.radius, 0, Math.PI * 2 );
+            ctx.fill();
         },
         // events
         pointerStart: function (sm, pos, e) {
             var state = states[sm.currentState];
             console.log(pos);
-
         },
-        pointerMove: function () {},
+        pointerMove: function (sm, pos, e) {
+            if(sm.input.pointerDown){
+                sm.game.sun.x = pos.x;
+                sm.game.sun.y = pos.y;
+            }
+        },
         pointerEnd: function () {}
     }
 };
