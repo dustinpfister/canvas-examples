@@ -1,5 +1,13 @@
 # canvas-example-mr-sun
 
+
+## 0.1.0 - gameMod.update, plugins, and section.energy
+* have a game.year propery that will reflect the current game year
+* have a gameMod.update method that will be called in each frame tick for the game state in main.js
+* have a game.yearRate propery that will be used to set the rate at which years will go by in ms
+* have a gameMod.load method that can be used to load a plugin for the game module
+* just have a energy plug-in for now that will append an energy property for each section, and update that over time.
+
 ## 0.0.0 - Basic idea working
 * (done) start with a basic state machine with event support
 * (done) have a circle 'sun' display object in the center of the canvas
