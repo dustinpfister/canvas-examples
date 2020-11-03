@@ -2,21 +2,23 @@ var gameMod = (function(){
     // public API
     var api = {};
     // create a new game state object
-    api.create = function(sm){
+    api.create = function(opt){
+        opt = opt || {};
+        opt.canvas = opt.canvas || {width: 320, height: 240 };
         var game = {};
         game.sun = {
             radius: 16
         };
-        game.sun.x = sm.canvas.width / 2;
-        game.sun.y = sm.canvas.height / 2;
+        game.sun.x = opt.canvas.width / 2;
+        game.sun.y = opt.canvas.height / 2;
         // setup sections
         var i = 0,
         sections = [],
         total = 19,
         radian, 
         radius = 100,
-        cx = sm.canvas.width / 2,
-        cy = sm.canvas.height / 2;
+        cx = opt.canvas.width / 2,
+        cy = opt.canvas.height / 2;
         while(i < total){
             radian = Math.PI * 2 / total * i;
             sections.push({
