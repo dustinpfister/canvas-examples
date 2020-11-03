@@ -5,11 +5,13 @@ var gameMod = (function(){
     api.create = function(opt){
         opt = opt || {};
         opt.canvas = opt.canvas || {width: 320, height: 240 };
+
  
         // base object
         var game = {};
         game.centerX = opt.centerX || opt.canvas.width / 2;
         game.centerY = opt.centerY || opt.canvas.height / 2;
+        game.sectionRadius = opt.sectionRadius || 16;
         game.worldRadius = 100;
 
         // sun object
@@ -31,7 +33,7 @@ var gameMod = (function(){
             sections.push({
                 x: Math.cos(radian) * game.worldRadius + cx,
                 y: Math.sin(radian) * game.worldRadius + cy,
-                radius: 16,
+                radius: game.sectionRadius,
                 per: 1
             });
             i += 1;

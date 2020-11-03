@@ -27,7 +27,7 @@ var states = {
             if(sm.input.pointerDown){
                 sun.x = pos.x;
                 sun.y = pos.y;
-                var ajust = (sm.game.sun.radius + sm.game.sections[0].radius);
+                var ajust = sm.game.sun.radius + sm.game.sectionRadius;
                 utils.boundToCircle(sun, sm.canvas.width / 2, sm.canvas.height / 2, 100 - ajust);
                 gameMod.updateSections(sm.game);
             }
