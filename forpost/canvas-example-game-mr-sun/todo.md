@@ -1,5 +1,8 @@
 # canvas-example-mr-sun
 
+## 0.2.0 - geo-thermal plugin
+* The plug-in appends a section.temp property
+* section.temp is set by
 
 ## 0.1.0 - gameMod.update, plugins, and section.energy
 * have a game.year propery that will reflect the current game year
