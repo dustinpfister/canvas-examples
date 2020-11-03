@@ -3,10 +3,11 @@ var gameMod = (function(){
     var plugs = {
         energy: {
             name: 'energy',
-            create: function(game){
+            create: function(game, opt){
                  console.log('create ' + this.name);
             },
             onDeltaYear: function(game, deltaYears){
+                console.log('deltaYears: ' + deltaYears);
             }
         }
     };
@@ -64,7 +65,8 @@ var gameMod = (function(){
             i += 1;
         }
         game.sections = sections;
-        usePlugs(game, 'create', [game, opt])
+        // use 'create' method of all plug-ins
+        usePlugs(game, 'create', [game, opt]);
         gameMod.updateSections(game);
         return game;
     };
@@ -103,6 +105,7 @@ var gameMod = (function(){
         if(deltaYears >= 1){
             game.year	 += deltaYears;
             game.secs %= game.yearRate;
+            usePlugs(game, 'onDeltaYear', [game, deltaYears]);
         }
     };
     api.load = function(plugObj){
