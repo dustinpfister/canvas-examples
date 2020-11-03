@@ -9,5 +9,6 @@
 * (done) for now just have the percent value of a 'section' object effect the color of the section, and display the percent value for it.
 * (done) create a game.js file and pull all methods that have to do with creating, and updating a game objet thus far into it.
 * (done) create a draw.js module for this example
-* start a utils.js module
+* (done) start a utils.js module
+* make it so the sun can not leave inner radius
 * make a pkg_0_0_0.html
