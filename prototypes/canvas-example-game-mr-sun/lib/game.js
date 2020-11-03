@@ -56,11 +56,18 @@ var gameMod = (function(){
         });
     };
     // move sun
+    var boundToCircle = function(obj, cx, cy, radius){
+        if(utils.distance(obj.x, obj.y, cx, cy) > radius){
+            var a = Math.atan2(obj.y - cy, obj.x - cx);
+            obj.x = cx + Math.cos(a) * radius;
+            obj.y = cy + Math.sin(a) * radius;
+        }
+    };
     api.moveSun = function(game, pos){
         var ajust = game.sun.radius + game.sectionRadius;
         game.sun.x = pos.x;
         game.sun.y = pos.y;
-        utils.boundToCircle(game.sun, game.centerX, game.centerY, game.worldRadius - ajust);
+        boundToCircle(game.sun, game.centerX, game.centerY, game.worldRadius - ajust);
         api.updateSections(sm.game);
     };
     // return the Public API
