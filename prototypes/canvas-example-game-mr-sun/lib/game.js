@@ -16,10 +16,10 @@ var gameMod = (function(){
 
         // sun object
         game.sun = {
-            radius: 16
+            radius: 16,
+            x: game.centerX,
+            y: game.centerY
         };
-        game.sun.x = game.centerX;
-        game.sun.y = game.centerY;
 
         // setup sections
         var i = 0,
