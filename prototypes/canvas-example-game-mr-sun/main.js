@@ -1,3 +1,4 @@
+/*
 var getCanvasRelative = function (e) {
     var canvas = e.target,
     bx = canvas.getBoundingClientRect();
@@ -11,7 +12,7 @@ var getCanvasRelative = function (e) {
 var distance = function (x1, y1, x2, y2) {
     return Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2));
 };
- 
+ */
 var canvas = document.createElement('canvas'),
 ctx = canvas.getContext('2d'),
 container = document.getElementById('canvas-app') || document.body;
@@ -78,7 +79,7 @@ var pointerHanders = {
 };
 var createPointerHandler = function (sm, type) {
     return function (e) {
-        var pos = getCanvasRelative(e);
+        var pos = utils.getCanvasRelative(e);
         sm.input.pos = pos;
         e.preventDefault();
         pointerHanders[type](sm, pos, e);

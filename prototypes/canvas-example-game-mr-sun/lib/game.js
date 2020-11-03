@@ -36,7 +36,7 @@ var gameMod = (function(){
         var sun = game.sun;
         game.sections.forEach(function(section){
             var ajust = section.radius + sun.radius;
-            var d = distance(section.x, section.y, sun.x, sun.y) - ajust;
+            var d = utils.distance(section.x, section.y, sun.x, sun.y) - ajust;
             var per = d / (200 - ajust * 2);
             per = per > 1 ? 1: per;
             per = per < 0 ? 0: per;

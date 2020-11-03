@@ -7,7 +7,7 @@
 * (done) the 'sun' object can be moved 
 * (done) each 'section' object has a percent value that is effected by the distance between the 'section' and the 'sun'
 * (done) for now just have the percent value of a 'section' object effect the color of the section, and display the percent value for it.
-* create a game.js file and pull all methods that have to do with creating, and updating a game objet thus far into it.
-* create a draw.js module for this example
+* (done) create a game.js file and pull all methods that have to do with creating, and updating a game objet thus far into it.
+* (done) create a draw.js module for this example
 * start a utils.js module
 * make a pkg_0_0_0.html
