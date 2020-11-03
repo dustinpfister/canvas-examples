@@ -30,6 +30,15 @@ var draw = (function () {
         sm.ctx.arc(sun.x, sun.y, sun.radius, 0, Math.PI * 2);
         sm.ctx.fill();
     };
+    // display
+    api.disp = function (sm) {
+        var ctx = sm.ctx;
+        ctx.fillStyle = 'white';
+        ctx.textAlign = 'left';
+        ctx.textBaseline = 'top';
+        ctx.font = '10px courier';
+        ctx.fillText('year: ' + sm.game.year, 3, 3);
+    };
     // draw version number
     api.ver = function (sm) {
         var ctx = sm.ctx;

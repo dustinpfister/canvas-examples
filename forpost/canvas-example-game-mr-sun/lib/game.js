@@ -77,9 +77,9 @@ var gameMod = (function(){
     // update method
     api.update = function(game, secs){
         game.secs += secs;
-        var deltaYears = game.secs / game.yearRate;
+        var deltaYears = Math.floor(game.secs / game.yearRate);
         if(deltaYears >= 1){
-            game.years += deltaYears;
+            game.year	 += deltaYears;
             game.secs %= game.yearRate;
         }
     };

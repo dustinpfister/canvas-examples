@@ -18,9 +18,11 @@ var states = {
         },
         // for each update tick
         update: function (sm, secs) {
+            gameMod.update(sm.game, secs);
             draw.back(sm);
             draw.sections(sm);
             draw.sun(sm);
+            draw.disp(sm);
             draw.ver(sm);
         },
         // events
