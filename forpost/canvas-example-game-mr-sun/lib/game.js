@@ -26,12 +26,15 @@ var gameMod = (function(){
         }
     };
 
-    var usePlugs = function(game, method, args){
-        method = method || 'create';
+    var usePlugs = function(game, methodName, args){
+        methodName = methodName || 'create';
         args = args || [game]
         Object.keys(plugs).forEach(function(plugKey){
-            var plugObj = plugs[plugKey];
-            plugObj[method].apply(plugObj, args);
+            var plugObj = plugs[plugKey],
+            method = plugObj[methodName];
+            if(method){
+                method.apply(plugObj, args);
+            }
         });
     };
 
