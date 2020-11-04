@@ -1,5 +1,5 @@
 var gameMod = (function(){
-
+    // the plug-in object
     var plugs = {
         energy: {
             name: 'energy',
@@ -25,7 +25,7 @@ var gameMod = (function(){
             }
         }
     };
-
+    // use plugins for the given method
     var usePlugs = function(game, methodName, args){
         methodName = methodName || 'create';
         args = args || [game]
@@ -37,34 +37,28 @@ var gameMod = (function(){
             }
         });
     };
-
     // public API
     var api = {};
     // create a new game state object
     api.create = function(opt){
         opt = opt || {};
         opt.canvas = opt.canvas || {width: 320, height: 240 };
-
- 
-        // base object
+        // create base game object
         var game = {};
         game.centerX = opt.centerX || opt.canvas.width / 2;
         game.centerY = opt.centerY || opt.canvas.height / 2;
         game.sectionRadius = opt.sectionRadius || 16;
         game.worldRadius = opt.worldRadius || 100;
-
         game.secs = 0;
         game.year = 0;
         game.yearRate = 1;
-
-        // sun object
+        // create sun object
         game.sun = {
             radius: 16,
             x: game.centerX,
             y: game.centerY
         };
-
-        // setup sections
+        // create sections
         var i = 0,
         sections = [],
         total = opt.sectionCount || 20,
@@ -125,9 +119,11 @@ var gameMod = (function(){
             usePlugs(game, 'onDeltaYear', [game, deltaYears]);
         }
     };
+    // load a plug-in
     api.load = function(plugObj){
+        // just reference the object for now
+        plugs[plugObj.name || Object.keys(plugs).length] = plugObj;
     };
     // return the Public API
     return api;
-
 }());
