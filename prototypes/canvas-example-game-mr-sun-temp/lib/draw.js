@@ -20,16 +20,20 @@ var draw = (function () {
             ctx.textBaseline = 'middle';
             ctx.font = '10px arial';
             //ctx.fillText(section.per.toFixed(2), section.x, section.y);
-            ctx.fillText(section.energy, section.x, section.y);
+            ctx.fillText(section.temp, section.x, section.y);
         });
     };
     // draw sun
     api.sun = function (sm) {
-        var sun = sm.game.sun;
-        sm.ctx.fillStyle = 'yellow';
-        sm.ctx.beginPath();
-        sm.ctx.arc(sun.x, sun.y, sun.radius, 0, Math.PI * 2);
-        sm.ctx.fill();
+        var sun = sm.game.sun,
+        ctx = sm.ctx;
+        ctx.fillStyle = 'yellow';
+        ctx.beginPath();
+        ctx.arc(sun.x, sun.y, sun.radius, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.fillStyle = 'black';
+        ctx.font = '10px arial';
+        ctx.fillText(sun.temp, sun.x, sun.y);
     };
     // display
     api.disp = function (sm) {
