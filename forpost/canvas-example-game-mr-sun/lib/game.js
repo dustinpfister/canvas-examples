@@ -1,30 +1,6 @@
 var gameMod = (function(){
     // the plug-in object
-    var plugs = {
-        energy: {
-            name: 'energy',
-            create: function(game, opt){
-                 console.log('create ' + this.name);
-                game.sections = game.sections.map(function(section){
-                    section.energy = 0;
-                    return section;
-                });
-                game.data = game.data || {};
-                game.data.energy = {
-                    maxEnergyDelta: 1
-                };
-            },
-            onDeltaYear: function(game, deltaYears){
-                var maxEnergyDelta = game.data.energy.maxEnergyDelta;
-                game.sections = game.sections.map(function(section){
-                    var energyDelta = maxEnergyDelta * section.per * deltaYears;
-                    section.energy = section.energy + energyDelta;
-                    section.energy = Number(section.energy.toFixed(2));
-                    return section;
-                });
-            }
-        }
-    };
+    var plugs = {};
     // use plugins for the given method
     var usePlugs = function(game, methodName, args){
         methodName = methodName || 'create';
