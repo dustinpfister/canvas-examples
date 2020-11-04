@@ -100,6 +100,8 @@ var gameMod = (function(){
         var len = Object.keys(plugs).length;
         // use given key name, or else use number of public keys in plugs
         plugObj.name = plugObj.name || len;
+        // callPriority defaults to len
+        plugObj.callPriority = plugObj.callPriority || len;
         // just reference the object for now
         plugs[plugObj.name] = plugObj;
     };
