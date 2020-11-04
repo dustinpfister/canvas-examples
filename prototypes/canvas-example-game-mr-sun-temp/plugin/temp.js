@@ -27,7 +27,7 @@ gameMod.load({
             }
             section.groundTemp = section.groundTemp < 0.25 ? 0: section.groundTemp;
             section.groundTemp = section.groundTemp > game.maxTemp / 2 ? game.maxTemp / 2: section.groundTemp;
-            section.temp = section.groundTemp + game.sun.temp * section.per;
+            section.temp = section.groundTemp + game.sun.temp / 2 * section.per;
         }
         console.log('sun temp: ' + game.sun.temp);
     }

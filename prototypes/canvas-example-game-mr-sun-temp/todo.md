@@ -15,5 +15,4 @@
 * (done) the temp of section will be set by distance from sun, and groundTemp
 * (done) have a game.maxTemp propery
 * (done) sun will slowly reach maxTemp over time
-
-* start a ./plugin/fusion.js plugin that depends on temp.js
+* (done) start a ./plugin/fusion.js plugin that depends on temp.js
