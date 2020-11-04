@@ -1,5 +1,9 @@
 # canvas-example-mr-sun
 
+## 0.x.0 - save states
+* save states should be a feature of main.js
+* just have a way to load and save a single state via local storage for now and be done with it
+
 ## 0.1.0 - gameMod.update, plugins, and section.energy
 * (done) have a game.year propery that will reflect the current game year
 * (done) have a gameMod.update method that will be called in each frame tick for the game state in main.js
@@ -11,8 +15,8 @@
 * (done) have a gameMod.load method that can be used to load a plugin for the game module
 * (done) a plugin is a call of the gameMod.load method, to which the first agument is a plug-in object
 * (done) Make a build.sh script
-* README.md
-* make a pkg_0_1_0.html file
+* (done) README.md
+* (done) make a pkg_0_1_0.html file
 
 ## 0.0.0 - Basic idea working
 * (done) start with a basic state machine with event support
