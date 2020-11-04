@@ -42,7 +42,7 @@ var gameMod = (function(){
         game.worldRadius = opt.worldRadius || 100;
         game.secs = 0;
         game.year = 0;
-        game.yearRate = 1;
+        game.yearRate = opt.yearRate || 1;
         // create sun object
         game.sun = {
             radius: 16,

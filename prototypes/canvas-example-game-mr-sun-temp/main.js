@@ -13,7 +13,8 @@ var states = {
             sm.game = gameMod.create({
                 canvas: sm.canvas,
                 sectionCount: 19,
-                worldRadius: 100
+                worldRadius: 100,
+                yearRate: 0.1
             });
         },
         // for each update tick
@@ -38,7 +39,7 @@ var states = {
 };
  
 var sm = {
-    ver: '0.0.0',
+    ver: '0.1.0',
     canvas: canvas,
     currentState: 'game',
     ctx: ctx,

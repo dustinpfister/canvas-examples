@@ -13,7 +13,7 @@ gameMod.load({
     },
     onDeltaYear: function(game, deltaYears){
         // sun will gain temp over time
-        game.sun.temp = 10 + 10 * game.year;
+        game.sun.temp = 50 + (game.maxTemp - 50) * game.year / 100000;
         game.sun.temp = game.sun.temp > game.maxTemp ? game.maxTemp: game.sun.temp;
         // update temp of sections
         var i = game.sections.length,
@@ -29,6 +29,5 @@ gameMod.load({
             section.groundTemp = section.groundTemp > game.maxTemp / 2 ? game.maxTemp / 2: section.groundTemp;
             section.temp = section.groundTemp + game.sun.temp / 2 * section.per;
         }
-        console.log('sun temp: ' + game.sun.temp);
     }
 });

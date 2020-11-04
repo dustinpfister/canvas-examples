@@ -1,5 +1,8 @@
 # canvas-example-mr-sun-temp
 
+## 0.1.0 -
+* (done) sun slowly goes to maxTemp over a set number of years
+
 ## 0.0.0 - Start temp.js, fusion.js plugin callPriority
 * (done) start project with source code of canvas-example-mr-sun 0.1.0
 * (done) add support for a callPriority propery of a plugObj in game.js
@@ -16,5 +19,4 @@
 * (done) have a game.maxTemp propery
 * (done) sun will slowly reach maxTemp over time
 * (done) start a ./plugin/fusion.js plugin that depends on temp.js
-* (done) basic idea of fusion plugin working
-* make a pkg\_0\_0\_0.html
+* (done) make a pkg-0-0-0.html file
