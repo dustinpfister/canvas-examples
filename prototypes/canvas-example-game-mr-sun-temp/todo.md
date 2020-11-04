@@ -13,7 +13,7 @@
 * (done) section.groundTemp will loose temp over time if section.per is less than 0.5
 * (done) section.groundTemp will can temp back if section.per is greater than of equal to 0.5
 * (done) the temp of section will be set by distance from sun, and groundTemp
-* have a game.maxTemp propery
-* sun will slowing reach maxTemp over time
+* (done) have a game.maxTemp propery
+* (done) sun will slowly reach maxTemp over time
 
 * start a ./plugin/fusion.js plugin that depends on temp.js

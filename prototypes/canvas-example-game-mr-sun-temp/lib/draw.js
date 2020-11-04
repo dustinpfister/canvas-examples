@@ -18,9 +18,12 @@ var draw = (function () {
             ctx.fillStyle = 'white';
             ctx.textAlign = 'center';
             ctx.textBaseline = 'middle';
-            ctx.font = '10px arial';
-            ctx.fillText(section.per.toFixed(2), section.x, section.y-5);
-            ctx.fillText(section.groundTemp.toFixed(2), section.x, section.y+5);
+            ctx.font = '8px arial';
+            //ctx.fillText(section.per.toFixed(2), section.x, section.y-5);
+            //ctx.fillText(section.groundTemp.toFixed(2) + ':' + section.temp.toFixed(2), section.x, section.y+5);
+            var min = section.minerals;
+            ctx.fillText(min.copper + ':' + min.gold, section.x, section.y-5);
+            ctx.fillText(section.temp.toFixed(2), section.x, section.y+5);
         });
     };
     // draw sun
