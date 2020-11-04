@@ -10,6 +10,9 @@
 * (done) the energy property will go up for each year, at a rate that is effected by section.per ( sun position )
 * (done) have a gameMod.load method that can be used to load a plugin for the game module
 * (done) a plugin is a call of the gameMod.load method, to which the first agument is a plug-in object
+* (done) Make a build.sh script
+* README.md
+* make a pkg_0_1_0.html file
 
 ## 0.0.0 - Basic idea working
 * (done) start with a basic state machine with event support
