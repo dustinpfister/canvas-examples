@@ -16,3 +16,5 @@
 * (done) have a game.maxTemp propery
 * (done) sun will slowly reach maxTemp over time
 * (done) start a ./plugin/fusion.js plugin that depends on temp.js
+* (done) basic idea of fusion plugin working
+* make a pkg\_0\_0\_0.html

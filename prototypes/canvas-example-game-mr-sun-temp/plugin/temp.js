@@ -5,7 +5,7 @@ gameMod.load({
         console.log(this.name);
         game.maxTemp = 2000;
         game.sun.temp = 0;
-        game.sections = game.sections.map((section)=>{
+        game.sections = game.sections.map(function(section){
             section.temp = 0;
             section.groundTemp = 0;
             return section;

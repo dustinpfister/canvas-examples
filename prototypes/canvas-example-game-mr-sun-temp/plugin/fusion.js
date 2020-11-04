@@ -2,7 +2,7 @@ gameMod.load({
     name: 'fusion',
     callPriority: '1.1',
     create: function(game, opt){
-        game.sections = game.sections.map((section)=>{
+        game.sections = game.sections.map(function(section){
             section.minerals = {
                 copper: 0, 
                 gold: 0 
