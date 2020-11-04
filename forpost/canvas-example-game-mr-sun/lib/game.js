@@ -97,8 +97,11 @@ var gameMod = (function(){
     };
     // load a plug-in
     api.load = function(plugObj){
+        var len = Object.keys(plugs).length;
+        // use given key name, or else use number of public keys in plugs
+        plugObj.name = plugObj.name || len;
         // just reference the object for now
-        plugs[plugObj.name || Object.keys(plugs).length] = plugObj;
+        plugs[plugObj.name] = plugObj;
     };
     // return the Public API
     return api;
