@@ -19,8 +19,8 @@ var draw = (function () {
             ctx.textAlign = 'center';
             ctx.textBaseline = 'middle';
             ctx.font = '10px arial';
-            //ctx.fillText(section.per.toFixed(2), section.x, section.y);
-            ctx.fillText(Math.round(section.temp), section.x, section.y);
+            ctx.fillText(section.per.toFixed(2), section.x, section.y-5);
+            ctx.fillText(section.groundTemp.toFixed(2), section.x, section.y+5);
         });
     };
     // draw sun

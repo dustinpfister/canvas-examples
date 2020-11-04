@@ -20,12 +20,12 @@ gameMod.load({
         section;
         while(i--){
             section = game.sections[i];
-            if(Number(section.per.toFixed(2)) >= 0.5){
+            if(Math.floor(section.per * 100) >= 50){
                 section.groundTemp += game.sun.temp / 10 * section.per;
             }else{
                 section.groundTemp -= section.groundTemp / 100;
             }
-            section.groundTemp = section.groundTemp < 0 ? 0: section.groundTemp;
+            section.groundTemp = section.groundTemp < 0.25 ? 0: section.groundTemp;
             section.groundTemp = section.groundTemp > game.maxTemp / 2 ? game.maxTemp / 2: section.groundTemp;
             section.temp = section.groundTemp + game.sun.temp * section.per;
         }
