@@ -1,6 +1,8 @@
 gameMod.load({
     name: 'energy',
+    callPriority: 0,
     create: function(game, opt){
+        console.log(this.name);
         game.sections = game.sections.map(function(section){
             section.energy = 0;
             return section;
