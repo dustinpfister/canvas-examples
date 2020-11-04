@@ -1,6 +1,6 @@
 gameMod.load({
     name: 'fusion',
-    callPriority: '1.2',
+    callPriority: '1.1',
     create: function(game, opt){
         console.log(this.name);
     },

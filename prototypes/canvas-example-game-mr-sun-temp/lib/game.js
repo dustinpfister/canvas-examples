@@ -1,11 +1,26 @@
 var gameMod = (function(){
     // the plug-in object
     var plugs = {};
+    var getCallPrioritySorted = function(){
+        var keys = Object.keys(plugs);
+        return keys.sort(function(a, b){
+            var plugObjA = plugs[a],
+            plugObjB = plugs[b];
+            if(plugObjA.callPriority > plugObjB.callPriority){
+                return -1;
+            }
+            if(plugObjA.callPriority < plugObjB.callPriority){
+                return 1;
+            }
+            return 0;
+        });
+    };
     // use plugins for the given method
     var usePlugs = function(game, methodName, args){
         methodName = methodName || 'create';
         args = args || [game]
-        Object.keys(plugs).forEach(function(plugKey){
+        var keys = getCallPrioritySorted();
+        keys.forEach(function(plugKey){
             var plugObj = plugs[plugKey],
             method = plugObj[methodName];
             if(method){
