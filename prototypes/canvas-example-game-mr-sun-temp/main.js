@@ -51,7 +51,12 @@ var states = {
     observe_section: {
         start: function(){
         },
-        update: function(){
+        update: function(sm, secs){
+            gameMod.update(sm.game, secs);
+        },
+        pointerEnd: function (sm) {
+             console.log('back to game');
+             changeState(sm, 'game', {});
         }
     }
 };
