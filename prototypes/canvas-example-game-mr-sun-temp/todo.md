@@ -28,7 +28,7 @@
 * (done) use new utils.levelObjCollection in temp plugin to set temp of the sun
 * (done) fix UI problems where I am entering an observation state when I do not intend to by having a startPos property of the input object in the state machine
 * (done) in the observe_sun section display a graph of the current level of the sun
-* show current position in the graph
+* (done) show current position in the graph
 * make a pkg-0-2-0.html
 
 ## 0.1.0 - start observe_section State

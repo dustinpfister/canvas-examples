@@ -27,15 +27,14 @@ var draw = (function () {
         ctx.fillText('Sun Status: ', 10, 10);
         ctx.font = '10px arial';
         ctx.fillText('temp: ' + sun.temp.toFixed(2), 10, 30);
-
+        ctx.fillText('tempLevel: ' + sun.tempData.i + '/' + sun.tempData.len, 10, 40);
+        // draw graph
         var h = 100,
         w = 100,
         sy = 150,
         sx = 200;
-
         ctx.fillStyle = '#5f5f5f';
         ctx.fillRect(sx, sy - h, w, h);
-
         ctx.beginPath();
         sun.sunGrid.data.forEach(function(tempObj){
             ctx.strokeStyle = 'white';
@@ -72,11 +71,11 @@ var draw = (function () {
             ctx.textAlign = 'center';
             ctx.textBaseline = 'middle';
             ctx.font = '8px arial';
-            ctx.fillText(section.per.toFixed(2), section.x, section.y-5);
+            //ctx.fillText(section.per.toFixed(2), section.x, section.y-5);
             //ctx.fillText(section.groundTemp.toFixed(2) + ':' + section.temp.toFixed(2), section.x, section.y+5);
             //var min = section.minerals;
             //ctx.fillText(min.copper + ':' + min.gold, section.x, section.y-5);
-            //ctx.fillText(section.temp.toFixed(2), section.x, section.y+5);
+            ctx.fillText(section.temp.toFixed(2), section.x, section.y+5);
         });
     };
     // draw sun
