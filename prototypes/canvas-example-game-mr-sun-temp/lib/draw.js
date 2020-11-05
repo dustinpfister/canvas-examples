@@ -27,7 +27,7 @@ var draw = (function () {
         ctx.fillText('Sun Status: ', 10, 10);
         ctx.font = '10px arial';
         ctx.fillText('temp: ' + sun.temp.toFixed(2), 10, 30);
-        ctx.fillText('tempLevel: ' + sun.tempData.i + '/' + sun.tempData.len, 10, 40);
+        ctx.fillText('tempLevel: ' + sun.tempData.i + '/' + Number(sun.tempData.len - 1), 10, 40);
         // draw graph
         var h = 100,
         w = 100,
