@@ -3,7 +3,15 @@ gameMod.load({
     callPriority: '1.0',
     create: function(game, opt){
         game.maxTemp = 2000;
-        game.sun.temp = 0;
+        var td = game.sun.tempData = {
+            i: 1,
+            len: 100,
+            base: 25,
+            max: 2000,
+            temp: {}
+        };
+        td.temp = utils.createLogPerObject(td.i, td.len, td.base, td.max);
+        game.sun.temp = td.temp.valueOf();
         game.sections = game.sections.map(function(section){
             section.temp = 0;
             section.groundTemp = 0;
@@ -12,8 +20,15 @@ gameMod.load({
     },
     onDeltaYear: function(game, deltaYears){
         // sun will gain temp over time
-        game.sun.temp = 50 + (game.maxTemp - 50) * game.year / 100000;
-        game.sun.temp = game.sun.temp > game.maxTemp ? game.maxTemp: game.sun.temp;
+
+        var td = game.sun.tempData;
+        td.i += deltaYears;
+        td.i = td.i >= td.len ? td.len : td.i;
+        td.temp = utils.createLogPerObject(td.i, td.len, td.base, td.max);
+        game.sun.temp = td.temp.valueOf();
+
+        //game.sun.temp = 50 + (game.maxTemp - 50) * game.year / 100000;
+        //game.sun.temp = game.sun.temp > game.maxTemp ? game.maxTemp: game.sun.temp;
         // update temp of sections
         var i = game.sections.length,
         section;
