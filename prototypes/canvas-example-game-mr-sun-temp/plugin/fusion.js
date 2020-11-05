@@ -22,7 +22,7 @@ gameMod.load((function(){
                 if(section.temp > 100){
                     section.minerals.copper += getMinDelta(section, 5, 100, deltaYears);
                 }
-                if(section.temp > 1800){
+                if(section.temp > 500){
                     section.minerals.silver += getMinDelta(section, 1, 500, deltaYears);
                 }
             }
