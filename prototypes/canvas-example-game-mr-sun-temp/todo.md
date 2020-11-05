@@ -1,6 +1,37 @@
 # canvas-example-mr-sun-temp
 
-## 0.1.0 - observe_section State
+## 0.4.0 - Fusion happens in the Sun, and Sun Life
+* make changes to fusion.js so that mineral production happens in the Sun actually
+* the temp of the sun is what will effect mineral production
+* minerals will transfer from the sun to sections when section.per <= 0.95
+* start a new sun.js plug-in
+* sun.js will set the lifespan of the sun.
+* when a suns lifespan === 0 the sun will die.
+* when the sun is dead, sun.temp = 0;
+* when the sun dies all the minerials will be distributed to the sections.
+* sun.js will spawn a new sun object in the event that the current sun object is dead.
+* make a pkg-0-4-0.html
+
+## 0.3.0 - temp.js ajustments, and variable max ground temp
+* in temp.js section.temp should stay between 20 and 100 when the Sun as at the center
+* in temp.js section.groundTemp should go up at a rate based on section.per
+* in temp.js the maxGroundTemp should also be set by section.per
+* section.groundTemp should also make used of utils.levelObjCollection
+* make a pkg-0-3-0.html
+
+## 0.2.0 - observe_sun, Math.log, and better sun temp formula
+* make the logPer method in the canvas-example-percent-math-log example part of utils.js
+* create a new utils.createLogPerObject method that will create an logPerObject for i,len,a,b arguments
+* create a new utils.levelObjCollection that can be used to create a collection of logPerObjects with an object that is given for an argument.
+* utils.levelObjCollection accepts all values that have to do with createing an array of objects for each level of something such as the level of the Sun object.
+* start an observe_sun state object
+* just like the obsever_section state this state displayed info, only this time of the sun object
+* use new utils.levelObjCollection in temp plugin to set temp of the sun
+* in the observe_sun section display a graph of the current level of the sun
+* fix UI problems where I am entering an observation state when I do not intend to by having a startPos property of the input object in the state machine
+* make a pkg-0-2-0.html
+
+## 0.1.0 - start observe_section State
 * (done) start an observe section state
 * (done) when a section is clicked the app will enter observe_section state for that section
 * (done) when in observe_section state a click anyware will result in a return to game state
@@ -9,6 +40,7 @@
 * (done) have a changeState method that will be used to change states for now
 * (done) have a 'start' state object method that will be fired once on a change state call
 * (done) sun slowly goes to maxTemp over a set number of years
+* make a pkg-0-1-0.html
 
 ## 0.0.0 - Start temp.js, fusion.js plugin callPriority
 * (done) start project with source code of canvas-example-mr-sun 0.1.0
