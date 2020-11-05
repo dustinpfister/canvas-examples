@@ -1,6 +1,13 @@
 # canvas-example-mr-sun-temp
 
-## 0.1.0 -
+## 0.1.0 - observe_section State
+* start an observe section state
+* when a section is clicked the app will enter observe_section state for that section
+* when in observe_section state a click anyware will result in a return to game state
+* in observe state values of interest are displaed for the section
+* gameMod.update still called to makre sure info is up to date
+* have a changeState method that will be used to change states for now
+* have a 'start' state object method that will be fired once on a change state call
 * (done) sun slowly goes to maxTemp over a set number of years
 
 ## 0.0.0 - Start temp.js, fusion.js plugin callPriority

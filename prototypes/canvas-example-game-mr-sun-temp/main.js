@@ -14,7 +14,7 @@ var states = {
                 canvas: sm.canvas,
                 sectionCount: 19,
                 worldRadius: 100,
-                yearRate: 0.1
+                yearRate: 3
             });
         },
         // for each update tick
