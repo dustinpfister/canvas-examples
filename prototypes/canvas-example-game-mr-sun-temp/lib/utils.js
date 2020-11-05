@@ -50,7 +50,7 @@ utils.createLogPerCollection = function(opt){
     opt.b = opt.b === undefined ? opt.a : opt.b;
     var i = 0, obj, collection = {
        len: opt.len,
-       base: opt.abase,
+       base: opt.base,
        max: opt.max,
        a: opt.a,
        b: opt.b

@@ -6,7 +6,7 @@ gameMod.load({
         var td = game.sun.tempData = {
             i: 0,
             len: 100,
-            base: 25,
+            base: 100,
             max: 2000,
             temp: {}
         };

@@ -28,14 +28,18 @@ var draw = (function () {
         ctx.font = '10px arial';
         ctx.fillText('temp: ' + sun.temp.toFixed(2), 10, 30);
 
+        var h = 100,
+        w = 100,
+        sy = 150,
+        sx = 200;
+
+        ctx.fillStyle = '#5f5f5f';
+        ctx.fillRect(sx, sy - h, w, h);
+
         ctx.beginPath();
         ctx.strokeStyle = 'white';
         sun.sunGrid.data.forEach(function(tempObj){
             var temp = tempObj.valueOf(),
-            h = 100,
-            w = 100,
-            sy = 150,
-            sx = 200,
             y = sy - h * (temp / sun.sunGrid.max),
             x = sx + w * tempObj.per;
             if(tempObj.i === 0){
@@ -43,8 +47,6 @@ var draw = (function () {
             }else{
                 ctx.lineTo(x, y);
             }
-            //ctx.fillStyle = 'white';
-            //ctx.fillRect(sx,sy - h, w, h);
         });
         ctx.stroke();
     };
