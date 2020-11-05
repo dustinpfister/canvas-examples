@@ -34,9 +34,25 @@ utils.createLogPerObject = function(i, len, base, max, a, b){
         len: len,
         per: per,
         logPer: logPer,
-        n: base + logPer * max,
+        n: base + logPer * ( max - base ),
         valueOf: function(){
             return this.n;
         }
     };
+};
+
+utils.createLogPerCollection = function(opt){
+    opt = opt || {};
+    opt.len = opt.len === undefined ? 100 : opt.len;
+    opt.base = opt.base === undefined ? 0 : opt.base;
+    opt.max = opt.max === undefined ? 50 : opt.max;
+    opt.a = opt.a === undefined ? 2 : opt.a;
+    opt.b = opt.b === undefined ? opt.a : opt.b;
+    var i = 0, obj, collection = [];
+    while(i < opt.len){
+        obj = utils.createLogPerObject(i, opt.len, opt.base, opt.max, opt.a, opt.b);
+        collection.push(obj);
+        i += 1;
+    }
+    return collection;
 };

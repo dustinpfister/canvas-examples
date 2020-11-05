@@ -21,8 +21,8 @@
 
 ## 0.2.0 - observe_sun, Math.log, and better sun temp formula
 * (done) make the logPer method in the canvas-example-percent-math-log example part of utils.js
-* create a new utils.createLogPerObject method that will create an logPerObject for i,len,a,b arguments
-* create a new utils.levelObjCollection that can be used to create a collection of logPerObjects with an object that is given for an argument.
+* (done) create a new utils.createLogPerObject method that will create an logPerObject for i,len,a,b arguments
+* create a new utils.createLogPerCollection that can be used to create a collection of logPerObjects with an object that is given for an argument.
 * utils.levelObjCollection accepts all values that have to do with createing an array of objects for each level of something such as the level of the Sun object.
 * start an observe_sun state object
 * just like the obsever_section state this state displayed info, only this time of the sun object

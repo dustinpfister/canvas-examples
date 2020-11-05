@@ -25,6 +25,14 @@ var states = {
                 worldRadius: 100,
                 yearRate: 0.5
             });
+
+//var obj = utils.createLogPerObject(4, 100, 25, 1000);
+var arr = utils.createLogPerCollection({
+    base: 10,
+    max: 1000
+});
+console.log(arr.map(function(obj){ return Math.floor(obj.valueOf());}));
+
         },
         // for each update tick
         update: function (sm, secs) {
