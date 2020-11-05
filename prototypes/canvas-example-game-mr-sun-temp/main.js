@@ -44,11 +44,16 @@ var states = {
             }
         },
         pointerEnd: function (sm, pos) {
+             // if section click
              var section = gameMod.getSectionByPos(sm.game, pos.x, pos.y);
              if(section){
                  changeState(sm, 'observe_section', {
                      section: section
                  });
+             }
+             // if sun click
+             if(utils.distance(sm.game.sun.x, sm.game.sun.y, pos.x, pos.y) <= sm.game.sun.radius){
+                 changeState(sm, 'observe_sun', {});
              }
         }
     },
@@ -70,6 +75,7 @@ var states = {
     },
     observe_sun: {
         data: {
+            sunGrid: []
         },
         start: function(sm, opt){
             
@@ -77,7 +83,7 @@ var states = {
         update: function(sm, secs){
             gameMod.update(sm.game, secs);
             draw.back(sm);
-            draw.sunData(sm, sm.states['observe_sun'].sun);
+            draw.sunData(sm, sm.game.sun);
         },
         pointerEnd: function (sm) {
              changeState(sm, 'game', {});
