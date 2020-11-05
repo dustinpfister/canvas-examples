@@ -25,14 +25,6 @@ var states = {
                 worldRadius: 100,
                 yearRate: 0.5
             });
-
-//var obj = utils.createLogPerObject(4, 100, 25, 1000);
-var arr = utils.createLogPerCollection({
-    base: 10,
-    max: 1000
-});
-console.log(arr.map(function(obj){ return Math.floor(obj.valueOf());}));
-
         },
         // for each update tick
         update: function (sm, secs) {
@@ -52,7 +44,6 @@ console.log(arr.map(function(obj){ return Math.floor(obj.valueOf());}));
             }
         },
         pointerEnd: function (sm, pos) {
-             console.log('pointer down');
              var section = gameMod.getSectionByPos(sm.game, pos.x, pos.y);
              if(section){
                  changeState(sm, 'observe_section', {
@@ -66,8 +57,6 @@ console.log(arr.map(function(obj){ return Math.floor(obj.valueOf());}));
             section:{}
         },
         start: function(sm, opt){
-            console.log('observe_section state start: ');
-            console.log(opt.section);
             sm.states['observe_section'].section = opt.section;
         },
         update: function(sm, secs){
@@ -76,7 +65,21 @@ console.log(arr.map(function(obj){ return Math.floor(obj.valueOf());}));
             draw.sectionData(sm, sm.states['observe_section'].section);
         },
         pointerEnd: function (sm) {
-             console.log('back to game');
+             changeState(sm, 'game', {});
+        }
+    },
+    observe_sun: {
+        data: {
+        },
+        start: function(sm, opt){
+            
+        },
+        update: function(sm, secs){
+            gameMod.update(sm.game, secs);
+            draw.back(sm);
+            //draw.sectionData(sm, sm.states['observe_section'].section);
+        },
+        pointerEnd: function (sm) {
              changeState(sm, 'game', {});
         }
     }
