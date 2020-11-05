@@ -19,6 +19,15 @@ var draw = (function () {
             ctx.fillText(min + ': ' + section.minerals[min].toFixed(2), 10, 50 + i * 10);
         });
     };
+    api.sunData = function(sm, sun){
+        ctx.fillStyle = 'white';
+        ctx.textAlign = 'left';
+        ctx.textBaseline = 'top';
+        ctx.font = '15px arial';
+        ctx.fillText('Sun Status: ', 10, 10);
+        ctx.font = '10px arial';
+        ctx.fillText('temp: ' + sun.temp.toFixed(2), 10, 30);
+    };
     // draw sections
     api.sections = function (sm) {
         var ctx = sm.ctx;

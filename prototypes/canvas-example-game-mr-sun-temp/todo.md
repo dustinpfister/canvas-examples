@@ -23,7 +23,7 @@
 * (done) make the logPer method in the canvas-example-percent-math-log example part of utils.js
 * (done) create a new utils.createLogPerObject method that will create an logPerObject for i,len,a,b arguments
 * (done) create a new utils.createLogPerCollection that can be used to create a collection of logPerObjects with an object that is given for an argument.
-* start an observe_sun state object
+* (done) start an observe_sun state object
 * just like the obsever_section state this state displayed info, only this time of the sun object
 * use new utils.levelObjCollection in temp plugin to set temp of the sun
 * in the observe_sun section display a graph of the current level of the sun
