@@ -37,8 +37,9 @@ var draw = (function () {
         ctx.fillRect(sx, sy - h, w, h);
 
         ctx.beginPath();
-        ctx.strokeStyle = 'white';
         sun.sunGrid.data.forEach(function(tempObj){
+            ctx.strokeStyle = 'white';
+            ctx.fillStyle = 'black';
             var temp = tempObj.valueOf(),
             y = sy - h * (temp / sun.sunGrid.max),
             x = sx + w * tempObj.per;
@@ -46,6 +47,14 @@ var draw = (function () {
                 ctx.moveTo(x, y);
             }else{
                 ctx.lineTo(x, y);
+            }
+            if(tempObj.i === sun.tempData.i){
+                ctx.stroke();
+                ctx.beginPath();
+                ctx.arc( x, y, 2, 0, Math.PI * 2);
+                ctx.stroke();
+                ctx.fill();
+                ctx.beginPath();
             }
         });
         ctx.stroke();
