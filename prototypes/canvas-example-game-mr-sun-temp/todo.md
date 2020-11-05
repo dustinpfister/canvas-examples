@@ -40,7 +40,7 @@
 * (done) have a changeState method that will be used to change states for now
 * (done) have a 'start' state object method that will be fired once on a change state call
 * (done) sun slowly goes to maxTemp over a set number of years
-* make a pkg-0-1-0.html
+* (done) make a pkg-0-1-0.html
 
 ## 0.0.0 - Start temp.js, fusion.js plugin callPriority
 * (done) start project with source code of canvas-example-mr-sun 0.1.0
