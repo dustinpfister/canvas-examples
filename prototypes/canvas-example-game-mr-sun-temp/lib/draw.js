@@ -36,7 +36,7 @@ var draw = (function () {
         ctx.fill();
         ctx.fillStyle = 'black';
         ctx.font = '10px arial';
-        ctx.fillText(sun.temp, sun.x, sun.y);
+        ctx.fillText(Math.round(sun.temp), sun.x, sun.y);
     };
     // display
     api.disp = function (sm) {
