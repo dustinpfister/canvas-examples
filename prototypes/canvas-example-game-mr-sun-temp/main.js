@@ -64,6 +64,8 @@ var states = {
         },
         update: function(sm, secs){
             gameMod.update(sm.game, secs);
+            draw.back(sm);
+            draw.sectionData(sm, sm.states['observe_section'].section);
         },
         pointerEnd: function (sm) {
              console.log('back to game');

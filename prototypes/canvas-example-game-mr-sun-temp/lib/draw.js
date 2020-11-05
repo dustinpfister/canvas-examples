@@ -6,6 +6,19 @@ var draw = (function () {
         sm.ctx.fillStyle = '#202020';
         sm.ctx.fillRect(0, 0, sm.canvas.width, sm.canvas.height);
     };
+    api.sectionData = function(sm, section){
+        ctx.fillStyle = 'white';
+        ctx.textAlign = 'left';
+        ctx.textBaseline = 'top';
+        ctx.font = '15px arial';
+        ctx.fillText('section ' + section.i, 10, 10);
+        ctx.font = '10px arial';
+        ctx.fillText('groundTemp: ' + section.groundTemp.toFixed(2), 10, 30);
+        ctx.fillText('temp: ' + section.temp.toFixed(2), 10, 40);
+        Object.keys(section.minerals).forEach(function(min, i){
+            ctx.fillText(min + ': ' + section.minerals[min].toFixed(2), 10, 50 + i * 10);
+        });
+    };
     // draw sections
     api.sections = function (sm) {
         var ctx = sm.ctx;

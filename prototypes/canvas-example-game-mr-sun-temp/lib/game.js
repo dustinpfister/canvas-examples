@@ -59,6 +59,7 @@ var gameMod = (function(){
         while(i < total){
             radian = Math.PI * 2 / total * i;
             sections.push({
+                i: i,
                 x: Math.cos(radian) * game.worldRadius + cx,
                 y: Math.sin(radian) * game.worldRadius + cy,
                 radius: game.sectionRadius,

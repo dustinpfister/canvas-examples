@@ -2,8 +2,8 @@
 
 ## 0.1.0 - observe_section State
 * (done) start an observe section state
-* when a section is clicked the app will enter observe_section state for that section
-* when in observe_section state a click anyware will result in a return to game state
+* (done) when a section is clicked the app will enter observe_section state for that section
+* (done) when in observe_section state a click anyware will result in a return to game state
 * in observe state values of interest are displaed for the section
 * gameMod.update still called to makre sure info is up to date
 * have a changeState method that will be used to change states for now
