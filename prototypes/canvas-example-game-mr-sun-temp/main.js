@@ -57,12 +57,12 @@ var states = {
             section:{}
         },
         start: function(sm, opt){
-            sm.states['observe_section'].section = opt.section;
+            sm.states['observe_section'].data.section = opt.section;
         },
         update: function(sm, secs){
             gameMod.update(sm.game, secs);
             draw.back(sm);
-            draw.sectionData(sm, sm.states['observe_section'].section);
+            draw.sectionData(sm, sm.states['observe_section'].data.section);
         },
         pointerEnd: function (sm) {
              changeState(sm, 'game', {});
@@ -77,7 +77,7 @@ var states = {
         update: function(sm, secs){
             gameMod.update(sm.game, secs);
             draw.back(sm);
-            //draw.sectionData(sm, sm.states['observe_section'].section);
+            draw.sunData(sm, sm.states['observe_sun'].sun);
         },
         pointerEnd: function (sm) {
              changeState(sm, 'game', {});
