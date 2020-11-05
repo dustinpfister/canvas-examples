@@ -20,15 +20,12 @@ gameMod.load({
     },
     onDeltaYear: function(game, deltaYears){
         // sun will gain temp over time
-
         var td = game.sun.tempData;
         td.i += deltaYears;
         td.i = td.i >= td.len ? td.len : td.i;
         td.temp = utils.createLogPerObject(td.i, td.len, td.base, td.max);
         game.sun.temp = td.temp.valueOf();
 
-        //game.sun.temp = 50 + (game.maxTemp - 50) * game.year / 100000;
-        //game.sun.temp = game.sun.temp > game.maxTemp ? game.maxTemp: game.sun.temp;
         // update temp of sections
         var i = game.sections.length,
         section;
