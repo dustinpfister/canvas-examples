@@ -43,8 +43,9 @@ var states = {
                 gameMod.moveSun(sm.game, pos);
             }
         },
-        pointerEnd: function () {
+        pointerEnd: function (sm) {
              console.log('pointer down');
+             changeState(sm, 'observe_section', {});
         }
     },
     observe_section: {
@@ -76,14 +77,23 @@ var pointerHanders = {
     start: function (sm, pos, e) {
         var pos = sm.input.pos;
         sm.input.pointerDown = true;
-        states[sm.currentState].pointerStart(sm, pos, e);
+        var method = states[sm.currentState].pointerStart;
+        if(method){
+            method(sm, pos, e);
+        }
     },
     move: function (sm, pos, e) {
-        states[sm.currentState].pointerMove(sm, pos, e);
+        var method = states[sm.currentState].pointerMove;
+        if(method){
+            method(sm, pos, e);
+        }
     },
     end: function (sm, pos, e) {
         sm.input.pointerDown = false;
-        states[sm.currentState].pointerEnd(sm, pos, e);
+        var method = states[sm.currentState].pointerEnd;
+        if(method){
+            method(sm, pos, e);
+        }
     }
 };
 var createPointerHandler = function (sm, type) {
