@@ -44,16 +44,19 @@ var states = {
             }
         },
         pointerEnd: function (sm, pos) {
-             // if section click
-             var section = gameMod.getSectionByPos(sm.game, pos.x, pos.y);
-             if(section){
-                 changeState(sm, 'observe_section', {
-                     section: section
-                 });
-             }
-             // if sun click
-             if(utils.distance(sm.game.sun.x, sm.game.sun.y, pos.x, pos.y) <= sm.game.sun.radius){
-                 changeState(sm, 'observe_sun', {});
+             console.log(sm.input.d)
+             if(sm.input.d < 3){
+                 // if section click
+                 var section = gameMod.getSectionByPos(sm.game, pos.x, pos.y);
+                 if(section){
+                     changeState(sm, 'observe_section', {
+                         section: section
+                     });
+                 }
+                 // if sun click
+                 if(utils.distance(sm.game.sun.x, sm.game.sun.y, pos.x, pos.y) <= sm.game.sun.radius){
+                     changeState(sm, 'observe_sun', {});
+                 }
              }
         }
     },
@@ -100,6 +103,11 @@ var sm = {
     states: states,
     input: {
         pointerDown: false,
+        d:0,
+        startPos:{
+             x: 0,
+             y: 0
+        },
         pos: {
             x: 0,
             y: 0
@@ -112,13 +120,20 @@ var pointerHanders = {
     start: function (sm, pos, e) {
         var pos = sm.input.pos;
         sm.input.pointerDown = true;
+        sm.input.startPos = {
+            x: pos.x,
+            y: pos.y
+        };
+        sm.input.d = 0;
         var method = states[sm.currentState].pointerStart;
         if(method){
             method(sm, pos, e);
         }
     },
     move: function (sm, pos, e) {
-        var method = states[sm.currentState].pointerMove;
+        var method = states[sm.currentState].pointerMove,
+        startPos = sm.input.startPos;
+        sm.input.d = utils.distance(startPos.x, startPos.y, pos.x, pos.y);
         if(method){
             method(sm, pos, e);
         }
