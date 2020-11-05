@@ -85,6 +85,18 @@ var gameMod = (function(){
             section.per = per;
         });
     };
+    // get a section by canvas position
+    api.getSectionByPos = function(game, x, y){
+        var section,
+        i = game.sections.length;
+        while(i--){
+            section = game.sections[i];
+            if(utils.distance(section.x, section.y, x, y) <= section.radius){
+                return section;
+            }
+        }
+        return false;
+    };
     // move sun
     var boundToCircle = function(obj, cx, cy, radius){
         if(utils.distance(obj.x, obj.y, cx, cy) > radius){

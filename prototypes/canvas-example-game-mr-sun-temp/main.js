@@ -43,13 +43,24 @@ var states = {
                 gameMod.moveSun(sm.game, pos);
             }
         },
-        pointerEnd: function (sm) {
+        pointerEnd: function (sm, pos) {
              console.log('pointer down');
-             changeState(sm, 'observe_section', {});
+             var section = gameMod.getSectionByPos(sm.game, pos.x, pos.y);
+             if(section){
+                 changeState(sm, 'observe_section', {
+                     section: section
+                 });
+             }
         }
     },
     observe_section: {
-        start: function(){
+        data: {
+            section:{}
+        },
+        start: function(sm, opt){
+            console.log('observe_section state start: ');
+            console.log(opt.section);
+            sm.states['observe_section'].section = opt.section;
         },
         update: function(sm, secs){
             gameMod.update(sm.game, secs);

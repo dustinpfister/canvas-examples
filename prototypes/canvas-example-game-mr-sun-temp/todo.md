@@ -1,7 +1,7 @@
 # canvas-example-mr-sun-temp
 
 ## 0.1.0 - observe_section State
-* start an observe section state
+* (done) start an observe section state
 * when a section is clicked the app will enter observe_section state for that section
 * when in observe_section state a click anyware will result in a return to game state
 * in observe state values of interest are displaed for the section
