@@ -77,7 +77,7 @@ var states = {
     },
     observe_sun: {
         data: {
-            sunGrid: []
+            //sunGrid: []
         },
         start: function(sm, opt){
             
@@ -86,7 +86,7 @@ var states = {
             var state = sm.states['observe_sun'],
             td = sm.game.sun.tempData;
             gameMod.update(sm.game, secs);
-            state.data.sunGrid = utils.createLogPerCollection({
+            sm.game.sun.sunGrid = utils.createLogPerCollection({
                len: td.len,
                base: td.base,
                max: td.max

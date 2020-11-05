@@ -47,7 +47,8 @@ var gameMod = (function(){
         game.sun = {
             radius: 16,
             x: game.centerX,
-            y: game.centerY
+            y: game.centerY,
+            sunGrid: {}
         };
         // create sections
         var i = 0,

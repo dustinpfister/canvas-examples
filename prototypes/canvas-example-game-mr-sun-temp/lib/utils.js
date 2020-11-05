@@ -51,7 +51,7 @@ utils.createLogPerCollection = function(opt){
     var i = 0, obj, collection = {
        len: opt.len,
        base: opt.abase,
-       max: opt.amax,
+       max: opt.max,
        a: opt.a,
        b: opt.b
     };
