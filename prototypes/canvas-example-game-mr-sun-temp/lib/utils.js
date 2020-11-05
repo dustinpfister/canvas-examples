@@ -22,3 +22,21 @@ utils.logPer = function (per, a, b) {
     return Math.log((1 + a - 2) + per) / Math.log(b);
 };
 
+utils.createLogPerObject = function(i, len, base, max, a, b){
+    a = a === undefined ? 2: a;
+    b = b === undefined ? a: b;
+    base = base === undefined ? 0: base;
+    max = max === undefined ? 1: max;
+    var per = i / len,
+    logPer = utils.logPer(per, a, b);
+    return {
+        i: i,
+        len: len,
+        per: per,
+        logPer: logPer,
+        n: base + logPer * max,
+        valueOf: function(){
+            return this.n;
+        }
+    };
+};

@@ -20,7 +20,7 @@
 * make a pkg-0-3-0.html
 
 ## 0.2.0 - observe_sun, Math.log, and better sun temp formula
-* make the logPer method in the canvas-example-percent-math-log example part of utils.js
+* (done) make the logPer method in the canvas-example-percent-math-log example part of utils.js
 * create a new utils.createLogPerObject method that will create an logPerObject for i,len,a,b arguments
 * create a new utils.levelObjCollection that can be used to create a collection of logPerObjects with an object that is given for an argument.
 * utils.levelObjCollection accepts all values that have to do with createing an array of objects for each level of something such as the level of the Sun object.
@@ -40,7 +40,7 @@
 * (done) have a changeState method that will be used to change states for now
 * (done) have a 'start' state object method that will be fired once on a change state call
 * (done) sun slowly goes to maxTemp over a set number of years
-* (done) make a pkg-0-1-0.html
+* make a pkg-0-1-0.html
 
 ## 0.0.0 - Start temp.js, fusion.js plugin callPriority
 * (done) start project with source code of canvas-example-mr-sun 0.1.0
