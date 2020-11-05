@@ -5,7 +5,16 @@ container.appendChild(canvas);
 canvas.width = 320;
 canvas.height = 240;
 ctx.translate(0.5, 0.5);
- 
+
+var changeState = function(sm, stateKey, opt){
+    opt = opt || {};
+    var newState = sm.states[stateKey];
+    if(newState.start){
+        newState.start(sm, opt);
+    }
+    sm.currentState = stateKey;
+};
+
 var states = {
     game: {
         init: function(sm){
@@ -34,7 +43,15 @@ var states = {
                 gameMod.moveSun(sm.game, pos);
             }
         },
-        pointerEnd: function () {}
+        pointerEnd: function () {
+             console.log('pointer down');
+        }
+    },
+    observe_section: {
+        start: function(){
+        },
+        update: function(){
+        }
     }
 };
  
@@ -44,6 +61,7 @@ var sm = {
     currentState: 'game',
     ctx: ctx,
     game: {},
+    states: states,
     input: {
         pointerDown: false,
         pos: {
