@@ -48,10 +48,17 @@ utils.createLogPerCollection = function(opt){
     opt.max = opt.max === undefined ? 50 : opt.max;
     opt.a = opt.a === undefined ? 2 : opt.a;
     opt.b = opt.b === undefined ? opt.a : opt.b;
-    var i = 0, obj, collection = [];
+    var i = 0, obj, collection = {
+       len: opt.len,
+       base: opt.abase,
+       max: opt.amax,
+       a: opt.a,
+       b: opt.b
+    };
+    collection.data = [];
     while(i < opt.len){
         obj = utils.createLogPerObject(i, opt.len, opt.base, opt.max, opt.a, opt.b);
-        collection.push(obj);
+        collection.data.push(obj);
         i += 1;
     }
     return collection;

@@ -25,9 +25,9 @@
 * (done) create a new utils.createLogPerCollection that can be used to create a collection of logPerObjects with an object that is given for an argument.
 * (done) start an observe_sun state object
 * (done) just like the obsever_section state this state displayed info, only this time of the sun object
-* use new utils.levelObjCollection in temp plugin to set temp of the sun
+* (done) use new utils.levelObjCollection in temp plugin to set temp of the sun
+* (done) fix UI problems where I am entering an observation state when I do not intend to by having a startPos property of the input object in the state machine
 * in the observe_sun section display a graph of the current level of the sun
-* fix UI problems where I am entering an observation state when I do not intend to by having a startPos property of the input object in the state machine
 * make a pkg-0-2-0.html
 
 ## 0.1.0 - start observe_section State

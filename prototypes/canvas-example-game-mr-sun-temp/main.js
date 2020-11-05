@@ -44,7 +44,6 @@ var states = {
             }
         },
         pointerEnd: function (sm, pos) {
-             console.log(sm.input.d)
              if(sm.input.d < 3){
                  // if section click
                  var section = gameMod.getSectionByPos(sm.game, pos.x, pos.y);
@@ -84,7 +83,14 @@ var states = {
             
         },
         update: function(sm, secs){
+            var state = sm.states['observe_sun'],
+            td = sm.game.sun.tempData;
             gameMod.update(sm.game, secs);
+            state.data.sunGrid = utils.createLogPerCollection({
+               len: td.len,
+               base: td.base,
+               max: td.max
+            });
             draw.back(sm);
             draw.sunData(sm, sm.game.sun);
         },
