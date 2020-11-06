@@ -35,6 +35,10 @@ gameMod.load({
         // SET SUN TEMP
         game.sun.temp = td.temp.valueOf();
 
+        // I think globalMaxGroundTemp should not be fixed, but should also not be the same as the sun
+        // something crude like just dividing by 10 might work for now.
+        td.globalMaxGroundTemp = game.sun.temp / 10;
+
         // update temp of sections
         var i = game.sections.length,
         section;

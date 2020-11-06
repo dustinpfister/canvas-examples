@@ -14,8 +14,8 @@
 
 ## 0.3.0 - temp.js ajustments, and variable max ground temp
 * (done) in temp.js have a td.maxGroundTemp prop.
-* td.maxGroundTemp should remain a fixed static value, however there should be an additional tempLimit per section
-* in temp.js the maxGroundTemp should also be set by section.per
+* (done) td.maxGroundTemp should remain a fixed static value, however there should be an additional tempLimit per section
+* (done) globalMaxGroundTemp should go up with sun temp
 * make a pkg-0-3-0.html
 
 ## 0.2.0 - observe_sun, Math.log, and better sun temp formula
