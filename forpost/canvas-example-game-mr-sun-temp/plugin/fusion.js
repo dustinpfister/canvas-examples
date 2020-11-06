@@ -45,8 +45,16 @@ gameMod.load((function(){
             section;
             while(i--){
                 section = game.sections[i];
-                if(section.per > 95){
-                   
+
+                if(section.per > 0.95){
+                   Object.keys(sun.minerals).forEach(function(minKey){
+                       var minCount = sun.minerals[minKey];
+                       if(minCount >= 1){
+
+                           section.minerals[minKey] += 1;
+                           sun.minerals[minKey] -= 1;
+                       }
+                   });
                 }
             }
 
