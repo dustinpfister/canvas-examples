@@ -6,29 +6,33 @@ gameMod.load((function(){
         return rate * Math.floor(sun.temp / temp) * deltaYears;
     };
 
+    // create a minerals object
+    var createMineralsObj = function(){
+        return {
+            copper: 0, 
+            iron: 0 
+        };
+    };
+
     // the plugObj for fusion
     return {
         name: 'fusion',
         callPriority: '1.1',
         create: function(game, opt){
             // minerals object for the sun
-            game.sun.minerals = {
-                copper: 0, 
-                iron: 0 
-            };
+            game.sun.minerals = createMineralsObj();
             // minerals objects for each section
             var i = game.sections.length,
             section;
             while(i--){
                 section = game.sections[i];
-                section.minerals = {
-                   copper: 0, 
-                   iron: 0 
-                }
+                section.minerals = createMineralsObj();
             }
         },
         onDeltaYear: function(game, deltaYears){
-            sun = game.sun;
+            var sun = game.sun;
+
+            // fusion happens in the sun
             if(sun.temp >= 10){
                 sun.minerals.iron += getMinDelta(sun, 1, 10, deltaYears);
             }
@@ -36,6 +40,7 @@ gameMod.load((function(){
                 sun.minerals.copper += getMinDelta(sun, 0.5, 25, deltaYears);
             }
 
+            // transfer to sections
             var i = game.sections.length,
             section;
             while(i--){
