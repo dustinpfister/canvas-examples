@@ -13,10 +13,9 @@
 * make a pkg-0-4-0.html
 
 ## 0.3.0 - temp.js ajustments, and variable max ground temp
-* in temp.js section.temp should stay between 20 and 100 when the Sun as at the center
-* in temp.js section.groundTemp should go up at a rate based on section.per
+* (done) in temp.js have a td.maxGroundTemp prop.
+* td.maxGroundTemp should go up with section.per;
 * in temp.js the maxGroundTemp should also be set by section.per
-* section.groundTemp should also make used of utils.levelObjCollection
 * make a pkg-0-3-0.html
 
 ## 0.2.0 - observe_sun, Math.log, and better sun temp formula
