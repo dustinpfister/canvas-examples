@@ -3,8 +3,19 @@ var draw = (function () {
     // public API
     var api = {};
 
-    // SECTIONS:
+    // HELPERS
+    var drawMineralList = function(ctx, obj, startY, fontSize){
+        startY = startY === undefined ? 0 : startY;
+        fontSize = fontSize || 10;
+        if(obj.minerals){
+            ctx.font = fontSize + 'px arial';
+            Object.keys(obj.minerals).forEach(function(min, i){
+                ctx.fillText(min + ': ' + obj.minerals[min].toFixed(2), 10, startY + i * fontSize);
+            });
+        }
+    };
 
+    // SECTIONS:
     api.sectionData = function(sm, section){
         ctx.fillStyle = 'white';
         ctx.textAlign = 'left';
@@ -14,6 +25,7 @@ var draw = (function () {
         ctx.font = '10px arial';
         ctx.fillText('groundTemp: ' + section.groundTemp.toFixed(2), 10, 30);
         ctx.fillText('temp: ' + section.temp.toFixed(2), 10, 40);
+        drawMineralList(ctx, section, 50, 10);
     };
     // draw sections
     api.sections = function (sm) {
@@ -32,22 +44,11 @@ var draw = (function () {
             //ctx.fillText(section.groundTemp.toFixed(2) + ':' + section.temp.toFixed(2), section.x, section.y+5);
             //var min = section.minerals;
             //ctx.fillText(min.copper + ':' + min.gold, section.x, section.y-5);
-            ctx.fillText(section.temp.toFixed(2), section.x, section.y+5);
+            ctx.fillText(section.temp.toFixed(2), section.x, section.y + 5);
         });
     };
 
     // SUN
-
-    var drawMineralList = function(ctx, obj, startY, fontSize){
-        startY = startY === undefined ? 0 : startY;
-        fontSize = fontSize || 10;
-        if(obj.minerals){
-            ctx.font = fontSize + 'px arial';
-            Object.keys(obj.minerals).forEach(function(min, i){
-                ctx.fillText(min + ': ' + obj.minerals[min].toFixed(2), 10, startY + i * fontSize);
-            });
-        }
-    };
     api.sunData = function(sm, sun){
         var game = sm.game;
         ctx.fillStyle = 'white';

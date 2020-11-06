@@ -25,19 +25,16 @@ gameMod.load((function(){
             if(sun.temp >= 25){
                 sun.minerals.copper += getMinDelta(sun, 0.5, 25, deltaYears);
             }
-/*
+
             var i = game.sections.length,
             section;
             while(i--){
                 section = game.sections[i];
-                if(section.temp > 10){
-                    section.minerals.copper += getMinDelta(section, 5, 100, deltaYears);
-                }
-                if(section.temp > 25){
-                    section.minerals.silver += getMinDelta(section, 1, 250, deltaYears);
+                if(section.per > 95){
+                   
                 }
             }
-*/
+
         }
     };
 }()));
