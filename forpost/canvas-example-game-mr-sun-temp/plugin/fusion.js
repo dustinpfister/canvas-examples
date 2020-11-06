@@ -49,10 +49,11 @@ gameMod.load((function(){
                 if(section.per > 0.95){
                    Object.keys(sun.minerals).forEach(function(minKey){
                        var minCount = sun.minerals[minKey];
-                       if(minCount >= 1){
+                       var transferAmount = 1 * deltaYears;
+                       if(minCount >= transferAmount){
 
-                           section.minerals[minKey] += 1;
-                           sun.minerals[minKey] -= 1;
+                           section.minerals[minKey] += transferAmount;
+                           sun.minerals[minKey] -= transferAmount;
                        }
                    });
                 }
