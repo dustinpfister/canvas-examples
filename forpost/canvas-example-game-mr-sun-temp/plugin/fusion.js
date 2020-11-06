@@ -11,11 +11,21 @@ gameMod.load((function(){
         name: 'fusion',
         callPriority: '1.1',
         create: function(game, opt){
+            // minerals object for the sun
             game.sun.minerals = {
                 copper: 0, 
                 iron: 0 
             };
-
+            // minerals objects for each section
+            var i = game.sections.length,
+            section;
+            while(i--){
+                section = game.sections[i];
+                section.minerals = {
+                   copper: 0, 
+                   iron: 0 
+                }
+            }
         },
         onDeltaYear: function(game, deltaYears){
             sun = game.sun;
