@@ -16,6 +16,7 @@
 * (done) in temp.js have a td.maxGroundTemp prop.
 * (done) td.maxGroundTemp should remain a fixed static value, however there should be an additional tempLimit per section
 * (done) globalMaxGroundTemp should go up with sun temp
+* (done) tempData should be part of the game object, not the sun
 * make a pkg-0-3-0.html
 
 ## 0.2.0 - observe_sun, Math.log, and better sun temp formula

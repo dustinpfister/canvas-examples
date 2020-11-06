@@ -84,7 +84,8 @@ var states = {
         },
         update: function(sm, secs){
             var state = sm.states['observe_sun'],
-            td = sm.game.sun.tempData;
+            //td = sm.game.sun.tempData;
+            td = sm.game.tempData;
             gameMod.update(sm.game, secs);
             sm.game.sun.sunGrid = utils.createLogPerCollection({
                len: td.len,

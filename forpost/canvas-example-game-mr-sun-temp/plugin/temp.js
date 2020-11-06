@@ -2,8 +2,8 @@ gameMod.load({
     name: 'temp',
     callPriority: '1.0',
     create: function(game, opt){
-        //game.maxTemp = 500;
-        var td = game.sun.tempData = {
+        // create tempData object
+        var td = game.tempData = {
             i: 0,
             len: 100,
             base: 10,
@@ -25,9 +25,8 @@ gameMod.load({
     onDeltaYear: function(game, deltaYears){
 
         // sun will gain temp over time
-        var td = game.sun.tempData;
+        var td = game.tempData;
         td.years += deltaYears;
-        //td.i += deltaYears;
         td.i = Math.floor(td.years / td.iAtYears);
         td.i = td.i >= td.len ? td.len - 1 : td.i;
         td.temp = utils.createLogPerObject(td.i, td.len, td.base, td.max);

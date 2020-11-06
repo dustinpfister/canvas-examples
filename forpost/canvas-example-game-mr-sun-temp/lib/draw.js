@@ -20,15 +20,16 @@ var draw = (function () {
         });
     };
     api.sunData = function(sm, sun){
+        var game = sm.game;
         ctx.fillStyle = 'white';
         ctx.textAlign = 'left';
         ctx.textBaseline = 'top';
         ctx.font = '15px arial';
         ctx.fillText('Sun Status: ', 10, 10);
         ctx.font = '10px arial';
-        ctx.fillText('years: ' + sun.tempData.years, 10, 30);
+        ctx.fillText('years: ' + game.tempData.years, 10, 30);
         ctx.fillText('temp: ' + sun.temp.toFixed(2), 10, 40);
-        ctx.fillText('tempLevel: ' + sun.tempData.i + '/' + Number(sun.tempData.len - 1), 10, 50);
+        ctx.fillText('tempLevel: ' + game.tempData.i + '/' + Number(game.tempData.len - 1), 10, 50);
         // draw graph
         var h = 100,
         w = 100,
@@ -48,7 +49,7 @@ var draw = (function () {
             }else{
                 ctx.lineTo(x, y);
             }
-            if(tempObj.i === sun.tempData.i){
+            if(tempObj.i === game.tempData.i){
                 ctx.stroke();
                 ctx.beginPath();
                 ctx.arc( x, y, 2, 0, Math.PI * 2);
