@@ -1,15 +1,19 @@
 # canvas-example-mr-sun-temp
 
-## 0.4.0 - Fusion happens in the Sun, Sun Life, Death, and sun.js plug-in started
-* make changes to fusion.js so that mineral production happens in the Sun actually
-* the temp of the sun is what will effect mineral production
-* minerals will transfer from the sun to sections when section.per <= 0.95
+## 0.5.0 - start a sun.js plug-in
 * start a new sun.js plug-in
 * sun.js will set the lifespan of the sun.
 * when a suns lifespan === 0 the sun will die.
 * when the sun is dead, sun.temp = 0;
 * when the sun dies all the minerials will be distributed to the sections.
 * sun.js will spawn a new sun object in the event that the current sun object is dead.
+* make a pkg-0-5-0.html
+
+## 0.4.0 - Fusion happens in the Sun
+* make changes to fusion.js so that mineral production happens in the Sun actually
+* the temp of the sun is what will effect mineral production
+* minerials that are created in the sun, will be stored in the sun.
+* minerals will transfer from the sun to sections when section.per <= 0.95
 * make a pkg-0-4-0.html
 
 ## 0.3.0 - temp.js ajustments, and variable max ground temp
