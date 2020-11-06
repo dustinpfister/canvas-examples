@@ -5,6 +5,8 @@ gameMod.load((function(){
         var td = game.tempData;
         if(game.sun.state === 'dead'){
             game.sun.temp = 0;
+            td.years = 0;
+            td.i = 0;
             td.globalMaxGroundTemp = game.tempData.max;
         }
         if(game.sun.state === 'alive'){

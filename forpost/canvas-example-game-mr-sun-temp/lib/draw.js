@@ -57,9 +57,10 @@ var draw = (function () {
         ctx.font = '15px arial';
         ctx.fillText('Sun Status: ', 10, 10);
         ctx.font = '10px arial';
-        ctx.fillText('years: ' + game.tempData.years, 10, 30);
-        ctx.fillText('temp: ' + sun.temp.toFixed(2), 10, 40);
-        ctx.fillText('tempLevel: ' + game.tempData.i + '/' + Number(game.tempData.len - 1), 10, 50);
+        ctx.fillText('status: ' + game.sun.state, 10, 30);
+        ctx.fillText('years: ' + game.tempData.years, 10, 40);
+        ctx.fillText('temp: ' + sun.temp.toFixed(2), 10, 50);
+        ctx.fillText('tempLevel: ' + game.tempData.i + '/' + Number(game.tempData.len - 1), 10, 60);
 
         drawMineralList(ctx, sun, 70, 10);
 

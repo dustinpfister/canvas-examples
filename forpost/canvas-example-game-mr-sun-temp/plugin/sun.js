@@ -7,7 +7,7 @@ gameMod.load({
     create: function(game, opt){
         var sun = game.sun;
         sun.state = 'dead';
-        sun.spawnRate = 16;
+        sun.spawnRate = 20;
         sun.deadYears = 0;
         sun.toAlivePer = 0;
         sun.lifeSpan = 0;
@@ -20,7 +20,7 @@ gameMod.load({
             sun.toAlivePer = sun.deadYears / sun.spawnRate;
             if(sun.toAlivePer >= 1){
                 sun.state = 'alive';
-                sun.lifeSpan = 100;
+                sun.lifeSpan = 1000;
             }
         }
         if(sun.state === 'alive'){
