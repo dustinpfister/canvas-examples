@@ -52,7 +52,7 @@ gameMod.load({
             section.groundTemp = section.groundTemp > section.maxGroundTemp ? section.maxGroundTemp: section.groundTemp;
 
             // SET SECTION TEMP
-            section.temp = section.groundTemp + game.sun.temp / 2 * section.per;
+            section.temp = section.groundTemp + game.sun.temp * section.per;
 
         }
     }
