@@ -96,12 +96,18 @@ var draw = (function () {
     // draw sun
     api.sun = function (sm) {
         var sun = sm.game.sun,
+        color = 'yellow',
+        textColor = 'black',
         ctx = sm.ctx;
-        ctx.fillStyle = 'yellow';
+        if(sun.state === 'dead'){
+            color = 'black';
+            textColor = 'white';
+        }
+        ctx.fillStyle = color;
         ctx.beginPath();
         ctx.arc(sun.x, sun.y, sun.radius, 0, Math.PI * 2);
         ctx.fill();
-        ctx.fillStyle = 'black';
+        ctx.fillStyle = textColor;
         ctx.font = '10px arial';
         ctx.fillText(Math.round(sun.temp), sun.x, sun.y);
     };
