@@ -52,7 +52,7 @@ gameMod.load((function(){
     // plugObj for temp.js
     return {
         name: 'temp',
-        callPriority: '1',
+        callPriority: '1.0',
         create: function(game, opt){
             // create tempData object
             var td = game.tempData = {

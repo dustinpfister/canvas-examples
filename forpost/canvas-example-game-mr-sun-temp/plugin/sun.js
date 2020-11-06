@@ -14,6 +14,11 @@ gameMod.load({
     },
     onDeltaYear: function(game, deltaYears){
         var sun = game.sun;
+        if(sun.state === 'explode'){
+            sun.deadYears = 0;
+            sun.toAlivePer = 0;
+            sun.state = 'dead';
+        }
         if(sun.state === 'dead'){
             sun.deadYears += deltaYears;
             sun.deadYears = sun.deadYears > sun.spawnRate ? sun.spawnRate: sun.deadYears;
@@ -27,9 +32,7 @@ gameMod.load({
             sun.lifeSpan -= deltaYears;
             sun.lifeSpan = sun.lifeSpan < 0 ? 0 : sun.lifeSpan;
             if(sun.lifeSpan === 0){
-                sun.state = 'dead';
-                sun.deadYears = 0;
-                sun.toAlivePer = 0;
+                sun.state = 'explode';
             }
         }
     }

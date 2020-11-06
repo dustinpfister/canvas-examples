@@ -58,6 +58,21 @@ gameMod.load((function(){
                 }
             }
 
+            if(sun.state === 'explode'){
+                Object.keys(sun.minerals).forEach(function(minKey){
+                    var minCount = sun.minerals[minKey],
+                    i = game.sections.length,
+                    section;
+                    if(minCount > 0){
+                        while(i--){
+                            section = game.sections[i];
+                            section.minerals[minKey] += Math.floor(minCount / game.sections.length * section.per);
+                        }
+                        sun.minerals[minKey] = 0;
+                    }
+                });
+            }
+
         }
     };
 }()));
