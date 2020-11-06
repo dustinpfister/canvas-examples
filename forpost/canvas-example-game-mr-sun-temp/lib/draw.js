@@ -21,6 +21,14 @@ var draw = (function () {
         });
 */
     };
+    var drawMineralList = function(ctx, obj, startY){
+        startY = startY === undefined ? 0 : startY;
+        if(obj.minerals){
+            Object.keys(obj.minerals).forEach(function(min, i){
+                ctx.fillText(min + ': ' + obj.minerals[min].toFixed(2), 10, startY + i * 10);
+            });
+        }
+    };
     api.sunData = function(sm, sun){
         var game = sm.game;
         ctx.fillStyle = 'white';
@@ -33,12 +41,14 @@ var draw = (function () {
         ctx.fillText('temp: ' + sun.temp.toFixed(2), 10, 40);
         ctx.fillText('tempLevel: ' + game.tempData.i + '/' + Number(game.tempData.len - 1), 10, 50);
 
+        drawMineralList(ctx, sun, 60);
+/*
         if(sun.minerals){
             Object.keys(sun.minerals).forEach(function(min, i){
                 ctx.fillText(min + ': ' + sun.minerals[min].toFixed(2), 10, 60 + i * 10);
             });
         }
-
+*/
         // draw graph
         var h = 100,
         w = 100,
