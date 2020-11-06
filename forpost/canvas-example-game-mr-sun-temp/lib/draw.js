@@ -15,9 +15,11 @@ var draw = (function () {
         ctx.font = '10px arial';
         ctx.fillText('groundTemp: ' + section.groundTemp.toFixed(2), 10, 30);
         ctx.fillText('temp: ' + section.temp.toFixed(2), 10, 40);
+/*
         Object.keys(section.minerals).forEach(function(min, i){
             ctx.fillText(min + ': ' + section.minerals[min].toFixed(2), 10, 50 + i * 10);
         });
+*/
     };
     api.sunData = function(sm, sun){
         var game = sm.game;
@@ -30,6 +32,13 @@ var draw = (function () {
         ctx.fillText('years: ' + game.tempData.years, 10, 30);
         ctx.fillText('temp: ' + sun.temp.toFixed(2), 10, 40);
         ctx.fillText('tempLevel: ' + game.tempData.i + '/' + Number(game.tempData.len - 1), 10, 50);
+
+        if(sun.minerals){
+            Object.keys(sun.minerals).forEach(function(min, i){
+                ctx.fillText(min + ': ' + sun.minerals[min].toFixed(2), 10, 60 + i * 10);
+            });
+        }
+
         // draw graph
         var h = 100,
         w = 100,

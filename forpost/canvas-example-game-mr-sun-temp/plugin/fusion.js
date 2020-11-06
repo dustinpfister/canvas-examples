@@ -1,11 +1,18 @@
+// fusion.js
 gameMod.load((function(){
+
+    // helper for creating a delta value for mineral production
     var getMinDelta = function(section, rate, temp, deltaYears){
         return rate * Math.floor(section.temp / temp) * deltaYears;
     };
+
+    // the plugObj for fusion
     return {
         name: 'fusion',
         callPriority: '1.1',
         create: function(game, opt){
+
+            /*
             game.sections = game.sections.map(function(section){
                 section.minerals = {
                     copper: 0, 
@@ -13,6 +20,7 @@ gameMod.load((function(){
                 };
                 return section;
             });
+            */
         },
         onDeltaYear: function(game, deltaYears){
             var i = game.sections.length,
