@@ -11,10 +11,10 @@ gameMod.load({
             years: 0,
             iAtYears: 100,
             temp: {},
-            maxGroundTemp: 0
+            globalMaxGroundTemp: 0
         };
         td.temp = utils.createLogPerObject(td.i, td.len, td.base, td.max);
-        td.maxGroundTemp = 10;
+        td.globalMaxGroundTemp = 10;
         game.sun.temp = td.temp.valueOf();
         game.sections = game.sections.map(function(section){
             section.temp = 0;
@@ -31,6 +31,8 @@ gameMod.load({
         td.i = Math.floor(td.years / td.iAtYears);
         td.i = td.i >= td.len ? td.len - 1 : td.i;
         td.temp = utils.createLogPerObject(td.i, td.len, td.base, td.max);
+
+        // SET SUN TEMP
         game.sun.temp = td.temp.valueOf();
 
         // update temp of sections
@@ -44,9 +46,14 @@ gameMod.load({
             }else{
                 section.groundTemp -= section.groundTemp / 100;
             }
+            // section max ground temp set by section.per and global max ground temp value
+            section.maxGroundTemp = td.globalMaxGroundTemp * section.per;
             section.groundTemp = section.groundTemp < 0.25 ? 0: section.groundTemp;
-            section.groundTemp = section.groundTemp > td.maxGroundTemp? td.maxGroundTemp: section.groundTemp;
+            section.groundTemp = section.groundTemp > section.maxGroundTemp ? section.maxGroundTemp: section.groundTemp;
+
+            // SET SECTION TEMP
             section.temp = section.groundTemp + game.sun.temp / 2 * section.per;
+
         }
     }
 });

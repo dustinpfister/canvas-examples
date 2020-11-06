@@ -1,6 +1,6 @@
 # canvas-example-mr-sun-temp
 
-## 0.4.0 - Fusion happens in the Sun, and Sun Life
+## 0.4.0 - Fusion happens in the Sun, Sun Life, Death, and sun.js plug-in started
 * make changes to fusion.js so that mineral production happens in the Sun actually
 * the temp of the sun is what will effect mineral production
 * minerals will transfer from the sun to sections when section.per <= 0.95
@@ -14,7 +14,7 @@
 
 ## 0.3.0 - temp.js ajustments, and variable max ground temp
 * (done) in temp.js have a td.maxGroundTemp prop.
-* td.maxGroundTemp should go up with section.per;
+* td.maxGroundTemp should remain a fixed static value, however there should be an additional tempLimit per section
 * in temp.js the maxGroundTemp should also be set by section.per
 * make a pkg-0-3-0.html
 
