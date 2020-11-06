@@ -21,6 +21,11 @@ gameMod.load((function(){
                 return section;
             });
             */
+            game.sun.minerals = {
+                copper: 0, 
+                silver: 0 
+            };
+
         },
         onDeltaYear: function(game, deltaYears){
             var i = game.sections.length,

@@ -41,7 +41,7 @@ var draw = (function () {
         ctx.fillText('temp: ' + sun.temp.toFixed(2), 10, 40);
         ctx.fillText('tempLevel: ' + game.tempData.i + '/' + Number(game.tempData.len - 1), 10, 50);
 
-        drawMineralList(ctx, sun, 60);
+        drawMineralList(ctx, sun, 70);
 /*
         if(sun.minerals){
             Object.keys(sun.minerals).forEach(function(min, i){
