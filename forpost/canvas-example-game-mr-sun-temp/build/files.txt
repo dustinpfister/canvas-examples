@@ -1,5 +1,6 @@
 ../lib/utils.js
 ../lib/game.js
 ../lib/draw.js
+../plugin/sun.js
 ../plugin/temp.js
 ../plugin/fusion.js

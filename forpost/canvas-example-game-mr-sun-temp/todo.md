@@ -14,7 +14,7 @@
 * (done) the temp of the sun is what will effect mineral production type and rate rather than a section
 * (done) minerials that are created in the sun, will be stored in the sun.
 * (done) minerals will transfer from the sun to sections when section.per <= 0.95
-* make a pkg-0-4-0.html
+* (done) make a pkg-0-4-0.html
 
 ## 0.3.0 - temp.js ajustments, and variable max ground temp
 * (done) in temp.js have a td.maxGroundTemp prop.
