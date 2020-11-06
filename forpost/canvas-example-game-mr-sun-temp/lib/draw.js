@@ -1,11 +1,10 @@
 var draw = (function () {
+
     // public API
     var api = {};
-    // draw background
-    api.back = function (sm) {
-        sm.ctx.fillStyle = '#202020';
-        sm.ctx.fillRect(0, 0, sm.canvas.width, sm.canvas.height);
-    };
+
+    // SECTIONS:
+
     api.sectionData = function(sm, section){
         ctx.fillStyle = 'white';
         ctx.textAlign = 'left';
@@ -15,17 +14,37 @@ var draw = (function () {
         ctx.font = '10px arial';
         ctx.fillText('groundTemp: ' + section.groundTemp.toFixed(2), 10, 30);
         ctx.fillText('temp: ' + section.temp.toFixed(2), 10, 40);
-/*
-        Object.keys(section.minerals).forEach(function(min, i){
-            ctx.fillText(min + ': ' + section.minerals[min].toFixed(2), 10, 50 + i * 10);
-        });
-*/
     };
-    var drawMineralList = function(ctx, obj, startY){
+    // draw sections
+    api.sections = function (sm) {
+        var ctx = sm.ctx;
+        sm.game.sections.forEach(function (section) {
+            var b = 50 + Math.round(section.per * 128);
+            ctx.fillStyle = 'rgb(0,0,' + b + ')';
+            ctx.beginPath();
+            ctx.arc(section.x, section.y, section.radius, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.fillStyle = 'white';
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.font = '8px arial';
+            //ctx.fillText(section.per.toFixed(2), section.x, section.y-5);
+            //ctx.fillText(section.groundTemp.toFixed(2) + ':' + section.temp.toFixed(2), section.x, section.y+5);
+            //var min = section.minerals;
+            //ctx.fillText(min.copper + ':' + min.gold, section.x, section.y-5);
+            ctx.fillText(section.temp.toFixed(2), section.x, section.y+5);
+        });
+    };
+
+    // SUN
+
+    var drawMineralList = function(ctx, obj, startY, fontSize){
         startY = startY === undefined ? 0 : startY;
+        fontSize = fontSize || 10;
         if(obj.minerals){
+            ctx.font = fontSize + 'px arial';
             Object.keys(obj.minerals).forEach(function(min, i){
-                ctx.fillText(min + ': ' + obj.minerals[min].toFixed(2), 10, startY + i * 10);
+                ctx.fillText(min + ': ' + obj.minerals[min].toFixed(2), 10, startY + i * fontSize);
             });
         }
     };
@@ -41,14 +60,8 @@ var draw = (function () {
         ctx.fillText('temp: ' + sun.temp.toFixed(2), 10, 40);
         ctx.fillText('tempLevel: ' + game.tempData.i + '/' + Number(game.tempData.len - 1), 10, 50);
 
-        drawMineralList(ctx, sun, 70);
-/*
-        if(sun.minerals){
-            Object.keys(sun.minerals).forEach(function(min, i){
-                ctx.fillText(min + ': ' + sun.minerals[min].toFixed(2), 10, 60 + i * 10);
-            });
-        }
-*/
+        drawMineralList(ctx, sun, 70, 10);
+
         // draw graph
         var h = 100,
         w = 100,
@@ -79,26 +92,6 @@ var draw = (function () {
         });
         ctx.stroke();
     };
-    // draw sections
-    api.sections = function (sm) {
-        var ctx = sm.ctx;
-        sm.game.sections.forEach(function (section) {
-            var b = 50 + Math.round(section.per * 128);
-            ctx.fillStyle = 'rgb(0,0,' + b + ')';
-            ctx.beginPath();
-            ctx.arc(section.x, section.y, section.radius, 0, Math.PI * 2);
-            ctx.fill();
-            ctx.fillStyle = 'white';
-            ctx.textAlign = 'center';
-            ctx.textBaseline = 'middle';
-            ctx.font = '8px arial';
-            //ctx.fillText(section.per.toFixed(2), section.x, section.y-5);
-            //ctx.fillText(section.groundTemp.toFixed(2) + ':' + section.temp.toFixed(2), section.x, section.y+5);
-            //var min = section.minerals;
-            //ctx.fillText(min.copper + ':' + min.gold, section.x, section.y-5);
-            ctx.fillText(section.temp.toFixed(2), section.x, section.y+5);
-        });
-    };
     // draw sun
     api.sun = function (sm) {
         var sun = sm.game.sun,
@@ -110,6 +103,14 @@ var draw = (function () {
         ctx.fillStyle = 'black';
         ctx.font = '10px arial';
         ctx.fillText(Math.round(sun.temp), sun.x, sun.y);
+    };
+
+    // MISC
+
+    // draw background
+    api.back = function (sm) {
+        sm.ctx.fillStyle = '#202020';
+        sm.ctx.fillRect(0, 0, sm.canvas.width, sm.canvas.height);
     };
     // display
     api.disp = function (sm) {
