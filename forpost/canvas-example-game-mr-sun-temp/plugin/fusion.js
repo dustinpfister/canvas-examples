@@ -33,29 +33,28 @@ gameMod.load((function(){
             var sun = game.sun;
 
             // fusion happens in the sun
-            if(sun.temp >= 10){
-                sun.minerals.iron += getMinDelta(sun, 1, 10, deltaYears);
-            }
-            if(sun.temp >= 25){
-                sun.minerals.copper += getMinDelta(sun, 0.5, 25, deltaYears);
-            }
-
-            // transfer to sections
-            var i = game.sections.length,
-            section;
-            while(i--){
-                section = game.sections[i];
-
-                if(section.per > 0.95){
-                   Object.keys(sun.minerals).forEach(function(minKey){
-                       var minCount = sun.minerals[minKey];
-                       var transferAmount = 1 * deltaYears;
-                       if(minCount >= transferAmount){
-
-                           section.minerals[minKey] += transferAmount;
-                           sun.minerals[minKey] -= transferAmount;
-                       }
-                   });
+            if(sun.state === 'alive'){
+                if(sun.temp >= 10){
+                    sun.minerals.iron += getMinDelta(sun, 1, 10, deltaYears);
+                }
+                if(sun.temp >= 25){
+                    sun.minerals.copper += getMinDelta(sun, 0.5, 25, deltaYears);
+                }
+                // transfer to sections
+                var i = game.sections.length,
+                section;
+                while(i--){
+                    section = game.sections[i];
+                    if(section.per > 0.95){
+                       Object.keys(sun.minerals).forEach(function(minKey){
+                           var minCount = sun.minerals[minKey];
+                           var transferAmount = 1 * deltaYears;
+                           if(minCount >= transferAmount){
+                               section.minerals[minKey] += transferAmount;
+                               sun.minerals[minKey] -= transferAmount;
+                           }
+                       });
+                    }
                 }
             }
 
