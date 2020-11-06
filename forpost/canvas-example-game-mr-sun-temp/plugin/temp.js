@@ -1,5 +1,16 @@
 gameMod.load((function(){
 
+    var updateSun = function(game, deltaYears){
+        var td = game.tempData;
+        if(game.sun.state === 'dead'){
+            game.sun.temp = 0;
+            td.globalMaxGroundTemp = game.tempData.max;
+        }
+        if(game.sun.state === 'alive'){
+            updateLiveSun(game, deltaYears);
+        }
+    };
+
     var updateLiveSun = function(game, deltaYears){
         // sun will gain temp over time
         var td = game.tempData;
@@ -14,43 +25,12 @@ gameMod.load((function(){
         td.globalMaxGroundTemp = game.sun.temp / 10;
     };
 
-    return {
-        name: 'temp',
-        callPriority: '1.0',
-        create: function(game, opt){
-            // create tempData object
-            var td = game.tempData = {
-                i: 0,
-                len: 100,
-                base: 10,
-                max: 500,
-                years: 0,
-                iAtYears: 100,
-                temp: {},
-                globalMaxGroundTemp: 0
-            };
-            td.temp = utils.createLogPerObject(td.i, td.len, td.base, td.max);
-            td.globalMaxGroundTemp = 10;
-            game.sun.temp = td.temp.valueOf();
-            game.sections = game.sections.map(function(section){
-                section.temp = 0;
-                section.groundTemp = 0;
-                return section;
-            });
-        },
-        onDeltaYear: function(game, deltaYears){
-            var td = game.tempData;
-            if(game.sun.state === 'dead'){
-                game.sun.temp = 0;
-                td.globalMaxGroundTemp = game.tempData.max;
-            }
-            if(game.sun.state === 'alive'){
-                updateLiveSun(game, deltaYears);
-            }
-            // update temp of sections
-            var i = game.sections.length,
-            section;
-            while(i--){
+    var updateTempSections = function(game, deltaYears){
+        // update temp of sections
+        var i = game.sections.length,
+        td = game.tempData,
+        section;
+        while(i--){
             section = game.sections[i];
             // ground temp goes up when section.per >= 49
             if(Math.floor(section.per * 100) >= 49){
@@ -64,7 +44,36 @@ gameMod.load((function(){
             section.groundTemp = section.groundTemp > section.maxGroundTemp ? section.maxGroundTemp: section.groundTemp;
             // SET SECTION TEMP
             section.temp = section.groundTemp + game.sun.temp * section.per;
-            }
+        }
+    };
+
+    return {
+        name: 'temp',
+        callPriority: '1',
+        create: function(game, opt){
+            // create tempData object
+            var td = game.tempData = {
+                i: 0,
+                len: 100,
+                base: 10,
+                max: 500,
+                years: 0,
+                iAtYears: 100,
+                temp: {},
+                globalMaxGroundTemp: 0
+            };
+            // update for first time
+            updateSun(game, 0);
+            // set section temp values
+            game.sections = game.sections.map(function(section){
+                section.temp = 0;
+                section.groundTemp = 0;
+                return section;
+            });
+        },
+        onDeltaYear: function(game, deltaYears){
+            updateSun(game, deltaYears);
+            updateTempSections(game, deltaYears);
         }
     };
 

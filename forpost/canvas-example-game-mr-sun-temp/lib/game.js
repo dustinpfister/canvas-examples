@@ -7,10 +7,10 @@ var gameMod = (function(){
             var plugObjA = plugs[a],
             plugObjB = plugs[b];
             if(plugObjA.callPriority > plugObjB.callPriority){
-                return -1;
+                return 1;
             }
             if(plugObjA.callPriority < plugObjB.callPriority){
-                return 1;
+                return -1;
             }
             return 0;
         });
