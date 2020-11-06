@@ -109,7 +109,12 @@ var draw = (function () {
         ctx.fill();
         ctx.fillStyle = textColor;
         ctx.font = '10px arial';
-        ctx.fillText(Math.round(sun.temp), sun.x, sun.y);
+        if(sun.state === 'alive'){
+            ctx.fillText(Math.round(sun.temp), sun.x, sun.y);
+        }
+        if(sun.state === 'dead'){
+            ctx.fillText(Math.round(sun.toAlivePer * 100), sun.x, sun.y);
+        }
     };
 
     // MISC

@@ -1,5 +1,6 @@
 gameMod.load((function(){
 
+    // update sun temp
     var updateSun = function(game, deltaYears){
         var td = game.tempData;
         if(game.sun.state === 'dead'){
@@ -10,7 +11,7 @@ gameMod.load((function(){
             updateLiveSun(game, deltaYears);
         }
     };
-
+    // update a live sun
     var updateLiveSun = function(game, deltaYears){
         // sun will gain temp over time
         var td = game.tempData;
@@ -24,7 +25,7 @@ gameMod.load((function(){
         // something crude like just dividing by 10 might work for now.
         td.globalMaxGroundTemp = game.sun.temp / 10;
     };
-
+    // update temp for sections
     var updateTempSections = function(game, deltaYears){
         // update temp of sections
         var i = game.sections.length,
@@ -46,7 +47,7 @@ gameMod.load((function(){
             section.temp = section.groundTemp + game.sun.temp * section.per;
         }
     };
-
+    // plugObj for temp.js
     return {
         name: 'temp',
         callPriority: '1',
