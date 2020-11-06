@@ -1,13 +1,15 @@
 # canvas-example-mr-sun-temp
 
+## 0.6.0 - 
+
 ## 0.5.0 - start a sun.js plug-in
 * (done) start a new sun.js plug-in
 * (done) when the sun is dead, sun.temp = 0;
 * (done) sun.js will spawn a new sun object in the event that the current sun object is dead.
 * (done) sun.js will set the lifespan of the sun.
 * (done) when a suns lifespan === 0 the sun will die.
-* when the sun dies all the minerials will be distributed to the sections in fusion.js.
-* make a pkg-0-5-0.html
+* (done) when the sun dies all the minerials will be distributed to the sections in fusion.js.
+* (done) make a pkg-0-5-0.html
 
 ## 0.4.0 - Fusion happens in the Sun
 * (done) make changes to fusion.js so that mineral production happens in the Sun actually
