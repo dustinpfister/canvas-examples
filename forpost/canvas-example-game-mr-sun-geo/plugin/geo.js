@@ -1,7 +1,7 @@
 // geo.js plug-in
 gameMod.load({
-    name: 'sun',
-    callPriority: '0',
+    name: 'geo',
+    callPriority: '2',
     create: function(game, opt){
     },
     onDeltaYear: function(game, deltaYears){
