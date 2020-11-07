@@ -1,8 +1,7 @@
 // geo.js plug-in
 gameMod.load((function () {
-
+        // tabulate the mass of an object
         var tabulateObjectMass = function (obj) {
-
             var i = 0,
             len = Object.keys(obj.minerals).length,
             minKey,
@@ -16,7 +15,7 @@ gameMod.load((function () {
             }
             return mass;
         };
-
+        // set total mass by tabulating all sections
         var setTotalMass = function (game) {
             var gd = game.geoData,
             i = 0,
@@ -31,7 +30,19 @@ gameMod.load((function () {
                 i += 1;
             }
         };
-
+        // set massPer prop for all sections
+        var setMassPerValues = function (game) {
+            var gd = game.geoData,
+            i = 0,
+            len = game.sections.length,
+            mass,
+            section;
+            while (i < len) {
+                section = game.sections[i];
+                section.massPer = section.totalMass / gd.totalMass;
+                i += 1;
+            }
+        };
         return {
             name: 'geo',
             callPriority: '2',
@@ -41,9 +52,8 @@ gameMod.load((function () {
                 };
             },
             onDeltaYear: function (game, deltaYears) {
-
                 setTotalMass(game);
-
+                setMassPerValues(game);
             }
         };
 
