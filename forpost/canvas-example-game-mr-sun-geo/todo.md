@@ -1,10 +1,13 @@
 # canvas-example-mr-sun-geo
 
 ## 0.3.0 - atmosphere.js, and volcanic action in geo.js
-* start a atmosphere.js plug-in
+* start a atmo.js plug-in
 
 ## 0.2.0 - hydrosphere.js and starting Erosion in geo.js
-* start a hydrosphere.js plug-in
+* start a hydro.js plug-in
+* create a game.hydoData object
+* have a game.hydoData.totalWater propery
+* create a pkg-0-2-0.html
 
 ## 0.1.0 - Magmatism
 * (done) the temp of a section can be used along with section.totalMass to find a section.magmatism value
