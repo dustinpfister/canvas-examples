@@ -46,12 +46,21 @@ gameMod.load((function () {
                     // set magmatism
                     section.magmatism = section.massPer * (section.groundTemp / game.tempData.globalMaxGroundTemp);
                     // elevation
-                    
+                    /*
                     section.elevation.total = section.elevation.total + section.magmatism * deltaYears * gd.maxElevationPerYear;
                     section.elevation.total = section.elevation.total - section.erosion * deltaYears * gd.maxErosionPerYear;
                     // elevation bounds
                     section.elevation.total = section.elevation.total > gd.maxElevation ? gd.maxElevation: section.elevation.total;
                     section.elevation.total = section.elevation.total < 0 ? 0: section.elevation.total;
+                    */
+                    var elObj = section.elevation;
+                    elObj.base = elObj.max * 0.25 * section.massPer;
+                    elObj.magma = elObj.magma + section.magmatism * deltaYears * gd.maxElevationPerYear;
+                    elObj.magma = elObj.magma - section.erosion * deltaYears * gd.maxErosionPerYear;
+                    elObj.magma = elObj.magma > elObj.max * 0.75 ? elObj.max * 0.75 : elObj.magma;
+                    elObj.magma = elObj.magma < 0 ? 0: elObj.magma;
+
+                    section.elevation.total = section.elevation.base + section.elevation.magma;
                 }
                 i += 1;
             }
@@ -65,7 +74,7 @@ gameMod.load((function () {
                     maxElevation: 1000,
                     maxElevationPerYear: 10,
                     maxErosionPerYear: 1,
-                    seaLevel: 0
+                    seaLevel: 30
                 };
                 var gd = game.geoData;
 
@@ -76,6 +85,7 @@ gameMod.load((function () {
                     section.erosion = 0.5;
                     //section.elevation = 0;
                     section.elevation = {
+                        max: 1000,
                         base: 0,
                         magma: 0,
                         total: 0
