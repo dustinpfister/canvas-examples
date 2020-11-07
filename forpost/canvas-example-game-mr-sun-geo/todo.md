@@ -1,12 +1,23 @@
-# canvas-example-mr-sun-temp
+# canvas-example-mr-sun-geo
+
+## 0.3.0 - atmosphere.js, and volcanic action in geo.js
+* start a atmosphere.js plug-in
+
+## 0.2.0 - hydrosphere.js and starting Erosion in geo.js
+* start a hydosphere.js plug-in
 
 ## 0.1.0 - Magmatism
-* the temp of a section can be used to find Magmatism of the section
+* the temp of a section can be used along with section.totalMass to find a section.magmatism value
+* have a geoData.maxElevation property
+* section.magmatism can be used with section.massPer and geoData.maxElevation to set section.elevation
+* in draw.js display elevation by way of just drawing a line between the section, and another line for maxElevation.
+* create a pkg-0-1-0.html
 
 ## 0.0.0 - start a geo.js plug-in
-* start a geo.js plugin that will be used to define the current Geology of all world sections
+* (done) start a geo.js plugin that will be used to define the current Geology of all world sections
 * set a game.geoData object for the plug-in
 * geo.js will create, and update a game.geoData.totalMass property
+* have a section.totalMass
 * a section.massPer value can be set by compating a totalMass for a section to that of game.geodata.totalMass
 * display new section.totalMass, and section.massPer values for each section
-* create a pkg-0-1-0.html
+* create a pkg-0-0-0.html
