@@ -15,7 +15,7 @@
 
 ## 0.0.0 - start a geo.js plug-in
 * (done) start a geo.js plugin that will be used to define the current Geology of all world sections
-* set a game.geoData object for the plug-in
+* (done) set a game.geoData object for the plug-in
 * geo.js will create, and update a game.geoData.totalMass property
 * have a section.totalMass
 * a section.massPer value can be set by compating a totalMass for a section to that of game.geodata.totalMass
