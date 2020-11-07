@@ -4,19 +4,19 @@ var draw = (function () {
     var api = {};
 
     // HELPERS
-    var drawMineralList = function(ctx, obj, startY, fontSize){
+    var drawMineralList = function (ctx, obj, startY, fontSize) {
         startY = startY === undefined ? 0 : startY;
         fontSize = fontSize || 10;
-        if(obj.minerals){
+        if (obj.minerals) {
             ctx.font = fontSize + 'px arial';
-            Object.keys(obj.minerals).forEach(function(min, i){
+            Object.keys(obj.minerals).forEach(function (min, i) {
                 ctx.fillText(min + ': ' + obj.minerals[min].toFixed(2), 10, startY + i * fontSize);
             });
         }
     };
 
     // SECTIONS:
-    api.sectionData = function(sm, section){
+    api.sectionData = function (sm, section) {
         ctx.fillStyle = 'white';
         ctx.textAlign = 'left';
         ctx.textBaseline = 'top';
@@ -40,16 +40,18 @@ var draw = (function () {
             ctx.textAlign = 'center';
             ctx.textBaseline = 'middle';
             ctx.font = '8px arial';
-            ctx.fillText(section.per.toFixed(2), section.x, section.y-5);
+            //ctx.fillText(section.per.toFixed(2), section.x, section.y-5);
             //ctx.fillText(section.groundTemp.toFixed(2) + ':' + section.temp.toFixed(2), section.x, section.y+5);
             //var min = section.minerals;
             //ctx.fillText(min.copper + ':' + min.gold, section.x, section.y-5);
-            ctx.fillText(section.temp.toFixed(2), section.x, section.y + 5);
+            //ctx.fillText(section.temp.toFixed(2), section.x, section.y + 5);
+            ctx.fillText(section.totalMass, section.x, section.y - 5);
+            ctx.fillText(section.massPer.toFixed(2), section.x, section.y + 5);
         });
     };
 
     // SUN
-    api.sunData = function(sm, sun){
+    api.sunData = function (sm, sun) {
         var game = sm.game;
         ctx.fillStyle = 'white';
         ctx.textAlign = 'left';
@@ -72,21 +74,21 @@ var draw = (function () {
         ctx.fillStyle = '#5f5f5f';
         ctx.fillRect(sx, sy - h, w, h);
         ctx.beginPath();
-        sun.sunGrid.data.forEach(function(tempObj){
+        sun.sunGrid.data.forEach(function (tempObj) {
             ctx.strokeStyle = 'white';
             ctx.fillStyle = 'black';
             var temp = tempObj.valueOf(),
             y = sy - h * (temp / sun.sunGrid.max),
             x = sx + w * tempObj.per;
-            if(tempObj.i === 0){
+            if (tempObj.i === 0) {
                 ctx.moveTo(x, y);
-            }else{
+            } else {
                 ctx.lineTo(x, y);
             }
-            if(tempObj.i === game.tempData.i){
+            if (tempObj.i === game.tempData.i) {
                 ctx.stroke();
                 ctx.beginPath();
-                ctx.arc( x, y, 2, 0, Math.PI * 2);
+                ctx.arc(x, y, 2, 0, Math.PI * 2);
                 ctx.stroke();
                 ctx.fill();
                 ctx.beginPath();
@@ -100,7 +102,7 @@ var draw = (function () {
         color = 'yellow',
         textColor = 'black',
         ctx = sm.ctx;
-        if(sun.state === 'dead'){
+        if (sun.state === 'dead') {
             color = 'black';
             textColor = 'white';
         }
@@ -110,10 +112,10 @@ var draw = (function () {
         ctx.fill();
         ctx.fillStyle = textColor;
         ctx.font = '10px arial';
-        if(sun.state === 'alive'){
+        if (sun.state === 'alive') {
             ctx.fillText(Math.round(sun.temp), sun.x, sun.y);
         }
-        if(sun.state === 'dead'){
+        if (sun.state === 'dead') {
             ctx.fillText(Math.round(sun.toAlivePer * 100), sun.x, sun.y);
         }
     };

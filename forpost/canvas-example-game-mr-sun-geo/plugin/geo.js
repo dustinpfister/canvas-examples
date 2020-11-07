@@ -39,7 +39,10 @@ gameMod.load((function () {
             section;
             while (i < len) {
                 section = game.sections[i];
-                section.massPer = section.totalMass / gd.totalMass;
+                section.massPer = 0;
+                if (section.totalMass > 0) {
+                    section.massPer = section.totalMass / gd.totalMass;
+                }
                 i += 1;
             }
         };
