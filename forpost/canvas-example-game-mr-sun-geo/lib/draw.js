@@ -39,7 +39,7 @@ var draw = (function () {
         var ex = section.x + Math.cos(a) * el;
         var ey = section.y + Math.sin(a) * el;
         ctx.strokeStyle = 'red';
-        ctx.lineHeight = 3;
+        ctx.lineWidth = 3;
         ctx.beginPath();
         ctx.moveTo(sx, sy);
         ctx.lineTo(ex,ey);
@@ -52,9 +52,14 @@ var draw = (function () {
         if(section.elevation > sm.game.geoData.seaLevel){
             ctx.fillStyle = 'brown';
         }
+        ctx.strokeStyle = 'white';
+        ctx.lineWidth = 0.25 + 2.75 * section.per;
         ctx.beginPath();
         ctx.arc(section.x, section.y, section.radius, 0, Math.PI * 2);
         ctx.fill();
+        ctx.globalAlpha = section.per.toFixed(2);
+        ctx.stroke();
+        ctx.globalAlpha = 1;
     };
     api.sections = function (sm) {
         var ctx = sm.ctx;
