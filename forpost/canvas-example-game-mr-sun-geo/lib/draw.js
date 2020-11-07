@@ -26,14 +26,14 @@ var draw = (function () {
         ctx.fillText('temp: ' + section.temp.toFixed(2), 10, 30);
         ctx.fillText('groundTemp: ' + section.groundTemp.toFixed(2), 10, 40);
         ctx.fillText('magmatism: ' + section.magmatism.toFixed(2), 10, 50);
-        ctx.fillText('elevation: ' + section.elevation, 10, 70);
+        ctx.fillText('elevation: ' + section.elevation.total, 10, 70);
         drawMineralList(ctx, section, 90, 10);
     };
     // draw sections
     var drawSectionElevationMark = function(sm, section){
         var ctx = sm.ctx;
         var a = Math.PI * 2 * (section.i / sm.game.sections.length) + Math.PI;
-        var el = section.radius + section.elevation / sm.game.geoData.maxElevation * 32;
+        var el = section.radius + section.elevation.total / sm.game.geoData.maxElevation * 32;
 /*
         var sx = section.x + Math.cos(a) * section.radius;
         var sy = section.y + Math.sin(a) * section.radius;
@@ -57,7 +57,7 @@ var draw = (function () {
         var ctx = sm.ctx;
         //var b = 50 + Math.round(section.per * 128);
         ctx.fillStyle = 'blue';
-        if(section.elevation > sm.game.geoData.seaLevel){
+        if(section.elevation.total > sm.game.geoData.seaLevel){
             ctx.fillStyle = 'brown';
         }
         ctx.strokeStyle = 'white';
