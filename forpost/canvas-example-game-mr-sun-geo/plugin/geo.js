@@ -55,10 +55,12 @@ gameMod.load((function () {
                     */
                     var elObj = section.elevation;
                     elObj.base = elObj.max * 0.25 * section.massPer;
-                    elObj.magma = elObj.magma + section.magmatism * deltaYears * gd.maxElevationPerYear;
-                    elObj.magma = elObj.magma - section.erosion * deltaYears * gd.maxErosionPerYear;
-                    elObj.magma = elObj.magma > elObj.max * 0.75 ? elObj.max * 0.75 : elObj.magma;
-                    elObj.magma = elObj.magma < 0 ? 0: elObj.magma;
+                    if(section.per < 0.40 || section.per > 0.60){
+                        elObj.magma = elObj.magma + section.magmatism * deltaYears * gd.maxElevationPerYear;
+                        elObj.magma = elObj.magma - section.erosion * deltaYears * gd.maxErosionPerYear;
+                        elObj.magma = elObj.magma > elObj.max * 0.75 ? elObj.max * 0.75 : elObj.magma;
+                        elObj.magma = elObj.magma < 0 ? 0: elObj.magma;
+                    }
 
                     section.elevation.total = section.elevation.base + section.elevation.magma;
                 }
