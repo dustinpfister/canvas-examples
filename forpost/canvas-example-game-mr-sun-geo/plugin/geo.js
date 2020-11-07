@@ -47,7 +47,9 @@ gameMod.load((function () {
                     section.magmatism = section.massPer * (section.groundTemp / game.tempData.globalMaxGroundTemp);
                     // elevation
                     section.elevation = section.elevation + section.magmatism * deltaYears * gd.maxElevationPerYear;
+                    section.elevation = section.elevation - section.erosion * deltaYears * gd.maxErosionPerYear;
                     section.elevation = section.elevation > gd.maxElevation ? gd.maxElevation: section.elevation;
+                    section.elevation = section.elevation < 0 ? 0: section.elevation;
                 }
                 i += 1;
             }
@@ -59,7 +61,8 @@ gameMod.load((function () {
                 game.geoData = {
                     totalMass: 0,
                     maxElevation: 1000,
-                    maxElevationPerYear: 10
+                    maxElevationPerYear: 10,
+                    maxErosionPerYear: 5
                 };
                 var gd = game.geoData;
 
@@ -67,6 +70,7 @@ gameMod.load((function () {
                     section.totalMass = 0;
                     section.massPer = 0;
                     section.magmatism = 0;
+                    section.erosion = 0.5;
                     section.elevation = 0;
                 });
 
