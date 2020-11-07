@@ -31,7 +31,7 @@ gameMod.load((function () {
             }
         };
         // set massPer prop for all sections
-        var setMassPerValues = function (game) {
+        var setMassPerValues = function (game, deltaYears) {
             var gd = game.geoData,
             i = 0,
             len = game.sections.length,
@@ -45,7 +45,9 @@ gameMod.load((function () {
                     section.massPer = section.totalMass / gd.totalMass;
                     // set magmatism
                     section.magmatism = section.massPer * (section.groundTemp / game.tempData.globalMaxGroundTemp);
-                    section.elevation = section.magmatism * gd.maxElevation;
+                    // elevation
+                    section.elevation = section.magmatism * deltaYears * gd.maxElevationPerYear;
+                    section.elevation = section.elevation > gd.maxElevationPerYear ? gd.maxElevationPerYear: section.elevation;
                 }
                 i += 1;
             }
@@ -56,7 +58,8 @@ gameMod.load((function () {
             create: function (game, opt) {
                 game.geoData = {
                     totalMass: 0,
-                    maxElevation: 1000
+                    maxElevation: 1000,
+                    maxElevationPerYear: 10
                 };
                 var gd = game.geoData;
 
@@ -70,7 +73,7 @@ gameMod.load((function () {
             },
             onDeltaYear: function (game, deltaYears) {
                 setTotalMass(game);
-                setMassPerValues(game);
+                setMassPerValues(game, deltaYears);
             }
         };
 
