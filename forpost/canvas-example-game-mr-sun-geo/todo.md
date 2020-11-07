@@ -19,5 +19,5 @@
 * (done) geo.js will create, and update a game.geoData.totalMass property
 * (done) have a section.totalMass
 * (done) a section.massPer value can be set by comparing a totalMass for a section to that of game.geoData.totalMass
-* display new section.totalMass, and section.massPer values for each section
+* (done) display new section.totalMass, and section.massPer values for each section
 * create a pkg-0-0-0.html
