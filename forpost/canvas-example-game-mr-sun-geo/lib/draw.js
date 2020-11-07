@@ -33,15 +33,17 @@ var draw = (function () {
     var drawSectionElevationMark = function(sm, section){
 
         var a = Math.PI * 2 * (section.i / sm.game.sections.length) + Math.PI;
-        var el = section.elevation / sm.game.geoData.maxElevation * 100;
-        var x = section.x + Math.cos(a) * el;
-        var y = section.y + Math.sin(a) * el;
+        var el = section.radius + section.elevation / sm.game.geoData.maxElevation * 32;
+        var sx = section.x + Math.cos(a) * section.radius;
+        var sy = section.y + Math.sin(a) * section.radius;
+        var ex = section.x + Math.cos(a) * el;
+        var ey = section.y + Math.sin(a) * el;
 
         ctx.strokeStyle = 'red';
         ctx.lineHeight = 3;
         ctx.beginPath();
-        ctx.moveTo(section.x, section.y);
-        ctx.lineTo(x,y);
+        ctx.moveTo(sx, sy);
+        ctx.lineTo(ex,ey);
         ctx.stroke();
 
     };
