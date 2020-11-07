@@ -31,30 +31,36 @@ var draw = (function () {
     };
     // draw sections
     var drawSectionElevationMark = function(sm, section){
-
+        var ctx = sm.ctx;
         var a = Math.PI * 2 * (section.i / sm.game.sections.length) + Math.PI;
         var el = section.radius + section.elevation / sm.game.geoData.maxElevation * 32;
         var sx = section.x + Math.cos(a) * section.radius;
         var sy = section.y + Math.sin(a) * section.radius;
         var ex = section.x + Math.cos(a) * el;
         var ey = section.y + Math.sin(a) * el;
-
         ctx.strokeStyle = 'red';
         ctx.lineHeight = 3;
         ctx.beginPath();
         ctx.moveTo(sx, sy);
         ctx.lineTo(ex,ey);
         ctx.stroke();
-
+    };
+    var drawSectionCircle = function(sm, section){
+        var ctx = sm.ctx;
+        //var b = 50 + Math.round(section.per * 128);
+        ctx.fillStyle = 'blue';
+        if(section.elevation > sm.game.geoData.seaLevel){
+            ctx.fillStyle = 'brown';
+        }
+        ctx.beginPath();
+        ctx.arc(section.x, section.y, section.radius, 0, Math.PI * 2);
+        ctx.fill();
     };
     api.sections = function (sm) {
         var ctx = sm.ctx;
         sm.game.sections.forEach(function (section) {
-            var b = 50 + Math.round(section.per * 128);
-            ctx.fillStyle = 'rgb(0,0,' + b + ')';
-            ctx.beginPath();
-            ctx.arc(section.x, section.y, section.radius, 0, Math.PI * 2);
-            ctx.fill();
+
+            drawSectionCircle(sm, section);
 
             drawSectionElevationMark(sm, section);
 

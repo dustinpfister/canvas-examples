@@ -12,7 +12,9 @@
 * (done) section.magmatism can be used with section.massPer and geoData.maxElevation to set section.elevation (for now)
 * (done) in draw.js display elevation by way of just drawing a line between the section, and another line for maxElevation.
 * (done) have magmatism be a value that will step elevation rather than set it
-* have an section.erosion propery
+* (done) have an section.erosion propery
+* have a geoData.seaLevel property
+* draw sections blue if they are below sea level, and brown if they are above for now
 * create a pkg-0-1-0.html
 
 ## 0.0.0 - start a geo.js plug-in

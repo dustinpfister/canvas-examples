@@ -62,7 +62,8 @@ gameMod.load((function () {
                     totalMass: 0,
                     maxElevation: 1000,
                     maxElevationPerYear: 10,
-                    maxErosionPerYear: 5
+                    maxErosionPerYear: 1,
+                    seaLevel: 0
                 };
                 var gd = game.geoData;
 
