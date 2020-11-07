@@ -23,9 +23,12 @@ var draw = (function () {
         ctx.font = '15px arial';
         ctx.fillText('section ' + section.i, 10, 10);
         ctx.font = '10px arial';
-        ctx.fillText('groundTemp: ' + section.groundTemp.toFixed(2), 10, 30);
-        ctx.fillText('temp: ' + section.temp.toFixed(2), 10, 40);
-        drawMineralList(ctx, section, 50, 10);
+
+        ctx.fillText('temp: ' + section.temp.toFixed(2), 10, 30);
+        ctx.fillText('groundTemp: ' + section.groundTemp.toFixed(2), 10, 40);
+        ctx.fillText('magmatism: ' + section.magmatism.toFixed(2), 10, 50);
+
+        drawMineralList(ctx, section, 70, 10);
     };
     // draw sections
     api.sections = function (sm) {

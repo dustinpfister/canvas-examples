@@ -41,7 +41,10 @@ gameMod.load((function () {
                 section = game.sections[i];
                 section.massPer = 0;
                 if (section.totalMass > 0) {
+                    // set mass percentage
                     section.massPer = section.totalMass / gd.totalMass;
+                    // set magmatism
+                    section.magmatism = section.massPer * (section.groundTemp / game.tempData.globalMaxGroundTemp);
                 }
                 i += 1;
             }
@@ -53,6 +56,14 @@ gameMod.load((function () {
                 game.geoData = {
                     totalMass: 0
                 };
+                var gd = game.geoData;
+
+                game.sections.forEach(function(section){
+                    section.totalMass = 0;
+                    section.massPer = 0;
+                    section.magmatism = 0;
+                });
+
             },
             onDeltaYear: function (game, deltaYears) {
                 setTotalMass(game);
