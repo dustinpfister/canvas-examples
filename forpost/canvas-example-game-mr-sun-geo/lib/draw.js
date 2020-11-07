@@ -23,16 +23,28 @@ var draw = (function () {
         ctx.font = '15px arial';
         ctx.fillText('section ' + section.i, 10, 10);
         ctx.font = '10px arial';
-
         ctx.fillText('temp: ' + section.temp.toFixed(2), 10, 30);
         ctx.fillText('groundTemp: ' + section.groundTemp.toFixed(2), 10, 40);
         ctx.fillText('magmatism: ' + section.magmatism.toFixed(2), 10, 50);
-
         ctx.fillText('elevation: ' + section.elevation, 10, 70);
-
         drawMineralList(ctx, section, 90, 10);
     };
     // draw sections
+    var drawSectionElevationMark = function(sm, section){
+
+        var a = Math.PI * 2 * (section.i / sm.game.sections.length) + Math.PI;
+        var el = section.elevation / sm.game.geoData.maxElevation * 100;
+        var x = section.x + Math.cos(a) * el;
+        var y = section.y + Math.sin(a) * el;
+
+        ctx.strokeStyle = 'red';
+        ctx.lineHeight = 3;
+        ctx.beginPath();
+        ctx.moveTo(section.x, section.y);
+        ctx.lineTo(x,y);
+        ctx.stroke();
+
+    };
     api.sections = function (sm) {
         var ctx = sm.ctx;
         sm.game.sections.forEach(function (section) {
@@ -41,6 +53,9 @@ var draw = (function () {
             ctx.beginPath();
             ctx.arc(section.x, section.y, section.radius, 0, Math.PI * 2);
             ctx.fill();
+
+            drawSectionElevationMark(sm, section);
+
             ctx.fillStyle = 'white';
             ctx.textAlign = 'center';
             ctx.textBaseline = 'middle';
