@@ -25,7 +25,7 @@ gameMod.load({
             sun.toAlivePer = sun.deadYears / sun.spawnRate;
             if(sun.toAlivePer >= 1){
                 sun.state = 'alive';
-                sun.lifeSpan = 1000;
+                sun.lifeSpan = 10000;
             }
         }
         if(sun.state === 'alive'){
