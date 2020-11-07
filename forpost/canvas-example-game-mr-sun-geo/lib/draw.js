@@ -132,7 +132,8 @@ var draw = (function () {
         ctx.textAlign = 'left';
         ctx.textBaseline = 'top';
         ctx.font = '10px courier';
-        ctx.fillText('year: ' + sm.game.year, 3, 3);
+        ctx.fillText('year: ' + sm.game.year, 3, 5);
+        ctx.fillText('totalMass: ' + sm.game.geoData.totalMass, 3, 15);
     };
     // draw version number
     api.ver = function (sm) {
