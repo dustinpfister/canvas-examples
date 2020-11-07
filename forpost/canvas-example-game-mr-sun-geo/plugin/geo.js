@@ -45,6 +45,7 @@ gameMod.load((function () {
                     section.massPer = section.totalMass / gd.totalMass;
                     // set magmatism
                     section.magmatism = section.massPer * (section.groundTemp / game.tempData.globalMaxGroundTemp);
+                    section.elevation = section.magmatism * gd.maxElevation;
                 }
                 i += 1;
             }
@@ -54,7 +55,8 @@ gameMod.load((function () {
             callPriority: '2',
             create: function (game, opt) {
                 game.geoData = {
-                    totalMass: 0
+                    totalMass: 0,
+                    maxElevation: 1000
                 };
                 var gd = game.geoData;
 
@@ -62,6 +64,7 @@ gameMod.load((function () {
                     section.totalMass = 0;
                     section.massPer = 0;
                     section.magmatism = 0;
+                    section.elevation = 0;
                 });
 
             },

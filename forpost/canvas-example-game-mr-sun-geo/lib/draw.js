@@ -28,7 +28,9 @@ var draw = (function () {
         ctx.fillText('groundTemp: ' + section.groundTemp.toFixed(2), 10, 40);
         ctx.fillText('magmatism: ' + section.magmatism.toFixed(2), 10, 50);
 
-        drawMineralList(ctx, section, 70, 10);
+        ctx.fillText('elevation: ' + section.elevation, 10, 70);
+
+        drawMineralList(ctx, section, 90, 10);
     };
     // draw sections
     api.sections = function (sm) {

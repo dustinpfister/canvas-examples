@@ -7,9 +7,9 @@
 * start a hydrosphere.js plug-in
 
 ## 0.1.0 - Magmatism
-* the temp of a section can be used along with section.totalMass to find a section.magmatism value
-* have a geoData.maxElevation property
-* section.magmatism can be used with section.massPer and geoData.maxElevation to set section.elevation
+* (done) the temp of a section can be used along with section.totalMass to find a section.magmatism value
+* (done) have a geoData.maxElevation property
+* (done) section.magmatism can be used with section.massPer and geoData.maxElevation to set section.elevation
 * in draw.js display elevation by way of just drawing a line between the section, and another line for maxElevation.
 * create a pkg-0-1-0.html
 
