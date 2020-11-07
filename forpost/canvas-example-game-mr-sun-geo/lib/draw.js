@@ -34,10 +34,18 @@ var draw = (function () {
         var ctx = sm.ctx;
         var a = Math.PI * 2 * (section.i / sm.game.sections.length) + Math.PI;
         var el = section.radius + section.elevation / sm.game.geoData.maxElevation * 32;
+/*
         var sx = section.x + Math.cos(a) * section.radius;
         var sy = section.y + Math.sin(a) * section.radius;
         var ex = section.x + Math.cos(a) * el;
         var ey = section.y + Math.sin(a) * el;
+*/
+        var cx = section.x + Math.cos(a) * el;
+        var cy = section.y + Math.sin(a) * el;
+        var sx = cx + Math.cos(a - Math.PI / 2) * 10;
+        var sy = cy + Math.sin(a - Math.PI / 2) * 10;
+        var ex = cx + Math.cos(a + Math.PI / 2) * 10;
+        var ey = cy + Math.sin(a + Math.PI / 2) * 10;
         ctx.strokeStyle = 'red';
         ctx.lineWidth = 3;
         ctx.beginPath();

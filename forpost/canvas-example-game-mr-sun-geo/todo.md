@@ -16,6 +16,8 @@
 * (done) have a geoData.seaLevel property
 * (done) draw sections blue if they are below sea level, and brown if they are above for now
 * (done) draw white rings around sections and set thinkness by section.per
+* elevation lines should be accross
+* elevation growth rate should stay stable if the sun is more or less in the center
 * create a pkg-0-1-0.html
 
 ## 0.0.0 - start a geo.js plug-in
