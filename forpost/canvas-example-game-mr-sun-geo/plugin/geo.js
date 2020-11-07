@@ -31,7 +31,7 @@ gameMod.load((function () {
             }
         };
         // set massPer prop for all sections
-        var setMassPerValues = function (game, deltaYears) {
+        var updateSectionValues = function (game, deltaYears) {
             var gd = game.geoData,
             i = 0,
             len = game.sections.length,
@@ -73,7 +73,7 @@ gameMod.load((function () {
             },
             onDeltaYear: function (game, deltaYears) {
                 setTotalMass(game);
-                setMassPerValues(game, deltaYears);
+                updateSectionValues(game, deltaYears);
             }
         };
 
