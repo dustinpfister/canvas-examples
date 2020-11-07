@@ -19,7 +19,7 @@
 * (done) elevation lines should be accross
 * (done) section.massPer alone should be part of elevation
 * (done) elevation growth rate should stay stable if the sun is more or less in the center
-* create a pkg-0-1-0.html
+* (done) create a pkg-0-1-0.html
 
 ## 0.0.0 - start a geo.js plug-in
 * (done) start a geo.js plug-in that will be used to define the current Geology of all world sections
