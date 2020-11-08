@@ -1,6 +1,11 @@
 # canvas-example-mr-sun-geo
 
-## 0.4.0 - Set Temp Range 0-1000, Sun Level, and Ice in Hydro.js
+## 0.x.0 - grid_view.js plug-in and state
+* start an view_grid.js plug-in that will be used as a way to display the state of the sections by way of a grid
+* the view_grid.js plug-in just adds a way to create the state of the grid
+* create draw.js methods thatwill make use of view_grid.js
+
+## 0.4.0 - Set Temp Range 0-1000, Sun Level, and Ice
 * have a set temp Range of 0-1000 for any section temp value, 0 is the absolute min, and 1000 the absolute max
 * do away with system that is worked out for 'TempLevel', but start a simular system for 'SunLevel' in sun.js
 * a level 1 Sun will have a temp of about 10, where a level 100 sun will have a temp of 1000
@@ -8,16 +13,18 @@
 * water will not transfer from or to another section when it is to cold (0 to 50).
 * make a pkg-0-4-0.html
 
-## 0.3.0 - atmosphere.js, and basic water cycle in hydo.js
-* start a atmo.js plug-in that will create an game.atmoData object
-* create section.atmo objects for each section
-* a section.atmo.water.amount will store water for the atmosphere section
+## 0.3.0 - atmo.js started, and basic water cycle
+* (done) start a atmo.js plug-in that will create an game.atmoData object
+* (done) create section.atmo objects for each section
+* (done) a section.atmo.water.amount will store water for the atmosphere section
 * water will transfer from one section to another
 * in hydro.js have a section.water.evaporation property that will be affeceted by section.temp
-* in hydro.js water in a section will evaporate by section.water.evaporation rate and add to game.atmoData.water.amount
+* in atmo.js water in a section will evaporate by section.water.evaporation rate and add to game.atmoData.water.amount
+* water can transfer from one section to another in the armosphere
+* water can rain back down to a section
 * create a pkg-0-3-0.html
 
-## 0.2.0 - start hydrosphere.js, and water transfer
+## 0.2.0 - hydro.js started, and water transfer
 * (done) start a hydro.js plug-in
 * (done) create a game.hydoData object
 * (done) have a game.hydoData.water object that will hold values like water.total
