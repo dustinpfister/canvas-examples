@@ -27,7 +27,8 @@ gameMod.load((function () {
                 game.sections.forEach(function(section){
                     section.atmo = {
                         water: {
-                            amount: 0
+                            amount: 0,
+                            per: 0
                         }
                     };
                 });

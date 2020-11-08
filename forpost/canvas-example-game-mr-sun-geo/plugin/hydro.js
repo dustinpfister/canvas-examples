@@ -40,6 +40,10 @@ gameMod.load((function () {
                 // set evaporation
                 section.water.evaporation = section.temp / 100;
                 section.water.evaporation = section.water.evaporation > 1 ? 1 : section.water.evaporation;
+
+                // water per
+                section.water.per = section.water.amount / hd.water.total;
+
                 i += 1;
             }
         };

@@ -87,7 +87,7 @@ var draw = (function () {
             //ctx.fillText(w.per.toFixed(2), section.x, section.y + 5);
 
             ctx.fillText(w.evaporation.toFixed(2), section.x, section.y - 5);
-            //ctx.fillText(section.massPer.toFixed(2), section.x, section.y + 5);
+            ctx.fillText(w.per.toFixed(2), section.x, section.y + 5);
         });
     };
 
