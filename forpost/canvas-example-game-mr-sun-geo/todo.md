@@ -11,8 +11,8 @@
 * (done) create a water object for each section that will include section.water.amount, section.water.per
 * (done) have a hard coded starting value for water.total (for now)
 * (done) in the create method evenly divide the total amount of water over all sections for section.water.amount
-* in the onDeltaYear method transfer water from higher elevations to lower onces by a rate that is effected by elevation
-* display water.amount, and water.per for each section
+* (done) in the onDeltaYear method transfer water from higher elevations to lower onces
+* (done) display water.amount, and water.per for each section
 * create a pkg-0-2-0.html
 
 ## 0.1.0 - Magmatism
