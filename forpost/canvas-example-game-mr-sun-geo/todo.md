@@ -1,12 +1,18 @@
 # canvas-example-mr-sun-geo
 
-## 0.3.0 - atmosphere.js, and volcanic action in geo.js
+## 0.3.0 - atmosphere.js, and evaporation in hydo.js
 * start a atmo.js plug-in
+* in hydo.js have a section.water.evaporation properyy that will be affeceted by section.temp
 
-## 0.2.0 - hydrosphere.js and starting Erosion in geo.js
+## 0.2.0 - start hydrosphere.js, and water transfer
 * start a hydro.js plug-in
 * create a game.hydoData object
-* have a game.hydoData.totalWater propery
+* have a game.hydoData.water object that will hold values like water.total
+* create a water object for each section that will include section.water.amount, section.water.per
+* have a hard coded starting value for water.total (for now)
+* in the create method evenly divide the total amount of water over all sections for section.water.amount
+* in the onDeltaYear method transfer water from higher elevations to lower onces
+* display water.amount, and water.per for each section
 * create a pkg-0-2-0.html
 
 ## 0.1.0 - Magmatism
