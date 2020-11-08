@@ -1,8 +1,21 @@
 # canvas-example-mr-sun-geo
 
-## 0.3.0 - atmosphere.js, and evaporation in hydo.js
-* start a atmo.js plug-in
-* in hydo.js have a section.water.evaporation properyy that will be affeceted by section.temp
+## 0.4.0 - Set Temp Range 0-1000, Sun Level, and Ice in Hydro.js
+* have a set temp Range of 0-1000 for any section temp value, 0 is the absolute min, and 1000 the absolute max
+* do away with system that is worked out for 'TempLevel', but start a simular system for 'SunLevel' in sun.js
+* a level 1 Sun will have a temp of about 10, where a level 100 sun will have a temp of 1000
+* in hydro.js if a section.temp is between 0 and 50 then all water will be ice
+* water will not transfer from or to another section when it is to cold (0 to 50).
+* make a pkg-0-4-0.html
+
+## 0.3.0 - atmosphere.js, and basic water cycle in hydo.js
+* start a atmo.js plug-in that will create an game.atmoData object
+* create section.atmo objects for each section
+* a section.atmo.water.amount will store water for the atmosphere section
+* water will transfer from one section to another
+* in hydro.js have a section.water.evaporation property that will be affeceted by section.temp
+* in hydro.js water in a section will evaporate by section.water.evaporation rate and add to game.atmoData.water.amount
+* create a pkg-0-3-0.html
 
 ## 0.2.0 - start hydrosphere.js, and water transfer
 * (done) start a hydro.js plug-in
@@ -13,7 +26,7 @@
 * (done) in the create method evenly divide the total amount of water over all sections for section.water.amount
 * (done) in the onDeltaYear method transfer water from higher elevations to lower onces
 * (done) display water.amount, and water.per for each section
-* create a pkg-0-2-0.html
+* (done) create a pkg-0-2-0.html
 
 ## 0.1.0 - Magmatism
 * (done) the temp of a section can be used along with section.totalMass to find a section.magmatism value
