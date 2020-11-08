@@ -11,6 +11,16 @@ gameMod.load((function () {
                 i += 1;
             }
         };
+        // distribute total water to world sections
+        var distributeWater = function(game){
+            var hd = game.hydroData;
+            var perSection = Math.floor(hd.water.total / game.sections.length),
+            oddWater = hd.water.total % game.sections.length;
+            game.sections.forEach(function(section){
+                section.water.amount = perSection;
+            });
+            game.sections[0].water.amount += oddWater;
+        };
         // plugObj for hydro.js
         return {
             name: 'hydro',
@@ -30,6 +40,7 @@ gameMod.load((function () {
                         per: 0
                     };
                 });
+                distributeWater(game);
             },
             onDeltaYear: function (game, deltaYears) {
             }
