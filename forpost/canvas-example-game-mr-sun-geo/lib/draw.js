@@ -81,13 +81,12 @@ var draw = (function () {
             ctx.textAlign = 'center';
             ctx.textBaseline = 'middle';
             ctx.font = '8px arial';
-            //ctx.fillText(section.per.toFixed(2), section.x, section.y-5);
-            //ctx.fillText(section.groundTemp.toFixed(2) + ':' + section.temp.toFixed(2), section.x, section.y+5);
-            //var min = section.minerals;
-            //ctx.fillText(min.copper + ':' + min.gold, section.x, section.y-5);
-            //ctx.fillText(section.temp.toFixed(2), section.x, section.y + 5);
-            ctx.fillText(section.totalMass, section.x, section.y - 5);
-            ctx.fillText(section.massPer.toFixed(2), section.x, section.y + 5);
+
+            //ctx.fillText(section.totalMass, section.x, section.y - 5);
+            //ctx.fillText(section.massPer.toFixed(2), section.x, section.y + 5);
+            var w = section.water;
+            ctx.fillText(w.amount, section.x, section.y - 5);
+            ctx.fillText(w.per.toFixed(2), section.x, section.y + 5);
         });
     };
 
