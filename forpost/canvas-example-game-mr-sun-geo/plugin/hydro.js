@@ -35,7 +35,11 @@ gameMod.load((function () {
             section;
             while (i < len) {
                 section = game.sections[i];
+                // transfer water by elevation
                 transferElevation(game, section);
+                // set evaporation
+                section.water.evaporation = section.temp / 100;
+                section.water.evaporation = section.water.evaporation > 1 ? 1 : section.water.evaporation;
                 i += 1;
             }
         };
@@ -55,6 +59,7 @@ gameMod.load((function () {
                 game.sections.forEach(function(section){
                     section.water = {
                         amount: 0,
+                        evaporation: 0,
                         per: 0
                     };
                 });

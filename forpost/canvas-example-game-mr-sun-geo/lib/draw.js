@@ -82,11 +82,12 @@ var draw = (function () {
             ctx.textBaseline = 'middle';
             ctx.font = '8px arial';
 
-            //ctx.fillText(section.totalMass, section.x, section.y - 5);
-            //ctx.fillText(section.massPer.toFixed(2), section.x, section.y + 5);
             var w = section.water;
-            ctx.fillText(w.amount, section.x, section.y - 5);
-            ctx.fillText(w.per.toFixed(2), section.x, section.y + 5);
+            //ctx.fillText(w.amount, section.x, section.y - 5);
+            //ctx.fillText(w.per.toFixed(2), section.x, section.y + 5);
+
+            ctx.fillText(w.evaporation.toFixed(2), section.x, section.y - 5);
+            //ctx.fillText(section.massPer.toFixed(2), section.x, section.y + 5);
         });
     };
 
