@@ -16,7 +16,9 @@ gameMod.load((function () {
              var len = game.sections.length;
              var n1 = game.sections[utils.mod(section.i - 1, len)];
              var n2 = game.sections[utils.mod(section.i + 1, len)];
-             if(section.elevation.total > n1.elevation.total && section.water.amount >= 1){
+
+
+             if(section.elevation.total + section.water.amount > (n1.elevation.total + n1.water.amount) && section.water.amount >= 1){
                  section.water.amount -= 1;
                  n1.water.amount += 1;
              }
@@ -24,6 +26,7 @@ gameMod.load((function () {
                  section.water.amount -= 1;
                  n2.water.amount += 1;
              }
+
         };
         var updateSectionValues = function (game, deltaYears) {
             var hd = game.hydroData,
