@@ -5,9 +5,9 @@
 * in hydo.js have a section.water.evaporation properyy that will be affeceted by section.temp
 
 ## 0.2.0 - start hydrosphere.js, and water transfer
-* start a hydro.js plug-in
-* create a game.hydoData object
-* have a game.hydoData.water object that will hold values like water.total
+* (done) start a hydro.js plug-in
+* (done) create a game.hydoData object
+* (done) have a game.hydoData.water object that will hold values like water.total
 * create a water object for each section that will include section.water.amount, section.water.per
 * have a hard coded starting value for water.total (for now)
 * in the create method evenly divide the total amount of water over all sections for section.water.amount
