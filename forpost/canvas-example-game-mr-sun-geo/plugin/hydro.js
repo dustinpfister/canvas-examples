@@ -22,7 +22,7 @@ gameMod.load((function () {
                  section.water.amount -= 1;
                  n1.water.amount += 1;
              }
-             if(section.elevation.total > n2.elevation.total && section.water.amount >= 1){
+             if(section.elevation.total + section.water.amount > (n2.elevation.total + n2.water.amount) && section.water.amount >= 1){
                  section.water.amount -= 1;
                  n2.water.amount += 1;
              }
