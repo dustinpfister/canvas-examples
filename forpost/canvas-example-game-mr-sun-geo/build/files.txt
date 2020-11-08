@@ -6,3 +6,4 @@
 ../plugin/fusion.js
 ../plugin/geo.js
 ../plugin/hydro.js
+../plugin/atmo.js
