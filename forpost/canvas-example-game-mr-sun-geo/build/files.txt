@@ -5,3 +5,4 @@
 ../plugin/temp.js
 ../plugin/fusion.js
 ../plugin/geo.js
+../plugin/hydro.js
