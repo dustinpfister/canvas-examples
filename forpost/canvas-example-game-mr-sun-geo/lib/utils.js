@@ -1,5 +1,9 @@
 var utils = {};
 
+utils.mod = function(x, m) {
+    return (x % m + m) % m;
+};
+
 utils.getCanvasRelative = function (e) {
     var canvas = e.target,
     bx = canvas.getBoundingClientRect();

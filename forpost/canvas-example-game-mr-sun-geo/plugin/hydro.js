@@ -1,16 +1,6 @@
 // hydro.js plug-in
 gameMod.load((function () {
         
-        var updateSectionValues = function (game, deltaYears) {
-            var hd = game.hydroData,
-            i = 0,
-            len = game.sections.length,
-            section;
-            while (i < len) {
-                section = game.sections[i];
-                i += 1;
-            }
-        };
         // distribute total water to world sections
         var distributeWater = function(game){
             var hd = game.hydroData;
@@ -20,6 +10,31 @@ gameMod.load((function () {
                 section.water.amount = perSection;
             });
             game.sections[0].water.amount += oddWater;
+        };
+        // transfer water from one section to another based on elevation
+        var transferElevation = function(game, section){
+             var len = game.sections.length;
+             var n1 = game.sections[utils.mod(section.i - 1, len)];
+             var n2 = game.sections[utils.mod(section.i + 1, len)];
+             if(section.elevation.total > n1.elevation.total && section.water.amount >= 1){
+                 section.water.amount -= 1;
+                 n1.water.amount += 1;
+             }
+             if(section.elevation.total > n2.elevation.total && section.water.amount >= 1){
+                 section.water.amount -= 1;
+                 n2.water.amount += 1;
+             }
+        };
+        var updateSectionValues = function (game, deltaYears) {
+            var hd = game.hydroData,
+            i = 0,
+            len = game.sections.length,
+            section;
+            while (i < len) {
+                section = game.sections[i];
+                transferElevation(game, section);
+                i += 1;
+            }
         };
         // plugObj for hydro.js
         return {
@@ -43,6 +58,7 @@ gameMod.load((function () {
                 distributeWater(game);
             },
             onDeltaYear: function (game, deltaYears) {
+                updateSectionValues(game, deltaYears);
             }
         };
 

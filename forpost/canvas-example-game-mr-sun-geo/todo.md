@@ -8,10 +8,10 @@
 * (done) start a hydro.js plug-in
 * (done) create a game.hydoData object
 * (done) have a game.hydoData.water object that will hold values like water.total
-* create a water object for each section that will include section.water.amount, section.water.per
-* have a hard coded starting value for water.total (for now)
-* in the create method evenly divide the total amount of water over all sections for section.water.amount
-* in the onDeltaYear method transfer water from higher elevations to lower onces
+* (done) create a water object for each section that will include section.water.amount, section.water.per
+* (done) have a hard coded starting value for water.total (for now)
+* (done) in the create method evenly divide the total amount of water over all sections for section.water.amount
+* in the onDeltaYear method transfer water from higher elevations to lower onces by a rate that is effected by elevation
 * display water.amount, and water.per for each section
 * create a pkg-0-2-0.html
 
