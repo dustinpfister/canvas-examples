@@ -6,10 +6,10 @@ canvas.width = 320;
 canvas.height = 240;
 ctx.translate(0.5, 0.5);
 
-var changeState = function(sm, stateKey, opt){
+var changeState = function (sm, stateKey, opt) {
     opt = opt || {};
     var newState = sm.states[stateKey];
-    if(newState.start){
+    if (newState.start) {
         newState.start(sm, opt);
     }
     sm.currentState = stateKey;
@@ -17,14 +17,15 @@ var changeState = function(sm, stateKey, opt){
 
 var states = {
     game: {
-        init: function(sm){
+        init: function (sm) {
             // setup sun object
             sm.game = gameMod.create({
-                canvas: sm.canvas,
-                sectionCount: 19,
-                worldRadius: 100,
-                yearRate: 0.25
-            });
+                    canvas: sm.canvas,
+                    sectionCount: 19,
+                    worldRadius: 100,
+                    yearRate: 0.25,
+                    year: 0
+                });
         },
         // for each update tick
         update: function (sm, secs) {
@@ -39,68 +40,66 @@ var states = {
         pointerStart: function (sm, pos, e) {},
         pointerMove: function (sm, pos, e) {
             var sun = sm.game.sun;
-            if(sm.input.pointerDown){
+            if (sm.input.pointerDown) {
                 gameMod.moveSun(sm.game, pos);
             }
         },
         pointerEnd: function (sm, pos) {
-             if(sm.input.d < 3){
-                 // if section click
-                 var section = gameMod.getSectionByPos(sm.game, pos.x, pos.y);
-                 if(section){
-                     changeState(sm, 'observe_section', {
-                         section: section
-                     });
-                 }
-                 // if sun click
-                 if(utils.distance(sm.game.sun.x, sm.game.sun.y, pos.x, pos.y) <= sm.game.sun.radius){
-                     changeState(sm, 'observe_sun', {});
-                 }
-             }
+            if (sm.input.d < 3) {
+                // if section click
+                var section = gameMod.getSectionByPos(sm.game, pos.x, pos.y);
+                if (section) {
+                    changeState(sm, 'observe_section', {
+                        section: section
+                    });
+                }
+                // if sun click
+                if (utils.distance(sm.game.sun.x, sm.game.sun.y, pos.x, pos.y) <= sm.game.sun.radius) {
+                    changeState(sm, 'observe_sun', {});
+                }
+            }
         }
     },
     observe_section: {
         data: {
-            section:{}
+            section: {}
         },
-        start: function(sm, opt){
+        start: function (sm, opt) {
             sm.states['observe_section'].data.section = opt.section;
         },
-        update: function(sm, secs){
+        update: function (sm, secs) {
             gameMod.update(sm.game, secs);
             draw.back(sm);
             draw.sectionData(sm, sm.states['observe_section'].data.section);
         },
         pointerEnd: function (sm) {
-             changeState(sm, 'game', {});
+            changeState(sm, 'game', {});
         }
     },
     observe_sun: {
         data: {
             //sunGrid: []
         },
-        start: function(sm, opt){
-            
-        },
-        update: function(sm, secs){
+        start: function (sm, opt) {},
+        update: function (sm, secs) {
             var state = sm.states['observe_sun'],
             //td = sm.game.sun.tempData;
             td = sm.game.tempData;
             gameMod.update(sm.game, secs);
             sm.game.sun.sunGrid = utils.createLogPerCollection({
-               len: td.len,
-               base: td.base,
-               max: td.max
-            });
+                    len: td.len,
+                    base: td.base,
+                    max: td.max
+                });
             draw.back(sm);
             draw.sunData(sm, sm.game.sun);
         },
         pointerEnd: function (sm) {
-             changeState(sm, 'game', {});
+            changeState(sm, 'game', {});
         }
     }
 };
- 
+
 var sm = {
     ver: '0.3.0',
     canvas: canvas,
@@ -110,10 +109,10 @@ var sm = {
     states: states,
     input: {
         pointerDown: false,
-        d:0,
-        startPos:{
-             x: 0,
-             y: 0
+        d: 0,
+        startPos: {
+            x: 0,
+            y: 0
         },
         pos: {
             x: 0,
@@ -121,7 +120,7 @@ var sm = {
         }
     }
 };
- 
+
 // Pointer Events
 var pointerHanders = {
     start: function (sm, pos, e) {
@@ -133,7 +132,7 @@ var pointerHanders = {
         };
         sm.input.d = 0;
         var method = states[sm.currentState].pointerStart;
-        if(method){
+        if (method) {
             method(sm, pos, e);
         }
     },
@@ -141,14 +140,14 @@ var pointerHanders = {
         var method = states[sm.currentState].pointerMove,
         startPos = sm.input.startPos;
         sm.input.d = utils.distance(startPos.x, startPos.y, pos.x, pos.y);
-        if(method){
+        if (method) {
             method(sm, pos, e);
         }
     },
     end: function (sm, pos, e) {
         sm.input.pointerDown = false;
         var method = states[sm.currentState].pointerEnd;
-        if(method){
+        if (method) {
             method(sm, pos, e);
         }
     }
@@ -161,7 +160,7 @@ var createPointerHandler = function (sm, type) {
         pointerHanders[type](sm, pos, e);
     };
 };
- 
+
 // attach for mouse and touch
 canvas.addEventListener('mousedown', createPointerHandler(sm, 'start'));
 canvas.addEventListener('mousemove', createPointerHandler(sm, 'move'));
@@ -169,10 +168,10 @@ canvas.addEventListener('mouseup', createPointerHandler(sm, 'end'));
 canvas.addEventListener('touchstart', createPointerHandler(sm, 'start'));
 canvas.addEventListener('touchmove', createPointerHandler(sm, 'move'));
 canvas.addEventListener('touchend', createPointerHandler(sm, 'end'));
- 
+
 // init current state
 states[sm.currentState].init(sm);
- 
+
 // loop
 var lt = new Date(),
 FPS_target = 30;
