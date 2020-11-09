@@ -65,18 +65,21 @@ var draw = (function () {
         ctx.globalAlpha = 1;
     };
     var drawAtmoWaterCircle = function (sm, section) {
-
         var ctx = sm.ctx,
         a = Math.PI * 2 * (section.i / sm.game.sections.length) + Math.PI,
         x = section.x + Math.cos(a) * section.radius * 2,
         y = section.y + Math.sin(a) * section.radius * 2;
-        ctx.fillStyle = 'white';
-        ctx.strokeStyle = 'white';
+
+        ctx.strokeStyle = 'rgba(255,255,255,0.3)';
         ctx.lineWidth = 1;
         ctx.beginPath();
         ctx.arc(x, y, section.radius / 4, 0, Math.PI * 2);
         ctx.stroke();
 
+        ctx.fillStyle = 'white';
+        ctx.beginPath();
+        ctx.arc(x, y, section.radius / 4 * section.atmo.water.per, 0, Math.PI * 2);
+        ctx.fill();
     };
     api.sections = function (sm) {
         var ctx = sm.ctx;
