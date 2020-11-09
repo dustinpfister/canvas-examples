@@ -19,7 +19,7 @@
 * (done) a section.atmo.water.amount will store water for the atmosphere section
 * (done) in hydro.js have a section.water.evaporation property that will be affected by section.temp
 * (done) in atmo.js water in a section will evaporate by section.water.evaporation rate and add to game.atmoData.water.amount
-* water can transfer from one section to another in the atmosphere
+* (done) water can transfer from one section to another in the atmosphere
 * water can rain back down to a section
 * set water.per values for section.water, and section.atmo
 * in draw.js have white circles above each section as a way to know how much water there is in atmo
