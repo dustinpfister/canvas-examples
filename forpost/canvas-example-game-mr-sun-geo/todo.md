@@ -7,7 +7,7 @@
 
 ## 0.4.0 - Set Temp Range 0-1000, Sun Level, and Ice
 * have a set temp Range of 0-1000 for any section temp value, 0 is the absolute min, and 1000 the absolute max
-* do away with system that is worked out for 'TempLevel', but start a simular system for 'SunLevel' in sun.js
+* do away with system that is worked out for 'TempLevel', but start a similar system for 'SunLevel' in sun.js
 * a level 1 Sun will have a temp of about 10, where a level 100 sun will have a temp of 1000
 * in hydro.js if a section.temp is between 0 and 50 then all water will be ice
 * water will not transfer from or to another section when it is to cold (0 to 50).
@@ -17,9 +17,9 @@
 * (done) start a atmo.js plug-in that will create an game.atmoData object
 * (done) create section.atmo objects for each section
 * (done) a section.atmo.water.amount will store water for the atmosphere section
-* (done) in hydro.js have a section.water.evaporation property that will be affeceted by section.temp
+* (done) in hydro.js have a section.water.evaporation property that will be affected by section.temp
 * in atmo.js water in a section will evaporate by section.water.evaporation rate and add to game.atmoData.water.amount
-* water can transfer from one section to another in the armosphere
+* water can transfer from one section to another in the atmosphere
 * water can rain back down to a section
 * set water.per values for section.water, and section.atmo
 * in draw.js have white circles above each section as a way to know how much water there is in atmo
