@@ -80,7 +80,7 @@ var draw = (function () {
         ctx.arc(x, y, section.radius / 4 * section.atmo.water.per, 0, Math.PI * 2);
         ctx.fill();
         ctx.fillStyle = 'rgba(0,255,0,1)';
-        ctx.fillText(section.atmo.water.amount, x, y);
+        ctx.fillText(section.atmo.water.per.toFixed(2), x, y);
 
     };
     api.sections = function (sm) {

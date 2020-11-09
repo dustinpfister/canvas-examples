@@ -21,9 +21,9 @@
 * (done) in atmo.js water in a section will evaporate by section.water.evaporation rate and add to game.atmoData.water.amount
 * (done) water can transfer from one section to another in the atmosphere
 * (done) water can rain back down to a section
-* set water.per values for section.water, and section.atmo
-* in draw.js have white circles above each section as a way to know how much water there is in atmo
-* in draw.js have a flashing white circle mean rain for now
+* (done) set water.per values for section.water, and section.atmo
+* (done) in draw.js have white circles above each section as a way to know how much water there is in atmo
+* in draw.js have a the white circle be  circle mean rain for now
 * create a pkg-0-3-0.html
 
 ## 0.2.0 - hydro.js started, and water transfer

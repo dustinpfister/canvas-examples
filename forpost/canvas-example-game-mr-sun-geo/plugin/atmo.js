@@ -46,7 +46,10 @@ gameMod.load((function () {
             var hd = game.hydroData,
             i = 0,
             len = game.sections.length,
-            section;
+            section,
+            highAtmoWaterAmount = Math.max.apply(null, game.sections.map(function (section) {
+                        return section.atmo.water.amount;
+                    }));
             while (i < len) {
                 section = game.sections[i];
 
@@ -55,7 +58,8 @@ gameMod.load((function () {
                 transferAtmo(game, section);
                 rain(section);
 
-                section.atmo.water.per = section.atmo.water.amount / hd.water.total;
+                //!!! this is not working the way it should
+                section.atmo.water.per = section.atmo.water.amount / (highAtmoWaterAmount || 1);
                 i += 1;
             }
         };
