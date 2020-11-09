@@ -64,23 +64,21 @@ var draw = (function () {
         ctx.stroke();
         ctx.globalAlpha = 1;
     };
+    // draw an ato circle that will show how much water is in the atmo
     var drawAtmoWaterCircle = function (sm, section) {
         var ctx = sm.ctx,
         a = Math.PI * 2 * (section.i / sm.game.sections.length) + Math.PI,
         x = section.x + Math.cos(a) * section.radius * 2,
         y = section.y + Math.sin(a) * section.radius * 2;
-
         ctx.strokeStyle = 'rgba(255,255,255,0.3)';
         ctx.lineWidth = 1;
         ctx.beginPath();
         ctx.arc(x, y, section.radius / 4, 0, Math.PI * 2);
         ctx.stroke();
-
         ctx.fillStyle = 'white';
         ctx.beginPath();
         ctx.arc(x, y, section.radius / 4 * section.atmo.water.per, 0, Math.PI * 2);
         ctx.fill();
-
         ctx.fillStyle = 'rgba(0,255,0,1)';
         ctx.fillText(section.atmo.water.amount, x, y);
 
@@ -97,7 +95,7 @@ var draw = (function () {
             ctx.font = '8px arial';
             var w = section.water;
             ctx.fillText(w.evaporation.toFixed(2), section.x, section.y - 5);
-            ctx.fillText(w.per.toFixed(2), section.x, section.y + 5);
+            ctx.fillText(w.amount, section.x, section.y + 5);
         });
     };
 

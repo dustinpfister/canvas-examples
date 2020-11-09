@@ -30,7 +30,8 @@ gameMod.load((function () {
             secAtmo = section.atmo;
             if (secAtmo.water.rainCount === 0) {
                 if (roll < secAtmo.rainPer) {
-                    secAtmo.water.rainCount = Math.round(secAtmo.water.rainCountMax * Math.random());
+                    //secAtmo.water.rainCount = Math.round(secAtmo.water.rainCountMax * Math.random());
+					secAtmo.water.rainCount = 1;
                 }
             }
             if (secAtmo.water.amount >= 1 && secAtmo.water.rainCount > 0) {
