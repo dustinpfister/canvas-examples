@@ -24,18 +24,18 @@ gameMod.load((function () {
             }
         };
         // rain water down back to the section water object
-        var rain = function (section) {
+        var rain = function (game, section) {
             var roll = Math.random(),
             delta,
             secAtmo = section.atmo;
             if (secAtmo.water.rainCount <= 0) {
                 if (roll < secAtmo.water.rainPer) {
-					secAtmo.water.rainCount = 2;
-                    //secAtmo.water.rainCount = Math.round(secAtmo.water.rainCountMax * Math.random());
+                    //secAtmo.water.rainCount = 2;
+                    secAtmo.water.rainCount = Math.round(secAtmo.water.rainCountMax * Math.random());
                 }
             }
             if (secAtmo.water.amount >= 1 && secAtmo.water.rainCount > 0) {
-                delta = Math.floor(secAtmo.water.amount * 0.50);
+                delta = Math.floor(secAtmo.water.amount * game.atmoData.maxWaterPercent);
                 delta = delta > 1 ? delta : 1;
                 secAtmo.water.amount -= delta;
                 section.water.amount += delta;
@@ -63,7 +63,7 @@ gameMod.load((function () {
                 // water evaporation, transfer, and rain
                 evaporation(section);
                 transferAtmo(game, section);
-                rain(section);
+                rain(game, section);
 
                 i += 1;
             }
@@ -78,7 +78,9 @@ gameMod.load((function () {
             create: function (game, opt) {
                 console.log(this.name);
                 // create hydroData Object
-                game.atmoData = {};
+                game.atmoData = {
+                    maxWaterPercent: 0.10
+                };
                 // set defaults for section.water
                 game.sections.forEach(function (section) {
                     section.atmo = {
