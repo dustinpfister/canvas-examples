@@ -23,7 +23,7 @@
 * (done) water can rain back down to a section
 * (done) set water.per values for section.water, and section.atmo
 * (done) in draw.js have white circles above each section as a way to know how much water there is in atmo
-* in draw.js have a the white circle be a gray circle mean rain for now
+* (done) in draw.js have a the white circle be a gray circle mean rain for now
 * create a pkg-0-3-0.html
 
 ## 0.2.0 - hydro.js started, and water transfer
