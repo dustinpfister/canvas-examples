@@ -76,6 +76,9 @@ var draw = (function () {
         ctx.arc(x, y, section.radius / 4, 0, Math.PI * 2);
         ctx.stroke();
         ctx.fillStyle = 'white';
+        if (section.atmo.water.rainCount > 0) {
+            ctx.fillStyle = 'gray';
+        }
         ctx.beginPath();
         ctx.arc(x, y, section.radius / 4 * section.atmo.water.per, 0, Math.PI * 2);
         ctx.fill();

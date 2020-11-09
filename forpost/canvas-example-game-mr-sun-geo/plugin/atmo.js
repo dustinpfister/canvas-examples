@@ -28,9 +28,10 @@ gameMod.load((function () {
             var roll = Math.random(),
             delta,
             secAtmo = section.atmo;
-            if (secAtmo.water.rainCount === 0) {
+            if (secAtmo.water.rainCount <= 0) {
                 if (roll < secAtmo.water.rainPer) {
-                    secAtmo.water.rainCount = Math.round(secAtmo.water.rainCountMax * Math.random());
+					secAtmo.water.rainCount = 2;
+                    //secAtmo.water.rainCount = Math.round(secAtmo.water.rainCountMax * Math.random());
                 }
             }
             if (secAtmo.water.amount >= 1 && secAtmo.water.rainCount > 0) {
@@ -64,12 +65,10 @@ gameMod.load((function () {
                 transferAtmo(game, section);
                 rain(section);
 
-                //!!! this is not working the way it should
-                //section.atmo.water.per = section.atmo.water.amount / (highAtmoWaterAmount || 1);
                 i += 1;
             }
-			
-			setPerValues(game);
+
+            setPerValues(game);
 
         };
         // plugObj for hydro.js
@@ -85,7 +84,7 @@ gameMod.load((function () {
                     section.atmo = {
                         water: {
                             //rain: false,
-                            rainPer: 0.25,
+                            rainPer: 0.05,
                             rainCount: 0,
                             rainCountMax: 10,
                             amount: 0,
