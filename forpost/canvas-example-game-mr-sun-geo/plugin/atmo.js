@@ -23,18 +23,19 @@ gameMod.load((function () {
                 n2.atmo.water.amount += 1;
             }
         };
+        // rain water down back to the section water object
         var rain = function (section) {
             var roll = Math.random(),
             secAtmo = section.atmo;
-            if (secAtmo.rainCount === 0) {
+            if (secAtmo.water.rainCount === 0) {
                 if (roll < secAtmo.rainPer) {
-                    secAtmo.rainCount = Math.round(secAtmo.rainCountMax * Math.random());
+                    secAtmo.water.rainCount = Math.round(secAtmo.water.rainCountMax * Math.random());
                 }
             }
-            if (secAtmo.amount >= 1 && secAtmo.rainCount > 0) {
-                secAtmo.amount -= 1;
+            if (secAtmo.water.amount >= 1 && secAtmo.water.rainCount > 0) {
+                secAtmo.water.amount -= 1;
                 section.water.amount += 1;
-                secAtmo.rainCount -= 1;
+                secAtmo.water.rainCount -= 1;
             }
         };
         // update section objects
