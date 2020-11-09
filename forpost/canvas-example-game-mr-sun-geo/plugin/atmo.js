@@ -80,7 +80,7 @@ gameMod.load((function () {
                 // create hydroData Object
                 game.atmoData = {
                     rainCountMax: 10,
-                    maxWaterPercent: 0.10 // percentage of water per rainCount
+                    maxWaterPercent: 0.20 // percentage of water per rainCount
                 };
                 // set defaults for section.water
                 game.sections.forEach(function (section) {
