@@ -14,7 +14,7 @@ gameMod.load((function () {
                     section.atmo.water.amount += 1;
                     section.water.amount -= 1;
                 }
-                //section.atmo.water.per = section.atmo.water.amount / hd.water.total;
+                section.atmo.water.per = section.atmo.water.amount / hd.water.total;
                 i += 1;
             }
         };
@@ -31,7 +31,7 @@ gameMod.load((function () {
                     section.atmo = {
                         water: {
                             amount: 0,
-                            per: 0.2
+                            per: 0
                         }
                     };
                 });
