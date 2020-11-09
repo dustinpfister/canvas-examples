@@ -41,15 +41,21 @@ gameMod.load((function () {
                 secAtmo.water.rainCount -= 1;
             }
         };
+        // set per values
+        var setPerValues = function (game) {
+            var highAtmoWaterAmount = Math.max.apply(null, game.sections.map(function (section) {
+                        return section.atmo.water.amount;
+                    }));
+            game.sections.forEach(function (section) {
+                section.atmo.water.per = section.atmo.water.amount / (highAtmoWaterAmount || 1);
+            });
+        };
         // update section objects
         var updateSectionValues = function (game, deltaYears) {
             var hd = game.hydroData,
             i = 0,
             len = game.sections.length,
-            section,
-            highAtmoWaterAmount = Math.max.apply(null, game.sections.map(function (section) {
-                        return section.atmo.water.amount;
-                    }));
+            section;
             while (i < len) {
                 section = game.sections[i];
 
@@ -59,9 +65,12 @@ gameMod.load((function () {
                 rain(section);
 
                 //!!! this is not working the way it should
-                section.atmo.water.per = section.atmo.water.amount / (highAtmoWaterAmount || 1);
+                //section.atmo.water.per = section.atmo.water.amount / (highAtmoWaterAmount || 1);
                 i += 1;
             }
+			
+			setPerValues(game);
+
         };
         // plugObj for hydro.js
         return {
