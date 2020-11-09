@@ -31,7 +31,7 @@ gameMod.load((function () {
             if (secAtmo.water.rainCount <= 0) {
                 if (roll < secAtmo.water.rainPer) {
                     //secAtmo.water.rainCount = 2;
-                    secAtmo.water.rainCount = Math.round(secAtmo.water.rainCountMax * Math.random());
+                    secAtmo.water.rainCount = Math.round(game.atmoData.rainCountMax * Math.random());
                 }
             }
             if (secAtmo.water.amount >= 1 && secAtmo.water.rainCount > 0) {
@@ -79,7 +79,8 @@ gameMod.load((function () {
                 console.log(this.name);
                 // create hydroData Object
                 game.atmoData = {
-                    maxWaterPercent: 0.10
+                    rainCountMax: 5,
+                    maxWaterPercent: 0.25 // percentage of water per rainCount
                 };
                 // set defaults for section.water
                 game.sections.forEach(function (section) {
@@ -88,7 +89,6 @@ gameMod.load((function () {
                             //rain: false,
                             rainPer: 0.05,
                             rainCount: 0,
-                            rainCountMax: 10,
                             amount: 0,
                             per: 0
                         }
