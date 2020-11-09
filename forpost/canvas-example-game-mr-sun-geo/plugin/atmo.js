@@ -1,6 +1,14 @@
 // atmo.js plug-in
 gameMod.load((function () {
 
+        var evaporation = function (section) {
+            // transfer water from water object to atmo object
+            if (section.water.evaporation > 0.10 && section.water.amount >= 1) {
+                section.atmo.water.amount += 1;
+                section.water.amount -= 1;
+            }
+        };
+
         // update section objects
         var updateSectionValues = function (game, deltaYears) {
             var hd = game.hydroData,
@@ -9,11 +17,9 @@ gameMod.load((function () {
             section;
             while (i < len) {
                 section = game.sections[i];
-                // transfer water from water object to atmo object
-                if (section.water.evaporation > 0.10 && section.water.amount >= 1) {
-                    section.atmo.water.amount += 1;
-                    section.water.amount -= 1;
-                }
+
+                evaporation(section);
+
                 section.atmo.water.per = section.atmo.water.amount / hd.water.total;
                 i += 1;
             }
