@@ -31,7 +31,7 @@ var draw = (function () {
         drawMineralList(ctx, section, 90, 10);
     };
     // draw sections
-    var drawSectionElevationMark = function(sm, section){
+    var drawSectionElevationMark = function (sm, section) {
         var ctx = sm.ctx,
         a = Math.PI * 2 * (section.i / sm.game.sections.length) + Math.PI,
         el = section.radius + section.elevation.total / sm.game.geoData.maxElevation * 32,
@@ -45,14 +45,14 @@ var draw = (function () {
         ctx.lineWidth = 3;
         ctx.beginPath();
         ctx.moveTo(sx, sy);
-        ctx.lineTo(ex,ey);
+        ctx.lineTo(ex, ey);
         ctx.stroke();
     };
     // Draw a simple section circle
-    var drawSectionCircle = function(sm, section){
+    var drawSectionCircle = function (sm, section) {
         var ctx = sm.ctx;
         ctx.fillStyle = 'blue';
-        if(section.elevation.total > sm.game.geoData.seaLevel){
+        if (section.elevation.total > sm.game.geoData.seaLevel) {
             ctx.fillStyle = 'brown';
         }
         ctx.strokeStyle = 'white';
@@ -64,11 +64,26 @@ var draw = (function () {
         ctx.stroke();
         ctx.globalAlpha = 1;
     };
+    var drawAtmoWaterCircle = function (sm, section) {
+
+        var ctx = sm.ctx,
+        a = Math.PI * 2 * (section.i / sm.game.sections.length) + Math.PI,
+        x = section.x + Math.cos(a) * section.radius * 2,
+        y = section.y + Math.sin(a) * section.radius * 2;
+        ctx.fillStyle = 'white';
+        ctx.strokeStyle = 'white';
+        ctx.lineWidth = 1;
+        ctx.beginPath();
+        ctx.arc(x, y, section.radius / 4, 0, Math.PI * 2);
+        ctx.stroke();
+
+    };
     api.sections = function (sm) {
         var ctx = sm.ctx;
         sm.game.sections.forEach(function (section) {
             drawSectionCircle(sm, section);
             drawSectionElevationMark(sm, section);
+            drawAtmoWaterCircle(sm, section);
             ctx.fillStyle = 'white';
             ctx.textAlign = 'center';
             ctx.textBaseline = 'middle';
