@@ -26,6 +26,7 @@ gameMod.load((function () {
         // rain water down back to the section water object
         var rain = function (section) {
             var roll = Math.random(),
+            delta,
             secAtmo = section.atmo;
             if (secAtmo.water.rainCount === 0) {
                 if (roll < secAtmo.rainPer) {
@@ -33,8 +34,10 @@ gameMod.load((function () {
                 }
             }
             if (secAtmo.water.amount >= 1 && secAtmo.water.rainCount > 0) {
-                secAtmo.water.amount -= 1;
-                section.water.amount += 1;
+                delta = Math.floor(secAtmo.water.amount * 0.50);
+                delta = delta > 1 ? delta : 1;
+                secAtmo.water.amount -= delta;
+                section.water.amount += delta;
                 secAtmo.water.rainCount -= 1;
             }
         };
