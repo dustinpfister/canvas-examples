@@ -31,21 +31,15 @@ var draw = (function () {
     };
     // draw sections
     var drawSectionElevationMark = function(sm, section){
-        var ctx = sm.ctx;
-        var a = Math.PI * 2 * (section.i / sm.game.sections.length) + Math.PI;
-        var el = section.radius + section.elevation.total / sm.game.geoData.maxElevation * 32;
-/*
-        var sx = section.x + Math.cos(a) * section.radius;
-        var sy = section.y + Math.sin(a) * section.radius;
-        var ex = section.x + Math.cos(a) * el;
-        var ey = section.y + Math.sin(a) * el;
-*/
-        var cx = section.x + Math.cos(a) * el;
-        var cy = section.y + Math.sin(a) * el;
-        var sx = cx + Math.cos(a - Math.PI / 2) * 10;
-        var sy = cy + Math.sin(a - Math.PI / 2) * 10;
-        var ex = cx + Math.cos(a + Math.PI / 2) * 10;
-        var ey = cy + Math.sin(a + Math.PI / 2) * 10;
+        var ctx = sm.ctx,
+        a = Math.PI * 2 * (section.i / sm.game.sections.length) + Math.PI,
+        el = section.radius + section.elevation.total / sm.game.geoData.maxElevation * 32,
+        cx = section.x + Math.cos(a) * el,
+        cy = section.y + Math.sin(a) * el,
+        sx = cx + Math.cos(a - Math.PI / 2) * 10,
+        sy = cy + Math.sin(a - Math.PI / 2) * 10,
+        ex = cx + Math.cos(a + Math.PI / 2) * 10,
+        ey = cy + Math.sin(a + Math.PI / 2) * 10;
         ctx.strokeStyle = 'red';
         ctx.lineWidth = 3;
         ctx.beginPath();
