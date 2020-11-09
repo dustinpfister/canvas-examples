@@ -16,6 +16,7 @@ var draw = (function () {
     };
 
     // SECTIONS:
+    // draw section data for observation state
     api.sectionData = function (sm, section) {
         ctx.fillStyle = 'white';
         ctx.textAlign = 'left';
@@ -47,9 +48,9 @@ var draw = (function () {
         ctx.lineTo(ex,ey);
         ctx.stroke();
     };
+    // Draw a simple section circle
     var drawSectionCircle = function(sm, section){
         var ctx = sm.ctx;
-        //var b = 50 + Math.round(section.per * 128);
         ctx.fillStyle = 'blue';
         if(section.elevation.total > sm.game.geoData.seaLevel){
             ctx.fillStyle = 'brown';
@@ -66,20 +67,13 @@ var draw = (function () {
     api.sections = function (sm) {
         var ctx = sm.ctx;
         sm.game.sections.forEach(function (section) {
-
             drawSectionCircle(sm, section);
-
             drawSectionElevationMark(sm, section);
-
             ctx.fillStyle = 'white';
             ctx.textAlign = 'center';
             ctx.textBaseline = 'middle';
             ctx.font = '8px arial';
-
             var w = section.water;
-            //ctx.fillText(w.amount, section.x, section.y - 5);
-            //ctx.fillText(w.per.toFixed(2), section.x, section.y + 5);
-
             ctx.fillText(w.evaporation.toFixed(2), section.x, section.y - 5);
             ctx.fillText(w.per.toFixed(2), section.x, section.y + 5);
         });

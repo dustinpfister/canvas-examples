@@ -14,6 +14,7 @@ gameMod.load((function () {
                     section.atmo.water.amount += 1;
                     section.water.amount -= 1;
                 }
+                section.atmo.water.per = section.atmo.water.amount / hd.water.total;
                 i += 1;
             }
         };
