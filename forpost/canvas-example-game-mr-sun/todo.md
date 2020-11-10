@@ -15,6 +15,7 @@
 ## 0.2.0 - Loose energy.js in favor of cookies.js, and jar.js plug-in modules
 * (done) copy over game.js from Mr Sun Geo
 * (done) copy over utils.js from Mr Sun Geo
+* (done) start a plug-api-base.js file
 * start a cookies.js plug-in that will just serve as a replacement for energy.js
 * in cookies.js each section will produce a number of cookies over time to a set max
 * start a jar.js plug-in

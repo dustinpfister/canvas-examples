@@ -19,7 +19,7 @@ var draw = (function () {
             ctx.textAlign = 'center';
             ctx.textBaseline = 'middle';
             ctx.font = '10px arial';
-            ctx.fillText(section.per.toFixed(2), section.x, section.y);
+            ctx.fillText(section.cookie.count, section.x, section.y);
             //ctx.fillText(section.energy, section.x, section.y);
         });
     };
