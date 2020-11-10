@@ -1,6 +1,6 @@
 gameMod.load({
     name: 'cookie',
-    callPriority: 1.1,
+    callPriority: 2.1,
     create: function(game, opt){
         console.log(this.name);
         game.forSections(function(section){
