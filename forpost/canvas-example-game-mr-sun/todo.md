@@ -4,17 +4,21 @@
 * save states should be a feature of main.js
 * just have a way to load and save a single state via local storage for now and be done with it
 
-## 0.2.0 - Loose energy.js in favor of sun.js, and plug-api-base.js, and cookies.js plug-in modules
+## 0.x.0 - sun.js
 * update core of applaction to the source code canvas-example-mr-sun-geo
 * create a plug-api-base
 * plug-api creates a game.loopSections method
 * plug-api creates a game.getSection method
 * copy over sun.js from canvas-example-mr-sun-geo
 * make an exp system part of sun.js where bolth time and points are used to gain exp.
+
+## 0.2.0 - Loose energy.js in favor of cookies.js, and jar.js plug-in modules
 * start a cookies.js plug-in that will just serve as a way to test out the new sun.js plug-in
 * in cookies.js each section will produce a number of cookies over time to a set max
-* moving the sun to a section will result in the sun gathering cookies
-* cookies count as points for the sake of this canvas-example
+* start a jar.js plug-in
+* moving the sun to a section will result in the sun gathering cookies that will be placed in jar.js
+* update draw.js to draw the state of cookies.js and jar.js
+* make a pkg-0-2-0.html file
 
 ## 0.1.0 - gameMod.update, plugins, and section.energy
 * (done) have a game.year propery that will reflect the current game year
@@ -28,7 +32,7 @@
 * (done) a plugin is a call of the gameMod.load method, to which the first agument is a plug-in object
 * (done) Make a build.sh script
 * (done) README.md
-* (done) make a pkg_0_1_0.html file
+* (done) make a pkg-0-1-0.html file
 
 ## 0.0.0 - Basic idea working
 * (done) start with a basic state machine with event support
@@ -42,4 +46,4 @@
 * (done) start a utils.js module
 * (done) make it so the sun can not leave inner radius
 * (done) display version number in canvas
-* (done) make a pkg_0_0_0.html
+* (done) make a pkg-0-0-0.html
