@@ -4,6 +4,18 @@
 * save states should be a feature of main.js
 * just have a way to load and save a single state via local storage for now and be done with it
 
+## 0.2.0 - Loose energy.js in favor of sun.js, and plug-api-base.js, and cookies.js plug-in modules
+* update core of applaction to the source code canvas-example-mr-sun-geo
+* create a plug-api-base
+* plug-api creates a game.loopSections method
+* plug-api creates a game.getSection method
+* copy over sun.js from canvas-example-mr-sun-geo
+* make an exp system part of sun.js where bolth time and points are used to gain exp.
+* start a cookies.js plug-in that will just serve as a way to test out the new sun.js plug-in
+* in cookies.js each section will produce a number of cookies over time to a set max
+* moving the sun to a section will result in the sun gathering cookies
+* cookies count as points for the sake of this canvas-example
+
 ## 0.1.0 - gameMod.update, plugins, and section.energy
 * (done) have a game.year propery that will reflect the current game year
 * (done) have a gameMod.update method that will be called in each frame tick for the game state in main.js
