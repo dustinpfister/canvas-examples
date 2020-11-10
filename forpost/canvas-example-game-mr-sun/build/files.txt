@@ -1,5 +1,6 @@
 ../lib/utils.js
 ../lib/game.js
 ../lib/draw.js
+../plugin/plug-api-base.js
 ../plugin/jar.js
 ../plugin/cookie.js

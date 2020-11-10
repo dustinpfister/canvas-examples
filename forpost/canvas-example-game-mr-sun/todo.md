@@ -13,7 +13,9 @@
 * make an exp system part of sun.js where bolth time and points are used to gain exp.
 
 ## 0.2.0 - Loose energy.js in favor of cookies.js, and jar.js plug-in modules
-* start a cookies.js plug-in that will just serve as a way to test out the new sun.js plug-in
+* (done) copy over game.js from Mr Sun Geo
+* (done) copy over utils.js from Mr Sun Geo
+* start a cookies.js plug-in that will just serve as a replacement for energy.js
 * in cookies.js each section will produce a number of cookies over time to a set max
 * start a jar.js plug-in
 * moving the sun to a section will result in the sun gathering cookies that will be placed in jar.js
