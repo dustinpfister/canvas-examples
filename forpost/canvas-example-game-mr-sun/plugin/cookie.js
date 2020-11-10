@@ -1,6 +1,8 @@
 gameMod.load({
     name: 'cookie',
+    callPriority: 1.1,
     create: function(game, opt){
+        console.log(this.name);
         game.forSections(function(section){
             section.cookie = {
                 count: 0,

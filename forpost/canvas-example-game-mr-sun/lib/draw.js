@@ -25,11 +25,14 @@ var draw = (function () {
     };
     // draw sun
     api.sun = function (sm) {
-        var sun = sm.game.sun;
-        sm.ctx.fillStyle = 'yellow';
-        sm.ctx.beginPath();
-        sm.ctx.arc(sun.x, sun.y, sun.radius, 0, Math.PI * 2);
-        sm.ctx.fill();
+        var sun = sm.game.sun,
+        ctx = sm.ctx;
+        ctx.fillStyle = 'yellow';
+        ctx.beginPath();
+        ctx.arc(sun.x, sun.y, sun.radius, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.fillStyle = 'black';
+        ctx.fillText(sm.game.jar.count, sun.x, sun.y);
     };
     // display
     api.disp = function (sm) {
