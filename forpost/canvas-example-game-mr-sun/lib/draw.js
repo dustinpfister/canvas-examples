@@ -41,7 +41,8 @@ var draw = (function () {
         ctx.textAlign = 'left';
         ctx.textBaseline = 'top';
         ctx.font = '10px courier';
-        ctx.fillText('year: ' + sm.game.year, 3, 3);
+        ctx.fillText('year: ' + sm.game.year, 3, 10);
+        ctx.fillText('sun exp: ' + sm.game.sun.exp, 3, 20);
     };
     // draw version number
     api.ver = function (sm) {

@@ -8,7 +8,7 @@
 * plug-api creates a game.getSection method
 
 ## 0.3.0 - sun.js
-* copy over sun.js from canvas-example-mr-sun-geo
+* (done) copy over sun.js from canvas-example-mr-sun-geo
 * make an exp system part of sun.js where bolth time, and points are used to gain exp.
 * use game.years as the value that will have to do with time
 * sun.js creates a game.addPoints method
