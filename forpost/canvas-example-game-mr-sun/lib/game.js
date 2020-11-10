@@ -1,11 +1,26 @@
 var gameMod = (function(){
     // the plug-in object
     var plugs = {};
+    var getCallPrioritySorted = function(){
+        var keys = Object.keys(plugs);
+        return keys.sort(function(a, b){
+            var plugObjA = plugs[a],
+            plugObjB = plugs[b];
+            if(plugObjA.callPriority > plugObjB.callPriority){
+                return 1;
+            }
+            if(plugObjA.callPriority < plugObjB.callPriority){
+                return -1;
+            }
+            return 0;
+        });
+    };
     // use plugins for the given method
     var usePlugs = function(game, methodName, args){
         methodName = methodName || 'create';
         args = args || [game]
-        Object.keys(plugs).forEach(function(plugKey){
+        var keys = getCallPrioritySorted();
+        keys.forEach(function(plugKey){
             var plugObj = plugs[plugKey],
             method = plugObj[methodName];
             if(method){
@@ -26,13 +41,14 @@ var gameMod = (function(){
         game.sectionRadius = opt.sectionRadius || 16;
         game.worldRadius = opt.worldRadius || 100;
         game.secs = 0;
-        game.year = 0;
-        game.yearRate = 1;
-        // create sun object
+        game.year = opt.year || 0;
+        game.yearRate = opt.yearRate || 1;
+        // create base sun object
         game.sun = {
             radius: 16,
             x: game.centerX,
-            y: game.centerY
+            y: game.centerY,
+            sunGrid: {}
         };
         // create sections
         var i = 0,
@@ -44,6 +60,7 @@ var gameMod = (function(){
         while(i < total){
             radian = Math.PI * 2 / total * i;
             sections.push({
+                i: i,
                 x: Math.cos(radian) * game.worldRadius + cx,
                 y: Math.sin(radian) * game.worldRadius + cy,
                 radius: game.sectionRadius,
@@ -69,6 +86,18 @@ var gameMod = (function(){
             per = 1 - per;
             section.per = per;
         });
+    };
+    // get a section by canvas position
+    api.getSectionByPos = function(game, x, y){
+        var section,
+        i = game.sections.length;
+        while(i--){
+            section = game.sections[i];
+            if(utils.distance(section.x, section.y, x, y) <= section.radius){
+                return section;
+            }
+        }
+        return false;
     };
     // move sun
     var boundToCircle = function(obj, cx, cy, radius){
@@ -100,6 +129,8 @@ var gameMod = (function(){
         var len = Object.keys(plugs).length;
         // use given key name, or else use number of public keys in plugs
         plugObj.name = plugObj.name || len;
+        // callPriority defaults to len
+        plugObj.callPriority = plugObj.callPriority || len;
         // just reference the object for now
         plugs[plugObj.name] = plugObj;
     };
