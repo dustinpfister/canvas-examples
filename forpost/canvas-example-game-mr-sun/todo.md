@@ -16,11 +16,11 @@
 * (done) copy over game.js from Mr Sun Geo
 * (done) copy over utils.js from Mr Sun Geo
 * (done) start a plug-api-base.js file
-* start a cookies.js plug-in that will just serve as a replacement for energy.js
-* in cookies.js each section will produce a number of cookies over time to a set max
-* start a jar.js plug-in
-* moving the sun to a section will result in the sun gathering cookies that will be placed in jar.js
-* update draw.js to draw the state of cookies.js and jar.js
+* (done) start a cookies.js plug-in that will just serve as a replacement for energy.js
+* (done) in cookies.js each section will produce a number of cookies over time to a set max
+* (done) start a jar.js plug-in
+* (done) moving the sun to a section will result in the sun gathering cookies that will be placed in jar.js
+* (done) update draw.js to draw the state of cookies.js and jar.js
 * make a pkg-0-2-0.html file
 
 ## 0.1.0 - gameMod.update, plugins, and section.energy
