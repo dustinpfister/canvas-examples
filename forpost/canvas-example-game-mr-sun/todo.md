@@ -4,13 +4,16 @@
 * save states should be a feature of main.js
 * just have a way to load and save a single state via local storage for now and be done with it
 
-## 0.x.0 - sun.js
-* update core of applaction to the source code canvas-example-mr-sun-geo
-* create a plug-api-base
-* plug-api creates a game.loopSections method
+## 0.x.0 - Pointer events
 * plug-api creates a game.getSection method
+
+## 0.3.0 - sun.js
 * copy over sun.js from canvas-example-mr-sun-geo
-* make an exp system part of sun.js where bolth time and points are used to gain exp.
+* make an exp system part of sun.js where bolth time, and points are used to gain exp.
+* use game.years as the value that will have to do with time
+* sun.js creates a game.addPoints method
+* in jar.js use game.jar.count as the value for game.addPoints
+* make a pkg-0-3-0.html file
 
 ## 0.2.0 - Loose energy.js in favor of cookies.js, and jar.js plug-in modules
 * (done) copy over game.js from Mr Sun Geo
@@ -21,7 +24,7 @@
 * (done) start a jar.js plug-in
 * (done) moving the sun to a section will result in the sun gathering cookies that will be placed in jar.js
 * (done) update draw.js to draw the state of cookies.js and jar.js
-* make a pkg-0-2-0.html file
+* (done) make a pkg-0-2-0.html file
 
 ## 0.1.0 - gameMod.update, plugins, and section.energy
 * (done) have a game.year propery that will reflect the current game year
