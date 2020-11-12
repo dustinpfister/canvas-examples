@@ -83,6 +83,7 @@ var stateMod = (function(){
             ver: opt.ver || '0.0.0',
             currentState: opt.currentState || 'game',
             game: {},
+            draw: {},
             states: states,
             input: {
                 pointerDown: false,
@@ -119,10 +120,15 @@ var stateMod = (function(){
         var loop = function () {
             var now = new Date(),
             t = now - lt,
+            draw,
             secs = t / 1000;
             requestAnimationFrame(loop);
             if (t >= 1000 / FPS_target) {
                 states[sm.currentState].update(sm, secs);
+                draw = states[sm.currentState].draw;
+                if(draw){
+                    draw.call(sm, sm.draw, sm.ctx, sm.canvas, sm.game, sm);
+                }
                 lt = now;
             }
         };
