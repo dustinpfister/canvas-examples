@@ -1,4 +1,4 @@
-var stateMod.load({
+stateMod.load({
     name: 'ui-sun',
     init: function (sm) {
         // setup sun object
