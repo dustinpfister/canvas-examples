@@ -73,6 +73,7 @@ gameMod.load((function () {
                 // add Points method
                 sun.addPoints = function (points) {
                     sun.points += 1;
+                    setSunLevel(sun);
                 };
 
                 // reset sun method
@@ -88,7 +89,6 @@ gameMod.load((function () {
             onDeltaYear: function (game, deltaYears) {
                 var sun = game.sun;
                 sun.years += deltaYears;
-                sun.exp = sun.years + sun.points;
                 setSunLevel(sun);
             }
         };

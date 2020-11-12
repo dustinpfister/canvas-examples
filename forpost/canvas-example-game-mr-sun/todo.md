@@ -9,10 +9,11 @@
 
 ## 0.3.0 - sun.js
 * (done) copy over sun.js from canvas-example-mr-sun-geo
-* make an exp system part of sun.js where bolth time, and points are used to gain exp.
-* use game.years as the value that will have to do with time
-* sun.js creates a game.addPoints method
+* (done) make an exp system part of sun.js where bolth time, and points are used to gain exp.
+* (done) use sun.years as the value that will have to do with time
+* (done) sun.js creates a sun.addPoints method
 * in jar.js use game.jar.count as the value for game.addPoints
+* display current sun xp, and level
 * make a pkg-0-3-0.html file
 
 ## 0.2.0 - Loose energy.js in favor of cookies.js, and jar.js plug-in modules
