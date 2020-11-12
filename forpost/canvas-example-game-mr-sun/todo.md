@@ -7,8 +7,11 @@
 ## 0.x.0 - puase method for state-machine.js
 * have an sm.pause method that can be used to pause the whole game.
 
-## 0.5.0 - draw methods for state objects
+## 0.5.0 - draw methods and objects for state objects
 * add support for a draw method in state objects
+* a stateObj.draw method wil be called after update if there
+* a sm.drawObj object will be passed to stateObj.draw, methods can be appended to this in state.init
+* call all init methods in stateMod.create
 * make a pkg-0-5-0.html
 
 ## 0.4.0 - state-machine.js
@@ -18,7 +21,7 @@
 * (done) have a /states/ui-sun.js file that will be a replacement for the game state in main.js
 * (done) use state-machine.js in main.js
 * (done) have an sm.start method that is used in main.js to start the state machine
-* make a pkg-0-4-0.html file
+* (done) make a pkg-0-4-0.html file
 
 ## 0.3.0 - sun.js
 * (done) copy over sun.js from canvas-example-mr-sun-geo
