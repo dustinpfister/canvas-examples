@@ -4,8 +4,19 @@
 * save states should be a feature of main.js
 * just have a way to load and save a single state via local storage for now and be done with it
 
-## 0.x.0 - Pointer events
-* plug-api creates a game.getSection method
+## 0.5.0 - draw methods for state objects
+* add support for a draw method in state objects
+* make a pkg-0-5-0.html
+
+## 0.4.0 - state-machine.js
+* start a state-machine.js file in /lib
+* the state-machine.js file can be used to create and return a new sm object that is used in main.js
+* start a /states folder and add a sm.load method like that of gameMod.load
+* have a /states/ui-sun.js file that will be a replacement for the game state in main.js
+* use state-machine.js in main.js
+* have an sm.start method that is used in main.js to start the state machine
+* have an sm.pause method that can be used to pause the whole game.
+* make a pkg-0-4-0.html file
 
 ## 0.3.0 - sun.js
 * (done) copy over sun.js from canvas-example-mr-sun-geo
