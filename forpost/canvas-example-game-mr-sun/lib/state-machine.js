@@ -126,11 +126,15 @@ var stateMod = (function(){
             var now = new Date(),
             t = now - lt,
             draw,
+            update,
             secs = t / 1000;
             requestAnimationFrame(loop);
             if (t >= 1000 / FPS_target) {
-                states[sm.currentState].update(sm, secs);
+                update = states[sm.currentState].update;
                 draw = states[sm.currentState].draw;
+                if(update){
+                    update.call(sm, sm, secs);
+                }
                 if(draw){
                     draw.call(sm, sm.draw, sm.ctx, sm.canvas, sm.game, sm);
                 }
