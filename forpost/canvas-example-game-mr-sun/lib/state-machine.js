@@ -109,7 +109,10 @@ var stateMod = (function(){
 
         // call init for all state objects
         Object.keys(states).forEach(function(stateName){
-            states[stateName].init(sm);
+            var stateObj = states[stateName];
+            if(stateObj){
+                stateObj.init(sm);
+            }
         });
 
         return sm;
