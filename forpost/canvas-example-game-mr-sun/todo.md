@@ -12,6 +12,7 @@
 * a stateObj.draw method wil be called after update if there
 * a sm.drawObj object will be passed to stateObj.draw, methods can be appended to this in state.init
 * call all init methods in stateMod.create
+* have a init-draw-base.js state that will append base draw methods such as draw.back
 * make a pkg-0-5-0.html
 
 ## 0.4.0 - state-machine.js
