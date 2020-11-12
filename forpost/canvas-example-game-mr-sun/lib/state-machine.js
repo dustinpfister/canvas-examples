@@ -1,13 +1,6 @@
 var stateMod = (function(){
 
-    var canvas = document.createElement('canvas'),
-    ctx = canvas.getContext('2d'),
-    container = document.getElementById('canvas-app') || document.body;
-    container.appendChild(canvas);
-    canvas.width = 320;
-    canvas.height = 240;
-    ctx.translate(0.5, 0.5);
-
+    // STATES ARRAY
     var changeState = function (sm, stateKey, opt) {
         opt = opt || {};
         var newState = sm.states[stateKey];
@@ -63,6 +56,47 @@ var stateMod = (function(){
                 }
             }
         }
+    };
+
+    // start public api
+    var api = {};
+
+    // CREATE a new sm object
+    var createCanvas = function(opt){
+        opt = opt || {};
+        opt.container = opt.container || document.getElementById('canvas-app') || document.body;
+        opt.canvas = document.createElement('canvas');
+        opt.ctx = opt.canvas.getContext('2d');
+        opt.container.appendChild(canvas);
+        opt.canvas.width = opt.width === undefined ? 320 : opt.width;
+        opt.canvas.height = opt.height === undefined ? 240 : opt.height;
+        opt.ctx.translate(0.5, 0.5);
+        return opt;
+    };
+
+    api.create = function(opt){
+        var can = createCanvas(opt);
+        var sm = {
+            canvas: can.canvas,
+            ctx: can.ctx,
+            ver: '0.0.0',
+            currentState: 'game',
+            game: {},
+            states: states,
+            input: {
+                pointerDown: false,
+                d: 0,
+                startPos: {
+                    x: 0,
+                    y: 0
+                },
+                pos: {
+                    x: 0,
+                    y: 0
+                }
+            }
+        };
+        return sm;
     };
 
     var sm = {
