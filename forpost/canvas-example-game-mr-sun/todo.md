@@ -7,6 +7,8 @@
 ## 0.x.0 - puase method for state-machine.js
 * have an sm.pause method that can be used to pause the whole game.
 
+## 0.6.0 -
+
 ## 0.5.0 - draw methods and objects for state objects
 * (done) add support for a draw method in state objects
 * (done) a stateObj.draw method will be called after update if there is one
