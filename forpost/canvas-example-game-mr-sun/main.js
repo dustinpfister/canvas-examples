@@ -1,3 +1,9 @@
+var sm = stateMod.create({
+    ver: '0.4.0'
+});
+stateMod.start(sm);
+
+/*
 var canvas = document.createElement('canvas'),
 ctx = canvas.getContext('2d'),
 container = document.getElementById('canvas-app') || document.body;
@@ -101,3 +107,4 @@ var loop = function () {
     }
 };
 loop();
+*/

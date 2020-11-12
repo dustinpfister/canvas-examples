@@ -107,7 +107,7 @@ var stateMod = (function(){
         opt.container = opt.container || document.getElementById('canvas-app') || document.body;
         opt.canvas = document.createElement('canvas');
         opt.ctx = opt.canvas.getContext('2d');
-        opt.container.appendChild(canvas);
+        opt.container.appendChild(opt.canvas);
         opt.canvas.width = opt.width === undefined ? 320 : opt.width;
         opt.canvas.height = opt.height === undefined ? 240 : opt.height;
         opt.ctx.translate(0.5, 0.5);
@@ -115,6 +115,7 @@ var stateMod = (function(){
     };
 
     api.create = function(opt){
+        opt = opt || {};
         var can = createCanvas(opt);
         var sm = {
             canvas: can.canvas,
@@ -138,12 +139,12 @@ var stateMod = (function(){
         };
 
         // attach events for mouse and touch
-        canvas.addEventListener('mousedown', createPointerHandler(sm, 'start'));
-        canvas.addEventListener('mousemove', createPointerHandler(sm, 'move'));
-        canvas.addEventListener('mouseup', createPointerHandler(sm, 'end'));
-        canvas.addEventListener('touchstart', createPointerHandler(sm, 'start'));
-        canvas.addEventListener('touchmove', createPointerHandler(sm, 'move'));
-        canvas.addEventListener('touchend', createPointerHandler(sm, 'end'));
+        sm.canvas.addEventListener('mousedown', createPointerHandler(sm, 'start'));
+        sm.canvas.addEventListener('mousemove', createPointerHandler(sm, 'move'));
+        sm.canvas.addEventListener('mouseup', createPointerHandler(sm, 'end'));
+        sm.canvas.addEventListener('touchstart', createPointerHandler(sm, 'start'));
+        sm.canvas.addEventListener('touchmove', createPointerHandler(sm, 'move'));
+        sm.canvas.addEventListener('touchend', createPointerHandler(sm, 'end'));
 
         // init current state
         states[sm.currentState].init(sm);
@@ -167,5 +168,8 @@ var stateMod = (function(){
         };
         loop();
     };
+
+    // return the public api to stateMod
+    return api;
 
 }());
