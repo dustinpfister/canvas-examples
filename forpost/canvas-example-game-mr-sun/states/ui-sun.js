@@ -3,7 +3,6 @@ stateMod.load({
     // for each update tick
     update: function (sm, secs) {
         gameMod.update(sm.game, secs);
-
     },
     draw: function(d, ctx, canvas, game, sm){
         d.back(sm);

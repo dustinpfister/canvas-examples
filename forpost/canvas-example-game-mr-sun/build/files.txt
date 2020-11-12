@@ -6,4 +6,5 @@
 ../plugin/cookie.js
 ../lib/state-machine.js
 ../states/init-draw-base.js
+../states/init-game.js
 ../states/ui-sun.js

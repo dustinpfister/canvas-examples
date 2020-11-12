@@ -13,8 +13,8 @@
 * (done) a sm.drawObj object will be passed to stateObj.draw, methods can be appended to this in state.init
 * (done) call all init methods in stateMod.create
 * (done) have a init-draw-base.js state that will append base draw methods such as draw.back
-* have an init-game.js state
-* make a pkg-0-5-0.html
+* (done ) have an init-game.js state
+* (done) make a pkg-0-5-0.html
 
 ## 0.4.0 - state-machine.js
 * (done) start a state-machine.js file in /lib
