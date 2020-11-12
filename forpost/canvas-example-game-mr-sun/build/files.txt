@@ -4,4 +4,6 @@
 ../plugin/sun.js
 ../plugin/jar.js
 ../plugin/cookie.js
+./lib/state-machine.js
+./states/ui-sun.js
 ../lib/draw.js
