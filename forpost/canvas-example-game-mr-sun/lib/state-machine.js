@@ -58,68 +58,6 @@ var stateMod = (function(){
         }
     };
 
-    // start public api
-    var api = {};
-
-    // CREATE a new sm object
-    var createCanvas = function(opt){
-        opt = opt || {};
-        opt.container = opt.container || document.getElementById('canvas-app') || document.body;
-        opt.canvas = document.createElement('canvas');
-        opt.ctx = opt.canvas.getContext('2d');
-        opt.container.appendChild(canvas);
-        opt.canvas.width = opt.width === undefined ? 320 : opt.width;
-        opt.canvas.height = opt.height === undefined ? 240 : opt.height;
-        opt.ctx.translate(0.5, 0.5);
-        return opt;
-    };
-
-    api.create = function(opt){
-        var can = createCanvas(opt);
-        var sm = {
-            canvas: can.canvas,
-            ctx: can.ctx,
-            ver: '0.0.0',
-            currentState: 'game',
-            game: {},
-            states: states,
-            input: {
-                pointerDown: false,
-                d: 0,
-                startPos: {
-                    x: 0,
-                    y: 0
-                },
-                pos: {
-                    x: 0,
-                    y: 0
-                }
-            }
-        };
-        return sm;
-    };
-
-    var sm = {
-        ver: '0.0.0',
-        canvas: canvas,
-        currentState: 'game',
-        ctx: ctx,
-        game: {},
-        states: states,
-        input: {
-            pointerDown: false,
-            d: 0,
-            startPos: {
-                x: 0,
-                y: 0
-            },
-            pos: {
-                x: 0,
-                y: 0
-            }
-        }
-    };
-
     // Pointer Events
     var pointerHanders = {
         start: function (sm, pos, e) {
@@ -160,30 +98,74 @@ var stateMod = (function(){
         };
     };
 
-    // attach for mouse and touch
-    canvas.addEventListener('mousedown', createPointerHandler(sm, 'start'));
-    canvas.addEventListener('mousemove', createPointerHandler(sm, 'move'));
-    canvas.addEventListener('mouseup', createPointerHandler(sm, 'end'));
-    canvas.addEventListener('touchstart', createPointerHandler(sm, 'start'));
-    canvas.addEventListener('touchmove', createPointerHandler(sm, 'move'));
-    canvas.addEventListener('touchend', createPointerHandler(sm, 'end'));
+    // start public api
+    var api = {};
 
-    // init current state
-    states[sm.currentState].init(sm);
-
-    // loop
-    var lt = new Date(),
-    FPS_target = 30;
-    var loop = function () {
-        var now = new Date(),
-        t = now - lt,
-        secs = t / 1000;
-        requestAnimationFrame(loop);
-        if (t >= 1000 / FPS_target) {
-            states[sm.currentState].update(sm, secs);
-            lt = now;
-        }
+    // CREATE a new sm object
+    var createCanvas = function(opt){
+        opt = opt || {};
+        opt.container = opt.container || document.getElementById('canvas-app') || document.body;
+        opt.canvas = document.createElement('canvas');
+        opt.ctx = opt.canvas.getContext('2d');
+        opt.container.appendChild(canvas);
+        opt.canvas.width = opt.width === undefined ? 320 : opt.width;
+        opt.canvas.height = opt.height === undefined ? 240 : opt.height;
+        opt.ctx.translate(0.5, 0.5);
+        return opt;
     };
-    loop();
+
+    api.create = function(opt){
+        var can = createCanvas(opt);
+        var sm = {
+            canvas: can.canvas,
+            ctx: can.ctx,
+            ver: opt.ver || '0.0.0',
+            currentState: opt.curentState || 'game',
+            game: {},
+            states: states,
+            input: {
+                pointerDown: false,
+                d: 0,
+                startPos: {
+                    x: 0,
+                    y: 0
+                },
+                pos: {
+                    x: 0,
+                    y: 0
+                }
+            }
+        };
+
+        // attach events for mouse and touch
+        canvas.addEventListener('mousedown', createPointerHandler(sm, 'start'));
+        canvas.addEventListener('mousemove', createPointerHandler(sm, 'move'));
+        canvas.addEventListener('mouseup', createPointerHandler(sm, 'end'));
+        canvas.addEventListener('touchstart', createPointerHandler(sm, 'start'));
+        canvas.addEventListener('touchmove', createPointerHandler(sm, 'move'));
+        canvas.addEventListener('touchend', createPointerHandler(sm, 'end'));
+
+        // init current state
+        states[sm.currentState].init(sm);
+
+        return sm;
+    };
+
+    // start the given sm object
+    api.start = function(sm){
+        var lt = new Date(),
+        FPS_target = 30;
+        var loop = function () {
+            var now = new Date(),
+            t = now - lt,
+            secs = t / 1000;
+            requestAnimationFrame(loop);
+            if (t >= 1000 / FPS_target) {
+                states[sm.currentState].update(sm, secs);
+                lt = now;
+            }
+        };
+        loop();
+    };
 
 }());
