@@ -1,5 +1,6 @@
 stateMod.load({
     name: 'ui-sun',
+    // init method for the game state
     init: function(sm){
         var sun = sm.game.sun;
         sun.move = function(game, pos){
@@ -9,6 +10,7 @@ stateMod.load({
             }
         };
     },
+    // update and draw
     update: function (sm, secs) {
         gameMod.update(sm.game, secs);
     },

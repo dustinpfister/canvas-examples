@@ -7,7 +7,14 @@
 ## 0.x.0 - puase method for state-machine.js
 * have an sm.pause method that can be used to pause the whole game.
 
-## 0.6.0 -
+## 0.x.0 - transition system
+* have transition object support for stateObjects
+* a transition object contains transitionState objects
+* a transitionState object contains an init, update, and draw methods
+
+## 0.6.0 - init_buttons.js state
+* start an init_buttons.js state
+* the init method of this state will allow for button objects in each state object
 
 ## 0.5.0 - draw methods and objects for state objects
 * (done) add support for a draw method in state objects
