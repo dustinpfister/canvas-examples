@@ -1,6 +1,14 @@
 stateMod.load({
     name: 'ui-sun',
-    // for each update tick
+    init: function(sm){
+        var sun = sm.game.sun;
+        sun.move = function(game, pos){
+            var radius = game.worldRadius - game.sectionRadius;
+            if(utils.distance(pos.x, pos.y, game.centerX, game.centerY) < radius){
+                gameMod.moveSun(game, pos);
+            }
+        };
+    },
     update: function (sm, secs) {
         gameMod.update(sm.game, secs);
     },
@@ -12,11 +20,12 @@ stateMod.load({
         d.ver(sm);
     },
     // events
-    pointerStart: function (sm, pos, e) {},
+    pointerStart: function (sm, pos, e) {
+        sm.game.sun.move(sm.game, pos);
+    },
     pointerMove: function (sm, pos, e) {
-        var sun = sm.game.sun;
         if (sm.input.pointerDown) {
-            gameMod.moveSun(sm.game, pos);
+            sm.game.sun.move(sm.game, pos);
         }
     },
     pointerEnd: function (sm, pos) {
