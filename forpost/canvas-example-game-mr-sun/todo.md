@@ -9,7 +9,7 @@
 * make a pkg-0-5-0.html
 
 ## 0.4.0 - state-machine.js
-* start a state-machine.js file in /lib
+* (done) start a state-machine.js file in /lib
 * the state-machine.js file can be used to create and return a new sm object that is used in main.js
 * start a /states folder and add a sm.load method like that of gameMod.load
 * have a /states/ui-sun.js file that will be a replacement for the game state in main.js
@@ -25,7 +25,7 @@
 * (done) sun.js creates a sun.addPoints method
 * (done) in jar.js use game.jar.count as the value for sun.points
 * (done) display current sun xp, and level
-* make a pkg-0-3-0.html file
+* (done) make a pkg-0-3-0.html file
 
 ## 0.2.0 - Loose energy.js in favor of cookies.js, and jar.js plug-in modules
 * (done) copy over game.js from Mr Sun Geo
