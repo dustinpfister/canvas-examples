@@ -10,11 +10,11 @@
 
 ## 0.4.0 - state-machine.js
 * (done) start a state-machine.js file in /lib
-* the state-machine.js file can be used to create and return a new sm object that is used in main.js
+* (done) the state-machine.js file can be used to create and return a new sm object that is used in main.js
 * start a /states folder and add a sm.load method like that of gameMod.load
 * have a /states/ui-sun.js file that will be a replacement for the game state in main.js
-* use state-machine.js in main.js
-* have an sm.start method that is used in main.js to start the state machine
+* (done) use state-machine.js in main.js
+* (done) have an sm.start method that is used in main.js to start the state machine
 * have an sm.pause method that can be used to pause the whole game.
 * make a pkg-0-4-0.html file
 
