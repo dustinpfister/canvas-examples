@@ -1,15 +1,5 @@
 stateMod.load({
     name: 'ui-sun',
-    init: function (sm) {
-        // setup sun object
-        sm.game = gameMod.create({
-            canvas: sm.canvas,
-            sectionCount: 19,
-            worldRadius: 100,
-            yearRate: 0.25,
-            year: 0
-        });
-    },
     // for each update tick
     update: function (sm, secs) {
         gameMod.update(sm.game, secs);
