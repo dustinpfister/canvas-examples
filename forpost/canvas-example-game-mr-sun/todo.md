@@ -4,6 +4,9 @@
 * save states should be a feature of main.js
 * just have a way to load and save a single state via local storage for now and be done with it
 
+## 0.x.0 - puase method for state-machine.js
+* have an sm.pause method that can be used to pause the whole game.
+
 ## 0.5.0 - draw methods for state objects
 * add support for a draw method in state objects
 * make a pkg-0-5-0.html
@@ -11,11 +14,10 @@
 ## 0.4.0 - state-machine.js
 * (done) start a state-machine.js file in /lib
 * (done) the state-machine.js file can be used to create and return a new sm object that is used in main.js
-* start a /states folder and add a sm.load method like that of gameMod.load
-* have a /states/ui-sun.js file that will be a replacement for the game state in main.js
+* (done) start a /states folder and add a sm.load method like that of gameMod.load
+* (done) have a /states/ui-sun.js file that will be a replacement for the game state in main.js
 * (done) use state-machine.js in main.js
 * (done) have an sm.start method that is used in main.js to start the state machine
-* have an sm.pause method that can be used to pause the whole game.
 * make a pkg-0-4-0.html file
 
 ## 0.3.0 - sun.js
