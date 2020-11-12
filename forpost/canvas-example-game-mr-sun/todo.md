@@ -8,9 +8,9 @@
 * have an sm.pause method that can be used to pause the whole game.
 
 ## 0.5.0 - draw methods and objects for state objects
-* add support for a draw method in state objects
-* a stateObj.draw method wil be called after update if there
-* a sm.drawObj object will be passed to stateObj.draw, methods can be appended to this in state.init
+* (done) add support for a draw method in state objects
+* (done) a stateObj.draw method will be called after update if there is one
+* (done) a sm.drawObj object will be passed to stateObj.draw, methods can be appended to this in state.init
 * call all init methods in stateMod.create
 * have a init-draw-base.js state that will append base draw methods such as draw.back
 * make a pkg-0-5-0.html

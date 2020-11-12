@@ -107,8 +107,10 @@ var stateMod = (function(){
         sm.canvas.addEventListener('touchmove', createPointerHandler(sm, 'move'));
         sm.canvas.addEventListener('touchend', createPointerHandler(sm, 'end'));
 
-        // init current state
-        states[sm.currentState].init(sm);
+        // call init for all state objects
+        Object.keys(states).forEach(function(stateName){
+            states[stateName].init(sm);
+        });
 
         return sm;
     };
