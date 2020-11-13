@@ -19,7 +19,9 @@ stateMod.load((function(){
             d.ver(sm);
         },
         // events
-        pointerStart: function (sm, pos, e) {},
+        pointerStart: function (sm, pos, e) {
+            sm.currentState = 'ui-sun';
+        },
         pointerMove: function (sm, pos, e) {},
         pointerEnd: function (sm, pos) {}
     };
