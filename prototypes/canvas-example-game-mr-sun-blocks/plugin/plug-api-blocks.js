@@ -11,7 +11,7 @@ gameMod.load(function(){
                 i: i,
                 x: i % w,
                 y: Math.floor(i / w),
-                type: 0
+                type: Math.floor(Math.random() * 2)
             });
             i += 1;
         }
