@@ -1,9 +1,10 @@
 ../lib/utils.js
 ../lib/game.js
-../lib/draw.js
+../plugin/plug-api-base.js
 ../plugin/sun.js
-../plugin/temp.js
-../plugin/fusion.js
-../plugin/geo.js
-../plugin/hydro.js
-../plugin/atmo.js
+../plugin/jar.js
+../plugin/cookie.js
+../lib/state-machine.js
+../states/init-draw-base.js
+../states/init-game.js
+../states/ui-sun.js

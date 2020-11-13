@@ -1,11 +1,17 @@
-# canvas-example-mr-sun-geo
+# canvas-example-mr-sun-blocks
 
-## 0.1.0 - The ui-blocks.js plug-in
-*
+### 0.x.0 - scroll blocks
+* scroll threw blocks arrays from left to right
+* can loop around one way or the other
 
-## 0.0.0 - start a plug-in pointer support, buttons plug-in
-* copy over source code from canvas-example-game-mr-sun-geo
-* start pointer support for plug-ins
-* start a ui-sun.js 
-* start a blocks.js plug-in
-* create a pkg-0-0-0.html
+## 0.0.0 - start plug-api-blocks.js game.js plugin, and ui-blocks.js state
+* start with source code of Mr Sun 0.5.0.
+* do away with cookie and jar plugins that come with Mr Sun 0.5.0
+
+* start a plug-api-blocks.js game.js plugin
+* plug-api-blocks.js adds a 'section.blocks' array for each section on gameMod.create
+* each blocks array contains 12 x 5 'block objects'
+* a 'block object' contains a blockType property
+* blockType = 0 for 'nothing', blockType = 1 for 'rock' for now just these two
+
+* start a ui-blocks.js state to view the current state of a blocks array for a given section

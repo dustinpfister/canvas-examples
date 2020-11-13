@@ -75,6 +75,7 @@ var gameMod = (function(){
         return game;
     };
     // update sections
+
     api.updateSections = function(game){
         var sun = game.sun;
         game.sections.forEach(function(section){
@@ -87,6 +88,7 @@ var gameMod = (function(){
             section.per = per;
         });
     };
+
     // get a section by canvas position
     api.getSectionByPos = function(game, x, y){
         var section,
