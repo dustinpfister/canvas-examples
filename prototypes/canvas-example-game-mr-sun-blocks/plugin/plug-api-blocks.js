@@ -35,7 +35,9 @@ gameMod.load(function(){
             });
 
             // add setSection to game
-            game.setSection = setSection;
+            game.setSection = function(index){
+                setSection(game, index);
+            };
 
             setSection(game, 0);
         }

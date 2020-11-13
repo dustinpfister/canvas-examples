@@ -16,6 +16,6 @@
 * (done) start a ui-blocks.js state to view the current state of a blocks array for a given section
 * (done) plug-api-blocks creates a game.currentSection and game.currentSectionIndex properties
 * (done) ui-blocks has a x and y offset for drawing the blocks for the current section
-* pointer action on upper center area of canvas will switch ui-blocks to ui-sun
-* pointer action on a section object in ui-sun will set game.currentSection to that asn switch to ui-blocks
+* (done) pointer action on canvas will switch ui-blocks to ui-sun
+* (done) pointer action on a section object in ui-sun will set game.currentSection to that asn switch to ui-blocks
 * make a pkg-0-0-0.html

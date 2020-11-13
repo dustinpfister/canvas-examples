@@ -20,10 +20,11 @@ stateMod.load((function(){
         },
         // events
         pointerStart: function (sm, pos, e) {
-            sm.currentState = 'ui-sun';
         },
         pointerMove: function (sm, pos, e) {},
-        pointerEnd: function (sm, pos) {}
+        pointerEnd: function (sm, pos) {
+            sm.currentState = 'ui-sun';
+        }
     };
 
 }()));

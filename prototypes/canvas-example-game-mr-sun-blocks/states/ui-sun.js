@@ -35,13 +35,13 @@ stateMod.load({
             // if section click
             var section = gameMod.getSectionByPos(sm.game, pos.x, pos.y);
             if (section) {
-                //changeState(sm, 'observe_section', {
-                //    section: section
-                //});
+
+                sm.game.setSection(section.i);
+                sm.currentState = 'ui-blocks';
             }
             // if sun click
             if (utils.distance(sm.game.sun.x, sm.game.sun.y, pos.x, pos.y) <= sm.game.sun.radius) {
-                //changeState(sm, 'observe_sun', {});
+                //
             }
         }
     }
