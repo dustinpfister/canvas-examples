@@ -4,6 +4,11 @@
 * scroll threw blocks arrays from left to right
 * can loop around one way or the other
 
+## 0.1.0 - Start /plugin/temp.js, and /plugin/fusion.js game plugins
+* add a temp.js, and a fusion.js starting with what was worked out in Mr Sun Geo
+* change temp.js to work with new sun.js that I am using from Mr Sun 0.5.0
+* display mineral info in ui-blocks
+
 ## 0.0.0 - start plug-api-blocks.js game.js plugin, and ui-blocks.js state
 * (done) start with source code of Mr Sun 0.5.0.
 * (done) do away with cookie and jar plugins that come with Mr Sun 0.5.0
@@ -18,4 +23,4 @@
 * (done) ui-blocks has a x and y offset for drawing the blocks for the current section
 * (done) pointer action on canvas will switch ui-blocks to ui-sun
 * (done) pointer action on a section object in ui-sun will set game.currentSection to that asn switch to ui-blocks
-* make a pkg-0-0-0.html
+* (done) make a pkg-0-0-0.html
