@@ -9,7 +9,7 @@
 * change temp.js to work with new sun.js that I am using from Mr Sun 0.5.0
 * display mineral info in ui-blocks
 * have all block types default to 0 for starters
-* let the amount of 'iron' minerials determon the amount of rock blocks for a section
+* let the amount of 'iron' minerals determine the amount of rock blocks for a section
 * blocks start out from the bottom up
 * section.temp and section.groundTemp effect block type by setting rocks to magma type
 
