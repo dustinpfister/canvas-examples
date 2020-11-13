@@ -2,8 +2,6 @@
 ../lib/game.js
 ../plugin/plug-api-base.js
 ../plugin/sun.js
-../plugin/jar.js
-../plugin/cookie.js
 ../lib/state-machine.js
 ../states/init-draw-base.js
 ../states/init-game.js
