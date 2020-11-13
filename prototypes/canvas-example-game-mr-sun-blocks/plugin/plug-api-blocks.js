@@ -19,7 +19,7 @@ gameMod.load(function(){
     }
 
     return {
-        name: 'plug-api-base',
+        name: 'plug-api-blocks',
         callPriority: 0.2,
         create: function(game, opt){
             console.log(this.name);

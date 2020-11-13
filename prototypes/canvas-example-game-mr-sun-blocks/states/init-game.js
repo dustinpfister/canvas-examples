@@ -9,5 +9,7 @@ stateMod.load({
             yearRate: 0.25,
             year: 0
         });
+        console.log('game:');
+        console.log(sm.game);
     }
 });
