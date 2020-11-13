@@ -8,3 +8,4 @@
 ../states/init-draw-blocks.js
 ../states/init-game.js
 ../states/ui-sun.js
+../states/ui-blocks.js

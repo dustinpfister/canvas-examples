@@ -11,7 +11,6 @@
 * (done) plug-api-blocks.js adds a 'section.blocks' array for each section on gameMod.create
 * (done) each blocks array contains 12 x 5 'block objects'
 * (done) a 'block object' contains a block.type property
-* type = 0 for 'nothing', type = 1 for 'rock' for now just these two
-
-* start a init-draw-blocks state that adds draw methods for blocks
-* start a ui-blocks.js state to view the current state of a blocks array for a given section
+* (done) type = 0 for 'nothing', type = 1 for 'rock' for now just these two
+* (done) start a init-draw-blocks state that adds draw methods for blocks
+* (done) start a ui-blocks.js state to view the current state of a blocks array for a given section
