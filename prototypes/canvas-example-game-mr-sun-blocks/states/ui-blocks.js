@@ -13,7 +13,9 @@ stateMod.load((function(){
         },
         draw: function(d, ctx, canvas, game, sm){
             d.back(sm);
-            d.blocks(sm);
+            var offsetX = 160 - 16 * 12 / 2,
+            offsetY = 120 - 16 * 5 / 2;
+            d.blocks(sm, sm.game.currentSection, offsetX, offsetY);
             d.ver(sm);
         },
         // events

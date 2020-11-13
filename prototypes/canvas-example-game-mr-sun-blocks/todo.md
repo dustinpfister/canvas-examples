@@ -14,4 +14,5 @@
 * (done) type = 0 for 'nothing', type = 1 for 'rock' for now just these two
 * (done) start a init-draw-blocks state that adds draw methods for blocks
 * (done) start a ui-blocks.js state to view the current state of a blocks array for a given section
-* ui-blocks creates a game.currentSection and game.currentSectionIndex properties
+* (done) plug-api-blocks creates a game.currentSection and game.currentSectionIndex properties
+* ui-blocks has a x and y offset for drawing the blocks for the current section
