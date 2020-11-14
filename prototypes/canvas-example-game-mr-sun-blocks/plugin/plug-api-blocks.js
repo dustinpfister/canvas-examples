@@ -1,5 +1,9 @@
 gameMod.load(function(){
 
+    var MAX_BLOCK_TYPE_COUNTS = {
+        rock: 24
+    };
+
     var createBlocksArray = function(){
         var blocks = [],
         w = 12,
@@ -45,6 +49,14 @@ gameMod.load(function(){
             };
             // set current section to sectionIndex 0
             setSection(game, 0);
+        },
+        onDeltaYear: function(game, deltaYears){
+            game.forSections(function(section){
+                var bt = section.blockTypes;
+                // just setting total for 'rocks' now.
+                bt.rock.total = Math.floor(section.minerals.carbon / 100);
+                bt.rock.total = bt.rock.total > MAX_BLOCK_TYPE_COUNTS.rock ? MAX_BLOCK_TYPE_COUNTS.rock: bt.rock.total;
+            });
         }
     };
 
