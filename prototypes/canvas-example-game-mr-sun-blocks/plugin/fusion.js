@@ -4,8 +4,7 @@ gameMod.load((function(){
     var SUN_STARTING_HYDROGEN = 10000,
     SUN_MINERAL_PRODUCTION = {
         carbon: {
-            rate: 1,     // the amount of the mineral
-            per: 1,      // one 'rate' for 'per' (in years)
+            rate: 5,     // the amount of the mineral
             temp: 100,   // min temp required
             cost: {      // the cost to produce
                 amount: 1,
@@ -14,8 +13,7 @@ gameMod.load((function(){
         },
         oxygen: {
             rate: 1,
-            per: 10,
-            temp: 100,
+            temp: 250,
             cost: {
                 amount: 1,
                 mineral: 'carbon'
@@ -23,9 +21,13 @@ gameMod.load((function(){
         }
     };
 
+
     // helper for creating a delta value for mineral production
     var getMinDelta = function(sun, rate, temp, deltaYears){
         return rate * Math.floor(sun.temp / temp) * deltaYears;
+    };
+    var getMinCost = function(sun, production, deltaYears){
+        return Math.floor(production.cost.amount * deltaYears);
     };
 
     // create a minerals object
@@ -49,7 +51,14 @@ gameMod.load((function(){
             minCount = sun.minerals[minName];
             production = SUN_MINERAL_PRODUCTION[minName];
             if(production){
-                sun.minerals[minName] += production.rate;
+                if(sun.temp >= production.temp){
+                    var delta = getMinDelta(sun, production.rate, production.temp, deltaYears),
+                    cost = getMinCost(sun, production, deltaYears);
+                    if(sun.minerals[production.cost.mineral] >= cost){
+                        sun.minerals[production.cost.mineral] -= cost;
+                        sun.minerals[minName] += delta
+                    }
+                }
             }
             i += 1;
         }
