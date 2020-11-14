@@ -38,7 +38,7 @@ stateMod.load((function(){
                 ctx.textAlign = 'left';
                 ctx.textBaseLine  =  'top';
                 Object.keys(sun.minerals).forEach(function(minName, i){
-                    var minCount = section.minerals[minName],
+                    var minCount = sun.minerals[minName],
                     x = offsetX,
                     y = offsetY + 10 * i;
                     ctx.fillText(minName + ': ' + minCount, x, y);

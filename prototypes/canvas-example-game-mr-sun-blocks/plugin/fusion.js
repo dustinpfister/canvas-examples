@@ -1,6 +1,8 @@
 // fusion.js
 gameMod.load((function(){
 
+    var SUN_STARTING_HYDROGEN = 10000;
+
     // helper for creating a delta value for mineral production
     var getMinDelta = function(sun, rate, temp, deltaYears){
         return rate * Math.floor(sun.temp / temp) * deltaYears;
@@ -15,6 +17,8 @@ gameMod.load((function(){
         };
     };
 
+    
+
     // the plugObj for fusion
     return {
         name: 'fusion',
@@ -22,6 +26,7 @@ gameMod.load((function(){
         create: function(game, opt){
             // minerals object for the sun
             game.sun.minerals = createMineralsObj();
+            game.sun.minerals.hydrogen = SUN_STARTING_HYDROGEN;
             // minerals objects for each section
             game.forSections(function(section){
                 section.minerals = createMineralsObj();
