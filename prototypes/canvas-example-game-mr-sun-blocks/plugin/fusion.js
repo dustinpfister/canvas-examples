@@ -19,6 +19,11 @@ gameMod.load((function(){
                 mineral: 'carbon'
             }
         }
+    },
+    SUN_MINERAL_TRANSFER_RATES = { // transfer rates per year from sun to section
+        hydrogen: 7,
+        carbon: 5,
+        oxygen: 1
     };
 
 
@@ -68,7 +73,7 @@ gameMod.load((function(){
         if(section.per > 0.95){
             Object.keys(sun.minerals).forEach(function(minKey){
                 var minCount = sun.minerals[minKey];
-                var transferAmount = 1 * deltaYears;
+                var transferAmount = SUN_MINERAL_TRANSFER_RATES[minKey] * deltaYears;
                 if(minCount >= transferAmount){
                     section.minerals[minKey] += transferAmount;
                     sun.minerals[minKey] -= transferAmount;

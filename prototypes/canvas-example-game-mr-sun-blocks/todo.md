@@ -15,10 +15,11 @@
 * (done) display mineral info of current section in ui-blocks
 * (done) with fusion.js the sun object starts with a fixed amount of Hydrogen
 * (done) sun creates just carbon, and oxygen at the cost of Hydrogen
-* can transfer minerals to world sections
+* (done) can transfer minerals to world sections
 * let the amount of 'carbon' minerals determine the amount of rock type blocks for a section (for now)
 * blocks start out from the bottom up
 * section.temp and section.groundTemp effect block type by setting rocks to magma type
+* transfer rates for minerals to sections in fusion.js
 * create a pkg-0-1-0.html
 
 ## 0.0.0 - start plug-api-blocks.js game.js plugin, and ui-blocks.js state
