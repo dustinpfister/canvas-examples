@@ -12,10 +12,12 @@ stateMod.load((function(){
             gameMod.update(sm.game, secs);
         },
         draw: function(d, ctx, canvas, game, sm){
-            d.back(sm);
             var offsetX = 160 - 16 * 12 / 2,
-            offsetY = 120 - 16 * 5 / 2;
-            d.blocks(sm, sm.game.currentSection, offsetX, offsetY);
+            offsetY = 120 - 16 * 5 / 2,
+            section = sm.game.currentSection;
+            d.back(sm);
+            d.blocks(sm, section, offsetX, offsetY);
+            d.sectionMineralInfo(sm, section, 10, 10);
             d.ver(sm);
         },
         // events

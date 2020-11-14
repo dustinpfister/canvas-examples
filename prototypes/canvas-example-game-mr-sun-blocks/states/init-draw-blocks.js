@@ -21,6 +21,7 @@ stateMod.load((function(){
                 ctx.font = '10px arial';
                 ctx.textAlign = 'left';
                 ctx.textBaseLine  =  'top';
+
                 var minName = 'hydrogen',
                 minCount = section.minerals[minName],
                 x = offsetX,
