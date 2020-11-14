@@ -19,6 +19,7 @@ stateMod.load({
         d.sections(sm);
         d.sun(sm);
         d.disp(sm);
+        d.sunMineralInfo(sm, 3, 30);
         d.ver(sm);
     },
     // events

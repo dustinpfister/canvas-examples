@@ -1,3 +1,4 @@
+// extended draw methods for Mr Sun Blocks
 stateMod.load((function(){
     var blockColors = ['white', 'black'];
     return {
@@ -22,6 +23,21 @@ stateMod.load((function(){
                 ctx.textAlign = 'left';
                 ctx.textBaseLine  =  'top';
                 Object.keys(section.minerals).forEach(function(minName, i){
+                    var minCount = section.minerals[minName],
+                    x = offsetX,
+                    y = offsetY + 10 * i;
+                    ctx.fillText(minName + ': ' + minCount, x, y);
+                });
+            };
+            // draw mineral info for the sun
+            sm.draw.sunMineralInfo = function(sm, offsetX, offsetY){
+                var ctx = sm.ctx,
+                sun = sm.game.sun;
+                ctx.fillStyle = 'white';
+                ctx.font = '10px arial';
+                ctx.textAlign = 'left';
+                ctx.textBaseLine  =  'top';
+                Object.keys(sun.minerals).forEach(function(minName, i){
                     var minCount = section.minerals[minName],
                     x = offsetX,
                     y = offsetY + 10 * i;
