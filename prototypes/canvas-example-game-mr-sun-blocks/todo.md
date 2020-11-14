@@ -10,13 +10,12 @@
 ## 0.1.0 - Start /plugin/temp.js, and /plugin/fusion.js game plugins
 * (done) add a temp.js, and a fusion.js starting with what was worked out in Mr Sun Geo
 * (done) change temp.js to work with new sun.js that I am using from Mr Sun 0.5.0
-
-* have all block types default to 0 for starters
-* add a fusion.js game plugin based off of what is in Mr Sun Geo
+* (done) have all block types default to 0 for starters
+* (done) add a fusion.js game plugin based off of what is in Mr Sun Geo
 * with fusion.js the sun object starts with a fixed amount of Hydrogen
 * sun creates just hydrogen, carbon, and oxygen
 * let the amount of 'carbon' minerals determine the amount of rock type blocks for a section (for now)
-* display mineral info in ui-blocks
+* display mineral info of current section in ui-blocks
 * blocks start out from the bottom up
 * section.temp and section.groundTemp effect block type by setting rocks to magma type
 * create a pkg-0-1-0.html

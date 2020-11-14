@@ -14,6 +14,19 @@ stateMod.load((function(){
                     ctx.fillRect(x, y, 16, 16);
                 });
             };
+            // draw mineral info for a section
+            sm.draw.sectionMineralInfo = function(sm, section, offsetX, offsetY){
+                var ctx = sm.ctx;
+                ctx.fillStyle = 'white';
+                ctx.font = '10px arial';
+                ctx.textAlign = 'left';
+                ctx.textBaseLine  =  'top';
+                var minName = 'hydrogen',
+                minCount = section.minerals[minName],
+                x = offsetX,
+                y = offsetY;
+                ctx.fillText(minName + ': ' + minCount, x, y);
+            };
         }
     };
 }()));
