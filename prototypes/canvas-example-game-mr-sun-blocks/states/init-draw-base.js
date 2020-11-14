@@ -2,7 +2,7 @@ stateMod.load({
     name: 'init-draw-base',
     init: function (sm) {
         // draw background method
-        sm.draw.back = function(sm){
+        sm.draw.back = function (sm) {
             sm.ctx.fillStyle = '#000020';
             sm.ctx.fillRect(0, 0, sm.canvas.width, sm.canvas.height);
         };
@@ -21,6 +21,9 @@ stateMod.load({
                 ctx.textAlign = 'center';
                 ctx.textBaseline = 'middle';
                 ctx.font = '10px arial';
+                // draw text
+                ctx.fillText(section.temp, section.x, section.y - 5);
+                ctx.fillText(section.groundTemp, section.x, section.y + 5);
             });
         };
         // draw Mr Sun
@@ -43,7 +46,7 @@ stateMod.load({
             ctx.fillText('year: ' + sm.game.year, 3, 10);
         };
         // draw version number
-       sm.draw.ver = function (sm) {
+        sm.draw.ver = function (sm) {
             var ctx = sm.ctx;
             ctx.fillStyle = 'white';
             ctx.textAlign = 'left';
