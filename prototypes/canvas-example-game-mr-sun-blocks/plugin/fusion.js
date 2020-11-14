@@ -38,7 +38,7 @@ gameMod.load((function(){
             oxygen: 0
         };
     };
-
+    // create heavy minerals from lighter ones
     var createMinerals = function(sun, deltaYears){
         var i = 0,
         minName,
@@ -63,6 +63,19 @@ gameMod.load((function(){
             i += 1;
         }
     };
+    // transfer minerals to a section that is close
+    var transferToSection = function(sun, section, deltaYears){
+        if(section.per > 0.95){
+            Object.keys(sun.minerals).forEach(function(minKey){
+                var minCount = sun.minerals[minKey];
+                var transferAmount = 1 * deltaYears;
+                if(minCount >= transferAmount){
+                    section.minerals[minKey] += transferAmount;
+                    sun.minerals[minKey] -= transferAmount;
+                }
+            });
+        }
+    };
 
     // the plugObj for fusion
     return {
@@ -82,6 +95,11 @@ gameMod.load((function(){
 
             var sun = game.sun;
             createMinerals(sun, deltaYears);
+
+            game.forSections(function(section){
+                transferToSection(sun, section, deltaYears);
+            });
+
 /*
             var sun = game.sun;
 

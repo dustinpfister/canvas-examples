@@ -14,7 +14,8 @@
 * (done) add a fusion.js game plugin based off of what is in Mr Sun Geo
 * (done) display mineral info of current section in ui-blocks
 * (done) with fusion.js the sun object starts with a fixed amount of Hydrogen
-* sun creates just carbon, and oxygen at the cost of Hydrogen
+* (done) sun creates just carbon, and oxygen at the cost of Hydrogen
+* can transfer minerals to world sections
 * let the amount of 'carbon' minerals determine the amount of rock type blocks for a section (for now)
 * blocks start out from the bottom up
 * section.temp and section.groundTemp effect block type by setting rocks to magma type
