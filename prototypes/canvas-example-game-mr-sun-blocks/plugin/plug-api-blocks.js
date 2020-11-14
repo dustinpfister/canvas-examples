@@ -27,6 +27,11 @@ gameMod.load(function(){
         game.currentSection = game.sections[game.currentSectionIndex];
     };
 
+    // get all the blocks of a block index
+    var getAllBlocksOfIndex = function(section, blockIndex){
+        //return 
+    };
+
     return {
         name: 'plug-api-blocks',
         callPriority: 0.2,
@@ -51,11 +56,16 @@ gameMod.load(function(){
             setSection(game, 0);
         },
         onDeltaYear: function(game, deltaYears){
+
             game.forSections(function(section){
                 var bt = section.blockTypes;
                 // just setting total for 'rocks' now.
                 bt.rock.total = Math.floor(section.minerals.carbon / 100);
                 bt.rock.total = bt.rock.total > MAX_BLOCK_TYPE_COUNTS.rock ? MAX_BLOCK_TYPE_COUNTS.rock: bt.rock.total;
+
+                // use rocks
+                if(bt.rock.used < bt.rock.total){
+                }
             });
         }
     };
