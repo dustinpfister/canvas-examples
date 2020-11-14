@@ -11,6 +11,7 @@ gameMod.load((function(){
         timePer = timePer > 1 ? 1 : timePer;
         game.forSections(function(section){
             section.temp = section.per * MAX_SUN_TEMP;
+
             var groundTempLoss = MAX_GROUND_TEMP * 0.75 * timePer;
             section.groundTemp = MAX_GROUND_TEMP - groundTempLoss;
 

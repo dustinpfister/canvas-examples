@@ -5,8 +5,8 @@
 * can loop around one way or the other
 
 ## 0.1.0 - Start /plugin/temp.js, and /plugin/fusion.js game plugins
-* add a temp.js, and a fusion.js starting with what was worked out in Mr Sun Geo
-* change temp.js to work with new sun.js that I am using from Mr Sun 0.5.0
+* (done) add a temp.js, and a fusion.js starting with what was worked out in Mr Sun Geo
+* (done) change temp.js to work with new sun.js that I am using from Mr Sun 0.5.0
 * display mineral info in ui-blocks
 * have all block types default to 0 for starters
 * let the amount of 'iron' minerals determine the amount of rock blocks for a section
