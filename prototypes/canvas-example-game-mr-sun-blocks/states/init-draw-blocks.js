@@ -21,12 +21,12 @@ stateMod.load((function(){
                 ctx.font = '10px arial';
                 ctx.textAlign = 'left';
                 ctx.textBaseLine  =  'top';
-
-                var minName = 'hydrogen',
-                minCount = section.minerals[minName],
-                x = offsetX,
-                y = offsetY;
-                ctx.fillText(minName + ': ' + minCount, x, y);
+                Object.keys(section.minerals).forEach(function(minName, i){
+                    var minCount = section.minerals[minName],
+                    x = offsetX,
+                    y = offsetY + 10 * i;
+                    ctx.fillText(minName + ': ' + minCount, x, y);
+                });
             };
         }
     };
