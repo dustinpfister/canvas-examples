@@ -4,6 +4,9 @@
 * scroll threw blocks arrays from left to right
 * can loop around one way or the other
 
+## 0.x.0 - more minerals
+* add aluminium, iron, sliver, and gold as possible minerals
+
 ## 0.1.0 - Start /plugin/temp.js, and /plugin/fusion.js game plugins
 * (done) add a temp.js, and a fusion.js starting with what was worked out in Mr Sun Geo
 * (done) change temp.js to work with new sun.js that I am using from Mr Sun 0.5.0
@@ -11,7 +14,7 @@
 * have all block types default to 0 for starters
 * add a fusion.js game plugin based off of what is in Mr Sun Geo
 * with fusion.js the sun object starts with a fixed amount of Hydrogen
-* sun creates just carbon, oxygen, aluminium, iron, sliver, gold
+* sun creates just hydrogen, carbon, and oxygen
 * let the amount of 'carbon' minerals determine the amount of rock type blocks for a section (for now)
 * display mineral info in ui-blocks
 * blocks start out from the bottom up

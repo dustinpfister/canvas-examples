@@ -3,6 +3,8 @@
 ../plugin/plug-api-base.js
 ../plugin/plug-api-blocks.js
 ../plugin/sun.js
+../plugin/temp.js
+../plugin/fusion.js
 ../lib/state-machine.js
 ../states/init-draw-base.js
 ../states/init-draw-blocks.js
