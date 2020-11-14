@@ -17,7 +17,11 @@ gameMod.load((function(){
         };
     };
 
-    
+    var createMinerals = function(sun, deltaYears){
+
+        
+
+    };
 
     // the plugObj for fusion
     return {
@@ -33,6 +37,9 @@ gameMod.load((function(){
             });
         },
         onDeltaYear: function(game, deltaYears){
+
+            var sun = game.sun;
+            createMinerals(sun, deltaYears);
 /*
             var sun = game.sun;
 
