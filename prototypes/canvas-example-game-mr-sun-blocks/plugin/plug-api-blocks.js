@@ -28,17 +28,22 @@ gameMod.load(function(){
         callPriority: 0.2,
         create: function(game, opt){
             console.log(this.name);
-
             // set up blocks for first time
             game.forSections(function(section){
                 section.blocks = createBlocksArray();
+                section.blockTypes = {
+                    rock: {
+                        index: 1, // type index
+                        total: 0, // total amount that is ready for the section
+                        used: 0   // total amount used in the section
+                    }
+                };
             });
-
             // add setSection to game
             game.setSection = function(index){
                 setSection(game, index);
             };
-
+            // set current section to sectionIndex 0
             setSection(game, 0);
         }
     };

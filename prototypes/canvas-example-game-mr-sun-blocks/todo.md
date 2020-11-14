@@ -19,7 +19,7 @@
 * let the amount of 'carbon' minerals determine the amount of rock type blocks for a section (for now)
 * blocks start out from the bottom up
 * section.temp and section.groundTemp effect block type by setting rocks to magma type
-* transfer rates for minerals to sections in fusion.js
+* (done) transfer rates for minerals to sections in fusion.js
 * create a pkg-0-1-0.html
 
 ## 0.0.0 - start plug-api-blocks.js game.js plugin, and ui-blocks.js state
