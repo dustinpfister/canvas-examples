@@ -1,7 +1,27 @@
 // fusion.js
 gameMod.load((function(){
 
-    var SUN_STARTING_HYDROGEN = 10000;
+    var SUN_STARTING_HYDROGEN = 10000,
+    SUN_MINERAL_PRODUCTION = {
+        carbon: {
+            rate: 1,     // the amount of the mineral
+            per: 1,      // one 'rate' for 'per' (in years)
+            temp: 100,   // min temp required
+            cost: {      // the cost to produce
+                amount: 1,
+                mineral: 'hydrogen'
+            }
+        },
+        oxygen: {
+            rate: 1,
+            per: 10,
+            temp: 100,
+            cost: {
+                amount: 1,
+                mineral: 'carbon'
+            }
+        }
+    };
 
     // helper for creating a delta value for mineral production
     var getMinDelta = function(sun, rate, temp, deltaYears){
@@ -18,9 +38,21 @@ gameMod.load((function(){
     };
 
     var createMinerals = function(sun, deltaYears){
-
-        
-
+        var i = 0,
+        minName,
+        minCount,
+        production,
+        keys = Object.keys(sun.minerals),
+        len = keys.length; 
+        while(i < len){
+            minName = keys[i];
+            minCount = sun.minerals[minName];
+            production = SUN_MINERAL_PRODUCTION[minName];
+            if(production){
+                sun.minerals[minName] += production.rate;
+            }
+            i += 1;
+        }
     };
 
     // the plugObj for fusion
@@ -30,11 +62,12 @@ gameMod.load((function(){
         create: function(game, opt){
             // minerals object for the sun
             game.sun.minerals = createMineralsObj();
-            game.sun.minerals.hydrogen = SUN_STARTING_HYDROGEN;
             // minerals objects for each section
             game.forSections(function(section){
                 section.minerals = createMineralsObj();
             });
+            // starting hydrogen for sun
+            game.sun.minerals.hydrogen = SUN_STARTING_HYDROGEN;
         },
         onDeltaYear: function(game, deltaYears){
 
