@@ -16,18 +16,21 @@ stateMod.load((function(){
                 });
             };
             // draw mineral info for a section
+            var drawMineralInfo = function(ctx, obj, offsetX, offsetY){
+                Object.keys(obj.minerals).forEach(function(minName, i){
+                    var minCount = obj.minerals[minName],
+                    x = offsetX,
+                    y = offsetY + 10 * i;
+                    ctx.fillText(minName + ': ' + minCount, x, y);
+                });
+            };
             sm.draw.sectionMineralInfo = function(sm, section, offsetX, offsetY){
                 var ctx = sm.ctx;
                 ctx.fillStyle = 'white';
                 ctx.font = '10px arial';
                 ctx.textAlign = 'left';
                 ctx.textBaseLine  =  'top';
-                Object.keys(section.minerals).forEach(function(minName, i){
-                    var minCount = section.minerals[minName],
-                    x = offsetX,
-                    y = offsetY + 10 * i;
-                    ctx.fillText(minName + ': ' + minCount, x, y);
-                });
+                drawMineralInfo(ctx, section, offsetX, offsetY);
             };
             // draw mineral info for the sun
             sm.draw.sunMineralInfo = function(sm, offsetX, offsetY){
@@ -37,12 +40,7 @@ stateMod.load((function(){
                 ctx.font = '10px arial';
                 ctx.textAlign = 'left';
                 ctx.textBaseLine  =  'top';
-                Object.keys(sun.minerals).forEach(function(minName, i){
-                    var minCount = sun.minerals[minName],
-                    x = offsetX,
-                    y = offsetY + 10 * i;
-                    ctx.fillText(minName + ': ' + minCount, x, y);
-                });
+                drawMineralInfo(ctx, sun, offsetX, offsetY);
             };
         }
     };
