@@ -1,7 +1,7 @@
 // fusion.js
 gameMod.load((function(){
 
-    var SUN_STARTING_HYDROGEN = 10000,
+    var SUN_STARTING_HYDROGEN = 100000,
     SUN_MINERAL_PRODUCTION = {
         carbon: {
             rate: 5,     // the amount of the mineral
