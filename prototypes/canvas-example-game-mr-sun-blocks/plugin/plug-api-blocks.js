@@ -2,12 +2,14 @@ gameMod.load(function(){
 
     var MAX_BLOCK_TYPE_COUNTS = {
         rock: 24
-    };
+    },
+    GRID_WIDTH = 12,
+    GRID_HEIGHT = 5;
 
     var createBlocksArray = function(){
         var blocks = [],
-        w = 12,
-        h = 5,
+        w = GRID_WIDTH,
+        h = GRID_HEIGHT,
         i = 0,
         len = w * h;
         while(i < len){
@@ -26,6 +28,18 @@ gameMod.load(function(){
         game.currentSectionIndex = index;
         game.currentSection = game.sections[game.currentSectionIndex];
     };
+    // simple get block helper
+    var getBlock = function(section, x, y){
+        var block;
+        if(x < 0 || y < 0 || x >= GRID_WIDTH || y >= GRID_HEIGHT){
+            return false;
+        }
+        block = section.blocks[y * GRID_WIDTH + x];
+        if(block){
+            return block;
+        }
+        return false;
+    };
 
     // get all the blocks of a block index
     var getAllBlocksOfIndex = function(section, blockIndex){
@@ -33,6 +47,7 @@ gameMod.load(function(){
             return block.type === blockIndex;
         });
     };
+    // apply 'gravity' to a block
 
     return {
         name: 'plug-api-blocks',
@@ -56,6 +71,8 @@ gameMod.load(function(){
             };
             // set current section to sectionIndex 0
             setSection(game, 0);
+            console.log('getBlock:');
+            console.log( getBlock(game.sections[0], -1, 1) );
         },
         onDeltaYear: function(game, deltaYears){
 
