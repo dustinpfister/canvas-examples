@@ -1,11 +1,11 @@
 # canvas-example-mr-sun-blocks
 
+## 0.x.0 - more minerals
+* add aluminium, iron, sliver, and gold as possible minerals
+
 ### 0.x.0 - scroll blocks
 * scroll threw blocks arrays from left to right
 * can loop around one way or the other
-
-## 0.x.0 - more minerals
-* add aluminium, iron, sliver, and gold as possible minerals
 
 ## 0.x.0 - Temp Efefcts blocks
 * section.temp and section.groundTemp effect block type by setting rock to magma type and back to rock
@@ -28,6 +28,7 @@
 * (done) have a simple get random block helper
 * (done) place blocks randomly
 * (done) transfer rates for minerals to sections in fusion.js
+* display rocks count for world sections in ui-sun
 * create a pkg-0-1-0.html
 
 ## 0.0.0 - start plug-api-blocks.js game.js plugin, and ui-blocks.js state
