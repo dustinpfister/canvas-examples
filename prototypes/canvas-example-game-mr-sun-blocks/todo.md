@@ -19,7 +19,7 @@
 * (done) start a blockTypes object for each section.
 * (done) let the amount of 'carbon' minerals determine the amount of total rock type blocks for a section (for now)
 * (done) have a getAllBlocksOfIndex helper
-* have a simple getBlock helper
+* (done) have a simple getBlock helper
 * have a gravity helper in plug-api-blocks
 * blocks start out from the bottom up
 * section.temp and section.groundTemp effect block type by setting rocks to magma type

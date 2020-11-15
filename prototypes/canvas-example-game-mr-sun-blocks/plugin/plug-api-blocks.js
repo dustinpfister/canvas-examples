@@ -23,7 +23,7 @@ gameMod.load(function(){
         }
         return blocks;
     };
-
+    // set the current section
     var setSection = function(game, index){
         game.currentSectionIndex = index;
         game.currentSection = game.sections[game.currentSectionIndex];
@@ -48,6 +48,17 @@ gameMod.load(function(){
         });
     };
     // apply 'gravity' to a block
+    var gravity = function(section, block){
+        if(block.type === 1){
+            var below = getBlock(section, block.x, block.y + 1);
+            if(below){
+                if(below.type === 0){
+                    below.type = block.type;
+                    block.type = 0;
+                }
+            }
+        }
+    };
 
     return {
         name: 'plug-api-blocks',
@@ -88,6 +99,10 @@ gameMod.load(function(){
                     freeBlocks[0].type = 1;
                     bt.rock.used += 1;
                 }
+                section.blocks.forEach(function(block){
+                    // drop down if block below is empty
+                    gravity(section, block);
+                });
             });
         }
     };
