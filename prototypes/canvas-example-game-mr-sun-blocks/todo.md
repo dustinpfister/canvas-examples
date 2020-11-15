@@ -7,6 +7,9 @@
 ## 0.x.0 - more minerals
 * add aluminium, iron, sliver, and gold as possible minerals
 
+## 0.x.0 - Temp Efefcts blocks
+* section.temp and section.groundTemp effect block type by setting rock to magma type and back to rock
+
 ## 0.1.0 - Start /plugin/temp.js, and /plugin/fusion.js game plugins
 * (done) add a temp.js, and a fusion.js starting with what was worked out in Mr Sun Geo
 * (done) change temp.js to work with new sun.js that I am using from Mr Sun 0.5.0
@@ -22,9 +25,8 @@
 * (done) have a simple getBlock helper
 * (done) have a gravity helper in plug-api-blocks
 * (done) blocks start out from the bottom up
-* have a simple get random block helper
-* place blocks randomly
-* section.temp and section.groundTemp effect block type by setting rocks to magma type
+* (done) have a simple get random block helper
+* (done) place blocks randomly
 * (done) transfer rates for minerals to sections in fusion.js
 * create a pkg-0-1-0.html
 

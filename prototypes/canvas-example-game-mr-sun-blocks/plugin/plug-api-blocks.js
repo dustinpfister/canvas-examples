@@ -1,7 +1,7 @@
 gameMod.load(function(){
 
     var MAX_BLOCK_TYPE_COUNTS = {
-        rock: 50
+        rock: 30
     },
     GRID_WIDTH = 12,
     GRID_HEIGHT = 5;
