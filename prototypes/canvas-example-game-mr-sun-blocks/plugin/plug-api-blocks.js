@@ -1,3 +1,18 @@
+/*
+game.blocks = {
+   rock: [
+       {
+           type: 'block',
+           typeIndex: 1,
+           section: [section-ref],
+           cell: [null] or [cell-ref]
+       }
+   ]
+}
+
+
+*/
+
 gameMod.load(function(){
     // constants
     var MAX_BLOCK_TYPE_COUNTS = {
@@ -17,7 +32,8 @@ gameMod.load(function(){
                 i: i,
                 x: i % w,
                 y: Math.floor(i / w),
-                type: 0
+                type: 0,
+                block: null // free cell if null, otherwise it is a refernce to the block that is here
             });
             i += 1;
         }
@@ -70,7 +86,7 @@ gameMod.load(function(){
         callPriority: 0.2,
         create: function(game, opt){
             console.log(this.name);
-            // set up blocks for first time
+            // set up cells and blocks
             game.forSections(function(section){
                 section.cells = createCellsArray();
                 section.blockTypes = {

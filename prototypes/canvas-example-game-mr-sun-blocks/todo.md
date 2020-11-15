@@ -11,8 +11,12 @@
 * section.temp and section.groundTemp effect block type by setting rock to magma type and back to rock
 
 ## 0.2.0 - section.cells, and new section.blocks
-* Have a new section.cells that will be a replacement for section.blocks
-* section.blocks will be a collection of availabule blocks for the section
+* (done) Have a new section.cells that will be a replacement for section.blocks
+* game.blocks will be a collection of blocks for the whole world (replacing section.blockTypes)
+* the game.blocks object contains Objects pools, one for each block type (game.blocks.rock, game.blocks.water, etc)
+* have an active flag for each block, if active is false then the block is not in play
+
+* a block will become active depending on mineral count for a section just as before
 * have a section.cells\[cellIndex\].block that can be null, or a reference to a block in section.blocks
 * create a pkg-0-1-0.html
 
