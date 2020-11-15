@@ -10,6 +10,12 @@
 ## 0.x.0 - Temp Efefcts blocks
 * section.temp and section.groundTemp effect block type by setting rock to magma type and back to rock
 
+## 0.2.0 - section.cells, and new section.blocks
+* Have a new section.cells that will be a replacement for section.blocks
+* section.blocks will be a collection of availabule blocks for the section
+* have a section.cells\[cellIndex\].block that can be null, or a reference to a block in section.blocks
+* create a pkg-0-1-0.html
+
 ## 0.1.0 - Start /plugin/temp.js, and /plugin/fusion.js game plugins
 * (done) add a temp.js, and a fusion.js starting with what was worked out in Mr Sun Geo
 * (done) change temp.js to work with new sun.js that I am using from Mr Sun 0.5.0

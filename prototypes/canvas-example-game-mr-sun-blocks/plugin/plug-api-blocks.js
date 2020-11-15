@@ -1,19 +1,19 @@
 gameMod.load(function(){
-
+    // constants
     var MAX_BLOCK_TYPE_COUNTS = {
         rock: 30
     },
     GRID_WIDTH = 12,
     GRID_HEIGHT = 5;
-
-    var createBlocksArray = function(){
-        var blocks = [],
+    // create a new blocks array
+    var createCellsArray = function(){
+        var cells = [],
         w = GRID_WIDTH,
         h = GRID_HEIGHT,
         i = 0,
         len = w * h;
         while(i < len){
-            blocks.push({
+            cells.push({
                 i: i,
                 x: i % w,
                 y: Math.floor(i / w),
@@ -21,7 +21,7 @@ gameMod.load(function(){
             });
             i += 1;
         }
-        return blocks;
+        return cells;
     };
     // set the current section
     var setSection = function(game, index){
@@ -72,7 +72,7 @@ gameMod.load(function(){
             console.log(this.name);
             // set up blocks for first time
             game.forSections(function(section){
-                section.blocks = createBlocksArray();
+                section.blocks = createCellsArray();
                 section.blockTypes = {
                     rock: {
                         index: 1, // type index
