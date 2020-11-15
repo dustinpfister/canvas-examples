@@ -40,12 +40,17 @@ gameMod.load(function(){
         }
         return false;
     };
-
     // get all the blocks of a block index
     var getAllBlocksOfIndex = function(section, blockIndex){
         return section.blocks.filter(function(block){
             return block.type === blockIndex;
         });
+    };
+    // get a random block from the given collection
+    var getRandomBlock = function(collection){
+        var len = collection.length,
+        i = Math.round(Math.random() * ( len - 1 ));
+        return collection.slice(i, i + 1)[0];
     };
     // apply 'gravity' to a block
     var gravity = function(section, block){
@@ -96,7 +101,8 @@ gameMod.load(function(){
                 // use rocks
                 if(bt.rock.used < bt.rock.total){
                     var freeBlocks = getAllBlocksOfIndex(section, 0);
-                    freeBlocks[0].type = 1;
+                    //freeBlocks[0].type = 1;
+                    getRandomBlock(freeBlocks).type = 1;
                     bt.rock.used += 1;
                 }
                 section.blocks.forEach(function(block){

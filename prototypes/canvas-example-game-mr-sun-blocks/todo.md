@@ -20,8 +20,10 @@
 * (done) let the amount of 'carbon' minerals determine the amount of total rock type blocks for a section (for now)
 * (done) have a getAllBlocksOfIndex helper
 * (done) have a simple getBlock helper
-* have a gravity helper in plug-api-blocks
-* blocks start out from the bottom up
+* (done) have a gravity helper in plug-api-blocks
+* (done) blocks start out from the bottom up
+* have a simple get random block helper
+* place blocks randomly
 * section.temp and section.groundTemp effect block type by setting rocks to magma type
 * (done) transfer rates for minerals to sections in fusion.js
 * create a pkg-0-1-0.html
