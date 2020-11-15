@@ -29,7 +29,9 @@ gameMod.load(function(){
 
     // get all the blocks of a block index
     var getAllBlocksOfIndex = function(section, blockIndex){
-        //return 
+        return section.blocks.filter(function(block){
+            return block.type === blockIndex;
+        });
     };
 
     return {
@@ -65,6 +67,9 @@ gameMod.load(function(){
 
                 // use rocks
                 if(bt.rock.used < bt.rock.total){
+                    var freeBlocks = getAllBlocksOfIndex(section, 0);
+                    freeBlocks[0].type = 1;
+                    bt.rock.used += 1;
                 }
             });
         }

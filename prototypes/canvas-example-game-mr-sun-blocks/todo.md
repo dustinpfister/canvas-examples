@@ -18,7 +18,7 @@
 * (done) can transfer minerals to world sections
 * (done) start a blockTypes object for each section.
 * (done) let the amount of 'carbon' minerals determine the amount of total rock type blocks for a section (for now)
-* have a getAllBlocksOfIndex helper
+* (done) have a getAllBlocksOfIndex helper
 * blocks start out from the bottom up
 * section.temp and section.groundTemp effect block type by setting rocks to magma type
 * (done) transfer rates for minerals to sections in fusion.js
