@@ -34,7 +34,7 @@ gameMod.load(function(){
         if(x < 0 || y < 0 || x >= GRID_WIDTH || y >= GRID_HEIGHT){
             return false;
         }
-        block = section.blocks[y * GRID_WIDTH + x];
+        block = section.cells[y * GRID_WIDTH + x];
         if(block){
             return block;
         }
@@ -42,7 +42,7 @@ gameMod.load(function(){
     };
     // get all the blocks of a block index
     var getAllBlocksOfIndex = function(section, blockIndex){
-        return section.blocks.filter(function(block){
+        return section.cells.filter(function(block){
             return block.type === blockIndex;
         });
     };
@@ -72,7 +72,7 @@ gameMod.load(function(){
             console.log(this.name);
             // set up blocks for first time
             game.forSections(function(section){
-                section.blocks = createCellsArray();
+                section.cells = createCellsArray();
                 section.blockTypes = {
                     rock: {
                         index: 1, // type index
@@ -105,7 +105,7 @@ gameMod.load(function(){
                     getRandomBlock(freeBlocks).type = 1;
                     bt.rock.used += 1;
                 }
-                section.blocks.forEach(function(block){
+                section.cells.forEach(function(block){
                     // drop down if block below is empty
                     gravity(section, block);
                 });

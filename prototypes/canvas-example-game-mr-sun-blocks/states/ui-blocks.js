@@ -16,7 +16,7 @@ stateMod.load((function(){
             offsetY = 120 - 16 * 5 / 2,
             section = sm.game.currentSection;
             d.back(sm);
-            d.blocks(sm, section, offsetX, offsetY);
+            d.cells(sm, section, offsetX, offsetY);
             d.sectionMineralInfo(sm, section, 10, 10);
             d.ver(sm);
         },
