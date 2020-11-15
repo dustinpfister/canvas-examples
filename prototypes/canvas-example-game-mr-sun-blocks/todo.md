@@ -7,17 +7,24 @@
 * scroll threw blocks arrays from left to right
 * can loop around one way or the other
 
-## 0.x.0 - Temp Efefcts blocks
-* section.temp and section.groundTemp effect block type by setting rock to magma type and back to rock
+## 0.3.0 - Magma state of rock Type
+* have a block.temp property
+* block.temp is set by section.temp / section.groundTemp
+* a rock can be in a Magma state if the temp of the block is high enough
+* when in magma state the block can move from one section to another
 
 ## 0.2.0 - section.cells, and new section.blocks
 * (done) Have a new section.cells that will be a replacement for section.blocks
+* (done) have a section.cells\[cellIndex\].block that can be null, or a reference to a block in section.blocks
 * game.blocks will be a collection of blocks for the whole world (replacing section.blockTypes)
+* add an objectPool plug-in for game.js
 * the game.blocks object contains Objects pools, one for each block type (game.blocks.rock, game.blocks.water, etc)
 * have an active flag for each block, if active is false then the block is not in play
-
 * a block will become active depending on mineral count for a section just as before
-* have a section.cells\[cellIndex\].block that can be null, or a reference to a block in section.blocks
+* there will need to be section block type limits just as before
+* access active blocks will just have to say in game.blocks for now
+* update helper methods in plug-api-blocks to work with new system.
+* update draw.cells to work with new system
 * create a pkg-0-1-0.html
 
 ## 0.1.0 - Start /plugin/temp.js, and /plugin/fusion.js game plugins
