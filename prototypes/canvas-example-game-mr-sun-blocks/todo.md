@@ -28,8 +28,8 @@
 * (done) have a simple get random block helper
 * (done) place blocks randomly
 * (done) transfer rates for minerals to sections in fusion.js
-* display rocks count for world sections in ui-sun
-* create a pkg-0-1-0.html
+* (done) display rocks count for world sections in ui-sun
+* (done) create a pkg-0-1-0.html
 
 ## 0.0.0 - start plug-api-blocks.js game.js plugin, and ui-blocks.js state
 * (done) start with source code of Mr Sun 0.5.0.
