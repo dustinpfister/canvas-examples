@@ -7,22 +7,30 @@
 * scroll threw blocks arrays from left to right
 * can loop around one way or the other
 
+## 0.5.0 - mineral-transfer.js game plugin
+* When a rock is in magma state, and on the edge of a section, its minerals can transfer to the bodering section
+* add ui-blocks.js buttons that allow for user transfer of minerals to the left or right section
+* any change in minerals can of course trigger approperate chnages to block count and type
+
+## 0.4.0 - ui-blocks.js, 
+* add a toSUN button object in the upper center area of the canvas in ui-blocks state
+* clicking only on the toSun button will result in the current state switching back to ui-sun
+* all left and right buttons on each side of the canvas that allow for changing the current section
+* display the state of blocks for the other sections to the left and right
+
 ## 0.3.0 - Magma state of rock Type
 * have a block.temp property
 * block.temp is set by section.temp / section.groundTemp
 * a rock can be in a Magma state if the temp of the block is high enough
-* when in magma state the block can move from one section to another
+* when in magma state the block can move left and right in the section
 
 ## 0.2.0 - section.cells, and new section.blocks
 * (done) Have a new section.cells that will be a replacement for section.blocks
 * (done) have a section.cells\[cellIndex\].block that can be null, or a reference to a block in section.blocks
-* game.blocks will be a collection of blocks for the whole world (replacing section.blockTypes)
-* add an objectPool plug-in for game.js
-* the game.blocks object contains Objects pools, one for each block type (game.blocks.rock, game.blocks.water, etc)
+* section.blocks will be a collection of block objects for the current section.
+* the length of section.blocks will be the same as section.cells
 * have an active flag for each block, if active is false then the block is not in play
 * a block will become active depending on mineral count for a section just as before
-* there will need to be section block type limits just as before
-* access active blocks will just have to say in game.blocks for now
 * update helper methods in plug-api-blocks to work with new system.
 * update draw.cells to work with new system
 * create a pkg-0-1-0.html
