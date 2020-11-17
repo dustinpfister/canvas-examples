@@ -64,6 +64,7 @@ gameMod.load(function(){
         }
         return false;
     };
+/*
     // get all the blocks of a block index
     var getAllBlocksOfIndex = function(section, blockIndex){
         return section.cells.filter(function(block){
@@ -88,7 +89,7 @@ gameMod.load(function(){
             }
         }
     };
-
+*/
     return {
         name: 'plug-api-blocks',
         callPriority: 0.2,
