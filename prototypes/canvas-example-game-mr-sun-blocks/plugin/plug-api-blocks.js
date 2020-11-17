@@ -24,6 +24,22 @@ gameMod.load(function(){
         }
         return cells;
     };
+    // create a new blocks array
+    var createBlocksArray = function(){
+        var blocks = [],
+        w = GRID_WIDTH,
+        h = GRID_HEIGHT,
+        i = 0,
+        len = w * h;
+        while(i < len){
+            blocks.push({
+                i: i,
+                type: 1
+            });
+            i += 1;
+        }
+        return blocks;
+    };
     // set the current section
     var setSection = function(game, index){
         game.currentSectionIndex = index;
@@ -74,7 +90,8 @@ gameMod.load(function(){
             // set up cells and blocks
             game.forSections(function(section){
                 section.cells = createCellsArray();
-
+                section.blocks = createBlocksArray();
+/*
                 section.blockTypes = {
                     rock: {
                         index: 1, // type index
@@ -82,7 +99,7 @@ gameMod.load(function(){
                         used: 0   // total amount used in the section
                     }
                 };
-
+*/
             });
             // add setSection to game
             game.setSection = function(index){
@@ -90,6 +107,7 @@ gameMod.load(function(){
             };
             // set current section to sectionIndex 0
             setSection(game, 0);
+            console.log(game.sections[0]);
         },
         onDeltaYear: function(game, deltaYears){
 

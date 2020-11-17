@@ -27,7 +27,7 @@
 ## 0.2.0 - section.cells, and new section.blocks
 * (done) Have a new section.cells that will be a replacement for section.blocks
 * (done) have a section.cells\[cellIndex\].block that can be null, or a reference to a block in section.blocks
-
+* create a section.blocks array
 * section.cells[cellIndex].block will be a reference to a block in section.blocks
 
 * have an active flag for each block, if active is false then the block is not in play
