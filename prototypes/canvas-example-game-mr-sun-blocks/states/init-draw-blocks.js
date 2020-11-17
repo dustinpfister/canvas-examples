@@ -1,6 +1,6 @@
 // extended draw methods for Mr Sun Blocks
 stateMod.load((function(){
-    var blockColors = ['white', 'black'];
+    var blockColors = ['white', 'black', 'blue'];
     return {
         name: 'init-draw-blocks',
         init: function (sm) {
@@ -12,7 +12,7 @@ stateMod.load((function(){
                     var block = cell.block,
                     x = offsetX + cell.x * 16,
                     y = offsetY + cell.y * 16;
-                    ctx.fillStyle = 'white';
+                    ctx.fillStyle = blockColors[0];
                     if(block){
                         ctx.fillStyle = blockColors[block.type];
                     }
