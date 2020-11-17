@@ -41,6 +41,12 @@ gameMod.load(function(){
         }
         return blocks;
     };
+    var getAllActiveBlocks = function(blocks, active){
+        active = active === undefined ? true: active;
+        return blocks.filter(function(block){
+            return block.active === active;
+        });
+    };
     // set the current section
     var setSection = function(game, index){
         game.currentSectionIndex = index;
@@ -101,6 +107,9 @@ gameMod.load(function(){
             // set current section to sectionIndex 0
             setSection(game, 0);
             console.log(game.sections[0]);
+            game.sections[0].blocks[2].active = true;
+            game.sections[0].blocks[6].active = true;
+            console.log(getAllActiveBlocks(game.sections[0].blocks));
         },
         onDeltaYear: function(game, deltaYears){
 
