@@ -80,11 +80,12 @@ gameMod.load(function(){
     // apply 'gravity' to a block
     var gravity = function(section, block){
         //if(block.type === 1){
-        var below = getBlock(section, block.x, block.y + 1);
-        if(below){
-            if(below.type === 0){
-                below.type = block.type;
-                block.type = 0;
+        var belowCell = getCell(section, block.cell.x, block.cell.y + 1);
+        if(belowCell){
+            if(belowCell.block === null){
+                block.cell.block = null;
+                belowCell.block = block;
+                block.cell = belowCell;
             }
         }
         //}
