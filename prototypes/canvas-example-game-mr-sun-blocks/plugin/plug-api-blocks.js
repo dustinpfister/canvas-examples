@@ -88,6 +88,7 @@ gameMod.load(function(){
                 var cell = getEmptyCell(section);
                 if(cell){
                     cell.block = block;
+                    block.cell = cell;
                 }
             }
         });
