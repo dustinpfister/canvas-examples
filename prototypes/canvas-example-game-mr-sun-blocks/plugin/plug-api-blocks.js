@@ -39,6 +39,19 @@ gameMod.load(function(){
         }
         return false;
     };
+    var getEmptyCell = function(section){
+        var i = 0,
+        cell,
+        len = section.cells.length;
+        while(i < len){
+            cell = section.cells[i];
+            if(cell.block === null){
+               return cell;
+            }
+            i += 1;
+        }
+        return false;
+    };
     // create a new blocks array
     var createBlocksArray = function(){
         var blocks = [],
