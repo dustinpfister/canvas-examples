@@ -1,8 +1,11 @@
 gameMod.load(function(){
     // constants
+/*
     var MAX_BLOCK_TYPE_COUNTS = {
         rock: 30
     },
+*/
+    var MASS_FOR_ALL_BLOCKS = 1000, // mass for all blocks active
     GRID_WIDTH = 12,
     GRID_HEIGHT = 5;
     // create a new blocks array
@@ -41,17 +44,31 @@ gameMod.load(function(){
         }
         return blocks;
     };
+    // get all active or inactive blocks
     var getAllActiveBlocks = function(blocks, active){
         active = active === undefined ? true: active;
         return blocks.filter(function(block){
             return block.active === active;
         });
     };
+    // update blocks
+    var updateBlocks = function(section){
+        var activePer = section.totalMass / MASS_FOR_ALL_BLOCKS;
+        activePer = activePer > 1 ? 1 : activePer;
+        var topIndex = Math.floor(activePer * section.blocks.length);
+        section.blocks.forEach(function(block){
+            block.active = block.i < topIndex;
+        });
+    };
+
+
+
     // set the current section
     var setSection = function(game, index){
         game.currentSectionIndex = index;
         game.currentSection = game.sections[game.currentSectionIndex];
     };
+/*
     // simple get block helper
     var getBlock = function(section, x, y){
         var block;
@@ -64,7 +81,6 @@ gameMod.load(function(){
         }
         return false;
     };
-/*
     // get all the blocks of a block index
     var getAllBlocksOfIndex = function(section, blockIndex){
         return section.cells.filter(function(block){
