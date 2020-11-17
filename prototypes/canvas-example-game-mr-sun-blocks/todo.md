@@ -32,8 +32,8 @@
 * (done) have a getAllActive blocks helper that will return an array of blocks that have an active flag set to true
 * (done) fusion.js should set a totalMass property
 * (done) have fusion.js create and update a mineralsPer object that is the minCount / totalMass
-* have a updateBlocks helper that will set active flag and type for all blocks based on minerals
-* have number of activeBlocks be bassed on totalMass
+* (done) have a updateBlocks helper that will set active flag
+* (done) have number of activeBlocks be bassed on totalMass
 * have type of active blocks be set by mineralsPer
 * have a type 2 that is just active blocks other than rock for now
 * section.cells[cellIndex].block will be a reference to a block in section.blocks
