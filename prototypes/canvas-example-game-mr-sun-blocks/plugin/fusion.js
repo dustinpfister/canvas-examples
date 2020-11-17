@@ -89,9 +89,11 @@ gameMod.load((function(){
         create: function(game, opt){
             // minerals object for the sun
             game.sun.minerals = createMineralsObj();
+            game.sun.totalMass = 0;
             // minerals objects for each section
             game.forSections(function(section){
                 section.minerals = createMineralsObj();
+                section.totalMass = 0;
             });
             // starting hydrogen for sun
             game.sun.minerals.hydrogen = SUN_STARTING_HYDROGEN;

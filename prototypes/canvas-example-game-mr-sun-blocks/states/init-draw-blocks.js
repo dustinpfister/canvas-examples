@@ -21,12 +21,14 @@ stateMod.load((function(){
             };
             // draw mineral info for a section
             var drawMineralInfo = function(ctx, obj, offsetX, offsetY){
-                Object.keys(obj.minerals).forEach(function(minName, i){
+                var keys = Object.keys(obj.minerals);
+                keys.forEach(function(minName, i){
                     var minCount = obj.minerals[minName],
                     x = offsetX,
                     y = offsetY + 10 * i;
                     ctx.fillText(minName + ': ' + minCount, x, y);
                 });
+                ctx.fillText('totalMass: ' + obj.totalMass, offsetX, offsetY + 10 * keys.length);
             };
             sm.draw.sectionMineralInfo = function(sm, section, offsetX, offsetY){
                 var ctx = sm.ctx;
