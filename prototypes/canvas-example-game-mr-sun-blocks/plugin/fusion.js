@@ -81,7 +81,14 @@ gameMod.load((function(){
             });
         }
     };
-
+    // update totalMass
+    var updateTotalMass = function(obj){
+        obj.totalMass = 0;
+        Object.keys(obj.minerals).forEach(function(minKey){
+            var minCount = obj.minerals[minKey];
+            obj.totalMass += minCount;
+        });
+    };
     // the plugObj for fusion
     return {
         name: 'fusion',
@@ -102,9 +109,11 @@ gameMod.load((function(){
 
             var sun = game.sun;
             createMinerals(sun, deltaYears);
+            updateTotalMass(sun);
 
             game.forSections(function(section){
                 transferToSection(sun, section, deltaYears);
+                updateTotalMass(section);
             });
         }
     };
