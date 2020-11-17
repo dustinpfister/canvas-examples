@@ -27,6 +27,18 @@ gameMod.load(function(){
         }
         return cells;
     };
+    // simple get block helper
+    var getCell = function(section, x, y){
+        var cell;
+        if(x < 0 || y < 0 || x >= GRID_WIDTH || y >= GRID_HEIGHT){
+            return false;
+        }
+        cell = section.cells[y * GRID_WIDTH + x];
+        if(cell){
+            return cell;
+        }
+        return false;
+    };
     // create a new blocks array
     var createBlocksArray = function(){
         var blocks = [],
@@ -37,6 +49,7 @@ gameMod.load(function(){
         while(i < len){
             blocks.push({
                 i: i,
+                cell: null,
                 active: false,
                 type: 1
             });
@@ -58,6 +71,8 @@ gameMod.load(function(){
         var topIndex = Math.floor(activePer * section.blocks.length);
         section.blocks.forEach(function(block){
             block.active = block.i < topIndex;
+            if(!block.cell){
+            }
         });
     };
 
@@ -131,7 +146,7 @@ gameMod.load(function(){
         onDeltaYear: function(game, deltaYears){
 
             game.forSections(function(section){
-
+                updateBlocks(section);
             });
         }
     };
