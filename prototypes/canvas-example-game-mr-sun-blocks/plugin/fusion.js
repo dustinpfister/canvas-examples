@@ -104,51 +104,6 @@ gameMod.load((function(){
             game.forSections(function(section){
                 transferToSection(sun, section, deltaYears);
             });
-
-/*
-            var sun = game.sun;
-
-            // fusion happens in the sun
-            if(sun.state === 'alive'){
-                if(sun.temp >= 10){
-                    sun.minerals.iron += getMinDelta(sun, 1, 10, deltaYears);
-                }
-                if(sun.temp >= 25){
-                    sun.minerals.copper += getMinDelta(sun, 0.5, 25, deltaYears);
-                }
-                // transfer to sections
-                var i = game.sections.length,
-                section;
-                while(i--){
-                    section = game.sections[i];
-                    if(section.per > 0.95){
-                       Object.keys(sun.minerals).forEach(function(minKey){
-                           var minCount = sun.minerals[minKey];
-                           var transferAmount = 1 * deltaYears;
-                           if(minCount >= transferAmount){
-                               section.minerals[minKey] += transferAmount;
-                               sun.minerals[minKey] -= transferAmount;
-                           }
-                       });
-                    }
-                }
-            }
-
-            if(sun.state === 'explode'){
-                Object.keys(sun.minerals).forEach(function(minKey){
-                    var minCount = sun.minerals[minKey],
-                    i = game.sections.length,
-                    section;
-                    if(minCount > 0){
-                        while(i--){
-                            section = game.sections[i];
-                            section.minerals[minKey] += Math.floor(minCount / game.sections.length * section.per);
-                        }
-                        sun.minerals[minKey] = 0;
-                    }
-                });
-            }
-*/
         }
     };
 }()));

@@ -29,9 +29,9 @@
 * (done) have a section.cells\[cellIndex\].block that can be null, or a reference to a block in section.blocks
 * (done) create a section.blocks array
 * (done) have an active flag for each block, if active is false then the block is not in play
-* have a getAllActive blocks helper that will return an array of blocks that have an active flag set to true
-* have a setAllBlocks helper that will set active flag and type for all blocks based on minerals
+* (done) have a getAllActive blocks helper that will return an array of blocks that have an active flag set to true
 * fusion.js should set a totalMass property
+* have a setAllBlocks helper that will set active flag and type for all blocks based on minerals
 * have number of activeBlocks be bassed on totalMass
 * section.cells[cellIndex].block will be a reference to a block in section.blocks
 * a block will become active depending on mineral count for a section just as before
