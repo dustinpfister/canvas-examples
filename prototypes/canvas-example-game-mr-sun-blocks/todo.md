@@ -27,12 +27,18 @@
 ## 0.2.0 - section.cells, and new section.blocks
 * (done) Have a new section.cells that will be a replacement for section.blocks
 * (done) have a section.cells\[cellIndex\].block that can be null, or a reference to a block in section.blocks
-* create a section.blocks array
+* (done) create a section.blocks array
+* have an active flag for each block, if active is false then the block is not in play
+* have a getAllActive blocks helper that will return an array of blocks that have an active flag set to true
+* have a setAllBlocks helper that will set active flag and type for all blocks based on minerals
+* fusion.js should set a totalMass property
+* have number of activeBlocks be bassed on totalMass
+
 * section.cells[cellIndex].block will be a reference to a block in section.blocks
 
-* have an active flag for each block, if active is false then the block is not in play
+
 * a block will become active depending on mineral count for a section just as before
-* update helper methods in plug-api-blocks to work with new system.
+* update helper methods in plug-api-blocks to work with new system (using getAllActiveHelper).
 * update draw.cells to work with new system
 * create a pkg-0-1-0.html
 
