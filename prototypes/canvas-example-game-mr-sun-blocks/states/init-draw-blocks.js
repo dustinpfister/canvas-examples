@@ -9,10 +9,13 @@ stateMod.load((function(){
                 section = section === undefined ? sm.game.currentSection : section;
                 var ctx = sm.ctx;
                 section.cells.forEach(function(cell){
-                    var block = cell;
-                    var x = offsetX + block.x * 16,
-                    y = offsetY + block.y * 16;
-                    ctx.fillStyle = blockColors[block.type];
+                    var block = cell.block,
+                    x = offsetX + cell.x * 16,
+                    y = offsetY + cell.y * 16;
+                    ctx.fillStyle = 'white';
+                    if(block){
+                        ctx.fillStyle = blockColors[block.type];
+                    }
                     ctx.fillRect(x, y, 16, 16);
                 });
             };

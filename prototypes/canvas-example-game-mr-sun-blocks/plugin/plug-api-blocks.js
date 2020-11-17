@@ -1,18 +1,3 @@
-/*
-game.blocks = {
-   rock: [
-       {
-           type: 'block',
-           typeIndex: 1,
-           section: [section-ref],
-           cell: [null] or [cell-ref]
-       }
-   ]
-}
-
-
-*/
-
 gameMod.load(function(){
     // constants
     var MAX_BLOCK_TYPE_COUNTS = {
