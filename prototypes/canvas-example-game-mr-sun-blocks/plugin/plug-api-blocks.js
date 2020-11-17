@@ -77,6 +77,18 @@ gameMod.load(function(){
             return block.active === active;
         });
     };
+    // apply 'gravity' to a block
+    var gravity = function(section, block){
+        //if(block.type === 1){
+        var below = getBlock(section, block.x, block.y + 1);
+        if(below){
+            if(below.type === 0){
+                below.type = block.type;
+                block.type = 0;
+            }
+        }
+        //}
+    };
     // update blocks
     var updateBlocks = function(section){
         var activePer = section.totalMass / MASS_FOR_ALL_BLOCKS;
@@ -126,19 +138,9 @@ gameMod.load(function(){
         i = Math.round(Math.random() * ( len - 1 ));
         return collection.slice(i, i + 1)[0];
     };
-    // apply 'gravity' to a block
-    var gravity = function(section, block){
-        if(block.type === 1){
-            var below = getBlock(section, block.x, block.y + 1);
-            if(below){
-                if(below.type === 0){
-                    below.type = block.type;
-                    block.type = 0;
-                }
-            }
-        }
-    };
 */
+
+
     return {
         name: 'plug-api-blocks',
         callPriority: 0.2,
