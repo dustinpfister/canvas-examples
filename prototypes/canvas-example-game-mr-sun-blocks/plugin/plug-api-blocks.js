@@ -84,7 +84,11 @@ gameMod.load(function(){
         var topIndex = Math.floor(activePer * section.blocks.length);
         section.blocks.forEach(function(block){
             block.active = block.i < topIndex;
-            if(!block.cell){
+            if(!block.cell && block.active){
+                var cell = getEmptyCell(section);
+                if(cell){
+                    cell.block = block;
+                }
             }
         });
     };
