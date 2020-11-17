@@ -34,6 +34,7 @@ gameMod.load(function(){
         while(i < len){
             blocks.push({
                 i: i,
+                active: false,
                 type: 1
             });
             i += 1;
