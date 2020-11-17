@@ -74,6 +74,7 @@ gameMod.load(function(){
             // set up cells and blocks
             game.forSections(function(section){
                 section.cells = createCellsArray();
+
                 section.blockTypes = {
                     rock: {
                         index: 1, // type index
@@ -81,6 +82,7 @@ gameMod.load(function(){
                         used: 0   // total amount used in the section
                     }
                 };
+
             });
             // add setSection to game
             game.setSection = function(index){
@@ -88,12 +90,11 @@ gameMod.load(function(){
             };
             // set current section to sectionIndex 0
             setSection(game, 0);
-            console.log('getBlock:');
-            console.log( getBlock(game.sections[0], -1, 1) );
         },
         onDeltaYear: function(game, deltaYears){
 
             game.forSections(function(section){
+/*
                 var bt = section.blockTypes;
                 // just setting total for 'rocks' now.
                 bt.rock.total = Math.floor(section.minerals.carbon / 100);
@@ -110,6 +111,7 @@ gameMod.load(function(){
                     // drop down if block below is empty
                     gravity(section, block);
                 });
+*/
             });
         }
     };

@@ -21,10 +21,6 @@ stateMod.load({
                 ctx.textAlign = 'center';
                 ctx.textBaseline = 'middle';
                 ctx.font = '8px arial';
-                // draw text
-                //ctx.fillText(section.temp, section.x, section.y - 5);
-                //ctx.fillText(section.groundTemp, section.x, section.y + 5);
-                ctx.fillText(section.blockTypes.rock.total, section.x, section.y);
             });
         };
         // draw Mr Sun
