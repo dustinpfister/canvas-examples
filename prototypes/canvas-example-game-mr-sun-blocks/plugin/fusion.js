@@ -89,6 +89,12 @@ gameMod.load((function(){
             obj.totalMass += minCount;
         });
     };
+    var updateMineralsPer = function(obj){
+        Object.keys(obj.minerals).forEach(function(minKey){
+            var minCount = obj.minerals[minKey];
+            obj.mineralsPer[minKey] = minCount / obj.totalMass
+        });
+    };
     // the plugObj for fusion
     return {
         name: 'fusion',
@@ -96,10 +102,12 @@ gameMod.load((function(){
         create: function(game, opt){
             // minerals object for the sun
             game.sun.minerals = createMineralsObj();
+            game.sun.mineralsPer = {};
             game.sun.totalMass = 0;
             // minerals objects for each section
             game.forSections(function(section){
                 section.minerals = createMineralsObj();
+                section.mineralsPer = {};
                 section.totalMass = 0;
             });
             // starting hydrogen for sun
@@ -110,10 +118,12 @@ gameMod.load((function(){
             var sun = game.sun;
             createMinerals(sun, deltaYears);
             updateTotalMass(sun);
+            updateMineralsPer(sun);
 
             game.forSections(function(section){
                 transferToSection(sun, section, deltaYears);
                 updateTotalMass(section);
+                updateMineralsPer(section);
             });
         }
     };

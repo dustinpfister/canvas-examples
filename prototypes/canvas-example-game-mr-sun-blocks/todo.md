@@ -30,7 +30,8 @@
 * (done) create a section.blocks array
 * (done) have an active flag for each block, if active is false then the block is not in play
 * (done) have a getAllActive blocks helper that will return an array of blocks that have an active flag set to true
-* fusion.js should set a totalMass property
+* (done) fusion.js should set a totalMass property
+* have fusion.js create and update a mineralsPer array that is the minCount / totalMass
 * have a setAllBlocks helper that will set active flag and type for all blocks based on minerals
 * have number of activeBlocks be bassed on totalMass
 * section.cells[cellIndex].block will be a reference to a block in section.blocks
