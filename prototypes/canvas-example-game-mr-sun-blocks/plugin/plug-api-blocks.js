@@ -120,36 +120,27 @@ gameMod.load(function () {
     };
     // set the types for each block in a section
     var setBlockTypes = function (section) {
-		var i = 0,
-		blocks = getAllActiveBlocks(section.blocks, true),
-		len = blocks.length,
-		indexMarkers = Object.keys(section.mineralsPer).map(function(key){
-			var minPer = section.mineralsPer[key];
-			i += minPer * len;
-			return i;
-		});
-	
+        var i = 0,
+        blocks = getAllActiveBlocks(section.blocks, true),
+        len = blocks.length,
+        indexMarkers = Object.keys(section.mineralsPer).map(function(key){
+            var minPer = section.mineralsPer[key];
+            i = i + minPer * len;
+            return i;
+        });
 
         blocks.forEach(function (block) {
-			var i = 0,
-			len = indexMarkers.length,
-			indexMark;
-			while(i < len){
-				indexMark = indexMarkers[i];
-				if(block.i < indexMark){
-                    block.type = Math.floor(indexMark * len);
-					break;
-				}
-				i += 1;
-			}
-			/*
-			indexMarkers.forEach(function(indexMark, i){
-				block.type = 1;
-				if(block.i < indexMark){
-                    block.type = Math.floor(i + indexMark);
-				}
-			});
-			*/
+            var i = 0,
+            len = indexMarkers.length,
+            indexMark;
+            while(i < len){
+                indexMark = indexMarkers[i];
+                if(block.i < indexMark){
+                    block.type = i + 1;
+                    break;
+                }
+                i += 1;
+            }
         });
     };
     // set the current section
