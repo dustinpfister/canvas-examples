@@ -101,8 +101,8 @@ gameMod.load(function(){
             }
         }
     };
-    // update blocks
-    var updateBlocks = function(section){
+    // set blocks active
+    var setBlocksActive = function(section){
         var activePer = section.totalMass / MASS_FOR_ALL_BLOCKS;
         activePer = activePer > 1 ? 1 : activePer;
         var topIndex = Math.floor(activePer * section.blocks.length);
@@ -133,7 +133,6 @@ gameMod.load(function(){
             game.forSections(function(section){
                 section.cells = createCellsArray();
                 section.blocks = createBlocksArray();
-
             });
             // add setSection to game
             game.setSection = function(index){
@@ -143,9 +142,8 @@ gameMod.load(function(){
             setSection(game, 0);
         },
         onDeltaYear: function(game, deltaYears){
-
             game.forSections(function(section){
-                updateBlocks(section);
+                setBlocksActive(section);
             });
         }
     };
