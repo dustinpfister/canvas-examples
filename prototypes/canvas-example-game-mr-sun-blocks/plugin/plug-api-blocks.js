@@ -5,7 +5,7 @@ gameMod.load(function(){
         rock: 30
     },
 */
-    var MASS_FOR_ALL_BLOCKS = 1000, // mass for all blocks active
+    var MASS_FOR_ALL_BLOCKS = 10000, // mass for all blocks active
     GRID_WIDTH = 12,
     GRID_HEIGHT = 5;
     // create a new blocks array
@@ -80,6 +80,7 @@ gameMod.load(function(){
     // apply 'gravity' to a block
     var gravity = function(section, block){
         //if(block.type === 1){
+        if(block.cell){
         var belowCell = getCell(section, block.cell.x, block.cell.y + 1);
         if(belowCell){
             if(belowCell.block === null){
@@ -87,6 +88,7 @@ gameMod.load(function(){
                 belowCell.block = block;
                 block.cell = belowCell;
             }
+        }
         }
         //}
     };
@@ -104,6 +106,7 @@ gameMod.load(function(){
                     block.cell = cell;
                 }
             }
+            gravity(section, block);
         });
     };
 
