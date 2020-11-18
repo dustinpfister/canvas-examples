@@ -38,7 +38,7 @@
 * (done) a block will become active depending on mineral count for a section just as before
 * (done) update draw.cells to work with new system
 * (done) have type of active blocks be set by mineralsPer
-* create a pkg-0-1-0.html
+* (done) create a pkg-0-2-0.html
 
 ## 0.1.0 - Start /plugin/temp.js, and /plugin/fusion.js game plugins
 * (done) add a temp.js, and a fusion.js starting with what was worked out in Mr Sun Geo
