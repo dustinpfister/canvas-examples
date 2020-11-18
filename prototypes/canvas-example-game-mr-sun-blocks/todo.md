@@ -7,22 +7,22 @@
 * scroll threw blocks arrays from left to right
 * can loop around one way or the other
 
-## 0.5.0 - mineral-transfer.js game plugin
-* When a rock is in magma state, and on the edge of a section, its minerals can transfer to the bodering section
-* add ui-blocks.js buttons that allow for user transfer of minerals to the left or right section
-* any change in minerals can of course trigger approperate chnages to block count and type
-
-## 0.4.0 - ui-blocks.js, 
-* add a toSUN button object in the upper center area of the canvas in ui-blocks state
-* clicking only on the toSun button will result in the current state switching back to ui-sun
-* all left and right buttons on each side of the canvas that allow for changing the current section
-* display the state of blocks for the other sections to the left and right
-
-## 0.3.0 - Magma state of rock Type
+## 0.x.0 - Magma state of rock Type
 * have a block.temp property
 * block.temp is set by section.temp / section.groundTemp
 * a rock can be in a Magma state if the temp of the block is high enough
 * when in magma state the block can move left and right in the section
+
+## 0.x.0 - mineral-transfer.js game plugin
+* When a rock is in magma state, and on the edge of a section, its minerals can transfer to the bodering section
+* add ui-blocks.js buttons that allow for user transfer of minerals to the left or right section
+* any change in minerals can of course trigger approperate chnages to block count and type
+
+## 0.3.0 - toSun and section change buttons in ui-blocks.js 
+* add a toSUN button object in the upper center area of the canvas in ui-blocks state
+* clicking only on the toSun button will result in the current state switching back to ui-sun
+* all left and right buttons on each side of the canvas that allow for changing the current section
+* display the state of blocks for the other sections to the left and right
 
 ## 0.2.0 - section.cells, and new section.blocks
 * (done) Have a new section.cells that will be a replacement for section.blocks
