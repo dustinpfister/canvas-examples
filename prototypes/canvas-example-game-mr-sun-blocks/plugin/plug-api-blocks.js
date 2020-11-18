@@ -1,10 +1,5 @@
 gameMod.load(function(){
     // constants
-/*
-    var MAX_BLOCK_TYPE_COUNTS = {
-        rock: 30
-    },
-*/
     var MASS_FOR_ALL_BLOCKS = 10000, // mass for all blocks active
     GRID_WIDTH = 12,
     GRID_HEIGHT = 5;
@@ -109,33 +104,12 @@ gameMod.load(function(){
             gravity(section, block);
         });
     };
-
-
-
     // set the current section
     var setSection = function(game, index){
         game.currentSectionIndex = index;
         game.currentSection = game.sections[game.currentSectionIndex];
     };
 /*
-    // simple get block helper
-    var getBlock = function(section, x, y){
-        var block;
-        if(x < 0 || y < 0 || x >= GRID_WIDTH || y >= GRID_HEIGHT){
-            return false;
-        }
-        block = section.cells[y * GRID_WIDTH + x];
-        if(block){
-            return block;
-        }
-        return false;
-    };
-    // get all the blocks of a block index
-    var getAllBlocksOfIndex = function(section, blockIndex){
-        return section.cells.filter(function(block){
-            return block.type === blockIndex;
-        });
-    };
     // get a random block from the given collection
     var getRandomBlock = function(collection){
         var len = collection.length,
