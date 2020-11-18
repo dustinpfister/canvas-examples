@@ -159,6 +159,9 @@ var stateMod = (function(){
             }
         });
 
+        // call 'create' method for all plugins
+        callMethodForAllPlugins(sm, 'create', [sm, opt]);
+
         return sm;
     };
 

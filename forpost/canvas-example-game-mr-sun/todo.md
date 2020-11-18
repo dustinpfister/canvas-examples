@@ -17,23 +17,28 @@
 * a transition object contains transitionState objects
 * a transitionState object contains an init, update, and draw methods
 
-## 0.6.0 - buttons in state objects, and improved state-machine.js plugin support
-* (done) start a new plugins object in state-machine.js
-* (done) start with a built in core-pointer plugin that will just do what is all ready done in pointerHandlers
-* change stateMod.load to look for a type property as a way to know what object to add the external object to
-
-* new /state-machine/ folder
-* new /state-machine/plugin folder for plugins for state-machine.js
-* pull built in core-pointer into the first plugin for state-machine.js as /state-machine/plugin/core-pointer.js
-
-* new /state-machine/states folder for the actual game states such as ui-sun
-* rename /states/init-draw-base.js as /state-machine/plugin/core-draw.js
-* rename /states/init-game.js as /state-machine/plugin/core-game.js
-
-
+## 0.7.0 - core-buttons.js
 * start a new /state-machine/plugin/core-buttons.js
 * core-buttons.js will add support for button objects in states
 * add a button object in ui-sun.js state
+
+## 0.6.0 - improved state-machine.js plugin support
+* (done) start a new plugins object in state-machine.js
+* (done) start with a built in core-pointer plugin that will just do what is all ready done in pointerHandlers
+* (done) change stateMod.load to look for a type property as a way to know what object to add the external object to
+* (done) new /state-machine/ folder
+* (done) new /state-machine/plugin folder for plugins for state-machine.js
+* (done) pull built in core-pointer into the first plugin for state-machine.js as /state-machine/plugin/core-pointer.js
+
+* call a create method if there for all plugins
+* rename /states/init-draw-base.js as /state-machine/plugin/core-draw.js
+* rename /states/init-game.js as /state-machine/plugin/core-game.js
+* make slight changes to new core-draw and core-game files so they work with new system
+
+* new /state-machine/states folder for the actual game states
+* rename /states/ui-sun as /state-machine/states/ui-sun.js
+
+
 
 ## 0.5.0 - draw methods and objects for state objects
 * (done) add support for a draw method in state objects
