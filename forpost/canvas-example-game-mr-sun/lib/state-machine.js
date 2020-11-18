@@ -17,6 +17,7 @@ var stateMod = (function(){
 
     var plugins = {
         // built in plug-in that adds pointer events for state objects
+/*
         POINTER_STATE_EVENTS : {
             name: 'POINTER_STATE_EVENTS',
             pointerEvent : function(sm, type, pos, e, state, game){
@@ -28,6 +29,7 @@ var stateMod = (function(){
                }
             }
         }
+*/
     };
     // call a method for all plugins with given array of arguments
     var callMethodForAllPlugins = function(sm, methodName, args){
@@ -95,11 +97,9 @@ var stateMod = (function(){
 
     // LOAD OBJECTS
     api.load = function(obj){
-
         if(obj.type === undefined || obj.type === 'state'){
             states[obj.name || Object.keys(states).length] = obj;
         }
-
         if(obj.type === 'plugin'){
             plugins[obj.name || Object.keys(plugins).length] = obj;
         }

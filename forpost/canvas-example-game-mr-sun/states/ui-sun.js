@@ -23,12 +23,17 @@ stateMod.load({
     },
     pointer : {
         start: function (sm, pos, e) {
+            console.log('start');
             sm.game.sun.move(sm.game, pos);
         },
         move: function (sm, pos, e) {
             if (sm.input.pointerDown) {
+                console.log('move');
                 sm.game.sun.move(sm.game, pos);
             }
+        },
+        end: function(){
+            console.log('end');
         }
     }
 /*
