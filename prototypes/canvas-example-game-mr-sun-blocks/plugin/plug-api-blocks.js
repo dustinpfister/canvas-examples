@@ -125,7 +125,8 @@ gameMod.load(function () {
 		len = blocks.length,
 		indexMarkers = Object.keys(section.mineralsPer).map(function(key){
 			var minPer = section.mineralsPer[key];
-			return i + minPer * len;
+			i += minPer * len;
+			return i;
 		});
 	
 
