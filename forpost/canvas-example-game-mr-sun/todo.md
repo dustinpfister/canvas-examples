@@ -19,9 +19,13 @@
 
 ## 0.6.0 - buttons in state objects, and improved state-machine.js plugin support
 * (done) start a new plugins object in state-machine.js
-* start with a built in POINTER-STATE-EVENTS plugin that will just do what is all ready done in pointerHandlers
+* (done) start with a built in core-pointer plugin that will just do what is all ready done in pointerHandlers
+* change stateMod.load to look for a type property as a way to know what object to add the external object to
+
 * new /state-machine/ folder
 * new /state-machine/plugin folder for plugins for state-machine.js
+* pull built in core-pointer into the first plugin for state-machine.js as /state-machine/plugin/core-pointer.js
+
 * new /state-machine/states folder for the actual game states such as ui-sun
 * rename /states/init-draw-base.js as /state-machine/plugin/core-draw.js
 * rename /states/init-game.js as /state-machine/plugin/core-game.js

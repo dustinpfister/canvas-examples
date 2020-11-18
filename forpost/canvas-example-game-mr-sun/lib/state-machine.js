@@ -93,9 +93,16 @@ var stateMod = (function(){
     // start public api
     var api = {};
 
-    // LOAD STATE OBJECTS
-    api.load = function(stateObj){
-        states[stateObj.name || Object.keys(states).length] = stateObj;
+    // LOAD OBJECTS
+    api.load = function(obj){
+
+        if(obj.type === undefined || obj.type === 'state'){
+            states[obj.name || Object.keys(states).length] = obj;
+        }
+
+        if(obj.type === 'plugin'){
+            plugins[obj.name || Object.keys(plugins).length] = obj;
+        }
     };
 
     // CREATE a new sm object
