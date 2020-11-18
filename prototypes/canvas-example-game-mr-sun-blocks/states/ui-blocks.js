@@ -1,7 +1,5 @@
 stateMod.load((function(){
 
-
-
     return {
         name: 'ui-blocks',
         // init method for the game state
