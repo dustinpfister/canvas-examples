@@ -34,14 +34,21 @@ gameMod.load(function(){
         }
         return false;
     };
+    // get all empty cells
     var getAllEmptyCells = function(section){
        return section.cells.filter(function(cell){
            return cell.block === null;
        });
     };
     // get a random block from the given collection
-    var getRandomCell = function(collection){
-        //return collection.slice(i, i + 1)[0];
+    var getRandomFreeCell = function(section){
+        var freeCells = getAllEmptyCells(section),
+        len = freeCells.length,
+        i = Math.floor(Math.random() * len);
+        if(len > 0){
+            return freeCells.slice(i, i + 1)[0];
+        }
+        return false;
     };
     var getEmptyCell = function(section){
         var i = 0,
@@ -104,7 +111,8 @@ gameMod.load(function(){
         section.blocks.forEach(function(block){
             block.active = block.i < topIndex;
             if(!block.cell && block.active){
-                var cell = getEmptyCell(section);
+                //var cell = getEmptyCell(section);
+                var cell = getRandomFreeCell(section);
                 if(cell){
                     cell.block = block;
                     block.cell = cell;
