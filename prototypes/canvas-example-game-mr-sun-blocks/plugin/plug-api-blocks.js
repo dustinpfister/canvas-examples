@@ -1,6 +1,6 @@
 gameMod.load(function () {
     // constants
-    var MASS_FOR_ALL_BLOCKS = 10000, // mass for all blocks active
+    var MASS_FOR_ALL_BLOCKS = 1000, // mass for all blocks active
     GRID_WIDTH = 12,
     GRID_HEIGHT = 5;
     // create a new blocks array
@@ -128,11 +128,12 @@ gameMod.load(function () {
 			return i + minPer * len;
 		});
 	
+	    
         blocks.forEach(function (block) {
 			indexMarkers.forEach(function(indexMark, i){
 				block.type = 1;
 				if(block.i < indexMark){
-                    block.type = 2;
+                    block.type = Math.floor(i + indexMark);
 				}
 			});
         });

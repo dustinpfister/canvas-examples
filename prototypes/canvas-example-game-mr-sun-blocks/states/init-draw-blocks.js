@@ -1,6 +1,6 @@
 // extended draw methods for Mr Sun Blocks
 stateMod.load((function(){
-    var blockColors = ['white', 'black', 'blue'];
+    var blockColors = ['white', 'black', 'blue', 'red', 'green'];
     return {
         name: 'init-draw-blocks',
         init: function (sm) {
