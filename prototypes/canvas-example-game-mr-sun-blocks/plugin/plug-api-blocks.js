@@ -90,18 +90,16 @@ gameMod.load(function(){
     };
     // apply 'gravity' to a block
     var gravity = function(section, block){
-        //if(block.type === 1){
         if(block.cell){
-        var belowCell = getCell(section, block.cell.x, block.cell.y + 1);
-        if(belowCell){
-            if(belowCell.block === null){
-                block.cell.block = null;
-                belowCell.block = block;
-                block.cell = belowCell;
+            var belowCell = getCell(section, block.cell.x, block.cell.y + 1);
+            if(belowCell){
+                if(belowCell.block === null){
+                    block.cell.block = null;
+                    belowCell.block = block;
+                    block.cell = belowCell;
+                }
             }
         }
-        }
-        //}
     };
     // update blocks
     var updateBlocks = function(section){
@@ -111,7 +109,6 @@ gameMod.load(function(){
         section.blocks.forEach(function(block){
             block.active = block.i < topIndex;
             if(!block.cell && block.active){
-                //var cell = getEmptyCell(section);
                 var cell = getRandomFreeCell(section);
                 if(cell){
                     cell.block = block;
@@ -126,16 +123,7 @@ gameMod.load(function(){
         game.currentSectionIndex = index;
         game.currentSection = game.sections[game.currentSectionIndex];
     };
-/*
-    // get a random block from the given collection
-    var getRandomBlock = function(collection){
-        var len = collection.length,
-        i = Math.round(Math.random() * ( len - 1 ));
-        return collection.slice(i, i + 1)[0];
-    };
-*/
-
-
+    // plugObj for plug-api-blocks
     return {
         name: 'plug-api-blocks',
         callPriority: 0.2,
