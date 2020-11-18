@@ -29,9 +29,9 @@
 * (done) new /state-machine/ folder
 * (done) new /state-machine/plugin folder for plugins for state-machine.js
 * (done) pull built in core-pointer into the first plugin for state-machine.js as /state-machine/plugin/core-pointer.js
+* (done) call a create method if there for all plugins
 
-* call a create method if there for all plugins
-* rename /states/init-draw-base.js as /state-machine/plugin/core-draw.js
+* (done) rename /states/init-draw-base.js as /state-machine/plugin/core-draw.js
 * rename /states/init-game.js as /state-machine/plugin/core-game.js
 * make slight changes to new core-draw and core-game files so they work with new system
 
