@@ -50,27 +50,34 @@ var stateMod = (function(){
                 y: pos.y
             };
             sm.input.d = 0;
+/*
             var method = states[sm.currentState].pointerStart;
             if (method) {
                 method(sm, pos, e);
             }
+*/
             callMethodForAllPlugins(sm, 'pointerEvent', [sm, 'start', pos, e, states[sm.currentState], sm.game]);
         },
         move: function (sm, pos, e) {
-            var method = states[sm.currentState].pointerMove,
-            startPos = sm.input.startPos;
+
+            var startPos = sm.input.startPos;
             sm.input.d = utils.distance(startPos.x, startPos.y, pos.x, pos.y);
+/*
+            var method = states[sm.currentState].pointerMove;
             if (method) {
                 method(sm, pos, e);
             }
+*/
             callMethodForAllPlugins(sm, 'pointerEvent', [sm, 'move', pos, e, states[sm.currentState], sm.game]);
         },
         end: function (sm, pos, e) {
             sm.input.pointerDown = false;
+/*
             var method = states[sm.currentState].pointerEnd;
             if (method) {
                 method(sm, pos, e);
             }
+*/
             callMethodForAllPlugins(sm, 'pointerEvent', [sm, 'end', pos, e, states[sm.currentState], sm.game]);
         }
     };
