@@ -120,8 +120,21 @@ gameMod.load(function () {
     };
     // set the types for each block in a section
     var setBlockTypes = function (section) {
-        section.blocks.forEach(function (block) {
-            block.type = 2;
+		var i = 0,
+		blocks = getAllActiveBlocks(section.blocks, true),
+		len = blocks.length,
+		indexMarkers = Object.keys(section.mineralsPer).map(function(key){
+			var minPer = section.mineralsPer[key];
+			return i + minPer * len;
+		});
+	
+        blocks.forEach(function (block) {
+			indexMarkers.forEach(function(indexMark, i){
+				block.type = 1;
+				if(block.i < indexMark){
+                    block.type = 2;
+				}
+			});
         });
     };
     // set the current section

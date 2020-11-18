@@ -89,6 +89,7 @@ gameMod.load((function(){
             obj.totalMass += minCount;
         });
     };
+    // update minerals percent values
     var updateMineralsPer = function(obj){
         Object.keys(obj.minerals).forEach(function(minKey){
             var minCount = obj.minerals[minKey];
