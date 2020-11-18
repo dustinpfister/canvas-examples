@@ -1,6 +1,7 @@
 var stateMod = (function(){
 
-    // STATES ARRAY
+    // STATES Object
+/*
     var changeState = function (sm, stateKey, opt) {
         opt = opt || {};
         var newState = sm.states[stateKey];
@@ -9,9 +10,35 @@ var stateMod = (function(){
         }
         sm.currentState = stateKey;
     };
+*/
 
-    // the states array
+    // the states object
     var states = {};
+
+    var plugins = {
+        // built in plug-in that adds pointer events for state objects
+        POINTER_STATE_EVENTS : {
+            name: 'POINTER_STATE_EVENTS',
+            pointerEvent : function(sm, type, pos, e, state, game){
+               if(state.pointer){
+                   var method = state.pointer[type];
+                   if(method){
+                       method.call(sm, sm, pos, e, state, game);
+                   }
+               }
+            }
+        }
+    };
+    // call a method for all plugins with given array of arguments
+    var callMethodForAllPlugins = function(sm, methodName, args){
+        var plugKeys = Object.keys(plugins);
+        plugKeys.forEach(function(plugKey){
+            var plugObj = plugins[plugKey];
+            if(plugObj[methodName]){
+                plugObj[methodName].apply(sm, args);
+            }
+        });
+    };
 
     // Pointer Events
     var pointerHanders = {
@@ -27,6 +54,7 @@ var stateMod = (function(){
             if (method) {
                 method(sm, pos, e);
             }
+            callMethodForAllPlugins(sm, 'pointerEvent', [sm, 'start', pos, e, states[sm.currentState], sm.game]);
         },
         move: function (sm, pos, e) {
             var method = states[sm.currentState].pointerMove,
@@ -35,6 +63,7 @@ var stateMod = (function(){
             if (method) {
                 method(sm, pos, e);
             }
+            callMethodForAllPlugins(sm, 'pointerEvent', [sm, 'move', pos, e, states[sm.currentState], sm.game]);
         },
         end: function (sm, pos, e) {
             sm.input.pointerDown = false;
@@ -42,6 +71,7 @@ var stateMod = (function(){
             if (method) {
                 method(sm, pos, e);
             }
+            callMethodForAllPlugins(sm, 'pointerEvent', [sm, 'end', pos, e, states[sm.currentState], sm.game]);
         }
     };
     var createPointerHandler = function (sm, type) {
@@ -59,7 +89,7 @@ var stateMod = (function(){
     // LOAD STATE OBJECTS
     api.load = function(stateObj){
         states[stateObj.name || Object.keys(states).length] = stateObj;
-    }
+    };
 
     // CREATE a new sm object
     var createCanvas = function(opt){

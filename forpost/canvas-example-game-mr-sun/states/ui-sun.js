@@ -21,6 +21,17 @@ stateMod.load({
         d.disp(sm);
         d.ver(sm);
     },
+    pointer : {
+        start: function (sm, pos, e) {
+            sm.game.sun.move(sm.game, pos);
+        },
+        move: function (sm, pos, e) {
+            if (sm.input.pointerDown) {
+                sm.game.sun.move(sm.game, pos);
+            }
+        }
+    }
+/*
     // events
     pointerStart: function (sm, pos, e) {
         sm.game.sun.move(sm.game, pos);
@@ -45,4 +56,5 @@ stateMod.load({
             }
         }
     }
+*/
 });

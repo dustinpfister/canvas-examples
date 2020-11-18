@@ -12,10 +12,24 @@
 * init_buttons adds a sm.addButton method that when called will add a button for the current state
 * the init method of this state will allow for button objects in each state object
 
-## 0.6.0 - transition system
+## 0.x.0 - transition system
 * have transition object support for stateObjects
 * a transition object contains transitionState objects
 * a transitionState object contains an init, update, and draw methods
+
+## 0.6.0 - buttons in state objects, and improved state-machine.js plugin support
+* (done) start a new plugins object in state-machine.js
+* start with a built in POINTER-STATE-EVENTS plugin that will just do what is all ready done in pointerHandlers
+* new /state-machine/ folder
+* new /state-machine/plugin folder for plugins for state-machine.js
+* new /state-machine/states folder for the actual game states such as ui-sun
+* rename /states/init-draw-base.js as /state-machine/plugin/core-draw.js
+* rename /states/init-game.js as /state-machine/plugin/core-game.js
+
+
+* start a new /state-machine/plugin/core-buttons.js
+* core-buttons.js will add support for button objects in states
+* add a button object in ui-sun.js state
 
 ## 0.5.0 - draw methods and objects for state objects
 * (done) add support for a draw method in state objects
