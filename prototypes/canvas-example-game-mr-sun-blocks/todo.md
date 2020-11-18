@@ -33,13 +33,13 @@
 * (done) fusion.js should set a totalMass property
 * (done) have fusion.js create and update a mineralsPer object that is the minCount / totalMass
 * (done) have a updateBlocks helper that will set active flag
-* (done) have number of activeBlocks be bassed on totalMass
+* (done) section.cells[cellIndex].block will be a reference to a block in section.blocks
+* (done) have number of activeBlocks be based on totalMass
+* (done) a block will become active depending on mineral count for a section just as before
+* (done) update draw.cells to work with new system
 * have type of active blocks be set by mineralsPer
 * have a type 2 that is just active blocks other than rock for now
-* section.cells[cellIndex].block will be a reference to a block in section.blocks
-* a block will become active depending on mineral count for a section just as before
 * update helper methods in plug-api-blocks to work with new system (using getAllActiveHelper).
-* update draw.cells to work with new system
 * create a pkg-0-1-0.html
 
 ## 0.1.0 - Start /plugin/temp.js, and /plugin/fusion.js game plugins
