@@ -1,6 +1,6 @@
 gameMod.load(function () {
     // constants
-    var MASS_FOR_ALL_BLOCKS = 1000, // mass for all blocks active
+    var MASS_FOR_ALL_BLOCKS = 10000, // mass for all blocks active
     GRID_WIDTH = 12,
     GRID_HEIGHT = 5;
     // create a new blocks array

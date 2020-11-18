@@ -37,9 +37,7 @@
 * (done) have number of activeBlocks be based on totalMass
 * (done) a block will become active depending on mineral count for a section just as before
 * (done) update draw.cells to work with new system
-* have type of active blocks be set by mineralsPer
-* have a type 2 that is just active blocks other than rock for now
-* update helper methods in plug-api-blocks to work with new system (using getAllActiveHelper).
+* (done) have type of active blocks be set by mineralsPer
 * create a pkg-0-1-0.html
 
 ## 0.1.0 - Start /plugin/temp.js, and /plugin/fusion.js game plugins
