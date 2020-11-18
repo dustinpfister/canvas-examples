@@ -34,6 +34,15 @@ gameMod.load(function(){
         }
         return false;
     };
+    var getAllEmptyCells = function(section){
+       return section.cells.filter(function(cell){
+           return cell.block === null;
+       });
+    };
+    // get a random block from the given collection
+    var getRandomCell = function(collection){
+        //return collection.slice(i, i + 1)[0];
+    };
     var getEmptyCell = function(section){
         var i = 0,
         cell,
