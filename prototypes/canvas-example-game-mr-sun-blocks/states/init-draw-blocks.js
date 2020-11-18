@@ -1,6 +1,6 @@
 // extended draw methods for Mr Sun Blocks
 stateMod.load((function(){
-    var blockColors = ['white', 'black', 'blue', 'red', 'green'];
+    var blockColors = ['white', 'lime', 'blue', 'red', 'green'];
     return {
         name: 'init-draw-blocks',
         init: function (sm) {
@@ -17,6 +17,10 @@ stateMod.load((function(){
                         ctx.fillStyle = blockColors[block.type];
                     }
                     ctx.fillRect(x, y, 16, 16);
+                    ctx.fillStyle = 'black';
+                    if(block){
+                        ctx.fillText(block.type, x, y);
+                    }
                 });
             };
             // draw mineral info for a section

@@ -128,14 +128,27 @@ gameMod.load(function () {
 			return i + minPer * len;
 		});
 	
-	    
+
         blocks.forEach(function (block) {
+			var i = 0,
+			len = indexMarkers.length,
+			indexMark;
+			while(i < len){
+				indexMark = indexMarkers[i];
+				if(block.i < indexMark){
+                    block.type = Math.floor(indexMark * len);
+					break;
+				}
+				i += 1;
+			}
+			/*
 			indexMarkers.forEach(function(indexMark, i){
 				block.type = 1;
 				if(block.i < indexMark){
                     block.type = Math.floor(i + indexMark);
 				}
 			});
+			*/
         });
     };
     // set the current section
