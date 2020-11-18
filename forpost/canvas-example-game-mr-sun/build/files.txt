@@ -5,6 +5,8 @@
 ../plugin/jar.js
 ../plugin/cookie.js
 ../lib/state-machine.js
-../states/init-draw-base.js
-../states/init-game.js
-../states/ui-sun.js
+../state-machine/plugin/core-pointer.js
+../state-machine/plugin/core-draw.js
+../state-machine/plugin/core-game.js
+../state-machine/states/ui-sun.js
+

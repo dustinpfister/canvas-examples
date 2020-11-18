@@ -35,7 +35,7 @@
 * (done) make slight changes to new core-draw and core-game files so they work with new system
 * (done) new /state-machine/states folder for the actual game states
 * (done) rename /states/ui-sun as /state-machine/states/ui-sun.js
-
+* make a pkg-0-6-0.html
 
 
 ## 0.5.0 - draw methods and objects for state objects
