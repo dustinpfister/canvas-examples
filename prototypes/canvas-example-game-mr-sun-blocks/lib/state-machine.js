@@ -1,6 +1,7 @@
 var stateMod = (function(){
 
     // STATES ARRAY
+/*
     var changeState = function (sm, stateKey, opt) {
         opt = opt || {};
         var newState = sm.states[stateKey];
@@ -9,7 +10,7 @@ var stateMod = (function(){
         }
         sm.currentState = stateKey;
     };
-
+*/
     // the states array
     var states = {};
 
