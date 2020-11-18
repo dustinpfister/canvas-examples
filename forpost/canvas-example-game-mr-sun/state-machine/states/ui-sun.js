@@ -23,43 +23,13 @@ stateMod.load({
     },
     pointer : {
         start: function (sm, pos, e) {
-            console.log('start');
             sm.game.sun.move(sm.game, pos);
         },
         move: function (sm, pos, e) {
             if (sm.input.pointerDown) {
-                console.log('move');
                 sm.game.sun.move(sm.game, pos);
             }
         },
-        end: function(){
-            console.log('end');
-        }
+        end: function(){}
     }
-/*
-    // events
-    pointerStart: function (sm, pos, e) {
-        sm.game.sun.move(sm.game, pos);
-    },
-    pointerMove: function (sm, pos, e) {
-        if (sm.input.pointerDown) {
-            sm.game.sun.move(sm.game, pos);
-        }
-    },
-    pointerEnd: function (sm, pos) {
-        if (sm.input.d < 3) {
-            // if section click
-            var section = gameMod.getSectionByPos(sm.game, pos.x, pos.y);
-            if (section) {
-                //changeState(sm, 'observe_section', {
-                //    section: section
-                //});
-            }
-            // if sun click
-            if (utils.distance(sm.game.sun.x, sm.game.sun.y, pos.x, pos.y) <= sm.game.sun.radius) {
-                //changeState(sm, 'observe_sun', {});
-            }
-        }
-    }
-*/
 });
