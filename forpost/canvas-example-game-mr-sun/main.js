@@ -1,5 +1,5 @@
 var sm = stateMod.create({
-    ver: '0.6.0',
+    ver: '0.7.0',
     currentState: 'ui-sun'
 });
 

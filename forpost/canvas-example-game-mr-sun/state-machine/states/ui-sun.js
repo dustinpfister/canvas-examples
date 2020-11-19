@@ -1,7 +1,7 @@
 stateMod.load({
     name: 'ui-sun',
-    // init method for the game state
-    init: function(sm){
+    // create method for the game state
+    create: function(sm){
         var sun = sm.game.sun;
         sun.move = function(game, pos){
             var radius = game.worldRadius - game.sectionRadius;

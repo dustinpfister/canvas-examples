@@ -20,7 +20,9 @@
 ## 0.7.0 - core-buttons.js
 * start a new /state-machine/plugin/core-buttons.js
 * core-buttons.js will add support for button objects in states
-* add a button object in ui-sun.js state
+* start a ui-menu.js state
+* add a 'menu button' in ui-sun.js state that will switch to ui-menu
+* add a 'back button' in ui-menu.js that will go back to ui-sun
 
 ## 0.6.0 - improved state-machine.js plugin support
 * (done) start a new plugins object in state-machine.js
@@ -35,8 +37,7 @@
 * (done) make slight changes to new core-draw and core-game files so they work with new system
 * (done) new /state-machine/states folder for the actual game states
 * (done) rename /states/ui-sun as /state-machine/states/ui-sun.js
-* make a pkg-0-6-0.html
-
+* (done) make a pkg-0-6-0.html
 
 ## 0.5.0 - draw methods and objects for state objects
 * (done) add support for a draw method in state objects
