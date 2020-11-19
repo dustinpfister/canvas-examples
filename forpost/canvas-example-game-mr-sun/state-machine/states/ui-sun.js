@@ -10,6 +10,13 @@ stateMod.load({
             }
         };
     },
+    buttons: {
+        0 : {
+            x: 300,
+            y: 50,
+            r: 16
+        }
+    },
     // update and draw
     update: function (sm, secs) {
         gameMod.update(sm.game, secs);
