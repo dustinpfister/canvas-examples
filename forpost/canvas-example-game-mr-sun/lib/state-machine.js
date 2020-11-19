@@ -4,11 +4,11 @@ var stateMod = (function(){
     var changeState = function (sm, stateKey, opt) {
         opt = opt || {};
         var newState = sm.states[stateKey];
+        sm.state = newState;
+        sm.currentState = stateKey;
         if (newState.init) {
             newState.init(sm, opt);
         }
-        sm.state = newState;
-        sm.currentState = stateKey;
     };
 
     // the states object
@@ -113,7 +113,7 @@ var stateMod = (function(){
         // attach built in sm methods
         sm.changeState = function(stateName, opt){
             console.log('change state to: ' + stateName);
-            changeState(sm, stateName, opt);
+            changeState(sm, stateName, opt || {} );
         };
 
         // attach events for mouse and touch

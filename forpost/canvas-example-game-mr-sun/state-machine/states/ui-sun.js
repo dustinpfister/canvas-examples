@@ -17,10 +17,13 @@ stateMod.load({
             r: 16,
             click: function(sm){
                 console.log('click');
-
                 sm.currentState = 'ui-sections'
             }
         }
+    },
+    // init will be called every time the state starts (for first time, or from another state)
+    init: function(sm, opt){
+        console.log(sm.state.name);
     },
     // update and draw
     update: function (sm, secs) {
