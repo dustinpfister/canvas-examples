@@ -2,7 +2,10 @@ stateMod.load({
     name: 'ui-sections',
     // create method for the game state
     create: function(sm){
-        
+        // set a sm.data.currentSection
+        sm.data = sm.data || {};
+        sm.data.currentSection = 0;
+        console.log(sm.data.currentSection);
     },
     buttons: {
         0 : {
@@ -10,7 +13,6 @@ stateMod.load({
             y: 20,
             r: 16,
             click: function(sm){
-                //console.log('click');
                 sm.currentState = 'ui-sun'
             }
         }
@@ -23,5 +25,10 @@ stateMod.load({
         d.back(sm);
         d.buttons(sm);
         d.ver(sm);
+        ctx.fillStyle = 'white';
+        ctx.textAlign = 'left';
+        ctx.textBaseline = 'middle';
+        ctx.font = '10px arial';
+        ctx.fillText('section# : ' + sm.data.currentSection, 10, 10);
     }
 });

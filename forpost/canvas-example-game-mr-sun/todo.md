@@ -21,9 +21,13 @@
 * (done) start a new /state-machine/plugin/core-buttons.js
 * (done) core-buttons.js will add support for button objects in states
 * (done) add a draw.buttons method in core-draw.js
-* start a ui-sections.js state
-* add a 'sections button' in ui-sun.js state that will switch to ui-sections
-* add a 'back button' in ui-sections.js that will go back to ui-sun
+* (done) start a ui-sections.js state
+* (done) add a 'sections button' in ui-sun.js state that will switch to ui-sections
+* (done) add a 'back button' in ui-sections.js that will go back to ui-sun
+* have a sm.currentSection value
+* display basic info about a current section in ui-sections
+* have right and left buttons to change sections
+* clicking on a section object in ui.sun will also change state to ui-sections and set sm.currentSection to that section 
 
 ## 0.6.0 - improved state-machine.js plugin support
 * (done) start a new plugins object in state-machine.js
