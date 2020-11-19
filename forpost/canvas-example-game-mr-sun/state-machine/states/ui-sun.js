@@ -13,10 +13,12 @@ stateMod.load({
     buttons: {
         0 : {
             x: 300,
-            y: 50,
+            y: 20,
             r: 16,
-            click: function(){
+            click: function(sm){
                 console.log('click');
+
+                sm.currentState = 'ui-sections'
             }
         }
     },

@@ -10,4 +10,4 @@
 ../state-machine/plugin/core-buttons.js
 ../state-machine/plugin/core-game.js
 ../state-machine/states/ui-sun.js
-
+../state-machine/states/ui-sections.js

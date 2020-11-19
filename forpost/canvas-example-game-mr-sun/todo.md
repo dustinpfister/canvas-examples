@@ -21,9 +21,9 @@
 * (done) start a new /state-machine/plugin/core-buttons.js
 * (done) core-buttons.js will add support for button objects in states
 * (done) add a draw.buttons method in core-draw.js
-* start a ui-menu.js state
-* add a 'menu button' in ui-sun.js state that will switch to ui-menu
-* add a 'back button' in ui-menu.js that will go back to ui-sun
+* start a ui-sections.js state
+* add a 'sections button' in ui-sun.js state that will switch to ui-sections
+* add a 'back button' in ui-sections.js that will go back to ui-sun
 
 ## 0.6.0 - improved state-machine.js plugin support
 * (done) start a new plugins object in state-machine.js
