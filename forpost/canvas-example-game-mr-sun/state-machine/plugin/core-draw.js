@@ -15,10 +15,11 @@ stateMod.load({
                 ctx.beginPath();
                 ctx.arc(section.x, section.y, section.radius, 0, Math.PI * 2);
                 ctx.fill();
-                ctx.fillStyle = 'white';
-                ctx.textAlign = 'center';
-                ctx.textBaseline = 'middle';
-                ctx.font = '10px arial';
+
+                //ctx.fillStyle = 'white';
+                //ctx.textAlign = 'center';
+                //ctx.textBaseline = 'middle';
+                //ctx.font = '10px arial';
                 //ctx.fillText(section.cookie.count, section.x, section.y);
                 //ctx.fillText(section.energy, section.x, section.y);
             });
