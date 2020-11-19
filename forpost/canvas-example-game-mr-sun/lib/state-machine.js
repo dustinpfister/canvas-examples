@@ -1,16 +1,15 @@
 var stateMod = (function(){
 
-    // STATES Object
-/*
+    // STATES
     var changeState = function (sm, stateKey, opt) {
         opt = opt || {};
         var newState = sm.states[stateKey];
-        if (newState.start) {
-            newState.start(sm, opt);
+        if (newState.init) {
+            newState.init(sm, opt);
         }
+        sm.state = newState;
         sm.currentState = stateKey;
     };
-*/
 
     // the states object
     var states = {};
@@ -92,6 +91,7 @@ var stateMod = (function(){
             canvas: can.canvas,
             ctx: can.ctx,
             ver: opt.ver || '0.0.0',
+            state:{},
             currentState: opt.currentState || 'game',
             game: {},
             draw: {},
@@ -108,6 +108,12 @@ var stateMod = (function(){
                     y: 0
                 }
             }
+        };
+
+        // attach built in sm methods
+        sm.changeState = function(stateName, opt){
+            console.log('change state to: ' + stateName);
+            changeState(sm, stateName, opt);
         };
 
         // attach events for mouse and touch
@@ -141,6 +147,10 @@ var stateMod = (function(){
     api.start = function(sm){
         var lt = new Date(),
         FPS_target = 30;
+
+        // call changeState for first time
+        sm.changeState(sm.currentState);
+
         var loop = function () {
             var now = new Date(),
             t = now - lt,
