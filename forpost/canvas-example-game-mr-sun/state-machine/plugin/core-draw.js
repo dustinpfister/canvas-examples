@@ -19,7 +19,7 @@ stateMod.load({
                 ctx.textAlign = 'center';
                 ctx.textBaseline = 'middle';
                 ctx.font = '10px arial';
-                ctx.fillText(section.cookie.count, section.x, section.y);
+                //ctx.fillText(section.cookie.count, section.x, section.y);
                 //ctx.fillText(section.energy, section.x, section.y);
             });
         };
@@ -31,7 +31,7 @@ stateMod.load({
             ctx.arc(sun.x, sun.y, sun.radius, 0, Math.PI * 2);
             ctx.fill();
             ctx.fillStyle = 'black';
-            ctx.fillText(sm.game.jar.count, sun.x, sun.y);
+            //ctx.fillText(sm.game.jar.count, sun.x, sun.y);
         };
         // display
         sm.draw.disp = function (sm) {
@@ -45,13 +45,28 @@ stateMod.load({
             ctx.fillText('sun level: ' + sm.game.sun.levelObj.level, 3, 30);
         };
         // draw version number
-       sm.draw.ver = function (sm) {
+        sm.draw.ver = function (sm) {
             var ctx = sm.ctx;
             ctx.fillStyle = 'white';
             ctx.textAlign = 'left';
             ctx.textBaseline = 'top';
             ctx.font = '10px courier';
             ctx.fillText('v' + sm.ver, 10, sm.canvas.height - 15);
+        };
+        // draw buttons of the current state
+        sm.draw.buttons = function(sm){
+            var ctx = sm.ctx,
+            state = sm.states[sm.currentState];
+            ctx.fillStyle = 'red';
+            if(state.buttons){
+                Object.keys(state.buttons).forEach(function(buttonKey){
+                    var button = state.buttons[buttonKey];
+                    ctx.beginPath();
+                    ctx.arc(button.x, button.y, button.r, 0, Math.PI * 2);
+                    ctx.fill();
+                });
+            }
+            
         };
     }
 });

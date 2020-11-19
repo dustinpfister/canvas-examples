@@ -29,6 +29,7 @@ stateMod.load({
         d.sections(sm);
         d.sun(sm);
         d.disp(sm);
+        d.buttons(sm);
         d.ver(sm);
     },
     pointer : {

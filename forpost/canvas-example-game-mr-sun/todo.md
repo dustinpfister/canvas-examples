@@ -19,7 +19,8 @@
 
 ## 0.7.0 - core-buttons.js
 * (done) start a new /state-machine/plugin/core-buttons.js
-* core-buttons.js will add support for button objects in states
+* (done) core-buttons.js will add support for button objects in states
+* (done) add a draw.buttons method in core-draw.js
 * start a ui-menu.js state
 * add a 'menu button' in ui-sun.js state that will switch to ui-menu
 * add a 'back button' in ui-menu.js that will go back to ui-sun
