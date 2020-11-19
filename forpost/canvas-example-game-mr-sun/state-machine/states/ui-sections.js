@@ -8,12 +8,32 @@ stateMod.load({
         console.log(sm.data.currentSection);
     },
     buttons: {
-        0 : {
+        back : {
             x: 300,
             y: 20,
             r: 16,
             click: function(sm){
                 sm.currentState = 'ui-sun'
+            }
+        },
+        left : {
+            x: 20,
+            y: 120,
+            r: 16,
+            click: function(sm){
+                //sm.currentState = 'ui-sun'
+                sm.data.currentSection += 1;
+                sm.data.currentSection = sm.data.currentSection >= sm.game.sections.length ? 0 : sm.data.currentSection;
+            }
+        },
+        right : {
+            x: 300,
+            y: 120,
+            r: 16,
+            click: function(sm){
+                //sm.currentState = 'ui-sun'
+                sm.data.currentSection -= 1;
+                sm.data.currentSection = sm.data.currentSection < 0 ? sm.game.sections.length - 1 : sm.data.currentSection;
             }
         }
     },
