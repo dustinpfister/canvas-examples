@@ -12,10 +12,15 @@
 * init_buttons adds a sm.addButton method that when called will add a button for the current state
 * the init method of this state will allow for button objects in each state object
 
-## 0.x.0 - transition system
-* have transition object support for stateObjects
-* a transition object contains transitionState objects
-* a transitionState object contains an init, update, and draw methods
+## 0.8.0 - transition system
+* have a sm.changeState method
+* sm.changeState will call state.init for the state that we are change to if it has one
+* sm.changeState will call a onStateChange method for all state-machine plugins that have one
+* start a core-transitions.js state-machine plug-in that will add support for transition objects
+* a transition object contains methods for onTranStart, onTranUpdate, and onTranEnd
+* a transition object contains a maxFrame, and frameRate properties
+* use sm.changeState for ui-sun and ui-sections and create transition animations for them
+* make a pkg-0-7-0.html
 
 ## 0.7.0 - core-buttons.js started
 * (done) start a new /state-machine/plugin/core-buttons.js
@@ -29,7 +34,7 @@
 * (done) have right and left buttons to change sections
 * (done) clicking on a section object in ui.sun will also change state to ui-sections and set sm.currentSection to that section
 * (done) add a createButton method in buttons.js, and use it to make buttons in ui-sections and ui-sun
-* make a pkg-0-7-0.html
+* (done) make a pkg-0-7-0.html
 
 ## 0.6.0 - improved state-machine.js plugin support
 * (done) start a new plugins object in state-machine.js
