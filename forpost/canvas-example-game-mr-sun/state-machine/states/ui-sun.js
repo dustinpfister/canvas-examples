@@ -14,7 +14,10 @@ stateMod.load({
         0 : {
             x: 300,
             y: 50,
-            r: 16
+            r: 16,
+            click: function(){
+                console.log('click');
+            }
         }
     },
     // update and draw
