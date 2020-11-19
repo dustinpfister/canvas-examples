@@ -8,5 +8,8 @@ stateMod.load({
                 method.call(sm, sm, pos, e, state, game);
             }
         }
+    },
+    update: function(sm){
+        // console.log('tick');
     }
 });

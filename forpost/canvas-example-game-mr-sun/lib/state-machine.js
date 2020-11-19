@@ -1,8 +1,10 @@
 var stateMod = (function(){
 
     // STATES
+
     var changeState = function (sm, stateKey, opt) {
         opt = opt || {};
+        var oldState = sm.state;
         var newState = sm.states[stateKey];
         sm.state = newState;
         sm.currentState = stateKey;
@@ -10,7 +12,13 @@ var stateMod = (function(){
             newState.init(sm, opt);
         }
     };
-
+/*
+    // start a state change delay
+    var startStateChangeDelay = function(sm, newStateKey, delayFunc){
+       sm.newStateKey = newStatekey;
+       sm.delayFunc = delayFunc;
+    };
+*/
     // the states object
     var states = {};
     // the plugins object
@@ -163,6 +171,7 @@ var stateMod = (function(){
                 draw = states[sm.currentState].draw;
                 if(update){
                     update.call(sm, sm, secs);
+                    callMethodForAllPlugins(sm, 'update', [sm, secs]);
                 }
                 if(draw){
                     draw.call(sm, sm.draw, sm.ctx, sm.canvas, sm.game, sm);

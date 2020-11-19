@@ -16,8 +16,9 @@
 * (done) have a sm.changeState method
 * (done) sm.changeState will call state.init for the state that we are change to if it has one
 * sm.changeState will call a onStateChange method for all state-machine plugins that have one
+* sm.changeState 
 * start a core-transitions.js state-machine plug-in that will add support for transition objects
-* a transition object contains methods for onTranStart, onTranUpdate, and onTranEnd
+* a transition object contains methods for tranStart, tranUpdate, and tranEnd
 * a transition object contains a maxFrame, and frameRate properties
 * use sm.changeState for ui-sun and ui-sections and create transition animations for them
 * make a pkg-0-7-0.html
