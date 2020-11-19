@@ -30,5 +30,10 @@ stateMod.load({
         ctx.textBaseline = 'middle';
         ctx.font = '10px arial';
         ctx.fillText('section# : ' + sm.data.currentSection, 10, 10);
+        var section = sm.game.sections[sm.data.currentSection];
+        
+        ctx.fillText('count : ' + section.cookie.count, 10, 30);
+        ctx.fillText('rate : ' + section.cookie.rate, 10, 40);
+        ctx.fillText('max : ' + section.cookie.max, 10, 50);
     }
 });

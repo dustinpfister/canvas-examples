@@ -24,8 +24,8 @@
 * (done) start a ui-sections.js state
 * (done) add a 'sections button' in ui-sun.js state that will switch to ui-sections
 * (done) add a 'back button' in ui-sections.js that will go back to ui-sun
-* have a sm.currentSection value
-* display basic info about a current section in ui-sections
+* (done) have a sm.currentSection value
+* (done) display basic info about a current section in ui-sections
 * have right and left buttons to change sections
 * clicking on a section object in ui.sun will also change state to ui-sections and set sm.currentSection to that section 
 
