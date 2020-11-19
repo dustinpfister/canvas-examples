@@ -26,8 +26,9 @@
 * (done) add a 'back button' in ui-sections.js that will go back to ui-sun
 * (done) have a sm.currentSection value
 * (done) display basic info about a current section in ui-sections
-* have right and left buttons to change sections
-* clicking on a section object in ui.sun will also change state to ui-sections and set sm.currentSection to that section 
+* (done) have right and left buttons to change sections
+* (done) clicking on a section object in ui.sun will also change state to ui-sections and set sm.currentSection to that section 
+* make a pkg-0-7-0.html
 
 ## 0.6.0 - improved state-machine.js plugin support
 * (done) start a new plugins object in state-machine.js

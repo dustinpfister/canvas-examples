@@ -54,6 +54,20 @@ stateMod.load({
                 sm.game.sun.move(sm.game, pos);
             }
         },
-        end: function(){}
+        end: function(sm, pos, e){
+            if (sm.input.d < 3) {
+                // if section click
+                var section = gameMod.getSectionByPos(sm.game, pos.x, pos.y);
+                if (section) {
+
+                    sm.data.currentSection = section.i;
+                    sm.currentState = 'ui-sections';
+                }
+                // if sun click
+                if (utils.distance(sm.game.sun.x, sm.game.sun.y, pos.x, pos.y) <= sm.game.sun.radius) {
+                    //
+                }
+            }
+        }
     }
 });
