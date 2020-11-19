@@ -17,7 +17,7 @@
 * a transition object contains transitionState objects
 * a transitionState object contains an init, update, and draw methods
 
-## 0.7.0 - core-buttons.js
+## 0.7.0 - core-buttons.js started
 * (done) start a new /state-machine/plugin/core-buttons.js
 * (done) core-buttons.js will add support for button objects in states
 * (done) add a draw.buttons method in core-draw.js
