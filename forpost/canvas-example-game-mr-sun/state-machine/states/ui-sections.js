@@ -8,13 +8,11 @@ stateMod.load({
         console.log(sm.data.currentSection);
     },
     buttons: {
-        back : {
-            x: 300,
-            y: 20,
-            r: 16,
-            click: function(sm){
-                sm.currentState = 'ui-sun'
-            }
+        // can use a function
+        back : function(sm, createButton){
+            return createButton({ x: 300, y: 20, click: function(sm){
+                sm.currentState = 'ui-sun';
+            }});
         },
         left : {
             x: 20,
@@ -55,5 +53,6 @@ stateMod.load({
         ctx.fillText('count : ' + section.cookie.count, 10, 30);
         ctx.fillText('rate : ' + section.cookie.rate, 10, 40);
         ctx.fillText('max : ' + section.cookie.max, 10, 50);
+        ctx.fillText('per : ' + section.per, 10, 60);
     }
 });

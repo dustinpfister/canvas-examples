@@ -27,7 +27,8 @@
 * (done) have a sm.currentSection value
 * (done) display basic info about a current section in ui-sections
 * (done) have right and left buttons to change sections
-* (done) clicking on a section object in ui.sun will also change state to ui-sections and set sm.currentSection to that section 
+* (done) clicking on a section object in ui.sun will also change state to ui-sections and set sm.currentSection to that section
+* (done) add a createButton method in buttons.js, and use it to make buttons in ui-sections and ui-sun
 * make a pkg-0-7-0.html
 
 ## 0.6.0 - improved state-machine.js plugin support
