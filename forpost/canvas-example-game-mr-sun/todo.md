@@ -18,7 +18,7 @@
 * a transitionState object contains an init, update, and draw methods
 
 ## 0.7.0 - core-buttons.js
-* start a new /state-machine/plugin/core-buttons.js
+* (done) start a new /state-machine/plugin/core-buttons.js
 * core-buttons.js will add support for button objects in states
 * start a ui-menu.js state
 * add a 'menu button' in ui-sun.js state that will switch to ui-menu

@@ -2,8 +2,7 @@ stateMod.load({
     name: 'core-game',
     type: 'plugin',
     create: function (sm) {
-        console.log('hello??');
-        // setup sun object
+        // setup game object
         sm.game = gameMod.create({
             canvas: sm.canvas,
             sectionCount: 19,

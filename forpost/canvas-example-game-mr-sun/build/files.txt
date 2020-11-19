@@ -7,6 +7,7 @@
 ../lib/state-machine.js
 ../state-machine/plugin/core-pointer.js
 ../state-machine/plugin/core-draw.js
+../state-machine/plugin/core-buttons.js
 ../state-machine/plugin/core-game.js
 ../state-machine/states/ui-sun.js
 
