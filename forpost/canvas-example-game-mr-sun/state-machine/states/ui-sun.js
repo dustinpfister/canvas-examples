@@ -75,5 +75,18 @@ stateMod.load({
                 }
             }
         }
+    },
+    transition: {
+        maxFrame: 5, // frames used
+        transTime: 3,  // target trans time in seconds
+        start: function(sm){
+            console.log('trans start');
+        },
+        update: function(sm, frame, maxFrame, per){
+            console.log('trans frame: ' + frame + '/' + maxFrame + ' ( ' + Math.round( per * 100) + ')');
+        },
+        end: function(sm){
+            console.log('trans end');
+        }
     }
 });
