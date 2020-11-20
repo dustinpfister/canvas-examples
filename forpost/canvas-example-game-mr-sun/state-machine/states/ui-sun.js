@@ -17,7 +17,8 @@ stateMod.load({
             r: 16,
             click: function(sm){
                 console.log('click');
-                sm.currentState = 'ui-sections'
+                //sm.currentState = 'ui-sections'
+                sm.changeState('ui-sections');
             }
         }
     },
@@ -64,7 +65,9 @@ stateMod.load({
                 if (section) {
 
                     sm.data.currentSection = section.i;
-                    sm.currentState = 'ui-sections';
+                    //sm.currentState = 'ui-sections';
+                    sm.changeState('ui-sections');
+
                 }
                 // if sun click
                 if (utils.distance(sm.game.sun.x, sm.game.sun.y, pos.x, pos.y) <= sm.game.sun.radius) {

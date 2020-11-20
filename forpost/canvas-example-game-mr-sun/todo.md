@@ -15,7 +15,7 @@
 ## 0.8.0 - transition system
 * (done) have a sm.changeState method
 * (done) sm.changeState will call state.init for the state that we are change to if it has one
-* start a core-transitions.js state-machine plug-in that will add support for transition objects
+* (done) start a core-transitions.js state-machine plug-in that will add support for transition objects
 * a transition object contains methods for tranStart, tranUpdate, and tranEnd
 * a transition object contains a maxFrame, and frameRate properties
 * use sm.changeState for ui-sun and ui-sections and create transition animations for them

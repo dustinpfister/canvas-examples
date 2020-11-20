@@ -11,7 +11,8 @@ stateMod.load({
         // can use a function
         back : function(sm, createButton){
             return createButton({ x: 300, y: 20, click: function(sm){
-                sm.currentState = 'ui-sun';
+                //sm.currentState = 'ui-sun';
+                sm.changeState('ui-sun');
             }});
         },
         left : {
