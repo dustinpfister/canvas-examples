@@ -20,7 +20,9 @@
 * (done) a transition object contains a maxFrame, and frameRate properties
 * (done) use sm.changeState when a transition is over if a new state name is given when the transition is started
 * (done) have a trans.forward bool than can be used to have the transition play froward (true) or backward (false)
-* have more than one block of code in ui-sun for the draw method for trans.action === 'running' and !running
+* (done) have more than one block of code in ui-sun for the draw method for trans.action === 'running' and !running
+* (done) create a collection of display objects for sections that can be attached to trans.data that wil be used just for rendering a transition called trans.data.sudoSections.
+* use trans.data.sudoSections in the trans.update method
 * make a pkg-0-7-0.html
 
 ## 0.7.0 - core-buttons.js started
