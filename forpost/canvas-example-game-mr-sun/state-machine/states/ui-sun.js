@@ -97,20 +97,12 @@ stateMod.load({
                 // if section click
                 var section = gameMod.getSectionByPos(sm.game, pos.x, pos.y);
                 if (section) {
-
                     sm.data.currentSection = section.i;
-                    //sm.currentState = 'ui-sections';
-                    //sm.changeState('ui-sections');
                     sm.startTrans({
                         newStateName: 'ui-sections',
                         forward: true,
-                        data: {
-                            //dispObj: button,
-                            //homeX: button.x,
-                            //homeY: button.y
-                        }
+                        data: {}
                     });
-
                 }
                 // if sun click
                 if (utils.distance(sm.game.sun.x, sm.game.sun.y, pos.x, pos.y) <= sm.game.sun.radius) {
