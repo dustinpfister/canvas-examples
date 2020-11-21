@@ -18,6 +18,7 @@ stateMod.load({
             click: function(sm, pos, button, e, state, game){
                 console.log('click');
                 // start the transition to a new state
+                // start transition in 'forward direction' as we are going 'forward to a new state'
                 sm.startTrans({
                     newStateName: 'ui-sections',
                     forward: true,
@@ -32,7 +33,13 @@ stateMod.load({
     },
     // init will be called every time the state starts (for first time, or from another state)
     init: function(sm, opt){
-        console.log(sm.state.name);
+        // start transition in 'reverse' as we are coming 'back from another state'
+        sm.startTrans({
+            newStateName: '', // we are not chaning states when it comes to this
+            forward: false,
+            data: {}
+        });
+
     },
     // update and draw
     update: function (sm, secs) {
