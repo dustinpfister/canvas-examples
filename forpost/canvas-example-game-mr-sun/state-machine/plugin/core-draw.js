@@ -4,7 +4,12 @@ stateMod.load({
     create: function (sm) {
         // draw background method
         sm.draw.back = function(sm){
-            sm.ctx.fillStyle = '#000020';
+            var color = '#000020';
+            if(sm.currentState === 'ui-sections'){
+                var b = 50 + Math.round(sm.game.sections[sm.data.currentSection].per * 128);
+                color = 'rgb(0,0,' + b + ')';
+            }
+            sm.ctx.fillStyle = color;
             sm.ctx.fillRect(0, 0, sm.canvas.width, sm.canvas.height);
         };
         var drawSecton = function(ctx, section){
