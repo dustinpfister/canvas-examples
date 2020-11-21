@@ -1,10 +1,15 @@
 # canvas-example-mr-sun
 
-## 0.x.0 - save states
-* save states should be a feature of main.js
-* just have a way to load and save a single state via local storage for now and be done with it
+## 0.11.0 - core-save-states.js
+* start a core-save-states.js state-machine plug-in
+* core-save-states.js adds a sm.save method
+* core-save-states.js adds a sm.load method
+* have a sm.gameName property that will be set to 'mr-sun' for this canvas example ('mr-sun-temp', 'mr-sun-geo', ect would be the value for other Mr Sun projects based off the source code from this point)
+* update core-game.js to make use of new sm.load method
+* the sm.gameName property should be set in a 'non core' file such as main.js
+* the sm.save method should be used in a 'non core' file or plug-in such as jar.js for 'mr-sun' or temp.js in 'mr-sun-temp'
 
-## 0.11.0 - core-spritesheets.js, extrenal images, /states/init-load.js, and /img
+## 0.10.0 - core-spritesheets.js, extrenal images, /states/init-load.js, and /img
 * have a /img folder to store sprite sheets images
 * have a /img/index.json file that will serve as a way to define into for each image
 * image files should follow this pattern: /img/0.png, /img/1.png, /img/2.png
@@ -29,7 +34,7 @@ there should be a way to set the values for the frames like this at least. Other
 * ui-sun should start when all assets are loaded
 * skin display objects with new sprite sheets uisng the new draw.sprite method
 
-## 0.10.0 - core-spritesheets.js started
+## 0.9.0 - core-spritesheets.js started
 * start a core-spritesheets.js state-machine plug-in
 * core-spritesheets.js plug-in will add a sm.createSprite method that will create a 'standard sprite object'
 * use new createSprite method for all display objects in the game
