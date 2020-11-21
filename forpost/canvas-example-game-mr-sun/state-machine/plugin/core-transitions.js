@@ -37,7 +37,7 @@ stateMod.load({
                 // end if trans.per === 1
                 if(trans.per === 1){
                     trans.action = 'end';
-                    trans.end(sm, trans);
+                    trans.end(sm, trans, trans.data);
                     if(trans.newStateName != ''){
                          sm.changeState(trans.newStateName);
                     }

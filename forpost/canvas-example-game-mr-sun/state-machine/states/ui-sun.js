@@ -11,7 +11,7 @@ stateMod.load({
         };
     },
     buttons: {
-        0 : {
+        sections : {
             x: 300,
             y: 20,
             r: 16,
@@ -88,16 +88,17 @@ stateMod.load({
         maxFrame: 50, // frames used
         maxSecs: 1,  // target trans time in seconds
         start: function(sm, trans, data){
-            console.log('trans start');
+            var secButton = sm.state.buttons.sections;
+            secButton.x = 300;
         },
         update: function(sm, trans, frame, maxFrame, per, data){
             //console.log('trans frame: ' + frame + '/' + maxFrame + ' ( ' + Math.round( per * 100) + ')');
-            var obj = data.dispObj;
-            obj.x = data.homeX - 320 * per;
+
+            var secButton = sm.state.buttons.sections;
+            secButton.x = 300 - 320 * per;
         },
-        end: function(sm, trans){
-            console.log('trans end');
-            trans.data.dispObj.x = trans.data.homeX;
+        end: function(sm, trans, data){
+            sm.state.buttons.sections.x = 300;
         }
     }
 });
