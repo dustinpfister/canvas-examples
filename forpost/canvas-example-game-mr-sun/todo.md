@@ -49,7 +49,9 @@ there should be a way to set the values for the frames like this at least. Other
 * (done) create a collection of display objects for sections that can be attached to trans.data that wil be used just for rendering a transition called trans.data.sudoSections.
 * (done) update draw.sections to work with a given sections collection other than game.sections such as trans.data.psudoSections
 * (done) use trans.data.sudoSections in the trans.update method of ui-sun to update the position of the sudoSection objects
-* use sm.data.currentSection as part of a transition effect for ui-sun
+* (done) use sm.data.currentSection as part of a transition effect for ui-sun
+* use new startTrans method for when a section is clicked
+* change draw.sections so that the index that is current is drawn above all others.
 * make a pkg-0-8-0.html
 
 ## 0.7.0 - core-buttons.js started

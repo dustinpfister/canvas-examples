@@ -27,7 +27,7 @@ stateMod.load({
                         homeX: button.x,
                         homeY: button.y
                     }
-                })
+                });
             }
         }
     },
@@ -93,7 +93,16 @@ stateMod.load({
 
                     sm.data.currentSection = section.i;
                     //sm.currentState = 'ui-sections';
-                    sm.changeState('ui-sections');
+                    //sm.changeState('ui-sections');
+                    sm.startTrans({
+                        newStateName: 'ui-sections',
+                        forward: true,
+                        data: {
+                            //dispObj: button,
+                            //homeX: button.x,
+                            //homeY: button.y
+                        }
+                    });
 
                 }
                 // if sun click
@@ -138,7 +147,7 @@ stateMod.load({
                 var dy = sm.game.worldRadius * Math.sin(a) * per;
                 sudoSection.x = sudoSection.homeX - dx;
                 sudoSection.y = sudoSection.homeY - dy;
-                csSection.radius = csSection.homeRadius + 320 * per;
+                csSection.radius = csSection.homeRadius + sm.canvas.width * per;
             });
         },
         end: function(sm, trans, data){
