@@ -15,12 +15,17 @@ stateMod.load({
             x: 300,
             y: 20,
             r: 16,
-            click: function(sm){
+            click: function(sm, pos, button, e, state, game){
                 console.log('click');
                 //sm.currentState = 'ui-sections'
                 //sm.changeState('ui-sections');
                 sm.startTrans({
-                    newStateName: 'ui-sections'
+                    newStateName: 'ui-sections',
+                    data: {
+                        dispObj: button,
+                        homeX: button.x,
+                        homeY: button.y
+                    }
                 })
             }
         }
@@ -80,16 +85,19 @@ stateMod.load({
         }
     },
     trans: {
-        maxFrame: 5, // frames used
-        maxSecs: 3,  // target trans time in seconds
-        start: function(sm){
+        maxFrame: 50, // frames used
+        maxSecs: 1,  // target trans time in seconds
+        start: function(sm, trans, data){
             console.log('trans start');
         },
         update: function(sm, trans, frame, maxFrame, per, data){
-            console.log('trans frame: ' + frame + '/' + maxFrame + ' ( ' + Math.round( per * 100) + ')');
+            //console.log('trans frame: ' + frame + '/' + maxFrame + ' ( ' + Math.round( per * 100) + ')');
+            var obj = data.dispObj;
+            obj.x = data.homeX - 320 * per;
         },
         end: function(sm, trans){
             console.log('trans end');
+            trans.data.dispObj.x = trans.data.homeX;
         }
     }
 });

@@ -13,10 +13,12 @@ stateMod.load({
             if(trans){
                 trans.frame = 0;
                 trans.secs = 0;
-                trans.start(sm);
-                trans.action = 'running';
+                // call trans state method
                 trans.newStateName = opt.newStateName;
                 trans.data = opt.data;
+                trans.action = 'start';
+                trans.start(sm, trans, trans.data);
+                trans.action = 'running';
             }
         }
     },
