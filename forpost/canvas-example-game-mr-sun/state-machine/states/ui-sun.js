@@ -46,26 +46,33 @@ stateMod.load({
         gameMod.update(sm.game, secs);
     },
     draw: function(d, ctx, canvas, game, sm){
+        // always draw backgound
         d.back(sm);
-
-        if(sm.state.trans.action === 'running'){
-       
-        }else{
-            d.sections(sm);
-            d.sun(sm);
-            d.disp(sm);
-            // info for all sections
-            ctx.fillStyle = 'white';
-            ctx.textAlign = 'center';
-            ctx.textBaseline = 'middle';
-            ctx.font = '10px arial';
-            game.forSections(function(section){
-                ctx.fillText(section.cookie.count, section.x, section.y);
-            });
-            // info for sun
-            ctx.fillStyle = 'black';
-            ctx.fillText(sm.game.jar.count, sm.game.sun.x, sm.game.sun.y);
+        //!!!- this if statement is a duck tap solution for an error that should not be hapening to begin with
+        // when switching from ui-sun to ui-sections
+        if(sm.state.trans){
+            // if the trans is running
+            if(sm.state.trans.action === 'running'){
+                d.sections(sm, sm.state.trans.data.sudoSections);
+            }else{
+                // else draw game state
+                d.sections(sm);
+                d.sun(sm);
+                d.disp(sm);
+                // info for all sections
+                ctx.fillStyle = 'white';
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
+                ctx.font = '10px arial';
+                game.forSections(function(section){
+                    ctx.fillText(section.cookie.count, section.x, section.y);
+                });
+                // info for sun
+                ctx.fillStyle = 'black';
+                ctx.fillText(sm.game.jar.count, sm.game.sun.x, sm.game.sun.y);
+            }
         }
+        // always draw buttons and version number
         d.buttons(sm);
         d.ver(sm);
     },
@@ -109,7 +116,8 @@ stateMod.load({
                     homeY: section.y,
                     x: section.x,
                     y: section.y,
-                    radius: section.radius
+                    radius: section.radius,
+                    per: section.per
                 }
             });
             console.log(trans.data.sudoSections);

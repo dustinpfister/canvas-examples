@@ -7,21 +7,15 @@ stateMod.load({
             sm.ctx.fillStyle = '#000020';
             sm.ctx.fillRect(0, 0, sm.canvas.width, sm.canvas.height);
         };
-        sm.draw.sections = function (sm) {
+        sm.draw.sections = function (sm, sectionCollection) {
             var ctx = sm.ctx;
-            sm.game.sections.forEach(function (section) {
+            sectionCollection = sectionCollection || sm.game.sections;
+            sectionCollection.forEach(function (section) {
                 var b = 50 + Math.round(section.per * 128);
                 ctx.fillStyle = 'rgb(0,0,' + b + ')';
                 ctx.beginPath();
                 ctx.arc(section.x, section.y, section.radius, 0, Math.PI * 2);
                 ctx.fill();
-
-                //ctx.fillStyle = 'white';
-                //ctx.textAlign = 'center';
-                //ctx.textBaseline = 'middle';
-                //ctx.font = '10px arial';
-                //ctx.fillText(section.cookie.count, section.x, section.y);
-                //ctx.fillText(section.energy, section.x, section.y);
             });
         };
         sm.draw.sun = function (sm) {
