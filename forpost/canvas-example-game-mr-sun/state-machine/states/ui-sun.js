@@ -22,11 +22,7 @@ stateMod.load({
                 sm.startTrans({
                     newStateName: 'ui-sections',
                     forward: true,
-                    data: {
-                        dispObj: button,
-                        homeX: button.x,
-                        homeY: button.y
-                    }
+                    data: {}
                 });
             }
         }
