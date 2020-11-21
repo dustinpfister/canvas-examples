@@ -43,13 +43,12 @@ stateMod.load({
     draw: function(d, ctx, canvas, game, sm){
         // always draw backgound
         d.back(sm);
-        //!!!- this if statement is a duck tap solution for an error that should not be hapening to begin with
-        // when switching from ui-sun to ui-sections
-        if(sm.state.trans){
             // if the trans is running
             if(sm.state.trans.action === 'running'){
                 d.sections(sm, sm.state.trans.data.sudoSections);
-            }else{
+            }
+
+            if(sm.state.trans.action === 'end'){
                 // else draw game state
                 d.sections(sm);
                 d.sun(sm);
@@ -66,7 +65,6 @@ stateMod.load({
                 ctx.fillStyle = 'black';
                 ctx.fillText(sm.game.jar.count, sm.game.sun.x, sm.game.sun.y);
             }
-        }
         // always draw buttons and version number
         d.buttons(sm);
         d.ver(sm);
