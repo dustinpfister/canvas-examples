@@ -7,10 +7,7 @@ stateMod.load({
             sm.ctx.fillStyle = '#000020';
             sm.ctx.fillRect(0, 0, sm.canvas.width, sm.canvas.height);
         };
-        sm.draw.sections = function (sm, sectionCollection) {
-            var ctx = sm.ctx;
-            sectionCollection = sectionCollection || sm.game.sections;
-            sectionCollection.forEach(function (section) {
+        var drawSecton = function(ctx, section){
                 var b = 50 + Math.round(section.per * 128);
                 ctx.fillStyle = 'rgb(0,0,' + b + ')';
                 ctx.beginPath();
@@ -18,6 +15,12 @@ stateMod.load({
                 ctx.fill();
                 ctx.strokeStyle='white';
                 ctx.stroke();
+        };
+        sm.draw.sections = function (sm, sectionCollection) {
+            var ctx = sm.ctx;
+            sectionCollection = sectionCollection || sm.game.sections;
+            sectionCollection.forEach(function (section) {
+                drawSecton(ctx, section);
             });
         };
         sm.draw.sun = function (sm) {
