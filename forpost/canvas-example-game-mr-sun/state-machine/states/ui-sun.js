@@ -144,40 +144,10 @@ stateMod.load({
                 }
             });
             sm.sudoSectionsTrans(sm, trans, per);
-/*
-            var csIndex = sm.data.currentSection,
-            csSection = trans.data.sudoSections[csIndex];
-            trans.data.sudoSections.forEach(function(sudoSection){
-                var a = Math.atan2(sm.game.centerY - csSection.homeY, sm.game.centerX -  csSection.homeX) + Math.PI;
-                var dx = sm.game.worldRadius * Math.cos(a) * per;
-                var dy = sm.game.worldRadius * Math.sin(a) * per;
-                sudoSection.x = sudoSection.homeX - dx;
-                sudoSection.y = sudoSection.homeY - dy;
-                csSection.radius = csSection.homeRadius + sm.canvas.width * per;
-            });
-*/
         },
         update: function(sm, trans, frame, maxFrame, per, data){
             var secButton = sm.state.buttons.sections;
             secButton.x = 300 - 320 * per;
-/*
-            trans.data.sudoSections.forEach(function(sudoSection){
-                sudoSection.x = sudoSection.homeX + 320 * per;
-                sudoSection.y = sudoSection.homeY + 320 * per;
-            });
-*/
-/*
-            var csIndex = sm.data.currentSection,
-            csSection = trans.data.sudoSections[csIndex];
-            trans.data.sudoSections.forEach(function(sudoSection){
-                var a = Math.atan2(sm.game.centerY - csSection.homeY, sm.game.centerX -  csSection.homeX) + Math.PI;
-                var dx = sm.game.worldRadius * Math.cos(a) * per;
-                var dy = sm.game.worldRadius * Math.sin(a) * per;
-                sudoSection.x = sudoSection.homeX - dx;
-                sudoSection.y = sudoSection.homeY - dy;
-                csSection.radius = csSection.homeRadius + sm.canvas.width * per;
-            });
-*/
             sm.sudoSectionsTrans(sm, trans, per);
         },
         end: function(sm, trans, data){
