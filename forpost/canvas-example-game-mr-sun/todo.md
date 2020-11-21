@@ -12,13 +12,13 @@
 * init_buttons adds a sm.addButton method that when called will add a button for the current state
 * the init method of this state will allow for button objects in each state object
 
-## 0.8.0 - transition system
+## 0.8.0 - transition system started
 * (done) have a sm.changeState method
 * (done) sm.changeState will call state.init for the state that we are change to if it has one
 * (done) start a core-transitions.js state-machine plug-in that will add support for transition objects
-* a transition object contains methods for tranStart, tranUpdate, and tranEnd
-* a transition object contains a maxFrame, and frameRate properties
-* use sm.changeState for ui-sun and ui-sections and create transition animations for them
+* (done) a transition object contains methods for start, update, and end
+* (done) a transition object contains a maxFrame, and frameRate properties
+* (done) use sm.changeState when a transition is over if a new state name is given when the transition is started
 * make a pkg-0-7-0.html
 
 ## 0.7.0 - core-buttons.js started
