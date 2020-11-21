@@ -17,10 +17,10 @@ stateMod.load({
             r: 16,
             click: function(sm, pos, button, e, state, game){
                 console.log('click');
-                //sm.currentState = 'ui-sections'
-                //sm.changeState('ui-sections');
+                // start the transition to a new state
                 sm.startTrans({
                     newStateName: 'ui-sections',
+                    forward: true,
                     data: {
                         dispObj: button,
                         homeX: button.x,
@@ -87,6 +87,7 @@ stateMod.load({
     trans: {
         maxFrame: 50, // frames used
         maxSecs: 1,  // target trans time in seconds
+        action: 'end',
         start: function(sm, trans, data){
             var secButton = sm.state.buttons.sections;
             secButton.x = 300;

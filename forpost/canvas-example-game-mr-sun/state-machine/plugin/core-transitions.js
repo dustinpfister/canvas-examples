@@ -19,6 +19,8 @@ stateMod.load({
                 trans.action = 'start';
                 trans.start(sm, trans, trans.data);
                 trans.action = 'running';
+                // should the transition animation be played forward or backward
+                trans.forward = opt.forward === undefined ? true : opt.forward;
             }
         }
     },
@@ -32,10 +34,16 @@ stateMod.load({
                 trans.per = trans.secs / trans.maxSecs;
                 trans.per = trans.per > 1 ? 1 : trans.per;
                 trans.frame = Math.round(trans.maxFrame * trans.per);
+
+                if(!trans.forward){
+                    trans.frame = trans.maxFrame - trans.frame;
+                    trans.per = 1 - trans.per;
+                }
+
                 // call update
                 trans.update(sm, trans, trans.frame, trans.maxFrame, trans.per, trans.data);
                 // end if trans.per === 1
-                if(trans.per === 1){
+                if((trans.forward && trans.per === 1) || (!trans.forward && trans.per === 0)){
                     trans.action = 'end';
                     trans.end(sm, trans, trans.data);
                     if(trans.newStateName != ''){

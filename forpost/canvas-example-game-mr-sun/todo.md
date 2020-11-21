@@ -19,6 +19,7 @@
 * (done) a transition object contains methods for start, update, and end
 * (done) a transition object contains a maxFrame, and frameRate properties
 * (done) use sm.changeState when a transition is over if a new state name is given when the transition is started
+* have a trans.forward bool than can be used to have the transition play froward (true) or backward (false)
 * make a pkg-0-7-0.html
 
 ## 0.7.0 - core-buttons.js started
