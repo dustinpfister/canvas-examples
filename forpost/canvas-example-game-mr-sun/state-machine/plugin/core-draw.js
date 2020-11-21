@@ -22,6 +22,8 @@ stateMod.load({
             sectionCollection.forEach(function (section) {
                 drawSecton(ctx, section);
             });
+            // make sure current section is drawn over all others
+            drawSecton(ctx, sectionCollection[sm.data.currentSection]);
         };
         sm.draw.sun = function (sm) {
             var sun = sm.game.sun,
