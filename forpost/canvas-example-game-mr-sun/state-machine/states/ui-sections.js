@@ -69,12 +69,18 @@ stateMod.load({
         maxSecs: 1,  // target trans time in seconds
         action: 'end',
         start: function(sm, trans, data){
-            var secButton = sm.state.buttons.back;
-            secButton.x = 300 - 320;
+            var buttons = sm.state.buttons;
+            buttons.back.x = -20;
+            buttons.left.x = -20;
+            buttons.right.x = -20;
         },
         update: function(sm, trans, frame, maxFrame, per, data){
-            var secButton = sm.state.buttons.back;
-            secButton.x = 300 - 320 * per;
+             var buttons = sm.state.buttons;
+             buttons.back.x = 300 - 320 * per;
+             buttons.left.x = 20 - 32 * per;
+             buttons.right.x = sm.canvas.width - 20 + 32 * per;
+            //var secButton = sm.state.buttons.back;
+            //secButton.x = 300 - 320 * per;
 
         },
         end: function(sm, trans, data){

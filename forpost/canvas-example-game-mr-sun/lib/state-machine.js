@@ -99,10 +99,11 @@ var stateMod = (function(){
             canvas: can.canvas,
             ctx: can.ctx,
             ver: opt.ver || '0.0.0',
-            state:{},
             currentState: opt.currentState || 'game',
+            state:{},
             game: {},
             draw: {},
+            data: {},
             states: states,
             input: {
                 pointerDown: false,
