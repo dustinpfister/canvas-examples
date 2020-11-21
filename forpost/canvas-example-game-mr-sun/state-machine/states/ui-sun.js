@@ -9,6 +9,19 @@ stateMod.load({
                 gameMod.moveSun(game, pos);
             }
         };
+        // sudo section objects transition helper
+        sm.sudoSectionsTrans = function(sm, trans, per){
+            var csIndex = sm.data.currentSection,
+            csSection = trans.data.sudoSections[csIndex];
+            trans.data.sudoSections.forEach(function(sudoSection){
+                var a = Math.atan2(sm.game.centerY - csSection.homeY, sm.game.centerX -  csSection.homeX) + Math.PI;
+                var dx = sm.game.worldRadius * Math.cos(a) * per;
+                var dy = sm.game.worldRadius * Math.sin(a) * per;
+                sudoSection.x = sudoSection.homeX - dx;
+                sudoSection.y = sudoSection.homeY - dy;
+                csSection.radius = csSection.homeRadius + sm.canvas.width * per;
+            });
+        }
     },
     buttons: {
         sections : {
@@ -130,6 +143,8 @@ stateMod.load({
                     per: section.per
                 }
             });
+            sm.sudoSectionsTrans(sm, trans, per);
+/*
             var csIndex = sm.data.currentSection,
             csSection = trans.data.sudoSections[csIndex];
             trans.data.sudoSections.forEach(function(sudoSection){
@@ -140,6 +155,7 @@ stateMod.load({
                 sudoSection.y = sudoSection.homeY - dy;
                 csSection.radius = csSection.homeRadius + sm.canvas.width * per;
             });
+*/
         },
         update: function(sm, trans, frame, maxFrame, per, data){
             var secButton = sm.state.buttons.sections;
@@ -150,6 +166,7 @@ stateMod.load({
                 sudoSection.y = sudoSection.homeY + 320 * per;
             });
 */
+/*
             var csIndex = sm.data.currentSection,
             csSection = trans.data.sudoSections[csIndex];
             trans.data.sudoSections.forEach(function(sudoSection){
@@ -160,6 +177,8 @@ stateMod.load({
                 sudoSection.y = sudoSection.homeY - dy;
                 csSection.radius = csSection.homeRadius + sm.canvas.width * per;
             });
+*/
+            sm.sudoSectionsTrans(sm, trans, per);
         },
         end: function(sm, trans, data){
             sm.state.buttons.sections.x = 300;
