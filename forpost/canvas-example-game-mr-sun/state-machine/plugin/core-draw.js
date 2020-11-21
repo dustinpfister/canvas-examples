@@ -16,6 +16,8 @@ stateMod.load({
                 ctx.beginPath();
                 ctx.arc(section.x, section.y, section.radius, 0, Math.PI * 2);
                 ctx.fill();
+                ctx.strokeStyle='white';
+                ctx.stroke();
             });
         };
         sm.draw.sun = function (sm) {
@@ -61,7 +63,6 @@ stateMod.load({
                     ctx.fill();
                 });
             }
-            
         };
     }
 });

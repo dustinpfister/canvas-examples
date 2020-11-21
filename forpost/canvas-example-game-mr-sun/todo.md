@@ -50,7 +50,8 @@ there should be a way to set the values for the frames like this at least. Other
 * (done) update draw.sections to work with a given sections collection other than game.sections such as trans.data.psudoSections
 * (done) use trans.data.sudoSections in the trans.update method of ui-sun to update the position of the sudoSection objects
 * (done) use sm.data.currentSection as part of a transition effect for ui-sun
-* use new startTrans method for when a section is clicked
+* (done) use new startTrans method for when a section is clicked
+* draw white circle around all sections
 * change draw.sections so that the index that is current is drawn above all others.
 * make a pkg-0-8-0.html
 
