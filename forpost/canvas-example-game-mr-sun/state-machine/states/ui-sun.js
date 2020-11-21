@@ -111,10 +111,13 @@ stateMod.load({
         action: 'end',
         start: function(sm, trans, data){
             var secButton = sm.state.buttons.sections;
+            var per = 1;
             if(trans.forward){
                 secButton.x = 300 - 320 * 1;
+                per = 1;
             }else{
                 secButton.x = 300 - 320 * 0;
+                per = 0;
             }
             trans.data.sudoSections = sm.game.sections.map(function(section){
                 return {
@@ -126,6 +129,16 @@ stateMod.load({
                     radius: section.radius,
                     per: section.per
                 }
+            });
+            var csIndex = sm.data.currentSection,
+            csSection = trans.data.sudoSections[csIndex];
+            trans.data.sudoSections.forEach(function(sudoSection){
+                var a = Math.atan2(sm.game.centerY - csSection.homeY, sm.game.centerX -  csSection.homeX) + Math.PI;
+                var dx = sm.game.worldRadius * Math.cos(a) * per;
+                var dy = sm.game.worldRadius * Math.sin(a) * per;
+                sudoSection.x = sudoSection.homeX - dx;
+                sudoSection.y = sudoSection.homeY - dy;
+                csSection.radius = csSection.homeRadius + sm.canvas.width * per;
             });
         },
         update: function(sm, trans, frame, maxFrame, per, data){

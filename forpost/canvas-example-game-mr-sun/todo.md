@@ -54,7 +54,9 @@ there should be a way to set the values for the frames like this at least. Other
 * (done) draw white circle around all sections
 * (done) change draw.sections so that the index that is current is drawn above all others.
 * (done) update draw.back method to change background color based on current section when us-sections is the current section.
-* start a basic transition for ui-sections
+* (done) start a basic transition for ui-sections
+* move left and right buttons for trans in ui-sections
+* fix bug with sudoSections flashing when moveing from ui-sections to ui-sun
 * make a pkg-0-8-0.html
 
 ## 0.7.0 - core-buttons.js started
