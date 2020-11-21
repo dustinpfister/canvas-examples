@@ -48,7 +48,8 @@ var gameMod = (function(){
             radius: 16,
             x: game.centerX,
             y: game.centerY,
-            sunGrid: {}
+            sunGrid: {},
+            text: ''
         };
         // create sections
         var i = 0,
@@ -64,7 +65,8 @@ var gameMod = (function(){
                 x: Math.cos(radian) * game.worldRadius + cx,
                 y: Math.sin(radian) * game.worldRadius + cy,
                 radius: game.sectionRadius,
-                per: 1
+                per: 1,
+                text: ''
             });
             i += 1;
         }

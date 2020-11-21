@@ -16,6 +16,7 @@ gameMod.load({
             var cookie = section.cookie;
             cookie.count += cookie.rate * deltaYears;
             cookie.count = cookie.count > cookie.max ? cookie.max : cookie.count;
+            section.text = cookie.count + '/' + cookie.max;
         });
     }
 });

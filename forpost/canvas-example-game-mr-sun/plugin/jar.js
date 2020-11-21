@@ -8,6 +8,7 @@ gameMod.load({
         };
     },
     onDeltaYear: function (game, deltaYears) {
+        game.sun.text = game.jar.count;
         game.forSections(function (section) {
             // take all
             if (section.per >= 0.98) {

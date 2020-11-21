@@ -57,7 +57,7 @@ there should be a way to set the values for the frames like this at least. Other
 * (done) start a basic transition for ui-sections
 * (done) move left and right buttons for trans in ui-sections
 * (done) fix bug with sudoSections flashing when moveing from ui-sections to ui-sun
-* make a pkg-0-8-0.html
+* (done) make a pkg-0-8-0.html
 
 ## 0.7.0 - core-buttons.js started
 * (done) start a new /state-machine/plugin/core-buttons.js

@@ -73,11 +73,11 @@ stateMod.load({
                 ctx.textBaseline = 'middle';
                 ctx.font = '10px arial';
                 game.forSections(function(section){
-                    ctx.fillText(section.cookie.count, section.x, section.y);
+                    ctx.fillText(section.text, section.x, section.y);
                 });
                 // info for sun
                 ctx.fillStyle = 'black';
-                ctx.fillText(sm.game.jar.count, sm.game.sun.x, sm.game.sun.y);
+                ctx.fillText(sm.game.sun.text, sm.game.sun.x, sm.game.sun.y);
             }
         // always draw buttons and version number
         d.buttons(sm);
