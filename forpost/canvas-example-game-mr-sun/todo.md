@@ -48,7 +48,7 @@ there should be a way to set the values for the frames like this at least. Other
 * (done) have more than one block of code in ui-sun for the draw method for trans.action === 'running' and !running
 * (done) create a collection of display objects for sections that can be attached to trans.data that wil be used just for rendering a transition called trans.data.sudoSections.
 * (done) update draw.sections to work with a given sections collection other than game.sections such as trans.data.psudoSections
-* use trans.data.sudoSections in the trans.update method to update the position of the sudoSection objects
+* use trans.data.sudoSections in the trans.update method of ui-sun to update the position of the sudoSection objects
 * make a pkg-0-8-0.html
 
 ## 0.7.0 - core-buttons.js started

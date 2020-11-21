@@ -108,8 +108,7 @@ stateMod.load({
         maxSecs: 1,  // target trans time in seconds
         action: 'end',
         start: function(sm, trans, data){
-            //var secButton = sm.state.buttons.sections;
-            //secButton.x = 300;
+
             trans.data.sudoSections = sm.game.sections.map(function(section){
                 return {
                     homeX: section.x,
@@ -120,13 +119,14 @@ stateMod.load({
                     per: section.per
                 }
             });
-            console.log(trans.data.sudoSections);
         },
         update: function(sm, trans, frame, maxFrame, per, data){
-            //console.log('trans frame: ' + frame + '/' + maxFrame + ' ( ' + Math.round( per * 100) + ')');
-
             var secButton = sm.state.buttons.sections;
             secButton.x = 300 - 320 * per;
+            trans.data.sudoSections.forEach(function(sudoSection){
+                sudoSection.x = sudoSection.homeX + 320 * per;
+                sudoSection.y = sudoSection.homeY + 320 * per;
+            });
         },
         end: function(sm, trans, data){
             sm.state.buttons.sections.x = 300;
