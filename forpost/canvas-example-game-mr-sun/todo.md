@@ -4,13 +4,38 @@
 * save states should be a feature of main.js
 * just have a way to load and save a single state via local storage for now and be done with it
 
-## 0.x.0 - puase method for state-machine.js
-* have an sm.pause method that can be used to pause the whole game.
+## 0.10.0 - core-spritesheets.js, extrenal images, /states/init-load.js, and /img
+* have a /img folder to store sprite sheets images
+* have a /img/index.json file that will serve as a way to define into for each image
+* image files should follow this pattern: /img/0.png, /img/1.png, /img/2.png
+* index.json might look like this
+[
+    {
+        "name": "sun",
+        "frames": [0,0,32,32,32,0,32,32,64,0,32,32]
+    },
+    {
+        "name": "world-sections",
+        "frames": [0,0,32,32,32,0,32,32,64,0,32,32]
+    },
+    {
+        "name": "buttons",
+        "frames": [0,0,32,32,32,0,32,32,64,0,32,32]
+    },
+]
+there should be a way to set the values for the frames like this at least. Other features for defining what the deal is with frames and how to structure things can be done in later releaces id needed.
+* have a /state-machine/states/init-load.js state that will work as an asset loader
+* images should be stored in an sm.img array where index 0 is 0.png and so forth
+* ui-sun should start when all assets are loaded
+* skin display objects with new sprite sheets uisng the new draw.sprite method
 
-## 0.x.0 - init_buttons.js state
-* start an init_buttons.js state
-* init_buttons adds a sm.addButton method that when called will add a button for the current state
-* the init method of this state will allow for button objects in each state object
+## 0.9.0 - core-spritesheets.js started
+* start a core-spritesheets.js state-machine plug-in
+* core-spritesheets.js plug-in will add a sm.createSprite method that will create a 'standard sprite object'
+* use new createSprite method for all display objects in the game
+* have a default code generated image for a display object in the event that there is not an image for the sprite
+* core-spritesheets.js plug-in will add a draw.sprite method to draw a sprite to the canvas
+* make a pkg-0-x-0.html
 
 ## 0.8.0 - transition system started
 * (done) have a sm.changeState method
@@ -24,7 +49,7 @@
 * (done) create a collection of display objects for sections that can be attached to trans.data that wil be used just for rendering a transition called trans.data.sudoSections.
 * (done) update draw.sections to work with a given sections collection other than game.sections such as trans.data.psudoSections
 * use trans.data.sudoSections in the trans.update method to update the position of the sudoSection objects
-* make a pkg-0-7-0.html
+* make a pkg-0-8-0.html
 
 ## 0.7.0 - core-buttons.js started
 * (done) start a new /state-machine/plugin/core-buttons.js
