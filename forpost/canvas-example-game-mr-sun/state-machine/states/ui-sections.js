@@ -5,13 +5,11 @@ stateMod.load({
         // set a sm.data.currentSection
         sm.data = sm.data || {};
         sm.data.currentSection = 0;
-        console.log(sm.data.currentSection);
     },
     buttons: {
         // can use a function
         back : function(sm, createButton){
             return createButton({ x: 300, y: 20, click: function(sm){
-                //sm.currentState = 'ui-sun';
                 sm.changeState('ui-sun');
             }});
         },
@@ -20,7 +18,6 @@ stateMod.load({
             y: 120,
             r: 16,
             click: function(sm){
-                //sm.currentState = 'ui-sun'
                 sm.data.currentSection += 1;
                 sm.data.currentSection = sm.data.currentSection >= sm.game.sections.length ? 0 : sm.data.currentSection;
             }
@@ -30,7 +27,6 @@ stateMod.load({
             y: 120,
             r: 16,
             click: function(sm){
-                //sm.currentState = 'ui-sun'
                 sm.data.currentSection -= 1;
                 sm.data.currentSection = sm.data.currentSection < 0 ? sm.game.sections.length - 1 : sm.data.currentSection;
             }
@@ -55,5 +51,22 @@ stateMod.load({
         ctx.fillText('rate : ' + section.cookie.rate, 10, 40);
         ctx.fillText('max : ' + section.cookie.max, 10, 50);
         ctx.fillText('per : ' + section.per, 10, 60);
+    },
+    trans: {
+        maxFrame: 50, // frames used
+        maxSecs: 1,  // target trans time in seconds
+        action: 'end',
+        start: function(sm, trans, data){
+
+        },
+        update: function(sm, trans, frame, maxFrame, per, data){
+            var secButton = sm.state.buttons.back;
+            secButton.x = 300 - 320 * per;
+
+        },
+        end: function(sm, trans, data){
+            sm.state.buttons.sections.x = 300;
+        }
     }
+
 });

@@ -167,12 +167,14 @@ var stateMod = (function(){
             secs = t / 1000;
             requestAnimationFrame(loop);
             if (t >= 1000 / FPS_target) {
+                // update current state
                 update = states[sm.currentState].update;
-                draw = states[sm.currentState].draw;
                 if(update){
-                    update.call(sm, sm, secs);
                     callMethodForAllPlugins(sm, 'update', [sm, secs]);
+                    update.call(sm, sm, secs);
                 }
+                // get draw method of current state
+                draw = states[sm.currentState].draw;
                 if(draw){
                     draw.call(sm, sm.draw, sm.ctx, sm.canvas, sm.game, sm);
                 }

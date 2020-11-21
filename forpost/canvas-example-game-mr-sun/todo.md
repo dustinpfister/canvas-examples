@@ -53,7 +53,8 @@ there should be a way to set the values for the frames like this at least. Other
 * (done) use new startTrans method for when a section is clicked
 * (done) draw white circle around all sections
 * (done) change draw.sections so that the index that is current is drawn above all others.
-* update draw.back method to change background color based on current section when us-sections is the current section.
+* (done) update draw.back method to change background color based on current section when us-sections is the current section.
+* start a basic transition for ui-sections
 * make a pkg-0-8-0.html
 
 ## 0.7.0 - core-buttons.js started
