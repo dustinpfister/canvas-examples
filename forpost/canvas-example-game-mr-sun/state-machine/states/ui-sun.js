@@ -115,6 +115,7 @@ stateMod.load({
                     homeY: section.y,
                     x: section.x,
                     y: section.y,
+                    homeRadius: section.radius,
                     radius: section.radius,
                     per: section.per
                 }
@@ -123,9 +124,21 @@ stateMod.load({
         update: function(sm, trans, frame, maxFrame, per, data){
             var secButton = sm.state.buttons.sections;
             secButton.x = 300 - 320 * per;
+/*
             trans.data.sudoSections.forEach(function(sudoSection){
                 sudoSection.x = sudoSection.homeX + 320 * per;
                 sudoSection.y = sudoSection.homeY + 320 * per;
+            });
+*/
+            var csIndex = sm.data.currentSection,
+            csSection = trans.data.sudoSections[csIndex];
+            trans.data.sudoSections.forEach(function(sudoSection){
+                var a = Math.atan2(sm.game.centerY - csSection.homeY, sm.game.centerX -  csSection.homeX) + Math.PI;
+                var dx = sm.game.worldRadius * Math.cos(a) * per;
+                var dy = sm.game.worldRadius * Math.sin(a) * per;
+                sudoSection.x = sudoSection.homeX - dx;
+                sudoSection.y = sudoSection.homeY - dy;
+                csSection.radius = csSection.homeRadius + 320 * per;
             });
         },
         end: function(sm, trans, data){

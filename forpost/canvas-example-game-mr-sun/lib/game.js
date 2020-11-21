@@ -72,6 +72,7 @@ var gameMod = (function(){
         // use 'create' method of all plug-ins
         usePlugs(game, 'create', [game, opt]);
         gameMod.updateSections(game);
+console.log(game.centerX);
         return game;
     };
     // update sections

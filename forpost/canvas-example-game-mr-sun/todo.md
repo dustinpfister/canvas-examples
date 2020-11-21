@@ -4,7 +4,7 @@
 * save states should be a feature of main.js
 * just have a way to load and save a single state via local storage for now and be done with it
 
-## 0.10.0 - core-spritesheets.js, extrenal images, /states/init-load.js, and /img
+## 0.11.0 - core-spritesheets.js, extrenal images, /states/init-load.js, and /img
 * have a /img folder to store sprite sheets images
 * have a /img/index.json file that will serve as a way to define into for each image
 * image files should follow this pattern: /img/0.png, /img/1.png, /img/2.png
@@ -29,7 +29,7 @@ there should be a way to set the values for the frames like this at least. Other
 * ui-sun should start when all assets are loaded
 * skin display objects with new sprite sheets uisng the new draw.sprite method
 
-## 0.9.0 - core-spritesheets.js started
+## 0.10.0 - core-spritesheets.js started
 * start a core-spritesheets.js state-machine plug-in
 * core-spritesheets.js plug-in will add a sm.createSprite method that will create a 'standard sprite object'
 * use new createSprite method for all display objects in the game
@@ -48,7 +48,8 @@ there should be a way to set the values for the frames like this at least. Other
 * (done) have more than one block of code in ui-sun for the draw method for trans.action === 'running' and !running
 * (done) create a collection of display objects for sections that can be attached to trans.data that wil be used just for rendering a transition called trans.data.sudoSections.
 * (done) update draw.sections to work with a given sections collection other than game.sections such as trans.data.psudoSections
-* use trans.data.sudoSections in the trans.update method of ui-sun to update the position of the sudoSection objects
+* (done) use trans.data.sudoSections in the trans.update method of ui-sun to update the position of the sudoSection objects
+* use sm.data.currentSection as part of a transition effect for ui-sun
 * make a pkg-0-8-0.html
 
 ## 0.7.0 - core-buttons.js started
