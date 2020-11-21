@@ -47,22 +47,27 @@ stateMod.load({
     },
     draw: function(d, ctx, canvas, game, sm){
         d.back(sm);
-        d.sections(sm);
-        d.sun(sm);
-        d.disp(sm);
+
+        if(sm.state.trans.action === 'running'){
+       
+        }else{
+            d.sections(sm);
+            d.sun(sm);
+            d.disp(sm);
+            // info for all sections
+            ctx.fillStyle = 'white';
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.font = '10px arial';
+            game.forSections(function(section){
+                ctx.fillText(section.cookie.count, section.x, section.y);
+            });
+            // info for sun
+            ctx.fillStyle = 'black';
+            ctx.fillText(sm.game.jar.count, sm.game.sun.x, sm.game.sun.y);
+        }
         d.buttons(sm);
         d.ver(sm);
-        // info for all sections
-        ctx.fillStyle = 'white';
-        ctx.textAlign = 'center';
-        ctx.textBaseline = 'middle';
-        ctx.font = '10px arial';
-        game.forSections(function(section){
-            ctx.fillText(section.cookie.count, section.x, section.y);
-        });
-        // info for sun
-        ctx.fillStyle = 'black';
-        ctx.fillText(sm.game.jar.count, sm.game.sun.x, sm.game.sun.y);
     },
     pointer : {
         start: function (sm, pos, e) {
