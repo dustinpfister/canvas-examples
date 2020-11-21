@@ -22,7 +22,6 @@ stateMod.load({
                 csSection.radius = csSection.homeRadius + sm.canvas.width * per;
             });
         };
-        console.log(sm.state);
     },
     buttons: {
         sections : {

@@ -67,7 +67,6 @@ gameMod.load((function () {
             name: 'sun',
             callPriority: '1.1',
             create: function (game, opt) {
-                console.log(this.name);
                 var sun = game.sun;
 
                 // add Points method

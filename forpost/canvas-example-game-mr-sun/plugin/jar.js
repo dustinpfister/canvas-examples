@@ -2,7 +2,6 @@ gameMod.load({
     name: 'jar',
     callPriority: 2.2,
     create: function (game, opt) {
-        console.log(this.name);
         game.jar = {
             count: 0
         };
