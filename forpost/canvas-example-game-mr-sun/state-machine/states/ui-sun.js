@@ -35,7 +35,6 @@ stateMod.load({
             forward: false,
             data: {}
         });
-
     },
     // update and draw
     update: function (sm, secs) {
@@ -113,7 +112,12 @@ stateMod.load({
         maxSecs: 1,  // target trans time in seconds
         action: 'end',
         start: function(sm, trans, data){
-
+            var secButton = sm.state.buttons.sections;
+            if(trans.forward){
+                secButton.x = 300 - 320 * 1;
+            }else{
+                secButton.x = 300 - 320 * 0;
+            }
             trans.data.sudoSections = sm.game.sections.map(function(section){
                 return {
                     homeX: section.x,

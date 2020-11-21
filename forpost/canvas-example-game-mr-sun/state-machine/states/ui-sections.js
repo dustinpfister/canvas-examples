@@ -10,7 +10,12 @@ stateMod.load({
         // can use a function
         back : function(sm, createButton){
             return createButton({ x: 300, y: 20, click: function(sm){
-                sm.changeState('ui-sun');
+                //sm.changeState('ui-sun');
+                sm.startTrans({
+                    newStateName: 'ui-sun',
+                    forward: true,
+                    data: {}
+                });
             }});
         },
         left : {
@@ -32,7 +37,14 @@ stateMod.load({
             }
         }
     },
-    // update and draw
+    init: function(sm, opt){
+        // start transition in 'reverse' as we are coming 'back from another state'
+        sm.startTrans({
+            newStateName: '', // we are not chaning states when it comes to this
+            forward: false,
+            data: {}
+        });
+    },
     update: function (sm, secs) {
         gameMod.update(sm.game, secs);
     },
@@ -57,7 +69,8 @@ stateMod.load({
         maxSecs: 1,  // target trans time in seconds
         action: 'end',
         start: function(sm, trans, data){
-
+            var secButton = sm.state.buttons.back;
+            secButton.x = 300 - 320;
         },
         update: function(sm, trans, frame, maxFrame, per, data){
             var secButton = sm.state.buttons.back;
@@ -65,7 +78,6 @@ stateMod.load({
 
         },
         end: function(sm, trans, data){
-            sm.state.buttons.sections.x = 300;
         }
     }
 

@@ -4,7 +4,7 @@ var stateMod = (function(){
 
     var changeState = function (sm, stateKey, opt) {
         opt = opt || {};
-        var oldState = sm.state;
+        //var oldState = sm.state;
         var newState = sm.states[stateKey];
         sm.state = newState;
         sm.currentState = stateKey;
