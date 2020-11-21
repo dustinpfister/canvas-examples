@@ -132,20 +132,22 @@ var stateMod = (function(){
         sm.canvas.addEventListener('touchmove', createPointerHandler(sm, 'move'));
         sm.canvas.addEventListener('touchend', createPointerHandler(sm, 'end'));
 
+        // set state object to current state
+        sm.state = states[sm.currentState];
 
         // call 'create' method for all plugins
         callMethodForAllPlugins(sm, 'create', [sm, opt]);
 
+        // call any create methods for states
         Object.keys(states).forEach(function(stateName){
             var stateObj = states[stateName];
-            // call any create methods for states
             if(stateObj.create){
                 stateObj.create(sm);
             }
             // call all init methods for states once here (FOR NOW)
-            if(stateObj.init){
-                stateObj.init(sm);
-            }
+            //if(stateObj.init){
+            //    stateObj.init(sm);
+            //}
         });
 
         return sm;

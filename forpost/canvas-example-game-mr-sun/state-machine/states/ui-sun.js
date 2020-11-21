@@ -21,7 +21,8 @@ stateMod.load({
                 sudoSection.y = sudoSection.homeY - dy;
                 csSection.radius = csSection.homeRadius + sm.canvas.width * per;
             });
-        }
+        };
+        console.log(sm.state);
     },
     buttons: {
         sections : {
@@ -132,6 +133,7 @@ stateMod.load({
                 secButton.x = 300 - 320 * 0;
                 per = 0;
             }
+
             trans.data.sudoSections = sm.game.sections.map(function(section){
                 return {
                     homeX: section.x,
