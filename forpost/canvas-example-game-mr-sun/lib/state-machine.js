@@ -1,10 +1,8 @@
 var stateMod = (function(){
 
     // STATES
-
     var changeState = function (sm, stateKey, opt) {
         opt = opt || {};
-        //var oldState = sm.state;
         var newState = sm.states[stateKey];
         sm.state = newState;
         sm.currentState = stateKey;
@@ -12,13 +10,7 @@ var stateMod = (function(){
             newState.init(sm, opt);
         }
     };
-/*
-    // start a state change delay
-    var startStateChangeDelay = function(sm, newStateKey, delayFunc){
-       sm.newStateKey = newStatekey;
-       sm.delayFunc = delayFunc;
-    };
-*/
+
     // the states object
     var states = {};
     // the plugins object
@@ -121,7 +113,6 @@ var stateMod = (function(){
 
         // attach built in sm methods
         sm.changeState = function(stateName, opt){
-            console.log('change state to: ' + stateName);
             changeState(sm, stateName, opt || {} );
         };
 
