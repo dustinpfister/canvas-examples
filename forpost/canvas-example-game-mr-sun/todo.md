@@ -1,6 +1,19 @@
 # canvas-example-mr-sun
 
-## 0.11.0 - core-save-states.js
+## 0.x.0 - start a states/ui-disp.js ui state for changing display settings
+* start a new ui-disp state for changing display settings
+
+## 0.x.0 - Full Screen support in core-canvas-resolution.js
+* add full screen support
+
+## 0.x.0 - start a core-canvas-resolution.js
+* start a core-canvas-resolution.js state-machine.js plug in that will be used to add features for this minor
+* The name should say it but yes the the plug-in will set resolution
+* have some standard options for res mode ( 320 x 240, 640 x 480, etc )
+* the res mode should be set automatically depending on the width and height of the container element
+* change the CSS of the container element as needed to adjust to this new system
+
+## 0.x.0 - core-save-states.js
 * start a core-save-states.js state-machine plug-in
 * core-save-states.js adds a sm.save method
 * core-save-states.js adds a sm.load method
@@ -28,7 +41,7 @@
         "frames": [0,0,32,32,32,0,32,32,64,0,32,32]
     },
 ]
-there should be a way to set the values for the frames like this at least. Other features for defining what the deal is with frames and how to structure things can be done in later releaces id needed.
+there should be a way to set the values for the frames like this at least. Other features for defining what the deal is with frames and how to structure things can be done in later releases if needed.
 * have a /state-machine/states/init-load.js state that will work as an asset loader
 * images should be stored in an sm.img array where index 0 is 0.png and so forth
 * ui-sun should start when all assets are loaded
