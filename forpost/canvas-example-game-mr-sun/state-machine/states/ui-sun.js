@@ -29,7 +29,6 @@ stateMod.load({
             y: 20,
             r: 16,
             click: function(sm, pos, button, e, state, game){
-                console.log('click');
                 // start the transition to a new state
                 // start transition in 'forward direction' as we are going 'forward to a new state'
                 sm.startTrans({
