@@ -1,10 +1,11 @@
 # canvas-example-mr-sun
 
-## 0.x.0 - start a states/ui-disp.js ui state for changing display settings
-* start a new ui-disp state for changing display settings
 
 ## 0.x.0 - Full Screen support in core-canvas-resolution.js
 * add full screen support
+
+## 0.x.0 - start a states/ui-disp.js ui state for changing display settings
+* start a new ui-disp state for changing display settings
 
 ## 0.x.0 - start a core-canvas-resolution.js
 * start a core-canvas-resolution.js state-machine.js plug in that will be used to add features for this minor
@@ -21,6 +22,15 @@
 * update core-game.js to make use of new sm.load method
 * the sm.gameName property should be set in a 'non core' file such as main.js
 * the sm.save method should be used in a 'non core' file or plug-in such as jar.js for 'mr-sun' or temp.js in 'mr-sun-temp'
+
+## 0.x.0 - transition system II - support for an Array of transitions
+* updated core-transitions.js to allow for an array of trans objects, while still supporting the option of just one.
+* add a trans.name property for trans objects
+* update sm.startTrans to allow for an options that can be used to set the trans to use.
+
+## 0.x.0 - core plug-ins for game.js, and reduction of game.js code
+* start a collection of core-\* plug-ins for game.js like that of what is going on with state-machine.js
+* pull code that has to do with setting the current game year, and adding 
 
 ## 0.10.0 - core-spritesheets.js, extrenal images, /states/init-load.js, and /img
 * have a /img folder to store sprite sheets images
