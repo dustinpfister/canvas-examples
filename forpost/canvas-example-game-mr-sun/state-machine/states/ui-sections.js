@@ -59,10 +59,10 @@ stateMod.load({
         ctx.fillText('section# : ' + sm.data.currentSection, 10, 10);
         var section = sm.game.sections[sm.data.currentSection];
         
-        ctx.fillText('count : ' + section.cookie.count, 10, 30);
-        ctx.fillText('rate : ' + section.cookie.rate, 10, 40);
-        ctx.fillText('max : ' + section.cookie.max, 10, 50);
-        ctx.fillText('per : ' + section.per, 10, 60);
+        //ctx.fillText('count : ' + section.cookie.count, 10, 30);
+        //ctx.fillText('rate : ' + section.cookie.rate, 10, 40);
+        //ctx.fillText('max : ' + section.cookie.max, 10, 50);
+        ctx.fillText('per : ' + section.per.toFixed(2), 10, 60);
     },
     trans: {
         maxFrame: 50, // frames used
