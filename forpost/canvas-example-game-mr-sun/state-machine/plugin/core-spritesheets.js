@@ -73,7 +73,7 @@ stateMod.load({
         sm.background = {
             x: 0,
             y: 0,
-            sprite: sm.createSpriteObj('default', 0)
+            sprite: sm.createSpriteObj('default', 0, 0, 0, 320, 240)
         };
 
     }
