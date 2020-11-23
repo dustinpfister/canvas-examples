@@ -94,10 +94,16 @@ stateMod.load({
         },
         move: function (sm, pos, e) {
             if (sm.input.pointerDown) {
+
                 sm.game.sun.move(sm.game, pos);
+                // ajust alpha for section sprites
+                sm.game.forSections(function(section){
+                    section.sprite.alpha = section.per;
+                });
             }
         },
         end: function(sm, pos, e){
+
             if (sm.input.d < 3) {
                 // if section click
                 var section = gameMod.getSectionByPos(sm.game, pos.x, pos.y);
