@@ -21,6 +21,7 @@ stateMod.load({
             }
             sm.ctx.fillStyle = color;
             sm.ctx.fillRect(0, 0, sm.canvas.width, sm.canvas.height);
+            drawSprite(sm.ctx, sm.background);
         };
         // SECTIONS
         var drawSecton = function(ctx, section){
