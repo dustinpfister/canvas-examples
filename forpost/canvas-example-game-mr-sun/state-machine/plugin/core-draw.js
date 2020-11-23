@@ -24,7 +24,10 @@ stateMod.load({
                 var sprite = section.sprite;
                 if(sprite){
                     //console.log(sprite.sheet.name);
-                    ctx.drawImage(sprite.sheet.img, 0, 0, 32, 32, section.x, section.y, 32, 32);
+                    ctx.save();
+                    ctx.translate(section.x, section.y);
+                    ctx.drawImage(sprite.sheet.img, 0, 0, 32, 32, sprite.x, sprite.y, 20, 20);
+                    ctx.restore();
                 }
         };
         sm.draw.sections = function (sm, sectionCollection) {

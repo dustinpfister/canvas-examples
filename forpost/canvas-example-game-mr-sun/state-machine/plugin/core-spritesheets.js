@@ -18,11 +18,11 @@ stateMod.load({
             ctx.strokeStyle = 'lime';
             ctx.lineWidth = 3;
             ctx.beginPath();
-            ctx.rect(0, 0, 32, 32);
+            ctx.rect(0, 0, 31, 31);
             ctx.moveTo(0,0);
-            ctx.lineTo(32, 32);
-            ctx.moveTo(32, 0);
-            ctx.lineTo(0, 32);
+            ctx.lineTo(31, 31);
+            ctx.moveTo(31, 0);
+            ctx.lineTo(0, 31);
             ctx.stroke();
             return canvas;
         };
@@ -50,8 +50,8 @@ stateMod.load({
             return {
                 sheet: sm.sheets[0],
                 frame: 0,
-                x: -16, // offset from dispObj.x and y
-                y: -16
+                x: -10, // offset from dispObj.x and y
+                y: -10
             };
         };
 
