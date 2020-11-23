@@ -2,6 +2,16 @@ stateMod.load({
     name: 'core-draw',
     type: 'plugin',
     create: function (sm) {
+        // SPRITES
+        var drawSprite = function(ctx, dispObj){
+           var sprite = dispObj.sprite;
+           if(sprite){
+               ctx.save();
+               ctx.translate(dispObj.x, dispObj.y);
+               ctx.drawImage(sprite.sheet.img, 0, 0, 32, 32, sprite.x, sprite.y, 24, 24);
+               ctx.restore();
+            }
+        };
         // draw background method
         sm.draw.back = function(sm){
             var color = '#000020';
@@ -12,23 +22,16 @@ stateMod.load({
             sm.ctx.fillStyle = color;
             sm.ctx.fillRect(0, 0, sm.canvas.width, sm.canvas.height);
         };
+        // SECTIONS
         var drawSecton = function(ctx, section){
-                var b = 50 + Math.round(section.per * 128);
-                ctx.fillStyle = 'rgb(0,0,' + b + ')';
-                ctx.beginPath();
-                ctx.arc(section.x, section.y, section.radius, 0, Math.PI * 2);
-                ctx.fill();
-                ctx.strokeStyle='white';
-                ctx.stroke();
-
-                var sprite = section.sprite;
-                if(sprite){
-                    //console.log(sprite.sheet.name);
-                    ctx.save();
-                    ctx.translate(section.x, section.y);
-                    ctx.drawImage(sprite.sheet.img, 0, 0, 32, 32, sprite.x, sprite.y, 24, 24);
-                    ctx.restore();
-                }
+            var b = 50 + Math.round(section.per * 128);
+            ctx.fillStyle = 'rgb(0,0,' + b + ')';
+            ctx.beginPath();
+            ctx.arc(section.x, section.y, section.radius, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.strokeStyle='white';
+            ctx.stroke();
+            drawSprite(ctx, section);
         };
         sm.draw.sections = function (sm, sectionCollection) {
             var ctx = sm.ctx;
@@ -47,7 +50,7 @@ stateMod.load({
             ctx.arc(sun.x, sun.y, sun.radius, 0, Math.PI * 2);
             ctx.fill();
             ctx.fillStyle = 'black';
-            //ctx.fillText(sm.game.jar.count, sun.x, sun.y);
+            drawSprite(ctx, sun);
         };
         // display
         sm.draw.disp = function (sm) {
