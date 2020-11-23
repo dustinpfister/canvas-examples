@@ -26,7 +26,7 @@ stateMod.load({
                     //console.log(sprite.sheet.name);
                     ctx.save();
                     ctx.translate(section.x, section.y);
-                    ctx.drawImage(sprite.sheet.img, 0, 0, 32, 32, sprite.x, sprite.y, 20, 20);
+                    ctx.drawImage(sprite.sheet.img, 0, 0, 32, 32, sprite.x, sprite.y, 24, 24);
                     ctx.restore();
                 }
         };

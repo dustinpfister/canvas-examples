@@ -50,8 +50,8 @@ stateMod.load({
             return {
                 sheet: sm.sheets[0],
                 frame: 0,
-                x: -10, // offset from dispObj.x and y
-                y: -10
+                x: -12, // offset from dispObj.x and y
+                y: -12
             };
         };
 
@@ -59,13 +59,13 @@ stateMod.load({
         var img = defaultSheet();
         sm.createSpriteSheetObj(img, 'default', defaultFrames(img), 0);
 
-        console.log('sheets: ');
-        console.log(sm.sheets);
-
+        // set up sprites for sections
         sm.game.forSections(function(section){
             section.sprite = sm.createSpriteObj('default', 0);
         });
-        console.log(sm.game.sections);
+
+        // set up sprite for sun
+        sm.game.sun.sprite = sm.createSpriteObj('default', 0);
 
     }
 });
