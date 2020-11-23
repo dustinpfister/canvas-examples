@@ -57,14 +57,21 @@ there should be a way to set the values for the frames like this at least. Other
 * ui-sun should start when all assets are loaded
 * skin display objects with new sprite sheets uisng the new draw.sprite method
 
+## 0.10.0 - General Fixes, Changes and Improvements
+* I want to add a afterCreate method for state-machine plugins
+* use afterCreate method in various plug-ins to add sprite objects for sections, sudoSections, buttons, and Sun
+* start a core-utils.js
+* add a sm.log method in core-utils.js
+* add a sm.logOnce method in core-utils.js
+
 ## 0.9.0 - core-spritesheets.js started
 * (done) start a core-spritesheets.js state-machine plug-in
 * (done) sm.createSpriteSheet method to create a spriteSheet object that will be added to an sm.sheets array
 * (done) core-spritesheets.js plug-in will add a sm.createSprite method that will create a 'standard sprite object'
 * (done) A standard-sprite-object should be a property of a game.js object so that this state-machine plug-in can stil be optional in a way.
 * (done) have a default code generated image for a display object in the event that there is not an image for the sprite
-* Use new sprites with buttons also
-* update core-draw.js to make use of sprite properties of secions, sun, and buttons.
+* (done) Use new sprites with buttons also
+* (done) update core-draw.js to make use of sprite properties of secions, sun, and buttons.
 * have a spriteSheet for a background also.
 * make a pkg-0-x-0.html
 
