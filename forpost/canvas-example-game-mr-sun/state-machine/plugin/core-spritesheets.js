@@ -32,6 +32,7 @@ stateMod.load({
             return [ 0, 0, img.width, img.height ];
         };
 
+        // create a sprite sheet object
         sm.createSpriteSheetObj = function(img, name, frames, index){
             img = img === undefined ? defaultSheet() : img;
             index = index === undefined ? sm.sheets.length : index;
@@ -44,10 +45,27 @@ stateMod.load({
             };
         };
 
+        // create a sprite object
+        sm.createSpriteObj = function(sheetId, frame){
+            return {
+                sheet: sm.sheets[0],
+                frame: 0,
+                x: -16, // offset from dispObj.x and y
+                y: -16
+            };
+        };
+
         // set up a 'default' sheet at index 0
         var img = defaultSheet();
         sm.createSpriteSheetObj(img, 'default', defaultFrames(img), 0);
+
+        console.log('sheets: ');
         console.log(sm.sheets);
+
+        sm.game.forSections(function(section){
+            section.sprite = sm.createSpriteObj('default', 0);
+        });
+        console.log(sm.game.sections);
 
     }
 });
