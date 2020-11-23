@@ -58,11 +58,14 @@ there should be a way to set the values for the frames like this at least. Other
 * skin display objects with new sprite sheets uisng the new draw.sprite method
 
 ## 0.9.0 - core-spritesheets.js started
-* start a core-spritesheets.js state-machine plug-in
+* (done) start a core-spritesheets.js state-machine plug-in
+* sm.createSpriteSheet method to create a spriteSheet object that will be added to an sm.sheets array
 * core-spritesheets.js plug-in will add a sm.createSprite method that will create a 'standard sprite object'
-* use new createSprite method for all display objects in the game
+* A standard-sprite-object can be a property of a game.js object so that this state-machine plug-in can stil be optional in a way.
+* Use new sprites with buttons also
 * have a default code generated image for a display object in the event that there is not an image for the sprite
-* core-spritesheets.js plug-in will add a draw.sprite method to draw a sprite to the canvas
+* core-spritesheets.js plug-in will add a draw.sprite method to draw a sprite to the canvas.
+* have a spriteSheet for a background also.
 * make a pkg-0-x-0.html
 
 ## 0.8.0 - transition system started
