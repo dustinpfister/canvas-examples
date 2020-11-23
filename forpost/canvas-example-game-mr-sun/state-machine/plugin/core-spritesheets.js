@@ -67,5 +67,12 @@ stateMod.load({
         // set up sprite for sun
         sm.game.sun.sprite = sm.createSpriteObj('default', 0);
 
+        // background sprite
+        sm.background = {
+            x: 0,
+            y: 0,
+            sprite: sm.createSpriteObj('default', 0)
+        };
+
     }
 });
