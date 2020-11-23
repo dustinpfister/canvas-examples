@@ -8,7 +8,7 @@ stateMod.load({
            if(sprite){
                ctx.save();
                ctx.translate(dispObj.x, dispObj.y);
-               ctx.drawImage(sprite.sheet.img, 0, 0, 32, 32, sprite.x, sprite.y, 24, 24);
+               ctx.drawImage(sprite.sheet.img, 0, 0, 32, 32, sprite.x, sprite.y, sprite.w, sprite.h);
                ctx.restore();
             }
         };
