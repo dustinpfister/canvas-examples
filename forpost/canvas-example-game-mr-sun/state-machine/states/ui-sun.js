@@ -20,6 +20,13 @@ stateMod.load({
                 sudoSection.x = sudoSection.homeX - dx;
                 sudoSection.y = sudoSection.homeY - dy;
                 csSection.radius = csSection.homeRadius + sm.canvas.width * per;
+
+                // ajust sprite
+                var sprite = sudoSection.sprite;
+                sprite.x = 320 / 2 * per * -1;
+                sprite.y = 240 / 2 * per * -1;
+                sprite.w = Math.floor(320 * per);
+                sprite.h = Math.floor(240 * per);
             });
         };
     },
