@@ -83,6 +83,7 @@ stateMod.load({
                     ctx.beginPath();
                     ctx.arc(button.x, button.y, button.r, 0, Math.PI * 2);
                     ctx.fill();
+                    drawSprite(ctx, button);
                 });
             }
         };

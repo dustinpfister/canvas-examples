@@ -10,6 +10,7 @@ stateMod.load({
            button.y = opt.y === undefined ? 0 : opt.y;
            button.r = opt.r === undefined ? 16 : opt.r;
            button.click = opt.click || function(){};
+           button.sprite = sm.createSpriteObj('default', 0);
            return button;
         };
         // call all functions for buttons to create button objects that way
@@ -20,6 +21,9 @@ stateMod.load({
                     var button = state.buttons[buttonKey];
                     if(typeof button === 'function'){
                         state.buttons[buttonKey] = button(sm, createButton)
+                    }
+                    if(typeof button === 'object'){
+                        state.buttons[buttonKey] = createButton(button);
                     }
                 });
             }

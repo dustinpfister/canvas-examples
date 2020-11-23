@@ -61,11 +61,10 @@ there should be a way to set the values for the frames like this at least. Other
 * (done) start a core-spritesheets.js state-machine plug-in
 * (done) sm.createSpriteSheet method to create a spriteSheet object that will be added to an sm.sheets array
 * (done) core-spritesheets.js plug-in will add a sm.createSprite method that will create a 'standard sprite object'
-* A standard-sprite-object should be a property of a game.js object so that this state-machine plug-in can stil be optional in a way.
+* (done) A standard-sprite-object should be a property of a game.js object so that this state-machine plug-in can stil be optional in a way.
+* (done) have a default code generated image for a display object in the event that there is not an image for the sprite
 * Use new sprites with buttons also
 * update core-draw.js to make use of sprite properties of secions, sun, and buttons.
-* have a default code generated image for a display object in the event that there is not an image for the sprite
-* core-spritesheets.js plug-in will add a draw.sprite method to draw a sprite to the canvas.
 * have a spriteSheet for a background also.
 * make a pkg-0-x-0.html
 
