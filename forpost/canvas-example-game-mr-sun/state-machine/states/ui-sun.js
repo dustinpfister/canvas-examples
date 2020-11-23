@@ -132,7 +132,8 @@ stateMod.load({
                     y: section.y,
                     homeRadius: section.radius,
                     radius: section.radius,
-                    per: section.per
+                    per: section.per,
+                    sprite: sm.createSpriteObj('default', 0)
                 }
             });
             sm.sudoSectionsTrans(sm, trans, per);
