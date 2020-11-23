@@ -77,7 +77,7 @@ there should be a way to set the values for the frames like this at least. Other
 * (done) uisng frames array of sprite sheet to draw a frame
 * (done) alpha prop for sprite objects
 * (done) radian sprite prop for on the fly rotations
-* ajust ui-sun to set alpha of section sprites based on distance 
+* (done) ajust ui-sun to set alpha of section sprites based on distance 
 * make a pkg-0-x-0.html
 
 ## 0.8.0 - transition system started
