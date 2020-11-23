@@ -28,11 +28,7 @@
 * add a trans.name property for trans objects
 * update sm.startTrans to allow for an options that can be used to set the trans to use.
 
-## 0.x.0 - core plug-ins for game.js, and reduction of game.js code
-* start a collection of core-\* plug-ins for game.js like that of what is going on with state-machine.js
-* pull code that has to do with setting the current game year, and adding 
-
-## 0.10.0 - core-spritesheets.js, extrenal images, /states/init-load.js, and /img
+## 0.x.0 - core-spritesheets.js, extrenal images, /states/init-load.js, and /img
 * have a /img folder to store sprite sheets images
 * have a /img/index.json file that will serve as a way to define into for each image
 * image files should follow this pattern: /img/0.png, /img/1.png, /img/2.png
@@ -57,12 +53,18 @@ there should be a way to set the values for the frames like this at least. Other
 * ui-sun should start when all assets are loaded
 * skin display objects with new sprite sheets uisng the new draw.sprite method
 
-## 0.10.0 - General Fixes, Changes and Improvements
+## 0.10.0 - core-utils.js, and variaus improvements
 * I want to add a afterCreate method for state-machine plugins
 * use afterCreate method in various plug-ins to add sprite objects for sections, sudoSections, buttons, and Sun
 * start a core-utils.js
 * add a sm.log method in core-utils.js
 * add a sm.logOnce method in core-utils.js
+* add a sm.angleToSun method in core-utils.js
+* work out a sm.scaleSprite method for core-spritesheets
+* start a collection of core-\* plug-ins for game.js like that of what is going on with state-machine.js
+* pull code that has to do with setting the current game year, and adding
+* fix sprite.radian values for sudoSections so that they rotate from section.radian to an upward position.
+* make a pkg-0-10-0.html
 
 ## 0.9.0 - core-spritesheets.js started
 * (done) start a core-spritesheets.js state-machine plug-in
@@ -78,7 +80,7 @@ there should be a way to set the values for the frames like this at least. Other
 * (done) alpha prop for sprite objects
 * (done) radian sprite prop for on the fly rotations
 * (done) ajust ui-sun to set alpha of section sprites based on distance 
-* make a pkg-0-x-0.html
+* (done) make a pkg-0-9-0.html
 
 ## 0.8.0 - transition system started
 * (done) have a sm.changeState method
