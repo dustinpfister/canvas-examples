@@ -20,6 +20,12 @@ stateMod.load({
                 ctx.fill();
                 ctx.strokeStyle='white';
                 ctx.stroke();
+
+                var sprite = section.sprite;
+                if(sprite){
+                    //console.log(sprite.sheet.name);
+                    ctx.drawImage(sprite.sheet.img, 0, 0, 32, 32, section.x, section.y, 32, 32);
+                }
         };
         sm.draw.sections = function (sm, sectionCollection) {
             var ctx = sm.ctx;
