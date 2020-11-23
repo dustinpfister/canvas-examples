@@ -32,6 +32,28 @@ stateMod.load({
             return [ 0, 0, img.width, img.height ];
         };
 
+        // get a sheet by sheetId ( name or number )
+        var getSheet = function(sheetId){
+            // is sheetId is a string, assume name
+            if(typeof sheetId === 'string'){
+                var i = sm.sheets.length, sheet;
+                while(i--){
+                    sheet = sm.sheets[i];
+                    if(sheet.name === sheetId){
+                        console.log(sheet.name);
+                        return sheet;
+                    }
+                }
+            }
+            // is sheetId is a number, assume index number
+            if(typeof sheetId === 'number'){
+                console.log(sm.sheets[sheetId].name + ' by number');
+                return sm.sheets[sheetId];
+            }
+            // fail
+            return {};
+        };
+
         // create a sprite sheet object
         sm.createSpriteSheetObj = function(img, name, frames, index){
             img = img === undefined ? defaultSheet() : img;
@@ -48,8 +70,8 @@ stateMod.load({
         // create a sprite object
         sm.createSpriteObj = function(sheetId, frame, x, y, w, h){
             return {
-                sheet: sm.sheets[0],
-                frame: 0,
+                sheet: getSheet(sheetId),
+                frame: frame === undefined ? 0 : frame,
                 x: x === undefined ? -12 : x, // offset from dispObj.x and y
                 y: y === undefined ? -12 : y,
                 w: w === undefined ? 24 : w,
@@ -67,7 +89,7 @@ stateMod.load({
         });
 
         // set up sprite for sun
-        sm.game.sun.sprite = sm.createSpriteObj('default', 0);
+        sm.game.sun.sprite = sm.createSpriteObj(0, 0);
 
         // background sprite
         sm.background = {
