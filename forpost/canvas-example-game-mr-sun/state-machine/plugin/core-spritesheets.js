@@ -46,12 +46,14 @@ stateMod.load({
         };
 
         // create a sprite object
-        sm.createSpriteObj = function(sheetId, frame){
+        sm.createSpriteObj = function(sheetId, frame, x, y, w, h){
             return {
                 sheet: sm.sheets[0],
                 frame: 0,
-                x: -12, // offset from dispObj.x and y
-                y: -12
+                x: x === undefined ? -12 : x, // offset from dispObj.x and y
+                y: y === undefined ? -12 : y,
+                w: w === undefined ? 24 : w,
+                h: h === undefined ? 24 : h
             };
         };
 
