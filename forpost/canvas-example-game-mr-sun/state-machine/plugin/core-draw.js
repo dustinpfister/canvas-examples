@@ -13,6 +13,7 @@ stateMod.load({
                ctx.save();
                ctx.globalAlpha = sprite.alpha;
                ctx.translate(dispObj.x, dispObj.y);
+               ctx.rotate(sprite.radian);
                ctx.drawImage(sheet.img, fa[0], fa[1], fa[2], fa[3], sprite.x, sprite.y, sprite.w, sprite.h);
                ctx.restore();
             }

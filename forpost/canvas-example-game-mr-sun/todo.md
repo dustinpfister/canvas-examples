@@ -75,7 +75,8 @@ there should be a way to set the values for the frames like this at least. Other
 * (done) have a spriteSheet for a background also.
 * (done) scale sprite with transition in ui-sun
 * (done) uisng frames array of sprite sheet to draw a frame
-* alpha prop for sprite objects
+* (done) alpha prop for sprite objects
+* (done) radian sprite prop for on the fly rotations
 * make a pkg-0-x-0.html
 
 ## 0.8.0 - transition system started

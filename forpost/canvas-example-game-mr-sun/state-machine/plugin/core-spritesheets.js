@@ -74,7 +74,8 @@ stateMod.load({
                 y: y === undefined ? -12 : y,
                 w: w === undefined ? 24 : w,
                 h: h === undefined ? 24 : h,
-                alpha: alpha === undefined ? 1 : alpha
+                alpha: alpha === undefined ? 1 : alpha,
+                radian: 0
             };
         };
 
@@ -83,8 +84,10 @@ stateMod.load({
         sm.createSpriteSheetObj(img, 'default', defaultFrames(img), 0);
 
         // set up sprites for sections
+        var sun = sm.game.sun;
         sm.game.forSections(function(section){
             section.sprite = sm.createSpriteObj('default', 0, -16, -16, 31, 31, 0.75);
+            section.sprite.radian = Math.atan2(sun.y - section.y, sun.x - section.x);
         });
 
         // set up sprite for sun
