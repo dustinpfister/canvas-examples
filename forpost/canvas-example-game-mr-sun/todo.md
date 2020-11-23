@@ -72,7 +72,10 @@ there should be a way to set the values for the frames like this at least. Other
 * (done) have a default code generated image for a display object in the event that there is not an image for the sprite
 * (done) Use new sprites with buttons also
 * (done) update core-draw.js to make use of sprite properties of secions, sun, and buttons.
-* have a spriteSheet for a background also.
+* (done) have a spriteSheet for a background also.
+* scale sprite with transition in ui-sun
+* frameWidth, and frameHeight values for spriteSheets
+* alpha prop for sprite objects
 * make a pkg-0-x-0.html
 
 ## 0.8.0 - transition system started
