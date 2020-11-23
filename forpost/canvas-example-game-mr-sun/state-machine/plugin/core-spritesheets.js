@@ -40,18 +40,16 @@ stateMod.load({
                 while(i--){
                     sheet = sm.sheets[i];
                     if(sheet.name === sheetId){
-                        console.log(sheet.name);
                         return sheet;
                     }
                 }
             }
             // is sheetId is a number, assume index number
             if(typeof sheetId === 'number'){
-                console.log(sm.sheets[sheetId].name + ' by number');
                 return sm.sheets[sheetId];
             }
             // fail
-            return {};
+            return sm.sheets[0];
         };
 
         // create a sprite sheet object
@@ -89,7 +87,7 @@ stateMod.load({
         });
 
         // set up sprite for sun
-        sm.game.sun.sprite = sm.createSpriteObj(0, 0);
+        sm.game.sun.sprite = sm.createSpriteObj('default', 0);
 
         // background sprite
         sm.background = {

@@ -4,11 +4,15 @@ stateMod.load({
     create: function (sm) {
         // SPRITES
         var drawSprite = function(ctx, dispObj){
-           var sprite = dispObj.sprite;
+           var sprite = dispObj.sprite,
+           sheet,
+           fa = [];
            if(sprite){
+               sheet = sprite.sheet;
+               fa = sheet.frames.slice(sprite.frame * 4, sprite.frame * 4 + 4);
                ctx.save();
                ctx.translate(dispObj.x, dispObj.y);
-               ctx.drawImage(sprite.sheet.img, 0, 0, 32, 32, sprite.x, sprite.y, sprite.w, sprite.h);
+               ctx.drawImage(sheet.img, fa[0], fa[1], fa[2], fa[3], sprite.x, sprite.y, sprite.w, sprite.h);
                ctx.restore();
             }
         };
