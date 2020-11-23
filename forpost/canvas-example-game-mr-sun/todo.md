@@ -74,7 +74,7 @@ there should be a way to set the values for the frames like this at least. Other
 * (done) update core-draw.js to make use of sprite properties of secions, sun, and buttons.
 * (done) have a spriteSheet for a background also.
 * (done) scale sprite with transition in ui-sun
-* frameWidth, and frameHeight values for sprites
+* (done) uisng frames array of sprite sheet to draw a frame
 * alpha prop for sprite objects
 * make a pkg-0-x-0.html
 

@@ -11,6 +11,7 @@ stateMod.load({
                sheet = sprite.sheet;
                fa = sheet.frames.slice(sprite.frame * 4, sprite.frame * 4 + 4);
                ctx.save();
+               ctx.globalAlpha = sprite.alpha;
                ctx.translate(dispObj.x, dispObj.y);
                ctx.drawImage(sheet.img, fa[0], fa[1], fa[2], fa[3], sprite.x, sprite.y, sprite.w, sprite.h);
                ctx.restore();

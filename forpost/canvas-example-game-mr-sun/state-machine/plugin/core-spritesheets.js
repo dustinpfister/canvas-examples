@@ -66,14 +66,15 @@ stateMod.load({
         };
 
         // create a sprite object
-        sm.createSpriteObj = function(sheetId, frame, x, y, w, h){
+        sm.createSpriteObj = function(sheetId, frame, x, y, w, h, alpha){
             return {
                 sheet: getSheet(sheetId),
                 frame: frame === undefined ? 0 : frame,
                 x: x === undefined ? -12 : x, // offset from dispObj.x and y
                 y: y === undefined ? -12 : y,
                 w: w === undefined ? 24 : w,
-                h: h === undefined ? 24 : h
+                h: h === undefined ? 24 : h,
+                alpha: alpha === undefined ? 1 : alpha
             };
         };
 
@@ -83,17 +84,17 @@ stateMod.load({
 
         // set up sprites for sections
         sm.game.forSections(function(section){
-            section.sprite = sm.createSpriteObj('default', 0);
+            section.sprite = sm.createSpriteObj('default', 0, -16, -16, 31, 31, 0.75);
         });
 
         // set up sprite for sun
-        sm.game.sun.sprite = sm.createSpriteObj('default', 0);
+        sm.game.sun.sprite = sm.createSpriteObj('default', 0, -16, -16, 31, 31, 0.75);
 
         // background sprite
         sm.background = {
             x: 0,
             y: 0,
-            sprite: sm.createSpriteObj('default', 0, 0, 0, 320, 240)
+            sprite: sm.createSpriteObj('default', 0, 0, 0, 320, 240, 0.25)
         };
 
     }
