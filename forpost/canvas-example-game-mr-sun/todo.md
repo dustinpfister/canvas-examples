@@ -3,6 +3,10 @@
 ## known bugs, problems, concerns
 * the createAfter method in state-machine plugins may not be needed. A simular system to that of callPriority may work better, or a whole new system where I can set an array of dependancy plug-ins
 
+## 0.x.0 - variaus improvements
+* start a collection of core-\* plug-ins for game.js like that of what is going on with state-machine.js
+* pull code that has to do with setting the current game year, and adding
+
 ## 0.x.0 - Full Screen support in core-canvas-resolution.js
 * add full screen support
 
@@ -63,10 +67,9 @@ there should be a way to set the values for the frames like this at least. Other
 * (done) add a sm.logOnce method in core-utils.js
 * (done) add a sm.getAngle method in core-utils.js
 * (done) work out a sm.scaleSpriteToDispObj method for core-spritesheets
-* start a collection of core-\* plug-ins for game.js like that of what is going on with state-machine.js
-* pull code that has to do with setting the current game year, and adding
 * new code generated sprite sheet for sections that shows which way is up
 * fix sprite.radian values for sudoSections so that they rotate from section.radian to an upward position.
+* how current sudo section in ui-sections
 * make a pkg-0-10-0.html
 
 ## 0.9.0 - core-spritesheets.js started
