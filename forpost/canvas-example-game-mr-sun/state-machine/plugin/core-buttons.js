@@ -13,6 +13,7 @@ stateMod.load({
            button.sprite = sm.createSpriteObj('default', 0);
            return button;
         };
+
         // call all functions for buttons to create button objects that way
         Object.keys(sm.states).forEach(function(stateKey){
             var state = sm.states[stateKey];
