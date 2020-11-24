@@ -58,6 +58,9 @@ stateMod.load({
     // update and draw
     update: function (sm, secs) {
         gameMod.update(sm.game, secs);
+
+        // log once
+        sm.logOnce(secs);
     },
     draw: function(d, ctx, canvas, game, sm){
         // always draw backgound
