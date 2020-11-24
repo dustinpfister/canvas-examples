@@ -24,8 +24,26 @@ stateMod.load({
                 // should the transition animation be played forward or backward
                 trans.forward = opt.forward === undefined ? true : opt.forward;
             }
-        }
+        };
     },
+
+    afterCreate : function(sm){
+
+       sm.sudoSections = sm.game.sections.map(function(section){
+            return {
+                i: section.i,
+                homeX: section.x,
+                homeY: section.y,
+                x: section.x,
+                y: section.y,
+                homeRadius: section.radius,
+                radius: section.radius,
+                per: section.per,
+                sprite: sm.createSpriteObj('default', 0)
+            }
+        });
+    },
+
     update: function(sm, secs){
         // check if there is a trans object
         var trans = sm.state.trans;
