@@ -25,8 +25,7 @@ stateMod.load({
             click: function(sm){
                 sm.data.currentSection += 1;
                 sm.data.currentSection = sm.data.currentSection >= sm.game.sections.length ? 0 : sm.data.currentSection;
-
-sm.sudoSectionsTrans();
+                sm.sudoSectionsTrans(sm, 1);
             }
         },
         right : {
@@ -36,6 +35,7 @@ sm.sudoSectionsTrans();
             click: function(sm){
                 sm.data.currentSection -= 1;
                 sm.data.currentSection = sm.data.currentSection < 0 ? sm.game.sections.length - 1 : sm.data.currentSection;
+                sm.sudoSectionsTrans(sm, 1);
             }
         }
     },
@@ -46,6 +46,7 @@ sm.sudoSectionsTrans();
             forward: false,
             data: {}
         });
+
     },
     update: function (sm, secs) {
         gameMod.update(sm.game, secs);
