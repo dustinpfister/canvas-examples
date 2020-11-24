@@ -81,6 +81,9 @@ stateMod.load({
             };
         };
 
+        sm.scaleSprite = function(){
+        };
+
         // set up a 'default' sheet at index 0
         var img = defaultSheet();
         sm.createSpriteSheetObj(img, 'default', defaultFrames(img), 0);

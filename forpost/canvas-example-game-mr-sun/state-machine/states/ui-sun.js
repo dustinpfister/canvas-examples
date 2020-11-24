@@ -14,19 +14,29 @@ stateMod.load({
             var csIndex = sm.data.currentSection,
             csSection = trans.data.sudoSections[csIndex];
             trans.data.sudoSections.forEach(function(sudoSection){
-                var a = sm.getAngle(sm.game.centerY, sm.game.centerX, csSection.homeX, csSection.homeY);
+                var a = sm.getAngle(sm.game.centerX, sm.game.centerY, csSection.homeX, csSection.homeY);
                 var dx = sm.game.worldRadius * Math.cos(a) * per;
                 var dy = sm.game.worldRadius * Math.sin(a) * per;
                 sudoSection.x = sudoSection.homeX - dx;
                 sudoSection.y = sudoSection.homeY - dy;
-                csSection.radius = csSection.homeRadius + sm.canvas.width * per;
+                csSection.radius = csSection.homeRadius + 120 * per;
 
                 // ajust sprite
-                var sprite = sudoSection.sprite;
-                sprite.x = 320 / 2 * per * -1;
-                sprite.y = 240 / 2 * per * -1;
-                sprite.w = Math.floor(320 * per);
-                sprite.h = Math.floor(240 * per);
+                var sprite = sudoSection.sprite,
+                homeSize = csSection.homeRadius * 2,
+                size = homeSize + homeSize * 2 * per;
+
+                sprite.x = size / 2 * -1;
+                sprite.y = size / 2 * -1;
+                sprite.w = Math.floor(size);
+                sprite.h = Math.floor(size);
+
+/*
+                sprite.x = homeSize / 2 * per * -1;
+                sprite.y = homeSize / 2 * per * -1;
+                sprite.w = Math.floor(homeSize * per);
+                sprite.h = Math.floor(homeSize * per);
+*/
             });
         };
     },
