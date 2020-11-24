@@ -45,9 +45,10 @@ var gameMod = (function(){
         game.yearRate = opt.yearRate || 1;
         // create base sun object
         game.sun = {
-            radius: 16,
             x: game.centerX,
             y: game.centerY,
+            radius: 16,
+            homeRadius: 16,
             sunGrid: {},
             text: ''
         };
@@ -65,6 +66,7 @@ var gameMod = (function(){
                 x: Math.cos(radian) * game.worldRadius + cx,
                 y: Math.sin(radian) * game.worldRadius + cy,
                 radius: game.sectionRadius,
+                homeRadius: game.sectionRadius,
                 per: 1,
                 text: ''
             });

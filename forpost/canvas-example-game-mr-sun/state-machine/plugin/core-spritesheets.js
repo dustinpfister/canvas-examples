@@ -81,7 +81,16 @@ stateMod.load({
             };
         };
 
-        sm.scaleSprite = function(){
+        // scale a sprite for the given display Object
+        sm.scaleSprite = function(dispObj){
+            var sprite = dispObj.sprite,
+            homeSize = dispObj.radius * 2,
+            size = homeSize + homeSize * 2 * per;
+
+            sprite.x = size / 2 * -1;
+            sprite.y = size / 2 * -1;
+            sprite.w = Math.floor(size);
+            sprite.h = Math.floor(size);
         };
 
         // set up a 'default' sheet at index 0
