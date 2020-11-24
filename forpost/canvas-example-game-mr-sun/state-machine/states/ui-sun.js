@@ -13,13 +13,17 @@ stateMod.load({
         sm.sudoSectionsTrans = function(sm, trans, per){
             var csIndex = sm.data.currentSection,
             csSection = trans.data.sudoSections[csIndex];
+            csSection.radius = csSection.homeRadius + 60 * per;
+
             trans.data.sudoSections.forEach(function(sudoSection){
-                var a = sm.getAngle(sm.game.centerX, sm.game.centerY, csSection.homeX, csSection.homeY);
-                var dx = sm.game.worldRadius * Math.cos(a) * per;
-                var dy = sm.game.worldRadius * Math.sin(a) * per;
+                var section = sm.game.sections[sudoSection.i],
+                a = sm.getAngle(sm.game.centerX, sm.game.centerY, csSection.homeX, csSection.homeY),
+                dx = sm.game.worldRadius * Math.cos(a) * per,
+                dy = sm.game.worldRadius * Math.sin(a) * per;
                 sudoSection.x = sudoSection.homeX - dx;
                 sudoSection.y = sudoSection.homeY - dy;
-                csSection.radius = csSection.homeRadius + 60 * per;
+
+                sudoSection.sprite.radian = section.sprite.radian;
 
                 // scale sprite
                 sm.scaleSpriteToDispObj(sudoSection);
@@ -136,6 +140,7 @@ stateMod.load({
 
             trans.data.sudoSections = sm.game.sections.map(function(section){
                 return {
+                    i: section.i,
                     homeX: section.x,
                     homeY: section.y,
                     x: section.x,
