@@ -33,7 +33,7 @@ stateMod.load({
             drawSprite(sm.ctx, sm.background);
         };
         // SECTIONS
-        var drawSecton = function(ctx, section){
+        var drawSecton = sm.draw.section = function(ctx, section){
             var b = 50 + Math.round(section.per * 128);
             ctx.fillStyle = 'rgb(0,0,' + b + ')';
             ctx.beginPath();

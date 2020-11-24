@@ -50,19 +50,22 @@ stateMod.load({
     },
     draw: function(d, ctx, canvas, game, sm){
         d.back(sm);
+
+        // drawing the sudo section of the current section
+        d.section(ctx, sm.sudoSections[sm.data.currentSection] );
+
         d.buttons(sm);
         d.ver(sm);
+
+
+        // section info
         ctx.fillStyle = 'white';
         ctx.textAlign = 'left';
         ctx.textBaseline = 'middle';
         ctx.font = '10px arial';
         ctx.fillText('section# : ' + sm.data.currentSection, 10, 10);
         var section = sm.game.sections[sm.data.currentSection];
-        
-        //ctx.fillText('count : ' + section.cookie.count, 10, 30);
-        //ctx.fillText('rate : ' + section.cookie.rate, 10, 40);
-        //ctx.fillText('max : ' + section.cookie.max, 10, 50);
-        ctx.fillText('per : ' + section.per.toFixed(2), 10, 60);
+        ctx.fillText('per : ' + section.per.toFixed(2), 10, 30);
     },
     trans: {
         maxFrame: 50, // frames used
