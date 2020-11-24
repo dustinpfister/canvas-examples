@@ -1,7 +1,7 @@
 stateMod.load({
     name: 'core-buttons',
     type: 'plugin',
-    create: function (sm) {
+    afterCreate: function (sm) {
         // create button helper
         var createButton = function(opt){
            var button = {};
