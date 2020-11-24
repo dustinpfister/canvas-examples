@@ -3,6 +3,8 @@ stateMod.load({
     type: 'plugin',
     create : function(sm){
 
+        sm.log('create core-spritesheets ');
+
         // set up sheets array
         sm.sheets = [];
 

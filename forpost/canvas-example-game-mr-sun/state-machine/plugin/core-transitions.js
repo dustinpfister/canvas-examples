@@ -2,6 +2,9 @@ stateMod.load({
     name: 'core-transitions',
     type: 'plugin',
     create : function(sm){
+
+        sm.log('create core-transitions ');
+
         // adds a sm.startTransition method
         sm.startTrans = function(opt){
             opt = opt || {};

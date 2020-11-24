@@ -2,6 +2,9 @@ stateMod.load({
     name: 'core-draw',
     type: 'plugin',
     create: function (sm) {
+
+        sm.log('create core-draw ');
+
         // SPRITES
         var drawSprite = function(ctx, dispObj){
            var sprite = dispObj.sprite,

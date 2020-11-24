@@ -57,7 +57,7 @@ there should be a way to set the values for the frames like this at least. Other
 
 ## 0.10.0 - core-utils.js, and variaus improvements
 * (done) I want to add a afterCreate method for state-machine plugins
-* use afterCreate method in various plug-ins to add sprite objects for sections, sudoSections, buttons, and Sun
+* (done) use afterCreate method in various plug-ins 
 * start a core-utils.js
 * add a sm.log method in core-utils.js
 * add a sm.logOnce method in core-utils.js
