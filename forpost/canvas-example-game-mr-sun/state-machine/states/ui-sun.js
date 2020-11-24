@@ -31,8 +31,6 @@ stateMod.load({
             });
         };
 
-
-
     },
     buttons: {
         sections : {
@@ -140,21 +138,8 @@ stateMod.load({
                 secButton.x = 300 - 320 * 0;
                 per = 0;
             }
-/*
-            sm.sudoSections = sm.game.sections.map(function(section){
-                return {
-                    i: section.i,
-                    homeX: section.x,
-                    homeY: section.y,
-                    x: section.x,
-                    y: section.y,
-                    homeRadius: section.radius,
-                    radius: section.radius,
-                    per: section.per,
-                    sprite: sm.createSpriteObj('default', 0)
-                }
-            });
-*/
+
+            sm.setSudoSections();
             sm.sudoSectionsTrans(sm, trans, per);
         },
         update: function(sm, trans, frame, maxFrame, per, data){

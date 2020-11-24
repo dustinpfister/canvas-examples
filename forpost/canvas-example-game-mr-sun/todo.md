@@ -67,6 +67,9 @@ there should be a way to set the values for the frames like this at least. Other
 * (done) add a sm.logOnce method in core-utils.js
 * (done) add a sm.getAngle method in core-utils.js
 * (done) work out a sm.scaleSpriteToDispObj method for core-spritesheets
+* (done) sudoSections is now a prop of sm rather than the trans object of ui-sun
+* (done) sudoSections is created in core-transitions
+* new resetSudoSections method in core-transitions see if it fies new rendering isshue in ui-sun
 * new code generated sprite sheet for sections that shows which way is up
 * fix sprite.radian values for sudoSections so that they rotate from section.radian to an upward position.
 * how current sudo section in ui-sections

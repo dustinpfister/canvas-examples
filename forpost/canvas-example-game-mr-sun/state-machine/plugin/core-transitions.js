@@ -10,7 +10,6 @@ stateMod.load({
             opt = opt || {};
             opt.newStateName = opt.newStateName || '';
             opt.data = opt.data || {};
-
             var trans = sm.state.trans;
             if(trans){
                 trans.frame = 0;
@@ -25,10 +24,30 @@ stateMod.load({
                 trans.forward = opt.forward === undefined ? true : opt.forward;
             }
         };
+
+        sm.setSudoSections = function(){
+            sm.sudoSections = sm.game.sections.map(function(section){
+                return {
+                    i: section.i,
+                    homeX: section.x,
+                    homeY: section.y,
+                    x: section.x,
+                    y: section.y,
+                    homeRadius: section.radius,
+                    radius: section.radius,
+                    per: section.per,
+                    sprite: sm.createSpriteObj('default', 0)
+                }
+            });
+        };
+
     },
 
     afterCreate : function(sm){
 
+       // setup sudo sections for first time
+       sm.setSudoSections();
+/*
        sm.sudoSections = sm.game.sections.map(function(section){
             return {
                 i: section.i,
@@ -42,6 +61,7 @@ stateMod.load({
                 sprite: sm.createSpriteObj('default', 0)
             }
         });
+*/
     },
 
     update: function(sm, secs){
