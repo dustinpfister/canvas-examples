@@ -12,10 +12,10 @@ stateMod.load({
         // sudo section objects transition helper
         sm.sudoSectionsTrans = function(sm, trans, per){
             var csIndex = sm.data.currentSection,
-            csSection = trans.data.sudoSections[csIndex];
+            csSection = sm.sudoSections[csIndex];
             csSection.radius = csSection.homeRadius + 60 * per;
 
-            trans.data.sudoSections.forEach(function(sudoSection){
+            sm.sudoSections.forEach(function(sudoSection){
                 var section = sm.game.sections[sudoSection.i],
                 a = sm.getAngle(sm.game.centerX, sm.game.centerY, csSection.homeX, csSection.homeY),
                 dx = sm.game.worldRadius * Math.cos(a) * per,
@@ -65,7 +65,7 @@ stateMod.load({
         d.back(sm);
             // if the trans is running
             if(sm.state.trans.action === 'running'){
-                d.sections(sm, sm.state.trans.data.sudoSections);
+                d.sections(sm, sm.sudoSections);
             }
 
             if(sm.state.trans.action === 'end'){
@@ -138,7 +138,7 @@ stateMod.load({
                 per = 0;
             }
 
-            trans.data.sudoSections = sm.game.sections.map(function(section){
+            sm.sudoSections = sm.game.sections.map(function(section){
                 return {
                     i: section.i,
                     homeX: section.x,
