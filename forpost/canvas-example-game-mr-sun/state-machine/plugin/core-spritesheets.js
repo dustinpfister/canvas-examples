@@ -83,6 +83,13 @@ stateMod.load({
         var img = defaultSheet();
         sm.createSpriteSheetObj(img, 'default', defaultFrames(img), 0);
 
+
+
+    },
+    afterCreate : function(sm, game){
+
+        console.log('after create');
+
         // set up sprites for sections
         var sun = sm.game.sun;
         sm.game.forSections(function(section){
@@ -99,6 +106,5 @@ stateMod.load({
             y: 0,
             sprite: sm.createSpriteObj('default', 0, 0, 0, 320, 240, 0.25)
         };
-
     }
 });

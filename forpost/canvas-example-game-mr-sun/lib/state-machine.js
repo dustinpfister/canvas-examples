@@ -136,11 +136,10 @@ var stateMod = (function(){
             if(stateObj.create){
                 stateObj.create(sm);
             }
-            // call all init methods for states once here (FOR NOW)
-            //if(stateObj.init){
-            //    stateObj.init(sm);
-            //}
         });
+
+
+        callMethodForAllPlugins(sm, 'afterCreate', [sm, opt]);
 
         return sm;
     };

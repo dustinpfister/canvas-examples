@@ -66,7 +66,7 @@ stateMod.load({
     },
     trans: {
         maxFrame: 50, // frames used
-        maxSecs: 0.75,  // target trans time in seconds
+        maxSecs: 1.5,  // target trans time in seconds
         action: 'end',
         start: function(sm, trans, data){
             var buttons = sm.state.buttons;

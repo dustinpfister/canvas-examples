@@ -63,6 +63,7 @@ there should be a way to set the values for the frames like this at least. Other
 * work out a sm.scaleSprite method for core-spritesheets
 * start a collection of core-\* plug-ins for game.js like that of what is going on with state-machine.js
 * pull code that has to do with setting the current game year, and adding
+* new code generated sprite sheet for sections that shows which way is up
 * fix sprite.radian values for sudoSections so that they rotate from section.radian to an upward position.
 * make a pkg-0-10-0.html
 
