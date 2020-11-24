@@ -1,5 +1,7 @@
 # canvas-example-mr-sun
 
+## known bugs, problems, concerns
+* the createAfter method in state-machine plugins may not be needed. A simular system to that of callPriority may work better, or a whole new system where I can set an array of dependancy plug-ins
 
 ## 0.x.0 - Full Screen support in core-canvas-resolution.js
 * add full screen support
@@ -54,7 +56,7 @@ there should be a way to set the values for the frames like this at least. Other
 * skin display objects with new sprite sheets uisng the new draw.sprite method
 
 ## 0.10.0 - core-utils.js, and variaus improvements
-* I want to add a afterCreate method for state-machine plugins
+* (done) I want to add a afterCreate method for state-machine plugins
 * use afterCreate method in various plug-ins to add sprite objects for sections, sudoSections, buttons, and Sun
 * start a core-utils.js
 * add a sm.log method in core-utils.js
