@@ -10,7 +10,7 @@ stateMod.load({
             }
         };
         // sudo section objects transition helper
-        sm.sudoSectionsTrans = function(sm, trans, per){
+        sm.sudoSectionsTrans = function(sm, per){
             var csIndex = sm.data.currentSection,
             csSection = sm.sudoSections[csIndex];
             csSection.radius = csSection.homeRadius + 60 * per;
@@ -140,12 +140,12 @@ stateMod.load({
             }
 
             sm.setSudoSections();
-            sm.sudoSectionsTrans(sm, trans, per);
+            sm.sudoSectionsTrans(sm, per);
         },
         update: function(sm, trans, frame, maxFrame, per, data){
             var secButton = sm.state.buttons.sections;
             secButton.x = 300 - 320 * per;
-            sm.sudoSectionsTrans(sm, trans, per);
+            sm.sudoSectionsTrans(sm, per);
         },
         end: function(sm, trans, data){
             sm.state.buttons.sections.x = 300;

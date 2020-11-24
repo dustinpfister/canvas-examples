@@ -25,6 +25,8 @@ stateMod.load({
             click: function(sm){
                 sm.data.currentSection += 1;
                 sm.data.currentSection = sm.data.currentSection >= sm.game.sections.length ? 0 : sm.data.currentSection;
+
+sm.sudoSectionsTrans();
             }
         },
         right : {
