@@ -19,24 +19,11 @@ stateMod.load({
                 var dy = sm.game.worldRadius * Math.sin(a) * per;
                 sudoSection.x = sudoSection.homeX - dx;
                 sudoSection.y = sudoSection.homeY - dy;
-                csSection.radius = csSection.homeRadius + 120 * per;
+                csSection.radius = csSection.homeRadius + 60 * per;
 
-                // ajust sprite
-                var sprite = sudoSection.sprite,
-                homeSize = csSection.homeRadius * 2,
-                size = homeSize + homeSize * 2 * per;
+                // scale sprite
+                sm.scaleSpriteToDispObj(sudoSection);
 
-                sprite.x = size / 2 * -1;
-                sprite.y = size / 2 * -1;
-                sprite.w = Math.floor(size);
-                sprite.h = Math.floor(size);
-
-/*
-                sprite.x = homeSize / 2 * per * -1;
-                sprite.y = homeSize / 2 * per * -1;
-                sprite.w = Math.floor(homeSize * per);
-                sprite.h = Math.floor(homeSize * per);
-*/
             });
         };
     },

@@ -62,7 +62,7 @@ there should be a way to set the values for the frames like this at least. Other
 * (done) add a sm.log method in core-utils.js
 * (done) add a sm.logOnce method in core-utils.js
 * (done) add a sm.getAngle method in core-utils.js
-* work out a sm.scaleSprite method for core-spritesheets
+* (done) work out a sm.scaleSpriteToDispObj method for core-spritesheets
 * start a collection of core-\* plug-ins for game.js like that of what is going on with state-machine.js
 * pull code that has to do with setting the current game year, and adding
 * new code generated sprite sheet for sections that shows which way is up
