@@ -19,6 +19,11 @@ stateMod.load({
             };
         }());
 
+        // get an angle from one point to another
+        sm.getAngle = function(fromX, fromY, toX, toY){
+            return Math.atan2(fromY - toY, fromX - toX) + Math.PI;
+        };
+
         sm.log('create core-utils');
     }
 });

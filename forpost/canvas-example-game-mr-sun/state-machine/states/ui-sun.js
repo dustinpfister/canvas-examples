@@ -14,7 +14,8 @@ stateMod.load({
             var csIndex = sm.data.currentSection,
             csSection = trans.data.sudoSections[csIndex];
             trans.data.sudoSections.forEach(function(sudoSection){
-                var a = Math.atan2(sm.game.centerY - csSection.homeY, sm.game.centerX -  csSection.homeX) + Math.PI;
+                //var a = Math.atan2(sm.game.centerY - csSection.homeY, sm.game.centerX -  csSection.homeX) + Math.PI;
+                var a = sm.getAngle(sm.game.centerY, sm.game.centerX, csSection.homeX, csSection.homeY);
                 var dx = sm.game.worldRadius * Math.cos(a) * per;
                 var dy = sm.game.worldRadius * Math.sin(a) * per;
                 sudoSection.x = sudoSection.homeX - dx;

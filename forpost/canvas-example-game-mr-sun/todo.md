@@ -58,10 +58,10 @@ there should be a way to set the values for the frames like this at least. Other
 ## 0.10.0 - core-utils.js, and variaus improvements
 * (done) I want to add a afterCreate method for state-machine plugins
 * (done) use afterCreate method in various plug-ins 
-* start a core-utils.js
-* add a sm.log method in core-utils.js
-* add a sm.logOnce method in core-utils.js
-* add a sm.angleToSun method in core-utils.js
+* (done) start a core-utils.js
+* (done) add a sm.log method in core-utils.js
+* (done) add a sm.logOnce method in core-utils.js
+* (done) add a sm.getAngle method in core-utils.js
 * work out a sm.scaleSprite method for core-spritesheets
 * start a collection of core-\* plug-ins for game.js like that of what is going on with state-machine.js
 * pull code that has to do with setting the current game year, and adding
