@@ -13,6 +13,5 @@ stateMod.load({
         }
     },
     update: function(sm){
-        // console.log('tick');
     }
 });

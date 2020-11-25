@@ -33,6 +33,7 @@
 * updated core-transitions.js to allow for an array of trans objects, while still supporting the option of just one.
 * add a trans.name property for trans objects
 * update sm.startTrans to allow for an options that can be used to set the trans to use.
+* fix sprite.radian values for sudoSections so that they rotate from section.radian to an upward position in ui-sections.
 
 ## 0.x.0 - core-spritesheets.js, extrenal images, /states/init-load.js, and /img
 * have a /img folder to store sprite sheets images
@@ -71,9 +72,7 @@ there should be a way to set the values for the frames like this at least. Other
 * (done) sudoSections is created in core-transitions
 * (done) new resetSudoSections method in core-transitions see if it fies new rendering isshue in ui-sun
 * (done) show current sudo section in ui-sections
-* new code generated sprite sheet for sections that shows which way is up
-* fix sprite.radian values for sudoSections so that they rotate from section.radian to an upward position.
-
+* (done) new code generated sprite sheet for sections that shows which way is up
 * make a pkg-0-10-0.html
 
 ## 0.9.0 - core-spritesheets.js started

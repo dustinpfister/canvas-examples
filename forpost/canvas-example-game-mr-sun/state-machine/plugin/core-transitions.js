@@ -47,21 +47,6 @@ stateMod.load({
 
        // setup sudo sections for first time
        sm.setSudoSections();
-/*
-       sm.sudoSections = sm.game.sections.map(function(section){
-            return {
-                i: section.i,
-                homeX: section.x,
-                homeY: section.y,
-                x: section.x,
-                y: section.y,
-                homeRadius: section.radius,
-                radius: section.radius,
-                per: section.per,
-                sprite: sm.createSpriteObj('default', 0)
-            }
-        });
-*/
     },
 
     update: function(sm, secs){
