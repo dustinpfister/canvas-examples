@@ -9,23 +9,35 @@ stateMod.load({
         sm.sheets = [];
 
         // default code generated sprite sheet
-        var defaultSheet = function(){
+        var drawMethods = {
+            box: function(ctx){
+                ctx.fillStyle = 'black';
+                ctx.fillRect(0, 0, 32, 32);
+                ctx.strokeStyle = 'lime';
+                ctx.lineWidth = 3;
+                ctx.beginPath();
+                ctx.rect(0, 0, 31, 31);
+                ctx.moveTo(0,0);
+                ctx.lineTo(31, 31);
+                ctx.moveTo(31, 0);
+                ctx.lineTo(0, 31);
+                ctx.stroke();
+            }
+        };
+        var codeSheet = function(draw){
             var canvas = document.createElement('canvas'),
             ctx = canvas.getContext('2d');
             canvas.width = 32;
             canvas.height = 32;
             ctx.translate(0.5, 0.5);
-            ctx.fillStyle = 'black';
-            ctx.fillRect(0, 0, 32, 32);
-            ctx.strokeStyle = 'lime';
-            ctx.lineWidth = 3;
-            ctx.beginPath();
-            ctx.rect(0, 0, 31, 31);
-            ctx.moveTo(0,0);
-            ctx.lineTo(31, 31);
-            ctx.moveTo(31, 0);
-            ctx.lineTo(0, 31);
-            ctx.stroke();
+
+            draw = draw === undefined ? 'box' : draw;
+            if(typeof draw === 'string'){
+                drawMethods[draw](ctx);
+            }
+            if(typeof draw === 'function'){
+                draw(ctx);
+            }
             return canvas;
         };
 
@@ -56,7 +68,7 @@ stateMod.load({
 
         // create a sprite sheet object
         sm.createSpriteSheetObj = function(img, name, frames, index){
-            img = img === undefined ? defaultSheet() : img;
+            img = img === undefined ? codeSheet() : img;
             index = index === undefined ? sm.sheets.length : index;
             frames = frames === undefined ? defaultFrames(img) : frames;
             name = name === undefined ? sm.sheets.length : name;
@@ -92,7 +104,7 @@ stateMod.load({
         };
 
         // set up a 'default' sheet at index 0
-        var img = defaultSheet();
+        var img = codeSheet();
         sm.createSpriteSheetObj(img, 'default', defaultFrames(img), 0);
 
 

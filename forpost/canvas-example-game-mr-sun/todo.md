@@ -70,7 +70,7 @@ there should be a way to set the values for the frames like this at least. Other
 * (done) sudoSections is now a prop of sm rather than the trans object of ui-sun
 * (done) sudoSections is created in core-transitions
 * (done) new resetSudoSections method in core-transitions see if it fies new rendering isshue in ui-sun
-* show current sudo section in ui-sections
+* (done) show current sudo section in ui-sections
 * new code generated sprite sheet for sections that shows which way is up
 * fix sprite.radian values for sudoSections so that they rotate from section.radian to an upward position.
 
