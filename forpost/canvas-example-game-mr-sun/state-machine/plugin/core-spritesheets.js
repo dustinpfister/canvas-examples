@@ -131,7 +131,9 @@ stateMod.load({
         var sun = sm.game.sun;
         sm.game.forSections(function(section){
             section.sprite = sm.createSpriteObj('default', 0, -16, -16, 31, 31, 0.75);
-            section.sprite.radian = Math.atan2(sun.y - section.y, sun.x - section.x);
+            section.sprite.radian = sm.getAngle(sm.game.centerX, sm.game.centerY, section.x, section.y);
+            section.sprite.radian -= Math.PI * 0.5; 
+            //Math.atan2(sun.y - section.y, sun.x - section.x);
         });
 
         // set up sprite for sun
