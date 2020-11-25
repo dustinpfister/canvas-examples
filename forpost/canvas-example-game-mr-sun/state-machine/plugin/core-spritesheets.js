@@ -117,10 +117,11 @@ stateMod.load({
         };
 
         // set up a 'default' sheet at index 0
-        var img = codeSheet('arrow');
+        var img = codeSheet('box');
         sm.createSpriteSheetObj(img, 'default', defaultFrames(img), 0);
 
-
+        img = codeSheet('arrow');
+        sm.createSpriteSheetObj(img, 'arrow', defaultFrames(img), 1);
 
     },
     afterCreate : function(sm, game){
@@ -130,7 +131,7 @@ stateMod.load({
         // set up sprites for sections
         var sun = sm.game.sun;
         sm.game.forSections(function(section){
-            section.sprite = sm.createSpriteObj('default', 0, -16, -16, 31, 31, 0.75);
+            section.sprite = sm.createSpriteObj('arrow', 0, -16, -16, 31, 31, 0.75);
             section.sprite.radian = sm.getAngle(sm.game.centerX, sm.game.centerY, section.x, section.y);
             section.sprite.radian -= Math.PI * 0.5; 
         });

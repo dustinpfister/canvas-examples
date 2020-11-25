@@ -36,7 +36,7 @@ stateMod.load({
                     homeRadius: section.radius,
                     radius: section.radius,
                     per: section.per,
-                    sprite: sm.createSpriteObj('default', 0)
+                    sprite: sm.createSpriteObj('arrow', 0)
                 }
             });
         };
