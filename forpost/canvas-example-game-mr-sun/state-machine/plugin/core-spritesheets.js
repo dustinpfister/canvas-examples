@@ -22,6 +22,19 @@ stateMod.load({
                 ctx.moveTo(31, 0);
                 ctx.lineTo(0, 31);
                 ctx.stroke();
+            },
+            arrow: function(ctx){
+                ctx.fillStyle = 'black';
+                ctx.fillRect(0, 0, 32, 32);
+                ctx.strokeStyle = 'lime';
+                ctx.lineWidth = 3;
+                ctx.beginPath();
+                ctx.rect(0, 0, 31, 31);
+                ctx.moveTo(16,0);
+                ctx.lineTo(0, 16);
+                ctx.lineTo(31, 16);
+                ctx.closePath();
+                ctx.stroke();
             }
         };
         var codeSheet = function(draw){
@@ -104,7 +117,7 @@ stateMod.load({
         };
 
         // set up a 'default' sheet at index 0
-        var img = codeSheet();
+        var img = codeSheet('arrow');
         sm.createSpriteSheetObj(img, 'default', defaultFrames(img), 0);
 
 
