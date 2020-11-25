@@ -73,7 +73,7 @@ there should be a way to set the values for the frames like this at least. Other
 * (done) new resetSudoSections method in core-transitions see if it fies new rendering isshue in ui-sun
 * (done) show current sudo section in ui-sections
 * (done) new code generated sprite sheet for sections that shows which way is up
-* make a pkg-0-10-0.html
+* (done) make a pkg-0-10-0.html
 
 ## 0.9.0 - core-spritesheets.js started
 * (done) start a core-spritesheets.js state-machine plug-in
