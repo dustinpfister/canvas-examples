@@ -36,11 +36,16 @@ var gridMod = (function(){
     api.create = createGrid;
 
     // apply bounds
-    api.applyBounds = function(grid, xMax, yMax, xMin, yMin){
+    api.applyBounds = function(grid){
         var xMax = 32;
-        grid.xOffset = grid.xOffset > xMax ? xMax : grid.xOffset;
         var xMin = xMax + grid.cellSize * grid.width * -1;
+        var yMax = 32;
+        var yMin = yMax + grid.cellSize * grid.height * -1;
+
+        grid.xOffset = grid.xOffset > xMax ? xMax : grid.xOffset;
         grid.xOffset = grid.xOffset < xMin ? xMin : grid.xOffset;
+        grid.yOffset = grid.yOffset > yMax ? yMax : grid.yOffset;
+        grid.yOffset = grid.yOffset < yMin ? yMin : grid.yOffset;
     };
 
     // move map method
