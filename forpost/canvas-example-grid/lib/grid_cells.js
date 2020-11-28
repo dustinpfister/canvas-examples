@@ -2,7 +2,9 @@ var gridMod = (function(){
 
     var createGrid = function (opt) {
         opt = opt || {};
-        var grid = {};
+        var grid = {
+            ver : opt.ver || ''
+        };
         grid.canvas = opt.canvas || {width: 640, height: 480};
         grid.xOffset = opt.xOffset === undefined ? 5 : opt.xOffset;
         grid.yOffset = opt.yOffset === undefined ? 5 : opt.yOffset;

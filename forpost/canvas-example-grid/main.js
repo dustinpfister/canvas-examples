@@ -7,6 +7,7 @@ canvas.height = 240;
 ctx.translate(0.5, 0.5);
 
 var grid = gridMod.create({
+    ver: '0.0.0',
     canvas: canvas,
     width: 16,
     height: 8
@@ -29,6 +30,7 @@ var loop = function () {
 
     draw.back(ctx, canvas);
     draw.cells(ctx, grid);
+    draw.ver(ctx, grid);
 
     lt = new Date();
 
