@@ -11,6 +11,7 @@ var gridMod = (function(){
         grid.height = opt.height || 2;
         // create cells
         grid.cells = createBaseCellsArray(grid.width, grid.height);
+        grid.bounds = createBoundsObject(grid, grid.canvas);
         return grid;
     };
 
@@ -47,8 +48,8 @@ var gridMod = (function(){
             yMin: yMax + ((grid.cellSize * grid.height) - (grid.canvas.height - grid.cellSize * 2)) * -1
         };
     };
-    api.applyBounds = function(grid){
-        var bounds = createBoundsObject(grid);
+    api.applyBounds = function(grid, bounds){
+        bounds = bounds || grid.bounds;
         grid.xOffset = grid.xOffset > bounds.xMax ? bounds.xMax : grid.xOffset;
         grid.xOffset = grid.xOffset < bounds.xMin ? bounds.xMin : grid.xOffset;
         grid.yOffset = grid.yOffset > bounds.yMax ? bounds.yMax : grid.yOffset;
