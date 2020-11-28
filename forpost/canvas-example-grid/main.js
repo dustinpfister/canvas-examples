@@ -7,24 +7,26 @@ canvas.height = 240;
 ctx.translate(0.5, 0.5);
 
 var grid = gridMod.create({
-   width: 24,
-   height: 16
+   width: 16,
+   height: 8
 });
 
-
-
-
-// can pull in a loop
+var lt = new Date();
 var loop = function () {
+
+    var now = new Date(),
+    secs = (now - lt) / 1000;
+
     requestAnimationFrame(loop);
 
-    //grid.xOffset -= 1;
-    gridMod.moveMap(grid, 0.025, 0, -32);
+    gridMod.moveMap(grid, secs, 0, -128);
     gridMod.applyBounds(grid);
-
 
     draw.back(ctx, canvas);
     draw.cells(ctx, grid);
+
+    lt = new Date();
+
 };
 
 loop();
