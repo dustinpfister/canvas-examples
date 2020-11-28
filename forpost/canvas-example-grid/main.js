@@ -7,8 +7,9 @@ canvas.height = 240;
 ctx.translate(0.5, 0.5);
 
 var grid = gridMod.create({
-   width: 16,
-   height: 8
+    canvas: canvas,
+    width: 16,
+    height: 8
 });
 
 var lt = new Date(),

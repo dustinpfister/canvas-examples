@@ -3,6 +3,7 @@ var gridMod = (function(){
     var createGrid = function (opt) {
         opt = opt || {};
         var grid = {};
+        grid.canvas = opt.canvas || {width: 640, height: 480};
         grid.xOffset = opt.xOffset === undefined ? 5 : opt.xOffset;
         grid.yOffset = opt.yOffset === undefined ? 5 : opt.yOffset;
         grid.cellSize = opt.cellSize === undefined ? 32 : opt.cellSize;
@@ -42,8 +43,8 @@ var gridMod = (function(){
         return {
             xMax: xMax,
             yMax: yMax,
-            xMin: xMax + ((grid.cellSize * grid.width) - (320 - grid.cellSize * 2)) * -1,
-            yMin: yMax + ((grid.cellSize * grid.height) - (240 - grid.cellSize * 2)) * -1
+            xMin: xMax + ((grid.cellSize * grid.width) - (grid.canvas.width - grid.cellSize * 2)) * -1,
+            yMin: yMax + ((grid.cellSize * grid.height) - (grid.canvas.height - grid.cellSize * 2)) * -1
         };
     };
     api.applyBounds = function(grid){
