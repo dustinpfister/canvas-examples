@@ -53,6 +53,16 @@ var gridMod = (function(){
         grid.yOffset = grid.yOffset > bounds.yMax ? bounds.yMax : grid.yOffset;
         grid.yOffset = grid.yOffset < bounds.yMin ? bounds.yMin : grid.yOffset;
     };
+    api.onEdge = function(grid){
+        var bounds = createBoundsObject(grid);
+        if(grid.xOffset >= bounds.xMax || 
+        grid.xOffset <= bounds.xMin || 
+        grid.yOffset >= bounds.yMax || 
+        grid.yOffset <= bounds.yMin){
+            return true;
+        }
+        return false;
+    };
 
     // move map method
     api.moveMap = function(grid, secs, radian, pps){

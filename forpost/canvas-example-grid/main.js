@@ -22,6 +22,9 @@ var loop = function () {
 
     gridMod.moveMap(grid, secs, radian, -128);
     gridMod.applyBounds(grid);
+    if(gridMod.onEdge(grid)){
+        radian = Math.PI * 2 * Math.random();
+    }
 
     draw.back(ctx, canvas);
     draw.cells(ctx, grid);
