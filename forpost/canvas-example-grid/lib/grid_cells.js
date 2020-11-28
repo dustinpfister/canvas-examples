@@ -29,9 +29,17 @@ var gridMod = (function(){
         return cells;
     };
 
+    // PUBLIC API
     var api = {};
-
+    // create a grid object
     api.create = createGrid;
+    // apply bounds
+    api.applyBounds = function(grid, xMax, yMax, xMin, yMin){
+        var xMax = 32;
+        grid.xOffset = grid.xOffset > xMax ? xMax : grid.xOffset;
+        var xMin = xMax + grid.cellSize * grid.width * -1;
+        grid.xOffset = grid.xOffset < xMin ? xMin : grid.xOffset;
+    };
 
     return api;
 

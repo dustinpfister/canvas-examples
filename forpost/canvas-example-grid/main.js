@@ -19,10 +19,7 @@ var loop = function () {
     requestAnimationFrame(loop);
 
     grid.xOffset -= 1;
-    var xMax = 32;
-    grid.xOffset = grid.xOffset > xMax ? xMax : grid.xOffset;
-    var xMin = xMax + grid.cellSize * grid.width * -1;
-    grid.xOffset = grid.xOffset < xMin ? xMin : grid.xOffset;
+    gridMod.applyBounds(grid);
 
     draw.back(ctx, canvas);
     draw.cells(ctx, grid);
