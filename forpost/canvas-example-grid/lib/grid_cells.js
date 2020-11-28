@@ -1,6 +1,5 @@
 var gridMod = (function(){
 
-
     var createGrid = function (opt) {
         opt = opt || {};
         var grid = {};
