@@ -18,8 +18,10 @@ var grid = gridMod.create({
 var loop = function () {
     requestAnimationFrame(loop);
 
-    grid.xOffset -= 1;
+    //grid.xOffset -= 1;
+    gridMod.moveMap(grid, 0.025, 0, -32);
     gridMod.applyBounds(grid);
+
 
     draw.back(ctx, canvas);
     draw.cells(ctx, grid);

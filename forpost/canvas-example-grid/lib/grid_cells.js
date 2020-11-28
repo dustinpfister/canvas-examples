@@ -31,14 +31,30 @@ var gridMod = (function(){
 
     // PUBLIC API
     var api = {};
+
     // create a grid object
     api.create = createGrid;
+
     // apply bounds
     api.applyBounds = function(grid, xMax, yMax, xMin, yMin){
         var xMax = 32;
         grid.xOffset = grid.xOffset > xMax ? xMax : grid.xOffset;
         var xMin = xMax + grid.cellSize * grid.width * -1;
         grid.xOffset = grid.xOffset < xMin ? xMin : grid.xOffset;
+    };
+
+    // move map method
+    api.moveMap = function(grid, secs, radian, pps){
+        secs = secs === undefined ? 0 : secs;
+        radian = radian === undefined ? 0 : radian;
+        pps = pps === undefined ? 0 : pps;
+
+        var deltaX = Math.cos(radian) * pps * secs;
+        var deltaY = Math.sin(radian) * pps * secs;
+
+        grid.xOffset += deltaX;
+        grid.yOffset += deltaY;
+
     };
 
     return api;
