@@ -35,17 +35,23 @@ var gridMod = (function(){
     // create a grid object
     api.create = createGrid;
 
-    // apply bounds
+    // Bounds
+    var createBoundsObject = function(grid){
+        var xMax = grid.cellSize,
+        yMax = grid.cellSize;
+        return {
+            xMax: xMax,
+            yMax: yMax,
+            xMin: xMax + grid.cellSize * grid.width * -1,
+            yMin: yMax + grid.cellSize * grid.height * -1
+        };
+    };
     api.applyBounds = function(grid){
-        var xMax = 32;
-        var xMin = xMax + grid.cellSize * grid.width * -1;
-        var yMax = 32;
-        var yMin = yMax + grid.cellSize * grid.height * -1;
-
-        grid.xOffset = grid.xOffset > xMax ? xMax : grid.xOffset;
-        grid.xOffset = grid.xOffset < xMin ? xMin : grid.xOffset;
-        grid.yOffset = grid.yOffset > yMax ? yMax : grid.yOffset;
-        grid.yOffset = grid.yOffset < yMin ? yMin : grid.yOffset;
+        var bounds = createBoundsObject(grid);
+        grid.xOffset = grid.xOffset > bounds.xMax ? bounds.xMax : grid.xOffset;
+        grid.xOffset = grid.xOffset < bounds.xMin ? bounds.xMin : grid.xOffset;
+        grid.yOffset = grid.yOffset > bounds.yMax ? bounds.yMax : grid.yOffset;
+        grid.yOffset = grid.yOffset < bounds.yMin ? bounds.yMin : grid.yOffset;
     };
 
     // move map method

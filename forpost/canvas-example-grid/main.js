@@ -11,7 +11,8 @@ var grid = gridMod.create({
    height: 8
 });
 
-var lt = new Date();
+var lt = new Date(),
+radian = Math.PI * 0.25;
 var loop = function () {
 
     var now = new Date(),
@@ -19,7 +20,7 @@ var loop = function () {
 
     requestAnimationFrame(loop);
 
-    gridMod.moveMap(grid, secs, Math.PI * 0.25, -128);
+    gridMod.moveMap(grid, secs, radian, -128);
     gridMod.applyBounds(grid);
 
     draw.back(ctx, canvas);
