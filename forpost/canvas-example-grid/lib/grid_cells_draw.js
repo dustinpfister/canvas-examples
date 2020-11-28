@@ -22,10 +22,12 @@ draw.back = function(ctx, canvas){
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 };
 
+// draw info
 draw.info = function(ctx, grid){
     ctx.fillStyle = 'white';
     ctx.textBaseline  = 'top';
     ctx.font = '10px arial';
+    ctx.fillText('offset: ' + grid.xOffset.toFixed(2) + ' , ' + grid.yOffset.toFixed(2), 5, 5);
 };
 
 // version

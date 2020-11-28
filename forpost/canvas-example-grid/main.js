@@ -30,6 +30,7 @@ var loop = function () {
 
     draw.back(ctx, canvas);
     draw.cells(ctx, grid);
+    draw.info(ctx, grid);
     draw.ver(ctx, grid);
 
     lt = new Date();
