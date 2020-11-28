@@ -42,8 +42,8 @@ var gridMod = (function(){
         return {
             xMax: xMax,
             yMax: yMax,
-            xMin: xMax + grid.cellSize * grid.width * -1,
-            yMin: yMax + grid.cellSize * grid.height * -1
+            xMin: xMax + ((grid.cellSize * grid.width) - (320 - grid.cellSize * 2)) * -1,
+            yMin: yMax + ((grid.cellSize * grid.height) - (240 - grid.cellSize * 2)) * -1
         };
     };
     api.applyBounds = function(grid){

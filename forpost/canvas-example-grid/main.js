@@ -12,7 +12,7 @@ var grid = gridMod.create({
 });
 
 var lt = new Date(),
-radian = Math.PI * 0.25;
+radian = Math.PI * 1.75;
 var loop = function () {
 
     var now = new Date(),
