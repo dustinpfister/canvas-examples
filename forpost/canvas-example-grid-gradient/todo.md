@@ -3,6 +3,7 @@
 ## 0.1.0 - Better container CSS
 * work out some CSS so that the canvas will be scalled to the largest size
 * make sure the ratio of the canvas stays the same as what is native
+* on resize event hander that will change the size of the canvas element
 
 ## 0.0.0 - The core idea working
 * (done) can set updaters in the same way as init methods when using the constructor
