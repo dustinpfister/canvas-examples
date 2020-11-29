@@ -20,6 +20,7 @@ var loop = function () {
     draw.pool(canvas, ctx, clock);
     draw.clockDayCircle(canvas, ctx, clock);
     draw.clockText(canvas, ctx, clock);
+    draw.ver(canvas, ctx, clock);
 };
 // start loop
 loop();

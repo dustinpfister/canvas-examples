@@ -11,7 +11,7 @@ var clockMod = (function () {
     };
 
     var setPart = function (clock, part) {
-        var weekPer = (clock.now.getDay()+1) / 7,
+        var weekPer = (clock.now.getDay() + 1) / 7,
         baseSpeed = 16 + 32 * weekPer,
         deltaSpeed = 96 * weekPer * Math.random();
         part.pps = baseSpeed + deltaSpeed;
@@ -80,6 +80,7 @@ var clockMod = (function () {
     return {
         create: function (now) {
             var clock = {};
+            clock.ver = '0.0.0';
             clock.now = now || new Date(0);
             setClockPropsToNow(clock);
             clock.pool = createPool(clock, 240);
@@ -91,7 +92,7 @@ var clockMod = (function () {
 
         update: function (clock, now) {
             //clock.now = new Date(2020, 4, 9, now.getHours(), now.getMinutes(), now.getSeconds(), now.getMilliseconds());
-            clock.now =now || new Date(0);
+            clock.now = now || new Date(0);
             setClockPropsToNow(clock);
             var t = clock.now - clock.poolLastTick,
             secs = t / 1000;

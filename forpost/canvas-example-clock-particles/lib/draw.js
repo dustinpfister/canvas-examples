@@ -64,3 +64,12 @@ draw.clockDayCircle = function (canvas, ctx, clock) {
     ctx.arc(canvas.width / 2, canvas.height / 2, clock.faceRadius, 0, r);
     ctx.stroke();
 };
+
+draw.ver = function (canvas, ctx, clock) {
+    ctx.fillStyle = 'black';
+    ctx.font = '10px arial';
+    ctx.textBaseline = 'top';
+    ctx.textAlign = 'left';
+    ctx.fillText('v' + clock.ver, 10, 10);
+
+};
