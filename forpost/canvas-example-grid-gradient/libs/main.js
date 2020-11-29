@@ -5,6 +5,8 @@
     ctx = canvas.getContext('2d');
     canvas.width = 320;
     canvas.height = 240;
+    canvas.style.width = container.scrollWidth + 'px';
+    canvas.style.height = container.scrollHeight+'px';
     ctx.translate(0.5, 0.5);
     container.appendChild(canvas);
 
