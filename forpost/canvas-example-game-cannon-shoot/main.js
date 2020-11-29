@@ -20,6 +20,7 @@ var loop = function () {
     draw.ground(state);
     draw.currentMode(state);
     draw.debug(state);
+    draw.ver(state);
 };
 loop();
 canvas.addEventListener('mousedown', game.userAction(state));

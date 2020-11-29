@@ -4,6 +4,7 @@ var game = (function () {
 
     var createNewState = function (opt) {
         var state = {
+            ver: '0.0.0',
             canvas: canvas,
             ctx: ctx = canvas.getContext('2d'),
             mode: 'aim', // 'aim', 'fired, and 'over' modes

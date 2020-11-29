@@ -103,6 +103,16 @@ var draw = (function () {
             ctx.fillText('cannon power: ' + state.cannon.power, 10, 30);
         },
 
+        // draw ver
+        ver: function (state) {
+            var ctx = state.ctx;
+            ctx.fillStyle = 'white';
+            ctx.font = '10px arial';
+            ctx.textBaseline = 'top';
+            ctx.textAlign = 'left';
+            ctx.fillText('v' + state.ver, 10, 100);
+        },
+
         // draw ground
         ground: function (state) {
             var canvas = state.canvas,
