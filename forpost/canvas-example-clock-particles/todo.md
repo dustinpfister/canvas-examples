@@ -11,5 +11,5 @@
 * (done) face centered and scaled
 * (done) have a particles pool for the clock object
 * (done) more particles become active as the day progress to noon and less as the day progress to midnight
-* display v0.0.0 in the canvas
-* make a pkg-0-0-0.html
+* (done) display v0.0.0 in the canvas
+* (done) make a pkg-0-0-0.html
