@@ -20,3 +20,26 @@ var state = {
         y: canvasObj.canvas.height / 2
     }
 };
+
+var draw = {
+    // draw background
+    background: function (ctx, canvas) {
+        ctx.fillStyle = 'black';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+    }
+};
+
+var lt = new Date(),
+FPS_target = 1000 / 30;
+
+var loop = function () {
+    var now = new Date(),
+    t = now - lt,
+    secs = t / 1000;
+    requestAnimationFrame(loop);
+    if (t >= FPS_target) {
+        draw.background(state.ctx, state.canvas);
+        lt = now;
+    }
+};
+loop();
