@@ -44,7 +44,7 @@ var loop = function () {
         state.map.radian = state.map.radian > Math.PI * 2 ? state.map.radian % (Math.PI * 2) : state.map.radian;
 
         draw.background(state.ctx, state.canvas);
-        draw.gridLines(state.ctx, state, 'white');
+        draw.gridLines(state.ctx, state, 'rgba(255,255,255,0.1)');
         draw.ship(state.ctx, state);
         draw.info(state.ctx, state);
         draw.ver(state.ctx, state);
