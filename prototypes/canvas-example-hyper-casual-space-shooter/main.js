@@ -44,8 +44,8 @@ var draw = {
     gridLines : function (ctx, state, style) {
         var grid={
             cellSize: 32,
-            cellWidth: 5,
-            cellHeight: 5,
+            cellWidth: 11,
+            cellHeight: 11,
             xOffset: state.map.x,
             yOffset: state.map.y
         },
