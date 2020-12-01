@@ -41,7 +41,26 @@ var draw = {
         ctx.stroke();
         ctx.restore();
     },
-    gridLines: function(ctx, state){
+    gridLines : function (ctx, state, style) {
+        var grid={
+            cellSize: 32,
+            cellWidth: 5,
+            cellHeight: 5,
+            xOffset: state.map.x,
+            yOffset: state.map.y
+        },
+        x, y,
+        len = grid.cellWidth * grid.cellHeight,
+        i = 0;
+        ctx.strokeStyle = style || 'red';
+        ctx.save();
+        ctx.translate(160, 120);
+        while(i < len){
+            
+            i += 1;
+        }
+        ctx.restore();
+
     }
 };
 
@@ -55,6 +74,7 @@ var loop = function () {
     requestAnimationFrame(loop);
     if (t >= FPS_target) {
         draw.background(state.ctx, state.canvas);
+        draw.gridLines(state.ctx, state, 'white');
         draw.ship(state.ctx, state);
         lt = now;
     }
