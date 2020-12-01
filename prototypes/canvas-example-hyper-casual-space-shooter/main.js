@@ -20,8 +20,8 @@ var state = {
         y: 0
     },
     map: { // map position
-        x: 0,
-        y: 0
+        x: -16,
+        y: -16
     }
 };
 
@@ -49,6 +49,8 @@ var draw = {
             xOffset: state.map.x,
             yOffset: state.map.y
         },
+        sx = grid.cellWidth * grid.cellSize / 2 * -1 - (grid.xOffset % grid.cellSize),
+        sy = grid.cellHeight * grid.cellSize / 2 * -1 + (grid.yOffset % grid.cellSize),
         x, y,
         len = grid.cellWidth * grid.cellHeight,
         i = 0;
@@ -56,7 +58,11 @@ var draw = {
         ctx.save();
         ctx.translate(160, 120);
         while(i < len){
-            
+            x = sx + (i % grid.cellWidth) * grid.cellSize;
+            y = sy + Math.floor(i / grid.cellWidth) * grid.cellSize;
+            ctx.beginPath();
+            ctx.rect(x,y,grid.cellSize, grid.cellSize);
+            ctx.stroke();
             i += 1;
         }
         ctx.restore();
