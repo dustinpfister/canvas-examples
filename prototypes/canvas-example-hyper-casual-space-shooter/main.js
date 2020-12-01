@@ -13,6 +13,7 @@ var createCanvas = function(opt){
 // STATE
 var canvasObj = createCanvas();
 var state = {
+    ver: '0.0.0',
     canvas : canvasObj.canvas,
     ctx: canvasObj.ctx,
     ship: { 
@@ -46,6 +47,7 @@ var loop = function () {
         draw.gridLines(state.ctx, state, 'white');
         draw.ship(state.ctx, state);
         draw.info(state.ctx, state);
+        draw.ver(state.ctx, state);
         lt = now;
     }
 };

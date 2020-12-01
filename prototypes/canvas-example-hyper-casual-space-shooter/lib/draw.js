@@ -45,5 +45,11 @@ var draw = {
         ctx.fillStyle = 'yellow';
         ctx.font = '10px arial';
         ctx.fillText(state.map.x.toFixed(2) + ',' + state.map.y.toFixed(2), 10, 10);
+    },
+    ver: function(ctx, state){
+        ctx.fillStyle = 'yellow';
+        ctx.font = '10px arial';
+        ctx.textBaseline = 'top';
+        ctx.fillText('v' + state.ver, 5, state.canvas.height - 15);
     }
 };
