@@ -15,13 +15,13 @@ var canvasObj = createCanvas();
 var state = {
     canvas : canvasObj.canvas,
     ctx: canvasObj.ctx,
-    ship: { // x and y position relative to canvas 0,0
-        x: canvasObj.canvas.width / 2, 
-        y: canvasObj.canvas.height / 2
+    ship: { 
+        x: 0, // ship position relative to map position
+        y: 0
     },
-    map:{ // map offset values
-       x: 0,
-       y: 0
+    map: { // map position
+        x: 0,
+        y: 0
     }
 };
 
@@ -33,9 +33,15 @@ var draw = {
     },
     ship: function(ctx, state){
         ctx.strokeStyle = 'blue';
+        ctx.save();
+        ctx.translate(160, 120);
         ctx.beginPath();
+        ctx.lineWidth = 3;
         ctx.arc(state.ship.x, state.ship.y, 5, 0, Math.PI * 2);
         ctx.stroke();
+        ctx.restore();
+    },
+    gridLines: function(ctx, state){
     }
 };
 
