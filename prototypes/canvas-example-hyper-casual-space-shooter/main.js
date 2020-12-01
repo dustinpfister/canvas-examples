@@ -69,7 +69,11 @@ var draw = {
             i += 1;
         }
         ctx.restore();
-
+    },
+    info: function(ctx, state){
+        ctx.fillStyle = 'yellow';
+        ctx.font = '10px arial';
+        ctx.fillText(state.map.x.toFixed(2) + ',' + state.map.y.toFixed(2), 10, 10);
     }
 };
 
@@ -91,6 +95,7 @@ var loop = function () {
         draw.background(state.ctx, state.canvas);
         draw.gridLines(state.ctx, state, 'white');
         draw.ship(state.ctx, state);
+        draw.info(state.ctx, state);
         lt = now;
     }
 };
