@@ -17,11 +17,13 @@ var state = {
     ctx: canvasObj.ctx,
     ship: { 
         x: 0, // ship position relative to map position
-        y: 0
+        y: 0,
     },
     map: { // map position
         x: -16,
-        y: -16
+        y: -16,
+        radian: Math.PI / 180 * 45,
+        pps: 64
     }
 };
 
@@ -43,9 +45,9 @@ var draw = {
     },
     gridLines : function (ctx, state, style) {
         var grid={
-            cellSize: 32,
-            cellWidth: 11,
-            cellHeight: 11,
+            cellSize: 64,
+            cellWidth: 7,
+            cellHeight: 7,
             xOffset: state.map.x,
             yOffset: state.map.y
         },
@@ -55,6 +57,7 @@ var draw = {
         len = grid.cellWidth * grid.cellHeight,
         i = 0;
         ctx.strokeStyle = style || 'red';
+        ctx.lineWidth = 1;
         ctx.save();
         ctx.translate(160, 120);
         while(i < len){
@@ -79,6 +82,12 @@ var loop = function () {
     secs = t / 1000;
     requestAnimationFrame(loop);
     if (t >= FPS_target) {
+
+        state.map.x += Math.cos(state.map.radian) * state.map.pps * secs;
+        state.map.y += Math.sin(state.map.radian) * state.map.pps * secs;
+        state.map.radian += Math.PI / 180 * 45 * secs;
+        state.map.radian = state.map.radian > Math.PI * 2 ? state.map.radian % (Math.PI * 2) : state.map.radian;
+
         draw.background(state.ctx, state.canvas);
         draw.gridLines(state.ctx, state, 'white');
         draw.ship(state.ctx, state);
