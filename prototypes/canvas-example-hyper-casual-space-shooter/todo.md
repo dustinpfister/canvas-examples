@@ -20,7 +20,9 @@
 * (done) move the map around with keyboard events
 * (done) a and d change heading, while w and s change speed
 * (done) display heading and speed
-* chnage pps by a ppsDelta
+* (done) chnage pps by a ppsDelta
+* make ship a trangle like shape with tip pointing to current heading
+* make a pkg-0-1-0.html
 
 ## 0.0.0 - basic idea working
 * (done) just have a ship display object fixed to the center of the canvas

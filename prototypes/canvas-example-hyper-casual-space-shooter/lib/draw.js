@@ -6,13 +6,13 @@ var draw = {
     },
     ship: function(ctx, state){
         var game = state.game;
-        ctx.strokeStyle = 'blue';
+        ctx.fillStyle = 'blue';
         ctx.save();
         ctx.translate(160, 120);
         ctx.beginPath();
         ctx.lineWidth = 3;
-        ctx.arc(game.ship.x, game.ship.y, 5, 0, Math.PI * 2);
-        ctx.stroke();
+        ctx.arc(game.ship.x, game.ship.y, game.ship.r, 0, Math.PI * 2);
+        ctx.fill();
         ctx.restore();
     },
     gridLines : function (ctx, state, style) {

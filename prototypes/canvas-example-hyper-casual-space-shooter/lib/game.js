@@ -7,6 +7,7 @@ var gameMod = (function(){
             ship: { 
                 x: 0, // ship position relative to map position
                 y: 0,
+                r: 8
             },
             map: { // map position
                 x: 0,
