@@ -47,10 +47,12 @@ var loop = function () {
             
         }
         if(input.keys.w){
-           
+           input.pps += 1;
+           input.pps = input.pps > 128 ? 128 : input.pps;
         }
         if(input.keys.s){
-            
+            input.pps -= 1;
+            input.pps = input.pps < 0 ? 0 : input.pps;
         }
         input.degree = utils.mod(input.degree, 360);
         gameMod.setMapMovement(game, input.degree, input.pps);
