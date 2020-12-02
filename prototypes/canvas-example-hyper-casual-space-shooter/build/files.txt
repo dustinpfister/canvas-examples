@@ -1,13 +1,3 @@
 ../lib/utils.js
 ../lib/game.js
-../plugin/plug-api-base.js
-../plugin/plug-api-blocks.js
-../plugin/sun.js
-../plugin/temp.js
-../plugin/fusion.js
-../lib/state-machine.js
-../states/init-draw-base.js
-../states/init-draw-blocks.js
-../states/init-game.js
-../states/ui-sun.js
-../states/ui-blocks.js
+../lib/draw.js
