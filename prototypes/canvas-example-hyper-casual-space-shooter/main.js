@@ -30,10 +30,7 @@ var loop = function () {
     requestAnimationFrame(loop);
     if (t >= FPS_target) {
 
-        game.map.x += Math.cos(game.map.radian) * game.map.pps * secs;
-        game.map.y += Math.sin(game.map.radian) * game.map.pps * secs;
-        game.map.radian += Math.PI / 180 * 45 * secs;
-        game.map.radian = game.map.radian > Math.PI * 2 ? game.map.radian % (Math.PI * 2) : game.map.radian;
+        gameMod.updateMap(game, secs);
 
         draw.background(state.ctx, state.canvas);
         draw.gridLines(state.ctx, state, 'rgba(255,255,255,0.1)');
