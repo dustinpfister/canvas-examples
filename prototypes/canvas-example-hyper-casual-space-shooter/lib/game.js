@@ -17,13 +17,20 @@ var gameMod = (function(){
         };
     };
 
+    api.setMapMovement = function(game, degree, pps){
+        game.map.pps = pps;
+        game.map.radian = Math.PI / 180 * degree;
+        //game.map.radian = game.map.radian > Math.PI * 2 ? game.map.radian % (Math.PI * 2) : game.map.radian;
+        if(game.map.radian >= Math.PI * 2 || game.map.radian < 0){
+            game.map.radian = utils.mod(game.map.radian, Math.PI * 2);
+        }
+    };
+
     // update the MAP using current RADIAN and PPS values
     // with the given SECS value.
     api.updateMap = function(game, secs){
         game.map.x += Math.cos(game.map.radian) * game.map.pps * secs;
         game.map.y += Math.sin(game.map.radian) * game.map.pps * secs;
-        //game.map.radian += Math.PI / 180 * 45 * secs;
-        //game.map.radian = game.map.radian > Math.PI * 2 ? game.map.radian % (Math.PI * 2) : game.map.radian;
     }
 
     // return the Public API

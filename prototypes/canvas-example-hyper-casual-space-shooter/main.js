@@ -31,6 +31,7 @@ var loop = function () {
     if (t >= FPS_target) {
 
         gameMod.updateMap(game, secs);
+        gameMod.setMapMovement(game, 90, 32);
 
         draw.background(state.ctx, state.canvas);
         draw.gridLines(state.ctx, state, 'rgba(255,255,255,0.1)');
