@@ -49,7 +49,7 @@ var loop = function () {
         }
         if(input.keys.w){
            input.pps += input.ppsDelta * secs;
-           input.pps = input.pps > game.maxPPS ? game.maxPPS : input.pps;
+           input.pps = input.pps > game.map.maxPPS ? game.map.maxPPS : input.pps;
         }
         if(input.keys.s){
             input.pps -= input.ppsDelta * secs;
