@@ -16,8 +16,10 @@
 * move the map around with the mouse
 
 ## 0.1.0 - keyboard events
-* add keyboard even support in main.js
-* move the map around with keyboard events
+* (done) add keyboard even support in main.js
+* (done) move the map around with keyboard events
+* a and d change heading, while w and s change speed
+* display heading and speed
 
 ## 0.0.0 - basic idea working
 * (done) just have a ship display object fixed to the center of the canvas

@@ -18,6 +18,8 @@ var state = {
     ctx: canvasObj.ctx,
     game: gameMod.create(),
     input: {
+        degree: 0,
+        degreesPerSecond: 5,
         keys: {}
     }
 };
@@ -35,18 +37,23 @@ var loop = function () {
 
         gameMod.updateMap(game, secs);
 
-        if(state.input.keys.a){
-            gameMod.setMapMovement(game, 180, 32);
+        var input = state.input;
+        if(input.keys.a){
+            input.degree += input.degreesPerSecond;
         }
-        if(state.input.keys.d){
-            gameMod.setMapMovement(game, 0, 32);
+        if(input.keys.d){
+            input.degree -= input.degreesPerSecond;
+            
         }
-        if(state.input.keys.w){
-            gameMod.setMapMovement(game, 90, 32);
+        if(input.keys.w){
+           
         }
-        if(state.input.keys.s){
-            gameMod.setMapMovement(game, 270, 32);
+        if(input.keys.s){
+            
         }
+        input.degree = utils.mod(input.degree, 360);
+        gameMod.setMapMovement(game, input.degree, 32);
+
         draw.background(state.ctx, state.canvas);
         draw.gridLines(state.ctx, state, 'rgba(255,255,255,0.1)');
         draw.ship(state.ctx, state);
