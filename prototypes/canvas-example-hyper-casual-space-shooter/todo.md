@@ -14,7 +14,7 @@
 * (done) ship position and position of any other objects are all realtive to 0,0
 * (done) the state.map position just reflects the curent position of the origin 0,0
 * (done) draw grid lines in the background
-* display basic info in the canvas such as map position
-* display version number in canvas
+* (done) display basic info in the canvas such as map position
+* (done) display version number in canvas
 * break things down into draw.js, game.js, and main.js
 * make a pkg-0-0-0.html file

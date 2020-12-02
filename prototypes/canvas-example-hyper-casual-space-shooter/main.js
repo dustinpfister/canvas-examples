@@ -16,15 +16,17 @@ var state = {
     ver: '0.0.0',
     canvas : canvasObj.canvas,
     ctx: canvasObj.ctx,
-    ship: { 
-        x: 0, // ship position relative to map position
-        y: 0,
-    },
-    map: { // map position
-        x: -16,
-        y: -16,
-        radian: Math.PI / 180 * 45,
-        pps: 64
+    game: {
+        ship: { 
+            x: 0, // ship position relative to map position
+            y: 0,
+        },
+        map: { // map position
+            x: -16,
+            y: -16,
+            radian: Math.PI / 180 * 45,
+            pps: 64
+        }
     }
 };
 
@@ -34,14 +36,15 @@ FPS_target = 1000 / 30;
 var loop = function () {
     var now = new Date(),
     t = now - lt,
+    game = state.game,
     secs = t / 1000;
     requestAnimationFrame(loop);
     if (t >= FPS_target) {
 
-        state.map.x += Math.cos(state.map.radian) * state.map.pps * secs;
-        state.map.y += Math.sin(state.map.radian) * state.map.pps * secs;
-        state.map.radian += Math.PI / 180 * 45 * secs;
-        state.map.radian = state.map.radian > Math.PI * 2 ? state.map.radian % (Math.PI * 2) : state.map.radian;
+        game.map.x += Math.cos(game.map.radian) * game.map.pps * secs;
+        game.map.y += Math.sin(game.map.radian) * game.map.pps * secs;
+        game.map.radian += Math.PI / 180 * 45 * secs;
+        game.map.radian = game.map.radian > Math.PI * 2 ? game.map.radian % (Math.PI * 2) : game.map.radian;
 
         draw.background(state.ctx, state.canvas);
         draw.gridLines(state.ctx, state, 'rgba(255,255,255,0.1)');

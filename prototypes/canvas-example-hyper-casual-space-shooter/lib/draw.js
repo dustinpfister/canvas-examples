@@ -5,12 +5,13 @@ var draw = {
         ctx.fillRect(0, 0, canvas.width, canvas.height);
     },
     ship: function(ctx, state){
+        var game = state.game;
         ctx.strokeStyle = 'blue';
         ctx.save();
         ctx.translate(160, 120);
         ctx.beginPath();
         ctx.lineWidth = 3;
-        ctx.arc(state.ship.x, state.ship.y, 5, 0, Math.PI * 2);
+        ctx.arc(game.ship.x, game.ship.y, 5, 0, Math.PI * 2);
         ctx.stroke();
         ctx.restore();
     },
@@ -19,8 +20,8 @@ var draw = {
             cellSize: 64,
             cellWidth: 7,
             cellHeight: 7,
-            xOffset: state.map.x,
-            yOffset: state.map.y
+            xOffset: state.game.map.x,
+            yOffset: state.game.map.y
         },
         sx = grid.cellWidth * grid.cellSize / 2 * -1 - (grid.xOffset % grid.cellSize),
         sy = grid.cellHeight * grid.cellSize / 2 * -1 + (grid.yOffset % grid.cellSize),
@@ -42,9 +43,10 @@ var draw = {
         ctx.restore();
     },
     info: function(ctx, state){
+        var game = state.game;
         ctx.fillStyle = 'yellow';
         ctx.font = '10px arial';
-        ctx.fillText(state.map.x.toFixed(2) + ',' + state.map.y.toFixed(2), 10, 10);
+        ctx.fillText(game.map.x.toFixed(2) + ',' + game.map.y.toFixed(2), 10, 10);
     },
     ver: function(ctx, state){
         ctx.fillStyle = 'yellow';
