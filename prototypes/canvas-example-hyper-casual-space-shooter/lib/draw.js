@@ -47,7 +47,7 @@ var draw = {
         ctx.fillStyle = 'yellow';
         ctx.font = '10px arial';
         ctx.fillText('map pos: ' + Math.floor(game.map.x) + ' , ' + Math.floor(game.map.y), 10, 10);
-        ctx.fillText('heading: ' + state.input.degree, 10, 20);
+        ctx.fillText('heading: ' + Math.floor(state.input.degree) + '; pps: ' + state.game.map.pps, 10, 20);
     },
     ver: function(ctx, state){
         ctx.fillStyle = 'yellow';
