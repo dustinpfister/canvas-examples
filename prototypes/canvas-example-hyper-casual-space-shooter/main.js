@@ -19,7 +19,7 @@ var state = {
     game: gameMod.create(),
     input: {
         degree: 0,
-        degreesPerSecond: 5,
+        degreesPerSecond: 90,
         pps: 0,
         keys: {}
     }
@@ -40,10 +40,10 @@ var loop = function () {
 
         var input = state.input;
         if(input.keys.a){
-            input.degree += input.degreesPerSecond;
+            input.degree += input.degreesPerSecond * secs;
         }
         if(input.keys.d){
-            input.degree -= input.degreesPerSecond;
+            input.degree -= input.degreesPerSecond * secs;
             
         }
         if(input.keys.w){
