@@ -19,7 +19,8 @@
 * (done) add keyboard even support in main.js
 * (done) move the map around with keyboard events
 * (done) a and d change heading, while w and s change speed
-* display heading and speed
+* (done) display heading and speed
+* chnage pps by a ppsDelta
 
 ## 0.0.0 - basic idea working
 * (done) just have a ship display object fixed to the center of the canvas

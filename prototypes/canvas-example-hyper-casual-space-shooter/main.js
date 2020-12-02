@@ -21,6 +21,7 @@ var state = {
         degree: 0,
         degreesPerSecond: 90,
         pps: 0,
+        ppsDelta: 64,
         keys: {}
     }
 };
@@ -47,11 +48,11 @@ var loop = function () {
             
         }
         if(input.keys.w){
-           input.pps += 1;
+           input.pps += input.ppsDelta * secs;
            input.pps = input.pps > game.maxPPS ? game.maxPPS : input.pps;
         }
         if(input.keys.s){
-            input.pps -= 1;
+            input.pps -= input.ppsDelta * secs;
             input.pps = input.pps < 0 ? 0 : input.pps;
         }
         input.degree = utils.mod(input.degree, 360);
