@@ -18,7 +18,7 @@
 ## 0.1.0 - keyboard events
 * (done) add keyboard even support in main.js
 * (done) move the map around with keyboard events
-* a and d change heading, while w and s change speed
+* (done) a and d change heading, while w and s change speed
 * display heading and speed
 
 ## 0.0.0 - basic idea working
