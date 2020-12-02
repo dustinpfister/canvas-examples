@@ -16,5 +16,6 @@
 * (done) draw grid lines in the background
 * (done) display basic info in the canvas such as map position
 * (done) display version number in canvas
-* break things down into draw.js, game.js, and main.js
+* (done) break things down into draw.js, game.js, and main.js
+* (done) have update and move gameMod methods
 * make a pkg-0-0-0.html file

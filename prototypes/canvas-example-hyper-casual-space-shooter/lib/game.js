@@ -12,18 +12,23 @@ var gameMod = (function(){
                 x: 0,
                 y: 0,
                 radian: Math.PI / 180 * 45,
-                pps: 32
+                pps: 32,
+                maxPPS: 128
             }
         };
     };
 
+    // set map movment values and wrap or clamp anything that might go out of range
     api.setMapMovement = function(game, degree, pps){
-        game.map.pps = pps;
         game.map.radian = Math.PI / 180 * degree;
-        //game.map.radian = game.map.radian > Math.PI * 2 ? game.map.radian % (Math.PI * 2) : game.map.radian;
+        // wrap radian
         if(game.map.radian >= Math.PI * 2 || game.map.radian < 0){
             game.map.radian = utils.mod(game.map.radian, Math.PI * 2);
         }
+        // clamp PPS
+        game.map.pps = pps;
+        game.map.pps = game.map.pps < 0 ? 0 : game.map.pps;
+        game.map.pps = game.map.pps > game.map.maxPPS ? game.map.maxPPS : game.map.pps;
     };
 
     // update the MAP using current RADIAN and PPS values
