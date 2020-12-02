@@ -16,18 +16,7 @@ var state = {
     ver: '0.0.0',
     canvas : canvasObj.canvas,
     ctx: canvasObj.ctx,
-    game: {
-        ship: { 
-            x: 0, // ship position relative to map position
-            y: 0,
-        },
-        map: { // map position
-            x: -16,
-            y: -16,
-            radian: Math.PI / 180 * 45,
-            pps: 64
-        }
-    }
+    game: gameMod.create()
 };
 
 var lt = new Date(),
