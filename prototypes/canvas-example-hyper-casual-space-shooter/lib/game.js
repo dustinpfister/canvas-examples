@@ -12,7 +12,7 @@ var gameMod = (function(){
                 x: 0,
                 y: 0,
                 radian: Math.PI / 180 * 45,
-                pps: 32,
+                pps: 0,
                 maxPPS: 128
             }
         };

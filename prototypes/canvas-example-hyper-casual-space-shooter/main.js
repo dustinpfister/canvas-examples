@@ -20,6 +20,7 @@ var state = {
     input: {
         degree: 0,
         degreesPerSecond: 5,
+        pps: 0,
         keys: {}
     }
 };
@@ -52,7 +53,7 @@ var loop = function () {
             
         }
         input.degree = utils.mod(input.degree, 360);
-        gameMod.setMapMovement(game, input.degree, 32);
+        gameMod.setMapMovement(game, input.degree, input.pps);
 
         draw.background(state.ctx, state.canvas);
         draw.gridLines(state.ctx, state, 'rgba(255,255,255,0.1)');
