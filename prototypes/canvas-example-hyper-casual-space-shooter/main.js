@@ -48,7 +48,7 @@ var loop = function () {
         }
         if(input.keys.w){
            input.pps += 1;
-           input.pps = input.pps > 128 ? 128 : input.pps;
+           input.pps = input.pps > game.maxPPS ? game.maxPPS : input.pps;
         }
         if(input.keys.s){
             input.pps -= 1;

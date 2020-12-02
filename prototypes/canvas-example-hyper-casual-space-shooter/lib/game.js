@@ -13,7 +13,7 @@ var gameMod = (function(){
                 y: 0,
                 radian: Math.PI / 180 * 45,
                 pps: 0,
-                maxPPS: 128
+                maxPPS: 256
             }
         };
     };
