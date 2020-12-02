@@ -1,12 +1,23 @@
 # canvas-example-hyper-casual-space-shooter
 
 ## 0.4.0 - shots
+* auto fire shots from the ship
+* when a single shot hits a block it will become inactive ( for now )
 
 ## 0.3.0 - Object pool lib, and blocks
+* add an object pool lib to the project
+* add a 'blocks' pool to game object
+* blocks will become active at random locations around the origin
+* blocks will move from one point to another along an outer radius around the origin
+* if the ship hits a block the block will become inactive ( for now )
 
 ## 0.2.0 - mouse events
+* add mouse event support
+* move the map around with the mouse
 
 ## 0.1.0 - keyboard events
+* add keyboard even support in main.js
+* move the map around with keyboard events
 
 ## 0.0.0 - basic idea working
 * (done) just have a ship display object fixed to the center of the canvas
@@ -18,4 +29,4 @@
 * (done) display version number in canvas
 * (done) break things down into draw.js, game.js, and main.js
 * (done) have update and move gameMod methods
-* make a pkg-0-0-0.html file
+* (done) make a pkg-0-0-0.html file
