@@ -22,7 +22,7 @@
 * (done) display heading and speed
 * (done) change pps by a ppsDelta
 * (done) show what direction the ship is going
-* make a pkg-0-1-0.html
+* (done) make a pkg-0-1-0.html
 
 ## 0.0.0 - basic idea working
 * (done) just have a ship display object fixed to the center of the canvas
