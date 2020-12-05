@@ -9,6 +9,7 @@ var gameMod = (function(){
                 y: 0,
                 r: 8
             },
+            blocks: poolMod.create(),
             map: { // map position
                 x: 0,
                 y: 0,
@@ -37,7 +38,11 @@ var gameMod = (function(){
     api.updateMap = function(game, secs){
         game.map.x += Math.cos(game.map.radian) * game.map.pps * secs;
         game.map.y += Math.sin(game.map.radian) * game.map.pps * secs;
-    }
+    };
+
+    api.updateBlocks = function(game, secs){
+        poolMod.update(game.blocks, secs, game);
+    };
 
     // return the Public API
     return api;

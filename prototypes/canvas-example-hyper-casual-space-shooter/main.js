@@ -13,7 +13,7 @@ var createCanvas = function(opt){
 // STATE
 var canvasObj = createCanvas();
 var state = {
-    ver: '0.1.0',
+    ver: '0.2.0',
     canvas : canvasObj.canvas,
     ctx: canvasObj.ctx,
     game: gameMod.create(),
@@ -38,6 +38,7 @@ var loop = function () {
     if (t >= FPS_target) {
 
         gameMod.updateMap(game, secs);
+        gameMod.updateBlocks(game, secs);
 
         var input = state.input;
         if(input.keys.a){

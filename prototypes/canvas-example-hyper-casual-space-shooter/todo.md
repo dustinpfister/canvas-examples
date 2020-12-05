@@ -5,11 +5,11 @@
 * move the map around with the mouse by clicking and holding in a circle
 * have a bar on the side that will control speed
 
-## 0.4.0 - shots
+## 0.3.0 - shots
 * auto fire shots from the ship
 * when a single shot hits a block it will become inactive ( for now )
 
-## 0.3.0 - Object pool lib, and blocks
+## 0.2.0 - Object pool lib, and blocks
 * (done) add an object pool lib to the project
 * add a 'blocks' pool to game object
 * blocks will become active at random locations around the origin
