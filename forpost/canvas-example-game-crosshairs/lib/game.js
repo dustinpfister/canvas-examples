@@ -90,7 +90,7 @@ var gameMod = (function () {
         }, {
             name: 'Atom',
             locked: true,
-            unLockAt: 50,
+            unLockAt: 30,
             pps: 128,
             shotRate: 1,
             blastRadius: 10,
