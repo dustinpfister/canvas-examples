@@ -110,7 +110,7 @@ var draw = (function () {
             ctx.font = '10px arial';
             ctx.textBaseline = 'top';
             ctx.textAlign = 'left';
-            ctx.fillText('v' + state.ver, 10, 100);
+            ctx.fillText('v' + state.ver, 10, canvas.height - 10);
         },
 
         // draw ground

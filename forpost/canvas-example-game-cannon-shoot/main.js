@@ -8,6 +8,7 @@ canvas.height = 240;
 ctx.translate(0.5, 0.5);
 
 var state = game.createNewState({
+        ver: '0.0.0',
         canvas: canvas
     });
 
