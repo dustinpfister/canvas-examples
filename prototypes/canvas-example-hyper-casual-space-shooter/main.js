@@ -61,6 +61,7 @@ var loop = function () {
 
         draw.background(state.ctx, state.canvas);
         draw.gridLines(state.ctx, state, 'rgba(255,255,255,0.1)');
+        draw.blocks(state.ctx, state);
         draw.ship(state.ctx, state);
         draw.info(state.ctx, state);
         draw.ver(state.ctx, state);

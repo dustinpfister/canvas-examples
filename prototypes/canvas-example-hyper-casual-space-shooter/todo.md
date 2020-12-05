@@ -11,7 +11,8 @@
 
 ## 0.2.0 - Object pool lib, and blocks
 * (done) add an object pool lib to the project
-* add a 'blocks' pool to game object
+* (done) add a 'blocks' pool to game object
+* draw.blocks method
 * blocks will become active at random locations around the origin
 * blocks will move from one point to another along an outer radius around the origin
 * if the ship hits a block the block will become inactive ( for now )

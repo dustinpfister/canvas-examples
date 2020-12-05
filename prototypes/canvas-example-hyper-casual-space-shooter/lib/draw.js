@@ -4,6 +4,16 @@ var draw = {
         ctx.fillStyle = 'black';
         ctx.fillRect(0, 0, canvas.width, canvas.height);
     },
+    blocks: function(ctx, state){
+        var game = state.game;
+        ctx.fillStyle='gray';
+        state.game.blocks.objects.forEach(function(block){
+            ctx.beginPath();
+            ctx.lineWidth = 3;
+            ctx.arc(block.x, block.y, block.r, 0, Math.PI * 2);
+            ctx.fill();
+        });
+    },
     ship: function(ctx, state){
         var game = state.game;
         ctx.fillStyle = 'rgba(0,0,255,0.2)';
