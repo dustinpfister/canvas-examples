@@ -8,10 +8,12 @@ var draw = {
         var game = state.game;
         ctx.fillStyle='gray';
         state.game.blocks.objects.forEach(function(block){
-            ctx.beginPath();
-            ctx.lineWidth = 3;
-            ctx.arc(block.x, block.y, block.r, 0, Math.PI * 2);
-            ctx.fill();
+            if(block.active){
+                ctx.beginPath();
+                ctx.lineWidth = 3;
+                ctx.arc(block.x, block.y, block.r, 0, Math.PI * 2);
+                ctx.fill();
+            }
         });
     },
     ship: function(ctx, state){
