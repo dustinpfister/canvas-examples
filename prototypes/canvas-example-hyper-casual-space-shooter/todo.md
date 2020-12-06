@@ -14,8 +14,9 @@
 * (done) add a 'blocks' pool to game object
 * (done) draw.blocks method
 * (done) blocks will become active at random locations around the ship
-* blocks will spawn in front of ship
-* if the ship hits a block the block will become inactive ( for now )
+* (done) blocks will spawn in front of ship
+* block will become inactive if the distance to the ship goes over a sit limit such as 1000
+* block will become inactive if the ship hits it ( for now )
 * make a pkg-0-2-0.html
 
 ## 0.1.0 - keyboard events

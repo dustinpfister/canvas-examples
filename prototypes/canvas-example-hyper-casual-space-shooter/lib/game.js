@@ -1,12 +1,15 @@
 var gameMod = (function(){
     
+    var BLOCK_MAX_DIST = 1000;
+ 
+
     var api = {};
 
     var positionBlock = function(state, obj){
         var game = state.game,
         map = game.map,
         rDelta = Math.PI / 180 * 45,
-        dist = 150 + 50 * Math.random();
+        dist = 100 + 50 * Math.random();
         var a = utils.wrapRadian(map.radian - rDelta + ( rDelta * 2 ) * Math.random()); //Math.PI * 2 * Math.random();
         obj.x = game.ship.x + Math.cos(a) * dist;
         obj.y = game.ship.y + Math.sin(a) * dist;
@@ -24,7 +27,6 @@ var gameMod = (function(){
                 spawn: function(obj, pool, state, opt){
                     var game = state.game;
 
-
                     // set starting position of block
                     positionBlock(state, obj);
  
@@ -36,18 +38,14 @@ var gameMod = (function(){
                 update: function(obj, pool, state, secs){
                     obj.lifespan = 1;
                     var map = state.game.map;
-                    //var mapDeltaX = Math.cos(map.radian) * (map.pps * 1) * secs;
-                    //var mapDeltaY = Math.sin(map.radian) * (map.pps * 1) * secs;
                     obj.radian = utils.wrapRadian(state.game.map.radian + Math.PI);
                     obj.pps = state.game.map.pps;
                     var objDeltaX = Math.cos(obj.radian) * obj.pps * secs;
                     var objDeltaY = Math.sin(obj.radian) * obj.pps * secs;
-                    //obj.x += mapDeltaX + objDeltaX;
-                    //obj.y += mapDeltaY + objDeltaY;
-                    //obj.x += mapDeltaX;
-                    //obj.y += mapDeltaY;
                     obj.x += objDeltaX;
                     obj.y += objDeltaY;
+
+                    obj.data.dist = utils.distance(obj.x, obj.y, state.game.ship.x, state.game.ship.y);
                 }
             }),
             map: { // map position

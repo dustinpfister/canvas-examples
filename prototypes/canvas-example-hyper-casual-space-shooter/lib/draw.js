@@ -8,13 +8,20 @@ var draw = {
         var game = state.game;
         ctx.save();
         ctx.translate(160, 120);
-        ctx.fillStyle='gray';
+
         state.game.blocks.objects.forEach(function(block){
             if(block.active){
+                ctx.fillStyle='gray';
                 ctx.beginPath();
                 ctx.lineWidth = 3;
                 ctx.arc(block.x, block.y, block.r, 0, Math.PI * 2);
                 ctx.fill();
+
+                ctx.fillStyle = 'yellow';
+                ctx.textBaseline = 'middle';
+                ctx.textAlign = 'center';
+                ctx.fillText(Math.floor(block.data.dist), block.x, block.y);
+
             }
         });
         ctx.restore();
@@ -71,6 +78,8 @@ var draw = {
         var game = state.game;
         ctx.fillStyle = 'yellow';
         ctx.font = '10px arial';
+        ctx.textBaseline = 'top';
+        ctx.textAlign = 'left';
         ctx.fillText('map pos: ' + Math.floor(game.map.x) + ' , ' + Math.floor(game.map.y), 10, 10);
         ctx.fillText('map radian: ' + game.map.radian.toFixed(2) + '; map pps: ' + game.map.pps.toFixed(2), 10, 20);
     },
@@ -78,6 +87,7 @@ var draw = {
         ctx.fillStyle = 'yellow';
         ctx.font = '10px arial';
         ctx.textBaseline = 'top';
+        ctx.textAlign = 'left';
         ctx.fillText('v' + state.ver, 5, state.canvas.height - 15);
     }
 };
