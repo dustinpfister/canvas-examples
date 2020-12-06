@@ -1,24 +1,23 @@
 var gameMod = (function(){
     
-    var BLOCK_COUNT = 10,
-    BLOCK_POS_MIN_DIST = 100,
-    BLOCK_POS_MAX_DIST = 150;
+    var BLOCK_COUNT = 30,
+    BLOCK_POS_MIN_DIST = 220,
+    BLOCK_POS_MAX_DIST = 360,
+    BLOCK_POS_ADELTA = 45;    // the max DEGREE left or right from current map angle
  
 
     var api = {};
 
-
+    // basic random positioning of blocks
     var positionBlock = function(state, obj){
         var game = state.game,
         map = game.map,
-        rDelta = Math.PI / 180 * 45,
+        rDelta = Math.PI / 180 * BLOCK_POS_ADELTA,
         dist = BLOCK_POS_MIN_DIST + (BLOCK_POS_MAX_DIST - BLOCK_POS_MIN_DIST) * Math.random();
         var a = utils.wrapRadian(map.radian - rDelta + ( rDelta * 2 ) * Math.random()); //Math.PI * 2 * Math.random();
         obj.x = game.ship.x + Math.cos(a) * dist;
         obj.y = game.ship.y + Math.sin(a) * dist;
     };
-
-
 
     api.create = function(){
         var game = {
@@ -28,9 +27,7 @@ var gameMod = (function(){
                 r: 8
             },
             blocks: poolMod.create({
-                data: {
-                   posAreas: []
-                },
+                data: {},
                 count: BLOCK_COUNT,
                 spawn: function(obj, pool, state, opt){
                     var game = state.game;

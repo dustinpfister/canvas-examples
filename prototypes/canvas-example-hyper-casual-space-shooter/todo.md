@@ -1,5 +1,7 @@
 # canvas-example-hyper-casual-space-shooter
 
+## 0.x.0 - Improved 'block' positioning
+
 ## 0.x.0 - mouse events
 * add mouse event support
 * move the map around with the mouse by clicking and holding in a circle
