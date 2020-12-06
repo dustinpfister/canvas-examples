@@ -37,6 +37,9 @@ var poolMod = (function () {
                 radian: opt.radian === undefined ? 0 : opt.radian,
                 pps: opt.pps === undefined ? 32 : opt.pps,
                 lifespan: opt.lifespan || 3,
+
+                // basic style
+                fillStyle: opt.fillStyle || 'red',
                 data: {}
             });
             i += 1;
