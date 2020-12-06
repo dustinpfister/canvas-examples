@@ -6,6 +6,8 @@ var draw = {
     },
     blocks: function(ctx, state){
         var game = state.game;
+        ctx.save();
+        ctx.translate(160, 120);
         ctx.fillStyle='gray';
         state.game.blocks.objects.forEach(function(block){
             if(block.active){
@@ -15,6 +17,7 @@ var draw = {
                 ctx.fill();
             }
         });
+        ctx.restore();
     },
     ship: function(ctx, state){
         var game = state.game;

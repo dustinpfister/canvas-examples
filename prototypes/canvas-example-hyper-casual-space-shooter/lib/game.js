@@ -11,8 +11,14 @@ var gameMod = (function(){
             },
             blocks: poolMod.create({
                 spawn: function(obj, pool, state, opt){
-                    obj.x = state.canvas.width;
+                    //obj.x = state.canvas.width;
                     //console.log(state);
+
+                    var a = Math.PI * 2 * Math.random();
+                    obj.x = state.game.ship.x + Math.cos(a) * 100;
+                    obj.y = state.game.ship.y + Math.sin(a) * 100;
+                    obj.lifespan = 1;
+
                 }
             }),
             map: { // map position
