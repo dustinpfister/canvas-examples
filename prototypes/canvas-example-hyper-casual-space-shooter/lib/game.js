@@ -17,8 +17,16 @@ var gameMod = (function(){
                     var a = Math.PI * 2 * Math.random();
                     obj.x = state.game.ship.x + Math.cos(a) * 100;
                     obj.y = state.game.ship.y + Math.sin(a) * 100;
-                    obj.lifespan = 1;
+                    obj.lifespan = 5;
 
+                },
+                update: function(obj, pool, state, secs){
+                    //obj.lifespan = 1;
+                    var map = state.game.map;
+                    var mapDeltaX = Math.cos(map.radian + Math.PI) * (map.pps * 0.5) * secs;
+                    var mapDeltaY = Math.sin(map.radian) * (map.pps * 0.5) * secs;
+                    obj.x += mapDeltaX;
+                    obj.y += mapDeltaY;
                 }
             }),
             map: { // map position
