@@ -49,7 +49,7 @@ var draw = {
             yOffset: state.game.map.y
         },
         sx = grid.cellWidth * grid.cellSize / 2 * -1 - (grid.xOffset % grid.cellSize),
-        sy = grid.cellHeight * grid.cellSize / 2 * -1 + (grid.yOffset % grid.cellSize),
+        sy = grid.cellHeight * grid.cellSize / 2 * -1 + (grid.yOffset % grid.cellSize) * -1,
         x, y,
         len = grid.cellWidth * grid.cellHeight,
         i = 0;
