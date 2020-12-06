@@ -26,12 +26,24 @@ var gameMod = (function(){
                 r: 8
             },
             shots: poolMod.create({
+                count: 1,
                 fillStyle: 'red',
                 r: 2,
                 spawn: function(obj, pool, state, opt){
                     obj.x = 0;
                     obj.y = 0;
+
+                    // shot radian should be set to current map radian
+                    obj.radian = state.game.map.radian;
+                    obj.pps = 64;
+
                     obj.lifespan = 3;
+                },
+                update: function(obj, pool, state, secs){
+                    var objDeltaX = Math.cos(obj.radian) * obj.pps * secs;
+                    var objDeltaY = Math.sin(obj.radian) * obj.pps * secs;
+                    obj.x += objDeltaX;
+                    obj.y += objDeltaY;
                 }
             }),
             blocks: poolMod.create({

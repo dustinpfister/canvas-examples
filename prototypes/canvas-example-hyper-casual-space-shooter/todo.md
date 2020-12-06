@@ -25,8 +25,8 @@
 ## 0.3.0 - shots
 * (done) new 'shots' object pool in game
 * (done) ne draw base object helper
-* shots start at the ship location
-* new draw.shots method
+* (done) shots start at the ship location
+* (done) new draw.shots method
 * auto fire shots from the ship (for now)
 * when a single shot hits a block it will become inactive ( for now )
 * use new draw base object helper for draw.ship
