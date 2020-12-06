@@ -3,11 +3,6 @@ var gameMod = (function(){
     var api = {};
 
 
-    var wrapRadian = function(radian){
-        return utils.mod(radian, Math.PI * 2);
-    };
-
-
     api.create = function(plugObj){
         return {
             ship: { 
@@ -39,6 +34,7 @@ var gameMod = (function(){
                     var map = state.game.map;
                     //var mapDeltaX = Math.cos(map.radian) * (map.pps * 1) * secs;
                     //var mapDeltaY = Math.sin(map.radian) * (map.pps * 1) * secs;
+                    obj.radian = utils.wrapRadian(state.game.map.radian + Math.PI);
                     var objDeltaX = Math.cos(obj.radian) * obj.pps * secs;
                     var objDeltaY = Math.sin(obj.radian) * obj.pps * secs;
                     //obj.x += mapDeltaX + objDeltaX;
