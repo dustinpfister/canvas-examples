@@ -28,7 +28,7 @@ var gameMod = (function(){
                     //obj.radian = Math.PI * 1; //Math.PI / 180 * 90 * -1;
                     //obj.radian = Math.PI / 180 * 180;
  
-                    obj.radian = wrapRadian(game.map.radian + Math.PI);
+                    obj.radian = utils.wrapRadian(game.map.radian + Math.PI);
                     obj.pps = 16;
 
                     obj.lifespan = 5;
@@ -62,7 +62,7 @@ var gameMod = (function(){
     // set map movment values and wrap or clamp anything that might go out of range
     api.setMapMovement = function(game, degree, pps){
 
-        game.map.radian = wrapRadian(Math.PI / 180 * degree);
+        game.map.radian = utils.wrapRadian(Math.PI / 180 * degree);
 
         // clamp PPS
         game.map.pps = pps;
