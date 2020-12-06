@@ -18,7 +18,7 @@ var gameMod = (function(){
                     obj.x = state.game.ship.x + Math.cos(a) * 100;
                     obj.y = state.game.ship.y + Math.sin(a) * 100;
 
-                    obj.heading = Math.PI / 180 * 90 * -1;
+                    obj.heading = Math.PI * 1; //Math.PI / 180 * 90 * -1;
 
 
                     obj.lifespan = 5;
@@ -47,10 +47,10 @@ var gameMod = (function(){
 
     // set map movment values and wrap or clamp anything that might go out of range
     api.setMapMovement = function(game, degree, pps){
-        game.map.radian = Math.PI / 180 * degree;
+        game.map.radian = Math.PI * 1; //Math.PI / 180 * 90;
         // wrap radian
         if(game.map.radian >= Math.PI * 2 || game.map.radian < 0){
-            game.map.radian = utils.mod(game.map.radian, Math.PI * 2);
+            game.map.radian = utils.mod(game.map.radian , Math.PI * 2);
         }
         // clamp PPS
         game.map.pps = pps;

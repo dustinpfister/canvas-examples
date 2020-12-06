@@ -30,7 +30,7 @@ var draw = {
         ctx.fill();
         ctx.strokeStyle = 'white';
 
-        var radian = game.map.radian * -1;
+        var radian = game.map.radian;
         ctx.beginPath();
         ctx.moveTo(
             game.ship.x + Math.cos(radian) * game.ship.r,
@@ -72,7 +72,7 @@ var draw = {
         ctx.fillStyle = 'yellow';
         ctx.font = '10px arial';
         ctx.fillText('map pos: ' + Math.floor(game.map.x) + ' , ' + Math.floor(game.map.y), 10, 10);
-        ctx.fillText('heading: ' + Math.floor(state.input.degree) + '; pps: ' + state.input.pps.toFixed(2), 10, 20);
+        ctx.fillText('map radian: ' + game.map.radian.toFixed(2) + '; map pps: ' + game.map.pps.toFixed(2), 10, 20);
     },
     ver: function(ctx, state){
         ctx.fillStyle = 'yellow';
