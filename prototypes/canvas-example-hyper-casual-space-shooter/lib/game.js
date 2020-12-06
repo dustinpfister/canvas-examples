@@ -17,6 +17,10 @@ var gameMod = (function(){
                     var a = Math.PI * 2 * Math.random();
                     obj.x = state.game.ship.x + Math.cos(a) * 100;
                     obj.y = state.game.ship.y + Math.sin(a) * 100;
+
+                    obj.heading = Math.PI / 180 * 90 * -1;
+
+
                     obj.lifespan = 5;
 
                 },
@@ -25,8 +29,10 @@ var gameMod = (function(){
                     var map = state.game.map;
                     var mapDeltaX = Math.cos(map.radian + Math.PI) * (map.pps * 0.5) * secs;
                     var mapDeltaY = Math.sin(map.radian) * (map.pps * 0.5) * secs;
-                    obj.x += mapDeltaX;
-                    obj.y += mapDeltaY;
+                    var objDeltaX = Math.cos(obj.heading) * obj.pps * secs;
+                    var objDeltaY = Math.sin(obj.heading) * obj.pps * secs;
+                    obj.x += mapDeltaX + objDeltaX;
+                    obj.y += mapDeltaY + objDeltaY;
                 }
             }),
             map: { // map position

@@ -13,8 +13,8 @@
 * (done) add an object pool lib to the project
 * (done) add a 'blocks' pool to game object
 * (done) draw.blocks method
-* blocks will become active at random locations around the origin
-* blocks will move from one point to another along an outer radius around the origin
+* (done) blocks will become active at random locations around the ship
+* blocks will move from one point to another along an outer radius around the ship
 * if the ship hits a block the block will become inactive ( for now )
 
 ## 0.1.0 - keyboard events
