@@ -1,6 +1,6 @@
 var gameMod = (function(){
     
-    var BLOCK_MAX_DIST = 1000;
+    var BLOCK_MAX_DIST = 320;
  
 
     var api = {};
@@ -9,7 +9,7 @@ var gameMod = (function(){
         var game = state.game,
         map = game.map,
         rDelta = Math.PI / 180 * 45,
-        dist = 100 + 50 * Math.random();
+        dist = 160 + 100 * Math.random();
         var a = utils.wrapRadian(map.radian - rDelta + ( rDelta * 2 ) * Math.random()); //Math.PI * 2 * Math.random();
         obj.x = game.ship.x + Math.cos(a) * dist;
         obj.y = game.ship.y + Math.sin(a) * dist;
@@ -51,7 +51,12 @@ var gameMod = (function(){
 
 
                     // become inactive if
+                    // block hits ship
                     if(obj.data.dist <= game.ship.r + obj.r){
+                        obj.lifespan = 0;
+                    }
+                    // block goes out of range
+                    if(obj.data.dist >= BLOCK_MAX_DIST){
                         obj.lifespan = 0;
                     }
                 }
