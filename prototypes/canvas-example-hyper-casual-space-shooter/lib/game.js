@@ -3,9 +3,13 @@ var gameMod = (function(){
     var api = {};
 
     var positionBlock = function(state, obj){
-        var a = Math.PI * 2 * Math.random();
-        obj.x = state.game.ship.x + Math.cos(a) * 100;
-        obj.y = state.game.ship.y + Math.sin(a) * 100;
+        var game = state.game,
+        map = game.map,
+        rDelta = Math.PI / 180 * 45,
+        dist = 150 + 50 * Math.random();
+        var a = utils.wrapRadian(map.radian - rDelta + ( rDelta * 2 ) * Math.random()); //Math.PI * 2 * Math.random();
+        obj.x = game.ship.x + Math.cos(a) * dist;
+        obj.y = game.ship.y + Math.sin(a) * dist;
     };
 
 
