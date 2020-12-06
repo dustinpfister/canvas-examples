@@ -23,10 +23,15 @@ var gameMod = (function(){
             ship: { 
                 x: 0, // ship position relative to map position
                 y: 0,
-                r: 8
+                r: 8,
+                weaponSecs: 0,
+                weapon: {
+                    firesPerSecond: 2,
+                    shotsPerFire: 1
+                }
             },
             shots: poolMod.create({
-                count: 1,
+                count: 16,
                 fillStyle: 'red',
                 r: 2,
                 spawn: function(obj, pool, state, opt){
@@ -124,8 +129,16 @@ var gameMod = (function(){
     };
 
     api.updateShots = function(game, secs, state){
+
+        var ship = game.ship,
+        weapon = ship.weapon;
+
+        ship.weaponSecs += secs;
+        if(ship.weaponSecs >= 1 / weapon.firesPerSecond){
+            poolMod.spawn(game.shots, state, {});
+            ship.weaponSecs = 0;
+        }
         poolMod.update(game.shots, secs, state);
-        poolMod.spawn(game.shots, state, {});
     };
 
     // return the Public API
