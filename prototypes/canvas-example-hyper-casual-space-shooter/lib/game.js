@@ -4,7 +4,6 @@ var gameMod = (function(){
     BLOCK_POS_MIN_DIST = 220,
     BLOCK_POS_MAX_DIST = 360,
     BLOCK_POS_ADELTA = 45;    // the max DEGREE left or right from current map angle
- 
 
     var api = {};
 
@@ -26,19 +25,17 @@ var gameMod = (function(){
                 y: 0,
                 r: 8
             },
+            shots: poolMod.create({}),
             blocks: poolMod.create({
                 data: {},
                 count: BLOCK_COUNT,
                 spawn: function(obj, pool, state, opt){
                     var game = state.game;
-
                     // set starting position of block
                     positionBlock(state, obj);
- 
                     obj.radian = utils.wrapRadian(game.map.radian + Math.PI);
                     obj.pps = game.map.pps;
                     obj.lifespan = 1;
-
                 },
                 update: function(obj, pool, state, secs){
                     obj.lifespan = 1;
@@ -50,11 +47,8 @@ var gameMod = (function(){
                     var objDeltaY = Math.sin(obj.radian) * obj.pps * secs;
                     obj.x += objDeltaX;
                     obj.y += objDeltaY;
-
                     // data object for 'block'
                     obj.data.dist = utils.distance(obj.x, obj.y, state.game.ship.x, state.game.ship.y);
-
-
                     // become inactive if
                     // block hits ship
                     if(obj.data.dist <= game.ship.r + obj.r){
@@ -74,17 +68,12 @@ var gameMod = (function(){
                 maxPPS: 256
             }
         };
-        game.blocks.objects[3].active = true;
-        game.blocks.objects[1].active = true;
-        console.log( poolMod.getAllActive(game.blocks) );
         return game;
     };
 
     // set map movment values and wrap or clamp anything that might go out of range
     api.setMapMovement = function(game, degree, pps){
-
         game.map.radian = utils.wrapRadian(Math.PI / 180 * degree);
-
         // clamp PPS
         game.map.pps = pps;
         game.map.pps = game.map.pps < 0 ? 0 : game.map.pps;
@@ -100,7 +89,6 @@ var gameMod = (function(){
 
     api.updateBlocks = function(game, secs, state){
         poolMod.update(game.blocks, secs, state);
-
         poolMod.spawn(game.blocks, state, {});
     };
 
