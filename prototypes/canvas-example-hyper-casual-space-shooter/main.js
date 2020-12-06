@@ -38,7 +38,7 @@ var loop = function () {
     if (t >= FPS_target) {
 
         gameMod.updateMap(game, secs);
-        gameMod.updateBlocks(game, secs);
+        gameMod.updateBlocks(game, secs, state);
 
         var input = state.input;
         if(input.keys.a){

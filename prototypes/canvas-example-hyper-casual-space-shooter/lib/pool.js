@@ -92,16 +92,16 @@ var poolMod = (function () {
     };
     // check bounds for the given display object and canvas and return true if the object
     // is out of bounds and false if it is not.
-    api.checkBounds = function (obj, canvas) {
-        if (obj.x >= canvas.width || obj.x < obj.w * -1 || obj.y > canvas.height || obj.y < obj.h * -1) {
-            return false;
-        }
-        return true;
-    };
+    //api.checkBounds = function (obj, canvas) {
+    //    if (obj.x >= canvas.width || obj.x < obj.w * -1 || obj.y > canvas.height || obj.y < obj.h * -1) {
+    //        return false;
+    //    }
+    //    return true;
+    //};
     // bounding box
-    api.boundingBox = function (a, b) {
-        return utils.boundingBox(a.x, a.y, a.w, a.h, b.x, b.y, b.w, b.h);
-    };
+    //api.boundingBox = function (a, b) {
+    //    return utils.boundingBox(a.x, a.y, a.w, a.h, b.x, b.y, b.w, b.h);
+    //};
     // return public method
     return api;
 }

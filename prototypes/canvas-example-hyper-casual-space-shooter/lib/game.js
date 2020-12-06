@@ -9,7 +9,12 @@ var gameMod = (function(){
                 y: 0,
                 r: 8
             },
-            blocks: poolMod.create(),
+            blocks: poolMod.create({
+                spawn: function(obj, pool, state, opt){
+                    obj.x = state.canvas.width;
+                    //console.log(state);
+                }
+            }),
             map: { // map position
                 x: 0,
                 y: 0,
@@ -40,8 +45,10 @@ var gameMod = (function(){
         game.map.y += Math.sin(game.map.radian) * game.map.pps * secs;
     };
 
-    api.updateBlocks = function(game, secs){
-        poolMod.update(game.blocks, secs, game);
+    api.updateBlocks = function(game, secs, state){
+        poolMod.update(game.blocks, secs, state);
+
+        poolMod.spawn(game.blocks, state, {});
     };
 
     // return the Public API
