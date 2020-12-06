@@ -1,15 +1,32 @@
 # canvas-example-hyper-casual-space-shooter
 
 ## 0.x.0 - Improved 'block' positioning
+* work out system so that blocks will not overlap when spawning
 
 ## 0.x.0 - mouse events
 * add mouse event support
-* move the map around with the mouse by clicking and holding in a circle
-* have a bar on the side that will control speed
+* have a set of two circles in the lower right corner that will be a 'pointerControl' area
+* move the map around with the mouse by clicking and holding in the 'pointerControl' area
+* the smaller inner circle in the 'pointerControl' area sill set the current map.radian and map.pps values
+* The angle of the inner cirle to the center of the circle will be used to set map.radian
+* the distance of the inner circle from the center to the outer circle will be used to set map.pps
+* The actual distnace used will be from a certain min radius from the center so that it is easy to each and stay at 0 pps
+
+## 0.x.0 - block Hit Points
+* have a data.hp object for each block
+* a data.hp.current value will be the current hit point value for the block
+* a data.hp.max value will be the max amount of hit points for that block
+* a data.hp.per value that is the percent value of hp.current / hp.max
+* draw.blocks will display a hp bar for each block
+* have a shot.damage property
+* when a shot hits a block it will deduct shot.damage from hp.current
+* if block hp.current <= 0 then it will go inactive
 
 ## 0.3.0 - shots
-* auto fire shots from the ship
+* new 'shots' object pool in game
+* auto fire shots from the ship (for now)
 * when a single shot hits a block it will become inactive ( for now )
+* make a pkg-0-3-0.html
 
 ## 0.2.0 - Object pool lib, and blocks
 * (done) add an object pool lib to the project
@@ -19,9 +36,8 @@
 * (done) blocks will spawn in front of ship
 * (done) block will become inactive if the distance to the ship goes over a sit limit such as 1000
 * (done) block will become inactive if the ship hits it ( for now )
-* work out system so that blocks will not overlap when spawning
-* MAX_BLOCKS constant in game.js
-* make a pkg-0-2-0.html
+* (done) MAX_BLOCKS constant in game.js
+* (done) make a pkg-0-2-0.html
 
 ## 0.1.0 - keyboard events
 * (done) add keyboard even support in main.js
