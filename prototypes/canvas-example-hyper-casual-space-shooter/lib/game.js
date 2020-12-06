@@ -1,10 +1,12 @@
 var gameMod = (function(){
     
-    var BLOCK_POS_MIN_DIST = 100,
+    var BLOCK_COUNT = 10,
+    BLOCK_POS_MIN_DIST = 100,
     BLOCK_POS_MAX_DIST = 150;
  
 
     var api = {};
+
 
     var positionBlock = function(state, obj){
         var game = state.game,
@@ -17,15 +19,19 @@ var gameMod = (function(){
     };
 
 
+
     api.create = function(){
-        return {
+        var game = {
             ship: { 
                 x: 0, // ship position relative to map position
                 y: 0,
                 r: 8
             },
             blocks: poolMod.create({
-                count: 20,
+                data: {
+                   posAreas: []
+                },
+                count: BLOCK_COUNT,
                 spawn: function(obj, pool, state, opt){
                     var game = state.game;
 
@@ -71,6 +77,10 @@ var gameMod = (function(){
                 maxPPS: 256
             }
         };
+        game.blocks.objects[3].active = true;
+        game.blocks.objects[1].active = true;
+        console.log( poolMod.getAllActive(game.blocks) );
+        return game;
     };
 
     // set map movment values and wrap or clamp anything that might go out of range

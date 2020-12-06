@@ -75,7 +75,18 @@ var poolMod = (function () {
             }
         }
     };
+
+    api.getAllActive = function(pool, activeState){
+        activeState = activeState === undefined ? true : activeState;
+        return pool.objects.filter(function(object){
+            return object.active === activeState;
+        });
+    };
+
+
+
     // set all to inActive or active state
+/*
     api.setActiveStateForAll = function (pool, bool) {
         bool = bool === undefined ? false : bool;
         var i = pool.objects.length,
@@ -85,24 +96,8 @@ var poolMod = (function () {
             obj.active = bool;
         }
     };
-    // move the given object by its current heading and pps
-    api.moveByPPS = function (obj, secs) {
-        obj.x += Math.cos(obj.heading) * obj.pps * secs;
-        obj.y += Math.sin(obj.heading) * obj.pps * secs;
-    };
-    // check bounds for the given display object and canvas and return true if the object
-    // is out of bounds and false if it is not.
-    //api.checkBounds = function (obj, canvas) {
-    //    if (obj.x >= canvas.width || obj.x < obj.w * -1 || obj.y > canvas.height || obj.y < obj.h * -1) {
-    //        return false;
-    //    }
-    //    return true;
-    //};
-    // bounding box
-    //api.boundingBox = function (a, b) {
-    //    return utils.boundingBox(a.x, a.y, a.w, a.h, b.x, b.y, b.w, b.h);
-    //};
-    // return public method
+*/
+
     return api;
 }
     ());
