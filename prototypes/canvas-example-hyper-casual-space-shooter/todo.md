@@ -23,10 +23,11 @@
 * if block hp.current <= 0 then it will go inactive
 
 ## 0.3.0 - shots
-* new 'shots' object pool in game
+* (done) new 'shots' object pool in game
+* shots start at the ship location
+* new draw.shots method
 * auto fire shots from the ship (for now)
 * when a single shot hits a block it will become inactive ( for now )
-* new draw.shots method
 * make a pkg-0-3-0.html
 
 ## 0.2.0 - Object pool lib, and blocks
