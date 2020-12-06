@@ -15,8 +15,10 @@
 * (done) draw.blocks method
 * (done) blocks will become active at random locations around the ship
 * (done) blocks will spawn in front of ship
-* block will become inactive if the distance to the ship goes over a sit limit such as 1000
-* block will become inactive if the ship hits it ( for now )
+* (done) block will become inactive if the distance to the ship goes over a sit limit such as 1000
+* (done) block will become inactive if the ship hits it ( for now )
+* work out system so that blocks will not overlap when spawning
+* MAX_BLOCKS constant in game.js
 * make a pkg-0-2-0.html
 
 ## 0.1.0 - keyboard events

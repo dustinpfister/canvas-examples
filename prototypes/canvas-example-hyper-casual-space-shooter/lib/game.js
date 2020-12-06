@@ -1,6 +1,7 @@
 var gameMod = (function(){
     
-    var BLOCK_MAX_DIST = 320;
+    var BLOCK_POS_MIN_DIST = 100,
+    BLOCK_POS_MAX_DIST = 150;
  
 
     var api = {};
@@ -9,14 +10,14 @@ var gameMod = (function(){
         var game = state.game,
         map = game.map,
         rDelta = Math.PI / 180 * 45,
-        dist = 160 + 100 * Math.random();
+        dist = BLOCK_POS_MIN_DIST + (BLOCK_POS_MAX_DIST - BLOCK_POS_MIN_DIST) * Math.random();
         var a = utils.wrapRadian(map.radian - rDelta + ( rDelta * 2 ) * Math.random()); //Math.PI * 2 * Math.random();
         obj.x = game.ship.x + Math.cos(a) * dist;
         obj.y = game.ship.y + Math.sin(a) * dist;
     };
 
 
-    api.create = function(plugObj){
+    api.create = function(){
         return {
             ship: { 
                 x: 0, // ship position relative to map position
@@ -24,6 +25,7 @@ var gameMod = (function(){
                 r: 8
             },
             blocks: poolMod.create({
+                count: 20,
                 spawn: function(obj, pool, state, opt){
                     var game = state.game;
 
@@ -56,7 +58,7 @@ var gameMod = (function(){
                         obj.lifespan = 0;
                     }
                     // block goes out of range
-                    if(obj.data.dist >= BLOCK_MAX_DIST){
+                    if(obj.data.dist >= BLOCK_POS_MAX_DIST){
                         obj.lifespan = 0;
                     }
                 }
