@@ -1,5 +1,16 @@
 var draw = (function(){
 
+    var baseObjectDraw = function(){
+        ctx.save();
+        ctx.translate(160, 120);
+        ctx.fillStyle='gray';
+        ctx.beginPath();
+        ctx.lineWidth = 3;
+        ctx.arc(block.x, block.y, block.r, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.restore();
+    };
+
     return {
         // draw background
         background: function (ctx, canvas) {
@@ -8,8 +19,8 @@ var draw = (function(){
         },
         blocks: function(ctx, state){
             var game = state.game;
-            ctx.save();
-            ctx.translate(160, 120);
+            //ctx.save();
+            //ctx.translate(160, 120);
             state.game.blocks.objects.forEach(function(block){
                 if(block.active){
                     ctx.fillStyle='gray';
@@ -23,7 +34,7 @@ var draw = (function(){
                     ctx.fillText(Math.floor(block.data.dist), block.x, block.y);
                 }
             });
-            ctx.restore();
+            //ctx.restore();
         },
         ship: function(ctx, state){
             var game = state.game;
