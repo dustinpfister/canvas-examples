@@ -25,7 +25,15 @@ var gameMod = (function(){
                 y: 0,
                 r: 8
             },
-            shots: poolMod.create({}),
+            shots: poolMod.create({
+                fillStyle: 'red',
+                r: 2,
+                spawn: function(obj, pool, state, opt){
+                    obj.x = 0;
+                    obj.y = 0;
+                    obj.lifespan = 3;
+                }
+            }),
             blocks: poolMod.create({
                 data: {},
                 fillStyle: 'green',
@@ -91,6 +99,11 @@ var gameMod = (function(){
     api.updateBlocks = function(game, secs, state){
         poolMod.update(game.blocks, secs, state);
         poolMod.spawn(game.blocks, state, {});
+    };
+
+    api.updateShots = function(game, secs, state){
+        poolMod.update(game.shots, secs, state);
+        poolMod.spawn(game.shots, state, {});
     };
 
     // return the Public API

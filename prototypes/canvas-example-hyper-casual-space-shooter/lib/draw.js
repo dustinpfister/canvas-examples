@@ -20,15 +20,14 @@ var draw = (function(){
             ctx.fillStyle = 'black';
             ctx.fillRect(0, 0, canvas.width, canvas.height);
         },
-        shots: function(){
+        shots: function(ctx, state){
            var game = state.game;
-            state.game.blocks.objects.forEach(function(block){
-                if(block.active){
-                    baseObjectDraw(ctx, block, function(ctx, block){
+            state.game.shots.objects.forEach(function(shot){
+                if(shot.active){
+                    baseObjectDraw(ctx, shot, function(ctx, shot){
                         ctx.fillStyle = 'yellow';
                         ctx.textBaseline = 'middle';
                         ctx.textAlign = 'center';
-                        ctx.fillText(Math.floor(block.data.dist), block.x, block.y);
                     });
                 }
             });

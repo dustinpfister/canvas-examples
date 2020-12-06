@@ -60,11 +60,14 @@ var loop = function () {
 
         gameMod.updateMap(game, secs);
         gameMod.updateBlocks(game, secs, state);
+        gameMod.updateShots(game, secs, state);
+
 
         draw.background(state.ctx, state.canvas);
         draw.gridLines(state.ctx, state, 'rgba(255,255,255,0.1)');
         draw.blocks(state.ctx, state);
         draw.ship(state.ctx, state);
+        draw.shots(state.ctx, state);
         draw.info(state.ctx, state);
         draw.ver(state.ctx, state);
         lt = now;
