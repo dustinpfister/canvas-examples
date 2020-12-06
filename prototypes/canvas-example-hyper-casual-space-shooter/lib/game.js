@@ -2,6 +2,12 @@ var gameMod = (function(){
     
     var api = {};
 
+    var positionBlock = function(state, obj){
+        var a = Math.PI * 2 * Math.random();
+        obj.x = state.game.ship.x + Math.cos(a) * 100;
+        obj.y = state.game.ship.y + Math.sin(a) * 100;
+    };
+
 
     api.create = function(plugObj){
         return {
@@ -13,24 +19,18 @@ var gameMod = (function(){
             blocks: poolMod.create({
                 spawn: function(obj, pool, state, opt){
                     var game = state.game;
-                    //obj.x = state.canvas.width;
-                    //console.log(state);
 
-                    var a = Math.PI * 2 * Math.random();
-                    obj.x = state.game.ship.x + Math.cos(a) * 100;
-                    obj.y = state.game.ship.y + Math.sin(a) * 100;
 
-                    //obj.radian = Math.PI * 1; //Math.PI / 180 * 90 * -1;
-                    //obj.radian = Math.PI / 180 * 180;
+                    // set starting position of block
+                    positionBlock(state, obj);
  
                     obj.radian = utils.wrapRadian(game.map.radian + Math.PI);
                     obj.pps = game.map.pps;
-
-                    obj.lifespan = 5;
+                    obj.lifespan = 1;
 
                 },
                 update: function(obj, pool, state, secs){
-                    //obj.lifespan = 1;
+                    obj.lifespan = 1;
                     var map = state.game.map;
                     //var mapDeltaX = Math.cos(map.radian) * (map.pps * 1) * secs;
                     //var mapDeltaY = Math.sin(map.radian) * (map.pps * 1) * secs;

@@ -14,8 +14,9 @@
 * (done) add a 'blocks' pool to game object
 * (done) draw.blocks method
 * (done) blocks will become active at random locations around the ship
-* blocks will move from one point to another along an outer radius around the ship
+* blocks will spawn in front of ship
 * if the ship hits a block the block will become inactive ( for now )
+* make a pkg-0-2-0.html
 
 ## 0.1.0 - keyboard events
 * (done) add keyboard even support in main.js
