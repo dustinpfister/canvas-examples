@@ -39,22 +39,21 @@ var gameMod = (function(){
 
                     obj.lifespan = 3;
                 },
-                update: function(obj, pool, state, secs){
-                    var objDeltaX = Math.cos(obj.radian) * obj.pps * secs;
-                    var objDeltaY = Math.sin(obj.radian) * obj.pps * secs;
-                    obj.x += objDeltaX;
-                    obj.y += objDeltaY;
-
-var blocks = poolMod.getAllActive(state.game.blocks, true);
-blocks.forEach(function(block){
-    var dist = utils.distance(obj.x, obj.y, block.x, block.y);
-                    if(dist <= block.r + obj.r){
-                        obj.lifespan = 0;
-                        block.lifespan = 0;
-                        block.active = false;
-                    }
-});
-
+                update: function(shot, pool, state, secs){
+                    var objDeltaX = Math.cos(shot.radian) * shot.pps * secs;
+                    var objDeltaY = Math.sin(shot.radian) * shot.pps * secs;
+                    shot.x += objDeltaX;
+                    shot.y += objDeltaY;
+                    // check if the shot has hit an active block
+                    var blocks = poolMod.getAllActive(state.game.blocks, true);
+                    blocks.forEach(function(block){
+                        var dist = utils.distance(shot.x, shot.y, block.x, block.y);
+                        if(dist <= block.r + shot.r){
+                            shot.lifespan = 0;
+                            block.lifespan = 0;
+                            block.active = false;
+                        }
+                    });
                 }
             }),
             blocks: poolMod.create({
