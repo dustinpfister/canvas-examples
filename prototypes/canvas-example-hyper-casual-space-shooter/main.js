@@ -37,8 +37,6 @@ var loop = function () {
     requestAnimationFrame(loop);
     if (t >= FPS_target) {
 
-        gameMod.updateMap(game, secs);
-        gameMod.updateBlocks(game, secs, state);
 
         var input = state.input;
         if(input.keys.a){
@@ -58,6 +56,10 @@ var loop = function () {
         }
         input.degree = utils.mod(input.degree, 360);
         gameMod.setMapMovement(game, input.degree, input.pps);
+
+
+        gameMod.updateMap(game, secs);
+        gameMod.updateBlocks(game, secs, state);
 
         draw.background(state.ctx, state.canvas);
         draw.gridLines(state.ctx, state, 'rgba(255,255,255,0.1)');
