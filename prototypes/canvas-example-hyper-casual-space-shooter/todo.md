@@ -28,7 +28,11 @@
 * (done) shots start at the ship location
 * (done) new draw.shots method
 * (done) auto fire shots from the ship (for now)
-* when a single shot hits a block it will become inactive ( for now )
+* (done) when a single shot hits a block it will become inactive ( for now )
+* ship.weapon property that will be reference to the current weapon object
+* just one weapon object (for now)
+* weapon object should have a firesPerSecond, and shotsPerFile properties
+* first weapon might be something like 4 firesPerSecond and 1 shotsPerFile
 * use new draw base object helper for draw.ship
 * make a pkg-0-3-0.html
 
