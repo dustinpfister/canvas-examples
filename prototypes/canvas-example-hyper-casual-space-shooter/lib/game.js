@@ -2,6 +2,12 @@ var gameMod = (function(){
     
     var api = {};
 
+
+    var wrapRadian = function(radian){
+        return utils.mod(radian, Math.PI * 2);
+    };
+
+
     api.create = function(plugObj){
         return {
             ship: { 
@@ -22,7 +28,7 @@ var gameMod = (function(){
                     //obj.radian = Math.PI * 1; //Math.PI / 180 * 90 * -1;
                     //obj.radian = Math.PI / 180 * 180;
  
-                    obj.radian = game.map.radian + Math.PI;
+                    obj.radian = wrapRadian(game.map.radian + Math.PI);
                     obj.pps = 16;
 
                     obj.lifespan = 5;
@@ -55,13 +61,9 @@ var gameMod = (function(){
 
     // set map movment values and wrap or clamp anything that might go out of range
     api.setMapMovement = function(game, degree, pps){
-        game.map.radian = Math.PI / 180 * degree;
-        //game.map.radian = Math.PI * 1;
-        //game.map.radian = Math.PI / 180 * 90;
-        // wrap radian
-        if(game.map.radian >= Math.PI * 2 || game.map.radian < 0){
-            game.map.radian = utils.mod(game.map.radian , Math.PI * 2);
-        }
+
+        game.map.radian = wrapRadian(Math.PI / 180 * degree);
+
         // clamp PPS
         game.map.pps = pps;
         game.map.pps = game.map.pps < 0 ? 0 : game.map.pps;
