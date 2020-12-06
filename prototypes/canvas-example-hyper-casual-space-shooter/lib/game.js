@@ -37,6 +37,7 @@ var gameMod = (function(){
                 },
                 update: function(obj, pool, state, secs){
                     obj.lifespan = 1;
+                    var game = state.game;
                     var map = state.game.map;
                     obj.radian = utils.wrapRadian(state.game.map.radian + Math.PI);
                     obj.pps = state.game.map.pps;
@@ -45,7 +46,14 @@ var gameMod = (function(){
                     obj.x += objDeltaX;
                     obj.y += objDeltaY;
 
+                    // data object for 'block'
                     obj.data.dist = utils.distance(obj.x, obj.y, state.game.ship.x, state.game.ship.y);
+
+
+                    // become inactive if
+                    if(obj.data.dist <= game.ship.r + obj.r){
+                        obj.lifespan = 0;
+                    }
                 }
             }),
             map: { // map position
