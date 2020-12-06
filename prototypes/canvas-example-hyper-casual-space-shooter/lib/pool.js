@@ -34,7 +34,7 @@ var poolMod = (function () {
                 r: opt.r === undefined ? 16 : opt.r,
                 //w: opt.w === undefined ? 32 : opt.w,
                 //h: opt.h === undefined ? 32 : opt.h,
-                heading: opt.heading === undefined ? 0 : opt.heading,
+                radian: opt.radian === undefined ? 0 : opt.radian,
                 pps: opt.pps === undefined ? 32 : opt.pps,
                 lifespan: opt.lifespan || 3,
                 data: {}
