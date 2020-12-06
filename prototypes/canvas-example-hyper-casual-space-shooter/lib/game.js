@@ -28,6 +28,7 @@ var gameMod = (function(){
             shots: poolMod.create({}),
             blocks: poolMod.create({
                 data: {},
+                fillStyle: 'green',
                 count: BLOCK_COUNT,
                 spawn: function(obj, pool, state, opt){
                     var game = state.game;
