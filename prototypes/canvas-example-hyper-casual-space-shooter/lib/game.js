@@ -24,7 +24,7 @@ var gameMod = (function(){
                     //obj.radian = Math.PI / 180 * 180;
  
                     obj.radian = utils.wrapRadian(game.map.radian + Math.PI);
-                    obj.pps = 16;
+                    obj.pps = game.map.pps;
 
                     obj.lifespan = 5;
 
@@ -35,6 +35,7 @@ var gameMod = (function(){
                     //var mapDeltaX = Math.cos(map.radian) * (map.pps * 1) * secs;
                     //var mapDeltaY = Math.sin(map.radian) * (map.pps * 1) * secs;
                     obj.radian = utils.wrapRadian(state.game.map.radian + Math.PI);
+                    obj.pps = state.game.map.pps;
                     var objDeltaX = Math.cos(obj.radian) * obj.pps * secs;
                     var objDeltaY = Math.sin(obj.radian) * obj.pps * secs;
                     //obj.x += mapDeltaX + objDeltaX;
