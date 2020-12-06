@@ -1,6 +1,6 @@
 var gameMod = (function(){
     
-    var BLOCK_COUNT = 30,
+    var BLOCK_COUNT = 20,
     BLOCK_POS_MIN_DIST = 220,
     BLOCK_POS_MAX_DIST = 360,
     BLOCK_POS_ADELTA = 45;    // the max DEGREE left or right from current map angle
@@ -44,6 +44,17 @@ var gameMod = (function(){
                     var objDeltaY = Math.sin(obj.radian) * obj.pps * secs;
                     obj.x += objDeltaX;
                     obj.y += objDeltaY;
+
+var blocks = poolMod.getAllActive(state.game.blocks, true);
+blocks.forEach(function(block){
+    var dist = utils.distance(obj.x, obj.y, block.x, block.y);
+                    if(dist <= block.r + obj.r){
+                        obj.lifespan = 0;
+                        block.lifespan = 0;
+                        block.active = false;
+                    }
+});
+
                 }
             }),
             blocks: poolMod.create({

@@ -27,7 +27,7 @@
 * (done) ne draw base object helper
 * (done) shots start at the ship location
 * (done) new draw.shots method
-* auto fire shots from the ship (for now)
+* (done) auto fire shots from the ship (for now)
 * when a single shot hits a block it will become inactive ( for now )
 * use new draw base object helper for draw.ship
 * make a pkg-0-3-0.html
