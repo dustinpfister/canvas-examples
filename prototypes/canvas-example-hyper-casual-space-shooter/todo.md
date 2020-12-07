@@ -33,8 +33,17 @@
 * in gameMod.create create a deep clone off the DEFAULT_WEAPONS object as game.weapons
 
 ## 0.x.0 - AutoHeal
+* have a hp.autoHealRate, hp.autoHealSecs, and hp.autoHealAmount properties
 
 ## 0.x.0 - Common Health System and Ship Hit Points
+* have a createHPObject helper
+* have a attackObject helper that will deduct HP from from a given object with given damage
+* attackObject method will update hp.per as well as hp.current
+* attackObject method will clamp hp.current
+* use new HP methods with the blocks
+* use new HP Methods with the ship
+* have blocks attack ship when the ship hits a block
+* have ship respawn at 0,0 when deal
 
 ## 0.4.0 - block Hit Points
 * (done) have a data.hp object for each block
