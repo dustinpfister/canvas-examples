@@ -37,7 +37,7 @@
 * (done) just one weapon object (for now)
 * (done) weapon object should have a firesPerSecond, and shotsPerFile properties
 * (done) first weapon might be something like 4 firesPerSecond and 1 shotsPerFile
-* use new draw base object helper for draw.ship
+* (done) use new draw base object helper for draw.ship
 * make a pkg-0-3-0.html
 
 ## 0.2.0 - Object pool lib, and blocks
