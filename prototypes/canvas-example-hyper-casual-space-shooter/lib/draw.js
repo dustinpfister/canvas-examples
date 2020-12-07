@@ -20,10 +20,12 @@ var draw = (function(){
         ctx.save();
         ctx.translate(160, 120);
         ctx.fillStyle= obj.fillStyle || 'gray';
+        ctx.strokeStyle= obj.strokeStyle || 'white';
         ctx.beginPath();
-        ctx.lineWidth = 3;
+        ctx.lineWidth = 1;
         ctx.arc(obj.x, obj.y, obj.r, 0, Math.PI * 2);
         ctx.fill();
+        ctx.stroke();
         if(render){
             render(ctx, obj);
         }
@@ -77,6 +79,7 @@ var draw = (function(){
                     game.ship.y + Math.sin(radian) * game.ship.r
                 );
                 ctx.lineTo(game.ship.x, game.ship.y);
+                ctx.lineWidth = 3;
                 ctx.stroke();
             });
 

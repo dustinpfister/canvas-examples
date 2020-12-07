@@ -27,13 +27,13 @@ var gameMod = (function(){
                 fillStyle: 'blue',
                 weaponSecs: 0,
                 weapon: {
-                    firesPerSecond: 8,
+                    firesPerSecond: 4,
                     shotsPerFire: 1,
-                    shotDamage: 4
+                    shotDamage: 2
                 }
             },
             shots: poolMod.create({
-                count: 32,
+                count: 60,
                 fillStyle: 'red',
                 r: 2,
                 spawn: function(obj, pool, state, opt){
@@ -73,7 +73,7 @@ var gameMod = (function(){
             }),
             blocks: poolMod.create({
                 data: {},
-                fillStyle: 'green',
+                fillStyle: '#1a1a1a',
                 count: BLOCK_COUNT,
                 spawn: function(obj, pool, state, opt){
                     var game = state.game;

@@ -37,14 +37,14 @@
 ## 0.x.0 - Common Health System and Ship Hit Points
 
 ## 0.4.0 - block Hit Points
-* have a data.hp object for each block
-* a data.hp.current value will be the current hit point value for the block
-* a data.hp.max value will be the max amount of hit points for that block
-* a data.hp.per value that is the percent value of hp.current / hp.max
-* draw.blocks will display a hp bar for each block
-* have a shot.damage property
-* when a shot hits a block it will deduct shot.damage from hp.current
-* if block hp.current <= 0 then it will go inactive
+* (done) have a data.hp object for each block
+* (done) a data.hp.current value will be the current hit point value for the block
+* (done) a data.hp.max value will be the max amount of hit points for that block
+* (done) a data.hp.per value that is the percent value of hp.current / hp.max
+* (done) draw.blocks will display a hp bar for each block
+* (done) have a shot.damage property
+* (done) when a shot hits a block it will deduct shot.damage from hp.current
+* (done) if block hp.current <= 0 then it will go inactive
 * make a pkg-0-4-0.html
 
 ## 0.3.0 - shots
