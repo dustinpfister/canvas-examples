@@ -1,13 +1,8 @@
 # canvas-example-hyper-casual-space-shooter
 
-## 0.x.0 - Weapons Object
-* Have a DEFAULT_WEAPONS Object in game.js that will contain objects with hard coded stats for each Weapon in the game
-* in gameMod.create create a deep clone off the DEFAULT_WEAPONS object as game.weapons
+<!-- ADDITIONAL FIXES AND FEATURES ONCE I HAVE THE CORE OF WHAT THE GAME IS DONE -->
 
-## 0.x.0 - Improved 'block' positioning
-* work out system so that blocks will not overlap when spawning
-
-## 0.x.0 - mouse events
+## 0.x.0 - mouse and touch support
 * add mouse event support
 * have a set of two circles in the lower right corner that will be a 'pointerControl' area
 * move the map around with the mouse by clicking and holding in the 'pointerControl' area
@@ -16,7 +11,32 @@
 * the distance of the inner circle from the center to the outer circle will be used to set map.pps
 * The actual distnace used will be from a certain min radius from the center so that it is easy to each and stay at 0 pps
 
-## 0.x.0 - block Hit Points
+## 0.x.0 - Common System for Object Movement
+* have a commom system for movement of objects
+* use the same commom system for 'shots', 'blocks', and any additional objects
+
+## 0.x.0 - Improved 'block' positioning
+* work out system so that blocks will not overlap when spawning
+
+<!-- WORK OUT THE CORE OF WHAT THE GAME IS FIRST -->
+
+## 0.x.0 - map.dist, map.per, and MAP\_MAX\_DIST
+* have a map.dist property that is the distance from (map.x, map.y) to (0,0)
+* have a MAP\_MAX\_DIST property that is the max distnace that the ship can go from (0,0)
+* have a map.per property that is map.dist / MAP\_MAX\_DIST
+* have the map.x, and map.y values wrap when they go out of bounds
+* set MAP MAX DIST to a low value of say around 10,000 (for now)
+* in draw.js have map.dist effect just the background color (for now)
+
+## 0.x.0 - Weapons Object
+* Have a DEFAULT_WEAPONS Object in game.js that will contain objects with hard coded stats for each Weapon in the game
+* in gameMod.create create a deep clone off the DEFAULT_WEAPONS object as game.weapons
+
+## 0.x.0 - AutoHeal
+
+## 0.x.0 - Common Health System and Ship Hit Points
+
+## 0.4.0 - block Hit Points
 * have a data.hp object for each block
 * a data.hp.current value will be the current hit point value for the block
 * a data.hp.max value will be the max amount of hit points for that block
@@ -25,6 +45,7 @@
 * have a shot.damage property
 * when a shot hits a block it will deduct shot.damage from hp.current
 * if block hp.current <= 0 then it will go inactive
+* make a pkg-0-4-0.html
 
 ## 0.3.0 - shots
 * (done) new 'shots' object pool in game
@@ -38,7 +59,7 @@
 * (done) weapon object should have a firesPerSecond, and shotsPerFile properties
 * (done) first weapon might be something like 4 firesPerSecond and 1 shotsPerFile
 * (done) use new draw base object helper for draw.ship
-* make a pkg-0-3-0.html
+* (done) make a pkg-0-3-0.html
 
 ## 0.2.0 - Object pool lib, and blocks
 * (done) add an object pool lib to the project
