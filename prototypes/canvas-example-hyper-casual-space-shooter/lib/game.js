@@ -28,7 +28,8 @@ var gameMod = (function(){
                 weaponSecs: 0,
                 weapon: {
                     firesPerSecond: 8,
-                    shotsPerFire: 1
+                    shotsPerFire: 1,
+                    shotDamage: 4
                 }
             },
             shots: poolMod.create({
@@ -44,7 +45,8 @@ var gameMod = (function(){
                     obj.pps = 128;
                     obj.lifespan = 3;
 
-                    obj.damage = 4;
+                    var weapon = state.game.ship.weapon;
+                    obj.damage = weapon.shotDamage;
 
                 },
                 update: function(shot, pool, state, secs){
