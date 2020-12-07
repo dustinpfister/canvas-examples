@@ -24,6 +24,7 @@ var gameMod = (function(){
                 x: 0, // ship position relative to map position
                 y: 0,
                 r: 8,
+                fillStyle: 'blue',
                 weaponSecs: 0,
                 weapon: {
                     firesPerSecond: 2,

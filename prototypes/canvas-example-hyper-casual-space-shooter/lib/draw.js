@@ -1,5 +1,6 @@
 var draw = (function(){
 
+    // base draw object helper
     var baseObjectDraw = function(ctx, obj, render){
         ctx.save();
         ctx.translate(160, 120);
@@ -48,22 +49,19 @@ var draw = (function(){
         ship: function(ctx, state){
             var game = state.game;
             ctx.fillStyle = 'rgba(0,0,255,0.2)';
-            ctx.save();
-            ctx.translate(160, 120);
-            ctx.beginPath();
-            ctx.lineWidth = 3;
-            ctx.arc(game.ship.x, game.ship.y, game.ship.r, 0, Math.PI * 2);
-            ctx.fill();
-            ctx.strokeStyle = 'white';
-            var radian = game.map.radian;
-            ctx.beginPath();
-            ctx.moveTo(
-                game.ship.x + Math.cos(radian) * game.ship.r,
-                game.ship.y + Math.sin(radian) * game.ship.r
-            );
-            ctx.lineTo(game.ship.x, game.ship.y);
-            ctx.stroke();
-            ctx.restore();
+
+            baseObjectDraw(ctx, game.ship, function(){
+                var radian = game.map.radian;
+                ctx.strokeStyle = 'white';
+                ctx.beginPath();
+                ctx.moveTo(
+                    game.ship.x + Math.cos(radian) * game.ship.r,
+                    game.ship.y + Math.sin(radian) * game.ship.r
+                );
+                ctx.lineTo(game.ship.x, game.ship.y);
+                ctx.stroke();
+            });
+
         },
         gridLines : function (ctx, state, style) {
             var grid={
