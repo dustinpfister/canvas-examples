@@ -58,6 +58,7 @@ var gameMod = (function(){
                         if(dist <= block.r + shot.r){
                             shot.lifespan = 0;
                             block.hp.current -= 1;
+                            block.hp.per = block.hp.current / block.hp.max;
                             if(block.hp.current <= 0 ){
                                 block.lifespan = 0;
                                 block.active = false;

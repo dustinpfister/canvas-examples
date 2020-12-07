@@ -12,6 +12,8 @@ var draw = (function(){
         if(render){
             render(ctx, obj);
         }
+        if(obj.hp){
+        }
         ctx.restore();
     };
 
