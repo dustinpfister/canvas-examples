@@ -1,14 +1,18 @@
 var draw = (function(){
 
     var drawHealthBar = function(ctx, obj){
-            ctx.beginPath();
-            ctx.rect(obj.x - obj.r, obj.y + obj.r - 5, obj.r * 2, 5);
-            ctx.fillStyle="rgba(120,120,120,0.4)";
-            ctx.fill();
-            ctx.beginPath();
-            ctx.rect(obj.x - obj.r, obj.y + obj.r - 5, obj.r * 2 * obj.hp.per, 5);
-            ctx.fillStyle="rgba(0,255,0,0.4)";
-            ctx.fill();
+        if(obj.hp){
+            if(obj.hp.per < 1){
+                ctx.beginPath();
+                ctx.rect(obj.x - obj.r, obj.y + obj.r - 5, obj.r * 2, 5);
+                ctx.fillStyle="rgba(120,120,120,0.4)";
+                ctx.fill();
+                ctx.beginPath();
+                ctx.rect(obj.x - obj.r, obj.y + obj.r - 5, obj.r * 2 * obj.hp.per, 5);
+                ctx.fillStyle="rgba(0,255,0,0.4)";
+                ctx.fill();
+            }
+        }
     };
 
     // base draw object helper
