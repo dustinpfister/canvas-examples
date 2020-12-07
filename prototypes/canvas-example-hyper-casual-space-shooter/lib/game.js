@@ -89,7 +89,8 @@ var gameMod = (function(){
                     // become inactive if
                     // block hits ship
                     if(obj.data.dist <= game.ship.r + obj.r){
-                        obj.lifespan = 0;
+                        //obj.lifespan = 0;
+                        //map.radian += Math.PI;
                     }
                     // block goes out of range
                     if(obj.data.dist >= BLOCK_POS_MAX_DIST){
