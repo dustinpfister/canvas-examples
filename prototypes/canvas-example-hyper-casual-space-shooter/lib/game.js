@@ -42,8 +42,10 @@ var gameMod = (function(){
                     // shot radian should be set to current map radian
                     obj.radian = state.game.map.radian;
                     obj.pps = 128;
-
                     obj.lifespan = 3;
+
+                    obj.damage = 4;
+
                 },
                 update: function(shot, pool, state, secs){
                     var objDeltaX = Math.cos(shot.radian) * shot.pps * secs;
@@ -57,7 +59,7 @@ var gameMod = (function(){
                         // if a shot hits a block
                         if(dist <= block.r + shot.r){
                             shot.lifespan = 0;
-                            block.hp.current -= 1;
+                            block.hp.current -= shot.damage;
                             block.hp.per = block.hp.current / block.hp.max;
                             if(block.hp.current <= 0 ){
                                 block.lifespan = 0;
