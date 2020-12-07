@@ -1,5 +1,9 @@
 # canvas-example-hyper-casual-space-shooter
 
+## 0.x.0 - Weapons Object
+* Have a DEFAULT_WEAPONS Object in game.js that will contain objects with hard coded stats for each Weapon in the game
+* in gameMod.create create a deep clone off the DEFAULT_WEAPONS object as game.weapons
+
 ## 0.x.0 - Improved 'block' positioning
 * work out system so that blocks will not overlap when spawning
 
@@ -29,10 +33,10 @@
 * (done) new draw.shots method
 * (done) auto fire shots from the ship (for now)
 * (done) when a single shot hits a block it will become inactive ( for now )
-* ship.weapon property that will be reference to the current weapon object
-* just one weapon object (for now)
-* weapon object should have a firesPerSecond, and shotsPerFile properties
-* first weapon might be something like 4 firesPerSecond and 1 shotsPerFile
+* (done) ship.weapon property that will be reference to the current weapon object
+* (done) just one weapon object (for now)
+* (done) weapon object should have a firesPerSecond, and shotsPerFile properties
+* (done) first weapon might be something like 4 firesPerSecond and 1 shotsPerFile
 * use new draw base object helper for draw.ship
 * make a pkg-0-3-0.html
 
