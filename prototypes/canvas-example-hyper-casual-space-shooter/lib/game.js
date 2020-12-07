@@ -27,12 +27,12 @@ var gameMod = (function(){
                 fillStyle: 'blue',
                 weaponSecs: 0,
                 weapon: {
-                    firesPerSecond: 2,
+                    firesPerSecond: 8,
                     shotsPerFire: 1
                 }
             },
             shots: poolMod.create({
-                count: 16,
+                count: 32,
                 fillStyle: 'red',
                 r: 2,
                 spawn: function(obj, pool, state, opt){
@@ -41,7 +41,7 @@ var gameMod = (function(){
 
                     // shot radian should be set to current map radian
                     obj.radian = state.game.map.radian;
-                    obj.pps = 64;
+                    obj.pps = 128;
 
                     obj.lifespan = 3;
                 },
