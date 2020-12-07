@@ -54,10 +54,14 @@ var gameMod = (function(){
                     var blocks = poolMod.getAllActive(state.game.blocks, true);
                     blocks.forEach(function(block){
                         var dist = utils.distance(shot.x, shot.y, block.x, block.y);
+                        // if a shot hits a block
                         if(dist <= block.r + shot.r){
                             shot.lifespan = 0;
-                            block.lifespan = 0;
-                            block.active = false;
+                            block.hp.current -= 1;
+                            if(block.hp.current <= 0 ){
+                                block.lifespan = 0;
+                                block.active = false;
+                            }
                         }
                     });
                 }
@@ -73,6 +77,12 @@ var gameMod = (function(){
                     obj.radian = utils.wrapRadian(game.map.radian + Math.PI);
                     obj.pps = game.map.pps;
                     obj.lifespan = 1;
+
+                    obj.hp = {
+                        current: 10,
+                        max: 10,
+                        per: 1
+                    };
                 },
                 update: function(obj, pool, state, secs){
                     obj.lifespan = 1;
