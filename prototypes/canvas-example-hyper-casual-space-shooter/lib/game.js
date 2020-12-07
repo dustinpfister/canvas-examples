@@ -18,21 +18,9 @@ var gameMod = (function(){
         obj.y = game.ship.y + Math.sin(a) * dist;
     };
 
-    api.create = function(){
-        var game = {
-            ship: { 
-                x: 0, // ship position relative to map position
-                y: 0,
-                r: 8,
-                fillStyle: 'blue',
-                weaponSecs: 0,
-                weapon: {
-                    firesPerSecond: 4,
-                    shotsPerFire: 1,
-                    shotDamage: 2
-                }
-            },
-            shots: poolMod.create({
+    // create shots pool helper
+    var createShotsPool = function(){
+        return poolMod.create({
                 count: 60,
                 fillStyle: 'red',
                 r: 2,
@@ -70,7 +58,25 @@ var gameMod = (function(){
                         }
                     });
                 }
-            }),
+            })
+    };
+
+    // public create method
+    api.create = function(){
+        var game = {
+            ship: { 
+                x: 0, // ship position relative to map position
+                y: 0,
+                r: 8,
+                fillStyle: 'blue',
+                weaponSecs: 0,
+                weapon: {
+                    firesPerSecond: 4,
+                    shotsPerFire: 1,
+                    shotDamage: 2
+                }
+            },
+            shots: createShotsPool(),
             blocks: poolMod.create({
                 data: {},
                 fillStyle: '#1a1a1a',
