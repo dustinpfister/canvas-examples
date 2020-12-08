@@ -4,7 +4,7 @@ var gameMod = (function(){
     BLOCK_POS_MIN_DIST = 220,
     BLOCK_POS_MAX_DIST = 360,
     BLOCK_POS_ADELTA = 45,    // the max DEGREE left or right from current map angle
-    BLOCK_HP_MIN = 10;
+    BLOCK_HP_MIN = 100;
 
     var api = {};
 
@@ -91,6 +91,7 @@ var gameMod = (function(){
                 obj.pps = game.map.pps;
                 obj.lifespan = 1;
                 obj.hp = CreateHPObject(BLOCK_HP_MIN);
+                obj.damage = 1;
             },
             update: function(obj, pool, state, secs){
                 obj.lifespan = 1;
@@ -107,8 +108,8 @@ var gameMod = (function(){
                 // become inactive if
                 // block hits ship
                 if(obj.data.dist <= game.ship.r + obj.r){
-                    //obj.lifespan = 0;
-                    //map.radian += Math.PI;
+                    attackObject(game.ship, obj.damage);
+                    obj.lifespan = 0;
                 }
                 // block goes out of range
                 if(obj.data.dist >= BLOCK_POS_MAX_DIST){
@@ -144,8 +145,6 @@ var gameMod = (function(){
                 maxPPS: 256
             }
         };
-        // testing attack object method
-        attackObject(game.ship, 20);
         return game;
     };
 

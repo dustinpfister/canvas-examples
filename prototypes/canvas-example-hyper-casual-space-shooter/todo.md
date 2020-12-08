@@ -36,12 +36,12 @@
 * have a hp.autoHealRate, hp.autoHealSecs, and hp.autoHealAmount properties
 
 ## 0.5.0 - Common Health System and Ship Hit Points
-* have a createHPObject helper
-* have a attackObject helper that will deduct HP from from a given object with given damage
-* attackObject method will update hp.per as well as hp.current
-* attackObject method will clamp hp.current
-* use new HP methods with the blocks
-* use new HP Methods with the ship
+* (done) have a createHPObject helper
+* (done) have a attackObject helper that will deduct HP from from a given object with given damage
+* (done) attackObject method will update hp.per as well as hp.current
+* (done) attackObject method will clamp hp.current
+* (done) use new HP methods with the blocks
+* (done) use new HP Methods with the ship
 * have blocks attack ship when the ship hits a block
 * have ship respawn at 0,0 when deal
 
