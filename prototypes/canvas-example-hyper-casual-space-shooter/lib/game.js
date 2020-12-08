@@ -7,6 +7,15 @@ var gameMod = (function(){
 
     var api = {};
 
+    // HIT POINTS
+    var CreateHPObject = function(maxHP){
+        return {
+            current: maxHP || 100,
+            max: maxHP || 100,
+            per: 1
+        };
+    };
+
     // basic random positioning of blocks
     var positionBlock = function(state, obj){
         var game = state.game,
@@ -70,11 +79,7 @@ var gameMod = (function(){
                 obj.radian = utils.wrapRadian(game.map.radian + Math.PI);
                 obj.pps = game.map.pps;
                 obj.lifespan = 1;
-                obj.hp = {
-                    current: 10,
-                    max: 10,
-                    per: 1
-                };
+                obj.hp = CreateHPObject()
             },
             update: function(obj, pool, state, secs){
                 obj.lifespan = 1;
