@@ -27,15 +27,12 @@ var gameMod = (function(){
                 spawn: function(obj, pool, state, opt){
                     obj.x = 0;
                     obj.y = 0;
-
                     // shot radian should be set to current map radian
                     obj.radian = state.game.map.radian;
                     obj.pps = 128;
                     obj.lifespan = 3;
-
                     var weapon = state.game.ship.weapon;
                     obj.damage = weapon.shotDamage;
-
                 },
                 update: function(shot, pool, state, secs){
                     var objDeltaX = Math.cos(shot.radian) * shot.pps * secs;
@@ -58,7 +55,51 @@ var gameMod = (function(){
                         }
                     });
                 }
-            })
+            });
+    };
+
+    var createBlocksPool = function(){
+        return poolMod.create({
+            data: {},
+            fillStyle: '#1a1a1a',
+            count: BLOCK_COUNT,
+            spawn: function(obj, pool, state, opt){
+                var game = state.game;
+                // set starting position of block
+                positionBlock(state, obj);
+                obj.radian = utils.wrapRadian(game.map.radian + Math.PI);
+                obj.pps = game.map.pps;
+                obj.lifespan = 1;
+                obj.hp = {
+                    current: 10,
+                    max: 10,
+                    per: 1
+                };
+            },
+            update: function(obj, pool, state, secs){
+                obj.lifespan = 1;
+                var game = state.game;
+                var map = state.game.map;
+                obj.radian = utils.wrapRadian(state.game.map.radian + Math.PI);
+                obj.pps = state.game.map.pps;
+                var objDeltaX = Math.cos(obj.radian) * obj.pps * secs;
+                var objDeltaY = Math.sin(obj.radian) * obj.pps * secs;
+                obj.x += objDeltaX;
+                obj.y += objDeltaY;
+                // data object for 'block'
+                obj.data.dist = utils.distance(obj.x, obj.y, state.game.ship.x, state.game.ship.y);
+                // become inactive if
+                // block hits ship
+                if(obj.data.dist <= game.ship.r + obj.r){
+                    //obj.lifespan = 0;
+                    //map.radian += Math.PI;
+                }
+                // block goes out of range
+                if(obj.data.dist >= BLOCK_POS_MAX_DIST){
+                    obj.lifespan = 0;
+                }
+            }
+        });
     };
 
     // public create method
@@ -77,48 +118,7 @@ var gameMod = (function(){
                 }
             },
             shots: createShotsPool(),
-            blocks: poolMod.create({
-                data: {},
-                fillStyle: '#1a1a1a',
-                count: BLOCK_COUNT,
-                spawn: function(obj, pool, state, opt){
-                    var game = state.game;
-                    // set starting position of block
-                    positionBlock(state, obj);
-                    obj.radian = utils.wrapRadian(game.map.radian + Math.PI);
-                    obj.pps = game.map.pps;
-                    obj.lifespan = 1;
-
-                    obj.hp = {
-                        current: 10,
-                        max: 10,
-                        per: 1
-                    };
-                },
-                update: function(obj, pool, state, secs){
-                    obj.lifespan = 1;
-                    var game = state.game;
-                    var map = state.game.map;
-                    obj.radian = utils.wrapRadian(state.game.map.radian + Math.PI);
-                    obj.pps = state.game.map.pps;
-                    var objDeltaX = Math.cos(obj.radian) * obj.pps * secs;
-                    var objDeltaY = Math.sin(obj.radian) * obj.pps * secs;
-                    obj.x += objDeltaX;
-                    obj.y += objDeltaY;
-                    // data object for 'block'
-                    obj.data.dist = utils.distance(obj.x, obj.y, state.game.ship.x, state.game.ship.y);
-                    // become inactive if
-                    // block hits ship
-                    if(obj.data.dist <= game.ship.r + obj.r){
-                        //obj.lifespan = 0;
-                        //map.radian += Math.PI;
-                    }
-                    // block goes out of range
-                    if(obj.data.dist >= BLOCK_POS_MAX_DIST){
-                        obj.lifespan = 0;
-                    }
-                }
-            }),
+            blocks: createBlocksPool(),
             map: { // map position
                 x: 0,
                 y: 0,
