@@ -35,7 +35,7 @@
 ## 0.x.0 - AutoHeal
 * have a hp.autoHealRate, hp.autoHealSecs, and hp.autoHealAmount properties
 
-## 0.x.0 - Common Health System and Ship Hit Points
+## 0.5.0 - Common Health System and Ship Hit Points
 * have a createHPObject helper
 * have a attackObject helper that will deduct HP from from a given object with given damage
 * attackObject method will update hp.per as well as hp.current
