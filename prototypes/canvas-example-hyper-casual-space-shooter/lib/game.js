@@ -3,7 +3,8 @@ var gameMod = (function(){
     var BLOCK_COUNT = 20,
     BLOCK_POS_MIN_DIST = 220,
     BLOCK_POS_MAX_DIST = 360,
-    BLOCK_POS_ADELTA = 45;    // the max DEGREE left or right from current map angle
+    BLOCK_POS_ADELTA = 45,    // the max DEGREE left or right from current map angle
+    BLOCK_HP_MIN = 10;
 
     var api = {};
 
@@ -79,7 +80,7 @@ var gameMod = (function(){
                 obj.radian = utils.wrapRadian(game.map.radian + Math.PI);
                 obj.pps = game.map.pps;
                 obj.lifespan = 1;
-                obj.hp = CreateHPObject()
+                obj.hp = CreateHPObject(BLOCK_HP_MIN);
             },
             update: function(obj, pool, state, secs){
                 obj.lifespan = 1;
