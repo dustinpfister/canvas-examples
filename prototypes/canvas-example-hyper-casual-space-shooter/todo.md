@@ -54,7 +54,7 @@
 * (done) have a shot.damage property
 * (done) when a shot hits a block it will deduct shot.damage from hp.current
 * (done) if block hp.current <= 0 then it will go inactive
-* make a pkg-0-4-0.html
+* (done) make a pkg-0-4-0.html
 
 ## 0.3.0 - shots
 * (done) new 'shots' object pool in game
