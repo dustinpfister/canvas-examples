@@ -134,7 +134,8 @@ var gameMod = (function(){
                 maxPPS: 256
             }
         };
-        game.ship.hp = 10;
+        game.ship.hp.current = 25;
+        game.ship.hp.per = 0.25;
         return game;
     };
 
