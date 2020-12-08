@@ -17,6 +17,15 @@ var gameMod = (function(){
         };
     };
 
+    // attack the given object with the given amount of damage
+    var attackObject = function(obj, damage){
+        if(obj.hp){
+            obj.hp.current -= damage;
+            obj.hp.current = obj.hp.current < 0 ? 0 : obj.hp.current;
+            obj.hp.per = obj.hp.current / obj.hp.max;
+        }
+    };
+
     // basic random positioning of blocks
     var positionBlock = function(state, obj){
         var game = state.game,
@@ -134,8 +143,8 @@ var gameMod = (function(){
                 maxPPS: 256
             }
         };
-        game.ship.hp.current = 25;
-        game.ship.hp.per = 0.25;
+        // testing attack object method
+        attackObject(game.ship, 20);
         return game;
     };
 
