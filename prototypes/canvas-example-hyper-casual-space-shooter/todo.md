@@ -20,6 +20,9 @@
 
 <!-- WORK OUT THE CORE OF WHAT THE GAME IS FIRST -->
 
+## 0.x.0 - Ship death
+* have ship respawn at 0,0 when deal
+
 ## 0.x.0 - map.dist, map.per, and MAP\_MAX\_DIST
 * have a map.dist property that is the distance from (map.x, map.y) to (0,0)
 * have a MAP\_MAX\_DIST property that is the max distnace that the ship can go from (0,0)
@@ -42,8 +45,8 @@
 * (done) attackObject method will clamp hp.current
 * (done) use new HP methods with the blocks
 * (done) use new HP Methods with the ship
-* have blocks attack ship when the ship hits a block
-* have ship respawn at 0,0 when deal
+* (done) have blocks attack ship when the ship hits a block
+* make a pkg-0-5-0.html
 
 ## 0.4.0 - block Hit Points
 * (done) have a data.hp object for each block
