@@ -46,7 +46,7 @@
 * (done) use new HP methods with the blocks
 * (done) use new HP Methods with the ship
 * (done) have blocks attack ship when the ship hits a block
-* make a pkg-0-5-0.html
+* (done) make a pkg-0-5-0.html
 
 ## 0.4.0 - block Hit Points
 * (done) have a data.hp object for each block
