@@ -115,6 +115,7 @@ var gameMod = (function(){
                 x: 0, // ship position relative to map position
                 y: 0,
                 r: 8,
+                hp: CreateHPObject(100),
                 fillStyle: 'blue',
                 weaponSecs: 0,
                 weapon: {
@@ -133,6 +134,7 @@ var gameMod = (function(){
                 maxPPS: 256
             }
         };
+        game.ship.hp = 10;
         return game;
     };
 
