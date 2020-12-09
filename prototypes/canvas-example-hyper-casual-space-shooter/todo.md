@@ -31,7 +31,7 @@
 * have a hp.autoHealRate, hp.autoHealSecs, and hp.autoHealAmount properties
 
 ## 0.6.0 - map.dist, map.per, and MAP\_MAX\_DIST
-* have a map.dist property that is the distance from (map.x, map.y) to (0,0)
+* (done) have a map.dist property that is the distance from (map.x, map.y) to (0,0)
 * have a MAP\_MAX\_DIST property that is the max distnace that the ship can go from (0,0)
 * have a map.per property that is map.dist / MAP\_MAX\_DIST
 * have the map.x, and map.y values wrap when they go out of bounds

@@ -4,7 +4,8 @@ var gameMod = (function(){
     BLOCK_POS_MIN_DIST = 220,
     BLOCK_POS_MAX_DIST = 360,
     BLOCK_POS_ADELTA = 45,    // the max DEGREE left or right from current map angle
-    BLOCK_HP_MIN = 100;
+    BLOCK_HP_MIN = 100,
+    MAP_MAX_DIST = 1000;      // max distance from 0,0
 
     var api = {};
 
