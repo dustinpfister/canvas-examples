@@ -119,6 +119,7 @@ var draw = (function(){
             ctx.textAlign = 'left';
             ctx.fillText('map pos: ' + Math.floor(game.map.x) + ' , ' + Math.floor(game.map.y), 10, 10);
             ctx.fillText('map radian: ' + game.map.radian.toFixed(2) + '; map pps: ' + game.map.pps.toFixed(2), 10, 20);
+            ctx.fillText('map dist: ' + game.map.dist.toFixed(2), 10, 30);
         },
         ver: function(ctx, state){
             ctx.fillStyle = 'yellow';

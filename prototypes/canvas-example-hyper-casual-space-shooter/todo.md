@@ -37,6 +37,7 @@
 * have the map.x, and map.y values wrap when they go out of bounds
 * set MAP MAX DIST to a low value of say around 10,000 (for now)
 * in draw.js have map.dist effect just the background color (for now)
+* make a pkg-0-6-0.html
 
 ## 0.5.0 - Common Health System and Ship Hit Points
 * (done) have a createHPObject helper

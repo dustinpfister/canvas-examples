@@ -162,6 +162,7 @@ var gameMod = (function(){
     api.updateMap = function(game, secs){
         game.map.x += Math.cos(game.map.radian) * game.map.pps * secs;
         game.map.y += Math.sin(game.map.radian) * game.map.pps * secs;
+        game.map.dist = utils.distance(0, 0, game.map.x, game.map.y)
     };
 
     api.updateBlocks = function(game, secs, state){
