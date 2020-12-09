@@ -23,20 +23,20 @@
 ## 0.x.0 - Ship death
 * have ship respawn at 0,0 when deal
 
-## 0.x.0 - map.dist, map.per, and MAP\_MAX\_DIST
-* have a map.dist property that is the distance from (map.x, map.y) to (0,0)
-* have a MAP\_MAX\_DIST property that is the max distnace that the ship can go from (0,0)
-* have a map.per property that is map.dist / MAP\_MAX\_DIST
-* have the map.x, and map.y values wrap when they go out of bounds
-* set MAP MAX DIST to a low value of say around 10,000 (for now)
-* in draw.js have map.dist effect just the background color (for now)
-
 ## 0.x.0 - Weapons Object
 * Have a DEFAULT_WEAPONS Object in game.js that will contain objects with hard coded stats for each Weapon in the game
 * in gameMod.create create a deep clone off the DEFAULT_WEAPONS object as game.weapons
 
 ## 0.x.0 - AutoHeal
 * have a hp.autoHealRate, hp.autoHealSecs, and hp.autoHealAmount properties
+
+## 0.6.0 - map.dist, map.per, and MAP\_MAX\_DIST
+* have a map.dist property that is the distance from (map.x, map.y) to (0,0)
+* have a MAP\_MAX\_DIST property that is the max distnace that the ship can go from (0,0)
+* have a map.per property that is map.dist / MAP\_MAX\_DIST
+* have the map.x, and map.y values wrap when they go out of bounds
+* set MAP MAX DIST to a low value of say around 10,000 (for now)
+* in draw.js have map.dist effect just the background color (for now)
 
 ## 0.5.0 - Common Health System and Ship Hit Points
 * (done) have a createHPObject helper
