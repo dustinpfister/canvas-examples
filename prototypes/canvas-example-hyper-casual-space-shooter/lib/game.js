@@ -143,7 +143,9 @@ var gameMod = (function(){
                 y: 0,
                 radian: Math.PI / 180 * 45,
                 pps: 0,
-                maxPPS: 256
+                maxPPS: 256,
+                dist: 0,
+                per: 0
             }
         };
         return game;

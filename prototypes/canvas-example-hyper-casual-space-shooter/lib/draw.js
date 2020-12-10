@@ -112,14 +112,15 @@ var draw = (function(){
             ctx.restore();
         },
         info: function(ctx, state){
-            var game = state.game;
+            var game = state.game,
+            map = game.map;
             ctx.fillStyle = 'yellow';
             ctx.font = '10px arial';
             ctx.textBaseline = 'top';
             ctx.textAlign = 'left';
-            ctx.fillText('map pos: ' + Math.floor(game.map.x) + ' , ' + Math.floor(game.map.y), 10, 10);
-            ctx.fillText('map radian: ' + game.map.radian.toFixed(2) + '; map pps: ' + game.map.pps.toFixed(2), 10, 20);
-            ctx.fillText('map dist: ' + game.map.dist.toFixed(2), 10, 30);
+            ctx.fillText('map pos: ' + Math.floor(map.x) + ' , ' + Math.floor(map.y), 10, 10);
+            ctx.fillText('map radian: ' + map.radian.toFixed(2) + '; map pps: ' + map.pps.toFixed(2), 10, 20);
+            ctx.fillText('map dist: ' + map.dist.toFixed(2) + ' ('+Math.floor(map.per)+'%)', 10, 30);
         },
         ver: function(ctx, state){
             ctx.fillStyle = 'yellow';
