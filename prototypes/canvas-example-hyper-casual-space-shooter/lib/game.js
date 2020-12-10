@@ -5,7 +5,7 @@ var gameMod = (function(){
     BLOCK_POS_MAX_DIST = 360,
     BLOCK_POS_ADELTA = 45,    // the max DEGREE left or right from current map angle
     BLOCK_HP_MIN = 100,
-    MAP_MAX_DIST = 1000;      // max distance from 0,0
+    MAP_MAX_DIST = Math.pow(10,5); //Number.MAX_SAFE_INTEGER;      // max distance from 0,0
 
     var api = {};
 
@@ -160,12 +160,21 @@ var gameMod = (function(){
         game.map.pps = game.map.pps > game.map.maxPPS ? game.map.maxPPS : game.map.pps;
     };
 
+    // clamp map pos helper for map updater
+    var clampMapPos = function(map){
+        if(map.dist >= MAP_MAX_DIST){
+          var radian = utils.wrapRadian(map.radian + Math.PI);
+          map.x = Math.cos(radian) * MAP_MAX_DIST;
+          map.y = Math.sin(radian) * MAP_MAX_DIST;
+        }
+    };
     // update the MAP using current RADIAN and PPS values
     // with the given SECS value.
     api.updateMap = function(game, secs){
         game.map.x += Math.cos(game.map.radian) * game.map.pps * secs;
         game.map.y += Math.sin(game.map.radian) * game.map.pps * secs;
         game.map.dist = utils.distance(0, 0, game.map.x, game.map.y);
+        clampMapPos(game.map);
         game.map.per = game.map.dist / MAP_MAX_DIST;
     };
 
