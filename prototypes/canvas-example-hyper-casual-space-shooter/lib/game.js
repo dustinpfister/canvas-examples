@@ -2,7 +2,7 @@ var gameMod = (function(){
     
     // CONSTANTS
     var BLOCK_COUNT = 20,
-    BLOCK_POS_MIN_DIST = 220,
+    BLOCK_POS_MIN_DIST = 50, //220,
     BLOCK_POS_MAX_DIST = 360,
     BLOCK_POS_ADELTA = 45,    // the max DEGREE left or right from current map angle
     BLOCK_HP_MIN = 5,
@@ -99,6 +99,12 @@ var gameMod = (function(){
         return BLOCK_POS_MIN_DIST + (BLOCK_POS_MAX_DIST - BLOCK_POS_MIN_DIST) * per;
     };
 
+    // set block position helper
+    var setBlockPos = function(game, block, dist, a){
+        block.x = game.ship.x + Math.cos(a) * dist;
+        block.y = game.ship.y + Math.sin(a) * dist;
+    };
+
     // basic random positioning of a block
     var positionBlockRandom = function(state, obj){
         var game = state.game,
@@ -106,12 +112,17 @@ var gameMod = (function(){
         rDelta = Math.PI / 180 * BLOCK_POS_ADELTA,
         dist =  getBlockDist(Math.random());
         var a = utils.wrapRadian(map.radian - rDelta + ( rDelta * 2 ) * Math.random()); //Math.PI * 2 * Math.random();
-        obj.x = game.ship.x + Math.cos(a) * dist;
-        obj.y = game.ship.y + Math.sin(a) * dist;
+        setBlockPos(game, obj, dist, a)
     };
 
     var positionBlock = function(state, obj){
-    }
+        var game = state.game,
+        map = game.map,
+        rDelta = Math.PI / 180 * BLOCK_POS_ADELTA,
+        dist =  getBlockDist(0);
+        var a = utils.wrapRadian(map.radian - rDelta + ( rDelta * 2 ) * Math.random()); //Math.PI * 2 * Math.random();
+        setBlockPos(game, obj, dist, a)
+    };
 
     // create block pool helper
     var createBlocksPool = function(){
@@ -123,7 +134,7 @@ var gameMod = (function(){
                 var game = state.game;
 
                 // set starting position of block
-                positionBlockRandom(state, obj);
+                positionBlock(state, obj);
 
                 obj.radian = utils.wrapRadian(game.map.radian + Math.PI);
                 obj.pps = game.map.pps;
