@@ -8,6 +8,7 @@ var gameMod = (function(){
     BLOCK_POS_SLOT_DIST = 15,
     BLOCK_HP_MIN = 5,
     BLOCK_HP_MAX = 1000,
+    SHIP_AUTOFIRE = true,
     MAP_MAX_DIST = Math.pow(10,5); //Number.MAX_SAFE_INTEGER;      // max distance from 0,0
 
     // DEFAULT WEAPON OBJECTS
@@ -318,9 +319,11 @@ var gameMod = (function(){
         weapon = ship.weapon;
 
         ship.weaponSecs += secs;
-        if(ship.weaponSecs >= 1 / weapon.firesPerSecond){
-            //poolMod.spawn(game.shots, state, {});
-            ship.weaponSecs = 0;
+        if(SHIP_AUTOFIRE){
+            if(ship.weaponSecs >= 1 / weapon.firesPerSecond){
+                poolMod.spawn(game.shots, state, {});
+                ship.weaponSecs = 0;
+            }
         }
         poolMod.update(game.shots, secs, state);
     };
