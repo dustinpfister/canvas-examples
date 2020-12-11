@@ -20,24 +20,31 @@
 
 <!-- WORK OUT THE CORE OF WHAT THE GAME IS FIRST -->
 
+## 0.17.0 - warp
 
-## 0.14.0 - Use Math.log to set block values
+## 0.16.0 - Home Base
+* can buy things at home base
+* can bank money at home base
+
+## 0.15.0 - Use Math.log to set block values
 * block values effected by distance go up using Math.log
 
-## 0.13.0 - Ship death
+## 0.14.0 - Ship death
 * have ship respawn at 0,0 when dead
 * player money will be reduced by half on each death.
 
-## 0.12.0 - AutoHeal
+## 0.13.0 - AutoHeal
 * have a hp.autoHealRate, hp.autoHealSecs, and hp.autoHealAmount properties
 
-## 0.11.0 - MAX_SHOT_DAMAGE
+## 0.12.0 - MAX_SHOT_DAMAGE
 * have a MAX-SHOT-DAM-DAMAGE constant that will be used to set the max amount of damage a shot can have
 * set "Atom" weapon damage to MAX-SHOT-DAMAGE
 
-## 0.10.0 - Money
+## 0.11.0 - Money
 * have a game.money value that will hold the current amount of money that the player has
 * have a block.money value that is the amount of money that the player gets when it kills the block
+
+## 0.10.0 - Shots Per Fire
 
 ## 0.9.0 - Weapon Accuracy
 

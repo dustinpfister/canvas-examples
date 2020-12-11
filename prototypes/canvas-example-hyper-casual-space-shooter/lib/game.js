@@ -1,5 +1,6 @@
 var gameMod = (function(){
     
+    // CONSTANTS
     var BLOCK_COUNT = 20,
     BLOCK_POS_MIN_DIST = 220,
     BLOCK_POS_MAX_DIST = 360,
@@ -7,6 +8,16 @@ var gameMod = (function(){
     BLOCK_HP_MIN = 5,
     BLOCK_HP_MAX = 1000,
     MAP_MAX_DIST = Math.pow(10,5); //Number.MAX_SAFE_INTEGER;      // max distance from 0,0
+
+    // DEFAULT WEAPON OBJECTS
+    var DEFAULT_WEAPONS = {
+        0 : {
+            name: "Pulse gun",
+            firesPerSecond: 2,
+            shotDamage: 1,
+            shotsPerFire: 1
+        }
+    };
 
     var api = {};
 
