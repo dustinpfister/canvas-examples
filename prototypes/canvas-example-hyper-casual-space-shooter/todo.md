@@ -18,41 +18,44 @@
 * have a commom system for movement of objects
 * use the same commom system for 'shots', 'blocks', and any additional objects
 
+## 0.x.0 - save states
+
+## 0.x.0 - Use Math.log to set block values
+* block values effected by distance go up using Math.log
+
+## 0.x.0 - Shots Per Fire
+
+## 0.x.0 - Weapon Accuracy
+
+## 0.x.0 - MAX_SHOT_DAMAGE
+* have a MAX-SHOT-DAM-DAMAGE constant that will be used to set the max amount of damage a shot can have
+* set "Atom" weapon damage to MAX-SHOT-DAMAGE
+
+
 <!-- WORK OUT THE CORE OF WHAT THE GAME IS FIRST -->
 
-## 0.18.0 - spawn blocks durring movement
+## 0.14.0 - warp
+* warp home feature
+
+## 0.13.0 - spawn blocks durring movement
 * have a BLOCK-SPAWN-DIST, and BLOCK-COUNT-PER-SPAWN-DIST
 * have a game.spawnDist value that is updated each time the map position changes
 * when game.spawnDist >= BLOCK-SPAWN-DIST set up to BLOCK-COUNT-PER-SPAWN-DIST active
 
-## 0.17.0 - warp
-* warp home feature
-
-## 0.16.0 - Home Base
+## 0.12.0 - Home Base
 * can buy things at home base
 * can bank money at home base
 
-## 0.15.0 - Use Math.log to set block values
-* block values effected by distance go up using Math.log
+## 0.11.0 - AutoHeal
+* have a hp.autoHealRate, hp.autoHealSecs, and hp.autoHealAmount properties
 
-## 0.14.0 - Ship death
+## 0.10.0 - Ship death
 * have ship respawn at 0,0 when dead
 * player money will be reduced by half on each death.
 
-## 0.13.0 - AutoHeal
-* have a hp.autoHealRate, hp.autoHealSecs, and hp.autoHealAmount properties
-
-## 0.12.0 - MAX_SHOT_DAMAGE
-* have a MAX-SHOT-DAM-DAMAGE constant that will be used to set the max amount of damage a shot can have
-* set "Atom" weapon damage to MAX-SHOT-DAMAGE
-
-## 0.11.0 - Money
+## 0.9.0 - Money
 * have a game.money value that will hold the current amount of money that the player has
 * have a block.money value that is the amount of money that the player gets when it kills the block
-
-## 0.10.0 - Shots Per Fire
-
-## 0.9.0 - Weapon Accuracy
 
 ## 0.8.0 - Improved 'block' positioning
 * (done) make positionBlock method positionBlockRandom
@@ -62,7 +65,6 @@
 * (done) position blocks using new system but in front of current position of ship
 * (done) have new PositionRandom method that uses getFreePositions and pops random positions from it
 * (done) make a pkg-0-8-0.html
-
 
 ## 0.7.0 - Weapons Collection
 * (done) Have a DEFAULT_WEAPONS Object in game.js that will contain objects with hard coded stats for each Weapon in the game
