@@ -55,12 +55,12 @@
 ## 0.7.0 - Weapons Collection
 * (done) Have a DEFAULT_WEAPONS Object in game.js that will contain objects with hard coded stats for each Weapon in the game
 * (done) have a utils.deepClone method
-* in gameMod.create create a deep clone off the DEFAULT_WEAPONS object as game.weapons
-* have a "Pulse gun" weapon that has 2 shot per second, and 1 damage per hit
-* have a "Cannon" weapon that has 5 shots per second, and 3 damage per hit 
-* have a "Atom" weapon that has 1 shot per second, and 100 damage per hit
+* (done) in gameMod.create create a deep clone off the DEFAULT_WEAPONS object as game.weapons
+* (done) have a "Pulse gun" weapon that has 2 shot per second, and 1 damage per hit
+* (done) have a "Cannon" weapon that has 5 shots per second, and 3 damage per hit 
+* (done) have a "Atom" weapon that has 1 shot per second, and 100 damage per hit
 * have keyboard buttons 1-3 set the current weapon
-* display weapon info
+* (done) display weapon info
 * make a pkg-0-7-0.html
 
 ## 0.6.0 - map.dist, map.per, and MAP\_MAX\_DIST

@@ -54,6 +54,16 @@ var loop = function () {
             input.pps -= input.ppsDelta * secs;
             input.pps = input.pps < 0 ? 0 : input.pps;
         }
+        if(input.keys[1]){
+            game.ship.weapon = game.weapons[0];
+        }
+        if(input.keys[2]){
+            game.ship.weapon = game.weapons[1];
+        }
+        if(input.keys[3]){
+            game.ship.weapon = game.weapons[2];
+        }
+
         input.degree = utils.mod(input.degree, 360);
         gameMod.setMapMovement(game, input.degree, input.pps);
 
