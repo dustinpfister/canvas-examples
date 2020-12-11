@@ -2,7 +2,7 @@ var gameMod = (function(){
     
     // CONSTANTS
     var BLOCK_COUNT = 20,
-    BLOCK_POS_MIN_DIST = 50, //220,
+    BLOCK_POS_MIN_DIST = 110, //220, // center of grid location ( see getFreePositions helper )
     BLOCK_POS_MAX_DIST = 360,
     BLOCK_POS_ADELTA = 45,    // the max DEGREE left or right from current map angle
     BLOCK_HP_MIN = 5,
@@ -123,7 +123,7 @@ var gameMod = (function(){
             x = 0;
             spotY = Math.sin(0) * dist + y * 32 - yAjust - (32 * Math.floor(gridH / 2));
             loopx:while(x < gridW){
-                spotX = Math.cos(0) * dist + x * 32 - xAjust;
+                spotX = Math.cos(0) * dist + x * 32 - xAjust - (32 * Math.floor(gridW / 2));
                 blockIndex = activeBlocks.length;
                 while(blockIndex--){
                     block = activeBlocks[blockIndex];
