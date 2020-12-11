@@ -14,20 +14,17 @@ var gameMod = (function(){
         0 : {
             name: "Pulse gun",
             firesPerSecond: 2,
-            shotDamage: 1,
-            shotsPerFire: 1
+            shotDamage: 1
         },
         1 : {
             name: "Cannon",
             firesPerSecond: 5,
-            shotDamage: 3,
-            shotsPerFire: 1
+            shotDamage: 3
         },
         2 : {
             name: "Atom",
             firesPerSecond: 1,
-            shotDamage: 100,
-            shotsPerFire: 1
+            shotDamage: 100
         }
     };
 
@@ -74,7 +71,6 @@ var gameMod = (function(){
                     shot.y += objDeltaY;
                     // check if the shot has hit an active block
                     var blocks = poolMod.getAllActive(state.game.blocks, true);
-
                     var i = blocks.length;
                     while(i--){
                         var block = blocks[i];
@@ -90,7 +86,6 @@ var gameMod = (function(){
                             break;
                         }
                     }
-
                 }
             });
     };
@@ -141,7 +136,7 @@ var gameMod = (function(){
         return free;
     };
 
-
+    // position a block
     var positionBlock = function(state, obj){
         var game = state.game;
         var freeSlots = getFreePositions(game);
@@ -155,8 +150,6 @@ var gameMod = (function(){
         }
     };
 
-
-
     // create block pool helper
     var createBlocksPool = function(){
         return poolMod.create({
@@ -165,10 +158,8 @@ var gameMod = (function(){
             count: BLOCK_COUNT,
             spawn: function(obj, pool, state, opt){
                 var game = state.game;
-
                 // set starting position of block
                 positionBlock(state, obj);
-
                 obj.radian = utils.wrapRadian(game.map.radian + Math.PI);
                 obj.pps = game.map.pps;
                 obj.lifespan = 1;
@@ -213,21 +204,13 @@ var gameMod = (function(){
                 fillStyle: 'blue',
                 weaponSecs: 0,
                 weapons: {},
-/*
-                weapon: { // reference to the current weapon for the ship
-                    name: 'foo',
-                    firesPerSecond: 2,
-                    shotsPerFire: 1,
-                    shotDamage: 5
-                }
-*/
             },
             shots: createShotsPool(),
             blocks: createBlocksPool(),
             map: { // map position
                 x: 0,
                 y: 0,
-                radian: 0, //Math.PI / 180 * 45,
+                radian: 0, 
                 pps: 0,
                 maxPPS: 256,
                 dist: 0,
@@ -237,15 +220,6 @@ var gameMod = (function(){
 
         // set current weapon
         game.ship.weapon = game.weapons[0];
-
-
-        // text block pool
-        //var testBlocks = createBlocksPool();
-        //testBlocks.objects[0].active = true;
-        //testBlocks.objects[0].x = 32;
-        //testBlocks.objects[0].y = 32;
-        //console.log(getFreePositions(game, testBlocks));
-
 
         return game;
     };
@@ -285,10 +259,8 @@ var gameMod = (function(){
     };
 
     api.updateShots = function(game, secs, state){
-
         var ship = game.ship,
         weapon = ship.weapon;
-
         ship.weaponSecs += secs;
         if(SHIP_AUTOFIRE || state.input.fire){
             if(ship.weaponSecs >= 1 / weapon.firesPerSecond){
