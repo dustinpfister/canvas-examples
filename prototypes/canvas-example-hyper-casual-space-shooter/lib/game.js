@@ -94,16 +94,24 @@ var gameMod = (function(){
 
     // BLOCK POOL
 
+    // get a block distance between BLOCK_POS_MIN_DIST and BLOCK_POS_MAX_DIST with given per
+    var getBlockDist = function(per){
+        return BLOCK_POS_MIN_DIST + (BLOCK_POS_MAX_DIST - BLOCK_POS_MIN_DIST) * per;
+    };
+
     // basic random positioning of a block
     var positionBlockRandom = function(state, obj){
         var game = state.game,
         map = game.map,
         rDelta = Math.PI / 180 * BLOCK_POS_ADELTA,
-        dist = BLOCK_POS_MIN_DIST + (BLOCK_POS_MAX_DIST - BLOCK_POS_MIN_DIST) * Math.random();
+        dist =  getBlockDist(Math.random());
         var a = utils.wrapRadian(map.radian - rDelta + ( rDelta * 2 ) * Math.random()); //Math.PI * 2 * Math.random();
         obj.x = game.ship.x + Math.cos(a) * dist;
         obj.y = game.ship.y + Math.sin(a) * dist;
     };
+
+    var positionBlock = function(state, obj){
+    }
 
     // create block pool helper
     var createBlocksPool = function(){
