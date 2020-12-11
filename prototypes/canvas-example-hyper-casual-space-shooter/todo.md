@@ -53,7 +53,11 @@
 * (done) start new positionBlock method
 * (done) have a getFreePositions helper that will return an array of free grid index values
 * (done) work out system so that blocks will not overlap when spawning they should snap to a grid that is map relative
-* position blocks using new system but in front of current position of ship
+* (done) position blocks using new system but in front of current position of ship
+* have new constants only now for BLOCK-POS-MIN-SLOT-DIST, ect
+* have getFreePositions take into acount BLOCK-POS-ADELTA
+* have new PositionRandom method that uses getFreePositions and pops random positions from it
+
 
 ## 0.7.0 - Weapons Collection
 * (done) Have a DEFAULT_WEAPONS Object in game.js that will contain objects with hard coded stats for each Weapon in the game
