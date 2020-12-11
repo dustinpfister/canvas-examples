@@ -63,8 +63,10 @@ var gameMod = (function(){
                     obj.radian = state.game.map.radian;
                     obj.pps = 128;
                     obj.lifespan = 3;
+
                     var weapon = state.game.ship.weapon;
-                    obj.damage = weapon.shotDamage;
+                    obj.damage = weapon.shotDamage; // damage when shot hits a block
+                   
                 },
                 update: function(shot, pool, state, secs){
                     var objDeltaX = Math.cos(shot.radian) * shot.pps * secs;
@@ -83,7 +85,7 @@ var gameMod = (function(){
                             attackObject(block, shot.damage);
                             // if the block is dead
                             if(block.hp.current <= 0 ){
-                                state.game.money += 1;
+                                state.game.money += block.money;
                                 block.lifespan = 0;
                                 block.active = false;
                             }
@@ -169,6 +171,7 @@ var gameMod = (function(){
                 obj.lifespan = 1;
                 obj.hp = CreateHPObject( BLOCK_HP_MIN + Math.round( (BLOCK_HP_MAX - BLOCK_HP_MIN) ) * game.map.per );
                 obj.damage = 1;
+                obj.money = 2;
             },
             update: function(obj, pool, state, secs){
                 obj.lifespan = 1;

@@ -54,7 +54,7 @@
 * player money will be reduced by half on each death.
 
 ## 0.9.0 - Money
-* have a game.money value that will hold the current amount of money that the player has
+* (done) have a game.money value that will hold the current amount of money that the player has
 * have a block.money value that is the amount of money that the player gets when it kills the block
 
 ## 0.8.0 - Improved 'block' positioning
