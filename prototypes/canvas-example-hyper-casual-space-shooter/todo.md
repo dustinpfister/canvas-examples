@@ -54,9 +54,9 @@
 * (done) have a getFreePositions helper that will return an array of free grid index values
 * (done) work out system so that blocks will not overlap when spawning they should snap to a grid that is map relative
 * (done) position blocks using new system but in front of current position of ship
-* have new constants only now for BLOCK-POS-MIN-SLOT-DIST, ect
+* (done) have new PositionRandom method that uses getFreePositions and pops random positions from it
 * have getFreePositions take into acount BLOCK-POS-ADELTA
-* have new PositionRandom method that uses getFreePositions and pops random positions from it
+* make a pkg-0-8-0.html
 
 
 ## 0.7.0 - Weapons Collection

@@ -2,9 +2,7 @@ var gameMod = (function(){
     
     // CONSTANTS
     var BLOCK_COUNT = 20,
-    BLOCK_POS_MIN_DIST = 110, //220, // center of grid location ( see getFreePositions helper )
     BLOCK_POS_MAX_DIST = 600,
-    BLOCK_POS_ADELTA = 45,    // the max DEGREE left or right from current map angle
     BLOCK_POS_SLOT_DIST = 15,
     BLOCK_HP_MIN = 5,
     BLOCK_HP_MAX = 1000,
@@ -99,11 +97,6 @@ var gameMod = (function(){
 
     // BLOCK POOL
 
-    // get a block distance between BLOCK_POS_MIN_DIST and BLOCK_POS_MAX_DIST with given per
-    var getBlockDist = function(per){
-        return BLOCK_POS_MIN_DIST + (BLOCK_POS_MAX_DIST - BLOCK_POS_MIN_DIST) * per;
-    };
-
     // get all free positions where a block can go
     // will retrun an empty array in the event that there are none
     var getFreePositions = function(game, blockPool){
@@ -115,14 +108,11 @@ var gameMod = (function(){
         spotY,
         blockIndex,
         block,
-        //dist = getBlockDist(0), // get a distance from ship
         free = [],
         gridH = 10,
         gridW = 10,
         slotDist = BLOCK_POS_SLOT_DIST,
         // starting position of grid
-        //sx = Math.ceil(gridW / 2 * -1) + Math.ceil(Math.cos(game.map.radian) * (gridW / 2 + slotDist ) ), 
-        //sy = Math.ceil(gridH / 2 * -1) + Math.ceil(Math.sin(game.map.radian) * (gridH / 2 + slotDist ) ),
         sx = Math.ceil(Math.cos(game.map.radian) * (gridH / 2 + slotDist) - gridW / 2),
         sy = Math.ceil(Math.sin(game.map.radian) * (gridH / 2 + slotDist) - gridH / 2),
         x = sx, // grid position
@@ -151,28 +141,9 @@ var gameMod = (function(){
         return free;
     };
 
-    // set block position helper
-    var setBlockPos = function(game, block, dist, a){
-        block.x = game.ship.x + Math.cos(a) * dist;
-        block.y = game.ship.y + Math.sin(a) * dist;
-    };
-
-    // basic random positioning of a block
-    var positionBlockRandom = function(state, obj){
-        var game = state.game,
-        map = game.map,
-        rDelta = Math.PI / 180 * BLOCK_POS_ADELTA,
-        dist =  getBlockDist(Math.random());
-        var a = utils.wrapRadian(map.radian - rDelta + ( rDelta * 2 ) * Math.random()); //Math.PI * 2 * Math.random();
-        setBlockPos(game, obj, dist, a)
-    };
 
     var positionBlock = function(state, obj){
-        var game = state.game,
-        map = game.map,
-        dist =  getBlockDist(0),
-        rDelta = Math.PI / 180 * BLOCK_POS_ADELTA;
-
+        var game = state.game;
         var freeSlots = getFreePositions(game);
         if(freeSlots.length === 0){
             obj.active = false;
