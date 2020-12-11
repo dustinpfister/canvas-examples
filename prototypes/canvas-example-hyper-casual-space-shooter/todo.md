@@ -2,6 +2,9 @@
 
 <!-- ADDITIONAL FIXES AND FEATURES ONCE I HAVE THE CORE OF WHAT THE GAME IS DONE -->
 
+## 0.x.0 - Better Graphics (CANVAS ONLY)
+* have canvas generated sheets for the ship, blocks, shots, and a background
+
 ## 0.x.0 - mouse and touch support
 * add mouse event support
 * have a set of two circles in the lower right corner that will be a 'pointerControl' area
@@ -17,21 +20,40 @@
 
 <!-- WORK OUT THE CORE OF WHAT THE GAME IS FIRST -->
 
-## 0.x.0 - Improved 'block' positioning
-* work out system so that blocks will not overlap when spawning
 
-## 0.x.0 - Use Math.log to set block values
+## 0.14.0 - Use Math.log to set block values
 * block values effected by distance go up using Math.log
 
-## 0.x.0 - Ship death
-* have ship respawn at 0,0 when deal
+## 0.13.0 - Ship death
+* have ship respawn at 0,0 when dead
+* player money will be reduced by half on each death.
 
-## 0.x.0 - AutoHeal
+## 0.12.0 - AutoHeal
 * have a hp.autoHealRate, hp.autoHealSecs, and hp.autoHealAmount properties
 
-## 0.6.0 - Weapons Object
+## 0.11.0 - MAX_SHOT_DAMAGE
+* have a MAX-SHOT-DAM-DAMAGE constant that will be used to set the max amount of damage a shot can have
+* set "Atom" weapon damage to MAX-SHOT-DAMAGE
+
+## 0.10.0 - Money
+* have a game.money value that will hold the current amount of money that the player has
+* have a block.money value that is the amount of money that the player gets when it kills the block
+
+## 0.9.0 - Weapon Accuracy
+
+## 0.8.0 - Improved 'block' positioning
+* work out system so that blocks will not overlap when spawning they should snap to a grid that is map relative
+* have a getFreePositions helper that will return an array of free grid index values
+
+## 0.7.0 - Weapons Collection
 * Have a DEFAULT_WEAPONS Object in game.js that will contain objects with hard coded stats for each Weapon in the game
 * in gameMod.create create a deep clone off the DEFAULT_WEAPONS object as game.weapons
+* have a "Pulse gun" weapon that has 2 shot per second, and 1 damage per hit
+* have a "Cannon" weapon that has 5 shots per second, and 3 damage per hit 
+* have a "Atom" weapon that has 1 shot per second, and 100 damage per hit
+* have keyboard buttons 1-3 set the current weapon
+* display weapon info
+* make a pkg-0-7-0.html
 
 ## 0.6.0 - map.dist, map.per, and MAP\_MAX\_DIST
 * (done) have a map.dist property that is the distance from (map.x, map.y) to (0,0)
