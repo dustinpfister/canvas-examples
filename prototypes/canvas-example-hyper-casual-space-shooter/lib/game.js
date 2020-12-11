@@ -48,6 +48,8 @@ var gameMod = (function(){
         }
     };
 
+    // SHOTS
+
     // create shots pool helper
     var createShotsPool = function(){
         return poolMod.create({
@@ -79,7 +81,9 @@ var gameMod = (function(){
                         if(dist <= block.r + shot.r){
                             shot.lifespan = 0;
                             attackObject(block, shot.damage);
+                            // if the block is dead
                             if(block.hp.current <= 0 ){
+                                state.game.money += 1;
                                 block.lifespan = 0;
                                 block.active = false;
                             }
