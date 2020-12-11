@@ -1,7 +1,7 @@
 var gameMod = (function(){
     
     // CONSTANTS
-    var BLOCK_COUNT = 20,
+    var BLOCK_COUNT = 10,
     BLOCK_POS_MIN_DIST = 50, //220,
     BLOCK_POS_MAX_DIST = 360,
     BLOCK_POS_ADELTA = 45,    // the max DEGREE left or right from current map angle
@@ -97,6 +97,44 @@ var gameMod = (function(){
 
     // BLOCK POOL
 
+    // get all free positions where a block can go
+    // will retrun an empty array in the event that there are none
+    var getFreePositions = function(game, blockPool){
+        var map = game.map,
+        activeBlocks = poolMod.getAllActive(blockPool || game.blocks, true),
+        x = 0,
+        y = 0,
+        xAjust = utils.mod(game.map.x, 32),
+        yAjust = utils.mod(game.map.y, 32),
+        spotX,
+        spotY,
+        blockIndex,
+        block,
+        free = [];
+        while(y < 3){
+            x = 0;
+            spotY = y * 32 - yAjust;
+            loopx:while(x < 3){
+                spotX = x * 32 - xAjust;
+                blockIndex = activeBlocks.length;
+                while(blockIndex--){
+                    block = activeBlocks[blockIndex];
+                    if(utils.distance(block.x, block.y, spotX, spotY) <= block.r){
+                       x+=1;
+                       continue loopx;
+                    }
+                }
+                free.push({
+                    x: spotX,
+                    y: spotY
+                });
+                x += 1;
+            }
+            y += 1;
+        }
+        return free;
+    };
+
     // get a block distance between BLOCK_POS_MIN_DIST and BLOCK_POS_MAX_DIST with given per
     var getBlockDist = function(per){
         return BLOCK_POS_MIN_DIST + (BLOCK_POS_MAX_DIST - BLOCK_POS_MIN_DIST) * per;
@@ -124,46 +162,21 @@ var gameMod = (function(){
         dist =  getBlockDist(0),
         rDelta = Math.PI / 180 * BLOCK_POS_ADELTA;
 
-        var a = 0;
-        setBlockPos(game, obj, dist, a)
+        var freeSlots = getFreePositions(game);
+        if(freeSlots.length === 0){
+            obj.active = false;
+            obj.lifespan = 0;
+        }else{
+            var slot = freeSlots.pop();
+            obj.x = slot.x;
+            obj.y = slot.y;
+        }
+        //var a = 0;
+        //setBlockPos(game, obj, dist, a)
+        
     };
 
-    // get all free positions where a block can go
-    // will retrun an empty array in the event that there are none
-    var getFreePositions = function(game, blockPool){
-        var map = game.map,
-        activeBlocks = poolMod.getAllActive(blockPool, true),
-        x = 0,
-        y = 0,
-        spotX,
-        spotY,
-        blockIndex,
-        block,
-        free = [];
-        while(y < 3){
-            x = 0;
-            spotY = y * 32;
-            loopx:while(x < 3){
-                spotX = x * 32;
-                blockIndex = activeBlocks.length;
-                while(blockIndex--){
-                    block = activeBlocks[blockIndex];
-                    if(utils.distance(block.x, block.y, spotX, spotY) <= block.r){
-                       console.log(block);
-                       x+=1;
-                       continue loopx;
-                    }
-                }
-                free.push({
-                    x: spotX,
-                    y: spotY
-                });
-                x += 1;
-            }
-            y += 1;
-        }
-        return free;
-    };
+
 
     // create block pool helper
     var createBlocksPool = function(){
@@ -248,11 +261,11 @@ var gameMod = (function(){
 
 
         // text block pool
-        var testBlocks = createBlocksPool();
-        testBlocks.objects[0].active = true;
-        testBlocks.objects[0].x = 32;
-        testBlocks.objects[0].y = 32;
-        console.log(getFreePositions(game, testBlocks));
+        //var testBlocks = createBlocksPool();
+        //testBlocks.objects[0].active = true;
+        //testBlocks.objects[0].x = 32;
+        //testBlocks.objects[0].y = 32;
+        //console.log(getFreePositions(game, testBlocks));
 
 
         return game;
