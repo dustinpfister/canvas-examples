@@ -15,20 +15,23 @@
 * have a commom system for movement of objects
 * use the same commom system for 'shots', 'blocks', and any additional objects
 
+<!-- WORK OUT THE CORE OF WHAT THE GAME IS FIRST -->
+
 ## 0.x.0 - Improved 'block' positioning
 * work out system so that blocks will not overlap when spawning
 
-<!-- WORK OUT THE CORE OF WHAT THE GAME IS FIRST -->
+## 0.x.0 - Use Math.log to set block values
+* block values effected by distance go up using Math.log
 
 ## 0.x.0 - Ship death
 * have ship respawn at 0,0 when deal
 
-## 0.x.0 - Weapons Object
-* Have a DEFAULT_WEAPONS Object in game.js that will contain objects with hard coded stats for each Weapon in the game
-* in gameMod.create create a deep clone off the DEFAULT_WEAPONS object as game.weapons
-
 ## 0.x.0 - AutoHeal
 * have a hp.autoHealRate, hp.autoHealSecs, and hp.autoHealAmount properties
+
+## 0.6.0 - Weapons Object
+* Have a DEFAULT_WEAPONS Object in game.js that will contain objects with hard coded stats for each Weapon in the game
+* in gameMod.create create a deep clone off the DEFAULT_WEAPONS object as game.weapons
 
 ## 0.6.0 - map.dist, map.per, and MAP\_MAX\_DIST
 * (done) have a map.dist property that is the distance from (map.x, map.y) to (0,0)
@@ -39,7 +42,7 @@
 * (done) in draw.js have map.dist effect the background color
 * (done) have map.dist effect max HP of blocks
 * (done) display block hp rather than distance to ship
-* make a pkg-0-6-0.html
+* (done) make a pkg-0-6-0.html
 
 ## 0.5.0 - Common Health System and Ship Hit Points
 * (done) have a createHPObject helper
