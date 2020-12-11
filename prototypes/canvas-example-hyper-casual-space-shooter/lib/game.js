@@ -172,12 +172,13 @@ var gameMod = (function(){
     // update the MAP using current RADIAN and PPS values
     // with the given SECS value.
     api.updateMap = function(game, secs){
-        game.map.x += Math.cos(game.map.radian) * game.map.pps * secs;
-        game.map.y += Math.sin(game.map.radian) * game.map.pps * secs;
-        game.map.dist = utils.distance(0, 0, game.map.x, game.map.y);
-        clampMapPos(game.map);
-        game.map.per = game.map.dist / MAP_MAX_DIST;
-        game.map.aToOrigin = utils.angleTo(game.map.x, game.map.y, 0, 0);
+        var map = game.map;
+        map.x += Math.cos(map.radian) * map.pps * secs;
+        map.y += Math.sin(map.radian) * map.pps * secs;
+        map.dist = utils.distance(0, 0, map.x, map.y);
+        clampMapPos(map);
+        map.per = game.map.dist / MAP_MAX_DIST;
+        map.aToOrigin = utils.angleTo(map.x, map.y, 0, 0);
     };
 
     api.updateBlocks = function(game, secs, state){
