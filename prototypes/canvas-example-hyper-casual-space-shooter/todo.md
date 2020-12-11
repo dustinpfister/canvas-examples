@@ -59,9 +59,9 @@
 * (done) have a "Pulse gun" weapon that has 2 shot per second, and 1 damage per hit
 * (done) have a "Cannon" weapon that has 5 shots per second, and 3 damage per hit 
 * (done) have a "Atom" weapon that has 1 shot per second, and 100 damage per hit
-* have keyboard buttons 1-3 set the current weapon
+* (done) have keyboard buttons 1-3 set the current weapon
 * (done) display weapon info
-* make a pkg-0-7-0.html
+* (done) make a pkg-0-7-0.html
 
 ## 0.6.0 - map.dist, map.per, and MAP\_MAX\_DIST
 * (done) have a map.dist property that is the distance from (map.x, map.y) to (0,0)
