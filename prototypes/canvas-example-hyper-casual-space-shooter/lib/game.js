@@ -74,20 +74,23 @@ var gameMod = (function(){
                     shot.y += objDeltaY;
                     // check if the shot has hit an active block
                     var blocks = poolMod.getAllActive(state.game.blocks, true);
-                    blocks.forEach(function(block){
+
+                    var i = blocks.length;
+                    while(i--){
+                        var block = blocks[i];
                         var dist = utils.distance(shot.x, shot.y, block.x, block.y);
                         // if a shot hits a block
                         if(dist <= block.r + shot.r){
                             shot.lifespan = 0;
-                            //block.hp.current -= shot.damage;
-                            //block.hp.per = block.hp.current / block.hp.max;
                             attackObject(block, shot.damage);
                             if(block.hp.current <= 0 ){
                                 block.lifespan = 0;
                                 block.active = false;
                             }
+                            break;
                         }
-                    });
+                    }
+
                 }
             });
     };
