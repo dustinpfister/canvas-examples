@@ -13,7 +13,7 @@ var createCanvas = function(opt){
 // STATE
 var canvasObj = createCanvas();
 var state = {
-    ver: '0.7.0',
+    ver: '0.8.0',
     canvas : canvasObj.canvas,
     ctx: canvasObj.ctx,
     game: gameMod.create(),

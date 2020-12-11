@@ -51,17 +51,6 @@ var gameMod = (function(){
         }
     };
 
-    // basic random positioning of blocks
-    var positionBlock = function(state, obj){
-        var game = state.game,
-        map = game.map,
-        rDelta = Math.PI / 180 * BLOCK_POS_ADELTA,
-        dist = BLOCK_POS_MIN_DIST + (BLOCK_POS_MAX_DIST - BLOCK_POS_MIN_DIST) * Math.random();
-        var a = utils.wrapRadian(map.radian - rDelta + ( rDelta * 2 ) * Math.random()); //Math.PI * 2 * Math.random();
-        obj.x = game.ship.x + Math.cos(a) * dist;
-        obj.y = game.ship.y + Math.sin(a) * dist;
-    };
-
     // create shots pool helper
     var createShotsPool = function(){
         return poolMod.create({
@@ -103,6 +92,20 @@ var gameMod = (function(){
             });
     };
 
+    // BLOCK POOL
+
+    // basic random positioning of a block
+    var positionBlockRandom = function(state, obj){
+        var game = state.game,
+        map = game.map,
+        rDelta = Math.PI / 180 * BLOCK_POS_ADELTA,
+        dist = BLOCK_POS_MIN_DIST + (BLOCK_POS_MAX_DIST - BLOCK_POS_MIN_DIST) * Math.random();
+        var a = utils.wrapRadian(map.radian - rDelta + ( rDelta * 2 ) * Math.random()); //Math.PI * 2 * Math.random();
+        obj.x = game.ship.x + Math.cos(a) * dist;
+        obj.y = game.ship.y + Math.sin(a) * dist;
+    };
+
+    // create block pool helper
     var createBlocksPool = function(){
         return poolMod.create({
             data: {},
@@ -110,8 +113,10 @@ var gameMod = (function(){
             count: BLOCK_COUNT,
             spawn: function(obj, pool, state, opt){
                 var game = state.game;
+
                 // set starting position of block
-                positionBlock(state, obj);
+                positionBlockRandom(state, obj);
+
                 obj.radian = utils.wrapRadian(game.map.radian + Math.PI);
                 obj.pps = game.map.pps;
                 obj.lifespan = 1;
