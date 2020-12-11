@@ -177,6 +177,7 @@ var gameMod = (function(){
         game.map.dist = utils.distance(0, 0, game.map.x, game.map.y);
         clampMapPos(game.map);
         game.map.per = game.map.dist / MAP_MAX_DIST;
+        game.map.aToOrigin = utils.angleTo(game.map.x, game.map.y, 0, 0);
     };
 
     api.updateBlocks = function(game, secs, state){
