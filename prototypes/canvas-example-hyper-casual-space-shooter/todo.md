@@ -49,8 +49,10 @@
 ## 0.9.0 - Weapon Accuracy
 
 ## 0.8.0 - Improved 'block' positioning
-* work out system so that blocks will not overlap when spawning they should snap to a grid that is map relative
+* (done) make positionBlock method positionBlockRandom
+* (done) start new positionBlock method
 * have a getFreePositions helper that will return an array of free grid index values
+* work out system so that blocks will not overlap when spawning they should snap to a grid that is map relative
 
 ## 0.7.0 - Weapons Collection
 * (done) Have a DEFAULT_WEAPONS Object in game.js that will contain objects with hard coded stats for each Weapon in the game
