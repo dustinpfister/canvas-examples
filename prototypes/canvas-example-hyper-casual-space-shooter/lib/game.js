@@ -147,6 +147,7 @@ var gameMod = (function(){
     // public create method
     api.create = function(){
         var game = {
+            weapons: utils.deepClone(DEFAULT_WEAPONS),
             ship: { 
                 x: 0, // ship position relative to map position
                 y: 0,
@@ -154,12 +155,15 @@ var gameMod = (function(){
                 hp: CreateHPObject(100),
                 fillStyle: 'blue',
                 weaponSecs: 0,
-                weapon: {
+                weapons: {},
+/*
+                weapon: { // reference to the current weapon for the ship
                     name: 'foo',
                     firesPerSecond: 2,
                     shotsPerFire: 1,
                     shotDamage: 5
                 }
+*/
             },
             shots: createShotsPool(),
             blocks: createBlocksPool(),
@@ -173,6 +177,10 @@ var gameMod = (function(){
                 per: 0
             }
         };
+
+        // set current weapon
+        game.ship.weapon = game.weapons[0];
+
         return game;
     };
 
