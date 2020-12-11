@@ -132,7 +132,7 @@ var gameMod = (function(){
     // will retrun an empty array in the event that there are none
     var getFreePositions = function(game, blockPool){
         var map = game.map,
-        activeblocks = poolMod.getAllActive(blockPool, true),
+        activeBlocks = poolMod.getAllActive(blockPool, true),
         x = 0,
         y = 0,
         spotX,
@@ -143,19 +143,21 @@ var gameMod = (function(){
         while(y < 3){
             x = 0;
             spotY = y * 32;
-            while(x < 3){
-                spotY = x * 32;
+            loopx:while(x < 3){
+                spotX = x * 32;
                 blockIndex = activeBlocks.length;
                 while(blockIndex--){
                     block = activeBlocks[blockIndex];
-                    if(utils.distance(block.x, block.y, spotX, spotY) <= block.r * 2){
-                       continue;
+                    if(utils.distance(block.x, block.y, spotX, spotY) <= block.r){
+                       console.log(block);
+                       x+=1;
+                       continue loopx;
                     }
-                    free.push({
-                        x: spotX,
-                        y: spotY
-                    });
                 }
+                free.push({
+                    x: spotX,
+                    y: spotY
+                });
                 x += 1;
             }
             y += 1;
@@ -247,7 +249,10 @@ var gameMod = (function(){
 
         // text block pool
         var testBlocks = createBlocksPool();
-        console.log(testBlocks);
+        testBlocks.objects[0].active = true;
+        testBlocks.objects[0].x = 32;
+        testBlocks.objects[0].y = 32;
+        console.log(getFreePositions(game, testBlocks));
 
 
         return game;
