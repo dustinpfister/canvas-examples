@@ -64,7 +64,8 @@ var draw = (function(){
                         ctx.fillStyle = 'yellow';
                         ctx.textBaseline = 'middle';
                         ctx.textAlign = 'center';
-                        ctx.fillText(Math.floor(block.data.dist), block.x, block.y);
+                        ctx.font = '8px arial';
+                        ctx.fillText(Math.floor(block.hp.current) + '/' + Math.floor(block.hp.max) , block.x, block.y);
                     });
                 }
             });
