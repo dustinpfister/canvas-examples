@@ -20,7 +20,13 @@
 
 <!-- WORK OUT THE CORE OF WHAT THE GAME IS FIRST -->
 
+## 0.18.0 - spawn blocks durring movement
+* have a BLOCK-SPAWN-DIST, and BLOCK-COUNT-PER-SPAWN-DIST
+* have a game.spawnDist value that is updated each time the map position changes
+* when game.spawnDist >= BLOCK-SPAWN-DIST set up to BLOCK-COUNT-PER-SPAWN-DIST active
+
 ## 0.17.0 - warp
+* warp home feature
 
 ## 0.16.0 - Home Base
 * can buy things at home base
@@ -55,7 +61,6 @@
 * (done) work out system so that blocks will not overlap when spawning they should snap to a grid that is map relative
 * (done) position blocks using new system but in front of current position of ship
 * (done) have new PositionRandom method that uses getFreePositions and pops random positions from it
-* have getFreePositions take into acount BLOCK-POS-ADELTA
 * make a pkg-0-8-0.html
 
 
