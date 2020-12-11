@@ -109,13 +109,11 @@ var gameMod = (function(){
         activeBlocks = poolMod.getAllActive(blockPool || game.blocks, true),
         xMapAjust = utils.mod(game.map.x, 32), // take into account current map position
         yMapAjust = utils.mod(game.map.y, 32),
-        //xShipAjust = Math.cos(game.map.radian) * BLOCK_POS_MIN_DIST,
-        //yShipAjust = Math.sin(game.map.radian) * BLOCK_POS_MIN_DIST,
         spotX, // the position relative to 0,0
         spotY,
         blockIndex,
         block,
-        dist = getBlockDist(0), // get a distance from ship
+        //dist = getBlockDist(0), // get a distance from ship
         free = [],
         gridH = 3,
         gridW = 3,
@@ -127,21 +125,9 @@ var gameMod = (function(){
         y = sy;
         while(y < gridH + sy){
             x = sx;
-
-            // the basic expression
             spotY =  y * 32 - yMapAjust;
-
-            //spotY = Math.sin(0) * dist + y * 32 - yMapAjust - (32 * Math.floor(gridH / 2));
-            //spotY = yShipAjust + y * 32;
-
             loopx:while(x < gridW + sx){
-
-                // the basic expression
                 spotX = x * 32 - xMapAjust;
-
-
-                //spotX = Math.cos(0) * dist + x * 32 - xMapAjust - (32 * Math.floor(gridW / 2));
-                //spotX = xShipAjust + x * 32;
                 blockIndex = activeBlocks.length;
                 while(blockIndex--){
                     block = activeBlocks[blockIndex];
