@@ -63,7 +63,7 @@ var loop = function () {
         gameMod.updateShots(game, secs, state);
 
 
-        draw.background(state.ctx, state.canvas);
+        draw.background(state.ctx, state);
         draw.gridLines(state.ctx, state, 'rgba(255,255,255,0.1)');
         draw.blocks(state.ctx, state);
         draw.ship(state.ctx, state);

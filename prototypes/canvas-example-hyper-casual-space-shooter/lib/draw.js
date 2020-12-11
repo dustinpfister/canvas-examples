@@ -37,8 +37,11 @@ var draw = (function(){
 
     return {
         // draw background
-        background: function (ctx, canvas) {
-            ctx.fillStyle = 'black';
+        background: function (ctx, state) {
+            var canvas = state.canvas,
+            map = state.game.map,
+            r = Math.floor(map.per * 255);
+            ctx.fillStyle = 'rgba(0,' + r + ',0,1)';
             ctx.fillRect(0, 0, canvas.width, canvas.height);
         },
         shots: function(ctx, state){
