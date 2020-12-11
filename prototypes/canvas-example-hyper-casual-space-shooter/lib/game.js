@@ -6,6 +6,8 @@ var gameMod = (function(){
     BLOCK_POS_SLOT_DIST = 15,
     BLOCK_HP_MIN = 5,
     BLOCK_HP_MAX = 1000,
+    BLOCK_MONEY_BASE = 1,
+    BLOCK_MONEY_DIST = 999,
     SHIP_AUTOFIRE = false,
     MAP_MAX_DIST = Math.pow(10,5); //Number.MAX_SAFE_INTEGER;      // max distance from 0,0
 
@@ -171,7 +173,8 @@ var gameMod = (function(){
                 obj.lifespan = 1;
                 obj.hp = CreateHPObject( BLOCK_HP_MIN + Math.round( (BLOCK_HP_MAX - BLOCK_HP_MIN) ) * game.map.per );
                 obj.damage = 1;
-                obj.money = 1 + Math.floor(game.map.per * 100);
+                // block money based on BASE amount plus DIST AMOUNT
+                obj.money = BLOCK_MONEY_BASE + Math.round(game.map.per * BLOCK_MONEY_DIST);
             },
             update: function(obj, pool, state, secs){
                 obj.lifespan = 1;
