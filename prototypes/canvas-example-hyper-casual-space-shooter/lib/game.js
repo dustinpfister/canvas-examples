@@ -171,7 +171,7 @@ var gameMod = (function(){
                 obj.lifespan = 1;
                 obj.hp = CreateHPObject( BLOCK_HP_MIN + Math.round( (BLOCK_HP_MAX - BLOCK_HP_MIN) ) * game.map.per );
                 obj.damage = 1;
-                obj.money = 2;
+                obj.money = 1 + Math.floor(game.map.per * 100);
             },
             update: function(obj, pool, state, secs){
                 obj.lifespan = 1;
@@ -222,7 +222,7 @@ var gameMod = (function(){
                 pps: 0,
                 maxPPS: 256,
                 dist: 0,
-                per: 0
+                per: 0 // map.dist / MAX_MAX_DIST
             }
         };
 
