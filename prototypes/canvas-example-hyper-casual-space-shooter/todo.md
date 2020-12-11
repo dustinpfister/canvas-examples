@@ -61,7 +61,7 @@
 * (done) work out system so that blocks will not overlap when spawning they should snap to a grid that is map relative
 * (done) position blocks using new system but in front of current position of ship
 * (done) have new PositionRandom method that uses getFreePositions and pops random positions from it
-* make a pkg-0-8-0.html
+* (done) make a pkg-0-8-0.html
 
 
 ## 0.7.0 - Weapons Collection
