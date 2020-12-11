@@ -38,7 +38,7 @@
 * (done) set MAP MAX DIST to a low value of say around 100,000 (for now)
 * (done) in draw.js have map.dist effect the background color
 * (done) have map.dist effect max HP of blocks
-* dusplay block hp rather than distance to ship
+* (done) display block hp rather than distance to ship
 * make a pkg-0-6-0.html
 
 ## 0.5.0 - Common Health System and Ship Hit Points
