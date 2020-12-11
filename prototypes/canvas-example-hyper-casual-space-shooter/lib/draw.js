@@ -116,6 +116,8 @@ var draw = (function(){
     };
     api.info = function(ctx, state){
         var game = state.game,
+        ship = game.ship,
+        w = ship.weapon,
         map = game.map;
         ctx.fillStyle = 'yellow';
         ctx.font = '10px arial';
@@ -125,6 +127,7 @@ var draw = (function(){
         ctx.fillText('map radian: ' + map.radian.toFixed(2) + '; map pps: ' + map.pps.toFixed(2), 10, 20);
         ctx.fillText('map dist: ' + map.dist.toFixed(2) + ' ('+Math.floor(map.per * 100)+'%)', 10, 30);
         ctx.fillText('a to origin: ' + map.aToOrigin.toFixed(2), 10, 40);
+        ctx.fillText('weapon : ' + w.name + ', damage: ' + w.shotDamage + ', fps: ' + w.firesPerSecond, 10, 50);
     };
     api.ver = function(ctx, state){
         ctx.fillStyle = 'yellow';

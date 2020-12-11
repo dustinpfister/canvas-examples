@@ -155,9 +155,10 @@ var gameMod = (function(){
                 fillStyle: 'blue',
                 weaponSecs: 0,
                 weapon: {
-                    firesPerSecond: 4,
+                    name: 'foo',
+                    firesPerSecond: 2,
                     shotsPerFire: 1,
-                    shotDamage: 2
+                    shotDamage: 5
                 }
             },
             shots: createShotsPool(),
