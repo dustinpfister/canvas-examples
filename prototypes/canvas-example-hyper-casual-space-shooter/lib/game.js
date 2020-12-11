@@ -1,10 +1,11 @@
 var gameMod = (function(){
     
     // CONSTANTS
-    var BLOCK_COUNT = 25,
+    var BLOCK_COUNT = 20,
     BLOCK_POS_MIN_DIST = 110, //220, // center of grid location ( see getFreePositions helper )
-    BLOCK_POS_MAX_DIST = 360,
+    BLOCK_POS_MAX_DIST = 1000,
     BLOCK_POS_ADELTA = 45,    // the max DEGREE left or right from current map angle
+    BLOCK_POS_SLOT_DIST = 15,
     BLOCK_HP_MIN = 5,
     BLOCK_HP_MAX = 1000,
     MAP_MAX_DIST = Math.pow(10,5); //Number.MAX_SAFE_INTEGER;      // max distance from 0,0
@@ -115,12 +116,14 @@ var gameMod = (function(){
         block,
         //dist = getBlockDist(0), // get a distance from ship
         free = [],
-        gridH = 3,
-        gridW = 3,
-        slotDist = 1,
+        gridH = 10,
+        gridW = 10,
+        slotDist = BLOCK_POS_SLOT_DIST,
         // starting position of grid
-        sx = Math.round(gridW / 2 * -1) + Math.round(Math.cos(game.map.radian) * (Math.ceil(gridW / 2) + slotDist )  ), 
-        sy = Math.round(gridH / 2 * -1) + Math.round(Math.sin(game.map.radian) * (Math.ceil(gridH / 2) + slotDist ) ), 
+        //sx = Math.ceil(gridW / 2 * -1) + Math.ceil(Math.cos(game.map.radian) * (gridW / 2 + slotDist ) ), 
+        //sy = Math.ceil(gridH / 2 * -1) + Math.ceil(Math.sin(game.map.radian) * (gridH / 2 + slotDist ) ),
+        sx = Math.ceil(Math.cos(game.map.radian) * (gridH / 2 + slotDist) - gridW / 2),
+        sy = Math.ceil(Math.sin(game.map.radian) * (gridH / 2 + slotDist) - gridH / 2),
         x = sx, // grid position
         y = sy;
         while(y < gridH + sy){
@@ -174,13 +177,10 @@ var gameMod = (function(){
             obj.active = false;
             obj.lifespan = 0;
         }else{
-            var slot = freeSlots.pop();
+            var slot = freeSlots.splice(Math.floor(freeSlots.length * Math.random()), 1)[0];
             obj.x = slot.x;
             obj.y = slot.y;
         }
-        //var a = 0;
-        //setBlockPos(game, obj, dist, a)
-        
     };
 
 

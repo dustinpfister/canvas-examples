@@ -18,7 +18,7 @@ var state = {
     ctx: canvasObj.ctx,
     game: gameMod.create(),
     input: {
-        degree: 45,
+        degree: 0,
         degreesPerSecond: 90,
         pps: 0,
         ppsDelta: 64,
