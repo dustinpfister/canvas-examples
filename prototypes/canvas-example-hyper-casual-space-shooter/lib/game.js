@@ -97,25 +97,33 @@ var gameMod = (function(){
 
     // BLOCK POOL
 
+    // get a block distance between BLOCK_POS_MIN_DIST and BLOCK_POS_MAX_DIST with given per
+    var getBlockDist = function(per){
+        return BLOCK_POS_MIN_DIST + (BLOCK_POS_MAX_DIST - BLOCK_POS_MIN_DIST) * per;
+    };
+
     // get all free positions where a block can go
     // will retrun an empty array in the event that there are none
     var getFreePositions = function(game, blockPool){
         var map = game.map,
         activeBlocks = poolMod.getAllActive(blockPool || game.blocks, true),
-        x = 0,
+        x = 0, // grid position
         y = 0,
-        xAjust = utils.mod(game.map.x, 32),
+        xAjust = utils.mod(game.map.x, 32), // take into account current map position
         yAjust = utils.mod(game.map.y, 32),
-        spotX,
+        spotX, // the position relative to 0,0
         spotY,
         blockIndex,
         block,
-        free = [];
-        while(y < 3){
+        dist = getBlockDist(0), // get a distance from ship
+        free = [],
+        gridH = 3,
+        gridW = 3;
+        while(y < gridH){
             x = 0;
-            spotY = y * 32 - yAjust;
-            loopx:while(x < 3){
-                spotX = x * 32 - xAjust;
+            spotY = Math.sin(0) * dist + y * 32 - yAjust;
+            loopx:while(x < gridW){
+                spotX = Math.cos(0) * dist + x * 32 - xAjust;
                 blockIndex = activeBlocks.length;
                 while(blockIndex--){
                     block = activeBlocks[blockIndex];
@@ -133,11 +141,6 @@ var gameMod = (function(){
             y += 1;
         }
         return free;
-    };
-
-    // get a block distance between BLOCK_POS_MIN_DIST and BLOCK_POS_MAX_DIST with given per
-    var getBlockDist = function(per){
-        return BLOCK_POS_MIN_DIST + (BLOCK_POS_MAX_DIST - BLOCK_POS_MIN_DIST) * per;
     };
 
     // set block position helper

@@ -51,8 +51,9 @@
 ## 0.8.0 - Improved 'block' positioning
 * (done) make positionBlock method positionBlockRandom
 * (done) start new positionBlock method
-* have a getFreePositions helper that will return an array of free grid index values
-* work out system so that blocks will not overlap when spawning they should snap to a grid that is map relative
+* (done) have a getFreePositions helper that will return an array of free grid index values
+* (done) work out system so that blocks will not overlap when spawning they should snap to a grid that is map relative
+* position blocks using new system but in front of current position of ship
 
 ## 0.7.0 - Weapons Collection
 * (done) Have a DEFAULT_WEAPONS Object in game.js that will contain objects with hard coded stats for each Weapon in the game
