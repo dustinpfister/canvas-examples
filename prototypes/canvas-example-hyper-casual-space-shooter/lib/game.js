@@ -1,7 +1,7 @@
 var gameMod = (function(){
     
     // CONSTANTS
-    var BLOCK_COUNT = 10,
+    var BLOCK_COUNT = 20,
     BLOCK_POS_MIN_DIST = 50, //220,
     BLOCK_POS_MAX_DIST = 360,
     BLOCK_POS_ADELTA = 45,    // the max DEGREE left or right from current map angle
@@ -117,11 +117,11 @@ var gameMod = (function(){
         block,
         dist = getBlockDist(0), // get a distance from ship
         free = [],
-        gridH = 3,
-        gridW = 3;
+        gridH = 5,
+        gridW = 4;
         while(y < gridH){
             x = 0;
-            spotY = Math.sin(0) * dist + y * 32 - yAjust;
+            spotY = Math.sin(0) * dist + y * 32 - yAjust - (32 * Math.floor(gridH / 2));
             loopx:while(x < gridW){
                 spotX = Math.cos(0) * dist + x * 32 - xAjust;
                 blockIndex = activeBlocks.length;
