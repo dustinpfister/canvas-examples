@@ -121,10 +121,46 @@ var gameMod = (function(){
     var positionBlock = function(state, obj){
         var game = state.game,
         map = game.map,
-        rDelta = Math.PI / 180 * BLOCK_POS_ADELTA,
-        dist =  getBlockDist(0);
-        var a = utils.wrapRadian(map.radian - rDelta + ( rDelta * 2 ) * Math.random()); //Math.PI * 2 * Math.random();
+        dist =  getBlockDist(0),
+        rDelta = Math.PI / 180 * BLOCK_POS_ADELTA;
+
+        var a = 0;
         setBlockPos(game, obj, dist, a)
+    };
+
+    // get all free positions where a block can go
+    // will retrun an empty array in the event that there are none
+    var getFreePositions = function(game, blockPool){
+        var map = game.map,
+        activeblocks = poolMod.getAllActive(blockPool, true),
+        x = 0,
+        y = 0,
+        spotX,
+        spotY,
+        blockIndex,
+        block,
+        free = [];
+        while(y < 3){
+            x = 0;
+            spotY = y * 32;
+            while(x < 3){
+                spotY = x * 32;
+                blockIndex = activeBlocks.length;
+                while(blockIndex--){
+                    block = activeBlocks[blockIndex];
+                    if(utils.distance(block.x, block.y, spotX, spotY) <= block.r * 2){
+                       continue;
+                    }
+                    free.push({
+                        x: spotX,
+                        y: spotY
+                    });
+                }
+                x += 1;
+            }
+            y += 1;
+        }
+        return free;
     };
 
     // create block pool helper
@@ -207,6 +243,12 @@ var gameMod = (function(){
 
         // set current weapon
         game.ship.weapon = game.weapons[0];
+
+
+        // text block pool
+        var testBlocks = createBlocksPool();
+        console.log(testBlocks);
+
 
         return game;
     };
