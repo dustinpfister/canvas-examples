@@ -1,5 +1,6 @@
 var draw = (function(){
 
+    // draw a health bar for an object
     var drawHealthBar = function(ctx, obj){
         if(obj.hp){
             if(obj.hp.per < 1){
@@ -114,6 +115,7 @@ var draw = (function(){
         }
         ctx.restore();
     };
+    // draw game state info
     api.info = function(ctx, state){
         var game = state.game,
         ship = game.ship,
@@ -128,7 +130,9 @@ var draw = (function(){
         ctx.fillText('map dist: ' + map.dist.toFixed(2) + ' ('+Math.floor(map.per * 100)+'%)', 10, 30);
         ctx.fillText('a to origin: ' + map.aToOrigin.toFixed(2), 10, 40);
         ctx.fillText('weapon : ' + w.name + ', damage: ' + w.shotDamage + ', fps: ' + w.firesPerSecond, 10, 50);
+        ctx.fillText('money : ' + game.money + '$', 10, 60);
     };
+    // draw current version number
     api.ver = function(ctx, state){
         ctx.fillStyle = 'yellow';
         ctx.font = '10px arial';
@@ -136,7 +140,6 @@ var draw = (function(){
         ctx.textAlign = 'left';
         ctx.fillText('v' + state.ver, 5, state.canvas.height - 15);
     };
-
+    // return draw api
     return api;
-
 }());

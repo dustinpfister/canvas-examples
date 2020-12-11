@@ -195,6 +195,7 @@ var gameMod = (function(){
     // public create method
     api.create = function(){
         var game = {
+            money: 0,
             weapons: utils.deepClone(DEFAULT_WEAPONS),
             ship: { 
                 x: 0, // ship position relative to map position

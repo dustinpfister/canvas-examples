@@ -5,15 +5,6 @@
 ## 0.x.0 - Better Graphics (CANVAS ONLY)
 * have canvas generated sheets for the ship, blocks, shots, and a background
 
-## 0.x.0 - mouse and touch support
-* add mouse event support
-* have a set of two circles in the lower right corner that will be a 'pointerControl' area
-* move the map around with the mouse by clicking and holding in the 'pointerControl' area
-* the smaller inner circle in the 'pointerControl' area sill set the current map.radian and map.pps values
-* The angle of the inner cirle to the center of the circle will be used to set map.radian
-* the distance of the inner circle from the center to the outer circle will be used to set map.pps
-* The actual distnace used will be from a certain min radius from the center so that it is easy to each and stay at 0 pps
-
 ## 0.x.0 - Common System for Object Movement
 * have a commom system for movement of objects
 * use the same commom system for 'shots', 'blocks', and any additional objects
@@ -33,6 +24,15 @@
 
 
 <!-- WORK OUT THE CORE OF WHAT THE GAME IS FIRST -->
+
+## 0.15.0 - mouse and touch support
+* add mouse event support
+* have a set of two circles in the lower right corner that will be a 'pointerControl' area
+* move the map around with the mouse by clicking and holding in the 'pointerControl' area
+* the smaller inner circle in the 'pointerControl' area sill set the current map.radian and map.pps values
+* The angle of the inner cirle to the center of the circle will be used to set map.radian
+* the distance of the inner circle from the center to the outer circle will be used to set map.pps
+* The actual distnace used will be from a certain min radius from the center so that it is easy to each and stay at 0 pps
 
 ## 0.14.0 - warp
 * warp home feature
