@@ -4,7 +4,8 @@ var gameMod = (function(){
     BLOCK_POS_MIN_DIST = 220,
     BLOCK_POS_MAX_DIST = 360,
     BLOCK_POS_ADELTA = 45,    // the max DEGREE left or right from current map angle
-    BLOCK_HP_MIN = 100,
+    BLOCK_HP_MIN = 5,
+    BLOCK_HP_MAX = 1000,
     MAP_MAX_DIST = Math.pow(10,5); //Number.MAX_SAFE_INTEGER;      // max distance from 0,0
 
     var api = {};
@@ -91,7 +92,7 @@ var gameMod = (function(){
                 obj.radian = utils.wrapRadian(game.map.radian + Math.PI);
                 obj.pps = game.map.pps;
                 obj.lifespan = 1;
-                obj.hp = CreateHPObject(BLOCK_HP_MIN);
+                obj.hp = CreateHPObject( BLOCK_HP_MIN + Math.round( (BLOCK_HP_MAX - BLOCK_HP_MIN) ) * game.map.per );
                 obj.damage = 1;
             },
             update: function(obj, pool, state, secs){
