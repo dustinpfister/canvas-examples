@@ -1,7 +1,7 @@
 var gameMod = (function(){
     
     // CONSTANTS
-    var BLOCK_COUNT = 20,
+    var BLOCK_COUNT = 25,
     BLOCK_POS_MIN_DIST = 110, //220, // center of grid location ( see getFreePositions helper )
     BLOCK_POS_MAX_DIST = 360,
     BLOCK_POS_ADELTA = 45,    // the max DEGREE left or right from current map angle
@@ -107,23 +107,41 @@ var gameMod = (function(){
     var getFreePositions = function(game, blockPool){
         var map = game.map,
         activeBlocks = poolMod.getAllActive(blockPool || game.blocks, true),
-        x = 0, // grid position
-        y = 0,
-        xAjust = utils.mod(game.map.x, 32), // take into account current map position
-        yAjust = utils.mod(game.map.y, 32),
+        xMapAjust = utils.mod(game.map.x, 32), // take into account current map position
+        yMapAjust = utils.mod(game.map.y, 32),
+        //xShipAjust = Math.cos(game.map.radian) * BLOCK_POS_MIN_DIST,
+        //yShipAjust = Math.sin(game.map.radian) * BLOCK_POS_MIN_DIST,
         spotX, // the position relative to 0,0
         spotY,
         blockIndex,
         block,
         dist = getBlockDist(0), // get a distance from ship
         free = [],
-        gridH = 5,
-        gridW = 4;
-        while(y < gridH){
-            x = 0;
-            spotY = Math.sin(0) * dist + y * 32 - yAjust - (32 * Math.floor(gridH / 2));
-            loopx:while(x < gridW){
-                spotX = Math.cos(0) * dist + x * 32 - xAjust - (32 * Math.floor(gridW / 2));
+        gridH = 3,
+        gridW = 3,
+        slotDist = 1,
+        // starting position of grid
+        sx = Math.round(gridW / 2 * -1) + Math.round(Math.cos(game.map.radian) * (Math.ceil(gridW / 2) + slotDist )  ), 
+        sy = Math.round(gridH / 2 * -1) + Math.round(Math.sin(game.map.radian) * (Math.ceil(gridH / 2) + slotDist ) ), 
+        x = sx, // grid position
+        y = sy;
+        while(y < gridH + sy){
+            x = sx;
+
+            // the basic expression
+            spotY =  y * 32 - yMapAjust;
+
+            //spotY = Math.sin(0) * dist + y * 32 - yMapAjust - (32 * Math.floor(gridH / 2));
+            //spotY = yShipAjust + y * 32;
+
+            loopx:while(x < gridW + sx){
+
+                // the basic expression
+                spotX = x * 32 - xMapAjust;
+
+
+                //spotX = Math.cos(0) * dist + x * 32 - xMapAjust - (32 * Math.floor(gridW / 2));
+                //spotX = xShipAjust + x * 32;
                 blockIndex = activeBlocks.length;
                 while(blockIndex--){
                     block = activeBlocks[blockIndex];
@@ -251,7 +269,7 @@ var gameMod = (function(){
             map: { // map position
                 x: 0,
                 y: 0,
-                radian: Math.PI / 180 * 45,
+                radian: 0, //Math.PI / 180 * 45,
                 pps: 0,
                 maxPPS: 256,
                 dist: 0,
@@ -315,7 +333,7 @@ var gameMod = (function(){
 
         ship.weaponSecs += secs;
         if(ship.weaponSecs >= 1 / weapon.firesPerSecond){
-            poolMod.spawn(game.shots, state, {});
+            //poolMod.spawn(game.shots, state, {});
             ship.weaponSecs = 0;
         }
         poolMod.update(game.shots, secs, state);
