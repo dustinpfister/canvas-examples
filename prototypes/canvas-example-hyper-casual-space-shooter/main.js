@@ -22,6 +22,7 @@ var state = {
         degreesPerSecond: 90,
         pps: 0,
         ppsDelta: 64,
+        fire: false,
         keys: {}
     }
 };
@@ -53,6 +54,10 @@ var loop = function () {
         if(input.keys.s){
             input.pps -= input.ppsDelta * secs;
             input.pps = input.pps < 0 ? 0 : input.pps;
+        }
+        input.fire = false;
+        if(input.keys.l){
+            input.fire = true;
         }
         if(input.keys[1]){
             game.ship.weapon = game.weapons[0];

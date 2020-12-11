@@ -3,12 +3,12 @@ var gameMod = (function(){
     // CONSTANTS
     var BLOCK_COUNT = 20,
     BLOCK_POS_MIN_DIST = 110, //220, // center of grid location ( see getFreePositions helper )
-    BLOCK_POS_MAX_DIST = 1000,
+    BLOCK_POS_MAX_DIST = 600,
     BLOCK_POS_ADELTA = 45,    // the max DEGREE left or right from current map angle
     BLOCK_POS_SLOT_DIST = 15,
     BLOCK_HP_MIN = 5,
     BLOCK_HP_MAX = 1000,
-    SHIP_AUTOFIRE = true,
+    SHIP_AUTOFIRE = false,
     MAP_MAX_DIST = Math.pow(10,5); //Number.MAX_SAFE_INTEGER;      // max distance from 0,0
 
     // DEFAULT WEAPON OBJECTS
@@ -319,7 +319,7 @@ var gameMod = (function(){
         weapon = ship.weapon;
 
         ship.weaponSecs += secs;
-        if(SHIP_AUTOFIRE){
+        if(SHIP_AUTOFIRE || state.input.fire){
             if(ship.weaponSecs >= 1 / weapon.firesPerSecond){
                 poolMod.spawn(game.shots, state, {});
                 ship.weaponSecs = 0;
