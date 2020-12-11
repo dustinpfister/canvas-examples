@@ -53,7 +53,8 @@
 * have a getFreePositions helper that will return an array of free grid index values
 
 ## 0.7.0 - Weapons Collection
-* Have a DEFAULT_WEAPONS Object in game.js that will contain objects with hard coded stats for each Weapon in the game
+* (done) Have a DEFAULT_WEAPONS Object in game.js that will contain objects with hard coded stats for each Weapon in the game
+* have a utils.deepClone method
 * in gameMod.create create a deep clone off the DEFAULT_WEAPONS object as game.weapons
 * have a "Pulse gun" weapon that has 2 shot per second, and 1 damage per hit
 * have a "Cannon" weapon that has 5 shots per second, and 3 damage per hit 

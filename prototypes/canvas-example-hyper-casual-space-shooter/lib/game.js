@@ -16,6 +16,18 @@ var gameMod = (function(){
             firesPerSecond: 2,
             shotDamage: 1,
             shotsPerFire: 1
+        },
+        0 : {
+            name: "Cannon",
+            firesPerSecond: 5,
+            shotDamage: 3,
+            shotsPerFire: 1
+        },
+        0 : {
+            name: "Atom",
+            firesPerSecond: 1,
+            shotDamage: 100,
+            shotsPerFire: 1
         }
     };
 
