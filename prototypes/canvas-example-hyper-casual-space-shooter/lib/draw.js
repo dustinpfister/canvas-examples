@@ -41,7 +41,7 @@ var draw = (function(){
             var canvas = state.canvas,
             map = state.game.map,
             r = Math.floor(map.per * 255);
-            ctx.fillStyle = 'rgba(0,' + r + ',0,1)';
+            ctx.fillStyle = 'rgba(' + r + ',0,0,1)';
             ctx.fillRect(0, 0, canvas.width, canvas.height);
         },
         shots: function(ctx, state){

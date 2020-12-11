@@ -36,7 +36,8 @@
 * (done) have a map.per property that is map.dist / MAP\_MAX\_DIST
 * (done) have the map.x, and map.y values wrap when they go out of bounds
 * (done) set MAP MAX DIST to a low value of say around 100,000 (for now)
-* in draw.js have map.dist effect just the background color (for now)
+* (done) in draw.js have map.dist effect the background color
+* have map.dist effect max HP of blocks
 * make a pkg-0-6-0.html
 
 ## 0.5.0 - Common Health System and Ship Hit Points
