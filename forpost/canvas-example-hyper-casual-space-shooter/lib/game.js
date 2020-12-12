@@ -53,8 +53,6 @@ var gameMod = (function(){
         if(obj.hp){
             obj.hp.autoHeal.secs += secs;
             if(obj.hp.autoHeal.secs >= obj.hp.autoHeal.rate){
-
-            console.log('hello');
                 obj.hp.current += obj.hp.autoHeal.amount;
                 obj.hp.current = obj.hp.current > obj.hp.max ? obj.hp.max : obj.hp.current;
                 obj.hp.per = obj.hp.current / obj.hp.max;

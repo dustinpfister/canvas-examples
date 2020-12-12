@@ -102,6 +102,8 @@ window.addEventListener('keyup', function(e){
     state.input.keys[key] = false;
 });
 
+// MOUSE AND TOUCH
+
 var pointerEvent = function(e){
    var pos = utils.getCanvasRelative(e);
    if(e.type === 'mousedown' || e.type === 'touchstart'){
@@ -116,17 +118,26 @@ var pointerEvent = function(e){
        pointerEvent.end(e, pos);
    }
 };
-pointerEvent.start = function(e, pos){
-   console.log(pos.x, pos.y);
-};
-pointerEvent.move = function(e, pos){
-   console.log(pos.x, pos.y);
-};
-pointerEvent.end = function(e, pos){
-   console.log(pos.x, pos.y);
+
+var applyPosAsKey = function(pos){
+    var d = Math.floor(utils.angleTo(pos.x, pos.y, 160, 120) / ( Math.PI * 2 ) * 360),
+    dir = utils.shortestDirection(d, state.input.degree, 360);
+    console.log(dir);
+    //input.keys.a
+    //if(d, )
 };
 
-// MOUSE AND TOUCH
+pointerEvent.start = function(e, pos){
+    applyPosAsKey(pos)
+};
+pointerEvent.move = function(e, pos){
+   //console.log(pos.x, pos.y);
+};
+pointerEvent.end = function(e, pos){
+   //console.log(pos.x, pos.y);
+};
+
+
 canvas.addEventListener('mousedown', pointerEvent);
 canvas.addEventListener('mousemove', pointerEvent);
 canvas.addEventListener('mouseup', pointerEvent);
