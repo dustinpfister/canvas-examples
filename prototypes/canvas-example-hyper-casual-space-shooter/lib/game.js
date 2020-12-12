@@ -203,7 +203,7 @@ var gameMod = (function(){
         });
     };
 
-    var createShip = function(){
+    var createShip = function(game){
         var ship = { 
             x: 0, // ship position relative to map position
             y: 0,
@@ -211,7 +211,7 @@ var gameMod = (function(){
             hp: CreateHPObject(SHIP_HP),
             fillStyle: 'blue',
             weaponSecs: 0,
-            weapon: {} // will be a reference to the current weapon
+            weapon: game.weapons[0] // reference to the current weapon
         };
         return ship;
     };
@@ -221,7 +221,7 @@ var gameMod = (function(){
         var game = {
             money: 0,
             weapons: utils.deepClone(DEFAULT_WEAPONS),
-            ship: createShip(),
+            ship: {}, //createShip(),
             shots: createShotsPool(),
             blocks: createBlocksPool(),
             map: { // map position
@@ -236,7 +236,7 @@ var gameMod = (function(){
         };
 
         // set current weapon
-        game.ship.weapon = game.weapons[0];
+        game.ship = createShip(game);
 
         return game;
     };
