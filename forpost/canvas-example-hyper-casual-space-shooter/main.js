@@ -21,8 +21,13 @@ var state = {
     ctx: canvasObj.ctx,
     game: gameMod.create(),
     input: {
-        pointerDown: false,
-        pointerPos: {},
+        //pointerDown: false,
+        //pointerPos: {},
+        pointer: {
+            down: false,
+            pos: {},
+            dir: 0
+        },
         degree: 0,
         degreesPerSecond: 90,
         pps: 0,
@@ -30,6 +35,12 @@ var state = {
         fire: false,
         keys: {}
     }
+};
+
+// apply pos as key helper
+var applyPosAsKey = function(pos){
+    var d = Math.floor(utils.angleTo(pos.x, pos.y, 160, 120) / ( Math.PI * 2 ) * 360);
+    state.input.pointer.dir = utils.shortestDirection(d, Math.floor(state.input.degree), 360);
 };
 
 // LOOP
@@ -43,10 +54,13 @@ var loop = function () {
     requestAnimationFrame(loop);
     if (t >= FPS_target) {
         var input = state.input;
-        if(input.keys.a){
+
+        applyPosAsKey(input.pointer.pos);
+
+        if(input.keys.a || (input.pointer.dir === 1 && input.pointer.down) ){
             input.degree += input.degreesPerSecond * secs;
         }
-        if(input.keys.d){
+        if(input.keys.d || (input.pointer.dir === -1 && input.pointer.down) ){
             input.degree -= input.degreesPerSecond * secs;
             
         }
@@ -105,33 +119,26 @@ window.addEventListener('keyup', function(e){
 // MOUSE AND TOUCH
 
 var pointerEvent = function(e){
-   var pos = utils.getCanvasRelative(e);
+   var pos = state.input.pointer.pos = utils.getCanvasRelative(e);
    if(e.type === 'mousedown' || e.type === 'touchstart'){
-       state.pointerDown = true;
+       state.input.pointer.down = true;
        pointerEvent.start(e, pos);
    }
-   if((e.type === 'mousemove' || e.type === 'touchmove') && state.pointerDown){
+   if((e.type === 'mousemove' || e.type === 'touchmove') && state.input.pointer.down){
        pointerEvent.move(e, pos);
    }
    if(e.type === 'mouseup' || e.type === 'touchend'){
-       state.pointerDown = false;
+       state.input.pointer.down = false;
        pointerEvent.end(e, pos);
    }
 };
 
-var applyPosAsKey = function(pos){
-    var d = Math.floor(utils.angleTo(pos.x, pos.y, 160, 120) / ( Math.PI * 2 ) * 360),
-    dir = utils.shortestDirection(d, state.input.degree, 360);
-    console.log(dir);
-    //input.keys.a
-    //if(d, )
-};
-
 pointerEvent.start = function(e, pos){
-    applyPosAsKey(pos)
+    //applyPosAsKey(pos);
 };
 pointerEvent.move = function(e, pos){
-   //console.log(pos.x, pos.y);
+    //console.log(pos.x, pos.y);
+    //applyPosAsKey(pos);
 };
 pointerEvent.end = function(e, pos){
    //console.log(pos.x, pos.y);
