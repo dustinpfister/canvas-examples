@@ -38,7 +38,12 @@ var gameMod = (function(){
         return {
             current: maxHP || 100,
             max: maxHP || 100,
-            per: 1
+            per: 1,
+            autoHeal: {
+                rate: 1,
+                amount: 1, // every RATE heal AMOUNT
+                secs: 0
+            }
         };
     };
 
