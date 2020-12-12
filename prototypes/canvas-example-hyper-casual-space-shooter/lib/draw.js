@@ -68,6 +68,7 @@ var draw = (function(){
                     ctx.textAlign = 'center';
                     ctx.font = '8px arial';
                     ctx.fillText(Math.floor(block.hp.current) + '/' + Math.floor(block.hp.max) , block.x, block.y);
+                    ctx.fillText(block.money + '$', block.x, block.y + 8);
                 });
             }
         });
