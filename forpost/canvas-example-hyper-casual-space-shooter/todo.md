@@ -22,14 +22,11 @@
 * have a MAX-SHOT-DAM-DAMAGE constant that will be used to set the max amount of damage a shot can have
 * set "Atom" weapon damage to MAX-SHOT-DAMAGE
 
-
-<!-- WORK OUT THE CORE OF WHAT THE GAME IS FIRST -->
-
-## 0.11.0 - Home Base
+## 0.x.0 - Home Base
 * can buy things at home base
 * can bank money at home base
 
-## 0.14.0 - mouse and touch support
+## 0.x.0 - better mouse and touch support
 * add mouse event support
 * have a set of two circles in the lower right corner that will be a 'pointerControl' area
 * move the map around with the mouse by clicking and holding in the 'pointerControl' area
@@ -38,13 +35,19 @@
 * the distance of the inner circle from the center to the outer circle will be used to set map.pps
 * The actual distnace used will be from a certain min radius from the center so that it is easy to each and stay at 0 pps
 
-## 0.13.0 - warp
+## 0.x.0 - warp
 * warp home feature
 
-## 0.12.0 - spawn blocks durring movement
+## 0.x.0 - spawn blocks durring movement
 * have a BLOCK-SPAWN-DIST, and BLOCK-COUNT-PER-SPAWN-DIST
 * have a game.spawnDist value that is updated each time the map position changes
 * when game.spawnDist >= BLOCK-SPAWN-DIST set up to BLOCK-COUNT-PER-SPAWN-DIST active
+
+<!-- WORK OUT THE CORE OF WHAT THE GAME IS FIRST -->
+
+## 0.11.0 - Basic Pointer Event Support
+* add basic mouse and touch support
+* make a pkg-0-11-0.html
 
 ## 0.10.0 - Ship death, Autoheal
 * (done) have a createShip helper
@@ -53,7 +56,7 @@
 * (done) have a hp.autoHeal.rate, hp.autoHeal.secs, and hp.autoHeal.amount properties
 * (done) ship autoheals
 * (done) Ship autoHeal constants
-* make a pkg-0-10-0.html
+* (done) make a pkg-0-10-0.html
 
 ## 0.9.0 - Money
 * (done) have a game.money value that will hold the current amount of money that the player has

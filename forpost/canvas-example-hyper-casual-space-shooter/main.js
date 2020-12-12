@@ -1,3 +1,4 @@
+// CANVAS
 var createCanvas = function(opt){
     opt = opt || {};
     opt.container = opt.container || document.getElementById('canvas-app') || document.body;
@@ -10,14 +11,18 @@ var createCanvas = function(opt){
     return opt;
 };
 
+var canvasObj = createCanvas(),
+canvas = canvasObj.canvas;
+
 // STATE
-var canvasObj = createCanvas();
 var state = {
-    ver: '0.10.0',
-    canvas : canvasObj.canvas,
+    ver: '0.11.0',
+    canvas : canvas,
     ctx: canvasObj.ctx,
     game: gameMod.create(),
     input: {
+        pointerDown: false,
+        pointerPos: {},
         degree: 0,
         degreesPerSecond: 90,
         pps: 0,
@@ -27,9 +32,9 @@ var state = {
     }
 };
 
+// LOOP
 var lt = new Date(),
 FPS_target = 1000 / 30;
-
 var loop = function () {
     var now = new Date(),
     t = now - lt,
@@ -37,8 +42,6 @@ var loop = function () {
     secs = t / 1000;
     requestAnimationFrame(loop);
     if (t >= FPS_target) {
-
-
         var input = state.input;
         if(input.keys.a){
             input.degree += input.degreesPerSecond * secs;
@@ -68,16 +71,13 @@ var loop = function () {
         if(input.keys[3]){
             game.ship.weapon = game.weapons[2];
         }
-
         input.degree = utils.mod(input.degree, 360);
+        // update game
         gameMod.setMapMovement(game, input.degree, input.pps);
-
-
         gameMod.updateMap(game, secs);
         gameMod.updateBlocks(game, secs, state);
         gameMod.updateShots(game, secs, state);
-
-
+        // draw
         draw.background(state.ctx, state);
         draw.gridLines(state.ctx, state, 'rgba(255,255,255,0.1)');
         draw.blocks(state.ctx, state);
@@ -101,3 +101,33 @@ window.addEventListener('keyup', function(e){
     var key = e.key.toLowerCase();
     state.input.keys[key] = false;
 });
+
+var pointerEvent = function(e){
+   var pos = utils.getCanvasRelative(e);
+   if(e.type === 'mousedown' || e.type === 'touchstart'){
+       state.pointerDown = true;
+       pointerEvent.start(e, pos);
+   }
+   if((e.type === 'mousemove' || e.type === 'touchmove') && state.pointerDown){
+       pointerEvent.move(e, pos);
+   }
+   if(e.type === 'mouseup' || e.type === 'touchend'){
+       state.pointerDown = false;
+       pointerEvent.end(e, pos);
+   }
+};
+pointerEvent.start = function(e, pos){
+   console.log(pos.x, pos.y);
+};
+pointerEvent.move = function(e, pos){
+   console.log(pos.x, pos.y);
+};
+pointerEvent.end = function(e, pos){
+   console.log(pos.x, pos.y);
+};
+
+// MOUSE AND TOUCH
+canvas.addEventListener('mousedown', pointerEvent);
+canvas.addEventListener('mousemove', pointerEvent);
+canvas.addEventListener('mouseup', pointerEvent);
+
