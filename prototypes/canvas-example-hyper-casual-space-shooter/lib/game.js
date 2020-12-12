@@ -8,8 +8,10 @@ var gameMod = (function(){
     BLOCK_HP_MAX = 1000,
     BLOCK_MONEY_BASE = 1,
     BLOCK_MONEY_DIST = 999,
-    SHIP_AUTOFIRE = false,
-    SHIP_HP = 5,
+    SHIP_AUTOFIRE = true,
+    SHIP_HP = 100,
+    SHIP_AUTOHEAL_RATE = 5,
+    SHIP_AUTOHEAL_AMOUNT = 1,
     MAP_MAX_DIST = Math.pow(10,5); //Number.MAX_SAFE_INTEGER;      // max distance from 0,0
 
     // DEFAULT WEAPON OBJECTS
@@ -40,7 +42,7 @@ var gameMod = (function(){
             max: maxHP || 100,
             per: 1,
             autoHeal: {
-                rate: 1,
+                rate: 3,
                 amount: 1, // every RATE heal AMOUNT
                 secs: 0
             }
@@ -250,6 +252,8 @@ var gameMod = (function(){
             weaponSecs: 0,
             weapon: game.weapons[0] // reference to the current weapon
         };
+        ship.hp.autoHeal.rate = SHIP_AUTOHEAL_RATE;
+        ship.hp.autoHeal.amount = SHIP_AUTOHEAL_AMOUNT;
         return ship;
     };
 

@@ -51,7 +51,10 @@
 * (done) have ship respawn at 0,0 when dead
 * (done) player money will be reduced by half on each death.
 * (done) have a hp.autoHeal.rate, hp.autoHeal.secs, and hp.autoHeal.amount properties
-* ship autoheals
+* (done) ship autoheals
+* Ship autoHeal constants
+* make a pkg-0-10-0.html
+
 
 ## 0.9.0 - Money
 * (done) have a game.money value that will hold the current amount of money that the player has
