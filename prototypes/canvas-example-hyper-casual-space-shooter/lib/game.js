@@ -50,7 +50,9 @@ var gameMod = (function(){
         poolMod.getAllActive(game.blocks).forEach(function(block){
            block.active = false;
            block.lifespan = 0;
-       });
+        });
+        // game money effected
+        game.money = game.money > 0 ? game.money / 2 : 0;
     };
 
     // attack the given object with the given amount of damage
