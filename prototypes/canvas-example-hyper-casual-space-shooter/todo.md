@@ -57,7 +57,7 @@
 * (done) have a game.money value that will hold the current amount of money that the player has
 * (done) have a block.money value that is the amount of money that the player gets when it kills the block
 * (done) have block.money do up with map.dist
-
+* make a pkg-0-9-0.html
 
 ## 0.8.0 - Improved 'block' positioning
 * (done) make positionBlock method positionBlockRandom
