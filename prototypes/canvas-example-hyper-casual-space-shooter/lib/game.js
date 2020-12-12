@@ -42,6 +42,17 @@ var gameMod = (function(){
         };
     };
 
+    var onShipDeath = function(game){
+        game.ship = createShip(game);
+        game.map.x = 0;
+        game.map.y = 0;
+        // set all blocks inactive
+        poolMod.getAllActive(game.blocks).forEach(function(block){
+           block.active = false;
+           block.lifespan = 0;
+       });
+    };
+
     // attack the given object with the given amount of damage
     var attackObject = function(game, obj, damage){
         if(obj.hp){
@@ -51,13 +62,7 @@ var gameMod = (function(){
 
             // if ship death
             if(obj.hp.current === 0 && obj.type === 'ship'){
-                game.ship = createShip(game);
-                game.map.x = 0;
-                game.map.y = 0;
-                poolMod.getAllActive(game.blocks).forEach(function(block){
-                   block.active = false;
-                   block.lifespan = 0;
-                });
+                onShipDeath(game);
             }
         }
     };
