@@ -25,7 +25,7 @@
 
 <!-- WORK OUT THE CORE OF WHAT THE GAME IS FIRST -->
 
-## 0.15.0 - mouse and touch support
+## 0.14.0 - mouse and touch support
 * add mouse event support
 * have a set of two circles in the lower right corner that will be a 'pointerControl' area
 * move the map around with the mouse by clicking and holding in the 'pointerControl' area
@@ -34,24 +34,23 @@
 * the distance of the inner circle from the center to the outer circle will be used to set map.pps
 * The actual distnace used will be from a certain min radius from the center so that it is easy to each and stay at 0 pps
 
-## 0.14.0 - warp
+## 0.13.0 - warp
 * warp home feature
 
-## 0.13.0 - spawn blocks durring movement
+## 0.12.0 - spawn blocks durring movement
 * have a BLOCK-SPAWN-DIST, and BLOCK-COUNT-PER-SPAWN-DIST
 * have a game.spawnDist value that is updated each time the map position changes
 * when game.spawnDist >= BLOCK-SPAWN-DIST set up to BLOCK-COUNT-PER-SPAWN-DIST active
 
-## 0.12.0 - Home Base
+## 0.11.0 - Home Base
 * can buy things at home base
 * can bank money at home base
 
-## 0.11.0 - AutoHeal
-* have a hp.autoHealRate, hp.autoHealSecs, and hp.autoHealAmount properties
-
-## 0.10.0 - Ship death
+## 0.10.0 - Ship death, Autoheal
+* have a createShip helper
 * have ship respawn at 0,0 when dead
 * player money will be reduced by half on each death.
+* have a hp.autoHealRate, hp.autoHealSecs, and hp.autoHealAmount properties
 
 ## 0.9.0 - Money
 * (done) have a game.money value that will hold the current amount of money that the player has

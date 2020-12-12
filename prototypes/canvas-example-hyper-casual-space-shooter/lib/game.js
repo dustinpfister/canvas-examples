@@ -203,20 +203,25 @@ var gameMod = (function(){
         });
     };
 
+    var createShip = function(){
+        var ship = { 
+            x: 0, // ship position relative to map position
+            y: 0,
+            r: 8,
+            hp: CreateHPObject(SHIP_HP),
+            fillStyle: 'blue',
+            weaponSecs: 0,
+            weapon: {} // will be a reference to the current weapon
+        };
+        return ship;
+    };
+
     // public create method
     api.create = function(){
         var game = {
             money: 0,
             weapons: utils.deepClone(DEFAULT_WEAPONS),
-            ship: { 
-                x: 0, // ship position relative to map position
-                y: 0,
-                r: 8,
-                hp: CreateHPObject(SHIP_HP),
-                fillStyle: 'blue',
-                weaponSecs: 0,
-                weapons: {},
-            },
+            ship: createShip(),
             shots: createShotsPool(),
             blocks: createBlocksPool(),
             map: { // map position
