@@ -25,6 +25,10 @@
 
 <!-- WORK OUT THE CORE OF WHAT THE GAME IS FIRST -->
 
+## 0.11.0 - Home Base
+* can buy things at home base
+* can bank money at home base
+
 ## 0.14.0 - mouse and touch support
 * add mouse event support
 * have a set of two circles in the lower right corner that will be a 'pointerControl' area
@@ -42,19 +46,14 @@
 * have a game.spawnDist value that is updated each time the map position changes
 * when game.spawnDist >= BLOCK-SPAWN-DIST set up to BLOCK-COUNT-PER-SPAWN-DIST active
 
-## 0.11.0 - Home Base
-* can buy things at home base
-* can bank money at home base
-
 ## 0.10.0 - Ship death, Autoheal
 * (done) have a createShip helper
 * (done) have ship respawn at 0,0 when dead
 * (done) player money will be reduced by half on each death.
 * (done) have a hp.autoHeal.rate, hp.autoHeal.secs, and hp.autoHeal.amount properties
 * (done) ship autoheals
-* Ship autoHeal constants
+* (done) Ship autoHeal constants
 * make a pkg-0-10-0.html
-
 
 ## 0.9.0 - Money
 * (done) have a game.money value that will hold the current amount of money that the player has
