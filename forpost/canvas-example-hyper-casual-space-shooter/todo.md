@@ -46,7 +46,9 @@
 <!-- WORK OUT THE CORE OF WHAT THE GAME IS FIRST -->
 
 ## 0.11.0 - Basic Pointer Event Support
-* add basic mouse and touch support
+* (done) start basic mouse and touch support
+* (done) change map radian with mouse
+* change map pps with mouse
 * make a pkg-0-11-0.html
 
 ## 0.10.0 - Ship death, Autoheal
