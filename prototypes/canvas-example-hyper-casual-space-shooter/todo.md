@@ -49,7 +49,7 @@
 ## 0.10.0 - Ship death, Autoheal
 * (done) have a createShip helper
 * (done) have ship respawn at 0,0 when dead
-* player money will be reduced by half on each death.
+* (done) player money will be reduced by half on each death.
 * have a hp.autoHealRate, hp.autoHealSecs, and hp.autoHealAmount properties
 
 ## 0.9.0 - Money

@@ -61,7 +61,6 @@ var gameMod = (function(){
             obj.hp.current -= damage;
             obj.hp.current = obj.hp.current < 0 ? 0 : obj.hp.current;
             obj.hp.per = obj.hp.current / obj.hp.max;
-
             // if ship death
             if(obj.hp.current === 0 && obj.type === 'ship'){
                 onShipDeath(game);

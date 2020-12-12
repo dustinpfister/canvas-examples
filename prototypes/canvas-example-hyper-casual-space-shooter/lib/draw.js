@@ -68,7 +68,7 @@ var draw = (function(){
                     ctx.textAlign = 'center';
                     ctx.font = '8px arial';
                     ctx.fillText(Math.floor(block.hp.current) + '/' + Math.floor(block.hp.max) , block.x, block.y);
-                    ctx.fillText(block.money + '$', block.x, block.y + 8);
+                    ctx.fillText(block.money.toFixed(2), block.x, block.y + 8);
                 });
             }
         });
@@ -131,7 +131,7 @@ var draw = (function(){
         ctx.fillText('map dist: ' + map.dist.toFixed(2) + ' ('+Math.floor(map.per * 100)+'%)', 10, 30);
         ctx.fillText('a to origin: ' + map.aToOrigin.toFixed(2), 10, 40);
         ctx.fillText('weapon : ' + w.name + ', damage: ' + w.shotDamage + ', fps: ' + w.firesPerSecond, 10, 50);
-        ctx.fillText('money : ' + game.money + '$', 10, 60);
+        ctx.fillText('money : ' + game.money.toFixed(2) + '$', 10, 60);
     };
     // draw current version number
     api.ver = function(ctx, state){
