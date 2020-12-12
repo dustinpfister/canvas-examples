@@ -9,6 +9,7 @@ var gameMod = (function(){
     BLOCK_MONEY_BASE = 1,
     BLOCK_MONEY_DIST = 999,
     SHIP_AUTOFIRE = false,
+    SHIP_HP = 5,
     MAP_MAX_DIST = Math.pow(10,5); //Number.MAX_SAFE_INTEGER;      // max distance from 0,0
 
     // DEFAULT WEAPON OBJECTS
@@ -211,7 +212,7 @@ var gameMod = (function(){
                 x: 0, // ship position relative to map position
                 y: 0,
                 r: 8,
-                hp: CreateHPObject(100),
+                hp: CreateHPObject(SHIP_HP),
                 fillStyle: 'blue',
                 weaponSecs: 0,
                 weapons: {},
