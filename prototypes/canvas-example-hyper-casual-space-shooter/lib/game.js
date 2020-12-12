@@ -51,8 +51,11 @@ var gameMod = (function(){
         if(obj.hp){
             obj.hp.autoHeal.secs += secs;
             if(obj.hp.autoHeal.secs >= obj.hp.autoHeal.rate){
+
+            console.log('hello');
                 obj.hp.current += obj.hp.autoHeal.amount;
                 obj.hp.current = obj.hp.current > obj.hp.max ? obj.hp.max : obj.hp.current;
+                obj.hp.per = obj.hp.current / obj.hp.max;
                 obj.hp.autoHeal.secs = 0;
             }
         }
@@ -302,6 +305,8 @@ var gameMod = (function(){
         clampMapPos(map);
         map.per = game.map.dist / MAP_MAX_DIST;
         map.aToOrigin = utils.angleTo(map.x, map.y, 0, 0);
+
+        autoHealObject(game.ship, secs);
     };
 
     api.updateBlocks = function(game, secs, state){
