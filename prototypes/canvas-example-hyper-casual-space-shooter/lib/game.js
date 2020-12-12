@@ -47,6 +47,17 @@ var gameMod = (function(){
         };
     };
 
+    var autoHealObject = function(obj, secs){
+        if(obj.hp){
+            obj.hp.autoHeal.secs += secs;
+            if(obj.hp.autoHeal.secs >= obj.hp.autoHeal.rate){
+                obj.hp.current += obj.hp.autoHeal.amount;
+                obj.hp.current = obj.hp.current > obj.hp.max ? obj.hp.max : obj.hp.current;
+                obj.hp.autoHeal.secs = 0;
+            }
+        }
+    };
+
     var onShipDeath = function(game){
         game.ship = createShip(game);
         game.map.x = 0;
