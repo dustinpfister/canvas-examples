@@ -43,11 +43,22 @@ var gameMod = (function(){
     };
 
     // attack the given object with the given amount of damage
-    var attackObject = function(obj, damage){
+    var attackObject = function(game, obj, damage){
         if(obj.hp){
             obj.hp.current -= damage;
             obj.hp.current = obj.hp.current < 0 ? 0 : obj.hp.current;
             obj.hp.per = obj.hp.current / obj.hp.max;
+
+            // if ship death
+            if(obj.hp.current === 0 && obj.type === 'ship'){
+                game.ship = createShip(game);
+                game.map.x = 0;
+                game.map.y = 0;
+                poolMod.getAllActive(game.blocks).forEach(function(block){
+                   block.active = false;
+                   block.lifespan = 0;
+                });
+            }
         }
     };
 
@@ -85,7 +96,7 @@ var gameMod = (function(){
                         // if a shot hits a block
                         if(dist <= block.r + shot.r){
                             shot.lifespan = 0;
-                            attackObject(block, shot.damage);
+                            attackObject(state.game, block, shot.damage);
                             // if the block is dead
                             if(block.hp.current <= 0 ){
                                 state.game.money += block.money;
@@ -192,7 +203,7 @@ var gameMod = (function(){
                 // become inactive if
                 // block hits ship
                 if(obj.data.dist <= game.ship.r + obj.r){
-                    attackObject(game.ship, obj.damage);
+                    attackObject(game, game.ship, obj.damage);
                     obj.lifespan = 0;
                 }
                 // block goes out of range
@@ -204,7 +215,8 @@ var gameMod = (function(){
     };
 
     var createShip = function(game){
-        var ship = { 
+        var ship = {
+            type: 'ship',
             x: 0, // ship position relative to map position
             y: 0,
             r: 8,

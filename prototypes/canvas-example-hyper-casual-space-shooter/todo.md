@@ -47,7 +47,7 @@
 * can bank money at home base
 
 ## 0.10.0 - Ship death, Autoheal
-* have a createShip helper
+* (done) have a createShip helper
 * have ship respawn at 0,0 when dead
 * player money will be reduced by half on each death.
 * have a hp.autoHealRate, hp.autoHealSecs, and hp.autoHealAmount properties
