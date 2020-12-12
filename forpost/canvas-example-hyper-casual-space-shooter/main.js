@@ -67,13 +67,19 @@ var loop = function () {
         // update input.pointer
         updatePointer(input.pointer.pos);
 
-        // update map radian with keys or pointer
+        // keyboard or pointer update map radian
         if(input.keys.a || (input.pointer.dir === 1 && input.pointer.down) ){
             input.degree += input.degreesPerSecond * secs;
         }
         if(input.keys.d || (input.pointer.dir === -1 && input.pointer.down) ){
             input.degree -= input.degreesPerSecond * secs;
             
+        }
+
+        // pointer update pps
+        if(input.pointer.down && input.pointer.dist < 160){
+            var per = input.pointer.dist / 160;
+            input.pps = game.map.maxPPS * per;
         }
 
         // keyboard update pps
