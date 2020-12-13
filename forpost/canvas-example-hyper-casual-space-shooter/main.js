@@ -56,18 +56,15 @@ var loop = function () {
         var input = state.input;
         // update input.pointer
         updatePointer(input.pointer.pos);
+
         // keyboard or pointer update map radian
-        if(input.keys.a || (input.pointer.dir === 1 && input.pointer.down) ){
+        //if(input.keys.a || (input.pointer.dir === 1 && input.pointer.down) ){
+        if(input.keys.a){
             input.degree += input.degreesPerSecond * secs;
         }
-        if(input.keys.d || (input.pointer.dir === -1 && input.pointer.down) ){
+        //if(input.keys.d || (input.pointer.dir === -1 && input.pointer.down) ){
+        if(input.keys.d){
             input.degree -= input.degreesPerSecond * secs;
-            
-        }
-        // pointer update pps
-        if(input.pointer.down && input.pointer.dist < 160){
-            var per = input.pointer.dist / 160;
-            input.pps = game.map.maxPPS * per;
         }
         // keyboard update pps
         if(input.keys.w){
@@ -77,6 +74,20 @@ var loop = function () {
         if(input.keys.s){
             input.pps -= input.ppsDelta * secs;
             input.pps = input.pps < 0 ? 0 : input.pps;
+        }
+        // pointer update map radian
+        if(input.pointer.down && input.pointer.dist <= 32){
+            if(input.pointer.dir === 1){
+                input.degree += input.degreesPerSecond * secs;
+            }
+            if(input.pointer.dir === -1){
+                input.degree -= input.degreesPerSecond * secs;
+            }
+        }
+        // pointer update map pps
+        if(input.pointer.down && input.pointer.dist < 32){
+            var per = input.pointer.dist / 32;
+            input.pps = game.map.maxPPS * per;
         }
         // keyboard update fire
         input.fire = false;

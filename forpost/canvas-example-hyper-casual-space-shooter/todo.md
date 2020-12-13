@@ -62,9 +62,10 @@
 * (done) have the game as it is to begin with be a main 'space' mode
 * (done) add a HOME-BASE-DIST const that is the max distance in which the game is in 'base' mode
 * (done) game will switch between 'space' and 'base' mode depeding on the current map.dist value and HOME-BASE-DIST
-* add a HOME-BASE-BUTTONS const that will be button objects that show up when in 'home-base' mode
+* (done) add a BASE-BUTTONS const that will be button objects that show up when in 'home-base' mode
+* (done) have a draw.currentMode method that will always draw based on what the current mode is
 * start with just a 'change weapon' button for now
-* have a draw.currentMode method that will always draw based on what the current mode is
+* change mouse movement so it does not change map.radian and pps when clicking a button
 
 <!-- WORK OUT JUST A BASIC SET OF FEATURES -->
 
