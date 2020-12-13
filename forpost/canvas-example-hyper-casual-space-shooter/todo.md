@@ -1,6 +1,6 @@
 # canvas-example-hyper-casual-space-shooter
 
-<!-- ADDITIONAL FIXES AND FEATURES ONCE I HAVE THE CORE OF WHAT THE GAME IS DONE -->
+<!-- ADDITIONAL FIXES AND FEATURES -->
 
 ## 0.x.0 - Better Graphics (CANVAS ONLY)
 * have canvas generated sheets for the ship, blocks, shots, and a background
@@ -9,22 +9,13 @@
 * have a commom system for movement of objects
 * use the same commom system for 'shots', 'blocks', and any additional objects
 
-## 0.x.0 - save states
-
 ## 0.x.0 - Use Math.log to set block values
 * block values effected by distance go up using Math.log
 
-## 0.x.0 - Shots Per Fire
-
-## 0.x.0 - Weapon Accuracy
 
 ## 0.x.0 - MAX_SHOT_DAMAGE
 * have a MAX-SHOT-DAM-DAMAGE constant that will be used to set the max amount of damage a shot can have
 * set "Atom" weapon damage to MAX-SHOT-DAMAGE
-
-## 0.x.0 - Home Base
-* can buy things at home base
-* can bank money at home base
 
 ## 0.x.0 - better mouse and touch support
 * add mouse event support
@@ -35,15 +26,45 @@
 * the distance of the inner circle from the center to the outer circle will be used to set map.pps
 * The actual distnace used will be from a certain min radius from the center so that it is easy to each and stay at 0 pps
 
-## 0.x.0 - warp
-* warp home feature
 
 ## 0.x.0 - spawn blocks durring movement
 * have a BLOCK-SPAWN-DIST, and BLOCK-COUNT-PER-SPAWN-DIST
 * have a game.spawnDist value that is updated each time the map position changes
 * when game.spawnDist >= BLOCK-SPAWN-DIST set up to BLOCK-COUNT-PER-SPAWN-DIST active
 
-<!-- WORK OUT THE CORE OF WHAT THE GAME IS FIRST -->
+<!-- ADD FEATURES THAT MAKE THE GAME MORE FUN AND ADDICTIVE -->
+
+## 0.x.0 - Shots Per Fire
+
+## 0.x.0 - save states
+
+## 0.x.0 - warp
+* add a warp home button in 'space' mode
+* the cost of a warp home will go up as the ship goes farther out
+
+## 0.x.0 - Weapon Accuracy Button at Base
+* add a 'upgrade accuracy' button for the current weapon in 'base' mode
+
+## 0.x.0 - Weapon Accuracy
+* each weapon has an accuracy object
+* acc.radius is the potential radius in which a shot will hit from perfect accuracy to acc.radius
+* acc.per is applied with acc.radius to find and actual radius that will be used to set shot location
+
+## 0.x.0 - Weapon Upgrades
+* add 'upgrade damage', and 'upgrade fire rate' buttons that will upgrade the current weapon
+* each upgrade costs money
+* buttons will only show up on 'base' mode
+
+## 0.x.0 - game modes, 'space' mode, and 'base' mode
+* have a game.mode property that will store the current mode
+* have the game as it is to begin with be a main 'space' mode
+* add a HOME-BASE-DIST const that is the max distance in which the game is in 'base' mode
+* game will switch between 'space' and 'base' mode depeding on the current map.dist value and HOME-BASE-DIST
+* add a HOME-BASE-BUTTONS const that will be button objects that show up when in 'home-base' mode
+* start with just a 'change weapon' button for now
+* have a draw.currentMode method that will always draw based on what the current mode is
+
+<!-- WORK OUT JUST A BASIC SET OF FEATURES -->
 
 ## 0.11.0 - Basic Pointer Event Support
 * (done) start basic mouse and touch support
