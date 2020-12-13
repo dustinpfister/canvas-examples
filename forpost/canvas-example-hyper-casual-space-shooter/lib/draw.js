@@ -132,6 +132,7 @@ var draw = (function(){
         ctx.fillText('a to origin: ' + map.aToOrigin.toFixed(2), 10, 40);
         ctx.fillText('weapon : ' + w.name + ', damage: ' + w.shotDamage + ', fps: ' + w.firesPerSecond, 10, 50);
         ctx.fillText('money : ' + game.money.toFixed(2) + '$', 10, 60);
+        ctx.fillText('mode : ' + game.mode, 10, 70);
     };
     // draw current version number
     api.ver = function(ctx, state){

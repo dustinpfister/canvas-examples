@@ -259,6 +259,7 @@ var gameMod = (function(){
     api.create = function(){
         var game = {
             money: 0,
+            mode: 'space',
             weapons: utils.deepClone(DEFAULT_WEAPONS),
             ship: {}, //createShip(),
             shots: createShotsPool(),

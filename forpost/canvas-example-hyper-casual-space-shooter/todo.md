@@ -57,6 +57,7 @@
 
 ## 0.x.0 - game modes, 'space' mode, and 'base' mode
 * have a game.mode property that will store the current mode
+* display current game mode
 * have the game as it is to begin with be a main 'space' mode
 * add a HOME-BASE-DIST const that is the max distance in which the game is in 'base' mode
 * game will switch between 'space' and 'base' mode depeding on the current map.dist value and HOME-BASE-DIST
