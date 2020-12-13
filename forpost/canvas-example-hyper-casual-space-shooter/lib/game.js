@@ -312,14 +312,24 @@ var gameMod = (function(){
     };
 
     var updateBlocks = function(game, secs, state){
-        poolMod.update(game.blocks, secs, state);
-        poolMod.spawn(game.blocks, state, {});
+
+        // only spawn blocks in space mode
+        if(game.mode === 'space'){
+            poolMod.update(game.blocks, secs, state);
+            poolMod.spawn(game.blocks, state, {});
+        }
+
+        // all blocks are inactive in base mode
+        if(game.mode === 'base'){
+            poolMod.setActiveStateForAll(game.blocks, false);
+        }
     };
 
     var updateShots = function(game, secs, state){
         var ship = game.ship,
         weapon = ship.weapon;
 
+        // only shoot new shots in 'space' mode
         if(game.mode === 'space'){
             ship.weaponSecs += secs;
             if(SHIP_AUTOFIRE || state.input.fire){
@@ -328,9 +338,11 @@ var gameMod = (function(){
                     ship.weaponSecs = 0;
                 }
             }
-            poolMod.update(game.shots, secs, state);
-
         }
+
+        // always update shot pool
+        poolMod.update(game.shots, secs, state);
+
     };
 
     api.update = function(game, secs, state){

@@ -86,10 +86,7 @@ var poolMod = (function () {
         });
     };
 
-
-
     // set all to inActive or active state
-/*
     api.setActiveStateForAll = function (pool, bool) {
         bool = bool === undefined ? false : bool;
         var i = pool.objects.length,
@@ -99,7 +96,6 @@ var poolMod = (function () {
             obj.active = bool;
         }
     };
-*/
 
     return api;
 }
