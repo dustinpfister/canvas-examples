@@ -48,7 +48,7 @@
 ## 0.11.0 - Basic Pointer Event Support
 * (done) start basic mouse and touch support
 * (done) change map radian with mouse
-* change map pps with mouse
+* (done) change map pps with mouse
 * make a pkg-0-11-0.html
 
 ## 0.10.0 - Ship death, Autoheal
