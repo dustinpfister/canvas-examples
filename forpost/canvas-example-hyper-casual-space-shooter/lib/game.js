@@ -13,10 +13,10 @@ var gameMod = (function(){
     SHIP_AUTOHEAL_RATE = 5,
     SHIP_AUTOHEAL_AMOUNT = 1,
     MAP_MAX_DIST = Math.pow(10,5), //Number.MAX_SAFE_INTEGER;      // max distance from 0,0
-    HOME_BASE_DIST = 100;
+    BASE_DIST = 100;
 
 
-    var HOME-BASE-BUTTONS = {
+    var BASE_BUTTONS = {
         0: {
             desc: 'Change Weapon',
             x: 64,
@@ -286,7 +286,8 @@ var gameMod = (function(){
                 maxPPS: 256,
                 dist: 0,
                 per: 0 // map.dist / MAX_MAX_DIST
-            }
+            },
+            baseButtons: BASE_BUTTONS
         };
 
         // set current weapon
@@ -363,7 +364,7 @@ var gameMod = (function(){
 
         // switch modes based on map.dist
         game.mode = 'space';
-        if(game.map.dist <= HOME_BASE_DIST){
+        if(game.map.dist <= BASE_DIST){
            game.mode = 'base';
         }
 
