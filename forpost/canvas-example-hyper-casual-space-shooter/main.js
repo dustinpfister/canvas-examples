@@ -100,12 +100,18 @@ var loop = function () {
         gameMod.update(game, secs, state);
         // draw
         draw.background(state.ctx, state);
+        draw.currentMode(state.cts, state);
+        draw.info(state.ctx, state);
+        draw.ver(state.ctx, state);
+/*
+        draw.background(state.ctx, state);
         draw.gridLines(state.ctx, state, 'rgba(255,255,255,0.1)');
         draw.blocks(state.ctx, state);
         draw.ship(state.ctx, state);
         draw.shots(state.ctx, state);
-        draw.info(state.ctx, state);
+
         draw.ver(state.ctx, state);
+*/
         lt = now;
     }
 };
