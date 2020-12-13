@@ -373,12 +373,9 @@ var gameMod = (function(){
            game.mode = 'base';
         }
 
-
-        game.baseObj = {
-            x: game.map.x * -1,
-            y: game.map.y * -1,
-            r: BASE_DIST
-        };
+        // move baseObject
+        game.baseObj.x = game.map.x * -1;
+        game.baseObj.y = game.map.y * -1;
 
         updateMap(game, secs);
         updateBlocks(game, secs, state);

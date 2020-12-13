@@ -47,23 +47,17 @@ var draw = (function(){
         ctx.fillRect(0, 0, canvas.width, canvas.height);
     };
 
-
-
     // draw current mode
     api.currentMode = function(ctx, state){
         var game = state.game;
         draw.gridLines(state.ctx, state, 'rgba(255,255,255,0.1)');
-
         baseObjectDraw(ctx, game.baseObj, function(){});
-
         if(game.mode === 'base'){
             baseObjectDraw(ctx, game.baseButtons[0], function(){});
         }
-
         draw.blocks(state.ctx, state);
         draw.ship(state.ctx, state);
         draw.shots(state.ctx, state);
-
     };
 
     api.shots = function(ctx, state){
