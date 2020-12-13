@@ -10,10 +10,8 @@ var createCanvas = function(opt){
     opt.ctx.translate(0.5, 0.5);
     return opt;
 };
-
 var canvasObj = createCanvas(),
 canvas = canvasObj.canvas;
-
 // STATE
 var state = {
     ver: '0.12.0',
@@ -37,36 +35,27 @@ var state = {
         keys: {}
     }
 };
-
 // update pointer object helper
 var updatePointer = function(pos){
     // update dir so that we know the shortest direction to go
     var d = Math.floor(utils.angleTo(pos.x, pos.y, 160, 120) / ( Math.PI * 2 ) * 360);
     state.input.pointer.dir = utils.shortestDirection(d, Math.floor(state.input.degree), 360);
-
     // update dist
     state.input.pointer.dist = utils.distance(pos.x, pos.y, 160, 120);
-
 };
-
 // LOOP
 var lt = new Date(),
 FPS_target = 1000 / 30;
 var loop = function () {
-
     var now = new Date(),
     t = now - lt,
     game = state.game,
     secs = t / 1000;
-
     requestAnimationFrame(loop);
-
     if (t >= FPS_target) {
         var input = state.input;
-
         // update input.pointer
         updatePointer(input.pointer.pos);
-
         // keyboard or pointer update map radian
         if(input.keys.a || (input.pointer.dir === 1 && input.pointer.down) ){
             input.degree += input.degreesPerSecond * secs;
@@ -75,13 +64,11 @@ var loop = function () {
             input.degree -= input.degreesPerSecond * secs;
             
         }
-
         // pointer update pps
         if(input.pointer.down && input.pointer.dist < 160){
             var per = input.pointer.dist / 160;
             input.pps = game.map.maxPPS * per;
         }
-
         // keyboard update pps
         if(input.keys.w){
            input.pps += input.ppsDelta * secs;
@@ -91,13 +78,11 @@ var loop = function () {
             input.pps -= input.ppsDelta * secs;
             input.pps = input.pps < 0 ? 0 : input.pps;
         }
-
         // keyboard update fire
         input.fire = false;
         if(input.keys.l){
             input.fire = true;
         }
-
         // keyboard switch weapons
         if(input.keys[1]){
             game.ship.weapon = game.weapons[0];
@@ -108,20 +93,11 @@ var loop = function () {
         if(input.keys[3]){
             game.ship.weapon = game.weapons[2];
         }
-
         // wrap degree
         input.degree = utils.mod(input.degree, 360);
-
         // update game
         gameMod.setMapMovement(game, input.degree, input.pps);
-
         gameMod.update(game, secs, state);
-        /*
-        gameMod.updateMap(game, secs);
-        gameMod.updateBlocks(game, secs, state);
-        gameMod.updateShots(game, secs, state);
-        */
-
         // draw
         draw.background(state.ctx, state);
         draw.gridLines(state.ctx, state, 'rgba(255,255,255,0.1)');
@@ -131,11 +107,9 @@ var loop = function () {
         draw.info(state.ctx, state);
         draw.ver(state.ctx, state);
         lt = now;
-
     }
 };
 loop();
-
 // KEYBOARD EVENTS
 window.addEventListener('keydown', function(e){
     //e.preventDefault();
@@ -147,38 +121,18 @@ window.addEventListener('keyup', function(e){
     var key = e.key.toLowerCase();
     state.input.keys[key] = false;
 });
-
 // MOUSE AND TOUCH
-
 var pointerEvent = function(e){
    var pos = state.input.pointer.pos = utils.getCanvasRelative(e);
    if(e.type === 'mousedown' || e.type === 'touchstart'){
        state.input.pointer.down = true;
-       //pointerEvent.start(e, pos);
    }
    //if((e.type === 'mousemove' || e.type === 'touchmove') && state.input.pointer.down){
-       //pointerEvent.move(e, pos);
    //}
    if(e.type === 'mouseup' || e.type === 'touchend'){
        state.input.pointer.down = false;
-       //pointerEvent.end(e, pos);
    }
 };
-
-/*
-pointerEvent.start = function(e, pos){
-    //applyPosAsKey(pos);
-};
-pointerEvent.move = function(e, pos){
-    //console.log(pos.x, pos.y);
-    //applyPosAsKey(pos);
-};
-pointerEvent.end = function(e, pos){
-   //console.log(pos.x, pos.y);
-};
-*/
-
 canvas.addEventListener('mousedown', pointerEvent);
 canvas.addEventListener('mousemove', pointerEvent);
 canvas.addEventListener('mouseup', pointerEvent);
-
