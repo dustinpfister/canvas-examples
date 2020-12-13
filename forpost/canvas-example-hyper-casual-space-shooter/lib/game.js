@@ -259,7 +259,7 @@ var gameMod = (function(){
     api.create = function(){
         var game = {
             money: 0,
-            mode: 'space',
+            mode: 'base',
             weapons: utils.deepClone(DEFAULT_WEAPONS),
             ship: {}, //createShip(),
             shots: createShotsPool(),
@@ -319,14 +319,18 @@ var gameMod = (function(){
     var updateShots = function(game, secs, state){
         var ship = game.ship,
         weapon = ship.weapon;
-        ship.weaponSecs += secs;
-        if(SHIP_AUTOFIRE || state.input.fire){
-            if(ship.weaponSecs >= 1 / weapon.firesPerSecond){
-                poolMod.spawn(game.shots, state, {});
-                ship.weaponSecs = 0;
+
+        if(game.mode === 'space'){
+            ship.weaponSecs += secs;
+            if(SHIP_AUTOFIRE || state.input.fire){
+                if(ship.weaponSecs >= 1 / weapon.firesPerSecond){
+                    poolMod.spawn(game.shots, state, {});
+                    ship.weaponSecs = 0;
+                }
             }
+            poolMod.update(game.shots, secs, state);
+
         }
-        poolMod.update(game.shots, secs, state);
     };
 
     api.update = function(game, secs, state){
