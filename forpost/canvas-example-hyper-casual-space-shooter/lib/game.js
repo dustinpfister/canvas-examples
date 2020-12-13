@@ -15,6 +15,19 @@ var gameMod = (function(){
     MAP_MAX_DIST = Math.pow(10,5), //Number.MAX_SAFE_INTEGER;      // max distance from 0,0
     HOME_BASE_DIST = 100;
 
+
+    var HOME-BASE-BUTTONS = {
+        0: {
+            desc: 'Change Weapon',
+            x: 64,
+            y: 0,
+            r: 16,
+            onClick: function(game, e){
+                console.log('click');
+            }
+        }
+    };
+
     // DEFAULT WEAPON OBJECTS
     var DEFAULT_WEAPONS = {
         0 : {
