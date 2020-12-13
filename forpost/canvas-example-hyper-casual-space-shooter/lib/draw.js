@@ -59,7 +59,6 @@ var draw = (function(){
             baseObjectDraw(ctx, game.baseButtons[0], function(){});
         }
 
-
     };
 
     api.shots = function(ctx, state){
