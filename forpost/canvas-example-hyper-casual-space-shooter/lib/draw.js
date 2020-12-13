@@ -54,6 +54,12 @@ var draw = (function(){
         draw.blocks(state.ctx, state);
         draw.ship(state.ctx, state);
         draw.shots(state.ctx, state);
+
+        if(game.mode === 'base'){
+            baseObjectDraw(ctx, game.baseButtons[0], function(){});
+        }
+
+
     };
 
     api.shots = function(ctx, state){

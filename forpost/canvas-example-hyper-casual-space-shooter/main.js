@@ -100,7 +100,7 @@ var loop = function () {
         gameMod.update(game, secs, state);
         // draw
         draw.background(state.ctx, state);
-        draw.currentMode(state.cts, state);
+        draw.currentMode(state.ctx, state);
         draw.info(state.ctx, state);
         draw.ver(state.ctx, state);
 /*
