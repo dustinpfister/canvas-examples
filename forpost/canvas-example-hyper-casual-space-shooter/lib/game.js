@@ -12,7 +12,8 @@ var gameMod = (function(){
     SHIP_HP = 100,
     SHIP_AUTOHEAL_RATE = 5,
     SHIP_AUTOHEAL_AMOUNT = 1,
-    MAP_MAX_DIST = Math.pow(10,5); //Number.MAX_SAFE_INTEGER;      // max distance from 0,0
+    MAP_MAX_DIST = Math.pow(10,5), //Number.MAX_SAFE_INTEGER;      // max distance from 0,0
+    HOME_BASE_DIST = 100;
 
     // DEFAULT WEAPON OBJECTS
     var DEFAULT_WEAPONS = {
@@ -259,7 +260,7 @@ var gameMod = (function(){
     api.create = function(){
         var game = {
             money: 0,
-            mode: 'base',
+            mode: 'space',
             weapons: utils.deepClone(DEFAULT_WEAPONS),
             ship: {}, //createShip(),
             shots: createShotsPool(),
@@ -346,9 +347,17 @@ var gameMod = (function(){
     };
 
     api.update = function(game, secs, state){
+
+        // switch modes based on map.dist
+        game.mode = 'space';
+        if(game.map.dist <= HOME_BASE_DIST){
+           game.mode = 'base';
+        }
+
         updateMap(game, secs);
         updateBlocks(game, secs, state);
         updateShots(game, secs, state);
+
     };
 
     // return the Public API
