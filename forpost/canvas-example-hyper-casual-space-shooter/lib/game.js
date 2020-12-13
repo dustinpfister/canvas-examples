@@ -300,7 +300,7 @@ var gameMod = (function(){
     };
     // update the MAP using current RADIAN and PPS values
     // with the given SECS value.
-    api.updateMap = function(game, secs){
+    var updateMap = function(game, secs){
         var map = game.map;
         map.x += Math.cos(map.radian) * map.pps * secs;
         map.y += Math.sin(map.radian) * map.pps * secs;
@@ -308,16 +308,15 @@ var gameMod = (function(){
         clampMapPos(map);
         map.per = game.map.dist / MAP_MAX_DIST;
         map.aToOrigin = utils.angleTo(map.x, map.y, 0, 0);
-
         autoHealObject(game.ship, secs);
     };
 
-    api.updateBlocks = function(game, secs, state){
+    var updateBlocks = function(game, secs, state){
         poolMod.update(game.blocks, secs, state);
         poolMod.spawn(game.blocks, state, {});
     };
 
-    api.updateShots = function(game, secs, state){
+    var updateShots = function(game, secs, state){
         var ship = game.ship,
         weapon = ship.weapon;
         ship.weaponSecs += secs;
@@ -328,6 +327,12 @@ var gameMod = (function(){
             }
         }
         poolMod.update(game.shots, secs, state);
+    };
+
+    api.update = function(game, secs, state){
+        updateMap(game, secs);
+        updateBlocks(game, secs, state);
+        updateShots(game, secs, state);
     };
 
     // return the Public API

@@ -114,9 +114,13 @@ var loop = function () {
 
         // update game
         gameMod.setMapMovement(game, input.degree, input.pps);
+
+        gameMod.update(game, secs, state);
+        /*
         gameMod.updateMap(game, secs);
         gameMod.updateBlocks(game, secs, state);
         gameMod.updateShots(game, secs, state);
+        */
 
         // draw
         draw.background(state.ctx, state);
