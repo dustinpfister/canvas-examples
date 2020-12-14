@@ -394,8 +394,12 @@ var gameMod = (function(){
     };
 
     api.checkButtons = function(game, pos, e){
-        console.log('button check');
-        console.log( buttonCheck(game.buttons.base[0], pos) );
+        // only one button so for now this should work
+        var button = game.buttons.base[0];
+        if(buttonCheck(button, pos)){
+            button.onClick(game, e);
+        }
+
     };
 
     // return the Public API
