@@ -34,6 +34,10 @@
 
 <!-- ADDITIONAL FIXES AND FEATURES -->
 
+## 0.x.0 - Replace hard coded 160, 120 values
+* have a state.canvasHalfWidth, and state.canvasHalfHeight values
+* Replace hard coded 160, 120 values in draw.js, game.js, ect with state.canvasHalfWidth and state.canvasHalfHeigh
+
 ## 0.x.0 - Anamated buttons
 
 ## 0.x.0 - Better Graphics (CANVAS ONLY)

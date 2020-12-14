@@ -386,8 +386,16 @@ var gameMod = (function(){
 
     };
 
+    var buttonCheck = function(button, pos){
+        if(utils.distance(button.x, button.y, pos.x - 160, pos.y - 120) <= button.r){
+            return true;
+        }
+        return false;
+    };
+
     api.checkButtons = function(game, pos, e){
         console.log('button check');
+        console.log( buttonCheck(game.buttons.base[0], pos) );
     };
 
     // return the Public API
