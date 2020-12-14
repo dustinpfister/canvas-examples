@@ -53,7 +53,7 @@ var draw = (function(){
         draw.gridLines(state.ctx, state, 'rgba(255,255,255,0.1)');
         baseObjectDraw(ctx, game.baseObj, function(){});
         if(game.mode === 'base'){
-            baseObjectDraw(ctx, game.baseButtons[0], function(){});
+            baseObjectDraw(ctx, game.buttons.base[0], function(){});
         }
         draw.blocks(state.ctx, state);
         draw.ship(state.ctx, state);

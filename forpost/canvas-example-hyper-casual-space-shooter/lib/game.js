@@ -287,7 +287,10 @@ var gameMod = (function(){
                 dist: 0,
                 per: 0 // map.dist / MAX_MAX_DIST
             },
-            baseButtons: BASE_BUTTONS,
+            //baseButtons: BASE_BUTTONS,
+            buttons: {
+               base: BASE_BUTTONS
+            },
             baseObj : {
                 x: 0,
                 y: 0,
