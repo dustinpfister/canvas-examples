@@ -83,10 +83,13 @@
 ## 0.x.0 - Keyboard Button Nav
 * can use arrow keys and enter button as a way to select and click buttons with the keyboard
 
-## 0.13.0 - Weapon Upgrade buttons
+## 0.14.0 - Weapon Upgrade buttons
 * add 'upgrade damage', and 'upgrade fire rate' buttons that will upgrade the current weapon
 * each upgrade costs money
 * buttons will only show up on 'base' mode
+
+## 0.13.0 - Upgrade System
+* start a system for the cost, and effect of upgrades
 
 ## 0.12.0 - game modes, 'space' mode, and 'base' mode
 * (done) have a game.mode property that will store the current mode
@@ -100,8 +103,8 @@
 * (done) start with just a 'change weapon' button for now
 * (done) change mouse movement so it does not change map.radian and pps when clicking a button
 * (done) add a gameMod.buttonCheck method that will be called by main.js on each pointer up event
-* clicking change button weapon works and loops forward over weapons
-* make a pkg-0-12-0.html
+* (done) clicking change button weapon works and loops forward over weapons
+* (done) make a pkg-0-12-0.html
 
 <!-- WORK OUT JUST A BASIC SET OF FEATURES -->
 
