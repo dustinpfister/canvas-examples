@@ -140,6 +140,7 @@ var pointerEvent = function(e){
    //}
    if(e.type === 'mouseup' || e.type === 'touchend'){
        state.input.pointer.down = false;
+       gameMod.checkButtons(state.game, pos, e);
    }
 };
 canvas.addEventListener('mousedown', pointerEvent);

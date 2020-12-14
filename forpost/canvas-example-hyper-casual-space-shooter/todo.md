@@ -60,16 +60,16 @@
 * the distance of the inner circle from the center to the outer circle will be used to set map.pps
 * The actual distnace used will be from a certain min radius from the center so that it is easy to each and stay at 0 pps
 
-## 0.x.0 - spawn blocks durring movement
-* have a BLOCK-SPAWN-DIST, and BLOCK-COUNT-PER-SPAWN-DIST
-* have a game.spawnDist value that is updated each time the map position changes
-* when game.spawnDist >= BLOCK-SPAWN-DIST set up to BLOCK-COUNT-PER-SPAWN-DIST active
-
 <!-- SAVE STATES -->
 
 ## 0.x.0 - save states
 
 <!-- ADD ADDITIONAL CORE FEATURES -->
+
+## 0.x.0 - spawn blocks durring movement
+* have a BLOCK-SPAWN-DIST, and BLOCK-COUNT-PER-SPAWN-DIST
+* have a game.spawnDist value that is updated each time the map position changes
+* when game.spawnDist >= BLOCK-SPAWN-DIST set up to BLOCK-COUNT-PER-SPAWN-DIST active
 
 ## 0.x.0 - chnage weapon forward and backward buttons, common game.buttons
 * have a common game.buttons object for buttons that will show up for any mode not just 'base' mode

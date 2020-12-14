@@ -383,6 +383,10 @@ var gameMod = (function(){
 
     };
 
+    api.checkButtons = function(game, pos, e){
+        console.log('button check');
+    };
+
     // return the Public API
     return api;
 }());
