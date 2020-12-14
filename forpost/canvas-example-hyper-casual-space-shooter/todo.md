@@ -1,6 +1,40 @@
 # canvas-example-hyper-casual-space-shooter
 
+<!-- SHIP SPEED UPGRADES - ADD FEATURES THAT MAKE THE GAME MORE FUN, ADDICTIVE, OR INTERESTING -->
+
+<!-- WARP - ADD FEATURES THAT MAKE THE GAME MORE FUN, ADDICTIVE, OR INTERESTING -->
+
+## 0.x.0 - warp
+* add a warp home button in 'space' mode
+* the cost of a warp home will go up as the ship goes farther out
+
+<!-- BLOCKS - ADD FEATURES THAT MAKE THE GAME MORE FUN, ADDICTIVE, OR INTERESTING -->
+
+## 0.x.0 - block Armor
+
+<!-- WEAPONS - ADD FEATURES THAT MAKE THE GAME MORE FUN, ADDICTIVE, OR INTERESTING -->
+
+## 0.x.0 - weapon shot types and properties - Damage Over Time
+* have more than one type of 'shot' by adding a type property for shots
+* current basic shots can still be in the game as 'normal' type shots
+* start a 'dot' shot type that will add a damage over time effect to blocks
+
+## 0.x.0 - Weapon Accuracy Button at Base
+* add a 'upgrade accuracy' button for the current weapon in 'base' mode
+
+## 0.x.0 - Weapon Accuracy
+* each weapon has an accuracy object
+* acc.radius is the potential radius in which a shot will hit from perfect accuracy to acc.radius
+* acc.per is applied with acc.radius to find and actual radius that will be used to set shot location
+
+## 0.x.0 - Shots Per Fire, and fire update methods
+* have a weapon.onFire.start method
+* have a weapon.onFire.update method
+* have a weapon.onFire.end method
+
 <!-- ADDITIONAL FIXES AND FEATURES -->
+
+## 0.x.0 - Anamated buttons
 
 ## 0.x.0 - Better Graphics (CANVAS ONLY)
 * have canvas generated sheets for the ship, blocks, shots, and a background
@@ -26,36 +60,31 @@
 * the distance of the inner circle from the center to the outer circle will be used to set map.pps
 * The actual distnace used will be from a certain min radius from the center so that it is easy to each and stay at 0 pps
 
-
 ## 0.x.0 - spawn blocks durring movement
 * have a BLOCK-SPAWN-DIST, and BLOCK-COUNT-PER-SPAWN-DIST
 * have a game.spawnDist value that is updated each time the map position changes
 * when game.spawnDist >= BLOCK-SPAWN-DIST set up to BLOCK-COUNT-PER-SPAWN-DIST active
 
-<!-- ADD FEATURES THAT MAKE THE GAME MORE FUN AND ADDICTIVE -->
-
-## 0.x.0 - Shots Per Fire
+<!-- SAVE STATES -->
 
 ## 0.x.0 - save states
 
-## 0.x.0 - warp
-* add a warp home button in 'space' mode
-* the cost of a warp home will go up as the ship goes farther out
+<!-- ADD ADDITIONAL CORE FEATURES -->
 
-## 0.x.0 - Weapon Accuracy Button at Base
-* add a 'upgrade accuracy' button for the current weapon in 'base' mode
+## 0.x.0 - chnage weapon forward and backward buttons, common game.buttons
+* have a common game.buttons object for buttons that will show up for any mode not just 'base' mode
+* have change weapon buttons for looping forward AND backward threw weapons
+* show chnage wepon buttons in bolth 'space' and 'base' modes
 
-## 0.x.0 - Weapon Accuracy
-* each weapon has an accuracy object
-* acc.radius is the potential radius in which a shot will hit from perfect accuracy to acc.radius
-* acc.per is applied with acc.radius to find and actual radius that will be used to set shot location
+## 0.x.0 - Keyboard Button Nav
+* can use arrow keys and enter button as a way to select and click buttons with the keyboard
 
-## 0.x.0 - Weapon Upgrades
+## 0.13.0 - Weapon Upgrade buttons
 * add 'upgrade damage', and 'upgrade fire rate' buttons that will upgrade the current weapon
 * each upgrade costs money
 * buttons will only show up on 'base' mode
 
-## 0.x.0 - game modes, 'space' mode, and 'base' mode
+## 0.12.0 - game modes, 'space' mode, and 'base' mode
 * (done) have a game.mode property that will store the current mode
 * (done) display current game mode
 * (done) have just a main gameMod.update method that is called in main.js
@@ -64,8 +93,10 @@
 * (done) game will switch between 'space' and 'base' mode depeding on the current map.dist value and HOME-BASE-DIST
 * (done) add a BASE-BUTTONS const that will be button objects that show up when in 'home-base' mode
 * (done) have a draw.currentMode method that will always draw based on what the current mode is
-* start with just a 'change weapon' button for now
-* change mouse movement so it does not change map.radian and pps when clicking a button
+* (done) start with just a 'change weapon' button for now
+* (done) change mouse movement so it does not change map.radian and pps when clicking a button
+* add a gameMod.buttonCheck method that will be called by main.js on each pointer up event
+* clicking change button weapon works and loops forward over weapons
 
 <!-- WORK OUT JUST A BASIC SET OF FEATURES -->
 
