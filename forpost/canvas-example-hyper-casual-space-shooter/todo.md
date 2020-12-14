@@ -99,8 +99,9 @@
 * (done) have a draw.currentMode method that will always draw based on what the current mode is
 * (done) start with just a 'change weapon' button for now
 * (done) change mouse movement so it does not change map.radian and pps when clicking a button
-* add a gameMod.buttonCheck method that will be called by main.js on each pointer up event
+* (done) add a gameMod.buttonCheck method that will be called by main.js on each pointer up event
 * clicking change button weapon works and loops forward over weapons
+* make a pkg-0-12-0.html
 
 <!-- WORK OUT JUST A BASIC SET OF FEATURES -->
 

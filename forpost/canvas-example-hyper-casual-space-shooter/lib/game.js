@@ -23,7 +23,9 @@ var gameMod = (function(){
             y: 0,
             r: 16,
             onClick: function(game, e){
-                console.log('click');
+                game.ship.weaponIndex += 1;
+                game.ship.weaponIndex = utils.mod(game.ship.weaponIndex, Object.keys(game.weapons).length);
+                game.ship.weapon = game.weapons[game.ship.weaponIndex];
             }
         }
     };
@@ -262,6 +264,7 @@ var gameMod = (function(){
             hp: CreateHPObject(SHIP_HP),
             fillStyle: 'blue',
             weaponSecs: 0,
+            weaponIndex:0,
             weapon: game.weapons[0] // reference to the current weapon
         };
         ship.hp.autoHeal.rate = SHIP_AUTOHEAL_RATE;

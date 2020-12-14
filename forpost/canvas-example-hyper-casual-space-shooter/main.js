@@ -96,12 +96,15 @@ var loop = function () {
         }
         // keyboard switch weapons
         if(input.keys[1]){
+            game.ship.weaponIndex = 0;
             game.ship.weapon = game.weapons[0];
         }
         if(input.keys[2]){
+            game.ship.weaponIndex = 1;
             game.ship.weapon = game.weapons[1];
         }
         if(input.keys[3]){
+            game.ship.weaponIndex = 2;
             game.ship.weapon = game.weapons[2];
         }
         // wrap degree
