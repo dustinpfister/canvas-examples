@@ -57,6 +57,8 @@ utils.deepClone = function (obj) {
     return JSON.parse(JSON.stringify(obj));
 };
 
+// PERCENT METHODS
+
 // clamp a percent value
 utils.clampPer = function (per) {
     if (per > 1) {
@@ -68,7 +70,7 @@ utils.clampPer = function (per) {
     return per;
 };
 
-// basic percent method
+// basic percent method that will return a percent or numerator depeding on mode
 utils.per = function(a, d, mode){
     mode = mode === undefined ? 'per' : mode;
     if(mode === 'per'){
@@ -95,3 +97,21 @@ utils.log3 = function (a, d, mode, p1) {
     return Math.round((Math.pow(base, 1 + per) / base - 1) * d);
 };
 
+// LEVEL OBJECT
+
+utils.xp = {
+  defaultOptions:{
+      levelCap: 100,
+      expCap: Math.pow(10, 7)
+      perMethod: 'log3'
+      perArgs: [10]
+  }
+};
+
+utils.xp.byLevel = function(level, options){
+
+};
+
+utils.xp.byExp = function(exp, options){
+
+};

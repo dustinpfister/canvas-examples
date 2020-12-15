@@ -93,7 +93,7 @@
 * buttons will only show up on 'base' mode
 
 ## 0.13.0 - adding new percent, and xp utils.js methods.
-* add percent methods from js-javascript-example-percent-module to utils.js to be used with a new exp system
+* (done) add percent methods from js-javascript-example-percent-module to utils.js to be used with a new exp system
 * start a new utils.xp object
 * have a utils.xp.byLevel method that returns a level object with values set by a given level, and options
 * have a utils.xp.byExp method that returns a level object with values set by a given level, and options
