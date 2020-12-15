@@ -57,3 +57,41 @@ utils.deepClone = function (obj) {
     return JSON.parse(JSON.stringify(obj));
 };
 
+// clamp a percent value
+utils.clampPer = function (per) {
+    if (per > 1) {
+        return 1;
+    }
+    if (per < 0) {
+        return 0;
+    }
+    return per;
+};
+
+// basic percent method
+utils.per = function(a, d, mode){
+    mode = mode === undefined ? 'per' : mode;
+    if(mode === 'per'){
+        // a is a numerator return a percent value
+        return utils.clampPer(a / d);
+    }
+    // a is a percent return a numerator
+    return a * d;
+};
+
+// log3 percent method
+utils.log3 = function (a, d, mode, p1) {
+    mode = mode === undefined ? 'per' : mode;
+    p1 = p1 === undefined ? 12 : p1;
+    if(mode === 'per'){
+        // a is a numerator return a percent value
+        var n = a;
+        var per = utils.per(n, d, 'per');
+        return Math.log(1 + per) / Math.log(2 + p1);
+    }
+    // a is a percent return a numerator
+    var per = a;
+    var base = 2 + p1;
+    return Math.round((Math.pow(base, 1 + per) / base - 1) * d);
+};
+

@@ -90,6 +90,7 @@
 
 ## 0.13.0 - new xp.js module Upgrade System
 * start a new xp.js based off of what I worked out in js-javascript-example-percent-module
+* use a percent method from xp.js that will work 'two ways'
 * start a system for the cost, and effect of upgrades
 
 ## 0.12.0 - game modes, 'space' mode, and 'base' mode

@@ -149,3 +149,35 @@ var pointerEvent = function(e){
 canvas.addEventListener('mousedown', pointerEvent);
 canvas.addEventListener('mousemove', pointerEvent);
 canvas.addEventListener('mouseup', pointerEvent);
+
+// test - the result of getN should equal the original value of n
+var testForN = function (method, n, d) {
+    var per = method(n, d, 'per'),
+    n2 = method(per, d, 'n');
+    //console.log('n=' + n, 'n2=' + n2, n === n2);
+    //return result;
+    return {
+        method: method,
+        n: n,
+        d: d,
+        pass: n === n2,
+        n2: n2
+    }
+};
+
+var n = 0,
+d = 1,
+step = 0.1,
+result,
+pass = true,
+method = utils.per;
+while (n <= d) {
+    result = testForN(method, n, d);
+    if (!result.pass) {
+        pass = false;
+    }
+    console.log('n=' + result.n.toFixed(2), 'n2=' + result.n2.toFixed(2), result.pass);
+    n += step;
+}
+console.log('passed? :' + pass);
+
