@@ -94,7 +94,7 @@ utils.log3 = function (a, d, mode, p1) {
     // a is a percent return a numerator
     var per = a;
     var base = 2 + p1;
-    return Math.round((Math.pow(base, 1 + per) / base - 1) * d);
+    return ((Math.pow(base, 1 + per) / base - 1) * d);
 };
 
 // LEVEL OBJECT
@@ -116,16 +116,25 @@ utils.xp.byLevel = function(level, opt){
     opt.perMethod = 'log3';
     opt.perArgs = [0];
 
-    //var per = level / opt.levelCap,
     var per = utils[opt.perMethod].apply(null, [level, opt.levelCap, 'per'].concat(opt.perArgs));
 
     return {
         level: level,
-        percentToCap: per,
         xp: opt.expCap * per
     };
 };
 
-utils.xp.byExp = function(exp, opt){
+utils.xp.byExp = function(xp, opt){
+    opt = opt || {};
+    opt.levelCap = 100;
+    opt.expCap = 1000;
+    opt.perMethod = 'log3';
+    opt.perArgs = [0];
 
+    var level = utils[opt.perMethod].apply(null, [xp / opt.expCap, opt.levelCap, 'n'].concat(opt.perArgs));
+
+    return {
+        level: level,
+        xp: xp
+    };
 };

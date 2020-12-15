@@ -152,6 +152,14 @@ canvas.addEventListener('mouseup', pointerEvent);
 
 // TESTING OUT UTILS XP
 
-var levelObj = utils.xp.byLevel(100);
+var a = utils.xp.byLevel(50.25);
+console.log(a);
 
-console.log(levelObj);
+var b = utils.xp.byExp(a.xp);
+console.log(b);
+
+var c = utils.xp.byExp(337);
+console.log(c);
+
+var d = utils.xp.byLevel(c.level);
+console.log(d);
