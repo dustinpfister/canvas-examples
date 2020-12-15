@@ -68,6 +68,10 @@
 
 ## 0.x.0 - save states
 
+<!-- SHIP UPGRADES -->
+
+## 0.x.0 - ship speed upgrade buttons
+
 <!-- ADD ADDITIONAL CORE FEATURES -->
 
 ## 0.x.0 - spawn blocks durring movement
@@ -75,7 +79,7 @@
 * have a game.spawnDist value that is updated each time the map position changes
 * when game.spawnDist >= BLOCK-SPAWN-DIST set up to BLOCK-COUNT-PER-SPAWN-DIST active
 
-## 0.x.0 - chnage weapon forward and backward buttons, common game.buttons
+## 0.x.0 - change weapon forward and backward buttons, common game.buttons
 * have a common game.buttons object for buttons that will show up for any mode not just 'base' mode
 * have change weapon buttons for looping forward AND backward threw weapons
 * show chnage wepon buttons in bolth 'space' and 'base' modes
@@ -83,15 +87,25 @@
 ## 0.x.0 - Keyboard Button Nav
 * can use arrow keys and enter button as a way to select and click buttons with the keyboard
 
-## 0.14.0 - Weapon Upgrade buttons
+## 0.x.0 - Weapon Upgrade buttons
 * add 'upgrade damage', and 'upgrade fire rate' buttons that will upgrade the current weapon
 * each upgrade costs money
 * buttons will only show up on 'base' mode
 
-## 0.13.0 - new xp.js module Upgrade System
-* start a new xp.js based off of what I worked out in js-javascript-example-percent-module
-* use a percent method from xp.js that will work 'two ways'
+## 0.13.0 - adding new percent, and xp utils.js methods.
+* add percent methods from js-javascript-example-percent-module to utils.js to be used with a new exp system
+* start a new utils.xp object
+* have a utils.xp.byLevel method that returns a level object with values set by a given level, and options
+* have a utils.xp.byExp method that returns a level object with values set by a given level, and options
+* both utils.xp.byLevel and utils.xp.byExp return the same standard level object
+* a level object contains values like level, exp, expToNext, expForNext, and so forth
+* a level object has valueOf and toString methods, value of should return level
+* new xp methods make use of what I worked out in js-javascript-example-percent-module
+
 * start a system for the cost, and effect of upgrades
+* have and upgrade just for ship speed for now
+* have ship speed upgrades autobuy (for now)
+* make a pkg-0-12-0.html
 
 ## 0.12.0 - game modes, 'space' mode, and 'base' mode
 * (done) have a game.mode property that will store the current mode
