@@ -99,22 +99,15 @@ utils.log3 = function (a, d, mode, p1) {
 
 // LEVEL OBJECT
 
-utils.xp = {
-  defaultOptions:{
-      levelCap: 100,
-      expCap: Math.pow(10, 7),
-      perMethod: 'log3',
-      perArgs: [10]
-  }
-};
+utils.xp = {};
 
 utils.xp.byLevel = function(level, opt){
 
     opt = opt || {};
-    opt.levelCap = 100;
-    opt.expCap = 1000;
-    opt.perMethod = 'log3';
-    opt.perArgs = [0];
+    opt.levelCap = opt.levelCap || 100;
+    opt.expCap = opt.expCap || 1000;
+    opt.perMethod = opt.perMethod || 'log3';
+    opt.perArgs = opt.perArgs || [0];
 
     var per = utils[opt.perMethod].apply(null, [level, opt.levelCap, 'per'].concat(opt.perArgs));
 
@@ -126,10 +119,10 @@ utils.xp.byLevel = function(level, opt){
 
 utils.xp.byExp = function(xp, opt){
     opt = opt || {};
-    opt.levelCap = 100;
-    opt.expCap = 1000;
-    opt.perMethod = 'log3';
-    opt.perArgs = [0];
+    opt.levelCap = opt.levelCap || 100;
+    opt.expCap = opt.expCap || 1000;
+    opt.perMethod = opt.perMethod || 'log3';
+    opt.perArgs = opt.perArgs || [0];
 
     var level = utils[opt.perMethod].apply(null, [xp / opt.expCap, opt.levelCap, 'n'].concat(opt.perArgs));
 
