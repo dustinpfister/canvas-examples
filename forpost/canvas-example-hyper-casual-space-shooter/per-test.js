@@ -1,8 +1,6 @@
 // test - the result of getN should equal the original value of n
 var testForN = function (method, n, d, args) {
     args = args || [];
-    //var per = method(n, d, 'per'),
-    //n2 = method(per, d, 'n');
     var per = method.apply(null, [n, d, 'per'].concat(args || [])),
     n2 = method.apply(null,[per, d, 'n'].concat(args || []));
     return {
