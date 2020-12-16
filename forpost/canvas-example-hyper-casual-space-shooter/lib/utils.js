@@ -131,6 +131,8 @@ utils.xp = (function(){
     // and 'opt' is an options object the contains properties such as opt.expCap
     xpAPI.byExp = function(xp, opt){
         opt = xpAPI.createOptions(opt);
+        xp = xp >= opt.expCap ? opt.expCap : xp;
+        xp = xp < 0 ? 0 : xp;
         var l = utils[opt.perMethod].apply(null, [xp / opt.expCap, opt.levelCap, 'n'].concat(opt.perArgs));
         return {
             l: l,
