@@ -138,5 +138,18 @@ utils.xp = (function(){
             }
         };
     };
+    xpAPI.createTable = function(opt){
+        opt = opt || {};
+        var l = 0,
+        lCap = 100,
+        table = {
+            levelObjArray : []
+        }
+        while(l < lCap){
+            table.levelObjArray[l] = xpAPI.byLevel(l)
+            l += 1;
+        }
+        return table;
+    };
     return xpAPI;
 }());

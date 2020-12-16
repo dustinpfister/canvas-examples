@@ -152,6 +152,10 @@ canvas.addEventListener('mouseup', pointerEvent);
 
 // TESTING OUT UTILS XP
 
+var table = utils.xp.createTable();
+console.log(table);
+
+/*
 var a = utils.xp.byLevel(50.25);
 console.log(a);
 
@@ -163,3 +167,4 @@ console.log(c);
 
 var d = utils.xp.byLevel(c.level);
 console.log(d);
+*/
