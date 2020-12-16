@@ -305,6 +305,14 @@ var gameMod = (function(){
         // set current weapon
         game.ship = createShip(game);
 
+        // first upgrade
+        game.upgrades[0] = utils.xp.createTable({
+            levelCap: 10,
+            expCap: 100000
+        });
+
+        console.log(game.upgrades);
+
         return game;
     };
 

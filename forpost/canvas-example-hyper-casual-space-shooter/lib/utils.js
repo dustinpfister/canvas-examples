@@ -146,11 +146,10 @@ utils.xp = (function(){
     xpAPI.createTable = function(opt){
         opt = xpAPI.createOptions(opt);
         var l = 0,
-        lCap = 100,
         table = {
             levelObjArray : []
         }
-        while(l < lCap){
+        while(l < opt.levelCap){
             table.levelObjArray[l] = xpAPI.byLevel(l, opt);
             l += 1;
         }
