@@ -94,16 +94,16 @@
 
 ## 0.13.0 - adding new percent, and xp utils.js methods.
 * (done) add percent methods from js-javascript-example-percent-module to utils.js to be used with a new exp system
-* start a new utils.xp object
-* have a utils.xp.byLevel method that returns a level object with values set by a given level, and options
-* have a utils.xp.byExp method that returns a level object with values set by a given level, and options
-* both utils.xp.byLevel and utils.xp.byExp return the same standard level object
-* a level object contains values like level, exp, expToNext, expForNext, and so forth
-* a level object has valueOf and toString methods, value of should return level
-* new xp methods make use of what I worked out in js-javascript-example-percent-module
+* (done) start a new utils.xp object
+* (done) have a utils.xp.byLevel method that returns a level object with values set by a given level, and options
+* (done) have a utils.xp.byExp method that returns a level object with values set by a given level, and options
+* (done) both utils.xp.byLevel and utils.xp.byExp return the same standard level object
+* (done) a level object contains at least level, and xp
 
-* start a system for the cost, and effect of upgrades
-* have and upgrade just for ship speed for now
+* a level object has valueOf and toString methods, value of should return level
+* have a utils.xp.createTable method that will create an Array of levelObjects using utils.xp.byLevel
+* have a game.upgrades object
+* use new utils.xp.createTable to create a table of levelObjects for game.upgrades[0] (ship maxSpeed upgrade)
 * have ship speed upgrades autobuy (for now)
 * make a pkg-0-12-0.html
 
