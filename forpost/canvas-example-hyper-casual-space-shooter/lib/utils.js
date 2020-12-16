@@ -115,6 +115,8 @@ utils.xp = (function(){
     // can be a function, and 'opt' is an options object that contains values for levelCap, ect
     xpAPI.byLevel = function(l, opt){
         opt = xpAPI.createOptions(opt);
+        l = l >= opt.levelCap ? opt.levelCap - 1 : l;
+        l = l < 0 ? 0 : l;
         var per = utils[opt.perMethod].apply(null, [l, opt.levelCap, 'per'].concat(opt.perArgs));
         return {
             l: l,

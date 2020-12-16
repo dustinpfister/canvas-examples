@@ -163,7 +163,7 @@ var opt = utils.xp.createOptions({
    levelCap: 30
 });
 
-var a = utils.xp.byLevel(15, opt);
+var a = utils.xp.byLevel(35, opt);
 console.log(a);
 
 var b = utils.xp.byExp(a.xp, opt);
