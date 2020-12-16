@@ -102,6 +102,15 @@ utils.log3 = function (a, d, mode, p1) {
 utils.xp = (function(){
     // public API for utils.xp
     var xpAPI = {};
+    xpAPI.createOptions = function(opt){
+        opt = opt || {};
+        return {
+            levelCap: opt.levelCap || 100,
+            expCap: opt.expCap || 1000,
+            perMethod: opt.perMethod || 'log3',
+            perArgs: opt.perArgs || [0]
+        };
+    };
     // create a levelObject by 'l' and 'opt' where 'l' is a ZERO RELATIVE level number that
     // can be a function, and 'opt' is an options object that contains values for levelCap, ect
     xpAPI.byLevel = function(l, opt){
