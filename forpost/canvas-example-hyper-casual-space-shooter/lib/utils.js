@@ -128,10 +128,14 @@ utils.xp = (function(){
         opt.expCap = opt.expCap || 1000;
         opt.perMethod = opt.perMethod || 'log3';
         opt.perArgs = opt.perArgs || [0];
-        var level = utils[opt.perMethod].apply(null, [xp / opt.expCap, opt.levelCap, 'n'].concat(opt.perArgs));
+        var l = utils[opt.perMethod].apply(null, [xp / opt.expCap, opt.levelCap, 'n'].concat(opt.perArgs));
         return {
-            level: level,
-            xp: xp
+            l: l,
+            level: Math.floor(l) + 1,
+            xp: xp,
+            valueOf: function(){
+                return this.level;
+            }
         };
     };
     return xpAPI;
