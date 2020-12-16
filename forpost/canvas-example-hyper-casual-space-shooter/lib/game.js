@@ -278,6 +278,7 @@ var gameMod = (function(){
             money: 0,
             mode: 'space',
             weapons: utils.deepClone(DEFAULT_WEAPONS),
+            upgrades: [],
             ship: {}, //createShip(),
             shots: createShotsPool(),
             blocks: createBlocksPool(),

@@ -102,9 +102,8 @@
 * (done) a level object has valueOf, value of should return level
 * (done) have a utils.xp.createTable method that will create an Array of levelObjects using utils.xp.byLevel
 * (done) have a utils.xp.createOptions that will return an options object to use with xp.byLevel, and xp.byExp
+* (done) start a game.upgrades object
 
-
-* have a game.upgrades object
 * use new utils.xp.createTable to create a table of levelObjects for game.upgrades[0] (ship maxSpeed upgrade)
 * have ship speed upgrades autobuy (for now)
 * make a pkg-0-12-0.html

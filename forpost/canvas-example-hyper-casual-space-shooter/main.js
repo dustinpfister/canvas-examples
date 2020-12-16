@@ -149,30 +149,3 @@ var pointerEvent = function(e){
 canvas.addEventListener('mousedown', pointerEvent);
 canvas.addEventListener('mousemove', pointerEvent);
 canvas.addEventListener('mouseup', pointerEvent);
-
-// TESTING OUT UTILS XP
-/*
-var opt = utils.xp.createOptions();
-console.log(opt);
-*/
-//var table = utils.xp.createTable();
-//console.log(table);
-
-
-var opt = utils.xp.createOptions({
-   levelCap: 30
-});
-
-var a = utils.xp.byLevel(35, opt);
-console.log(a);
-
-var b = utils.xp.byExp(a.xp, opt);
-console.log(b);
-
-/*
-var c = utils.xp.byExp(337);
-console.log(c);
-
-var d = utils.xp.byLevel(c.level);
-console.log(d);
-*/
