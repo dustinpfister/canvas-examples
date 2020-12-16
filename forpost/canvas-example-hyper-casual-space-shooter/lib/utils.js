@@ -102,16 +102,18 @@ utils.log3 = function (a, d, mode, p1) {
 utils.xp = (function(){
     var xpAPI = {};
 
-    xpAPI.byLevel = function(level, opt){
+    // create a levelObject by 'l' and 'opt' where 'l' is a ZERO RELATIVE level number that
+    // can be a function, and 'opt' is an options object that contains values for levelCap, ect
+    xpAPI.byLevel = function(l, opt){
         opt = opt || {};
         opt.levelCap = opt.levelCap || 100;
         opt.expCap = opt.expCap || 1000;
         opt.perMethod = opt.perMethod || 'log3';
         opt.perArgs = opt.perArgs || [0];
-        var per = utils[opt.perMethod].apply(null, [level, opt.levelCap, 'per'].concat(opt.perArgs));
+        var per = utils[opt.perMethod].apply(null, [l, opt.levelCap, 'per'].concat(opt.perArgs));
         return {
-            l: level,
-            level: Math.floor(level) + 1,
+            l: l,
+            level: Math.floor(l) + 1,
             xp: opt.expCap * per,
             valueOf: function(){
                 return this.level;
