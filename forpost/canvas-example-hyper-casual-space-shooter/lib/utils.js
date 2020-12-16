@@ -99,35 +99,36 @@ utils.log3 = function (a, d, mode, p1) {
 
 // LEVEL OBJECT
 
-utils.xp = {};
+utils.xp = (function(){
+    var xpAPI = {};
 
-utils.xp.byLevel = function(level, opt){
-
-    opt = opt || {};
-    opt.levelCap = opt.levelCap || 100;
-    opt.expCap = opt.expCap || 1000;
-    opt.perMethod = opt.perMethod || 'log3';
-    opt.perArgs = opt.perArgs || [0];
-
-    var per = utils[opt.perMethod].apply(null, [level, opt.levelCap, 'per'].concat(opt.perArgs));
-
-    return {
-        level: level,
-        xp: opt.expCap * per
+    xpAPI.byLevel = function(level, opt){
+        opt = opt || {};
+        opt.levelCap = opt.levelCap || 100;
+        opt.expCap = opt.expCap || 1000;
+        opt.perMethod = opt.perMethod || 'log3';
+        opt.perArgs = opt.perArgs || [0];
+        var per = utils[opt.perMethod].apply(null, [level, opt.levelCap, 'per'].concat(opt.perArgs));
+        return {
+            l: level,
+            level: Math.floor(level) + 1,
+            xp: opt.expCap * per,
+            valueOf: function(){
+                return this.level;
+            }
+        };
     };
-};
-
-utils.xp.byExp = function(xp, opt){
-    opt = opt || {};
-    opt.levelCap = opt.levelCap || 100;
-    opt.expCap = opt.expCap || 1000;
-    opt.perMethod = opt.perMethod || 'log3';
-    opt.perArgs = opt.perArgs || [0];
-
-    var level = utils[opt.perMethod].apply(null, [xp / opt.expCap, opt.levelCap, 'n'].concat(opt.perArgs));
-
-    return {
-        level: level,
-        xp: xp
+    xpAPI.byExp = function(xp, opt){
+        opt = opt || {};
+        opt.levelCap = opt.levelCap || 100;
+        opt.expCap = opt.expCap || 1000;
+        opt.perMethod = opt.perMethod || 'log3';
+        opt.perArgs = opt.perArgs || [0];
+        var level = utils[opt.perMethod].apply(null, [xp / opt.expCap, opt.levelCap, 'n'].concat(opt.perArgs));
+        return {
+            level: level,
+            xp: xp
+        };
     };
-};
+    return xpAPI;
+}(utils));
