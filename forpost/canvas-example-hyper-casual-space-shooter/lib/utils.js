@@ -144,14 +144,14 @@ utils.xp = (function(){
         };
     };
     xpAPI.createTable = function(opt){
-        opt = opt || {};
+        opt = xpAPI.createOptions(opt);
         var l = 0,
         lCap = 100,
         table = {
             levelObjArray : []
         }
         while(l < lCap){
-            table.levelObjArray[l] = xpAPI.byLevel(l)
+            table.levelObjArray[l] = xpAPI.byLevel(l, opt);
             l += 1;
         }
         return table;
