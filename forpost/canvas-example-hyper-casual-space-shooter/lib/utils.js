@@ -114,11 +114,14 @@ utils.xp = (function(){
     // create a levelObject by 'l' and 'opt' where 'l' is a ZERO RELATIVE level number that
     // can be a function, and 'opt' is an options object that contains values for levelCap, ect
     xpAPI.byLevel = function(l, opt){
-        opt = opt || {};
-        opt.levelCap = opt.levelCap || 100;
-        opt.expCap = opt.expCap || 1000;
-        opt.perMethod = opt.perMethod || 'log3';
-        opt.perArgs = opt.perArgs || [0];
+        //opt = opt || {};
+        //opt.levelCap = opt.levelCap || 100;
+        //opt.expCap = opt.expCap || 1000;
+        //opt.perMethod = opt.perMethod || 'log3';
+        //opt.perArgs = opt.perArgs || [0];
+
+        opt = xpAPI.createOptions(opt);
+
         var per = utils[opt.perMethod].apply(null, [l, opt.levelCap, 'per'].concat(opt.perArgs));
         return {
             l: l,
