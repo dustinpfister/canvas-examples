@@ -74,9 +74,6 @@
 
 <!-- ADD ADDITIONAL CORE FEATURES -->
 
-## 0.x.0 - utils.xp new features
-* start a new utils.xp.createUpgrade method that will create a table, and have all the properties of an upgrade object
-* start a new utils.xp.checkUpgrade method
 
 ## 0.x.0 - spawn blocks durring movement
 * have a BLOCK-SPAWN-DIST, and BLOCK-COUNT-PER-SPAWN-DIST
@@ -95,6 +92,10 @@
 * add 'upgrade damage', and 'upgrade fire rate' buttons that will upgrade the current weapon
 * each upgrade costs money
 * buttons will only show up on 'base' mode
+
+## 0.x.0 - utils.xp new features
+* start a new utils.xp.createUpgrade method that will create a table, and have all the properties of an upgrade object
+* start a new utils.xp.checkUpgrade method
 
 ## 0.13.0 - adding new percent, and xp utils.js methods.
 * (done) add percent methods from js-javascript-example-percent-module to utils.js to be used with a new exp system

@@ -121,6 +121,8 @@ utils.xp = (function(){
         return {
             l: l,
             level: Math.floor(l) + 1,
+            levelCap: opt.levelCap,
+            perToLevelCap: (Math.floor(l) + 1) / opt.levelCap,
             xp: opt.expCap * per,
             valueOf: function(){
                 return this.level;
@@ -137,6 +139,8 @@ utils.xp = (function(){
         return {
             l: l,
             level: Math.floor(l) + 1,
+            levelCap: opt.levelCap,
+            perToLevelCap: (Math.floor(l) + 1) / opt.levelCap,
             xp: xp,
             valueOf: function(){
                 return this.level;

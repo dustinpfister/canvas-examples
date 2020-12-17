@@ -315,9 +315,11 @@ var gameMod = (function(){
         upgrade.levelIndex = 0;
         upgrade.desc = 'Max Speed';
         upgrade.levelObj = upgrade.levelObjArray[upgrade.levelIndex];
-        upgrade.applyToState = function(game){
-            
+        upgrade.applyToState = function(game, levelObj, upgrade){
+            var delta = SHIP_MAX_SPEED_MAX - SHIP_MAX_SPEED_START;
+            game.map.maxPPS = delta;
         };
+        upgrade.applyToState(game, upgrade.levelObj, upgrade);
         game.upgrades[0] = upgrade;
 
         console.log(game.upgrades[0]);
@@ -401,6 +403,7 @@ var gameMod = (function(){
         game.baseObj.x = game.map.x * -1;
         game.baseObj.y = game.map.y * -1;
 
+        // update map, blocks, shots
         updateMap(game, secs);
         updateBlocks(game, secs, state);
         updateShots(game, secs, state);
