@@ -308,7 +308,7 @@ var gameMod = (function(){
         game.ship = createShip(game);
 
         // first upgrade
-        upgrade = utils.xp.createUpgrade('Max Speed', 0,
+        var upgrade = game.upgrades[0] = utils.xp.createUpgrade('Max Speed', 0,
             // apply to state
             function(game, levelObj, upgrade){
                 var delta = SHIP_MAX_SPEED_MAX - SHIP_MAX_SPEED_START;
@@ -323,17 +323,7 @@ var gameMod = (function(){
                 tableY: 200
             }
         );
-        //upgrade.levelIndex = 0;
-        //upgrade.desc = 'Max Speed';
-        //upgrade.levelObj = upgrade.levelObjArray[upgrade.levelIndex];
-        //upgrade.applyToState = function(game, levelObj, upgrade){
-        //    var delta = SHIP_MAX_SPEED_MAX - SHIP_MAX_SPEED_START;
-        //    game.map.maxPPS = SHIP_MAX_SPEED_START + delta * levelObj.perToLevelCap;
-        //};
         upgrade.applyToState(game, upgrade.levelObj, upgrade);
-        game.upgrades[0] = upgrade;
-
-        console.log(game.upgrades[0].points);
 
         return game;
     };
