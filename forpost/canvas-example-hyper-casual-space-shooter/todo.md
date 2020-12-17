@@ -74,6 +74,10 @@
 
 <!-- ADD ADDITIONAL CORE FEATURES -->
 
+## 0.x.0 - utils.xp new features
+* start a new utils.xp.createUpgrade method that will create a table, and have all the properties of an upgrade object
+* start a new utils.xp.checkUpgrade method
+
 ## 0.x.0 - spawn blocks durring movement
 * have a BLOCK-SPAWN-DIST, and BLOCK-COUNT-PER-SPAWN-DIST
 * have a game.spawnDist value that is updated each time the map position changes
@@ -103,9 +107,11 @@
 * (done) have a utils.xp.createTable method that will create an Array of levelObjects using utils.xp.byLevel
 * (done) have a utils.xp.createOptions that will return an options object to use with xp.byLevel, and xp.byExp
 * (done) start a game.upgrades object
+* (done) use new utils.xp.createTable to create a table of levelObjects for game.upgrades[0] (ship maxSpeed upgrade)
 
-* use new utils.xp.createTable to create a table of levelObjects for game.upgrades[0] (ship maxSpeed upgrade)
+* have a upgrade.applyToState method for new max speed upgrade
 * have ship speed upgrades autobuy (for now)
+
 * make a pkg-0-12-0.html
 
 ## 0.12.0 - game modes, 'space' mode, and 'base' mode
