@@ -159,12 +159,16 @@ utils.xp = (function(){
         };
         while(l < opt.levelCap){
             levelObj = table.levelObjArray[l] = xpAPI.byLevel(l, opt);
+            table.points[l] = {
+                x: w / (opt.levelCap-1) * l,
+                y: table.h - levelObj.perToLevelCap * table.h
+            };
             l += 1;
         }
         return table;
     };
     // create an upgrade object
-    xpAPI.createTable = function(opt){
+    xpAPI.createUpgrade = function(opt){
         opt = xpAPI.createOptions(opt);
         var l = 0,
         table = {

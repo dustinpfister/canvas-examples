@@ -322,7 +322,7 @@ var gameMod = (function(){
         upgrade.applyToState(game, upgrade.levelObj, upgrade);
         game.upgrades[0] = upgrade;
 
-        console.log(game.upgrades[0]);
+        console.log(game.upgrades[0].points);
 
         return game;
     };
