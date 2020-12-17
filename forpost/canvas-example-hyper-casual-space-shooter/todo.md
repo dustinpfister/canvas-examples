@@ -12,26 +12,6 @@
 
 ## 0.x.0 - block Armor
 
-<!-- WEAPONS - ADD FEATURES THAT MAKE THE GAME MORE FUN, ADDICTIVE, OR INTERESTING -->
-
-## 0.x.0 - weapon shot types and properties - Damage Over Time
-* have more than one type of 'shot' by adding a type property for shots
-* current basic shots can still be in the game as 'normal' type shots
-* start a 'dot' shot type that will add a damage over time effect to blocks
-
-## 0.x.0 - Weapon Accuracy Button at Base
-* add a 'upgrade accuracy' button for the current weapon in 'base' mode
-
-## 0.x.0 - Weapon Accuracy
-* each weapon has an accuracy object
-* acc.radius is the potential radius in which a shot will hit from perfect accuracy to acc.radius
-* acc.per is applied with acc.radius to find and actual radius that will be used to set shot location
-
-## 0.x.0 - Shots Per Fire, and fire update methods
-* have a weapon.onFire.start method
-* have a weapon.onFire.update method
-* have a weapon.onFire.end method
-
 <!-- ADDITIONAL FIXES AND FEATURES -->
 
 ## 0.x.0 - Replace hard coded 160, 120 values
@@ -70,10 +50,35 @@
 
 <!-- SHIP UPGRADES -->
 
-## 0.x.0 - ship speed upgrade buttons
+## 0.x.0 - ship max speed upgrade button
+
+## 0.x.0 - ship acc upgrade button
+
+## 0.x.0 - ship turning upgrade button
+
+## 0.x.0 - ship breaking upgrade button
+
+<!-- WEAPONS - ADD FEATURES THAT MAKE THE GAME MORE FUN, ADDICTIVE, OR INTERESTING -->
+
+## 0.x.0 - weapon shot types and properties - Damage Over Time
+* have more than one type of 'shot' by adding a type property for shots
+* current basic shots can still be in the game as 'normal' type shots
+* start a 'dot' shot type that will add a damage over time effect to blocks
+
+## 0.x.0 - Weapon Accuracy Button at Base
+* add a 'upgrade accuracy' button for the current weapon in 'base' mode
+
+## 0.x.0 - Weapon Accuracy
+* each weapon has an accuracy object
+* acc.radius is the potential radius in which a shot will hit from perfect accuracy to acc.radius
+* acc.per is applied with acc.radius to find and actual radius that will be used to set shot location
+
+## 0.x.0 - Shots Per Fire, and fire update methods
+* have a weapon.onFire.start method
+* have a weapon.onFire.update method
+* have a weapon.onFire.end method
 
 <!-- ADD ADDITIONAL CORE FEATURES -->
-
 
 ## 0.x.0 - spawn blocks durring movement
 * have a BLOCK-SPAWN-DIST, and BLOCK-COUNT-PER-SPAWN-DIST
@@ -93,9 +98,14 @@
 * each upgrade costs money
 * buttons will only show up on 'base' mode
 
-## 0.x.0 - utils.xp new features
+## 0.14.0 - utils.xp new features, DEFAULT_UPGRADES object
 * start a new utils.xp.createUpgrade method that will create a table, and have all the properties of an upgrade object
-* start a new utils.xp.checkUpgrade method
+* start a new utils.xp.setUpgrade method that can be used to just directly set an upgrade object to a given level
+* start a DEFAULT_UPGRADES object that will get cloned as game.upgrades
+* add new ship acc upgrade object
+* ship acc upgrade also just autobuys for now
+* buying an upgrade will deduct money
+* make a pkg-0-13-0.html
 
 ## 0.13.0 - adding new percent, and xp utils.js methods.
 * (done) add percent methods from js-javascript-example-percent-module to utils.js to be used with a new exp system
@@ -112,7 +122,7 @@
 * (done) have a upgrade.applyToState method for new max speed upgrade
 * (done) have ship speed upgrades autobuy (for now)
 * (done) have a createLevelObject helper for utils.xp
-* make a pkg-0-13-0.html
+* (done) make a pkg-0-13-0.html
 
 ## 0.12.0 - game modes, 'space' mode, and 'base' mode
 * (done) have a game.mode property that will store the current mode
