@@ -124,6 +124,7 @@ utils.xp = (function(){
             levelCap: opt.levelCap,
             perToLevelCap: l / ( opt.levelCap - 1 ),
             xp: xp,
+            expCap: opt.expCap,
             valueOf: function(){
                 return this.level;
             }
@@ -161,7 +162,7 @@ utils.xp = (function(){
             levelObj = table.levelObjArray[l] = xpAPI.byLevel(l, opt);
             table.points[l] = {
                 x: w / (opt.levelCap-1) * l,
-                y: table.h - levelObj.perToLevelCap * table.h
+                y: table.h - (levelObj.xp / levelObj.expCap) * table.h
             };
             l += 1;
         }
