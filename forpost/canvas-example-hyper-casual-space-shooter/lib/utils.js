@@ -173,10 +173,12 @@ utils.xp = (function(){
         return table;
     };
     // create an upgrade object
-    xpAPI.createUpgrade = function(opt){
+    xpAPI.createUpgrade = function(desc, levelIndex, opt){
         opt = xpAPI.createOptions(opt);
-        var table = xpAPI.createTable(opt);
-        return table;
+        var upgrade = xpAPI.createTable(opt);
+        upgrade.desc = desc || '';
+        upgrade.levelIndex = levelIndex || 0;
+        return upgrade;
     };
     return xpAPI;
 }());

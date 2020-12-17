@@ -308,15 +308,15 @@ var gameMod = (function(){
         game.ship = createShip(game);
 
         // first upgrade
-        upgrade = utils.xp.createUpgrade({
+        upgrade = utils.xp.createUpgrade('Max Speed', 0, {
             levelCap: 10,
             expCap: 10000,
             perArgs: [0.75],
             tableX: 280,
             tableY: 200
         });
-        upgrade.levelIndex = 9;
-        upgrade.desc = 'Max Speed';
+        //upgrade.levelIndex = 0;
+        //upgrade.desc = 'Max Speed';
         upgrade.levelObj = upgrade.levelObjArray[upgrade.levelIndex];
         upgrade.applyToState = function(game, levelObj, upgrade){
             var delta = SHIP_MAX_SPEED_MAX - SHIP_MAX_SPEED_START;
