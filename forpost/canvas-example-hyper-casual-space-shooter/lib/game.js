@@ -310,7 +310,7 @@ var gameMod = (function(){
         // first upgrade
         upgrade = utils.xp.createTable({
             levelCap: 10,
-            expCap: 100000
+            expCap: 1000
         });
         upgrade.levelIndex = 9;
         upgrade.desc = 'Max Speed';
@@ -407,6 +407,17 @@ var gameMod = (function(){
         updateMap(game, secs);
         updateBlocks(game, secs, state);
         updateShots(game, secs, state);
+
+        // speed upgrade
+        var upgrade = game.upgrades[0];
+
+        upgrade.levelObjArray.forEach(function(levelObj, i){
+            if(game.money >= levelObj.xp){
+                upgrade.levelIndex = i;
+                upgrade.levelObj = upgrade.levelObjArray[upgrade.levelIndex];
+            }
+        });
+        upgrade.applyToState(game, upgrade.levelObj, upgrade);
 
     };
 

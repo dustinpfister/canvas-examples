@@ -109,9 +109,9 @@
 * (done) have a utils.xp.createOptions that will return an options object to use with xp.byLevel, and xp.byExp
 * (done) start a game.upgrades object
 * (done) use new utils.xp.createTable to create a table of levelObjects for game.upgrades[0] (ship maxSpeed upgrade)
-
-* have a upgrade.applyToState method for new max speed upgrade
+* (done) have a upgrade.applyToState method for new max speed upgrade
 * have ship speed upgrades autobuy (for now)
+* have a createLevelObject helper for utils.xp
 
 * make a pkg-0-12-0.html
 
