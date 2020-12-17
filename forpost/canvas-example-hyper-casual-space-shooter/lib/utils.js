@@ -108,7 +108,9 @@ utils.xp = (function(){
             levelCap: opt.levelCap || 100,
             expCap: opt.expCap || 1000,
             perMethod: opt.perMethod || 'log3',
-            perArgs: opt.perArgs || [0]
+            perArgs: opt.perArgs || [0],
+            tableWidth: opt.tableWidth || 25,
+            tableHeight: opt.tableHeight || 25
         };
     };
     // create a standard level Object
@@ -146,22 +148,20 @@ utils.xp = (function(){
         return createLevelObject(xp, opt);
     };
     // create a table of levelObjects for the given options object
-    xpAPI.createTable = function(opt, w, h){
+    xpAPI.createTable = function(opt){
         opt = xpAPI.createOptions(opt);
-        w = w || 50;
-        h = h || 50;
         var l = 0,
         levelObj,
         table = {
             levelObjArray : [],
             points: [],
-            w: w,
-            h: h
+            w: opt.tableWidth,
+            h: opt.tableHeight
         };
         while(l < opt.levelCap){
             levelObj = table.levelObjArray[l] = xpAPI.byLevel(l, opt);
             table.points[l] = {
-                x: w / (opt.levelCap-1) * l,
+                x: table.w / (opt.levelCap-1) * l,
                 y: table.h - (levelObj.xp / levelObj.expCap) * table.h
             };
             l += 1;
