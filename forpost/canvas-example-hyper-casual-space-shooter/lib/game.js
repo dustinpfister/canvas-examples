@@ -317,7 +317,7 @@ var gameMod = (function(){
             // level options
             {
                 levelCap: 10,
-                expCap: 10000,
+                expCap: 1000,
                 perArgs: [0.75],
                 tableX: 280,
                 tableY: 200

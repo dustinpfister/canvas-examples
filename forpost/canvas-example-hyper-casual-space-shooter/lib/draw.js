@@ -156,7 +156,7 @@ var draw = (function(){
         ctx.textAlign = 'left';
         ctx.fillText('v' + state.ver, 5, state.canvas.height - 15);
     };
-    // draw an xp table
+    // draw an xp table or upgrade object
     api.xpTable = function(ctx, table){
         table.points.forEach(function(point, i){
             if(i===0){
@@ -165,12 +165,20 @@ var draw = (function(){
             }
             ctx.lineTo(table.x + point.x, table.y + point.y);
         });
-        ctx.strokeStyle = 'lime';
+        ctx.strokeStyle = 'green';
         ctx.stroke();
         ctx.strokeStyle = 'gray';
         ctx.beginPath();
         ctx.rect(table.x, table.y, table.w, table.h);
         ctx.stroke();
+        // if upgrate object draw circle over current level point
+        if(table.levelIndex >= 0){
+            var point = table.points[table.levelIndex];
+            ctx.strokeStyle = 'lime';
+            ctx.beginPath();
+            ctx.arc(table.x + point.x, table.y + point.y, 2, 0, Math.PI * 2);
+            ctx.stroke();
+        }
     };
     // return draw api
     return api;
