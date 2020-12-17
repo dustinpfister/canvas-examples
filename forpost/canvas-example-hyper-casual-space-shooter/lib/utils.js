@@ -35,22 +35,21 @@ utils.angleTo = function(fromX, fromY, toX, toY){
 };
 
 utils.normalizeHalf = function(n, scale) {
-  var c = scale || Math.PI * 2;
-  var h = c / 2;
-  return utils.mod(n + h, c) - h;
+    var c = scale || Math.PI * 2;
+    var h = c / 2;
+    return utils.mod(n + h, c) - h;
 };
 
 utils.shortestDirection = function(from, to, scale) {
-  var z = from - to;
-  if (from === to) {
-    return 0;
-    // if (mod(-z, 360) < mod(z, 360)) {
-  } else if (utils.normalizeHalf(z, scale) < 0) {
-    return -1; // Left
-  } else {
-    return +1; // Right
-  }
-}
+    var z = from - to;
+    if (from === to) {
+        return 0;
+    } else if (utils.normalizeHalf(z, scale) < 0) {
+        return -1; // Left
+    } else {
+        return +1; // Right
+    }
+};
 
 // deep clone an object
 utils.deepClone = function (obj) {

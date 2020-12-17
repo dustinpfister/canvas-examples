@@ -98,6 +98,10 @@
 * each upgrade costs money
 * buttons will only show up on 'base' mode
 
+## 0.15.0 - Graph an upgrade
+* utils.xp.createTable should create a table that can be used to graph what is going on with levels
+* have a draw.xpTable method that can graph the state of a table object created with utils.xp.createTable
+
 ## 0.14.0 - utils.xp new features, DEFAULT_UPGRADES object
 * start a new utils.xp.createUpgrade method that will create a table, and have all the properties of an upgrade object
 * start a new utils.xp.setUpgrade method that can be used to just directly set an upgrade object to a given level
