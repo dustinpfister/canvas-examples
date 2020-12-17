@@ -111,10 +111,32 @@ utils.xp = (function(){
             perArgs: opt.perArgs || [0]
         };
     };
+    var createLevelObject = function(xp, opt){
+        xp = xp >= opt.expCap ? opt.expCap : xp;
+        xp = xp < 0 ? 0 : xp;
+        var l = utils[opt.perMethod].apply(null, [xp / opt.expCap, opt.levelCap, 'n'].concat(opt.perArgs));
+        l = l >= opt.levelCap ? opt.levelCap - 1 : l;
+        l = l < 0 ? 0 : l;
+        return {
+            l: l,
+            level: Math.floor(l) + 1,
+            levelCap: opt.levelCap,
+            perToLevelCap: l / ( opt.levelCap - 1 ),
+            xp: xp,
+            valueOf: function(){
+                return this.level;
+            }
+        };
+    };
     // create a levelObject by 'l' and 'opt' where 'l' is a ZERO RELATIVE level number that
     // can be a function, and 'opt' is an options object that contains values for levelCap, ect
     xpAPI.byLevel = function(l, opt){
         opt = xpAPI.createOptions(opt);
+        l = l >= opt.levelCap ? opt.levelCap - 1 : l;
+        l = l < 0 ? 0 : l;
+        var per = utils[opt.perMethod].apply(null, [l, opt.levelCap, 'per'].concat(opt.perArgs));
+        return createLevelObject(opt.expCap * per, opt);
+/*
         l = l >= opt.levelCap ? opt.levelCap - 1 : l;
         l = l < 0 ? 0 : l;
         var per = utils[opt.perMethod].apply(null, [l, opt.levelCap, 'per'].concat(opt.perArgs));
@@ -128,14 +150,17 @@ utils.xp = (function(){
                 return this.level;
             }
         };
+*/
     };
     // create a levelObject by a 'xp' value where 'xp' is a number between 0 and opt.expCap
     // and 'opt' is an options object the contains properties such as opt.expCap
     xpAPI.byExp = function(xp, opt){
         opt = xpAPI.createOptions(opt);
+        return createLevelObject(xp, opt);
+/*
         xp = xp >= opt.expCap ? opt.expCap : xp;
         xp = xp < 0 ? 0 : xp;
-        var l = utils[opt.perMethod].apply(null, [xp / opt.expCap, opt.levelCap, 'n'].concat(opt.perArgs));
+        //var l = utils[opt.perMethod].apply(null, [xp / opt.expCap, opt.levelCap, 'n'].concat(opt.perArgs));
         return {
             l: l,
             level: Math.floor(l) + 1,
@@ -146,6 +171,7 @@ utils.xp = (function(){
                 return this.level;
             }
         };
+*/
     };
     xpAPI.createTable = function(opt){
         opt = xpAPI.createOptions(opt);
