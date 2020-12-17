@@ -308,7 +308,7 @@ var gameMod = (function(){
         game.ship = createShip(game);
 
         // first upgrade
-        upgrade = utils.xp.createTable({
+        upgrade = utils.xp.createUpgrade({
             levelCap: 10,
             expCap: 10000,
             perArgs: [0.75]

@@ -100,15 +100,15 @@
 
 ## 0.14.0 - utils.xp new features, DEFAULT_UPGRADES object
 * (done) utils.xp.createTable should create points that can be used to graph what is going on with levels
-* have a draw.xpTable method that can graph the state of a table object created with utils.xp.createTable
+* (done) have a draw.xpTable method that can graph the state of a table object created with utils.xp.createTable
+* (done) start a new utils.xp.createUpgrade method that will create a table as the base of the object, and have all the properties of an upgrade object
 
-* start a new utils.xp.createUpgrade method that will create a table, and have all the properties of an upgrade object
 * start a new utils.xp.setUpgrade method that can be used to just directly set an upgrade object to a given level
 * start a DEFAULT_UPGRADES object that will get cloned as game.upgrades
 * add new ship acc upgrade object
 * ship acc upgrade also just autobuys for now
 * buying an upgrade will deduct money
-* make a pkg-0-13-0.html
+* make a pkg-0-14-0.html
 
 ## 0.13.0 - adding new percent, and xp utils.js methods.
 * (done) add percent methods from js-javascript-example-percent-module to utils.js to be used with a new exp system
