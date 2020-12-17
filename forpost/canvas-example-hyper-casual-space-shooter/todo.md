@@ -111,9 +111,8 @@
 * (done) use new utils.xp.createTable to create a table of levelObjects for game.upgrades[0] (ship maxSpeed upgrade)
 * (done) have a upgrade.applyToState method for new max speed upgrade
 * (done) have ship speed upgrades autobuy (for now)
-* have a createLevelObject helper for utils.xp
-
-* make a pkg-0-12-0.html
+* (done) have a createLevelObject helper for utils.xp
+* make a pkg-0-13-0.html
 
 ## 0.12.0 - game modes, 'space' mode, and 'base' mode
 * (done) have a game.mode property that will store the current mode
