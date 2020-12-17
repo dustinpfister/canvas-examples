@@ -306,12 +306,16 @@ var gameMod = (function(){
         game.ship = createShip(game);
 
         // first upgrade
-        game.upgrades[0] = utils.xp.createTable({
+        upgrade = utils.xp.createTable({
             levelCap: 10,
             expCap: 100000
         });
+        upgrade.levelIndex = 0;
+        upgrade.desc = 'Max Speed';
+        upgrade.levelObj = upgrade.levelObjArray[upgrade.levelIndex];
+        game.upgrades[0] = upgrade;
 
-        console.log(game.upgrades);
+        console.log(game.upgrades[0]);
 
         return game;
     };
