@@ -167,6 +167,10 @@ var draw = (function(){
         });
         ctx.strokeStyle = 'lime';
         ctx.stroke();
+        ctx.strokeStyle = 'gray';
+        ctx.beginPath();
+        ctx.rect(x, y, table.w, table.h);
+        ctx.stroke();
     };
     // return draw api
     return api;
