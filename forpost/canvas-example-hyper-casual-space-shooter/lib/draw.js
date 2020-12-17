@@ -156,6 +156,18 @@ var draw = (function(){
         ctx.textAlign = 'left';
         ctx.fillText('v' + state.ver, 5, state.canvas.height - 15);
     };
+    // draw an xp table
+    api.xpTable = function(ctx, table, x, y){
+        table.points.forEach(function(point, i){
+            if(i===0){
+                ctx.beginPath();
+                ctx.moveTo(x + point.x, y + point.y);
+            }
+            ctx.lineTo(x + point.x, y + point.y);
+        });
+        ctx.strokeStyle = 'lime';
+        ctx.stroke();
+    };
     // return draw api
     return api;
 }());
