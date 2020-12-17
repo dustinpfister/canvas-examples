@@ -312,7 +312,7 @@ var gameMod = (function(){
             levelCap: 10,
             expCap: 100000
         });
-        upgrade.levelIndex = 0;
+        upgrade.levelIndex = 9;
         upgrade.desc = 'Max Speed';
         upgrade.levelObj = upgrade.levelObjArray[upgrade.levelIndex];
         upgrade.applyToState = function(game, levelObj, upgrade){
