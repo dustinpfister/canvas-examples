@@ -147,8 +147,8 @@ utils.xp = (function(){
     // create a table of levelObjects for the given options object
     xpAPI.createTable = function(opt, w, h){
         opt = xpAPI.createOptions(opt);
-        w = w || 100;
-        h = h || 100;
+        w = w || 50;
+        h = h || 50;
         var l = 0,
         levelObj,
         table = {

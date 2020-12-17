@@ -118,6 +118,9 @@ var loop = function () {
         draw.info(state.ctx, state);
         draw.ver(state.ctx, state);
 
+        // drawing upgrade 0
+        draw.xpTable(state.ctx, game.upgrades[0], 250, 180);
+
         lt = now;
     }
 };
