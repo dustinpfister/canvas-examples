@@ -12,6 +12,8 @@ var gameMod = (function(){
     SHIP_HP = 100,
     SHIP_AUTOHEAL_RATE = 5,
     SHIP_AUTOHEAL_AMOUNT = 1,
+    SHIP_MAX_SPEED_START = 64, // starting max ship speed
+    SHIP_MAX_SPEED_MAX = 512,  // fully upgraded max ship speed
     MAP_MAX_DIST = Math.pow(10,5), //Number.MAX_SAFE_INTEGER;      // max distance from 0,0
     BASE_DIST = 100;
 
@@ -287,7 +289,7 @@ var gameMod = (function(){
                 y: 0,
                 radian: 0, 
                 pps: 0,
-                maxPPS: 256,
+                maxPPS: SHIP_MAX_SPEED_START,
                 dist: 0,
                 per: 0 // map.dist / MAX_MAX_DIST
             },
@@ -313,6 +315,9 @@ var gameMod = (function(){
         upgrade.levelIndex = 0;
         upgrade.desc = 'Max Speed';
         upgrade.levelObj = upgrade.levelObjArray[upgrade.levelIndex];
+        upgrade.applyToState = function(game){
+            
+        };
         game.upgrades[0] = upgrade;
 
         console.log(game.upgrades[0]);
