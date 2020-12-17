@@ -110,7 +110,9 @@ utils.xp = (function(){
             perMethod: opt.perMethod || 'log3',
             perArgs: opt.perArgs || [0],
             tableWidth: opt.tableWidth || 25,
-            tableHeight: opt.tableHeight || 25
+            tableHeight: opt.tableHeight || 25,
+            tableX: opt.tableX === undefined ? 0 : opt.tableX,
+            tableY: opt.tableY === undefined ? 0 : opt.tableY
         };
     };
     // create a standard level Object
@@ -156,7 +158,9 @@ utils.xp = (function(){
             levelObjArray : [],
             points: [],
             w: opt.tableWidth,
-            h: opt.tableHeight
+            h: opt.tableHeight,
+            x: opt.tableX,
+            y: opt.tableY
         };
         while(l < opt.levelCap){
             levelObj = table.levelObjArray[l] = xpAPI.byLevel(l, opt);

@@ -311,7 +311,9 @@ var gameMod = (function(){
         upgrade = utils.xp.createUpgrade({
             levelCap: 10,
             expCap: 10000,
-            perArgs: [0.75]
+            perArgs: [0.75],
+            tableX: 280,
+            tableY: 200
         });
         upgrade.levelIndex = 9;
         upgrade.desc = 'Max Speed';

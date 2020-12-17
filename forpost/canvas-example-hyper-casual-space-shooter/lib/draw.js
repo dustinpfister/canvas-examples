@@ -157,19 +157,19 @@ var draw = (function(){
         ctx.fillText('v' + state.ver, 5, state.canvas.height - 15);
     };
     // draw an xp table
-    api.xpTable = function(ctx, table, x, y){
+    api.xpTable = function(ctx, table){
         table.points.forEach(function(point, i){
             if(i===0){
                 ctx.beginPath();
-                ctx.moveTo(x + point.x, y + point.y);
+                ctx.moveTo(table.x + point.x, table.y + point.y);
             }
-            ctx.lineTo(x + point.x, y + point.y);
+            ctx.lineTo(table.x + point.x, table.y + point.y);
         });
         ctx.strokeStyle = 'lime';
         ctx.stroke();
         ctx.strokeStyle = 'gray';
         ctx.beginPath();
-        ctx.rect(x, y, table.w, table.h);
+        ctx.rect(table.x, table.y, table.w, table.h);
         ctx.stroke();
     };
     // return draw api
