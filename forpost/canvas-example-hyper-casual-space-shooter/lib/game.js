@@ -317,7 +317,7 @@ var gameMod = (function(){
         upgrade.levelObj = upgrade.levelObjArray[upgrade.levelIndex];
         upgrade.applyToState = function(game, levelObj, upgrade){
             var delta = SHIP_MAX_SPEED_MAX - SHIP_MAX_SPEED_START;
-            game.map.maxPPS = delta;
+            game.map.maxPPS = SHIP_MAX_SPEED_START + delta * levelObj.perToLevelCap;
         };
         upgrade.applyToState(game, upgrade.levelObj, upgrade);
         game.upgrades[0] = upgrade;
