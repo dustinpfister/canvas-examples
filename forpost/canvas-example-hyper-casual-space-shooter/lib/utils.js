@@ -145,6 +145,25 @@ utils.xp = (function(){
         return createLevelObject(xp, opt);
     };
     // create a table of levelObjects for the given options object
+    xpAPI.createTable = function(opt, w, h){
+        opt = xpAPI.createOptions(opt);
+        w = w || 100;
+        h = h || 100;
+        var l = 0,
+        levelObj,
+        table = {
+            levelObjArray : [],
+            points: [],
+            w: w,
+            h: h
+        };
+        while(l < opt.levelCap){
+            levelObj = table.levelObjArray[l] = xpAPI.byLevel(l, opt);
+            l += 1;
+        }
+        return table;
+    };
+    // create an upgrade object
     xpAPI.createTable = function(opt){
         opt = xpAPI.createOptions(opt);
         var l = 0,
