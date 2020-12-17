@@ -102,6 +102,7 @@ utils.log3 = function (a, d, mode, p1) {
 utils.xp = (function(){
     // public API for utils.xp
     var xpAPI = {};
+    // create an options object to use with byLevel and byExp methods
     xpAPI.createOptions = function(opt){
         opt = opt || {};
         return {
@@ -111,6 +112,7 @@ utils.xp = (function(){
             perArgs: opt.perArgs || [0]
         };
     };
+    // create a standard level Object
     var createLevelObject = function(xp, opt){
         xp = xp >= opt.expCap ? opt.expCap : xp;
         xp = xp < 0 ? 0 : xp;
@@ -136,49 +138,20 @@ utils.xp = (function(){
         l = l < 0 ? 0 : l;
         var per = utils[opt.perMethod].apply(null, [l, opt.levelCap, 'per'].concat(opt.perArgs));
         return createLevelObject(opt.expCap * per, opt);
-/*
-        l = l >= opt.levelCap ? opt.levelCap - 1 : l;
-        l = l < 0 ? 0 : l;
-        var per = utils[opt.perMethod].apply(null, [l, opt.levelCap, 'per'].concat(opt.perArgs));
-        return {
-            l: l,
-            level: Math.floor(l) + 1,
-            levelCap: opt.levelCap,
-            perToLevelCap: l / ( opt.levelCap - 1 ),
-            xp: opt.expCap * per,
-            valueOf: function(){
-                return this.level;
-            }
-        };
-*/
     };
     // create a levelObject by a 'xp' value where 'xp' is a number between 0 and opt.expCap
     // and 'opt' is an options object the contains properties such as opt.expCap
     xpAPI.byExp = function(xp, opt){
         opt = xpAPI.createOptions(opt);
         return createLevelObject(xp, opt);
-/*
-        xp = xp >= opt.expCap ? opt.expCap : xp;
-        xp = xp < 0 ? 0 : xp;
-        //var l = utils[opt.perMethod].apply(null, [xp / opt.expCap, opt.levelCap, 'n'].concat(opt.perArgs));
-        return {
-            l: l,
-            level: Math.floor(l) + 1,
-            levelCap: opt.levelCap,
-            perToLevelCap: l / ( opt.levelCap - 1 ),
-            xp: xp,
-            valueOf: function(){
-                return this.level;
-            }
-        };
-*/
     };
+    // create a table of levelObjects for the given options object
     xpAPI.createTable = function(opt){
         opt = xpAPI.createOptions(opt);
         var l = 0,
         table = {
             levelObjArray : []
-        }
+        };
         while(l < opt.levelCap){
             table.levelObjArray[l] = xpAPI.byLevel(l, opt);
             l += 1;
