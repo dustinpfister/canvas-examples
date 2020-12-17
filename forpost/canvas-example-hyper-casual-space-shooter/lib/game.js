@@ -69,25 +69,6 @@ var gameMod = (function(){
         }
     ];
 
-/*
-        var upgrade = game.upgrades[0] = utils.xp.createUpgrade('Max Speed', 0,
-            // apply to state
-            function(game, levelObj, upgrade){
-                var delta = SHIP_MAX_SPEED_MAX - SHIP_MAX_SPEED_START;
-                game.map.maxPPS = SHIP_MAX_SPEED_START + delta * levelObj.perToLevelCap;
-            },
-            // level options
-            {
-                levelCap: 10,
-                expCap: 1000,
-                perArgs: [0.75],
-                tableX: 280,
-                tableY: 200
-            }
-        );
-        upgrade.applyToState(game, upgrade.levelObj, upgrade);
-*/
-
     var api = {};
 
     // HIT POINTS
@@ -344,25 +325,7 @@ var gameMod = (function(){
         // set current weapon
         game.ship = createShip(game);
 
-        // first upgrade
-/*
-        var upgrade = game.upgrades[0] = utils.xp.createUpgrade('Max Speed', 0,
-            // apply to state
-            function(game, levelObj, upgrade){
-                var delta = SHIP_MAX_SPEED_MAX - SHIP_MAX_SPEED_START;
-                game.map.maxPPS = SHIP_MAX_SPEED_START + delta * levelObj.perToLevelCap;
-            },
-            // level options
-            {
-                levelCap: 10,
-                expCap: 1000,
-                perArgs: [0.75],
-                tableX: 280,
-                tableY: 200
-            }
-        );
-        upgrade.applyToState(game, upgrade.levelObj, upgrade);
-*/
+        // create game.upgrades
         game.upgrades = DEFAULT_UPGRADES.map(function(upDef){
             var upgrade = utils.xp.createUpgrade(upDef.desc, 0, upDef.applyToState, upDef.levelOpt);
             upgrade.applyToState(game, upgrade.levelObj, upgrade);
