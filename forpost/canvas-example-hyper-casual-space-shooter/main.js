@@ -30,7 +30,7 @@ var state = {
         degree: 0,
         degreesPerSecond: 90,
         pps: 0,
-        ppsDelta: 64,
+        ppsDelta: 1,
         fire: false,
         keys: {}
     }
@@ -68,11 +68,13 @@ var loop = function () {
         }
         // keyboard update pps
         if(input.keys.w){
-           input.pps += input.ppsDelta * secs;
+           //input.pps += input.ppsDelta * secs;
+           input.pps += game.map.ppsDelta * secs;
            input.pps = input.pps > game.map.maxPPS ? game.map.maxPPS : input.pps;
         }
         if(input.keys.s){
-            input.pps -= input.ppsDelta * secs;
+            //input.pps -= input.ppsDelta * secs;
+            input.pps -= game.map.ppsDelta * secs;
             input.pps = input.pps < 0 ? 0 : input.pps;
         }
         // pointer update map radian

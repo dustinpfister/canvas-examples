@@ -104,9 +104,10 @@
 * (done) start a new utils.xp.createUpgrade method that will create a table as the base of the object, and have all the properties of an upgrade object
 * (done) draw.xpTable will draw a white circle around current location in graph if it is an upgrade object
 * (done) start a DEFAULT_UPGRADES object that will get cloned as game.upgrades
+* (done) add new ship acc upgrade object
+* (done) ship acc upgrade also just autobuys for now
 
-* add new ship acc upgrade object
-* ship acc upgrade also just autobuys for now
+* add a utils.xp.buyUpgrade method that will set upgrade.levelIndex if there is enough of a RESOURCE in STATE
 * buying an upgrade will deduct money
 * make a pkg-0-14-0.html
 

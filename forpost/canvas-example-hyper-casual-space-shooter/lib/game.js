@@ -36,18 +36,18 @@ var gameMod = (function(){
     var DEFAULT_WEAPONS = {
         0 : {
             name: "Pulse gun",
-            firesPerSecond: 2,
+            firesPerSecond: 5,
             shotDamage: 1
         },
         1 : {
             name: "Cannon",
-            firesPerSecond: 5,
+            firesPerSecond: 10,
             shotDamage: 3
         },
         2 : {
             name: "Atom",
-            firesPerSecond: 1,
-            shotDamage: 100
+            firesPerSecond: 2,
+            shotDamage: 500
         }
     };
 
@@ -321,6 +321,7 @@ var gameMod = (function(){
                 y: 0,
                 radian: 0, 
                 pps: 0,
+                ppsDelta: 128,
                 maxPPS: SHIP_MAX_SPEED_START,
                 dist: 0,
                 per: 0 // map.dist / MAX_MAX_DIST
