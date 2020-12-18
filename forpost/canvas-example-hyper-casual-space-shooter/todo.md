@@ -103,9 +103,8 @@
 * (done) have a draw.xpTable method that can graph the state of a table object created with utils.xp.createTable
 * (done) start a new utils.xp.createUpgrade method that will create a table as the base of the object, and have all the properties of an upgrade object
 * (done) draw.xpTable will draw a white circle around current location in graph if it is an upgrade object
+* (done) start a DEFAULT_UPGRADES object that will get cloned as game.upgrades
 
-* start a new utils.xp.setUpgrade method that can be used to just directly set an upgrade object to a given level
-* start a DEFAULT_UPGRADES object that will get cloned as game.upgrades
 * add new ship acc upgrade object
 * ship acc upgrade also just autobuys for now
 * buying an upgrade will deduct money

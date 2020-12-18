@@ -61,7 +61,7 @@ var gameMod = (function(){
             },
             levelOpt: {
                 levelCap: 50,
-                expCap: 100000,
+                expCap: 100,
                 perArgs: [0.45],
                 tableX: 280,
                 tableY: 200
@@ -417,16 +417,17 @@ var gameMod = (function(){
         updateShots(game, secs, state);
 
         // speed upgrade
-        var upgrade = game.upgrades[0];
-
-        upgrade.levelObjArray.forEach(function(levelObj, i){
-            if(game.money >= levelObj.xp){
-                upgrade.levelIndex = i;
-                upgrade.levelObj = upgrade.levelObjArray[upgrade.levelIndex];
-            }
-        });
-        upgrade.applyToState(game, upgrade.levelObj, upgrade);
-
+        var i = game.upgrades.length;
+        while(i--){
+            var upgrade = game.upgrades[i];
+            upgrade.levelObjArray.forEach(function(levelObj, i){
+                if(game.money >= levelObj.xp){
+                    upgrade.levelIndex = i;
+                    upgrade.levelObj = upgrade.levelObjArray[upgrade.levelIndex];
+                }
+            });
+            upgrade.applyToState(game, upgrade.levelObj, upgrade);
+        }
     };
 
     var buttonCheck = function(button, pos){
