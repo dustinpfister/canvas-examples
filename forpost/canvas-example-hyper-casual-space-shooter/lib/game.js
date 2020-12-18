@@ -62,9 +62,23 @@ var gameMod = (function(){
             levelOpt: {
                 levelCap: 50,
                 expCap: 100,
-                perArgs: [0.45],
+                perArgs: [0],
                 tableX: 280,
                 tableY: 200
+            }
+        },
+        {
+            desc: 'Ship Acceleration',
+            applyToState: function(game, levelObj, upgrade){
+                //var delta = SHIP_MAX_SPEED_MAX - SHIP_MAX_SPEED_START;
+                //game.map.maxPPS = SHIP_MAX_SPEED_START + delta * levelObj.perToLevelCap;
+            },
+            levelOpt: {
+                levelCap: 50,
+                expCap: 100,
+                perArgs: [2],
+                tableX: 280,
+                tableY: 150
             }
         }
     ];
@@ -416,7 +430,7 @@ var gameMod = (function(){
         updateBlocks(game, secs, state);
         updateShots(game, secs, state);
 
-        // speed upgrade
+        // update upgrades
         var i = game.upgrades.length;
         while(i--){
             var upgrade = game.upgrades[i];
