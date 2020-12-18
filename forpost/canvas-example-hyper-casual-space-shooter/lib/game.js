@@ -13,12 +13,11 @@ var gameMod = (function(){
     SHIP_AUTOHEAL_RATE = 5,
     SHIP_AUTOHEAL_AMOUNT = 1,
     SHIP_MAX_SPEED_START = 64, // starting max ship speed in pps
-    SHIP_MAX_SPEED_MAX = 512,  // fully upgraded max ship speed in pps
+    SHIP_MAX_SPEED_MAX = 1024,  // fully upgraded max ship speed in pps
     SHIP_ACC_START = 8, // starting Acceleration in ppsps
     SHIP_ACC_MAX = 128, // fully upgraded max ship speed in pps
     MAP_MAX_DIST = Math.pow(10,5), //Number.MAX_SAFE_INTEGER;      // max distance from 0,0
     BASE_DIST = 100;
-
 
     var BASE_BUTTONS = {
         0: {
@@ -72,8 +71,9 @@ var gameMod = (function(){
         {
             desc: 'Ship Acceleration',
             applyToState: function(game, levelObj, upgrade){
-                //var delta = SHIP_MAX_SPEED_MAX - SHIP_MAX_SPEED_START;
-                //game.map.maxPPS = SHIP_MAX_SPEED_START + delta * levelObj.perToLevelCap;
+                var delta = SHIP_ACC_MAX - SHIP_ACC_START;
+                game.map.ppsDelta = SHIP_ACC_START + delta * levelObj.perToLevelCap;
+                
             },
             levelOpt: {
                 levelCap: 50,
