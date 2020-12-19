@@ -2,7 +2,7 @@ var gameMod = (function(){
     
     // CONSTANTS
 
-    var GAME_MONEY_START = 100,
+    var GAME_MONEY_START = 7500,
 
     // BLOCK CONSTANTS
     BLOCK_COUNT = 20,
@@ -70,7 +70,7 @@ var gameMod = (function(){
             },
             levelOpt: {
                 levelCap: 10,
-                expCap: 100000,
+                expCap: 1000,
                 perArgs: [0],
                 tableX: 280,
                 tableY: 200
@@ -85,7 +85,7 @@ var gameMod = (function(){
             },
             levelOpt: {
                 levelCap: 10,
-                expCap: 100000,
+                expCap: 1000,
                 perArgs: [2],
                 tableX: 280,
                 tableY: 150
@@ -98,19 +98,19 @@ var gameMod = (function(){
         lvNext;
 
         // if the current level is not at the level cap
-        if(lvCurrent.level != upgrade.levelCap){
+        if(lvCurrent.level < upgrade.opt.levelCap){
             lvNext = utils.xp.byLevel(lvCurrent.l + 1, upgrade.opt);
-            upgrade.levelIndex = Math.floor(lvCurrent.l + 1);
-            upgrade.levelObj = lvNext; //upgrade.levelObjArray[upgrade.levelIndex];
+            if(game.money >= lvNext.xp){
+                upgrade.levelIndex = Math.floor(lvCurrent.l + 1);
+                upgrade.levelObj = lvNext;
+                game.money -= lvNext.xp;
+                console.log('level up for ' + upgrade.desc);
+            }else{
+                console.log('not enough money for ' + upgrade.desc + ' upgrade.');
+            }
+        }else{
+            console.log('level cap reached.');
         }
-/*
-        upgrade.levelObjArray.forEach(function(levelObj, i){
-            if(game.money >= levelObj.xp){
-                    upgrade.levelIndex = i;
-                    upgrade.levelObj = upgrade.levelObjArray[upgrade.levelIndex];
-                }
-            });
-*/
     };
 
     var api = {};
@@ -379,6 +379,23 @@ var gameMod = (function(){
 
         buyUpgrade(game, game.upgrades[0]);
         buyUpgrade(game, game.upgrades[0]);
+        buyUpgrade(game, game.upgrades[0]);
+        buyUpgrade(game, game.upgrades[0]);
+        buyUpgrade(game, game.upgrades[0]);
+        buyUpgrade(game, game.upgrades[0]);
+        buyUpgrade(game, game.upgrades[0]);
+        buyUpgrade(game, game.upgrades[0]);
+        buyUpgrade(game, game.upgrades[0]);
+        buyUpgrade(game, game.upgrades[0]);
+
+        buyUpgrade(game, game.upgrades[1]);
+        buyUpgrade(game, game.upgrades[1]);
+        buyUpgrade(game, game.upgrades[1]);
+        buyUpgrade(game, game.upgrades[1]);
+        buyUpgrade(game, game.upgrades[1]);
+        buyUpgrade(game, game.upgrades[1]);
+        buyUpgrade(game, game.upgrades[1]);
+        buyUpgrade(game, game.upgrades[1]);
         buyUpgrade(game, game.upgrades[1]);
         buyUpgrade(game, game.upgrades[1]);
 
