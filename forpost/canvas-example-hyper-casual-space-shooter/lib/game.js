@@ -67,7 +67,7 @@ var gameMod = (function(){
                 game.map.maxPPS = SHIP_MAX_SPEED_START + delta * levelObj.perToLevelCap;
             },
             levelOpt: {
-                levelCap: 100,
+                levelCap: 10,
                 expCap: 100000,
                 perArgs: [0],
                 tableX: 280,
@@ -82,7 +82,7 @@ var gameMod = (function(){
                 
             },
             levelOpt: {
-                levelCap: 50,
+                levelCap: 10,
                 expCap: 100000,
                 perArgs: [2],
                 tableX: 280,
@@ -97,11 +97,9 @@ var gameMod = (function(){
 
         // if the current level is not at the level cap
         if(lvCurrent.level != upgrade.levelCap){
-            lvNext = utils.xp.byLevel(lvCurrent.l + 1, upgrade.opt)
-            console.log('not at cap');
-            console.log(lvCurrent);
-            console.log(lvNext);
-            
+            lvNext = utils.xp.byLevel(lvCurrent.l + 1, upgrade.opt);
+            upgrade.levelIndex = Math.floor(lvCurrent.l + 1);
+            upgrade.levelObj = lvNext; //upgrade.levelObjArray[upgrade.levelIndex];
         }
 /*
         upgrade.levelObjArray.forEach(function(levelObj, i){
@@ -378,6 +376,11 @@ var gameMod = (function(){
         });
 
         buyUpgrade(game, game.upgrades[0]);
+        buyUpgrade(game, game.upgrades[0]);
+        buyUpgrade(game, game.upgrades[1]);
+        buyUpgrade(game, game.upgrades[1]);
+
+        console.log(game.upgrades[0].levelObj.level);
 
         return game;
     };
@@ -442,7 +445,7 @@ var gameMod = (function(){
         }
 
         // always update shot pool
-        poolMod.update(game.shots, secs, state);
+        poolMod.update(game.shots, secs, state);;
 
     };
 
@@ -464,17 +467,21 @@ var gameMod = (function(){
         updateShots(game, secs, state);
 
         // update upgrades
+
         var i = game.upgrades.length;
         while(i--){
             var upgrade = game.upgrades[i];
+/*
             upgrade.levelObjArray.forEach(function(levelObj, i){
                 if(game.money >= levelObj.xp){
                     upgrade.levelIndex = i;
                     upgrade.levelObj = upgrade.levelObjArray[upgrade.levelIndex];
                 }
             });
+*/
             upgrade.applyToState(game, upgrade.levelObj, upgrade);
         }
+
     };
 
     var buttonCheck = function(button, pos){
