@@ -2,8 +2,10 @@ var gameMod = (function(){
     
     // CONSTANTS
 
+    var GAME_MONEY_START = 100,
+
     // BLOCK CONSTANTS
-    var BLOCK_COUNT = 20,
+    BLOCK_COUNT = 20,
     BLOCK_POS_MAX_DIST = 600,
     BLOCK_POS_SLOT_DIST = 15,
     BLOCK_HP_MIN = 5,
@@ -337,7 +339,7 @@ var gameMod = (function(){
     // public create method
     api.create = function(){
         var game = {
-            money: 0,
+            money: GAME_MONEY_START,
             mode: 'space',
             weapons: utils.deepClone(DEFAULT_WEAPONS),
             upgrades: [],
