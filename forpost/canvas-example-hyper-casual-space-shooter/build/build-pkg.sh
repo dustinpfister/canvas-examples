@@ -11,6 +11,7 @@ done
 
 # create pkg.js
 ver=$(cat "${bashdir}/ver.txt")
+sig=$(cat "${bashdir}/sig.txt")
 pkgfile="${bashdir}/../pkg/${ver}/pkg.js"
 mkdir -p $(dirname $pkgfile)
-echo $pkg > ${pkgfile}
+echo -e "$sig\n$pkg" > ${pkgfile}
