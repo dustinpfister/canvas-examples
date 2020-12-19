@@ -70,7 +70,7 @@ var gameMod = (function(){
             },
             levelOpt: {
                 levelCap: 10,
-                expCap: 1000000,
+                expCap: 100000,
                 perArgs: [0],
                 tableX: 280,
                 tableY: 200

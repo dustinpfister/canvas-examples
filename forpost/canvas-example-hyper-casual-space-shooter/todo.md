@@ -48,15 +48,7 @@
 
 ## 0.x.0 - save states
 
-<!-- SHIP UPGRADES -->
 
-## 0.x.0 - ship max speed upgrade button
-
-## 0.x.0 - ship acc upgrade button
-
-## 0.x.0 - ship turning upgrade button
-
-## 0.x.0 - ship breaking upgrade button
 
 <!-- WEAPONS - ADD FEATURES THAT MAKE THE GAME MORE FUN, ADDICTIVE, OR INTERESTING -->
 
@@ -98,6 +90,14 @@
 * each upgrade costs money
 * buttons will only show up on 'base' mode
 
+<!-- SHIP UPGRADES -->
+
+## 0.15.0 - Ship upgrade buttons
+* ship max speed upgrade button
+* ship acc upgrade button
+* ship turning upgrade button
+* make a pkg-0-15-0.html
+
 ## 0.14.0 - utils.xp new features, DEFAULT_UPGRADES object
 * (done) utils.xp.createTable should create points that can be used to graph what is going on with levels
 * (done) have a draw.xpTable method that can graph the state of a table object created with utils.xp.createTable
@@ -108,7 +108,7 @@
 * (done) ship acc upgrade also just autobuys for now
 * (done) add a buyUpgrade method that will set upgrade.levelIndex if there is enough of a RESOURCE in STATE
 * (done) buying an upgrade will deduct money
-* make a pkg-0-14-0.html
+* (done) make a pkg-0-14-0.html
 
 ## 0.13.0 - adding new percent, and xp utils.js methods.
 * (done) add percent methods from js-javascript-example-percent-module to utils.js to be used with a new exp system
