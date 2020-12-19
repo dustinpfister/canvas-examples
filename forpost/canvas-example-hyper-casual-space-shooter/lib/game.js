@@ -95,8 +95,11 @@ var gameMod = (function(){
         var levelObjCurrent = upgrade.levelObj,
         levelObjNext;
 
+        // if the current level is not at the level cap
         if(levelObjCurrent.level != upgrade.levelCap){
+            levelObjNext = utils.xp.byLevel
             console.log('not at cap');
+            
         }
 /*
         upgrade.levelObjArray.forEach(function(levelObj, i){

@@ -176,6 +176,7 @@ utils.xp = (function(){
     xpAPI.createUpgrade = function(desc, levelIndex, applyToState, opt){
         opt = xpAPI.createOptions(opt);
         var upgrade = xpAPI.createTable(opt);
+        upgrade.opt = opt; // store the options used to create a level object
         upgrade.desc = desc || '';
         upgrade.levelIndex = levelIndex || 0;
         upgrade.levelObj = upgrade.levelObjArray[upgrade.levelIndex];
