@@ -14,8 +14,10 @@ ver=$(cat "${bashdir}/ver.txt")
 sig=$(cat "${bashdir}/sig.txt")
 pkgfile="${bashdir}/../pkg/${ver}/pkg.js"
 mkdir -p $(dirname $pkgfile)
+echo "Writing pkg file: ${pkgfile}"
 echo -e "$sig\n$pkg" > ${pkgfile}
 
 # cp index.html file to pkg path
 pkgdir=$(dirname $pkgfile)
+echo "Copying index.html"
 cp "${bashdir}/index.html" "${pkgdir}/index.html"
