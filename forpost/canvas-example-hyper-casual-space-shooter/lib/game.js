@@ -1,6 +1,8 @@
 var gameMod = (function(){
     
     // CONSTANTS
+
+    // BLOCK CONSTANTS
     var BLOCK_COUNT = 20,
     BLOCK_POS_MAX_DIST = 600,
     BLOCK_POS_SLOT_DIST = 15,
@@ -8,6 +10,8 @@ var gameMod = (function(){
     BLOCK_HP_MAX = 1000,
     BLOCK_MONEY_BASE = 1,
     BLOCK_MONEY_DIST = 999,
+
+    // SHIP AND MAP VALUES
     SHIP_AUTOFIRE = true,
     SHIP_HP = 100,
     SHIP_AUTOHEAL_RATE = 5,
@@ -16,10 +20,12 @@ var gameMod = (function(){
     SHIP_MAX_SPEED_MAX = 1024,  // fully upgraded max ship speed in pps
     SHIP_ACC_START = 8, // starting Acceleration in ppsps
     SHIP_ACC_MAX = 128, // fully upgraded max ship speed in pps
-    MAP_MAX_DIST = Math.pow(10,5), //Number.MAX_SAFE_INTEGER;      // max distance from 0,0
-    BASE_DIST = 100;
+    MAP_MAX_DIST = Math.pow(10,5), //Number.MAX_SAFE_INTEGER;      // max distance from BASE (0,0)
 
-    var BASE_BUTTONS = {
+    // BASE VALUES
+    // values for the base area at the origin
+    BASE_DIST = 100,
+    BASE_BUTTONS = {
         0: {
             desc: 'Change Weapon',
             x: 64,

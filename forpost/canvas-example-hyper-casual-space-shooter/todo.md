@@ -107,7 +107,7 @@
 * (done) add new ship acc upgrade object
 * (done) ship acc upgrade also just autobuys for now
 
-* add a utils.xp.buyUpgrade method that will set upgrade.levelIndex if there is enough of a RESOURCE in STATE
+* add a buyUpgrade method that will set upgrade.levelIndex if there is enough of a RESOURCE in STATE
 * buying an upgrade will deduct money
 * make a pkg-0-14-0.html
 
