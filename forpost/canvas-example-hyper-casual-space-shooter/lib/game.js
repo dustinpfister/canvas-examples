@@ -91,6 +91,23 @@ var gameMod = (function(){
         }
     ];
 
+    var buyUpgrade = function(game, upgrade){
+        var levelObjCurrent = upgrade.levelObj,
+        levelObjNext;
+
+        if(levelObjCurrent.level != upgrade.levelCap){
+            console.log('not at cap');
+        }
+/*
+        upgrade.levelObjArray.forEach(function(levelObj, i){
+            if(game.money >= levelObj.xp){
+                    upgrade.levelIndex = i;
+                    upgrade.levelObj = upgrade.levelObjArray[upgrade.levelIndex];
+                }
+            });
+*/
+    };
+
     var api = {};
 
     // HIT POINTS
@@ -354,6 +371,8 @@ var gameMod = (function(){
             upgrade.applyToState(game, upgrade.levelObj, upgrade);
             return upgrade;
         });
+
+        buyUpgrade(game, game.upgrades[0]);
 
         return game;
     };
