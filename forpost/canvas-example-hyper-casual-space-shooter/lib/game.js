@@ -92,13 +92,15 @@ var gameMod = (function(){
     ];
 
     var buyUpgrade = function(game, upgrade){
-        var levelObjCurrent = upgrade.levelObj,
-        levelObjNext;
+        var lvCurrent = upgrade.levelObj,
+        lvNext;
 
         // if the current level is not at the level cap
-        if(levelObjCurrent.level != upgrade.levelCap){
-            levelObjNext = utils.xp.byLevel
+        if(lvCurrent.level != upgrade.levelCap){
+            lvNext = utils.xp.byLevel(lvCurrent.l + 1, upgrade.opt)
             console.log('not at cap');
+            console.log(lvCurrent);
+            console.log(lvNext);
             
         }
 /*
