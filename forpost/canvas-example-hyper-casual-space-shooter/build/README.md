@@ -5,3 +5,10 @@ For my hyper casual space shooter canvas example I wanted to make a new build to
 ## 1 - The ./build-pkg script
 
 This is a script that will read a files.txt file and use that to create a pkg.js file with uglifyjs
+
+This new script will make use of these files:
+
+* files.txt
+* ver.txt
+* sig.txt
+* index.html
