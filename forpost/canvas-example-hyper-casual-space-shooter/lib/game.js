@@ -51,7 +51,7 @@ var gameMod = (function(){
         1 : {
             name: "Cannon",
             firesPerSecond: 10,
-            shotDamage: 3
+            shotDamage: 50
         },
         2 : {
             name: "Atom",
@@ -69,8 +69,8 @@ var gameMod = (function(){
                 game.map.maxPPS = SHIP_MAX_SPEED_START + delta * levelObj.perToLevelCap;
             },
             levelOpt: {
-                levelCap: 10,
-                expCap: 100000,
+                levelCap: 30,
+                expCap: 10000,
                 perArgs: [0],
                 tableX: 280,
                 tableY: 200
@@ -84,7 +84,7 @@ var gameMod = (function(){
                 
             },
             levelOpt: {
-                levelCap: 10,
+                levelCap: 30,
                 expCap: 10000,
                 perArgs: [2],
                 tableX: 280,
