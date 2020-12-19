@@ -2,7 +2,7 @@ var gameMod = (function(){
     
     // CONSTANTS
 
-    var GAME_MONEY_START = 7500,
+    var GAME_MONEY_START = 0,
 
     // BLOCK CONSTANTS
     BLOCK_COUNT = 20,
@@ -104,12 +104,12 @@ var gameMod = (function(){
                 upgrade.levelIndex = Math.floor(lvCurrent.l + 1);
                 upgrade.levelObj = lvNext;
                 game.money -= lvNext.xp;
-                console.log('level up for ' + upgrade.desc);
+                //console.log('level up for ' + upgrade.desc);
             }else{
-                console.log('not enough money for ' + upgrade.desc + ' upgrade.');
+                //console.log('not enough money for ' + upgrade.desc + ' upgrade.');
             }
         }else{
-            console.log('level cap reached.');
+            //console.log('level cap reached.');
         }
     };
 
@@ -377,30 +377,6 @@ var gameMod = (function(){
             return upgrade;
         });
 
-        buyUpgrade(game, game.upgrades[0]);
-        buyUpgrade(game, game.upgrades[0]);
-        buyUpgrade(game, game.upgrades[0]);
-        buyUpgrade(game, game.upgrades[0]);
-        buyUpgrade(game, game.upgrades[0]);
-        buyUpgrade(game, game.upgrades[0]);
-        buyUpgrade(game, game.upgrades[0]);
-        buyUpgrade(game, game.upgrades[0]);
-        buyUpgrade(game, game.upgrades[0]);
-        buyUpgrade(game, game.upgrades[0]);
-
-        buyUpgrade(game, game.upgrades[1]);
-        buyUpgrade(game, game.upgrades[1]);
-        buyUpgrade(game, game.upgrades[1]);
-        buyUpgrade(game, game.upgrades[1]);
-        buyUpgrade(game, game.upgrades[1]);
-        buyUpgrade(game, game.upgrades[1]);
-        buyUpgrade(game, game.upgrades[1]);
-        buyUpgrade(game, game.upgrades[1]);
-        buyUpgrade(game, game.upgrades[1]);
-        buyUpgrade(game, game.upgrades[1]);
-
-        console.log(game.upgrades[0].levelObj.level);
-
         return game;
     };
 
@@ -490,6 +466,7 @@ var gameMod = (function(){
         var i = game.upgrades.length;
         while(i--){
             var upgrade = game.upgrades[i];
+            buyUpgrade(game, upgrade);
 /*
             upgrade.levelObjArray.forEach(function(levelObj, i){
                 if(game.money >= levelObj.xp){
