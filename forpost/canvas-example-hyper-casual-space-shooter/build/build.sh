@@ -1,6 +1,6 @@
 #!/bin/bash
 
-bashdir="."
+bashdir=$(dirname "${0}")
 top=$(cat "${bashdir}/top.txt")
 bottom=$(cat "${bashdir}/bottom.txt")
 js=$(cat "${bashdir}/files.txt" | xargs uglifyjs)
