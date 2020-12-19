@@ -15,3 +15,7 @@ sig=$(cat "${bashdir}/sig.txt")
 pkgfile="${bashdir}/../pkg/${ver}/pkg.js"
 mkdir -p $(dirname $pkgfile)
 echo -e "$sig\n$pkg" > ${pkgfile}
+
+# cp index.html file to pkg path
+pkgdir=$(dirname $pkgfile)
+cp "${bashdir}/index.html" "${pkgdir}/index.html"
