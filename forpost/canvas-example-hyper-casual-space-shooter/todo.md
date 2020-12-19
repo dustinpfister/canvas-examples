@@ -106,9 +106,8 @@
 * (done) start a DEFAULT_UPGRADES object that will get cloned as game.upgrades
 * (done) add new ship acc upgrade object
 * (done) ship acc upgrade also just autobuys for now
-
-* add a buyUpgrade method that will set upgrade.levelIndex if there is enough of a RESOURCE in STATE
-* buying an upgrade will deduct money
+* (done) add a buyUpgrade method that will set upgrade.levelIndex if there is enough of a RESOURCE in STATE
+* (done) buying an upgrade will deduct money
 * make a pkg-0-14-0.html
 
 ## 0.13.0 - adding new percent, and xp utils.js methods.
