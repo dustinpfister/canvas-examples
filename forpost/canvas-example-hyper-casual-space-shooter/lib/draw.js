@@ -56,7 +56,9 @@ var draw = (function(){
         var buttons_mode = game.buttons[game.mode];
         if(buttons_mode){
             var buttons_page = buttons_mode[game.buttons.currentPage];
-            baseObjectDraw(ctx, buttons_page[0], function(){});
+            Object.keys(buttons_page).forEach(function(key){
+                baseObjectDraw(ctx, buttons_page[key], function(){});
+            });
         }
 
         draw.blocks(state.ctx, state);
