@@ -1,9 +1,9 @@
 #!/bin/bash
 
 # dirs
-dir_this_script=$(dirname $0)
-dir_ce_root=$(dirname "../../${0}");
-dir_for_post="${dir_ce_root}/forpost"
+dir_this_script=$(dirname $( realpath $0 ) )
+dir_ce_root=$( realpath "${dir_this_script}/../.." )
+dir_for_post=$( realpath "${dir_ce_root}/forpost" )
 
 # loop examples folders
 examples=$(ls $dir_for_post)
