@@ -7,8 +7,11 @@
 forpost_folder_name=$1  # The forpost folder such as "canvas-example-hyper-casual-space-shooter"
 
 # vars
-dir_here=$( dirname $( realpath $0 ) )
-dir_build=$( realpath "../../forpost/${forpost_folder_name}/build" )
+dir_this_script=$(dirname $( realpath $0 ) )
+dir_ce_root=$( realpath "${dir_this_script}/../.." )
+dir_for_post=$( realpath "${dir_ce_root}/forpost" )
+
+dir_build=$( realpath "${dir_for_post}/${forpost_folder_name}/build" )
 dir_target_folder=$( realpath "${dir_build}/../pkg" )
 dir_filepath=""
 ver=$(cat "${dir_build}/ver.txt") # version file
@@ -37,6 +40,6 @@ else
   echo -e "$sig\n$pkg" > ${pkgfile}
 
   # copy an index.html file for the pkg
-  cp "${dir_here}/index.html" "${dir_pkg}/index.html"
+  cp "${dir_this_script}/index.html" "${dir_pkg}/index.html"
 
 fi
