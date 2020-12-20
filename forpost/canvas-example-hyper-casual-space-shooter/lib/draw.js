@@ -53,7 +53,9 @@ var draw = (function(){
         draw.gridLines(state.ctx, state, 'rgba(255,255,255,0.1)');
         baseObjectDraw(ctx, game.baseObj, function(){});
         if(game.mode === 'base'){
-            baseObjectDraw(ctx, game.buttons.base['weapons'][0], function(){});
+            var buttons_mode = game.buttons[game.mode],
+            buttons_page = buttons_mode[game.buttons.currentPage];
+            baseObjectDraw(ctx, buttons_page[0], function(){});
         }
         draw.blocks(state.ctx, state);
         draw.ship(state.ctx, state);
