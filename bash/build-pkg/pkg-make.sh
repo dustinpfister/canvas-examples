@@ -19,7 +19,7 @@ js=""
 pkg="" # the pkg var that will hold the finished package
 
 if [ -f $pkgfile ]; then
-  echo "there is all ready a build for that version"
+  echo "There is all ready a build for version ${ver} of ${forpost_folder_name}"
 else
 
   for relpath in $( cat "${dir_build}/files.txt" ); do
