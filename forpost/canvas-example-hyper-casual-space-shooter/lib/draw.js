@@ -57,7 +57,14 @@ var draw = (function(){
         if(buttons_mode){
             var buttons_page = buttons_mode[game.buttons.currentPage];
             Object.keys(buttons_page).forEach(function(key){
-                baseObjectDraw(ctx, buttons_page[key], function(){});
+                baseObjectDraw(ctx, buttons_page[key], function(ctx, button){
+                    ctx.fillStyle = 'black';
+                    ctx.textAlign='center';
+                    ctx.textBaseline='middle';
+                    ctx.font='8px arial';
+                    ctx.fillText(button.desc, button.x, button.y);
+
+                });
             });
         }
 
