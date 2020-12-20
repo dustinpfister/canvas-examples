@@ -462,19 +462,10 @@ var gameMod = (function(){
         updateShots(game, secs, state);
 
         // update upgrades
-
         var i = game.upgrades.length;
         while(i--){
             var upgrade = game.upgrades[i];
             buyUpgrade(game, upgrade);
-/*
-            upgrade.levelObjArray.forEach(function(levelObj, i){
-                if(game.money >= levelObj.xp){
-                    upgrade.levelIndex = i;
-                    upgrade.levelObj = upgrade.levelObjArray[upgrade.levelIndex];
-                }
-            });
-*/
             upgrade.applyToState(game, upgrade.levelObj, upgrade);
         }
 
