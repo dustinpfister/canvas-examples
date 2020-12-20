@@ -39,6 +39,17 @@ var gameMod = (function(){
                     game.ship.weaponIndex = utils.mod(game.ship.weaponIndex, Object.keys(game.weapons).length);
                     game.ship.weapon = game.weapons[game.ship.weaponIndex];
                 }
+            },
+            1: {
+                desc: 'Change Weapon',
+                x: -64,
+                y: 0,
+                r: 16,
+                onClick: function(game, e){
+                    game.ship.weaponIndex += 1;
+                    game.ship.weaponIndex = utils.mod(game.ship.weaponIndex, Object.keys(game.weapons).length);
+                    game.ship.weapon = game.weapons[game.ship.weaponIndex];
+                }
             }
         }
     };
