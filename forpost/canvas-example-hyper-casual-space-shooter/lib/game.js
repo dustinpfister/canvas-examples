@@ -41,14 +41,17 @@ var gameMod = (function(){
                 }
             },
             1: {
-                desc: 'Change Weapon',
+                desc: 'Max Speed',
                 x: -64,
                 y: 0,
                 r: 16,
                 onClick: function(game, e){
-                    game.ship.weaponIndex += 1;
-                    game.ship.weaponIndex = utils.mod(game.ship.weaponIndex, Object.keys(game.weapons).length);
-                    game.ship.weapon = game.weapons[game.ship.weaponIndex];
+                    var upgrade = game.upgrades[0];
+                    buyUpgrade(game, upgrade);
+                    upgrade.applyToState(game, upgrade.levelObj, upgrade);
+                    //game.ship.weaponIndex += 1;
+                    //game.ship.weaponIndex = utils.mod(game.ship.weaponIndex, Object.keys(game.weapons).length);
+                    //game.ship.weapon = game.weapons[game.ship.weaponIndex];
                 }
             }
         }
@@ -83,7 +86,7 @@ var gameMod = (function(){
             },
             levelOpt: {
                 levelCap: 30,
-                expCap: 10000,
+                expCap: 1000,
                 perArgs: [0],
                 tableX: 280,
                 tableY: 200
@@ -98,7 +101,7 @@ var gameMod = (function(){
             },
             levelOpt: {
                 levelCap: 30,
-                expCap: 10000,
+                expCap: 1000,
                 perArgs: [2],
                 tableX: 280,
                 tableY: 150
@@ -479,8 +482,8 @@ var gameMod = (function(){
         var i = game.upgrades.length;
         while(i--){
             var upgrade = game.upgrades[i];
-            buyUpgrade(game, upgrade);
-            upgrade.applyToState(game, upgrade.levelObj, upgrade);
+            //buyUpgrade(game, upgrade);
+            //upgrade.applyToState(game, upgrade.levelObj, upgrade);
         }
 
     };
