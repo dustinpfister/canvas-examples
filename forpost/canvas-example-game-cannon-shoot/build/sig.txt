@@ -1,0 +1,6 @@
+/*
+   canvas-example-game-cannon-shoot
+   Copyright 2020 by Dustin Pfister
+   
+   https://github.com/dustinpfister
+*/
