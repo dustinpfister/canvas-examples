@@ -481,13 +481,18 @@ var gameMod = (function(){
         return false;
     };
 
+    // check current mode and page of buttons
     api.checkButtons = function(game, pos, e){
-        // only one button so for now this should work
-        var buttons_mode = game.buttons[game.mode];
+        var buttons_mode = game.buttons[game.mode],
+        i;
         if(buttons_mode){
-            button = buttons_mode[game.buttons.currentPage][0];
-            if(buttonCheck(button, pos)){
-                button.onClick(game, e);
+            i = Object.keys(buttons_mode[game.buttons.currentPage]).length;
+            while(i--){
+                button = buttons_mode[game.buttons.currentPage][i];
+                if(buttonCheck(button, pos)){
+                    button.onClick(game, e);
+                    break;
+                }
             }
         }
     };
