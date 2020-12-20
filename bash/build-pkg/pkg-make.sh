@@ -21,25 +21,24 @@ pkgfile="${dir_pkg}/pkg.js"
 js=""
 pkg="" # the pkg var that will hold the finished package
 
-if [ -f $pkgfile ]; then
-  echo "There is all ready a build for version ${ver} of ${forpost_folder_name}"
-else
+buildpkg(){
+  if [ -f $pkgfile ]; then
+    echo "There is all ready a build for version ${ver} of ${forpost_folder_name}"
+  else
+    for relpath in $( cat "${dir_build}/files.txt" ); do
+      dir_filepath=$( realpath "${dir_build}/${relpath}" )
+      echo "${dir_filepath}"
+      js=$( uglifyjs ${dir_filepath} )
+      pkg="${pkg}${js}"
+    done
+    # create base folder for pkg.js if it is not there
+    mkdir -p $dir_pkg
+    # echo mess that we are writing the file, and write the file
+    echo "Writing pkg file: ${pkgfile}"
+    echo -e "$sig\n$pkg" > ${pkgfile}
+    # copy an index.html file for the pkg
+    cp "${dir_this_script}/index.html" "${dir_pkg}/index.html"
+  fi
+}
 
-  for relpath in $( cat "${dir_build}/files.txt" ); do
-    dir_filepath=$( realpath "${dir_build}/${relpath}" )
-    echo "${dir_filepath}"
-    js=$( uglifyjs ${dir_filepath} )
-    pkg="${pkg}${js}"
-  done
-
-  # create base folder for pkg.js if it is not there
-  mkdir -p $dir_pkg
-
-  # echo mess that we are writing the file, and write the file
-  echo "Writing pkg file: ${pkgfile}"
-  echo -e "$sig\n$pkg" > ${pkgfile}
-
-  # copy an index.html file for the pkg
-  cp "${dir_this_script}/index.html" "${dir_pkg}/index.html"
-
-fi
+buildpkg
