@@ -4,3 +4,4 @@
 ../plugin/sun.js
 ../plugin/temp.js
 ../plugin/fusion.js
+../main.js

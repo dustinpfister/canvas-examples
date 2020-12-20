@@ -7,3 +7,4 @@
 ../plugin/geo.js
 ../plugin/hydro.js
 ../plugin/atmo.js
+../main.js

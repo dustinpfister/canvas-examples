@@ -1,2 +1,3 @@
 ../lib/grid_cells.js
 ../lib/grid_cells_draw.js
+../main.js
