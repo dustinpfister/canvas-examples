@@ -28,15 +28,18 @@ var gameMod = (function(){
     // values for the base area at the origin
     BASE_DIST = 100,
     BASE_BUTTONS = {
-        0: {
-            desc: 'Change Weapon',
-            x: 64,
-            y: 0,
-            r: 16,
-            onClick: function(game, e){
-                game.ship.weaponIndex += 1;
-                game.ship.weaponIndex = utils.mod(game.ship.weaponIndex, Object.keys(game.weapons).length);
-                game.ship.weapon = game.weapons[game.ship.weaponIndex];
+        currentPage: 'weapons',
+        weapons:{
+            0: {
+                desc: 'Change Weapon',
+                x: 64,
+                y: 0,
+                r: 16,
+                onClick: function(game, e){
+                    game.ship.weaponIndex += 1;
+                    game.ship.weaponIndex = utils.mod(game.ship.weaponIndex, Object.keys(game.weapons).length);
+                    game.ship.weapon = game.weapons[game.ship.weaponIndex];
+                }
             }
         }
     };
@@ -482,7 +485,7 @@ var gameMod = (function(){
         // only one button so for now this should work
         var buttons_mode = game.buttons[game.mode];
         if(buttons_mode){
-            button = buttons_mode[0];
+            button = buttons_mode['weapons'][0];
             if(buttonCheck(button, pos)){
                 button.onClick(game, e);
             }
