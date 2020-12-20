@@ -93,6 +93,9 @@
 <!-- SHIP UPGRADES -->
 
 ## 0.15.0 - Ship upgrade buttons
+* gameMod.checkButtons needs to check buttons based on current 'mode'
+* gameMod.checkButtons needs to be updated to check for more than one button
+* I want to have more than one page of buttons per mode for example 
 * ship max speed upgrade button
 * ship acc upgrade button
 * ship turning upgrade button
