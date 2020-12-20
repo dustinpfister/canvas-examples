@@ -28,7 +28,6 @@ var gameMod = (function(){
     // values for the base area at the origin
     BASE_DIST = 100,
     BASE_BUTTONS = {
-        currentPage: 'weapons',
         weapons:{
             0: {
                 desc: 'Change Weapon',
@@ -361,6 +360,7 @@ var gameMod = (function(){
             },
             //baseButtons: BASE_BUTTONS,
             buttons: {
+               currentPage: 'weapons',
                base: BASE_BUTTONS
             },
             baseObj : {
@@ -485,7 +485,7 @@ var gameMod = (function(){
         // only one button so for now this should work
         var buttons_mode = game.buttons[game.mode];
         if(buttons_mode){
-            button = buttons_mode['weapons'][0];
+            button = buttons_mode[game.buttons.currentPage][0];
             if(buttonCheck(button, pos)){
                 button.onClick(game, e);
             }
