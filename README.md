@@ -10,6 +10,14 @@ In the forpost folder each example there should correspond with a blog post on m
 
 Many of these canvas examples are in various states of completion and or quality. If an idea for something is simple enough then maybe it is done, but in any case the bulk of these examples thus far do deserve some more attention. So I think that it is worth mentioning which examples have been getting more attestation then others hear.
 
+### - [Hyper Casual Space shooter](forpost/canvas-example-hyper-casual-space-shooter)
+
+This example aims to be just a simple space shooter. I aim to keep the focus on the game logic itself rather than graphics and flashy features that do not always add to the value of a game.
+
 ### - [Cross hairs](forpost/canvas-example-game-crosshairs)
 
 This is the first example that I have broken a certain pattern with, as of this writing I have been coming back to it now and then for over a month thus far.
+
+### - [Mr Sun](forpost/canvas-example-game-mr-sun)
+
+This is another example that I have put a lot of time into thus far. It still needs a little more work though.
