@@ -10,8 +10,12 @@ forpost_folder_name=$1  # The forpost folder such as "canvas-example-hyper-casua
 dir_this_script=$(dirname $( realpath $0 ) )
 dir_ce_root=$( realpath "${dir_this_script}/../.." )
 dir_for_post=$( realpath "${dir_ce_root}/forpost" )
+dir_canvas="${dir_for_post}/${forpost_folder_name}"
 
-dir_build=$( realpath "${dir_for_post}/${forpost_folder_name}/build" )
+setvars(){
+
+
+dir_build=$( realpath "${dir_canvas}/build" )
 dir_target_folder=$( realpath "${dir_build}/../pkg" )
 dir_filepath=""
 ver=$(cat "${dir_build}/ver.txt") # version file
@@ -20,6 +24,7 @@ dir_pkg="${dir_target_folder}/${ver}"
 pkgfile="${dir_pkg}/pkg.js"
 js=""
 pkg="" # the pkg var that will hold the finished package
+}
 
 buildpkg(){
   if [ -f $pkgfile ]; then
@@ -41,4 +46,9 @@ buildpkg(){
   fi
 }
 
-buildpkg
+if [ -f "${dir_canvas}/build/files.txt" ]; then
+  setvars
+  buildpkg
+else
+  echo "no ./build/files.txt found for ${forpost_folder_name}"
+fi
