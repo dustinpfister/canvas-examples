@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# get the pkg javascript
-# $ ./get-pkg-js.sh canvas-example-hyper-casual-space-shooter
+# make a pkg file for a canvas example
+# $ ./pkg-make.sh canvas-example-hyper-casual-space-shooter
 
 # params
 forpost_folder_name=$1  # The forpost folder such as "canvas-example-hyper-casual-space-shooter"
