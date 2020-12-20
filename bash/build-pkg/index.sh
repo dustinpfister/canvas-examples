@@ -2,7 +2,7 @@
 
 # dirs
 dir_this_script=$(dirname $0)
-dir_ce_root=$(dirname "../${0}");
+dir_ce_root=$(dirname "../../${0}");
 dir_for_post="${dir_ce_root}/forpost"
 
 # loop examples folders
