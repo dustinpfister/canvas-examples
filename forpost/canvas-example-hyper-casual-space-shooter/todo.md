@@ -101,7 +101,8 @@
 * (done) have a main button page to nav to weapons and ship pages
 * (done) make a better utils.deepClone that will work with buttons object
 * (done) display current cost of upgrades
-* display cost on start
+* (done) display cost on start
+* fix bug with max speed cost not updating as it should
 * make a pkg-0-15-0.html
 
 ## 0.14.0 - utils.xp new features, DEFAULT_UPGRADES object
