@@ -86,6 +86,7 @@ var gameMod = (function(){
                 y: -32,
                 r: 16,
                 cost: 0,
+                upgradeID: 's1',
                 onClick: function(game, button){
                     var upgrade = game.upgrades[0];
                     buyUpgrade(game, upgrade);
@@ -98,6 +99,8 @@ var gameMod = (function(){
                 x: 64,
                 y: 32,
                 r: 16,
+                cost: 0,
+                upgradeID: 's2',
                 onClick: function(game){
                     var upgrade = game.upgrades[1];
                     buyUpgrade(game, upgrade);
@@ -129,6 +132,7 @@ var gameMod = (function(){
     // UPGRADES
     var DEFAULT_UPGRADES = [
         {
+            id: 's1',
             desc: 'Max Speed',
             applyToState: function(game, levelObj, upgrade){
                 var delta = SHIP_MAX_SPEED_MAX - SHIP_MAX_SPEED_START;
@@ -143,6 +147,7 @@ var gameMod = (function(){
             }
         },
         {
+            id: 's2',
             desc: 'Ship Acceleration',
             applyToState: function(game, levelObj, upgrade){
                 var delta = SHIP_ACC_MAX - SHIP_ACC_START;
@@ -158,6 +163,18 @@ var gameMod = (function(){
             }
         }
     ];
+
+    // get an upgrade object by id
+    var getUpgradeById = function(game, id){
+        var i = game.upgrades.length;
+        while(i--){
+            var upgrade = game.upgrades[i];
+            if(id === upgrade.id){
+                return upgrade;
+            }
+        }
+        return false;
+    };
 
     var buyUpgrade = function(game, upgrade){
         var lvCurrent = upgrade.levelObj,
