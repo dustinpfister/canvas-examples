@@ -2,7 +2,7 @@ var gameMod = (function(){
     
     // CONSTANTS
 
-    var GAME_MONEY_START = 10000,
+    var GAME_MONEY_START = 100000,
 
     // BLOCK CONSTANTS
     BLOCK_COUNT = 20,
@@ -160,7 +160,7 @@ var gameMod = (function(){
             levelOpt: {
                 levelCap: 30,
                 expCap: 1000,
-                perArgs: [2],
+                perArgs: [1.5],
                 tableX: 280,
                 tableY: 150
             }
@@ -185,8 +185,8 @@ var gameMod = (function(){
 
         // if the current level is not at the level cap
         if(lvCurrent.level < upgrade.opt.levelCap){
-            //lvNext = utils.xp.byLevel(lvCurrent.l + 1, upgrade.opt);
-            lvNext = utils.xp.byLevel(lvCurrent.level, upgrade.opt);
+            lvNext = utils.xp.byLevel(lvCurrent.l + 1, upgrade.opt);
+            //lvNext = utils.xp.byLevel(lvCurrent.level, upgrade.opt);
             if(game.money >= lvNext.xp){
                 upgrade.levelIndex = Math.floor(Math.floor(lvCurrent.l) + 1);
                 upgrade.levelObj = lvNext;
