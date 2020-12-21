@@ -134,17 +134,30 @@ utils.xp = (function(){
         l = l >= opt.levelCap ? opt.levelCap - 1 : l;
         l = l < 0 ? 0 : l;
         return {
+            opt: opt,
             l: l,
             level: Math.floor(l) + 1,
             levelCap: opt.levelCap,
             perToLevelCap: l / ( opt.levelCap - 1 ),
             xp: xp,
-            xpForNext: xp,
+            xpForNext: null,
             expCap: opt.expCap,
             valueOf: function(){
                 return this.level;
             }
         };
+    };
+    var getXPByLevel = function(l, opt){
+        var per = utils[opt.perMethod].apply(null, [l, opt.levelCap, 'per'].concat(opt.perArgs));
+        return opt.expCap * per;
+    };
+    var appendXPForNext = function(levelObj){
+        if(levelObj.level < levelObj.levelCap){
+            levelObj.xpForNext = getXPByLevel(Math.floor(levelObj.l) + 1, levelObj.opt)
+        }else{
+            // what to set xp for next when the current level is at level cap
+            levelObj.xpForNext = Infinity;
+        }
     };
     // create a levelObject by 'l' and 'opt' where 'l' is a ZERO RELATIVE level number that
     // can be a function, and 'opt' is an options object that contains values for levelCap, ect
@@ -154,6 +167,7 @@ utils.xp = (function(){
         l = l < 0 ? 0 : l;
         var per = utils[opt.perMethod].apply(null, [l, opt.levelCap, 'per'].concat(opt.perArgs));
         var levelObj = createLevelObject(opt.expCap * per, opt);
+        appendXPForNext(levelObj);
         return levelObj;
     };
     // create a levelObject by a 'xp' value where 'xp' is a number between 0 and opt.expCap
@@ -161,6 +175,7 @@ utils.xp = (function(){
     xpAPI.byExp = function(xp, opt){
         opt = xpAPI.createOptions(opt);
         var levelObj = createLevelObject(xp, opt);
+        appendXPForNext(levelObj);
         return levelObj;
     };
     // create a table of levelObjects for the given options object

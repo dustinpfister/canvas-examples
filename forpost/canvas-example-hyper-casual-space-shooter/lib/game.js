@@ -2,7 +2,7 @@ var gameMod = (function(){
     
     // CONSTANTS
 
-    var GAME_MONEY_START = 10000,
+    var GAME_MONEY_START = 100,
 
     // BLOCK CONSTANTS
     BLOCK_COUNT = 20,
@@ -88,9 +88,9 @@ var gameMod = (function(){
                 cost: 0,
                 onClick: function(game, button){
                     var upgrade = game.upgrades[0];
-                    button.cost =  0;
                     buyUpgrade(game, upgrade);
                     upgrade.applyToState(game, upgrade.levelObj, upgrade);
+                    button.cost = upgrade.levelObj.xpForNext;
                 }
             },
             2: {
