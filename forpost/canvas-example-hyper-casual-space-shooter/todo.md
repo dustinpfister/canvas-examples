@@ -89,7 +89,7 @@
 * add 'upgrade damage', and 'upgrade fire rate' buttons that will upgrade the current weapon
 * each upgrade costs money
 * buttons will only show up on 'base' mode
-* have a main button page
+
 * each button page should have a button for nav back
 
 ## 0.15.0 - Ship upgrade buttons
@@ -98,6 +98,7 @@
 * (done) I want to have more than one page of buttons per mode for example 
 * (done) ship max speed upgrade button
 * (done) ship acc upgrade button
+* have a main button page to nav to weapons and ship pages
 * display current cost of upgrades
 * make a pkg-0-15-0.html
 

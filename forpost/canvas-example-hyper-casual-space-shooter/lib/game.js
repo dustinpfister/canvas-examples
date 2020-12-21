@@ -28,6 +28,26 @@ var gameMod = (function(){
     // values for the base area at the origin
     BASE_DIST = 100,
     BASE_BUTTONS = {
+        main: {
+            0: {
+                desc: 'Weapons',
+                x: 64,
+                y: -32,
+                r: 16,
+                onClick: function(game, e){
+                    game.buttons.currentPage = 'weapons';
+                }
+            },
+            1: {
+                desc: 'Ship',
+                x: 64,
+                y: 0,
+                r: 16,
+                onClick: function(game, e){
+                    game.buttons.currentPage = 'ship';
+                }
+            }
+        },
         weapons:{
             0: {
                 desc: 'Change Weapon',
@@ -384,7 +404,7 @@ var gameMod = (function(){
             },
             //baseButtons: BASE_BUTTONS,
             buttons: {
-               currentPage: 'ship',
+               currentPage: 'main',
                base: BASE_BUTTONS
             },
             baseObj : {
