@@ -96,9 +96,9 @@
 * (done) gameMod.checkButtons needs to check buttons based on current 'mode'
 * (done) gameMod.checkButtons needs to be updated to check for more than one button
 * (done) I want to have more than one page of buttons per mode for example 
-* ship max speed upgrade button
+* (done) ship max speed upgrade button
 * ship acc upgrade button
-* ship turning upgrade button
+* display current cost of upgrades
 * make a pkg-0-15-0.html
 
 ## 0.14.0 - utils.xp new features, DEFAULT_UPGRADES object

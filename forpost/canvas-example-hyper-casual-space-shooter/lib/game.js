@@ -2,7 +2,7 @@ var gameMod = (function(){
     
     // CONSTANTS
 
-    var GAME_MONEY_START = 0,
+    var GAME_MONEY_START = 10000,
 
     // BLOCK CONSTANTS
     BLOCK_COUNT = 20,
@@ -49,9 +49,17 @@ var gameMod = (function(){
                     var upgrade = game.upgrades[0];
                     buyUpgrade(game, upgrade);
                     upgrade.applyToState(game, upgrade.levelObj, upgrade);
-                    //game.ship.weaponIndex += 1;
-                    //game.ship.weaponIndex = utils.mod(game.ship.weaponIndex, Object.keys(game.weapons).length);
-                    //game.ship.weapon = game.weapons[game.ship.weaponIndex];
+                }
+            },
+            2: {
+                desc: 'Max Acc',
+                x: -64,
+                y: 32,
+                r: 16,
+                onClick: function(game, e){
+                    var upgrade = game.upgrades[1];
+                    buyUpgrade(game, upgrade);
+                    upgrade.applyToState(game, upgrade.levelObj, upgrade);
                 }
             }
         }
