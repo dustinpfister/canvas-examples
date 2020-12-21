@@ -99,8 +99,9 @@
 * (done) ship max speed upgrade button
 * (done) ship acc upgrade button
 * (done) have a main button page to nav to weapons and ship pages
-* make a better utils.deepClone that will work with buttons object
-* display current cost of upgrades
+* (done) make a better utils.deepClone that will work with buttons object
+* (done) display current cost of upgrades
+* display cost on start
 * make a pkg-0-15-0.html
 
 ## 0.14.0 - utils.xp new features, DEFAULT_UPGRADES object

@@ -533,12 +533,12 @@ var gameMod = (function(){
         updateShots(game, secs, state);
 
         // update upgrades
-        var i = game.upgrades.length;
-        while(i--){
-            var upgrade = game.upgrades[i];
-            //buyUpgrade(game, upgrade);
-            //upgrade.applyToState(game, upgrade.levelObj, upgrade);
-        }
+        //var i = game.upgrades.length;
+        //while(i--){
+        //    var upgrade = game.upgrades[i];
+        //    buyUpgrade(game, upgrade);
+        //    upgrade.applyToState(game, upgrade.levelObj, upgrade);
+        //}
 
     };
 
