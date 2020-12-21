@@ -85,6 +85,7 @@ var gameMod = (function(){
                 x: 64,
                 y: -32,
                 r: 16,
+                cost: 0,
                 onClick: function(game, e){
                     var upgrade = game.upgrades[0];
                     buyUpgrade(game, upgrade);

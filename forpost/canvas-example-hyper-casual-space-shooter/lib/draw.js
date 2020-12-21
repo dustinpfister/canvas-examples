@@ -64,7 +64,7 @@ var draw = (function(){
                     ctx.font='8px arial';
                     ctx.fillText(button.desc, button.x, button.y);
                     var cost = button.cost;
-                    if(cost){
+                    if(cost != undefined){
                         ctx.fillText(Math.ceil(button.cost) + '$', button.x, button.y + 10);
                     }
                 });
