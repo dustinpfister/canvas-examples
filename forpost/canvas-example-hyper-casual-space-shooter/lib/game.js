@@ -41,7 +41,7 @@ var gameMod = (function(){
             1: {
                 desc: 'Ship',
                 x: 64,
-                y: 0,
+                y: 32,
                 r: 16,
                 onClick: function(game, e){
                     game.buttons.currentPage = 'ship';
@@ -50,9 +50,18 @@ var gameMod = (function(){
         },
         weapons:{
             0: {
-                desc: 'Change Weapon',
+                desc: 'Back',
                 x: 64,
                 y: 0,
+                r: 16,
+                onClick: function(game, e){
+                    game.buttons.currentPage = 'main';
+                }
+            },
+            1: {
+                desc: 'Change Weapon',
+                x: 64,
+                y: 32,
                 r: 16,
                 onClick: function(game, e){
                     game.ship.weaponIndex += 1;
@@ -63,9 +72,18 @@ var gameMod = (function(){
         },
         ship:{
             0: {
-                desc: 'Max Speed',
-                x: -64,
+                desc: 'Back',
+                x: 64,
                 y: 0,
+                r: 16,
+                onClick: function(game, e){
+                    game.buttons.currentPage = 'main';
+                }
+            },
+            1: {
+                desc: 'Max Speed',
+                x: 64,
+                y: -32,
                 r: 16,
                 onClick: function(game, e){
                     var upgrade = game.upgrades[0];
@@ -73,9 +91,9 @@ var gameMod = (function(){
                     upgrade.applyToState(game, upgrade.levelObj, upgrade);
                 }
             },
-            1: {
+            2: {
                 desc: 'Max Acc',
-                x: -64,
+                x: 64,
                 y: 32,
                 r: 16,
                 onClick: function(game, e){
