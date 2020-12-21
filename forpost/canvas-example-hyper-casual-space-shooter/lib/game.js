@@ -2,7 +2,7 @@ var gameMod = (function(){
     
     // CONSTANTS
 
-    var GAME_MONEY_START = 100,
+    var GAME_MONEY_START = 10000,
 
     // BLOCK CONSTANTS
     BLOCK_COUNT = 20,
@@ -88,7 +88,8 @@ var gameMod = (function(){
                 cost: 0,
                 upgradeID: 's1',
                 onClick: function(game, button){
-                    var upgrade = game.upgrades[0];
+                    var upgrade = button.upgrade;
+                    console.log(upgrade.levelObj.xpForNext);
                     buyUpgrade(game, upgrade);
                     upgrade.applyToState(game, upgrade.levelObj, upgrade);
                     button.cost = upgrade.levelObj.xpForNext;
@@ -101,8 +102,9 @@ var gameMod = (function(){
                 r: 16,
                 cost: 0,
                 upgradeID: 's2',
-                onClick: function(game){
-                    var upgrade = game.upgrades[1];
+                onClick: function(game, button){
+                    var upgrade = button.upgrade;
+                    console.log(upgrade.levelObj.xpForNext);
                     buyUpgrade(game, upgrade);
                     upgrade.applyToState(game, upgrade.levelObj, upgrade);
                     button.cost = upgrade.levelObj.xpForNext;
@@ -183,9 +185,10 @@ var gameMod = (function(){
 
         // if the current level is not at the level cap
         if(lvCurrent.level < upgrade.opt.levelCap){
-            lvNext = utils.xp.byLevel(lvCurrent.l + 1, upgrade.opt);
+            //lvNext = utils.xp.byLevel(lvCurrent.l + 1, upgrade.opt);
+            lvNext = utils.xp.byLevel(lvCurrent.level, upgrade.opt);
             if(game.money >= lvNext.xp){
-                upgrade.levelIndex = Math.floor(lvCurrent.l + 1);
+                upgrade.levelIndex = Math.floor(Math.floor(lvCurrent.l) + 1);
                 upgrade.levelObj = lvNext;
                 game.money -= lvNext.xp;
                 //console.log('level up for ' + upgrade.desc);

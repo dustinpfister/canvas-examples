@@ -153,7 +153,7 @@ utils.xp = (function(){
     };
     var appendXPForNext = function(levelObj){
         if(levelObj.level < levelObj.levelCap){
-            levelObj.xpForNext = getXPByLevel(Math.floor(levelObj.l) + 1, levelObj.opt)
+            levelObj.xpForNext = getXPByLevel(levelObj.level, levelObj.opt)
         }else{
             // what to set xp for next when the current level is at level cap
             levelObj.xpForNext = Infinity;
