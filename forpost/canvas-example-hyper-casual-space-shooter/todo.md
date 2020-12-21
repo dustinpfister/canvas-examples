@@ -85,19 +85,19 @@
 ## 0.x.0 - Keyboard Button Nav
 * can use arrow keys and enter button as a way to select and click buttons with the keyboard
 
-## 0.x.0 - Weapon Upgrade buttons
+## 0.16.0 - Weapon Upgrade buttons
 * add 'upgrade damage', and 'upgrade fire rate' buttons that will upgrade the current weapon
 * each upgrade costs money
 * buttons will only show up on 'base' mode
-
-<!-- SHIP UPGRADES -->
+* have a main button page
+* each button page should have a button for nav back
 
 ## 0.15.0 - Ship upgrade buttons
 * (done) gameMod.checkButtons needs to check buttons based on current 'mode'
 * (done) gameMod.checkButtons needs to be updated to check for more than one button
 * (done) I want to have more than one page of buttons per mode for example 
 * (done) ship max speed upgrade button
-* ship acc upgrade button
+* (done) ship acc upgrade button
 * display current cost of upgrades
 * make a pkg-0-15-0.html
 
