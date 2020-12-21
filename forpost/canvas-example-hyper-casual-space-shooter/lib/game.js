@@ -39,8 +39,10 @@ var gameMod = (function(){
                     game.ship.weaponIndex = utils.mod(game.ship.weaponIndex, Object.keys(game.weapons).length);
                     game.ship.weapon = game.weapons[game.ship.weaponIndex];
                 }
-            },
-            1: {
+            }
+        },
+        ship:{
+            0: {
                 desc: 'Max Speed',
                 x: -64,
                 y: 0,
@@ -51,7 +53,7 @@ var gameMod = (function(){
                     upgrade.applyToState(game, upgrade.levelObj, upgrade);
                 }
             },
-            2: {
+            1: {
                 desc: 'Max Acc',
                 x: -64,
                 y: 32,
@@ -382,7 +384,7 @@ var gameMod = (function(){
             },
             //baseButtons: BASE_BUTTONS,
             buttons: {
-               currentPage: 'weapons',
+               currentPage: 'ship',
                base: BASE_BUTTONS
             },
             baseObj : {
