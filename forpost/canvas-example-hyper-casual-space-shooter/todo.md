@@ -86,11 +86,9 @@
 * can use arrow keys and enter button as a way to select and click buttons with the keyboard
 
 ## 0.16.0 - Weapon Upgrade buttons
-* add 'upgrade damage', and 'upgrade fire rate' buttons that will upgrade the current weapon
-* each upgrade costs money
-* buttons will only show up on 'base' mode
-
-* each button page should have a button for nav back
+* add 'upgrade damage' upgrades for each weapon
+* add 'upgrade damage' buttons that will upgrade the current weapon damage
+* make a 0.16.0 pkg folder
 
 ## 0.15.0 - Ship upgrade buttons
 * (done) gameMod.checkButtons needs to check buttons based on current 'mode'
@@ -103,7 +101,7 @@
 * (done) display current cost of upgrades
 * (done) display cost on start
 * (done) fix bug with max speed cost not updating as it should
-* make a pkg-0-15-0.html
+* (done) make a 0.15.0 pkg folder
 
 ## 0.14.0 - utils.xp new features, DEFAULT_UPGRADES object
 * (done) utils.xp.createTable should create points that can be used to graph what is going on with levels
