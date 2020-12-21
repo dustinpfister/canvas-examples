@@ -424,7 +424,7 @@ var gameMod = (function(){
             //baseButtons: BASE_BUTTONS,
             buttons: {
                currentPage: 'main',
-               base: BASE_BUTTONS
+               base: utils.deepClone(BASE_BUTTONS)
             },
             baseObj : {
                 fillStyle: '#282828',
