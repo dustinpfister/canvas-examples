@@ -88,6 +88,7 @@ var gameMod = (function(){
                 cost: 0,
                 onClick: function(game, button){
                     var upgrade = game.upgrades[0];
+                    button.cost =  0;
                     buyUpgrade(game, upgrade);
                     upgrade.applyToState(game, upgrade.levelObj, upgrade);
                 }
