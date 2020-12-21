@@ -58,7 +58,7 @@ var draw = (function(){
             var buttons_page = buttons_mode[game.buttons.currentPage];
             Object.keys(buttons_page).forEach(function(key){
                 baseObjectDraw(ctx, buttons_page[key], function(ctx, button){
-                    ctx.fillStyle = 'black';
+                    ctx.fillStyle = 'yellow';
                     ctx.textAlign='center';
                     ctx.textBaseline='middle';
                     ctx.font='8px arial';

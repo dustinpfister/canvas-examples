@@ -98,7 +98,7 @@
 * (done) I want to have more than one page of buttons per mode for example 
 * (done) ship max speed upgrade button
 * (done) ship acc upgrade button
-* have a main button page to nav to weapons and ship pages
+* (done) have a main button page to nav to weapons and ship pages
 * display current cost of upgrades
 * make a pkg-0-15-0.html
 
