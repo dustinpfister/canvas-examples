@@ -34,7 +34,7 @@ var gameMod = (function(){
                 x: 64,
                 y: -32,
                 r: 16,
-                onClick: function(game, e){
+                onClick: function(game){
                     game.buttons.currentPage = 'weapons';
                 }
             },
@@ -43,7 +43,7 @@ var gameMod = (function(){
                 x: 64,
                 y: 32,
                 r: 16,
-                onClick: function(game, e){
+                onClick: function(game){
                     game.buttons.currentPage = 'ship';
                 }
             }
@@ -54,7 +54,7 @@ var gameMod = (function(){
                 x: 64,
                 y: 0,
                 r: 16,
-                onClick: function(game, e){
+                onClick: function(game){
                     game.buttons.currentPage = 'main';
                 }
             },
@@ -63,7 +63,7 @@ var gameMod = (function(){
                 x: 64,
                 y: 32,
                 r: 16,
-                onClick: function(game, e){
+                onClick: function(game){
                     game.ship.weaponIndex += 1;
                     game.ship.weaponIndex = utils.mod(game.ship.weaponIndex, Object.keys(game.weapons).length);
                     game.ship.weapon = game.weapons[game.ship.weaponIndex];
@@ -76,7 +76,7 @@ var gameMod = (function(){
                 x: 64,
                 y: 0,
                 r: 16,
-                onClick: function(game, e){
+                onClick: function(game){
                     game.buttons.currentPage = 'main';
                 }
             },
@@ -86,7 +86,7 @@ var gameMod = (function(){
                 y: -32,
                 r: 16,
                 cost: 0,
-                onClick: function(game, e){
+                onClick: function(game, button){
                     var upgrade = game.upgrades[0];
                     buyUpgrade(game, upgrade);
                     upgrade.applyToState(game, upgrade.levelObj, upgrade);
@@ -97,7 +97,7 @@ var gameMod = (function(){
                 x: 64,
                 y: 32,
                 r: 16,
-                onClick: function(game, e){
+                onClick: function(game){
                     var upgrade = game.upgrades[1];
                     buyUpgrade(game, upgrade);
                     upgrade.applyToState(game, upgrade.levelObj, upgrade);
@@ -557,7 +557,7 @@ var gameMod = (function(){
             while(i--){
                 button = buttons_mode[game.buttons.currentPage][i];
                 if(buttonCheck(button, pos)){
-                    button.onClick(game, e);
+                    button.onClick(game, button, e);
                     break;
                 }
             }
