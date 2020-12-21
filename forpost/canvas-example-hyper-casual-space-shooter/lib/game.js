@@ -426,6 +426,7 @@ var gameMod = (function(){
                base: BASE_BUTTONS
             },
             baseObj : {
+                fillStyle: '#282828',
                 x: 0,
                 y: 0,
                 r: BASE_DIST
