@@ -105,6 +105,7 @@ var gameMod = (function(){
                     var upgrade = game.upgrades[1];
                     buyUpgrade(game, upgrade);
                     upgrade.applyToState(game, upgrade.levelObj, upgrade);
+                    button.cost = upgrade.levelObj.xpForNext;
                 }
             }
         }
@@ -358,6 +359,8 @@ var gameMod = (function(){
         }
     };
 
+    // CREATE
+
     // create block pool helper
     var createBlocksPool = function(){
         return poolMod.create({
@@ -402,6 +405,7 @@ var gameMod = (function(){
         });
     };
 
+    // create ship object
     var createShip = function(game){
         var ship = {
             type: 'ship',
@@ -459,7 +463,22 @@ var gameMod = (function(){
         game.upgrades = DEFAULT_UPGRADES.map(function(upDef){
             var upgrade = utils.xp.createUpgrade(upDef.desc, 0, upDef.applyToState, upDef.levelOpt);
             upgrade.applyToState(game, upgrade.levelObj, upgrade);
+            upgrade.id = upDef.id;
             return upgrade;
+        });
+
+        // create upgrade refernces and set starting cost values for buttons
+        ['base'].forEach(function(mode){
+             Object.keys(game.buttons[mode]).forEach(function(pageKey){
+                 Object.keys(game.buttons[mode][pageKey]).forEach(function(buttonKey){
+                     var button = game.buttons[mode][pageKey][buttonKey];
+                     if(button.upgradeID){
+                         // create a ref to upgrade, and set start cost
+                         button.upgrade = getUpgradeById(game, button.upgradeID);
+                         button.cost = button.upgrade.levelObj.xpForNext;
+                     }
+                 });
+             });
         });
 
         return game;
