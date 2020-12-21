@@ -52,8 +52,19 @@ utils.shortestDirection = function(from, to, scale) {
 };
 
 // deep clone an object
-utils.deepClone = function (obj) {
-    return JSON.parse(JSON.stringify(obj));
+//utils.deepClone = function (obj) {
+//    return JSON.parse(JSON.stringify(obj));
+//};
+utils.deepClone = function(obj){
+    var clone = {}; // clone is a new object
+    for(var i in obj) {
+        if(typeof(obj[i])=="object" && obj[i] != null){
+            clone[i] = utils.deepClone(obj[i]);
+        }else{
+            clone[i] = obj[i];
+        }
+    }
+    return clone;
 };
 
 // PERCENT METHODS
