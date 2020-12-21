@@ -63,7 +63,10 @@ var draw = (function(){
                     ctx.textBaseline='middle';
                     ctx.font='8px arial';
                     ctx.fillText(button.desc, button.x, button.y);
-
+                    var cost = button.cost;
+                    if(cost){
+                        ctx.fillText(Math.ceil(button.cost) + '$', button.x, button.y + 10);
+                    }
                 });
             });
         }
