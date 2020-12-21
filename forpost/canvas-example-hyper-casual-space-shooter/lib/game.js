@@ -494,9 +494,12 @@ var gameMod = (function(){
     api.update = function(game, secs, state){
 
         // switch modes based on map.dist
-        game.mode = 'space';
-        if(game.map.dist <= BASE_DIST){
-           game.mode = 'base';
+        if(game.map.dist > BASE_DIST && game.mode === 'base'){
+            game.mode = 'space';
+        }
+        if(game.map.dist <= BASE_DIST && game.mode === 'space'){
+            game.buttons.currentPage = 'main';
+            game.mode = 'base';
         }
 
         // move baseObject
