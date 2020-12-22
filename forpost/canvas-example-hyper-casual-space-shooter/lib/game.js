@@ -194,8 +194,9 @@ var gameMod = (function(){
             applyToState: function(game, levelObj, upgrade){
                 //var delta = SHIP_MAX_SPEED_MAX - SHIP_MAX_SPEED_START;
                 //game.map.maxPPS = SHIP_MAX_SPEED_START + delta * levelObj.perToLevelCap;
-              
-                console.log(upgrade.id);
+                var weaponIndex = upgrade.id.split('-')[1],
+                weapon = game.weapons[weaponIndex];
+                console.log(weapon);
          
             },
             levelOpt: {
