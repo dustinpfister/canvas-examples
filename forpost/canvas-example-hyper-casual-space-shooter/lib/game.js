@@ -194,6 +194,9 @@ var gameMod = (function(){
             applyToState: function(game, levelObj, upgrade){
                 //var delta = SHIP_MAX_SPEED_MAX - SHIP_MAX_SPEED_START;
                 //game.map.maxPPS = SHIP_MAX_SPEED_START + delta * levelObj.perToLevelCap;
+              
+                console.log(upgrade.id);
+         
             },
             levelOpt: {
                 levelCap: 30,
@@ -564,8 +567,8 @@ var gameMod = (function(){
         // create game.upgrades
         game.upgrades = DEFAULT_UPGRADES.map(function(upDef){
             var upgrade = utils.xp.createUpgrade(upDef.desc, 0, upDef.applyToState, upDef.levelOpt);
-            upgrade.applyToState(game, upgrade.levelObj, upgrade);
             upgrade.id = upDef.id;
+            upgrade.applyToState(game, upgrade.levelObj, upgrade);
             return upgrade;
         });
 
