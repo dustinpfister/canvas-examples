@@ -190,8 +190,9 @@ var gameMod = (function(){
         Object.keys(WEAPONS).forEach(function(weaponKey){
 
         //var weaponKey = 0,
-        var weapon = WEAPONS[weaponKey],
-        weaponProp = 'firesPerSecond';
+        var weapon = WEAPONS[weaponKey];
+        //weaponProp = 'firesPerSecond';
+        ['firesPerSecond', 'shotDamage'].forEach(function(weaponProp){
 
         var upgrade = {
             id: 'w-' + weaponKey + '-' + weaponProp,
@@ -225,6 +226,8 @@ var gameMod = (function(){
             }
         };
         DEFAULT_UPGRADES.push(upgrade);
+
+        });
 
         });
 
