@@ -69,6 +69,24 @@ var gameMod = (function(){
                     game.ship.weaponIndex = utils.mod(game.ship.weaponIndex, Object.keys(game.weapons).length);
                     game.ship.weapon = game.weapons[game.ship.weaponIndex];
                 }
+            },
+            2: {
+                desc: 'Fires Per Second',
+                x: -64,
+                y: -32,
+                r: 16,
+                weaponUpgrade: 'firesPerSecond', // attach an array of upgrade refs
+                onClick: function(game){
+                    var weapon = game.weapons[game.ship.weaponIndex],
+                    upgradeID = 'w-' + game.ship.weaponIndex + '-firesPerSecond',
+                    upgrade = getUpgradeById(game, upgradeID);
+                    console.log(upgradeID);
+                    console.log(upgrade);
+
+                    //game.ship.weaponIndex += 1;
+                    //game.ship.weaponIndex = utils.mod(game.ship.weaponIndex, Object.keys(game.weapons).length);
+                    //game.ship.weapon = game.weapons[game.ship.weaponIndex];
+                }
             }
         },
         ship:{
@@ -587,6 +605,8 @@ var gameMod = (function(){
              Object.keys(game.buttons[mode]).forEach(function(pageKey){
                  Object.keys(game.buttons[mode][pageKey]).forEach(function(buttonKey){
                      var button = game.buttons[mode][pageKey][buttonKey];
+
+                     // attach a single upgrade ref
                      if(button.upgradeID){
                          // create a ref to upgrade, and set start cost
                          button.upgrade = getUpgradeById(game, button.upgradeID);
