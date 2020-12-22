@@ -75,6 +75,7 @@ var gameMod = (function(){
                 x: -64,
                 y: -32,
                 r: 16,
+                cost:0,
                 weaponUpgrade: 'firesPerSecond', // attach an array of upgrade refs
                 onClick: function(game){
                     var weapon = game.weapons[game.ship.weaponIndex],
@@ -82,10 +83,9 @@ var gameMod = (function(){
                     upgrade = getUpgradeById(game, upgradeID);
                     console.log(upgradeID);
                     console.log(upgrade);
-
-                    //game.ship.weaponIndex += 1;
-                    //game.ship.weaponIndex = utils.mod(game.ship.weaponIndex, Object.keys(game.weapons).length);
-                    //game.ship.weapon = game.weapons[game.ship.weaponIndex];
+                    buyUpgrade(game, upgrade);
+                    upgrade.applyToState(game, upgrade.levelObj, upgrade);
+                    button.cost = upgrade.levelObj.xpForNext;
                 }
             }
         },
