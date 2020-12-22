@@ -76,9 +76,10 @@ var gameMod = (function(){
                 y: -32,
                 r: 16,
                 cost:0,
+                type: 'weaponUpgrade',
+                weaponProp: 'firesPerSecond',
                 onClick: function(game, button){
-                    var weapon = game.weapons[game.ship.weaponIndex],
-                    upgradeID = 'w-' + game.ship.weaponIndex + '-firesPerSecond',
+                    var upgradeID = 'w-' + game.ship.weaponIndex + '-firesPerSecond',
                     upgrade = getUpgradeById(game, upgradeID);
                     buyUpgrade(game, upgrade);
                     upgrade.applyToState(game, upgrade.levelObj, upgrade);
@@ -91,9 +92,10 @@ var gameMod = (function(){
                 y: 0,
                 r: 16,
                 cost:0,
+                type: 'weaponUpgrade',
+                weaponProp: 'shotDamage',
                 onClick: function(game, button){
-                    var weapon = game.weapons[game.ship.weaponIndex],
-                    upgradeID = 'w-' + game.ship.weaponIndex + '-shotDamage',
+                    var upgradeID = 'w-' + game.ship.weaponIndex + '-shotDamage',
                     upgrade = getUpgradeById(game, upgradeID);
                     buyUpgrade(game, upgrade);
                     upgrade.applyToState(game, upgrade.levelObj, upgrade);
@@ -142,6 +144,7 @@ var gameMod = (function(){
         }
     };
 
+    // create upgrade object references and cost/display info
     var updateButtons = function(game){
         ['base'].forEach(function(mode){
              Object.keys(game.buttons[mode]).forEach(function(pageKey){
@@ -152,6 +155,15 @@ var gameMod = (function(){
                          // create a ref to upgrade, and set start cost
                          button.upgrade = getUpgradeById(game, button.upgradeID);
                          button.cost = button.upgrade.levelObj.xpForNext;
+                     }
+                     if(button.type){
+                         if(button.type === 'weaponUpgrade'){
+                             var upgradeID = 'w-' + game.ship.weaponIndex + '-' + button.weaponProp;
+                             button.upgrade = getUpgradeById(game, upgradeID);
+                             console.log(upgradeID);
+                             console.log(button);
+                             console.log(button.upgrade);
+                         }
                      }
                  });
              });
