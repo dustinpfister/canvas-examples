@@ -138,7 +138,7 @@ var gameMod = (function(){
             name: 'Pulse Gun',
             firesPerSecond: { // min and max range for fires per second
                 min: 2,
-                max: 5
+                max: 15
             },
             shotDamage: { // min and max range for shot damage
                 min: 1,
@@ -617,9 +617,9 @@ var gameMod = (function(){
         });
 
         //console.log(game.upgrades[2])
-        var upgrade = game.upgrades[2];
-        buyUpgrade(game, upgrade);
-        upgrade.applyToState(game, upgrade.levelObj, upgrade);
+        //var upgrade = game.upgrades[2];
+        //buyUpgrade(game, upgrade);
+        //upgrade.applyToState(game, upgrade.levelObj, upgrade);
 
 
         return game;
