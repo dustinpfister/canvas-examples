@@ -113,7 +113,29 @@ var gameMod = (function(){
         }
     };
 
-    // DEFAULT WEAPON OBJECTS
+    // main WEAPONS Object that will be used to create DEFAULT_WEAPONS and append DEFAULT_UPGRADES
+    var WEAPONS = {
+        0: {
+            name: 'Pulse Gun',
+            firesPerSecond: { // min and max range for fires per second
+                min: 2,
+                max: 5
+            },
+            shotDamage: { // min and max range for shot damage
+                min: 1,
+                max: 5
+            },
+            levelOpt: { // values for weapon upgrade level object to be used with xp system
+                levelCap: 10,
+                expCap: 1000,
+                perArgs: [0],
+                tableX: 280,
+                tableY: 200
+            }
+        }
+    };
+
+    // DEFAULT WEAPON OBJECT that will be cloned as game.weapons
     var DEFAULT_WEAPONS = {
         0 : {
             name: "Pulse gun",
