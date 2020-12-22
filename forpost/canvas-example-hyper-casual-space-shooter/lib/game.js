@@ -24,10 +24,11 @@ var gameMod = (function(){
     SHIP_ACC_MAX = 128, // fully upgraded max ship speed in pps
     MAP_MAX_DIST = Math.pow(10,5), //Number.MAX_SAFE_INTEGER;      // max distance from BASE (0,0)
 
-    // BASE VALUES
+    // HOME BASE VALUES
     // values for the base area at the origin
-    BASE_DIST = 100,
-    BASE_BUTTONS = {
+    BASE_DIST = 100;
+
+    var BASE_BUTTONS = {
         main: {
             0: {
                 desc: 'Weapons',
@@ -129,13 +130,63 @@ var gameMod = (function(){
                 levelCap: 10,
                 expCap: 1000,
                 perArgs: [0],
-                tableX: 280,
+                tableX: -200,
+                tableY: 200
+            }
+        },
+        1: {
+            name: 'Cannon',
+            firesPerSecond: { // min and max range for fires per second
+                min: 4,
+                max: 10
+            },
+            shotDamage: { // min and max range for shot damage
+                min: 4,
+                max: 50
+            },
+            levelOpt: { // values for weapon upgrade level object to be used with xp system
+                levelCap: 10,
+                expCap: 1000,
+                perArgs: [0],
+                tableX: -200,
+                tableY: 200
+            }
+        },
+        2: {
+            name: 'Atom',
+            firesPerSecond: { // min and max range for fires per second
+                min: 1,
+                max: 3
+            },
+            shotDamage: { // min and max range for shot damage
+                min: 100,
+                max: 1000
+            },
+            levelOpt: { // values for weapon upgrade level object to be used with xp system
+                levelCap: 10,
+                expCap: 1000,
+                perArgs: [0],
+                tableX: -200,
                 tableY: 200
             }
         }
     };
 
+    // a helper to create DEFAULT_WERAPONS from WEAPONS
+    var create_DEFAULT_WEAPONS = function(){
+        return Object.keys(WEAPONS).map(function(weaponKey){
+            var weaponDATA = WEAPONS[weaponKey];
+            return {
+                name: weaponDATA.name,
+                firesPerSecond: weaponDATA.firesPerSecond.min,
+                shotDamage: weaponDATA.shotDamage.min
+            };
+        });
+    };
+
     // DEFAULT WEAPON OBJECT that will be cloned as game.weapons
+    var DEFAULT_WEAPONS = create_DEFAULT_WEAPONS();
+/*
     var DEFAULT_WEAPONS = {
         0 : {
             name: "Pulse gun",
@@ -153,6 +204,7 @@ var gameMod = (function(){
             shotDamage: 500
         }
     };
+*/
 
     // UPGRADES
     var DEFAULT_UPGRADES = [
