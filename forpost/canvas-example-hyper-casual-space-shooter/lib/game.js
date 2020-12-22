@@ -198,6 +198,7 @@ var gameMod = (function(){
                 weapon = game.weapons[weaponIndex],
                 weaponProp = upgrade.id.split('-')[2];
                 console.log(weaponIndex, weaponProp);
+                weapon[weaponProp] = 10;
                 //console.log(weapon);
          
             },
