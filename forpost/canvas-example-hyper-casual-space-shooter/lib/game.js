@@ -192,17 +192,23 @@ var gameMod = (function(){
             id: 'w-' + weaponKey + '-' + weaponProp,
             desc: weapon.name + ' ' + weaponProp,
             applyToState: function(game, levelObj, upgrade){
-                //var delta = SHIP_MAX_SPEED_MAX - SHIP_MAX_SPEED_START;
-                //game.map.maxPPS = SHIP_MAX_SPEED_START + delta * levelObj.perToLevelCap;
-                var weaponIndex = upgrade.id.split('-')[1],
+                var weaponIndex = Number(upgrade.id.split('-')[1]),
                 weapon = game.weapons[weaponIndex],
                 weaponDATA = WEAPONS[weaponIndex],
                 weaponProp = upgrade.id.split('-')[2];
-                console.log(weaponIndex, weaponProp);
-                console.log(weaponDATA);
-                console.log(weapon);
 
-                weapon[weaponProp] = weaponDATA[weaponProp].min;
+                if(weaponIndex === 0){
+                    console.log('debug upgrade:');
+                    console.log('weaponIndex and prop: ', weaponIndex, weaponProp);
+                    console.log('weaponDATA:', weaponDATA);
+                    console.log('weapon:', weapon);
+                    console.log('upgrade:', upgrade);
+                    console.log('levelObj:', levelObj);
+                }
+
+                // expression to set property of game.weapon object
+                var delta = weaponDATA[weaponProp].max - weaponDATA[weaponProp].min;
+                weapon[weaponProp] = weaponDATA[weaponProp].min + delta * levelObj.perToLevelCap;
          
             },
             levelOpt: {
