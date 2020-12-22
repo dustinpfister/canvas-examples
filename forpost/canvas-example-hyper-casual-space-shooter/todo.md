@@ -91,12 +91,14 @@
 * (done) have some code that will append DEFAULT UPGRADES with weapon upgrade objects created from WEAPONS
 * (done) append upgrades for all weapons
 * (done) append weapon upgrades for fire rate and damage properties (for now)
+* (done) add 'rate of fire' upgrade button for the current weapon
+* (done) add 'upgrade damage' buttons that will upgrade the current weapon damage
 
-* add 'upgrade damage' buttons that will upgrade the current weapon damage
-* update gameMod.create to create an array of upgrade ids and upgrade refernces for weapon upgrade buttons 
-* add 'rate of fire' upgrade button for the current weapon
-* change positions of graphs
+* display weapon upgrade graphs
+* update cost values and graphs when change weapon button is clicked
+* set correct start cost values for weapon buttons
 
+* add a button.type = weaponUpgrade, and button.weaponProp and update gameMod.checkButtons
 * make a 0.16.0 pkg folder
 
 ## 0.15.0 - Ship upgrade buttons

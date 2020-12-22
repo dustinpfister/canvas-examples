@@ -76,7 +76,7 @@ var gameMod = (function(){
                 y: -32,
                 r: 16,
                 cost:0,
-                onClick: function(game){
+                onClick: function(game, button){
                     var weapon = game.weapons[game.ship.weaponIndex],
                     upgradeID = 'w-' + game.ship.weaponIndex + '-firesPerSecond',
                     upgrade = getUpgradeById(game, upgradeID);
@@ -91,7 +91,7 @@ var gameMod = (function(){
                 y: 0,
                 r: 16,
                 cost:0,
-                onClick: function(game){
+                onClick: function(game, button){
                     var weapon = game.weapons[game.ship.weaponIndex],
                     upgradeID = 'w-' + game.ship.weaponIndex + '-shotDamage',
                     upgrade = getUpgradeById(game, upgradeID);
@@ -140,6 +140,22 @@ var gameMod = (function(){
                 }
             }
         }
+    };
+
+    var updateButtons = function(game){
+        ['base'].forEach(function(mode){
+             Object.keys(game.buttons[mode]).forEach(function(pageKey){
+                 Object.keys(game.buttons[mode][pageKey]).forEach(function(buttonKey){
+                     var button = game.buttons[mode][pageKey][buttonKey];
+                     // attach a single upgrade ref
+                     if(button.upgradeID){
+                         // create a ref to upgrade, and set start cost
+                         button.upgrade = getUpgradeById(game, button.upgradeID);
+                         button.cost = button.upgrade.levelObj.xpForNext;
+                     }
+                 });
+             });
+        });
     };
 
     // main WEAPONS Object that will be used to create DEFAULT_WEAPONS and append DEFAULT_UPGRADES
@@ -610,20 +626,7 @@ var gameMod = (function(){
         });
 
         // create upgrade refernces and set starting cost values for buttons
-        ['base'].forEach(function(mode){
-             Object.keys(game.buttons[mode]).forEach(function(pageKey){
-                 Object.keys(game.buttons[mode][pageKey]).forEach(function(buttonKey){
-                     var button = game.buttons[mode][pageKey][buttonKey];
-
-                     // attach a single upgrade ref
-                     if(button.upgradeID){
-                         // create a ref to upgrade, and set start cost
-                         button.upgrade = getUpgradeById(game, button.upgradeID);
-                         button.cost = button.upgrade.levelObj.xpForNext;
-                     }
-                 });
-             });
-        });
+        updateButtons(game);
 
         //console.log(game.upgrades[2])
         //var upgrade = game.upgrades[2];
