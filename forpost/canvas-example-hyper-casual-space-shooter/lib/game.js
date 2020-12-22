@@ -184,10 +184,15 @@ var gameMod = (function(){
         });
     };
 
+    // append upgrade objects to DEFAULT_UPGRADES
     var append_WEAPON_UPGRADES = function(){
-        var weaponKey = 0,
-        weapon = WEAPONS[weaponKey],
+
+        Object.keys(WEAPONS).forEach(function(weaponKey){
+
+        //var weaponKey = 0,
+        var weapon = WEAPONS[weaponKey],
         weaponProp = 'firesPerSecond';
+
         var upgrade = {
             id: 'w-' + weaponKey + '-' + weaponProp,
             desc: weapon.name + ' ' + weaponProp,
@@ -196,7 +201,7 @@ var gameMod = (function(){
                 weapon = game.weapons[weaponIndex],
                 weaponDATA = WEAPONS[weaponIndex],
                 weaponProp = upgrade.id.split('-')[2];
-
+/*
                 if(weaponIndex === 0){
                     console.log('debug upgrade:');
                     console.log('weaponIndex and prop: ', weaponIndex, weaponProp);
@@ -205,7 +210,7 @@ var gameMod = (function(){
                     console.log('upgrade:', upgrade);
                     console.log('levelObj:', levelObj);
                 }
-
+*/
                 // expression to set property of game.weapon object
                 var delta = weaponDATA[weaponProp].max - weaponDATA[weaponProp].min;
                 weapon[weaponProp] = weaponDATA[weaponProp].min + delta * levelObj.perToLevelCap;
@@ -220,6 +225,9 @@ var gameMod = (function(){
             }
         };
         DEFAULT_UPGRADES.push(upgrade);
+
+        });
+
     };
 
     // DEFAULT WEAPON OBJECT that will be cloned as game.weapons
@@ -279,6 +287,7 @@ var gameMod = (function(){
         }
     ];
 
+    // call append_WEAPON_UPGRADES here to compleate DEFAULT_UPGRADES
     append_WEAPON_UPGRADES();
     console.log(DEFAULT_UPGRADES);
 
