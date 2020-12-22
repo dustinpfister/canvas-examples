@@ -76,13 +76,25 @@ var gameMod = (function(){
                 y: -32,
                 r: 16,
                 cost:0,
-                weaponUpgrade: 'firesPerSecond', // attach an array of upgrade refs
                 onClick: function(game){
                     var weapon = game.weapons[game.ship.weaponIndex],
                     upgradeID = 'w-' + game.ship.weaponIndex + '-firesPerSecond',
                     upgrade = getUpgradeById(game, upgradeID);
-                    console.log(upgradeID);
-                    console.log(upgrade);
+                    buyUpgrade(game, upgrade);
+                    upgrade.applyToState(game, upgrade.levelObj, upgrade);
+                    button.cost = upgrade.levelObj.xpForNext;
+                }
+            },
+            3: {
+                desc: 'Damage',
+                x: -64,
+                y: 0,
+                r: 16,
+                cost:0,
+                onClick: function(game){
+                    var weapon = game.weapons[game.ship.weaponIndex],
+                    upgradeID = 'w-' + game.ship.weaponIndex + '-shotDamage',
+                    upgrade = getUpgradeById(game, upgradeID);
                     buyUpgrade(game, upgrade);
                     upgrade.applyToState(game, upgrade.levelObj, upgrade);
                     button.cost = upgrade.levelObj.xpForNext;
@@ -108,7 +120,6 @@ var gameMod = (function(){
                 upgradeID: 's1',
                 onClick: function(game, button){
                     var upgrade = button.upgrade;
-                    console.log(upgrade.levelObj.xpForNext);
                     buyUpgrade(game, upgrade);
                     upgrade.applyToState(game, upgrade.levelObj, upgrade);
                     button.cost = upgrade.levelObj.xpForNext;
@@ -123,7 +134,6 @@ var gameMod = (function(){
                 upgradeID: 's2',
                 onClick: function(game, button){
                     var upgrade = button.upgrade;
-                    console.log(upgrade.levelObj.xpForNext);
                     buyUpgrade(game, upgrade);
                     upgrade.applyToState(game, upgrade.levelObj, upgrade);
                     button.cost = upgrade.levelObj.xpForNext;
@@ -293,7 +303,6 @@ var gameMod = (function(){
 
     // call append_WEAPON_UPGRADES here to compleate DEFAULT_UPGRADES
     append_WEAPON_UPGRADES();
-    console.log(DEFAULT_UPGRADES);
 
     // get an upgrade object by id
     var getUpgradeById = function(game, id){
