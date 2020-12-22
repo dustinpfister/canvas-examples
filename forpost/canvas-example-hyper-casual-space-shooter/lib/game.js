@@ -136,15 +136,15 @@ var gameMod = (function(){
         },
         1: {
             name: 'Cannon',
-            firesPerSecond: { // min and max range for fires per second
+            firesPerSecond: { 
                 min: 4,
                 max: 10
             },
-            shotDamage: { // min and max range for shot damage
+            shotDamage: { 
                 min: 4,
                 max: 50
             },
-            levelOpt: { // values for weapon upgrade level object to be used with xp system
+            levelOpt: { 
                 levelCap: 10,
                 expCap: 1000,
                 perArgs: [0],
@@ -154,15 +154,15 @@ var gameMod = (function(){
         },
         2: {
             name: 'Atom',
-            firesPerSecond: { // min and max range for fires per second
+            firesPerSecond: { 
                 min: 1,
                 max: 3
             },
-            shotDamage: { // min and max range for shot damage
+            shotDamage: { 
                 min: 100,
                 max: 1000
             },
-            levelOpt: { // values for weapon upgrade level object to be used with xp system
+            levelOpt: { 
                 levelCap: 10,
                 expCap: 1000,
                 perArgs: [0],
@@ -182,6 +182,28 @@ var gameMod = (function(){
                 shotDamage: weaponDATA.shotDamage.min
             };
         });
+    };
+
+    var append_WEAPON_UPGRADES = function(){
+        var weaponKey = 0,
+        weapon = WEAPONS[weaponKey],
+        weaponProp = 'firesPerSecond';
+        var upgrade = {
+            id: 'w-' + weaponKey + '-' + weaponProp,
+            desc: weapon.name + ' ' + weaponProp,
+            applyToState: function(game, levelObj, upgrade){
+                //var delta = SHIP_MAX_SPEED_MAX - SHIP_MAX_SPEED_START;
+                //game.map.maxPPS = SHIP_MAX_SPEED_START + delta * levelObj.perToLevelCap;
+            },
+            levelOpt: {
+                levelCap: 30,
+                expCap: 1000,
+                perArgs: [0],
+                tableX: -200,
+                tableY: 0
+            }
+        };
+        DEFAULT_UPGRADES.push(upgrade);
     };
 
     // DEFAULT WEAPON OBJECT that will be cloned as game.weapons
@@ -240,6 +262,9 @@ var gameMod = (function(){
             }
         }
     ];
+
+    append_WEAPON_UPGRADES();
+    console.log(DEFAULT_UPGRADES);
 
     // get an upgrade object by id
     var getUpgradeById = function(game, id){

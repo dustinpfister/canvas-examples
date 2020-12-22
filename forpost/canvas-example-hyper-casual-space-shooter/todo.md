@@ -87,7 +87,7 @@
 
 ## 0.16.0 - Weapon Upgrade buttons
 * (done) add a new const WEAPONS that will be used to create DEFAULT WEAPONS and append DEFAULT UPGRADES
-* have some code that will create a DEFAULT WEAPONS Const from WEAPONS
+* (done) have some code that will create a DEFAULT WEAPONS Const from WEAPONS
 * have some code that will append DEFAULT UPGRADES with weapon upgrade objects created from WEAPONS
 * add 'upgrade damage' buttons that will upgrade the current weapon damage
 * update gameMod.create to create an array of upgrade ids and upgrade refernces for weapon upgrade buttons 
