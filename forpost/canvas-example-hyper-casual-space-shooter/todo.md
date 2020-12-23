@@ -96,8 +96,8 @@
 * (done) update cost values when change weapon buttons is clicked
 * (done) set correct start cost values for weapon buttons
 * (done) add a button.type = weaponUpgrade, and button.weaponProp and update gameMod.checkButtons
-* get levelObj props in WEAPONS working with upgrades
-
+* (done) get levelOpt props in WEAPONS working with upgrades
+* have a levelOpt for each weapon property in WEAPONS
 * display weapon upgrade graphs
 * update graphs when change weapon button is clicked
 * make a 0.16.0 pkg folder
