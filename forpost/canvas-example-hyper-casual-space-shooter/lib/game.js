@@ -177,54 +177,78 @@ var gameMod = (function(){
             name: 'Pulse Gun',
             firesPerSecond: { // min and max range for fires per second
                 min: 2,
-                max: 15
+                max: 10,
+                levelOpt: { 
+                    levelCap: 100,
+                    expCap: 25000,
+                    perArgs: [1.75]
+                }
             },
             shotDamage: { // min and max range for shot damage
                 min: 1,
-                max: 5
+                max: 5,
+                levelOpt: { 
+                    levelCap: 100,
+                    expCap: 75000,
+                    perArgs: [1.25]
+                }
             },
             levelOpt: { // values for weapon upgrade level object to be used with xp system
                 levelCap: 100,
                 expCap: 50000,
-                perArgs: [1.75],
-                tableX: -200,
-                tableY: 200
+                perArgs: [1.75]
             }
         },
         1: {
             name: 'Cannon',
             firesPerSecond: { 
                 min: 4,
-                max: 10
+                max: 10,
+                levelOpt: { 
+                    levelCap: 10,
+                    expCap: 1000,
+                    perArgs: [0]
+                }
             },
             shotDamage: { 
                 min: 4,
-                max: 50
+                max: 50,
+                levelOpt: { 
+                    levelCap: 10,
+                    expCap: 1000,
+                    perArgs: [0]
+                }
             },
             levelOpt: { 
                 levelCap: 10,
                 expCap: 1000,
-                perArgs: [0],
-                tableX: -200,
-                tableY: 200
+                perArgs: [0]
             }
         },
         2: {
             name: 'Atom',
             firesPerSecond: { 
                 min: 1,
-                max: 3
+                max: 3,
+                levelOpt: { 
+                    levelCap: 10,
+                    expCap: 1000,
+                    perArgs: [0]
+                }
             },
             shotDamage: { 
                 min: 100,
-                max: 1000
+                max: 1000,
+                levelOpt: { 
+                    levelCap: 10,
+                    expCap: 1000,
+                    perArgs: [0]
+                }
             },
             levelOpt: { 
                 levelCap: 10,
                 expCap: 1000,
-                perArgs: [0],
-                tableX: -200,
-                tableY: 200
+                perArgs: [0]
             }
         }
     };
@@ -248,6 +272,10 @@ var gameMod = (function(){
             var weapon = WEAPONS[weaponKey];
             // create upgrades for these properties
             ['firesPerSecond', 'shotDamage'].forEach(function(weaponProp){
+                levelOpt = utils.deepClone(weapon[weaponProp].levelOpt);
+                levelOpt.tableX = -200;
+                levelOpt.tableY = 0;
+                levelOpt.perArgs=[levelOpt.perArgs[0]];
                 var upgrade = {
                     id: 'w-' + weaponKey + '-' + weaponProp,
                     desc: weapon.name + ' ' + weaponProp,
@@ -260,13 +288,7 @@ var gameMod = (function(){
                         var delta = weaponDATA[weaponProp].max - weaponDATA[weaponProp].min;
                         weapon[weaponProp] = weaponDATA[weaponProp].min + delta * levelObj.perToLevelCap;
                     },
-                    levelOpt: {
-                        levelCap: weapon.levelOpt.levelCap,
-                        expCap: weapon.levelOpt.expCap,
-                        perArgs: weapon.levelOpt.perArgs,
-                        tableX: -200,
-                        tableY: 0
-                    }
+                    levelOpt: levelOpt
                 };
                 console.log(upgrade);
                 DEFAULT_UPGRADES.push(upgrade);
