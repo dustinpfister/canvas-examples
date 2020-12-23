@@ -160,6 +160,7 @@ var gameMod = (function(){
                          if(button.type === 'weaponUpgrade'){
                              var upgradeID = 'w-' + game.ship.weaponIndex + '-' + button.weaponProp;
                              button.upgrade = getUpgradeById(game, upgradeID);
+                             button.cost = button.upgrade.levelObj.xpForNext;
                              console.log(upgradeID);
                              console.log(button);
                              console.log(button.upgrade);
