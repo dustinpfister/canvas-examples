@@ -2,7 +2,7 @@ var gameMod = (function(){
     
     // CONSTANTS
 
-    var GAME_MONEY_START = 100000,
+    var GAME_MONEY_START = 10000000,
 
     // BLOCK CONSTANTS
     BLOCK_COUNT = 20,
@@ -262,7 +262,6 @@ var gameMod = (function(){
                 levelOpt.perArgs = levelOpt.perArgs || [0];
                 levelOpt.tableX = -200;
                 levelOpt.tableY = 0;
-                //levelOpt.perArgs=[levelOpt.perArgs[0]];
                 var upgrade = {
                     id: 'w-' + weaponKey + '-' + weaponProp,
                     desc: weapon.name + ' ' + weaponProp,
@@ -277,7 +276,6 @@ var gameMod = (function(){
                     },
                     levelOpt: levelOpt
                 };
-                console.log(upgrade);
                 DEFAULT_UPGRADES.push(upgrade);
             });
         });
@@ -285,25 +283,6 @@ var gameMod = (function(){
 
     // DEFAULT WEAPON OBJECT that will be cloned as game.weapons
     var DEFAULT_WEAPONS = create_DEFAULT_WEAPONS();
-/*
-    var DEFAULT_WEAPONS = {
-        0 : {
-            name: "Pulse gun",
-            firesPerSecond: 5,
-            shotDamage: 1
-        },
-        1 : {
-            name: "Cannon",
-            firesPerSecond: 10,
-            shotDamage: 50
-        },
-        2 : {
-            name: "Atom",
-            firesPerSecond: 2,
-            shotDamage: 500
-        }
-    };
-*/
 
     // UPGRADES
     var DEFAULT_UPGRADES = [
@@ -358,14 +337,11 @@ var gameMod = (function(){
     var buyUpgrade = function(game, upgrade){
         var lvCurrent = upgrade.levelObj,
         lvNext;
-
         // if the current level is not at the level cap
         if(lvCurrent.level < upgrade.opt.levelCap){
-
             lvNext = utils.xp.byLevel(lvCurrent.l + 1, upgrade.opt);
             //lvNext = utils.xp.byLevel(lvCurrent.level, upgrade.opt);
             if(game.money >= lvNext.xp){
-
                 upgrade.levelIndex = Math.floor(Math.floor(lvCurrent.l) + 1);
                 upgrade.levelObj = lvNext;
                 game.money -= lvNext.xp;
@@ -636,10 +612,8 @@ var gameMod = (function(){
                 r: BASE_DIST
             }
         };
-
         // set current weapon
         game.ship = createShip(game);
-
         // create game.upgrades
         game.upgrades = DEFAULT_UPGRADES.map(function(upDef){
             var upgrade = utils.xp.createUpgrade(upDef.desc, 0, upDef.applyToState, upDef.levelOpt);
@@ -647,16 +621,8 @@ var gameMod = (function(){
             upgrade.applyToState(game, upgrade.levelObj, upgrade);
             return upgrade;
         });
-
         // create upgrade refernces and set starting cost values for buttons
         updateButtons(game);
-
-        //console.log(game.upgrades[2])
-        //var upgrade = game.upgrades[2];
-        //buyUpgrade(game, upgrade);
-        //upgrade.applyToState(game, upgrade.levelObj, upgrade);
-
-
         return game;
     };
 
@@ -691,13 +657,11 @@ var gameMod = (function(){
     };
 
     var updateBlocks = function(game, secs, state){
-
         // only spawn blocks in space mode
         if(game.mode === 'space'){
             poolMod.update(game.blocks, secs, state);
             poolMod.spawn(game.blocks, state, {});
         }
-
         // all blocks are inactive in base mode
         if(game.mode === 'base'){
             poolMod.setActiveStateForAll(game.blocks, false);
@@ -707,7 +671,6 @@ var gameMod = (function(){
     var updateShots = function(game, secs, state){
         var ship = game.ship,
         weapon = ship.weapon;
-
         // only shoot new shots in 'space' mode
         if(game.mode === 'space'){
             ship.weaponSecs += secs;
@@ -718,14 +681,11 @@ var gameMod = (function(){
                 }
             }
         }
-
         // always update shot pool
         poolMod.update(game.shots, secs, state);;
-
     };
 
     api.update = function(game, secs, state){
-
         // switch modes based on map.dist
         if(game.map.dist > BASE_DIST && game.mode === 'base'){
             game.mode = 'space';
@@ -734,24 +694,13 @@ var gameMod = (function(){
             game.buttons.currentPage = 'main';
             game.mode = 'base';
         }
-
         // move baseObject
         game.baseObj.x = game.map.x * -1;
         game.baseObj.y = game.map.y * -1;
-
         // update map, blocks, shots
         updateMap(game, secs);
         updateBlocks(game, secs, state);
         updateShots(game, secs, state);
-
-        // update upgrades
-        //var i = game.upgrades.length;
-        //while(i--){
-        //    var upgrade = game.upgrades[i];
-        //    buyUpgrade(game, upgrade);
-        //    upgrade.applyToState(game, upgrade.levelObj, upgrade);
-        //}
-
     };
 
     var buttonCheck = function(button, pos){

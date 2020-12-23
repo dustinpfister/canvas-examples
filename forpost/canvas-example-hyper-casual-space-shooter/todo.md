@@ -99,7 +99,7 @@
 * (done) get levelOpt props in WEAPONS working with upgrades
 * (done) have a levelOpt for each weapon property in WEAPONS
 * (done) see about fixing constructor problem with utils.deepClone
-* default values for levelOpt values in weapons
+* (done) default values for levelOpt values in weapons
 * display weapon upgrade graphs
 * update graphs when change weapon button is clicked
 * make a 0.16.0 pkg folder
