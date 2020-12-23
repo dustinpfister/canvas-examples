@@ -192,11 +192,6 @@ var gameMod = (function(){
                     expCap: 75000,
                     perArgs: [1.25]
                 }
-            },
-            levelOpt: { // values for weapon upgrade level object to be used with xp system
-                levelCap: 100,
-                expCap: 50000,
-                perArgs: [1.75]
             }
         },
         1: {
@@ -218,11 +213,6 @@ var gameMod = (function(){
                     expCap: 500000,
                     perArgs: [1.25]
                 }
-            },
-            levelOpt: { 
-                levelCap: 10,
-                expCap: 1000,
-                perArgs: [0]
             }
         },
         2: {
@@ -244,11 +234,6 @@ var gameMod = (function(){
                     expCap: 2450000,
                     perArgs: [0]
                 }
-            },
-            levelOpt: { 
-                levelCap: 10,
-                expCap: 1000,
-                perArgs: [0]
             }
         }
     };
