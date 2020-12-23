@@ -60,6 +60,11 @@ utils.deepClone = function(obj){
     for(var i in obj) {
         if(typeof(obj[i])=="object" && obj[i] != null){
             clone[i] = utils.deepClone(obj[i]);
+            // create as Array if source object is Array
+            if(obj[i].constructor.name === 'Array'){
+                clone[i].length = Object.keys(clone[i]).length;
+                clone[i] = Array.from(clone[i]);
+            }
         }else{
             clone[i] = obj[i];
         }
