@@ -2,7 +2,7 @@ var gameMod = (function(){
     
     // CONSTANTS
 
-    var GAME_MONEY_START = 10000000,
+    var GAME_MONEY_START = 100000000,
 
     // BLOCK CONSTANTS
     BLOCK_COUNT = 20,
@@ -185,7 +185,7 @@ var gameMod = (function(){
             },
             shotDamage: { // min and max range for shot damage
                 min: 1,
-                max: 5,
+                max: Math.floor(BLOCK_HP_MAX * 0.05),
                 levelOpt: { 
                     levelCap: 100,
                     expCap: 75000,
@@ -205,8 +205,8 @@ var gameMod = (function(){
                 }
             },
             shotDamage: { 
-                min: 4,
-                max: 50,
+                min: Math.floor(BLOCK_HP_MAX * 0.05),
+                max: Math.floor(BLOCK_HP_MAX * 0.25),
                 levelOpt: { 
                     levelCap: 80,
                     expCap: 500000,
@@ -226,8 +226,8 @@ var gameMod = (function(){
                 }
             },
             shotDamage: { 
-                min: 100,
-                max: 1000,
+                min: Math.floor(BLOCK_HP_MAX * 0.25),
+                max: BLOCK_HP_MAX,
                 levelOpt: { 
                     levelCap: 50,
                     expCap: 2450000,
