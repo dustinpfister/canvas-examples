@@ -205,18 +205,18 @@ var gameMod = (function(){
                 min: 4,
                 max: 10,
                 levelOpt: { 
-                    levelCap: 10,
-                    expCap: 1000,
-                    perArgs: [0]
+                    levelCap: 75,
+                    expCap: 200000,
+                    perArgs: [1.25]
                 }
             },
             shotDamage: { 
                 min: 4,
                 max: 50,
                 levelOpt: { 
-                    levelCap: 10,
-                    expCap: 1000,
-                    perArgs: [0]
+                    levelCap: 80,
+                    expCap: 500000,
+                    perArgs: [1.25]
                 }
             },
             levelOpt: { 
@@ -229,10 +229,10 @@ var gameMod = (function(){
             name: 'Atom',
             firesPerSecond: { 
                 min: 1,
-                max: 3,
+                max: 5,
                 levelOpt: { 
-                    levelCap: 10,
-                    expCap: 1000,
+                    levelCap: 50,
+                    expCap: 1200000,
                     perArgs: [0]
                 }
             },
@@ -240,8 +240,8 @@ var gameMod = (function(){
                 min: 100,
                 max: 1000,
                 levelOpt: { 
-                    levelCap: 10,
-                    expCap: 1000,
+                    levelCap: 50,
+                    expCap: 2450000,
                     perArgs: [0]
                 }
             },
