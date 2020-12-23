@@ -68,6 +68,7 @@ var gameMod = (function(){
                     game.ship.weaponIndex += 1;
                     game.ship.weaponIndex = utils.mod(game.ship.weaponIndex, Object.keys(game.weapons).length);
                     game.ship.weapon = game.weapons[game.ship.weaponIndex];
+                    updateButtons(game);
                 }
             },
             2: {
