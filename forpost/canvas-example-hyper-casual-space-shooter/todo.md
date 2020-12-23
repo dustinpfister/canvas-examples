@@ -93,12 +93,13 @@
 * (done) append weapon upgrades for fire rate and damage properties (for now)
 * (done) add 'rate of fire' upgrade button for the current weapon
 * (done) add 'upgrade damage' buttons that will upgrade the current weapon damage
+* (done) update cost values when change weapon buttons is clicked
+* (done) set correct start cost values for weapon buttons
+* (done) add a button.type = weaponUpgrade, and button.weaponProp and update gameMod.checkButtons
+* get levelObj props in WEAPONS working with upgrades
 
 * display weapon upgrade graphs
-* update cost values and graphs when change weapon button is clicked
-* set correct start cost values for weapon buttons
-
-* add a button.type = weaponUpgrade, and button.weaponProp and update gameMod.checkButtons
+* update graphs when change weapon button is clicked
 * make a 0.16.0 pkg folder
 
 ## 0.15.0 - Ship upgrade buttons
