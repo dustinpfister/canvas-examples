@@ -178,10 +178,9 @@ var gameMod = (function(){
             firesPerSecond: { // min and max range for fires per second
                 min: 2,
                 max: 10,
-                levelOpt: { 
-                    levelCap: 30,
-                    expCap: 10000,
-                    perArgs: [0]
+                levelOpt: {
+                    levelCap: 32,
+                    expCap: 4500,
                 }
             },
             shotDamage: { // min and max range for shot damage
@@ -257,7 +256,10 @@ var gameMod = (function(){
             var weapon = WEAPONS[weaponKey];
             // create upgrades for these properties
             ['firesPerSecond', 'shotDamage'].forEach(function(weaponProp){
-                levelOpt = utils.deepClone(weapon[weaponProp].levelOpt);
+                levelOpt = utils.deepClone(weapon[weaponProp].levelOpt || {});
+                levelOpt.levelCap = levelOpt.levelCap || 30;
+                levelOpt.expCap = levelOpt.expCap || 10000;
+                levelOpt.perArgs = levelOpt.perArgs || [0];
                 levelOpt.tableX = -200;
                 levelOpt.tableY = 0;
                 //levelOpt.perArgs=[levelOpt.perArgs[0]];
