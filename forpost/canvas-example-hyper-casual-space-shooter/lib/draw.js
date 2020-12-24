@@ -83,6 +83,10 @@ var draw = (function(){
                 api.xpTable(ctx, game.upgrades[upgradeIndex]);
                 api.xpTable(ctx, game.upgrades[upgradeIndex + 1]);
             }
+            if(game.buttons.currentPage === 'ship'){
+                api.xpTable(ctx, game.upgrades[0]);
+                api.xpTable(ctx, game.upgrades[1]);
+            }
         }
 
     };

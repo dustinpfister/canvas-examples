@@ -44,11 +44,6 @@
 * the distance of the inner circle from the center to the outer circle will be used to set map.pps
 * The actual distnace used will be from a certain min radius from the center so that it is easy to each and stay at 0 pps
 
-## 0.x.0 - Fix Upgrade system
-* display weapon upgrade graphs
-* update graphs when change weapon button is clicked
-* fix bug with upgrade system where log1 and log2 per methods can not be used
-
 <!-- SAVE STATES -->
 
 ## 0.x.0 - save states
