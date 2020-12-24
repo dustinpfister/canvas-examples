@@ -81,7 +81,7 @@
 <!-- ADD ADDITIONAL CORE FEATURES -->
 
 ## 0.17.0 - weapon.range, Shots Per Fire, and fire update methods
-* have a weapon.range property that will be the max dist that a shot will go
+* (done) have a weapon.range property that will be the max dist that a shot will go
 * have a weapon.shotsPerFire prop that is the number of shots that will be set active per weapon fire
 * have a weapon.onFire object that will be used to set and update the positions of shots
 * have a weapon.onFire.start method

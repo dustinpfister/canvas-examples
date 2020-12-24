@@ -267,12 +267,22 @@ var gameMod = (function(){
                 name: weaponDATA.name,
                 firesPerSecond: weaponDATA.firesPerSecond.min,
                 shotDamage: weaponDATA.shotDamage.min,
-                shotRange: weaponDATA.shotRange
+                shotRange: weaponDATA.shotRange || 64,
+                shotsPerFire: weaponDATA.shotsPerFire || 4,
+                onFireStart: weaponDATA.onFireStart || function(game, secs, state){
+                    var weapon = game.weapons[game.ship.weaponIndex];
+                    //var shotIndex = 0;
+                    //while(shotIndex < 4){
+                        poolMod.spawn(game.shots, state, {
+                            radian: state.game.map.radian - Math.PI / 180 * 45
+                        });
+                    //}
+                }
             };
         });
     };
 
-    // append upgrade objects to DEFAULT_UPGRADES
+    // append upgrade objects to DEFAULT_UPGRADES from WEAPONS
     var append_WEAPON_UPGRADES = function(){
         // loop all WEAPONS
         Object.keys(WEAPONS).forEach(function(weaponKey){
@@ -448,7 +458,7 @@ var gameMod = (function(){
                     shot.x = 0;
                     shot.y = 0;
                     // shot radian should be set to current map radian
-                    shot.radian = state.game.map.radian;
+                    shot.radian = opt.radian; //state.game.map.radian;
                     shot.pps = 128;
                     shot.lifespan = 1 / shot.pps * range;
                     shot.damage = weapon.shotDamage; // damage when shot hits a block
@@ -711,7 +721,8 @@ var gameMod = (function(){
             ship.weaponSecs += secs;
             if(SHIP_AUTOFIRE || state.input.fire){
                 if(ship.weaponSecs >= 1 / weapon.firesPerSecond){
-                    poolMod.spawn(game.shots, state, {});
+                    weapon.onFireStart(game, secs, state);
+                    //poolMod.spawn(game.shots, state, {});
                     ship.weaponSecs = 0;
                 }
             }
