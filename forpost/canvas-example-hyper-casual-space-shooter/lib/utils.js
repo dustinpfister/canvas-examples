@@ -97,20 +97,23 @@ utils.per = function(a, d, mode){
 };
 
 // basic percent method that makes use of Math.log
-utils.log1 = function (n, d, mode) {
-    var per = utils.per(n, d, 'per');
+utils.log1 = function (a, d, mode) {
+    var per;
     if(mode === 'per'){
+        // a = 'numerator value', return a percent value
+        per = utils.per(a, d, 'per');
         return utils.clampPer(Math.log(1 + per) / Math.log(2));
     }
-    per = n;
+    // a = 'percent value', return a numerator
+    per = a;
     return (Math.pow(2, 1 + per) / 2 - 1) * d;
 };
 
 // 'log2' percent method that uses Math.log with a range between a base and max per
-utils.log2 = function (n, d, mode, basePer, maxPer) {
+utils.log2 = function (a, d, mode, basePer, maxPer) {
     basePer = basePer === undefined ? 0.25 : basePer;
     maxPer = maxPer === undefined ? 0.75 : maxPer;
-    var logPer = utils.log1(n, d, 'per'),
+    var logPer = utils.log1(a, d, 'per'),
     range = maxPer - basePer,
     per = basePer + range * logPer;
 
@@ -126,12 +129,12 @@ utils.log3 = function (a, d, mode, p1) {
     mode = mode === undefined ? 'per' : mode;
     p1 = p1 === undefined ? 12 : p1;
     if(mode === 'per'){
-        // a is a numerator return a percent value
+        // a = 'numerator value', return a percent value
         var n = a;
         var per = utils.per(n, d, 'per');
         return Math.log(1 + per) / Math.log(2 + p1);
     }
-    // a is a percent return a numerator
+    // a = 'percent value', return a numerator
     var per = a;
     var base = 2 + p1;
     return ((Math.pow(base, 1 + per) / base - 1) * d);
@@ -148,7 +151,7 @@ utils.xp = (function(){
         return {
             levelCap: opt.levelCap || 100,
             expCap: opt.expCap || 1000,
-            perMethod: opt.perMethod || 'log3',
+            perMethod: opt.perMethod || 'log1', //'log3',
             perArgs: opt.perArgs || [0],
             tableWidth: opt.tableWidth || 25,
             tableHeight: opt.tableHeight || 25,
@@ -196,7 +199,6 @@ utils.xp = (function(){
         l = l >= opt.levelCap ? opt.levelCap - 1 : l;
         l = l < 0 ? 0 : l;
         var per = utils[opt.perMethod].apply(null, [l, opt.levelCap, 'per'].concat(opt.perArgs));
-        console.log(per);
         var levelObj = createLevelObject(opt.expCap * per, opt);
         appendXPForNext(levelObj);
         return levelObj;
