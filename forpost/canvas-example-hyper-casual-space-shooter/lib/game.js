@@ -198,7 +198,8 @@ var gameMod = (function(){
                     tableX: 160 - 12,
                     tableY: 120 - 12
                 }
-            }
+            },
+            shotRange: 128
         },
         1: {
             name: 'Cannon',
@@ -225,7 +226,8 @@ var gameMod = (function(){
                     tableX: 160 - 12,
                     tableY: 120 - 12
                 }
-            }
+            },
+            shotRange: 128
         },
         2: {
             name: 'Atom',
@@ -252,7 +254,8 @@ var gameMod = (function(){
                     tableX: 160 - 12,
                     tableY: 120 - 12
                 }
-            }
+            },
+            shotRange: 128
         }
     };
 
@@ -263,7 +266,8 @@ var gameMod = (function(){
             return {
                 name: weaponDATA.name,
                 firesPerSecond: weaponDATA.firesPerSecond.min,
-                shotDamage: weaponDATA.shotDamage.min
+                shotDamage: weaponDATA.shotDamage.min,
+                shotRange: weaponDATA.shotRange
             };
         });
     };
@@ -440,7 +444,7 @@ var gameMod = (function(){
                 r: 2,
                 spawn: function(shot, pool, state, opt){
                     var weapon = state.game.ship.weapon,
-                    range = 32;
+                    range = weapon.shotRange || 32;
                     shot.x = 0;
                     shot.y = 0;
                     // shot radian should be set to current map radian
