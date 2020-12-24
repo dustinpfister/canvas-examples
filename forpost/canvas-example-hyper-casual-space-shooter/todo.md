@@ -84,7 +84,9 @@
 * (done) have a weapon.range property that will be the max dist that a shot will go
 * (done) have a weapon.shotsPerFire prop that is the number of shots that will be set active per weapon fire
 * (done) have a weapon.onFireStart method that will define how a set of shots will start for a weapon
-* basic single shot default onFireStart method
+* (done) basic single shot default onFireStart method
+* have a 2 shot onFireStart method for pulse weapon where both shots are at the same angle but start apart from each other
+* make it so shotsPerFire can be an array, if so these are values that ar cycled
 
 ## 0.16.0 - Weapon Upgrade buttons
 * (done) add a new const WEAPONS that will be used to create DEFAULT WEAPONS and append DEFAULT UPGRADES

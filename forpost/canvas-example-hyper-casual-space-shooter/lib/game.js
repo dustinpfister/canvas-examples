@@ -199,7 +199,23 @@ var gameMod = (function(){
                     tableY: 120 - 12
                 }
             },
-            shotRange: 128
+            shotRange: 128,
+            shotsPerFire: 2,
+            onFireStart: function(game, secs, state){
+                var weapon = game.weapons[game.ship.weaponIndex];
+                var shotIndex = 0;
+                var radianStart = state.game.map.radian;
+                while(shotIndex < weapon.shotsPerFire){
+                    var shotPer = shotIndex / (weapon.shotsPerFire-1);
+                    var aDelta = -8 + 16 * shotPer;
+                    poolMod.spawn(game.shots, state, {
+                        radian: radianStart,
+                        x: (-8 + 16 * shotPer) * Math.sin(radianStart),
+                        y: (-8 + 16 * shotPer) * Math.cos(radianStart)
+                    });
+                    shotIndex += 1;
+                }
+            }
         },
         1: {
             name: 'Cannon',
@@ -465,8 +481,8 @@ var gameMod = (function(){
                 spawn: function(shot, pool, state, opt){
                     var weapon = state.game.ship.weapon,
                     range = weapon.shotRange || 32;
-                    shot.x = 0;
-                    shot.y = 0;
+                    shot.x = opt.x === undefined ? 0 : opt.x;
+                    shot.y = opt.y === undefined ? 0 : opt.y;
                     // shot radian should be set to current map radian
                     shot.radian = opt.radian; //state.game.map.radian;
                     shot.pps = 128;
