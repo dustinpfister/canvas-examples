@@ -44,6 +44,19 @@
 * the distance of the inner circle from the center to the outer circle will be used to set map.pps
 * The actual distnace used will be from a certain min radius from the center so that it is easy to each and stay at 0 pps
 
+## 0.x.0 - spawn blocks durring movement
+* have a BLOCK-SPAWN-DIST, and BLOCK-COUNT-PER-SPAWN-DIST
+* have a game.spawnDist value that is updated each time the map position changes
+* when game.spawnDist >= BLOCK-SPAWN-DIST set up to BLOCK-COUNT-PER-SPAWN-DIST active
+
+## 0.x.0 - change weapon forward and backward buttons, common game.buttons
+* have a common game.buttons object for buttons that will show up for any mode not just 'base' mode
+* have change weapon buttons for looping forward AND backward threw weapons
+* show chnage wepon buttons in bolth 'space' and 'base' modes
+
+## 0.x.0 - Keyboard Button Nav
+* can use arrow keys and enter button as a way to select and click buttons with the keyboard
+
 <!-- SAVE STATES -->
 
 ## 0.x.0 - save states
@@ -63,25 +76,17 @@
 * acc.radius is the potential radius in which a shot will hit from perfect accuracy to acc.radius
 * acc.per is applied with acc.radius to find and actual radius that will be used to set shot location
 
-## 0.x.0 - Shots Per Fire, and fire update methods
-* have a weapon.onFire.start method
-* have a weapon.onFire.update method
-* have a weapon.onFire.end method
+
 
 <!-- ADD ADDITIONAL CORE FEATURES -->
 
-## 0.x.0 - spawn blocks durring movement
-* have a BLOCK-SPAWN-DIST, and BLOCK-COUNT-PER-SPAWN-DIST
-* have a game.spawnDist value that is updated each time the map position changes
-* when game.spawnDist >= BLOCK-SPAWN-DIST set up to BLOCK-COUNT-PER-SPAWN-DIST active
-
-## 0.x.0 - change weapon forward and backward buttons, common game.buttons
-* have a common game.buttons object for buttons that will show up for any mode not just 'base' mode
-* have change weapon buttons for looping forward AND backward threw weapons
-* show chnage wepon buttons in bolth 'space' and 'base' modes
-
-## 0.x.0 - Keyboard Button Nav
-* can use arrow keys and enter button as a way to select and click buttons with the keyboard
+## 0.17.0 - weapon.range, Shots Per Fire, and fire update methods
+* have a weapon.range property that will be the max dist that a shot will go
+* have a weapon.shotsPerFire prop that is the number of shots that will be set active per weapon fire
+* have a weapon.onFire object that will be used to set and update the positions of shots
+* have a weapon.onFire.start method
+* have a weapon.onFire.update method
+* have a weapon.onFire.end method
 
 ## 0.16.0 - Weapon Upgrade buttons
 * (done) add a new const WEAPONS that will be used to create DEFAULT WEAPONS and append DEFAULT UPGRADES
@@ -98,7 +103,7 @@
 * (done) have a levelOpt for each weapon property in WEAPONS
 * (done) see about fixing constructor problem with utils.deepClone
 * (done) default values for levelOpt values in weapons
-* make a 0.16.0 pkg folder
+* (done) make a 0.16.0 pkg folder
 
 ## 0.15.0 - Ship upgrade buttons
 * (done) gameMod.checkButtons needs to check buttons based on current 'mode'
