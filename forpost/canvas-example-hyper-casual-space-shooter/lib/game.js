@@ -227,7 +227,18 @@ var gameMod = (function(){
                     tableY: 120 - 12
                 }
             },
-            shotRange: 128
+            shotRange: 128,
+            shotsPerFire: 4,
+            onFireStart: function(game, secs, state){
+                var weapon = game.weapons[game.ship.weaponIndex];
+                var shotIndex = 0;
+                while(shotIndex < weapon.shotsPerFire){
+                    poolMod.spawn(game.shots, state, {
+                        radian: state.game.map.radian - Math.PI / 180 * 45 + Math.PI / 180 * 90 * (shotIndex / (weapon.shotsPerFire-1))
+                    });
+                    shotIndex += 1;
+                }
+            }
         },
         2: {
             name: 'Atom',
@@ -271,12 +282,13 @@ var gameMod = (function(){
                 shotsPerFire: weaponDATA.shotsPerFire || 4,
                 onFireStart: weaponDATA.onFireStart || function(game, secs, state){
                     var weapon = game.weapons[game.ship.weaponIndex];
-                    //var shotIndex = 0;
-                    //while(shotIndex < 4){
+                    var shotIndex = 0;
+                    while(shotIndex < weapon.shotsPerFire){
                         poolMod.spawn(game.shots, state, {
-                            radian: state.game.map.radian - Math.PI / 180 * 45
+                            radian: state.game.map.radian - Math.PI / 180 * 45 + Math.PI / 180 * 90 * (shotIndex / (weapon.shotsPerFire-1))
                         });
-                    //}
+                        shotIndex += 1;
+                    }
                 }
             };
         });
