@@ -364,7 +364,7 @@ var gameMod = (function(){
             //lvNext = utils.xp.byLevel(lvCurrent.level, upgrade.opt);
             lvNext = upgrade.levelObjArray[lvCurrent.level];
             if(game.money >= lvNext.xp){
-                upgrade.levelIndex = Math.floor(Math.floor(lvCurrent.l) + 1);
+                upgrade.levelIndex = lvNext.level -1; //Math.floor(Math.floor(lvCurrent.l) + 1);
                 upgrade.levelObj = lvNext;
                 game.money -= lvNext.xp;
                 //console.log('level up for ' + upgrade.desc);
@@ -651,7 +651,7 @@ var gameMod = (function(){
             return upgrade.levelObjArray.map(function(levelObj){
                //var lvNext = utils.xp.byLevel(levelObj.l + 1, upgrade.opt);
                //return lvNext.l;
-               return levelObj.level;
+               return levelObj.xp;
             });
         }));
         return game;

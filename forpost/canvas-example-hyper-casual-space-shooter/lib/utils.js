@@ -227,8 +227,10 @@ utils.xp = (function(){
         while(l < opt.levelCap){
             levelObj = table.levelObjArray[l] = xpAPI.byLevel(l, opt);
             table.points[l] = {
-                x: table.w / (opt.levelCap-1) * l,
+                x: table.w / (opt.levelCap-1) * levelObj.l,
                 y: table.h - (levelObj.xp / levelObj.expCap) * table.h
+                //x: table.w / opt.levelCap * levelObj.level,
+                //y: table.h - (levelObj.level / levelObj.levelCap) * table.h
             };
             l += 1;
         }
