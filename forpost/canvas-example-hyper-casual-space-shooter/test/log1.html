@@ -3,12 +3,15 @@
         <title>canvas example hyper casual space shooter</title>
     </head>
     <body>
-        <textarea id="out"></textarea>
+        <textarea id="out" cols="80" rows="30"></textarea>
         <script src="../lib/utils.js"></script>
         <script>
 
 var out = document.getElementById('out');
-out.value = JSON.stringify(utils.xp.byLevel(3))
+out.value = JSON.stringify(utils.xp.byLevel(3, {
+  perMethod: 'log1',
+  levelCap: 10
+}));
 
 </script>
     </body>
