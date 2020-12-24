@@ -181,7 +181,7 @@ var gameMod = (function(){
                 levelOpt: {
                     levelCap: 10, //32,
                     expCap: 3500, //4500,
-                    perMethod: 'log3',
+                    perMethod: 'log1',
                     perArgs: [0.25, 0.75]
                 }
             },
@@ -342,6 +342,7 @@ var gameMod = (function(){
         // if the current level is not at the level cap
         if(lvCurrent.level < upgrade.opt.levelCap){
             lvNext = utils.xp.byLevel(lvCurrent.l + 1, upgrade.opt);
+        console.log(lvNext);
             //lvNext = utils.xp.byLevel(lvCurrent.level, upgrade.opt);
             if(game.money >= lvNext.xp){
                 upgrade.levelIndex = Math.floor(Math.floor(lvCurrent.l) + 1);

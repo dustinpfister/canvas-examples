@@ -109,6 +109,7 @@ utils.log2 = function (n, d, basePer, maxPer) {
     var logPer = utils.log1(n, d, 'per'),
     range = maxPer - basePer,
     per = basePer + range * logPer;
+
     return utils.clampPer(per);
 };
 
