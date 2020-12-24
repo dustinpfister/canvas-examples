@@ -184,7 +184,7 @@ var gameMod = (function(){
                     perMethod: 'log1',
                     perArgs: [],
                     tableX: 160 - 12,
-                    tableY: 120 - 12
+                    tableY: 120 - 12 - 30
                 }
             },
             shotDamage: { // min and max range for shot damage
@@ -194,7 +194,9 @@ var gameMod = (function(){
                     levelCap: 10,
                     expCap: 8500,
                     perMethod: 'log1',
-                    perArgs: []
+                    perArgs: [],
+                    tableX: 160 - 12,
+                    tableY: 120 - 12
                 }
             }
         },
@@ -207,7 +209,9 @@ var gameMod = (function(){
                     levelCap: 10,
                     expCap: 20000,
                     perMethod: 'log1',
-                    perArgs: []
+                    perArgs: [],
+                    tableX: 160 - 12,
+                    tableY: 120 - 12 - 30
                 }
             },
             shotDamage: { 
@@ -217,7 +221,9 @@ var gameMod = (function(){
                     levelCap: 10,
                     expCap: 50000,
                     perMethod: 'log1',
-                    perArgs: []
+                    perArgs: [],
+                    tableX: 160 - 12,
+                    tableY: 120 - 12
                 }
             }
         },
@@ -230,7 +236,9 @@ var gameMod = (function(){
                     levelCap: 10,
                     expCap: 100000,
                     perMethod: 'log1',
-                    perArgs: []
+                    perArgs: [],
+                    tableX: 160 - 12,
+                    tableY: 120 - 12 - 30
                 }
             },
             shotDamage: { 
@@ -240,7 +248,9 @@ var gameMod = (function(){
                     levelCap: 10,
                     expCap: 250000,
                     perMethod: 'log1',
-                    perArgs: []
+                    perArgs: [],
+                    tableX: 160 - 12,
+                    tableY: 120 - 12
                 }
             }
         }

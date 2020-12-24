@@ -53,16 +53,6 @@ var draw = (function(){
         draw.gridLines(state.ctx, state, 'rgba(255,255,255,0.1)');
         baseObjectDraw(ctx, game.baseObj, function(){});
 
-        if(game.mode === 'base'){
-            // draw grids for the current weapon
-            if(game.buttons.currentPage === 'weapons'){
-                var upgradeIndex = game.ship.weaponIndex + 2;
-                api.xpTable(ctx, game.upgrades[upgradeIndex]);
-                api.xpTable(ctx, game.upgrades[upgradeIndex + 1]);
-            }
-        }
-
-
         // draw any buttons for the mode
         var buttons_mode = game.buttons[game.mode];
         if(buttons_mode){
@@ -85,6 +75,16 @@ var draw = (function(){
         draw.blocks(state.ctx, state);
         draw.ship(state.ctx, state);
         draw.shots(state.ctx, state);
+
+        if(game.mode === 'base'){
+            // draw grids for the current weapon
+            if(game.buttons.currentPage === 'weapons'){
+                var upgradeIndex = game.ship.weaponIndex * 2 + 2;
+                api.xpTable(ctx, game.upgrades[upgradeIndex]);
+                api.xpTable(ctx, game.upgrades[upgradeIndex + 1]);
+            }
+        }
+
     };
 
     api.shots = function(ctx, state){
