@@ -102,7 +102,7 @@ utils.log1 = function (n, d, mode) {
     if(mode === 'per'){
         return utils.clampPer(Math.log(1 + per) / Math.log(2));
     }
-    return Math.round((Math.pow(2, 1 + per) / 2 - 1) * d);
+    return (Math.pow(2, 1 + per) / 2 - 1) * d;
 };
 
 // 'log2' percent method that uses Math.log with a range between a base and max per
@@ -195,6 +195,7 @@ utils.xp = (function(){
         l = l >= opt.levelCap ? opt.levelCap - 1 : l;
         l = l < 0 ? 0 : l;
         var per = utils[opt.perMethod].apply(null, [l, opt.levelCap, 'per'].concat(opt.perArgs));
+        console.log(per);
         var levelObj = createLevelObject(opt.expCap * per, opt);
         appendXPForNext(levelObj);
         return levelObj;
