@@ -207,10 +207,11 @@ var gameMod = (function(){
                 var radianStart = state.game.map.radian;
                 while(shotIndex < weapon.shotsPerFire){
                     var side = shotIndex % 2 === 0 ? -1 : 1;
+                    var dist = 8;
                     poolMod.spawn(game.shots, state, {
                         radian: radianStart,
-                        x: Math.sin(Math.PI - radianStart) * 8 * side,
-                        y: Math.cos(Math.PI + radianStart) * 8 * side
+                        x: Math.sin(Math.PI - radianStart) * dist * side,
+                        y: Math.cos(Math.PI + radianStart) * dist * side
                     });
 /*
                     poolMod.spawn(game.shots, state, {
