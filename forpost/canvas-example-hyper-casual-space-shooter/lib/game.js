@@ -281,14 +281,9 @@ var gameMod = (function(){
                 shotRange: weaponDATA.shotRange || 64,
                 shotsPerFire: weaponDATA.shotsPerFire || 4,
                 onFireStart: weaponDATA.onFireStart || function(game, secs, state){
-                    var weapon = game.weapons[game.ship.weaponIndex];
-                    var shotIndex = 0;
-                    while(shotIndex < weapon.shotsPerFire){
-                        poolMod.spawn(game.shots, state, {
-                            radian: state.game.map.radian - Math.PI / 180 * 45 + Math.PI / 180 * 90 * (shotIndex / (weapon.shotsPerFire-1))
-                        });
-                        shotIndex += 1;
-                    }
+                    poolMod.spawn(game.shots, state, {
+                        radian: state.game.map.radian
+                    });
                 }
             };
         });

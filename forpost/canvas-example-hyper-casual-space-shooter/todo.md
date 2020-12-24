@@ -82,11 +82,9 @@
 
 ## 0.17.0 - weapon.range, Shots Per Fire, and fire update methods
 * (done) have a weapon.range property that will be the max dist that a shot will go
-* have a weapon.shotsPerFire prop that is the number of shots that will be set active per weapon fire
-* have a weapon.onFire object that will be used to set and update the positions of shots
-* have a weapon.onFire.start method
-* have a weapon.onFire.update method
-* have a weapon.onFire.end method
+* (done) have a weapon.shotsPerFire prop that is the number of shots that will be set active per weapon fire
+* (done) have a weapon.onFireStart method that will define how a set of shots will start for a weapon
+* basic single shot default onFireStart method
 
 ## 0.16.0 - Weapon Upgrade buttons
 * (done) add a new const WEAPONS that will be used to create DEFAULT WEAPONS and append DEFAULT UPGRADES
