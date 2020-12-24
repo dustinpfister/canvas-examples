@@ -182,7 +182,9 @@ var gameMod = (function(){
                     levelCap: 10,
                     expCap: 3000,
                     perMethod: 'log1',
-                    perArgs: []
+                    perArgs: [],
+                    tableX: 160 - 12,
+                    tableY: 120 - 12
                 }
             },
             shotDamage: { // min and max range for shot damage
@@ -267,8 +269,8 @@ var gameMod = (function(){
                 levelOpt.levelCap = levelOpt.levelCap || 30;
                 levelOpt.expCap = levelOpt.expCap || 10000;
                 levelOpt.perArgs = levelOpt.perArgs || [0];
-                levelOpt.tableX = -200;
-                levelOpt.tableY = 0;
+                //levelOpt.tableX = 0;
+                //levelOpt.tableY = 0;
                 var upgrade = {
                     id: 'w-' + weaponKey + '-' + weaponProp,
                     desc: weapon.name + ' ' + weaponProp,

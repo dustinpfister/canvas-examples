@@ -121,9 +121,9 @@ var loop = function () {
         draw.ver(state.ctx, state);
 
         // drawing upgrade 0
-        game.upgrades.forEach(function(upgrade){
-            draw.xpTable(state.ctx, upgrade, 250, 180);
-        });
+        //game.upgrades.forEach(function(upgrade){
+            //draw.xpTable(state.ctx, game.upgrades[2], 250, 180);
+        //});
         lt = now;
     }
 };
