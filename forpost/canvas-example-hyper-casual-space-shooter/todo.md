@@ -102,6 +102,7 @@
 * (done) default values for levelOpt values in weapons
 * display weapon upgrade graphs
 * update graphs when change weapon button is clicked
+* fix bug with upgrade system where log1 and log2 per methods can not be used
 * make a 0.16.0 pkg folder
 
 ## 0.15.0 - Ship upgrade buttons

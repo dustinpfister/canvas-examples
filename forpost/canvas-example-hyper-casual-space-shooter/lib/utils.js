@@ -96,6 +96,22 @@ utils.per = function(a, d, mode){
     return a * d;
 };
 
+// basic percent method that makes use of Math.log
+utils.log1 = function (n, d) {
+    var per = utils.per(n, d, 'per');
+    return utils.clampPer(Math.log(1 + per) / Math.log(2));
+};
+
+// 'log2' percent method that uses Math.log with a range between a base and max per
+utils.log2 = function (n, d, basePer, maxPer) {
+    basePer = basePer === undefined ? 0.25 : basePer;
+    maxPer = maxPer === undefined ? 0.75 : maxPer;
+    var logPer = utils.log1(n, d, 'per'),
+    range = maxPer - basePer,
+    per = basePer + range * logPer;
+    return utils.clampPer(per);
+};
+
 // log3 percent method
 utils.log3 = function (a, d, mode, p1) {
     mode = mode === undefined ? 'per' : mode;

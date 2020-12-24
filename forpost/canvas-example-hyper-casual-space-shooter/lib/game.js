@@ -179,8 +179,10 @@ var gameMod = (function(){
                 min: 2,
                 max: 10,
                 levelOpt: {
-                    levelCap: 32,
-                    expCap: 4500,
+                    levelCap: 10, //32,
+                    expCap: 3500, //4500,
+                    perMethod: 'log3',
+                    perArgs: [0.25, 0.75]
                 }
             },
             shotDamage: { // min and max range for shot damage
