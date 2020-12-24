@@ -439,13 +439,14 @@ var gameMod = (function(){
                 fillStyle: 'red',
                 r: 2,
                 spawn: function(shot, pool, state, opt){
+                    var weapon = state.game.ship.weapon,
+                    range = 32;
                     shot.x = 0;
                     shot.y = 0;
                     // shot radian should be set to current map radian
                     shot.radian = state.game.map.radian;
                     shot.pps = 128;
-                    shot.lifespan = 1 / shot.pps * 64;
-                    var weapon = state.game.ship.weapon;
+                    shot.lifespan = 1 / shot.pps * range;
                     shot.damage = weapon.shotDamage; // damage when shot hits a block
                    
                 },
