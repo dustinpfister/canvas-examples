@@ -313,14 +313,14 @@ var gameMod = (function(){
                 game.map.maxPPS = SHIP_MAX_SPEED_START + delta * levelObj.perToLevelCap;
             },
             levelOpt: { 
-                    levelCap: 10,
-                    expCap: 75000,
-                    perMethod: 'log1',
-                    perArgs: [],
-                    tableX: 280,
-                    tableY: 200
-                }
-            },
+                levelCap: 10,
+                expCap: 75000,
+                perMethod: 'log1',
+                perArgs: [],
+                tableX: 260,
+                tableY: 120 - 12 - 32
+            }
+        },
         {
             id: 's2',
             desc: 'Ship Acceleration',
@@ -334,8 +334,8 @@ var gameMod = (function(){
                 expCap: 25000,
                 perMethod: 'log1',
                 perArgs: [],
-                tableX: 280,
-                tableY: 150
+                tableX: 260,
+                tableY: 120 - 12 + 32
             }
         }
     ];
