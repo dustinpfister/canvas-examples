@@ -2,7 +2,7 @@ var gameMod = (function(){
     
     // CONSTANTS
 
-    var GAME_MONEY_START = 100000000,
+    var GAME_MONEY_START = 0,
 
     // BLOCK CONSTANTS
     BLOCK_COUNT = 20,
@@ -179,8 +179,8 @@ var gameMod = (function(){
                 min: 2,
                 max: 10,
                 levelOpt: {
-                    levelCap: 10,
-                    expCap: 3000,
+                    levelCap: 20,
+                    expCap: 1000,
                     perMethod: 'log1',
                     perArgs: [],
                     tableX: 160 - 12,
@@ -191,8 +191,8 @@ var gameMod = (function(){
                 min: 1,
                 max: Math.floor(BLOCK_HP_MAX * 0.05),
                 levelOpt: { 
-                    levelCap: 10,
-                    expCap: 8500,
+                    levelCap: 20,
+                    expCap: 1500,
                     perMethod: 'log1',
                     perArgs: [],
                     tableX: 160 - 12,
@@ -230,7 +230,7 @@ var gameMod = (function(){
                 min: 4,
                 max: 10,
                 levelOpt: { 
-                    levelCap: 10,
+                    levelCap: 20,
                     expCap: 20000,
                     perMethod: 'log1',
                     perArgs: [],
@@ -242,7 +242,7 @@ var gameMod = (function(){
                 min: Math.floor(BLOCK_HP_MAX * 0.05),
                 max: Math.floor(BLOCK_HP_MAX * 0.25),
                 levelOpt: { 
-                    levelCap: 10,
+                    levelCap: 20,
                     expCap: 50000,
                     perMethod: 'log1',
                     perArgs: [],
@@ -272,7 +272,7 @@ var gameMod = (function(){
                 min: 1,
                 max: 5,
                 levelOpt: { 
-                    levelCap: 10,
+                    levelCap: 20,
                     expCap: 100000,
                     perMethod: 'log1',
                     perArgs: [],
@@ -284,7 +284,7 @@ var gameMod = (function(){
                 min: Math.floor(BLOCK_HP_MAX * 0.25),
                 max: BLOCK_HP_MAX,
                 levelOpt: { 
-                    levelCap: 10,
+                    levelCap: 20,
                     expCap: 250000,
                     perMethod: 'log1',
                     perArgs: [],
