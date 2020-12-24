@@ -12,7 +12,7 @@
 
 ## 0.x.0 - block Armor
 
-<!-- ADDITIONAL FIXES AND FEATURES -->
+<!-- ADDITIONAL FEATURES, FIX BUGS -->
 
 ## 0.x.0 - Replace hard coded 160, 120 values
 * have a state.canvasHalfWidth, and state.canvasHalfHeight values
@@ -44,11 +44,14 @@
 * the distance of the inner circle from the center to the outer circle will be used to set map.pps
 * The actual distnace used will be from a certain min radius from the center so that it is easy to each and stay at 0 pps
 
+## 0.x.0 - Fix Upgrade system
+* display weapon upgrade graphs
+* update graphs when change weapon button is clicked
+* fix bug with upgrade system where log1 and log2 per methods can not be used
+
 <!-- SAVE STATES -->
 
 ## 0.x.0 - save states
-
-
 
 <!-- WEAPONS - ADD FEATURES THAT MAKE THE GAME MORE FUN, ADDICTIVE, OR INTERESTING -->
 
@@ -100,9 +103,6 @@
 * (done) have a levelOpt for each weapon property in WEAPONS
 * (done) see about fixing constructor problem with utils.deepClone
 * (done) default values for levelOpt values in weapons
-* display weapon upgrade graphs
-* update graphs when change weapon button is clicked
-* fix bug with upgrade system where log1 and log2 per methods can not be used
 * make a 0.16.0 pkg folder
 
 ## 0.15.0 - Ship upgrade buttons

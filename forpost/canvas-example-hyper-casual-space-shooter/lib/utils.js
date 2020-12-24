@@ -169,7 +169,7 @@ utils.xp = (function(){
         return {
             opt: opt,
             l: l,
-            level: Math.floor(l) + 1,
+            level: Math.round(l) + 1,
             levelCap: opt.levelCap,
             perToLevelCap: l / ( opt.levelCap - 1 ),
             xp: xp,

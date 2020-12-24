@@ -179,8 +179,8 @@ var gameMod = (function(){
                 min: 2,
                 max: 10,
                 levelOpt: {
-                    levelCap: 10, //32,
-                    expCap: 3500, //4500,
+                    levelCap: 10,
+                    expCap: 3000,
                     perMethod: 'log1',
                     perArgs: []
                 }
@@ -189,9 +189,10 @@ var gameMod = (function(){
                 min: 1,
                 max: Math.floor(BLOCK_HP_MAX * 0.05),
                 levelOpt: { 
-                    levelCap: 100,
-                    expCap: 75000,
-                    perArgs: [1.25]
+                    levelCap: 10,
+                    expCap: 8500,
+                    perMethod: 'log1',
+                    perArgs: []
                 }
             }
         },
@@ -201,18 +202,20 @@ var gameMod = (function(){
                 min: 4,
                 max: 10,
                 levelOpt: { 
-                    levelCap: 75,
-                    expCap: 200000,
-                    perArgs: [1.25]
+                    levelCap: 10,
+                    expCap: 20000,
+                    perMethod: 'log1',
+                    perArgs: []
                 }
             },
             shotDamage: { 
                 min: Math.floor(BLOCK_HP_MAX * 0.05),
                 max: Math.floor(BLOCK_HP_MAX * 0.25),
                 levelOpt: { 
-                    levelCap: 80,
-                    expCap: 500000,
-                    perArgs: [1.25]
+                    levelCap: 10,
+                    expCap: 50000,
+                    perMethod: 'log1',
+                    perArgs: []
                 }
             }
         },
@@ -222,18 +225,20 @@ var gameMod = (function(){
                 min: 1,
                 max: 5,
                 levelOpt: { 
-                    levelCap: 50,
-                    expCap: 1200000,
-                    perArgs: [0]
+                    levelCap: 10,
+                    expCap: 100000,
+                    perMethod: 'log1',
+                    perArgs: []
                 }
             },
             shotDamage: { 
                 min: Math.floor(BLOCK_HP_MAX * 0.25),
                 max: BLOCK_HP_MAX,
                 levelOpt: { 
-                    levelCap: 50,
-                    expCap: 2450000,
-                    perArgs: [0]
+                    levelCap: 10,
+                    expCap: 250000,
+                    perMethod: 'log1',
+                    perArgs: []
                 }
             }
         }
@@ -295,14 +300,15 @@ var gameMod = (function(){
                 var delta = SHIP_MAX_SPEED_MAX - SHIP_MAX_SPEED_START;
                 game.map.maxPPS = SHIP_MAX_SPEED_START + delta * levelObj.perToLevelCap;
             },
-            levelOpt: {
-                levelCap: 30,
-                expCap: 1000,
-                perArgs: [0],
-                tableX: 280,
-                tableY: 200
-            }
-        },
+            levelOpt: { 
+                    levelCap: 10,
+                    expCap: 75000,
+                    perMethod: 'log1',
+                    perArgs: [],
+                    tableX: 280,
+                    tableY: 200
+                }
+            },
         {
             id: 's2',
             desc: 'Ship Acceleration',
@@ -312,9 +318,10 @@ var gameMod = (function(){
                 
             },
             levelOpt: {
-                levelCap: 30,
-                expCap: 1000,
-                perArgs: [1.5],
+                levelCap: 10,
+                expCap: 25000,
+                perMethod: 'log1',
+                perArgs: [],
                 tableX: 280,
                 tableY: 150
             }
@@ -341,8 +348,9 @@ var gameMod = (function(){
         lvNext;
         // if the current level is not at the level cap
         if(lvCurrent.level < upgrade.opt.levelCap){
-            lvNext = utils.xp.byLevel(lvCurrent.l + 1, upgrade.opt);
+            //lvNext = utils.xp.byLevel(lvCurrent.l + 1, upgrade.opt);
             //lvNext = utils.xp.byLevel(lvCurrent.level, upgrade.opt);
+            lvNext = upgrade.levelObjArray[lvCurrent.level];
             if(game.money >= lvNext.xp){
                 upgrade.levelIndex = Math.floor(Math.floor(lvCurrent.l) + 1);
                 upgrade.levelObj = lvNext;
@@ -629,7 +637,9 @@ var gameMod = (function(){
         // log upgrades
         console.log(game.upgrades.map(function(upgrade){
             return upgrade.levelObjArray.map(function(levelObj){
-               return levelObj.xpForNext;
+               //var lvNext = utils.xp.byLevel(levelObj.l + 1, upgrade.opt);
+               //return lvNext.l;
+               return levelObj.level;
             });
         }));
         return game;
