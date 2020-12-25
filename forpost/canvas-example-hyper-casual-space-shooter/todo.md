@@ -96,7 +96,7 @@
 * (done) make it so shotsPerFire can be an array, if so these are values that ar cycled
 * (done) can set shot pps in a weapon object
 * (done) draw an arrow that will point to the base
-* make the 1,2,3, ect keys also update buttons
+* (done) make the 1,2,3, ect keys also update buttons
 * make a 0.17.0 pkg folder
 
 ## 0.16.0 - Weapon Upgrade buttons

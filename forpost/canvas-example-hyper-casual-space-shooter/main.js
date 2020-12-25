@@ -45,7 +45,6 @@ var updatePointer = function(pos){
 };
 
 var numberButtonCheck = function(game, input){
-
     [1,2,3].forEach(function(n){
         if(input.keys[n]){
             game.ship.weaponIndex = n - 1;
@@ -55,7 +54,6 @@ var numberButtonCheck = function(game, input){
         }
     });
 };
-
 
 // LOOP
 var lt = new Date(),
@@ -72,6 +70,12 @@ var loop = function () {
         updatePointer(input.pointer.pos);
 
         // keyboard or pointer update map radian
+        // keyboard update pps
+        if(input.keys.w){
+           //input.pps += input.ppsDelta * secs;
+           input.pps += game.map.ppsDelta * secs;
+           input.pps = input.pps > game.map.maxPPS ? game.map.maxPPS : input.pps;
+        }
         //if(input.keys.a || (input.pointer.dir === 1 && input.pointer.down) ){
         if(input.keys.a){
             input.degree += input.degreesPerSecond * secs;
@@ -79,12 +83,6 @@ var loop = function () {
         //if(input.keys.d || (input.pointer.dir === -1 && input.pointer.down) ){
         if(input.keys.d){
             input.degree -= input.degreesPerSecond * secs;
-        }
-        // keyboard update pps
-        if(input.keys.w){
-           //input.pps += input.ppsDelta * secs;
-           input.pps += game.map.ppsDelta * secs;
-           input.pps = input.pps > game.map.maxPPS ? game.map.maxPPS : input.pps;
         }
         if(input.keys.s){
             //input.pps -= input.ppsDelta * secs;
@@ -110,30 +108,8 @@ var loop = function () {
         if(input.keys.l){
             input.fire = true;
         }
-
         // number button check
         numberButtonCheck(game, input);
-/*
-        // keyboard switch weapons
-        if(input.keys[1]){
-            game.ship.weaponIndex = 0;
-            game.ship.weapon = game.weapons[0];
-            game.buttons.currentPage = 'weapons';
-            gameMod.updateButtons(game);
-        }
-        if(input.keys[2]){
-            game.ship.weaponIndex = 1;
-            game.ship.weapon = game.weapons[1];
-            game.buttons.currentPage = 'weapons';
-            gameMod.updateButtons(game);
-        }
-        if(input.keys[3]){
-            game.ship.weaponIndex = 2;
-            game.ship.weapon = game.weapons[2];
-            game.buttons.currentPage = 'weapons';
-            gameMod.updateButtons(game);
-        }
-*/
         // wrap degree
         input.degree = utils.mod(input.degree, 360);
         // update game
@@ -144,11 +120,6 @@ var loop = function () {
         draw.currentMode(state.ctx, state);
         draw.info(state.ctx, state);
         draw.ver(state.ctx, state);
-
-        // drawing upgrade 0
-        //game.upgrades.forEach(function(upgrade){
-            //draw.xpTable(state.ctx, game.upgrades[2], 250, 180);
-        //});
         lt = now;
     }
 };
