@@ -19,8 +19,6 @@ var state = {
     ctx: canvasObj.ctx,
     game: gameMod.create(),
     input: {
-        //pointerDown: false,
-        //pointerPos: {},
         pointer: {
             down: false,
             pos: {},
@@ -45,14 +43,16 @@ var updatePointer = function(pos){
 };
 
 var numberButtonCheck = function(game, input){
-    [1,2,3].forEach(function(n){
-        if(input.keys[n]){
-            game.ship.weaponIndex = n - 1;
-            game.ship.weapon = game.weapons[n - 1];
-            game.buttons.currentPage = 'weapons';
-            gameMod.updateButtons(game);
-        }
-    });
+    if(game.mode === 'base'){
+        [1,2,3].forEach(function(n){
+            if(input.keys[n]){
+                game.ship.weaponIndex = n - 1;
+                game.ship.weapon = game.weapons[n - 1];
+                game.buttons.currentPage = 'weapons';
+                gameMod.updateButtons(game);
+            }
+        });
+    }
 };
 
 // LOOP
@@ -68,7 +68,6 @@ var loop = function () {
         var input = state.input;
         // update input.pointer
         updatePointer(input.pointer.pos);
-
         // keyboard or pointer update map radian
         // keyboard update pps
         if(input.keys.w){

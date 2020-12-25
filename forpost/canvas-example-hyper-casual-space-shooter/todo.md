@@ -97,6 +97,7 @@
 * (done) can set shot pps in a weapon object
 * (done) draw an arrow that will point to the base
 * (done) make the 1,2,3, ect keys also update buttons
+* (done) can only change weapon in base mode
 * make a 0.17.0 pkg folder
 
 ## 0.16.0 - Weapon Upgrade buttons
