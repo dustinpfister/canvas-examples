@@ -14,7 +14,7 @@ var gameMod = (function(){
     BLOCK_MONEY_DIST = 999,
 
     // SHIP AND MAP VALUES
-    SHIP_AUTOFIRE = false,
+    SHIP_AUTOFIRE = true,
     SHIP_HP = 10,
     SHIP_AUTOHEAL_ENABLED=false,
     SHIP_AUTOHEAL_RATE = 1,

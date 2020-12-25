@@ -1,3 +1,5 @@
+// Object Pool Module for canvas-example-hyper-casual-space-shooter
+
 var poolMod = (function () {
     // Public API
     var api = {};
@@ -13,6 +15,22 @@ var poolMod = (function () {
         }
         return false;
     };
+    // create a single display object
+    api.createDisplayObject = function(opt){
+        return {
+            active: false,
+            i: opt.i === undefined ? null : opt.i,
+            x: opt.x === undefined ? 0 : opt.x,
+            y: opt.y === undefined ? 0 : opt.y,
+            r: opt.r === undefined ? 16 : opt.r,
+            radian: opt.radian === undefined ? 0 : opt.radian,
+            pps: opt.pps === undefined ? 32 : opt.pps,
+            lifespan: opt.lifespan || 3,
+            // basic style
+            fillStyle: opt.fillStyle || 'red',
+            data: {}
+        };
+    };
     // create a new pool
     api.create = function (opt) {
         opt = opt || {};
@@ -26,22 +44,7 @@ var poolMod = (function () {
             update: opt.update || function (obj, pool, state, secs) {}
         };
         while (i < opt.count) {
-            pool.objects.push({
-                active: false,
-                i: i,
-                x: opt.x === undefined ? 0 : opt.x,
-                y: opt.y === undefined ? 0 : opt.y,
-                r: opt.r === undefined ? 16 : opt.r,
-                //w: opt.w === undefined ? 32 : opt.w,
-                //h: opt.h === undefined ? 32 : opt.h,
-                radian: opt.radian === undefined ? 0 : opt.radian,
-                pps: opt.pps === undefined ? 32 : opt.pps,
-                lifespan: opt.lifespan || 3,
-
-                // basic style
-                fillStyle: opt.fillStyle || 'red',
-                data: {}
-            });
+            pool.objects.push(api.createDisplayObject(opt));
             i += 1;
         }
         return pool;
@@ -78,14 +81,13 @@ var poolMod = (function () {
             }
         }
     };
-
+    // get all objects with the gieven activeState
     api.getAllActive = function(pool, activeState){
         activeState = activeState === undefined ? true : activeState;
         return pool.objects.filter(function(object){
             return object.active === activeState;
         });
     };
-
     // set all to inActive or active state
     api.setActiveStateForAll = function (pool, bool) {
         bool = bool === undefined ? false : bool;
@@ -96,7 +98,7 @@ var poolMod = (function () {
             obj.active = bool;
         }
     };
-
+    // return the public API
     return api;
 }
     ());
