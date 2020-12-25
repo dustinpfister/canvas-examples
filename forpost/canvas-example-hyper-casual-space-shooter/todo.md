@@ -8,10 +8,6 @@
 * add a warp home button in 'space' mode
 * the cost of a warp home will go up as the ship goes farther out
 
-<!-- BLOCKS - ADD FEATURES THAT MAKE THE GAME MORE FUN, ADDICTIVE, OR INTERESTING -->
-
-## 0.x.0 - block Armor
-
 <!-- ADDITIONAL FEATURES, FIX BUGS -->
 
 ## 0.x.0 - Replace hard coded 160, 120 values
@@ -61,6 +57,22 @@
 
 ## 0.x.0 - save states
 
+<!-- BLOCKS - ADD FEATURES THAT MAKE THE GAME MORE FUN, ADDICTIVE, OR INTERESTING -->
+
+## 0.x.0 - block Armor
+
+<!-- MONEY -->
+
+## 0.x.0 - Base Away Production
+* add a feature where money is generated while the player is away
+
+## 0.x.0 - Money over time
+* add a feature where money is generated over time
+
+## 0.x.0 - Block Money Upgrade
+* have block money start out low
+* block money will go up as block money upgrade is upgraded
+
 <!-- WEAPONS - ADD FEATURES THAT MAKE THE GAME MORE FUN! -->
 
 ## 0.x.0 - Weapon on fire update methods
@@ -83,8 +95,10 @@
 
 <!-- ADD ADDITIONAL CORE FEATURES -->
 
-## 0.18.0 - weapon.onShotHit methods, and block burn
+## 0.19.0 - weapon.onShotHit methods, and block burn
 * can add a weapon.onShotHit method that will fire when a shot hits a block
+
+## 0.18.0 - Block effects property
 * Add an effects prop to blocks that can contain and array of 'effects' objects 
 
 ## 0.17.0 - weapon.range, Shots Per Fire, and fire update methods
