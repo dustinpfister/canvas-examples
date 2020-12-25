@@ -200,6 +200,7 @@ var gameMod = (function(){
                 }
             },
             shotRange: 128,
+            shotPPS: 128,
             shotsPerFire: [2, 1],
             onFireStart: function(game, secs, state){
                 var weapon = game.weapons[game.ship.weaponIndex];
@@ -219,8 +220,6 @@ var gameMod = (function(){
                     });
                     shotIndex += 1;
                 }
-                weapon.shotsPerFireIndex += 1;
-                weapon.shotsPerFireIndex %= weapon.shotsPerFire.length;
             }
         },
         1: {
@@ -249,7 +248,7 @@ var gameMod = (function(){
                     tableY: 120 - 12
                 }
             },
-            shotRange: 128,
+            shotRange: 256,
             shotsPerFire: [3],
             onFireStart: function(game, secs, state){
                 var weapon = game.weapons[game.ship.weaponIndex];
@@ -291,7 +290,7 @@ var gameMod = (function(){
                     tableY: 120 - 12
                 }
             },
-            shotRange: 128,
+            shotRange: 64,
             shotsPerFire: [1]
         }
     };
@@ -311,7 +310,7 @@ var gameMod = (function(){
                         radian: state.game.map.radian
                     });
                 },
-                shotPPS: weaponDATA.shotPPS || 32,
+                shotPPS: weaponDATA.shotPPS || 128,
                 shotsPerFireIndex : 0
             };
         });
