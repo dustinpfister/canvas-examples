@@ -14,9 +14,10 @@ var gameMod = (function(){
     BLOCK_MONEY_DIST = 999,
 
     // SHIP AND MAP VALUES
-    SHIP_AUTOFIRE = true,
-    SHIP_HP = 100,
-    SHIP_AUTOHEAL_RATE = 5,
+    SHIP_AUTOFIRE = false,
+    SHIP_HP = 10,
+    SHIP_AUTOHEAL_ENABLED=false,
+    SHIP_AUTOHEAL_RATE = 1,
     SHIP_AUTOHEAL_AMOUNT = 1,
     SHIP_MAX_SPEED_START = 64, // starting max ship speed in pps
     SHIP_MAX_SPEED_MAX = 1024,  // fully upgraded max ship speed in pps
@@ -433,7 +434,7 @@ var gameMod = (function(){
             max: maxHP || 100,
             per: 1,
             autoHeal: { // every RATE heal AMOUNT
-                enabled: true,
+                enabled: false,
                 rate: 5,
                 amount: -1,
                 secs: 0
@@ -657,6 +658,7 @@ var gameMod = (function(){
             weaponIndex:0,
             weapon: game.weapons[0] // reference to the current weapon
         };
+        ship.hp.autoHeal.enabled = SHIP_AUTOHEAL_ENABLED;
         ship.hp.autoHeal.rate = SHIP_AUTOHEAL_RATE;
         ship.hp.autoHeal.amount = SHIP_AUTOHEAL_AMOUNT;
         return ship;
