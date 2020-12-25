@@ -61,7 +61,10 @@
 
 ## 0.x.0 - save states
 
-<!-- WEAPONS - ADD FEATURES THAT MAKE THE GAME MORE FUN, ADDICTIVE, OR INTERESTING -->
+<!-- WEAPONS - ADD FEATURES THAT MAKE THE GAME MORE FUN! -->
+
+## 0.x.0 - Weapon on fire update methods
+* have a onFireUpdate method as an option for a weapon
 
 ## 0.x.0 - weapon shot types and properties - Damage Over Time
 * have more than one type of 'shot' by adding a type property for shots
@@ -92,8 +95,9 @@
 * (done) have a 2 shot onFireStart method for pulse weapon where both shots are at the same angle but start apart from each other
 * (done) make it so shotsPerFire can be an array, if so these are values that ar cycled
 * (done) can set shot pps in a weapon object
-* have a onFireUpdate method as an option for a weapon
-* draw an arrow that will point to the base
+* (done) draw an arrow that will point to the base
+* make the 1,2,3, ect keys also update buttons
+* make a 0.17.0 pkg folder
 
 ## 0.16.0 - Weapon Upgrade buttons
 * (done) add a new const WEAPONS that will be used to create DEFAULT WEAPONS and append DEFAULT UPGRADES

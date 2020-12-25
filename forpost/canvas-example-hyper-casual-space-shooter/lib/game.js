@@ -808,6 +808,9 @@ var gameMod = (function(){
         }
     };
 
+    // make update buttons public
+    api.updateButtons = updateButtons;
+
     // return the Public API
     return api;
 }());
