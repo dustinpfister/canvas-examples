@@ -43,6 +43,20 @@ var updatePointer = function(pos){
     // update dist
     state.input.pointer.dist = utils.distance(pos.x, pos.y, 160, 120);
 };
+
+var numberButtonCheck = function(game, input){
+
+    [1,2,3].forEach(function(n){
+        if(input.keys[n]){
+            game.ship.weaponIndex = n - 1;
+            game.ship.weapon = game.weapons[n - 1];
+            game.buttons.currentPage = 'weapons';
+            gameMod.updateButtons(game);
+        }
+    });
+};
+
+
 // LOOP
 var lt = new Date(),
 FPS_target = 1000 / 30;
@@ -96,6 +110,10 @@ var loop = function () {
         if(input.keys.l){
             input.fire = true;
         }
+
+        // number button check
+        numberButtonCheck(game, input);
+/*
         // keyboard switch weapons
         if(input.keys[1]){
             game.ship.weaponIndex = 0;
@@ -115,6 +133,7 @@ var loop = function () {
             game.buttons.currentPage = 'weapons';
             gameMod.updateButtons(game);
         }
+*/
         // wrap degree
         input.degree = utils.mod(input.degree, 360);
         // update game
