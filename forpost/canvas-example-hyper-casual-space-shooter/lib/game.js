@@ -205,7 +205,6 @@ var gameMod = (function(){
                 var weapon = game.weapons[game.ship.weaponIndex];
                 var shotIndex = 0;
                 var radianStart = state.game.map.radian;
-
                 var shotsPerFire = weapon.shotsPerFire[weapon.shotsPerFireIndex];
                 while(shotIndex < shotsPerFire){
                     var side = shotIndex % 2 === 0 ? -1 : 1;
@@ -218,13 +217,6 @@ var gameMod = (function(){
                         x: Math.sin(Math.PI - radianStart) * dist * side,
                         y: Math.cos(Math.PI + radianStart) * dist * side
                     });
-/*
-                    poolMod.spawn(game.shots, state, {
-                        radian: radianStart,
-                        x: (-8 + 16 * shotPer) * Math.sin(radianStart),
-                        y: (-8 + 16 * shotPer) * Math.cos(radianStart)
-                    });
-*/
                     shotIndex += 1;
                 }
                 weapon.shotsPerFireIndex += 1;
@@ -258,12 +250,12 @@ var gameMod = (function(){
                 }
             },
             shotRange: 128,
-            shotsPerFire: 3,
+            shotsPerFire: [3],
             onFireStart: function(game, secs, state){
                 var weapon = game.weapons[game.ship.weaponIndex];
                 var shotIndex = 0;
                 var radianStart = state.game.map.radian - Math.PI / 180 * 20;
-                while(shotIndex < weapon.shotsPerFire){
+                while(shotIndex < weapon.shotsPerFire[0]){
                     var shotPer = shotIndex / (weapon.shotsPerFire-1);
                     var radianDelta = Math.PI / 180 * 40 * shotPer;
                     poolMod.spawn(game.shots, state, {
@@ -299,7 +291,8 @@ var gameMod = (function(){
                     tableY: 120 - 12
                 }
             },
-            shotRange: 128
+            shotRange: 128,
+            shotsPerFire: [1]
         }
     };
 
@@ -312,7 +305,7 @@ var gameMod = (function(){
                 firesPerSecond: weaponDATA.firesPerSecond.min,
                 shotDamage: weaponDATA.shotDamage.min,
                 shotRange: weaponDATA.shotRange || 64,
-                shotsPerFire: weaponDATA.shotsPerFire || 4,
+                shotsPerFire: weaponDATA.shotsPerFire || [1],
                 onFireStart: weaponDATA.onFireStart || function(game, secs, state){
                     poolMod.spawn(game.shots, state, {
                         radian: state.game.map.radian
@@ -763,7 +756,8 @@ var gameMod = (function(){
             if(SHIP_AUTOFIRE || state.input.fire){
                 if(ship.weaponSecs >= 1 / weapon.firesPerSecond){
                     weapon.onFireStart(game, secs, state);
-                    //poolMod.spawn(game.shots, state, {});
+                    weapon.shotsPerFireIndex += 1;
+                    weapon.shotsPerFireIndex %= weapon.shotsPerFire.length;
                     ship.weaponSecs = 0;
                 }
             }
