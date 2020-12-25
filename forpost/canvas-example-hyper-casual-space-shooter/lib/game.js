@@ -432,21 +432,27 @@ var gameMod = (function(){
             current: maxHP || 100,
             max: maxHP || 100,
             per: 1,
-            autoHeal: {
-                rate: 3,
-                amount: 1, // every RATE heal AMOUNT
+            autoHeal: { // every RATE heal AMOUNT
+                enabled: true,
+                rate: 5,
+                amount: -1,
                 secs: 0
             }
         };
     };
-
+    // update autoHeal stats
     var autoHealObject = function(obj, secs){
         if(obj.hp){
-            obj.hp.autoHeal.secs += secs;
-            if(obj.hp.autoHeal.secs >= obj.hp.autoHeal.rate){
-                obj.hp.current += obj.hp.autoHeal.amount;
-                obj.hp.current = obj.hp.current > obj.hp.max ? obj.hp.max : obj.hp.current;
-                obj.hp.per = obj.hp.current / obj.hp.max;
+            if(obj.hp.autoHeal.enabled){
+                obj.hp.autoHeal.secs += secs;
+                if(obj.hp.autoHeal.secs >= obj.hp.autoHeal.rate){
+                    obj.hp.current += obj.hp.autoHeal.amount;
+                    obj.hp.current = obj.hp.current > obj.hp.max ? obj.hp.max : obj.hp.current;
+                    obj.hp.current = obj.hp.current < 0 ? 0 : obj.hp.current;
+                    obj.hp.per = obj.hp.current / obj.hp.max;
+                    obj.hp.autoHeal.secs = 0;
+                }
+            }else{
                 obj.hp.autoHeal.secs = 0;
             }
         }
@@ -628,6 +634,8 @@ var gameMod = (function(){
                 if(obj.data.dist >= BLOCK_POS_MAX_DIST){
                     obj.lifespan = 0;
                 }
+                
+                autoHealObject(obj, secs);
             }
         });
     };

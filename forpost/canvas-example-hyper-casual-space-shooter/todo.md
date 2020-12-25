@@ -99,7 +99,7 @@
 * can add a weapon.onShotHit method that will fire when a shot hits a block
 
 ## 0.18.0 - Block effects property
-* Add an effects prop to blocks that can contain and array of 'effects' objects 
+* Add an effects prop to blocks that can contain and array of 'effects' objects
 
 ## 0.17.0 - weapon.range, Shots Per Fire, and fire update methods
 * (done) have a weapon.range property that will be the max dist that a shot will go
@@ -112,7 +112,7 @@
 * (done) draw an arrow that will point to the base
 * (done) make the 1,2,3, ect keys also update buttons
 * (done) can only change weapon in base mode
-* make a 0.17.0 pkg folder
+* (done) make a 0.17.0 pkg folder
 
 ## 0.16.0 - Weapon Upgrade buttons
 * (done) add a new const WEAPONS that will be used to create DEFAULT WEAPONS and append DEFAULT UPGRADES
