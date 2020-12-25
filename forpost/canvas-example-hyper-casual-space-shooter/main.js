@@ -100,16 +100,19 @@ var loop = function () {
         if(input.keys[1]){
             game.ship.weaponIndex = 0;
             game.ship.weapon = game.weapons[0];
+            game.buttons.currentPage = 'weapons';
             gameMod.updateButtons(game);
         }
         if(input.keys[2]){
             game.ship.weaponIndex = 1;
             game.ship.weapon = game.weapons[1];
+            game.buttons.currentPage = 'weapons';
             gameMod.updateButtons(game);
         }
         if(input.keys[3]){
             game.ship.weaponIndex = 2;
             game.ship.weapon = game.weapons[2];
+            game.buttons.currentPage = 'weapons';
             gameMod.updateButtons(game);
         }
         // wrap degree
