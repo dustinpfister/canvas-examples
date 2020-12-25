@@ -99,7 +99,19 @@
 * can add a weapon.onShotHit method that will fire when a shot hits a block
 
 ## 0.18.0 - Block effects property
-* Add an effects prop to blocks that can contain and array of 'effects' objects
+* Add an effects prop to display objects (just blocks for now) that can contain and array of 'effects' objects
+* an effects object contains an effectType prop
+* have a 'burn' effectType
+```js
+{
+    effectType: 'burn',
+    amount: 10, // cause 10 damage
+    every: 1,    // every 1 second
+    count: 3   // 3 times
+}
+```
+* have a block.awardBlockMoney prop where if true will award the block money to the player when hp.current === 0
+* if one or more burn effects are in effect block.awardBlockMoney = true, else false
 
 ## 0.17.0 - weapon.range, Shots Per Fire, and fire update methods
 * (done) have a weapon.range property that will be the max dist that a shot will go
