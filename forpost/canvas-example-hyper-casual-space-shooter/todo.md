@@ -86,7 +86,9 @@
 * (done) have a weapon.onFireStart method that will define how a set of shots will start for a weapon
 * (done) basic single shot default onFireStart method
 * (done) have a 2 shot onFireStart method for pulse weapon where both shots are at the same angle but start apart from each other
-* make it so shotsPerFire can be an array, if so these are values that ar cycled
+* (done) make it so shotsPerFire can be an array, if so these are values that ar cycled
+* have a onFireUpdate method as an option for a weapon
+* can set shot pps in a weapon object
 
 ## 0.16.0 - Weapon Upgrade buttons
 * (done) add a new const WEAPONS that will be used to create DEFAULT WEAPONS and append DEFAULT UPGRADES

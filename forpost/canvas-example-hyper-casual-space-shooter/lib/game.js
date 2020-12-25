@@ -311,6 +311,7 @@ var gameMod = (function(){
                         radian: state.game.map.radian
                     });
                 },
+                shotPPS: weaponDATA.shotPPS || 32,
                 shotsPerFireIndex : 0
             };
         });
@@ -493,7 +494,7 @@ var gameMod = (function(){
                     shot.y = opt.y === undefined ? 0 : opt.y;
                     // shot radian should be set to current map radian
                     shot.radian = opt.radian; //state.game.map.radian;
-                    shot.pps = 128;
+                    shot.pps = weapon.shotPPS;
                     shot.lifespan = 1 / shot.pps * range;
                     shot.damage = weapon.shotDamage; // damage when shot hits a block
                    
