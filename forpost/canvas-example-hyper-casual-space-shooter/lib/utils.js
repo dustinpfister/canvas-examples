@@ -30,8 +30,8 @@ utils.wrapRadian = function(radian){
 };
 
 // get the angle from one point to another
-utils.angleTo = function(fromX, fromY, toX, toY){
-    return utils.wrapRadian(Math.atan2(toY - fromY, toX - fromX) + Math.PI);
+utils.angleTo = function(toX, toY, fromX, fromY){
+    return utils.wrapRadian(Math.atan2(fromY - toY, fromX - toX) + Math.PI);
 };
 
 utils.normalizeHalf = function(n, scale) {

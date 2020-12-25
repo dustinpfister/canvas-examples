@@ -16,6 +16,18 @@ var draw = (function(){
         }
     };
 
+    var drawArrowToBase = function(ctx, game){
+        ctx.save();
+        ctx.translate(160, 120);
+        var x = Math.cos(game.map.aToOrigin) * 32;
+        var y = Math.sin(game.map.aToOrigin) * 32;
+        ctx.fillStyle='red';
+        ctx.beginPath();
+        ctx.arc(x,y,5,0,Math.PI*2);
+        ctx.fill();
+        ctx.restore();
+    };
+
     // base draw object helper
     var baseObjectDraw = function(ctx, obj, render){
         ctx.save();
@@ -87,6 +99,10 @@ var draw = (function(){
                 api.xpTable(ctx, game.upgrades[0]);
                 api.xpTable(ctx, game.upgrades[1]);
             }
+        }
+
+        if(game.mode === 'space'){
+            drawArrowToBase(ctx, game);
         }
 
     };

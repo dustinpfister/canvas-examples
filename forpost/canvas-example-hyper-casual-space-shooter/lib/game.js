@@ -663,7 +663,8 @@ var gameMod = (function(){
             map: { // map position
                 x: 0,
                 y: 0,
-                radian: 0, 
+                radian: 0,
+                aToOrigin: 0,
                 pps: 0,
                 ppsDelta: SHIP_ACC_START,
                 maxPPS: SHIP_MAX_SPEED_START,
@@ -731,7 +732,7 @@ var gameMod = (function(){
         map.dist = utils.distance(0, 0, map.x, map.y);
         clampMapPos(map);
         map.per = game.map.dist / MAP_MAX_DIST;
-        map.aToOrigin = utils.angleTo(map.x, map.y, 0, 0);
+        map.aToOrigin = utils.angleTo(0, 0, map.x, map.y);
         autoHealObject(game.ship, secs);
     };
 
