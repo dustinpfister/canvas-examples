@@ -80,6 +80,10 @@
 
 <!-- ADD ADDITIONAL CORE FEATURES -->
 
+## 0.18.0 - weapon.onShotHit methods, and block burn
+* can add a weapon.onShotHit method that will fire when a shot hits a block
+* Add an effects prop to blocks that can contain and array of 'effects' objects 
+
 ## 0.17.0 - weapon.range, Shots Per Fire, and fire update methods
 * (done) have a weapon.range property that will be the max dist that a shot will go
 * (done) have a weapon.shotsPerFire prop that is the number of shots that will be set active per weapon fire
@@ -87,8 +91,9 @@
 * (done) basic single shot default onFireStart method
 * (done) have a 2 shot onFireStart method for pulse weapon where both shots are at the same angle but start apart from each other
 * (done) make it so shotsPerFire can be an array, if so these are values that ar cycled
+* (done) can set shot pps in a weapon object
 * have a onFireUpdate method as an option for a weapon
-* can set shot pps in a weapon object
+* draw an arrow that will point to the base
 
 ## 0.16.0 - Weapon Upgrade buttons
 * (done) add a new const WEAPONS that will be used to create DEFAULT WEAPONS and append DEFAULT UPGRADES
