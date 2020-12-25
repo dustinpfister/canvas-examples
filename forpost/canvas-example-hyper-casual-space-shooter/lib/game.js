@@ -624,6 +624,8 @@ var gameMod = (function(){
                 obj.y += objDeltaY;
                 // data object for 'block'
                 obj.data.dist = utils.distance(obj.x, obj.y, state.game.ship.x, state.game.ship.y);
+                // apply current autoHeal values
+                autoHealObject(obj, secs);
                 // become inactive if
                 // block hits ship
                 if(obj.data.dist <= game.ship.r + obj.r){
@@ -634,8 +636,10 @@ var gameMod = (function(){
                 if(obj.data.dist >= BLOCK_POS_MAX_DIST){
                     obj.lifespan = 0;
                 }
-                
-                autoHealObject(obj, secs);
+                // if hp === 0
+                if(obj.hp.current <= 0){
+                    obj.lifespan = 0;
+                }
             }
         });
     };
