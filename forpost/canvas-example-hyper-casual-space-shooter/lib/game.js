@@ -2,7 +2,7 @@ var gameMod = (function(){
     
     // CONSTANTS
 
-    var GAME_MONEY_START = 0,
+    var GAME_MONEY_START = 10000,
 
     // BLOCK CONSTANTS
     BLOCK_COUNT = 20,
@@ -360,8 +360,8 @@ var gameMod = (function(){
                 game.map.maxPPS = SHIP_MAX_SPEED_START + delta * levelObj.perToLevelCap;
             },
             levelOpt: { 
-                levelCap: 10,
-                expCap: 75000,
+                levelCap: 50,
+                expCap: 50000,
                 perMethod: 'log1',
                 perArgs: [],
                 tableX: 260,
@@ -377,8 +377,8 @@ var gameMod = (function(){
                 
             },
             levelOpt: {
-                levelCap: 10,
-                expCap: 25000,
+                levelCap: 20,
+                expCap: 12500,
                 perMethod: 'log1',
                 perArgs: [],
                 tableX: 260,
