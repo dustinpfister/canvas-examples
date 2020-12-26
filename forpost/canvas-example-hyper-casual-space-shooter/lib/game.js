@@ -314,7 +314,16 @@ var gameMod = (function(){
                     });
                 },
                 shotPPS: weaponDATA.shotPPS || 128,
-                shotsPerFireIndex : 0
+                shotsPerFireIndex : 0,
+                effects: [
+                    {
+                        effectType: 'burn',
+                        chance: 0.5,
+                        maxStack: 2,
+                        damage: 3,
+                        every: 1
+                    }
+                ]
             };
         });
     };
