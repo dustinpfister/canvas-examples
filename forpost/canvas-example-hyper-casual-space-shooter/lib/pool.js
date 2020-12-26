@@ -42,8 +42,8 @@ var poolMod = (function () {
                 obj.effects.push({
                     effectType: 'burn',
                     damage: opt.damage === undefined ? 3 : opt.damage,  // 1 DAMAGE EVERY 1 second for a COUNT of 5 times
-                    every: opt.every === undefined ? 3 : opt.every,
-                    count: 5,
+                    every: opt.every === undefined ? 1 : opt.every,
+                    count: opt.count === undefined ? 5 : opt.count,
                     secs:0
                 });
             }

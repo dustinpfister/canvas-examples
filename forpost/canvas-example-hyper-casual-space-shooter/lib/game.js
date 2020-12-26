@@ -320,9 +320,9 @@ var gameMod = (function(){
                         effectType: 'burn',
                         chance: 1,
                         maxStack: 2,
-                        damage: 0.05,
+                        damage: 0.005,
                         every: 0.25,
-                        count: 10
+                        count: 100
                     }
                 ]
             };
