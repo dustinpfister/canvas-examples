@@ -524,7 +524,7 @@ var gameMod = (function(){
                             shot.lifespan = 0;
                             attackObject(state.game, block, shot.damage);
                             // start effect
-                            poolMod.createEffect(block);
+                            poolMod.createEffect(block, {damage:1, every: 3});
                             // if the block is dead
                             if(block.hp.current <= 0 ){
                                 // aways give block money on a 'shot death'

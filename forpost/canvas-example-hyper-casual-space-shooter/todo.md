@@ -117,7 +117,8 @@ weapon.effects = [
     {
         effectType: 'burn',  // type of effect
         chance: 0.75,        // chance of effect per hit
-        maxStack: 2          // number of times it can stack
+        maxStack: 2,          // number of times it can stack
+        damage: 5
     }
 ]
 ```
