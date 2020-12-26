@@ -204,7 +204,7 @@ var gameMod = (function(){
             },
             shotRange: 128,
             shotPPS: 128,
-            shotsPerFire: [2, 1],
+            shotsPerFire: [1],
             onFireStart: function(game, secs, state){
                 var weapon = game.weapons[game.ship.weaponIndex];
                 var shotIndex = 0;
@@ -515,7 +515,7 @@ var gameMod = (function(){
                     shot.pps = weapon.shotPPS;
                     shot.lifespan = 1 / shot.pps * range;
                     shot.damage = weapon.shotDamage; // damage when shot hits a block
-                   
+                    shot.effects = [1];
                 },
                 update: function(shot, pool, state, secs){
                     var objDeltaX = Math.cos(shot.radian) * shot.pps * secs;
@@ -533,7 +533,9 @@ var gameMod = (function(){
                             shot.lifespan = 0;
                             attackObject(state.game, block, shot.damage);
                             // start effect
-                            poolMod.createEffect(block, {damage:1, every: 3});
+                            shot.effects.forEach(function(effect){
+                                poolMod.createEffect(block, {damage:1, every: 3});
+                            });
                             // if the block is dead
                             if(block.hp.current <= 0 ){
                                 // aways give block money on a 'shot death'
