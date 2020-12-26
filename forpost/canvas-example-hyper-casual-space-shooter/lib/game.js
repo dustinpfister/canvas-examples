@@ -3,7 +3,7 @@ var gameMod = (function(){
     // CONSTANTS
 
     // MONEY
-    var GAME_MONEY_START = 100000,
+    var GAME_MONEY_START = 10000,
     MONEY_PERLOSS_ON_DEATH = 0.1, // percent of money loss on death 0-1
 
     // BLOCK CONSTANTS
@@ -17,9 +17,9 @@ var gameMod = (function(){
 
     // SHIP AND MAP VALUES
     SHIP_AUTOFIRE = false,
-    SHIP_HP = 1,
-    SHIP_AUTOHEAL_ENABLED=false,
-    SHIP_AUTOHEAL_RATE = 1,
+    SHIP_HP = 10,
+    SHIP_AUTOHEAL_ENABLED=true,
+    SHIP_AUTOHEAL_RATE = 10,
     SHIP_AUTOHEAL_AMOUNT = 1,
     SHIP_MAX_SPEED_START = 64, // starting max ship speed in pps
     SHIP_MAX_SPEED_MAX = 1024,  // fully upgraded max ship speed in pps

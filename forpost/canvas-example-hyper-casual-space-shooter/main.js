@@ -26,7 +26,7 @@ var state = {
             dist: 0
         },
         degree: 0,
-        degreesPerSecond: 90,
+        degreesPerSecond: 20,
         //pps: 0,
         //ppsDelta: 1,
         fire: false,
