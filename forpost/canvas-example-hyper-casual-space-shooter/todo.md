@@ -109,19 +109,10 @@
 * (done) have a block.awardBlockMoney prop where if true will award the block money to the player when hp.current === 0
 * (done) if one or more burn effects are in effect block.awardBlockMoney = true, else false
 * (done) call poolMod.createEffect when a shot hits a block
-* display current effects for a block including type and count
+* (done) display current effects for a block including type and count
 
-* a weapon can have an effects prop
-```js
-weapon.effects = [
-    {
-        effectType: 'burn',  // type of effect
-        chance: 0.75,        // chance of effect per hit
-        maxStack: 2,          // number of times it can stack
-        damage: 5
-    }
-]
-```
+* (done) a weapon can have an effects prop
+* have a weapon.effect prop just for pulse gun for now
 
 
 * MAX-UPDATE-SECS const of main update loop

@@ -202,6 +202,14 @@ var gameMod = (function(){
                     tableY: 120 - 12
                 }
             },
+            effects:[ {
+                effectType: 'burn',
+                chance: 1,
+                maxStack: 2,
+                damage: 0.01,
+                every: 0.25,
+                count: 100
+            }],
             shotRange: 128,
             shotPPS: 128,
             shotsPerFire: [1],
@@ -315,7 +323,8 @@ var gameMod = (function(){
                 },
                 shotPPS: weaponDATA.shotPPS || 128,
                 shotsPerFireIndex : 0,
-                effects: [
+                effects: weaponDATA.effects || [
+/*
                     {
                         effectType: 'burn',
                         chance: 1,
@@ -324,6 +333,7 @@ var gameMod = (function(){
                         every: 0.25,
                         count: 100
                     }
+*/
                 ]
             };
         });
