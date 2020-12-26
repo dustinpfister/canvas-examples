@@ -34,14 +34,30 @@ var poolMod = (function () {
         return obj;
     };
     // create a new pool
+    var types = {
+        block: function(obj, pool, state, opt){
+            console.log('block');
+        }
+    };
     api.create = function (opt) {
         opt = opt || {};
         opt.count = opt.count || 10;
+        opt.type = opt.type || '';
         var i = 0,
+        spawn = opt.spawn || function (obj, pool, state, opt) {},
         pool = {
+            type: opt.type,
             objects: [],
             data: opt.data || {},
-            spawn: opt.spawn || function (obj, pool, state, opt) {},
+            //spawn: spawn,
+            spawn: function(obj, pool, state, opt){
+                // call any built in spawn method for the type first
+                if(pool.type in types){
+                    types[pool.type](obj, pool, state, opt);
+                }
+                // call custom spawn
+                spawn(obj, pool, state, opt);
+            },
             purge: opt.purge || function (obj, pool, state) {},
             update: opt.update || function (obj, pool, state, secs) {}
         };

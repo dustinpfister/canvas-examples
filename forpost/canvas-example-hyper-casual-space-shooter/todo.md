@@ -101,6 +101,7 @@
 ## 0.18.0 - Block effects property
 * (done) have a MONEY-PERLOSS-ON-DEATH const
 * (done) dirrectly update map.pps in main.js
+* display objects in pool.js should have a type property
 * Add an effects prop to display objects (just blocks for now) that can contain and array of 'effects' objects
 * an effects object contains an effectType prop
 * have a 'burn' effectType

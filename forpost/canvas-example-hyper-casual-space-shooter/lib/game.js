@@ -612,6 +612,8 @@ var gameMod = (function(){
                 obj.radian = utils.wrapRadian(game.map.radian + Math.PI);
                 obj.pps = game.map.pps;
                 obj.lifespan = 1;
+
+                // block props
                 obj.hp = CreateHPObject( BLOCK_HP_MIN + Math.round( (BLOCK_HP_MAX - BLOCK_HP_MIN) ) * game.map.per );
                 obj.damage = 1;
                 // block money based on BASE amount plus DIST AMOUNT
