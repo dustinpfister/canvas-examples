@@ -49,8 +49,8 @@ var gameMod = (function(){
                 }
             },
             shotDamage: { // min and max range for shot damage
-                min: 0, //1,
-                max: 0, // Math.floor(BLOCK_HP_MAX * 0.05),
+                min: 1,
+                max: Math.floor(BLOCK_HP_MAX * 0.05),
                 levelOpt: { 
                     levelCap: 20,
                     expCap: 1500,
@@ -62,15 +62,15 @@ var gameMod = (function(){
             },
             effects:[ {
                 effectType: 'burn',
-                chance: 1,
+                chance: 0.25,
                 maxStack: 5,
-                damage: 0.01,
+                damage: 1,
                 every: 0.25,
-                count: 100
+                count: 10
             }],
             shotRange: 128,
             shotPPS: 128,
-            shotsPerFire: [1],
+            shotsPerFire: [2, 2, 1],
             onFireStart: function(game, secs, state){
                 var weapon = game.weapons[game.ship.weaponIndex];
                 var shotIndex = 0;
