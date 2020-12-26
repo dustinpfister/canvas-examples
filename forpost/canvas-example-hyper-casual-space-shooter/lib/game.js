@@ -318,7 +318,7 @@ var gameMod = (function(){
                 effects: [
                     {
                         effectType: 'burn',
-                        chance: 0.5,
+                        chance: 0.1,
                         maxStack: 2,
                         damage: 3,
                         every: 1
@@ -515,7 +515,15 @@ var gameMod = (function(){
                     shot.pps = weapon.shotPPS;
                     shot.lifespan = 1 / shot.pps * range;
                     shot.damage = weapon.shotDamage; // damage when shot hits a block
-                    shot.effects = [1];
+
+                    // shot effects
+                    shot.effects = [];
+                    weapon.effects.forEach(function(effect){
+                        var roll = Math.random();
+                        if(roll < effect.chance){
+                            shot.effects.push(1);
+                        }
+                    });
                 },
                 update: function(shot, pool, state, secs){
                     var objDeltaX = Math.cos(shot.radian) * shot.pps * secs;
