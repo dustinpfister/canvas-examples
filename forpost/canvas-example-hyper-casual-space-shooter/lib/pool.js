@@ -39,7 +39,8 @@ var poolMod = (function () {
             spawn: function(obj, pool, state, opt){
                 // blocks have an effects array
                 obj.effects = [];
-            }
+            },
+            update: function (obj, pool, state, secs) {}
         }
     };
     // create a new pool
@@ -49,6 +50,7 @@ var poolMod = (function () {
         opt.type = opt.type || '';
         var i = 0,
         spawn = opt.spawn || function (obj, pool, state, opt) {},
+        update = opt.update || function (obj, pool, state, secs) {},
         pool = {
             type: opt.type,
             objects: [],
@@ -62,7 +64,9 @@ var poolMod = (function () {
                 spawn(obj, pool, state, opt);
             },
             purge: opt.purge || function (obj, pool, state) {},
-            update: opt.update || function (obj, pool, state, secs) {}
+            update: function(obj, pool, state, opt){
+                update(obj, pool, state, opt);
+            }
         };
         while (i < opt.count) {
             pool.objects.push(api.createDisplayObject(opt));
