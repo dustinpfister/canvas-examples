@@ -101,6 +101,9 @@ var poolMod = (function () {
             },
             purge: opt.purge || function (obj, pool, state) {},
             update: function(obj, pool, state, opt){
+                if(obj.effects){
+                    Effects.update(obj, pool, state, opt);
+                }
                 update(obj, pool, state, opt);
             }
         };
