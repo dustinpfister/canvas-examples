@@ -128,7 +128,7 @@ var draw = (function(){
                     ctx.textBaseline = 'middle';
                     ctx.textAlign = 'center';
                     ctx.font = '8px arial';
-                    ctx.fillText(block.type, block.x, block.y - 8);
+                    ctx.fillText(block.effects.length, block.x, block.y - 8);
                     ctx.fillText(Math.floor(block.hp.current) + '/' + Math.floor(block.hp.max) , block.x, block.y);
                     ctx.fillText(block.money.toFixed(2), block.x, block.y + 8);
                 });
