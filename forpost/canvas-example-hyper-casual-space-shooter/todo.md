@@ -101,8 +101,8 @@
 ## 0.18.0 - Block effects property
 * (done) have a MONEY-PERLOSS-ON-DEATH const
 * (done) dirrectly update map.pps in main.js
-* display objects in pool.js should have a type property
-* Add an effects prop to display objects (just blocks for now) that can contain and array of 'effects' objects
+* (done) display objects in pool.js should have a type property
+* (done) Add an effects prop to display objects (just blocks for now) that can contain and array of 'effects' objects
 * an effects object contains an effectType prop
 * have a 'burn' effectType
 ```js
@@ -113,9 +113,19 @@
     count: 3   // 3 times
 }
 ```
+* I will need to have an update method for effects in poolMod
 * have a block.awardBlockMoney prop where if true will award the block money to the player when hp.current === 0
 * if one or more burn effects are in effect block.awardBlockMoney = true, else false
-
+* a weapon can have an effects prop
+```js
+weapon.effects = [
+    {
+        effectType: 'burn',  // type of effect
+        chance: 0.75,        // chance of effect per hit
+        maxStack: 2          // number of times it can stack
+    }
+]
+```
 * autoFire button as first space mode button
 * rate of ship heading change should be part of game object
 * have a SHIP-ROTATION-RATE const object with min and max props

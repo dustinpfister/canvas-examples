@@ -33,10 +33,12 @@ var poolMod = (function () {
         };
         return obj;
     };
+    
     // create a new pool
     var types = {
         block: function(obj, pool, state, opt){
-            console.log('block');
+            // blocks have an effects array
+            obj.effects = [];
         }
     };
     api.create = function (opt) {
@@ -49,7 +51,6 @@ var poolMod = (function () {
             type: opt.type,
             objects: [],
             data: opt.data || {},
-            //spawn: spawn,
             spawn: function(obj, pool, state, opt){
                 // call any built in spawn method for the type first
                 if(pool.type in types){
