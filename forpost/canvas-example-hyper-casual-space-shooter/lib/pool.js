@@ -40,8 +40,8 @@ var poolMod = (function () {
                 obj.effects.push({
                     effectType: 'burn',
                     damage: 1,  // 1 DAMAGE EVERY 1 second for a COUNT of 5 times
-                    every: 10,
-                    count: 5,
+                    every: 3,
+                    count: 7,
                     secs:0
                 });
             }
