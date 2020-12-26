@@ -1,6 +1,7 @@
 // Object Pool Module for canvas-example-hyper-casual-space-shooter
 
 var poolMod = (function () {
+    var EFFECTS_MAX = 10; // max number of effects per object
     // Public API
     var api = {};
     // get next inactive object in the given pool
@@ -35,13 +36,15 @@ var poolMod = (function () {
     };
     var Effects = {
         create: function(obj){
-            obj.effects.push({
-                effectType: 'burn',
-                damage: 1,  // 1 DAMAGE EVERY 1 second for a COUNT of 5 times
-                every: 1,
-                count: 5,
-                secs:0
-            });
+            if(obj.effects.length < EFFECTS_MAX){
+                obj.effects.push({
+                    effectType: 'burn',
+                    damage: 1,  // 1 DAMAGE EVERY 1 second for a COUNT of 5 times
+                    every: 1,
+                    count: 5,
+                    secs:0
+                });
+            }
         },
         update: function(obj, pool, state, secs){
             // update effects
@@ -64,8 +67,8 @@ var poolMod = (function () {
         }
     };
     // start an effect for the given display object
-    api.startEffect = function(obj){
-        
+    api.createEffect = function(obj){
+        Effects.create(obj);
     };
     // TYPES
     var types = {
