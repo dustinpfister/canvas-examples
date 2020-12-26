@@ -33,6 +33,17 @@ var poolMod = (function () {
         };
         return obj;
     };
+    var Effects = {
+        create: function(obj){
+            obj.effects.push({
+                effectType: 'burn',
+                damage: 1,  // 1 DAMAGE EVERY 1 second for a COUNT of 5 times
+                every: 1,
+                count: 5,
+                secs:0
+            });
+        }
+    };
     // TYPES
     var types = {
         block: { 

@@ -103,16 +103,9 @@
 * (done) dirrectly update map.pps in main.js
 * (done) display objects in pool.js should have a type property
 * (done) Add an effects prop to display objects (just blocks for now) that can contain and array of 'effects' objects
-* an effects object contains an effectType prop
-* have a 'burn' effectType
-```js
-{
-    effectType: 'burn',
-    amount: 10, // cause 10 damage
-    every: 1,    // every 1 second
-    count: 3   // 3 times
-}
-```
+* (done) an effects object contains an effectType prop
+* (done) have a 'burn' effectType
+
 * I will need to have an update method for effects in poolMod
 * have a block.awardBlockMoney prop where if true will award the block money to the player when hp.current === 0
 * if one or more burn effects are in effect block.awardBlockMoney = true, else false
