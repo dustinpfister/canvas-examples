@@ -40,7 +40,7 @@ var poolMod = (function () {
                 obj.effects.push({
                     effectType: 'burn',
                     damage: 1,  // 1 DAMAGE EVERY 1 second for a COUNT of 5 times
-                    every: 1,
+                    every: 10,
                     count: 5,
                     secs:0
                 });
@@ -62,6 +62,9 @@ var poolMod = (function () {
                     if(effect.count <=0 ){
                         obj.effects.splice(i, 1);
                     }
+                    obj.hp.current = obj.hp.current > obj.hp.max ? obj.hp.max : obj.hp.current;
+                    obj.hp.current = obj.hp.current < 0 ? 0 : obj.hp.current;
+                    obj.hp.per = obj.hp.current / obj.hp.max;
                 }
             }
         }
