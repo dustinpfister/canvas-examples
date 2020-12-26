@@ -320,8 +320,9 @@ var gameMod = (function(){
                         effectType: 'burn',
                         chance: 0.1,
                         maxStack: 2,
-                        damage: 3,
-                        every: 1
+                        damage: 2,
+                        every: 0.25,
+                        count: 10
                     }
                 ]
             };
@@ -521,7 +522,8 @@ var gameMod = (function(){
                     weapon.effects.forEach(function(effect){
                         var roll = Math.random();
                         if(roll < effect.chance){
-                            shot.effects.push(1);
+                            // push a refernce to the effect object
+                            shot.effects.push(effect);
                         }
                     });
                 },
@@ -540,9 +542,9 @@ var gameMod = (function(){
                         if(dist <= block.r + shot.r){
                             shot.lifespan = 0;
                             attackObject(state.game, block, shot.damage);
-                            // start effect
+                            // create any effects the shot might have
                             shot.effects.forEach(function(effect){
-                                poolMod.createEffect(block, {damage:1, every: 3});
+                                poolMod.createEffect(block, effect);
                             });
                             // if the block is dead
                             if(block.hp.current <= 0 ){
