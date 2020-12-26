@@ -42,7 +42,30 @@ var poolMod = (function () {
                 count: 5,
                 secs:0
             });
+        },
+        update: function(obj, pool, state, secs){
+            // update effects
+            var i = obj.effects.length, effect;
+            while(i--){
+                effect = obj.effects[i];
+                effect.secs += secs;
+                if(effect.secs >= effect.every){
+                    effect.secs = utils.mod(effect.secs, effect.every);
+                    // if damage apply that
+                    if(effect.damage){
+                        obj.hp.current -= effect.damage;
+                    }
+                    effect.count -= 1;
+                    if(effect.count <=0 ){
+                        obj.effects.splice(i, 1);
+                    }
+                }
+            }
         }
+    };
+    // start an effect for the given display object
+    api.startEffect = function(obj){
+        
     };
     // TYPES
     var types = {
@@ -52,23 +75,7 @@ var poolMod = (function () {
                 obj.effects = [];
             },
             update: function (obj, pool, state, secs) {
-                // update effects
-                var i = obj.effects.length, effect;
-                while(i--){
-                    effect = obj.effects[i];
-                    effect.secs += secs;
-                    if(effect.secs >= effect.every){
-                        effect.secs = utils.mod(effect.secs, effect.every);
-                        // if damage apply that
-                        if(effect.damage){
-                            obj.hp.current -= effect.damage;
-                        }
-                        effect.count -= 1;
-                        if(effect.count <=0 ){
-                            obj.effects.splice(i, 1);
-                        }
-                    }
-                }
+                Effects.update(obj, pool, state, secs);
             }
         }
     };
