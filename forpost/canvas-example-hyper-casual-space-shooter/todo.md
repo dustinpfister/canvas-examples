@@ -109,8 +109,8 @@
 
 * have a block.awardBlockMoney prop where if true will award the block money to the player when hp.current === 0
 * if one or more burn effects are in effect block.awardBlockMoney = true, else false
-* a weapon can have an effects prop
 
+* a weapon can have an effects prop
 ```js
 weapon.effects = [
     {
@@ -120,6 +120,8 @@ weapon.effects = [
     }
 ]
 ```
+* a weapon can cause an effect by calling a poolMod.startEffect method
+
 * display current effects for a block including type and count
 
 
