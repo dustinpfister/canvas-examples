@@ -618,6 +618,10 @@ var gameMod = (function(){
                 obj.damage = 1;
                 // block money based on BASE amount plus DIST AMOUNT
                 obj.money = BLOCK_MONEY_BASE + Math.round(game.map.per * BLOCK_MONEY_DIST);
+
+                // start effect
+                poolMod.createEffect(obj);
+
             },
             update: function(obj, pool, state, secs){
                 obj.lifespan = 1;
