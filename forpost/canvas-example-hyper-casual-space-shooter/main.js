@@ -27,8 +27,8 @@ var state = {
         },
         degree: 0,
         degreesPerSecond: 90,
-        pps: 0,
-        ppsDelta: 1,
+        //pps: 0,
+        //ppsDelta: 1,
         fire: false,
         keys: {}
     }
@@ -62,31 +62,27 @@ var loop = function () {
     var now = new Date(),
     t = now - lt,
     game = state.game,
+    input = state.input,
     secs = t / 1000;
     requestAnimationFrame(loop);
     if (t >= FPS_target) {
-        var input = state.input;
         // update input.pointer
         updatePointer(input.pointer.pos);
         // keyboard or pointer update map radian
         // keyboard update pps
         if(input.keys.w){
-           //input.pps += input.ppsDelta * secs;
-           input.pps += game.map.ppsDelta * secs;
-           input.pps = input.pps > game.map.maxPPS ? game.map.maxPPS : input.pps;
+           game.map.pps += game.map.ppsDelta * secs;
+           game.map.pps = game.map.pps > game.map.maxPPS ? game.map.maxPPS : game.map.pps;
         }
-        //if(input.keys.a || (input.pointer.dir === 1 && input.pointer.down) ){
         if(input.keys.a){
             input.degree += input.degreesPerSecond * secs;
         }
-        //if(input.keys.d || (input.pointer.dir === -1 && input.pointer.down) ){
         if(input.keys.d){
             input.degree -= input.degreesPerSecond * secs;
         }
         if(input.keys.s){
-            //input.pps -= input.ppsDelta * secs;
-            input.pps -= game.map.ppsDelta * secs;
-            input.pps = input.pps < 0 ? 0 : input.pps;
+            game.map.pps -= game.map.ppsDelta * secs;
+            game.map.pps = game.map.pps < 0 ? 0 : game.map.pps;
         }
         // pointer update map radian
         if(input.pointer.down && input.pointer.dist <= 32){
@@ -100,7 +96,7 @@ var loop = function () {
         // pointer update map pps
         if(input.pointer.down && input.pointer.dist < 32){
             var per = input.pointer.dist / 32;
-            input.pps = game.map.maxPPS * per;
+            game.map.pps.pps = game.map.maxPPS * per;
         }
         // keyboard update fire
         input.fire = false;
@@ -112,7 +108,8 @@ var loop = function () {
         // wrap degree
         input.degree = utils.mod(input.degree, 360);
         // update game
-        gameMod.setMapMovement(game, input.degree, input.pps);
+        //gameMod.setMapMovement(game, input.degree, input.pps);
+        game.map.radian = utils.wrapRadian(Math.PI / 180 * input.degree);
         gameMod.update(game, secs, state);
         // draw
         draw.background(state.ctx, state);
