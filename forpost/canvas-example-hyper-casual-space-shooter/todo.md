@@ -110,10 +110,9 @@
 * (done) if one or more burn effects are in effect block.awardBlockMoney = true, else false
 * (done) call poolMod.createEffect when a shot hits a block
 * (done) display current effects for a block including type and count
-
 * (done) a weapon can have an effects prop
-* have a weapon.effect prop just for pulse gun for now
-
+* (done) have a weapon.effect prop just for pulse gun for now
+* get max stack prop working
 
 * MAX-UPDATE-SECS const of main update loop
 * autoFire button as first space mode button

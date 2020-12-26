@@ -31,148 +31,6 @@ var gameMod = (function(){
     // values for the base area at the origin
     BASE_DIST = 100;
 
-    var BASE_BUTTONS = {
-        main: {
-            0: {
-                desc: 'Weapons',
-                x: 64,
-                y: -32,
-                r: 16,
-                onClick: function(game){
-                    game.buttons.currentPage = 'weapons';
-                }
-            },
-            1: {
-                desc: 'Ship',
-                x: 64,
-                y: 32,
-                r: 16,
-                onClick: function(game){
-                    game.buttons.currentPage = 'ship';
-                }
-            }
-        },
-        weapons:{
-            0: {
-                desc: 'Back',
-                x: 64,
-                y: 0,
-                r: 16,
-                onClick: function(game){
-                    game.buttons.currentPage = 'main';
-                }
-            },
-            1: {
-                desc: 'Change Weapon',
-                x: 64,
-                y: 32,
-                r: 16,
-                onClick: function(game){
-                    game.ship.weaponIndex += 1;
-                    game.ship.weaponIndex = utils.mod(game.ship.weaponIndex, Object.keys(game.weapons).length);
-                    game.ship.weapon = game.weapons[game.ship.weaponIndex];
-                    updateButtons(game);
-                }
-            },
-            2: {
-                desc: 'Fires Per Second',
-                x: -64,
-                y: -32,
-                r: 16,
-                cost:0,
-                type: 'weaponUpgrade',
-                weaponProp: 'firesPerSecond',
-                onClick: function(game, button){
-                    var upgradeID = 'w-' + game.ship.weaponIndex + '-firesPerSecond',
-                    upgrade = getUpgradeById(game, upgradeID);
-                    buyUpgrade(game, upgrade);
-                    upgrade.applyToState(game, upgrade.levelObj, upgrade);
-                    button.cost = upgrade.levelObj.xpForNext;
-                }
-            },
-            3: {
-                desc: 'Damage',
-                x: -64,
-                y: 0,
-                r: 16,
-                cost:0,
-                type: 'weaponUpgrade',
-                weaponProp: 'shotDamage',
-                onClick: function(game, button){
-                    var upgradeID = 'w-' + game.ship.weaponIndex + '-shotDamage',
-                    upgrade = getUpgradeById(game, upgradeID);
-                    buyUpgrade(game, upgrade);
-                    upgrade.applyToState(game, upgrade.levelObj, upgrade);
-                    button.cost = upgrade.levelObj.xpForNext;
-                }
-            }
-        },
-        ship:{
-            0: {
-                desc: 'Back',
-                x: 64,
-                y: 0,
-                r: 16,
-                onClick: function(game){
-                    game.buttons.currentPage = 'main';
-                }
-            },
-            1: {
-                desc: 'Max Speed',
-                x: 64,
-                y: -32,
-                r: 16,
-                cost: 0,
-                upgradeID: 's1',
-                onClick: function(game, button){
-                    var upgrade = button.upgrade;
-                    buyUpgrade(game, upgrade);
-                    upgrade.applyToState(game, upgrade.levelObj, upgrade);
-                    button.cost = upgrade.levelObj.xpForNext;
-                }
-            },
-            2: {
-                desc: 'Max Acc',
-                x: 64,
-                y: 32,
-                r: 16,
-                cost: 0,
-                upgradeID: 's2',
-                onClick: function(game, button){
-                    var upgrade = button.upgrade;
-                    buyUpgrade(game, upgrade);
-                    upgrade.applyToState(game, upgrade.levelObj, upgrade);
-                    button.cost = upgrade.levelObj.xpForNext;
-                }
-            }
-        }
-    };
-
-    // create upgrade object references and cost/display info
-    var updateButtons = function(game){
-        ['base'].forEach(function(mode){
-             Object.keys(game.buttons[mode]).forEach(function(pageKey){
-                 Object.keys(game.buttons[mode][pageKey]).forEach(function(buttonKey){
-                     var button = game.buttons[mode][pageKey][buttonKey];
-                     // attach a single upgrade ref
-                     if(button.upgradeID){
-                         // create a ref to upgrade, and set start cost
-                         button.upgrade = getUpgradeById(game, button.upgradeID);
-                     }
-                     if(button.type){
-                         // if the button is for a weapon upgrade
-                         if(button.type === 'weaponUpgrade'){
-                             var upgradeID = 'w-' + game.ship.weaponIndex + '-' + button.weaponProp;
-                             button.upgrade = getUpgradeById(game, upgradeID);
-                         }
-                     }
-                     if(button.upgrade && button.cost != undefined){
-                             button.cost = button.upgrade.levelObj.xpForNext;
-                     }
-                 });
-             });
-        });
-    };
 
     // main WEAPONS Object that will be used to create DEFAULT_WEAPONS and append DEFAULT_UPGRADES
     var WEAPONS = {
@@ -205,7 +63,7 @@ var gameMod = (function(){
             effects:[ {
                 effectType: 'burn',
                 chance: 1,
-                maxStack: 2,
+                maxStack: 5,
                 damage: 0.01,
                 every: 0.25,
                 count: 100
@@ -373,6 +231,150 @@ var gameMod = (function(){
 
     // DEFAULT WEAPON OBJECT that will be cloned as game.weapons
     var DEFAULT_WEAPONS = create_DEFAULT_WEAPONS();
+
+
+    var BASE_BUTTONS = {
+        main: {
+            0: {
+                desc: 'Weapons',
+                x: 64,
+                y: -32,
+                r: 16,
+                onClick: function(game){
+                    game.buttons.currentPage = 'weapons';
+                }
+            },
+            1: {
+                desc: 'Ship',
+                x: 64,
+                y: 32,
+                r: 16,
+                onClick: function(game){
+                    game.buttons.currentPage = 'ship';
+                }
+            }
+        },
+        weapons:{
+            0: {
+                desc: 'Back',
+                x: 64,
+                y: 0,
+                r: 16,
+                onClick: function(game){
+                    game.buttons.currentPage = 'main';
+                }
+            },
+            1: {
+                desc: 'Change Weapon',
+                x: 64,
+                y: 32,
+                r: 16,
+                onClick: function(game){
+                    game.ship.weaponIndex += 1;
+                    game.ship.weaponIndex = utils.mod(game.ship.weaponIndex, Object.keys(game.weapons).length);
+                    game.ship.weapon = game.weapons[game.ship.weaponIndex];
+                    updateButtons(game);
+                }
+            },
+            2: {
+                desc: 'Fires Per Second',
+                x: -64,
+                y: -32,
+                r: 16,
+                cost:0,
+                type: 'weaponUpgrade',
+                weaponProp: 'firesPerSecond',
+                onClick: function(game, button){
+                    var upgradeID = 'w-' + game.ship.weaponIndex + '-firesPerSecond',
+                    upgrade = getUpgradeById(game, upgradeID);
+                    buyUpgrade(game, upgrade);
+                    upgrade.applyToState(game, upgrade.levelObj, upgrade);
+                    button.cost = upgrade.levelObj.xpForNext;
+                }
+            },
+            3: {
+                desc: 'Damage',
+                x: -64,
+                y: 0,
+                r: 16,
+                cost:0,
+                type: 'weaponUpgrade',
+                weaponProp: 'shotDamage',
+                onClick: function(game, button){
+                    var upgradeID = 'w-' + game.ship.weaponIndex + '-shotDamage',
+                    upgrade = getUpgradeById(game, upgradeID);
+                    buyUpgrade(game, upgrade);
+                    upgrade.applyToState(game, upgrade.levelObj, upgrade);
+                    button.cost = upgrade.levelObj.xpForNext;
+                }
+            }
+        },
+        ship:{
+            0: {
+                desc: 'Back',
+                x: 64,
+                y: 0,
+                r: 16,
+                onClick: function(game){
+                    game.buttons.currentPage = 'main';
+                }
+            },
+            1: {
+                desc: 'Max Speed',
+                x: 64,
+                y: -32,
+                r: 16,
+                cost: 0,
+                upgradeID: 's1',
+                onClick: function(game, button){
+                    var upgrade = button.upgrade;
+                    buyUpgrade(game, upgrade);
+                    upgrade.applyToState(game, upgrade.levelObj, upgrade);
+                    button.cost = upgrade.levelObj.xpForNext;
+                }
+            },
+            2: {
+                desc: 'Max Acc',
+                x: 64,
+                y: 32,
+                r: 16,
+                cost: 0,
+                upgradeID: 's2',
+                onClick: function(game, button){
+                    var upgrade = button.upgrade;
+                    buyUpgrade(game, upgrade);
+                    upgrade.applyToState(game, upgrade.levelObj, upgrade);
+                    button.cost = upgrade.levelObj.xpForNext;
+                }
+            }
+        }
+    };
+
+    // create upgrade object references and cost/display info
+    var updateButtons = function(game){
+        ['base'].forEach(function(mode){
+             Object.keys(game.buttons[mode]).forEach(function(pageKey){
+                 Object.keys(game.buttons[mode][pageKey]).forEach(function(buttonKey){
+                     var button = game.buttons[mode][pageKey][buttonKey];
+                     // attach a single upgrade ref
+                     if(button.upgradeID){
+                         // create a ref to upgrade, and set start cost
+                         button.upgrade = getUpgradeById(game, button.upgradeID);
+                     }
+                     if(button.type){
+                         // if the button is for a weapon upgrade
+                         if(button.type === 'weaponUpgrade'){
+                             var upgradeID = 'w-' + game.ship.weaponIndex + '-' + button.weaponProp;
+                             button.upgrade = getUpgradeById(game, upgradeID);
+                         }
+                     }
+                     if(button.upgrade && button.cost != undefined){
+                             button.cost = button.upgrade.levelObj.xpForNext;
+                     }
+                 });
+             });
+        });
+    };
 
     // UPGRADES
     var DEFAULT_UPGRADES = [
@@ -554,7 +556,11 @@ var gameMod = (function(){
                             attackObject(state.game, block, shot.damage);
                             // create any effects the shot might have
                             shot.effects.forEach(function(effect){
-                                poolMod.createEffect(block, effect);
+                                // check stack count
+                                var stackCount = block.effectStats[effect.effectType] || 0;
+                                if( stackCount < effect.maxStack){
+                                    poolMod.createEffect(block, effect);
+                                }
                             });
                             // if the block is dead
                             if(block.hp.current <= 0 ){
