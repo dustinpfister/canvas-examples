@@ -2,7 +2,9 @@ var gameMod = (function(){
     
     // CONSTANTS
 
-    var GAME_MONEY_START = 10000,
+    // MONEY
+    var GAME_MONEY_START = 100000,
+    MONEY_PERLOSS_ON_DEATH = 0.1, // percent of money loss on death 0-1
 
     // BLOCK CONSTANTS
     BLOCK_COUNT = 20,
@@ -14,7 +16,7 @@ var gameMod = (function(){
     BLOCK_MONEY_DIST = 999,
 
     // SHIP AND MAP VALUES
-    SHIP_AUTOFIRE = true,
+    SHIP_AUTOFIRE = false,
     SHIP_HP = 10,
     SHIP_AUTOHEAL_ENABLED=false,
     SHIP_AUTOHEAL_RATE = 1,
@@ -458,7 +460,7 @@ var gameMod = (function(){
             }
         }
     };
-
+    // what to do when the player ship dies
     var onShipDeath = function(game){
         game.ship = createShip(game);
         game.map.x = 0;
@@ -469,7 +471,7 @@ var gameMod = (function(){
            block.lifespan = 0;
         });
         // game money effected
-        game.money = game.money > 0 ? game.money / 2 : 0;
+        game.money = game.money > 0 ? game.money * ( 1 - MONEY_PERLOSS_ON_DEATH) : 0;
     };
 
     // attack the given object with the given amount of damage

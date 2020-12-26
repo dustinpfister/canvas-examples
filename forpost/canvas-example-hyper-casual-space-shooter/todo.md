@@ -99,6 +99,8 @@
 * can add a weapon.onShotHit method that will fire when a shot hits a block
 
 ## 0.18.0 - Block effects property
+* have a MONEY-PERLOSS-ON-DEATH const
+* autoFire button as first space mode button
 * Add an effects prop to display objects (just blocks for now) that can contain and array of 'effects' objects
 * an effects object contains an effectType prop
 * have a 'burn' effectType
