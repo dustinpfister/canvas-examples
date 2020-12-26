@@ -108,8 +108,8 @@
 * (done) I will need to have an update method for effects in poolMod
 * (done) have a block.awardBlockMoney prop where if true will award the block money to the player when hp.current === 0
 * (done) if one or more burn effects are in effect block.awardBlockMoney = true, else false
-
-* call poolMod.createEffect when a shot hits a block
+* (done) call poolMod.createEffect when a shot hits a block
+* display current effects for a block including type and count
 
 * a weapon can have an effects prop
 ```js
@@ -121,9 +121,9 @@ weapon.effects = [
     }
 ]
 ```
-* a weapon can cause an effect by calling a poolMod.startEffect method
-* display current effects for a block including type and count
 
+
+* MAX-UPDATE-SECS const of main update loop
 * autoFire button as first space mode button
 * rate of ship heading change should be part of game object
 * have a SHIP-ROTATION-RATE const object with min and max props

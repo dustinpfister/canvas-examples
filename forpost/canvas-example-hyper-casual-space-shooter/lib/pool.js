@@ -35,12 +35,13 @@ var poolMod = (function () {
         return obj;
     };
     var Effects = {
-        create: function(obj){
+        create: function(obj, opt){
+            opt = opt || {};
             if(obj.effects.length < EFFECTS_MAX){
                 obj.awardBlockMoney = true; // just set this true here for now as there is just one effect
                 obj.effects.push({
                     effectType: 'burn',
-                    damage: 3,  // 1 DAMAGE EVERY 1 second for a COUNT of 5 times
+                    damage: opt.damage === undefined ? 3 : opt.damage,  // 1 DAMAGE EVERY 1 second for a COUNT of 5 times
                     every: 0.5,
                     count: 5,
                     secs:0
@@ -76,8 +77,8 @@ var poolMod = (function () {
         }
     };
     // start an effect for the given display object
-    api.createEffect = function(obj){
-        Effects.create(obj);
+    api.createEffect = function(obj, opt){
+        Effects.create(obj, opt);
     };
     // TYPES
     var types = {
