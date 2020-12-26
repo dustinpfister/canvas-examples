@@ -525,6 +525,7 @@ var gameMod = (function(){
                             attackObject(state.game, block, shot.damage);
                             // if the block is dead
                             if(block.hp.current <= 0 ){
+                                // aways give block money on a 'shot death'
                                 state.game.money += block.money;
                                 block.lifespan = 0;
                                 block.active = false;
@@ -649,6 +650,10 @@ var gameMod = (function(){
                 }
                 // if hp === 0
                 if(obj.hp.current <= 0){
+                    // award money on 'effect death' if awardBlockMoney is true
+                    if(obj.awardBlockMoney){
+                        game.money += obj.money;
+                    }
                     obj.lifespan = 0;
                 }
             }

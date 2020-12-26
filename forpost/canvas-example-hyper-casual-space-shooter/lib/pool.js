@@ -37,6 +37,7 @@ var poolMod = (function () {
     var Effects = {
         create: function(obj){
             if(obj.effects.length < EFFECTS_MAX){
+                obj.awardBlockMoney = true; // just set this true here for now as there is just one effect
                 obj.effects.push({
                     effectType: 'burn',
                     damage: 1,  // 1 DAMAGE EVERY 1 second for a COUNT of 5 times
@@ -49,6 +50,10 @@ var poolMod = (function () {
         update: function(obj, pool, state, secs){
             // update effects
             var i = obj.effects.length, effect;
+            // if effects length === 0 then obj.awardBlockMoney = false
+            if(obj.effects.length === 0){
+                obj.awardBlockMoney = false;
+            }
             while(i--){
                 effect = obj.effects[i];
                 effect.secs += secs;
@@ -67,6 +72,7 @@ var poolMod = (function () {
                     obj.hp.per = obj.hp.current / obj.hp.max;
                 }
             }
+
         }
     };
     // start an effect for the given display object
@@ -79,6 +85,7 @@ var poolMod = (function () {
             spawn: function(obj, pool, state, opt){
                 // blocks have an effects array
                 obj.effects = [];
+                obj.awardBlockMoney = false; // if true award money on effect death
             },
             update: function (obj, pool, state, secs) {
                 Effects.update(obj, pool, state, secs);
