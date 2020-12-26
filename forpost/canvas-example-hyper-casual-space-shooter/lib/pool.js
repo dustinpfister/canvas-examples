@@ -80,12 +80,21 @@ var poolMod = (function () {
     api.createEffect = function(obj, opt){
         Effects.create(obj, opt);
     };
+    // get an object of effect types and count from the given object
+    api.getEffectStats = function(obj){
+        var stats = {};
+        obj.effects.forEach(function(effect){
+            stats[effect.effectType] = stats[effect.effectType] === undefined ? 1 : stats[effect.effectType] += 1;
+        });
+        return stats;
+    };
     // TYPES
     var types = {
         block: { 
             spawn: function(obj, pool, state, opt){
                 // blocks have an effects array
                 obj.effects = [];
+                obj.effectStats = {};
                 obj.awardBlockMoney = false; // if true award money on effect death
             },
             update: function (obj, pool, state, secs) {

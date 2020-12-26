@@ -318,9 +318,9 @@ var gameMod = (function(){
                 effects: [
                     {
                         effectType: 'burn',
-                        chance: 0.1,
+                        chance: 1,
                         maxStack: 2,
-                        damage: 2,
+                        damage: 0.05,
                         every: 0.25,
                         count: 10
                     }
@@ -676,6 +676,9 @@ var gameMod = (function(){
                     }
                     obj.lifespan = 0;
                 }
+
+                // effect stats
+                obj.effectStats=poolMod.getEffectStats(obj);
             }
         });
     };
