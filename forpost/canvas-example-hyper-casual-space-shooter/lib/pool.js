@@ -15,9 +15,10 @@ var poolMod = (function () {
         }
         return false;
     };
-    // create a single display object
+    // create and return a single display object
     api.createDisplayObject = function(opt){
-        return {
+        var obj = {
+            type: opt.type || '',
             active: false,
             i: opt.i === undefined ? null : opt.i,
             x: opt.x === undefined ? 0 : opt.x,
@@ -30,6 +31,7 @@ var poolMod = (function () {
             fillStyle: opt.fillStyle || 'red',
             data: {}
         };
+        return obj;
     };
     // create a new pool
     api.create = function (opt) {

@@ -601,6 +601,7 @@ var gameMod = (function(){
     // create block pool helper
     var createBlocksPool = function(){
         return poolMod.create({
+            type: 'block',
             data: {},
             fillStyle: '#1a1a1a',
             count: BLOCK_COUNT,
