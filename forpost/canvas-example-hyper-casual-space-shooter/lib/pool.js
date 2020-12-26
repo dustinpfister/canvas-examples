@@ -40,9 +40,9 @@ var poolMod = (function () {
                 obj.awardBlockMoney = true; // just set this true here for now as there is just one effect
                 obj.effects.push({
                     effectType: 'burn',
-                    damage: 1,  // 1 DAMAGE EVERY 1 second for a COUNT of 5 times
-                    every: 3,
-                    count: 7,
+                    damage: 3,  // 1 DAMAGE EVERY 1 second for a COUNT of 5 times
+                    every: 0.5,
+                    count: 5,
                     secs:0
                 });
             }

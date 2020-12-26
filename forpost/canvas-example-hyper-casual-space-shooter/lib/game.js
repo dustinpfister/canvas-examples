@@ -191,8 +191,8 @@ var gameMod = (function(){
                 }
             },
             shotDamage: { // min and max range for shot damage
-                min: 1,
-                max: Math.floor(BLOCK_HP_MAX * 0.05),
+                min: 0, //1,
+                max: 0, // Math.floor(BLOCK_HP_MAX * 0.05),
                 levelOpt: { 
                     levelCap: 20,
                     expCap: 1500,
@@ -523,6 +523,8 @@ var gameMod = (function(){
                         if(dist <= block.r + shot.r){
                             shot.lifespan = 0;
                             attackObject(state.game, block, shot.damage);
+                            // start effect
+                            poolMod.createEffect(block);
                             // if the block is dead
                             if(block.hp.current <= 0 ){
                                 // aways give block money on a 'shot death'
@@ -619,9 +621,6 @@ var gameMod = (function(){
                 obj.damage = 1;
                 // block money based on BASE amount plus DIST AMOUNT
                 obj.money = BLOCK_MONEY_BASE + Math.round(game.map.per * BLOCK_MONEY_DIST);
-
-                // start effect
-                poolMod.createEffect(obj);
 
             },
             update: function(obj, pool, state, secs){

@@ -98,7 +98,7 @@
 ## 0.19.0 - weapon.onShotHit methods, and block burn
 * can add a weapon.onShotHit method that will fire when a shot hits a block
 
-## 0.18.0 - Block effects property
+## 0.18.0 - Block effects property started
 * (done) have a MONEY-PERLOSS-ON-DEATH const
 * (done) dirrectly update map.pps in main.js
 * (done) display objects in pool.js should have a type property
@@ -106,9 +106,11 @@
 * (done) an effects object contains an effectType prop
 * (done) have a 'burn' effectType
 * (done) I will need to have an update method for effects in poolMod
+* (done) have a block.awardBlockMoney prop where if true will award the block money to the player when hp.current === 0
+* (done) if one or more burn effects are in effect block.awardBlockMoney = true, else false
 
-* have a block.awardBlockMoney prop where if true will award the block money to the player when hp.current === 0
-* if one or more burn effects are in effect block.awardBlockMoney = true, else false
+* call poolMod.createEffect when a shot hits a block
+
 * a weapon can have an effects prop
 ```js
 weapon.effects = [
