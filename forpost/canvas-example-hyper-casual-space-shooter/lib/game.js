@@ -17,7 +17,7 @@ var gameMod = (function(){
 
     // SHIP AND MAP VALUES
     SHIP_AUTOFIRE = false,
-    SHIP_HP = 10,
+    SHIP_HP = 1,
     SHIP_AUTOHEAL_ENABLED=false,
     SHIP_AUTOHEAL_RATE = 1,
     SHIP_AUTOHEAL_AMOUNT = 1,
@@ -465,6 +465,7 @@ var gameMod = (function(){
         game.ship = createShip(game);
         game.map.x = 0;
         game.map.y = 0;
+        game.map.pps = 0;
         // set all blocks inactive
         poolMod.getAllActive(game.blocks).forEach(function(block){
            block.active = false;
