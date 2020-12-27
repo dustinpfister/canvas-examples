@@ -62,6 +62,7 @@ var loop = function () {
     var now = new Date(),
     t = now - lt,
     game = state.game,
+    map = game.map,
     input = state.input,
     secs = t / 1000;
     requestAnimationFrame(loop);
@@ -75,10 +76,10 @@ var loop = function () {
            game.map.pps = game.map.pps > game.map.maxPPS ? game.map.maxPPS : game.map.pps;
         }
         if(input.keys.a){
-            input.degree += input.degreesPerSecond * secs;
+            input.degree += map.degreesPerSecond * secs;
         }
         if(input.keys.d){
-            input.degree -= input.degreesPerSecond * secs;
+            input.degree -= map.degreesPerSecond * secs;
         }
         if(input.keys.s){
             game.map.pps -= game.map.ppsDelta * secs;
@@ -87,10 +88,10 @@ var loop = function () {
         // pointer update map radian
         if(input.pointer.down && input.pointer.dist <= 32){
             if(input.pointer.dir === 1){
-                input.degree += input.degreesPerSecond * secs;
+                input.degree += map.degreesPerSecond * secs;
             }
             if(input.pointer.dir === -1){
-                input.degree -= input.degreesPerSecond * secs;
+                input.degree -= map.degreesPerSecond * secs;
             }
         }
         // pointer update map pps

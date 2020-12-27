@@ -762,6 +762,8 @@ var gameMod = (function(){
             map: { // map position
                 x: 0,
                 y: 0,
+                degree: 0,
+                degreesPerSecond: 180,
                 radian: 0,
                 aToOrigin: 0,
                 pps: 0,
@@ -822,10 +824,10 @@ var gameMod = (function(){
           map.y = Math.sin(radian) * MAP_MAX_DIST;
         }
     };
-    // update the MAP using current RADIAN and PPS values
-    // with the given SECS value.
+    // update the MAP 
     var updateMap = function(game, secs){
         var map = game.map;
+        //map.radian = utils.wrapRadian(Math.PI / 180 * map.degree);
         map.x += Math.cos(map.radian) * map.pps * secs;
         map.y += Math.sin(map.radian) * map.pps * secs;
         map.dist = utils.distance(0, 0, map.x, map.y);
