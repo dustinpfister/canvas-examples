@@ -44,12 +44,6 @@
 ## 0.x.0 - Keyboard Button Nav
 * can use arrow keys and enter button as a way to select and click buttons with the keyboard
 
-<!-- SAVE STATES -->
-
-## 0.x.0 - save states
-* make money part of the save state
-* make upgrades part of the save state
-
 <!-- MONEY -->
 
 ## 0.x.0 - Base Away Production
@@ -80,7 +74,15 @@
 ## 0.x.0 - block Armor
 * add an armor property for blocks
 
+<!-- SAVE STATES -->
+
+## 0.x.0 - save states
+* make money part of the save state
+* make upgrades part of the save state
+
 <!-- EFFECTS -->
+
+## 0.x.0 - Money per hit Effect
 
 ## 0.x.0 - Sunder Armor Effect
 * Add a Sunder Armor effect that will reduce block armor by 5 to 10 percent per stack for 1 to 5 stacks
@@ -117,7 +119,7 @@
 * (done) rate of ship heading change should be part of game object
 * (done) have a SHIP-ROTATION-RATE const object with min and max props
 * (done) add a ship menu upgrade for ship rotation
-* make a 0.18.0 pkg folder
+* (done) make a 0.18.0 pkg folder
 
 ## 0.17.0 - weapon.range, Shots Per Fire, and fire update methods
 * (done) have a weapon.range property that will be the max dist that a shot will go
