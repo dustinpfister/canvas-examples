@@ -63,7 +63,7 @@ var gameMod = (function(){
                     tableY: 120 - 12
                 }
             },
-
+/*
             effects:[ { // effects for pulse gun
                 effectType: 'burn',
                 chance: 0.25,
@@ -72,8 +72,8 @@ var gameMod = (function(){
                 every: 0.25,
                 count: 10
             }],
-
-           // effects: ['burn'],
+*/
+            effects: ['burn'],
             shotRange: 128,
             shotPPS: 256,
             shotsPerFire: [2, 2, 1],
@@ -582,6 +582,7 @@ var gameMod = (function(){
                             attackObject(state.game, block, shot.damage);
                             // create any effects the shot might have
                             shot.effects.forEach(function(effect){
+                                    effect = poolMod.parseEffectObject(effect);
                                 // check stack count
                                 //var stackCount = block.effectStats[effect.effectType] || 0;
                                 //if( stackCount < effect.maxStack){
