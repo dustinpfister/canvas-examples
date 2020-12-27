@@ -40,7 +40,9 @@ var poolMod = (function () {
             if(obj.effects.length < EFFECTS_MAX){
                 obj.awardBlockMoney = true; // just set this true here for now as there is just one effect
                 obj.effects.push({
-                    effectType: 'burn',
+                    effectType: opt.effectType || 'burn',
+                    maxStack: opt.maxStack === undefined ? 3 : opt.maxStack,
+                    chance: opt.chance === undefined ? 1 : opt.chance,
                     damage: opt.damage === undefined ? 3 : opt.damage,  // 1 DAMAGE EVERY 1 second for a COUNT of 5 times
                     every: opt.every === undefined ? 1 : opt.every,
                     count: opt.count === undefined ? 5 : opt.count,
@@ -76,9 +78,24 @@ var poolMod = (function () {
 
         }
     };
+    // parse a
+    api.parseEffect = function(){
+    };
     // start an effect for the given display object
-    api.createEffect = function(obj, opt){
-        Effects.create(obj, opt);
+    api.createEffect = function(obj, effect){
+        var opt = effect;
+        if(typeof effect === 'string'){
+            opt = {
+                effectType : effect
+            };
+        }
+        opt.effectType = opt.effectType || 'burn';
+        opt.maxStack = opt.maxStack || 5;
+        var stackCount = obj.effectStats[effect.effectType] || 0;
+        console.log('hello');
+        if( stackCount < effect.maxStack){
+            Effects.create(obj, opt);
+        }
     };
     // get an object of effect types and count from the given object
     api.getEffectStats = function(obj){

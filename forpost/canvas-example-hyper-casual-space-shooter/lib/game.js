@@ -22,11 +22,11 @@ var gameMod = (function(){
     SHIP_AUTOHEAL_ENABLED=true,
     SHIP_AUTOHEAL_RATE = 10,
     SHIP_AUTOHEAL_AMOUNT = 1,
-    SHIP_ROTATION_RATE_MIN = 20,   // min and max rotattion rates in degrees
+    SHIP_ROTATION_RATE_MIN = 45,   // min and max rotattion rates in degrees
     SHIP_ROTATION_RATE_MAX = 180,
     SHIP_MAX_SPEED_START = 64,     // starting max ship speed in pps
     SHIP_MAX_SPEED_MAX = 1024,     // fully upgraded max ship speed in pps
-    SHIP_ACC_START = 8,            // starting Acceleration in ppsps
+    SHIP_ACC_START = 32,            // starting Acceleration in ppsps
     SHIP_ACC_MAX = 128,            // fully upgraded max ship speed in pps
     MAP_MAX_DIST = Math.pow(10,5), //Number.MAX_SAFE_INTEGER;      // max distance from BASE (0,0)
 
@@ -52,8 +52,8 @@ var gameMod = (function(){
                 }
             },
             shotDamage: { // min and max range for shot damage
-                min: 1,
-                max: Math.floor(BLOCK_HP_MAX * 0.05),
+                min: 0,
+                max: 0, //Math.floor(BLOCK_HP_MAX * 0.05),
                 levelOpt: { 
                     levelCap: 10,
                     expCap: 1500,
@@ -63,7 +63,8 @@ var gameMod = (function(){
                     tableY: 120 - 12
                 }
             },
-            effects:[ {
+
+            effects:[ { // effects for pulse gun
                 effectType: 'burn',
                 chance: 0.25,
                 maxStack: 5,
@@ -71,6 +72,8 @@ var gameMod = (function(){
                 every: 0.25,
                 count: 10
             }],
+
+           // effects: ['burn'],
             shotRange: 128,
             shotPPS: 256,
             shotsPerFire: [2, 2, 1],
@@ -184,18 +187,7 @@ var gameMod = (function(){
                 },
                 shotPPS: weaponDATA.shotPPS || 128,
                 shotsPerFireIndex : 0,
-                effects: weaponDATA.effects || [
-/*
-                    {
-                        effectType: 'burn',
-                        chance: 1,
-                        maxStack: 2,
-                        damage: 0.005,
-                        every: 0.25,
-                        count: 100
-                    }
-*/
-                ]
+                effects: weaponDATA.effects || []
             };
         });
     };
@@ -590,10 +582,10 @@ var gameMod = (function(){
                             // create any effects the shot might have
                             shot.effects.forEach(function(effect){
                                 // check stack count
-                                var stackCount = block.effectStats[effect.effectType] || 0;
-                                if( stackCount < effect.maxStack){
+                                //var stackCount = block.effectStats[effect.effectType] || 0;
+                                //if( stackCount < effect.maxStack){
                                     poolMod.createEffect(block, effect);
-                                }
+                                //}
                             });
                             // if the block is dead
                             if(block.hp.current <= 0 ){

@@ -94,10 +94,12 @@
 * the distance of the inner circle from the center to the outer circle will be used to set map.pps
 * The actual distnace used will be from a certain min radius from the center so that it is easy to each and stay at 0 pps
 
-## 0.19.0 - Effects upgrade page started, ACID Effect
+## 0.19.0 - Effect Types, Effects upgrade page started, ACID Effect
+* start an EFFECT-TYPES const in pool.js that will contain hard coded values for EFFECTS
+* A Weapon.effects Object should just be just an Array of types that the wepaon uses.
+* add an upgrades page for Effects
 * add an ACID Effect that will case 1x extra Damage per shot per stack
 * make ACID Effect the first efefct that will stay in effect for the block untill the block is destroyed
-* add an upgrades page for Effects
 * add a burn effect upgrade
 * autoFire button as first space mode button
 
