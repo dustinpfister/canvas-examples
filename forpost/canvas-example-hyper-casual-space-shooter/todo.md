@@ -50,11 +50,6 @@
 * make money part of the save state
 * make upgrades part of the save state
 
-<!-- BLOCKS - ADD FEATURES THAT MAKE THE GAME MORE FUN, ADDICTIVE, OR INTERESTING -->
-
-## 0.x.0 - block Armor
-* add an armor property for blocks
-
 <!-- MONEY -->
 
 ## 0.x.0 - Base Away Production
@@ -80,6 +75,27 @@
 * acc.radius is the potential radius in which a shot will hit from perfect accuracy to acc.radius
 * acc.per is applied with acc.radius to find and actual radius that will be used to set shot location
 
+<!-- BLOCKS - ADD FEATURES THAT MAKE THE GAME MORE FUN, ADDICTIVE, OR INTERESTING -->
+
+## 0.x.0 - block Armor
+* add an armor property for blocks
+
+<!-- EFFECTS -->
+
+## 0.x.0 - Sunder Armor Effect
+* Add a Sunder Armor effect that will reduce block armor by 5 to 10 percent per stack for 1 to 5 stacks
+* sunder armor is a timed effect
+
+## 0.x.0 - Critical Hit Effect
+* add CRIDICAL HIT effect that will cause 5 to 25 percent of total block hp in damage
+
+## 0.19.0 - Effects upgrade page started, ACID Effect
+* add an ACID Effect that will case 1x extra Damage per shot per stack
+* make ACID Effect the first efefct that will stay in effect for the block untill the block is destroyed
+* add an upgrades page for Effects
+* add a burn effect upgrade
+* autoFire button as first space mode button
+
 <!-- ADD ADDITIONAL CORE FEATURES -->
 
 ## 0.18.0 - Block effects property started
@@ -99,13 +115,8 @@
 * (done) get max stack prop working
 * (done) GAME-UPDATE-MAX-SECS const of main update loop
 * (done) rate of ship heading change should be part of game object
-
-* have a SHIP-ROTATION-RATE const object with min and max props
-* add a ship menu upgrade for ship rotation
-
-* add a burn effect upgrade
-
-* autoFire button as first space mode button
+* (done) have a SHIP-ROTATION-RATE const object with min and max props
+* (done) add a ship menu upgrade for ship rotation
 * make a 0.18.0 pkg folder
 
 ## 0.17.0 - weapon.range, Shots Per Fire, and fire update methods
