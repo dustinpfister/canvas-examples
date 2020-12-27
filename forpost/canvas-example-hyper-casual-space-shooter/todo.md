@@ -12,29 +12,12 @@
 * have a state.canvasHalfWidth, and state.canvasHalfHeight values
 * Replace hard coded 160, 120 values in draw.js, game.js, ect with state.canvasHalfWidth and state.canvasHalfHeigh
 
-## 0.x.0 - Better Graphics (CANVAS ONLY)
-* have canvas generated sheets for the ship, blocks, shots, and a background
-
 ## 0.x.0 - Common System for Object Movement
 * have a commom system for movement of objects
 * use the same commom system for 'shots', 'blocks', and any additional objects
 
 ## 0.x.0 - Use Math.log to set block values
 * block values effected by distance go up using Math.log
-
-## 0.x.0 - better mouse and touch support
-* add mouse event support
-* have a set of two circles in the lower right corner that will be a 'pointerControl' area
-* move the map around with the mouse by clicking and holding in the 'pointerControl' area
-* the smaller inner circle in the 'pointerControl' area sill set the current map.radian and map.pps values
-* The angle of the inner cirle to the center of the circle will be used to set map.radian
-* the distance of the inner circle from the center to the outer circle will be used to set map.pps
-* The actual distnace used will be from a certain min radius from the center so that it is easy to each and stay at 0 pps
-
-## 0.x.0 - spawn blocks durring movement
-* have a BLOCK-SPAWN-DIST, and BLOCK-COUNT-PER-SPAWN-DIST
-* have a game.spawnDist value that is updated each time the map position changes
-* when game.spawnDist >= BLOCK-SPAWN-DIST set up to BLOCK-COUNT-PER-SPAWN-DIST active
 
 ## 0.x.0 - change weapon forward and backward buttons, common game.buttons
 * have a common game.buttons object for buttons that will show up for any mode not just 'base' mode
@@ -58,6 +41,8 @@
 
 <!-- WEAPONS -->
 
+## 0.x.0 - Missles
+
 ## 0.x.0 - Weapon on fire update methods
 * have a onFireUpdate method as an option for a weapon
 
@@ -69,27 +54,45 @@
 * acc.radius is the potential radius in which a shot will hit from perfect accuracy to acc.radius
 * acc.per is applied with acc.radius to find and actual radius that will be used to set shot location
 
-<!-- BLOCKS - ADD FEATURES THAT MAKE THE GAME MORE FUN, ADDICTIVE, OR INTERESTING -->
+<!-- POLLISH ( ADDITIAL NEEDED BASIC FEATURES, IMPROVEMENTS OF FEATURES IN PLACE, SOME MORE FUN FEATURES -->
+<!-- 
+   For 0.19.x forward I want to get this game ready for the front page of my main canvas-examples post. There are still
+   Additional basic features that must be added (SAVE STATES). There are also features that are in place all ready
+   but they aere in poor shape (POINTER INPUT CONTROL, AND BLOCK POSITIONING). I do not want to go nuts with graphics, 
+   but I think it should be okay to have at least one minor where I work out some better basic canvas only graphics. Also
+   At this time I think I should add additional Block realted features Mainly Block Armor and additional Effects.
+-->
 
-## 0.x.0 - block Armor
-* add an armor property for blocks
-
-<!-- SAVE STATES -->
-
-## 0.x.0 - save states
+## 0.25.0 - save states
 * make money part of the save state
 * make upgrades part of the save state
 
-<!-- EFFECTS -->
+## 0.24.0 - spawn blocks durring movement
+* have a BLOCK-SPAWN-DIST, and BLOCK-COUNT-PER-SPAWN-DIST
+* have a game.spawnDist value that is updated each time the map position changes
+* when game.spawnDist >= BLOCK-SPAWN-DIST set up to BLOCK-COUNT-PER-SPAWN-DIST active
 
-## 0.x.0 - Money per hit Effect
-
-## 0.x.0 - Sunder Armor Effect
-* Add a Sunder Armor effect that will reduce block armor by 5 to 10 percent per stack for 1 to 5 stacks
+## 0.23.0 - Additional Effects
+* Add a SUNDER ARMOR effect that will reduce block armor by 5 to 10 percent per stack for 1 to 5 stacks
 * sunder armor is a timed effect
-
-## 0.x.0 - Critical Hit Effect
 * add CRIDICAL HIT effect that will cause 5 to 25 percent of total block hp in damage
+* add a MOMNEY PER HIT EFFECT
+
+## 0.22.0 - Block Armor and Shot Deflection
+* add an armor property for blocks
+* add a shotDeflectChance prop
+
+## 0.21.0 - Better Graphics (CANVAS ONLY)
+* have canvas generated sheets for the ship, blocks, shots, and a background
+
+## 0.20.0 - better mouse and touch support
+* add mouse event support
+* have a set of two circles in the lower right corner that will be a 'pointerControl' area
+* move the map around with the mouse by clicking and holding in the 'pointerControl' area
+* the smaller inner circle in the 'pointerControl' area sill set the current map.radian and map.pps values
+* The angle of the inner cirle to the center of the circle will be used to set map.radian
+* the distance of the inner circle from the center to the outer circle will be used to set map.pps
+* The actual distnace used will be from a certain min radius from the center so that it is easy to each and stay at 0 pps
 
 ## 0.19.0 - Effects upgrade page started, ACID Effect
 * add an ACID Effect that will case 1x extra Damage per shot per stack
@@ -99,7 +102,9 @@
 * autoFire button as first space mode button
 
 <!-- ADD ADDITIONAL CORE FEATURES -->
-
+<!--
+   From 0.12.0 to 0.18.0 The focus has been to continue working out what the very core of this game is. I have continued puting off basic features such as save states in favor of continuing to work out the reasons why I should even bother adding features like that. So then many useful features that help make the game a little more fun where added durring this time. Mainly an experence point system, weapon features, upgrades, and effects that effect blocks where also added.
+-->
 ## 0.18.0 - Block effects property started
 * (done) have a MONEY-PERLOSS-ON-DEATH const
 * (done) dirrectly update map.pps in main.js
@@ -209,6 +214,9 @@
 * (done) make a pkg-0-12-0.html
 
 <!-- WORK OUT JUST A BASIC SET OF FEATURES -->
+<!-- 
+  From 0.0.0 to 0.11.0 Just the very basic idea of this game was worked out of course. Other ver basic core features where also added during this time, but not well refined. One example of this is the code worked out for block positioning, at first blocks where just piled on top of each other, however later on in 0.8.0 a better system was added in place of this. However the positioning of blocks was still in need of additional improvment. Another feature that was added, but not well refined is pointer control.
+-->
 
 ## 0.11.0 - Basic Pointer Event Support
 * (done) start basic mouse and touch support
