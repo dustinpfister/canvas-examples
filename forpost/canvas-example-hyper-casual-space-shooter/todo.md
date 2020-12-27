@@ -103,6 +103,7 @@
 * rate of ship heading change should be part of game object
 * have a SHIP-ROTATION-RATE const object with min and max props
 * add a ship menu upgrade for ship rotation
+* add a burn effect upgrade
 * make a 0.18.0 pkg folder
 
 ## 0.17.0 - weapon.range, Shots Per Fire, and fire update methods

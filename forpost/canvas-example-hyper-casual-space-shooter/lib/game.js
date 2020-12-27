@@ -4,6 +4,7 @@ var gameMod = (function(){
 
     // MONEY
     var GAME_MONEY_START = 10000,
+    GAME_UPDATE_MAX_SECS = 0.8,   // max secs value for main update loop
     MONEY_PERLOSS_ON_DEATH = 0.1, // percent of money loss on death 0-1
 
     // BLOCK CONSTANTS
@@ -836,6 +837,11 @@ var gameMod = (function(){
     };
 
     api.update = function(game, secs, state){
+
+        // clamp secs between 0 and GAME_UPDATE_MAX_SECS const
+        secs = secs > GAME_UPDATE_MAX_SECS ? GAME_UPDATE_MAX_SECS : secs;
+        secs = secs < 0 ? 0 : secs;
+
         // switch modes based on map.dist
         if(game.map.dist > BASE_DIST && game.mode === 'base'){
             game.mode = 'space';
