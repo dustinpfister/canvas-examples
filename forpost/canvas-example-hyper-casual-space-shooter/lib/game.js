@@ -557,6 +557,7 @@ var gameMod = (function(){
                     // shot effects
                     shot.effects = [];
                     weapon.effects.forEach(function(effect){
+                        effect = poolMod.parseEffectObject(effect);
                         var roll = Math.random();
                         if(roll < effect.chance){
                             // push a refernce to the effect object

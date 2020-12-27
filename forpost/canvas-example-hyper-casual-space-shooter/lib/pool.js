@@ -78,23 +78,25 @@ var poolMod = (function () {
 
         }
     };
-    // parse a
-    api.parseEffect = function(){
-    };
-    // start an effect for the given display object
-    api.createEffect = function(obj, effect){
-        var opt = effect;
+    // return a vaild effect object from a given string of an effect type, or incompleate object
+    api.parseEffectObject = function(effect){
         if(typeof effect === 'string'){
-            opt = {
+            effect = {
                 effectType : effect
             };
         }
-        opt.effectType = opt.effectType || 'burn';
-        opt.maxStack = opt.maxStack || 5;
+        effect.chance = 1;
+        effect.maxStack = 3;
+        effect.damage = 1;
+        effect.every = 0.25;
+        effect.count = 10;
+        return effect;
+    };
+    // start an effect for the given display object
+    api.createEffect = function(obj, effect){
         var stackCount = obj.effectStats[effect.effectType] || 0;
-        console.log('hello');
         if( stackCount < effect.maxStack){
-            Effects.create(obj, opt);
+            Effects.create(obj, effect);
         }
     };
     // get an object of effect types and count from the given object
