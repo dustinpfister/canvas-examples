@@ -91,13 +91,14 @@ var draw = (function(){
         if(game.mode === 'base'){
             // draw grids for the current weapon
             if(game.buttons.currentPage === 'weapons'){
-                var upgradeIndex = game.ship.weaponIndex * 2 + 2;
+                var upgradeIndex = game.ship.weaponIndex * 2 + 3;
                 api.xpTable(ctx, game.upgrades[upgradeIndex]);
                 api.xpTable(ctx, game.upgrades[upgradeIndex + 1]);
             }
             if(game.buttons.currentPage === 'ship'){
                 api.xpTable(ctx, game.upgrades[0]);
                 api.xpTable(ctx, game.upgrades[1]);
+                api.xpTable(ctx, game.upgrades[2]);
             }
         }
 
