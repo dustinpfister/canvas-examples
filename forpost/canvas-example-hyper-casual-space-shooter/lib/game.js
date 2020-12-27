@@ -347,6 +347,20 @@ var gameMod = (function(){
                     upgrade.applyToState(game, upgrade.levelObj, upgrade);
                     button.cost = upgrade.levelObj.xpForNext;
                 }
+            },
+            3: {
+                desc: 'Rotation',
+                x: 64,
+                y: 64,
+                r: 16,
+                cost: 0,
+                upgradeID: 's3',
+                onClick: function(game, button){
+                    var upgrade = button.upgrade;
+                    buyUpgrade(game, upgrade);
+                    upgrade.applyToState(game, upgrade.levelObj, upgrade);
+                    button.cost = upgrade.levelObj.xpForNext;
+                }
             }
         }
     };
@@ -410,6 +424,22 @@ var gameMod = (function(){
                 perArgs: [],
                 tableX: 260,
                 tableY: 120 - 12 + 32
+            }
+        },
+        {
+            id: 's3',
+            desc: 'Rotation',
+            applyToState: function(game, levelObj, upgrade){
+                //var delta = SHIP_ACC_MAX - SHIP_ACC_START;
+                //game.map.ppsDelta = SHIP_ACC_START + delta * levelObj.perToLevelCap;
+            },
+            levelOpt: {
+                levelCap: 4,
+                expCap: 100,
+                perMethod: 'log1',
+                perArgs: [],
+                tableX: 260,
+                tableY: 120 - 12 + 64
             }
         }
     ];

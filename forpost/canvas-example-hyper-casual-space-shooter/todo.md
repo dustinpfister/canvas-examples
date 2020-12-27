@@ -97,13 +97,16 @@
 * (done) a weapon can have an effects prop
 * (done) have a weapon.effect prop just for pulse gun for now
 * (done) get max stack prop working
+* (done) GAME-UPDATE-MAX-SECS const of main update loop
 
-* MAX-UPDATE-SECS const of main update loop
-* autoFire button as first space mode button
+
 * rate of ship heading change should be part of game object
 * have a SHIP-ROTATION-RATE const object with min and max props
 * add a ship menu upgrade for ship rotation
+
 * add a burn effect upgrade
+
+* autoFire button as first space mode button
 * make a 0.18.0 pkg folder
 
 ## 0.17.0 - weapon.range, Shots Per Fire, and fire update methods
