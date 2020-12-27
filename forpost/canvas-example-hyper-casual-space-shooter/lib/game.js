@@ -432,8 +432,8 @@ var gameMod = (function(){
             id: 's3',
             desc: 'Rotation',
             applyToState: function(game, levelObj, upgrade){
-                //var delta = SHIP_ACC_MAX - SHIP_ACC_START;
-                //game.map.ppsDelta = SHIP_ACC_START + delta * levelObj.perToLevelCap;
+                var delta = SHIP_ROTATION_RATE_MAX - SHIP_ROTATION_RATE_MIN;
+                game.map.degreesPerSecond = SHIP_ROTATION_RATE_MIN + delta * levelObj.perToLevelCap;
             },
             levelOpt: {
                 levelCap: 4,
