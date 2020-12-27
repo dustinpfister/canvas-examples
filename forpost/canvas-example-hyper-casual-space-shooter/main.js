@@ -76,10 +76,10 @@ var loop = function () {
            map.pps = map.pps > map.maxPPS ? map.maxPPS : map.pps;
         }
         if(input.keys.a){
-            input.degree += map.degreesPerSecond * secs;
+            map.degree += map.degreesPerSecond * secs;
         }
         if(input.keys.d){
-            input.degree -= map.degreesPerSecond * secs;
+            map.degree -= map.degreesPerSecond * secs;
         }
         if(input.keys.s){
             map.pps -= map.ppsDelta * secs;
@@ -88,10 +88,10 @@ var loop = function () {
         // pointer update map radian
         if(input.pointer.down && input.pointer.dist <= 32){
             if(input.pointer.dir === 1){
-                input.degree += map.degreesPerSecond * secs;
+                map.degree += map.degreesPerSecond * secs;
             }
             if(input.pointer.dir === -1){
-                input.degree -= map.degreesPerSecond * secs;
+                map.degree -= map.degreesPerSecond * secs;
             }
         }
         // pointer update map pps
@@ -107,10 +107,10 @@ var loop = function () {
         // number button check
         numberButtonCheck(game, input);
         // wrap degree
-        input.degree = utils.mod(input.degree, 360);
+        map.degree = utils.mod(map.degree, 360);
         // update game
         //gameMod.setMapMovement(game, input.degree, input.pps);
-        game.map.radian = utils.wrapRadian(Math.PI / 180 * input.degree);
+        map.radian = utils.wrapRadian(Math.PI / 180 * map.degree);
         gameMod.update(game, secs, state);
         // draw
         draw.background(state.ctx, state);
