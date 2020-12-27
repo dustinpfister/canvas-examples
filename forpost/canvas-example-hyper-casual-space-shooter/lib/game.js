@@ -69,7 +69,7 @@ var gameMod = (function(){
                 count: 10
             }],
             shotRange: 128,
-            shotPPS: 128,
+            shotPPS: 256,
             shotsPerFire: [2, 2, 1],
             onFireStart: function(game, secs, state){
                 var weapon = game.weapons[game.ship.weaponIndex];
