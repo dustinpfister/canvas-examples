@@ -1,8 +1,6 @@
 # canvas-example-hyper-casual-space-shooter
 
-<!-- SHIP SPEED UPGRADES - ADD FEATURES THAT MAKE THE GAME MORE FUN, ADDICTIVE, OR INTERESTING -->
-
-<!-- WARP - ADD FEATURES THAT MAKE THE GAME MORE FUN, ADDICTIVE, OR INTERESTING -->
+<!-- WARP -->
 
 ## 0.x.0 - warp
 * add a warp home button in 'space' mode
@@ -14,8 +12,6 @@
 * have a state.canvasHalfWidth, and state.canvasHalfHeight values
 * Replace hard coded 160, 120 values in draw.js, game.js, ect with state.canvasHalfWidth and state.canvasHalfHeigh
 
-## 0.x.0 - Anamated buttons
-
 ## 0.x.0 - Better Graphics (CANVAS ONLY)
 * have canvas generated sheets for the ship, blocks, shots, and a background
 
@@ -25,11 +21,6 @@
 
 ## 0.x.0 - Use Math.log to set block values
 * block values effected by distance go up using Math.log
-
-
-## 0.x.0 - MAX_SHOT_DAMAGE
-* have a MAX-SHOT-DAM-DAMAGE constant that will be used to set the max amount of damage a shot can have
-* set "Atom" weapon damage to MAX-SHOT-DAMAGE
 
 ## 0.x.0 - better mouse and touch support
 * add mouse event support
@@ -56,10 +47,13 @@
 <!-- SAVE STATES -->
 
 ## 0.x.0 - save states
+* make money part of the save state
+* make upgrades part of the save state
 
 <!-- BLOCKS - ADD FEATURES THAT MAKE THE GAME MORE FUN, ADDICTIVE, OR INTERESTING -->
 
 ## 0.x.0 - block Armor
+* add an armor property for blocks
 
 <!-- MONEY -->
 
@@ -73,15 +67,10 @@
 * have block money start out low
 * block money will go up as block money upgrade is upgraded
 
-<!-- WEAPONS - ADD FEATURES THAT MAKE THE GAME MORE FUN! -->
+<!-- WEAPONS -->
 
 ## 0.x.0 - Weapon on fire update methods
 * have a onFireUpdate method as an option for a weapon
-
-## 0.x.0 - weapon shot types and properties - Damage Over Time
-* have more than one type of 'shot' by adding a type property for shots
-* current basic shots can still be in the game as 'normal' type shots
-* start a 'dot' shot type that will add a damage over time effect to blocks
 
 ## 0.x.0 - Weapon Accuracy Button at Base
 * add a 'upgrade accuracy' button for the current weapon in 'base' mode
@@ -91,12 +80,7 @@
 * acc.radius is the potential radius in which a shot will hit from perfect accuracy to acc.radius
 * acc.per is applied with acc.radius to find and actual radius that will be used to set shot location
 
-
-
 <!-- ADD ADDITIONAL CORE FEATURES -->
-
-## 0.19.0 - weapon.onShotHit methods, and block burn
-* can add a weapon.onShotHit method that will fire when a shot hits a block
 
 ## 0.18.0 - Block effects property started
 * (done) have a MONEY-PERLOSS-ON-DEATH const
@@ -112,13 +96,14 @@
 * (done) display current effects for a block including type and count
 * (done) a weapon can have an effects prop
 * (done) have a weapon.effect prop just for pulse gun for now
-* get max stack prop working
+* (done) get max stack prop working
 
 * MAX-UPDATE-SECS const of main update loop
 * autoFire button as first space mode button
 * rate of ship heading change should be part of game object
 * have a SHIP-ROTATION-RATE const object with min and max props
 * add a ship menu upgrade for ship rotation
+* make a 0.18.0 pkg folder
 
 ## 0.17.0 - weapon.range, Shots Per Fire, and fire update methods
 * (done) have a weapon.range property that will be the max dist that a shot will go
