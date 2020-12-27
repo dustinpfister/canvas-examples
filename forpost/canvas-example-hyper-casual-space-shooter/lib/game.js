@@ -3,7 +3,7 @@ var gameMod = (function(){
     // CONSTANTS
 
     // MONEY
-    var GAME_MONEY_START = 10000,
+    var GAME_MONEY_START = 0, //750000,
     GAME_UPDATE_MAX_SECS = 0.8,   // max secs value for main update loop
     MONEY_PERLOSS_ON_DEATH = 0.1, // percent of money loss on death 0-1
 
@@ -43,7 +43,7 @@ var gameMod = (function(){
                 min: 2,
                 max: 10,
                 levelOpt: {
-                    levelCap: 20,
+                    levelCap: 10,
                     expCap: 1000,
                     perMethod: 'log1',
                     perArgs: [],
@@ -55,7 +55,7 @@ var gameMod = (function(){
                 min: 1,
                 max: Math.floor(BLOCK_HP_MAX * 0.05),
                 levelOpt: { 
-                    levelCap: 20,
+                    levelCap: 10,
                     expCap: 1500,
                     perMethod: 'log1',
                     perArgs: [],
@@ -100,8 +100,8 @@ var gameMod = (function(){
                 min: 4,
                 max: 10,
                 levelOpt: { 
-                    levelCap: 20,
-                    expCap: 20000,
+                    levelCap: 10,
+                    expCap: 15000,
                     perMethod: 'log1',
                     perArgs: [],
                     tableX: 160 - 12,
@@ -112,7 +112,7 @@ var gameMod = (function(){
                 min: Math.floor(BLOCK_HP_MAX * 0.05),
                 max: Math.floor(BLOCK_HP_MAX * 0.25),
                 levelOpt: { 
-                    levelCap: 20,
+                    levelCap: 10,
                     expCap: 50000,
                     perMethod: 'log1',
                     perArgs: [],
@@ -142,8 +142,8 @@ var gameMod = (function(){
                 min: 1,
                 max: 5,
                 levelOpt: { 
-                    levelCap: 20,
-                    expCap: 100000,
+                    levelCap: 10,
+                    expCap: 25000,
                     perMethod: 'log1',
                     perArgs: [],
                     tableX: 160 - 12,
@@ -154,8 +154,8 @@ var gameMod = (function(){
                 min: Math.floor(BLOCK_HP_MAX * 0.25),
                 max: BLOCK_HP_MAX,
                 levelOpt: { 
-                    levelCap: 20,
-                    expCap: 250000,
+                    levelCap: 10,
+                    expCap: 30000,
                     perMethod: 'log1',
                     perArgs: [],
                     tableX: 160 - 12,
@@ -403,8 +403,8 @@ var gameMod = (function(){
                 game.map.maxPPS = SHIP_MAX_SPEED_START + delta * levelObj.perToLevelCap;
             },
             levelOpt: { 
-                levelCap: 50,
-                expCap: 50000,
+                levelCap: 10,
+                expCap: 10000,
                 perMethod: 'log1',
                 perArgs: [],
                 tableX: 260,
@@ -420,8 +420,8 @@ var gameMod = (function(){
                 
             },
             levelOpt: {
-                levelCap: 20,
-                expCap: 12500,
+                levelCap: 10,
+                expCap: 7500,
                 perMethod: 'log1',
                 perArgs: [],
                 tableX: 260,
@@ -436,8 +436,8 @@ var gameMod = (function(){
                 game.map.degreesPerSecond = SHIP_ROTATION_RATE_MIN + delta * levelObj.perToLevelCap;
             },
             levelOpt: {
-                levelCap: 4,
-                expCap: 100,
+                levelCap: 10,
+                expCap: 5000,
                 perMethod: 'log1',
                 perArgs: [],
                 tableX: 260,
