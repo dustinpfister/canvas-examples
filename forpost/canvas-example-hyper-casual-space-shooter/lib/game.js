@@ -22,10 +22,12 @@ var gameMod = (function(){
     SHIP_AUTOHEAL_ENABLED=true,
     SHIP_AUTOHEAL_RATE = 10,
     SHIP_AUTOHEAL_AMOUNT = 1,
-    SHIP_MAX_SPEED_START = 64, // starting max ship speed in pps
-    SHIP_MAX_SPEED_MAX = 1024,  // fully upgraded max ship speed in pps
-    SHIP_ACC_START = 8, // starting Acceleration in ppsps
-    SHIP_ACC_MAX = 128, // fully upgraded max ship speed in pps
+    SHIP_ROTATION_RATE_MIN = 20,   // min and max rotattion rates in degrees
+    SHIP_ROTATION_RATE_MAX = 180,
+    SHIP_MAX_SPEED_START = 64,     // starting max ship speed in pps
+    SHIP_MAX_SPEED_MAX = 1024,     // fully upgraded max ship speed in pps
+    SHIP_ACC_START = 8,            // starting Acceleration in ppsps
+    SHIP_ACC_MAX = 128,            // fully upgraded max ship speed in pps
     MAP_MAX_DIST = Math.pow(10,5), //Number.MAX_SAFE_INTEGER;      // max distance from BASE (0,0)
 
     // HOME BASE VALUES
@@ -762,8 +764,8 @@ var gameMod = (function(){
             map: { // map position
                 x: 0,
                 y: 0,
-                degree: 0,
-                degreesPerSecond: 180,
+                degree: 270,
+                degreesPerSecond: SHIP_ROTATION_RATE_MIN,
                 radian: 0,
                 aToOrigin: 0,
                 pps: 0,

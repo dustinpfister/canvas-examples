@@ -98,9 +98,8 @@
 * (done) have a weapon.effect prop just for pulse gun for now
 * (done) get max stack prop working
 * (done) GAME-UPDATE-MAX-SECS const of main update loop
+* (done) rate of ship heading change should be part of game object
 
-
-* rate of ship heading change should be part of game object
 * have a SHIP-ROTATION-RATE const object with min and max props
 * add a ship menu upgrade for ship rotation
 
