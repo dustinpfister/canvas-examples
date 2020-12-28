@@ -1,26 +1,28 @@
 # canvas-example-hyper-casual-space-shooter
 
-After working on a few [canvas examples](https://dustinpfister.github.io/2020/03/23/canvas-example/) where I end up writing thousands of lines of code, yet still feel as though the example is lacking, I now want to start making examples that fit the moto of "less code more game". So for this hyper casual space shooter I just wanted to make a simple game where I just fly around and blow up blocks. 
+O have worked on a fare number of [canvas examples](https://dustinpfister.github.io/2020/03/23/canvas-example/) where I end up writing thousands of lines of code, yet still feel as though the canvas example is lacking something. So now I want to start making examples that fit the moto of "less code more game" in an effort to break this cycle. 
+
+The general idea of this hyper casual style space shooter game is to just fly around and blow up blocks, and that is it. Of course I aim to add a great deal more to it on top of that, but I do not want to repeat some things that I have done in previous examples. The goal here should be to not just focus on continuing to work on a project, that is one thing that I want to do with some of my canvas examples that I think are worthy of more investment of time sure, but that alone is not enough. As I continue working on this example the focus should be on what I can add to this game idea that will make the game more fun, this canvas example is a game after all.
 
 ## Where to go to play this
 
-I have wrote a [blog post on hyper casual space shooter](https://dustinpfister.github.io/2020/12/11/canvas-example-hyper-casual-space-shooter/), as I do with all the examples in the forpost folder of this canvas examples repo. That page is also my prefered location for people to play the game, so if you feel compeled to share this please link to that page rather than here. However if you really want to play this locally, that of course can be done by just cloning down this repo.
+I have wrote a [blog post on hyper casual space shooter](https://dustinpfister.github.io/2020/12/11/canvas-example-hyper-casual-space-shooter/), as I do with all the examples in the forpost folder of this canvas examples repo. That page is also my prefered location for people to play the game, so if you feel compeled to share this please link to that page rather than here. However if you really want to play this locally, that of course can be done by just cloning down this repo. The game should work okay by way of the file protocol when it comes to playing it locally, the main index.html file should be the current state of the game, and on top of that there is the pkg folder when it comes to playing older builds.
 
-## Things I should keep in mind while working on this one
+## Things I should keep in mind while working on this canvas example
 
 The idea I have for this one is to just fly around and blast stuff, thats it. If I pour more time and energy into this example it should be to just make a more solid core of a game to which I might make additional forks off from. This example might in time end up being yet another canvas example compose of thousands of lines of code still, however I think that I should lay done some ground rules for myself this time to help keep myself from repeating old patterns.
 
-### 1 - Play my own game
+### 1 - Play my own game ( step outside of a developer mideset and enter the mindset of a gamer )
 
-One thing that I think that is hurting me is that I am seeing a lot of these canvas examples as chores that I just need to get out of the way so I can move on to the next thing. So to help put an end to this I should take at least a little time now and then to play the game myself. That is to actually play it manually rather than work out some code to automate the process of playing. The point of this is that if I do not find my own game fun, and I do not want to play it, why would anyone else want to?
+One thing that I think that is hurting me is that I am seeing a lot of these canvas examples as chores that I just need to get out of the way so I can move on to the next thing. So to help put an end to this I should take at least a little time now and then to play the game myself. That is to actually play it manually rather than work out some code to automate the process of playing. Simply put, if I do not find my own game fun, and I do not want to play it, why would anyone else want to?
 
-If I find that the game is boring, then I should take a moment to think about what I can add to the gamne to make it not so boring. It I think that I level up to fast, teak some values to make the process of doing so take a little longer. If I think that it takes way to long to level up teak some values back the other way.
+If I find that the game is boring, then I should take a moment to think about what I can add to the gamne to make it not so boring. It I think that I level up to fast, teak some values to make the process of doing so take a little longer. If I think that it takes way to long to level up teak some values back the other way. Also should I even have an experence point system to begin with? If I do have an experence point system what else should be going on with the game beyond just that when it comes to weapons, the properties of the blocks, effects on blocks, and resources?
 
 ### 2 - Do not just start adding every little feature that comes to mind
 
-This is a problem that seems to keep creeping up in other projects. For example in Mr Sun, and also cross hairs I have added an animated buttons feature. This kind of feature might make the project a little more flashy and interesting maybe, but does it really add value to a game itself? I would say no.
+This is a problem that seems to keep creeping up in other projects. For example in Mr Sun, and also cross hairs I have added an animated buttons feature. This kind of feature might make the project a little more flashy and interesting maybe, but does it really add value to a game itself? This is another kind of cycle that I find myself repeating on top of the "stoping work on a project after a while cycle", there is also the "wasting time adding features that do not add to the value of a game". That is subjective of course, maybe animated buttons do add to the value of a game, but only after the core logic of the game itself has been worked out first.
 
-Every time I draft out more work in a todo list I should take a moment to think if this is something that I really want to add to the game or not.
+Every time I draft out more work in a todo list I should take a moment to think if this is something that I really want to add to the game or not. It should be something that adds real value to the experence of playing the game.
 
 ### 3 - Keep The Example Simple
 
