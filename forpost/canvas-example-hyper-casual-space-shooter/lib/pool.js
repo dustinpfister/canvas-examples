@@ -24,17 +24,17 @@ var poolMod = (function () {
     var EFFECT_TYPES = {
         burn : {
             effectType: 'burn',
-            chance: 0.75,
-            maxStack: 5,
-            damage: 0.025,
-            every: 0.25,
-            count: 10
+            chance: 0.1,
+            maxStack: 3,
+            damagePer: 0.01,
+            every: 1,
+            count: 5
         },
         acid : {
             effectType: 'acid',
-            chance: 0.12,
+            chance: 0.1,
             maxStack: 3,
-            damageMulti: 2  // number of times extra damage is applyed
+            damageMulti: 1  // number of times extra damage is applyed
         }
     };
 
@@ -43,9 +43,10 @@ var poolMod = (function () {
         effect.secs += secs;
         if(effect.secs >= effect.every){
             effect.secs = utils.mod(effect.secs, effect.every);
-            // if damage apply that
-            if(effect.damage){
-                obj.hp.current -= effect.damage;
+            // if damagePer apply that
+            if(effect.damagePer){
+                var damage = obj.hp.max * effect.damagePer;
+                obj.hp.current -= damage; //effect.damage;
             }
             effect.count -= 1;
             // effect ends when count === 0
