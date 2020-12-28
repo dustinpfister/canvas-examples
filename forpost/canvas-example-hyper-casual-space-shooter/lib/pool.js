@@ -34,12 +34,13 @@ var poolMod = (function () {
             effectType: 'acid',
             chance: 1,
             maxStack: 3,
-            damage: 1  // count of
+            damageMulti: 5  // number of times extra damage is applyed
         }
     };
 
     // helper for an over time effect such as 'burn'
     var overTimeEffect = function(i, effect, obj, secs){
+        effect.secs += secs;
         if(effect.secs >= effect.every){
             effect.secs = utils.mod(effect.secs, effect.every);
             // if damage apply that
@@ -68,6 +69,7 @@ var poolMod = (function () {
                 obj.effects.push(effectObj);
             }
         },
+        // for effects that are updated over time
         update: function(obj, pool, state, secs){
             // update effects
             var i = obj.effects.length, effect;
@@ -77,7 +79,7 @@ var poolMod = (function () {
             }
             while(i--){
                 effect = obj.effects[i];
-                effect.secs += secs;
+
                 if(effect.effectType === 'burn'){
                     overTimeEffect(i, effect, obj, secs);
                 }
@@ -87,7 +89,23 @@ var poolMod = (function () {
                 obj.hp.per = obj.hp.current / obj.hp.max;
             }
         },
-        onAttack: function(){
+        // for effects that are updated per attack
+        onAttack: function(obj, damage){
+            var i = obj.effects.length, effect;
+            while(i--){
+                effect = obj.effects[i];
+                
+                if(effect.effectType === 'acid'){
+                    //console.log('acid: ',  damage, effect.damageMulti, damage * effect.damageMulti);
+                    var extraDamage = effect.damageMulti * damage;
+                    obj.hp.current -= extraDamage;
+                }
+
+                // clamp hit points
+                obj.hp.current = obj.hp.current > obj.hp.max ? obj.hp.max : obj.hp.current;
+                obj.hp.current = obj.hp.current < 0 ? 0 : obj.hp.current;
+                obj.hp.per = obj.hp.current / obj.hp.max;
+            }
         }
     };
 
@@ -106,8 +124,8 @@ var poolMod = (function () {
         }
         return false;
     };
-    api.applyOnAttackEffects = function(){
-        console.log('okay');
+    api.applyOnAttackEffects = function(obj, damage){
+        Effects.onAttack(obj, damage);
     };
     // create and return a single display object
     api.createDisplayObject = function(opt){

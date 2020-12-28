@@ -52,8 +52,8 @@ var gameMod = (function(){
                 }
             },
             shotDamage: { // min and max range for shot damage
-                min: 0,
-                max: 0, //Math.floor(BLOCK_HP_MAX * 0.05),
+                min: 0.1,
+                max: Math.floor(BLOCK_HP_MAX * 0.05),
                 levelOpt: { 
                     levelCap: 10,
                     expCap: 1500,
