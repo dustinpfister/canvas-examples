@@ -70,6 +70,7 @@ var poolMod = (function () {
                     effect.secs = utils.mod(effect.secs, effect.every);
                     // if damage apply that
                     if(effect.damage){
+                        console.log(obj);
                         obj.hp.current -= effect.damage;
                     }
                     effect.count -= 1;
@@ -100,6 +101,7 @@ var poolMod = (function () {
         effect.damage = 1;
         effect.every = 0.25;
         effect.count = 10;
+        // effect.secs = 0; // !!! I have a weird problem here
         return effect;
     };
     // start an effect for the given display object

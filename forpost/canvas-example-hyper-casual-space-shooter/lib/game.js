@@ -540,6 +540,7 @@ var gameMod = (function(){
     // create shots pool helper
     var createShotsPool = function(){
         return poolMod.create({
+                type: 'shot',
                 count: 60,
                 fillStyle: 'red',
                 r: 2,
@@ -582,7 +583,7 @@ var gameMod = (function(){
                             attackObject(state.game, block, shot.damage);
                             // create any effects the shot might have
                             shot.effects.forEach(function(effect){
-                                    effect = poolMod.parseEffectObject(effect);
+                                    //effect = poolMod.parseEffectObject(effect);
                                 // check stack count
                                 //var stackCount = block.effectStats[effect.effectType] || 0;
                                 //if( stackCount < effect.maxStack){
