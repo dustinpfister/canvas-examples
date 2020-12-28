@@ -525,6 +525,9 @@ var gameMod = (function(){
     // attack the given object with the given amount of damage
     var attackObject = function(game, obj, damage){
         if(obj.hp){
+            if(obj.type === 'block'){
+                poolMod.applyOnAttackEffects(obj, damage);
+            }
             obj.hp.current -= damage;
             obj.hp.current = obj.hp.current < 0 ? 0 : obj.hp.current;
             obj.hp.per = obj.hp.current / obj.hp.max;

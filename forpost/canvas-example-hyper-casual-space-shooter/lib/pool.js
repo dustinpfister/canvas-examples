@@ -78,17 +78,16 @@ var poolMod = (function () {
             while(i--){
                 effect = obj.effects[i];
                 effect.secs += secs;
-
                 if(effect.effectType === 'burn'){
                     overTimeEffect(i, effect, obj, secs);
                 }
-
                 // clamp hit points
                 obj.hp.current = obj.hp.current > obj.hp.max ? obj.hp.max : obj.hp.current;
                 obj.hp.current = obj.hp.current < 0 ? 0 : obj.hp.current;
                 obj.hp.per = obj.hp.current / obj.hp.max;
-                
             }
+        },
+        onAttack: function(){
         }
     };
 
@@ -106,6 +105,9 @@ var poolMod = (function () {
             }
         }
         return false;
+    };
+    api.applyOnAttackEffects = function(){
+        console.log('okay');
     };
     // create and return a single display object
     api.createDisplayObject = function(opt){
