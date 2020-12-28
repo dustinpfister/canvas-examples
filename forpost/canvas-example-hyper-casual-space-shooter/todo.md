@@ -96,6 +96,7 @@
 
 ## 0.19.0 - Effect Types, Effects upgrade page started, ACID Effect
 * (done) start a new poolMod.parseEffectObject method that will return a vaild effect object from an effectType string or incompleate object
+* fix weird bug where setting effects.secs to zero in poolMod.parseEffectsObject cases a shot be be a block
 * start an EFFECT-TYPES const in pool.js that will contain hard coded values for EFFECTS
 * A Weapon.effects Object should just be just an Array of types that the wepaon uses.
 * add an upgrades page for Effects
