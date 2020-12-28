@@ -1,7 +1,26 @@
 // Object Pool Module for canvas-example-hyper-casual-space-shooter
 
 var poolMod = (function () {
+
     var EFFECTS_MAX = 10; // max number of effects per object
+
+    // BLOCK TYPES
+    var BLOCK_TYPES = {
+        block: { 
+            spawn: function(obj, pool, state, opt){
+                // blocks have an effects array
+                obj.effects = [];
+                obj.effectStats = {};
+                obj.awardBlockMoney = false; // if true award money on effect death
+            },
+            update: function (obj, pool, state, secs) {
+                if(obj.effects.length > 0){
+                    Effects.update(obj, pool, state, secs);
+                }
+            }
+        }
+    };
+
     // Public API
     var api = {};
     // get next inactive object in the given pool
@@ -119,22 +138,7 @@ var poolMod = (function () {
         });
         return stats;
     };
-    // TYPES
-    var types = {
-        block: { 
-            spawn: function(obj, pool, state, opt){
-                // blocks have an effects array
-                obj.effects = [];
-                obj.effectStats = {};
-                obj.awardBlockMoney = false; // if true award money on effect death
-            },
-            update: function (obj, pool, state, secs) {
-                if(obj.effects.length > 0){
-                    Effects.update(obj, pool, state, secs);
-                }
-            }
-        }
-    };
+
     // create a new pool
     api.create = function (opt) {
         opt = opt || {};
@@ -149,16 +153,16 @@ var poolMod = (function () {
             data: opt.data || {},
             spawn: function(obj, pool, state, opt){
                 // call any built in spawn method for the type first
-                if(pool.type in types){
-                    types[pool.type].spawn(obj, pool, state, opt);
+                if(pool.type in BLOCK_TYPES){
+                    BLOCK_TYPES[pool.type].spawn(obj, pool, state, opt);
                 }
                 // call custom spawn
                 spawn(obj, pool, state, opt);
             },
             purge: opt.purge || function (obj, pool, state) {},
             update: function(obj, pool, state, opt){
-                if(types[obj.type]){
-                    types[obj.type].update(obj, pool, state, opt);
+                if(pool.type in BLOCK_TYPES){
+                    BLOCK_TYPES[obj.type].update(obj, pool, state, opt);
                 }
                 update(obj, pool, state, opt);
             }
