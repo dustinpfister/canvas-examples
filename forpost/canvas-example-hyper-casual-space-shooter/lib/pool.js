@@ -24,17 +24,17 @@ var poolMod = (function () {
     var EFFECT_TYPES = {
         burn : {
             effectType: 'burn',
-            chance: 1,
-            maxStack: 1,
+            chance: 0.75,
+            maxStack: 5,
             damage: 0.025,
             every: 0.25,
             count: 10
         },
         acid : {
             effectType: 'acid',
-            chance: 1,
+            chance: 0.12,
             maxStack: 3,
-            damageMulti: 5  // number of times extra damage is applyed
+            damageMulti: 2  // number of times extra damage is applyed
         }
     };
 

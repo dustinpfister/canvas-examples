@@ -76,7 +76,7 @@ var gameMod = (function(){
             effects: ['burn', 'acid'],
             shotRange: 128,
             shotPPS: 256,
-            shotsPerFire: [2, 2, 1],
+            shotsPerFire: [1],
             onFireStart: function(game, secs, state){
                 var weapon = game.weapons[game.ship.weaponIndex];
                 var shotIndex = 0;
