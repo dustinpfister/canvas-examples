@@ -101,7 +101,7 @@ var poolMod = (function () {
         effect.damage = 1;
         effect.every = 0.25;
         effect.count = 10;
-        // effect.secs = 0; // !!! I have a weird problem here
+        effect.secs = 0;
         return effect;
     };
     // start an effect for the given display object
@@ -129,7 +129,9 @@ var poolMod = (function () {
                 obj.awardBlockMoney = false; // if true award money on effect death
             },
             update: function (obj, pool, state, secs) {
-                Effects.update(obj, pool, state, secs);
+                if(obj.effects.length > 0){
+                    Effects.update(obj, pool, state, secs);
+                }
             }
         }
     };
@@ -155,8 +157,8 @@ var poolMod = (function () {
             },
             purge: opt.purge || function (obj, pool, state) {},
             update: function(obj, pool, state, opt){
-                if(obj.effects){
-                    Effects.update(obj, pool, state, opt);
+                if(types[obj.type]){
+                    types[obj.type].update(obj, pool, state, opt);
                 }
                 update(obj, pool, state, opt);
             }
