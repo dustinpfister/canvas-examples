@@ -34,10 +34,11 @@ var state = {
     }
 };
 // update pointer object helper
-var updatePointer = function(pos){
+var updatePointer = function(game, pos){
+    var map = game.map;
     // update dir so that we know the shortest direction to go
     var d = Math.floor(utils.angleTo(pos.x, pos.y, 160, 120) / ( Math.PI * 2 ) * 360);
-    state.input.pointer.dir = utils.shortestDirection(d, Math.floor(state.input.degree), 360);
+    state.input.pointer.dir = utils.shortestDirection(d, Math.floor(map.degree), 360);
     // update dist
     state.input.pointer.dist = utils.distance(pos.x, pos.y, 160, 120);
 };
@@ -68,7 +69,7 @@ var loop = function () {
     requestAnimationFrame(loop);
     if (t >= FPS_target) {
         // update input.pointer
-        updatePointer(input.pointer.pos);
+        updatePointer(game, input.pointer.pos);
         // keyboard or pointer update map radian
         // keyboard update pps
         if(input.keys.w){
