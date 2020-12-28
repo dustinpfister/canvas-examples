@@ -21,6 +21,17 @@ var poolMod = (function () {
         }
     };
 
+    var EFFECT_TYPES = {
+        burn : {
+            effectType: 'burn',
+            chance: 1,
+            maxStack: 3,
+            damage: 3,
+            every: 0.25,
+            count: 10
+        }
+    };
+
     // Effects create an update methods
     var Effects = {
         // create a new effect object for an effects array
@@ -105,11 +116,18 @@ var poolMod = (function () {
             effect = utils.deepClone(effectSource);
             effect.effectType = effect.effectType || 'burn';
         }
-        effect.chance = 1;
-        effect.maxStack = 3;
-        effect.damage = 1;
-        effect.every = 0.25;
-        effect.count = 10;
+        // get a ref tp the object for the effect type in EFFECT_TYPES
+        var effectData = EFFECT_TYPES[effect.effectType];
+        Object.keys(effectData).forEach(function(key){
+             effect[key] = effect[key] === undefined ? effectData[key] : effect[key];
+        });
+
+        //effect.chance = 1;
+        //effect.maxStack = 3;
+        //effect.damage = 1;
+        //effect.every = 0.25;
+        //effect.count = 10;
+
         effect.secs = 0;
         return effect;
     };
