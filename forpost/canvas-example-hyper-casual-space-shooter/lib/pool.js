@@ -21,6 +21,47 @@ var poolMod = (function () {
         }
     };
 
+    // Effects create an update methods
+    var Effects = {
+        // create a new effect object for an effects array
+        create: function(obj, effectObj){
+            effectObj = effectObj || {};
+            if(obj.effects.length < EFFECTS_MAX){
+                obj.awardBlockMoney = true; // just set this true here for now as there is just one effect
+                effectObj = utils.deepClone(effectObj);
+                effectObj.secs = 0;
+                obj.effects.push(effectObj);
+            }
+        },
+        update: function(obj, pool, state, secs){
+            // update effects
+            var i = obj.effects.length, effect;
+            // awardBlockMoney should be false if there are not effects at all in place
+            if(obj.effects.length === 0){
+                obj.awardBlockMoney = false;
+            }
+            while(i--){
+                effect = obj.effects[i];
+                effect.secs += secs;
+                if(effect.secs >= effect.every){
+                    effect.secs = utils.mod(effect.secs, effect.every);
+                    // if damage apply that
+                    if(effect.damage){
+                        obj.hp.current -= effect.damage;
+                    }
+                    effect.count -= 1;
+                    if(effect.count <=0 ){
+                        obj.effects.splice(i, 1);
+                    }
+                    obj.hp.current = obj.hp.current > obj.hp.max ? obj.hp.max : obj.hp.current;
+                    obj.hp.current = obj.hp.current < 0 ? 0 : obj.hp.current;
+                    obj.hp.per = obj.hp.current / obj.hp.max;
+                }
+            }
+        }
+    };
+
+
     // Public API
     var api = {};
     // get next inactive object in the given pool
@@ -52,57 +93,6 @@ var poolMod = (function () {
             data: {}
         };
         return obj;
-    };
-    var Effects = {
-        create: function(obj, effectObj){
-            effectObj = effectObj || {};
-            if(obj.effects.length < EFFECTS_MAX){
-                obj.awardBlockMoney = true; // just set this true here for now as there is just one effect
-                
-                effectObj = utils.deepClone(effectObj);
-                effectObj.secs = 0;
-                obj.effects.push(effectObj);
-/*
-                obj.effects.push({
-                    effectType: opt.effectType || 'burn',
-                    maxStack: opt.maxStack === undefined ? 3 : opt.maxStack,
-                    chance: opt.chance === undefined ? 1 : opt.chance,
-                    damage: opt.damage === undefined ? 3 : opt.damage,  // 1 DAMAGE EVERY 1 second for a COUNT of 5 times
-                    every: opt.every === undefined ? 1 : opt.every,
-                    count: opt.count === undefined ? 5 : opt.count,
-                    secs:0
-                });
-*/
-            }
-        },
-        update: function(obj, pool, state, secs){
-            // update effects
-            var i = obj.effects.length, effect;
-            // if effects length === 0 then obj.awardBlockMoney = false
-            if(obj.effects.length === 0){
-                obj.awardBlockMoney = false;
-            }
-            while(i--){
-                effect = obj.effects[i];
-                effect.secs += secs;
-                if(effect.secs >= effect.every){
-                    effect.secs = utils.mod(effect.secs, effect.every);
-                    // if damage apply that
-                    if(effect.damage){
-                        console.log(obj);
-                        obj.hp.current -= effect.damage;
-                    }
-                    effect.count -= 1;
-                    if(effect.count <=0 ){
-                        obj.effects.splice(i, 1);
-                    }
-                    obj.hp.current = obj.hp.current > obj.hp.max ? obj.hp.max : obj.hp.current;
-                    obj.hp.current = obj.hp.current < 0 ? 0 : obj.hp.current;
-                    obj.hp.per = obj.hp.current / obj.hp.max;
-                }
-            }
-
-        }
     };
     // return a vaild effect object from a given string of an effect type, or incompleate object
     api.parseEffectObject = function(effectSource){
