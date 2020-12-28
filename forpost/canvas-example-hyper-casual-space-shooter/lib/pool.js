@@ -35,18 +35,14 @@ var poolMod = (function () {
         return obj;
     };
     var Effects = {
-        create: function(obj, opt){
-            opt = opt || {};
+        create: function(obj, effectObj){
+            effectObj = effectObj || {};
             if(obj.effects.length < EFFECTS_MAX){
                 obj.awardBlockMoney = true; // just set this true here for now as there is just one effect
-                //obj.effects.push(effect);
                 
-opt = utils.deepClone(opt);
-opt.secs = 0;
-obj.effects.push(opt);
-
-                
-
+                effectObj = utils.deepClone(effectObj);
+                effectObj.secs = 0;
+                obj.effects.push(effectObj);
 /*
                 obj.effects.push({
                     effectType: opt.effectType || 'burn',
@@ -97,6 +93,7 @@ obj.effects.push(opt);
             };
         }else{
             effect = utils.deepClone(effectSource);
+            effect.effectType = effect.effectType || 'burn';
         }
         effect.chance = 1;
         effect.maxStack = 3;
