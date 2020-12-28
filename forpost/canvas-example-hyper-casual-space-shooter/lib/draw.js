@@ -22,9 +22,11 @@ var draw = (function(){
         var x = Math.cos(game.map.aToOrigin) * 32;
         var y = Math.sin(game.map.aToOrigin) * 32;
         ctx.fillStyle='red';
+        ctx.strokeStyle='black';
         ctx.beginPath();
         ctx.arc(x,y,5,0,Math.PI*2);
         ctx.fill();
+        ctx.stroke();
         ctx.restore();
     };
 
