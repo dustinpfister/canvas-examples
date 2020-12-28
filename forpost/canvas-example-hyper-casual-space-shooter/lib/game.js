@@ -63,16 +63,6 @@ var gameMod = (function(){
                     tableY: 120 - 12
                 }
             },
-/*
-            effects:[ { // effects for pulse gun
-                effectType: 'burn',
-                chance: 0.25,
-                maxStack: 5,
-                damage: 1,
-                every: 0.25,
-                count: 10
-            }],
-*/
             effects: ['burn', 'acid'],
             shotRange: 128,
             shotPPS: 256,
