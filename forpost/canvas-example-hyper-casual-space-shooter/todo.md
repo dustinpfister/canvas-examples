@@ -100,15 +100,16 @@
 * (done) rename Types to BLOCK-TYPES in pool.js
 * (done) start an EFFECT-TYPES const in pool.js that will contain hard coded values for EFFECTS
 * (done) A Weapon.effects Object can just be just an Array of effect types that the wepaon uses.
+* (done) add an ACID Effect that will cause 1x to 4x extra Damage per shot per stack
+* (done) make ACID Effect the first efefct that will stay in effect for the block untill the block is destroyed
 
-
-* add an ACID Effect that will cause 1x to 4x extra Damage per shot per stack
-* make ACID Effect the first efefct that will stay in effect for the block untill the block is destroyed
-
-* add an upgrades page for Effects
+* change overTime burn effect so that damage is a percentage of total block hp
 * add a burn effect upgrade
 * add a acid effect upgrade
+* add an upgrades page for Effects
+* add buttons for acid and burn effects
 * autoFire button as first space mode button
+* make a 0.19.0 pkg folder
 
 <!-- ADD ADDITIONAL CORE FEATURES -->
 <!--
