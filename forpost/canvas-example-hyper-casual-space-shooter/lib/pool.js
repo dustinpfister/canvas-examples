@@ -89,11 +89,14 @@ obj.effects.push(opt);
         }
     };
     // return a vaild effect object from a given string of an effect type, or incompleate object
-    api.parseEffectObject = function(effect){
-        if(typeof effect === 'string'){
+    api.parseEffectObject = function(effectSource){
+        var effect;
+        if(typeof effectSource === 'string'){
             effect = {
-                effectType : effect
+                effectType : effectSource
             };
+        }else{
+            effect = utils.deepClone(effectSource);
         }
         effect.chance = 1;
         effect.maxStack = 3;
