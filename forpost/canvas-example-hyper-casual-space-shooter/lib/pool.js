@@ -77,7 +77,9 @@ var poolMod = (function () {
                 effect = obj.effects[i];
                 effect.secs += secs;
 
-                overTimeEffect(i, effect, obj, secs);
+                if(effect.effectType === 'burn'){
+                    overTimeEffect(i, effect, obj, secs);
+                }
 
                 // clamp hit points
                 obj.hp.current = obj.hp.current > obj.hp.max ? obj.hp.max : obj.hp.current;
