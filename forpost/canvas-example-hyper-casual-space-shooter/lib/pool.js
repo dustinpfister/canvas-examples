@@ -40,7 +40,14 @@ var poolMod = (function () {
             if(obj.effects.length < EFFECTS_MAX){
                 obj.awardBlockMoney = true; // just set this true here for now as there is just one effect
                 //obj.effects.push(effect);
+                
+opt = utils.deepClone(opt);
+opt.secs = 0;
+obj.effects.push(opt);
 
+                
+
+/*
                 obj.effects.push({
                     effectType: opt.effectType || 'burn',
                     maxStack: opt.maxStack === undefined ? 3 : opt.maxStack,
@@ -50,7 +57,7 @@ var poolMod = (function () {
                     count: opt.count === undefined ? 5 : opt.count,
                     secs:0
                 });
-
+*/
             }
         },
         update: function(obj, pool, state, secs){
