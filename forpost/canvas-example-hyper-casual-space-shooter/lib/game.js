@@ -583,14 +583,9 @@ var gameMod = (function(){
                             attackObject(state.game, block, shot.damage);
                             // create any effects the shot might have
                             shot.effects.forEach(function(effect){
-                                    //effect = poolMod.parseEffectObject(effect);
-                                // check stack count
-                                //var stackCount = block.effectStats[effect.effectType] || 0;
-                                //if( stackCount < effect.maxStack){
-                                    poolMod.createEffect(block, effect);
-                // effect stats
-                block.effectStats=poolMod.getEffectStats(block);
-                                //}
+                                poolMod.createEffect(block, effect);
+                                // effect stats
+                                block.effectStats=poolMod.getEffectStats(block);
                             });
                             // if the block is dead
                             if(block.hp.current <= 0 ){

@@ -34,7 +34,7 @@ var poolMod = (function () {
             effectType: 'acid',
             chance: 1,
             maxStack: 3,
-            damage: 1
+            damage: 1  // count of
         }
     };
 
@@ -53,6 +53,8 @@ var poolMod = (function () {
             }
         }
     };
+
+    
 
     // Effects create an update methods
     var Effects = {
