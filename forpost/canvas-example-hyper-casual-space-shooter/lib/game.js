@@ -73,7 +73,7 @@ var gameMod = (function(){
                 count: 10
             }],
 */
-            effects: ['burn'],
+            effects: ['burn', 'acid'],
             shotRange: 128,
             shotPPS: 256,
             shotsPerFire: [2, 2, 1],
