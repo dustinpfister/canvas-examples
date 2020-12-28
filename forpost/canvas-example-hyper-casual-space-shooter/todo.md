@@ -97,14 +97,17 @@
 ## 0.19.0 - Effect Types, Effects upgrade page started, ACID Effect
 * (done) start a new poolMod.parseEffectObject method that will return a vaild effect object from an effectType string or incompleate object
 * (done) fix weird bug where setting effects.secs to zero in poolMod.parseEffectsObject cases a shot be be a block
+* (done) rename Types to BLOCK-TYPES in pool.js
+* (done) start an EFFECT-TYPES const in pool.js that will contain hard coded values for EFFECTS
+* (done) A Weapon.effects Object can just be just an Array of effect types that the wepaon uses.
 
-* rename Types to BLOCK-TYPES in pool.js
-* start an EFFECT-TYPES const in pool.js that will contain hard coded values for EFFECTS
-* A Weapon.effects Object should just be just an Array of types that the wepaon uses.
-* add an upgrades page for Effects
-* add an ACID Effect that will case 1x extra Damage per shot per stack
+
+* add an ACID Effect that will cause 1x to 4x extra Damage per shot per stack
 * make ACID Effect the first efefct that will stay in effect for the block untill the block is destroyed
+
+* add an upgrades page for Effects
 * add a burn effect upgrade
+* add a acid effect upgrade
 * autoFire button as first space mode button
 
 <!-- ADD ADDITIONAL CORE FEATURES -->

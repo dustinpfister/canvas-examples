@@ -29,6 +29,28 @@ var poolMod = (function () {
             damage: 0.025,
             every: 0.25,
             count: 10
+        },
+        acid : {
+            effectType: 'acid',
+            chance: 1,
+            maxStack: 3,
+            damage: 1
+        }
+    };
+
+    // helper for an over time effect such as 'burn'
+    var overTimeEffect = function(i, effect, obj, secs){
+        if(effect.secs >= effect.every){
+            effect.secs = utils.mod(effect.secs, effect.every);
+            // if damage apply that
+            if(effect.damage){
+                obj.hp.current -= effect.damage;
+            }
+            effect.count -= 1;
+            // effect ends when count === 0
+            if(effect.count <= 0 ){
+                obj.effects.splice(i, 1);
+            }
         }
     };
 
@@ -54,20 +76,14 @@ var poolMod = (function () {
             while(i--){
                 effect = obj.effects[i];
                 effect.secs += secs;
-                if(effect.secs >= effect.every){
-                    effect.secs = utils.mod(effect.secs, effect.every);
-                    // if damage apply that
-                    if(effect.damage){
-                        obj.hp.current -= effect.damage;
-                    }
-                    effect.count -= 1;
-                    if(effect.count <=0 ){
-                        obj.effects.splice(i, 1);
-                    }
-                    obj.hp.current = obj.hp.current > obj.hp.max ? obj.hp.max : obj.hp.current;
-                    obj.hp.current = obj.hp.current < 0 ? 0 : obj.hp.current;
-                    obj.hp.per = obj.hp.current / obj.hp.max;
-                }
+
+                overTimeEffect(i, effect, obj, secs);
+
+                // clamp hit points
+                obj.hp.current = obj.hp.current > obj.hp.max ? obj.hp.max : obj.hp.current;
+                obj.hp.current = obj.hp.current < 0 ? 0 : obj.hp.current;
+                obj.hp.per = obj.hp.current / obj.hp.max;
+                
             }
         }
     };
