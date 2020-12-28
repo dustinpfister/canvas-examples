@@ -588,6 +588,8 @@ var gameMod = (function(){
                                 //var stackCount = block.effectStats[effect.effectType] || 0;
                                 //if( stackCount < effect.maxStack){
                                     poolMod.createEffect(block, effect);
+                // effect stats
+                block.effectStats=poolMod.getEffectStats(block);
                                 //}
                             });
                             // if the block is dead

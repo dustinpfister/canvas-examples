@@ -25,8 +25,8 @@ var poolMod = (function () {
         burn : {
             effectType: 'burn',
             chance: 1,
-            maxStack: 3,
-            damage: 3,
+            maxStack: 1,
+            damage: 0.025,
             every: 0.25,
             count: 10
         }
