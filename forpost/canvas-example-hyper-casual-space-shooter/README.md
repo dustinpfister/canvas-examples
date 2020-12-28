@@ -1,6 +1,6 @@
 # canvas-example-hyper-casual-space-shooter
 
-After working on a few examples where I end up writing thousands of lines of code, yet still feel as though the example is lacking, I now want to start making examples that fit the moto of "less code more game". So for this hyper casual space shooter I just wanted to make a simple game where I just fly around and blow up blocks. 
+After working on a few [canvas examples](https://dustinpfister.github.io/2020/03/23/canvas-example/) where I end up writing thousands of lines of code, yet still feel as though the example is lacking, I now want to start making examples that fit the moto of "less code more game". So for this hyper casual space shooter I just wanted to make a simple game where I just fly around and blow up blocks. 
 
 ## Where to go to play this
 
