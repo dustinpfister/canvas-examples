@@ -182,41 +182,8 @@ var gameMod = (function(){
         });
     };
 
-    // append upgrade objects to DEFAULT_UPGRADES from WEAPONS
-    var append_WEAPON_UPGRADES = function(){
-        // loop all WEAPONS
-        Object.keys(WEAPONS).forEach(function(weaponKey){
-            var weapon = WEAPONS[weaponKey];
-            // create upgrades for these properties
-            ['firesPerSecond', 'shotDamage'].forEach(function(weaponProp){
-                levelOpt = utils.deepClone(weapon[weaponProp].levelOpt || {});
-                levelOpt.levelCap = levelOpt.levelCap || 30;
-                levelOpt.expCap = levelOpt.expCap || 10000;
-                levelOpt.perArgs = levelOpt.perArgs || [0];
-                //levelOpt.tableX = 0;
-                //levelOpt.tableY = 0;
-                var upgrade = {
-                    id: 'w-' + weaponKey + '-' + weaponProp,
-                    desc: weapon.name + ' ' + weaponProp,
-                    applyToState: function(game, levelObj, upgrade){
-                        var weaponIndex = Number(upgrade.id.split('-')[1]),
-                        weapon = game.weapons[weaponIndex],
-                        weaponDATA = WEAPONS[weaponIndex],
-                        weaponProp = upgrade.id.split('-')[2];
-                        // expression to set property of game.weapon object
-                        var delta = weaponDATA[weaponProp].max - weaponDATA[weaponProp].min;
-                        weapon[weaponProp] = weaponDATA[weaponProp].min + delta * levelObj.perToLevelCap;
-                    },
-                    levelOpt: levelOpt
-                };
-                DEFAULT_UPGRADES.push(upgrade);
-            });
-        });
-    };
-
     // DEFAULT WEAPON OBJECT that will be cloned as game.weapons
     var DEFAULT_WEAPONS = create_DEFAULT_WEAPONS();
-
 
     var BASE_BUTTONS = {
         main: {
@@ -376,6 +343,7 @@ var gameMod = (function(){
     };
 
     // UPGRADES
+
     var DEFAULT_UPGRADES = [
         {
             id: 's1',
@@ -427,6 +395,42 @@ var gameMod = (function(){
             }
         }
     ];
+
+    // append upgrade objects to DEFAULT_UPGRADES from WEAPONS
+    var append_WEAPON_UPGRADES = function(){
+        // loop all WEAPONS
+        Object.keys(WEAPONS).forEach(function(weaponKey){
+            var weapon = WEAPONS[weaponKey];
+            // create upgrades for these properties
+            ['firesPerSecond', 'shotDamage'].forEach(function(weaponProp){
+                levelOpt = utils.deepClone(weapon[weaponProp].levelOpt || {});
+                levelOpt.levelCap = levelOpt.levelCap || 30;
+                levelOpt.expCap = levelOpt.expCap || 10000;
+                levelOpt.perArgs = levelOpt.perArgs || [0];
+                //levelOpt.tableX = 0;
+                //levelOpt.tableY = 0;
+                var upgrade = {
+                    id: 'w-' + weaponKey + '-' + weaponProp,
+                    desc: weapon.name + ' ' + weaponProp,
+                    applyToState: function(game, levelObj, upgrade){
+                        var weaponIndex = Number(upgrade.id.split('-')[1]),
+                        weapon = game.weapons[weaponIndex],
+                        weaponDATA = WEAPONS[weaponIndex],
+                        weaponProp = upgrade.id.split('-')[2];
+                        // expression to set property of game.weapon object
+                        var delta = weaponDATA[weaponProp].max - weaponDATA[weaponProp].min;
+                        weapon[weaponProp] = weaponDATA[weaponProp].min + delta * levelObj.perToLevelCap;
+                    },
+                    levelOpt: levelOpt
+                };
+                DEFAULT_UPGRADES.push(upgrade);
+            });
+        });
+    };
+
+    // create and append upgrade objects for EFFECTS
+    var append_EFFECT_UPGRADES = function(){
+    };
 
     // call append_WEAPON_UPGRADES here to compleate DEFAULT_UPGRADES
     append_WEAPON_UPGRADES();

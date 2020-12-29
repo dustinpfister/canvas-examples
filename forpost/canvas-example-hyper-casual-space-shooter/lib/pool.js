@@ -2,6 +2,9 @@
 
 var poolMod = (function () {
 
+    // Public API
+    var api = {};
+
     var EFFECTS_MAX = 10; // max number of effects per object
 
     // BLOCK TYPES
@@ -21,7 +24,7 @@ var poolMod = (function () {
         }
     };
 
-    var EFFECT_TYPES = {
+    var EFFECT_TYPES = api.EFFECT_TYPES = {
         burn : {
             effectType: 'burn',
             chance: 0.1,
@@ -110,9 +113,6 @@ var poolMod = (function () {
         }
     };
 
-
-    // Public API
-    var api = {};
     // get next inactive object in the given pool
     var getInactive = function (pool) {
         var i = pool.objects.length,
