@@ -573,9 +573,10 @@ var gameMod = (function(){
                     // shot effects
                     shot.effects = [];
                     weapon.effects.forEach(function(effect){
+                        
                         var effectType = typeof effect === 'string' ? effect : effect.effectType;
-                        //var upgrade = getUpgradeById('e-' + effectType);
-                        console.log(effectType);
+                        var upgrade = getUpgradeById(state.game, 'e-' + effectType);
+                        console.log(effectType, upgrade);
                         var effect = poolMod.parseEffectObject(effect);
                         
                         var roll = Math.random();

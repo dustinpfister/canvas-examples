@@ -104,6 +104,10 @@
 * (done) make ACID Effect the first efefct that will stay in effect for the block untill the block is destroyed
 * (done) change overTime burn effect so that damage is a percentage of total block hp
 
+* looks like I might want a game.effects object that is cloned from the poolMod.EFFECT_TYPES
+* make game.effects the object that is changed by the applyToSate methods of effect upgrades
+* use the state of game.effects object to set values for effect options objects that are added to a shots.effects array in shots spawn method.
+
 * add a burn effect upgrade
 * add a acid effect upgrade
 * add an upgrades page for Effects
