@@ -17,7 +17,7 @@ var gameMod = (function(){
     BLOCK_MONEY_DIST = 999,
 
     // SHIP AND MAP VALUES
-    SHIP_AUTOFIRE = true,
+    SHIP_AUTOFIRE = false,
     SHIP_HP = 30,
     SHIP_AUTOHEAL_ENABLED=true,
     SHIP_AUTOHEAL_RATE = 10,
@@ -573,7 +573,11 @@ var gameMod = (function(){
                     // shot effects
                     shot.effects = [];
                     weapon.effects.forEach(function(effect){
-                        effect = poolMod.parseEffectObject(effect);
+                        var effectType = typeof effect === 'string' ? effect : effect.effectType;
+                        //var upgrade = getUpgradeById('e-' + effectType);
+                        console.log(effectType);
+                        var effect = poolMod.parseEffectObject(effect);
+                        
                         var roll = Math.random();
                         if(roll < effect.chance){
                             // push a refernce to the effect object

@@ -173,10 +173,10 @@ var poolMod = (function () {
         return effect;
     };
     // start an effect for the given display object
-    api.createEffect = function(obj, effect){
+    api.createEffect = function(obj, opt){
         var stackCount = obj.effectStats[effect.effectType] || 0;
         if( stackCount < effect.maxStack){
-            Effects.create(obj, effect);
+            Effects.create(obj, opt);
         }
     };
     // get an object of effect types and count from the given object
