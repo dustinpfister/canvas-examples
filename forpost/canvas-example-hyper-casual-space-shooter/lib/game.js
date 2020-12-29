@@ -430,10 +430,28 @@ var gameMod = (function(){
 
     // create and append upgrade objects for EFFECTS
     var append_EFFECT_UPGRADES = function(){
+        Object.keys(poolMod.EFFECT_TYPES).forEach(function(key){
+            var effectDATA = poolMod.EFFECT_TYPES[key];
+            console.log(effectDATA);
+            DEFAULT_UPGRADES.push({
+                id: 'e-' + key,
+                desc: key,
+                applyToState: function(game, levelObj, upgrade){
+                    console.log('applying ' + upgrade.desc);
+                },
+                levelOpt: utils.deepClone({
+                    levelCap: 10,
+                    expCap: 1000,
+                    perMethod: 'log1'
+                })
+            });
+        });
     };
 
     // call append_WEAPON_UPGRADES here to compleate DEFAULT_UPGRADES
     append_WEAPON_UPGRADES();
+    append_EFFECT_UPGRADES();
+    console.log(DEFAULT_UPGRADES);
 
     // get an upgrade object by id
     var getUpgradeById = function(game, id){
