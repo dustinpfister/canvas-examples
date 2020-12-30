@@ -11,3 +11,12 @@ dir_js_target="${dir_home}/js/canvas-examples"
 # make the target folder to create files first
 # if it is not there
 mkdir -p $dir_js_target
+
+# loop examples folders
+examples=$(ls $dir_for_post)
+for folderName in $examples; do
+  dir_pkg="${dir_for_post}/${folderName}/pkg"
+  if [ -d $dir_pkg ]; then
+    echo $dir_pkg
+  fi
+done
