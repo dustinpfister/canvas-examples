@@ -769,6 +769,7 @@ var gameMod = (function(){
             money: GAME_MONEY_START,
             mode: 'space',
             weapons: utils.deepClone(DEFAULT_WEAPONS),
+            effects: utils.deepClone(poolMod.EFFECT_TYPES),
             upgrades: [],
             ship: {}, //createShip(),
             shots: createShotsPool(),
@@ -811,6 +812,7 @@ var gameMod = (function(){
         updateButtons(game);
 
         // log upgrades
+
         console.log(game.upgrades.map(function(upgrade){
             return upgrade.levelObjArray.map(function(levelObj){
                //var lvNext = utils.xp.byLevel(levelObj.l + 1, upgrade.opt);
