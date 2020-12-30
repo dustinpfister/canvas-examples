@@ -13,6 +13,9 @@ dir_ce_root=$( realpath "${dir_this_script}/../.." )
 # this should resolve to the forpost folder
 dir_for_post=$( realpath "${dir_ce_root}/forpost" )
 
+# default target for a /js folder for the examples to be used in production
+dir_js_target="~/js/canvas-examples/"
+
 # echo the results
 echo $dir_this_script
 echo $dir_ce_root
