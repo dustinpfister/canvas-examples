@@ -16,7 +16,10 @@ mkdir -p $dir_js_target
 examples=$(ls $dir_for_post)
 for folderName in $examples; do
   dir_pkg="${dir_for_post}/${folderName}/pkg"
+  # if an example has a pkg folder
   if [ -d $dir_pkg ]; then
+    # just copy for now
+    cp -r $dir_pkg ${dir_js_target}/${folderName}
     echo $dir_pkg
   fi
 done
