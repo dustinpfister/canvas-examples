@@ -451,7 +451,6 @@ var gameMod = (function(){
     // call append_WEAPON_UPGRADES here to compleate DEFAULT_UPGRADES
     append_WEAPON_UPGRADES();
     append_EFFECT_UPGRADES();
-    console.log(DEFAULT_UPGRADES);
 
     // get an upgrade object by id
     var getUpgradeById = function(game, id){
@@ -812,7 +811,7 @@ var gameMod = (function(){
         updateButtons(game);
 
         // log upgrades
-
+/*
         console.log(game.upgrades.map(function(upgrade){
             return upgrade.levelObjArray.map(function(levelObj){
                //var lvNext = utils.xp.byLevel(levelObj.l + 1, upgrade.opt);
@@ -820,6 +819,7 @@ var gameMod = (function(){
                return levelObj.xp;
             });
         }));
+*/
         return game;
     };
 
