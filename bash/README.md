@@ -6,14 +6,16 @@ For my canvas-examples repo I want to make some bash scripts that will help me a
 
 It should go without saying that to run these scripts at all bash will need to be installed on the system. On all the Linux distros I have work with so far this is the case. However these scripts will also need to have a number of other commands at the ready. Many of these are common commands that should be on most systems, however others might need to be installed first.
 
-* bash - The command needed to run any of these scripts to begin with
-* echo - spit something out to the standard output
-* ls - list the contents of a folder
-* cat - read the contents of a file
-* dirname - get the path portion of a URI ( /foo/bar.txt to /foo )
+* bash     - The command needed to run any of these scripts to begin with
+* echo     - spit something out to the standard output
+* ls       - list the contents of a folder
+* cat      - read the contents of a file
+* dirname  - get the path portion of a URI ( /foo/bar.txt to /foo )
 * realpath - resolve a relative path to an absolute path ( ~/../../etc to /etc )
 * basename - get the file portion of a URI ( /foo/bar.txt to bar.txt )
 
+* nodejs   - to run javaScript code
+* uglifyjs - the npm package for nod that I am using the compact javaScript code
 
 ## build-pkg
 
