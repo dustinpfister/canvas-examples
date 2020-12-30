@@ -571,12 +571,12 @@ var gameMod = (function(){
 
                     // shot effects
                     shot.effects = [];
-                    weapon.effects.forEach(function(effect){
-                        
-                        var effectType = typeof effect === 'string' ? effect : effect.effectType;
-                        var upgrade = getUpgradeById(state.game, 'e-' + effectType);
-                        console.log(effectType, upgrade);
-                        var effect = poolMod.parseEffectObject(effect);
+                    //weapon.effects.forEach(function(effect){
+                    weapon.effects.forEach(function(effectKey){
+                        //var effectType = typeof effect === 'string' ? effect : effect.effectType;
+                        //var upgrade = getUpgradeById(state.game, 'e-' + effectType);
+                        //console.log(effectType, upgrade);
+                        var effect = poolMod.parseEffectObject(effectKey);
                         
                         var roll = Math.random();
                         if(roll < effect.chance){
