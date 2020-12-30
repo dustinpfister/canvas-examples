@@ -432,12 +432,17 @@ var gameMod = (function(){
     var append_EFFECT_UPGRADES = function(){
         Object.keys(poolMod.EFFECT_TYPES).forEach(function(key){
             var effectDATA = poolMod.EFFECT_TYPES[key];
-            console.log(effectDATA);
             DEFAULT_UPGRADES.push({
                 id: 'e-' + key,
                 desc: key,
                 applyToState: function(game, levelObj, upgrade){
-                    console.log('applying ' + upgrade.desc);
+                    var effect = game.effects[upgrade.id.split('-')[1]];
+                    console.log('applying ' + effect.effectType);
+
+                    // setting all maxStack values to 1 for now
+                    effect.maxStack = 1;
+                    console.log(effect);
+                    
                 },
                 levelOpt: utils.deepClone({
                     levelCap: 10,
@@ -572,11 +577,11 @@ var gameMod = (function(){
                     // shot effects
                     shot.effects = [];
                     //weapon.effects.forEach(function(effect){
-                    weapon.effects.forEach(function(effectKey){
+                    weapon.effects.forEach(function(effectType){
                         //var effectType = typeof effect === 'string' ? effect : effect.effectType;
                         //var upgrade = getUpgradeById(state.game, 'e-' + effectType);
                         //console.log(effectType, upgrade);
-                        var effect = poolMod.parseEffectObject(effectKey);
+                        var effect = poolMod.parseEffectObject(effectType);
                         
                         var roll = Math.random();
                         if(roll < effect.chance){
