@@ -103,10 +103,11 @@
 * (done) add an ACID Effect that will cause 1x to 4x extra Damage per shot per stack
 * (done) make ACID Effect the first efefct that will stay in effect for the block untill the block is destroyed
 * (done) change overTime burn effect so that damage is a percentage of total block hp
+* (done) looks like I might want a game.effects object that is cloned from the poolMod.EFFECT_TYPES
+* (done) make game.effects the object that is changed by the applyToSate methods of effect upgrades
+* (done) use the state of game.effects object to set values for effect options objects that are added to a shots.effects array in shots spawn method.
 
-* looks like I might want a game.effects object that is cloned from the poolMod.EFFECT_TYPES
-* make game.effects the object that is changed by the applyToSate methods of effect upgrades
-* use the state of game.effects object to set values for effect options objects that are added to a shots.effects array in shots spawn method.
+* I will want min and max values as CONSTANTS in game.js or as properties of the objects in game.effects. In any case these min and max values will be used to set the actaul values for the game.effects objects that are used to create effect objects in shots.
 
 * add a burn effect upgrade
 * add a acid effect upgrade
