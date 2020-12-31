@@ -442,7 +442,8 @@ var gameMod = (function(){
                     // setting all maxStack values to 1 for now
                     effect.maxStack = 3;
                     effect.chance = 1;
-                    console.log(effect);
+                    console.log(effect.upStat.maxStack);
+                    console.log(levelObj.perToLevelCap);
                     
                 },
                 levelOpt: utils.deepClone({

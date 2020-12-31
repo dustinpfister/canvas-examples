@@ -5,8 +5,6 @@ var poolMod = (function () {
     // Public API
     var api = {};
 
-    var EFFECTS_MAX = 10; // max number of effects per object
-
     // BLOCK TYPES
     var BLOCK_TYPES = {
         block: { 
@@ -24,6 +22,8 @@ var poolMod = (function () {
         }
     };
 
+    // EFFECTS
+    var EFFECTS_MAX = 10; // max number of effects per object
     var EFFECT_TYPES = api.EFFECT_TYPES = {
         burn : {
             effectType: 'burn',
@@ -31,13 +31,25 @@ var poolMod = (function () {
             maxStack: 3,
             damagePer: 0.01,
             every: 1,
-            count: 5
+            count: 5,
+            upStat: {
+                maxStack: {
+                    min: 1,
+                    max: 3
+                }
+            }
         },
         acid : {
             effectType: 'acid',
             chance: 0.1,
             maxStack: 3,
-            damageMulti: 1  // number of times extra damage is applyed
+            damageMulti: 1,   // number of times extra damage is applyed
+            upStat: {
+                maxStack: {
+                    min: 1,
+                    max: 3
+                }
+            }
         }
     };
 
