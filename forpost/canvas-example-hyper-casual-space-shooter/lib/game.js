@@ -330,17 +330,17 @@ var gameMod = (function(){
             },
             1: {
                 desc: 'Burn',
+                type: 'effectUpgrade',
+                effectType: 'burn',
                 x: 64,
                 y: 32,
                 r: 16,
                 cost: 0,
                 onClick: function(game, button){
                     console.log('burn effect button');
-/*
                     var upgrade = button.upgrade;
                     buyUpgrade(game, upgrade);
                     button.cost = upgrade.levelObj.xpForNext;
-*/
                 }
             }
         }
@@ -361,6 +361,10 @@ var gameMod = (function(){
                          // if the button is for a weapon upgrade
                          if(button.type === 'weaponUpgrade'){
                              var upgradeID = 'w-' + game.ship.weaponIndex + '-' + button.weaponProp;
+                             button.upgrade = getUpgradeById(game, upgradeID);
+                         }
+                         if(button.type === 'effectUpgrade'){
+                             var upgradeID = 'e-' + button.effectType;
                              button.upgrade = getUpgradeById(game, upgradeID);
                          }
                      }
