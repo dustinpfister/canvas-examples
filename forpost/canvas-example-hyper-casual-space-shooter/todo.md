@@ -87,6 +87,7 @@
 
 ## 0.20.0 - better mouse and touch support
 * add mouse event support
+* autoFire button as first space mode button
 * have a set of two circles in the lower right corner that will be a 'pointerControl' area
 * move the map around with the mouse by clicking and holding in the 'pointerControl' area
 * the smaller inner circle in the 'pointerControl' area sill set the current map.radian and map.pps values
@@ -107,19 +108,16 @@
 * (done) make game.effects the object that is changed by the applyToSate methods of effect upgrades
 * (done) use the state of game.effects object to set values for effect options objects that are added to a shots.effects array in shots spawn method.
 * (done) I will want min and max values as CONSTANTS in game.js or as properties of the objects in game.effects. In any case these min and max values will be used to set the actaul values for the game.effects objects that are used to create effect objects in shots.
-
-* have effect upgrades set chance prop of an effect
-* have effect upgrade set burn damagePer prop of an burn effect
-* have effect upgrade set acid damageMulti prop of an acid effect
+* (done) have effect upgrades set chance prop of an effect
+* (done) have effect upgrade set burn damagePer prop of an burn effect
+* (done) have effect upgrade set acid damageMulti prop of an acid effect
 
 * call applyToState in buyUpgrade and remove all old calls of applyToSatte
-
 * add a burn effect upgrade
 * add a acid effect upgrade
 * add an upgrades page for Effects
 * add buttons for acid and burn effects
-* autoFire button as first space mode button
-* fix basic pointer control with map pps
+
 * make a 0.19.0 pkg folder
 
 <!-- ADD ADDITIONAL CORE FEATURES -->
