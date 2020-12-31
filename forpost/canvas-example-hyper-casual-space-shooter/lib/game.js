@@ -52,8 +52,8 @@ var gameMod = (function(){
                 }
             },
             shotDamage: { // min and max range for shot damage
-                min: 1,
-                max: Math.floor(BLOCK_HP_MAX * 0.05),
+                min: 0,
+                max: 0, //Math.floor(BLOCK_HP_MAX * 0.05),
                 levelOpt: { 
                     levelCap: 10,
                     expCap: 1500,
@@ -63,7 +63,7 @@ var gameMod = (function(){
                     tableY: 120 - 12
                 }
             },
-            effects: ['burn','acid'],
+            effects: ['burn', 'acid'],
             shotRange: 128,
             shotPPS: 256,
             shotsPerFire: [2,2,2,1],
@@ -334,6 +334,21 @@ var gameMod = (function(){
                 effectType: 'burn',
                 x: 64,
                 y: 32,
+                r: 16,
+                cost: 0,
+                onClick: function(game, button){
+                    console.log('burn effect button');
+                    var upgrade = button.upgrade;
+                    buyUpgrade(game, upgrade);
+                    button.cost = upgrade.levelObj.xpForNext;
+                }
+            },
+            2: {
+                desc: 'ACID',
+                type: 'effectUpgrade',
+                effectType: 'acid',
+                x: 64,
+                y: -32,
                 r: 16,
                 cost: 0,
                 onClick: function(game, button){
