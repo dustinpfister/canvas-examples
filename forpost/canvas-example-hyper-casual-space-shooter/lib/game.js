@@ -240,7 +240,6 @@ var gameMod = (function(){
                     var upgradeID = 'w-' + game.ship.weaponIndex + '-firesPerSecond',
                     upgrade = getUpgradeById(game, upgradeID);
                     buyUpgrade(game, upgrade);
-                    upgrade.applyToState(game, upgrade.levelObj, upgrade);
                     button.cost = upgrade.levelObj.xpForNext;
                 }
             },
@@ -256,7 +255,6 @@ var gameMod = (function(){
                     var upgradeID = 'w-' + game.ship.weaponIndex + '-shotDamage',
                     upgrade = getUpgradeById(game, upgradeID);
                     buyUpgrade(game, upgrade);
-                    upgrade.applyToState(game, upgrade.levelObj, upgrade);
                     button.cost = upgrade.levelObj.xpForNext;
                 }
             }
@@ -281,7 +279,6 @@ var gameMod = (function(){
                 onClick: function(game, button){
                     var upgrade = button.upgrade;
                     buyUpgrade(game, upgrade);
-                    upgrade.applyToState(game, upgrade.levelObj, upgrade);
                     button.cost = upgrade.levelObj.xpForNext;
                 }
             },
@@ -295,7 +292,6 @@ var gameMod = (function(){
                 onClick: function(game, button){
                     var upgrade = button.upgrade;
                     buyUpgrade(game, upgrade);
-                    upgrade.applyToState(game, upgrade.levelObj, upgrade);
                     button.cost = upgrade.levelObj.xpForNext;
                 }
             },
@@ -309,7 +305,6 @@ var gameMod = (function(){
                 onClick: function(game, button){
                     var upgrade = button.upgrade;
                     buyUpgrade(game, upgrade);
-                    upgrade.applyToState(game, upgrade.levelObj, upgrade);
                     button.cost = upgrade.levelObj.xpForNext;
                 }
             }
@@ -846,13 +841,11 @@ var gameMod = (function(){
         buyUpgrade(game, upgrade);
         buyUpgrade(game, upgrade);
         buyUpgrade(game, upgrade);
-        //upgrade.applyToState(game, upgrade.levelObj, upgrade);
 
         var upgrade = getUpgradeById(game, 'e-acid');
         buyUpgrade(game, upgrade);
         buyUpgrade(game, upgrade);
         buyUpgrade(game, upgrade);
-        //upgrade.applyToState(game, upgrade.levelObj, upgrade);
 
         // log upgrades
 /*
