@@ -106,8 +106,11 @@
 * (done) looks like I might want a game.effects object that is cloned from the poolMod.EFFECT_TYPES
 * (done) make game.effects the object that is changed by the applyToSate methods of effect upgrades
 * (done) use the state of game.effects object to set values for effect options objects that are added to a shots.effects array in shots spawn method.
+* (done) I will want min and max values as CONSTANTS in game.js or as properties of the objects in game.effects. In any case these min and max values will be used to set the actaul values for the game.effects objects that are used to create effect objects in shots.
 
-* I will want min and max values as CONSTANTS in game.js or as properties of the objects in game.effects. In any case these min and max values will be used to set the actaul values for the game.effects objects that are used to create effect objects in shots.
+* have effect upgrades set chance prop of an effect
+* have effect upgrade set burn damagePer prop of an burn effect
+* have effect upgrade set acid damageMulti prop of an acid effect
 
 * call applyToState in buyUpgrade and remove all old calls of applyToSatte
 
