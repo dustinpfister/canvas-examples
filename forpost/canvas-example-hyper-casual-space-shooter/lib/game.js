@@ -204,6 +204,15 @@ var gameMod = (function(){
                 onClick: function(game){
                     game.buttons.currentPage = 'ship';
                 }
+            },
+            2: {
+                desc: 'Effects',
+                x: 96 + 8,
+                y: -32,
+                r: 16,
+                onClick: function(game){
+                    game.buttons.currentPage = 'effects';
+                }
             }
         },
         weapons:{
@@ -306,6 +315,32 @@ var gameMod = (function(){
                     var upgrade = button.upgrade;
                     buyUpgrade(game, upgrade);
                     button.cost = upgrade.levelObj.xpForNext;
+                }
+            }
+        },
+        effects: {
+           0: {
+                desc: 'Back',
+                x: 64,
+                y: 0,
+                r: 16,
+                onClick: function(game){
+                    game.buttons.currentPage = 'main';
+                }
+            },
+            1: {
+                desc: 'Burn',
+                x: 64,
+                y: 32,
+                r: 16,
+                cost: 0,
+                onClick: function(game, button){
+                    console.log('burn effect button');
+/*
+                    var upgrade = button.upgrade;
+                    buyUpgrade(game, upgrade);
+                    button.cost = upgrade.levelObj.xpForNext;
+*/
                 }
             }
         }

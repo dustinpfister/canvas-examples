@@ -111,10 +111,10 @@
 * (done) have effect upgrades set chance prop of an effect
 * (done) have effect upgrade set burn damagePer prop of an burn effect
 * (done) have effect upgrade set acid damageMulti prop of an acid effect
+* (done) call applyToState in buyUpgrade and remove all old calls of applyToSatte
+* (done) add a burn effect upgrade
+* (done) add a acid effect upgrade
 
-* call applyToState in buyUpgrade and remove all old calls of applyToSatte
-* add a burn effect upgrade
-* add a acid effect upgrade
 * add an upgrades page for Effects
 * add buttons for acid and burn effects
 
