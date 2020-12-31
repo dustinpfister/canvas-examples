@@ -36,6 +36,14 @@ var poolMod = (function () {
                 maxStack: {
                     min: 1,
                     max: 5
+                },
+                chance: {
+                    min: 0.25,
+                    max: 1
+                },
+                damagePer: {
+                    min: 0.25,
+                    max: 1
                 }
             }
         },
@@ -48,6 +56,14 @@ var poolMod = (function () {
                 maxStack: {
                     min: 1,
                     max: 3
+                },
+                chance: {
+                    min: 0.25,
+                    max: 1
+                },
+                damageMulti: {
+                    min: 0.25,
+                    max: 1
                 }
             }
         }
