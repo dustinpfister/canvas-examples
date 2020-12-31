@@ -503,6 +503,9 @@ var gameMod = (function(){
                 upgrade.levelIndex = lvNext.level -1; //Math.floor(Math.floor(lvCurrent.l) + 1);
                 upgrade.levelObj = lvNext;
                 game.money -= lvNext.xp;
+
+                // call apply to state
+                upgrade.applyToState(game, upgrade.levelObj, upgrade);
                 //console.log('level up for ' + upgrade.desc);
             }else{
                 //console.log('not enough money for ' + upgrade.desc + ' upgrade.');
@@ -843,13 +846,13 @@ var gameMod = (function(){
         buyUpgrade(game, upgrade);
         buyUpgrade(game, upgrade);
         buyUpgrade(game, upgrade);
-        upgrade.applyToState(game, upgrade.levelObj, upgrade);
+        //upgrade.applyToState(game, upgrade.levelObj, upgrade);
 
         var upgrade = getUpgradeById(game, 'e-acid');
         buyUpgrade(game, upgrade);
         buyUpgrade(game, upgrade);
         buyUpgrade(game, upgrade);
-        upgrade.applyToState(game, upgrade.levelObj, upgrade);
+        //upgrade.applyToState(game, upgrade.levelObj, upgrade);
 
         // log upgrades
 /*
