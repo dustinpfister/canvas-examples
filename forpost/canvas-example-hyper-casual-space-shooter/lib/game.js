@@ -471,6 +471,7 @@ var gameMod = (function(){
         return false;
     };
 
+    // buy an upgrade if there is enough money
     var buyUpgrade = function(game, upgrade){
         var lvCurrent = upgrade.levelObj,
         lvNext;
@@ -816,6 +817,12 @@ var gameMod = (function(){
         });
         // create upgrade refernces and set starting cost values for buttons
         updateButtons(game);
+
+
+        // buy starting upgrades
+        var upgrade = getUpgradeById(game, 'e-burn');
+        buyUpgrade(game, upgrade);
+        upgrade.applyToState(game, upgrade.levelObj, upgrade);
 
         // log upgrades
 /*
