@@ -441,13 +441,28 @@ var gameMod = (function(){
 
                     effect.chance = 1;
 
+                    Object.keys(effect.upStat).forEach(function(effectKey){
+                        var upStat = effect.upStat[effectKey];
+
+                        var delta = (upStat.max - upStat.min) * levelObj.perToLevelCap;
+                        effect[effectKey] = upStat.min + delta;
+                        if(upStat.round){
+                            effect[effectKey] = Math[upStat.round](effect[effectKey]);
+                        }
+                        console.log('');
+                        console.log(effect.effectType, effectKey, upStat.min, upStat.max);
+                        console.log('delta=', delta);
+                        console.log('value=', effect[effectKey]);
+                        //effect.maxStack = maxStack.min + delta;
+                    });
+
                     // maxStack values
-                    var upStat = effect.upStat,
-                    maxStack = upStat.maxStack,
-                    delta = Math.floor((maxStack.max - maxStack.min) * levelObj.perToLevelCap);
-                    effect.maxStack = maxStack.min + delta;
-                    console.log('');
-                    console.log(levelObj.perToLevelCap, delta, effect.maxStack);
+                    //var upStat = effect.upStat,
+                    //maxStack = upStat.maxStack,
+                    //delta = Math.floor((maxStack.max - maxStack.min) * levelObj.perToLevelCap);
+                    //effect.maxStack = maxStack.min + delta;
+                    //console.log('');
+                    //console.log(levelObj.perToLevelCap, delta, effect.maxStack);
                     
                 },
                 levelOpt: utils.deepClone({
@@ -827,7 +842,7 @@ var gameMod = (function(){
         var upgrade = getUpgradeById(game, 'e-burn');
         buyUpgrade(game, upgrade);
         buyUpgrade(game, upgrade);
-        //buyUpgrade(game, upgrade);
+        buyUpgrade(game, upgrade);
         upgrade.applyToState(game, upgrade.levelObj, upgrade);
 
         // log upgrades

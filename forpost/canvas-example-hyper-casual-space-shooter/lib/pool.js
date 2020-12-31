@@ -35,15 +35,16 @@ var poolMod = (function () {
             upStat: {
                 maxStack: {
                     min: 1,
-                    max: 5
+                    max: 10,
+                    round: 'floor'
                 },
                 chance: {
-                    min: 0.25,
+                    min: 0.75,
                     max: 1
                 },
                 damagePer: {
-                    min: 0.25,
-                    max: 1
+                    min: 0.01,
+                    max: 0.1
                 }
             }
         },
@@ -55,7 +56,8 @@ var poolMod = (function () {
             upStat: {
                 maxStack: {
                     min: 1,
-                    max: 3
+                    max: 3,
+                    round: 'floor'
                 },
                 chance: {
                     min: 0.25,
