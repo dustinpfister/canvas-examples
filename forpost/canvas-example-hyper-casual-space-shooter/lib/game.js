@@ -439,11 +439,15 @@ var gameMod = (function(){
                     var effect = game.effects[upgrade.id.split('-')[1]];
                     console.log('applying ' + effect.effectType);
 
-                    // setting all maxStack values to 1 for now
-                    effect.maxStack = 3;
                     effect.chance = 1;
-                    console.log(effect.upStat.maxStack);
-                    console.log(levelObj.perToLevelCap);
+
+                    // maxStack values
+                    var upStat = effect.upStat,
+                    maxStack = upStat.maxStack,
+                    delta = Math.floor((maxStack.max - maxStack.min) * levelObj.perToLevelCap);
+                    effect.maxStack = maxStack.min + delta;
+                    console.log('');
+                    console.log(levelObj.perToLevelCap, delta, effect.maxStack);
                     
                 },
                 levelOpt: utils.deepClone({
@@ -822,6 +826,8 @@ var gameMod = (function(){
         // buy starting upgrades
         var upgrade = getUpgradeById(game, 'e-burn');
         buyUpgrade(game, upgrade);
+        buyUpgrade(game, upgrade);
+        //buyUpgrade(game, upgrade);
         upgrade.applyToState(game, upgrade.levelObj, upgrade);
 
         // log upgrades

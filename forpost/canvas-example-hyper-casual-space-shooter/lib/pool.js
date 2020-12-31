@@ -35,7 +35,7 @@ var poolMod = (function () {
             upStat: {
                 maxStack: {
                     min: 1,
-                    max: 3
+                    max: 5
                 }
             }
         },

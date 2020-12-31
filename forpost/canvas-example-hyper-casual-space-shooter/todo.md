@@ -109,6 +109,8 @@
 
 * I will want min and max values as CONSTANTS in game.js or as properties of the objects in game.effects. In any case these min and max values will be used to set the actaul values for the game.effects objects that are used to create effect objects in shots.
 
+* call applyToState in buyUpgrade and remove all old calls of applyToSatte
+
 * add a burn effect upgrade
 * add a acid effect upgrade
 * add an upgrades page for Effects
