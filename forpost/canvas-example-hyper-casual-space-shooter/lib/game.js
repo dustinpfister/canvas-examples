@@ -52,8 +52,8 @@ var gameMod = (function(){
                 }
             },
             shotDamage: { // min and max range for shot damage
-                min: 0,
-                max: 0, //Math.floor(BLOCK_HP_MAX * 0.05),
+                min: 1,
+                max: Math.floor(BLOCK_HP_MAX * 0.05),
                 levelOpt: { 
                     levelCap: 10,
                     expCap: 1500,
@@ -337,7 +337,6 @@ var gameMod = (function(){
                 r: 16,
                 cost: 0,
                 onClick: function(game, button){
-                    console.log('burn effect button');
                     var upgrade = button.upgrade;
                     buyUpgrade(game, upgrade);
                     button.cost = upgrade.levelObj.xpForNext;
@@ -352,7 +351,6 @@ var gameMod = (function(){
                 r: 16,
                 cost: 0,
                 onClick: function(game, button){
-                    console.log('burn effect button');
                     var upgrade = button.upgrade;
                     buyUpgrade(game, upgrade);
                     button.cost = upgrade.levelObj.xpForNext;
@@ -486,33 +484,14 @@ var gameMod = (function(){
                 desc: key,
                 applyToState: function(game, levelObj, upgrade){
                     var effect = game.effects[upgrade.id.split('-')[1]];
-                    console.log('applying ' + effect.effectType);
-
-                    effect.chance = 1;
-
                     Object.keys(effect.upStat).forEach(function(effectKey){
                         var upStat = effect.upStat[effectKey];
-
                         var delta = (upStat.max - upStat.min) * levelObj.perToLevelCap;
                         effect[effectKey] = upStat.min + delta;
                         if(upStat.round){
                             effect[effectKey] = Math[upStat.round](effect[effectKey]);
                         }
-                        console.log('');
-                        console.log(effect.effectType, effectKey, upStat.min, upStat.max);
-                        console.log('delta=', delta);
-                        console.log('value=', effect[effectKey]);
-                        //effect.maxStack = maxStack.min + delta;
                     });
-
-                    // maxStack values
-                    //var upStat = effect.upStat,
-                    //maxStack = upStat.maxStack,
-                    //delta = Math.floor((maxStack.max - maxStack.min) * levelObj.perToLevelCap);
-                    //effect.maxStack = maxStack.min + delta;
-                    //console.log('');
-                    //console.log(levelObj.perToLevelCap, delta, effect.maxStack);
-                    
                 },
                 levelOpt: utils.deepClone({
                     levelCap: 10,
@@ -545,8 +524,6 @@ var gameMod = (function(){
         lvNext;
         // if the current level is not at the level cap
         if(lvCurrent.level < upgrade.opt.levelCap){
-            //lvNext = utils.xp.byLevel(lvCurrent.l + 1, upgrade.opt);
-            //lvNext = utils.xp.byLevel(lvCurrent.level, upgrade.opt);
             lvNext = upgrade.levelObjArray[lvCurrent.level];
             if(game.money >= lvNext.xp){
                 upgrade.levelIndex = lvNext.level -1; //Math.floor(Math.floor(lvCurrent.l) + 1);
@@ -555,12 +532,12 @@ var gameMod = (function(){
 
                 // call apply to state
                 upgrade.applyToState(game, upgrade.levelObj, upgrade);
-                //console.log('level up for ' + upgrade.desc);
+                //'level up for ' + upgrade.desc
             }else{
-                //console.log('not enough money for ' + upgrade.desc + ' upgrade.');
+                // not enough money for upgrade
             }
         }else{
-            //console.log('level cap reached.');
+            // level cap reached.
         }
     };
 
@@ -650,13 +627,8 @@ var gameMod = (function(){
 
                     // shot effects
                     shot.effects = [];
-                    //weapon.effects.forEach(function(effect){
                     weapon.effects.forEach(function(effectType){
-                        //var effectType = typeof effect === 'string' ? effect : effect.effectType;
-                        //var upgrade = getUpgradeById(state.game, 'e-' + effectType);
-                        //console.log(effectType, upgrade);
                         var effect = poolMod.parseEffectObject(state.game.effects[effectType]);
-                        
                         var roll = Math.random();
                         if(roll < effect.chance){
                             // push a refernce to the effect object

@@ -114,9 +114,8 @@
 * (done) call applyToState in buyUpgrade and remove all old calls of applyToSatte
 * (done) add a burn effect upgrade
 * (done) add a acid effect upgrade
-
-* add an upgrades page for Effects
-* add buttons for acid and burn effects
+* (done) add an upgrades page for Effects
+* (done) add buttons for acid and burn effects
 
 * make a 0.19.0 pkg folder
 
