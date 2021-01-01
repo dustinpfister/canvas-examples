@@ -120,7 +120,7 @@
 * (done) add a acid effect upgrade
 * (done) add an upgrades page for Effects
 * (done) add buttons for acid and burn effects
-* make a 0.19.0 pkg folder
+* (done) make a 0.19.0 pkg folder
 
 <!-- ADD ADDITIONAL CORE FEATURES -->
 <!--
