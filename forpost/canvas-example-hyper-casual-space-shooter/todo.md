@@ -97,7 +97,12 @@
 * The actual distnace used will be from a certain min radius from the center so that it is easy to each and stay at 0 pps
 
 ## 0.20.0 - Better Graphics (CANVAS ONLY)
-* have canvas generated sheets for the ship, blocks, shots, and a background
+* add a way to create canvas generated sprite sheets in draw.js
+* have at least a basic triangle like shape for the ship.
+* create star like shapes that rotate for shots.
+* change shot color and or shape based on shot effects array
+* make a cool background of some kind
+* make a 0.20.0 pkg folder
 
 ## 0.19.0 - Effect Types, Effects upgrade page started, ACID Effect
 * (done) start a new poolMod.parseEffectObject method that will return a vaild effect object from an effectType string or incompleate object
