@@ -143,15 +143,15 @@ var draw = (function(){
         ctx.fillStyle = 'rgba(0,0,255,0.2)';
         baseObjectDraw(ctx, game.ship, function(){
             var radian = game.map.radian;
+
+            ctx.rotate(radian);
             ctx.strokeStyle = 'white';
             ctx.beginPath();
-            ctx.moveTo(
-                game.ship.x + Math.cos(radian) * game.ship.r,
-                game.ship.y + Math.sin(radian) * game.ship.r
-            );
-            ctx.lineTo(game.ship.x, game.ship.y);
+            ctx.moveTo(0,0);
+            ctx.lineTo(game.ship.r, 0);
             ctx.lineWidth = 3;
             ctx.stroke();
+
         });
     };
     api.gridLines = function (ctx, state, style) {
