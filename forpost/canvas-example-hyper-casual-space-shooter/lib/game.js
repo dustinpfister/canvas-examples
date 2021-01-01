@@ -3,7 +3,7 @@ var gameMod = (function(){
     // CONSTANTS
 
     // MONEY
-    var GAME_MONEY_START = 750000,
+    var GAME_MONEY_START = 0,
     GAME_UPDATE_MAX_SECS = 0.8,   // max secs value for main update loop
     MONEY_PERLOSS_ON_DEATH = 0.1, // percent of money loss on death 0-1
 
@@ -113,6 +113,7 @@ var gameMod = (function(){
                     tableY: 120 - 12
                 }
             },
+            effects: ['burn'],
             shotRange: 256,
             shotsPerFire: [3, 2],
             onFireStart: function(game, secs, state){
@@ -155,6 +156,7 @@ var gameMod = (function(){
                     tableY: 120 - 12
                 }
             },
+            effects: ['acid'],
             shotRange: 64,
             shotsPerFire: [1]
         }
@@ -863,6 +865,7 @@ var gameMod = (function(){
 
 
         // buy starting upgrades
+/*
         var upgrade = getUpgradeById(game, 'e-burn');
         buyUpgrade(game, upgrade);
         buyUpgrade(game, upgrade);
@@ -872,7 +875,7 @@ var gameMod = (function(){
         buyUpgrade(game, upgrade);
         buyUpgrade(game, upgrade);
         buyUpgrade(game, upgrade);
-
+*/
         // log upgrades
 /*
         console.log(game.upgrades.map(function(upgrade){

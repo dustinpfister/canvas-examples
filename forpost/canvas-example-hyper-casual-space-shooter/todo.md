@@ -63,6 +63,10 @@
    At this time I think I should add additional Block realted features Mainly Block Armor and additional Effects.
 -->
 
+## 0.26.0 - Better stat info for upgrades
+* start a new system for upgrades where you select an upgrade and press a 'buy' button to upgrade
+* when an upgrade is selected stat info for the upgrade is displayed
+
 ## 0.25.0 - save states
 * make money part of the save state
 * make upgrades part of the save state
@@ -116,7 +120,6 @@
 * (done) add a acid effect upgrade
 * (done) add an upgrades page for Effects
 * (done) add buttons for acid and burn effects
-
 * make a 0.19.0 pkg folder
 
 <!-- ADD ADDITIONAL CORE FEATURES -->
