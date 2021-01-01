@@ -86,10 +86,7 @@
 * add an armor property for blocks
 * add a shotDeflectChance prop
 
-## 0.21.0 - Better Graphics (CANVAS ONLY)
-* have canvas generated sheets for the ship, blocks, shots, and a background
-
-## 0.20.0 - better mouse and touch support
+## 0.21.0 - better mouse and touch support
 * add mouse event support
 * autoFire button as first space mode button
 * have a set of two circles in the lower right corner that will be a 'pointerControl' area
@@ -98,6 +95,9 @@
 * The angle of the inner cirle to the center of the circle will be used to set map.radian
 * the distance of the inner circle from the center to the outer circle will be used to set map.pps
 * The actual distnace used will be from a certain min radius from the center so that it is easy to each and stay at 0 pps
+
+## 0.20.0 - Better Graphics (CANVAS ONLY)
+* have canvas generated sheets for the ship, blocks, shots, and a background
 
 ## 0.19.0 - Effect Types, Effects upgrade page started, ACID Effect
 * (done) start a new poolMod.parseEffectObject method that will return a vaild effect object from an effectType string or incompleate object
