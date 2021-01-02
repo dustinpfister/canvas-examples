@@ -396,7 +396,6 @@ var draw = (function(){
         ship(ctx, state);
         shots(ctx, state);
 
-        // draw grids if in base mode
         if(game.mode === 'base'){
             // draw grids for the current weapon
             if(game.buttons.currentPage === 'weapons'){
@@ -409,6 +408,9 @@ var draw = (function(){
                 xpTable(ctx, game.upgrades[1]);
                 xpTable(ctx, game.upgrades[2]);
             }
+            if(game.buttons.currentPage === 'effects'){
+                effectsInfo(ctx, state);
+            }
         }
 
         // draw an 'arrow' object that points to the base if in space mode
@@ -417,12 +419,13 @@ var draw = (function(){
             drawArrowToBase(ctx, game);
             // position status and map
             positionStatus(ctx, state);
-            positionMap(ctx, state)
+            positionMap(ctx, state);
+            effectsInfo(ctx, state);
         }
 
         // draw the games status bar
         statusBar(ctx, state);
-        effectsInfo(ctx, state);
+
 
         // draw debug info
         //info(ctx, state);
