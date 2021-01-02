@@ -39,12 +39,36 @@ var draw = (function(){
         ctx.fillRect(0, 0, canvas.width, canvas.height);
     };
 
+    // display effects info for current weapon
+    var effectsInfo = function(ctx, state){
+        var game = state.game,
+        weapon = game.ship.weapon;
+        
+        // base text style
+        ctx.fillStyle='lime';
+        ctx.textBaseline='top';
+        ctx.textAlign='left';
+        ctx.font='7px courier';
+
+        //ctx.fillText('effects: ' + weapon.effects.length, 5, 40);
+        weapon.effects.forEach(function(effectType, index){
+            var sy = 40 + 50 * index,
+            effect = game.effects[effectType];
+            ctx.fillText(effect.effectType + ':', 5, sy);
+            ctx.fillText(' chance  : ' + Math.round(effect.chance * 100) + '%', 5, sy + 8);
+            ctx.fillText(' maxStack: ' + effect.maxStack, 5, sy + 16);
+            if(effect.effectType === 'burn'){
+                ctx.fillText(' damage%: ' + Math.round(effect.damagePer * 100) + '%', 5, sy + 24);
+                ctx.fillText(' count ' + effect.count, 5, sy + 32);
+            }
+        });
+    };
+
     // draw game status bar info
     var statusBar = function(ctx, state){
         var game = state.game,
         map = game.map,
         weapon = game.ship.weapon;
-
 
         // backdrop for status bar
         ctx.fillStyle="rgba(128,128,128,0.5)";
@@ -70,6 +94,8 @@ var draw = (function(){
         ctx.font='8px courier';
         ctx.fillText('Shot Damage:' + weapon.shotDamage, 220, 13);
         ctx.fillText('Fires/sec  :' + weapon.firesPerSecond, 220, 20);
+
+        effectsInfo(ctx, state);
     };
 
     // draw a health bar for an object
