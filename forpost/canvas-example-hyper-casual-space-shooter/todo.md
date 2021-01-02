@@ -102,6 +102,7 @@
 * (done) have a debug mode in main.js state, if true debug info is drawn
 
 * have a way to turn debug mode on and off when playing ( press 'v')
+* create a new status bar display that will go up on the top of the canvas
 
 * add a way to create canvas generated sprite sheets in draw.js
 * create star like shapes that rotate for shots.
