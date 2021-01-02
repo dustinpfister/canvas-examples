@@ -72,7 +72,8 @@ var loop = function () {
         // update input.pointer
         updatePointer(game, input.pointer.pos);
         // keyboard or pointer update map radian
-        // keyboard update pps
+
+        // keyboard update map pps
         if(input.keys.w){
            map.pps += map.ppsDelta * secs;
            map.pps = map.pps > map.maxPPS ? map.maxPPS : map.pps;
@@ -87,6 +88,7 @@ var loop = function () {
             map.pps -= map.ppsDelta * secs;
             map.pps = map.pps < 0 ? 0 : map.pps;
         }
+
         // pointer update map radian
         if(input.pointer.down && input.pointer.dist <= 32){
             if(input.pointer.dir === 1){
@@ -132,6 +134,10 @@ window.addEventListener('keydown', function(e){
 window.addEventListener('keyup', function(e){
     //e.preventDefault();
     var key = e.key.toLowerCase();
+    // toggle debug mode
+    if(key === 'v'){
+       state.debug = !state.debug;
+    }
     state.input.keys[key] = false;
 });
 // MOUSE AND TOUCH

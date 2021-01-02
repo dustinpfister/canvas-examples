@@ -100,8 +100,8 @@
 * (done) have at least a basic triangle like shape for the ship.
 * (done) make draw.currentMode the only method that is called in main.js
 * (done) have a debug mode in main.js state, if true debug info is drawn
+* (done) have a way to turn debug mode on and off when playing ( press 'v')
 
-* have a way to turn debug mode on and off when playing ( press 'v')
 * create a new status bar display that will go up on the top of the canvas
 
 * add a way to create canvas generated sprite sheets in draw.js
