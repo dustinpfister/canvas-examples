@@ -117,7 +117,7 @@
 * (done) gradiant backdrop for status bar
 * (done) add a FPS counter
 * (done) change shot color and or shape based on shot effects array
-* make a 0.20.0 pkg folder
+* (done) make a 0.20.0 pkg folder
 
 ## 0.19.0 - Effect Types, Effects upgrade page started, ACID Effect
 * (done) start a new poolMod.parseEffectObject method that will return a vaild effect object from an effectType string or incompleate object
