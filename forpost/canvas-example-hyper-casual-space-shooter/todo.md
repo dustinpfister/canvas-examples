@@ -101,8 +101,13 @@
 * (done) make draw.currentMode the only method that is called in main.js
 * (done) have a debug mode in main.js state, if true debug info is drawn
 * (done) have a way to turn debug mode on and off when playing ( press 'v')
+* (done) create a new status bar display that will go up on the top of the canvas
 
-* create a new status bar display that will go up on the top of the canvas
+* display basic weapon info as part of status
+* display effect stats for current weapon only as part of status
+
+* start new positionStatus draw helper for map position info and status
+* make pointer arror a triangle
 
 * add a way to create canvas generated sprite sheets in draw.js
 * create star like shapes that rotate for shots.
