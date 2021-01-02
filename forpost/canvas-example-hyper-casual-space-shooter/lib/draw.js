@@ -40,12 +40,19 @@ var draw = (function(){
     };
 
     var statusBar = function(ctx, state){
-        var game = state.game;
+        var game = state.game,
+        map = game.map;
         ctx.fillStyle='white';
         ctx.textBaseline='top';
         ctx.textAlign='left';
+
+        // must display money
         ctx.font='10px courier';
-        ctx.fillText(utils.format_money(game.money) + '$', 10, 10);
+        ctx.fillText(utils.format_money(game.money) + '$', 5, 5);
+
+        // ship speed
+        ctx.font='8px courier';
+        ctx.fillText('speed: ' + map.pps + '/' + map.maxPPS, 5, 15);
     };
 
     // draw a health bar for an object
