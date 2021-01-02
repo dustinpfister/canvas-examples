@@ -147,9 +147,11 @@ var draw = (function(){
             ctx.rotate(radian);
             ctx.strokeStyle = 'white';
             ctx.beginPath();
-            ctx.moveTo(0,0);
-            ctx.lineTo(game.ship.r, 0);
-            ctx.lineWidth = 3;
+            ctx.moveTo(game.ship.r, 0);
+            ctx.lineTo(game.ship.r * -1, game.ship.r);
+            ctx.lineTo(game.ship.r * -1, game.ship.r * -1);
+            ctx.closePath();
+            ctx.lineWidth = 1;
             ctx.stroke();
 
         });
