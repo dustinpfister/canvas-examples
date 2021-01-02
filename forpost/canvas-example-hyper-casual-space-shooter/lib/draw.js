@@ -314,6 +314,15 @@ var draw = (function(){
         ctx.fillText('v' + state.ver, 5, state.canvas.height - 15);
     };
 
+    // draw FPS info
+    var FPS = function(ctx, state){
+        ctx.fillStyle = 'yellow';
+        ctx.font = '8px arial';
+        ctx.textBaseline = 'top';
+        ctx.textAlign = 'left';
+        ctx.fillText('FPS: ' + Math.floor(state.FPS), 50, state.canvas.height - 15);
+    };
+
     // draw an xp table or upgrade object
     var xpTable = function(ctx, table){
         table.points.forEach(function(point, i){
@@ -410,6 +419,8 @@ var draw = (function(){
 
         // draw version number
         ver(ctx, state);
+
+        FPS(ctx, state);
 
     };
 

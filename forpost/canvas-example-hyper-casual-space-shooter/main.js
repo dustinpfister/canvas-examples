@@ -63,6 +63,7 @@ var numberButtonCheck = function(game, input){
 //var lt = new Date(),
 //FPS_target = 1000 / 30;
 var loop = function () {
+
     var now = new Date(),
     t = now - state.lt,
     game = state.game,
@@ -73,6 +74,8 @@ var loop = function () {
     requestAnimationFrame(loop);
 
     if (t >= 1000 / state.FPS_target) {
+
+        state.FPS = 1 / secs;
 
         // update input.pointer
         updatePointer(game, input.pointer.pos);
