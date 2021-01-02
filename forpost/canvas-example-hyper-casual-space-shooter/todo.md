@@ -115,6 +115,8 @@
 * gradiant backdrop for status bar
 * health bar for ship in status bar
 
+* add a FPS counter
+
 * create star like shapes that rotate for shots.
 * change shot color and or shape based on shot effects array
 * make a cool background of some kind

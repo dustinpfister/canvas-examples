@@ -137,6 +137,27 @@ var draw = (function(){
 
     // draw an 'arrow' to the base
     var drawArrowToBase = function(ctx, game){
+
+        baseObjectDraw(ctx, {
+            x: Math.cos(game.map.aToOrigin) * 32,
+            y: Math.sin(game.map.aToOrigin) * 32,
+            r: 5,
+            fillStyle: 'black'
+        },
+        function(ctx, obj){
+            ctx.fillStyle = 'red',
+            ctx.translate(obj.x, obj.y);
+            ctx.rotate(game.map.aToOrigin);
+            ctx.beginPath();
+            ctx.moveTo(obj.r, 0);
+            ctx.lineTo(obj.r * -1, obj.r);
+            ctx.lineTo(obj.r * -1, obj.r * -1);
+            ctx.closePath();
+            ctx.lineWidth = 2;
+            ctx.stroke();
+            ctx.fill();
+        });
+/*
         ctx.save();
         ctx.translate(TRANSLATE_TO.x, TRANSLATE_TO.y);
         var x = Math.cos(game.map.aToOrigin) * 32;
@@ -148,6 +169,8 @@ var draw = (function(){
         ctx.fill();
         ctx.stroke();
         ctx.restore();
+*/
+
     };
 
     // base draw object helper
