@@ -5,6 +5,25 @@ var draw = (function(){
         y: 120
     };
 
+    // THE GRIDLINES
+    var GRIDLINES = [
+        {
+            cellSize:   64,
+            cellWidth:  7,
+            cellHeight: 7
+        },
+        {
+            cellSize:   32,
+            cellWidth:  14,
+            cellHeight: 14
+        },
+        {
+            cellSize:   16,
+            cellWidth:  28,
+            cellHeight: 28
+        },
+    ][0];
+
     // draw background
     var background = function (ctx, state) {
         var canvas = state.canvas,
@@ -121,15 +140,12 @@ var draw = (function(){
 
     // draw grid lines so that we know that we are in fact moving
     var gridLines = function (ctx, state, style) {
-        var grid={
-            cellSize: 64,
-            cellWidth: 7,
-            cellHeight: 7,
-            xOffset: state.game.map.x,
-            yOffset: state.game.map.y
-        },
-        sx = grid.cellWidth * grid.cellSize / 2 * -1 - (grid.xOffset % grid.cellSize),
-        sy = grid.cellHeight * grid.cellSize / 2 * -1 + (grid.yOffset % grid.cellSize) * -1,
+        var grid = GRIDLINES;
+        // update offsets
+        //grid.xOffset = state.game.map.x;
+        //grid.yOffset = state.game.map.y;
+        var sx = grid.cellWidth * grid.cellSize / 2 * -1 - (state.game.map.x % grid.cellSize),
+        sy = grid.cellHeight * grid.cellSize / 2 * -1 + (state.game.map.y % grid.cellSize) * -1,
         x, y,
         len = grid.cellWidth * grid.cellHeight,
         i = 0;
