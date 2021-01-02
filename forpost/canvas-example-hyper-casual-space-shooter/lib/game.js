@@ -28,7 +28,7 @@ var gameMod = (function(){
     SHIP_MAX_SPEED_MAX = 1024,     // fully upgraded max ship speed in pps
     SHIP_ACC_START = 64,            // starting Acceleration in ppsps
     SHIP_ACC_MAX = 256,            // fully upgraded max ship speed in pps
-    MAP_MAX_DIST = Math.pow(10,4), //Number.MAX_SAFE_INTEGER;      // max distance from BASE (0,0)
+    MAP_MAX_DIST = Math.pow(10,5), //Number.MAX_SAFE_INTEGER;      // max distance from BASE (0,0)
 
     // HOME BASE VALUES
     // values for the base area at the origin

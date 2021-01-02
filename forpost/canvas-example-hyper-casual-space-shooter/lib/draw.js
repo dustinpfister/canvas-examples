@@ -413,19 +413,19 @@ var draw = (function(){
 
         // draw an 'arrow' object that points to the base if in space mode
         if(game.mode === 'space'){
+            // draw an arrow back to the base
             drawArrowToBase(ctx, game);
+            // position status and map
+            positionStatus(ctx, state);
+            positionMap(ctx, state)
         }
 
         // draw the games status bar
         statusBar(ctx, state);
         effectsInfo(ctx, state);
 
-        // position status and map
-        positionStatus(ctx, state);
-        positionMap(ctx, state)
-
         // draw debug info
-        info(ctx, state);
+        //info(ctx, state);
 
         // draw version number
         ver(ctx, state);
