@@ -15,7 +15,7 @@ var draw = (function(){
             if(obj.hp.per < 1){
                 ctx.beginPath();
                 ctx.rect(obj.x - obj.r, obj.y + obj.r - 5, obj.r * 2, 5);
-                ctx.fillStyle="rgba(120,120,120,0.4)";
+                ctx.fillStyle="rgba(120,120,120,0.7)";
                 ctx.fill();
                 ctx.beginPath();
                 ctx.rect(obj.x - obj.r, obj.y + obj.r - 5, obj.r * 2 * obj.hp.per, 5);
@@ -54,10 +54,14 @@ var draw = (function(){
         if(render){
             render(ctx, obj);
         }
-        if(obj.hp){
-            drawHealthBar(ctx, obj);
-        }
         ctx.restore();
+        ctx.save();
+        // draw an hp bar for the object if it has one
+        if(obj.hp){
+            ctx.translate(160, 120);
+            drawHealthBar(ctx, obj);
+            ctx.restore();
+        }
     };
 
     // darw shots
