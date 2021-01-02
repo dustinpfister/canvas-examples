@@ -45,7 +45,7 @@ var draw = (function(){
         ctx.textBaseline='top';
         ctx.textAlign='left';
         ctx.font='10px courier';
-        ctx.fillText(Math.floor(game.money) + '$', 10, 10);
+        ctx.fillText(utils.format_money(game.money) + '$', 10, 10);
     };
 
     // draw a health bar for an object

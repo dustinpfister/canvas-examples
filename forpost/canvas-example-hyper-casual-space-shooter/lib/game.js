@@ -3,7 +3,7 @@ var gameMod = (function(){
     // CONSTANTS
 
     // MONEY
-    var GAME_MONEY_START = 1000.25,
+    var GAME_MONEY_START = 1000,
     GAME_UPDATE_MAX_SECS = 0.8,   // max secs value for main update loop
     MONEY_PERLOSS_ON_DEATH = 0.1, // percent of money loss on death 0-1
 
