@@ -31,11 +31,11 @@ var draw = (function(){
     ][0];
 
     // draw background
-    var background = function (ctx, state) {
+    var background = function (ctx, state, style) {
         var canvas = state.canvas,
         map = state.game.map,
         r = Math.floor(map.per * 255);
-        ctx.fillStyle = 'rgba(' + r + ',0,0,1)';
+        ctx.fillStyle = style || 'rgba(' + r + ',0,0,1)';
         ctx.fillRect(0, 0, canvas.width, canvas.height);
     };
 
@@ -180,6 +180,7 @@ var draw = (function(){
         w = ship.weapon,
         map = game.map;
         if(state.debug){
+            background(ctx, state, 'rgba(0,0,0,0.5)');
             ctx.fillStyle = 'yellow';
             ctx.font = '10px arial';
             ctx.textBaseline = 'top';
