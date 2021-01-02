@@ -609,6 +609,24 @@ var gameMod = (function(){
 
     // SHOTS
 
+    var shotStyleHelper = function(shot){
+        shot.fillStyle = 'rgba(255,255,255,0.2)';
+        shot.r = 2;
+        if(shot.effects.length > 0){
+            var r = 0, b = 0, g = 0;
+            shot.effects.forEach(function(effect){
+                if(effect.effectType === 'burn'){
+                    r = 255;
+                }
+                if(effect.effectType === 'acid'){
+                    b = 255;
+                }
+            });
+            shot.fillStyle = 'rgb(' + r + ',' + g + ', ' + b + ')';
+            shot.r = 3;
+        }
+    };
+
     // create shots pool helper
     var createShotsPool = function(){
         return poolMod.create({
@@ -629,18 +647,16 @@ var gameMod = (function(){
 
                     // shot effects
                     shot.effects = [];
-                    shot.fillStyle = 'rgba(255,255,255,0.2)';
-                    shot.r = 2;
                     weapon.effects.forEach(function(effectType){
                         var effect = poolMod.parseEffectObject(state.game.effects[effectType]);
                         var roll = Math.random();
                         if(roll < effect.chance){
                             // push a refernce to the effect object
                             shot.effects.push(effect);
-                            shot.fillStyle = 'red';
-                            shot.r = 3;
+
                         }
                     });
+                    shotStyleHelper(shot);
                 },
                 update: function(shot, pool, state, secs){
                     var objDeltaX = Math.cos(shot.radian) * shot.pps * secs;
