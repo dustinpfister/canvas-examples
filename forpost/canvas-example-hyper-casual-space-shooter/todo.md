@@ -93,6 +93,7 @@
 * add a shotDeflectChance prop
 
 ## 0.21.0 - better mouse and touch support
+* press 'b' key to turn auto fire on and off
 * add mouse event support
 * autoFire button as first space mode button
 * have a set of two circles in the lower right corner that will be a 'pointerControl' area

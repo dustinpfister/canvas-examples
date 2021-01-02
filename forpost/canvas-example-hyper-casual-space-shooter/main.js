@@ -147,6 +147,9 @@ window.addEventListener('keyup', function(e){
     if(key === 'v'){
        state.debug = !state.debug;
     }
+    if(key === 'b'){
+       state.game.autoFire = !state.game.autoFire;
+    }
     state.input.keys[key] = false;
 });
 // MOUSE AND TOUCH

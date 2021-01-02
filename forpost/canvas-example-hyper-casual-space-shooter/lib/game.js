@@ -17,7 +17,7 @@ var gameMod = (function(){
     BLOCK_MONEY_DIST = 999,
 
     // SHIP AND MAP VALUES
-    SHIP_AUTOFIRE = false,
+    SHIP_AUTOFIRE = false,          // auto fire on or off by default
     SHIP_HP = 30,
     SHIP_AUTOHEAL_ENABLED=true,
     SHIP_AUTOHEAL_RATE = 10,
@@ -840,6 +840,7 @@ var gameMod = (function(){
         var game = {
             money: GAME_MONEY_START,
             mode: 'space',
+            autoFire: SHIP_AUTOFIRE,
             weapons: utils.deepClone(DEFAULT_WEAPONS),
             effects: utils.deepClone(poolMod.EFFECT_TYPES),
             upgrades: [],
@@ -957,7 +958,7 @@ var gameMod = (function(){
         // only shoot new shots in 'space' mode
         if(game.mode === 'space'){
             ship.weaponSecs += secs;
-            if(SHIP_AUTOFIRE || state.input.fire){
+            if(game.autoFire || state.input.fire){
                 if(ship.weaponSecs >= 1 / weapon.firesPerSecond){
                     weapon.onFireStart(game, secs, state);
                     weapon.shotsPerFireIndex += 1;
