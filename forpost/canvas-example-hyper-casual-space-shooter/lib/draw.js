@@ -95,8 +95,8 @@ var draw = (function(){
         ctx.font='10px courier';
         ctx.fillText(weapon.name, 5, 5);
         ctx.font='8px courier';
-        ctx.fillText('Shot Damage:' + weapon.shotDamage, 5, 13);
-        ctx.fillText('Fires/sec  :' + weapon.firesPerSecond, 5, 20);
+        ctx.fillText('Shot Damage:' + weapon.shotDamage.toFixed(2), 5, 13);
+        ctx.fillText('Fires/sec  :' + weapon.firesPerSecond.toFixed(2), 5, 20);
 
         effectsInfo(ctx, state);
     };
