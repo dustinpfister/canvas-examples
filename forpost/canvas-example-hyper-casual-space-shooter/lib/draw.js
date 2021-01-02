@@ -64,10 +64,14 @@ var draw = (function(){
     // draw current mode
     api.currentMode = function(ctx, state){
         var game = state.game;
+
+        // draw grid lines
         draw.gridLines(state.ctx, state, 'rgba(255,255,255,0.1)');
+
+        // draw base object
         baseObjectDraw(ctx, game.baseObj, function(){});
 
-        // draw any buttons for the mode
+        // draw any buttons for the current mode
         var buttons_mode = game.buttons[game.mode];
         if(buttons_mode){
             var buttons_page = buttons_mode[game.buttons.currentPage];
@@ -86,10 +90,12 @@ var draw = (function(){
             });
         }
 
+        // draw blocks, the ship, and shots
         draw.blocks(state.ctx, state);
         draw.ship(state.ctx, state);
         draw.shots(state.ctx, state);
 
+        // draw grids if in base mode
         if(game.mode === 'base'){
             // draw grids for the current weapon
             if(game.buttons.currentPage === 'weapons'){
@@ -104,6 +110,7 @@ var draw = (function(){
             }
         }
 
+        // draw an 'arrow' object that points to the base if in space mode
         if(game.mode === 'space'){
             drawArrowToBase(ctx, game);
         }

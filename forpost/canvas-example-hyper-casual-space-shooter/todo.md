@@ -97,8 +97,10 @@
 * The actual distnace used will be from a certain min radius from the center so that it is easy to each and stay at 0 pps
 
 ## 0.20.0 - Better Graphics (CANVAS ONLY)
+* (done) have at least a basic triangle like shape for the ship.
+
 * add a way to create canvas generated sprite sheets in draw.js
-* have at least a basic triangle like shape for the ship.
+
 * create star like shapes that rotate for shots.
 * change shot color and or shape based on shot effects array
 * make a cool background of some kind
