@@ -39,20 +39,29 @@ var draw = (function(){
         ctx.fillRect(0, 0, canvas.width, canvas.height);
     };
 
+    // draw game status bar info
     var statusBar = function(ctx, state){
         var game = state.game,
-        map = game.map;
+        map = game.map,
+        weapon = game.ship.weapon;
         ctx.fillStyle='white';
         ctx.textBaseline='top';
         ctx.textAlign='left';
 
         // must display money
         ctx.font='10px courier';
-        ctx.fillText(utils.format_money(game.money) + '$', 5, 5);
+        ctx.fillText(utils.format_money(game.money), 5, 5);
 
         // ship speed
         ctx.font='8px courier';
-        ctx.fillText('speed: ' + map.pps + '/' + map.maxPPS, 5, 15);
+        ctx.fillText('speed: ' + Math.floor(map.pps) + '/' + Math.floor(map.maxPPS), 5, 15);
+
+        // basic weapon info
+        ctx.font='10px courier';
+        ctx.fillText(weapon.name, 220, 5);
+        ctx.font='8px courier';
+        ctx.fillText('Shot Damage:' + weapon.shotDamage, 220, 13);
+        ctx.fillText('Fires/sec  :' + weapon.firesPerSecond, 220, 20);
     };
 
     // draw a health bar for an object
