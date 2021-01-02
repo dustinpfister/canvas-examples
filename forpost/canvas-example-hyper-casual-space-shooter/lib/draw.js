@@ -11,8 +11,8 @@ var draw = (function(){
             cellSize:   64,
             cellWidth:  7,
             cellHeight: 7,
-            strokeStyle: 'rgba(255,255,255,0.1)',
-            //fillStyle: 'blue'
+            strokeStyle: 'rgba(255,255,255,0.2)',
+            //fillStyle: 'rgba(0,0,0,0.1)'
         },
         {
             cellSize:   32,
