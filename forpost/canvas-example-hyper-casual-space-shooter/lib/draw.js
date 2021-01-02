@@ -39,6 +39,25 @@ var draw = (function(){
         ctx.fillRect(0, 0, canvas.width, canvas.height);
     };
 
+    // position status
+    var positionStatus = function(ctx, state){
+        var game = state.game,
+        map = game.map;
+        
+        // base text style
+        ctx.fillStyle='yellow';
+        ctx.textBaseline='top';
+        ctx.textAlign='left';
+        ctx.font='8px courier';
+
+        var sy = 200;
+        ctx.fillText('position status: ', 220, sy);
+        ctx.fillText('pos: (' + Math.floor(map.x) + ',' + Math.floor(map.y) + ')', 220, sy + 8);
+        ctx.fillText('dist: ' + Math.floor(map.dist), 220, sy + 16);
+        ctx.fillText('per: ' + Math.floor(map.per * 100) + '%', 220, sy + 24);
+
+    };
+
     // display effects info for current weapon
     var effectsInfo = function(ctx, state){
         var game = state.game,
@@ -98,7 +117,6 @@ var draw = (function(){
         ctx.fillText('Shot Damage:' + weapon.shotDamage.toFixed(2), 5, 13);
         ctx.fillText('Fires/sec  :' + weapon.firesPerSecond.toFixed(2), 5, 20);
 
-        effectsInfo(ctx, state);
     };
 
     // draw a health bar for an object
@@ -357,6 +375,8 @@ var draw = (function(){
 
         // draw the games status bar
         statusBar(ctx, state);
+        effectsInfo(ctx, state);
+        positionStatus(ctx, state);
 
         // draw debug info
         info(ctx, state);
