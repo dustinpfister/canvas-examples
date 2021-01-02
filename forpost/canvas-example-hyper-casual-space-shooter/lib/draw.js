@@ -44,6 +44,13 @@ var draw = (function(){
         var game = state.game,
         map = game.map,
         weapon = game.ship.weapon;
+
+
+        // backdrop for status bar
+        ctx.fillStyle="rgba(128,128,128,0.5)";
+        ctx.fillRect(0,0, state.canvas.width, 30);
+
+        // base text style
         ctx.fillStyle='white';
         ctx.textBaseline='top';
         ctx.textAlign='left';
