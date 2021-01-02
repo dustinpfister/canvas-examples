@@ -48,7 +48,7 @@ var draw = (function(){
         ctx.fillStyle='lime';
         ctx.textBaseline='top';
         ctx.textAlign='left';
-        ctx.font='7px courier';
+        ctx.font='8px courier';
 
         //ctx.fillText('effects: ' + weapon.effects.length, 5, 40);
         weapon.effects.forEach(function(effectType, index){
@@ -60,6 +60,9 @@ var draw = (function(){
             if(effect.effectType === 'burn'){
                 ctx.fillText(' damage%: ' + Math.round(effect.damagePer * 100) + '%', 5, sy + 24);
                 ctx.fillText(' count ' + effect.count, 5, sy + 32);
+            }
+            if(effect.effectType === 'acid'){
+                ctx.fillText(' damage: ' + effect.damageMulti.toFixed(2) + 'X', 5, sy + 24);
             }
         });
     };
