@@ -614,7 +614,7 @@ var gameMod = (function(){
         return poolMod.create({
                 type: 'shot',
                 count: 60,
-                fillStyle: 'red',
+                fillStyle: 'white',
                 r: 2,
                 spawn: function(shot, pool, state, opt){
                     var weapon = state.game.ship.weapon,
@@ -629,12 +629,16 @@ var gameMod = (function(){
 
                     // shot effects
                     shot.effects = [];
+                    shot.fillStyle = 'rgba(255,255,255,0.2)';
+                    shot.r = 2;
                     weapon.effects.forEach(function(effectType){
                         var effect = poolMod.parseEffectObject(state.game.effects[effectType]);
                         var roll = Math.random();
                         if(roll < effect.chance){
                             // push a refernce to the effect object
                             shot.effects.push(effect);
+                            shot.fillStyle = 'red';
+                            shot.r = 3;
                         }
                     });
                 },

@@ -10,6 +10,8 @@
 
 ## 0.x.0 - Graphics Change II
 * add a way to create canvas generated sprite sheets in draw.js
+* create star like shapes that rotate for shots.
+* health bar for ship in status bar
 
 ## 0.x.0 - Replace hard coded 160, 120 values
 * have a state.canvasHalfWidth, and state.canvasHalfHeight values
@@ -111,13 +113,8 @@
 * (done) start new positionStatus draw helper for map position info and status
 * (done) make pointer arrow a triangle
 * (done) circle micro map for map dist and angle
-
-* gradiant backdrop for status bar
-* health bar for ship in status bar
-
-* add a FPS counter
-
-* create star like shapes that rotate for shots.
+* (done) gradiant backdrop for status bar
+* (done) add a FPS counter
 * change shot color and or shape based on shot effects array
 * make a cool background of some kind
 * make a 0.20.0 pkg folder
