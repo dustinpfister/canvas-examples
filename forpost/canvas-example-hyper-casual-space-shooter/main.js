@@ -18,6 +18,7 @@ var state = {
     canvas : canvas,
     ctx: canvasObj.ctx,
     game: gameMod.create(),
+    debug: true, // debug mode on or off
     input: {
         pointer: {
             down: false,
