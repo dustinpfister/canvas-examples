@@ -10,7 +10,9 @@ var draw = (function(){
         {
             cellSize:   64,
             cellWidth:  7,
-            cellHeight: 7
+            cellHeight: 7,
+            strokeStyle: 'rgba(255,255,255,0.1)',
+            //fillStyle: 'blue'
         },
         {
             cellSize:   32,
@@ -141,15 +143,13 @@ var draw = (function(){
     // draw grid lines so that we know that we are in fact moving
     var gridLines = function (ctx, state, style) {
         var grid = GRIDLINES;
-        // update offsets
-        //grid.xOffset = state.game.map.x;
-        //grid.yOffset = state.game.map.y;
         var sx = grid.cellWidth * grid.cellSize / 2 * -1 - (state.game.map.x % grid.cellSize),
         sy = grid.cellHeight * grid.cellSize / 2 * -1 + (state.game.map.y % grid.cellSize) * -1,
         x, y,
         len = grid.cellWidth * grid.cellHeight,
         i = 0;
-        ctx.strokeStyle = style || 'red';
+        ctx.strokeStyle = grid.strokeStyle || 'red';
+        ctx.fillStyle = grid.fillStyle || 'lime';
         ctx.lineWidth = 1;
         ctx.save();
         ctx.translate(TRANSLATE_TO.x, TRANSLATE_TO.y);
@@ -159,6 +159,9 @@ var draw = (function(){
             ctx.beginPath();
             ctx.rect(x,y,grid.cellSize, grid.cellSize);
             ctx.stroke();
+            if(grid.fillStyle){
+                ctx.fill();
+            }
             i += 1;
         }
         ctx.restore();
