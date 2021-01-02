@@ -81,19 +81,19 @@ var draw = (function(){
 
         // must display money
         ctx.font='10px courier';
-        ctx.fillText(utils.format_money(game.money), 5, 5);
+        ctx.fillText(utils.format_money(game.money), 220, 5);
 
         // ship speed and heading
         ctx.font='8px courier';
-        ctx.fillText('speed  : ' + Math.floor(map.pps) + '/' + Math.floor(map.maxPPS), 5, 13);
-        ctx.fillText('heading: ' + map.degree.toFixed(2), 5, 20);
+        ctx.fillText('speed  : ' + Math.floor(map.pps) + '/' + Math.floor(map.maxPPS), 220, 13);
+        ctx.fillText('heading: ' + map.degree.toFixed(2), 220, 20);
 
         // basic weapon info
         ctx.font='10px courier';
-        ctx.fillText(weapon.name, 220, 5);
+        ctx.fillText(weapon.name, 5, 5);
         ctx.font='8px courier';
-        ctx.fillText('Shot Damage:' + weapon.shotDamage, 220, 13);
-        ctx.fillText('Fires/sec  :' + weapon.firesPerSecond, 220, 20);
+        ctx.fillText('Shot Damage:' + weapon.shotDamage, 5, 13);
+        ctx.fillText('Fires/sec  :' + weapon.firesPerSecond, 5, 20);
 
         effectsInfo(ctx, state);
     };
