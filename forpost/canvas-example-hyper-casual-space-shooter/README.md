@@ -4,11 +4,39 @@ O have worked on a fare number of [canvas examples](https://dustinpfister.github
 
 The general idea of this hyper casual style space shooter game is to just fly around and blow up blocks, and that is it. Of course I aim to add a great deal more to it on top of that, but I do not want to repeat some things that I have done in previous examples. The goal here should be to not just focus on continuing to work on a project, that is one thing that I want to do with some of my canvas examples that I think are worthy of more investment of time sure, but that alone is not enough. As I continue working on this example the focus should be on what I can add to this game idea that will make the game more fun, this canvas example is a game after all.
 
-## Where to go to play this
+## 1 - Where to go to play this
 
 I have wrote a [blog post on hyper casual space shooter](https://dustinpfister.github.io/2020/12/11/canvas-example-hyper-casual-space-shooter/), as I do with all the examples in the forpost folder of this canvas examples repo. That page is also my prefered location for people to play the game, so if you feel compeled to share this please link to that page rather than here. However if you really want to play this locally, that of course can be done by just cloning down this repo. The game should work okay by way of the file protocol when it comes to playing it locally, the main index.html file should be the current state of the game, and on top of that there is the pkg folder when it comes to playing older builds.
 
-## Things I should keep in mind while working on this canvas example
+## 2 - Controls
+
+As of 0.20.x I still have not work out all of the kinks when it comes to controls. However I think I should write down at least something here when it comes to this.
+
+### 2.1 - Keyboad controls
+
+For now it is best to play this on a desktop system, and that might continue to be the case even if I do get around to improving touch only support.
+
+#### 2.1.1 - The w,a,s,d keys are used for ship rotation and speed
+
+   The _w_ key will increase ship speed to to the current max, while the _s_ key will bring it back down. The _a_ and _d_ keys can be used to change heading at the current rotation rate.
+
+### 2.1.2 - The number buttons can be used to change weapon in 'base mode'
+
+When at the main base located at map position 0,0 it is possible to use the number buttons to change weapons.
+
+### 2.2.3 - The l key is used for manual fire
+
+If auto fire is disabled, then the l key is pressed to shoot.
+
+### 2.2.4 - Press the v key to toggle debug info
+
+I am still working on this and as with all of my canvas examples this will likley always be a work in progress actually. So of course there is a way to display detailed info about various things by pressing the 'v' key.
+
+### 2.2 - Mouse/Touch controls
+
+As of 0.20.x this is in very bad shape as such I will not even write about it down. There are plans in place to improve this though of course.
+
+## 2 - Things I should keep in mind while working on this canvas example
 
 The idea I have for this one is to just fly around and blast stuff, thats it. If I pour more time and energy into this example it should be to just make a more solid core of a game to which I might make additional forks off from. This example might in time end up being yet another canvas example compose of thousands of lines of code still, however I think that I should lay done some ground rules for myself this time to help keep myself from repeating old patterns.
 
