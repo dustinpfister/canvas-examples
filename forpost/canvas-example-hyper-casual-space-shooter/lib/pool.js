@@ -39,7 +39,7 @@ var poolMod = (function () {
                     round: 'floor'
                 },
                 chance: {
-                    min: 0.75,
+                    min: 0.10,
                     max: 1
                 },
                 damagePer: {
@@ -60,7 +60,7 @@ var poolMod = (function () {
                     round: 'floor'
                 },
                 chance: {
-                    min: 0.25,
+                    min: 0.10,
                     max: 1
                 },
                 damageMulti: {
