@@ -8,6 +8,9 @@
 
 <!-- ADDITIONAL FEATURES, FIX BUGS -->
 
+## 0.x.0 - Graphics Change II
+* add a way to create canvas generated sprite sheets in draw.js
+
 ## 0.x.0 - Replace hard coded 160, 120 values
 * have a state.canvasHalfWidth, and state.canvasHalfHeight values
 * Replace hard coded 160, 120 values in draw.js, game.js, ect with state.canvasHalfWidth and state.canvasHalfHeigh
@@ -96,7 +99,7 @@
 * the distance of the inner circle from the center to the outer circle will be used to set map.pps
 * The actual distnace used will be from a certain min radius from the center so that it is easy to each and stay at 0 pps
 
-## 0.20.0 - Better Graphics (CANVAS ONLY)
+## 0.20.0 - Graphics Change I (CANVAS ONLY)
 * (done) have at least a basic triangle like shape for the ship.
 * (done) make draw.currentMode the only method that is called in main.js
 * (done) have a debug mode in main.js state, if true debug info is drawn
@@ -105,11 +108,13 @@
 * (done) display basic weapon info as part of status
 * (done) start a effects status helper
 * (done) display effect stats for current weapon only as part of effects status
+* (done) start new positionStatus draw helper for map position info and status
 
-* start new positionStatus draw helper for map position info and status
-* make pointer arror a triangle
+* make pointer arrow a triangle
+* circle micro map for map dist and angle
+* gradiant backdrop for status bar
+* health bar for ship in status bar
 
-* add a way to create canvas generated sprite sheets in draw.js
 * create star like shapes that rotate for shots.
 * change shot color and or shape based on shot effects array
 * make a cool background of some kind
