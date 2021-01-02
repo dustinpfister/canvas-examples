@@ -395,9 +395,6 @@ var draw = (function(){
             });
         }
 
-        // draw blocks, the ship, and shots
-        ship(ctx, state);
-
         if(game.mode === 'base'){
             if(game.buttons.currentPage != 'main'){
                // statusBar(ctx, state);
@@ -420,6 +417,9 @@ var draw = (function(){
 
         // draw an 'arrow' object that points to the base if in space mode
         if(game.mode === 'space'){
+            // draw blocks and shots
+            blocks(ctx, state);
+            shots(ctx, state);
             // draw an arrow back to the base
             drawArrowToBase(ctx, game);
             // position status and map
@@ -427,10 +427,10 @@ var draw = (function(){
             positionMap(ctx, state);
             effectsInfo(ctx, state);
             //statusBar(ctx, state);
-
-            blocks(ctx, state);
-            shots(ctx, state);
         }
+
+        // draw blocks, the ship, and shots
+        ship(ctx, state);
 
         // draw the games status bar
         statusBar(ctx, state);
