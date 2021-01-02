@@ -50,83 +50,8 @@ var draw = (function(){
         ctx.restore();
     };
 
-    var api = {};
 
-    // draw background
-    api.background = function (ctx, state) {
-        var canvas = state.canvas,
-        map = state.game.map,
-        r = Math.floor(map.per * 255);
-        ctx.fillStyle = 'rgba(' + r + ',0,0,1)';
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
-    };
-
-    // draw current game mode
-    api.currentMode = function(ctx, state){
-        var game = state.game;
-
-        // draw background
-        api.background(ctx, state);
-
-        // draw grid lines
-        draw.gridLines(state.ctx, state, 'rgba(255,255,255,0.1)');
-
-        // draw base object
-        baseObjectDraw(ctx, game.baseObj, function(){});
-
-        // draw any buttons for the current mode
-        var buttons_mode = game.buttons[game.mode];
-        if(buttons_mode){
-            var buttons_page = buttons_mode[game.buttons.currentPage];
-            Object.keys(buttons_page).forEach(function(key){
-                baseObjectDraw(ctx, buttons_page[key], function(ctx, button){
-                    ctx.fillStyle = 'yellow';
-                    ctx.textAlign='center';
-                    ctx.textBaseline='middle';
-                    ctx.font='8px arial';
-                    ctx.fillText(button.desc, button.x, button.y);
-                    var cost = button.cost;
-                    if(cost != undefined){
-                        ctx.fillText(Math.ceil(button.cost) + '$', button.x, button.y + 10);
-                    }
-                });
-            });
-        }
-
-        // draw blocks, the ship, and shots
-        draw.blocks(state.ctx, state);
-        draw.ship(state.ctx, state);
-        draw.shots(state.ctx, state);
-
-        // draw grids if in base mode
-        if(game.mode === 'base'){
-            // draw grids for the current weapon
-            if(game.buttons.currentPage === 'weapons'){
-                var upgradeIndex = game.ship.weaponIndex * 2 + 3;
-                api.xpTable(ctx, game.upgrades[upgradeIndex]);
-                api.xpTable(ctx, game.upgrades[upgradeIndex + 1]);
-            }
-            if(game.buttons.currentPage === 'ship'){
-                api.xpTable(ctx, game.upgrades[0]);
-                api.xpTable(ctx, game.upgrades[1]);
-                api.xpTable(ctx, game.upgrades[2]);
-            }
-        }
-
-        // draw an 'arrow' object that points to the base if in space mode
-        if(game.mode === 'space'){
-            drawArrowToBase(ctx, game);
-        }
-
-        // draw debug info
-        draw.info(state.ctx, state);
-
-        // draw version number
-        draw.ver(state.ctx, state);
-
-    };
-
-    api.shots = function(ctx, state){
+    var shots = function(ctx, state){
         var game = state.game;
         state.game.shots.objects.forEach(function(shot){
             if(shot.active){
@@ -138,7 +63,8 @@ var draw = (function(){
             }
         });
     };
-    api.blocks = function(ctx, state){
+
+    var blocks = function(ctx, state){
         var game = state.game;
         state.game.blocks.objects.forEach(function(block){
             if(block.active){
@@ -154,12 +80,12 @@ var draw = (function(){
             }
         });
     };
-    api.ship = function(ctx, state){
+
+    var ship = function(ctx, state){
         var game = state.game;
         ctx.fillStyle = 'rgba(0,0,255,0.2)';
         baseObjectDraw(ctx, game.ship, function(){
             var radian = game.map.radian;
-
             ctx.rotate(radian);
             ctx.strokeStyle = 'white';
             ctx.beginPath();
@@ -169,10 +95,10 @@ var draw = (function(){
             ctx.closePath();
             ctx.lineWidth = 1;
             ctx.stroke();
-
         });
     };
-    api.gridLines = function (ctx, state, style) {
+
+    var gridLines = function (ctx, state, style) {
         var grid={
             cellSize: 64,
             cellWidth: 7,
@@ -199,8 +125,9 @@ var draw = (function(){
         }
         ctx.restore();
     };
+
     // draw game state info
-    api.info = function(ctx, state){
+    var info = function(ctx, state){
         var game = state.game,
         ship = game.ship,
         w = ship.weapon,
@@ -220,16 +147,18 @@ var draw = (function(){
         ctx.fillText('money : ' + game.money.toFixed(2) + '$', 10, 60);
         ctx.fillText('mode : ' + game.mode, 10, 70);
     };
+
     // draw current version number
-    api.ver = function(ctx, state){
+    var ver = function(ctx, state){
         ctx.fillStyle = 'yellow';
         ctx.font = '10px arial';
         ctx.textBaseline = 'top';
         ctx.textAlign = 'left';
         ctx.fillText('v' + state.ver, 5, state.canvas.height - 15);
     };
+
     // draw an xp table or upgrade object
-    api.xpTable = function(ctx, table){
+    var xpTable = function(ctx, table){
         table.points.forEach(function(point, i){
             if(i===0){
                 ctx.beginPath();
@@ -252,6 +181,83 @@ var draw = (function(){
             ctx.stroke();
         }
     };
+
+    var api = {};
+
+    // draw background
+    var background = function (ctx, state) {
+        var canvas = state.canvas,
+        map = state.game.map,
+        r = Math.floor(map.per * 255);
+        ctx.fillStyle = 'rgba(' + r + ',0,0,1)';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+    };
+
+    // draw current game mode
+    api.currentMode = function(ctx, state){
+        var game = state.game;
+
+        // draw background
+        background(ctx, state);
+
+        // draw grid lines
+        gridLines(state.ctx, state, 'rgba(255,255,255,0.1)');
+
+        // draw base object
+        baseObjectDraw(ctx, game.baseObj, function(){});
+
+        // draw any buttons for the current mode
+        var buttons_mode = game.buttons[game.mode];
+        if(buttons_mode){
+            var buttons_page = buttons_mode[game.buttons.currentPage];
+            Object.keys(buttons_page).forEach(function(key){
+                baseObjectDraw(ctx, buttons_page[key], function(ctx, button){
+                    ctx.fillStyle = 'yellow';
+                    ctx.textAlign='center';
+                    ctx.textBaseline='middle';
+                    ctx.font='8px arial';
+                    ctx.fillText(button.desc, button.x, button.y);
+                    var cost = button.cost;
+                    if(cost != undefined){
+                        ctx.fillText(Math.ceil(button.cost) + '$', button.x, button.y + 10);
+                    }
+                });
+            });
+        }
+
+        // draw blocks, the ship, and shots
+        blocks(state.ctx, state);
+        ship(state.ctx, state);
+        shots(state.ctx, state);
+
+        // draw grids if in base mode
+        if(game.mode === 'base'){
+            // draw grids for the current weapon
+            if(game.buttons.currentPage === 'weapons'){
+                var upgradeIndex = game.ship.weaponIndex * 2 + 3;
+                xpTable(ctx, game.upgrades[upgradeIndex]);
+                xpTable(ctx, game.upgrades[upgradeIndex + 1]);
+            }
+            if(game.buttons.currentPage === 'ship'){
+                xpTable(ctx, game.upgrades[0]);
+                xpTable(ctx, game.upgrades[1]);
+                xpTable(ctx, game.upgrades[2]);
+            }
+        }
+
+        // draw an 'arrow' object that points to the base if in space mode
+        if(game.mode === 'space'){
+            drawArrowToBase(ctx, game);
+        }
+
+        // draw debug info
+        info(state.ctx, state);
+
+        // draw version number
+        ver(state.ctx, state);
+
+    };
+
     // return draw api
     return api;
 }());
