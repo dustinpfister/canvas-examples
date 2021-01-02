@@ -39,6 +39,15 @@ var draw = (function(){
         ctx.fillRect(0, 0, canvas.width, canvas.height);
     };
 
+    var statusBar = function(ctx, state){
+        var game = state.game;
+        ctx.fillStyle='white';
+        ctx.textBaseline='top';
+        ctx.textAlign='left';
+        ctx.font='10px courier';
+        ctx.fillText(Math.floor(game.money) + '$', 10, 10);
+    };
+
     // draw a health bar for an object
     var drawHealthBar = function(ctx, obj){
         if(obj.hp){
@@ -244,7 +253,7 @@ var draw = (function(){
         background(ctx, state);
 
         // draw grid lines
-        gridLines(state.ctx, state, 'rgba(255,255,255,0.1)');
+        gridLines(ctx, state, 'rgba(255,255,255,0.1)');
 
         // draw base object
         baseObjectDraw(ctx, game.baseObj, function(){});
@@ -269,9 +278,9 @@ var draw = (function(){
         }
 
         // draw blocks, the ship, and shots
-        blocks(state.ctx, state);
-        ship(state.ctx, state);
-        shots(state.ctx, state);
+        blocks(ctx, state);
+        ship(ctx, state);
+        shots(ctx, state);
 
         // draw grids if in base mode
         if(game.mode === 'base'){
@@ -293,11 +302,14 @@ var draw = (function(){
             drawArrowToBase(ctx, game);
         }
 
+        // draw the games status bar
+        statusBar(ctx, state);
+
         // draw debug info
-        info(state.ctx, state);
+        info(ctx, state);
 
         // draw version number
-        ver(state.ctx, state);
+        ver(ctx, state);
 
     };
 
