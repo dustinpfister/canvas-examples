@@ -969,8 +969,10 @@ var gameMod = (function(){
         game.baseObj.y = game.map.y * -1;
         // update map, blocks, shots
         updateMap(game, secs);
-        updateBlocks(game, secs, state);
-        updateShots(game, secs, state);
+        if(game.mode === 'space'){
+            updateBlocks(game, secs, state);
+            updateShots(game, secs, state);
+        }
     };
 
     var buttonCheck = function(button, pos){

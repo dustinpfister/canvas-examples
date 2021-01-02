@@ -392,13 +392,11 @@ var draw = (function(){
         }
 
         // draw blocks, the ship, and shots
-        blocks(ctx, state);
         ship(ctx, state);
-        shots(ctx, state);
 
         if(game.mode === 'base'){
             if(game.buttons.currentPage != 'main'){
-                statusBar(ctx, state);
+               // statusBar(ctx, state);
             }
             // draw grids for the current weapon
             if(game.buttons.currentPage === 'weapons'){
@@ -424,11 +422,14 @@ var draw = (function(){
             positionStatus(ctx, state);
             positionMap(ctx, state);
             effectsInfo(ctx, state);
-            statusBar(ctx, state);
+            //statusBar(ctx, state);
+
+            blocks(ctx, state);
+            shots(ctx, state);
         }
 
         // draw the games status bar
-
+        statusBar(ctx, state);
 
         // draw debug info
         info(ctx, state);
