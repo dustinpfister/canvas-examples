@@ -98,9 +98,10 @@
 
 ## 0.20.0 - Better Graphics (CANVAS ONLY)
 * (done) have at least a basic triangle like shape for the ship.
+* (done) make draw.currentMode the only method that is called in main.js
+* have a debug mode in main.js state, if true debug info is drawn
 
 * add a way to create canvas generated sprite sheets in draw.js
-
 * create star like shapes that rotate for shots.
 * change shot color and or shape based on shot effects array
 * make a cool background of some kind

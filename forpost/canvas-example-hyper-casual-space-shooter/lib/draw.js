@@ -134,13 +134,15 @@ var draw = (function(){
             var radian = game.map.radian;
             ctx.rotate(radian);
             ctx.strokeStyle = 'white';
+            ctx.fillStyle='#0060ff'
             ctx.beginPath();
             ctx.moveTo(game.ship.r, 0);
             ctx.lineTo(game.ship.r * -1, game.ship.r);
             ctx.lineTo(game.ship.r * -1, game.ship.r * -1);
             ctx.closePath();
-            ctx.lineWidth = 1;
+            ctx.lineWidth = 3;
             ctx.stroke();
+            ctx.fill();
         });
     };
 
