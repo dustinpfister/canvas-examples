@@ -44,7 +44,7 @@ var gameMod = (function(){
                 max: 10,
                 levelOpt: {
                     levelCap: 10,
-                    expCap: 1000,
+                    expCap: 10000,
                     perMethod: 'log1',
                     perArgs: [],
                     tableX: 160 - 12,
@@ -56,7 +56,7 @@ var gameMod = (function(){
                 max: Math.floor(BLOCK_HP_MAX * 0.05),
                 levelOpt: { 
                     levelCap: 10,
-                    expCap: 1500,
+                    expCap: 15000,
                     perMethod: 'log1',
                     perArgs: [],
                     tableX: 160 - 12,

@@ -389,7 +389,7 @@ var draw = (function(){
                     ctx.fillText(button.desc, button.x, button.y);
                     var cost = button.cost;
                     if(cost != undefined){
-                        ctx.fillText(Math.ceil(button.cost) + '$', button.x, button.y + 10);
+                        ctx.fillText(utils.format_money(button.cost), button.x, button.y + 10);
                     }
                 });
             });
