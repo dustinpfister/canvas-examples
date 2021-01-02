@@ -397,6 +397,9 @@ var draw = (function(){
         shots(ctx, state);
 
         if(game.mode === 'base'){
+            if(game.buttons.currentPage != 'main'){
+                statusBar(ctx, state);
+            }
             // draw grids for the current weapon
             if(game.buttons.currentPage === 'weapons'){
                 var upgradeIndex = game.ship.weaponIndex * 2 + 3;
@@ -421,14 +424,14 @@ var draw = (function(){
             positionStatus(ctx, state);
             positionMap(ctx, state);
             effectsInfo(ctx, state);
+            statusBar(ctx, state);
         }
 
         // draw the games status bar
-        statusBar(ctx, state);
 
 
         // draw debug info
-        //info(ctx, state);
+        info(ctx, state);
 
         // draw version number
         ver(ctx, state);
