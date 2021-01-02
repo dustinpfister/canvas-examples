@@ -3,7 +3,7 @@ var gameMod = (function(){
     // CONSTANTS
 
     // MONEY
-    var GAME_MONEY_START = 1000000,
+    var GAME_MONEY_START = 10000,
     GAME_UPDATE_MAX_SECS = 0.8,   // max secs value for main update loop
     MONEY_PERLOSS_ON_DEATH = 0.1, // percent of money loss on death 0-1
 
@@ -11,7 +11,7 @@ var gameMod = (function(){
     BLOCK_COUNT = 20,
     BLOCK_POS_MAX_DIST = 600,
     BLOCK_POS_SLOT_DIST = 15,
-    BLOCK_HP_MIN = 5,
+    BLOCK_HP_MIN = 50,
     BLOCK_HP_MAX = 1000,
     BLOCK_MONEY_BASE = 1,
     BLOCK_MONEY_DIST = 999,
@@ -65,8 +65,8 @@ var gameMod = (function(){
             },
             effects: ['burn', 'acid'],
             shotRange: 128,
-            shotPPS: 256,
-            shotsPerFire: [2,2,2,1],
+            shotPPS: 96,
+            shotsPerFire: [2],
             onFireStart: function(game, secs, state){
                 var weapon = game.weapons[game.ship.weaponIndex];
                 var shotIndex = 0;
@@ -103,7 +103,7 @@ var gameMod = (function(){
             },
             shotDamage: { 
                 min: Math.floor(BLOCK_HP_MAX * 0.05),
-                max: Math.floor(BLOCK_HP_MAX * 0.25),
+                max: Math.floor(BLOCK_HP_MAX * 0.10),
                 levelOpt: { 
                     levelCap: 10,
                     expCap: 50000,
@@ -145,8 +145,8 @@ var gameMod = (function(){
                 }
             },
             shotDamage: { 
-                min: Math.floor(BLOCK_HP_MAX * 0.25),
-                max: BLOCK_HP_MAX,
+                min: Math.floor(BLOCK_HP_MAX * 0.10),
+                max: Math.floor(BLOCK_HP_MAX * 0.25),
                 levelOpt: { 
                     levelCap: 10,
                     expCap: 30000,
@@ -497,7 +497,7 @@ var gameMod = (function(){
                 },
                 levelOpt: utils.deepClone({
                     levelCap: 10,
-                    expCap: 1000,
+                    expCap: 50000,
                     perMethod: 'log1'
                 })
             });

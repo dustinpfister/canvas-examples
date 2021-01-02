@@ -40,7 +40,7 @@ var poolMod = (function () {
                 },
                 chance: {
                     min: 0.10,
-                    max: 1
+                    max: 0.75
                 },
                 damagePer: {
                     min: 0.01,
@@ -61,7 +61,7 @@ var poolMod = (function () {
                 },
                 chance: {
                     min: 0.10,
-                    max: 1
+                    max: 0.75
                 },
                 damageMulti: {
                     min: 1.5,
