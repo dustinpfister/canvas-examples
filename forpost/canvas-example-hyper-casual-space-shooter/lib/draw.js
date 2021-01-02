@@ -52,9 +52,10 @@ var draw = (function(){
         ctx.font='10px courier';
         ctx.fillText(utils.format_money(game.money), 5, 5);
 
-        // ship speed
+        // ship speed and heading
         ctx.font='8px courier';
-        ctx.fillText('speed: ' + Math.floor(map.pps) + '/' + Math.floor(map.maxPPS), 5, 15);
+        ctx.fillText('speed  : ' + Math.floor(map.pps) + '/' + Math.floor(map.maxPPS), 5, 13);
+        ctx.fillText('heading: ' + map.degree.toFixed(2), 5, 20);
 
         // basic weapon info
         ctx.font='10px courier';
