@@ -118,6 +118,12 @@ var draw = (function(){
             drawArrowToBase(ctx, game);
         }
 
+        // draw debug info
+        draw.info(state.ctx, state);
+
+        // draw version number
+        draw.ver(state.ctx, state);
+
     };
 
     api.shots = function(ctx, state){
