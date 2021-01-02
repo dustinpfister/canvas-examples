@@ -163,11 +163,15 @@ var draw = (function(){
     var statusBar = function(ctx, state){
         var game = state.game,
         map = game.map,
-        weapon = game.ship.weapon;
+        weapon = game.ship.weapon,
+        grad = ctx.createLinearGradient(0, 0, 0, 40);
+        grad.addColorStop(0, '#808080');
+        grad.addColorStop(1, 'rgba(128,0,0,0.3)');
 
         // backdrop for status bar
-        ctx.fillStyle="rgba(128,128,128,0.5)";
-        ctx.fillRect(0,0, state.canvas.width, 30);
+        ctx.fillStyle=grad; //"rgba(128,128,128,0.5)";
+        ctx.fillRect(0,0, state.canvas.width, 40);
+
 
         // base text style
         ctx.fillStyle='white';
