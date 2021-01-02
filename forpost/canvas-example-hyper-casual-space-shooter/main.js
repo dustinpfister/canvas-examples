@@ -34,7 +34,8 @@ var state = {
         keys: {}
     },
     lt : new Date(),
-    FPS_target : 30
+    FPS_target : 24,
+    FPS: 0
 };
 // update pointer object helper
 var updatePointer = function(game, pos){

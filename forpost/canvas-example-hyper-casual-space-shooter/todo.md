@@ -110,6 +110,7 @@
 * (done) display effect stats for current weapon only as part of effects status
 * (done) start new positionStatus draw helper for map position info and status
 * (done) make pointer arrow a triangle
+
 * circle micro map for map dist and angle
 * gradiant backdrop for status bar
 * health bar for ship in status bar

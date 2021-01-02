@@ -26,8 +26,8 @@ var gameMod = (function(){
     SHIP_ROTATION_RATE_MAX = 180,
     SHIP_MAX_SPEED_START = 64,     // starting max ship speed in pps
     SHIP_MAX_SPEED_MAX = 1024,     // fully upgraded max ship speed in pps
-    SHIP_ACC_START = 32,            // starting Acceleration in ppsps
-    SHIP_ACC_MAX = 128,            // fully upgraded max ship speed in pps
+    SHIP_ACC_START = 64,            // starting Acceleration in ppsps
+    SHIP_ACC_MAX = 256,            // fully upgraded max ship speed in pps
     MAP_MAX_DIST = Math.pow(10,4), //Number.MAX_SAFE_INTEGER;      // max distance from BASE (0,0)
 
     // HOME BASE VALUES

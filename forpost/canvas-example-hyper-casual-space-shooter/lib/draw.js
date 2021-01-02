@@ -30,6 +30,56 @@ var draw = (function(){
         },
     ][0];
 
+    // base draw object helper
+    var baseObjectDraw = function(ctx, obj, render){
+        ctx.save();
+        ctx.translate(TRANSLATE_TO.x, TRANSLATE_TO.y);
+        ctx.fillStyle= obj.fillStyle || 'gray';
+        ctx.strokeStyle= obj.strokeStyle || 'white';
+        ctx.beginPath();
+        ctx.lineWidth = 1;
+        ctx.arc(obj.x, obj.y, obj.r, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.stroke();
+        if(render){
+            render(ctx, obj);
+        }
+        ctx.restore();
+        ctx.save();
+        // draw an hp bar for the object if it has one
+        if(obj.hp){
+            ctx.translate(TRANSLATE_TO.x, TRANSLATE_TO.y);
+            drawHealthBar(ctx, obj);
+            ctx.restore();
+        }
+    };
+
+
+    // draw an 'arrow' to the base
+    var drawArrowToBase = function(ctx, game){
+
+        baseObjectDraw(ctx, {
+            x: Math.cos(game.map.aToOrigin) * 32,
+            y: Math.sin(game.map.aToOrigin) * 32,
+            r: 5,
+            fillStyle: 'black'
+        },
+        function(ctx, obj){
+            ctx.fillStyle = 'red',
+            ctx.translate(obj.x, obj.y);
+            ctx.rotate(game.map.aToOrigin);
+            ctx.beginPath();
+            ctx.moveTo(obj.r, 0);
+            ctx.lineTo(obj.r * -1, obj.r);
+            ctx.lineTo(obj.r * -1, obj.r * -1);
+            ctx.closePath();
+            ctx.lineWidth = 2;
+            ctx.stroke();
+            ctx.fill();
+        });
+
+    };
+
     // draw background
     var background = function (ctx, state, style) {
         var canvas = state.canvas,
@@ -41,6 +91,22 @@ var draw = (function(){
 
     // draw a mini map that will help me to get a better idea of where I am
     var positionMap = function(ctx, state){
+
+        var minMap = {
+            x: 20,
+            y: -20,
+            r: 10,
+            fillStyle: 'rgba(255,0,0,0.2)'
+        };
+
+        baseObjectDraw(ctx, minMap, function(ctx, minMap){
+            ctx.translate(minMap.x, minMap.y);
+            ctx.beginPath();
+            ctx.lineWidth=2;
+            ctx.arc(0,0,1,0,Math.PI*2);
+            ctx.stroke();
+        });
+
     };
 
     // position status
@@ -136,68 +202,6 @@ var draw = (function(){
                 ctx.fillStyle="rgba(0,255,0,0.4)";
                 ctx.fill();
             }
-        }
-    };
-
-    // draw an 'arrow' to the base
-    var drawArrowToBase = function(ctx, game){
-
-        baseObjectDraw(ctx, {
-            x: Math.cos(game.map.aToOrigin) * 32,
-            y: Math.sin(game.map.aToOrigin) * 32,
-            r: 5,
-            fillStyle: 'black'
-        },
-        function(ctx, obj){
-            ctx.fillStyle = 'red',
-            ctx.translate(obj.x, obj.y);
-            ctx.rotate(game.map.aToOrigin);
-            ctx.beginPath();
-            ctx.moveTo(obj.r, 0);
-            ctx.lineTo(obj.r * -1, obj.r);
-            ctx.lineTo(obj.r * -1, obj.r * -1);
-            ctx.closePath();
-            ctx.lineWidth = 2;
-            ctx.stroke();
-            ctx.fill();
-        });
-/*
-        ctx.save();
-        ctx.translate(TRANSLATE_TO.x, TRANSLATE_TO.y);
-        var x = Math.cos(game.map.aToOrigin) * 32;
-        var y = Math.sin(game.map.aToOrigin) * 32;
-        ctx.fillStyle='red';
-        ctx.strokeStyle='black';
-        ctx.beginPath();
-        ctx.arc(x,y,5,0,Math.PI*2);
-        ctx.fill();
-        ctx.stroke();
-        ctx.restore();
-*/
-
-    };
-
-    // base draw object helper
-    var baseObjectDraw = function(ctx, obj, render){
-        ctx.save();
-        ctx.translate(TRANSLATE_TO.x, TRANSLATE_TO.y);
-        ctx.fillStyle= obj.fillStyle || 'gray';
-        ctx.strokeStyle= obj.strokeStyle || 'white';
-        ctx.beginPath();
-        ctx.lineWidth = 1;
-        ctx.arc(obj.x, obj.y, obj.r, 0, Math.PI * 2);
-        ctx.fill();
-        ctx.stroke();
-        if(render){
-            render(ctx, obj);
-        }
-        ctx.restore();
-        ctx.save();
-        // draw an hp bar for the object if it has one
-        if(obj.hp){
-            ctx.translate(TRANSLATE_TO.x, TRANSLATE_TO.y);
-            drawHealthBar(ctx, obj);
-            ctx.restore();
         }
     };
 
@@ -412,7 +416,10 @@ var draw = (function(){
         // draw the games status bar
         statusBar(ctx, state);
         effectsInfo(ctx, state);
+
+        // position status and map
         positionStatus(ctx, state);
+        positionMap(ctx, state)
 
         // draw debug info
         info(ctx, state);
