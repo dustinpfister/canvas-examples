@@ -91,7 +91,7 @@ var draw = (function(){
 
     // draw a mini map that will help me to get a better idea of where I am
     var positionMap = function(ctx, state){
-
+        var map = state.game.map;
         var minMap = {
             x: 20,
             y: -20,
@@ -100,10 +100,13 @@ var draw = (function(){
         };
 
         baseObjectDraw(ctx, minMap, function(ctx, minMap){
+            var radian = map.aToOrigin + Math.PI;
+            var x = Math.cos(radian) * minMap.r * map.per,
+            y = Math.sin(radian) * minMap.r * map.per;
             ctx.translate(minMap.x, minMap.y);
             ctx.beginPath();
             ctx.lineWidth=2;
-            ctx.arc(0,0,1,0,Math.PI*2);
+            ctx.arc(x,y,1,0,Math.PI*2);
             ctx.stroke();
         });
 
