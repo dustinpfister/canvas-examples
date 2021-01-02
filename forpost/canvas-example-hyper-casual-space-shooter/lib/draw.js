@@ -235,7 +235,7 @@ var draw = (function(){
         len = grid.cellWidth * grid.cellHeight,
         i = 0;
         ctx.strokeStyle = grid.strokeStyle || 'red';
-        ctx.fillStyle = grid.fillStyle || 'lime';
+        //ctx.fillStyle = grid.fillStyle || 'lime';
         ctx.lineWidth = grid.lineWidth || 1;
         ctx.save();
         ctx.translate(TRANSLATE_TO.x, TRANSLATE_TO.y);
@@ -245,9 +245,9 @@ var draw = (function(){
             ctx.beginPath();
             ctx.rect(x,y,grid.cellSize, grid.cellSize);
             ctx.stroke();
-            if(grid.fillStyle){
-                ctx.fill();
-            }
+            //if(grid.fillStyle){
+            //    ctx.fill();
+            //}
             i += 1;
         }
         ctx.restore();
