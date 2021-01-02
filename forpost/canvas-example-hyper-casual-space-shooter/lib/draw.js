@@ -1,5 +1,14 @@
 var draw = (function(){
 
+    // draw background
+    var background = function (ctx, state) {
+        var canvas = state.canvas,
+        map = state.game.map,
+        r = Math.floor(map.per * 255);
+        ctx.fillStyle = 'rgba(' + r + ',0,0,1)';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+    };
+
     // draw a health bar for an object
     var drawHealthBar = function(ctx, obj){
         if(obj.hp){
@@ -16,6 +25,7 @@ var draw = (function(){
         }
     };
 
+    // draw an 'arrow' to the base
     var drawArrowToBase = function(ctx, game){
         ctx.save();
         ctx.translate(160, 120);
@@ -50,7 +60,7 @@ var draw = (function(){
         ctx.restore();
     };
 
-
+    // darw shots
     var shots = function(ctx, state){
         var game = state.game;
         state.game.shots.objects.forEach(function(shot){
@@ -64,6 +74,7 @@ var draw = (function(){
         });
     };
 
+    // draw blocks
     var blocks = function(ctx, state){
         var game = state.game;
         state.game.blocks.objects.forEach(function(block){
@@ -81,6 +92,7 @@ var draw = (function(){
         });
     };
 
+    // draw the player ship
     var ship = function(ctx, state){
         var game = state.game;
         ctx.fillStyle = 'rgba(0,0,255,0.2)';
@@ -98,6 +110,7 @@ var draw = (function(){
         });
     };
 
+    // draw grid lines so that we know that we are in fact moving
     var gridLines = function (ctx, state, style) {
         var grid={
             cellSize: 64,
@@ -126,7 +139,7 @@ var draw = (function(){
         ctx.restore();
     };
 
-    // draw game state info
+    // draw game state info for debuging
     var info = function(ctx, state){
         var game = state.game,
         ship = game.ship,
@@ -182,16 +195,9 @@ var draw = (function(){
         }
     };
 
-    var api = {};
+    // PUBLIC API
 
-    // draw background
-    var background = function (ctx, state) {
-        var canvas = state.canvas,
-        map = state.game.map,
-        r = Math.floor(map.per * 255);
-        ctx.fillStyle = 'rgba(' + r + ',0,0,1)';
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
-    };
+    var api = {};
 
     // draw current game mode
     api.currentMode = function(ctx, state){
