@@ -12,6 +12,7 @@
 * add a way to create canvas generated sprite sheets in draw.js
 * create star like shapes that rotate for shots.
 * health bar for ship in status bar
+* make a cool background of some kind
 
 ## 0.x.0 - Replace hard coded 160, 120 values
 * have a state.canvasHalfWidth, and state.canvasHalfHeight values
@@ -115,8 +116,7 @@
 * (done) circle micro map for map dist and angle
 * (done) gradiant backdrop for status bar
 * (done) add a FPS counter
-* change shot color and or shape based on shot effects array
-* make a cool background of some kind
+* (done) change shot color and or shape based on shot effects array
 * make a 0.20.0 pkg folder
 
 ## 0.19.0 - Effect Types, Effects upgrade page started, ACID Effect
