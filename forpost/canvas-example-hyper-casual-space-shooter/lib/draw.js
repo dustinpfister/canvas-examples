@@ -61,9 +61,12 @@ var draw = (function(){
         ctx.fillRect(0, 0, canvas.width, canvas.height);
     };
 
-    // draw current mode
+    // draw current game mode
     api.currentMode = function(ctx, state){
         var game = state.game;
+
+        // draw background
+        api.background(ctx, state);
 
         // draw grid lines
         draw.gridLines(state.ctx, state, 'rgba(255,255,255,0.1)');

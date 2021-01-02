@@ -114,10 +114,10 @@ var loop = function () {
         map.radian = utils.wrapRadian(Math.PI / 180 * map.degree);
         gameMod.update(game, secs, state);
         // draw
-        draw.background(state.ctx, state);
+        //draw.background(state.ctx, state);
         draw.currentMode(state.ctx, state);
-        draw.info(state.ctx, state);
-        draw.ver(state.ctx, state);
+        //draw.info(state.ctx, state);
+        //draw.ver(state.ctx, state);
         lt = now;
     }
 };
