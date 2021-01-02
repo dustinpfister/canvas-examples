@@ -6,18 +6,22 @@ var draw = (function(){
     };
 
     // THE GRIDLINES
+    // ( playing around with diff settings, but this should be just a single object)
     var GRIDLINES = [
-        {
-            cellSize:   64,
-            cellWidth:  7,
-            cellHeight: 7,
-            strokeStyle: 'rgba(255,255,255,0.2)',
+        {  // large grid size might be best
+            cellSize:   128,
+            cellWidth:  5,
+            cellHeight: 5,
+            lineWidth: 1,
+            strokeStyle: 'rgba(255,255,255,0.1)',
             //fillStyle: 'rgba(0,0,0,0.1)'
         },
         {
             cellSize:   32,
             cellWidth:  14,
-            cellHeight: 14
+            cellHeight: 14,
+            lineWidth: 1,
+            strokeStyle: 'white',
         },
         {
             cellSize:   16,
@@ -150,7 +154,7 @@ var draw = (function(){
         i = 0;
         ctx.strokeStyle = grid.strokeStyle || 'red';
         ctx.fillStyle = grid.fillStyle || 'lime';
-        ctx.lineWidth = 1;
+        ctx.lineWidth = grid.lineWidth || 1;
         ctx.save();
         ctx.translate(TRANSLATE_TO.x, TRANSLATE_TO.y);
         while(i < len){
