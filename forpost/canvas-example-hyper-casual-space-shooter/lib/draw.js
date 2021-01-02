@@ -1,5 +1,10 @@
 var draw = (function(){
 
+    var TRANSLATE_TO = {
+        x: 160,
+        y: 120
+    };
+
     // draw background
     var background = function (ctx, state) {
         var canvas = state.canvas,
@@ -28,7 +33,7 @@ var draw = (function(){
     // draw an 'arrow' to the base
     var drawArrowToBase = function(ctx, game){
         ctx.save();
-        ctx.translate(160, 120);
+        ctx.translate(TRANSLATE_TO.x, TRANSLATE_TO.y);
         var x = Math.cos(game.map.aToOrigin) * 32;
         var y = Math.sin(game.map.aToOrigin) * 32;
         ctx.fillStyle='red';
@@ -43,7 +48,7 @@ var draw = (function(){
     // base draw object helper
     var baseObjectDraw = function(ctx, obj, render){
         ctx.save();
-        ctx.translate(160, 120);
+        ctx.translate(TRANSLATE_TO.x, TRANSLATE_TO.y);
         ctx.fillStyle= obj.fillStyle || 'gray';
         ctx.strokeStyle= obj.strokeStyle || 'white';
         ctx.beginPath();
@@ -58,7 +63,7 @@ var draw = (function(){
         ctx.save();
         // draw an hp bar for the object if it has one
         if(obj.hp){
-            ctx.translate(160, 120);
+            ctx.translate(TRANSLATE_TO.x, TRANSLATE_TO.y);
             drawHealthBar(ctx, obj);
             ctx.restore();
         }
@@ -131,7 +136,7 @@ var draw = (function(){
         ctx.strokeStyle = style || 'red';
         ctx.lineWidth = 1;
         ctx.save();
-        ctx.translate(160, 120);
+        ctx.translate(TRANSLATE_TO.x, TRANSLATE_TO.y);
         while(i < len){
             x = sx + (i % grid.cellWidth) * grid.cellSize;
             y = sy + Math.floor(i / grid.cellWidth) * grid.cellSize;
