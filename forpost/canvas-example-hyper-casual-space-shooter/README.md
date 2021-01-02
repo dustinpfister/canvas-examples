@@ -16,21 +16,18 @@ As of 0.20.x I still have not work out all of the kinks when it comes to control
 
 For now it is best to play this on a desktop system, and that might continue to be the case even if I do get around to improving touch only support.
 
-#### 2.1.1 - The w,a,s,d keys are used for ship rotation and speed
+* 'w' key - Speed up
+* 's' key - Slow down
+* 'a' key - heading +
+* 'd' key - heading -
 
-   The _w_ key will increase ship speed to to the current max, while the _s_ key will bring it back down. The _a_ and _d_ keys can be used to change heading at the current rotation rate.
+* '1' key - set weapon to 'pulse gun' when in base mode
+* '2' key - set weapon to 'cannon' when in base mode
+* '3' key - set weapon to 'atom' when in base mode
 
-### 2.1.2 - The number buttons can be used to change weapon in 'base mode'
-
-When at the main base located at map position 0,0 it is possible to use the number buttons to change weapons.
-
-### 2.2.3 - The l key is used for manual fire
-
-If auto fire is disabled, then the l key is pressed to shoot.
-
-### 2.2.4 - Press the v key to toggle debug info
-
-I am still working on this and as with all of my canvas examples this will likley always be a work in progress actually. So of course there is a way to display detailed info about various things by pressing the 'v' key.
+* 'l' key - fire when auto fire is off
+* 'v' key - toggle debug info
+* 'b' key - toggle auto fire on and off
 
 ### 2.2 - Mouse/Touch controls
 
