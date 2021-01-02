@@ -32,7 +32,9 @@ var state = {
         //ppsDelta: 1,
         fire: false,
         keys: {}
-    }
+    },
+    lt : new Date(),
+    FPS_target : 30
 };
 // update pointer object helper
 var updatePointer = function(game, pos){
@@ -58,17 +60,20 @@ var numberButtonCheck = function(game, input){
 };
 
 // LOOP
-var lt = new Date(),
-FPS_target = 1000 / 30;
+//var lt = new Date(),
+//FPS_target = 1000 / 30;
 var loop = function () {
     var now = new Date(),
-    t = now - lt,
+    t = now - state.lt,
     game = state.game,
     map = game.map,
     input = state.input,
     secs = t / 1000;
+
     requestAnimationFrame(loop);
-    if (t >= FPS_target) {
+
+    if (t >= 1000 / state.FPS_target) {
+
         // update input.pointer
         updatePointer(game, input.pointer.pos);
         // keyboard or pointer update map radian
@@ -121,7 +126,7 @@ var loop = function () {
         draw.currentMode(state.ctx, state);
         //draw.info(state.ctx, state);
         //draw.ver(state.ctx, state);
-        lt = now;
+        state.lt = now;
     }
 };
 loop();

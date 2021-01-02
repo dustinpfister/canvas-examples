@@ -39,6 +39,10 @@ var draw = (function(){
         ctx.fillRect(0, 0, canvas.width, canvas.height);
     };
 
+    // draw a mini map that will help me to get a better idea of where I am
+    var positionMap = function(ctx, state){
+    };
+
     // position status
     var positionStatus = function(ctx, state){
         var game = state.game,
