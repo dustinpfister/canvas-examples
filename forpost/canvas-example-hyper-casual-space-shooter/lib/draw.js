@@ -303,6 +303,11 @@ var draw = (function(){
             ctx.font = '10px arial';
             ctx.textBaseline = 'top';
             ctx.textAlign = 'left';
+
+            ctx.fillText('mode : ' + game.mode, 10, 10);
+            ctx.fillText('a to origin: ' + map.aToOrigin.toFixed(2), 10, 20);
+            ctx.fillText('headCir dist : ' + state.input.pointer.headCir.dist, 10, 30);
+/*
             ctx.fillText('map pos: ' + Math.floor(map.x) + ' , ' + Math.floor(map.y), 10, 10);
             ctx.fillText('map radian: ' + map.radian.toFixed(2) + 
                 '; map pps: ' + map.pps.toFixed(2) + ' / ' + map.maxPPS.toFixed(2), 10, 20);
@@ -313,6 +318,7 @@ var draw = (function(){
                 '; fps: ' + w.firesPerSecond.toFixed(2), 10, 50);
             ctx.fillText('money : ' + game.money.toFixed(2) + '$', 10, 60);
             ctx.fillText('mode : ' + game.mode, 10, 70);
+*/
         }
     };
 

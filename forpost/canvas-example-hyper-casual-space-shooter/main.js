@@ -22,7 +22,7 @@ var state = {
     input: {
         pointer: {
             down: false,
-            pos: {},
+            pos: {x:0,y:0},
             dir: 0,
             headCir: { // the heading circle use to set a target heading for the ship
                 x: 320 - 30,
@@ -45,12 +45,18 @@ var state = {
 };
 // update pointer object helper
 var updatePointer = function(game, pos){
-    var map = game.map;
+    var map = game.map,
+    input = state.input,
+    pointer = input.pointer,
+    headCir = pointer.headCir;
     // update dir so that we know the shortest direction to go
     var d = Math.floor(utils.angleTo(pos.x, pos.y, 160, 120) / ( Math.PI * 2 ) * 360);
-    state.input.pointer.dir = utils.shortestDirection(d, Math.floor(map.degree), 360);
-    // update dist
-    state.input.pointer.dist = utils.distance(pos.x, pos.y, 160, 120);
+    input.pointer.dir = utils.shortestDirection(d, Math.floor(map.degree), 360);
+    // update main dist
+    input.pointer.dist = utils.distance(pos.x, pos.y, 160, 120);
+    // update headCir
+    headCir.dist = utils.distance(pos.x, pos.y, headCir.x, headCir.y);
+   
 };
 
 var numberButtonCheck = function(game, input){
