@@ -147,16 +147,24 @@ var loop = function () {
             if(ppsBar.actualY > ppsBar.targetY){
                 map.pps += map.ppsDelta * secs;
                 map.pps = map.pps > map.maxPPS ? map.maxPPS : map.pps;
+                // update ppsBar.actualY based on map.pps over map.maxPPS
+                ppsBar.actualY = ppsBar.y + ppsBar.h - ppsBar.h * speedPer;
+                if(ppsBar.actualY < ppsBar.targetY){
+                    ppsBar.actualY = ppsBar.targetY;
+                }
             }
 
             if(ppsBar.actualY < ppsBar.targetY){
                 map.pps -= map.ppsDelta * secs;
                 map.pps = map.pps < 0 ? 0 : map.pps;
+                // update ppsBar.actualY based on map.pps over map.maxPPS
+                ppsBar.actualY = ppsBar.y + ppsBar.h - ppsBar.h * speedPer;
+                if(ppsBar.actualY > ppsBar.targetY){
+                    ppsBar.actualY = ppsBar.targetY;
+                }
             }
         }
 
-        // update ppsBar.actualY based on map.pps over map.maxPPS
-         ppsBar.actualY = ppsBar.y + ppsBar.h - ppsBar.h * speedPer;
 
         // pointer update map radian
         var headCir = input.pointer.headCir;
