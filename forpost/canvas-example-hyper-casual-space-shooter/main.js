@@ -52,13 +52,15 @@ var updatePointer = function(game, pos){
     headCir = pointer.headCir;
     // update dir so that we know the shortest direction to go
     var d = Math.floor(utils.angleTo(pos.x, pos.y, 160, 120) / ( Math.PI * 2 ) * 360);
-    input.pointer.dir = utils.shortestDirection(d, Math.floor(map.degree), 360);
+    pointer.dir = utils.shortestDirection(d, Math.floor(map.degree), 360);
     // update main dist
-    input.pointer.dist = utils.distance(pos.x, pos.y, 160, 120);
+    pointer.dist = utils.distance(pos.x, pos.y, 160, 120);
     // update headCir
     headCir.dist = utils.distance(pos.x, pos.y, headCir.x, headCir.y);
-    headCir.a = utils.angleTo(pos.x, pos.y, headCir.x, headCir.y);
-   
+    headCir.dist = headCir.dist > headCir.r ? headCir.r: headCir.dist;
+    if(headCir.dist < headCir.r){
+       headCir.a = utils.angleTo(pos.x, pos.y, headCir.x, headCir.y);
+    }
 };
 
 var numberButtonCheck = function(game, input){
