@@ -33,6 +33,17 @@
 ## 0.x.0 - Keyboard Button Nav
 * can use arrow keys and enter button as a way to select and click buttons with the keyboard
 
+<!-- UPGRADE SYSTEM -->
+
+## 0.x.0 - Better stat info for upgrades
+* start a new system for upgrades where you select an upgrade and press a 'buy' button to upgrade
+* when an upgrade is selected stat info for the upgrade is displayed
+
+<!-- BLOCKS-->
+
+## 0.x.0 - Block Deflect Chance
+* add a shotDeflectChance prop
+
 <!-- MONEY -->
 
 ## 0.x.0 - Base Away Production
@@ -69,10 +80,6 @@
    At this time I think I should add additional Block realted features Mainly Block Armor and additional Effects.
 -->
 
-## 0.26.0 - Better stat info for upgrades
-* start a new system for upgrades where you select an upgrade and press a 'buy' button to upgrade
-* when an upgrade is selected stat info for the upgrade is displayed
-
 ## 0.25.0 - save states
 * make money part of the save state
 * make upgrades part of the save state
@@ -88,9 +95,21 @@
 * add CRIDICAL HIT effect that will cause 5 to 25 percent of total block hp in damage
 * add a MOMNEY PER HIT EFFECT
 
-## 0.22.0 - Block Armor and Shot Deflection
+## 0.22.0 - Block Armor
 * add an armor property for blocks
-* add a shotDeflectChance prop
+* block armor should be an object
+```
+armor : {
+   minDam: 10,                        // must do at least 10 damage to even have a chance
+   damPer: 0.5,                       // any damage after 10 is still cut my half
+   deflectChance: 0.2,                // 20% chance to compleatly deflect the shot
+   effects: [['burn', 0.2], 'acid']   // 20% chance to resist burn effect, 100% chance to resist 'acid' effect
+}
+```
+* all blocks have an armor object
+* get minDam prop working
+
+
 
 ## 0.21.0 - better mouse and touch support
 * (done) press 'b' key to turn auto fire on and off
@@ -103,7 +122,7 @@
 * (done) keyboard can change ppsBar.target;
 * (done) ppsBar.targetY is what is used to set map.pps using map.ppsDelta which should also set ppsBar.actualY
 * (done) autoFire button as first space mode button
-* make a 0.21.0 pkg folder
+* (done) make a 0.21.0 pkg folder
 
 ## 0.20.0 - Graphics Change I (CANVAS ONLY)
 * (done) have at least a basic triangle like shape for the ship.
