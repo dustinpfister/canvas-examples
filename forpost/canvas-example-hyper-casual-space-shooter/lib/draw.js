@@ -143,18 +143,19 @@ var draw = (function(){
         ctx.font='8px courier';
 
         //ctx.fillText('effects: ' + weapon.effects.length, 5, 40);
+        var sx = 25;
         weapon.effects.forEach(function(effectType, index){
             var sy = 40 + 50 * index,
             effect = game.effects[effectType];
-            ctx.fillText(effect.effectType + ':', 5, sy);
-            ctx.fillText(' chance  : ' + Math.round(effect.chance * 100) + '%', 5, sy + 8);
-            ctx.fillText(' maxStack: ' + effect.maxStack, 5, sy + 16);
+            ctx.fillText(effect.effectType + ':', sx, sy);
+            ctx.fillText(' chance  : ' + Math.round(effect.chance * 100) + '%', sx, sy + 8);
+            ctx.fillText(' maxStack: ' + effect.maxStack, sx, sy + 16);
             if(effect.effectType === 'burn'){
-                ctx.fillText(' damage%: ' + Math.round(effect.damagePer * 100) + '%', 5, sy + 24);
-                ctx.fillText(' count ' + effect.count, 5, sy + 32);
+                ctx.fillText(' damage%: ' + Math.round(effect.damagePer * 100) + '%', sx, sy + 24);
+                ctx.fillText(' count ' + effect.count, sx, sy + 32);
             }
             if(effect.effectType === 'acid'){
-                ctx.fillText(' damage: ' + effect.damageMulti.toFixed(2) + 'X', 5, sy + 24);
+                ctx.fillText(' damage: ' + effect.damageMulti.toFixed(2) + 'X', sx, sy + 24);
             }
         });
     };
