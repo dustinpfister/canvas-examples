@@ -119,8 +119,14 @@ var loop = function () {
 
         // keyboard update map pps
         if(input.keys.w){
-           map.pps += map.ppsDelta * secs;
-           map.pps = map.pps > map.maxPPS ? map.maxPPS : map.pps;
+            map.pps += map.ppsDelta * secs;
+            map.pps = map.pps > map.maxPPS ? map.maxPPS : map.pps;
+            ppsBar.targetY -= 100 * secs;
+        }
+        if(input.keys.s){
+            map.pps -= map.ppsDelta * secs;
+            map.pps = map.pps < 0 ? 0 : map.pps;
+            ppsBar.targetY += 100 * secs;
         }
         if(input.keys.a){
             map.degree += map.degreesPerSecond * secs;
@@ -128,10 +134,10 @@ var loop = function () {
         if(input.keys.d){
             map.degree -= map.degreesPerSecond * secs;
         }
-        if(input.keys.s){
-            map.pps -= map.ppsDelta * secs;
-            map.pps = map.pps < 0 ? 0 : map.pps;
-        }
+
+
+        ppsBar.targetY = ppsBar.targetY < ppsBar.y ? ppsBar.y: ppsBar.targetY;
+        ppsBar.targetY = ppsBar.targetY > ppsBar.y + ppsBar.h ? ppsBar.y + ppsBar.h: ppsBar.targetY;
 
         // pointer update map radian
         var headCir = input.pointer.headCir;
