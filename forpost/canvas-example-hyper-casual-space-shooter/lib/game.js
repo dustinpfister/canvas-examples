@@ -612,6 +612,12 @@ var gameMod = (function(){
         if(target.hp){
             if(target.type === 'block'){
                 poolMod.applyOnAttackEffects(target, attacker.damage);
+                // create any effects the shot might have
+                attacker.effects.forEach(function(effect){
+                    poolMod.createEffect(target, effect);
+                    // effect stats
+                    target.effectStats=poolMod.getEffectStats(target);
+                });
             }
             target.hp.current -= attacker.damage;
             target.hp.current = target.hp.current < 0 ? 0 : target.hp.current;
@@ -689,12 +695,7 @@ var gameMod = (function(){
                         if(dist <= block.r + shot.r){
                             shot.lifespan = 0;
                             attackObject(state.game, block, shot);
-                            // create any effects the shot might have
-                            shot.effects.forEach(function(effect){
-                                poolMod.createEffect(block, effect);
-                                // effect stats
-                                block.effectStats=poolMod.getEffectStats(block);
-                            });
+
                             // if the block is dead
                             if(block.hp.current <= 0 ){
                                 // aways give block money on a 'shot death'
