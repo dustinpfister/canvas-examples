@@ -24,9 +24,9 @@ var gameMod = (function(){
     SHIP_AUTOHEAL_AMOUNT = 1,
     SHIP_ROTATION_RATE_MIN = 45,   // min and max rotattion rates in degrees
     SHIP_ROTATION_RATE_MAX = 180,
-    SHIP_MAX_SPEED_START = 64,     // starting max ship speed in pps
+    SHIP_MAX_SPEED_START = 128,     // starting max ship speed in pps
     SHIP_MAX_SPEED_MAX = 1024,     // fully upgraded max ship speed in pps
-    SHIP_ACC_START = 16,            // starting Acceleration in ppsps
+    SHIP_ACC_START = 64,            // starting Acceleration in ppsps
     SHIP_ACC_MAX = 256,            // fully upgraded max ship speed in pps
     MAP_MAX_DIST = Math.pow(10,5), //Number.MAX_SAFE_INTEGER;      // max distance from BASE (0,0)
 

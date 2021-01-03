@@ -8,11 +8,14 @@ var poolMod = (function () {
     // OBJECT TYPES
     var OBJECT_TYPES = {
         block: { 
-            spawn: function(obj, pool, state, opt){
+            spawn: function(block, pool, state, opt){
                 // blocks have an effects array
-                obj.effects = [];
-                obj.effectStats = {};
-                obj.awardBlockMoney = false; // if true award money on effect death
+                block.effects = [];
+                block.effectStats = {};
+                block.awardBlockMoney = false; // if true award money on effect death
+                block.armor = {
+                   minDam: 10
+                };
             },
             update: function (obj, pool, state, secs) {
                 if(obj.effects.length > 0){
@@ -192,12 +195,6 @@ var poolMod = (function () {
         Object.keys(effectData).forEach(function(key){
              effect[key] = effect[key] === undefined ? effectData[key] : effect[key];
         });
-
-        //effect.chance = 1;
-        //effect.maxStack = 3;
-        //effect.damage = 1;
-        //effect.every = 0.25;
-        //effect.count = 10;
 
         effect.secs = 0;
         return effect;
