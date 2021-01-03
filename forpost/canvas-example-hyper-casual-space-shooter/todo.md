@@ -33,6 +33,8 @@
 ## 0.x.0 - Keyboard Button Nav
 * can use arrow keys and enter button as a way to select and click buttons with the keyboard
 
+## 0.x.0 - message system
+
 <!-- UPGRADE SYSTEM -->
 
 ## 0.x.0 - Better stat info for upgrades
@@ -108,7 +110,7 @@ armor : {
 ```
 * all blocks have an armor object
 * get minDam prop working
-
+* make a 0.22.0 pkg folder
 
 
 ## 0.21.0 - better mouse and touch support

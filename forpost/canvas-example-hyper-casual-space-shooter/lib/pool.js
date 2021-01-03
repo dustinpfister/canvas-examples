@@ -5,8 +5,8 @@ var poolMod = (function () {
     // Public API
     var api = {};
 
-    // BLOCK TYPES
-    var BLOCK_TYPES = {
+    // OBJECT TYPES
+    var OBJECT_TYPES = {
         block: { 
             spawn: function(obj, pool, state, opt){
                 // blocks have an effects array
@@ -232,16 +232,16 @@ var poolMod = (function () {
             data: opt.data || {},
             spawn: function(obj, pool, state, opt){
                 // call any built in spawn method for the type first
-                if(pool.type in BLOCK_TYPES){
-                    BLOCK_TYPES[pool.type].spawn(obj, pool, state, opt);
+                if(pool.type in OBJECT_TYPES){
+                    OBJECT_TYPES[pool.type].spawn(obj, pool, state, opt);
                 }
                 // call custom spawn
                 spawn(obj, pool, state, opt);
             },
             purge: opt.purge || function (obj, pool, state) {},
             update: function(obj, pool, state, opt){
-                if(pool.type in BLOCK_TYPES){
-                    BLOCK_TYPES[obj.type].update(obj, pool, state, opt);
+                if(pool.type in OBJECT_TYPES){
+                    OBJECT_TYPES[obj.type].update(obj, pool, state, opt);
                 }
                 update(obj, pool, state, opt);
             }
