@@ -18,7 +18,7 @@ var state = {
     canvas : canvas,
     ctx: canvasObj.ctx,
     game: gameMod.create(),
-    debug: true, // debug mode on or off
+    debug: false, // debug mode on or off
     input: {
         pointer: {
             down: false,
@@ -111,6 +111,11 @@ var loop = function () {
         // update input.pointer
         updatePointer(game, input.pointer.pos);
         // keyboard or pointer update map radian
+
+        // update ppsBar.actualY based on map.pps over map.maxPPS
+        var per = map.pps / map.maxPPS,
+        ppsBar = input.pointer.ppsBar; 
+        ppsBar.actualY = ppsBar.y + ppsBar.h - ppsBar.h * per;
 
         // keyboard update map pps
         if(input.keys.w){
