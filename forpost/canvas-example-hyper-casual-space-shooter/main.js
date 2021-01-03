@@ -123,11 +123,13 @@ var loop = function () {
         // pointer update map radian
         var headCir = input.pointer.headCir;
         //if(input.pointer.down && input.pointer.dist <= 32){
-        if(input.pointer.down && headCir.dist <= headCir.r){
-            if(input.pointer.dir === 1){
+        if(input.pointer.down && headCir.dist < headCir.r){
+            //if(input.pointer.dir === 1){
+            if(headCir.dir === 1){
                 map.degree += map.degreesPerSecond * secs;
             }
-            if(input.pointer.dir === -1){
+            //if(input.pointer.dir === -1){
+            if(headCir.dir === -1){
                 map.degree -= map.degreesPerSecond * secs;
             }
         }
