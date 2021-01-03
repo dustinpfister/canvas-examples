@@ -237,7 +237,10 @@ var draw = (function(){
                     ctx.textBaseline = 'middle';
                     ctx.textAlign = 'center';
                     ctx.font = '8px arial';
-                    ctx.fillText(block.effects.length + ' : ' + JSON.stringify(block.effectStats), block.x, block.y - 8);
+                    var effectsText = Object.keys(block.effectStats).map(function(effectType){
+                        return effectType + ' ' + block.effectStats[effectType] + 'x';
+                    }).join(' : ');
+                    ctx.fillText(effectsText, block.x, block.y - 8);
                     ctx.fillText(Math.floor(block.hp.current) + '/' + Math.floor(block.hp.max) , block.x, block.y);
                     ctx.fillText(block.money.toFixed(2), block.x, block.y + 8);
                 });
