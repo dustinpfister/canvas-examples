@@ -97,12 +97,11 @@
 * (done) fixed an FPS problem becuase of a missing ctx.restore call
 * (done) start a circle area in the lower right of the canvas that can be used to set taregt_degree with mouse/touch
 * (done) create a bar like slider on the left that can be used to set a 'target pps' value
-
-* ppsBar.actualY reflects map.pps over map.maxPPS
-* display current ppsBar.targetY value in the draw.js
-* pointer can be used to set ppsBar.target
-* keyboard can change ppsBar.target;
-* ppsBar.targetY is what is used to set map.pps using map.ppsDelta which should also set ppsBar.actualY
+* (done) ppsBar.actualY reflects map.pps over map.maxPPS
+* (done) display current ppsBar.targetY value in the draw.js
+* (done) pointer can be used to set ppsBar.target
+* (done) keyboard can change ppsBar.target;
+* (done) ppsBar.targetY is what is used to set map.pps using map.ppsDelta which should also set ppsBar.actualY
 
 * autoFire button as first space mode button
 * make a 0.21.0 pkg folder
