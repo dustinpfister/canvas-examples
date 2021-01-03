@@ -471,6 +471,11 @@ var draw = (function(){
          ctx.beginPath();
          ctx.rect(ppsBar.x,ppsBar.y,ppsBar.w,ppsBar.h);
          ctx.stroke();
+         ctx.fillStyle='lime';
+         ctx.beginPath();
+         var h = ppsBar.h - ppsBar.h * ( ( ppsBar.actualY - ppsBar.y ) /  ppsBar.h);
+         ctx.rect(ppsBar.x, ppsBar.actualY, ppsBar.w, h);
+         ctx.fill();
     };
 
     // return draw api
