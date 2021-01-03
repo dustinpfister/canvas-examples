@@ -98,8 +98,8 @@
 * add a MOMNEY PER HIT EFFECT
 
 ## 0.22.0 - Block Armor
-* add an armor property for blocks
-* block armor should be an object
+* (done) add an armor property for blocks
+* (done) block armor should be an object
 ```
 armor : {
    minDam: 10,                        // must do at least 10 damage to even have a chance
@@ -108,8 +108,10 @@ armor : {
    effects: [['burn', 0.2], 'acid']   // 20% chance to resist burn effect, 100% chance to resist 'acid' effect
 }
 ```
-* all blocks have an armor object
-* get minDam prop working
+* (done) all blocks have an armor object
+* (done) get minDam prop working
+* have a BLOCK-ARMOR-MINDAM-START and BLOCK-ARMOR-MINDAM-MAX consts in pool.js
+* set block armor mindam prop based on distance from 0,0
 * make a 0.22.0 pkg folder
 
 
