@@ -607,16 +607,17 @@ var gameMod = (function(){
     };
 
     // attack the given object with the given amount of damage
-    var attackObject = function(game, obj, damage){
-        if(obj.hp){
-            if(obj.type === 'block'){
-                poolMod.applyOnAttackEffects(obj, damage);
+    //var attackObject = function(game, obj, damage){
+    var attackObject = function(game, target, attacker){
+        if(target.hp){
+            if(target.type === 'block'){
+                poolMod.applyOnAttackEffects(target, attacker.damage);
             }
-            obj.hp.current -= damage;
-            obj.hp.current = obj.hp.current < 0 ? 0 : obj.hp.current;
-            obj.hp.per = obj.hp.current / obj.hp.max;
+            target.hp.current -= attacker.damage;
+            target.hp.current = target.hp.current < 0 ? 0 : target.hp.current;
+            target.hp.per = target.hp.current / target.hp.max;
             // if ship death
-            if(obj.hp.current === 0 && obj.type === 'ship'){
+            if(target.hp.current === 0 && target.type === 'ship'){
                 onShipDeath(game);
             }
         }
@@ -687,7 +688,7 @@ var gameMod = (function(){
                         // if a shot hits a block
                         if(dist <= block.r + shot.r){
                             shot.lifespan = 0;
-                            attackObject(state.game, block, shot.damage);
+                            attackObject(state.game, block, shot);
                             // create any effects the shot might have
                             shot.effects.forEach(function(effect){
                                 poolMod.createEffect(block, effect);
@@ -809,7 +810,7 @@ var gameMod = (function(){
                 // become inactive if
                 // block hits ship
                 if(block.data.dist <= game.ship.r + block.r){
-                    attackObject(game, game.ship, block.damage);
+                    attackObject(game, game.ship, block);
                     block.lifespan = 0;
                 }
                 // block goes out of range
