@@ -102,8 +102,7 @@
 * (done) pointer can be used to set ppsBar.target
 * (done) keyboard can change ppsBar.target;
 * (done) ppsBar.targetY is what is used to set map.pps using map.ppsDelta which should also set ppsBar.actualY
-
-* autoFire button as first space mode button
+* (done) autoFire button as first space mode button
 * make a 0.21.0 pkg folder
 
 ## 0.20.0 - Graphics Change I (CANVAS ONLY)
