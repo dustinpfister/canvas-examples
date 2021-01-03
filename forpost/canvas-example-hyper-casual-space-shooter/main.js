@@ -119,13 +119,13 @@ var loop = function () {
 
         // keyboard update map pps
         if(input.keys.w){
-            map.pps += map.ppsDelta * secs;
-            map.pps = map.pps > map.maxPPS ? map.maxPPS : map.pps;
+            //map.pps += map.ppsDelta * secs;
+            //map.pps = map.pps > map.maxPPS ? map.maxPPS : map.pps;
             ppsBar.targetY -= 100 * secs;
         }
         if(input.keys.s){
-            map.pps -= map.ppsDelta * secs;
-            map.pps = map.pps < 0 ? 0 : map.pps;
+            //map.pps -= map.ppsDelta * secs;
+            //map.pps = map.pps < 0 ? 0 : map.pps;
             ppsBar.targetY += 100 * secs;
         }
         if(input.keys.a){
@@ -135,9 +135,23 @@ var loop = function () {
             map.degree -= map.degreesPerSecond * secs;
         }
 
-
+        // clamp targetY
         ppsBar.targetY = ppsBar.targetY < ppsBar.y ? ppsBar.y: ppsBar.targetY;
         ppsBar.targetY = ppsBar.targetY > ppsBar.y + ppsBar.h ? ppsBar.y + ppsBar.h: ppsBar.targetY;
+
+        // update map pps based on targetY and actualY of the ppsBar
+        if(ppsBar.targetY != ppsBar.actualY){
+
+            if(ppsBar.actualY > ppsBar.targetY){
+                map.pps += map.ppsDelta * secs;
+                map.pps = map.pps > map.maxPPS ? map.maxPPS : map.pps;
+            }
+
+            if(ppsBar.actualY < ppsBar.targetY){
+                map.pps -= map.ppsDelta * secs;
+                map.pps = map.pps < 0 ? 0 : map.pps;
+            }
+        }
 
         // pointer update map radian
         var headCir = input.pointer.headCir;
