@@ -59,7 +59,8 @@ var updatePointer = function(game, pos){
     var map = game.map,
     input = state.input,
     pointer = input.pointer,
-    headCir = pointer.headCir;
+    headCir = pointer.headCir,
+    ppsBar = pointer.ppsBar;
     // update dir so that we know the shortest direction to go
     var d = Math.floor(utils.angleTo(pos.x, pos.y, 160, 120) / ( Math.PI * 2 ) * 360);
     pointer.dir = utils.shortestDirection(d, Math.floor(map.degree), 360);
@@ -73,6 +74,9 @@ var updatePointer = function(game, pos){
             headCir.a = utils.angleTo(pos.x, pos.y, headCir.x, headCir.y);
             headCir.d = Math.floor(headCir.a / ( Math.PI * 2 ) * 360);
             headCir.dir = utils.shortestDirection(headCir.d, Math.floor(map.degree), 360);
+        }
+        if(utils.boundingBox(pos.x, pos.y, 1, 1, ppsBar.x, ppsBar.y, ppsBar.w, ppsBar.h)){
+            ppsBar.targetY = pos.y;
         }
     }
 };
