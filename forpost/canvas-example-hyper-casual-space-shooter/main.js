@@ -29,7 +29,9 @@ var state = {
                 y: 240 - 30,
                 r: 24,
                 dist: 0,
-                a:0
+                a: 0,
+                d: 0,
+                dir: 0
             },
             dist: 0 // dist from 160, 120 ( or 0,0 when it comes to game state)
         },
@@ -61,6 +63,8 @@ var updatePointer = function(game, pos){
         headCir.dist = headCir.dist > headCir.r ? headCir.r: headCir.dist;
         if(headCir.dist < headCir.r){
             headCir.a = utils.angleTo(pos.x, pos.y, headCir.x, headCir.y);
+            headCir.d = Math.floor(headCir.a / ( Math.PI * 2 ) * 360);
+            headCir.dir = utils.shortestDirection(headCir.d, Math.floor(map.degree), 360);
         }
     }
 };
@@ -117,7 +121,9 @@ var loop = function () {
         }
 
         // pointer update map radian
-        if(input.pointer.down && input.pointer.dist <= 32){
+        var headCir = input.pointer.headCir;
+        //if(input.pointer.down && input.pointer.dist <= 32){
+        if(input.pointer.down && headCir.dist <= headCir.r){
             if(input.pointer.dir === 1){
                 map.degree += map.degreesPerSecond * secs;
             }
