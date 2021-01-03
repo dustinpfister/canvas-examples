@@ -165,9 +165,9 @@ var draw = (function(){
         var game = state.game,
         map = game.map,
         weapon = game.ship.weapon,
-        grad = ctx.createLinearGradient(0, 0, 0, 40);
+        grad = ctx.createLinearGradient(0, 0, 0, 20);
         grad.addColorStop(0, '#808080');
-        grad.addColorStop(1, 'rgba(128,0,0,0.3)');
+        grad.addColorStop(1, 'rgba(0,0,255,0.07)');
 
         // backdrop for status bar
         ctx.fillStyle=grad; //"rgba(128,128,128,0.5)";
@@ -462,12 +462,12 @@ var draw = (function(){
          var headCir = state.input.pointer.headCir,
          ppsBar = state.input.pointer.ppsBar;
          // draw headCir
-         ctx.strokeStyle='red';
+         ctx.strokeStyle='white';
          ctx.beginPath();
          ctx.arc(headCir.x, headCir.y, headCir.r, 0, Math.PI * 2);
          ctx.stroke();
          // draw pps bar
-         ctx.strokeStyle='red';
+         ctx.strokeStyle='white';
          ctx.beginPath();
          ctx.rect(ppsBar.x,ppsBar.y,ppsBar.w,ppsBar.h);
          ctx.stroke();
@@ -478,7 +478,7 @@ var draw = (function(){
          ctx.rect(ppsBar.x, ppsBar.actualY, ppsBar.w, h);
          ctx.fill();
          // target
-         ctx.fillStyle='red';
+         ctx.fillStyle='white';
          ctx.beginPath();
          ctx.rect(ppsBar.x - 2, ppsBar.targetY - 3, ppsBar.w + 4, 6);
          ctx.fill();
