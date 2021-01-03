@@ -50,8 +50,8 @@ var draw = (function(){
         if(obj.hp){
             ctx.translate(TRANSLATE_TO.x, TRANSLATE_TO.y);
             drawHealthBar(ctx, obj);
-            ctx.restore();
         }
+        ctx.restore();
     };
 
 
