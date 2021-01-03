@@ -18,7 +18,7 @@ var state = {
     canvas : canvas,
     ctx: canvasObj.ctx,
     game: gameMod.create(),
-    debug: false, // debug mode on or off
+    debug: true, // debug mode on or off
     input: {
         pointer: {
             down: false,
@@ -28,7 +28,8 @@ var state = {
                 x: 320 - 30,
                 y: 240 - 30,
                 r: 24,
-                dist: 0
+                dist: 0,
+                a:0
             },
             dist: 0 // dist from 160, 120 ( or 0,0 when it comes to game state)
         },
@@ -56,6 +57,7 @@ var updatePointer = function(game, pos){
     input.pointer.dist = utils.distance(pos.x, pos.y, 160, 120);
     // update headCir
     headCir.dist = utils.distance(pos.x, pos.y, headCir.x, headCir.y);
+    headCir.a = utils.angleTo(pos.x, pos.y, headCir.x, headCir.y);
    
 };
 

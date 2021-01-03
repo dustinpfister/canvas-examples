@@ -296,6 +296,7 @@ var draw = (function(){
         var game = state.game,
         ship = game.ship,
         w = ship.weapon,
+        headCir = state.input.pointer.headCir,
         map = game.map;
         if(state.debug){
             background(ctx, state, 'rgba(0,0,0,0.5)');
@@ -306,7 +307,8 @@ var draw = (function(){
 
             ctx.fillText('mode : ' + game.mode, 10, 10);
             ctx.fillText('a to origin: ' + map.aToOrigin.toFixed(2), 10, 20);
-            ctx.fillText('headCir dist : ' + state.input.pointer.headCir.dist, 10, 30);
+            ctx.fillText('headCir dist : ' + headCir.dist, 10, 30);
+            ctx.fillText('headCir a : ' + headCir.a, 10, 40);
 /*
             ctx.fillText('map pos: ' + Math.floor(map.x) + ' , ' + Math.floor(map.y), 10, 10);
             ctx.fillText('map radian: ' + map.radian.toFixed(2) + 
