@@ -336,9 +336,9 @@ var draw = (function(){
 
     // draw an xp table or upgrade object
     var xpTable = function(ctx, table){
+        ctx.beginPath();
         table.points.forEach(function(point, i){
             if(i===0){
-                ctx.beginPath();
                 ctx.moveTo(table.x + point.x, table.y + point.y);
             }
             ctx.lineTo(table.x + point.x, table.y + point.y);
