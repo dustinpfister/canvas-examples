@@ -441,6 +441,7 @@ var draw = (function(){
         // draw version number
         ver(ctx, state);
 
+        // draw fps counter
         FPS(ctx, state);
 
     };

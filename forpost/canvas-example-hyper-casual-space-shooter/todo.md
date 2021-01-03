@@ -93,14 +93,14 @@
 * add a shotDeflectChance prop
 
 ## 0.21.0 - better mouse and touch support
-* press 'b' key to turn auto fire on and off
-* autoFire button as first space mode button
-* have a set of two circles in the lower right corner that will be a 'pointerControl' area
-* move the map around with the mouse by clicking and holding in the 'pointerControl' area
-* the smaller inner circle in the 'pointerControl' area sill set the current map.radian
-* The angle of the inner cirle to the center of the circle will be used to set map.radian
+* (done) press 'b' key to turn auto fire on and off
+* (done) fixed an FPS problem becuase of a missing ctx.restore call
 
+* start a circle area in the lower right of the canvas that can be used to set taregt_degree with mouse/touch
 * create a bar like slider on the left that can be used to set a 'target pps' value
+
+* autoFire button as first space mode button
+
 * make a 0.21.0 pkg folder
 
 ## 0.20.0 - Graphics Change I (CANVAS ONLY)
