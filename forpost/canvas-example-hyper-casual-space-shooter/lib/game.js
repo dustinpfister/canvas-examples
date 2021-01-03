@@ -66,7 +66,7 @@ var gameMod = (function(){
             effects: ['burn', 'acid'],
             shotRange: 128,
             shotPPS: 96,
-            shotsPerFire: [2],
+            shotsPerFire: [2,2,1],
             onFireStart: function(game, secs, state){
                 var weapon = game.weapons[game.ship.weaponIndex];
                 var shotIndex = 0;
@@ -186,6 +186,21 @@ var gameMod = (function(){
 
     // DEFAULT WEAPON OBJECT that will be cloned as game.weapons
     var DEFAULT_WEAPONS = create_DEFAULT_WEAPONS();
+
+    var SPACE_BUTTONS = {
+        main: {
+            0: {
+                desc: 'Auto Fire',
+                x: 130,
+                y: 40,
+                r: 10,
+                onClick: function(game){
+                    console.log('click auto fire');
+                    game.autoFire = !game.autoFire;
+                }
+            }
+        }
+    };
 
     var BASE_BUTTONS = {
         main: {
@@ -863,7 +878,8 @@ var gameMod = (function(){
             //baseButtons: BASE_BUTTONS,
             buttons: {
                currentPage: 'main',
-               base: utils.deepClone(BASE_BUTTONS)
+               base: utils.deepClone(BASE_BUTTONS),
+               space: utils.deepClone(SPACE_BUTTONS)
             },
             baseObj : {
                 fillStyle: '#282828',
@@ -979,6 +995,7 @@ var gameMod = (function(){
 
         // switch modes based on map.dist
         if(game.map.dist > BASE_DIST && game.mode === 'base'){
+            game.buttons.currentPage= 'main';
             game.mode = 'space';
         }
         if(game.map.dist <= BASE_DIST && game.mode === 'space'){
