@@ -33,6 +33,12 @@ var state = {
                 d: 0,
                 dir: 0
             },
+            ppsBar: {
+                x: 5,
+                y: 50,
+                w: 16,
+                h: 150
+            },
             dist: 0 // dist from 160, 120 ( or 0,0 when it comes to game state)
         },
         //degree: 0,

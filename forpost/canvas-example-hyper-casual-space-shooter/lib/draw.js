@@ -458,14 +458,18 @@ var draw = (function(){
 
     // draw the pointer user interface
     api.pointerUI = function(ctx, state){
-         var game = state.game,
-         headCir = state.input.pointer.headCir;
-
+         var headCir = state.input.pointer.headCir,
+         ppsBar = state.input.pointer.ppsBar;
+         // draw headCir
          ctx.strokeStyle='red';
          ctx.beginPath();
          ctx.arc(headCir.x, headCir.y, headCir.r, 0, Math.PI * 2);
          ctx.stroke();
-
+         // draw pps bar
+         ctx.strokeStyle='red';
+         ctx.beginPath();
+         ctx.rect(ppsBar.x,ppsBar.y,ppsBar.w,ppsBar.h);
+         ctx.stroke();
     };
 
     // return draw api
