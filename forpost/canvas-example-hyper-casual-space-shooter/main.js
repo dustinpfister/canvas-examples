@@ -100,6 +100,8 @@ var loop = function () {
     game = state.game,
     map = game.map,
     input = state.input,
+    speedPer = map.pps / map.maxPPS,
+    ppsBar = input.pointer.ppsBar,
     secs = t / 1000;
 
     requestAnimationFrame(loop);
@@ -111,11 +113,6 @@ var loop = function () {
         // update input.pointer
         updatePointer(game, input.pointer.pos);
         // keyboard or pointer update map radian
-
-        // update ppsBar.actualY based on map.pps over map.maxPPS
-        var per = map.pps / map.maxPPS,
-        ppsBar = input.pointer.ppsBar; 
-        ppsBar.actualY = ppsBar.y + ppsBar.h - ppsBar.h * per;
 
         // keyboard update map pps
         if(input.keys.w){
@@ -140,6 +137,7 @@ var loop = function () {
         ppsBar.targetY = ppsBar.targetY > ppsBar.y + ppsBar.h ? ppsBar.y + ppsBar.h: ppsBar.targetY;
 
         // update map pps based on targetY and actualY of the ppsBar
+
         if(ppsBar.targetY != ppsBar.actualY){
 
             if(ppsBar.actualY > ppsBar.targetY){
@@ -152,6 +150,9 @@ var loop = function () {
                 map.pps = map.pps < 0 ? 0 : map.pps;
             }
         }
+
+        // update ppsBar.actualY based on map.pps over map.maxPPS
+         ppsBar.actualY = ppsBar.y + ppsBar.h - ppsBar.h * speedPer;
 
         // pointer update map radian
         var headCir = input.pointer.headCir;
