@@ -792,41 +792,41 @@ var gameMod = (function(){
                 obj.money = BLOCK_MONEY_BASE + Math.round(game.map.per * BLOCK_MONEY_DIST);
 
             },
-            update: function(obj, pool, state, secs){
-                obj.lifespan = 1;
+            update: function(block, pool, state, secs){
+                block.lifespan = 1;
                 var game = state.game;
                 var map = state.game.map;
-                obj.radian = utils.wrapRadian(state.game.map.radian + Math.PI);
-                obj.pps = state.game.map.pps;
-                var objDeltaX = Math.cos(obj.radian) * obj.pps * secs;
-                var objDeltaY = Math.sin(obj.radian) * obj.pps * secs;
-                obj.x += objDeltaX;
-                obj.y += objDeltaY;
+                block.radian = utils.wrapRadian(state.game.map.radian + Math.PI);
+                block.pps = state.game.map.pps;
+                var objDeltaX = Math.cos(block.radian) * block.pps * secs;
+                var objDeltaY = Math.sin(block.radian) * block.pps * secs;
+                block.x += objDeltaX;
+                block.y += objDeltaY;
                 // data object for 'block'
-                obj.data.dist = utils.distance(obj.x, obj.y, state.game.ship.x, state.game.ship.y);
+                block.data.dist = utils.distance(block.x, block.y, state.game.ship.x, state.game.ship.y);
                 // apply current autoHeal values
-                autoHealObject(obj, secs);
+                autoHealObject(block, secs);
                 // become inactive if
                 // block hits ship
-                if(obj.data.dist <= game.ship.r + obj.r){
-                    attackObject(game, game.ship, obj.damage);
-                    obj.lifespan = 0;
+                if(block.data.dist <= game.ship.r + block.r){
+                    attackObject(game, game.ship, block.damage);
+                    block.lifespan = 0;
                 }
                 // block goes out of range
-                if(obj.data.dist >= BLOCK_POS_MAX_DIST){
-                    obj.lifespan = 0;
+                if(block.data.dist >= BLOCK_POS_MAX_DIST){
+                    block.lifespan = 0;
                 }
                 // if hp === 0
-                if(obj.hp.current <= 0){
+                if(block.hp.current <= 0){
                     // award money on 'effect death' if awardBlockMoney is true
-                    if(obj.awardBlockMoney){
-                        game.money += obj.money;
+                    if(block.awardBlockMoney){
+                        game.money += block.money;
                     }
-                    obj.lifespan = 0;
+                    block.lifespan = 0;
                 }
 
                 // effect stats
-                obj.effectStats=poolMod.getEffectStats(obj);
+                block.effectStats=poolMod.getEffectStats(block);
             }
         });
     };
