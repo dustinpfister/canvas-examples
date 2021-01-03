@@ -24,10 +24,16 @@ var state = {
             down: false,
             pos: {},
             dir: 0,
-            dist: 0
+            headCir: { // the heading circle use to set a target heading for the ship
+                x: 320 - 30,
+                y: 240 - 30,
+                r: 24,
+                dist: 0
+            },
+            dist: 0 // dist from 160, 120 ( or 0,0 when it comes to game state)
         },
-        degree: 0,
-        degreesPerSecond: 90,
+        //degree: 0,
+        //degreesPerSecond: 90,
         //pps: 0,
         //ppsDelta: 1,
         fire: false,
@@ -125,11 +131,11 @@ var loop = function () {
         //gameMod.setMapMovement(game, input.degree, input.pps);
         map.radian = utils.wrapRadian(Math.PI / 180 * map.degree);
         gameMod.update(game, secs, state);
+
         // draw
-        //draw.background(state.ctx, state);
         draw.currentMode(state.ctx, state);
-        //draw.info(state.ctx, state);
-        //draw.ver(state.ctx, state);
+        draw.pointerUI(state.ctx, state);
+
         state.lt = now;
     }
 };

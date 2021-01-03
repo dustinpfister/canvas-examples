@@ -446,6 +446,18 @@ var draw = (function(){
 
     };
 
+    // draw the pointer user interface
+    api.pointerUI = function(ctx, state){
+         var game = state.game,
+         headCir = state.input.pointer.headCir;
+
+         ctx.strokeStyle='red';
+         ctx.beginPath();
+         ctx.arc(headCir.x, headCir.y, headCir.r, 0, Math.PI * 2);
+         ctx.stroke();
+
+    };
+
     // return draw api
     return api;
 }());
