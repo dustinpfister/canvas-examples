@@ -64,6 +64,7 @@ var gameMod = (function(){
                 }
             },
             effects: ['burn', 'acid'],
+            //effects:[],
             shotRange: 128,
             shotPPS: 96,
             shotsPerFire: [2,2,1],
@@ -606,10 +607,15 @@ var gameMod = (function(){
         game.money = game.money > 0 ? game.money * ( 1 - MONEY_PERLOSS_ON_DEATH) : 0;
     };
 
-    // attack the given object with the given amount of damage
-    //var attackObject = function(game, obj, damage){
+    // attack the given TARGET object with the given ATTACKER object
     var attackObject = function(game, target, attacker){
         if(target.hp){
+            if(target.armor){
+                // return out of function if damage is two low
+                if(attacker.damage < target.armor.minDam){
+                    attacker.damage = 0;
+                }
+            }
             if(target.type === 'block'){
                 poolMod.applyOnAttackEffects(target, attacker.damage);
                 // create any effects the shot might have

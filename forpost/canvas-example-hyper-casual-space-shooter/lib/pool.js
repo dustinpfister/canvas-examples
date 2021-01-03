@@ -14,7 +14,7 @@ var poolMod = (function () {
                 block.effectStats = {};
                 block.awardBlockMoney = false; // if true award money on effect death
                 block.armor = {
-                   minDam: 10
+                   minDam: 2
                 };
             },
             update: function (obj, pool, state, secs) {
