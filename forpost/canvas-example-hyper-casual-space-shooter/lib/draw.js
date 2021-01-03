@@ -123,11 +123,11 @@ var draw = (function(){
         ctx.textAlign='left';
         ctx.font='8px courier';
 
-        var sy = 200;
-        ctx.fillText('position status: ', 220, sy);
-        ctx.fillText('pos: (' + Math.floor(map.x) + ',' + Math.floor(map.y) + ')', 220, sy + 8);
-        ctx.fillText('dist: ' + Math.floor(map.dist), 220, sy + 16);
-        ctx.fillText('per: ' + Math.floor(map.per * 100) + '%', 220, sy + 24);
+        var sx = 160, sy = 200;
+        ctx.fillText('position status: ', sx, sy);
+        ctx.fillText('pos: (' + Math.floor(map.x) + ',' + Math.floor(map.y) + ')', sx, sy + 8);
+        ctx.fillText('dist: ' + Math.floor(map.dist), sx, sy + 16);
+        ctx.fillText('per: ' + Math.floor(map.per * 100) + '%', sx, sy + 24);
 
     };
 
