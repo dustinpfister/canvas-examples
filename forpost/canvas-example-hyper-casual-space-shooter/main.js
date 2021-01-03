@@ -56,10 +56,12 @@ var updatePointer = function(game, pos){
     // update main dist
     pointer.dist = utils.distance(pos.x, pos.y, 160, 120);
     // update headCir
-    headCir.dist = utils.distance(pos.x, pos.y, headCir.x, headCir.y);
-    headCir.dist = headCir.dist > headCir.r ? headCir.r: headCir.dist;
-    if(headCir.dist < headCir.r){
-       headCir.a = utils.angleTo(pos.x, pos.y, headCir.x, headCir.y);
+    if(pointer.down){
+        headCir.dist = utils.distance(pos.x, pos.y, headCir.x, headCir.y);
+        headCir.dist = headCir.dist > headCir.r ? headCir.r: headCir.dist;
+        if(headCir.dist < headCir.r){
+            headCir.a = utils.angleTo(pos.x, pos.y, headCir.x, headCir.y);
+        }
     }
 };
 
