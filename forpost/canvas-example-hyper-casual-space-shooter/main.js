@@ -38,7 +38,7 @@ var state = {
                 y: 50,
                 w: 16,
                 h: 150,
-                targetY: 150, // the target Y value for the speed to get to
+                targetY: 200, // the target Y value for the speed to get to
                 actualY: 50 + 75  // the actual Y value for the current speed
             },
             dist: 0 // dist from 160, 120 ( or 0,0 when it comes to game state)

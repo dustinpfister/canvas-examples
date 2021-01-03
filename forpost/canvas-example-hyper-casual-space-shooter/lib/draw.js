@@ -471,10 +471,16 @@ var draw = (function(){
          ctx.beginPath();
          ctx.rect(ppsBar.x,ppsBar.y,ppsBar.w,ppsBar.h);
          ctx.stroke();
+         // actual
          ctx.fillStyle='yellow';
          ctx.beginPath();
          var h = ppsBar.h - ppsBar.h * ( ( ppsBar.actualY - ppsBar.y ) /  ppsBar.h);
          ctx.rect(ppsBar.x, ppsBar.actualY, ppsBar.w, h);
+         ctx.fill();
+         // target
+         ctx.fillStyle='red';
+         ctx.beginPath();
+         ctx.rect(ppsBar.x - 2, ppsBar.targetY - 3, ppsBar.w + 4, 6);
          ctx.fill();
     };
 
