@@ -15,7 +15,7 @@ var gameMod = (function(){
     BLOCK_HP_MAX = 1000,
     BLOCK_MONEY_BASE = 1,
     BLOCK_MONEY_DIST = 999,
-    BLOCK_ARMOR_MINDAM_MIN = 2,
+    BLOCK_ARMOR_MINDAM_MIN = 0,
     BLOCK_ARMOR_MINDAM_MAX = 45,
 
     // SHIP AND MAP VALUES
@@ -26,9 +26,9 @@ var gameMod = (function(){
     SHIP_AUTOHEAL_AMOUNT = 1,
     SHIP_ROTATION_RATE_MIN = 45,   // min and max rotattion rates in degrees
     SHIP_ROTATION_RATE_MAX = 180,
-    SHIP_MAX_SPEED_START = 64,     // starting max ship speed in pps
+    SHIP_MAX_SPEED_START = 128,     // starting max ship speed in pps
     SHIP_MAX_SPEED_MAX = 1024,     // fully upgraded max ship speed in pps
-    SHIP_ACC_START = 8,            // starting Acceleration in ppsps
+    SHIP_ACC_START = 64,            // starting Acceleration in ppsps
     SHIP_ACC_MAX = 256,            // fully upgraded max ship speed in pps
     MAP_MAX_DIST = Math.pow(10,5), //Number.MAX_SAFE_INTEGER;      // max distance from BASE (0,0)
 
@@ -65,8 +65,8 @@ var gameMod = (function(){
                     tableY: 120 - 12
                 }
             },
-            effects: ['burn', 'acid'],
-            //effects:[],
+            //effects: ['burn', 'acid'],
+            effects:[],
             shotRange: 128,
             shotPPS: 96,
             shotsPerFire: [2,2,1],
@@ -116,7 +116,7 @@ var gameMod = (function(){
                     tableY: 120 - 12
                 }
             },
-            effects: ['burn'],
+            effects: ['burn', 'acid'],
             shotRange: 256,
             shotsPerFire: [3, 2],
             onFireStart: function(game, secs, state){
@@ -800,6 +800,9 @@ var gameMod = (function(){
                 obj.damage = 1;
                 // block money based on BASE amount plus DIST AMOUNT
                 obj.money = BLOCK_MONEY_BASE + Math.round(game.map.per * BLOCK_MONEY_DIST);
+
+                // block armor
+                obj.armor.minDam = BLOCK_ARMOR_MINDAM_MIN;
 
             },
             update: function(block, pool, state, secs){
