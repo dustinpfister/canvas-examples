@@ -34,6 +34,7 @@
 * can use arrow keys and enter button as a way to select and click buttons with the keyboard
 
 ## 0.x.0 - message system
+## 0.x.0 - Course and fine grain control
 
 <!-- UPGRADE SYSTEM -->
 
@@ -110,7 +111,7 @@ armor : {
 ```
 * (done) all blocks have an armor object
 * (done) get minDam prop working
-* have a BLOCK-ARMOR-MINDAM-START and BLOCK-ARMOR-MINDAM-MAX consts in pool.js
+* have a BLOCK-ARMOR-MINDAM-START and BLOCK-ARMOR-MINDAM-MAX consts
 * set block armor mindam prop based on distance from 0,0
 * make a 0.22.0 pkg folder
 

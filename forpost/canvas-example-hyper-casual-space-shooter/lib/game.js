@@ -15,6 +15,8 @@ var gameMod = (function(){
     BLOCK_HP_MAX = 1000,
     BLOCK_MONEY_BASE = 1,
     BLOCK_MONEY_DIST = 999,
+    BLOCK_ARMOR_MINDAM_MIN = 2,
+    BLOCK_ARMOR_MINDAM_MAX = 45,
 
     // SHIP AND MAP VALUES
     SHIP_AUTOFIRE = true,          // auto fire on or off by default
@@ -24,9 +26,9 @@ var gameMod = (function(){
     SHIP_AUTOHEAL_AMOUNT = 1,
     SHIP_ROTATION_RATE_MIN = 45,   // min and max rotattion rates in degrees
     SHIP_ROTATION_RATE_MAX = 180,
-    SHIP_MAX_SPEED_START = 128,     // starting max ship speed in pps
+    SHIP_MAX_SPEED_START = 64,     // starting max ship speed in pps
     SHIP_MAX_SPEED_MAX = 1024,     // fully upgraded max ship speed in pps
-    SHIP_ACC_START = 64,            // starting Acceleration in ppsps
+    SHIP_ACC_START = 8,            // starting Acceleration in ppsps
     SHIP_ACC_MAX = 256,            // fully upgraded max ship speed in pps
     MAP_MAX_DIST = Math.pow(10,5), //Number.MAX_SAFE_INTEGER;      // max distance from BASE (0,0)
 
@@ -801,11 +803,14 @@ var gameMod = (function(){
 
             },
             update: function(block, pool, state, secs){
-                block.lifespan = 1;
                 var game = state.game;
                 var map = state.game.map;
+                // keep reseting lifespan
+                block.lifespan = 1;
+                // set block radain and pps based off of current map radian and pps
                 block.radian = utils.wrapRadian(state.game.map.radian + Math.PI);
                 block.pps = state.game.map.pps;
+                // move block
                 var objDeltaX = Math.cos(block.radian) * block.pps * secs;
                 var objDeltaY = Math.sin(block.radian) * block.pps * secs;
                 block.x += objDeltaX;
@@ -824,7 +829,7 @@ var gameMod = (function(){
                 if(block.data.dist >= BLOCK_POS_MAX_DIST){
                     block.lifespan = 0;
                 }
-                // if hp === 0
+                // if bloxk hp === 0
                 if(block.hp.current <= 0){
                     // award money on 'effect death' if awardBlockMoney is true
                     if(block.awardBlockMoney){
@@ -832,7 +837,6 @@ var gameMod = (function(){
                     }
                     block.lifespan = 0;
                 }
-
                 // effect stats
                 block.effectStats=poolMod.getEffectStats(block);
             }
