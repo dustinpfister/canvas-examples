@@ -125,6 +125,7 @@ armor : {
 * add a setBlockValueByMapDist helper function to set block values by map distance and some additional options
 * setBlockValueByMapDist should take a min and max value as arguments
 * setBlockValueByMapDist should take a percent function as an argument
+* when switching from 'space' to 'base' mode set all shots and blocks to inactive state
 * make a 0.22.0 pkg folder
 
 ## 0.21.0 - better mouse and touch support

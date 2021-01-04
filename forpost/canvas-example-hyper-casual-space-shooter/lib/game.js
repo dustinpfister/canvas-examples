@@ -1017,6 +1017,9 @@ var gameMod = (function(){
             game.mode = 'space';
         }
         if(game.map.dist <= BASE_DIST && game.mode === 'space'){
+            // set all shots and blocks to inactive state
+            poolMod.setActiveStateForAll(game.shots, false);
+            poolMod.setActiveStateForAll(game.shots, false);
             game.buttons.currentPage = 'main';
             game.mode = 'base';
         }
