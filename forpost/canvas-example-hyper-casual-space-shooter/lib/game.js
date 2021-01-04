@@ -30,7 +30,7 @@ var gameMod = (function(){
     SHIP_MAX_SPEED_MAX = 1024,     // fully upgraded max ship speed in pps
     SHIP_ACC_START = 64,            // starting Acceleration in ppsps
     SHIP_ACC_MAX = 256,            // fully upgraded max ship speed in pps
-    MAP_MAX_DIST = Math.pow(10,6), //Number.MAX_SAFE_INTEGER;      // max distance from BASE (0,0)
+    MAP_MAX_DIST = 2.5 * Math.pow(10,5), //Number.MAX_SAFE_INTEGER;      // max distance from BASE (0,0)
 
     // HOME BASE VALUES
     // values for the base area at the origin
@@ -65,8 +65,8 @@ var gameMod = (function(){
                     tableY: 120 - 12
                 }
             },
-            //effects: ['burn', 'acid'],
-            effects:[],
+            effects: ['burn', 'acid'],
+            //effects:[],
             shotRange: 128,
             shotPPS: 96,
             shotsPerFire: [2,2,1],
