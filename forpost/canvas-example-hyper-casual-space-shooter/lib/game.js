@@ -30,7 +30,7 @@ var gameMod = (function(){
     SHIP_MAX_SPEED_MAX = 1024,     // fully upgraded max ship speed in pps
     SHIP_ACC_START = 64,            // starting Acceleration in ppsps
     SHIP_ACC_MAX = 256,            // fully upgraded max ship speed in pps
-    MAP_MAX_DIST = Math.pow(10,5), //Number.MAX_SAFE_INTEGER;      // max distance from BASE (0,0)
+    MAP_MAX_DIST = Math.pow(10,4), //Number.MAX_SAFE_INTEGER;      // max distance from BASE (0,0)
 
     // HOME BASE VALUES
     // values for the base area at the origin
@@ -778,11 +778,24 @@ var gameMod = (function(){
         }
     };
 
-    var getValueByMapDist = function(game, minVal, maxVal, roundFunc){
-        var map = game.map;
-        var result = minVal + Math.round( ( maxVal - minVal ) * map.per);
-        if(roundFunc){
-            return roundFunc(result);
+    // get a value by map dist, and additional options like a minVal and maxVal 
+    var getValueByMapDist = function(game, opt){
+        opt = opt || {};
+        opt.minVal = opt.minVal || 0; // min value of the result
+        opt.maxVal = opt.maxVal || 1; // max value of the result
+        opt.roundFunc = opt.roundFunc || Math.round; // rounding method to use, false for none
+        opt.perFunc = opt.perFunc || utils.log3; // the percent function to use, false for none
+        opt.perFuncArgs = opt.perFuncArgs || [7];
+        // default per to game.map.per
+        var per = game.map.per,
+        delta = opt.maxVal - opt.minVal;
+        if(opt.perFunc){
+            per = opt.perFunc.apply(null, [per, 1, 'per'].concat(opt.perFuncArgs));
+        }
+        // use a percent method
+        var result = opt.minVal + delta * per;
+        if(opt.roundFunc){
+            return opt.roundFunc(result);
         }
         return result;
     };
@@ -815,7 +828,10 @@ var gameMod = (function(){
                 //var minVal = BLOCK_ARMOR_MINDAM_MIN,
                 //maxVal = BLOCK_ARMOR_MINDAM_MAX;
                 //obj.armor.minDam = Math.round( minVal + ( maxVal - minVal ) * map.per);
-                obj.armor.minDam = getValueByMapDist(game, BLOCK_ARMOR_MINDAM_MIN, BLOCK_ARMOR_MINDAM_MAX, Math.round);
+                obj.armor.minDam = getValueByMapDist(game, {
+                    minVal: BLOCK_ARMOR_MINDAM_MIN, 
+                    maxVal: BLOCK_ARMOR_MINDAM_MAX
+                });
             },
             update: function(block, pool, state, secs){
                 var game = state.game;
