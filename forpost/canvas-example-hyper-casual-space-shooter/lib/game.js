@@ -11,7 +11,7 @@ var gameMod = (function(){
     BLOCK_COUNT = 20,
     BLOCK_POS_MAX_DIST = 600,
     BLOCK_POS_SLOT_DIST = 15,
-    BLOCK_HP_MIN = 50,
+    BLOCK_HP_MIN = 10,
     BLOCK_HP_MAX = 1000,
     BLOCK_MONEY_BASE = 1,
     BLOCK_MONEY_DIST = 999,
@@ -54,7 +54,7 @@ var gameMod = (function(){
                 }
             },
             shotDamage: { // min and max range for shot damage
-                min: 1,
+                min: 0.25,
                 max: Math.floor(BLOCK_HP_MAX * 0.05),
                 levelOpt: { 
                     levelCap: 10,
@@ -778,6 +778,15 @@ var gameMod = (function(){
         }
     };
 
+    var getValueByMapDist = function(game, minVal, maxVal, roundFunc){
+        var map = game.map;
+        var result = minVal + Math.round( ( maxVal - minVal ) * map.per);
+        if(roundFunc){
+            return roundFunc(result);
+        }
+        return result;
+    };
+
     // CREATE
 
     // create block pool helper
@@ -803,10 +812,10 @@ var gameMod = (function(){
                 obj.money = BLOCK_MONEY_BASE + Math.round(game.map.per * BLOCK_MONEY_DIST);
 
                 // block armor
-                var minVal = BLOCK_ARMOR_MINDAM_MIN,
-                maxVal = BLOCK_ARMOR_MINDAM_MAX;
-                obj.armor.minDam = minVal + Math.round( ( maxVal - minVal ) * map.per);
-
+                //var minVal = BLOCK_ARMOR_MINDAM_MIN,
+                //maxVal = BLOCK_ARMOR_MINDAM_MAX;
+                //obj.armor.minDam = Math.round( minVal + ( maxVal - minVal ) * map.per);
+                obj.armor.minDam = getValueByMapDist(game, BLOCK_ARMOR_MINDAM_MIN, BLOCK_ARMOR_MINDAM_MAX, Math.round);
             },
             update: function(block, pool, state, secs){
                 var game = state.game;

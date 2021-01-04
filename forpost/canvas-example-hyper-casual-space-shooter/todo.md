@@ -122,9 +122,9 @@ armor : {
 * (done) have a BLOCK-ARMOR-MINDAM-START and BLOCK-ARMOR-MINDAM-MAX consts
 * (done) draw current block armor value for a block
 * (done) set block armor mindam prop based on distance from 0,0
-* add a setBlockValueByMapDist helper function to set block values by map distance and some additional options
-* setBlockValueByMapDist should take a min and max value as arguments
-* setBlockValueByMapDist should take a percent function as an argument
+* add a setObjectValueByMapDist helper function to set block values by map distance and some additional options
+* setObjectValueByMapDist should take a min and max value as arguments
+* setObjectValueByMapDist should take a percent function as an argument
 * when switching from 'space' to 'base' mode set all shots and blocks to inactive state
 * make a 0.22.0 pkg folder
 
