@@ -788,21 +788,24 @@ var gameMod = (function(){
             fillStyle: '#1a1a1a',
             count: BLOCK_COUNT,
             spawn: function(obj, pool, state, opt){
-                var game = state.game;
+                var game = state.game,
+                map = game.map;
                 // set starting position of block
                 positionBlock(state, obj);
-                obj.radian = utils.wrapRadian(game.map.radian + Math.PI);
-                obj.pps = game.map.pps;
+                obj.radian = utils.wrapRadian(map.radian + Math.PI);
+                obj.pps = map.pps;
                 obj.lifespan = 1;
 
                 // block props
-                obj.hp = CreateHPObject( BLOCK_HP_MIN + Math.round( (BLOCK_HP_MAX - BLOCK_HP_MIN) ) * game.map.per );
+                obj.hp = CreateHPObject( BLOCK_HP_MIN + Math.round( (BLOCK_HP_MAX - BLOCK_HP_MIN) ) * map.per );
                 obj.damage = 1;
                 // block money based on BASE amount plus DIST AMOUNT
                 obj.money = BLOCK_MONEY_BASE + Math.round(game.map.per * BLOCK_MONEY_DIST);
 
                 // block armor
-                obj.armor.minDam = BLOCK_ARMOR_MINDAM_MIN;
+                var minVal = BLOCK_ARMOR_MINDAM_MIN,
+                maxVal = BLOCK_ARMOR_MINDAM_MAX;
+                obj.armor.minDam = minVal + Math.round( ( maxVal - minVal ) * map.per);
 
             },
             update: function(block, pool, state, secs){
