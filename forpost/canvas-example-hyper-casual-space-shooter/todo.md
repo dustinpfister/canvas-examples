@@ -1,5 +1,8 @@
 # canvas-example-hyper-casual-space-shooter todo list
 
+<!-- MORE FEATURES (adding additional features that should make the game more fun) -->
+
+## 0.27.0 - 
 
 <!-- POLLISH ( ADDITIAL NEEDED BASIC FEATURES, IMPROVEMENTS OF FEATURES IN PLACE, SOME MORE FUN FEATURES -->
 <!-- 
