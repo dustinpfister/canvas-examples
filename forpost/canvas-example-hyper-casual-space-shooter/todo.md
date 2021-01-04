@@ -111,7 +111,8 @@ armor : {
 ```
 * (done) all blocks have an armor object
 * (done) get minDam prop working
-* have a BLOCK-ARMOR-MINDAM-START and BLOCK-ARMOR-MINDAM-MAX consts
+* (done) have a BLOCK-ARMOR-MINDAM-START and BLOCK-ARMOR-MINDAM-MAX consts
+* draw current block armor value for a block
 * set block armor mindam prop based on distance from 0,0
 * make a 0.22.0 pkg folder
 

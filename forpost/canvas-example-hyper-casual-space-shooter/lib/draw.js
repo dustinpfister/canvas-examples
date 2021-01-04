@@ -236,13 +236,13 @@ var draw = (function(){
                     ctx.fillStyle = 'yellow';
                     ctx.textBaseline = 'middle';
                     ctx.textAlign = 'center';
-                    ctx.font = '8px arial';
+                    ctx.font = '9px arial';
                     var effectsText = Object.keys(block.effectStats).map(function(effectType){
                         return effectType + ' ' + block.effectStats[effectType] + 'x';
                     }).join(' : ');
-                    ctx.fillText(effectsText, block.x, block.y - 8);
+                    ctx.fillText(effectsText, block.x, block.y - 9);
                     ctx.fillText(Math.floor(block.hp.current) + '/' + Math.floor(block.hp.max) , block.x, block.y);
-                    ctx.fillText(block.money.toFixed(2), block.x, block.y + 8);
+                    ctx.fillText(utils.format_money(block.money) + ' ; A' + block.armor.minDam, block.x, block.y + 9);
                 });
             }
         });
