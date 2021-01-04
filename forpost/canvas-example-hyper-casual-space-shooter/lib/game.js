@@ -30,7 +30,7 @@ var gameMod = (function(){
     SHIP_MAX_SPEED_MAX = 1024,     // fully upgraded max ship speed in pps
     SHIP_ACC_START = 64,            // starting Acceleration in ppsps
     SHIP_ACC_MAX = 256,            // fully upgraded max ship speed in pps
-    MAP_MAX_DIST = Math.pow(10,4), //Number.MAX_SAFE_INTEGER;      // max distance from BASE (0,0)
+    MAP_MAX_DIST = Math.pow(10,6), //Number.MAX_SAFE_INTEGER;      // max distance from BASE (0,0)
 
     // HOME BASE VALUES
     // values for the base area at the origin
@@ -784,8 +784,8 @@ var gameMod = (function(){
         opt.minVal = opt.minVal || 0; // min value of the result
         opt.maxVal = opt.maxVal || 1; // max value of the result
         opt.roundFunc = opt.roundFunc || Math.round; // rounding method to use, false for none
-        opt.perFunc = opt.perFunc || utils.log3; // the percent function to use, false for none
-        opt.perFuncArgs = opt.perFuncArgs || [7];
+        opt.perFunc = opt.perFunc || utils.log1; // the percent function to use, false for none
+        opt.perFuncArgs = opt.perFuncArgs || [];
         // default per to game.map.per
         var per = game.map.per,
         delta = opt.maxVal - opt.minVal;
@@ -830,7 +830,9 @@ var gameMod = (function(){
                 //obj.armor.minDam = Math.round( minVal + ( maxVal - minVal ) * map.per);
                 obj.armor.minDam = getValueByMapDist(game, {
                     minVal: BLOCK_ARMOR_MINDAM_MIN, 
-                    maxVal: BLOCK_ARMOR_MINDAM_MAX
+                    maxVal: BLOCK_ARMOR_MINDAM_MAX,
+                    perFunc: utils.log1,
+                    roundFunc: Math.floor
                 });
             },
             update: function(block, pool, state, secs){
