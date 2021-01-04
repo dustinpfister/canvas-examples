@@ -83,9 +83,17 @@
    At this time I think I should add additional Block realted features Mainly Block Armor and additional Effects.
 -->
 
-## 0.25.0 - save states
+## 0.26.0 - save states
 * make money part of the save state
 * make upgrades part of the save state
+
+## 0.25.0 - Block Damage, Ship Energy Bar, Ship Health Bar
+* have block damage go up with map distance
+* have a ship.energy prop
+* have a ship.enery.max, and ship.energy.current
+* ship energy goes up over time to the max
+* auto heal costs energy
+* rate at which energy goes up, gows down as distance from base goes up
 
 ## 0.24.0 - spawn blocks durring movement
 * have a BLOCK-SPAWN-DIST, and BLOCK-COUNT-PER-SPAWN-DIST
@@ -112,10 +120,12 @@ armor : {
 * (done) all blocks have an armor object
 * (done) get minDam prop working
 * (done) have a BLOCK-ARMOR-MINDAM-START and BLOCK-ARMOR-MINDAM-MAX consts
-* draw current block armor value for a block
-* set block armor mindam prop based on distance from 0,0
+* (done) draw current block armor value for a block
+* (done) set block armor mindam prop based on distance from 0,0
+* add a setBlockValueByMapDist helper function to set block values by map distance and some additional options
+* setBlockValueByMapDist should take a min and max value as arguments
+* setBlockValueByMapDist should take a percent function as an argument
 * make a 0.22.0 pkg folder
-
 
 ## 0.21.0 - better mouse and touch support
 * (done) press 'b' key to turn auto fire on and off
