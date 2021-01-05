@@ -1,0 +1,3 @@
+/*
+   canvas-example-animation-basics by Dustin Pfister
+*/
