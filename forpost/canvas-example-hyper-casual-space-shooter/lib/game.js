@@ -20,7 +20,7 @@ var gameMod = (function(){
 
     // SHIP AND MAP VALUES
     SHIP_AUTOFIRE = true,          // auto fire on or off by default
-    SHIP_HP = 10,
+    SHIP_HP = 1000,
     SHIP_AUTOHEAL_ENABLED=true,
     SHIP_AUTOHEAL_RATE = 3,
     SHIP_AUTOHEAL_AMOUNT = 1,

@@ -185,7 +185,7 @@ var draw = (function(){
 
         // ship speed and heading
         ctx.font='8px courier';
-        ctx.fillText('speed  : ' + Math.floor(map.pps) + '/' + Math.floor(map.maxPPS), 220, 13);
+        ctx.fillText('speed  : ' + Math.floor(map.pps) + ' / ' + Math.floor(map.maxPPS), 220, 13);
         ctx.fillText('heading: ' + map.degree.toFixed(2), 220, 20);
 
         // basic weapon info
@@ -197,18 +197,23 @@ var draw = (function(){
 
         // HP Bar
         ctx.fillStyle='#2a2a2a';
-        ctx.fillRect(160 - 50, 10, 100, 10);
+        ctx.fillRect(160 - 50, 5, 100, 15);
         ctx.fillStyle='#af0000';
-        ctx.fillRect(160 - 50, 10, 100 * ship.hp.per, 10);
+        ctx.fillRect(160 - 50, 5, 100 * ship.hp.per, 15);
         ctx.fillStyle = 'white';
         ctx.textAlign = 'center';
-        ctx.fillText(ship.hp.current + '/' + ship.hp.max, 160, 10);
+        ctx.font='8px arial';
+        ctx.fillText(ship.hp.current + ' / ' + ship.hp.max, 160, 9);
 
         // Energy bar
         ctx.fillStyle='#2a2a2a';
-        ctx.fillRect(160 - 50, 20, 100, 5);
+        ctx.fillRect(160 - 50, 20, 100, 8);
         ctx.fillStyle='#afaf00';
-        ctx.fillRect(160 - 50, 20, 100 * ship.energy.per, 5);
+        ctx.fillRect(160 - 50, 20, 100 * ship.energy.per, 8);
+        ctx.fillStyle = 'white';
+        ctx.textAlign = 'center';
+        ctx.font='8px arial';
+        ctx.fillText(Math.round(ship.energy.current) + ' / ' + ship.energy.max, 160, 20);
     };
 
     // draw a health bar for an object
