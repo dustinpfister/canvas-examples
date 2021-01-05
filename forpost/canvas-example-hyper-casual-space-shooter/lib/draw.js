@@ -200,6 +200,12 @@ var draw = (function(){
         ctx.fillRect(160 - 50, 10, 100, 10);
         ctx.fillStyle='#af0000';
         ctx.fillRect(160 - 50, 10, 100 * ship.hp.per, 10);
+
+        // Energy bar
+        ctx.fillStyle='#2a2a2a';
+        ctx.fillRect(160 - 50, 20, 100, 5);
+        ctx.fillStyle='#afaf00';
+        ctx.fillRect(160 - 50, 20, 100 * ship.energy.per, 5);
     };
 
     // draw a health bar for an object

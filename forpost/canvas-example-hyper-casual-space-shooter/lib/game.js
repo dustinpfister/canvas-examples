@@ -645,6 +645,7 @@ var gameMod = (function(){
         return {
             current: ENERGY_MAX,
             max: ENERGY_MAX,
+            per: 1,
             rate: 1,
             secs: 0
         };
