@@ -607,7 +607,6 @@ var gameMod = (function(){
         // game money effected
         game.money = game.money > 0 ? game.money * ( 1 - MONEY_PERLOSS_ON_DEATH) : 0;
     };
-
     // attack the given TARGET object with the given ATTACKER object
     var attackObject = function(game, target, attacker){
         if(target.hp){
@@ -636,8 +635,21 @@ var gameMod = (function(){
         }
     };
 
-    // SHOTS
+    // ENERGY
 
+    // create and return am energy object
+    createEnergyObject = function(){
+        return {
+            current: 100,
+            max: 100,
+            rate: 1,
+            secs: 0
+        };
+    };
+
+    // SHOTS
+    
+    // shot style data
     var shotStyleHelper = function(shot){
         shot.fillStyle = 'rgba(255,255,255,0.2)';
         shot.r = 2;
@@ -888,6 +900,7 @@ var gameMod = (function(){
             y: 0,
             r: 8,
             hp: CreateHPObject(SHIP_HP),
+            energy: createEnergyObject(),
             fillStyle: 'blue',
             weaponSecs: 0,
             weaponIndex:0,
