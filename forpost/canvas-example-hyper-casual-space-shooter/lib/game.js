@@ -566,7 +566,7 @@ var gameMod = (function(){
     var api = {};
 
     // HIT POINTS
-    var CreateHPObject = function(maxHP){
+    var createHPObject = function(maxHP){
         return {
             current: maxHP || 100,
             max: maxHP || 100,
@@ -833,7 +833,7 @@ var gameMod = (function(){
                 obj.lifespan = 1;
 
                 // block props
-                obj.hp = CreateHPObject( BLOCK_HP_MIN + Math.round( (BLOCK_HP_MAX - BLOCK_HP_MIN) ) * map.per );
+                obj.hp = createHPObject( BLOCK_HP_MIN + Math.round( (BLOCK_HP_MAX - BLOCK_HP_MIN) ) * map.per );
                 obj.damage = getValueByMapDist(game, {
                     minVal: 1, 
                     maxVal: 100,
@@ -902,7 +902,7 @@ var gameMod = (function(){
             x: 0, // ship position relative to map position
             y: 0,
             r: 8,
-            hp: CreateHPObject(SHIP_HP),
+            hp: createHPObject(SHIP_HP),
             energy: createEnergyObject(),
             fillStyle: 'blue',
             weaponSecs: 0,
