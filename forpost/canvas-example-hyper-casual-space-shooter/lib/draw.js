@@ -200,6 +200,9 @@ var draw = (function(){
         ctx.fillRect(160 - 50, 10, 100, 10);
         ctx.fillStyle='#af0000';
         ctx.fillRect(160 - 50, 10, 100 * ship.hp.per, 10);
+        ctx.fillStyle = 'white';
+        ctx.textAlign = 'center';
+        ctx.fillText(ship.hp.current + '/' + ship.hp.max, 160, 10);
 
         // Energy bar
         ctx.fillStyle='#2a2a2a';
