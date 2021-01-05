@@ -643,12 +643,18 @@ var gameMod = (function(){
     // create and return am energy object
     createEnergyObject = function(){
         return {
-            current: ENERGY_MAX,
+            current: ENERGY_MAX * 0.5,
             max: ENERGY_MAX,
-            per: 1,
+            per: 0,
             rate: 1,
             secs: 0
         };
+    };
+
+    // update energy
+    var updateEnergy = function(game, secs){
+        var energy = game.ship.energy;
+        energy.per = energy.current / energy.max;
     };
 
     // SHOTS
@@ -1052,6 +1058,7 @@ var gameMod = (function(){
         // always update shot pool
         poolMod.update(game.shots, secs, state);;
     };
+
     api.update = function(game, secs, state){
 
         // clamp secs between 0 and GAME_UPDATE_MAX_SECS const
@@ -1079,6 +1086,8 @@ var gameMod = (function(){
             updateBlocks(game, secs, state);
             updateShots(game, secs, state);
         }
+        // energy
+        updateEnergy(game, secs);
     };
 
     var buttonCheck = function(button, pos){
