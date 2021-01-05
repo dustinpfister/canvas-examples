@@ -61,7 +61,8 @@
 * when game.spawnDist >= BLOCK-SPAWN-DIST set up to BLOCK-COUNT-PER-SPAWN-DIST active
 
 ## 0.23.0 - Block Damage, Ship Energy Bar, Ship Health Bar, HomeSick feature
-* have block damage go up with map distance
+* (done) have block damage go up with map distance
+* display block damage
 * have a ship.energy prop
 * have a ship.enery.max, and ship.energy.current
 * ship energy goes up over time to the max

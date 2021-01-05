@@ -242,7 +242,9 @@ var draw = (function(){
                     }).join(' : ');
                     ctx.fillText(effectsText, block.x, block.y - 9);
                     ctx.fillText(Math.floor(block.hp.current) + '/' + Math.floor(block.hp.max) , block.x, block.y);
-                    ctx.fillText(utils.format_money(block.money) + ' ; A' + block.armor.minDam, block.x, block.y + 9);
+                    ctx.fillText(utils.format_money(block.money) + ' ; ' +
+                        'A' + block.armor.minDam + ' ; ' +
+                        'D' + block.damage, block.x, block.y + 9);
                 });
             }
         });
