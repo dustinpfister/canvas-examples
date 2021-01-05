@@ -33,7 +33,7 @@ var gameMod = (function(){
     MAP_MAX_DIST = 2.5 * Math.pow(10,5), //Number.MAX_SAFE_INTEGER;      // max distance from BASE (0,0)
 
     // energy
-    ENERGY_MAX = 1000,
+    ENERGY_MAX = 100,
 
     // HOME BASE VALUES
     // values for the base area at the origin
@@ -641,7 +641,7 @@ var gameMod = (function(){
     // ENERGY
 
     // create and return am energy object
-    createEnergyObject = function(){
+    var createEnergyObject = function(){
         return {
             current: ENERGY_MAX * 0.5,
             max: ENERGY_MAX,
@@ -651,10 +651,20 @@ var gameMod = (function(){
         };
     };
 
+    // clamp energy helper
+    var clampEnergy = function(energy){
+        energy.current = energy.current > energy.max ? energy.max: energy.current;
+        energy.current = energy.current < 0 ? 0: energy.current;
+    };
+
     // update energy
     var updateEnergy = function(game, secs){
         var energy = game.ship.energy;
         energy.per = energy.current / energy.max;
+        // add to energy by current rate
+        energy.current += energy.rate * secs;
+        // clamp energy
+        clampEnergy(energy);
     };
 
     // SHOTS
