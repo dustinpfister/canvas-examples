@@ -20,7 +20,7 @@ var gameMod = (function(){
 
     // SHIP AND MAP VALUES
     SHIP_AUTOFIRE = true,          // auto fire on or off by default
-    SHIP_HP = 1000,
+    SHIP_HP = 100,
     SHIP_AUTOHEAL_ENABLED=true,
     SHIP_AUTOHEAL_RATE = 3,
     SHIP_AUTOHEAL_AMOUNT = 1,
@@ -34,6 +34,7 @@ var gameMod = (function(){
 
     // energy
     ENERGY_MAX = 100,
+    ENERGY_AUTOHEAL_COST=3,
 
     // HOME BASE VALUES
     // values for the base area at the origin
@@ -1098,8 +1099,8 @@ var gameMod = (function(){
         // energy
         updateEnergy(game, secs);
         // autoHeal ship
-        if(game.ship.hp.current < game.ship.hp.max && game.ship.energy.current > 10 * secs){
-            game.ship.energy.current -= 10 * secs;
+        if(game.ship.hp.current < game.ship.hp.max && game.ship.energy.current > ENERGY_AUTOHEAL_COST * secs){
+            game.ship.energy.current -= ENERGY_AUTOHEAL_COST * secs;
             autoHealObject(game.ship, secs);
         }
     };
