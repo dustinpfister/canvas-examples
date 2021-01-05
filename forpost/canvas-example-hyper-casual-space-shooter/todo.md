@@ -1,8 +1,45 @@
 # canvas-example-hyper-casual-space-shooter todo list
 
-<!-- MORE FEATURES (adding additional features that should make the game more fun) -->
+<!-- AUTOMATION -->
+## 0.x.0 - Game Automation, game.startTime
+* work out a script that will automate the act of playing the game.
+* add a game.startTime value that will be the date at which the 'player' has started to play the game
 
-## 0.27.0 - 
+<!-- MORE WEAPONS, EFEFCTS, BLOCK FEATURES -->
+
+<!-- MONEY, and TIME ( How long will it take to get to a point in the game ) -->
+<!--
+    From 0.26.0 forward the focus should now be on MONEY and TIME.
+    Now that the very core of the game seems to be togeather I think it would be a good idea to start thinking in terms 
+    of MONEY and TIME in the game. Features added at this point should help for me to get an idea of how long a 
+    player needs to play the game in order to get all the upgrades, and thus get to the 'end of the game sort of speak'. 
+    That is if there is really and end to get to really to begin with. features should also help to get an idea of how 
+    long it will take to get from the center of the game map to the max distance, or any distance, with current 
+    ship speed. Also features should help to reduce the amount of time it would take to get somewhere from starting 
+    values, such as adding a warp feature.
+-->
+
+## 0.30.0 - Graphics Change II, and Warp Upgrade
+* Add Canvas generated sprite sheet helper in draw.js
+* create a sheet for shots
+* create a sheet for the ship
+* add a warp upgrade
+* warp upgrade reduces the energy cost per distance
+
+## 0.29.0 - Warp
+* add a warp feature
+* warping from one location to another should cost energy
+
+## 0.28.0 - ETA Helper
+* add a helper that will return an ETA to a given point, from a current point and speed.
+
+## 0.27.0 - Tabulate all upgrade costs helper
+* have a helper that will tabulate all upgrade costs to get an amount of money that will be needed to unlock all upgrades
+* use the Average Money Per Hour helper to estamate how long it will take to unlock everything
+
+## 0.26.0 - Average Money Per Hour Helper
+* add a feature that will create an average money per hour value
+* use the average money per hour value to estamate how long it will take to get to a given amount of money
 
 <!-- POLLISH ( ADDITIAL NEEDED BASIC FEATURES, IMPROVEMENTS OF FEATURES IN PLACE, SOME MORE FUN FEATURES -->
 <!-- 
@@ -13,23 +50,23 @@
    At this time I think I should add additional Block realted features Mainly Block Armor and additional Effects.
 -->
 
-## 0.25.0 - Block Damage, Ship Energy Bar, Ship Health Bar
-* have block damage go up with map distance
-* have a ship.energy prop
-* have a ship.enery.max, and ship.energy.current
-* ship energy goes up over time to the max
-* auto heal costs energy
-* rate at which energy goes up, gows down as distance from base goes up
+## 0.25.0 - save states
+* make money part of the save state
+* make upgrades part of the save state
+* make a 0.23.0 pkg folder
 
 ## 0.24.0 - spawn blocks durring movement
 * have a BLOCK-SPAWN-DIST, and BLOCK-COUNT-PER-SPAWN-DIST
 * have a game.spawnDist value that is updated each time the map position changes
 * when game.spawnDist >= BLOCK-SPAWN-DIST set up to BLOCK-COUNT-PER-SPAWN-DIST active
 
-## 0.23.0 - save states
-* make money part of the save state
-* make upgrades part of the save state
-* make a 0.23.0 pkg folder
+## 0.23.0 - Block Damage, Ship Energy Bar, Ship Health Bar
+* have block damage go up with map distance
+* have a ship.energy prop
+* have a ship.enery.max, and ship.energy.current
+* ship energy goes up over time to the max
+* auto heal costs energy
+* rate at which energy goes up, gows down as distance from base goes up
 
 ## 0.22.0 - Block Armor
 * (done) add an armor property for blocks
