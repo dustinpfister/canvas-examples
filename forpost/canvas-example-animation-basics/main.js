@@ -11,14 +11,28 @@ var createCanvas = function(opt){
 };
 
 var draw = {};
-
 draw.background = function(ctx, canvas){
     ctx.fillStyle='black';
     ctx.fillRect(0,0,canvas.width, canvas.height);
 };
+draw.ver = function(ctx, canvas, state){
+    ctx.fillStyle='white';
+    ctx.textBaseline='top';
+    ctx.textAlign='left';
+    ctx.font='10px arial';
+    ctx.fillText('v' + state.ver, 2, canvas.height - 12);
+};
 
-var canvasObj = createCanvas(),
-canvas = canvasObj.canvas,
-ctx = canvasObj.ctx;
+(function(){
 
-draw.background(ctx, canvas);
+    var state = {
+        ver: '0.1.0'
+    };
+    var canvasObj = createCanvas(),
+    canvas = canvasObj.canvas,
+    ctx = canvasObj.ctx;
+
+    draw.background(ctx, canvas);
+    draw.ver(ctx, canvas, state);
+
+}());
