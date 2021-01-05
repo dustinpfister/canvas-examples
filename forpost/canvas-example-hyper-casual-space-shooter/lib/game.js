@@ -20,7 +20,7 @@ var gameMod = (function(){
 
     // SHIP AND MAP VALUES
     SHIP_AUTOFIRE = true,          // auto fire on or off by default
-    SHIP_HP = 100,
+    SHIP_HP = 10,
     SHIP_AUTOHEAL_ENABLED=true,
     SHIP_AUTOHEAL_RATE = 3,
     SHIP_AUTOHEAL_AMOUNT = 1,
@@ -1035,7 +1035,6 @@ var gameMod = (function(){
         clampMapPos(map);
         map.per = game.map.dist / MAP_MAX_DIST;
         map.aToOrigin = utils.angleTo(0, 0, map.x, map.y);
-        autoHealObject(game.ship, secs);
     };
 
     var updateBlocks = function(game, secs, state){
@@ -1098,6 +1097,11 @@ var gameMod = (function(){
         }
         // energy
         updateEnergy(game, secs);
+        // autoHeal ship
+        if(game.ship.hp.current < game.ship.hp.max && game.ship.energy.current > 10 * secs){
+            game.ship.energy.current -= 10 * secs;
+            autoHealObject(game.ship, secs);
+        }
     };
 
     var buttonCheck = function(button, pos){
