@@ -1,10 +1,5 @@
 # canvas-example-hyper-casual-space-shooter todo list
 
-<!-- AUTOMATION -->
-## 0.x.0 - Game Automation, game.startTime
-* work out a script that will automate the act of playing the game.
-* add a game.startTime value that will be the date at which the 'player' has started to play the game
-
 <!-- MORE WEAPONS, EFEFCTS, BLOCK FEATURES -->
 
 <!-- MONEY, and TIME ( How long will it take to get to a point in the game ) -->
@@ -33,13 +28,11 @@
 ## 0.28.0 - ETA Helper
 * add a helper that will return an ETA to a given point, from a current point and speed.
 
-## 0.27.0 - Tabulate all upgrade costs helper
-* have a helper that will tabulate all upgrade costs to get an amount of money that will be needed to unlock all upgrades
-* use the Average Money Per Hour helper to estamate how long it will take to unlock everything
-
-## 0.26.0 - Average Money Per Hour Helper
+## 0.26.0 - Average Money Per Hour Helper, Tabulate all upgrade costs helper
 * add a feature that will create an average money per hour value
 * use the average money per hour value to estamate how long it will take to get to a given amount of money
+* have a helper that will tabulate all upgrade costs to get an amount of money that will be needed to unlock all upgrades
+* use the Average Money Per Hour helper to estamate how long it will take to unlock everything
 
 <!-- POLLISH ( ADDITIAL NEEDED BASIC FEATURES, IMPROVEMENTS OF FEATURES IN PLACE, SOME MORE FUN FEATURES -->
 <!-- 
@@ -53,12 +46,13 @@
 ## 0.25.0 - save states
 * make money part of the save state
 * make upgrades part of the save state
-* make a 0.23.0 pkg folder
+* make a 0.25.0 pkg folder
 
 ## 0.24.0 - spawn blocks durring movement
 * have a BLOCK-SPAWN-DIST, and BLOCK-COUNT-PER-SPAWN-DIST
 * have a game.spawnDist value that is updated each time the map position changes
 * when game.spawnDist >= BLOCK-SPAWN-DIST set up to BLOCK-COUNT-PER-SPAWN-DIST active
+* make a 0.24.0 pkg folder
 
 ## 0.23.0 - Block Damage, Ship Energy Bar, Ship Health Bar, HomeSick feature
 * (done) have block damage go up with map distance
@@ -69,7 +63,7 @@
 * (done) have an energy bar below the status bar
 * (done) ship energy goes up over time to the max
 * (done) auto heal costs energy
-* make a 0.23.0 pkg folder
+* (done) make a 0.23.0 pkg folder
 
 ## 0.22.0 - Block Armor
 * (done) add an armor property for blocks
