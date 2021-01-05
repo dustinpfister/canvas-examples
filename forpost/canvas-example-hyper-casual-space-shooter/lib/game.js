@@ -32,6 +32,9 @@ var gameMod = (function(){
     SHIP_ACC_MAX = 256,            // fully upgraded max ship speed in pps
     MAP_MAX_DIST = 2.5 * Math.pow(10,5), //Number.MAX_SAFE_INTEGER;      // max distance from BASE (0,0)
 
+    // energy
+    ENERGY_MAX = 1000,
+
     // HOME BASE VALUES
     // values for the base area at the origin
     BASE_DIST = 100;
@@ -640,8 +643,8 @@ var gameMod = (function(){
     // create and return am energy object
     createEnergyObject = function(){
         return {
-            current: 100,
-            max: 100,
+            current: ENERGY_MAX,
+            max: ENERGY_MAX,
             rate: 1,
             secs: 0
         };
