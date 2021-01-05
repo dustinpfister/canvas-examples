@@ -63,8 +63,10 @@
 ## 0.23.0 - Block Damage, Ship Energy Bar, Ship Health Bar, HomeSick feature
 * (done) have block damage go up with map distance
 * (done) display block damage
-* have a ship.energy prop
-* have a ship.enery.max, and ship.energy.current
+* (done) have a ship.energy prop
+* (done) have a ship.enery.max, and ship.energy.current
+* have an hp bar as part of the status bar
+* have an energy bar below the status bar
 * ship energy goes up over time to the max
 * auto heal costs energy
 * HomeSick feature rate at which energy goes up, will go down as distance from base goes up

@@ -924,7 +924,7 @@ var gameMod = (function(){
             weapons: utils.deepClone(DEFAULT_WEAPONS),
             effects: utils.deepClone(poolMod.EFFECT_TYPES),
             upgrades: [],
-            ship: {}, //createShip(),
+            ship: {},
             shots: createShotsPool(),
             blocks: createBlocksPool(),
             map: { // map position
@@ -1051,7 +1051,6 @@ var gameMod = (function(){
         // always update shot pool
         poolMod.update(game.shots, secs, state);;
     };
-
     api.update = function(game, secs, state){
 
         // clamp secs between 0 and GAME_UPDATE_MAX_SECS const

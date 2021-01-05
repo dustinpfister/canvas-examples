@@ -163,6 +163,7 @@ var draw = (function(){
     // draw game status bar info
     var statusBar = function(ctx, state){
         var game = state.game,
+        ship = game.ship,
         map = game.map,
         weapon = game.ship.weapon,
         grad = ctx.createLinearGradient(0, 0, 0, 20);
@@ -172,7 +173,6 @@ var draw = (function(){
         // backdrop for status bar
         ctx.fillStyle=grad; //"rgba(128,128,128,0.5)";
         ctx.fillRect(0,0, state.canvas.width, 40);
-
 
         // base text style
         ctx.fillStyle='white';
@@ -195,6 +195,11 @@ var draw = (function(){
         ctx.fillText('Shot Damage:' + weapon.shotDamage.toFixed(2), 5, 13);
         ctx.fillText('Fires/sec  :' + weapon.firesPerSecond.toFixed(2), 5, 20);
 
+        // HP Bar
+        ctx.fillStyle='#2a2a2a';
+        ctx.fillRect(160 - 50, 10, 100, 10);
+        ctx.fillStyle='#af0000';
+        ctx.fillRect(160 - 50, 10, 100 * ship.hp.per, 10);
     };
 
     // draw a health bar for an object
