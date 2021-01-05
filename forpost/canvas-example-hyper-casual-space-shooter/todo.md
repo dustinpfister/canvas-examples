@@ -60,13 +60,14 @@
 * have a game.spawnDist value that is updated each time the map position changes
 * when game.spawnDist >= BLOCK-SPAWN-DIST set up to BLOCK-COUNT-PER-SPAWN-DIST active
 
-## 0.23.0 - Block Damage, Ship Energy Bar, Ship Health Bar
+## 0.23.0 - Block Damage, Ship Energy Bar, Ship Health Bar, HomeSick feature
 * have block damage go up with map distance
 * have a ship.energy prop
 * have a ship.enery.max, and ship.energy.current
 * ship energy goes up over time to the max
 * auto heal costs energy
-* rate at which energy goes up, gows down as distance from base goes up
+* HomeSick feature rate at which energy goes up, will go down as distance from base goes up
+* make a 0.23.0 pkg folder
 
 ## 0.22.0 - Block Armor
 * (done) add an armor property for blocks

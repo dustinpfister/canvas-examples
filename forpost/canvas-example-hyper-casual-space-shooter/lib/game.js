@@ -20,9 +20,9 @@ var gameMod = (function(){
 
     // SHIP AND MAP VALUES
     SHIP_AUTOFIRE = true,          // auto fire on or off by default
-    SHIP_HP = 30,
+    SHIP_HP = 100,
     SHIP_AUTOHEAL_ENABLED=true,
-    SHIP_AUTOHEAL_RATE = 10,
+    SHIP_AUTOHEAL_RATE = 3,
     SHIP_AUTOHEAL_AMOUNT = 1,
     SHIP_ROTATION_RATE_MIN = 45,   // min and max rotattion rates in degrees
     SHIP_ROTATION_RATE_MAX = 180,
@@ -35,7 +35,6 @@ var gameMod = (function(){
     // HOME BASE VALUES
     // values for the base area at the origin
     BASE_DIST = 100;
-
 
     // main WEAPONS Object that will be used to create DEFAULT_WEAPONS and append DEFAULT_UPGRADES
     var WEAPONS = {
@@ -820,7 +819,12 @@ var gameMod = (function(){
 
                 // block props
                 obj.hp = CreateHPObject( BLOCK_HP_MIN + Math.round( (BLOCK_HP_MAX - BLOCK_HP_MIN) ) * map.per );
-                obj.damage = 1;
+                obj.damage = getValueByMapDist(game, {
+                    minVal: 1, 
+                    maxVal: 100,
+                    perFunc: utils.log1,
+                    roundFunc: Math.floor
+                });
                 // block money based on BASE amount plus DIST AMOUNT
                 obj.money = BLOCK_MONEY_BASE + Math.round(game.map.per * BLOCK_MONEY_DIST);
 
