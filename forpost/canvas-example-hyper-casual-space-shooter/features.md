@@ -12,6 +12,8 @@ This is a list of features that I may or may not even add to the game to begin w
 
 <!-- ADDITIONAL FEATURES -->
 <!-- These are additional features that have come to mind for this project that I may or may not get to -->
+## 0.x.0 - homesick
+* HomeSick feature rate at which energy goes up, will go down as distance from base goes up
 ## 0.x.0 - Weapon Blast radius, Accuracy
 * each weapon has an accuracy object
 * acc.radius is the potential radius in which a shot will hit from perfect accuracy to acc.radius

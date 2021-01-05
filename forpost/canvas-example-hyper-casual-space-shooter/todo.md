@@ -65,11 +65,10 @@
 * (done) display block damage
 * (done) have a ship.energy prop
 * (done) have a ship.enery.max, and ship.energy.current
-* have an hp bar as part of the status bar
-* have an energy bar below the status bar
-* ship energy goes up over time to the max
-* auto heal costs energy
-* HomeSick feature rate at which energy goes up, will go down as distance from base goes up
+* (done) have an hp bar as part of the status bar
+* (done) have an energy bar below the status bar
+* (done) ship energy goes up over time to the max
+* (done) auto heal costs energy
 * make a 0.23.0 pkg folder
 
 ## 0.22.0 - Block Armor
