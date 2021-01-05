@@ -2,7 +2,7 @@
 
 This is all the source code for my collection of [posts on canvas examples](https://dustinpfister.github.io/2020/03/23/canvas-example/) on my website here at github pages. For each canvas example in the forPost folder there should be a corresponding blog post in which I write about a given canvas example in detail.
 
-Each folder is its own independent project folder, and most if not all should work by way of the file protocol in a web browser.
+Each folder is its own independent project folder, and most if not all should work by way of the file protocol in a web browser. In other words you can just open the main index.html of a folder, no need to serve them locally.
 
 ## The forPost, and prototype Folders
 
