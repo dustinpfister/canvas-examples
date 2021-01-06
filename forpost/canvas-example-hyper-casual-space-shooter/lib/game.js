@@ -10,8 +10,8 @@ var gameMod = (function(){
     // BLOCK CONSTANTS
     BLOCK_COUNT = 40,                        // max number of blocks in the game.blocks pool
     BLOCK_POS_MAX_DIST = 1500,               // max distnace the a black can have from a ship until it becomes inactive
-    BLOCK_SPAWN_DIST = 500,                  // the distance the ship needs to go from last block spawn, for another block spawn
-    BLOCK_SPAWN_COUNT_PER_DIST_MIN = 1,      // the MIN count of poolMod.spawn calls when spawn dist is reached
+    BLOCK_SPAWN_DIST = 250,                  // the distance the ship needs to go from last block spawn, for another block spawn
+    BLOCK_SPAWN_COUNT_PER_DIST_MIN = 3,      // the MIN count of poolMod.spawn calls when spawn dist is reached
     BLOCK_POS_SLOT_DIST = 15,                // used in setting the position of blocks ( see getFreePositions helper )
     BLOCK_HP_MIN = 10,                       // min hit points for a block
     BLOCK_HP_MAX = 1000,                     // max hit points for a block
