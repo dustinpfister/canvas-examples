@@ -1043,8 +1043,10 @@ var gameMod = (function(){
     };
 
     var updateBlocks = function(game, secs, state){
+        var blockSpawn = game.blockSpawn;
         // only spawn blocks in space mode
         if(game.mode === 'space'){
+            blockSpawn.dist = utils.distance(game.map.x, game.map.y, blockSpawn.lastPos.x, blockSpawn.lastPos.y);
             poolMod.update(game.blocks, secs, state);
             poolMod.spawn(game.blocks, state, {});
         }
