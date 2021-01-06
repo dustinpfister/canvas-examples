@@ -9,7 +9,8 @@ var gameMod = (function(){
 
     // BLOCK CONSTANTS
     BLOCK_COUNT = 20,
-    BLOCK_POS_MAX_DIST = 600,
+    BLOCK_POS_MAX_DIST = 1000,
+    BLOCK_SPAWN_DIST = 100,
     BLOCK_POS_SLOT_DIST = 15,
     BLOCK_HP_MIN = 10,
     BLOCK_HP_MAX = 1000,
@@ -1049,7 +1050,7 @@ var gameMod = (function(){
 
             poolMod.update(game.blocks, secs, state);
             blockSpawn.dist = utils.distance(game.map.x, game.map.y, blockSpawn.lastPos.x, blockSpawn.lastPos.y);
-            if(blockSpawn.dist >= 100){
+            if(blockSpawn.dist >= BLOCK_SPAWN_DIST){
                 blockSpawn.lastPos.x = game.map.x;
                 blockSpawn.lastPos.y = game.map.y;
                 poolMod.spawn(game.blocks, state, {});
