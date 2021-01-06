@@ -945,6 +945,10 @@ var gameMod = (function(){
             ship: {},
             shots: createShotsPool(),
             blocks: createBlocksPool(),
+            blockSpawn: {
+                dist: 0,
+                lastPos: {x:0, y:0}
+            },
             map: { // map position
                 x: 0,
                 y: 0,
