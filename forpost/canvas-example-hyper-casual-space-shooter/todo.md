@@ -49,6 +49,7 @@
 * make a 0.25.0 pkg folder
 
 ## 0.24.0 - spawn blocks durring movement
+* display a current active block count in debug menu
 * have a BLOCK-SPAWN-DIST, and BLOCK-COUNT-PER-SPAWN-DIST
 * have a game.spawnDist value that is updated each time the map position changes
 * when game.spawnDist >= BLOCK-SPAWN-DIST set up to BLOCK-COUNT-PER-SPAWN-DIST active
