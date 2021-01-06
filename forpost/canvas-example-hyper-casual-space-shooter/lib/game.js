@@ -4,14 +4,14 @@ var gameMod = (function(){
 
     // MONEY
     var GAME_MONEY_START = 0,
-    GAME_UPDATE_MAX_SECS = 0.8,   // max secs value for main update loop
-    MONEY_PERLOSS_ON_DEATH = 0.1, // percent of money loss on death 0-1
+    GAME_UPDATE_MAX_SECS = 0.8,              // max secs value for main update loop
+    MONEY_PERLOSS_ON_DEATH = 0.1,            // percent of money loss on death 0-1
 
     // BLOCK CONSTANTS
     BLOCK_COUNT = 20,
     BLOCK_POS_MAX_DIST = 1000,
     BLOCK_SPAWN_DIST = 100,
-    BLOCK_POS_SLOT_DIST = 15,
+    BLOCK_POS_SLOT_DIST = 15,                // used in setting the position of blocks ( see getFreePositions helper )
     BLOCK_HP_MIN = 10,
     BLOCK_HP_MAX = 1000,
     BLOCK_MONEY_BASE = 1,
@@ -20,18 +20,18 @@ var gameMod = (function(){
     BLOCK_ARMOR_MINDAM_MAX = 45,
 
     // SHIP AND MAP VALUES
-    SHIP_AUTOFIRE = true,          // auto fire on or off by default
+    SHIP_AUTOFIRE = true,                    // auto fire on or off by default
     SHIP_HP = 100,
     SHIP_AUTOHEAL_ENABLED=true,
     SHIP_AUTOHEAL_RATE = 3,
     SHIP_AUTOHEAL_AMOUNT = 1,
-    SHIP_ROTATION_RATE_MIN = 45,   // min and max rotattion rates in degrees
+    SHIP_ROTATION_RATE_MIN = 45,             // min and max rotattion rates in degrees
     SHIP_ROTATION_RATE_MAX = 180,
-    SHIP_MAX_SPEED_START = 128,     // starting max ship speed in pps
-    SHIP_MAX_SPEED_MAX = 1024,     // fully upgraded max ship speed in pps
-    SHIP_ACC_START = 64,            // starting Acceleration in ppsps
-    SHIP_ACC_MAX = 256,            // fully upgraded max ship speed in pps
-    MAP_MAX_DIST = 2.5 * Math.pow(10,5), //Number.MAX_SAFE_INTEGER;      // max distance from BASE (0,0)
+    SHIP_MAX_SPEED_START = 128,              // starting max ship speed in pps
+    SHIP_MAX_SPEED_MAX = 1024,               // fully upgraded max ship speed in pps
+    SHIP_ACC_START = 64,                     // starting Acceleration in ppsps
+    SHIP_ACC_MAX = 256,                      // fully upgraded max ship speed in pps
+    MAP_MAX_DIST = 2.5 * Math.pow(10,5),     //Number.MAX_SAFE_INTEGER;      // max distance from BASE (0,0)
 
     // energy
     ENERGY_MAX = 100,
