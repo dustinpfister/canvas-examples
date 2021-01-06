@@ -44,6 +44,7 @@
 -->
 
 ## 0.25.0 - save states
+* add just a simple save state feature using localStorage
 * make money part of the save state
 * make upgrades part of the save state
 * make a 0.25.0 pkg folder
@@ -55,7 +56,7 @@
 * (done) blockSpawn.dist value for storing the current distance between lastPos and the current pos
 * (done) have a BLOCK-SPAWN-DIST that will be the total distance the ship needs to go for poolMod.spawn to be called
 * (done) BLOCK-SPAWN-COUNT-PER-DIST that will be the number of blocks to spawn when dist is reached
-* make a 0.24.0 pkg folder
+* (done) make a 0.24.0 pkg folder
 
 ## 0.23.0 - Block Damage, Ship Energy Bar, Ship Health Bar, HomeSick feature
 * (done) have block damage go up with map distance
