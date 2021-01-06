@@ -3,7 +3,7 @@ var gameMod = (function(){
     // CONSTANTS
 
     // MONEY
-    var GAME_MONEY_START = 1000000,
+    var GAME_MONEY_START = 0,
     GAME_UPDATE_MAX_SECS = 0.8,   // max secs value for main update loop
     MONEY_PERLOSS_ON_DEATH = 0.1, // percent of money loss on death 0-1
 
@@ -49,7 +49,7 @@ var gameMod = (function(){
                 max: 10,
                 levelOpt: {
                     levelCap: 10,
-                    expCap: 10000,
+                    expCap: 1000,
                     perMethod: 'log1',
                     perArgs: [],
                     tableX: 160 - 12,
@@ -61,7 +61,7 @@ var gameMod = (function(){
                 max: Math.floor(BLOCK_HP_MAX * 0.05),
                 levelOpt: { 
                     levelCap: 10,
-                    expCap: 15000,
+                    expCap: 1500,
                     perMethod: 'log1',
                     perArgs: [],
                     tableX: 160 - 12,
