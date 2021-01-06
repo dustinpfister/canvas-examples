@@ -331,9 +331,12 @@ var draw = (function(){
             ctx.textAlign = 'left';
 
             // block spawning
-            var activeBlocks = poolMod.getAllActive(game.blocks);
+            var activeBlocks = poolMod.getAllActive(game.blocks),
+            blockSpawn = game.blockSpawn;
             ctx.fillText('active blocks : ' + activeBlocks.length, 10, 10);
-
+            ctx.fillText('block spawn last pos : ' + blockSpawn.lastPos.x + ',' + blockSpawn.lastPos.y, 10, 20);
+            ctx.fillText('block spawn dist : ' + blockSpawn.dist, 10, 30);
+            ctx.fillText('map pos: ' + Math.floor(map.x) + ' , ' + Math.floor(map.y), 10, 40);
 
 /*
             ctx.fillText('mode : ' + game.mode, 10, 10);
