@@ -50,12 +50,12 @@
 
 ## 0.24.0 - spawn blocks durring movement
 * (done) display a current active block count in debug menu
-* have a game.blockSpawn object that is used to control the rate at which blocks are spawned
-* blockSpawn.lastPos values to store the last position at which blocks where spawned
-* blockSpawn.dist value for storing the current distance between lastPos and the current pos
+* (done) have a game.blockSpawn object that is used to control the rate at which blocks are spawned
+* (done) blockSpawn.lastPos values to store the last position at which blocks where spawned
+* (done) blockSpawn.dist value for storing the current distance between lastPos and the current pos
 
-* have a BLOCK-SPAWN-DIST that will be the total distnace the ship needs to go for poolMod.spawn to be called
-* BLOCK-COUNT-PER-SPAWN-DIST
+* (done) have a BLOCK-SPAWN-DIST that will be the total distance the ship needs to go for poolMod.spawn to be called
+* BLOCK-SPAWN-COUNT-PER-DIST that will be the number of blocks to spawn when dist is reached
 
 * when game.spawnDist >= BLOCK-SPAWN-DIST set up to BLOCK-COUNT-PER-SPAWN-DIST active
 * make a 0.24.0 pkg folder

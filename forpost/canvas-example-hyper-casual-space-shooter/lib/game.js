@@ -8,21 +8,22 @@ var gameMod = (function(){
     MONEY_PERLOSS_ON_DEATH = 0.1,            // percent of money loss on death 0-1
 
     // BLOCK CONSTANTS
-    BLOCK_COUNT = 20,
-    BLOCK_POS_MAX_DIST = 1000,
-    BLOCK_SPAWN_DIST = 100,
+    BLOCK_COUNT = 40,                        // max number of blocks in the game.blocks pool
+    BLOCK_POS_MAX_DIST = 1500,               // max distnace the a black can have from a ship until it becomes inactive
+    BLOCK_SPAWN_DIST = 500,                  // the distance the ship needs to go from last block spawn, for another block spawn
+    BLOCK_SPAWN_COUNT_PER_DIST_MIN = 1,      // the MIN count of poolMod.spawn calls when spawn dist is reached
     BLOCK_POS_SLOT_DIST = 15,                // used in setting the position of blocks ( see getFreePositions helper )
-    BLOCK_HP_MIN = 10,
-    BLOCK_HP_MAX = 1000,
-    BLOCK_MONEY_BASE = 1,
-    BLOCK_MONEY_DIST = 999,
-    BLOCK_ARMOR_MINDAM_MIN = 0,
+    BLOCK_HP_MIN = 10,                       // min hit points for a block
+    BLOCK_HP_MAX = 1000,                     // max hit points for a block
+    BLOCK_MONEY_BASE = 1,                    // base amount of money a block is worth
+    BLOCK_MONEY_DIST = 999,                  // max about of money that a block is worth based on distance from map pos 0,0
+    BLOCK_ARMOR_MINDAM_MIN = 0,              // min and max values for armor min damage prop
     BLOCK_ARMOR_MINDAM_MAX = 45,
 
     // SHIP AND MAP VALUES
     SHIP_AUTOFIRE = true,                    // auto fire on or off by default
-    SHIP_HP = 100,
-    SHIP_AUTOHEAL_ENABLED=true,
+    SHIP_HP = 100,                           // ship hit points
+    SHIP_AUTOHEAL_ENABLED=true,              // auto heal values for ship
     SHIP_AUTOHEAL_RATE = 3,
     SHIP_AUTOHEAL_AMOUNT = 1,
     SHIP_ROTATION_RATE_MIN = 45,             // min and max rotattion rates in degrees
@@ -31,10 +32,10 @@ var gameMod = (function(){
     SHIP_MAX_SPEED_MAX = 1024,               // fully upgraded max ship speed in pps
     SHIP_ACC_START = 64,                     // starting Acceleration in ppsps
     SHIP_ACC_MAX = 256,                      // fully upgraded max ship speed in pps
-    MAP_MAX_DIST = 2.5 * Math.pow(10,5),     //Number.MAX_SAFE_INTEGER;      // max distance from BASE (0,0)
+    MAP_MAX_DIST = 2.5 * Math.pow(10,5),     // max distance from BASE (0,0) ( set to Number.MAX_SAFE_INTEGER ? )
 
     // energy
-    ENERGY_MAX = 100,
+    ENERGY_MAX = 100,                        // energy max and auto heal cost
     ENERGY_AUTOHEAL_COST=3,
 
     // HOME BASE VALUES
@@ -1044,7 +1045,8 @@ var gameMod = (function(){
     };
 
     var updateBlocks = function(game, secs, state){
-        var blockSpawn = game.blockSpawn;
+        var blockSpawn = game.blockSpawn,
+        spawnIndex;
         // only spawn blocks in space mode
         if(game.mode === 'space'){
 
@@ -1053,7 +1055,10 @@ var gameMod = (function(){
             if(blockSpawn.dist >= BLOCK_SPAWN_DIST){
                 blockSpawn.lastPos.x = game.map.x;
                 blockSpawn.lastPos.y = game.map.y;
-                poolMod.spawn(game.blocks, state, {});
+                spawnIndex = BLOCK_SPAWN_COUNT_PER_DIST_MIN;
+                while(spawnIndex--){
+                    poolMod.spawn(game.blocks, state, {});
+                }
             }
         }
         // all blocks are inactive in base mode
