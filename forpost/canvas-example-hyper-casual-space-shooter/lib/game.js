@@ -1046,9 +1046,14 @@ var gameMod = (function(){
         var blockSpawn = game.blockSpawn;
         // only spawn blocks in space mode
         if(game.mode === 'space'){
-            blockSpawn.dist = utils.distance(game.map.x, game.map.y, blockSpawn.lastPos.x, blockSpawn.lastPos.y);
+
             poolMod.update(game.blocks, secs, state);
-            poolMod.spawn(game.blocks, state, {});
+            blockSpawn.dist = utils.distance(game.map.x, game.map.y, blockSpawn.lastPos.x, blockSpawn.lastPos.y);
+            if(blockSpawn.dist >= 100){
+                blockSpawn.lastPos.x = game.map.x;
+                blockSpawn.lastPos.y = game.map.y;
+                poolMod.spawn(game.blocks, state, {});
+            }
         }
         // all blocks are inactive in base mode
         if(game.mode === 'base'){
