@@ -52,7 +52,7 @@
 * (done) make upgrades part of the save state
 * (done) make map position part of the save state
 * (done) fix bug with speedBar when ship dies
-* (done) make a 0.25.0 pkg folder
+* (done - 01/07/2021) make a 0.25.0 pkg folder
 
 ## 0.24.0 - spawn blocks durring movement
 * (done) display a current active block count in debug menu
@@ -61,7 +61,7 @@
 * (done) blockSpawn.dist value for storing the current distance between lastPos and the current pos
 * (done) have a BLOCK-SPAWN-DIST that will be the total distance the ship needs to go for poolMod.spawn to be called
 * (done) BLOCK-SPAWN-COUNT-PER-DIST that will be the number of blocks to spawn when dist is reached
-* (done) make a 0.24.0 pkg folder
+* (done - 01/06/2021) make a 0.24.0 pkg folder
 
 ## 0.23.0 - Block Damage, Ship Energy Bar, Ship Health Bar, HomeSick feature
 * (done) have block damage go up with map distance
@@ -72,7 +72,7 @@
 * (done) have an energy bar below the status bar
 * (done) ship energy goes up over time to the max
 * (done) auto heal costs energy
-* (done) make a 0.23.0 pkg folder
+* (done - 01/05/2021 ) make a 0.23.0 pkg folder
 
 ## 0.22.0 - Block Armor
 * (done) add an armor property for blocks
@@ -94,7 +94,7 @@ armor : {
 * (done) getValueByMapDist should take a min and max value as arguments
 * (done) when switching from 'space' to 'base' mode set all shots and blocks to inactive state
 * (done) getValueByMapDist should take a percent function as an argument
-* (done) make a 0.22.0 pkg folder
+* (done - 01/04/2021 ) make a 0.22.0 pkg folder
 
 ## 0.21.0 - better mouse and touch support
 * (done) press 'b' key to turn auto fire on and off
@@ -107,7 +107,7 @@ armor : {
 * (done) keyboard can change ppsBar.target;
 * (done) ppsBar.targetY is what is used to set map.pps using map.ppsDelta which should also set ppsBar.actualY
 * (done) autoFire button as first space mode button
-* (done) make a 0.21.0 pkg folder
+* (done - 01/03/2021 ) make a 0.21.0 pkg folder
 
 ## 0.20.0 - Graphics Change I (CANVAS ONLY)
 * (done) have at least a basic triangle like shape for the ship.
@@ -124,7 +124,7 @@ armor : {
 * (done) gradiant backdrop for status bar
 * (done) add a FPS counter
 * (done) change shot color and or shape based on shot effects array
-* (done) make a 0.20.0 pkg folder
+* (done - 01/02/2021 ) make a 0.20.0 pkg folder
 
 ## 0.19.0 - Effect Types, Effects upgrade page started, ACID Effect
 * (done) start a new poolMod.parseEffectObject method that will return a vaild effect object from an effectType string or incompleate object
@@ -147,7 +147,7 @@ armor : {
 * (done) add a acid effect upgrade
 * (done) add an upgrades page for Effects
 * (done) add buttons for acid and burn effects
-* (done) make a 0.19.0 pkg folder
+* (done - 12/31/2020 ) make a 0.19.0 pkg folder
 
 <!-- ADD ADDITIONAL CORE FEATURES -->
 <!--
@@ -172,7 +172,7 @@ armor : {
 * (done) rate of ship heading change should be part of game object
 * (done) have a SHIP-ROTATION-RATE const object with min and max props
 * (done) add a ship menu upgrade for ship rotation
-* (done) make a 0.18.0 pkg folder
+* (done - 12/27/2020 ) make a 0.18.0 pkg folder
 
 ## 0.17.0 - weapon.range, Shots Per Fire, and fire update methods
 * (done) have a weapon.range property that will be the max dist that a shot will go
@@ -185,7 +185,7 @@ armor : {
 * (done) draw an arrow that will point to the base
 * (done) make the 1,2,3, ect keys also update buttons
 * (done) can only change weapon in base mode
-* (done) make a 0.17.0 pkg folder
+* (done - 12/25/2020 ) make a 0.17.0 pkg folder
 
 ## 0.16.0 - Weapon Upgrade buttons
 * (done) add a new const WEAPONS that will be used to create DEFAULT WEAPONS and append DEFAULT UPGRADES
@@ -202,7 +202,7 @@ armor : {
 * (done) have a levelOpt for each weapon property in WEAPONS
 * (done) see about fixing constructor problem with utils.deepClone
 * (done) default values for levelOpt values in weapons
-* (done) make a 0.16.0 pkg folder
+* (done - 12/24/2020 ) make a 0.16.0 pkg folder
 
 ## 0.15.0 - Ship upgrade buttons
 * (done) gameMod.checkButtons needs to check buttons based on current 'mode'
@@ -215,7 +215,7 @@ armor : {
 * (done) display current cost of upgrades
 * (done) display cost on start
 * (done) fix bug with max speed cost not updating as it should
-* (done) make a 0.15.0 pkg folder
+* (done - 12/21/2020 ) make a 0.15.0 pkg folder
 
 ## 0.14.0 - utils.xp new features, DEFAULT_UPGRADES object
 * (done) utils.xp.createTable should create points that can be used to graph what is going on with levels
@@ -227,7 +227,7 @@ armor : {
 * (done) ship acc upgrade also just autobuys for now
 * (done) add a buyUpgrade method that will set upgrade.levelIndex if there is enough of a RESOURCE in STATE
 * (done) buying an upgrade will deduct money
-* (done) make a pkg-0-14-0.html
+* (done - 12/19/2020 ) make a pkg-0-14-0.html
 
 ## 0.13.0 - adding new percent, and xp utils.js methods.
 * (done) add percent methods from js-javascript-example-percent-module to utils.js to be used with a new exp system
@@ -244,7 +244,7 @@ armor : {
 * (done) have a upgrade.applyToState method for new max speed upgrade
 * (done) have ship speed upgrades autobuy (for now)
 * (done) have a createLevelObject helper for utils.xp
-* (done) make a pkg-0-13-0.html
+* (done - 12/17/2020 ) make a pkg-0-13-0.html
 
 ## 0.12.0 - game modes, 'space' mode, and 'base' mode
 * (done) have a game.mode property that will store the current mode
@@ -259,7 +259,7 @@ armor : {
 * (done) change mouse movement so it does not change map.radian and pps when clicking a button
 * (done) add a gameMod.buttonCheck method that will be called by main.js on each pointer up event
 * (done) clicking change button weapon works and loops forward over weapons
-* (done) make a pkg-0-12-0.html
+* (done - 12/14/2020 ) make a pkg-0-12-0.html
 
 <!-- WORK OUT JUST A BASIC SET OF FEATURES -->
 <!-- 
@@ -270,7 +270,7 @@ armor : {
 * (done) start basic mouse and touch support
 * (done) change map radian with mouse
 * (done) change map pps with mouse
-* (done) make a pkg-0-11-0.html
+* (done - 12/12/2020 ) make a pkg-0-11-0.html
 
 ## 0.10.0 - Ship death, Autoheal
 * (done) have a createShip helper
@@ -279,13 +279,13 @@ armor : {
 * (done) have a hp.autoHeal.rate, hp.autoHeal.secs, and hp.autoHeal.amount properties
 * (done) ship autoheals
 * (done) Ship autoHeal constants
-* (done) make a pkg-0-10-0.html
+* (done - 12/12/2020 ) make a pkg-0-10-0.html
 
 ## 0.9.0 - Money
 * (done) have a game.money value that will hold the current amount of money that the player has
 * (done) have a block.money value that is the amount of money that the player gets when it kills the block
 * (done) have block.money do up with map.dist
-* (done) make a pkg-0-9-0.html
+* (done - 12/11/2020 ) make a pkg-0-9-0.html
 
 ## 0.8.0 - Improved 'block' positioning
 * (done) make positionBlock method positionBlockRandom
@@ -294,7 +294,7 @@ armor : {
 * (done) work out system so that blocks will not overlap when spawning they should snap to a grid that is map relative
 * (done) position blocks using new system but in front of current position of ship
 * (done) have new PositionRandom method that uses getFreePositions and pops random positions from it
-* (done) make a pkg-0-8-0.html
+* (done - 12/11/2020 ) make a pkg-0-8-0.html
 
 ## 0.7.0 - Weapons Collection
 * (done) Have a DEFAULT_WEAPONS Object in game.js that will contain objects with hard coded stats for each Weapon in the game
@@ -305,7 +305,7 @@ armor : {
 * (done) have a "Atom" weapon that has 1 shot per second, and 100 damage per hit
 * (done) have keyboard buttons 1-3 set the current weapon
 * (done) display weapon info
-* (done) make a pkg-0-7-0.html
+* (done - 12/11/2020 ) make a pkg-0-7-0.html
 
 ## 0.6.0 - map.dist, map.per, and MAP\_MAX\_DIST
 * (done) have a map.dist property that is the distance from (map.x, map.y) to (0,0)
@@ -316,7 +316,7 @@ armor : {
 * (done) in draw.js have map.dist effect the background color
 * (done) have map.dist effect max HP of blocks
 * (done) display block hp rather than distance to ship
-* (done) make a pkg-0-6-0.html
+* (done - 12/10/2020 ) make a pkg-0-6-0.html
 
 ## 0.5.0 - Common Health System and Ship Hit Points
 * (done) have a createHPObject helper
@@ -326,7 +326,7 @@ armor : {
 * (done) use new HP methods with the blocks
 * (done) use new HP Methods with the ship
 * (done) have blocks attack ship when the ship hits a block
-* (done) make a pkg-0-5-0.html
+* (done - 12/08/2020 ) make a pkg-0-5-0.html
 
 ## 0.4.0 - block Hit Points
 * (done) have a data.hp object for each block
@@ -337,7 +337,7 @@ armor : {
 * (done) have a shot.damage property
 * (done) when a shot hits a block it will deduct shot.damage from hp.current
 * (done) if block hp.current <= 0 then it will go inactive
-* (done) make a pkg-0-4-0.html
+* (done - 12/08/2020 ) make a pkg-0-4-0.html
 
 ## 0.3.0 - shots
 * (done) new 'shots' object pool in game
@@ -351,7 +351,7 @@ armor : {
 * (done) weapon object should have a firesPerSecond, and shotsPerFile properties
 * (done) first weapon might be something like 4 firesPerSecond and 1 shotsPerFile
 * (done) use new draw base object helper for draw.ship
-* (done) make a pkg-0-3-0.html
+* (done - 12/07/2020 ) make a pkg-0-3-0.html
 
 ## 0.2.0 - Object pool lib, and blocks
 * (done) add an object pool lib to the project
@@ -362,7 +362,7 @@ armor : {
 * (done) block will become inactive if the distance to the ship goes over a sit limit such as 1000
 * (done) block will become inactive if the ship hits it ( for now )
 * (done) MAX_BLOCKS constant in game.js
-* (done) make a pkg-0-2-0.html
+* (done - 12/06/2020 ) make a pkg-0-2-0.html
 
 ## 0.1.0 - keyboard events
 * (done) add keyboard even support in main.js
@@ -371,7 +371,7 @@ armor : {
 * (done) display heading and speed
 * (done) change pps by a ppsDelta
 * (done) show what direction the ship is going
-* (done) make a pkg-0-1-0.html
+* (done - 12/05/2020 ) make a pkg-0-1-0.html
 
 ## 0.0.0 - basic idea working
 * (done) just have a ship display object fixed to the center of the canvas
@@ -383,4 +383,4 @@ armor : {
 * (done) display version number in canvas
 * (done) break things down into draw.js, game.js, and main.js
 * (done) have update and move gameMod methods
-* (done) make a pkg-0-0-0.html file
+* (done - 12/02/2020 ) make a pkg-0-0-0.html file
