@@ -205,7 +205,25 @@ var loop = function () {
         state.lt = now;
     }
 };
+
+// SAVE STATE CHECK and LOOP START
+
+//localStorage.removeItem('hyper-casual-space-shooter-save');
+
+var gameSaves = localStorage.getItem('hyper-casual-space-shooter-save');
+if(gameSaves){
+   console.log('save found');
+}else{
+   console.log('no save found, creating new one');
+   gameSaves=[{money:10000}];
+   localStorage.setItem('hyper-casual-space-shooter-save', JSON.stringify(gameSaves))
+}
+
+console.log(gameSaves);
+
 loop();
+
+
 // KEYBOARD EVENTS
 window.addEventListener('keydown', function(e){
     //e.preventDefault();
