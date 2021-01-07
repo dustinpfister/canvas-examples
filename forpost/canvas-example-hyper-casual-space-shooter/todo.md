@@ -1,7 +1,5 @@
 # canvas-example-hyper-casual-space-shooter todo list
 
-<!-- MORE WEAPONS, EFEFCTS, BLOCK FEATURES -->
-
 <!-- MONEY, and TIME ( How long will it take to get to a point in the game ) -->
 <!--
     From 0.26.0 forward the focus should now be on MONEY and TIME.
@@ -54,7 +52,7 @@
 * (done) make upgrades part of the save state
 * (done) make map position part of the save state
 * (done) fix bug with speedBar when ship dies
-* make a 0.25.0 pkg folder
+* (done) make a 0.25.0 pkg folder
 
 ## 0.24.0 - spawn blocks durring movement
 * (done) display a current active block count in debug menu
