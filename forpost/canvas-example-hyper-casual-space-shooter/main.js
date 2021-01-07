@@ -208,15 +208,20 @@ var loop = function () {
 
 // SAVE STATE CHECK and LOOP START
 
-//localStorage.removeItem('hyper-casual-space-shooter-save');
+var save = {
+   appName: 'hyper-casual-space-shooter-save'
+};
 
-var gameSaves = localStorage.getItem('hyper-casual-space-shooter-save');
+//localStorage.removeItem(save.appName);
+
+var gameSaves = localStorage.getItem(save.appName);
 if(gameSaves){
-   console.log('save found');
+   console.log('save found, parsing');
+   gameSaves = JSON.parse(gameSaves);
 }else{
    console.log('no save found, creating new one');
    gameSaves=[{money:10000}];
-   localStorage.setItem('hyper-casual-space-shooter-save', JSON.stringify(gameSaves))
+   localStorage.setItem(save.appName, JSON.stringify(gameSaves))
 }
 
 console.log(gameSaves);
