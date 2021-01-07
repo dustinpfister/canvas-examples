@@ -1,6 +1,15 @@
 ## canvas-example-hyper-casual-space-shooter features list
 
-This is a list of features that I may or may not even add to the game to begin with. I do not really want to just add any and all idea that come to mind with this
+This is a list of features that I may or may not even add to the game to begin with. I do not really want to just add any and all idea that come to mind with this, so when I get an idea for something I park it here, and then sleep on it. I might also want to deaft out the next set of minors to work on that will then be added to the todo list here.
+
+<!-- INFO and HELP features -->
+<!-- 
+        From 0.31.x forward I should now add some features that will result in better and cleaner displays of info
+    in plave of displaying everything on the canvas all at once, it might be better to have an area that is a kind
+    of general info area. Clicking on this area can be uaed to switch between diferent views. There are other features
+    that I might want to add like a message system that can be used to display
+-->
+
 
 <!-- BASE OBJECT(S) and SANDBOX -->
 ## 0.x.0 - Sandbox game mode started
