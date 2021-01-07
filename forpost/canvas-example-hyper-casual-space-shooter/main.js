@@ -110,6 +110,9 @@ var save = {
        game.upgrades.forEach(function(upgrade){
            createOptions.upgradeIndices[upgrade.id] = upgrade.levelIndex;
        });
+       // save map pos
+       createOptions.mapX = game.map.x;
+       createOptions.mapY = game.map.y;
        // update jason
        localStorage.setItem(save.appName, JSON.stringify(save.gameSaves));
    }
@@ -123,7 +126,7 @@ if(save.gameSaves){
    save.gameSaves = JSON.parse(save.gameSaves);
 }else{
    console.log('no save found, creating new one');
-   save.gameSaves=[{money:10000, upgradeIndices:{}}];
+   save.gameSaves=[{money:10000, upgradeIndices:{}, mapX:0, mapY:0}];
    //localStorage.setItem(save.appName, JSON.stringify(save.gameSaves));
 }
 
@@ -132,7 +135,6 @@ var createOptions = save.gameSaves[save.slotIndex];
 console.log(save.gameSaves);
 console.log(createOptions);
 
-createOptions.mapX = 200;
 state.game = gameMod.create(createOptions);
 
 // LOOP

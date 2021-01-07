@@ -50,7 +50,7 @@
 * (done) save state object should be an array of objects where each element is a game save state start with just one index for now
 * (done) make money part of the save state
 * (done) make upgrades part of the save state
-* make map position part of the save state
+* (done) make map position part of the save state
 * make a 0.25.0 pkg folder
 
 ## 0.24.0 - spawn blocks durring movement
