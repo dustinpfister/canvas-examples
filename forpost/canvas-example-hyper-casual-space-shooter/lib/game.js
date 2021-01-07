@@ -554,7 +554,6 @@ var gameMod = (function(){
                 upgrade.levelIndex = lvNext.level -1; //Math.floor(Math.floor(lvCurrent.l) + 1);
                 upgrade.levelObj = lvNext;
                 game.money -= lvNext.xp;
-
                 // call apply to state
                 upgrade.applyToState(game, upgrade.levelObj, upgrade);
                 //'level up for ' + upgrade.desc
@@ -981,9 +980,20 @@ var gameMod = (function(){
         // set current weapon
         game.ship = createShip(game);
         // create game.upgrades
+        var upgradeIndices = opt.upgradeIndices || {
+            s1: 1
+        };
         game.upgrades = DEFAULT_UPGRADES.map(function(upDef){
             var upgrade = utils.xp.createUpgrade(upDef.desc, 0, upDef.applyToState, upDef.levelOpt);
             upgrade.id = upDef.id;
+
+            
+            upgrade.levelIndex = upgradeIndices[upgrade.id] || 0;
+            upgrade.levelObj = upgrade.levelObjArray[upgrade.levelIndex];
+            if(upgrade.id == 's1'){
+                console.log(upgrade.levelIndex);
+                console.log(upgrade.levelObjArray[upgrade.levelIndex]);
+            }
             upgrade.applyToState(game, upgrade.levelObj, upgrade);
             return upgrade;
         });
