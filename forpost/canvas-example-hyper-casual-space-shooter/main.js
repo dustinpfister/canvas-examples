@@ -209,7 +209,8 @@ var loop = function () {
 // SAVE STATE CHECK and LOOP START
 
 var save = {
-   appName: 'hyper-casual-space-shooter-save'
+   appName: 'hyper-casual-space-shooter-save',
+   slotIndex: 0
 };
 
 //localStorage.removeItem(save.appName);
@@ -224,7 +225,12 @@ if(gameSaves){
    localStorage.setItem(save.appName, JSON.stringify(gameSaves))
 }
 
+var createOptions = gameSaves[save.slotIndex];
+
 console.log(gameSaves);
+console.log(createOptions);
+
+state.game = gameMod.create(createOptions);
 
 loop();
 
