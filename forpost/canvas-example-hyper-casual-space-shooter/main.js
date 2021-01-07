@@ -101,7 +101,7 @@ var save = {
    gameSaves:[],
    slotIndex: 0,
    // update the current slotIndex with the given game object
-   update: function(game){
+   updateSlot: function(game){
        var createOptions = save.gameSaves[save.slotIndex];
        // save money to create options
        createOptions.money = game.money;
@@ -236,6 +236,9 @@ var loop = function () {
         // draw
         draw.currentMode(state.ctx, state);
         draw.pointerUI(state.ctx, state);
+
+        // update slot
+        save.updateSlot(game);
 
         state.lt = now;
     }
