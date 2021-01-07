@@ -921,6 +921,7 @@ var gameMod = (function(){
             x: 0, // ship position relative to map position
             y: 0,
             r: 8,
+            newShip: true, // used in main app loop to reset things
             hp: createHPObject(SHIP_HP),
             energy: createEnergyObject(),
             fillStyle: 'blue',

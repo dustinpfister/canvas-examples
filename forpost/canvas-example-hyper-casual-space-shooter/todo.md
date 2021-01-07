@@ -51,6 +51,8 @@
 * (done) make money part of the save state
 * (done) make upgrades part of the save state
 * (done) make map position part of the save state
+* make ship hp, and energy part of save state
+* fix bug with speedBar when ship dies
 * make a 0.25.0 pkg folder
 
 ## 0.24.0 - spawn blocks durring movement

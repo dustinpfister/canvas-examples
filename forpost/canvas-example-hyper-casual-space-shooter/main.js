@@ -157,6 +157,12 @@ var loop = function () {
 
         state.FPS = 1 / secs;
 
+        // if new ship
+        if(game.ship.newShip){
+            ppsBar.targetY = 200;
+            game.ship.newShip = false;
+        }
+
         // update input.pointer
         updatePointer(game, input.pointer.pos);
         // keyboard or pointer update map radian
