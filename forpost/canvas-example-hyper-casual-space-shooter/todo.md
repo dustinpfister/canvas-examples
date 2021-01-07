@@ -2,14 +2,14 @@
 
 <!-- MONEY, and TIME ( How long will it take to get to a point in the game ) -->
 <!--
-    From 0.26.0 forward the focus should now be on MONEY and TIME.
+        From 0.26.x to 0.30.x the focus should now be on MONEY and TIME.
     Now that the very core of the game seems to be togeather I think it would be a good idea to start thinking in terms 
-    of MONEY and TIME in the game. Features added at this point should help for me to get an idea of how long a 
-    player needs to play the game in order to get all the upgrades, and thus get to the 'end of the game sort of speak'. 
-    That is if there is really and end to get to really to begin with. features should also help to get an idea of how 
-    long it will take to get from the center of the game map to the max distance, or any distance, with current 
-    ship speed. Also features should help to reduce the amount of time it would take to get somewhere from starting 
-    values, such as adding a warp feature.
+    of what values need to change when it comes to balancing. Features added at this point should help for me to get an 
+    idea of how long a  player needs to play the game in order to get all the upgrades, and thus get to the 
+    'end of the game sort of speak'. That is if there is really and end to get to really to begin with. 
+        Features should also help to get an idea of how long it will take to get from the center of the game map to 
+    the max distance, or any distance, with current ship speed. Also features should help to reduce the amount of time it 
+    would take to get somewhere from starting values, such as adding a warp feature.
 -->
 
 ## 0.30.0 - Graphics Change II, and Warp Upgrade
@@ -36,11 +36,11 @@
 
 <!-- POLLISH ( ADDITIAL NEEDED BASIC FEATURES, IMPROVEMENTS OF FEATURES IN PLACE, SOME MORE FUN FEATURES -->
 <!-- 
-   For 0.19.x forward I want to get this game ready for the front page of my main canvas-examples post. There are still
+   Form 0.19.x to 0.25.x I wanted to get this game ready to showcase on my main canvas-examples post. There are still
    Additional basic features that must be added (SAVE STATES). There are also features that are in place all ready
    but they aere in poor shape (POINTER INPUT CONTROL, AND BLOCK POSITIONING). I do not want to go nuts with graphics, 
    but I think it should be okay to have at least one minor where I work out some better basic canvas only graphics. Also
-   At this time I think I should add additional Block realted features Mainly Block Armor and additional Effects.
+   At this time I think I should add additional Block realted features Mainly BLOCK ARMOR and additional EFFECTS.
 -->
 
 ## 0.25.0 - save states
