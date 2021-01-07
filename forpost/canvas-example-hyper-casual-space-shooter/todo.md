@@ -44,9 +44,12 @@
 -->
 
 ## 0.25.0 - save states
+* add an opt object for gameMod.create
+* start will just setting game.money with the new gameMod.create option object
 * add just a simple save state feature using localStorage
 * make money part of the save state
 * make upgrades part of the save state
+* make map position part of the save state
 * make a 0.25.0 pkg folder
 
 ## 0.24.0 - spawn blocks durring movement

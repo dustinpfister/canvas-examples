@@ -17,7 +17,7 @@ var state = {
     ver: '0.25.0',
     canvas : canvas,
     ctx: canvasObj.ctx,
-    game: gameMod.create(),
+    game: gameMod.create({money: 100}),
     debug: false, // debug mode on or off
     input: {
         pointer: {

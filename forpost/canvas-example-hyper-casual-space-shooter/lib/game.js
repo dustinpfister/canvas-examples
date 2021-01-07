@@ -3,7 +3,7 @@ var gameMod = (function(){
     // CONSTANTS
 
     // MONEY
-    var GAME_MONEY_START = 0,
+    var GAME_MONEY_START = 0,                // The amount of money to start a new game with
     GAME_UPDATE_MAX_SECS = 0.8,              // max secs value for main update loop
     MONEY_PERLOSS_ON_DEATH = 0.1,            // percent of money loss on death 0-1
 
@@ -936,9 +936,10 @@ var gameMod = (function(){
     };
 
     // public create method
-    api.create = function(){
+    api.create = function(opt){
+        opt = opt || {};
         var game = {
-            money: GAME_MONEY_START,
+            money: opt.money === undefined ? GAME_MONEY_START : opt.money,
             mode: 'space',
             autoFire: SHIP_AUTOFIRE,
             weapons: utils.deepClone(DEFAULT_WEAPONS),
