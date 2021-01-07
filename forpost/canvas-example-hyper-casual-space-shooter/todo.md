@@ -49,7 +49,7 @@
 * (done) add just a simple save state feature using localStorage
 * (done) save state object should be an array of objects where each element is a game save state start with just one index for now
 * (done) make money part of the save state
-* make upgrades part of the save state
+* (done) make upgrades part of the save state
 * make map position part of the save state
 * make a 0.25.0 pkg folder
 

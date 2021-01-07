@@ -952,8 +952,8 @@ var gameMod = (function(){
                 lastPos: {x:0, y:0}
             },
             map: { // map position
-                x: 0,
-                y: 0,
+                x: opt.mapX === undefined ? 0 : opt.mapX,
+                y: opt.mapY === undefined ? 0 : opt.mapY,
                 degree: 270,
                 degreesPerSecond: SHIP_ROTATION_RATE_MIN,
                 radian: 0,
