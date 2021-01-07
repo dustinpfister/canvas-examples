@@ -132,6 +132,7 @@ var createOptions = save.gameSaves[save.slotIndex];
 console.log(save.gameSaves);
 console.log(createOptions);
 
+createOptions.mapX = 200;
 state.game = gameMod.create(createOptions);
 
 // LOOP

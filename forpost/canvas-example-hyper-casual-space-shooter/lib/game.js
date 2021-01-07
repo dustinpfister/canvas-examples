@@ -1101,6 +1101,11 @@ var gameMod = (function(){
         secs = secs > GAME_UPDATE_MAX_SECS ? GAME_UPDATE_MAX_SECS : secs;
         secs = secs < 0 ? 0 : secs;
 
+        // move baseObject
+        game.baseObj.x = game.map.x * -1;
+        game.baseObj.y = game.map.y * -1;
+        // update map, blocks, shots
+        updateMap(game, secs);
         // switch modes based on map.dist
         if(game.map.dist > BASE_DIST && game.mode === 'base'){
             game.buttons.currentPage= 'main';
@@ -1113,11 +1118,6 @@ var gameMod = (function(){
             game.buttons.currentPage = 'main';
             game.mode = 'base';
         }
-        // move baseObject
-        game.baseObj.x = game.map.x * -1;
-        game.baseObj.y = game.map.y * -1;
-        // update map, blocks, shots
-        updateMap(game, secs);
         if(game.mode === 'space'){
             updateBlocks(game, secs, state);
             updateShots(game, secs, state);
