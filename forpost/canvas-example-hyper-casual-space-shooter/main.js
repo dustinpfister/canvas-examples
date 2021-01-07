@@ -105,6 +105,11 @@ var save = {
        var createOptions = save.gameSaves[save.slotIndex];
        // save money to create options
        createOptions.money = game.money;
+       // save upgrades
+       createOptions.upgradeIndices = {};
+       game.upgrades.forEach(function(upgrade){
+           createOptions.upgradeIndices[upgrade.id] = upgrade.levelIndex;
+       });
        // update jason
        localStorage.setItem(save.appName, JSON.stringify(save.gameSaves));
    }
@@ -118,7 +123,7 @@ if(save.gameSaves){
    save.gameSaves = JSON.parse(save.gameSaves);
 }else{
    console.log('no save found, creating new one');
-   save.gameSaves=[{money:10000}];
+   save.gameSaves=[{money:10000, upgradeIndices:{}}];
    //localStorage.setItem(save.appName, JSON.stringify(save.gameSaves));
 }
 

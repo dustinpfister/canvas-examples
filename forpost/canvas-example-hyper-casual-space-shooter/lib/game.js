@@ -986,8 +986,6 @@ var gameMod = (function(){
         game.upgrades = DEFAULT_UPGRADES.map(function(upDef){
             var upgrade = utils.xp.createUpgrade(upDef.desc, 0, upDef.applyToState, upDef.levelOpt);
             upgrade.id = upDef.id;
-
-            
             upgrade.levelIndex = upgradeIndices[upgrade.id] || 0;
             upgrade.levelObj = upgrade.levelObjArray[upgrade.levelIndex];
             if(upgrade.id == 's1'){
