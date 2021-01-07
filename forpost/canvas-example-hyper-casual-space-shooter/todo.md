@@ -33,6 +33,8 @@
 * use the average money per hour value to estamate how long it will take to get to a given amount of money
 * have a helper that will tabulate all upgrade costs to get an amount of money that will be needed to unlock all upgrades
 * use the Average Money Per Hour helper to estamate how long it will take to unlock everything
+* make ship hp, and energy part of save state
+* make a 0.26.0 pkg folder
 
 <!-- POLLISH ( ADDITIAL NEEDED BASIC FEATURES, IMPROVEMENTS OF FEATURES IN PLACE, SOME MORE FUN FEATURES -->
 <!-- 
@@ -51,8 +53,7 @@
 * (done) make money part of the save state
 * (done) make upgrades part of the save state
 * (done) make map position part of the save state
-* make ship hp, and energy part of save state
-* fix bug with speedBar when ship dies
+* (done) fix bug with speedBar when ship dies
 * make a 0.25.0 pkg folder
 
 ## 0.24.0 - spawn blocks durring movement
