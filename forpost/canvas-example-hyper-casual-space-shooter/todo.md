@@ -44,9 +44,10 @@
 -->
 
 ## 0.25.0 - save states
-* add an opt object for gameMod.create
-* start will just setting game.money with the new gameMod.create option object
+* (done) add an opt object for gameMod.create
+* (done) start with just setting game.money with the new gameMod.create option object
 * add just a simple save state feature using localStorage
+* save state object should be an array of objects where each element is a game save state start with just one index for now
 * make money part of the save state
 * make upgrades part of the save state
 * make map position part of the save state
