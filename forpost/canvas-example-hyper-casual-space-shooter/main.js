@@ -94,6 +94,41 @@ var numberButtonCheck = function(game, input){
     }
 };
 
+// SAVE STATE CHECK and LOOP START
+
+var save = {
+   appName: 'hyper-casual-space-shooter-save',
+   gameSaves:[],
+   slotIndex: 0,
+   // update the current slotIndex with the given game object
+   update: function(game){
+       var createOptions = save.gameSaves[save.slotIndex];
+       // save money to create options
+       createOptions.money = game.money;
+       // update jason
+       localStorage.setItem(save.appName, JSON.stringify(save.gameSaves));
+   }
+};
+
+//localStorage.removeItem(save.appName);
+
+save.gameSaves = localStorage.getItem(save.appName);
+if(save.gameSaves){
+   console.log('save found, parsing');
+   save.gameSaves = JSON.parse(save.gameSaves);
+}else{
+   console.log('no save found, creating new one');
+   save.gameSaves=[{money:10000}];
+   //localStorage.setItem(save.appName, JSON.stringify(save.gameSaves));
+}
+
+var createOptions = save.gameSaves[save.slotIndex];
+
+console.log(save.gameSaves);
+console.log(createOptions);
+
+state.game = gameMod.create(createOptions);
+
 // LOOP
 //var lt = new Date(),
 //FPS_target = 1000 / 30;
@@ -205,33 +240,6 @@ var loop = function () {
         state.lt = now;
     }
 };
-
-// SAVE STATE CHECK and LOOP START
-
-var save = {
-   appName: 'hyper-casual-space-shooter-save',
-   gameSaves:[],
-   slotIndex: 0
-};
-
-//localStorage.removeItem(save.appName);
-
-save.gameSaves = localStorage.getItem(save.appName);
-if(save.gameSaves){
-   console.log('save found, parsing');
-   save.gameSaves = JSON.parse(save.gameSaves);
-}else{
-   console.log('no save found, creating new one');
-   save.gameSaves=[{money:10000}];
-   localStorage.setItem(save.appName, JSON.stringify(save.gameSaves));
-}
-
-var createOptions = save.gameSaves[save.slotIndex];
-
-console.log(save.gameSaves);
-console.log(createOptions);
-
-state.game = gameMod.create(createOptions);
 
 loop();
 
