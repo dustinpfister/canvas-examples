@@ -26,13 +26,13 @@ Now that the very core of the game seems to be togeather I think it would be a g
 * (done) there will need to be a moneyPerHour.startTime, and a moneyPerHour.money values
 * (done) the valueOf the moneyPerHour object should be current avg
 * (done) display new values in debug menu
+* (done) move speed value to a place near the ppsBar
+* (done) move heading value to a place near the heading change circle
+* (done) display valueOf for moneyPerHour in small print under money
 
-* move speed value to a place near the ppsBar
-* move heading value to a place near the heading change circle
-* display valueOf for moneyPerHour in small print under money
-
-* use the average money per hour value to estamate how long it will take to get to a given amount of money
+* have ETM use the average money per hour value to estamate how long it will take to get to a given amount of money
 * have a helper that will tabulate all upgrade costs to get an amount of money that will be needed to unlock all upgrades
+
 * use the Average Money Per Hour helper to estamate how long it will take to unlock everything
 * make ship hp, and energy part of save state
 * make a 0.26.0 pkg folder
