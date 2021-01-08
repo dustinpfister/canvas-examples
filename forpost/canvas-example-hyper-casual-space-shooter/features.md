@@ -2,6 +2,23 @@
 
 This is a list of features that I may or may not even add to the game to begin with. I do not really want to just add any and all idea that come to mind with this, so when I get an idea for something I park it here, and then sleep on it. I might also want to deaft out the next set of minors to work on that will then be added to the todo list here.
 
+
+<!-- IMPROVE FEATURES IN PLACE, FIX BUGS, TWEAK VALUES -->
+<!--
+    Now that I have basic tools to help me know what the deal is with making money, and how log it takes to get somewhere it is time to use that info to improve features in place. Much of this might involve just tweaking some values to states that are more in line with what they should be for a finished product. At this time I should also focus on fixing known bugs, and simple little problems.
+
+-->
+
+## 0.32.0 - Weapon Value tweaks, and new weapons
+* The pulse gun is to powerful, make it the true 'starting gun' by making the max shot damage a far smaller percentage of max block hp.
+
+## 0.31.0 - Save State Improvements
+* The current weapon index should be part of the save state
+* The current ship health should be part of the save state
+* The current ship energy should be part of the save state
+* Player settings should be part of the save state too, such as saving the state of the autoFire bool
+
+
 <!-- INFO and HELP features -->
 <!-- 
         From 0.31.x forward I should now add some features that will result in better and cleaner displays of info

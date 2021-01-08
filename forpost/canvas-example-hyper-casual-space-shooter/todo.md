@@ -2,14 +2,9 @@
 
 <!-- MONEY, and TIME ( How long will it take to get to a point in the game ) -->
 <!--
-        From 0.26.x to 0.30.x the focus should now be on MONEY and TIME.
-    Now that the very core of the game seems to be togeather I think it would be a good idea to start thinking in terms 
-    of what values need to change when it comes to balancing. Features added at this point should help for me to get an 
-    idea of how long a  player needs to play the game in order to get all the upgrades, and thus get to the 
-    'end of the game sort of speak'. That is if there is really and end to get to really to begin with. 
-        Features should also help to get an idea of how long it will take to get from the center of the game map to 
-    the max distance, or any distance, with current ship speed. Also features should help to reduce the amount of time it 
-    would take to get somewhere from starting values, such as adding a warp feature.
+    From 0.26.x to 0.30.x the focus should now be on MONEY and TIME.
+Now that the very core of the game seems to be togeather I think it would be a good idea to start thinking in terms of what values need to change when it comes to balancing. Features added at this point should help for me to get an idea of how long a player needs to play the game in order to get all the upgrades, and thus get to the 'end of the game sort of speak'. That is if there is really and end to get to really to begin with. 
+    Features should also help to get an idea of how long it will take to get from the center of the game map to the max distance, or any distance, with current ship speed. Also features should help to reduce the amount of time it would take to get somewhere from starting values, such as adding a warp feature.
 -->
 
 ## 0.30.0 - Graphics Change II, and Warp Upgrade

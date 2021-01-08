@@ -126,7 +126,7 @@ if(save.gameSaves){
    save.gameSaves = JSON.parse(save.gameSaves);
 }else{
    console.log('no save found, creating new one');
-   save.gameSaves=[{money:10000, upgradeIndices:{}, mapX:0, mapY:0}];
+   save.gameSaves=[{money:0, upgradeIndices:{}, mapX:0, mapY:0}];
    //localStorage.setItem(save.appName, JSON.stringify(save.gameSaves));
 }
 
