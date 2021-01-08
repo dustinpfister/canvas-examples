@@ -950,8 +950,8 @@ var gameMod = (function(){
                 current: 0,            // the current avg
                 ETM:0,                 // Estimated time to money target
                 target: 1000,
-                blockValues: [],
-                maxValues: 5,
+                blockValues: [1,2,3,4,5],
+                maxValues: 3,
                 valueOf: function(){   // object value should be current avg
                     return this.current;
                 }
@@ -1149,6 +1149,14 @@ var gameMod = (function(){
 
 
         // update money per hour
+        var mph = game.moneyPerHour,
+        len = mph.blockValues.length;
+        if(len > mph.maxValues){
+            mph.blockValues.splice(0, len - mph.maxValues);
+        }
+
+
+
         var now = new Date(),
         t = now - game.moneyPerHour.startTime,
         hours = t / 1000 / 60 / 60;
