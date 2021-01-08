@@ -184,9 +184,9 @@ var draw = (function(){
         ctx.fillText(utils.format_money(game.money), 220, 5);
 
         // ship speed and heading
-        ctx.font='8px courier';
-        ctx.fillText('speed  : ' + Math.floor(map.pps) + ' / ' + Math.floor(map.maxPPS), 220, 13);
-        ctx.fillText('heading: ' + map.degree.toFixed(2), 220, 20);
+        //ctx.font='8px courier';
+        //ctx.fillText('speed  : ' + Math.floor(map.pps) + ' / ' + Math.floor(map.maxPPS), 220, 13);
+        //ctx.fillText('heading: ' + map.degree.toFixed(2), 220, 20);
 
         // basic weapon info
         ctx.font='10px courier';
@@ -452,9 +452,6 @@ var draw = (function(){
         }
 
         if(game.mode === 'base'){
-            if(game.buttons.currentPage != 'main'){
-               // statusBar(ctx, state);
-            }
             // draw grids for the current weapon
             if(game.buttons.currentPage === 'weapons'){
                 var upgradeIndex = game.ship.weaponIndex * 2 + 3;
@@ -482,7 +479,6 @@ var draw = (function(){
             positionStatus(ctx, state);
             positionMap(ctx, state);
             effectsInfo(ctx, state);
-            //statusBar(ctx, state);
         }
 
         // draw blocks, the ship, and shots
@@ -504,29 +500,35 @@ var draw = (function(){
 
     // draw the pointer user interface
     api.pointerUI = function(ctx, state){
-         var headCir = state.input.pointer.headCir,
-         ppsBar = state.input.pointer.ppsBar;
-         // draw headCir
-         ctx.strokeStyle='white';
-         ctx.beginPath();
-         ctx.arc(headCir.x, headCir.y, headCir.r, 0, Math.PI * 2);
-         ctx.stroke();
-         // draw pps bar
-         ctx.strokeStyle='white';
-         ctx.beginPath();
-         ctx.rect(ppsBar.x,ppsBar.y,ppsBar.w,ppsBar.h);
-         ctx.stroke();
-         // actual
-         ctx.fillStyle='yellow';
-         ctx.beginPath();
-         var h = ppsBar.h - ppsBar.h * ( ( ppsBar.actualY - ppsBar.y ) /  ppsBar.h);
-         ctx.rect(ppsBar.x, ppsBar.actualY, ppsBar.w, h);
-         ctx.fill();
-         // target
-         ctx.fillStyle='white';
-         ctx.beginPath();
-         ctx.rect(ppsBar.x - 2, ppsBar.targetY - 3, ppsBar.w + 4, 6);
-         ctx.fill();
+        var headCir = state.input.pointer.headCir,
+        ppsBar = state.input.pointer.ppsBar,
+        map = state.game.map;
+        // draw headCir
+        ctx.strokeStyle='white';
+        ctx.beginPath();
+        ctx.arc(headCir.x, headCir.y, headCir.r, 0, Math.PI * 2);
+        ctx.stroke();
+        // draw pps bar
+        ctx.strokeStyle='white';
+        ctx.beginPath();
+        ctx.rect(ppsBar.x,ppsBar.y,ppsBar.w,ppsBar.h);
+        ctx.stroke();
+        // actual
+        ctx.fillStyle='yellow';
+        ctx.beginPath();
+        var h = ppsBar.h - ppsBar.h * ( ( ppsBar.actualY - ppsBar.y ) /  ppsBar.h);
+        ctx.rect(ppsBar.x, ppsBar.actualY, ppsBar.w, h);
+        ctx.fill();
+        // target
+        ctx.fillStyle='white';
+        ctx.beginPath();
+        ctx.rect(ppsBar.x - 2, ppsBar.targetY - 3, ppsBar.w + 4, 6);
+        ctx.fill();
+        // draw speed and heading info
+        ctx.font='8px courier';
+        ctx.textAlign="center"
+        //ctx.fillText(Math.floor(map.pps) + '/' + Math.floor(map.maxPPS), headCir.x, headCir.y - headCir.r - 10);
+        ctx.fillText('heading:' + map.degree.toFixed(2), headCir.x - 10, headCir.y - headCir.r - 10);
     };
 
     // return draw api
