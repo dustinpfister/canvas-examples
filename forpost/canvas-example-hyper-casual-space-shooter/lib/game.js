@@ -98,8 +98,8 @@ var gameMod = (function(){
         1: {
             name: 'Cannon',
             firesPerSecond: { 
-                min: 4,
-                max: 10,
+                min: 2,
+                max: 5,
                 levelOpt: { 
                     levelCap: 10,
                     expCap: 15000,
@@ -110,8 +110,8 @@ var gameMod = (function(){
                 }
             },
             shotDamage: { 
-                min: Math.floor(BLOCK_HP_MAX * 0.05),
-                max: Math.floor(BLOCK_HP_MAX * 0.10),
+                min: Math.floor(BLOCK_HP_MAX * 0.01),
+                max: Math.floor(BLOCK_HP_MAX * 0.05),
                 levelOpt: { 
                     levelCap: 10,
                     expCap: 50000,
@@ -123,7 +123,7 @@ var gameMod = (function(){
             },
             effects: ['burn', 'acid'],
             shotRange: 256,
-            shotsPerFire: [3, 2],
+            shotsPerFire: [3],
             onFireStart: function(game, secs, state){
                 var weapon = game.weapons[game.ship.weaponIndex];
                 var shotIndex = 0;
