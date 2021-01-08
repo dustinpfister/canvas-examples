@@ -22,8 +22,8 @@ Now that the very core of the game seems to be togeather I think it would be a g
 * add a helper that will return an ETA to a given point, from a current point and speed.
 
 ## 0.26.0 - Average Money Per Hour Helper, Tabulate all upgrade costs helper
-* have a game.moneyPerHour object
-* there will need to be a moneyPerHour.startTime, and a moneyPerHour.money values
+* (done) have a game.moneyPerHour object
+* (done) there will need to be a moneyPerHour.startTime, and a moneyPerHour.money values
 * the valueOf the moneyPerHour object should be something like moneyPerHour.money / ((now - moneyPerHour.startTime) / 1000 / 60 / 60)
 
 * display new values in debug menu
