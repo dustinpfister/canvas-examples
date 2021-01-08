@@ -24,9 +24,9 @@ Now that the very core of the game seems to be togeather I think it would be a g
 ## 0.26.0 - Average Money Per Hour Helper, Tabulate all upgrade costs helper
 * (done) have a game.moneyPerHour object
 * (done) there will need to be a moneyPerHour.startTime, and a moneyPerHour.money values
-* the valueOf the moneyPerHour object should be something like moneyPerHour.money / ((now - moneyPerHour.startTime) / 1000 / 60 / 60)
+* (done) the valueOf the moneyPerHour object should be current avg
+* (done) display new values in debug menu
 
-* display new values in debug menu
 * move speed value to a place near the ppsBar
 * move heading value to a place near the heading change circle
 * display valueOf for moneyPerHour in small print under money

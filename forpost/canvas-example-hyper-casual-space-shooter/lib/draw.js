@@ -330,13 +330,13 @@ var draw = (function(){
             ctx.textBaseline = 'top';
             ctx.textAlign = 'left';
 
+            // money per hour
             var mph = game.moneyPerHour
-            ctx.fillText('mph current : ' + mph.current, 10, 10);
-            ctx.fillText('mph money : ' + mph.money, 10, 20);
+            ctx.fillText('mph current : ' + utils.format_money(mph.current), 10, 10);
+            ctx.fillText('mph money : ' + utils.format_money(mph.money), 10, 20);
 
 
 /*
-
             // block spawning
             var activeBlocks = poolMod.getAllActive(game.blocks),
             blockSpawn = game.blockSpawn;
@@ -347,6 +347,7 @@ var draw = (function(){
 */
 
 /*
+            // heading circle
             ctx.fillText('mode : ' + game.mode, 10, 10);
             ctx.fillText('a to origin: ' + map.aToOrigin.toFixed(2), 10, 20);
             ctx.fillText('headCir dist : ' + headCir.dist, 10, 30);
@@ -356,6 +357,7 @@ var draw = (function(){
 */
 
 /*
+            // map
             ctx.fillText('map pos: ' + Math.floor(map.x) + ' , ' + Math.floor(map.y), 10, 10);
             ctx.fillText('map radian: ' + map.radian.toFixed(2) + 
                 '; map pps: ' + map.pps.toFixed(2) + ' / ' + map.maxPPS.toFixed(2), 10, 20);
