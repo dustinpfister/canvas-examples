@@ -60,7 +60,7 @@ var gameMod = (function(){
             },
             shotDamage: { // min and max range for shot damage
                 min: 0.25,
-                max: Math.floor(BLOCK_HP_MAX * 0.005),
+                max: Math.floor(BLOCK_ARMOR_MINDAM_MAX * 0.10),
                 levelOpt: { 
                     levelCap: 10,
                     expCap: 1500,
@@ -110,8 +110,8 @@ var gameMod = (function(){
                 }
             },
             shotDamage: { 
-                min: Math.floor(BLOCK_HP_MAX * 0.01),
-                max: Math.floor(BLOCK_HP_MAX * 0.025),
+                min: Math.floor(BLOCK_ARMOR_MINDAM_MAX * 0.10),
+                max: Math.floor(BLOCK_ARMOR_MINDAM_MAX * 0.25),
                 levelOpt: { 
                     levelCap: 10,
                     expCap: 50000,
@@ -142,7 +142,7 @@ var gameMod = (function(){
             name: 'Atom',
             firesPerSecond: { 
                 min: 1,
-                max: 5,
+                max: 3,
                 levelOpt: { 
                     levelCap: 10,
                     expCap: 25000,
@@ -153,8 +153,8 @@ var gameMod = (function(){
                 }
             },
             shotDamage: { 
-                min: Math.floor(BLOCK_HP_MAX * 0.025),
-                max: Math.floor(BLOCK_HP_MAX * 0.1),
+                min: Math.floor(BLOCK_ARMOR_MINDAM_MAX * 0.25),
+                max: Math.floor(BLOCK_ARMOR_MINDAM_MAX * 1.20),
                 levelOpt: { 
                     levelCap: 10,
                     expCap: 30000,
