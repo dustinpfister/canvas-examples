@@ -22,7 +22,12 @@ Now that the very core of the game seems to be togeather I think it would be a g
 * add a helper that will return an ETA to a given point, from a current point and speed.
 
 ## 0.26.0 - Average Money Per Hour Helper, Tabulate all upgrade costs helper
-* add a feature that will create an average money per hour value
+* have a game.moneyPerHour object
+* there will need to be a moneyPerHour.startTime, and a moneyPerHour.money values
+* the valueOf the moneyPerHour object should be something like moneyPerHour.money / ((now - moneyPerHour.startTime) / 1000 / 60 / 60)
+* display new values in debug menu
+* display valueOf for moneyPerHour in small print under money
+
 * use the average money per hour value to estamate how long it will take to get to a given amount of money
 * have a helper that will tabulate all upgrade costs to get an amount of money that will be needed to unlock all upgrades
 * use the Average Money Per Hour helper to estamate how long it will take to unlock everything
