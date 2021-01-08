@@ -16,7 +16,7 @@ var gameMod = (function(){
     BLOCK_HP_MIN = 10,                       // min hit points for a block
     BLOCK_HP_MAX = 1000,                     // max hit points for a block
     BLOCK_MONEY_BASE = 1,                    // base amount of money a block is worth
-    BLOCK_MONEY_DIST = 499,                  // max about of money that a block is worth based on distance from map pos 0,0
+    BLOCK_MONEY_DIST = 99,                  // max about of money that a block is worth based on distance from map pos 0,0
     BLOCK_ARMOR_MINDAM_MIN = 0,              // min and max values for armor min damage prop
     BLOCK_ARMOR_MINDAM_MAX = BLOCK_HP_MAX * 0.05,
 
