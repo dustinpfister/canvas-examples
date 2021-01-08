@@ -741,7 +741,7 @@ var gameMod = (function(){
                             if(block.hp.current <= 0 ){
                                 // aways give block money on a 'shot death'
                                 state.game.money += block.money;
-                                state.game.moneyPerHour += block.money;
+                                state.game.moneyPerHour.money += block.money;
                                 block.lifespan = 0;
                                 block.active = false;
                             }
@@ -906,7 +906,7 @@ var gameMod = (function(){
                     // award money on 'effect death' if awardBlockMoney is true
                     if(block.awardBlockMoney){
                         game.money += block.money;
-                        game.moneyPerHour += block.money;
+                        game.moneyPerHour.money += block.money;
                     }
                     block.lifespan = 0;
                 }
