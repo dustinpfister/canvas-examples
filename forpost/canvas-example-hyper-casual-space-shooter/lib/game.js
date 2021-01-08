@@ -947,7 +947,7 @@ var gameMod = (function(){
                 startTime: new Date(), // the startTime to use to find an avg
                 current: 0,            // the current avg
                 ETM:0,                 // Estimated time to money target
-                target: 100000,
+                target: 1000,
                 valueOf: function(){   // object value should be current avg
                     return this.current;
                 }
@@ -1151,6 +1151,7 @@ var gameMod = (function(){
         game.moneyPerHour.current = game.moneyPerHour.money / hours;
         game.moneyPerHour.ETM = (game.moneyPerHour.target - game.money) / game.moneyPerHour.current;
         game.moneyPerHour.ETM = game.moneyPerHour.ETM < 0 ? 0 : game.moneyPerHour.ETM;
+        game.moneyPerHour.ETM = game.moneyPerHour.ETM > 999 ? 999 : game.moneyPerHour.ETM;
     };
 
     var buttonCheck = function(button, pos){
