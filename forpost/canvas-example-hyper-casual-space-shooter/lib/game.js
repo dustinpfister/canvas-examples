@@ -742,6 +742,7 @@ var gameMod = (function(){
                                 // aways give block money on a 'shot death'
                                 state.game.money += block.money;
                                 state.game.moneyPerHour.money += block.money;
+                                state.game.moneyPerHour.blockValues.push(block.money);
                                 block.lifespan = 0;
                                 block.active = false;
                             }
@@ -907,6 +908,7 @@ var gameMod = (function(){
                     if(block.awardBlockMoney){
                         game.money += block.money;
                         game.moneyPerHour.money += block.money;
+                        game.moneyPerHour.blockValues.push(block.money);
                     }
                     block.lifespan = 0;
                 }
@@ -948,6 +950,8 @@ var gameMod = (function(){
                 current: 0,            // the current avg
                 ETM:0,                 // Estimated time to money target
                 target: 1000,
+                blockValues: [],
+                maxValues: 5,
                 valueOf: function(){   // object value should be current avg
                     return this.current;
                 }

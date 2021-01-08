@@ -335,7 +335,7 @@ var draw = (function(){
             var mph = game.moneyPerHour
             ctx.fillText('mph current : ' + utils.format_money(mph.current), 10, 10);
             ctx.fillText('mph money : ' + utils.format_money(mph.money), 10, 20);
-
+            ctx.fillText('block values : ' + mph.blockValues.join(','), 10, 30);
 
 /*
             // block spawning
