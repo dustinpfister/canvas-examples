@@ -29,8 +29,13 @@ Now that the very core of the game seems to be togeather I think it would be a g
 * (done) move speed value to a place near the ppsBar
 * (done) move heading value to a place near the heading change circle
 * (done) display valueOf for moneyPerHour in small print under money
+* (done) have ETM use the average money per hour value to estamate how long it will take to get to a given amount of money
+* have a game.moneyPerHour.blockvalues array that will have a max length
+* push block values to game.moneyPerHour each time an amount of block money is given to the player
+* old block values get shifted out when the length is reached
+* old block values get shifted out after an amount of time (say 10 seconds)
+* the block values are what are used to get a money value for the game.moneyPerHour object
 
-* have ETM use the average money per hour value to estamate how long it will take to get to a given amount of money
 * have a helper that will tabulate all upgrade costs to get an amount of money that will be needed to unlock all upgrades
 
 * use the Average Money Per Hour helper to estamate how long it will take to unlock everything
