@@ -25,7 +25,10 @@ Now that the very core of the game seems to be togeather I think it would be a g
 * have a game.moneyPerHour object
 * there will need to be a moneyPerHour.startTime, and a moneyPerHour.money values
 * the valueOf the moneyPerHour object should be something like moneyPerHour.money / ((now - moneyPerHour.startTime) / 1000 / 60 / 60)
+
 * display new values in debug menu
+* move speed value to a place near the ppsBar
+* move heading value to a place near the heading change circle
 * display valueOf for moneyPerHour in small print under money
 
 * use the average money per hour value to estamate how long it will take to get to a given amount of money

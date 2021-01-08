@@ -940,6 +940,14 @@ var gameMod = (function(){
         opt = opt || {};
         var game = {
             money: opt.money === undefined ? GAME_MONEY_START : opt.money,
+            moneyPerHour: {
+                money: 0, // the amount of money to use to find an avg
+                startTime: new Date(), // the startTime to use to find an avg
+                current: 0,            // the current avg
+                valueOf: function(){   // object value should be current avg
+                    return this.current;
+                }
+            },
             mode: 'space',
             autoFire: SHIP_AUTOFIRE,
             weapons: utils.deepClone(DEFAULT_WEAPONS),
