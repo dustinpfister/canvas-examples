@@ -1157,6 +1157,16 @@ var gameMod = (function(){
             mph.blockValues.splice(0, len - mph.maxValues);
         }
 
+                //secs: 0,
+                //purgeOutAfter: 3,
+        mph.secs += secs;
+        if(mph.secs >= mph.purgeOutAfter){
+            if(mph.blockValues.length >= 1){
+                mph.blockValues.splice(0, 1);
+            }
+            mph.secs = 0;
+        }
+
 
 
         var now = new Date(),
