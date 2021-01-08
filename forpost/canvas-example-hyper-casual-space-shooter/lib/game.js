@@ -18,7 +18,7 @@ var gameMod = (function(){
     BLOCK_MONEY_BASE = 1,                    // base amount of money a block is worth
     BLOCK_MONEY_DIST = 999,                  // max about of money that a block is worth based on distance from map pos 0,0
     BLOCK_ARMOR_MINDAM_MIN = 0,              // min and max values for armor min damage prop
-    BLOCK_ARMOR_MINDAM_MAX = 45,
+    BLOCK_ARMOR_MINDAM_MAX = BLOCK_HP_MAX * 0.05,
 
     // SHIP AND MAP VALUES
     SHIP_AUTOFIRE = true,                    // auto fire on or off by default
@@ -60,7 +60,7 @@ var gameMod = (function(){
             },
             shotDamage: { // min and max range for shot damage
                 min: 0.25,
-                max: Math.floor(BLOCK_HP_MAX * 0.01),
+                max: Math.floor(BLOCK_HP_MAX * 0.005),
                 levelOpt: { 
                     levelCap: 10,
                     expCap: 1500,
@@ -111,7 +111,7 @@ var gameMod = (function(){
             },
             shotDamage: { 
                 min: Math.floor(BLOCK_HP_MAX * 0.01),
-                max: Math.floor(BLOCK_HP_MAX * 0.05),
+                max: Math.floor(BLOCK_HP_MAX * 0.025),
                 levelOpt: { 
                     levelCap: 10,
                     expCap: 50000,
@@ -153,8 +153,8 @@ var gameMod = (function(){
                 }
             },
             shotDamage: { 
-                min: Math.floor(BLOCK_HP_MAX * 0.10),
-                max: Math.floor(BLOCK_HP_MAX * 0.25),
+                min: Math.floor(BLOCK_HP_MAX * 0.025),
+                max: Math.floor(BLOCK_HP_MAX * 0.1),
                 levelOpt: { 
                     levelCap: 10,
                     expCap: 30000,
