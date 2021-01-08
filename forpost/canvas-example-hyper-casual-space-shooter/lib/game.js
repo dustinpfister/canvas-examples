@@ -743,6 +743,7 @@ var gameMod = (function(){
                                 state.game.money += block.money;
                                 state.game.moneyPerHour.money += block.money;
                                 state.game.moneyPerHour.blockValues.push(block.money);
+                                state.game.moneyPerHour.secs = 0;
                                 block.lifespan = 0;
                                 block.active = false;
                             }
@@ -909,6 +910,7 @@ var gameMod = (function(){
                         game.money += block.money;
                         game.moneyPerHour.money += block.money;
                         game.moneyPerHour.blockValues.push(block.money);
+                        game.moneyPerHour.secs = 0;
                     }
                     block.lifespan = 0;
                 }
