@@ -1140,6 +1140,13 @@ var gameMod = (function(){
             game.ship.energy.current -= ENERGY_AUTOHEAL_COST * secs;
             autoHealObject(game.ship, secs);
         }
+
+
+        // update money per hour
+        var now = new Date(),
+        t = now - game.moneyPerHour.startTime,
+        hours = t / 1000 / 60 / 60;
+        game.moneyPerHour.current = game.moneyPerHour.money / hours;
     };
 
     var buttonCheck = function(button, pos){
@@ -1167,9 +1174,6 @@ var gameMod = (function(){
 
     // make update buttons public
     api.updateButtons = updateButtons;
-
-    // update money per hour
-    //game.moneyPerHour.current = game.money
 
     // return the Public API
     return api;
