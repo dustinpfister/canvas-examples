@@ -526,8 +526,9 @@ var draw = (function(){
         ctx.fill();
         // draw speed and heading info
         ctx.font='8px courier';
-        ctx.textAlign="center"
-        //ctx.fillText(Math.floor(map.pps) + '/' + Math.floor(map.maxPPS), headCir.x, headCir.y - headCir.r - 10);
+        ctx.textAlign="left";
+        ctx.fillText('speed: ' + Math.floor(map.pps) + '/' + Math.floor(map.maxPPS), ppsBar.x, ppsBar.y + ppsBar.h + 8);
+        ctx.textAlign="center";
         ctx.fillText('heading:' + map.degree.toFixed(2), headCir.x - 10, headCir.y - headCir.r - 10);
     };
 
