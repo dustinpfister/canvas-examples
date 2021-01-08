@@ -50,8 +50,8 @@ var gameMod = (function(){
                 min: 2,
                 max: 10,
                 levelOpt: {
-                    levelCap: 10,
-                    expCap: 1000,
+                    levelCap: 20,
+                    expCap: 250,
                     perMethod: 'log1',
                     perArgs: [],
                     tableX: 160 - 12,
@@ -59,11 +59,11 @@ var gameMod = (function(){
                 }
             },
             shotDamage: { // min and max range for shot damage
-                min: 0.25,
+                min: 0.5,
                 max: Math.floor(BLOCK_ARMOR_MINDAM_MAX * 0.10),
                 levelOpt: { 
-                    levelCap: 10,
-                    expCap: 1500,
+                    levelCap: 20,
+                    expCap: 750,
                     perMethod: 'log1',
                     perArgs: [],
                     tableX: 160 - 12,
