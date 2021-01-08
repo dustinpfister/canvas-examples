@@ -945,14 +945,16 @@ var gameMod = (function(){
         var game = {
             money: opt.money === undefined ? GAME_MONEY_START : opt.money,
             moneyPerHour: {
-                money: 0, // the amount of money to use to find an avg
-                startTime: new Date(), // the startTime to use to find an avg
-                current: 0,            // the current avg
-                ETM:0,                 // Estimated time to money target
+                money: 0,                  // the amount of money to use to find an avg
+                startTime: new Date(),     // the startTime to use to find an avg
+                current: 0,                // the current avg
+                ETM:0,                     // Estimated time to money target
                 target: 1000,
                 blockValues: [1,2,3,4,5],
                 maxValues: 3,
-                valueOf: function(){   // object value should be current avg
+                secs: 0,
+                purgeOutAfter: 3,
+                valueOf: function(){       // object value should be current avg
                     return this.current;
                 }
             },
