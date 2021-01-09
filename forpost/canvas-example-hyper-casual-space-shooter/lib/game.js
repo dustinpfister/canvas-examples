@@ -1199,25 +1199,23 @@ var gameMod = (function(){
             }
             mph.secs = 0;
         }
-
+        // if block values array has at least one value
         if(mph.blockValues.length >= 1){
-
-        var now = new Date(),
-        t = now - mph.blockValues[0].date,
-        hours = t / 1000 / 60 / 60;
-
-        mph.money = 0;
-        mph.blockValues.forEach(function(bv){
-            mph.money += bv.money;
-        });
-
-        mph.current = mph.money / hours;
-        mph.ETM = (mph.target - game.money) / mph.current;
-        mph.ETM = mph.ETM < 0 ? 0 : mph.ETM;
-        mph.ETM = mph.ETM > 999 ? 999 : mph.ETM;
+            var now = new Date(),
+            t = now - mph.blockValues[0].date,
+            hours = t / 1000 / 60 / 60;
+            mph.money = 0;
+            mph.blockValues.forEach(function(bv){
+                mph.money += bv.money;
+            });
+            mph.current = mph.money / hours;
+            mph.ETM = (mph.target - game.money) / mph.current;
+            mph.ETM = mph.ETM < 0 ? 0 : mph.ETM;
+            mph.ETM = mph.ETM > 999 ? 999 : mph.ETM;
         }else{
-           mph.ETM = 0;
-           mph.current = 0;
+            mph.ETM = 0;
+            mph.current = 0;
+            mph.money = 0;
         }
         var lowest = getLowestUpgrade(game);
         if(lowest){
