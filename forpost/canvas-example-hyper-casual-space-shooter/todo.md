@@ -13,6 +13,7 @@ Now that the very core of the game seems to be togeather I think it would be a g
 * create a sheet for the ship
 * add a warp upgrade
 * warp upgrade reduces the energy cost per distance
+* make ship hp, and energy part of save state
 
 ## 0.29.0 - Warp
 * add a warp feature
@@ -36,16 +37,15 @@ Now that the very core of the game seems to be togeather I think it would be a g
 * (done) old block values get shifted out after an amount of time (say 10 seconds)
 * (done) the block values are what are used to get a money value for the game.moneyPerHour object
 * (done) have an amount of time to pass until values start geting purged out, and another that is the rate at which they get purged out
+* (done) have a getLowestUpgrade helper
+* (done) use getLowestUpgrade helper to update mph.target
 
-* have a getLowestUpgrade helper
-* use getLowestUpgrade helper to update mph.target
-
+* express ETM in minutes if the amount of time is below an hour
+* use game.money in getLowestUpgrade helper to get next lowest when the cost is reached
 
 * have a getAllUpgradesCost helper that will tabulate all upgrade costs
-
-
 * use the Average Money Per Hour helper to estamate how long it will take to unlock everything
-* make ship hp, and energy part of save state
+
 * make a 0.26.0 pkg folder
 
 <!-- POLLISH ( ADDITIAL NEEDED BASIC FEATURES, IMPROVEMENTS OF FEATURES IN PLACE, SOME MORE FUN FEATURES -->

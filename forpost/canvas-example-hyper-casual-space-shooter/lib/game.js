@@ -572,7 +572,7 @@ var gameMod = (function(){
             var lvCurrent = upgrade.levelObj;
             if(lvCurrent.level < upgrade.opt.levelCap){
                 lvNext = upgrade.levelObjArray[lvCurrent.level];
-                if(lvNext.xp < cost){
+                if(lvNext.xp < cost && game.money < lvNext.xp){
                     cost = lvNext.xp;
                     lowest = {
                         upgrade: upgrade,
