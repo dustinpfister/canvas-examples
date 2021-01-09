@@ -33,9 +33,10 @@ Now that the very core of the game seems to be togeather I think it would be a g
 * (done) have a game.moneyPerHour.blockvalues array that will have a max length
 * (done) push block values to game.moneyPerHour each time an amount of block money is given to the player
 * (done) old block values get shifted out when the length is reached
+* (done) old block values get shifted out after an amount of time (say 10 seconds)
+* (done) the block values are what are used to get a money value for the game.moneyPerHour object
+* have an amount of time to pass until values start geting purged out, and another that is the rate at which they get purged out
 
-* old block values get shifted out after an amount of time (say 10 seconds)
-* the block values are what are used to get a money value for the game.moneyPerHour object
 
 * have a helper that will tabulate all upgrade costs to get an amount of money that will be needed to unlock all upgrades
 * use the Average Money Per Hour helper to estamate how long it will take to unlock everything

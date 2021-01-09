@@ -959,9 +959,9 @@ var gameMod = (function(){
                 ETM:0,                     // Estimated time to money target
                 target: 600,
                 blockValues: [],
-                maxValues: 10,
+                maxValues: 5,
                 secs: 0,
-                purgeOutAfter: 90,
+                purgeOutAfter: 30,
                 valueOf: function(){       // object value should be current avg
                     return this.current;
                 }
