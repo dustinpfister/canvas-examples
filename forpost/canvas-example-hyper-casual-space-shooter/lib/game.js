@@ -747,6 +747,7 @@ var gameMod = (function(){
                                     money: block.money
                                 });
                                 state.game.moneyPerHour.secs = 0;
+                                state.game.moneyPerHour.purgeOut = false;
                                 block.lifespan = 0;
                                 block.active = false;
                             }
@@ -917,6 +918,7 @@ var gameMod = (function(){
                             money: block.money
                         });
                         game.moneyPerHour.secs = 0;
+                        game.moneyPerHour.purgeOut = false;
                     }
                     block.lifespan = 0;
                 }
@@ -957,11 +959,13 @@ var gameMod = (function(){
                 startTime: new Date(),     // the startTime to use to find an avg
                 current: 0,                // the current avg
                 ETM:0,                     // Estimated time to money target
-                target: 600,
+                target: 1000,
                 blockValues: [],
                 maxValues: 5,
+                startPurgeOutAfter: 60,    // amount of time till block values get purged out over time
+                purgeOut: false,
                 secs: 0,
-                purgeOutAfter: 30,
+                purgeOutAfter: 5,
                 valueOf: function(){       // object value should be current avg
                     return this.current;
                 }
@@ -1166,7 +1170,11 @@ var gameMod = (function(){
         }
         // purge out over time
         mph.secs += secs;
-        if(mph.secs >= mph.purgeOutAfter){
+        //if(mph.secs >= mph.purgeOutAfter){
+        if(mph.secs >= mph.startPurgeOutAfter && !mph.purgeOut){
+            mph.purgeOut = true;
+        }
+        if(mph.secs >= mph.purgeOutAfter && mph.purgeOut){
             if(mph.blockValues.length >= 1){
                 mph.blockValues.splice(0, 1);
             }

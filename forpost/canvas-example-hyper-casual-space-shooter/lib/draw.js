@@ -336,6 +336,8 @@ var draw = (function(){
             ctx.fillText('mph current : ' + utils.format_money(mph.current), 10, 10);
             ctx.fillText('mph money : ' + utils.format_money(mph.money), 10, 20);
             ctx.fillText('block value count : ' + mph.blockValues.length, 10, 30);
+            ctx.fillText('purge out over time : ' + mph.purgeOut, 10, 40);
+            ctx.fillText('mph secs : ' + mph.secs, 10, 50);
 
 /*
             // block spawning
