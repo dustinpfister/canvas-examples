@@ -957,11 +957,11 @@ var gameMod = (function(){
                 startTime: new Date(),     // the startTime to use to find an avg
                 current: 0,                // the current avg
                 ETM:0,                     // Estimated time to money target
-                target: 1000,
+                target: 600,
                 blockValues: [],
-                maxValues: 3,
+                maxValues: 10,
                 secs: 0,
-                purgeOutAfter: 30,
+                purgeOutAfter: 90,
                 valueOf: function(){       // object value should be current avg
                     return this.current;
                 }
