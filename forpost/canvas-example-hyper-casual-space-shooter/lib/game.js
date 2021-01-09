@@ -961,7 +961,7 @@ var gameMod = (function(){
                 blockValues: [],
                 maxValues: 3,
                 secs: 0,
-                purgeOutAfter: 3,
+                purgeOutAfter: 30,
                 valueOf: function(){       // object value should be current avg
                     return this.current;
                 }
@@ -1190,6 +1190,9 @@ var gameMod = (function(){
         game.moneyPerHour.ETM = (game.moneyPerHour.target - game.money) / game.moneyPerHour.current;
         game.moneyPerHour.ETM = game.moneyPerHour.ETM < 0 ? 0 : game.moneyPerHour.ETM;
         game.moneyPerHour.ETM = game.moneyPerHour.ETM > 999 ? 999 : game.moneyPerHour.ETM;
+        }else{
+           mph.ETM = 0;
+           mph.current = 0;
         }
     };
 
