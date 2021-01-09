@@ -1203,7 +1203,6 @@ var gameMod = (function(){
         if(mph.blockValues.length >= 1){
 
         var now = new Date(),
-        //t = now - game.moneyPerHour.startTime,
         t = now - mph.blockValues[0].date,
         hours = t / 1000 / 60 / 60;
 
@@ -1211,12 +1210,11 @@ var gameMod = (function(){
         mph.blockValues.forEach(function(bv){
             mph.money += bv.money;
         });
-        //mph.money /= mph.blockValues.length;
 
-        game.moneyPerHour.current = game.moneyPerHour.money / hours;
-        game.moneyPerHour.ETM = (game.moneyPerHour.target - game.money) / game.moneyPerHour.current;
-        game.moneyPerHour.ETM = game.moneyPerHour.ETM < 0 ? 0 : game.moneyPerHour.ETM;
-        game.moneyPerHour.ETM = game.moneyPerHour.ETM > 999 ? 999 : game.moneyPerHour.ETM;
+        mph.current = mph.money / hours;
+        mph.ETM = (mph.target - game.money) / mph.current;
+        mph.ETM = mph.ETM < 0 ? 0 : mph.ETM;
+        mph.ETM = mph.ETM > 999 ? 999 : mph.ETM;
         }else{
            mph.ETM = 0;
            mph.current = 0;

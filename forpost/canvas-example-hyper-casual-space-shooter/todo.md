@@ -39,9 +39,10 @@ Now that the very core of the game seems to be togeather I think it would be a g
 * (done) have an amount of time to pass until values start geting purged out, and another that is the rate at which they get purged out
 * (done) have a getLowestUpgrade helper
 * (done) use getLowestUpgrade helper to update mph.target
+* (done) use game.money in getLowestUpgrade helper to get next lowest when the cost is reached
 
 * express ETM in minutes if the amount of time is below an hour
-* use game.money in getLowestUpgrade helper to get next lowest when the cost is reached
+
 
 * have a getAllUpgradesCost helper that will tabulate all upgrade costs
 * use the Average Money Per Hour helper to estamate how long it will take to unlock everything
