@@ -1158,9 +1158,7 @@ var gameMod = (function(){
         if(len > mph.maxValues){
             mph.blockValues.splice(0, len - mph.maxValues);
         }
-
-                //secs: 0,
-                //purgeOutAfter: 3,
+        // purge out over time
         mph.secs += secs;
         if(mph.secs >= mph.purgeOutAfter){
             if(mph.blockValues.length >= 1){
@@ -1168,9 +1166,6 @@ var gameMod = (function(){
             }
             mph.secs = 0;
         }
-
-
-
         var now = new Date(),
         t = now - game.moneyPerHour.startTime,
         hours = t / 1000 / 60 / 60;
