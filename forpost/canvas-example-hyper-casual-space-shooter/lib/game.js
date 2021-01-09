@@ -978,6 +978,7 @@ var gameMod = (function(){
                 startTime: new Date(),     // the startTime to use to find an avg
                 current: 0,                // the current avg
                 ETM:0,                     // Estimated time to money target
+                ETMUnit: 'H',
                 target: 439,
                 blockValues: [],
                 maxValues: 5,
@@ -1209,9 +1210,16 @@ var gameMod = (function(){
                 mph.money += bv.money;
             });
             mph.current = mph.money / hours;
+            mph.ETMUnit = 'H';
             mph.ETM = (mph.target - game.money) / mph.current;
             mph.ETM = mph.ETM < 0 ? 0 : mph.ETM;
             mph.ETM = mph.ETM > 999 ? 999 : mph.ETM;
+            // if ETM < 1 switch to minutes
+            if(mph.ETM < 1){
+                mph.ETMUnit = 'M';
+                mph.ETM = mph.ETM * 60;
+            }
+            
         }else{
             mph.ETM = 0;
             mph.current = 0;

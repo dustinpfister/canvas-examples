@@ -166,6 +166,7 @@ var draw = (function(){
         ship = game.ship,
         map = game.map,
         weapon = game.ship.weapon,
+        mph = game.moneyPerHour,
         grad = ctx.createLinearGradient(0, 0, 0, 20);
         grad.addColorStop(0, '#808080');
         grad.addColorStop(1, 'rgba(0,0,255,0.07)');
@@ -185,8 +186,8 @@ var draw = (function(){
 
         // ship speed and heading
         ctx.font='8px courier';
-        ctx.fillText(utils.format_money(game.moneyPerHour.current)+'/hour', 220, 13);
-        ctx.fillText(game.moneyPerHour.ETM.toFixed(2) + 'H to ' + utils.format_money(game.moneyPerHour.target), 220, 20);
+        ctx.fillText(utils.format_money(mph.current)+'/hour', 220, 13);
+        ctx.fillText(mph.ETM.toFixed(2) + mph.ETMUnit + ' to ' + utils.format_money(mph.target), 220, 20);
         //ctx.fillText('heading: ' + map.degree.toFixed(2), 220, 20);
 
         // basic weapon info
