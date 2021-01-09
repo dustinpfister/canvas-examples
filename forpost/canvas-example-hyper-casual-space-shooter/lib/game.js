@@ -565,6 +565,25 @@ var gameMod = (function(){
         }
     };
 
+    var getLowestUpgrade = function(game){
+        var cost = Infinity, lvNext,
+        lowest = false;
+        game.upgrades.forEach(function(upgrade){
+            var lvCurrent = upgrade.levelObj;
+            if(lvCurrent.level < upgrade.opt.levelCap){
+                lvNext = upgrade.levelObjArray[lvCurrent.level];
+                if(lvNext.xp < cost){
+                    cost = lvNext.xp;
+                    lowest = {
+                        upgrade: upgrade,
+                        cost: lvNext.xp
+                    };
+                }
+            }
+        });
+        return lowest;
+    };
+
     var api = {};
 
     // HIT POINTS
@@ -959,7 +978,7 @@ var gameMod = (function(){
                 startTime: new Date(),     // the startTime to use to find an avg
                 current: 0,                // the current avg
                 ETM:0,                     // Estimated time to money target
-                target: 1000,
+                target: 439,
                 blockValues: [],
                 maxValues: 5,
                 startPurgeOutAfter: 60,    // amount of time till block values get purged out over time
@@ -1201,6 +1220,10 @@ var gameMod = (function(){
         }else{
            mph.ETM = 0;
            mph.current = 0;
+        }
+        var lowest = getLowestUpgrade(game);
+        if(lowest){
+            mph.target = lowest.cost;
         }
     };
 

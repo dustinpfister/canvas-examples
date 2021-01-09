@@ -35,10 +35,15 @@ Now that the very core of the game seems to be togeather I think it would be a g
 * (done) old block values get shifted out when the length is reached
 * (done) old block values get shifted out after an amount of time (say 10 seconds)
 * (done) the block values are what are used to get a money value for the game.moneyPerHour object
-* have an amount of time to pass until values start geting purged out, and another that is the rate at which they get purged out
+* (done) have an amount of time to pass until values start geting purged out, and another that is the rate at which they get purged out
+
+* have a getLowestUpgrade helper
+* use getLowestUpgrade helper to update mph.target
 
 
-* have a helper that will tabulate all upgrade costs to get an amount of money that will be needed to unlock all upgrades
+* have a getAllUpgradesCost helper that will tabulate all upgrade costs
+
+
 * use the Average Money Per Hour helper to estamate how long it will take to unlock everything
 * make ship hp, and energy part of save state
 * make a 0.26.0 pkg folder
