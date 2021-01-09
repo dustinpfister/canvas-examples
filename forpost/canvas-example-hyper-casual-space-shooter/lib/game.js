@@ -1172,13 +1172,25 @@ var gameMod = (function(){
             }
             mph.secs = 0;
         }
+
+        if(mph.blockValues.length >= 1){
+
         var now = new Date(),
-        t = now - game.moneyPerHour.startTime,
+        //t = now - game.moneyPerHour.startTime,
+        t = now - mph.blockValues[0].date,
         hours = t / 1000 / 60 / 60;
+
+        mph.money = 0;
+        mph.blockValues.forEach(function(bv){
+            mph.money += bv.money;
+        });
+        //mph.money /= mph.blockValues.length;
+
         game.moneyPerHour.current = game.moneyPerHour.money / hours;
         game.moneyPerHour.ETM = (game.moneyPerHour.target - game.money) / game.moneyPerHour.current;
         game.moneyPerHour.ETM = game.moneyPerHour.ETM < 0 ? 0 : game.moneyPerHour.ETM;
         game.moneyPerHour.ETM = game.moneyPerHour.ETM > 999 ? 999 : game.moneyPerHour.ETM;
+        }
     };
 
     var buttonCheck = function(button, pos){
