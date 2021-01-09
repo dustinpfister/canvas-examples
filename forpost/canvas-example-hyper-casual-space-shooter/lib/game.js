@@ -74,7 +74,7 @@ var gameMod = (function(){
             //effects:[],
             shotRange: 128,
             shotPPS: 96,
-            shotsPerFire: [2,2,1],
+            shotsPerFire: [1],
             onFireStart: function(game, secs, state){
                 var weapon = game.weapons[game.ship.weaponIndex];
                 var shotIndex = 0;
