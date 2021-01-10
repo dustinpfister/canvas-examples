@@ -4,7 +4,7 @@ var forFrame = (function(){
 
     var setFrame = function(ff, frame){
         ff.frame = frame;
-        ff.frame %= ff.maxFrame;
+        ff.frame = utils.mod(ff.frame, ff.maxFrame);
         ff.per = ff.frame / ff.maxFrame;
         ff.model = ff.forFrame(ff, ff.frame, ff.maxFrame);
         return ff.model;

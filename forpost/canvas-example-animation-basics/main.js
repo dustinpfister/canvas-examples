@@ -43,7 +43,7 @@ var loop = function(){
     draw.background(state.ctx, state.canvas);
     draw.box(state.ctx, state.ff.model);
     draw.ver(state.ctx, state.canvas, state);
-    forFrame.step(state.ff);
+    forFrame.step(state.ff, -1);
 };
 
 loop();
