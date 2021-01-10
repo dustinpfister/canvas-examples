@@ -1,10 +1,12 @@
 # canvas-examples
 
-This is all the source code for my collection of posts on [canvas examples on my website here at github pages](](https://dustinpfister.github.io/2020/03/23/canvas-example/)). For each canvas example in the for post folder there should be a corresponding blog post in which I write about the given canvas example in greater detail.
+This is all the source code for my collection of posts on [canvas examples on my website here at github pages](](https://dustinpfister.github.io/2020/03/23/canvas-example/)). this collection is mainly games, but there are also some additional projects that are just animations, ideas of modules, frameworks, and so forth. The only commone bond is that all of these use canvas elements in at least some capacity.
+
+## Each example is a project of its own
 
 Each folder is its own independent project folder, so all of the source code needed should be located in each folder. For better or worse I have decided to just go forward with that set in mind for this collection of examples at least. The idea here then is that each folder is an indepedanty vanilla javaScript project on its own. I might use thwe same code accorss other examples, but even then in the form of a copy that might end up getting hacked over a little. 
 
-## starting an example
+## Starting an example
 
 Most if not all examples should work by way of the file protocol in a web browser, in other words you can just open the main index.html of a folder in the browser wothout the need to serve the example locally.
 
