@@ -14,6 +14,9 @@ Now that the very core of the game seems to be togeather I think it would be a g
 * add a warp upgrade
 * warp upgrade reduces the energy cost per distance
 * make ship hp, and energy part of save state
+* have a getAllUpgradesCost helper that will tabulate all upgrade costs
+* use the Average Money Per Hour helper to estamate how long it will take to unlock everything
+
 
 ## 0.29.0 - Warp
 * add a warp feature
@@ -21,6 +24,8 @@ Now that the very core of the game seems to be togeather I think it would be a g
 
 ## 0.28.0 - ETA Helper
 * add a helper that will return an ETA to a given point, from a current point and speed.
+* use new ETA feature to find out how long it will take to go to the limit of the map.
+* use new ETA feature to find out how long it will take to go back to the base.
 
 ## 0.26.0 - Average Money Per Hour Helper, Tabulate all upgrade costs helper
 * (done) have a game.moneyPerHour object
@@ -40,13 +45,7 @@ Now that the very core of the game seems to be togeather I think it would be a g
 * (done) have a getLowestUpgrade helper
 * (done) use getLowestUpgrade helper to update mph.target
 * (done) use game.money in getLowestUpgrade helper to get next lowest when the cost is reached
-
-* express ETM in minutes if the amount of time is below an hour
-
-
-* have a getAllUpgradesCost helper that will tabulate all upgrade costs
-* use the Average Money Per Hour helper to estamate how long it will take to unlock everything
-
+* (done) express ETM in minutes if the amount of time is below an hour
 * make a 0.26.0 pkg folder
 
 <!-- POLLISH ( ADDITIAL NEEDED BASIC FEATURES, IMPROVEMENTS OF FEATURES IN PLACE, SOME MORE FUN FEATURES -->
