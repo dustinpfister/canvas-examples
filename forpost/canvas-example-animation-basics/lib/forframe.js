@@ -1,7 +1,12 @@
 var forFrame = (function(){
 
+    var DEFAULT_MAX_FRAME = 100,
+    DEFAULT_FRAME = 0,
+    DEFAULT_WIDTH = 320,
+    DEFAULT_HEIGHT = 240;
+
     // built in forFrame example
-    var builtIn = function(ff, frame, maxFrame){
+    var FORFRAME_BUILT_IN = function(ff, frame, maxFrame){
         return {
             x : 24 + ( ff.width - 48 ) * ff.per,
             y : utils.log1(utils.bias(frame, maxFrame), 1, 16) * ff.height - 24,
@@ -27,15 +32,15 @@ var forFrame = (function(){
     api.create = function(opt){
         opt = opt || {};
         var ff = {
-            frame: 0,
-            width: opt.width || 320,
-            height: opt.height || 240,
-            maxFrame: opt.maxFrame || 100,
+            frame: opt.frame || DEFAULT_FRAME,
+            width: opt.width || DEFAULT_WIDTH,
+            height: opt.height || DEFAULT_HEIGHT,
+            maxFrame: opt.maxFrame || DEFAULT_MAX_FRAME,
             model: {},
             per: 0,
-            forFrame: opt.forFrame || builtIn
+            forFrame: opt.forFrame || FORFRAME_BUILT_IN
         };
-        ff.model = setFrame(ff, 0);
+        ff.model = setFrame(ff, ff.frame);
         return ff;
     };
 
