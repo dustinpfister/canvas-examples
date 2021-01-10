@@ -23,12 +23,27 @@ draw.ver = function(ctx, canvas, state){
     ctx.fillText('v' + state.ver, 2, canvas.height - 12);
 };
 draw.box = function(ctx, box){
-    ctx.fillStyle = 'red'
+    ctx.fillStyle = 'red';
     ctx.beginPath();
     ctx.rect(box.x, box.y, box.w, box.h);
     ctx.fill();
 };
-
+draw.box2 = function(ctx, box){
+    ctx.save();
+    ctx.fillStyle = box.fillStyle || 'red';
+    ctx.strokeStyle = box.strokeStyle || 'white';
+    ctx.beginPath();
+    ctx.translate(box.x, box.y);
+    ctx.rotate(box.r);
+    ctx.rect(box.w / 2 * -1, box.h / 2 * -1, box.w, box.h);
+    if(box.fillStyle){
+        ctx.fill();
+    }
+    if(box.strokeStyle){
+        ctx.stroke();
+    }
+    ctx.restore();
+};
 
 var canvasObj = createCanvas();
 var state = {
@@ -40,7 +55,7 @@ var state = {
         height: canvasObj.canvas.height
     }),
     lt: new Date(),
-    framesPerSec: 20,
+    framesPerSec: 12,
 };
 
 var loop = function(){
@@ -48,7 +63,7 @@ var loop = function(){
     secs = (now - state.lt) / 1000;
     requestAnimationFrame(loop);
     draw.background(state.ctx, state.canvas);
-    draw.box(state.ctx, state.ff.model);
+    draw.box2(state.ctx, state.ff.model);
     draw.ver(state.ctx, state.canvas, state);
     forFrame.step(state.ff, secs * state.framesPerSec);
     state.lt = now;

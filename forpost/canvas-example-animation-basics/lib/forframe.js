@@ -22,10 +22,12 @@ var forFrame = (function(){
             per: 0,
             forFrame: opt.forFrame || function(ff, frame, maxFrame){
                 return {
-                    x : ( ff.width - 32 ) * ff.per,
-                    y : -32 + utils.log1(utils.bias(frame, maxFrame), 1, 16) * ff.height,
+                    x : 24 + ( ff.width - 48 ) * ff.per,
+                    y : utils.log1(utils.bias(frame, maxFrame), 1, 16) * ff.height - 24,
                     w : 32,
-                    h : 32
+                    h : 32,
+                    r : Math.PI / 180 * 360 * 4 * ff.per,
+                    fillStyle : 'red'
                 };
             }
         };
