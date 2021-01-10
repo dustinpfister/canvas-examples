@@ -2,6 +2,20 @@
 
 This is a list of features that I may or may not even add to the game to begin with. I do not really want to just add any and all idea that come to mind with this, so when I get an idea for something I park it here, and then sleep on it. I might also want to deaft out the next set of minors to work on that will then be added to the todo list here.
 
+
+<!-- ECONOMY -->
+
+## 0.x.0 - Block Money Dist upgrade
+* have constants for BLOCK-MONEY-DIST-MIN, and BLOCK-MONEY-DIST-MAX
+* have a 'block money dist' upgrade in the economy page
+
+## 0.x.0 - Economy page started, and Block Money Base upgrade
+* Start an economy button page at the base.
+* have the ushual back button in the economy page
+* have a single 'block money base' upgrade in the economy page
+* have constants for BLOCK-MONEY-BASE-MIN, and BLOCK-MONEY-BASE-MAX
+
+
 <!-- STATE MACHINE -->
 <!--
     I have been putting off creating a state machine becuase I want to focus on the core logic of what the game is first. That is have a game where there is just one state, the main game state, and that is it. However once I do have the core of what the game is worked out, and if I do want to keep working on this project, then at some point I will want to have some kind of main state machine started.

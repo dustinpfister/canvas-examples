@@ -7,10 +7,12 @@ Now that the very core of the game seems to be togeather I think it would be a g
     Features should also help to get an idea of how long it will take to get from the center of the game map to the max distance, or any distance, with current ship speed. Also features should help to reduce the amount of time it would take to get somewhere from starting values, such as adding a warp feature.
 -->
 
-## 0.29.0 - Graphics Change II, and Warp Upgrade
+## 0.30.0 - Graphics Change II
 * Add Canvas generated sprite sheet helper in draw.js
 * create a sheet for shots
 * create a sheet for the ship
+
+## 0.29.0 - Warp upgrade
 * add a warp upgrade
 * warp upgrade reduces the energy cost per distance
 * make ship hp, and energy part of save state
@@ -18,8 +20,9 @@ Now that the very core of the game seems to be togeather I think it would be a g
 * use the Average Money Per Hour helper to estamate how long it will take to unlock everything
 
 ## 0.28.0 - Warp
-* add a warp feature
-* warping from one location to another should cost energy
+* add a 'warp' game mode
+* The 'warp' game mode resuts in a whole new interface that can be used to set a location to warp to
+* warping from one location to another should cost energy/money
 
 ## 0.27.0 - ETA Helper
 * add a helper that will return an ETA to a given point, from a current point and speed.
@@ -45,7 +48,7 @@ Now that the very core of the game seems to be togeather I think it would be a g
 * (done) use getLowestUpgrade helper to update mph.target
 * (done) use game.money in getLowestUpgrade helper to get next lowest when the cost is reached
 * (done) express ETM in minutes if the amount of time is below an hour
-* (done) make a 0.26.0 pkg folder
+* (done - 01/10/2021) make a 0.26.0 pkg folder
 
 <!-- POLLISH ( ADDITIAL NEEDED BASIC FEATURES, IMPROVEMENTS OF FEATURES IN PLACE, SOME MORE FUN FEATURES -->
 <!-- 
