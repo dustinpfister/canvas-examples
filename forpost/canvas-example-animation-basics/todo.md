@@ -6,8 +6,8 @@
 * (done) start a /lib folder
 * (done) have a /lib/forframe.js file
 * (done) have a /main.js file
-* have basic forframe.js function working
-* work out just a simple animation that makes use of forframe.js
+* (done) have basic forframe.js function working
+* (done) work out just a simple animation that makes use of forframe.js
 * make a 0.1.0 pkg folder
 
 ## 0.0.0 - Just make a pkg.html

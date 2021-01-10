@@ -15,13 +15,13 @@ var forFrame = (function(){
         opt = opt || {};
         var ff = {
             frame: 0,
-            maxFrame: opt.maxFrame || 50,
+            maxFrame: opt.maxFrame || 100,
             model: {},
             per: 0,
             forFrame: opt.forFrame || function(ff, frame, maxFrame){
                 return {
                     x : -32 + 320 * ff.per,
-                    y : 0,
+                    y : 0 + utils.bias(frame, maxFrame) * (220 - 32),
                     w : 32,
                     h : 32
                 };
