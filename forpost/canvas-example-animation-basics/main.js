@@ -26,25 +26,19 @@ draw.box = function(ctx, box){
     ctx.fillStyle = 'red'
     ctx.beginPath();
     ctx.rect(box.x, box.y, box.w, box.h);
+    ctx.fill();
 };
 
 var ff = forFrame.create();
 console.log(ff);
-/*
-(function(){
 
-    var state = {
-        ver: '0.1.0'
-    };
-    var canvasObj = createCanvas(),
-    canvas = canvasObj.canvas,
-    ctx = canvasObj.ctx;
+var state = {
+    ver: '0.1.0'
+};
+var canvasObj = createCanvas(),
+canvas = canvasObj.canvas,
+ctx = canvasObj.ctx;
 
-    draw.box(ctx, ff.model);
-
-    draw.background(ctx, canvas);
-    draw.ver(ctx, canvas, state);
-
-
-}());
-*/
+draw.background(ctx, canvas);
+draw.box(ctx, ff.model);
+draw.ver(ctx, canvas, state);

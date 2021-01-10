@@ -21,12 +21,13 @@ var forFrame = (function(){
             forFrame: opt.forFrame || function(ff, frame, maxFrame){
                 return {
                     x : -32 + 320 * ff.per,
-                    y : 120 - 16,
+                    y : 0,
                     w : 32,
                     h : 32
                 };
             }
         };
+        ff.model = setFrame(ff, 5);
         return ff;
     };
 
