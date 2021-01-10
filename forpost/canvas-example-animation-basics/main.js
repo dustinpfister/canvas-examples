@@ -51,12 +51,12 @@ var state = {
     canvas: canvasObj.canvas,
     ctx: canvasObj.ctx,
     ff: forFrame.create({
+        maxFrame: 250,
         width: canvasObj.canvas.width,
         height: canvasObj.canvas.height
     }),
     lt: new Date(),
-    framesPerSec: 30,
-    secs: 0
+    framesPerSec: 30
 };
 
 var loop = function(){
@@ -69,13 +69,8 @@ var loop = function(){
     draw.box2(state.ctx, state.ff.model);
     draw.ver(state.ctx, state.canvas, state);
 
-
-    state.secs += secs;
-    if(state.secs >= 1 / state.framesPerSec){
-        frames = Math.floor(state.secs / (1 / state.framesPerSec) );
-        forFrame.step(state.ff, 1);
-        state.secs = utils.mod(state.secs, 1 / state.framesPerSec);
-    }
+    // update by secs
+    forFrame.update(state.ff, secs, state.framesPerSec);
     state.lt = now;
 };
 

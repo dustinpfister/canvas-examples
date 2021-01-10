@@ -1,6 +1,6 @@
 var forFrame = (function(){
 
-    var DEFAULT_MAX_FRAME = 100,
+    var DEFAULT_MAX_FRAME = 50,
     DEFAULT_FRAME = 0,
     DEFAULT_WIDTH = 320,
     DEFAULT_HEIGHT = 240;
@@ -38,17 +38,31 @@ var forFrame = (function(){
             maxFrame: opt.maxFrame || DEFAULT_MAX_FRAME,
             model: {},
             per: 0,
+            secs: 0,
             forFrame: opt.forFrame || FORFRAME_BUILT_IN
         };
         ff.model = setFrame(ff, ff.frame);
         return ff;
     };
 
-    // update a ff object with the given secs
+    // STEP an ff object with a given amount of frames
+    // as such STEPFRAMES needs to be a whole number
     api.step = function(ff, stepFrames){
         stepFrames = stepFrames === undefined ? 1 : stepFrames;
         stepFrames = Math.round(stepFrames);
         return setFrame(ff, ff.frame + stepFrames);
+    };
+
+    api.update = function(ff, secs, fps){
+        var frames;
+        secs = secs === undefined ? 0: secs;
+        fps = fps === undefined ? 30: fps;
+        ff.secs += secs;
+        if(ff.secs >= 1 / fps){
+            frames = Math.floor(ff.secs / (1 / fps));
+            api.step(ff, frames);
+            ff.secs = utils.mod(ff.secs, 1 / fps);
+        }
     };
 
     // return the public api;
