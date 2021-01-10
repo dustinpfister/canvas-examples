@@ -27,7 +27,7 @@ var forFrame = (function(){
                 };
             }
         };
-        ff.model = setFrame(ff, 5);
+        ff.model = setFrame(ff, 0);
         return ff;
     };
 

@@ -39,9 +39,11 @@ var state = {
 };
 
 var loop = function(){
-    draw.background(ctx, canvas);
-    draw.box(ctx, ff.model);
-    draw.ver(ctx, canvas, state);
+    requestAnimationFrame(loop);
+    draw.background(state.ctx, state.canvas);
+    draw.box(state.ctx, state.ff.model);
+    draw.ver(state.ctx, state.canvas, state);
+    forFrame.step(state.ff);
 };
 
 loop();
