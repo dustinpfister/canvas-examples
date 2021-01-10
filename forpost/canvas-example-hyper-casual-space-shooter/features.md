@@ -2,6 +2,22 @@
 
 This is a list of features that I may or may not even add to the game to begin with. I do not really want to just add any and all idea that come to mind with this, so when I get an idea for something I park it here, and then sleep on it. I might also want to deaft out the next set of minors to work on that will then be added to the todo list here.
 
+<!-- STATE MACHINE -->
+<!--
+    I have been putting off creating a state machine becuase I want to focus on the core logic of what the game is first. That is have a game where there is just one state, the main game state, and that is it. However once I do have the core of what the game is worked out, and if I do want to keep working on this project, then at some point I will want to have some kind of main state machine started.
+-->
+
+## 0.x.0 - New /states/save-manager.js
+* start a /states/save-manager.js
+* add a button in title.js that will go to save manager.js
+* the 'play button'
+
+## 0.x.0 - Start a statemachine.js file in /lib, /states folder, /states/title.js, /states/space.js
+* start a new statemahine.js file in /lib
+* have a /states/title.js that will be a main title screen state for the game.
+* have a /states/space.js file that will be the main game as it currently stands.
+* have a buttons feature of the state machine
+* use new state machine in main.js
 
 <!-- IMPROVE FEATURES IN PLACE, FIX BUGS, TWEAK VALUES -->
 <!--
@@ -9,10 +25,10 @@ This is a list of features that I may or may not even add to the game to begin w
 
 -->
 
-## 0.32.0 - Weapon Value tweaks, and new weapons
+## 0.33.0 - Weapon Value tweaks, and new weapons
 * The pulse gun is to powerful, make it the true 'starting gun' by making the max shot damage a far smaller percentage of max block hp.
 
-## 0.31.0 - Save State Improvements
+## 0.32.0 - Save State Improvements
 * The current weapon index should be part of the save state
 * The current ship health should be part of the save state
 * The current ship energy should be part of the save state

@@ -2,12 +2,12 @@
 
 <!-- MONEY, and TIME ( How long will it take to get to a point in the game ) -->
 <!--
-    From 0.26.x to 0.30.x the focus should now be on MONEY and TIME.
+    From 0.26.x to 0.29.x the focus should now be on MONEY and TIME.
 Now that the very core of the game seems to be togeather I think it would be a good idea to start thinking in terms of what values need to change when it comes to balancing. Features added at this point should help for me to get an idea of how long a player needs to play the game in order to get all the upgrades, and thus get to the 'end of the game sort of speak'. That is if there is really and end to get to really to begin with. 
     Features should also help to get an idea of how long it will take to get from the center of the game map to the max distance, or any distance, with current ship speed. Also features should help to reduce the amount of time it would take to get somewhere from starting values, such as adding a warp feature.
 -->
 
-## 0.30.0 - Graphics Change II, and Warp Upgrade
+## 0.29.0 - Graphics Change II, and Warp Upgrade
 * Add Canvas generated sprite sheet helper in draw.js
 * create a sheet for shots
 * create a sheet for the ship
@@ -17,12 +17,11 @@ Now that the very core of the game seems to be togeather I think it would be a g
 * have a getAllUpgradesCost helper that will tabulate all upgrade costs
 * use the Average Money Per Hour helper to estamate how long it will take to unlock everything
 
-
-## 0.29.0 - Warp
+## 0.28.0 - Warp
 * add a warp feature
 * warping from one location to another should cost energy
 
-## 0.28.0 - ETA Helper
+## 0.27.0 - ETA Helper
 * add a helper that will return an ETA to a given point, from a current point and speed.
 * use new ETA feature to find out how long it will take to go to the limit of the map.
 * use new ETA feature to find out how long it will take to go back to the base.
@@ -46,7 +45,7 @@ Now that the very core of the game seems to be togeather I think it would be a g
 * (done) use getLowestUpgrade helper to update mph.target
 * (done) use game.money in getLowestUpgrade helper to get next lowest when the cost is reached
 * (done) express ETM in minutes if the amount of time is below an hour
-* make a 0.26.0 pkg folder
+* (done) make a 0.26.0 pkg folder
 
 <!-- POLLISH ( ADDITIAL NEEDED BASIC FEATURES, IMPROVEMENTS OF FEATURES IN PLACE, SOME MORE FUN FEATURES -->
 <!-- 
