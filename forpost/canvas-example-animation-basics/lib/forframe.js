@@ -12,7 +12,7 @@ var forFrame = (function(){
             y : utils.log1(utils.bias(frame, maxFrame), 1, 16) * ff.height - 24,
             w : 32,
             h : 32,
-            r : Math.PI / 180 * 360 * 4 * ff.per,
+            r : Math.PI / 180 * 360 * 2 * ff.per,
             fillStyle : 'red'
         };
     };
@@ -47,6 +47,7 @@ var forFrame = (function(){
     // update a ff object with the given secs
     api.step = function(ff, stepFrames){
         stepFrames = stepFrames === undefined ? 1 : stepFrames;
+        stepFrames = Math.round(stepFrames);
         return setFrame(ff, ff.frame + stepFrames);
     };
 

@@ -55,17 +55,27 @@ var state = {
         height: canvasObj.canvas.height
     }),
     lt: new Date(),
-    framesPerSec: 12,
+    framesPerSec: 30,
+    secs: 0
 };
 
 var loop = function(){
     var now = new Date(),
-    secs = (now - state.lt) / 1000;
+    secs = (now - state.lt) / 1000,
+    frames;
+
     requestAnimationFrame(loop);
     draw.background(state.ctx, state.canvas);
     draw.box2(state.ctx, state.ff.model);
     draw.ver(state.ctx, state.canvas, state);
-    forFrame.step(state.ff, secs * state.framesPerSec);
+
+
+    state.secs += secs;
+    if(state.secs >= 1 / state.framesPerSec){
+        frames = Math.floor(state.secs / (1 / state.framesPerSec) );
+        forFrame.step(state.ff, 1);
+        state.secs = utils.mod(state.secs, 1 / state.framesPerSec);
+    }
     state.lt = now;
 };
 
