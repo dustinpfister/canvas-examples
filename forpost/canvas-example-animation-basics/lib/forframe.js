@@ -12,13 +12,19 @@ var forFrame = (function(){
 
     // create a main ff object
     api.create = function(opt){
+        opt = opt || {};
         var ff = {
             frame: 0,
             maxFrame: opt.maxFrame || 50,
             model: {},
             per: 0,
             forFrame: opt.forFrame || function(ff, frame, maxFrame){
-                return {};
+                return {
+                    x : -32 + 320 * ff.per,
+                    y : 120 - 16,
+                    w : 32,
+                    h : 32
+                };
             }
         };
         return ff;
@@ -29,5 +35,8 @@ var forFrame = (function(){
         stepFrames = stepFrames === undefined ? 1 : stepFrames;
         return setFrame(ff, ff.frame + stepFrames);
     };
+
+    // return the public api;
+    return api;
 
 }());

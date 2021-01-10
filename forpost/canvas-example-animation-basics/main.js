@@ -22,7 +22,15 @@ draw.ver = function(ctx, canvas, state){
     ctx.font='10px arial';
     ctx.fillText('v' + state.ver, 2, canvas.height - 12);
 };
+draw.box = function(ctx, box){
+    ctx.fillStyle = 'red'
+    ctx.beginPath();
+    ctx.rect(box.x, box.y, box.w, box.h);
+};
 
+var ff = forFrame.create();
+console.log(ff);
+/*
 (function(){
 
     var state = {
@@ -32,7 +40,11 @@ draw.ver = function(ctx, canvas, state){
     canvas = canvasObj.canvas,
     ctx = canvasObj.ctx;
 
+    draw.box(ctx, ff.model);
+
     draw.background(ctx, canvas);
     draw.ver(ctx, canvas, state);
 
+
 }());
+*/
