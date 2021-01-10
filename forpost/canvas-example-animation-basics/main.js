@@ -29,16 +29,19 @@ draw.box = function(ctx, box){
     ctx.fill();
 };
 
-var ff = forFrame.create();
-console.log(ff);
 
+var canvasObj = createCanvas();
 var state = {
-    ver: '0.1.0'
+    ver: '0.1.0',
+    canvas: canvasObj.canvas,
+    ctx: canvasObj.ctx,
+    ff: forFrame.create()
 };
-var canvasObj = createCanvas(),
-canvas = canvasObj.canvas,
-ctx = canvasObj.ctx;
 
-draw.background(ctx, canvas);
-draw.box(ctx, ff.model);
-draw.ver(ctx, canvas, state);
+var loop = function(){
+    draw.background(ctx, canvas);
+    draw.box(ctx, ff.model);
+    draw.ver(ctx, canvas, state);
+};
+
+loop();
