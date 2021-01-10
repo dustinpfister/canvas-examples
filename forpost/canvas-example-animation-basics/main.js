@@ -5,8 +5,8 @@ var createCanvas = function(opt){
     opt.canvas = document.createElement('canvas');
     opt.ctx = opt.canvas.getContext('2d');
     opt.container.appendChild(opt.canvas);
-    opt.canvas.width = opt.width === undefined ? 300 : opt.width;
-    opt.canvas.height = opt.height === undefined ? 200 : opt.height;
+    opt.canvas.width = opt.width === undefined ? 440 : opt.width;
+    opt.canvas.height = opt.height === undefined ? 280 : opt.height;
     opt.ctx.translate(0.5, 0.5);
     return opt;
 };
@@ -17,12 +17,12 @@ var state = {
     canvas: canvasObj.canvas,
     ctx: canvasObj.ctx,
     ff: forFrame.create({
-        maxFrame: 250,
+        maxFrame: 100,
         width: canvasObj.canvas.width,
         height: canvasObj.canvas.height
     }),
     lt: new Date(),
-    framesPerSec: 30
+    framesPerSec: 24
 };
 // basic app loop
 var loop = function(){
@@ -32,6 +32,7 @@ var loop = function(){
     // draw
     draw.background(state.ctx, state.canvas);
     draw.box2(state.ctx, state.ff.model);
+    draw.ffInfo(state.ctx, state.ff, 10, 10);
     draw.ver(state.ctx, state.canvas, state);
     // update by secs
     forFrame.update(state.ff, secs, state.framesPerSec);

@@ -7,12 +7,12 @@ draw.background = function(ctx, canvas){
 };
 
 // INFO
-draw.ffInfo = function(ctx, box, x, y){
+draw.ffInfo = function(ctx, ff,  x, y){
     ctx.fillStyle = 'white';
     ctx.font = '10px arial';
     ctx.textBaseline = 'top';
     ctx.textAlign = 'left';
-    ctx.fillText('frame:' + ff.frame + '/' + ff.maxFrame, x, y);
+    ctx.fillText('frame: ' + ff.frame + ' / ' + ff.maxFrame, x, y);
 };
 
 draw.ver = function(ctx, canvas, state){
