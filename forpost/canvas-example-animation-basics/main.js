@@ -47,7 +47,7 @@ draw.box2 = function(ctx, box){
 
 var canvasObj = createCanvas();
 var state = {
-    ver: '0.1.0',
+    ver: '0.2.0',
     canvas: canvasObj.canvas,
     ctx: canvasObj.ctx,
     ff: forFrame.create({
