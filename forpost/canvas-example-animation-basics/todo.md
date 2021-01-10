@@ -8,7 +8,7 @@
 
 ## 0.2.0 - forFrame.step, and forFrame.update
 * (done) make forFrame.step a function that will take ff and stepFrames as arguments
-* have a forFrame.update public method that will take ff and secs as arguments
+* (done) have a forFrame.update public method that will take ff and secs as arguments
 * have a draw.ffInfo method that will display frame, maxFrame
 * have a draw.js file
 * make a 0.2.0 pkg folder
