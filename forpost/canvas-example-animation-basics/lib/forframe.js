@@ -7,9 +7,22 @@ var forFrame = (function(){
         var ff = {
             frame: 0,
             maxFrame: opt.maxFrame || 50,
-            forFrame: opt.forFrame || function(){}
+            model: {},
+            per: 0,
+            forFrame: opt.forFrame || function(ff, frame, maxFrame){
+                return {};
+            }
         };
         return ff;
+    };
+
+    // update a ff object with the given secs
+    api.step = function(ff){
+        ff.frame += 1;
+        ff.frame %= ff.maxFrame;
+        ff.per = ff.frame / ff.maxFrame;
+        ff.model = ff.forFrame(ff, ff.frame, ff.maxFrame);
+        return ff.model;
     };
 
 }());

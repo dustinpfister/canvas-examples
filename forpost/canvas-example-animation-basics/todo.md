@@ -1,11 +1,13 @@
 # canvas-example-animation-basics todo
 
 ## 0.1.0 - new main example and build folder
-* create an old_code folder and place all the old code examples in there
-* start a build folder for this example
-* start a /lib folder
-* have a /lib/forframe.js file
-* have a /main.js file
+* (done) create an old_code folder and place all the old code examples in there
+* (done) start a build folder for this example
+* (done) start a /lib folder
+* (done) have a /lib/forframe.js file
+* (done) have a /main.js file
+* have basic forframe.js function working
+* work out just a simple animation that makes use of forframe.js
 * make a 0.1.0 pkg folder
 
 ## 0.0.0 - Just make a pkg.html
