@@ -22,8 +22,8 @@ var forFrame = (function(){
             per: 0,
             forFrame: opt.forFrame || function(ff, frame, maxFrame){
                 return {
-                    x : -32 + ff.width * ff.per,
-                    y : 0 + utils.bias(frame, maxFrame) * (ff.height - 32),
+                    x : ( ff.width - 32 ) * ff.per,
+                    y : -32 + utils.log1(utils.bias(frame, maxFrame), 1, 16) * ff.height,
                     w : 32,
                     h : 32
                 };
