@@ -35,15 +35,23 @@ var state = {
     ver: '0.1.0',
     canvas: canvasObj.canvas,
     ctx: canvasObj.ctx,
-    ff: forFrame.create()
+    ff: forFrame.create({
+        width: canvasObj.canvas.width,
+        height: canvasObj.canvas.height
+    }),
+    lt: new Date(),
+    framesPerSec: 20,
 };
 
 var loop = function(){
+    var now = new Date(),
+    secs = (now - state.lt) / 1000;
     requestAnimationFrame(loop);
     draw.background(state.ctx, state.canvas);
     draw.box(state.ctx, state.ff.model);
     draw.ver(state.ctx, state.canvas, state);
-    forFrame.step(state.ff, -1);
+    forFrame.step(state.ff, secs * state.framesPerSec);
+    state.lt = now;
 };
 
 loop();
