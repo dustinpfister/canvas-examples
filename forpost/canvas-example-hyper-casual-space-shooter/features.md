@@ -2,6 +2,14 @@
 
 This is a list of features that I may or may not even add to the game to begin with. I do not really want to just add any and all idea that come to mind with this, so when I get an idea for something I park it here, and then sleep on it. I might also want to deaft out the next set of minors to work on that will then be added to the todo list here.
 
+<!-- FACTIONS, and enemy ships -->
+
+## 0.x.0 - Faction Areas
+* have areas in the map where a faction can be
+* A faction object stores a value that is the last time the player has been in range of the faction area
+* the last time propery is used to find the strength of the faction in terms of units.
+
+### 0.x.0 - Added Enemy ships
 
 <!-- ECONOMY -->
 
