@@ -2,6 +2,14 @@ var forFrame = (function(){
 
     var api = {};
 
+    var setFrame = function(ff, frame){
+        ff.frame = frame;
+        ff.frame %= ff.maxFrame;
+        ff.per = ff.frame / ff.maxFrame;
+        ff.model = ff.forFrame(ff, ff.frame, ff.maxFrame);
+        return ff.model;
+    };
+
     // create a main ff object
     api.create = function(opt){
         var ff = {
@@ -17,12 +25,9 @@ var forFrame = (function(){
     };
 
     // update a ff object with the given secs
-    api.step = function(ff){
-        ff.frame += 1;
-        ff.frame %= ff.maxFrame;
-        ff.per = ff.frame / ff.maxFrame;
-        ff.model = ff.forFrame(ff, ff.frame, ff.maxFrame);
-        return ff.model;
+    api.step = function(ff, stepFrames){
+        stepFrames = stepFrames === undefined ? 1 : stepFrames;
+        return setFrame(ff, ff.frame + stepFrames);
     };
 
 }());
