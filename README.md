@@ -1,8 +1,12 @@
 # canvas-examples
 
-This is all the source code for my collection of [posts on canvas examples](https://dustinpfister.github.io/2020/03/23/canvas-example/) on my website here at github pages. For each canvas example in the forPost folder there should be a corresponding blog post in which I write about a given canvas example in detail.
+This is all the source code for my collection of posts on [canvas examples on my website here at github pages](](https://dustinpfister.github.io/2020/03/23/canvas-example/)). For each canvas example in the for post folder there should be a corresponding blog post in which I write about the given canvas example in greater detail.
 
-Each folder is its own independent project folder, and most if not all should work by way of the file protocol in a web browser. In other words you can just open the main index.html of a folder, no need to serve them locally.
+Each folder is its own independent project folder, so all of the source code needed should be located in each folder. For better or worse I have decided to just go forward with that set in mind for this collection of examples at least. The idea here then is that each folder is an indepedanty vanilla javaScript project on its own. I might use thwe same code accorss other examples, but even then in the form of a copy that might end up getting hacked over a little. 
+
+## starting an example
+
+Most if not all examples should work by way of the file protocol in a web browser, in other words you can just open the main index.html of a folder in the browser wothout the need to serve the example locally.
 
 ## The forPost, and prototype Folders
 
