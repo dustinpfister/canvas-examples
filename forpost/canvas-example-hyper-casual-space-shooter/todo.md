@@ -39,13 +39,12 @@ Now that the very core of the game seems to be togeather I think it would be a g
 * (done) the lable prop can be a string or a function that will return one
 * (done) I will need a game.pointersIndex prop that will be the current index for the object in MAP_POINTERS
 * (done) use current object in MAP_POINTERS to set what the arrow points to
+* (done) have a gameMod.loopPointers public method
+* (done) use the 'n' key as a way to loop pointers by calling gameMod.loopPointers
 
-* have a gameMod.loopPointers public method
-* use the 'n' key as a way to loop pointers by calling gameMod.loopPointers
+* have a pointer that will point to the best location for current weapon damage
+
 * have a change pointer button in space mode as a way to call gameMod.loopPointers with touch for now
-
-* I will need a way to change what the arrow points to
-
 * make a 0.27.0 pkg folder
 
 ## 0.26.0 - Average Money Per Hour Helper, Tabulate all upgrade costs helper

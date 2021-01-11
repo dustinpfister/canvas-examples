@@ -51,7 +51,7 @@ var state = {
         keys: {}
     },
     lt : new Date(),
-    FPS_target : 30,
+    FPS_target : 20,
     FPS: 0
 };
 // update pointer object helper
