@@ -113,6 +113,8 @@ var save = {
        // save map pos
        createOptions.mapX = game.map.x;
        createOptions.mapY = game.map.y;
+       // weaponIndex
+       createOptions.weaponIndex = game.ship.weaponIndex;
        // update jason
        localStorage.setItem(save.appName, JSON.stringify(save.gameSaves));
    }
@@ -131,7 +133,6 @@ if(save.gameSaves){
 }
 
 var createOptions = save.gameSaves[save.slotIndex];
-createOptions.weaponIndex = 1;
 state.game = gameMod.create(createOptions);
 
 // LOOP
