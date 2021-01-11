@@ -1375,6 +1375,11 @@ var gameMod = (function(){
         }
     };
 
+    api.loopPointers = function(game){
+        game.pointerIndex += 1;
+        game.pointerIndex = utils.mod(game.pointerIndex, MAP_POINTERS.length);
+    };
+
     // make update buttons public
     api.updateButtons = updateButtons;
 
