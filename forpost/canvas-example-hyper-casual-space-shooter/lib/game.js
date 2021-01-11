@@ -40,6 +40,27 @@ var gameMod = (function(){
     //MAP_MAX_DIST = 2.5 * Math.pow(10,5),     // max distance from BASE (0,0) ( set to Number.MAX_SAFE_INTEGER ? )
     //MAP_MAX_DIST = 5 * Math.pow(10,5),
     MAP_MAX_DIST = Math.pow(10,4),
+    MAP_POINTERS = [
+        {
+            label: 'base',
+            pos: {x: 0, y: 0}
+        },
+        {
+            label: 'limit:0',
+            pos: {x: MAP_MAX_DIST, y: 0}
+        },
+        {
+            label: function(game){
+                return 'limit:H';
+            },
+            pos: function(game){
+                return {
+                    x: Math.cos(game.map.radian) * MAP_MAX_DIST,
+                    y: Math.sin(game.map.radian) * MAP_MAX_DIST
+                };
+            }
+        }
+    ];
 
     // energy
     ENERGY_MAX = 100,                        // energy max and auto heal cost

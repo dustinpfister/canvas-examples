@@ -31,12 +31,16 @@ Now that the very core of the game seems to be togeather I think it would be a g
 * (done) the ETA Object should have a unit prop that will have a value like S, M, H, D, Y, or K for units of time
 * (done) add a radian value for an eta object
 * (done) use eta.radian in the draw arrow method in draw.js
-* add a optional point lable for createETA, and draw that if used
+* (done) add a optional point lable for createETA, and draw that if used
+* (done) make it so the arrow can point to something other than the base
 
+* have a MAP_POINTERS constant that will be an array of objects
+* each object in MAP_POINTERS will have a lable prop and a pos prop
+* the value of the pos prop and be an object literal of a position, or a function that will return one
+* the lable prop can be a string or a function that will return one
 
-* make it so the arrow can point to something other than the base
 * I will need a way to change what the arrow points to
-* use new ETA feature to find out how long it will take to go to the limit of the map.
+
 * make a 0.27.0 pkg folder
 
 ## 0.26.0 - Average Money Per Hour Helper, Tabulate all upgrade costs helper
