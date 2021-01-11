@@ -1151,6 +1151,7 @@ var gameMod = (function(){
                 }
             },
             ETA: {},
+            pointerIndex:0,
             mode: 'space',
             autoFire: SHIP_AUTOFIRE,
             weapons: utils.deepClone(DEFAULT_WEAPONS),
@@ -1283,9 +1284,9 @@ var gameMod = (function(){
         }
 
         // ETA
-        game.ETA = createETA(game, MAP_MAX_DIST, 0);
-        game.ETA.label = 'limit:0';
-
+        var pointer = MAP_POINTERS[game.pointerIndex];
+        game.ETA = createETA(game, pointer.pos.x, pointer.pos.y, pointer.label);
+        //game.ETA.label = 'limit:0';
         //game.ETA = createETA(game, 0, 0, 'base');
 
         // update money per hour
