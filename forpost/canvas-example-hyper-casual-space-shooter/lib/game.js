@@ -79,16 +79,30 @@ var gameMod = (function(){
             label: 'block',
             pos: function(game){
                 var active = poolMod.getAllActive(game.blocks),
-                len = active.length;
+                len = active.length,
+                distList = active.map(function(block, index){
+                    return {
+                        index: index,
+                        dist: utils.distance(0, 0, block.x, block.y)
+                    };
+                }).sort(function(a, b){
+                    if(a.dist > b.dist){
+                        return 1;
+                    }
+                    if(a.dist < b.dist){
+                        return -1;
+                    }
+                    return 0;
+                });
                 if(len > 0){
                     return {
-                        x: game.map.x + active[len-1].x,
-                        y: game.map.y + active[len-1].y
+                        x: game.map.x + active[distList[0].index].x,
+                        y: game.map.y + active[distList[0].index].y
                     };
                 }
                 return false;
             },
-            minDist: 64
+            minDist: 32
         }
     ];
 
