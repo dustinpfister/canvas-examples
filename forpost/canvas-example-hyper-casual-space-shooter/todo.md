@@ -33,11 +33,15 @@ Now that the very core of the game seems to be togeather I think it would be a g
 * (done) use eta.radian in the draw arrow method in draw.js
 * (done) add a optional point lable for createETA, and draw that if used
 * (done) make it so the arrow can point to something other than the base
+* (done) have a MAP_POINTERS constant that will be an array of objects
+* (done) each object in MAP_POINTERS will have a lable prop and a pos prop
+* (done) the value of the pos prop and be an object literal of a position, or a function that will return one
+* (done) the lable prop can be a string or a function that will return one
 
-* have a MAP_POINTERS constant that will be an array of objects
-* each object in MAP_POINTERS will have a lable prop and a pos prop
-* the value of the pos prop and be an object literal of a position, or a function that will return one
-* the lable prop can be a string or a function that will return one
+* I will need a game.pointersIndex prop that will be the current index for the object in MAP_POINTERS
+* use current object in MAP_POINTERS to set what the arrow points to
+* use the 'n' key as a way to loop pointers
+* have a change pointer button in space mode as a way to loop pointers with touch for now
 
 * I will need a way to change what the arrow points to
 
