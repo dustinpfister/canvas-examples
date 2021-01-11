@@ -51,6 +51,18 @@ var gameMod = (function(){
             label: 'limit:0',
             pos: {x: MAP_MAX_DIST, y: 0}
         },
+        {
+            label: 'limit:90',
+            pos: {x: 0, y: MAP_MAX_DIST}
+        },
+        {
+            label: 'limit:180',
+            pos: {x: MAP_MAX_DIST * -1, y: 0}
+        },
+        {
+            label: 'limit:270',
+            pos: {x: 0, y: MAP_MAX_DIST * -1}
+        },
         {   // to limit in front of ship
             label: function(game){
                 return 'limit:' + Math.floor(game.map.degree);
