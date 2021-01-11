@@ -1,6 +1,8 @@
 # canvas-example-hyper-casual-space-shooter
 
-The general idea of this hyper casual style space shooter game is to just fly around and blow up blocks, and that is it. Of course I aim to add a great deal more to it on top of that, but I do not want to repeat some things that I have done in previous examples. The goal here should be to not just focus on continuing to work on a project, that is one thing that I want to do with some of my canvas examples that I think are worthy of more investment of time sure, but that alone is not enough. As I continue working on this example the focus should be on what I can add to this game idea that will make the game more fun, this canvas example is a game after all.
+The general idea of this hyper casual style space shooter game is to just fly around and blow up blocks, and that is it. Well at least that was all I had in mind when I started working on it. By setting the bar very low I was able to get the basic idea of what I wanted up and running real fast naturally, and from that point forward I have just been adding on top of that basic idea.
+
+So of course I added a great deal more to the game beyond just flying around and blasting blocks, but I do not want to repeat some things that I have done in previous examples. The goal here should be to not just focus on continuing to work on a project, of course that is one thing that I want to do with some of my canvas examples that I think are worthy of more investment of time sure, but that alone is not enough. As I continue working on this example the focus should be on what I can add to this game idea that will make the game more fun, or at least addictive, or serve as some kind of escape, this canvas example is a game after all.
 
 ## 1 - Where to go to play this
 
