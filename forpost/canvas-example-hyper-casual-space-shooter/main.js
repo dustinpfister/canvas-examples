@@ -131,10 +131,7 @@ if(save.gameSaves){
 }
 
 var createOptions = save.gameSaves[save.slotIndex];
-
-console.log(save.gameSaves);
-console.log(createOptions);
-
+createOptions.weaponIndex = 1;
 state.game = gameMod.create(createOptions);
 
 // LOOP

@@ -139,7 +139,7 @@ var gameMod = (function(){
         return result;
     };
     // create the ship object
-    var createShip = function(game){
+    var createShip = function(game, weaponIndex){
         var ship = {
             type: 'ship',
             x: 0, // ship position relative to map position
@@ -150,8 +150,8 @@ var gameMod = (function(){
             energy: createEnergyObject(),
             fillStyle: 'blue',
             weaponSecs: 0,
-            weaponIndex:0,
-            weapon: game.weapons[0] // reference to the current weapon
+            weaponIndex: weaponIndex || 0,
+            weapon: game.weapons[weaponIndex || 0] // reference to the current weapon
         };
         ship.hp.autoHeal.enabled = SHIP_AUTOHEAL_ENABLED;
         ship.hp.autoHeal.rate = SHIP_AUTOHEAL_RATE;
@@ -826,7 +826,7 @@ var gameMod = (function(){
     };
     // what to do when the player ship dies
     var onShipDeath = function(game){
-        game.ship = createShip(game);
+        game.ship = createShip(game, game.ship.weaponIndex);
         game.map.x = 0;
         game.map.y = 0;
         game.map.pps = 0;
@@ -1249,7 +1249,7 @@ var gameMod = (function(){
             }
         };
         // set current weapon
-        game.ship = createShip(game);
+        game.ship = createShip(game, opt.weaponIndex || 0);
         // create game.upgrades
         var upgradeIndices = opt.upgradeIndices || {
             s1: 1
