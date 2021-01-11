@@ -23,7 +23,7 @@ var gameMod = (function(){
     BLOCK_ARMOR_MINDAM_MIN = 0,              // min and max values for armor min damage prop
     BLOCK_ARMOR_MINDAM_MAX = BLOCK_HP_MAX * 0.05,
 
-    // SHIP AND MAP VALUES
+    // ship
     SHIP_AUTOFIRE = true,                    // auto fire on or off by default
     SHIP_HP = 100,                           // ship hit points
     SHIP_AUTOHEAL_ENABLED=true,              // auto heal values for ship
@@ -35,7 +35,9 @@ var gameMod = (function(){
     SHIP_MAX_SPEED_MAX = 1024,               // fully upgraded max ship speed in pps
     SHIP_ACC_START = 64,                     // starting Acceleration in ppsps
     SHIP_ACC_MAX = 256,                      // fully upgraded max ship speed in pps
-    MAP_MAX_DIST = 2.5 * Math.pow(10,5),     // max distance from BASE (0,0) ( set to Number.MAX_SAFE_INTEGER ? )
+
+    // map
+    MAP_MAX_DIST = 5 * Math.pow(10,5),     // max distance from BASE (0,0) ( set to Number.MAX_SAFE_INTEGER ? )
 
     // energy
     ENERGY_MAX = 100,                        // energy max and auto heal cost
@@ -1257,7 +1259,7 @@ var gameMod = (function(){
         }
 
         // ETA
-        game.ETA = createETA(game, 1000, 1000);
+        game.ETA = createETA(game, MAP_MAX_DIST, 0);
 
         // update money per hour
         var mph = game.moneyPerHour,
