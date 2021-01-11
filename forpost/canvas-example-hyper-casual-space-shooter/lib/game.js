@@ -42,6 +42,56 @@ var gameMod = (function(){
     // values for the base area at the origin
     BASE_DIST = 100;
 
+    /********** HELPERS **********
+        miscellaneous helpers that are, or might be used by two or more game.js features
+    **********/
+    // get a value by map dist, and additional options like a minVal and maxVal 
+    var getValueByMapDist = function(game, opt){
+        opt = opt || {};
+        opt.minVal = opt.minVal || 0; // min value of the result
+        opt.maxVal = opt.maxVal || 1; // max value of the result
+        opt.roundFunc = opt.roundFunc || Math.round; // rounding method to use, false for none
+        opt.perFunc = opt.perFunc || utils.log1; // the percent function to use, false for none
+        opt.perFuncArgs = opt.perFuncArgs || [];
+        // default per to game.map.per
+        var per = game.map.per,
+        delta = opt.maxVal - opt.minVal;
+        if(opt.perFunc){
+            per = opt.perFunc.apply(null, [per, 1, 'per'].concat(opt.perFuncArgs));
+        }
+        // use a percent method
+        var result = opt.minVal + delta * per;
+        if(opt.roundFunc){
+            return opt.roundFunc(result);
+        }
+        return result;
+    };
+
+    // create the ship object
+    var createShip = function(game){
+        var ship = {
+            type: 'ship',
+            x: 0, // ship position relative to map position
+            y: 0,
+            r: 8,
+            newShip: true, // used in main app loop to reset things
+            hp: createHPObject(SHIP_HP),
+            energy: createEnergyObject(),
+            fillStyle: 'blue',
+            weaponSecs: 0,
+            weaponIndex:0,
+            weapon: game.weapons[0] // reference to the current weapon
+        };
+        ship.hp.autoHeal.enabled = SHIP_AUTOHEAL_ENABLED;
+        ship.hp.autoHeal.rate = SHIP_AUTOHEAL_RATE;
+        ship.hp.autoHeal.amount = SHIP_AUTOHEAL_AMOUNT;
+        return ship;
+    };
+
+    /********** WEAPONS **********
+        Data objects, and helpers for ship weapons
+    **********/
+
     // main WEAPONS Object that will be used to create DEFAULT_WEAPONS and append DEFAULT_UPGRADES
     var WEAPONS = {
         0: {
@@ -195,6 +245,34 @@ var gameMod = (function(){
     // DEFAULT WEAPON OBJECT that will be cloned as game.weapons
     var DEFAULT_WEAPONS = create_DEFAULT_WEAPONS();
 
+    /********** MAP **********
+        map helpers
+    **********/
+
+    // clamp map pos helper for map updater
+    var clampMapPos = function(map){
+        if(map.dist >= MAP_MAX_DIST){
+          var radian = utils.wrapRadian(map.radian + Math.PI);
+          map.x = Math.cos(radian) * MAP_MAX_DIST;
+          map.y = Math.sin(radian) * MAP_MAX_DIST;
+        }
+    };
+    // update the MAP 
+    var updateMap = function(game, secs){
+        var map = game.map;
+        //map.radian = utils.wrapRadian(Math.PI / 180 * map.degree);
+        map.x += Math.cos(map.radian) * map.pps * secs;
+        map.y += Math.sin(map.radian) * map.pps * secs;
+        map.dist = utils.distance(0, 0, map.x, map.y);
+        clampMapPos(map);
+        map.per = game.map.dist / MAP_MAX_DIST;
+        map.aToOrigin = utils.angleTo(0, 0, map.x, map.y);
+    };
+
+
+    /********** BUTTONS **********
+        buttons
+    **********/
     var SPACE_BUTTONS = {
         main: {
             0: {
@@ -384,6 +462,14 @@ var gameMod = (function(){
         }
     };
 
+    // check if a button was clicked
+    var buttonCheck = function(button, pos){
+        if(utils.distance(button.x, button.y, pos.x - 160, pos.y - 120) <= button.r){
+            return true;
+        }
+        return false;
+    };
+
     // create upgrade object references and cost/display info
     var updateButtons = function(game){
         ['base'].forEach(function(mode){
@@ -414,7 +500,9 @@ var gameMod = (function(){
         });
     };
 
-    // UPGRADES
+    /********** UPGRADES **********
+        upgrades
+    **********/
 
     var DEFAULT_UPGRADES = [
         {
@@ -584,9 +672,9 @@ var gameMod = (function(){
         return lowest;
     };
 
-    var api = {};
-
-    // HIT POINTS
+    /********** HIT POINTS **********
+        hit points, attack, and autoheal
+    **********/
     var createHPObject = function(maxHP){
         return {
             current: maxHP || 100,
@@ -659,7 +747,9 @@ var gameMod = (function(){
         }
     };
 
-    // ENERGY
+    /********** ENERGY **********
+        Ship energy
+    **********/
 
     // create and return am energy object
     var createEnergyObject = function(){
@@ -688,8 +778,11 @@ var gameMod = (function(){
         clampEnergy(energy);
     };
 
-    // SHOTS
-    
+
+    /********** Shots **********
+        weapon shot objects
+    **********/
+
     // shot style data
     var shotStyleHelper = function(shot){
         shot.fillStyle = 'rgba(255,255,255,0.2)';
@@ -777,7 +870,29 @@ var gameMod = (function(){
             });
     };
 
-    // BLOCK POOL
+    // update shots helper that is called in main api.update
+    var updateShots = function(game, secs, state){
+        var ship = game.ship,
+        weapon = ship.weapon;
+        // only shoot new shots in 'space' mode
+        if(game.mode === 'space'){
+            ship.weaponSecs += secs;
+            if(game.autoFire || state.input.fire){
+                if(ship.weaponSecs >= 1 / weapon.firesPerSecond){
+                    weapon.onFireStart(game, secs, state);
+                    weapon.shotsPerFireIndex += 1;
+                    weapon.shotsPerFireIndex %= weapon.shotsPerFire.length;
+                    ship.weaponSecs = 0;
+                }
+            }
+        }
+        // always update shot pool
+        poolMod.update(game.shots, secs, state);;
+    };
+
+    /********** BLOCKS **********
+        The block objects
+    **********/
 
     // get all free positions where a block can go
     // will retrun an empty array in the event that there are none
@@ -837,29 +952,28 @@ var gameMod = (function(){
         }
     };
 
-    // get a value by map dist, and additional options like a minVal and maxVal 
-    var getValueByMapDist = function(game, opt){
-        opt = opt || {};
-        opt.minVal = opt.minVal || 0; // min value of the result
-        opt.maxVal = opt.maxVal || 1; // max value of the result
-        opt.roundFunc = opt.roundFunc || Math.round; // rounding method to use, false for none
-        opt.perFunc = opt.perFunc || utils.log1; // the percent function to use, false for none
-        opt.perFuncArgs = opt.perFuncArgs || [];
-        // default per to game.map.per
-        var per = game.map.per,
-        delta = opt.maxVal - opt.minVal;
-        if(opt.perFunc){
-            per = opt.perFunc.apply(null, [per, 1, 'per'].concat(opt.perFuncArgs));
-        }
-        // use a percent method
-        var result = opt.minVal + delta * per;
-        if(opt.roundFunc){
-            return opt.roundFunc(result);
-        }
-        return result;
-    };
+    var updateBlocks = function(game, secs, state){
+        var blockSpawn = game.blockSpawn,
+        spawnIndex;
+        // only spawn blocks in space mode
+        if(game.mode === 'space'){
 
-    // CREATE
+            poolMod.update(game.blocks, secs, state);
+            blockSpawn.dist = utils.distance(game.map.x, game.map.y, blockSpawn.lastPos.x, blockSpawn.lastPos.y);
+            if(blockSpawn.dist >= BLOCK_SPAWN_DIST){
+                blockSpawn.lastPos.x = game.map.x;
+                blockSpawn.lastPos.y = game.map.y;
+                spawnIndex = BLOCK_SPAWN_COUNT_PER_DIST_MIN;
+                while(spawnIndex--){
+                    poolMod.spawn(game.blocks, state, {});
+                }
+            }
+        }
+        // all blocks are inactive in base mode
+        if(game.mode === 'base'){
+            poolMod.setActiveStateForAll(game.blocks, false);
+        }
+    };
 
     // create block pool helper
     var createBlocksPool = function(){
@@ -947,26 +1061,11 @@ var gameMod = (function(){
         });
     };
 
-    // create ship object
-    var createShip = function(game){
-        var ship = {
-            type: 'ship',
-            x: 0, // ship position relative to map position
-            y: 0,
-            r: 8,
-            newShip: true, // used in main app loop to reset things
-            hp: createHPObject(SHIP_HP),
-            energy: createEnergyObject(),
-            fillStyle: 'blue',
-            weaponSecs: 0,
-            weaponIndex:0,
-            weapon: game.weapons[0] // reference to the current weapon
-        };
-        ship.hp.autoHeal.enabled = SHIP_AUTOHEAL_ENABLED;
-        ship.hp.autoHeal.rate = SHIP_AUTOHEAL_RATE;
-        ship.hp.autoHeal.amount = SHIP_AUTOHEAL_AMOUNT;
-        return ship;
-    };
+    /********** PUBLIC API **********
+        methods to be used by project features outside of this module
+    **********/
+
+    var api = {};
 
     // public create method
     api.create = function(opt){
@@ -1084,68 +1183,6 @@ var gameMod = (function(){
         game.map.pps = game.map.pps > game.map.maxPPS ? game.map.maxPPS : game.map.pps;
     };
 
-    // clamp map pos helper for map updater
-    var clampMapPos = function(map){
-        if(map.dist >= MAP_MAX_DIST){
-          var radian = utils.wrapRadian(map.radian + Math.PI);
-          map.x = Math.cos(radian) * MAP_MAX_DIST;
-          map.y = Math.sin(radian) * MAP_MAX_DIST;
-        }
-    };
-    // update the MAP 
-    var updateMap = function(game, secs){
-        var map = game.map;
-        //map.radian = utils.wrapRadian(Math.PI / 180 * map.degree);
-        map.x += Math.cos(map.radian) * map.pps * secs;
-        map.y += Math.sin(map.radian) * map.pps * secs;
-        map.dist = utils.distance(0, 0, map.x, map.y);
-        clampMapPos(map);
-        map.per = game.map.dist / MAP_MAX_DIST;
-        map.aToOrigin = utils.angleTo(0, 0, map.x, map.y);
-    };
-
-    var updateBlocks = function(game, secs, state){
-        var blockSpawn = game.blockSpawn,
-        spawnIndex;
-        // only spawn blocks in space mode
-        if(game.mode === 'space'){
-
-            poolMod.update(game.blocks, secs, state);
-            blockSpawn.dist = utils.distance(game.map.x, game.map.y, blockSpawn.lastPos.x, blockSpawn.lastPos.y);
-            if(blockSpawn.dist >= BLOCK_SPAWN_DIST){
-                blockSpawn.lastPos.x = game.map.x;
-                blockSpawn.lastPos.y = game.map.y;
-                spawnIndex = BLOCK_SPAWN_COUNT_PER_DIST_MIN;
-                while(spawnIndex--){
-                    poolMod.spawn(game.blocks, state, {});
-                }
-            }
-        }
-        // all blocks are inactive in base mode
-        if(game.mode === 'base'){
-            poolMod.setActiveStateForAll(game.blocks, false);
-        }
-    };
-
-    var updateShots = function(game, secs, state){
-        var ship = game.ship,
-        weapon = ship.weapon;
-        // only shoot new shots in 'space' mode
-        if(game.mode === 'space'){
-            ship.weaponSecs += secs;
-            if(game.autoFire || state.input.fire){
-                if(ship.weaponSecs >= 1 / weapon.firesPerSecond){
-                    weapon.onFireStart(game, secs, state);
-                    weapon.shotsPerFireIndex += 1;
-                    weapon.shotsPerFireIndex %= weapon.shotsPerFire.length;
-                    ship.weaponSecs = 0;
-                }
-            }
-        }
-        // always update shot pool
-        poolMod.update(game.shots, secs, state);;
-    };
-
     api.update = function(game, secs, state){
 
         // clamp secs between 0 and GAME_UPDATE_MAX_SECS const
@@ -1229,13 +1266,6 @@ var gameMod = (function(){
         if(lowest){
             mph.target = lowest.cost;
         }
-    };
-
-    var buttonCheck = function(button, pos){
-        if(utils.distance(button.x, button.y, pos.x - 160, pos.y - 120) <= button.r){
-            return true;
-        }
-        return false;
     };
 
     // check current mode and page of buttons
