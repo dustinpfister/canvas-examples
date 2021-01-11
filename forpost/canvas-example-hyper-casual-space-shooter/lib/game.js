@@ -148,6 +148,19 @@ var gameMod = (function(){
             unit: unit
         };
     };
+    // update game.ETA with current pointer index
+    var updateETA = function(game){
+        var pointer = MAP_POINTERS[game.pointerIndex];
+        var pos = pointer.pos;
+        var label = pointer.label;
+        if(typeof pos === 'function'){
+            pos = pos(game);
+        }
+        if(typeof label === 'function'){
+            label = label(game);
+        }
+        game.ETA = createETA(game, pos.x, pos.y, label);
+    };
 
     /********** WEAPONS **********
         Data objects, and helpers for ship weapons
@@ -1284,7 +1297,9 @@ var gameMod = (function(){
         }
 
         // ETA
-        var pointer = MAP_POINTERS[2];
+        updateETA(game);
+/*
+        var pointer = MAP_POINTERS[game.pointerIndex];
         var pos = pointer.pos;
         var label = pointer.label;
         if(typeof pos === 'function'){
@@ -1294,7 +1309,7 @@ var gameMod = (function(){
             label = label(game);
         }
         game.ETA = createETA(game, pos.x, pos.y, label);
-
+*/
         // update money per hour
         var mph = game.moneyPerHour,
         len = mph.blockValues.length;
