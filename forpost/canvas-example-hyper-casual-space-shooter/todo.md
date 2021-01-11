@@ -24,10 +24,13 @@ Now that the very core of the game seems to be togeather I think it would be a g
 * The 'warp' game mode resuts in a whole new interface that can be used to set a location to warp to
 * warping from one location to another should cost energy/money
 
-## 0.27.0 - ETA Helper
-* add a helper that will return an ETA to a given point, from a current point and speed.
-* use new ETA feature to find out how long it will take to go to the limit of the map.
+## 0.27.0 - New ETA Helper
+* add an ETA helper that will return an ETA object to a given point, from a current point and speed.
+* the ETA Object should have a unit prop that will have a value like S, M, H, D, Y, or K for units of time
 * use new ETA feature to find out how long it will take to go back to the base.
+* use new ETA feature to find out how long it will take to go to the limit of the map.
+* update draw.js to display new ETA Values
+* make a 0.27.0 pkg folder
 
 ## 0.26.0 - Average Money Per Hour Helper, Tabulate all upgrade costs helper
 * (done) have a game.moneyPerHour object
