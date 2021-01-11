@@ -57,38 +57,34 @@ var draw = (function(){
 
     // draw an 'arrow' to the base
     var drawArrowToBase = function(ctx, game){
-
         var eta = game.ETA;
         if(eta.dist >= eta.minDist){
-
-        baseObjectDraw(ctx, {
-            //x: Math.cos(game.map.aToOrigin) * 32,
-            //y: Math.sin(game.map.aToOrigin) * 32,
-            x: Math.cos(eta.radian) * 32,
-            y: Math.sin(eta.radian) * 32,
-            r: 5,
-            fillStyle: 'black'
-        },
-        function(ctx, obj){
-            ctx.translate(obj.x, obj.y);
-            ctx.fillStyle = 'white';
-            ctx.fillText(eta.label, 0, 8);
-            if(eta.t === Infinity){
-                ctx.fillText('I', 0, 16);
-            }else{
-                ctx.fillText(Math.round(eta.t) + eta.unit, 0, 16);
-            }
-            ctx.fillStyle = 'red';
-            ctx.rotate(eta.radian);
-            ctx.beginPath();
-            ctx.moveTo(obj.r, 0);
-            ctx.lineTo(obj.r * -1, obj.r);
-            ctx.lineTo(obj.r * -1, obj.r * -1);
-            ctx.closePath();
-            ctx.lineWidth = 2;
-            ctx.stroke();
-            ctx.fill();
-        });
+            baseObjectDraw(ctx, {
+                x: Math.cos(eta.radian) * 32,
+                y: Math.sin(eta.radian) * 32,
+                r: 5,
+                fillStyle: 'black'
+            },
+            function(ctx, obj){
+                ctx.translate(obj.x, obj.y);
+                ctx.fillStyle = 'white';
+                ctx.fillText(eta.label, 0, 8);
+                if(eta.t === Infinity){
+                    ctx.fillText('I', 0, 16);
+                }else{
+                    ctx.fillText(Math.round(eta.t) + eta.unit, 0, 16);
+                }
+                ctx.fillStyle = 'red';
+                ctx.rotate(eta.radian);
+                ctx.beginPath();
+                ctx.moveTo(obj.r, 0);
+                ctx.lineTo(obj.r * -1, obj.r);
+                ctx.lineTo(obj.r * -1, obj.r * -1);
+                ctx.closePath();
+                ctx.lineWidth = 2;
+                ctx.stroke();
+                ctx.fill();
+            });
         }
     };
 
