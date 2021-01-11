@@ -1,13 +1,16 @@
 var gameMod = (function(){
     
     // CONSTANTS
+    /********** CONSTANTS **********
+        harde coded CONSTANTS for game values
+    **********/
 
-    // MONEY
+    // money (see also BLOCK_MONEY_* values)
     var GAME_MONEY_START = 0,                // The amount of money to start a new game with
     GAME_UPDATE_MAX_SECS = 0.8,              // max secs value for main update loop
     MONEY_PERLOSS_ON_DEATH = 0.1,            // percent of money loss on death 0-1
 
-    // BLOCK CONSTANTS
+    // blocks
     BLOCK_COUNT = 40,                        // max number of blocks in the game.blocks pool
     BLOCK_POS_MAX_DIST = 1500,               // max distnace the a black can have from a ship until it becomes inactive
     BLOCK_SPAWN_DIST = 250,                  // the distance the ship needs to go from last block spawn, for another block spawn
@@ -38,13 +41,13 @@ var gameMod = (function(){
     ENERGY_MAX = 100,                        // energy max and auto heal cost
     ENERGY_AUTOHEAL_COST=3,
 
-    // HOME BASE VALUES
     // values for the base area at the origin
     BASE_DIST = 100;
 
     /********** HELPERS **********
         miscellaneous helpers that are, or might be used by two or more game.js features
     **********/
+
     // get a value by map dist, and additional options like a minVal and maxVal 
     var getValueByMapDist = function(game, opt){
         opt = opt || {};
@@ -66,7 +69,6 @@ var gameMod = (function(){
         }
         return result;
     };
-
     // create the ship object
     var createShip = function(game){
         var ship = {
@@ -86,6 +88,18 @@ var gameMod = (function(){
         ship.hp.autoHeal.rate = SHIP_AUTOHEAL_RATE;
         ship.hp.autoHeal.amount = SHIP_AUTOHEAL_AMOUNT;
         return ship;
+    };
+    // create an ETA object to the given point
+    var createETA = function(game, x, y){
+        var map = game.map,
+        dist = utils.distance(map.x, map.y, x, y),
+        unit = 'S',
+        t = dist / map.pps;
+        return {
+            dist: dist,
+            t: t,
+            unit: unit
+        };
     };
 
     /********** WEAPONS **********
@@ -1089,6 +1103,7 @@ var gameMod = (function(){
                     return this.current;
                 }
             },
+            ETA: {},
             mode: 'space',
             autoFire: SHIP_AUTOFIRE,
             weapons: utils.deepClone(DEFAULT_WEAPONS),
@@ -1147,6 +1162,8 @@ var gameMod = (function(){
         });
         // create upgrade refernces and set starting cost values for buttons
         updateButtons(game);
+
+        game.ETA = createETA(game, 0, 0);
 
 
         // buy starting upgrades
@@ -1218,6 +1235,8 @@ var gameMod = (function(){
             autoHealObject(game.ship, secs);
         }
 
+        // ETA
+        game.ETA = createETA(game, 0, 0);
 
         // update money per hour
         var mph = game.moneyPerHour,
