@@ -61,8 +61,10 @@ var draw = (function(){
         var eta = game.ETA;
 
         baseObjectDraw(ctx, {
-            x: Math.cos(game.map.aToOrigin) * 32,
-            y: Math.sin(game.map.aToOrigin) * 32,
+            //x: Math.cos(game.map.aToOrigin) * 32,
+            //y: Math.sin(game.map.aToOrigin) * 32,
+            x: Math.cos(eta.radian) * 32,
+            y: Math.sin(eta.radian) * 32,
             r: 5,
             fillStyle: 'black'
         },
@@ -75,7 +77,7 @@ var draw = (function(){
                 ctx.fillText(Math.round(eta.t) + eta.unit, 0, 8);
             }
             ctx.fillStyle = 'red';
-            ctx.rotate(game.map.aToOrigin);
+            ctx.rotate(eta.radian);
             ctx.beginPath();
             ctx.moveTo(obj.r, 0);
             ctx.lineTo(obj.r * -1, obj.r);

@@ -117,6 +117,7 @@ var gameMod = (function(){
         }
         return {
             dist: dist,
+            radian: utils.angleTo(x, y, map.x, map.y),
             t: t,
             unit: unit
         };
