@@ -71,10 +71,11 @@ var draw = (function(){
         function(ctx, obj){
             ctx.translate(obj.x, obj.y);
             ctx.fillStyle = 'white';
+            ctx.fillText(eta.label, 0, 8);
             if(eta.t === Infinity){
-                ctx.fillText('I', 0, 8);
+                ctx.fillText('I', 0, 16);
             }else{
-                ctx.fillText(Math.round(eta.t) + eta.unit, 0, 8);
+                ctx.fillText(Math.round(eta.t) + eta.unit, 0, 16);
             }
             ctx.fillStyle = 'red';
             ctx.rotate(eta.radian);
@@ -86,7 +87,6 @@ var draw = (function(){
             ctx.lineWidth = 2;
             ctx.stroke();
             ctx.fill();
-            ctx.fillStyle = 'white';
         });
 
     };

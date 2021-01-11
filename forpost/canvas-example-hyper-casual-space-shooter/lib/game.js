@@ -37,7 +37,9 @@ var gameMod = (function(){
     SHIP_ACC_MAX = 256,                      // fully upgraded max ship speed in pps
 
     // map
-    MAP_MAX_DIST = 5 * Math.pow(10,5),     // max distance from BASE (0,0) ( set to Number.MAX_SAFE_INTEGER ? )
+    //MAP_MAX_DIST = 2.5 * Math.pow(10,5),     // max distance from BASE (0,0) ( set to Number.MAX_SAFE_INTEGER ? )
+    //MAP_MAX_DIST = 5 * Math.pow(10,5),
+    MAP_MAX_DIST = Math.pow(10,4),
 
     // energy
     ENERGY_MAX = 100,                        // energy max and auto heal cost
@@ -92,7 +94,7 @@ var gameMod = (function(){
         return ship;
     };
     // create an ETA object to the given point
-    var createETA = function(game, x, y){
+    var createETA = function(game, x, y, label){
         var map = game.map,
         dist = utils.distance(map.x, map.y, x, y),
         unit = 'S',
@@ -118,6 +120,7 @@ var gameMod = (function(){
             unit = 'K'
         }
         return {
+            label: label || '',
             dist: dist,
             radian: utils.angleTo(x, y, map.x, map.y),
             t: t,
@@ -1260,6 +1263,9 @@ var gameMod = (function(){
 
         // ETA
         game.ETA = createETA(game, MAP_MAX_DIST, 0);
+        game.ETA.label = 'limit:0';
+
+        //game.ETA = createETA(game, 0, 0, 'base');
 
         // update money per hour
         var mph = game.moneyPerHour,

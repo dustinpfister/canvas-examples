@@ -29,8 +29,10 @@ Now that the very core of the game seems to be togeather I think it would be a g
 * (done) use new ETA feature to find out how long it will take to go back to the base.
 * (done) update draw.js to display new ETA Values
 * (done) the ETA Object should have a unit prop that will have a value like S, M, H, D, Y, or K for units of time
-* add a radian value for an eta object
-* use eta.radian in the draw arrow method in draw.js
+* (done) add a radian value for an eta object
+* (done) use eta.radian in the draw arrow method in draw.js
+* add a optional point lable for createETA, and draw that if used
+
 
 * make it so the arrow can point to something other than the base
 * I will need a way to change what the arrow points to
