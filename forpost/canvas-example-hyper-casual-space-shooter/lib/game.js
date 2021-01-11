@@ -1257,7 +1257,7 @@ var gameMod = (function(){
         }
 
         // ETA
-        game.ETA = createETA(game, 0, 0);
+        game.ETA = createETA(game, 1000, 1000);
 
         // update money per hour
         var mph = game.moneyPerHour,
