@@ -38,9 +38,9 @@ var gameMod = (function(){
 
     // map
     //MAP_MAX_DIST = 2.5 * Math.pow(10,5),     // max distance from BASE (0,0) ( set to Number.MAX_SAFE_INTEGER ? )
-    MAP_MAX_DIST = 5 * Math.pow(10,5),
+    //MAP_MAX_DIST = 5 * Math.pow(10,5),
     //MAP_MAX_DIST = 5 * Math.pow(10,7),
-    //MAP_MAX_DIST = Number.MAX_SAFE_INTEGER,
+    MAP_MAX_DIST = Number.MAX_SAFE_INTEGER,
     //MAP_MAX_DIST = Math.pow(10,4),
     MAP_POINTERS = [
         {
@@ -217,7 +217,7 @@ var gameMod = (function(){
             name: 'Pulse Gun',
             firesPerSecond: { // min and max range for fires per second
                 min: 2,
-                max: 10,
+                max: 5,
                 levelOpt: {
                     levelCap: 20,
                     expCap: 250,
@@ -268,7 +268,7 @@ var gameMod = (function(){
             name: 'Cannon',
             firesPerSecond: { 
                 min: 2,
-                max: 5,
+                max: 10,
                 levelOpt: { 
                     levelCap: 10,
                     expCap: 15000,
@@ -279,7 +279,7 @@ var gameMod = (function(){
                 }
             },
             shotDamage: { 
-                min: Math.floor(BLOCK_ARMOR_MINDAM_MAX * 0.10),
+                min: Math.floor(BLOCK_ARMOR_MINDAM_MAX * 0.15),
                 max: Math.floor(BLOCK_ARMOR_MINDAM_MAX * 0.25),
                 levelOpt: { 
                     levelCap: 10,
@@ -296,10 +296,11 @@ var gameMod = (function(){
             onFireStart: function(game, secs, state){
                 var weapon = game.weapons[game.ship.weaponIndex];
                 var shotIndex = 0;
-                var radianStart = state.game.map.radian - Math.PI / 180 * 20;
+                var degree = 10;
+                var radianStart = state.game.map.radian - Math.PI / 180 * degree;
                 while(shotIndex < weapon.shotsPerFire[weapon.shotsPerFireIndex]){
                     var shotPer = shotIndex / (weapon.shotsPerFire[weapon.shotsPerFireIndex] - 1);
-                    var radianDelta = Math.PI / 180 * 40 * shotPer;
+                    var radianDelta = Math.PI / 180 * ( degree * 2 ) * shotPer;
                     poolMod.spawn(game.shots, state, {
                         radian: radianStart + radianDelta
                     });
