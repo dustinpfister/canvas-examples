@@ -38,7 +38,8 @@ var gameMod = (function(){
 
     // map
     //MAP_MAX_DIST = 2.5 * Math.pow(10,5),     // max distance from BASE (0,0) ( set to Number.MAX_SAFE_INTEGER ? )
-    MAP_MAX_DIST = 5 * Math.pow(10,7),
+    MAP_MAX_DIST = 5 * Math.pow(10,5),
+    //MAP_MAX_DIST = 5 * Math.pow(10,7),
     //MAP_MAX_DIST = Number.MAX_SAFE_INTEGER,
     //MAP_MAX_DIST = Math.pow(10,4),
     MAP_POINTERS = [
@@ -52,7 +53,7 @@ var gameMod = (function(){
         },
         {
             label: function(game){
-                return 'limit:H';
+                return 'limit:' + Math.floor(game.map.degree);
             },
             pos: function(game){
                 return {
