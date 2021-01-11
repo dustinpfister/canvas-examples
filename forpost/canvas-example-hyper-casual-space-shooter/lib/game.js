@@ -74,6 +74,21 @@ var gameMod = (function(){
                     y: Math.sin(game.map.radian) * MAP_MAX_DIST
                 };
             }
+        },
+        {   // to block
+            label: 'block',
+            pos: function(game){
+                var active = poolMod.getAllActive(game.blocks),
+                len = active.length;
+                if(len > 0){
+                    return {
+                        x: game.map.x + active[len-1].x,
+                        y: game.map.y + active[len-1].y
+                    };
+                }
+                return false;
+            },
+            minDist: 64
         }
     ];
 
