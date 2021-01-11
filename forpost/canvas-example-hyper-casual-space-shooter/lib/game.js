@@ -129,7 +129,7 @@ var gameMod = (function(){
         return ship;
     };
     // create an ETA object to the given point
-    var createETA = function(game, x, y, label){
+    var createETA = function(game, x, y, label, minDist){
         var map = game.map,
         dist = utils.distance(map.x, map.y, x, y),
         unit = 'S',
@@ -157,6 +157,7 @@ var gameMod = (function(){
         return {
             label: label || '',
             dist: dist,
+            minDist: minDist || 160,
             radian: utils.angleTo(x, y, map.x, map.y),
             t: t,
             unit: unit

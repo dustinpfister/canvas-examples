@@ -59,6 +59,7 @@ var draw = (function(){
     var drawArrowToBase = function(ctx, game){
 
         var eta = game.ETA;
+        if(eta.dist >= eta.minDist){
 
         baseObjectDraw(ctx, {
             //x: Math.cos(game.map.aToOrigin) * 32,
@@ -88,7 +89,7 @@ var draw = (function(){
             ctx.stroke();
             ctx.fill();
         });
-
+        }
     };
 
     // draw background
