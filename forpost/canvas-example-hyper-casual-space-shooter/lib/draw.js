@@ -58,6 +58,8 @@ var draw = (function(){
     // draw an 'arrow' to the base
     var drawArrowToBase = function(ctx, game){
 
+        var eta = game.ETA;
+
         baseObjectDraw(ctx, {
             x: Math.cos(game.map.aToOrigin) * 32,
             y: Math.sin(game.map.aToOrigin) * 32,
@@ -67,10 +69,10 @@ var draw = (function(){
         function(ctx, obj){
             ctx.translate(obj.x, obj.y);
             ctx.fillStyle = 'white';
-            if(game.ETA.t === Infinity){
+            if(eta.t === Infinity){
                 ctx.fillText('I', 0, 8);
             }else{
-                ctx.fillText(Math.round(game.ETA.t) + game.ETA.unit, 0, 8);
+                ctx.fillText(Math.round(eta.t) + eta.unit, 0, 8);
             }
             ctx.fillStyle = 'red';
             ctx.rotate(game.map.aToOrigin);
