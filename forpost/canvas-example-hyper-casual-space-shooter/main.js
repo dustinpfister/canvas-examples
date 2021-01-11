@@ -277,6 +277,9 @@ window.addEventListener('keyup', function(e){
     if(key === 'b'){
        state.game.autoFire = !state.game.autoFire;
     }
+    if(key === 'n'){
+       gameMod.loopPointers(state.game);
+    }
     state.input.keys[key] = false;
 });
 // MOUSE AND TOUCH
