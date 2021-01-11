@@ -65,8 +65,14 @@ var draw = (function(){
             fillStyle: 'black'
         },
         function(ctx, obj){
-            ctx.fillStyle = 'red',
             ctx.translate(obj.x, obj.y);
+            ctx.fillStyle = 'white';
+            if(game.ETA.t === Infinity){
+                ctx.fillText('I', 0, 8);
+            }else{
+                ctx.fillText(Math.round(game.ETA.t) + game.ETA.unit, 0, 8);
+            }
+            ctx.fillStyle = 'red';
             ctx.rotate(game.map.aToOrigin);
             ctx.beginPath();
             ctx.moveTo(obj.r, 0);
@@ -76,6 +82,7 @@ var draw = (function(){
             ctx.lineWidth = 2;
             ctx.stroke();
             ctx.fill();
+            ctx.fillStyle = 'white';
         });
 
     };
