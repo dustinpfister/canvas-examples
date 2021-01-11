@@ -42,8 +42,9 @@ Now that the very core of the game seems to be togeather I think it would be a g
 * (done) use current object in MAP_POINTERS to set what the arrow points to
 * (done) have a gameMod.loopPointers public method
 * (done) use the 'n' key as a way to loop pointers by calling gameMod.loopPointers
+* (done) have a minDist prop of an eta object, if the dist is below this the pointer will not be drawn
 
-* have a minDist prop of an eta object, if the dist is below this the pointer will not be drawn
+* pointer to the nearest block
 * have a change pointer button in space mode as a way to call gameMod.loopPointers with touch for now
 
 * make a 0.27.0 pkg folder

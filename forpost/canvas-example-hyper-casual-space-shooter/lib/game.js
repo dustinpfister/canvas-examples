@@ -45,7 +45,8 @@ var gameMod = (function(){
     MAP_POINTERS = [
         {
             label: 'base',
-            pos: {x: 0, y: 0}
+            pos: {x: 0, y: 0},
+            minDist: 200
         },
         {
             label: 'limit:0',
@@ -174,7 +175,7 @@ var gameMod = (function(){
         if(typeof label === 'function'){
             label = label(game);
         }
-        game.ETA = createETA(game, pos.x, pos.y, label);
+        game.ETA = createETA(game, pos.x, pos.y, label, pointer.minDist);
     };
 
     /********** WEAPONS **********
