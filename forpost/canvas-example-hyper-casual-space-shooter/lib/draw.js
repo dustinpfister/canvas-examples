@@ -344,12 +344,14 @@ var draw = (function(){
             ctx.textAlign = 'left';
 
             // money per hour
+/*
             var mph = game.moneyPerHour
             ctx.fillText('mph current : ' + utils.format_money(mph.current), 10, 10);
             ctx.fillText('mph money : ' + utils.format_money(mph.money), 10, 20);
             ctx.fillText('block value count : ' + mph.blockValues.length, 10, 30);
             ctx.fillText('purge out over time : ' + mph.purgeOut, 10, 40);
             ctx.fillText('mph secs : ' + mph.secs, 10, 50);
+*/
 
 /*
             // block spawning
@@ -371,7 +373,7 @@ var draw = (function(){
             ctx.fillText('headCir dir : ' + headCir.dir, 10, 60);
 */
 
-/*
+
             // map
             ctx.fillText('map pos: ' + Math.floor(map.x) + ' , ' + Math.floor(map.y), 10, 10);
             ctx.fillText('map radian: ' + map.radian.toFixed(2) + 
@@ -383,7 +385,7 @@ var draw = (function(){
                 '; fps: ' + w.firesPerSecond.toFixed(2), 10, 50);
             ctx.fillText('money : ' + game.money.toFixed(2) + '$', 10, 60);
             ctx.fillText('mode : ' + game.mode, 10, 70);
-*/
+
         }
     };
 

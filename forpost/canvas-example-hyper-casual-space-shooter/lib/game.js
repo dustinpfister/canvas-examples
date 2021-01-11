@@ -1284,10 +1284,16 @@ var gameMod = (function(){
         }
 
         // ETA
-        var pointer = MAP_POINTERS[game.pointerIndex];
-        game.ETA = createETA(game, pointer.pos.x, pointer.pos.y, pointer.label);
-        //game.ETA.label = 'limit:0';
-        //game.ETA = createETA(game, 0, 0, 'base');
+        var pointer = MAP_POINTERS[2];
+        var pos = pointer.pos;
+        var label = pointer.label;
+        if(typeof pos === 'function'){
+            pos = pos(game);
+        }
+        if(typeof label === 'function'){
+            label = label(game);
+        }
+        game.ETA = createETA(game, pos.x, pos.y, label);
 
         // update money per hour
         var mph = game.moneyPerHour,
