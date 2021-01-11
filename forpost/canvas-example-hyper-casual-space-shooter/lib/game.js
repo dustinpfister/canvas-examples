@@ -95,6 +95,26 @@ var gameMod = (function(){
         dist = utils.distance(map.x, map.y, x, y),
         unit = 'S',
         t = dist / map.pps;
+        if(t > 60 && unit === 'S'){
+           t /= 60;
+           unit = 'M';
+        }
+        if(t > 60 && unit === 'M'){
+            t /= 60;
+            unit = 'H'
+        }
+        if(t > 24 && unit === 'H'){
+            t /= 24;
+            unit = 'D'
+        }
+        if(t > 365.25 && unit === 'D'){
+            t /= 365.25;
+            unit = 'Y'
+        }
+        if(t > 1000 && unit === 'Y'){
+            t /= 1000;
+            unit = 'K'
+        }
         return {
             dist: dist,
             t: t,
