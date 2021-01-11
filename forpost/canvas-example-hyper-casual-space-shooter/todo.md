@@ -44,7 +44,10 @@ Now that the very core of the game seems to be togeather I think it would be a g
 * (done) use the 'n' key as a way to loop pointers by calling gameMod.loopPointers
 * (done) have a minDist prop of an eta object, if the dist is below this the pointer will not be drawn
 
+
+* make it so that 'false' is a vaild value option for eta.pos. A false value meens there is nothing to point to, currently
 * pointer to the nearest block
+
 * have a change pointer button in space mode as a way to call gameMod.loopPointers with touch for now
 
 * make a 0.27.0 pkg folder

@@ -58,7 +58,7 @@ var draw = (function(){
     // draw an 'arrow' to the base
     var drawArrowToBase = function(ctx, game){
         var eta = game.ETA;
-        if(eta.dist >= eta.minDist){
+        if(eta.dist >= eta.minDist && eta.pos != false){
             baseObjectDraw(ctx, {
                 x: Math.cos(eta.radian) * 32,
                 y: Math.sin(eta.radian) * 32,
