@@ -46,3 +46,16 @@ draw.box2 = function(ctx, box){
     }
     ctx.restore();
 };
+
+// FF_TYPES
+draw.types = {
+    plain: function(ctx, ff){
+        //console.log('hello?');
+        draw.box2(ctx, ff.model);
+    },
+    points: function(ctx, ff){
+    }
+};
+draw.ffType = function(ctx, ff){
+    draw.types[ff.type](ctx, ff);
+};
