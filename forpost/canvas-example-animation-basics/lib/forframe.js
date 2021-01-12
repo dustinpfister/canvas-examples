@@ -25,7 +25,7 @@ var forFrame = (function(){
         ff.frame = utils.mod(ff.frame, ff.maxFrame);
         ff.per = ff.frame / ff.maxFrame;
         ff.model = ff.forFrame(ff, ff.frame, ff.maxFrame);
-        return ff.model;
+        return ff;
     };
 
     // create a main ff object
@@ -63,6 +63,7 @@ var forFrame = (function(){
             api.step(ff, frames);
             ff.secs = utils.mod(ff.secs, 1 / fps);
         }
+        return ff;
     };
 
     // return the public api;
