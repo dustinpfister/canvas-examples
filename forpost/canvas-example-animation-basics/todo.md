@@ -5,6 +5,7 @@
 ## 0.x.0 - new forFrame.createSheet feature
 
 ## 0.x.0 - new forFrame.createPoints feature, and star example
+* make a 0.3.0 pkg folder
 
 ## 0.2.0 - forFrame.step, and forFrame.update
 * (done) make forFrame.step a function that will take ff and stepFrames as arguments

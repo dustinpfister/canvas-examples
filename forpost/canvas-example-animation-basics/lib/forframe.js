@@ -28,7 +28,7 @@ var forFrame = (function(){
         return ff;
     };
 
-    // create a main ff object
+    // create a plain ff object
     api.create = function(opt){
         opt = opt || {};
         var ff = {
@@ -42,6 +42,13 @@ var forFrame = (function(){
             forFrame: opt.forFrame || FORFRAME_BUILT_IN
         };
         ff.model = setFrame(ff, ff.frame);
+        return ff;
+    };
+
+    api.createPoints = function(opt){
+        opt = opt || {};
+        var ff = api.create(opt);
+        model.points = [];
         return ff;
     };
 
