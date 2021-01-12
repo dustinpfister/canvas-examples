@@ -9,8 +9,8 @@
 * (done) have a ff.type prop that will default to 'plain' for forFrame.create and 'points' for forFrame.createPoints
 * (done) have a FF_TYPES const that will be a collection of objects for each type
 * (done) use FF_TYPES to define what the defaults are for forFrame methods
-* have a draw.ffType function that will draw based on the ff.type prop
-* have a function that will create and return arguments for the forFrame method
+* (done) have a draw.ffType function that will draw based on the ff.type prop
+* (done) have a function that will create and return arguments for the forFrame method
 * make a 0.3.0 pkg folder
 
 ## 0.2.0 - forFrame.step, and forFrame.update

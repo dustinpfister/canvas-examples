@@ -48,9 +48,9 @@ var forFrame = (function(){
                };
             },
             forframe_arguments: function(ff){
-                return [ff.model, ff.frame, ff.maxFrame, ff.per];
+                return [ff.model, ff.model.points, ff.per];
             },
-            default_forframe: function(ff, frame, maxFrame){
+            default_forframe: function(ff, model, points, per){
                 return ff.model;
             }
         }

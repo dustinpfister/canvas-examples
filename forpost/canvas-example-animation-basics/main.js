@@ -17,7 +17,7 @@ var state = {
     canvas: canvasObj.canvas,
     ctx: canvasObj.ctx,
     ff: forFrame.create({
-        type: 'plain',
+        type: 'points',
         maxFrame: 100,
         width: canvasObj.canvas.width,
         height: canvasObj.canvas.height
