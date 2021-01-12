@@ -16,18 +16,24 @@ var forFrame = (function(){
             // this will be called before forFrame is called
             // here a default starting model can be define for the type
             beforeCall: function(ff){
-                return {};
-            },
-            // a default forFrame function if none is given
-            default_forframe: function(ff, frame, maxFrame){
                 return {
-                    x : 24 + ( ff.width - 48 ) * ff.per,
-                    y : utils.log1(utils.bias(frame, maxFrame), 1, 16) * ff.height - 24,
+                    x: 0,
+                    y:0,
                     w : 32,
                     h : 32,
-                    r : Math.PI / 180 * 360 * 2 * ff.per,
-                    fillStyle : 'red'
+                    r : 0,
+                    fillStyle: 'red'
                 };
+            },
+            forframe_arguments: function(ff){
+                return [ff.model, ff.frame, ff.maxFrame, ff.per];
+            },
+            // a default forFrame function if none is given
+            default_forframe: function(ff, model, frame, maxFrame, per){
+                model.x = 24 + ( ff.width - 48 ) * per;
+                model.y = utils.log1(utils.bias(frame, maxFrame), 1, 16) * ff.height - 24;
+                model.r = Math.PI / 180 * 360 * 2 * per;
+                return model;
             }
         },
         // points type
@@ -41,7 +47,11 @@ var forFrame = (function(){
                    points: []
                };
             },
+            forframe_arguments: function(ff){
+                return [ff.model, ff.frame, ff.maxFrame, ff.per];
+            },
             default_forframe: function(ff, frame, maxFrame){
+                return ff.model;
             }
         }
     };
