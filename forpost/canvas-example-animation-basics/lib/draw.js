@@ -54,11 +54,12 @@ draw.types = {
         draw.box2(ctx, ff.model);
     },
     points: function(ctx, ff){
-       //ctx.beginPath();
-       ctx.fillStyle = 'white';
-       ctx.fillText(ff.model.points, 20, 50);
+
+       //ctx.fillStyle = 'white';
+       //ctx.fillText(ff.model.points, 20, 50);
        ///console.log(typeof ff.model);
-/*
+       ctx.strokeStyle = 'white';
+       ctx.beginPath();
        ff.model.points.forEach(function(point, i){
 
            if(i == 0){
@@ -68,7 +69,7 @@ draw.types = {
            }
 
        });
-*/
+
        ctx.stroke();
     }
 };

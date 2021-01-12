@@ -53,11 +53,13 @@ var forFrame = (function(){
             },
             default_forframe: function(ff, model, points){
                 var len = 5,
-                i = len;
+                i = len,
+                ptPer;
                 while(i--){
+                    ptPer = ( len - ( i + 1 ) );
                     points.push({
-                       x: ff.width * ( len - ( i + 1 ) ),
-                       y: ff.height / 2 - 50 + 100 * ff.per
+                       x: ff.width * ptPer,
+                       y: ff.height / 2 - (100 * (ptPer * ff.bias))
                     });
                 }
                 return ff.model;
@@ -72,6 +74,7 @@ var forFrame = (function(){
         ff.frame = frame;
         ff.frame = utils.mod(ff.frame, ff.maxFrame);
         ff.per = ff.frame / ff.maxFrame;
+        ff.bias = 1 - Math.abs(0.5 - ff.per) / 0.5;
         // call beforeCall for the current type
         ff.model = FF_TYPES[ff.type].beforeCall(ff);
         var argu = FF_TYPES[ff.type].forframe_arguments(ff);

@@ -18,15 +18,13 @@ var state = {
     ctx: canvasObj.ctx,
     ff: forFrame.create({
         type: 'points',
-        maxFrame: 5,
+        maxFrame: 50,
         width: canvasObj.canvas.width,
         height: canvasObj.canvas.height
     }),
     lt: new Date(),
-    framesPerSec: 1
+    framesPerSec: 20
 };
-
-console.log( state.ff );
 
 // basic app loop
 var loop = function(){
@@ -43,4 +41,4 @@ var loop = function(){
     forFrame.update(state.ff, secs, state.framesPerSec);
     state.lt = now;
 };
-//loop();
+loop();
