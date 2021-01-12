@@ -17,6 +17,7 @@ var forFrame = (function(){
             // here a default starting model can be define for the type
             beforeCall: function(ff){
                 return {
+                    points:[],
                     x: 0,
                     y:0,
                     w : 32,
@@ -50,16 +51,16 @@ var forFrame = (function(){
             forframe_arguments: function(ff){
                 return [ff.model, ff.model.points, ff.per];
             },
-            default_forframe: function(ff, model, points, per){
+            default_forframe: function(ff, model, points){
                 var len = 5,
                 i = len;
                 while(i--){
                     points.push({
                        x: ff.width * ( len - ( i + 1 ) ),
-                       y: ff.height / 2 - 50 + 100 * per
+                       y: ff.height / 2 - 50 + 100 * ff.per
                     });
                 }
-                return model;
+                return ff.model;
             }
         }
     };
@@ -75,6 +76,7 @@ var forFrame = (function(){
         ff.model = FF_TYPES[ff.type].beforeCall(ff);
         var argu = FF_TYPES[ff.type].forframe_arguments(ff);
         ff.model = ff.forFrame.apply(ff, [ff].concat(argu));
+        //ff.model = ff.forFrame(ff);
         return ff;
     };
 
@@ -94,7 +96,7 @@ var forFrame = (function(){
         };
         ff = FF_TYPES[ff.type].create(ff);
         ff.forFrame = opt.forFrame || FF_TYPES[ff.type].default_forframe;
-        ff.model = setFrame(ff, ff.frame);
+        ff = setFrame(ff, ff.frame);
         return ff;
     };
 
