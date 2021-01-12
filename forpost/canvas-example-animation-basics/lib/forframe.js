@@ -65,7 +65,8 @@ var forFrame = (function(){
         ff.per = ff.frame / ff.maxFrame;
         // call beforeCall for the current type
         ff.model = FF_TYPES[ff.type].beforeCall(ff);
-        ff.model = ff.forFrame(ff, ff.frame, ff.maxFrame);
+        var argu = FF_TYPES[ff.type].forframe_arguments(ff);
+        ff.model = ff.forFrame.apply(ff, [ff].concat(argu));
         return ff;
     };
 
