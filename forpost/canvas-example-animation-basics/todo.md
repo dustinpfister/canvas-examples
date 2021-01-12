@@ -11,6 +11,7 @@
 * (done) use FF_TYPES to define what the defaults are for forFrame methods
 * (done) have a draw.ffType function that will draw based on the ff.type prop
 * (done) have a function that will create and return arguments for the forFrame method
+* make a better built in forFrame function for points type
 * make a 0.3.0 pkg folder
 
 ## 0.2.0 - forFrame.step, and forFrame.update
