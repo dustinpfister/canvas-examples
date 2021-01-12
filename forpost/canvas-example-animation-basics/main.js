@@ -16,7 +16,7 @@ var state = {
     ver: '0.3.0',
     canvas: canvasObj.canvas,
     ctx: canvasObj.ctx,
-    ff: forFrame.create({
+    ff: forFrame.createPoints({
         maxFrame: 100,
         width: canvasObj.canvas.width,
         height: canvasObj.canvas.height
@@ -31,7 +31,7 @@ var loop = function(){
     requestAnimationFrame(loop);
     // draw
     draw.background(state.ctx, state.canvas);
-    draw.box2(state.ctx, state.ff.model);
+    //draw.box2(state.ctx, state.ff.model);
     draw.ffInfo(state.ctx, state.ff, 10, 10);
     draw.ver(state.ctx, state.canvas, state);
     // update by secs

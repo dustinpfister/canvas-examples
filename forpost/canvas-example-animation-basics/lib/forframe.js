@@ -7,6 +7,12 @@ var forFrame = (function(){
 
     var FF_TYPES = {
         plain: {
+            // this will be called before forFrame is called
+            // here a default starting model can be define for the type
+            beforeCall: function(ff){
+                return {};
+            },
+            // a default forFrame function if none is given
             default_forframe: function(ff, frame, maxFrame){
                 return {
                     x : 24 + ( ff.width - 48 ) * ff.per,
@@ -17,6 +23,15 @@ var forFrame = (function(){
                     fillStyle : 'red'
                 };
             }
+        },
+        points: {
+             beforeCall: function(ff){
+                return {
+                    points: []
+                };
+             },
+             default_forframe: function(ff, frame, maxFrame){
+             }
         }
     };
 
@@ -27,6 +42,8 @@ var forFrame = (function(){
         ff.frame = frame;
         ff.frame = utils.mod(ff.frame, ff.maxFrame);
         ff.per = ff.frame / ff.maxFrame;
+        // call beforeCall for the current type
+        ff.model = FF_TYPES[ff.type].beforeCall(ff);
         ff.model = ff.forFrame(ff, ff.frame, ff.maxFrame);
         return ff;
     };
@@ -52,9 +69,9 @@ var forFrame = (function(){
 
     api.createPoints = function(opt){
         opt = opt || {};
-        var ff = api.create(opt);
-        model.points = [];
-        return ff;
+        // this will be set to points no matter what if U am to have a public method like this
+        opt.type = 'points'; 
+        return api.create(opt);
     };
 
     // STEP an ff object with a given amount of frames
