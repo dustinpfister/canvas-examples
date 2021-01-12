@@ -6,7 +6,13 @@ var forFrame = (function(){
     DEFAULT_HEIGHT = 240;
 
     var FF_TYPES = {
+        // plain generic type
         plain: {
+            // this will be called just once when the ff object is created
+            // so this method would be a good place to define a custom api
+            create: function(ff){
+                return ff;
+            },
             // this will be called before forFrame is called
             // here a default starting model can be define for the type
             beforeCall: function(ff){
@@ -24,14 +30,19 @@ var forFrame = (function(){
                 };
             }
         },
+        // points type
         points: {
-             beforeCall: function(ff){
-                return {
-                    points: []
-                };
-             },
-             default_forframe: function(ff, frame, maxFrame){
-             }
+            create: function(ff){
+               return ff;
+            },
+            // starting points model
+            beforeCall: function(ff){
+               return {
+                   points: []
+               };
+            },
+            default_forframe: function(ff, frame, maxFrame){
+            }
         }
     };
 
@@ -64,7 +75,7 @@ var forFrame = (function(){
         };
         ff.forFrame = opt.forFrame || FF_TYPES[ff.type].default_forframe;
         ff.model = setFrame(ff, ff.frame);
-        return ff;
+        return FF_TYPES[ff.type].create(ff);
     };
 
     api.createPoints = function(opt){
