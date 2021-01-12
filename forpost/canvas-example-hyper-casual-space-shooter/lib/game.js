@@ -38,9 +38,9 @@ var gameMod = (function(){
 
     // map
     //MAP_MAX_DIST = 2.5 * Math.pow(10,5),     // max distance from BASE (0,0) ( set to Number.MAX_SAFE_INTEGER ? )
-    //MAP_MAX_DIST = 5 * Math.pow(10,5),
+    MAP_MAX_DIST = 5 * Math.pow(10,5),
     //MAP_MAX_DIST = 5 * Math.pow(10,7),
-    MAP_MAX_DIST = Number.MAX_SAFE_INTEGER,
+    //MAP_MAX_DIST = Number.MAX_SAFE_INTEGER,
     //MAP_MAX_DIST = Math.pow(10,4),
     MAP_POINTERS = [
         {
@@ -397,14 +397,22 @@ var gameMod = (function(){
         main: {
             0: {
                 desc: 'Auto Fire',
-                x: 130,
+                x: 140,
                 y: 40,
                 r: 10,
                 onClick: function(game){
-                    console.log('click auto fire');
                     game.autoFire = !game.autoFire;
                 }
-            }
+            },
+            1: {
+                desc: 'Pointer',
+                x: 105,
+                y: 40,
+                r: 10,
+                onClick: function(game){
+                    api.loopPointers(game);
+                }
+            },
         }
     };
 
