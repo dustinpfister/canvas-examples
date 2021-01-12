@@ -5,6 +5,10 @@
 ## 0.x.0 - new forFrame.createSheet feature
 
 ## 0.x.0 - new forFrame.createPoints feature, and star example
+* start a forFrame.createPoints public method that will return a new kind of ff object
+* have a ff.type prop that will default to 'plain' for forFrame.create and 'points' for forFrame.createPoints
+* have a FF_TYPES const that will be a collection of objects for each type
+* use FF_TYPEs to define what the defaults are for forFrame methods
 * make a 0.3.0 pkg folder
 
 ## 0.2.0 - forFrame.step, and forFrame.update
