@@ -23,7 +23,7 @@ var state = {
         height: canvasObj.canvas.height
     }),
     lt: new Date(),
-    framesPerSec: 24
+    framesPerSec: 1
 };
 // basic app loop
 var loop = function(){

@@ -92,9 +92,10 @@ var forFrame = (function(){
             secs: 0
             //forFrame: opt.forFrame || FORFRAME_BUILT_IN
         };
+        ff = FF_TYPES[ff.type].create(ff);
         ff.forFrame = opt.forFrame || FF_TYPES[ff.type].default_forframe;
         ff.model = setFrame(ff, ff.frame);
-        return FF_TYPES[ff.type].create(ff);
+        return ff;
     };
 
     api.createPoints = function(opt){

@@ -54,6 +54,21 @@ draw.types = {
         draw.box2(ctx, ff.model);
     },
     points: function(ctx, ff){
+       ctx.beginPath();
+       ctx.strokeStyle = 'white';
+       ///console.log(typeof ff.model);
+/*
+       ff.model.points.forEach(function(point, i){
+
+           if(i == 0){
+               ctx.moveTo(point.x, point.y);
+           }else{
+               ctx.lineTo(point.x, point.y);
+           }
+
+       });
+*/
+       ctx.stroke();
     }
 };
 draw.ffType = function(ctx, ff){
