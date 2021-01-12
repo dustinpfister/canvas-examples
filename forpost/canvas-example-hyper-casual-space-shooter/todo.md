@@ -21,9 +21,17 @@ Now that the very core of the game seems to be togeather I think it would be a g
 * use the Average Money Per Hour helper to estamate how long it will take to unlock everything
 
 ## 0.28.0 - Warp
-* add a 'warp' game mode
+* start a 'warp' game mode
 * The 'warp' game mode resuts in a whole new interface that can be used to set a location to warp to
-* warping from one location to another should cost energy/money
+* the interface can be a circle in the center of the canvas, with another circle in it that is the ship
+* can have another circle centered around the ship that is the current max warp range.
+* can set a warp point by clicking in the circle
+* warping from one location to another should cost energy
+* have a warp button that will warp the ship to the current location if there is enough energy
+* color code warp button depeding if there is enough energy or not
+* have a way to use the keybord to dirrect input a warp point.
+* make changes to draw.js to help with rendering new 'warp' mode
+* make a 0.28.0 pkg folder
 
 ## 0.27.0 - New ETA Helper
 * (done) add an createETA helper that will return an ETA object to a given point, from a current point and speed.
@@ -47,7 +55,7 @@ Now that the very core of the game seems to be togeather I think it would be a g
 * (done) pointer to the nearest block
 * (done) make current weapon index part of a save state
 * (done) have a change pointer button in space mode as a way to call gameMod.loopPointers with touch for now
-* make a 0.27.0 pkg folder
+* (done - 01/12/2021) make a 0.27.0 pkg folder
 
 ## 0.26.0 - Average Money Per Hour Helper, Tabulate all upgrade costs helper
 * (done) have a game.moneyPerHour object
