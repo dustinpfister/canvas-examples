@@ -46,9 +46,7 @@ Now that the very core of the game seems to be togeather I think it would be a g
 * (done) make it so that 'false' is a vaild value option for eta.pos. A false value meens there is nothing to point to, currently
 * (done) pointer to the nearest block
 * (done) make current weapon index part of a save state
-
-* have a change pointer button in space mode as a way to call gameMod.loopPointers with touch for now
-
+* (done) have a change pointer button in space mode as a way to call gameMod.loopPointers with touch for now
 * make a 0.27.0 pkg folder
 
 ## 0.26.0 - Average Money Per Hour Helper, Tabulate all upgrade costs helper
