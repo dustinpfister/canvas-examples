@@ -269,7 +269,11 @@ var inputModes = {
             gameMod.checkButtons(state.game, pointer.pos, e);
         }
     },
-    warp: function(state, secs){
+    warp: {
+        update: function(state, secs){
+        },
+        pointerUp: function(state, pointer, e){
+        }
     }
 };
 
