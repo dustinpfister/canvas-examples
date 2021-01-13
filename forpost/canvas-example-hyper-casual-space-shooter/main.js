@@ -209,23 +209,19 @@ var pointerShipInput = function(state, secs){
     var input = state.input,
     headCir = input.pointer.headCir,
     map = state.game.map;
-
-        //if(input.pointer.down && input.pointer.dist <= 32){
-        if(input.pointer.down && headCir.dist < headCir.r){
-            //if(input.pointer.dir === 1){
-            if(headCir.dir === 1){
-                map.degree += map.degreesPerSecond * secs;
-            }
-            //if(input.pointer.dir === -1){
-            if(headCir.dir === -1){
-                map.degree -= map.degreesPerSecond * secs;
-            }
+    if(input.pointer.down && headCir.dist < headCir.r){
+        if(headCir.dir === 1){
+            map.degree += map.degreesPerSecond * secs;
         }
-        // pointer update map pps
-        if(input.pointer.down && input.pointer.dist < 32){
-            var per = input.pointer.dist / 32;
-            map.pps.pps = map.maxPPS * per;
+        if(headCir.dir === -1){
+            map.degree -= map.degreesPerSecond * secs;
         }
+    }
+    // pointer update map pps
+    if(input.pointer.down && input.pointer.dist < 32){
+        var per = input.pointer.dist / 32;
+        map.pps.pps = map.maxPPS * per;
+    }
     setMapRadian(state);
 };
 
