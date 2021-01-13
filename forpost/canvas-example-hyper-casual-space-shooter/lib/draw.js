@@ -456,6 +456,10 @@ var draw = (function(){
 
     var drawModes = {
         space: function(ctx, state){
+            gridLines(ctx, state, 'rgba(255,255,255,0.1)');
+
+            // draw base object
+            baseObjectDraw(ctx, state.game.baseObj, function(){});
             // draw blocks and shots
             blocks(ctx, state);
             shots(ctx, state);
@@ -468,6 +472,8 @@ var draw = (function(){
         },
         base: function(ctx, state){
             var game = state.game;
+            // draw base object
+            baseObjectDraw(ctx, state.game.baseObj, function(){});
             // draw grids for the current weapon
             if(game.buttons.currentPage === 'weapons'){
                 var upgradeIndex = game.ship.weaponIndex * 2 + 3;
@@ -495,10 +501,10 @@ var draw = (function(){
         background(ctx, state);
 
         // draw grid lines
-        gridLines(ctx, state, 'rgba(255,255,255,0.1)');
+        //gridLines(ctx, state, 'rgba(255,255,255,0.1)');
 
         // draw base object
-        baseObjectDraw(ctx, game.baseObj, function(){});
+        //baseObjectDraw(ctx, state.game.baseObj, function(){});
 
         // draw method for the current mode in drawModes
         drawModes[game.mode](ctx, state);
