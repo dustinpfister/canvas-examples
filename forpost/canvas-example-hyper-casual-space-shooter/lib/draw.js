@@ -504,8 +504,15 @@ var draw = (function(){
             ctx.textAlign='left';
             ctx.textBaseline='top';
             ctx.font='10px arial';
-
             ctx.fillText('warp mode', 10, 10);
+
+            // draw the navCir
+            var navCir = state.game.warp.navCir;
+            ctx.strokeStyle = 'white';
+            // draw main navCir
+            ctx.beginPath();
+            ctx.arc(navCir.x, navCir.y, navCir.r, 0, Math.PI * 2);
+            ctx.stroke();
         }
     };
 
