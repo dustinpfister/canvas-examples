@@ -500,13 +500,16 @@ var draw = (function(){
             draw.pointerUI(state.ctx, state);
         },
         warp: function(ctx, state){
-            var warp = state.game.warp;
+            var warp = state.game.warp,
+            map = state.game.map;
             ctx.fillStyle = 'white';
             ctx.textAlign='left';
             ctx.textBaseline='top';
             ctx.font='10px arial';
             ctx.fillText('warp mode', 10, 10);
             ctx.fillText('dist: ' + warp.dist.toFixed(2), 10, 20);
+            ctx.fillText('current map pos: ' + Math.floor(map.x) + ' , ' + Math.floor(map.y), 10, 30);
+            ctx.fillText('warp to: ' + warp.warpX + ' , ' + warp.warpY, 10, 40);
 
             // draw the navCir
             var navCir = warp.navCir;
