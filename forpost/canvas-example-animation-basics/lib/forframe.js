@@ -52,15 +52,16 @@ var forFrame = (function(){
                 return [ff.model, ff.model.points, ff.per];
             },
             default_forframe: function(ff, model, points){
-                var len = 5,
-                i = len,
-                ptPer;
-                while(i--){
-                    ptPer = ( len - ( i + 1 ) );
+                var len = 50,
+                i = 0,
+                pointPer;
+                while(i < len){
+                    pointPer = i / len;
                     points.push({
-                       x: ff.width * ptPer,
-                       y: ff.height / 2 - (100 * (ptPer * ff.bias))
+                       x: ff.width * pointPer,
+                       y: ff.height * 0.75 - utils.log1(i, len, 8) * (ff.height * 0.25) * ff.bias
                     });
+                    i += 1;
                 }
                 return ff.model;
             }
