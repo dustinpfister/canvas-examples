@@ -1449,9 +1449,18 @@ var gameMod = (function(){
         }
     };
 
+    // loop pointers
     api.loopPointers = function(game){
         game.pointerIndex += 1;
         game.pointerIndex = utils.mod(game.pointerIndex, MAP_POINTERS.length);
+    };
+
+    // update the current warp object
+    api.updateWarpObject = function(game){
+        var navCir = game.warp.navCir,
+        shipCir = navCir.shipCir,
+        warpCir = navCir.warpCir;
+        game.warp.dist = utils.distance(warpCir.x, warpCir.y, shipCir.x, shipCir.y);
     };
 
     // make update buttons public
