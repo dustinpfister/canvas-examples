@@ -277,11 +277,13 @@ var inputModes = {
             var game = state.game,
             pos = pointer.pos,
             navCir = game.warp.navCir,
+            shipCir = navCir.shipCir,
             warpCir = navCir.warpCir,
             d = utils.distance(pos.x, pos.y, navCir.x, navCir.y);
             if(d < navCir.r){
                 warpCir.x = pos.x - navCir.x;
                 warpCir.y = pos.y - navCir.y;
+                game.warp.dist = utils.distance(warpCir.x, warpCir.y, shipCir.x, shipCir.y);
             }
         },
         pointerUp: function(state, pointer, e){

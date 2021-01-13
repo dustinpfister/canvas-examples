@@ -500,14 +500,16 @@ var draw = (function(){
             draw.pointerUI(state.ctx, state);
         },
         warp: function(ctx, state){
+            var warp = state.game.warp;
             ctx.fillStyle = 'white';
             ctx.textAlign='left';
             ctx.textBaseline='top';
             ctx.font='10px arial';
             ctx.fillText('warp mode', 10, 10);
+            ctx.fillText('dist: ' + warp.dist.toFixed(2), 10, 20);
 
             // draw the navCir
-            var navCir = state.game.warp.navCir;
+            var navCir = warp.navCir;
             ctx.strokeStyle = 'white';
             // draw main navCir
             ctx.beginPath();
