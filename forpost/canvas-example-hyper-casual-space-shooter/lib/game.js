@@ -1333,6 +1333,11 @@ var gameMod = (function(){
                 game.buttons.currentPage = 'main';
                 game.mode = 'base';
             }
+            // update map, blocks, shots, ETA
+            updateMap(game, secs);
+            updateBlocks(game, secs, state);
+            updateShots(game, secs, state);
+            updateETA(game);
         },
         base: function(game, secs, state){
             // switch modes based on map.dist
@@ -1340,6 +1345,8 @@ var gameMod = (function(){
                 game.buttons.currentPage= 'main';
                 game.mode = 'space';
             }
+            // update map, blocks, shots
+            updateMap(game, secs);
         },
         warp: function(game, secs, state){
         },
@@ -1364,16 +1371,6 @@ var gameMod = (function(){
         // call allAfter update method
         updateModes['allAfter'](game, secs, state);
 
-        // update map, blocks, shots
-        updateMap(game, secs);
-
-
-        if(game.mode === 'space'){
-            updateBlocks(game, secs, state);
-            updateShots(game, secs, state);
-            // ETA
-            updateETA(game);
-        }
         // energy
         updateEnergy(game, secs);
 
