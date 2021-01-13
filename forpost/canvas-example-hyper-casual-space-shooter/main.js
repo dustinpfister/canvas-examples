@@ -1,4 +1,7 @@
-// CANVAS
+    /********** CANVAS **********
+        The canvas element(s)
+    **********/
+
 var createCanvas = function(opt){
     opt = opt || {};
     opt.container = opt.container || document.getElementById('canvas-app') || document.body;
@@ -12,7 +15,12 @@ var createCanvas = function(opt){
 };
 var canvasObj = createCanvas(),
 canvas = canvasObj.canvas;
-// STATE
+
+    /********** STATE **********
+        The main state object
+    **********/
+
+
 var state = {
     ver: '0.28.0',
     canvas : canvas,
@@ -55,7 +63,9 @@ var state = {
     FPS: 0
 };
 
-// SAVE STATE CHECK and LOOP START
+    /********** SAVE STATES **********
+        load and save game states
+    **********/
 
 var save = {
    appName: 'hyper-casual-space-shooter-save',
@@ -100,6 +110,8 @@ state.game = gameMod.create(createOptions);
     /********** INPUT **********
         process user input
     **********/
+
+
 // update pointer object helper
 var updatePointer = function(game, pos){
     var map = game.map,
@@ -274,7 +286,11 @@ canvas.addEventListener('mousemove', pointerEvent);
 canvas.addEventListener('mouseup', pointerEvent);
 
 
-// LOOP
+    /********** LOOP **********
+        The Main app loop
+    **********/
+
+
 var loop = function () {
 
     var now = new Date(),
