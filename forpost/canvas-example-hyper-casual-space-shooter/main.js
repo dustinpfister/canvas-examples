@@ -249,17 +249,19 @@ var pointerShipInput = function(state, secs){
 
 // input modes for each game mode
 var inputModes = {
-    space: function(state, secs){
-        // move ship
-        pointerShipInput(state, secs);
-        keyboardShipInput (state, secs);
-        applyPPSBar(state, secs);
+    space: {
+        update: function(state, secs){
+            pointerShipInput(state, secs);
+            keyboardShipInput (state, secs);
+            applyPPSBar(state, secs);
+        }
     },
-    base: function(state, secs){
-        // move ship
-        pointerShipInput(state, secs);
-        keyboardShipInput (state, secs);
-        applyPPSBar(state, secs);
+    base: {
+        update: function(state, secs){
+            pointerShipInput(state, secs);
+            keyboardShipInput (state, secs);
+            applyPPSBar(state, secs);
+        }
     },
     warp: function(state, secs){
     }
@@ -334,15 +336,7 @@ var loop = function () {
             game.ship.newShip = false;
         }
 
-        inputModes[game.mode](state, secs);
-
-        // pointer update map pps and radian
-        //pointerShipInput(state, secs);
-
-        // keyboard update map pps and radian
-        //keyboardShipInput (state, secs);
-
-        //applyPPSBar(state, secs);
+        inputModes[game.mode].update(state, secs);
 
         // update game object state
         gameMod.update(game, secs, state);
