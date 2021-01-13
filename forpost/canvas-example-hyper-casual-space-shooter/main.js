@@ -271,6 +271,8 @@ var inputModes = {
     },
     warp: {
         update: function(state, secs){
+
+                gameMod.updateWarpObject(state.game);
         },
         pointerMove: function(state, pointer, e){
             //console.log('warp pointer move');
@@ -283,7 +285,6 @@ var inputModes = {
             if(d < navCir.r){
                 warpCir.x = pos.x - navCir.x;
                 warpCir.y = pos.y - navCir.y;
-                gameMod.updateWarpObject(game);
 
             }
         },
