@@ -1324,6 +1324,7 @@ var gameMod = (function(){
         game.map.pps = game.map.pps > game.map.maxPPS ? game.map.maxPPS : game.map.pps;
     };
 
+    // main update method
     api.update = function(game, secs, state){
 
         // clamp secs between 0 and GAME_UPDATE_MAX_SECS const
@@ -1350,17 +1351,20 @@ var gameMod = (function(){
         if(game.mode === 'space'){
             updateBlocks(game, secs, state);
             updateShots(game, secs, state);
+
+            // ETA
+            updateETA(game);
         }
         // energy
         updateEnergy(game, secs);
+
         // autoHeal ship
         if(game.ship.hp.current < game.ship.hp.max && game.ship.energy.current > ENERGY_AUTOHEAL_COST * secs){
             game.ship.energy.current -= ENERGY_AUTOHEAL_COST * secs;
             autoHealObject(game.ship, secs);
         }
 
-        // ETA
-        updateETA(game);
+
 /*
         var pointer = MAP_POINTERS[game.pointerIndex];
         var pos = pointer.pos;
