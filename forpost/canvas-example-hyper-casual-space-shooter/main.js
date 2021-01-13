@@ -171,6 +171,10 @@ var keyboardShipInput = function(state, secs){
     if(input.keys.l){
         input.fire = true;
     }
+
+    // number button check
+    numberButtonCheck(state.game, input);
+
     setMapRadian(state);
 };
 
@@ -231,25 +235,21 @@ var loop = function () {
     var now = new Date(),
     t = now - state.lt,
     game = state.game,
-    //map = game.map,
-    //input = state.input,
+    map = game.map,
+    input = state.input,
     //speedPer = map.pps / map.maxPPS,
-    //ppsBar = input.pointer.ppsBar,
+    ppsBar = input.pointer.ppsBar,
     secs = t / 1000;
 
     requestAnimationFrame(loop);
 
     if (t >= 1000 / state.FPS_target) {
-
-        // update FPS counter
         state.FPS = 1 / secs;
-
         // if new ship
         if(game.ship.newShip){
             ppsBar.targetY = 200;
             game.ship.newShip = false;
         }
-
         // update input.pointer
         updatePointer(game, input.pointer.pos);
 
@@ -259,11 +259,7 @@ var loop = function () {
         // keyboard update map pps and radian
         keyboardShipInput (state, secs);
 
-        // update map pps by way of ppsBar
         applyPPSBar(state, secs);
-
-        // number button check
-        numberButtonCheck(game, input);
 
         // update game object state
         gameMod.update(game, secs, state);
