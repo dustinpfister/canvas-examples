@@ -609,6 +609,17 @@ var gameMod = (function(){
                 onClick: function(game){
                     game.mode = 'space';
                 }
+            },
+            1: {
+                desc: 'warp',
+                x: 140,
+                y: 0,
+                r: 10,
+                onClick: function(game){
+                    
+                    game.map.x = game.warp.warpX;
+                    game.map.y = game.warp.warpY;
+                }
             }
         }
     };
