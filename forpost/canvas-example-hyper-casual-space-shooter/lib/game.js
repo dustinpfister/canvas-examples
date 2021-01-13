@@ -1253,6 +1253,18 @@ var gameMod = (function(){
                 dist: 0,
                 per: 0 // map.dist / MAX_MAX_DIST
             },
+            warp: { current warp settings
+                warpX: 0,  // x and y map location to warp to
+                warpY: 0,
+                dist: 0,   // the distance of the warp
+                navCir: {  // the circle to set/disp current warpX, warpY, and dist
+                    x: 160,
+                    y: 120,
+                    r: 100,
+                    shipCir: { x: 0,y: 0,r: 5 },
+                    warpCir: { x: 0,y: 0,r: 5 }
+                }
+            },
             //baseButtons: BASE_BUTTONS,
             buttons: {
                currentPage: 'main',

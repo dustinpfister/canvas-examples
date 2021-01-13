@@ -25,8 +25,8 @@ Now that the very core of the game seems to be togeather I think it would be a g
 * (done) pull code that has to do with input in the loop in main.js into helper functions
 * (done) have a inputModes object in main.js that will handle input for each game mode
 * (done) start a 'warp' game mode
+* (done) have a space mode button to enter warp mode
 
-* have a space mode button to enter warp mode
 * The 'warp' game mode resuts in a whole new interface that can be used to set a location to warp to
 * the interface can be a circle in the center of the canvas, with another circle in it that is the ship
 * can have another circle centered around the ship that is the current max warp range.
