@@ -433,19 +433,7 @@ var draw = (function(){
 
     var api = {};
 
-    // draw current game mode
-    api.currentMode = function(ctx, state){
-        var game = state.game;
-
-        // draw background
-        background(ctx, state);
-
-        // draw grid lines
-        gridLines(ctx, state, 'rgba(255,255,255,0.1)');
-
-        // draw base object
-        baseObjectDraw(ctx, game.baseObj, function(){});
-
+    var drawModeButtons = function(ctx, game){
         // draw any buttons for the current mode
         var buttons_mode = game.buttons[game.mode];
         if(buttons_mode){
@@ -464,6 +452,22 @@ var draw = (function(){
                 });
             });
         }
+    };
+
+    // draw current game mode
+    api.currentMode = function(ctx, state){
+        var game = state.game;
+
+        // draw background
+        background(ctx, state);
+
+        // draw grid lines
+        gridLines(ctx, state, 'rgba(255,255,255,0.1)');
+
+        // draw base object
+        baseObjectDraw(ctx, game.baseObj, function(){});
+
+        drawModeButtons(ctx, game);
 
         if(game.mode === 'base'){
             // draw grids for the current weapon
