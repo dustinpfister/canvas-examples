@@ -1457,14 +1457,22 @@ var gameMod = (function(){
 
     // update the current warp object
     api.updateWarpObject = function(game){
-        var navCir = game.warp.navCir,
+        var warp = game.warp,
+        navCir = warp.navCir,
         map = game.map,
         shipCir = navCir.shipCir,
         warpCir = navCir.warpCir;
+        // update shipCir
         shipCir.x = Math.cos(map.aToOrigin + Math.PI) * navCir.r * map.per;
         shipCir.y = Math.sin(map.aToOrigin + Math.PI) * navCir.r * map.per;
-        game.warp.dist = utils.distance(warpCir.x, warpCir.y, shipCir.x, shipCir.y);
-        game.warp.dist = game.warp.dist / game.warp.navCir.r * MAP_MAX_DIST;
+        // update dist
+        warp.dist = utils.distance(warpCir.x, warpCir.y, shipCir.x, shipCir.y);
+        warp.dist = warp.dist / warp.navCir.r * MAP_MAX_DIST;
+        // set warpTo
+        var a = utils.angleTo(warpCir.x, warpCir.y, 0, 0),
+        d = utils.distance(0,0, warpCir.x, warpCir.y);
+        warp.warpX = Math.cos(a) * MAP_MAX_DIST * (d / navCir.r);
+        warp.warpY = Math.sin(a) * MAP_MAX_DIST * (d / navCir.r);
     };
 
     // make update buttons public

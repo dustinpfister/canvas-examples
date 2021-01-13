@@ -285,7 +285,6 @@ var inputModes = {
             if(d < navCir.r){
                 warpCir.x = pos.x - navCir.x;
                 warpCir.y = pos.y - navCir.y;
-
             }
         },
         pointerUp: function(state, pointer, e){
