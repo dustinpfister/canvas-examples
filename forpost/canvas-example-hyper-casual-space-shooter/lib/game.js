@@ -1461,6 +1461,7 @@ var gameMod = (function(){
         shipCir = navCir.shipCir,
         warpCir = navCir.warpCir;
         game.warp.dist = utils.distance(warpCir.x, warpCir.y, shipCir.x, shipCir.y);
+        game.warp.dist = game.warp.dist / game.warp.navCir.r * MAP_MAX_DIST;
     };
 
     // make update buttons public
