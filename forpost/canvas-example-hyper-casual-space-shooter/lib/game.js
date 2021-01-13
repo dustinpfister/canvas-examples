@@ -413,6 +413,15 @@ var gameMod = (function(){
                     api.loopPointers(game);
                 }
             },
+            2: {
+                desc: 'Warp',
+                x: 140,
+                y: 15,
+                r: 10,
+                onClick: function(game){
+                    
+                }
+            }
         }
     };
 
