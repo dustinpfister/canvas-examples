@@ -119,8 +119,12 @@ var updatePointer = function(game, pos){
     pointer = input.pointer,
     headCir = pointer.headCir,
     ppsBar = pointer.ppsBar;
+
+    state.input.pointer.pos = pos;
+
     // update dir so that we know the shortest direction to go
     var d = Math.floor(utils.angleTo(pointer.pos.x, pointer.pos.y, 160, 120) / ( Math.PI * 2 ) * 360);
+    // dir
     pointer.dir = utils.shortestDirection(d, Math.floor(map.degree), 360);
     // update main dist
     pointer.dist = utils.distance(pointer.pos.x, pointer.pos.y, 160, 120);
@@ -272,9 +276,9 @@ window.addEventListener('keyup', function(e){
 });
 // MOUSE AND TOUCH
 var pointerEvent = function(e){
-   var pos = state.input.pointer.pos = utils.getCanvasRelative(e);
-        // update input.pointer
-        updatePointer(state.game, state.input.pointer.pos);
+   // update input.pointer
+   updatePointer(state.game, utils.getCanvasRelative(e));
+   // on down
    if(e.type === 'mousedown' || e.type === 'touchstart'){
        state.input.pointer.down = true;
    }
@@ -282,7 +286,7 @@ var pointerEvent = function(e){
    //}
    if(e.type === 'mouseup' || e.type === 'touchend'){
        state.input.pointer.down = false;
-       gameMod.checkButtons(state.game, pos, e);
+       gameMod.checkButtons(state.game, state.input.pointer.pos, e);
    }
 };
 canvas.addEventListener('mousedown', pointerEvent);
