@@ -272,6 +272,18 @@ var inputModes = {
     warp: {
         update: function(state, secs){
         },
+        pointerMove: function(state, pointer, e){
+            //console.log('warp pointer move');
+            var game = state.game,
+            pos = pointer.pos,
+            navCir = game.warp.navCir,
+            warpCir = navCir.warpCir,
+            d = utils.distance(pos.x, pos.y, navCir.x, navCir.y);
+            if(d < navCir.r){
+                warpCir.x = pos.x - navCir.x;
+                warpCir.y = pos.y - navCir.y;
+            }
+        },
         pointerUp: function(state, pointer, e){
         },
         keyUp: function(state, key, e){
@@ -312,16 +324,20 @@ window.addEventListener('keyup', function(e){
 var pointerEvent = function(e){
    // update input.pointer
    updatePointer(state.game, utils.getCanvasRelative(e));
+   var inputModeObj = inputModes[state.game.mode];
    // on down
    if(e.type === 'mousedown' || e.type === 'touchstart'){
        state.input.pointer.down = true;
    }
-   //if((e.type === 'mousemove' || e.type === 'touchmove') && state.input.pointer.down){
-   //}
+   if((e.type === 'mousemove' || e.type === 'touchmove') && state.input.pointer.down){
+       if(inputModeObj.pointerMove){
+           inputModeObj.pointerMove(state, state.input.pointer, e);
+       }
+   }
    if(e.type === 'mouseup' || e.type === 'touchend'){
        state.input.pointer.down = false;
-       if(inputModes[state.game.mode].pointerUp){
-           inputModes[state.game.mode].pointerUp(state, state.input.pointer, e);
+       if(inputModeObj.pointerUp){
+           inputModeObj.pointerUp(state, state.input.pointer, e);
        }
    }
 };
