@@ -171,32 +171,30 @@ var applyPPSBar = function(state, secs){
    ppsBar = input.pointer.ppsBar,
    map = state.game.map,
    speedPer = map.pps / map.maxPPS;
-
-
-        // clamp targetY of ppsBar
-        ppsBar.targetY = ppsBar.targetY < ppsBar.y ? ppsBar.y: ppsBar.targetY;
-        ppsBar.targetY = ppsBar.targetY > ppsBar.y + ppsBar.h ? ppsBar.y + ppsBar.h: ppsBar.targetY;
-        // update map pps based on targetY and actualY of the ppsBar
-        if(ppsBar.targetY != ppsBar.actualY){
-            if(ppsBar.actualY > ppsBar.targetY){
-                map.pps += map.ppsDelta * secs;
-                map.pps = map.pps > map.maxPPS ? map.maxPPS : map.pps;
-                // update ppsBar.actualY based on map.pps over map.maxPPS
-                ppsBar.actualY = ppsBar.y + ppsBar.h - ppsBar.h * speedPer;
-                if(ppsBar.actualY < ppsBar.targetY){
-                    ppsBar.actualY = ppsBar.targetY;
-                }
-            }
+    // clamp targetY of ppsBar
+    ppsBar.targetY = ppsBar.targetY < ppsBar.y ? ppsBar.y: ppsBar.targetY;
+    ppsBar.targetY = ppsBar.targetY > ppsBar.y + ppsBar.h ? ppsBar.y + ppsBar.h: ppsBar.targetY;
+    // update map pps based on targetY and actualY of the ppsBar
+    if(ppsBar.targetY != ppsBar.actualY){
+        if(ppsBar.actualY > ppsBar.targetY){
+            map.pps += map.ppsDelta * secs;
+            map.pps = map.pps > map.maxPPS ? map.maxPPS : map.pps;
+            // update ppsBar.actualY based on map.pps over map.maxPPS
+            ppsBar.actualY = ppsBar.y + ppsBar.h - ppsBar.h * speedPer;
             if(ppsBar.actualY < ppsBar.targetY){
-                map.pps -= map.ppsDelta * secs;
-                map.pps = map.pps < 0 ? 0 : map.pps;
-                // update ppsBar.actualY based on map.pps over map.maxPPS
-                ppsBar.actualY = ppsBar.y + ppsBar.h - ppsBar.h * speedPer;
-                if(ppsBar.actualY > ppsBar.targetY){
-                    ppsBar.actualY = ppsBar.targetY;
-                }
+                ppsBar.actualY = ppsBar.targetY;
             }
         }
+        if(ppsBar.actualY < ppsBar.targetY){
+            map.pps -= map.ppsDelta * secs;
+            map.pps = map.pps < 0 ? 0 : map.pps;
+            // update ppsBar.actualY based on map.pps over map.maxPPS
+            ppsBar.actualY = ppsBar.y + ppsBar.h - ppsBar.h * speedPer;
+            if(ppsBar.actualY > ppsBar.targetY){
+                ppsBar.actualY = ppsBar.targetY;
+            }
+        }
+    }
 };
 
 // LOOP
@@ -216,18 +214,14 @@ var loop = function () {
     requestAnimationFrame(loop);
 
     if (t >= 1000 / state.FPS_target) {
-
         state.FPS = 1 / secs;
-
         // if new ship
         if(game.ship.newShip){
             ppsBar.targetY = 200;
             game.ship.newShip = false;
         }
-
         // update input.pointer
         updatePointer(game, input.pointer.pos);
-
         // keyboard update map pps and radian
         keyboardShipInput (state, secs);
 
