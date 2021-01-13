@@ -141,26 +141,29 @@ if(save.gameSaves){
 var createOptions = save.gameSaves[save.slotIndex];
 state.game = gameMod.create(createOptions);
 
-var keyboardShipMovement = function(state, secs){
+var keyboardShipInput = function(state, secs){
     var input = state.input,
     ppsBar = ppsBar = input.pointer.ppsBar,
     map = state.game.map;
-        if(input.keys.w){
-            //map.pps += map.ppsDelta * secs;
-            //map.pps = map.pps > map.maxPPS ? map.maxPPS : map.pps;
-            ppsBar.targetY -= 100 * secs;
-        }
-        if(input.keys.s){
-            //map.pps -= map.ppsDelta * secs;
-            //map.pps = map.pps < 0 ? 0 : map.pps;
-            ppsBar.targetY += 100 * secs;
-        }
-        if(input.keys.a){
-            map.degree += map.degreesPerSecond * secs;
-        }
-        if(input.keys.d){
-            map.degree -= map.degreesPerSecond * secs;
-        }
+    // set ppsBar that will set map.pps
+    if(input.keys.w){
+        ppsBar.targetY -= 100 * secs;
+    }
+    if(input.keys.s){
+        ppsBar.targetY += 100 * secs;
+    }
+    // ajust degree that will set map.radian
+    if(input.keys.a){
+        map.degree += map.degreesPerSecond * secs;
+    }
+    if(input.keys.d){
+        map.degree -= map.degreesPerSecond * secs;
+    }
+    // keyboard update fire
+    input.fire = false;
+    if(input.keys.l){
+        input.fire = true;
+    }
 };
 
 // LOOP
@@ -192,17 +195,14 @@ var loop = function () {
         // update input.pointer
         updatePointer(game, input.pointer.pos);
 
-        // keyboard update map pps
-        keyboardShipMovement(state, secs);
+        // keyboard update map pps and radian
+        keyboardShipInput (state, secs);
 
-        // clamp targetY
+        // clamp targetY of ppsBar
         ppsBar.targetY = ppsBar.targetY < ppsBar.y ? ppsBar.y: ppsBar.targetY;
         ppsBar.targetY = ppsBar.targetY > ppsBar.y + ppsBar.h ? ppsBar.y + ppsBar.h: ppsBar.targetY;
-
         // update map pps based on targetY and actualY of the ppsBar
-
         if(ppsBar.targetY != ppsBar.actualY){
-
             if(ppsBar.actualY > ppsBar.targetY){
                 map.pps += map.ppsDelta * secs;
                 map.pps = map.pps > map.maxPPS ? map.maxPPS : map.pps;
@@ -212,7 +212,6 @@ var loop = function () {
                     ppsBar.actualY = ppsBar.targetY;
                 }
             }
-
             if(ppsBar.actualY < ppsBar.targetY){
                 map.pps -= map.ppsDelta * secs;
                 map.pps = map.pps < 0 ? 0 : map.pps;
@@ -223,7 +222,6 @@ var loop = function () {
                 }
             }
         }
-
 
         // pointer update map radian
         var headCir = input.pointer.headCir;
@@ -243,17 +241,12 @@ var loop = function () {
             var per = input.pointer.dist / 32;
             map.pps.pps = map.maxPPS * per;
         }
-        // keyboard update fire
-        input.fire = false;
-        if(input.keys.l){
-            input.fire = true;
-        }
+
         // number button check
         numberButtonCheck(game, input);
         // wrap degree
         map.degree = utils.mod(map.degree, 360);
         // update game
-        //gameMod.setMapMovement(game, input.degree, input.pps);
         map.radian = utils.wrapRadian(Math.PI / 180 * map.degree);
 
 
