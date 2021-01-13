@@ -469,6 +469,11 @@ var draw = (function(){
             positionStatus(ctx, state);
             positionMap(ctx, state);
             effectsInfo(ctx, state);
+            // draw blocks, the ship, and shots
+            ship(ctx, state);
+            // draw the games status bar
+            statusBar(ctx, state);
+            draw.pointerUI(state.ctx, state);
         },
         base: function(ctx, state){
             var game = state.game;
@@ -488,8 +493,19 @@ var draw = (function(){
             if(game.buttons.currentPage === 'effects'){
                 effectsInfo(ctx, state);
             }
+            // draw blocks, the ship, and shots
+            ship(ctx, state);
+            // draw the games status bar
+            statusBar(ctx, state);
+            draw.pointerUI(state.ctx, state);
         },
         warp: function(ctx, state){
+            ctx.fillStyle = 'white';
+            ctx.textAlign='left';
+            ctx.textBaseline='top';
+            ctx.font='10px arial';
+
+            ctx.fillText('warp mode', 10, 10);
         }
     };
 
@@ -500,28 +516,10 @@ var draw = (function(){
         // draw background
         background(ctx, state);
 
-        // draw grid lines
-        //gridLines(ctx, state, 'rgba(255,255,255,0.1)');
-
-        // draw base object
-        //baseObjectDraw(ctx, state.game.baseObj, function(){});
-
         // draw method for the current mode in drawModes
         drawModes[game.mode](ctx, state);
 
         drawModeButtons(ctx, game);
-
-
-        // draw an 'arrow' object that points to the base if in space mode
-        if(game.mode === 'space'){
-
-        }
-
-        // draw blocks, the ship, and shots
-        ship(ctx, state);
-
-        // draw the games status bar
-        statusBar(ctx, state);
 
         // draw debug info
         info(ctx, state);

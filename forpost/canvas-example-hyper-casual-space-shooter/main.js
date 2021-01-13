@@ -273,6 +273,12 @@ var inputModes = {
         update: function(state, secs){
         },
         pointerUp: function(state, pointer, e){
+        },
+        keyUp: function(state, key, e){
+            console.log('key up');
+            if(key === 'q'){
+                state.game.mode = 'space';
+            }
         }
     }
 };
@@ -296,6 +302,10 @@ window.addEventListener('keyup', function(e){
     }
     if(key === 'n'){
        gameMod.loopPointers(state.game);
+    }
+    var inputModeKeyUp = inputModes[state.game.mode].keyUp;
+    if(inputModeKeyUp){
+        inputModeKeyUp(state, key, e)
     }
     state.input.keys[key] = false;
 });
@@ -358,7 +368,6 @@ var loop = function () {
 
         // draw
         draw.currentMode(state.ctx, state);
-        draw.pointerUI(state.ctx, state);
 
         state.lt = now;
     }
