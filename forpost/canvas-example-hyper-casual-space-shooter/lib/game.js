@@ -1324,6 +1324,17 @@ var gameMod = (function(){
         game.map.pps = game.map.pps > game.map.maxPPS ? game.map.maxPPS : game.map.pps;
     };
 
+    var updateModes = {
+        space: function(){
+        },
+        base: function(){
+        },
+        warp: function(){
+        },
+        all: function(){
+        }
+    };
+
     // main update method
     api.update = function(game, secs, state){
 
