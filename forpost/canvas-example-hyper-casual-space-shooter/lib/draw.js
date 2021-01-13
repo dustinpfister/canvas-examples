@@ -454,22 +454,11 @@ var draw = (function(){
         }
     };
 
-    // draw current game mode
-    api.currentMode = function(ctx, state){
-        var game = state.game;
-
-        // draw background
-        background(ctx, state);
-
-        // draw grid lines
-        gridLines(ctx, state, 'rgba(255,255,255,0.1)');
-
-        // draw base object
-        baseObjectDraw(ctx, game.baseObj, function(){});
-
-        drawModeButtons(ctx, game);
-
-        if(game.mode === 'base'){
+    var drawModes = {
+        space: function(ctx, state){
+        },
+        base: function(ctx, state){
+            var game = state.game;
             // draw grids for the current weapon
             if(game.buttons.currentPage === 'weapons'){
                 var upgradeIndex = game.ship.weaponIndex * 2 + 3;
@@ -484,7 +473,30 @@ var draw = (function(){
             if(game.buttons.currentPage === 'effects'){
                 effectsInfo(ctx, state);
             }
+        },
+        warp: function(ctx, state){
         }
+    };
+
+    // draw current game mode
+    api.currentMode = function(ctx, state){
+        var game = state.game;
+
+        // draw background
+        background(ctx, state);
+
+        // draw grid lines
+        gridLines(ctx, state, 'rgba(255,255,255,0.1)');
+
+        // draw base object
+        baseObjectDraw(ctx, game.baseObj, function(){});
+
+        drawModes[game.mode](ctx, state);
+        drawModeButtons(ctx, game);
+
+        //if(game.mode === 'base'){
+
+        //}
 
         // draw an 'arrow' object that points to the base if in space mode
         if(game.mode === 'space'){
