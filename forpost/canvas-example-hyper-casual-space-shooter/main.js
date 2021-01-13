@@ -254,6 +254,9 @@ var inputModes = {
             pointerShipInput(state, secs);
             keyboardShipInput (state, secs);
             applyPPSBar(state, secs);
+        },
+        pointerUp: function(state, pointer, e){
+            gameMod.checkButtons(state.game, pointer.pos, e);
         }
     },
     base: {
@@ -261,6 +264,9 @@ var inputModes = {
             pointerShipInput(state, secs);
             keyboardShipInput (state, secs);
             applyPPSBar(state, secs);
+        },
+        pointerUp: function(state, pointer, e){
+            gameMod.checkButtons(state.game, pointer.pos, e);
         }
     },
     warp: function(state, secs){
@@ -301,7 +307,9 @@ var pointerEvent = function(e){
    //}
    if(e.type === 'mouseup' || e.type === 'touchend'){
        state.input.pointer.down = false;
-       gameMod.checkButtons(state.game, state.input.pointer.pos, e);
+       if(inputModes[state.game.mode].pointerUp){
+           inputModes[state.game.mode].pointerUp(state, state.input.pointer, e);
+       }
    }
 };
 canvas.addEventListener('mousedown', pointerEvent);
