@@ -38,10 +38,10 @@ var gameMod = (function(){
 
     // map
     //MAP_MAX_DIST = 2.5 * Math.pow(10,5),     // max distance from BASE (0,0) ( set to Number.MAX_SAFE_INTEGER ? )
-    MAP_MAX_DIST = 5 * Math.pow(10,5),
+    //MAP_MAX_DIST = 5 * Math.pow(10,5),
     //MAP_MAX_DIST = 5 * Math.pow(10,7),
     //MAP_MAX_DIST = Number.MAX_SAFE_INTEGER,
-    //MAP_MAX_DIST = Math.pow(10,4),
+    MAP_MAX_DIST = Math.pow(10,4),
     MAP_POINTERS = [
         {
             label: 'base',
@@ -1458,8 +1458,11 @@ var gameMod = (function(){
     // update the current warp object
     api.updateWarpObject = function(game){
         var navCir = game.warp.navCir,
+        map = game.map,
         shipCir = navCir.shipCir,
         warpCir = navCir.warpCir;
+        shipCir.x = Math.cos(map.aToOrigin + Math.PI) * navCir.r * map.per;
+        shipCir.y = Math.sin(map.aToOrigin + Math.PI) * navCir.r * map.per;
         game.warp.dist = utils.distance(warpCir.x, warpCir.y, shipCir.x, shipCir.y);
         game.warp.dist = game.warp.dist / game.warp.navCir.r * MAP_MAX_DIST;
     };
