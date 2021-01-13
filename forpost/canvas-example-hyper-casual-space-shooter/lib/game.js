@@ -1325,22 +1325,34 @@ var gameMod = (function(){
     };
 
     var updateModes = {
-        space: function(){
+        space: function(game, secs, state){
+            if(game.map.dist <= BASE_DIST && game.mode === 'space'){
+                // set all shots and blocks to inactive state
+                poolMod.setActiveStateForAll(game.shots, false);
+                poolMod.setActiveStateForAll(game.shots, false);
+                game.buttons.currentPage = 'main';
+                game.mode = 'base';
+            }
         },
-        base: function(){
+        base: function(game, secs, state){
         },
-        warp: function(){
+        warp: function(game, secs, state){
         },
-        all: function(){
+        all: function(game, secs, state){
         }
     };
 
     // main update method
     api.update = function(game, secs, state){
 
+
         // clamp secs between 0 and GAME_UPDATE_MAX_SECS const
         secs = secs > GAME_UPDATE_MAX_SECS ? GAME_UPDATE_MAX_SECS : secs;
         secs = secs < 0 ? 0 : secs;
+
+        // call update method for current game mode
+        updateModes[game.mode](game, secs, state);
+
 
         // move baseObject
         game.baseObj.x = game.map.x * -1;
@@ -1352,13 +1364,7 @@ var gameMod = (function(){
             game.buttons.currentPage= 'main';
             game.mode = 'space';
         }
-        if(game.map.dist <= BASE_DIST && game.mode === 'space'){
-            // set all shots and blocks to inactive state
-            poolMod.setActiveStateForAll(game.shots, false);
-            poolMod.setActiveStateForAll(game.shots, false);
-            game.buttons.currentPage = 'main';
-            game.mode = 'base';
-        }
+
         if(game.mode === 'space'){
             updateBlocks(game, secs, state);
             updateShots(game, secs, state);
