@@ -275,7 +275,6 @@ var inputModes = {
         pointerUp: function(state, pointer, e){
         },
         keyUp: function(state, key, e){
-            console.log('key up');
             if(key === 'q'){
                 state.game.mode = 'space';
             }
