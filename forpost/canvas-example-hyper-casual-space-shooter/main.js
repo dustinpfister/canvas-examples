@@ -271,7 +271,6 @@ var inputModes = {
     },
     warp: {
         update: function(state, secs){
-
                 gameMod.updateWarpObject(state.game);
         },
         pointerMove: function(state, pointer, e){
@@ -288,6 +287,7 @@ var inputModes = {
             }
         },
         pointerUp: function(state, pointer, e){
+            gameMod.checkButtons(state.game, pointer.pos, e);
         },
         keyUp: function(state, key, e){
             if(key === 'q'){

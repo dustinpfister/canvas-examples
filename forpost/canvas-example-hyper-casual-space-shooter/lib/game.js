@@ -599,6 +599,20 @@ var gameMod = (function(){
         }
     };
 
+    var WARP_BUTTONS = {
+        main: {
+            0: {
+                desc: 'Back',
+                x: 140,
+                y: 40,
+                r: 10,
+                onClick: function(game){
+                    game.mode = 'space';
+                }
+            }
+        }
+    };
+
     // check if a button was clicked
     var buttonCheck = function(button, pos){
         if(utils.distance(button.x, button.y, pos.x - 160, pos.y - 120) <= button.r){
@@ -1269,7 +1283,8 @@ var gameMod = (function(){
             buttons: {
                currentPage: 'main',
                base: utils.deepClone(BASE_BUTTONS),
-               space: utils.deepClone(SPACE_BUTTONS)
+               space: utils.deepClone(SPACE_BUTTONS),
+               warp: utils.deepClone(WARP_BUTTONS)
             },
             baseObj : {
                 fillStyle: '#282828',
