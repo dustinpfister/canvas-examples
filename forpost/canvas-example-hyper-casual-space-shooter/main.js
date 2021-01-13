@@ -120,23 +120,11 @@ var updatePointer = function(game, pos){
     headCir = pointer.headCir,
     ppsBar = pointer.ppsBar;
     // update dir so that we know the shortest direction to go
-    var d = Math.floor(utils.angleTo(pos.x, pos.y, 160, 120) / ( Math.PI * 2 ) * 360);
+    var d = Math.floor(utils.angleTo(pointer.pos.x, pointer.pos.y, 160, 120) / ( Math.PI * 2 ) * 360);
     pointer.dir = utils.shortestDirection(d, Math.floor(map.degree), 360);
     // update main dist
-    pointer.dist = utils.distance(pos.x, pos.y, 160, 120);
-    // update headCir
-    if(pointer.down){
-        headCir.dist = utils.distance(pos.x, pos.y, headCir.x, headCir.y);
-        headCir.dist = headCir.dist > headCir.r ? headCir.r: headCir.dist;
-        if(headCir.dist < headCir.r){
-            headCir.a = utils.angleTo(pos.x, pos.y, headCir.x, headCir.y);
-            headCir.d = Math.floor(headCir.a / ( Math.PI * 2 ) * 360);
-            headCir.dir = utils.shortestDirection(headCir.d, Math.floor(map.degree), 360);
-        }
-        if(utils.boundingBox(pos.x, pos.y, 1, 1, ppsBar.x, ppsBar.y, ppsBar.w, ppsBar.h)){
-            ppsBar.targetY = pos.y;
-        }
-    }
+    pointer.dist = utils.distance(pointer.pos.x, pointer.pos.y, 160, 120);
+
 };
 
 var numberButtonCheck = function(game, input){
@@ -228,6 +216,7 @@ var applyPPSBar = function(state, secs){
 
 var pointerShipInput = function(state, secs){
     var input = state.input,
+    pointer = input.pointer,
     headCir = input.pointer.headCir,
     map = state.game.map;
     if(input.pointer.down && headCir.dist < headCir.r){
@@ -242,6 +231,19 @@ var pointerShipInput = function(state, secs){
     if(input.pointer.down && input.pointer.dist < 32){
         var per = input.pointer.dist / 32;
         map.pps.pps = map.maxPPS * per;
+    }
+    // update headCir
+    if(pointer.down){
+        headCir.dist = utils.distance(pointer.pos.x, pointer.pos.y, headCir.x, headCir.y);
+        headCir.dist = headCir.dist > headCir.r ? headCir.r: headCir.dist;
+        if(headCir.dist < headCir.r){
+            headCir.a = utils.angleTo(pointer.pos.x, pointer.pos.y, headCir.x, headCir.y);
+            headCir.d = Math.floor(headCir.a / ( Math.PI * 2 ) * 360);
+            headCir.dir = utils.shortestDirection(headCir.d, Math.floor(map.degree), 360);
+        }
+        if(utils.boundingBox(pointer.pos.x, pointer.pos.y, 1, 1, pointer.ppsBar.x, pointer.ppsBar.y, pointer.ppsBar.w, pointer.ppsBar.h)){
+            pointer.ppsBar.targetY = pointer.pos.y;
+        }
     }
     setMapRadian(state);
 };
