@@ -32,6 +32,7 @@ Now that the very core of the game seems to be togeather I think it would be a g
 * (done) can set a warp point by clicking in the circle
 * (done) make changes to draw.js to help with rendering new 'warp' mode
 
+* reset all blocks on warp
 * warping from one location to another should cost energy
 * color code warp button depeding if there is enough energy or not
 * have a way to use the keybord to dirrect input a warp point.
