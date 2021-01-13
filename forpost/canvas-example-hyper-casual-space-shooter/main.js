@@ -273,6 +273,8 @@ window.addEventListener('keyup', function(e){
 // MOUSE AND TOUCH
 var pointerEvent = function(e){
    var pos = state.input.pointer.pos = utils.getCanvasRelative(e);
+        // update input.pointer
+        updatePointer(state.game, state.input.pointer.pos);
    if(e.type === 'mousedown' || e.type === 'touchstart'){
        state.input.pointer.down = true;
    }
@@ -313,8 +315,6 @@ var loop = function () {
             ppsBar.targetY = 200;
             game.ship.newShip = false;
         }
-        // update input.pointer
-        updatePointer(game, input.pointer.pos);
 
         // pointer update map pps and radian
         pointerShipInput(state, secs);
