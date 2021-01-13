@@ -456,6 +456,15 @@ var draw = (function(){
 
     var drawModes = {
         space: function(ctx, state){
+            // draw blocks and shots
+            blocks(ctx, state);
+            shots(ctx, state);
+            // draw an arrow back to the base
+            drawArrowToBase(ctx, state.game);
+            // position status and map
+            positionStatus(ctx, state);
+            positionMap(ctx, state);
+            effectsInfo(ctx, state);
         },
         base: function(ctx, state){
             var game = state.game;
@@ -491,24 +500,15 @@ var draw = (function(){
         // draw base object
         baseObjectDraw(ctx, game.baseObj, function(){});
 
+        // draw method for the current mode in drawModes
         drawModes[game.mode](ctx, state);
+
         drawModeButtons(ctx, game);
 
-        //if(game.mode === 'base'){
-
-        //}
 
         // draw an 'arrow' object that points to the base if in space mode
         if(game.mode === 'space'){
-            // draw blocks and shots
-            blocks(ctx, state);
-            shots(ctx, state);
-            // draw an arrow back to the base
-            drawArrowToBase(ctx, game);
-            // position status and map
-            positionStatus(ctx, state);
-            positionMap(ctx, state);
-            effectsInfo(ctx, state);
+
         }
 
         // draw blocks, the ship, and shots
