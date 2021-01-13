@@ -141,6 +141,13 @@ if(save.gameSaves){
 var createOptions = save.gameSaves[save.slotIndex];
 state.game = gameMod.create(createOptions);
 
+var setMapRadian = function(state){
+    var map = state.game.map;
+    // wrap degree, and update map radian
+    map.degree = utils.mod(map.degree, 360); 
+    map.radian = utils.wrapRadian(Math.PI / 180 * map.degree);
+};
+
 var keyboardShipInput = function(state, secs){
     var input = state.input,
     ppsBar = ppsBar = input.pointer.ppsBar,
@@ -164,6 +171,7 @@ var keyboardShipInput = function(state, secs){
     if(input.keys.l){
         input.fire = true;
     }
+    setMapRadian(state);
 };
 
 var applyPPSBar = function(state, secs){
@@ -218,6 +226,7 @@ var pointerShipInput = function(state, secs){
             var per = input.pointer.dist / 32;
             map.pps.pps = map.maxPPS * per;
         }
+    setMapRadian(state);
 };
 
 // LOOP
@@ -256,20 +265,16 @@ var loop = function () {
 
         // number button check
         numberButtonCheck(game, input);
-        // wrap degree
-        map.degree = utils.mod(map.degree, 360);
-        // update game
-        map.radian = utils.wrapRadian(Math.PI / 180 * map.degree);
 
-
+        // update game object state
         gameMod.update(game, secs, state);
+
+        // update save state slot
+        save.updateSlot(game);
 
         // draw
         draw.currentMode(state.ctx, state);
         draw.pointerUI(state.ctx, state);
-
-        // update slot
-        save.updateSlot(game);
 
         state.lt = now;
     }
