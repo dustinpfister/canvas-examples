@@ -1351,7 +1351,6 @@ var gameMod = (function(){
         if(game.mode === 'space'){
             updateBlocks(game, secs, state);
             updateShots(game, secs, state);
-
             // ETA
             updateETA(game);
         }
@@ -1364,19 +1363,6 @@ var gameMod = (function(){
             autoHealObject(game.ship, secs);
         }
 
-
-/*
-        var pointer = MAP_POINTERS[game.pointerIndex];
-        var pos = pointer.pos;
-        var label = pointer.label;
-        if(typeof pos === 'function'){
-            pos = pos(game);
-        }
-        if(typeof label === 'function'){
-            label = label(game);
-        }
-        game.ETA = createETA(game, pos.x, pos.y, label);
-*/
         // update money per hour
         var mph = game.moneyPerHour,
         len = mph.blockValues.length;
@@ -1414,7 +1400,6 @@ var gameMod = (function(){
                 mph.ETMUnit = 'M';
                 mph.ETM = mph.ETM * 60;
             }
-            
         }else{
             mph.ETM = 0;
             mph.current = 0;
