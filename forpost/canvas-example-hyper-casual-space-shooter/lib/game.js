@@ -1412,15 +1412,11 @@ var gameMod = (function(){
 
     // main update method
     api.update = function(game, secs, state){
-
-
         // clamp secs between 0 and GAME_UPDATE_MAX_SECS const
         secs = secs > GAME_UPDATE_MAX_SECS ? GAME_UPDATE_MAX_SECS : secs;
         secs = secs < 0 ? 0 : secs;
-
         // call update method for current game mode
         updateModes[game.mode](game, secs, state);
-
         // call allAfter update method
         updateModes['allAfter'](game, secs, state);
     };

@@ -94,6 +94,12 @@ var numberButtonCheck = function(game, input){
     }
 };
 
+// input modes for each game mode
+var inputModes = {
+    space: function(state, game){
+    }
+};
+
 // SAVE STATE CHECK and LOOP START
 
 var save = {
@@ -135,6 +141,28 @@ if(save.gameSaves){
 var createOptions = save.gameSaves[save.slotIndex];
 state.game = gameMod.create(createOptions);
 
+var keyboardShipMovement = function(state, secs){
+    var input = state.input,
+    ppsBar = ppsBar = input.pointer.ppsBar,
+    map = state.game.map;
+        if(input.keys.w){
+            //map.pps += map.ppsDelta * secs;
+            //map.pps = map.pps > map.maxPPS ? map.maxPPS : map.pps;
+            ppsBar.targetY -= 100 * secs;
+        }
+        if(input.keys.s){
+            //map.pps -= map.ppsDelta * secs;
+            //map.pps = map.pps < 0 ? 0 : map.pps;
+            ppsBar.targetY += 100 * secs;
+        }
+        if(input.keys.a){
+            map.degree += map.degreesPerSecond * secs;
+        }
+        if(input.keys.d){
+            map.degree -= map.degreesPerSecond * secs;
+        }
+};
+
 // LOOP
 //var lt = new Date(),
 //FPS_target = 1000 / 30;
@@ -163,25 +191,9 @@ var loop = function () {
 
         // update input.pointer
         updatePointer(game, input.pointer.pos);
-        // keyboard or pointer update map radian
 
         // keyboard update map pps
-        if(input.keys.w){
-            //map.pps += map.ppsDelta * secs;
-            //map.pps = map.pps > map.maxPPS ? map.maxPPS : map.pps;
-            ppsBar.targetY -= 100 * secs;
-        }
-        if(input.keys.s){
-            //map.pps -= map.ppsDelta * secs;
-            //map.pps = map.pps < 0 ? 0 : map.pps;
-            ppsBar.targetY += 100 * secs;
-        }
-        if(input.keys.a){
-            map.degree += map.degreesPerSecond * secs;
-        }
-        if(input.keys.d){
-            map.degree -= map.degreesPerSecond * secs;
-        }
+        keyboardShipMovement(state, secs);
 
         // clamp targetY
         ppsBar.targetY = ppsBar.targetY < ppsBar.y ? ppsBar.y: ppsBar.targetY;
@@ -243,6 +255,8 @@ var loop = function () {
         // update game
         //gameMod.setMapMovement(game, input.degree, input.pps);
         map.radian = utils.wrapRadian(Math.PI / 180 * map.degree);
+
+
         gameMod.update(game, secs, state);
 
         // draw
