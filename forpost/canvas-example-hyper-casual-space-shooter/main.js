@@ -141,6 +141,11 @@ if(save.gameSaves){
 var createOptions = save.gameSaves[save.slotIndex];
 state.game = gameMod.create(createOptions);
 
+
+    /********** INPUT **********
+        process user input
+    **********/
+
 var setMapRadian = function(state){
     var map = state.game.map;
     // wrap degree, and update map radian
@@ -229,6 +234,46 @@ var pointerShipInput = function(state, secs){
     setMapRadian(state);
 };
 
+
+// KEYBOARD EVENTS
+window.addEventListener('keydown', function(e){
+    //e.preventDefault();
+    var key = e.key.toLowerCase();
+    state.input.keys[key] = true;
+});
+window.addEventListener('keyup', function(e){
+    //e.preventDefault();
+    var key = e.key.toLowerCase();
+    // toggle debug mode
+    if(key === 'v'){
+       state.debug = !state.debug;
+    }
+    if(key === 'b'){
+       state.game.autoFire = !state.game.autoFire;
+    }
+    if(key === 'n'){
+       gameMod.loopPointers(state.game);
+    }
+    state.input.keys[key] = false;
+});
+// MOUSE AND TOUCH
+var pointerEvent = function(e){
+   var pos = state.input.pointer.pos = utils.getCanvasRelative(e);
+   if(e.type === 'mousedown' || e.type === 'touchstart'){
+       state.input.pointer.down = true;
+   }
+   //if((e.type === 'mousemove' || e.type === 'touchmove') && state.input.pointer.down){
+   //}
+   if(e.type === 'mouseup' || e.type === 'touchend'){
+       state.input.pointer.down = false;
+       gameMod.checkButtons(state.game, pos, e);
+   }
+};
+canvas.addEventListener('mousedown', pointerEvent);
+canvas.addEventListener('mousemove', pointerEvent);
+canvas.addEventListener('mouseup', pointerEvent);
+
+
 // LOOP
 var loop = function () {
 
@@ -276,42 +321,3 @@ var loop = function () {
 };
 
 loop();
-
-
-// KEYBOARD EVENTS
-window.addEventListener('keydown', function(e){
-    //e.preventDefault();
-    var key = e.key.toLowerCase();
-    state.input.keys[key] = true;
-});
-window.addEventListener('keyup', function(e){
-    //e.preventDefault();
-    var key = e.key.toLowerCase();
-    // toggle debug mode
-    if(key === 'v'){
-       state.debug = !state.debug;
-    }
-    if(key === 'b'){
-       state.game.autoFire = !state.game.autoFire;
-    }
-    if(key === 'n'){
-       gameMod.loopPointers(state.game);
-    }
-    state.input.keys[key] = false;
-});
-// MOUSE AND TOUCH
-var pointerEvent = function(e){
-   var pos = state.input.pointer.pos = utils.getCanvasRelative(e);
-   if(e.type === 'mousedown' || e.type === 'touchstart'){
-       state.input.pointer.down = true;
-   }
-   //if((e.type === 'mousemove' || e.type === 'touchmove') && state.input.pointer.down){
-   //}
-   if(e.type === 'mouseup' || e.type === 'touchend'){
-       state.input.pointer.down = false;
-       gameMod.checkButtons(state.game, pos, e);
-   }
-};
-canvas.addEventListener('mousedown', pointerEvent);
-canvas.addEventListener('mousemove', pointerEvent);
-canvas.addEventListener('mouseup', pointerEvent);
