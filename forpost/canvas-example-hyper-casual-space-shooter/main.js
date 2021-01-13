@@ -54,51 +54,6 @@ var state = {
     FPS_target : 20,
     FPS: 0
 };
-// update pointer object helper
-var updatePointer = function(game, pos){
-    var map = game.map,
-    input = state.input,
-    pointer = input.pointer,
-    headCir = pointer.headCir,
-    ppsBar = pointer.ppsBar;
-    // update dir so that we know the shortest direction to go
-    var d = Math.floor(utils.angleTo(pos.x, pos.y, 160, 120) / ( Math.PI * 2 ) * 360);
-    pointer.dir = utils.shortestDirection(d, Math.floor(map.degree), 360);
-    // update main dist
-    pointer.dist = utils.distance(pos.x, pos.y, 160, 120);
-    // update headCir
-    if(pointer.down){
-        headCir.dist = utils.distance(pos.x, pos.y, headCir.x, headCir.y);
-        headCir.dist = headCir.dist > headCir.r ? headCir.r: headCir.dist;
-        if(headCir.dist < headCir.r){
-            headCir.a = utils.angleTo(pos.x, pos.y, headCir.x, headCir.y);
-            headCir.d = Math.floor(headCir.a / ( Math.PI * 2 ) * 360);
-            headCir.dir = utils.shortestDirection(headCir.d, Math.floor(map.degree), 360);
-        }
-        if(utils.boundingBox(pos.x, pos.y, 1, 1, ppsBar.x, ppsBar.y, ppsBar.w, ppsBar.h)){
-            ppsBar.targetY = pos.y;
-        }
-    }
-};
-
-var numberButtonCheck = function(game, input){
-    if(game.mode === 'base'){
-        [1,2,3].forEach(function(n){
-            if(input.keys[n]){
-                game.ship.weaponIndex = n - 1;
-                game.ship.weapon = game.weapons[n - 1];
-                game.buttons.currentPage = 'weapons';
-                gameMod.updateButtons(game);
-            }
-        });
-    }
-};
-
-// input modes for each game mode
-var inputModes = {
-    space: function(state, game){
-    }
-};
 
 // SAVE STATE CHECK and LOOP START
 
@@ -145,6 +100,51 @@ state.game = gameMod.create(createOptions);
     /********** INPUT **********
         process user input
     **********/
+// update pointer object helper
+var updatePointer = function(game, pos){
+    var map = game.map,
+    input = state.input,
+    pointer = input.pointer,
+    headCir = pointer.headCir,
+    ppsBar = pointer.ppsBar;
+    // update dir so that we know the shortest direction to go
+    var d = Math.floor(utils.angleTo(pos.x, pos.y, 160, 120) / ( Math.PI * 2 ) * 360);
+    pointer.dir = utils.shortestDirection(d, Math.floor(map.degree), 360);
+    // update main dist
+    pointer.dist = utils.distance(pos.x, pos.y, 160, 120);
+    // update headCir
+    if(pointer.down){
+        headCir.dist = utils.distance(pos.x, pos.y, headCir.x, headCir.y);
+        headCir.dist = headCir.dist > headCir.r ? headCir.r: headCir.dist;
+        if(headCir.dist < headCir.r){
+            headCir.a = utils.angleTo(pos.x, pos.y, headCir.x, headCir.y);
+            headCir.d = Math.floor(headCir.a / ( Math.PI * 2 ) * 360);
+            headCir.dir = utils.shortestDirection(headCir.d, Math.floor(map.degree), 360);
+        }
+        if(utils.boundingBox(pos.x, pos.y, 1, 1, ppsBar.x, ppsBar.y, ppsBar.w, ppsBar.h)){
+            ppsBar.targetY = pos.y;
+        }
+    }
+};
+
+var numberButtonCheck = function(game, input){
+    if(game.mode === 'base'){
+        [1,2,3].forEach(function(n){
+            if(input.keys[n]){
+                game.ship.weaponIndex = n - 1;
+                game.ship.weapon = game.weapons[n - 1];
+                game.buttons.currentPage = 'weapons';
+                gameMod.updateButtons(game);
+            }
+        });
+    }
+};
+
+// input modes for each game mode
+var inputModes = {
+    space: function(state, game){
+    }
+};
 
 var setMapRadian = function(state){
     var map = state.game.map;
