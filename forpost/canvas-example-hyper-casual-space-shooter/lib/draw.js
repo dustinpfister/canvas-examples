@@ -513,6 +513,16 @@ var draw = (function(){
             ctx.beginPath();
             ctx.arc(navCir.x, navCir.y, navCir.r, 0, Math.PI * 2);
             ctx.stroke();
+            
+            ctx.save();
+            ctx.translate(navCir.x, navCir.y);
+            ctx.beginPath();
+            ctx.arc(navCir.shipCir.x, navCir.shipCir.y, navCir.shipCir.r, 0, Math.PI * 2);
+            ctx.stroke();
+            ctx.beginPath();
+            ctx.arc(navCir.warpCir.x, navCir.warpCir.y, navCir.warpCir.r, 0, Math.PI * 2);
+            ctx.stroke();
+            ctx.restore();
         }
     };
 
