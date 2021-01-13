@@ -22,7 +22,7 @@ Now that the very core of the game seems to be togeather I think it would be a g
 
 ## 0.28.0 - Warp
 * (done) have a new updateModes object in game.js that will contain update methods for each game mode
-* pull code that has to do with input in the loop in main.js into helper functions
+* (done) pull code that has to do with input in the loop in main.js into helper functions
 * have a inputModes object in main.js that will handle input for each game mode
 
 * start a 'warp' game mode

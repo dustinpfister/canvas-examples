@@ -144,12 +144,6 @@ var numberButtonCheck = function(game, input){
     }
 };
 
-// input modes for each game mode
-var inputModes = {
-    space: function(state, game){
-    }
-};
-
 var setMapRadian = function(state){
     var map = state.game.map;
     // wrap degree, and update map radian
@@ -253,6 +247,25 @@ var pointerShipInput = function(state, secs){
 };
 
 
+// input modes for each game mode
+var inputModes = {
+    space: function(state, secs){
+        // move ship
+        pointerShipInput(state, secs);
+        keyboardShipInput (state, secs);
+        applyPPSBar(state, secs);
+    },
+    base: function(state, secs){
+        // move ship
+        pointerShipInput(state, secs);
+        keyboardShipInput (state, secs);
+        applyPPSBar(state, secs);
+    },
+    warp: function(state, secs){
+    }
+};
+
+
 // KEYBOARD EVENTS
 window.addEventListener('keydown', function(e){
     //e.preventDefault();
@@ -314,19 +327,22 @@ var loop = function () {
 
     if (t >= 1000 / state.FPS_target) {
         state.FPS = 1 / secs;
+
         // if new ship
         if(game.ship.newShip){
             ppsBar.targetY = 200;
             game.ship.newShip = false;
         }
 
+        inputModes[game.mode](state, secs);
+
         // pointer update map pps and radian
-        pointerShipInput(state, secs);
+        //pointerShipInput(state, secs);
 
         // keyboard update map pps and radian
-        keyboardShipInput (state, secs);
+        //keyboardShipInput (state, secs);
 
-        applyPPSBar(state, secs);
+        //applyPPSBar(state, secs);
 
         // update game object state
         gameMod.update(game, secs, state);
