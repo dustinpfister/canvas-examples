@@ -26,16 +26,16 @@ Now that the very core of the game seems to be togeather I think it would be a g
 * (done) have a inputModes object in main.js that will handle input for each game mode
 * (done) start a 'warp' game mode
 * (done) have a space mode button to enter warp mode
+* (done) The 'warp' game mode results in a whole new interface that can be used to set a location to warp to
+* (done) the interface can be a circle in the center of the canvas, with another circle in it that is the ship
+* (done) have a warp button that will warp the ship to the current location
+* (done) can set a warp point by clicking in the circle
+* (done) make changes to draw.js to help with rendering new 'warp' mode
 
-* The 'warp' game mode resuts in a whole new interface that can be used to set a location to warp to
-* the interface can be a circle in the center of the canvas, with another circle in it that is the ship
-* can have another circle centered around the ship that is the current max warp range.
-* can set a warp point by clicking in the circle
 * warping from one location to another should cost energy
-* have a warp button that will warp the ship to the current location if there is enough energy
 * color code warp button depeding if there is enough energy or not
 * have a way to use the keybord to dirrect input a warp point.
-* make changes to draw.js to help with rendering new 'warp' mode
+* can have another circle centered around the ship that is the current max warp range.
 * make a 0.28.0 pkg folder
 
 ## 0.27.0 - New ETA Helper

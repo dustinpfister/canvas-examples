@@ -1328,6 +1328,7 @@ var gameMod = (function(){
         game.ETA = createETA(game, 0, 0);
 
 
+
         // buy starting upgrades
 /*
         var upgrade = getUpgradeById(game, 'e-burn');
@@ -1387,6 +1388,7 @@ var gameMod = (function(){
             updateMap(game, secs);
         },
         warp: function(game, secs, state){
+            updateMap(game, secs);
         },
         allAfter: function(game, secs, state){
             // move baseObject

@@ -522,9 +522,11 @@ var draw = (function(){
             ctx.save();
             ctx.translate(navCir.x, navCir.y);
             ctx.beginPath();
+            ctx.strokeStyle='blue';
             ctx.arc(navCir.shipCir.x, navCir.shipCir.y, navCir.shipCir.r, 0, Math.PI * 2);
             ctx.stroke();
             ctx.beginPath();
+            ctx.strokeStyle='yellow';
             ctx.arc(navCir.warpCir.x, navCir.warpCir.y, navCir.warpCir.r, 0, Math.PI * 2);
             ctx.stroke();
             ctx.restore();
