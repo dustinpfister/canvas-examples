@@ -197,6 +197,29 @@ var applyPPSBar = function(state, secs){
     }
 };
 
+var pointerShipInput = function(state, secs){
+    var input = state.input,
+    headCir = input.pointer.headCir,
+    map = state.game.map;
+
+        //if(input.pointer.down && input.pointer.dist <= 32){
+        if(input.pointer.down && headCir.dist < headCir.r){
+            //if(input.pointer.dir === 1){
+            if(headCir.dir === 1){
+                map.degree += map.degreesPerSecond * secs;
+            }
+            //if(input.pointer.dir === -1){
+            if(headCir.dir === -1){
+                map.degree -= map.degreesPerSecond * secs;
+            }
+        }
+        // pointer update map pps
+        if(input.pointer.down && input.pointer.dist < 32){
+            var per = input.pointer.dist / 32;
+            map.pps.pps = map.maxPPS * per;
+        }
+};
+
 // LOOP
 //var lt = new Date(),
 //FPS_target = 1000 / 30;
@@ -222,29 +245,14 @@ var loop = function () {
         }
         // update input.pointer
         updatePointer(game, input.pointer.pos);
+
+        // pointer update map pps and radian
+        pointerShipInput(state, secs);
+
         // keyboard update map pps and radian
         keyboardShipInput (state, secs);
 
         applyPPSBar(state, secs);
-
-        // pointer update map radian
-        var headCir = input.pointer.headCir;
-        //if(input.pointer.down && input.pointer.dist <= 32){
-        if(input.pointer.down && headCir.dist < headCir.r){
-            //if(input.pointer.dir === 1){
-            if(headCir.dir === 1){
-                map.degree += map.degreesPerSecond * secs;
-            }
-            //if(input.pointer.dir === -1){
-            if(headCir.dir === -1){
-                map.degree -= map.degreesPerSecond * secs;
-            }
-        }
-        // pointer update map pps
-        if(input.pointer.down && input.pointer.dist < 32){
-            var per = input.pointer.dist / 32;
-            map.pps.pps = map.maxPPS * per;
-        }
 
         // number button check
         numberButtonCheck(game, input);
