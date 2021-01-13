@@ -1354,6 +1354,59 @@ var gameMod = (function(){
             // move baseObject
             game.baseObj.x = game.map.x * -1;
             game.baseObj.y = game.map.y * -1;
+            // energy
+            updateEnergy(game, secs);
+            // autoHeal ship
+            if(game.ship.hp.current < game.ship.hp.max && game.ship.energy.current > ENERGY_AUTOHEAL_COST * secs){
+                game.ship.energy.current -= ENERGY_AUTOHEAL_COST * secs;
+                autoHealObject(game.ship, secs);
+            }
+            // update money per hour
+            var mph = game.moneyPerHour,
+            len = mph.blockValues.length;
+            if(len > mph.maxValues){
+                mph.blockValues.splice(0, len - mph.maxValues);
+            }
+            // purge out over time
+            mph.secs += secs;
+            //if(mph.secs >= mph.purgeOutAfter){
+            if(mph.secs >= mph.startPurgeOutAfter && !mph.purgeOut){
+                mph.purgeOut = true;
+            }
+            if(mph.secs >= mph.purgeOutAfter && mph.purgeOut){
+                if(mph.blockValues.length >= 1){
+                    mph.blockValues.splice(0, 1);
+                }
+                mph.secs = 0;
+            }
+            // if block values array has at least one value
+            if(mph.blockValues.length >= 1){
+                var now = new Date(),
+                t = now - mph.blockValues[0].date,
+                hours = t / 1000 / 60 / 60;
+                mph.money = 0;
+                mph.blockValues.forEach(function(bv){
+                    mph.money += bv.money;
+                });
+                mph.current = mph.money / hours;
+                mph.ETMUnit = 'H';
+                mph.ETM = (mph.target - game.money) / mph.current;
+                mph.ETM = mph.ETM < 0 ? 0 : mph.ETM;
+                mph.ETM = mph.ETM > 999 ? 999 : mph.ETM;
+                // if ETM < 1 switch to minutes
+                if(mph.ETM < 1){
+                    mph.ETMUnit = 'M';
+                    mph.ETM = mph.ETM * 60;
+                }
+            }else{
+                mph.ETM = 0;
+                mph.current = 0;
+                mph.money = 0;
+            }
+            var lowest = getLowestUpgrade(game);
+            if(lowest){
+                mph.target = lowest.cost;
+            }
         }
     };
 
@@ -1370,62 +1423,6 @@ var gameMod = (function(){
 
         // call allAfter update method
         updateModes['allAfter'](game, secs, state);
-
-        // energy
-        updateEnergy(game, secs);
-
-        // autoHeal ship
-        if(game.ship.hp.current < game.ship.hp.max && game.ship.energy.current > ENERGY_AUTOHEAL_COST * secs){
-            game.ship.energy.current -= ENERGY_AUTOHEAL_COST * secs;
-            autoHealObject(game.ship, secs);
-        }
-
-        // update money per hour
-        var mph = game.moneyPerHour,
-        len = mph.blockValues.length;
-        if(len > mph.maxValues){
-            mph.blockValues.splice(0, len - mph.maxValues);
-        }
-        // purge out over time
-        mph.secs += secs;
-        //if(mph.secs >= mph.purgeOutAfter){
-        if(mph.secs >= mph.startPurgeOutAfter && !mph.purgeOut){
-            mph.purgeOut = true;
-        }
-        if(mph.secs >= mph.purgeOutAfter && mph.purgeOut){
-            if(mph.blockValues.length >= 1){
-                mph.blockValues.splice(0, 1);
-            }
-            mph.secs = 0;
-        }
-        // if block values array has at least one value
-        if(mph.blockValues.length >= 1){
-            var now = new Date(),
-            t = now - mph.blockValues[0].date,
-            hours = t / 1000 / 60 / 60;
-            mph.money = 0;
-            mph.blockValues.forEach(function(bv){
-                mph.money += bv.money;
-            });
-            mph.current = mph.money / hours;
-            mph.ETMUnit = 'H';
-            mph.ETM = (mph.target - game.money) / mph.current;
-            mph.ETM = mph.ETM < 0 ? 0 : mph.ETM;
-            mph.ETM = mph.ETM > 999 ? 999 : mph.ETM;
-            // if ETM < 1 switch to minutes
-            if(mph.ETM < 1){
-                mph.ETMUnit = 'M';
-                mph.ETM = mph.ETM * 60;
-            }
-        }else{
-            mph.ETM = 0;
-            mph.current = 0;
-            mph.money = 0;
-        }
-        var lowest = getLowestUpgrade(game);
-        if(lowest){
-            mph.target = lowest.cost;
-        }
     };
 
     // check current mode and page of buttons
