@@ -162,6 +162,7 @@ var forFrame = (function(){
 
         ff.frame = 0;
         while(ff.frame < ff.frameMax){
+            ffDraw.apply(ff, [ff, ctx, canvas]);
             api.step(ff, 1);
         }
 
