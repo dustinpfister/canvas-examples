@@ -631,10 +631,6 @@ var gameMod = (function(){
                     var warpCir = game.warp.navCir.warpCir;
                     warpCir.x = 0;
                     warpCir.y = 0;
-
-                    //game.map.x = game.warp.warpX;
-                    //game.map.y = game.warp.warpY;
-                    //poolMod.setActiveStateForAll(game.blocks, false);
                 }
             }
         }
@@ -1303,7 +1299,7 @@ var gameMod = (function(){
                     y: 120,
                     r: 100,
                     shipCir: { x: 0,y: 0,r: 5 }, // additional circle objects to use in navCir
-                    warpCir: { x: 50,y: 50,r: 5 }
+                    warpCir: { x: 0,y: 0,r: 5 }
                 }
             },
             //baseButtons: BASE_BUTTONS,
