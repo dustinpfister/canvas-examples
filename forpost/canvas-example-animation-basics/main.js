@@ -30,13 +30,24 @@ var box = forFrame.create({
    type: 'points',
    maxFrame: 3,
    width: 32,
-   height: 32
+   height: 32,
+   forFrame: function(ff, model, frame, maxFrame, per){
+       return {
+          x: (32 -4) * ff.per,
+          y: 16-2,
+          w: 4,
+          h: 4
+       };
+   }
 });
 
 var ffDraw = function(ff, ctx, canvas){
     ctx.fillStyle = 'white';
     ctx.textBaseline = 'top';
-    ctx.fillText('foo', 5, 5);
+    ctx.fillText(ff.frame, 5, 5);
+    var box = ff.model;
+
+    ctx.fillRect(box.x, box.y, box.w, box.h);
 };
 
 var can = forFrame.createCanvas(box, ffDraw, 'green');
