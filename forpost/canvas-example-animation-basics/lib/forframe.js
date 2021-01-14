@@ -163,7 +163,6 @@ var forFrame = (function(){
         ff.frame = 0;
         console.log(ff.maxFrame);
         while(ff.frame < ff.maxFrame){
-            console.log('hello?');
 
             setFrame(ff, ff.frame);
             ffDraw.apply(ff, [ff, ctx, canvas]);
