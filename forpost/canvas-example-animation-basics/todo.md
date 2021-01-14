@@ -2,7 +2,7 @@
 
 ## 0.x.0 - new ForFrame method that creates a collection of blocks
 
-## 0.x.0 - new forFrame.createSheet feature
+## 0.4.0 - new forFrame.createSheet feature
 
 ## 0.3.0 - new forFrame.createPoints feature, and star example
 * (done) start a forFrame.createPoints public method that will return a new kind of ff object
