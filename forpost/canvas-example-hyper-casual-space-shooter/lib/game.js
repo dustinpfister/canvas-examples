@@ -1254,7 +1254,7 @@ var gameMod = (function(){
             },
             ETA: {},
             pointerIndex:0,
-            mode: 'warp',
+            mode: 'space',
             autoFire: SHIP_AUTOFIRE,
             weapons: utils.deepClone(DEFAULT_WEAPONS),
             effects: utils.deepClone(poolMod.EFFECT_TYPES),
