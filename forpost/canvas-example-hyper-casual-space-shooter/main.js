@@ -22,7 +22,7 @@ canvas = canvasObj.canvas;
 
 
 var state = {
-    ver: '0.28.0',
+    ver: '0.29.0',
     canvas : canvas,
     ctx: canvasObj.ctx,
     game: gameMod.create({money: 100}),

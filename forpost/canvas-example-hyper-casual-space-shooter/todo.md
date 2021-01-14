@@ -2,21 +2,20 @@
 
 <!-- MONEY, and TIME ( How long will it take to get to a point in the game ) -->
 <!--
-    From 0.26.x to 0.29.x the focus should now be on MONEY and TIME.
+    From 0.26.x to 0.30.x the focus should now be on MONEY and TIME.
 Now that the very core of the game seems to be togeather I think it would be a good idea to start thinking in terms of what values need to change when it comes to balancing. Features added at this point should help for me to get an idea of how long a player needs to play the game in order to get all the upgrades, and thus get to the 'end of the game sort of speak'. That is if there is really and end to get to really to begin with. 
-    Features should also help to get an idea of how long it will take to get from the center of the game map to the max distance, or any distance, with current ship speed. Also features should help to reduce the amount of time it would take to get somewhere from starting values, such as adding a warp feature.
+    Features should also help to get an idea of how long it will take to get from the center of the game map to the max distance, or any distance, with current ship speed. Also features should help to reduce the amount of time it would take to get somewhere from starting values, such as adding a WARP feature.
 -->
 
 ## 0.30.0 - Graphics Change II, and General Improvements
 * Add Canvas generated sprite sheet helper in draw.js
 * create a sheet for shots
 * create a sheet for the ship
-
 * have a pointer that will point to the best location for current weapon damage
 * make ship hp, and energy part of save state
 * have a getAllUpgradesCost helper that will tabulate all upgrade costs
 * use the Average Money Per Hour helper to estamate how long it will take to unlock everything
-
+* make a 0.30.0 pkg folder
 
 ## 0.29.0 - Warp Cost upgrade, Warp Range Upgrade
 * warping from one location to another should cost energy
@@ -40,7 +39,7 @@ Now that the very core of the game seems to be togeather I think it would be a g
 * (done) can set a warp point by clicking in the circle
 * (done) make changes to draw.js to help with rendering new 'warp' mode
 * (done) reset all blocks on warp
-* make a 0.28.0 pkg folder
+* (done - 01/14/2021) make a 0.28.0 pkg folder
 
 ## 0.27.0 - New ETA Helper
 * (done) add an createETA helper that will return an ETA object to a given point, from a current point and speed.
