@@ -3,8 +3,11 @@
 ## 0.x.0 - new ForFrame method that creates a collection of blocks
 
 ## 0.4.0 - new forFrame.createSheet feature
+* start a forFrame.createSheet function that can be used to create and return a canvas element
+* the forframe method given will be used to render to the canvas element that will be returned
+* make a 0.4.0 pkg folder
 
-## 0.3.0 - new forFrame.createPoints feature, and star example
+## 0.3.0 - new forFrame.createPoints feature
 * (done) start a forFrame.createPoints public method that will return a new kind of ff object
 * (done) have a ff.type prop that will default to 'plain' for forFrame.create and 'points' for forFrame.createPoints
 * (done) have a FF_TYPES const that will be a collection of objects for each type
