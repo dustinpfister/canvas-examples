@@ -33,7 +33,13 @@ var box = forFrame.create({
    height: 32
 });
 
-var can = forFrame.createCanvas(box, null, 'green');
+var ffDraw = function(ff, ctx, canvas){
+    console.log('hello');
+    ctx.fillStyle = 'white';
+    ctx.fillText('foo', 0, 0);
+};
+
+var can = forFrame.createCanvas(box, ffDraw, 'green');
 
 // basic app loop
 var loop = function(){

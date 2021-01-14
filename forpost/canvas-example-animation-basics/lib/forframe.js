@@ -161,9 +161,13 @@ var forFrame = (function(){
         }
 
         ff.frame = 0;
-        while(ff.frame < ff.frameMax){
+        console.log(ff.maxFrame);
+        while(ff.frame < ff.maxFrame){
+            console.log('hello?');
+
+            setFrame(ff, ff.frame);
             ffDraw.apply(ff, [ff, ctx, canvas]);
-            api.step(ff, 1);
+            ff.frame += 1;
         }
 
         return canvas;
