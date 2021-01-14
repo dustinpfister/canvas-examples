@@ -115,7 +115,7 @@ Now that the very core of the game seems to be togeather I think it would be a g
 * (done) BLOCK-SPAWN-COUNT-PER-DIST that will be the number of blocks to spawn when dist is reached
 * (done - 01/06/2021) make a 0.24.0 pkg folder
 
-## 0.23.0 - Block Damage, Ship Energy Bar, Ship Health Bar, HomeSick feature
+## 0.23.0 - Block Damage, Ship Energy Bar, Ship Health Bar
 * (done) have block damage go up with map distance
 * (done) display block damage
 * (done) have a ship.energy prop
@@ -359,12 +359,12 @@ armor : {
 * (done) display weapon info
 * (done - 12/11/2020 ) make a pkg-0-7-0.html
 
-## 0.6.0 - map.dist, map.per, and MAP\_MAX\_DIST
+## 0.6.0 - map.dist, map.per, and MAP-MAX-DIST
 * (done) have a map.dist property that is the distance from (map.x, map.y) to (0,0)
-* (done) have a MAP\_MAX\_DIST property that is the max distnace that the ship can go from (0,0)
-* (done) have a map.per property that is map.dist / MAP\_MAX\_DIST
+* (done) have a MAP-MAX-DIST property that is the max distnace that the ship can go from (0,0)
+* (done) have a map.per property that is map.dist / MAP-MAX-DIST
 * (done) have the map.x, and map.y values wrap when they go out of bounds
-* (done) set MAP MAX DIST to a low value of say around 100,000 (for now)
+* (done) set MAP-MAX-DIST to a low value of say around 100,000 (for now)
 * (done) in draw.js have map.dist effect the background color
 * (done) have map.dist effect max HP of blocks
 * (done) display block hp rather than distance to ship

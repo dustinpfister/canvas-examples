@@ -1,28 +1,15 @@
 ## canvas-example-hyper-casual-space-shooter features list
 
-This is a list of features that I may or may not even add to the game to begin with. I do not really want to just add any and all idea that come to mind with this, so when I get an idea for something I park it here, and then sleep on it. I might also want to deaft out the next set of minors to work on that will then be added to the todo list here.
+This is a list of features that I may or may not even add to the game to begin with. I do not really want to just add any and all ideas that come to mind with this, so when I get an idea for something I park it here, and then sleep on it. I might also want to draft out the next set of minors to work on that will then be added to the todo list in this file.
 
-<!-- FACTIONS, and enemy ships -->
+<!-- ENERGY, and HP -->
+<!-- 
+   Energy was a feature added a while ago, but it could use some work.
+-->
 
-## 0.x.0 - Faction Areas
-* have areas in the map where a faction can be
-* A faction object stores a value that is the last time the player has been in range of the faction area
-* the last time propery is used to find the strength of the faction in terms of units.
-
-### 0.x.0 - Added Enemy ships
-
-<!-- ECONOMY -->
-
-## 0.x.0 - Block Money Dist upgrade
-* have constants for BLOCK-MONEY-DIST-MIN, and BLOCK-MONEY-DIST-MAX
-* have a 'block money dist' upgrade in the economy page
-
-## 0.x.0 - Economy page started, and Block Money Base upgrade
-* Start an economy button page at the base.
-* have the ushual back button in the economy page
-* have a single 'block money base' upgrade in the economy page
-* have constants for BLOCK-MONEY-BASE-MIN, and BLOCK-MONEY-BASE-MAX
-
+## 0.x.0 - Max HP upgrade
+## 0.x.0 - Max Energy upgrade
+## 0.x.0 - Energy Rate Upgrade added in Ship Page
 
 <!-- STATE MACHINE -->
 <!--
@@ -41,34 +28,63 @@ This is a list of features that I may or may not even add to the game to begin w
 * have a buttons feature of the state machine
 * use new state machine in main.js
 
+<!-- INFO DISP -->
+## 0.x.0 - message system
+## 0.x.0 - commom infoDisplay that can change my clicking it
+## 0.x.0 - damage disp object pool ( pool for objects that display how much damage done to a block)
+## 0.x.0 - cheat system
+
+<!-- WEAPONS -->
+## 0.x.0 - New Weapons with plain onHit Damage only, splash damage only, and bolth
+## 0.x.0 - Weapon Accuracy
+## 0.x.0 - Weapon Splash Damage
+## 0.x.0 - Missles
+## 0.x.0 - Weapon on fire update methods
+## 0.x.0 - Better weapon info display uisng infoDisplay system
+
+<!-- ECONOMY -->
+
+## 0.x.0 - Economy page started, and Block Money Base upgrade
+* Start an economy button page at the base.
+* have the ushual back button in the economy page
+* have a single 'block money base' upgrade in the economy page
+* have constants for BLOCK-MONEY-BASE-MIN, and BLOCK-MONEY-BASE-MAX
+* the block money base upgrade will increate the base amount of money for a block
+
+## 0.x.0 - Block Money Dist upgrade
+* have constants for BLOCK-MONEY-DIST-MIN, and BLOCK-MONEY-DIST-MAX
+* have a 'block money dist' upgrade in the economy page
+
+## 0.x.0 - Money Over time (while playing)
+## 0.x.0 - away production (money given after being away for a while)
+
+<!-- BASE OBJECT(S) and SANDBOX -->
+## 0.x.0 - Sandbox game mode started
+## 0.x.0 - More than one base Objects in the map
+
 <!-- IMPROVE FEATURES IN PLACE, FIX BUGS, TWEAK VALUES -->
 <!--
     Now that I have basic tools to help me know what the deal is with making money, and how log it takes to get somewhere it is time to use that info to improve features in place. Much of this might involve just tweaking some values to states that are more in line with what they should be for a finished product. At this time I should also focus on fixing known bugs, and simple little problems.
 
 -->
 
-## 0.33.0 - Weapon Value tweaks, and new weapons
+## 0.x.0 - Weapon Value tweaks, and new weapons
 * The pulse gun is to powerful, make it the true 'starting gun' by making the max shot damage a far smaller percentage of max block hp.
 
-## 0.32.0 - Save State Improvements
+## 0.x.0 - Save State Improvements
 * The current weapon index should be part of the save state
 * The current ship health should be part of the save state
 * The current ship energy should be part of the save state
 * Player settings should be part of the save state too, such as saving the state of the autoFire bool
 
+<!-- FACTIONS, and enemy ships -->
 
-<!-- INFO and HELP features -->
-<!-- 
-        From 0.31.x forward I should now add some features that will result in better and cleaner displays of info
-    in plave of displaying everything on the canvas all at once, it might be better to have an area that is a kind
-    of general info area. Clicking on this area can be uaed to switch between diferent views. There are other features
-    that I might want to add like a message system that can be used to display
--->
+## 0.x.0 - Faction Areas
+* have areas in the map where a faction can be
+* A faction object stores a value that is the last time the player has been in range of the faction area
+* the last time propery is used to find the strength of the faction in terms of units.
 
-
-<!-- BASE OBJECT(S) and SANDBOX -->
-## 0.x.0 - Sandbox game mode started
-## 0.x.0 - More than one base Objects in the map
+### 0.x.0 - Added Enemy ships
 
 <!-- AUTOMATION -->
 ## 0.x.0 - Game Automation, game.startTime
@@ -76,8 +92,6 @@ This is a list of features that I may or may not even add to the game to begin w
 * add a game.startTime value that will be the date at which the 'player' has started to play the game
 
 <!-- WARP -->
-## 0.x.0 - warp to home
-## 0.x.0 - warp to any point for a cost in energy or money
 
 <!-- UPGRADE SYSTEM -->
 ## 0.x.0 - log4 per method
@@ -99,19 +113,6 @@ This is a list of features that I may or may not even add to the game to begin w
 ## 0.x.0 - Money over time
 ## 0.x.0 - Block Money Upgrade
 
-<!-- WEAPONS -->
-## 0.x.0 - Better weapon info display uisng infoDisplay system
-## 0.x.0 - New Weapons with plain onHit Damage only, splash damage only, and bolth
-## 0.x.0 - Weapon Accuracy
-## 0.x.0 - Weapon Splash Damage
-## 0.x.0 - Missles
-## 0.x.0 - Weapon on fire update methods
-
-<!-- INFO DISP -->
-## 0.x.0 - message system
-## 0.x.0 - commom infoDisplay that can change my clicking it
-## 0.x.0 - damage disp object pool ( pool for objects that display how much damage done to a block)
-
 <!-- CONTROLS -->
 ## 0.x.0 - Course and fine grain control
 ## 0.x.0 - Yaw Movement with keyboard J and L keys (set manual fire to k button)
@@ -122,11 +123,7 @@ This is a list of features that I may or may not even add to the game to begin w
 <!-- These are additional features that have come to mind for this project that I may or may not get to -->
 ## 0.x.0 - homesick
 * HomeSick feature rate at which energy goes up, will go down as distance from base goes up
-## 0.x.0 - Graphics Change II
-* add a way to create canvas generated sprite sheets in draw.js
-* create star like shapes that rotate for shots.
-* health bar for ship in status bar
-* make a cool background of some kind
+## 0.x.0 - Graphics Change III
 ## 0.x.0 - Replace hard coded 160, 120 values
 * have a state.canvasHalfWidth, and state.canvasHalfHeight values
 * Replace hard coded 160, 120 values in draw.js, game.js, ect with state.canvasHalfWidth and state.canvasHalfHeigh
