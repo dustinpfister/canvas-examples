@@ -2,9 +2,9 @@
 
 ## 0.x.0 - new ForFrame method that creates a collection of blocks
 
-## 0.4.0 - new forFrame.createSheet feature
-* start a forFrame.createSheet function that can be used to create and return a canvas element
-* the forframe method given will be used to render to the canvas element that will be returned
+## 0.4.0 - new forFrame.createCanvas feature
+* start a forFrame.createCanvas function that can be used to create and return a canvas element
+* The forframe method given will be used to render to the canvas element that will be returned
 * make a 0.4.0 pkg folder
 
 ## 0.3.0 - new forFrame.createPoints feature

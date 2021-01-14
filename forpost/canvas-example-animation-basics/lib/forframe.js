@@ -84,6 +84,10 @@ var forFrame = (function(){
         return ff;
     };
 
+    /********** **********
+        CREATE an ff object 
+    *********************/
+
     // create a plain ff object
     api.create = function(opt){
         opt = opt || {};
@@ -104,12 +108,17 @@ var forFrame = (function(){
         return ff;
     };
 
+    // create and return a points type ff object
     api.createPoints = function(opt){
         opt = opt || {};
         // this will be set to points no matter what if U am to have a public method like this
         opt.type = 'points'; 
         return api.create(opt);
     };
+
+    /********** **********
+        UPDATE an ff object 
+    *********************/
 
     // STEP an ff object with a given amount of frames
     // as such STEPFRAMES needs to be a whole number
@@ -118,7 +127,7 @@ var forFrame = (function(){
         stepFrames = Math.round(stepFrames);
         return setFrame(ff, ff.frame + stepFrames);
     };
-
+   // UPDATE an ff Object
     api.update = function(ff, secs, fps){
         var frames;
         secs = secs === undefined ? 0: secs;
@@ -130,6 +139,23 @@ var forFrame = (function(){
             ff.secs = utils.mod(ff.secs, 1 / fps);
         }
         return ff;
+    };
+
+    /********** **********
+        CANVAS
+    *********************/
+
+    api.createCanvas = function(ffOpt){
+        ffOpt = ffOpt || {};
+        var ff = api.create(ffOpt);
+        var canvas = document.createElement('canvas'),
+        ctx = canvas.getContext('2d');
+        canvas.width = ff.width * ff.maxFrame;
+        canvas.height = ff.height;
+        
+        
+
+        return canvas;
     };
 
     // return the public api;
