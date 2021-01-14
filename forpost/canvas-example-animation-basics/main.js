@@ -26,6 +26,15 @@ var state = {
     framesPerSec: 20
 };
 
+var box = forFrame.create({
+   type: 'points',
+   maxFrame: 3,
+   width: 32,
+   height: 32
+});
+
+var can = forFrame.createCanvas(box);
+
 // basic app loop
 var loop = function(){
     var now = new Date(),
@@ -37,6 +46,10 @@ var loop = function(){
     draw.ffType(state.ctx, state.ff);
     draw.ffInfo(state.ctx, state.ff, 10, 10);
     draw.ver(state.ctx, state.canvas, state);
+
+    state.ctx.drawImage(can, 32, 32);
+
+
     // update by secs
     forFrame.update(state.ff, secs, state.framesPerSec);
     state.lt = now;

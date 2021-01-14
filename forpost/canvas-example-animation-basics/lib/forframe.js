@@ -145,15 +145,16 @@ var forFrame = (function(){
         CANVAS
     *********************/
 
-    api.createCanvas = function(ffOpt){
-        ffOpt = ffOpt || {};
-        var ff = api.create(ffOpt);
+    // create and return a canvas based on the given ff
+    api.createCanvas = function(ff){
+
         var canvas = document.createElement('canvas'),
         ctx = canvas.getContext('2d');
         canvas.width = ff.width * ff.maxFrame;
         canvas.height = ff.height;
         
-        
+        ctx.fillStyle='red';
+        ctx.fillRect(0,0,canvas.width, canvas.height);
 
         return canvas;
     };
