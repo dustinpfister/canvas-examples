@@ -161,11 +161,10 @@ var forFrame = (function(){
         }
 
         ff.frame = 0;
-        console.log(ff.maxFrame);
         while(ff.frame < ff.maxFrame){
-
             setFrame(ff, ff.frame);
             ffDraw.apply(ff, [ff, ctx, canvas]);
+            ctx.translate(ff.width, 0);
             ff.frame += 1;
         }
 

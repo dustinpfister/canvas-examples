@@ -34,7 +34,6 @@ var box = forFrame.create({
 });
 
 var ffDraw = function(ff, ctx, canvas){
-    console.log('hello');
     ctx.fillStyle = 'white';
     ctx.textBaseline = 'top';
     ctx.fillText('foo', 5, 5);
