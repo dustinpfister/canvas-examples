@@ -7,19 +7,27 @@ Now that the very core of the game seems to be togeather I think it would be a g
     Features should also help to get an idea of how long it will take to get from the center of the game map to the max distance, or any distance, with current ship speed. Also features should help to reduce the amount of time it would take to get somewhere from starting values, such as adding a warp feature.
 -->
 
-## 0.30.0 - Graphics Change II
+## 0.30.0 - Graphics Change II, and General Improvements
 * Add Canvas generated sprite sheet helper in draw.js
 * create a sheet for shots
 * create a sheet for the ship
-* have a pointer that will point to the best location for current weapon damage
 
-## 0.29.0 - Warp upgrade
-* add a warp upgrade
-* warp upgrade reduces the energy cost per distance
+* have a pointer that will point to the best location for current weapon damage
 * make ship hp, and energy part of save state
 * have a getAllUpgradesCost helper that will tabulate all upgrade costs
 * use the Average Money Per Hour helper to estamate how long it will take to unlock everything
 
+
+## 0.29.0 - Warp Cost upgrade, Warp Range Upgrade
+* warping from one location to another should cost energy
+* there should be a max warp dist value that will cap the distance
+
+* have a Warp Cost upgrade in ship upgrades page that will reduce the energy cost of warping
+* have a Warp Range upgrade in ship upgrades page that will incress the max range of a warp
+
+* color code warp button depeding if there is enough energy or not
+
+* add a warp cost upgrade
 ## 0.28.0 - Warp
 * (done) have a new updateModes object in game.js that will contain update methods for each game mode
 * (done) pull code that has to do with input in the loop in main.js into helper functions
@@ -31,10 +39,8 @@ Now that the very core of the game seems to be togeather I think it would be a g
 * (done) have a warp button that will warp the ship to the current location
 * (done) can set a warp point by clicking in the circle
 * (done) make changes to draw.js to help with rendering new 'warp' mode
+* (done) reset all blocks on warp
 
-* reset all blocks on warp
-* warping from one location to another should cost energy
-* color code warp button depeding if there is enough energy or not
 * have a way to use the keybord to dirrect input a warp point.
 * can have another circle centered around the ship that is the current max warp range.
 * make a 0.28.0 pkg folder
