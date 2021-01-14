@@ -37,6 +37,11 @@ I have worked on a fare number of [canvas examples](https://dustinpfister.github
 
 The idea I have for this one is to just fly around and blast stuff, thats it. If I put more time and energy into this example it should be to just make a more solid core of a game to which I might make additional forks off from. This example might in time end up being yet another canvas example compose of thousands of lines of code still, however I think that I should lay done some ground rules for myself this time to help keep myself from repeating old patterns.
 
+* I should play my own game, and not just test
+* Do not just add any and all features that come to mind
+* focus on just a single main game state
+* avoid eye candy features
+
 ### 3.1 - Play my own game ( step outside of a developer mideset and enter the mindset of a gamer )
 
 One thing that I think that is hurting me is that I am seeing a lot of these canvas examples as chores that I just need to get out of the way so I can move on to the next thing. So to help put an end to this I should take at least a little time now and then to play the game myself. That is to actually play it manually rather than work out some code to automate the process of playing. Simply put, if I do not find my own game fun, and I do not want to play it, why would anyone else want to?
@@ -45,7 +50,7 @@ If I find that the game is boring, then I should take a moment to think about wh
 
 ### 3.2 - Do not just start adding every little feature that comes to mind
 
-This is a problem that seems to keep creeping up in other projects. For example in Mr Sun, and also cross hairs I have added an animated buttons feature. This kind of feature might make the project a little more flashy and interesting maybe, but does it really add value to a game itself? This is another kind of cycle that I find myself repeating on top of the "stoping work on a project after a while cycle", there is also the "wasting time adding features that do not add to the value of a game". That is subjective of course, maybe animated buttons do add to the value of a game, but only after the core logic of the game itself has been worked out first.
+This is a problem that seems to keep creeping up in other projects. For example in Mr Sun, and also cross hairs I have added an animated buttons feature. This kind of feature might make the project a little more flashy and interesting maybe, but does it really add value to the game itself? This is another kind of cycle that I find myself repeating on top of the "stoping work on a project after a while cycle", there is also the "wasting time adding features that do not add to the value of a game". That is subjective of course, maybe animated buttons do add to the value of a game, but only after the core logic of the game itself has been worked out first.
 
 Every time I draft out more work in a todo list I should take a moment to think if this is something that I really want to add to the game or not. It should be something that adds real value to the experence of playing the game.
 
@@ -55,9 +60,9 @@ I often create a state machine for each of my canvas examples, thus far as of th
 
 In other words the focus should be on the very core of the game itself, and not all these addtional menus and features that may or may not be added on at a later point.
 
-### 3.4 - No fancy Graphics, animations, or over the top eye candy features
+### 3.4 - No fancy Graphics, animations, or over the top eye candy features (at least not at first)
 
-Another problem that I think that I run into is a tendancy to skip ahead to cosmetic features when much of the core of the game is not yet finished. When I stop to think for a moment it is kind of silly to work on a system for animated buttons when something like an experence point system needs much more work, or has not even been introduced yet. The core logic of the game itself is something that I should at least start, if not get solid actually before moving on to eye candy features.
+Another problem that I think that I run into is a tendancy to skip ahead to cosmetic features when much of the core of the game is not yet finished. When I stop to think for a moment it is kind of silly to work on a system for animated buttons when something like an experence point system needs much more work becuase it is a little buggy, or has not even been introduced to begin with yet. The core logic of the game itself is something that I should at least start, if not get solid before moving on to eye candy features.
 
 ### 3.5 - JavaScript generated Graphics only
 

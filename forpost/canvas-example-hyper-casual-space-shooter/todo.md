@@ -21,13 +21,13 @@ Now that the very core of the game seems to be togeather I think it would be a g
 ## 0.29.0 - Warp Cost upgrade, Warp Range Upgrade
 * warping from one location to another should cost energy
 * there should be a max warp dist value that will cap the distance
-
 * have a Warp Cost upgrade in ship upgrades page that will reduce the energy cost of warping
 * have a Warp Range upgrade in ship upgrades page that will incress the max range of a warp
-
 * color code warp button depeding if there is enough energy or not
+* can have another circle centered around the ship that is the current max warp range.
+* have a way to use the keybord to dirrect input a warp point.
+* make a 0.29.0 pkg folder
 
-* add a warp cost upgrade
 ## 0.28.0 - Warp
 * (done) have a new updateModes object in game.js that will contain update methods for each game mode
 * (done) pull code that has to do with input in the loop in main.js into helper functions
@@ -40,9 +40,6 @@ Now that the very core of the game seems to be togeather I think it would be a g
 * (done) can set a warp point by clicking in the circle
 * (done) make changes to draw.js to help with rendering new 'warp' mode
 * (done) reset all blocks on warp
-
-* have a way to use the keybord to dirrect input a warp point.
-* can have another circle centered around the ship that is the current max warp range.
 * make a 0.28.0 pkg folder
 
 ## 0.27.0 - New ETA Helper
