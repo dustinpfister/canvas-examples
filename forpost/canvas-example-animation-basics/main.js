@@ -33,7 +33,7 @@ var box = forFrame.create({
    height: 32
 });
 
-var can = forFrame.createCanvas(box);
+var can = forFrame.createCanvas(box, 'green');
 
 // basic app loop
 var loop = function(){
