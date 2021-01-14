@@ -8,6 +8,7 @@ Now that the very core of the game seems to be togeather I think it would be a g
 -->
 
 ## 0.30.0 - Graphics Change II, and General Improvements
+* to home warp button
 * Add Canvas generated sprite sheet helper in draw.js
 * create a sheet for shots
 * create a sheet for the ship

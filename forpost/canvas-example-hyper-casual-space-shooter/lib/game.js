@@ -611,7 +611,7 @@ var gameMod = (function(){
                 }
             },
             1: {
-                desc: 'warp',
+                desc: 'Warp',
                 x: 140,
                 y: 0,
                 r: 10,
@@ -620,6 +620,21 @@ var gameMod = (function(){
                     game.map.x = game.warp.warpX;
                     game.map.y = game.warp.warpY;
                     poolMod.setActiveStateForAll(game.blocks, false);
+                }
+            },
+            2: {
+                desc: 'Set Home',
+                x: -140,
+                y: 0,
+                r: 10,
+                onClick: function(game){
+                    var warpCir = game.warp.navCir.warpCir;
+                    warpCir.x = 0;
+                    warpCir.y = 0;
+
+                    //game.map.x = game.warp.warpX;
+                    //game.map.y = game.warp.warpY;
+                    //poolMod.setActiveStateForAll(game.blocks, false);
                 }
             }
         }
