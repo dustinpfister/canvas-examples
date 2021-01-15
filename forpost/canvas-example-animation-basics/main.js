@@ -26,8 +26,6 @@ var state = {
     framesPerSec: 20
 };
 
-console.log(canvasObjects[0]);
-
 // basic app loop
 var loop = function(){
     var now = new Date(),

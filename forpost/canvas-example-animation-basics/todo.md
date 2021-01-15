@@ -2,7 +2,8 @@
 
 ## 0.5.0 - Some better example options of forFrame features
 * (done) start a /lib/forframe-objects-canvas.js file
-* make the first box example the first object created and returned with forframe-objects-canvas.js
+* (done) make the first box example the first object created and returned with forframe-objects-canvas.js
+* make a forframe-objects.js file to store just plain forFrame option object examples
 * make a 0.5.0 pkg folder
 
 ## 0.4.0 - new forFrame.createCanvas feature
