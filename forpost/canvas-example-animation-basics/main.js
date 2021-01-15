@@ -60,11 +60,11 @@ var loop = function(){
 
     can.draw(state.ctx, 100, 100, 128, 128);
     // just step frame
-    can.set(35);
+    can.step(-1);
 
 
     draw.ffType(state.ctx, state.ff);
-    draw.ffInfo(state.ctx, state.ff, 10, 10);
+    //draw.ffInfo(state.ctx, state.ff, 10, 10);
     draw.ver(state.ctx, state.canvas, state);
 
     // update by secs

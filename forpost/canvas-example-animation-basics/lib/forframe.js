@@ -170,7 +170,7 @@ var forFrame = (function(){
 
         return {
             canvas: canvas,
-            ctx, ctx,
+            ctx: ctx,
             frame: 0,
             maxFrame: ff.maxFrame,
             cellWidth: ff.width,
