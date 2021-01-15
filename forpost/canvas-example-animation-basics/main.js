@@ -13,7 +13,7 @@ var createCanvas = function(opt){
 // state object
 var canvasObj = createCanvas();
 var state = {
-    ver: '0.4.0',
+    ver: '0.5.0',
     canvas: canvasObj.canvas,
     ctx: canvasObj.ctx,
     ff: forFrame.create({
