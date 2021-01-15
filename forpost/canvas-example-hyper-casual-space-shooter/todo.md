@@ -24,7 +24,12 @@ Now that the very core of the game seems to be togeather I think it would be a g
 * (done) warping from one location to another should cost energy
 
 * There should be a warp.maxDist prop that will cap the distance of a warp
+* warp.maxDist should apply to DISTANCE FROM HOME
+* the energy cost of a warp should be effected by distance
+
 * have a WARP-DIST-MIN, WARP-DIST-MAX, WARP-COST-MIN, and WARP-COST-MAX const values
+* WARP-COST-MIN and WARP-COST-MAX should be relative to ENERGY-MAX const, and MAP-MAX-DIST
+
 * have a Warp Cost upgrade in ship upgrades page that will reduce the energy cost of warping
 * have a Warp Range upgrade in ship upgrades page that will incress the max range of a warp
 * color code warp button depeding if there is enough energy or not
