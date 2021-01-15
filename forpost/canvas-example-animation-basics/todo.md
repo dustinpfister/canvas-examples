@@ -5,6 +5,7 @@
 ## 0.4.0 - new forFrame.createCanvas feature
 * (done) start a forFrame.createCanvas function that can be used to create and return a canvas element
 * (done) The ff object given will be used to render to the canvas element that will be returned
+* (done) what is returned by forFrame.createCanvas should be an object with canvas as a prop
 * make a 0.4.0 pkg folder
 
 ## 0.3.0 - new forFrame.createPoints feature

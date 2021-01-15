@@ -65,7 +65,7 @@ var loop = function(){
     draw.ver(state.ctx, state.canvas, state);
 
 
-    state.ctx.drawImage(can, 32 * 9, 0, 32, 32, 100, 100, 32, 32);
+    state.ctx.drawImage(can.canvas, 32 * can.frame, 0, 32, 32, 100, 100, 32, 32);
 
 
     // update by secs

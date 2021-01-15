@@ -168,7 +168,14 @@ var forFrame = (function(){
             ff.frame += 1;
         }
 
-        return canvas;
+        return {
+            canvas: canvas,
+            ctx, ctx,
+            frame: 0,
+            maxFrame: 0,
+            cellWidth: ff.width,
+            cellHeight: ff.height
+        };
     };
 
     // return the public api;
