@@ -180,6 +180,11 @@ var forFrame = (function(){
                 this.frame += delta;
                 this.frame = utils.mod(this.frame, this.maxFrame);
             },
+            set: function(frame){
+                frame = frame === undefined ? 0 : frame;
+                this.frame = frame;
+                this.frame = utils.mod(this.frame, this.maxFrame);
+            },
             // draw the current state of this canvas object
             // to the given canvas, with the given values for position and size
             draw: function(ctx, x, y, w, h){
