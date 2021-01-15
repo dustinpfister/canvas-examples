@@ -1,13 +1,15 @@
 # canvas-example-animation-basics todo
 
-## 0.x.0 - new ForFrame method that creates a collection of blocks
+## 0.5.0 - Some better example options of forFrame features
+* start a /lib/forframe-canvas-objects.js file
+* make a 0.5.0 pkg folder
 
 ## 0.4.0 - new forFrame.createCanvas feature
 * (done) start a forFrame.createCanvas function that can be used to create and return a canvas element
 * (done) The ff object given will be used to render to the canvas element that will be returned
 * (done) what is returned by forFrame.createCanvas should be an object with canvas as a prop
 * (done) have a draw method returned by the object that will just draw to the given context with the current object values for frame
-* have simple step and set functions for a 'canvas object'
+* (done) have simple step and set functions for a 'canvas object'
 * make a 0.4.0 pkg folder
 
 ## 0.3.0 - new forFrame.createPoints feature

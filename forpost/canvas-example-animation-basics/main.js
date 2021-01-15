@@ -40,7 +40,6 @@ var box = forFrame.create({
        };
    }
 });
-
 var ffDraw = function(ff, ctx, canvas){
     ctx.fillStyle = 'white';
     ctx.textBaseline = 'top';
@@ -48,7 +47,6 @@ var ffDraw = function(ff, ctx, canvas){
     var box = ff.model;
     ctx.fillRect(box.x, box.y, box.w, box.h);
 };
-
 var can = forFrame.createCanvas(box, ffDraw, 'green');
 
 // basic app loop
