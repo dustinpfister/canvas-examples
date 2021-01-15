@@ -26,28 +26,7 @@ var state = {
     framesPerSec: 20
 };
 
-var box = forFrame.create({
-   type: 'points',
-   maxFrame: 30,
-   width: 64,
-   height: 64,
-   forFrame: function(ff, model, frame, maxFrame, per){
-       return {
-          x: (ff.width - 8) * ff.per,
-          y: ff.height / 2 - 4,
-          w: 8,
-          h: 8
-       };
-   }
-});
-var ffDraw = function(ff, ctx, canvas){
-    ctx.fillStyle = 'white';
-    ctx.textBaseline = 'top';
-    //ctx.fillText(ff.frame, 5, 5);
-    var box = ff.model;
-    ctx.fillRect(box.x, box.y, box.w, box.h);
-};
-var can = forFrame.createCanvas(box, ffDraw, 'green');
+console.log(canvasObjects[0]);
 
 // basic app loop
 var loop = function(){
@@ -58,9 +37,9 @@ var loop = function(){
     draw.background(state.ctx, state.canvas);
 
 
-    can.draw(state.ctx, 100, 100, 128, 128);
+    canvasObjects[0].draw(state.ctx, 100, 100, 128, 128);
     // just step frame
-    can.step(-1);
+    canvasObjects[0].step(-1);
 
 
     draw.ffType(state.ctx, state.ff);
