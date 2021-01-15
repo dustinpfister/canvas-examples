@@ -175,8 +175,9 @@ var forFrame = (function(){
             maxFrame: ff.maxFrame,
             cellWidth: ff.width,
             cellHeight: ff.height,
-            step: function(){
-                this.frame += 1;
+            step: function(delta){
+                delta = delta === undefined ? 1 : delta;
+                this.frame += delta;
                 this.frame = utils.mod(this.frame, this.maxFrame);
             },
             // draw the current state of this canvas object
