@@ -7,7 +7,7 @@
 * (done) The ff object given will be used to render to the canvas element that will be returned
 * (done) what is returned by forFrame.createCanvas should be an object with canvas as a prop
 * (done) have a draw method returned by the object that will just draw to the given context with the current object values for frame
-* have a simple step function as part of the object to just step the frame value forward
+* have simple step and set functions for a 'canvas object'
 * make a 0.4.0 pkg folder
 
 ## 0.3.0 - new forFrame.createPoints feature

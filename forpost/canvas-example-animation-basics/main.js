@@ -62,8 +62,7 @@ var loop = function(){
 
     can.draw(state.ctx, 100, 100, 128, 128);
     // just step frame
-    can.frame += 1;
-    can.frame = utils.mod(can.frame, can.maxFrame);
+    can.step();
 
 
     draw.ffType(state.ctx, state.ff);

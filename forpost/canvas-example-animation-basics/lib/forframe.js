@@ -175,7 +175,10 @@ var forFrame = (function(){
             maxFrame: ff.maxFrame,
             cellWidth: ff.width,
             cellHeight: ff.height,
-            
+            step: function(){
+                this.frame += 1;
+                this.frame = utils.mod(this.frame, this.maxFrame);
+            },
             // draw the current state of this canvas object
             // to the given canvas, with the given values for position and size
             draw: function(ctx, x, y, w, h){
