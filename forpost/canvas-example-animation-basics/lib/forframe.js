@@ -172,9 +172,12 @@ var forFrame = (function(){
             canvas: canvas,
             ctx, ctx,
             frame: 0,
-            maxFrame: 0,
+            maxFrame: ff.maxFrame,
             cellWidth: ff.width,
             cellHeight: ff.height,
+            
+            // draw the current state of this canvas object
+            // to the given canvas, with the given values for position and size
             draw: function(ctx, x, y, w, h){
                 ctx.drawImage(this.canvas, this.cellWidth * this.frame, 0, this.cellWidth, this.cellHeight, x, y, w, h);
             }

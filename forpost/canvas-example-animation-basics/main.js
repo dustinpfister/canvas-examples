@@ -28,7 +28,7 @@ var state = {
 
 var box = forFrame.create({
    type: 'points',
-   maxFrame: 10,
+   maxFrame: 30,
    width: 32,
    height: 32,
    forFrame: function(ff, model, frame, maxFrame, per){
@@ -44,9 +44,8 @@ var box = forFrame.create({
 var ffDraw = function(ff, ctx, canvas){
     ctx.fillStyle = 'white';
     ctx.textBaseline = 'top';
-    ctx.fillText(ff.frame, 5, 5);
+    //ctx.fillText(ff.frame, 5, 5);
     var box = ff.model;
-
     ctx.fillRect(box.x, box.y, box.w, box.h);
 };
 
@@ -59,14 +58,17 @@ var loop = function(){
     requestAnimationFrame(loop);
     // draw
     draw.background(state.ctx, state.canvas);
-    //draw.box2(state.ctx, state.ff.model);
+
+
+    can.draw(state.ctx, 100, 100, 128, 128);
+    // just step frame
+    can.frame += 1;
+    can.frame = utils.mod(can.frame, can.maxFrame);
+
+
     draw.ffType(state.ctx, state.ff);
     draw.ffInfo(state.ctx, state.ff, 10, 10);
     draw.ver(state.ctx, state.canvas, state);
-
-
-    can.draw(state.ctx, 100, 100, 32, 32);
-
 
     // update by secs
     forFrame.update(state.ff, secs, state.framesPerSec);
