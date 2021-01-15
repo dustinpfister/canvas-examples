@@ -502,15 +502,14 @@ var draw = (function(){
         warp: function(ctx, state){
             var warp = state.game.warp,
             map = state.game.map;
-            ctx.fillStyle = 'white';
+            ctx.fillStyle = 'lime';
             ctx.textAlign='left';
             ctx.textBaseline='top';
-            ctx.font='10px arial';
-            ctx.fillText('warp mode', 10, 10);
-            ctx.fillText('warp dist: ' + Math.floor(warp.dist), 10, 20);
-            ctx.fillText('dist from home: ' + Math.floor(warp.distFromHome), 10, 30);
-            ctx.fillText('current map pos: ' + Math.floor(map.x) + ' , ' + Math.floor(map.y), 10, 40);
-            ctx.fillText('warp to: ' + Math.floor(warp.warpX) + ' , ' + Math.floor(warp.warpY), 10, 50);
+            ctx.font='8px arial';
+            ctx.fillText('warp dist: ' + Math.floor(warp.dist), 10, 40);
+            ctx.fillText('dist from home: ' + Math.floor(warp.distFromHome), 10, 50);
+            ctx.fillText('current map pos: ' + Math.floor(map.x) + ' , ' + Math.floor(map.y), 10, 60);
+            ctx.fillText('warp to: ' + Math.floor(warp.warpX) + ' , ' + Math.floor(warp.warpY), 10, 70);
 
             // draw the navCir
             var navCir = warp.navCir;
@@ -531,6 +530,8 @@ var draw = (function(){
             ctx.arc(navCir.warpCir.x, navCir.warpCir.y, navCir.warpCir.r, 0, Math.PI * 2);
             ctx.stroke();
             ctx.restore();
+
+            statusBar(ctx, state);
         }
     };
 
