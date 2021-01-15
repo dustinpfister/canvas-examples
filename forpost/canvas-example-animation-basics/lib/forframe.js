@@ -174,7 +174,10 @@ var forFrame = (function(){
             frame: 0,
             maxFrame: 0,
             cellWidth: ff.width,
-            cellHeight: ff.height
+            cellHeight: ff.height,
+            draw: function(ctx, x, y, w, h){
+                ctx.drawImage(this.canvas, this.cellWidth * this.frame, 0, this.cellWidth, this.cellHeight, x, y, w, h);
+            }
         };
     };
 
