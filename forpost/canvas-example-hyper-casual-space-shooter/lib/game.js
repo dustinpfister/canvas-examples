@@ -616,10 +616,13 @@ var gameMod = (function(){
                 y: 0,
                 r: 10,
                 onClick: function(game){
-                    
-                    game.map.x = game.warp.warpX;
-                    game.map.y = game.warp.warpY;
-                    poolMod.setActiveStateForAll(game.blocks, false);
+                    var energy = game.ship.energy;
+                    if(energy.current >= 20){
+                        energy.current -= 20;
+                        game.map.x = game.warp.warpX;
+                        game.map.y = game.warp.warpY;
+                        poolMod.setActiveStateForAll(game.blocks, false);
+                    }
                 }
             },
             2: {
