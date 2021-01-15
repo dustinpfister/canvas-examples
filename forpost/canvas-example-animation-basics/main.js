@@ -28,7 +28,7 @@ var state = {
 
 var box = forFrame.create({
    type: 'points',
-   maxFrame: 3,
+   maxFrame: 10,
    width: 32,
    height: 32,
    forFrame: function(ff, model, frame, maxFrame, per){
@@ -64,7 +64,8 @@ var loop = function(){
     draw.ffInfo(state.ctx, state.ff, 10, 10);
     draw.ver(state.ctx, state.canvas, state);
 
-    state.ctx.drawImage(can, 32, 32);
+
+    state.ctx.drawImage(can, 32 * 9, 0, 32, 32, 100, 100, 32, 32);
 
 
     // update by secs
