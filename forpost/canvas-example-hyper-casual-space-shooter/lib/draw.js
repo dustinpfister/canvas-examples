@@ -507,9 +507,10 @@ var draw = (function(){
             ctx.textBaseline='top';
             ctx.font='10px arial';
             ctx.fillText('warp mode', 10, 10);
-            ctx.fillText('dist: ' + warp.dist.toFixed(2), 10, 20);
-            ctx.fillText('current map pos: ' + Math.floor(map.x) + ' , ' + Math.floor(map.y), 10, 30);
-            ctx.fillText('warp to: ' + Math.floor(warp.warpX) + ' , ' + Math.floor(warp.warpY), 10, 40);
+            ctx.fillText('warp dist: ' + Math.floor(warp.dist), 10, 20);
+            ctx.fillText('dist from home: ' + Math.floor(warp.distFromHome), 10, 30);
+            ctx.fillText('current map pos: ' + Math.floor(map.x) + ' , ' + Math.floor(map.y), 10, 40);
+            ctx.fillText('warp to: ' + Math.floor(warp.warpX) + ' , ' + Math.floor(warp.warpY), 10, 50);
 
             // draw the navCir
             var navCir = warp.navCir;

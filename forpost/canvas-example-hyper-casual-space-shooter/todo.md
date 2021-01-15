@@ -19,6 +19,9 @@ Now that the very core of the game seems to be togeather I think it would be a g
 * make a 0.30.0 pkg folder
 
 ## 0.29.0 - Warp Cost upgrade, Warp Range Upgrade
+* (done) add a set home button in warp mode
+* (done) have and display a warp.distFromHome prop in warp mode
+
 * warping from one location to another should cost energy
 * there should be a max warp dist value that will cap the distance
 * have a Warp Cost upgrade in ship upgrades page that will reduce the energy cost of warping
