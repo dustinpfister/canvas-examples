@@ -29,14 +29,14 @@ var state = {
 var box = forFrame.create({
    type: 'points',
    maxFrame: 30,
-   width: 32,
-   height: 32,
+   width: 64,
+   height: 64,
    forFrame: function(ff, model, frame, maxFrame, per){
        return {
-          x: (32 -4) * ff.per,
-          y: 16-2,
-          w: 4,
-          h: 4
+          x: (ff.width - 8) * ff.per,
+          y: ff.height / 2 - 4,
+          w: 8,
+          h: 8
        };
    }
 });
