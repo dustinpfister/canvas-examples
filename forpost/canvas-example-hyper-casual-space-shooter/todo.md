@@ -21,13 +21,15 @@ Now that the very core of the game seems to be togeather I think it would be a g
 ## 0.29.0 - Warp Cost upgrade, Warp Range Upgrade
 * (done) add a set home button in warp mode
 * (done) have and display a warp.distFromHome prop in warp mode
+* (done) warping from one location to another should cost energy
 
-* warping from one location to another should cost energy
-* there should be a max warp dist value that will cap the distance
+* There should be a warp.maxDist prop that will cap the distance of a warp
+* have a WARP-DIST-MIN, WARP-DIST-MAX, WARP-COST-MIN, and WARP-COST-MAX const values
 * have a Warp Cost upgrade in ship upgrades page that will reduce the energy cost of warping
 * have a Warp Range upgrade in ship upgrades page that will incress the max range of a warp
 * color code warp button depeding if there is enough energy or not
 * can have another circle centered around the ship that is the current max warp range.
+* have a button interface that can be used to have fine grain control over warp dist via pointer input
 * have a way to use the keybord to dirrect input a warp point.
 * make a 0.29.0 pkg folder
 
