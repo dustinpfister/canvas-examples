@@ -40,13 +40,19 @@ var canvasObjects = (function(){
                 halfSize = size / 2,
                 radius = 16,
                 radian = 0,
-                boxGroup=[];
-                boxGroup.push({
-                    x: ff.width / 2 + Math.cos(radian) * radius - halfSize,
-                    y: ff.height / 2 + Math.sin(radian) * radius - halfSize,
-                    w: size,
-                    h: size
-                });
+                boxGroup=[],
+                len = 4,
+                i = 0;
+                while(i < len){
+                    radian = Math.PI * 2 / len * i;
+                    boxGroup.push({
+                        x: ff.width / 2 + Math.cos(radian) * radius - halfSize,
+                        y: ff.height / 2 + Math.sin(radian) * radius - halfSize,
+                        w: size,
+                        h: size
+                    });
+                    i = i + 1;
+                }
                 return boxGroup;
             }
         }),
