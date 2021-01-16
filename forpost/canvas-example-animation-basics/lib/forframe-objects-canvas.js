@@ -3,6 +3,7 @@ var canvasObjects = (function(){
 
     var objects = {};
 
+    // very basic box example
     objects.box = {
         ff: forFrame.create({
             type: 'points',
@@ -10,11 +11,13 @@ var canvasObjects = (function(){
             width: 64,
             height: 64,
             forFrame: function(ff, model, frame, maxFrame, per){
+                var size = 8,
+                halfSize = size / 2;
                 return {
-                    x: (ff.width - 8) * ff.per,
-                    y: ff.height / 2 - 4,
-                    w: 8,
-                    h: 8
+                    x: (ff.width - size) * ff.per,
+                    y: ff.height / 2 - halfSize,
+                    w: size,
+                    h: size
                 };
             }
         }),
