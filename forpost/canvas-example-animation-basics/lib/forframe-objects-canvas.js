@@ -32,7 +32,7 @@ var canvasObjects = (function(){
     objects.boxGroup = {
         ff: forFrame.create({
             type: 'points',
-            maxFrame: 12,
+            maxFrame: 30,
             width: 64,
             height: 64,
             forFrame: function(ff, model, frame, maxFrame, per){
@@ -41,7 +41,7 @@ var canvasObjects = (function(){
                 radius = 20,
                 radian = 0,
                 boxGroup=[],
-                len = 4,
+                len = 6,
                 i = 0;
                 while(i < len){
                     radian = Math.PI * 2 / len * i + Math.PI * 2 * ff.per;

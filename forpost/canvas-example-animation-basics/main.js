@@ -18,7 +18,8 @@ var state = {
     ctx: canvasObj.ctx,
     lt: new Date(),
     can: canvasObjects('boxGroup'),
-    framesPerSec: 20
+    framesPerSec: 15,
+    secs: 0
 };
 
 // basic app loop
@@ -26,13 +27,19 @@ var loop = function(){
     var now = new Date(),
     secs = (now - state.lt) / 1000;
     requestAnimationFrame(loop);
-    // draw
-    draw.background(state.ctx, state.canvas);
-    state.can.draw(state.ctx, 100, 100, 128, 128);
-    draw.ver(state.ctx, state.canvas, state);
 
-    // update
-    state.can.step(-1);
+    state.secs += secs;
+    if(state.secs >= 1 / state.framesPerSec){
+
+        // draw
+        draw.background(state.ctx, state.canvas);
+        state.can.draw(state.ctx, 100, 100, 128, 128);
+        draw.ver(state.ctx, state.canvas, state);
+
+        // update
+        state.can.step(1);
+        state.secs = utils.mod(state.secs, 1 / state.framesPerSec);
+    }
     state.lt = now;
 };
 loop();
