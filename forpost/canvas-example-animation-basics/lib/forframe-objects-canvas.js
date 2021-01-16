@@ -1,7 +1,8 @@
 
 var canvasObjects = (function(){
 
-    var objects = {}
+    var objects = {};
+
     objects.box = {
         ff: forFrame.create({
             type: 'points',
@@ -23,11 +24,10 @@ var canvasObjects = (function(){
             ctx.fillRect(box.x, box.y, box.w, box.h);
         }
     };
-   
 
-
-    return function(){
-        return forFrame.createCanvas(objects.box.ff,objects.box.draw, '#004f00');
+    return function(key){
+        key = key || 'box'
+        return forFrame.createCanvas(objects[key].ff,objects[key].draw, '#004f00');
     };
 
 }());
