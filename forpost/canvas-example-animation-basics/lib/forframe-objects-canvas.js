@@ -36,14 +36,16 @@ var canvasObjects = (function(){
             width: 64,
             height: 64,
             forFrame: function(ff, model, frame, maxFrame, per){
-                var size = 8,
-                halfSize = size / 2;
-                return [{
-                    x: (ff.width - size) * ff.per,
+                var size = 12,
+                halfSize = size / 2,
+                boxGroup=[];
+                boxGroup.push({
+                    x: ff.width / 2 - halfSize,
                     y: ff.height / 2 - halfSize,
                     w: size,
                     h: size
-                }];
+                });
+                return boxGroup;
             }
         }),
         draw: function(ff, ctx, canvas){
@@ -53,7 +55,7 @@ var canvasObjects = (function(){
                 ctx.fillRect(box.x, box.y, box.w, box.h);
             });
         },
-        backFill: false
+        backFill: 'blue'
     };
 
     return function(key){
