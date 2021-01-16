@@ -40,12 +40,12 @@ var loop = function(){
     can.step(-1);
 
 
-    draw.ffType(state.ctx, state.ff);
+    //draw.ffType(state.ctx, state.ff);
     //draw.ffInfo(state.ctx, state.ff, 10, 10);
     draw.ver(state.ctx, state.canvas, state);
 
     // update by secs
-    forFrame.update(state.ff, secs, state.framesPerSec);
+    //forFrame.update(state.ff, secs, state.framesPerSec);
     state.lt = now;
 };
 loop();
