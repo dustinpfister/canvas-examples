@@ -63,7 +63,7 @@ var canvasObjects = (function(){
                 ctx.fillRect(box.x, box.y, box.w, box.h);
             });
         },
-        backFill: 'blue'
+        backFill: false
     };
 
     return function(key){

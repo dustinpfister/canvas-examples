@@ -33,7 +33,7 @@ var loop = function(){
 
         // draw
         draw.background(state.ctx, state.canvas);
-        state.can.draw(state.ctx, 100, 100, 128, 128);
+        state.can.draw(state.ctx, 120, 40, 200, 200);
         draw.ver(state.ctx, state.canvas, state);
 
         // update
