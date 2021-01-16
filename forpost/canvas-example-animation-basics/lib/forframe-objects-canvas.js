@@ -38,10 +38,12 @@ var canvasObjects = (function(){
             forFrame: function(ff, model, frame, maxFrame, per){
                 var size = 12,
                 halfSize = size / 2,
+                radius = 16,
+                radian = 0,
                 boxGroup=[];
                 boxGroup.push({
-                    x: ff.width / 2 - halfSize,
-                    y: ff.height / 2 - halfSize,
+                    x: ff.width / 2 + Math.cos(radian) * radius - halfSize,
+                    y: ff.height / 2 + Math.sin(radian) * radius - halfSize,
                     w: size,
                     h: size
                 });
