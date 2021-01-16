@@ -1268,7 +1268,7 @@ var gameMod = (function(){
             },
             ETA: {},
             pointerIndex:0,
-            mode: 'space',
+            mode: 'warp',
             autoFire: SHIP_AUTOFIRE,
             weapons: utils.deepClone(DEFAULT_WEAPONS),
             effects: utils.deepClone(poolMod.EFFECT_TYPES),
@@ -1293,16 +1293,17 @@ var gameMod = (function(){
                 dist: 0,
                 per: 0 // map.dist / MAX_MAX_DIST
             },
-            warp: {              //current warp settings
-                warpX: 0,        // x and y map location to warp to
+            warp: {                               //current warp settings
+                warpX: 0,                         // x and y map location to warp to
                 warpY: 0,
-                dist: 0,         // the distance of the warp
-                distFromHome: 0, // dist from 0,0
-                navCir: {        // the circle to set/disp current warpX, warpY, and dist
+                dist: 0,                          // the distance of the warp (from current map pos to warp pos)
+                distFromHome: 0,                  // dist from home location ( map pos 0,0 )
+                maxDist: MAP_MAX_DIST * 0.1,      // the max distance the ship can warp from home
+                navCir: {                         // the circle to set/disp current warpX, warpY, and dist
                     x: 160,
                     y: 120,
                     r: 100,
-                    shipCir: { x: 0,y: 0,r: 5 }, // additional circle objects to use in navCir
+                    shipCir: { x: 0,y: 0,r: 5 },  // additional circle objects to use in navCir
                     warpCir: { x: 0,y: 0,r: 5 }
                 }
             },
