@@ -23,10 +23,8 @@ var canvasObjects = (function(){
         ctx.fillRect(box.x, box.y, box.w, box.h);
     };
 
-    var objects = [
-        forFrame.createCanvas(box, ffDraw, '#004f00')
-    ];
-
-    return objects;
+    return function(){
+        return forFrame.createCanvas(box, ffDraw, '#004f00');
+    };
 
 }());

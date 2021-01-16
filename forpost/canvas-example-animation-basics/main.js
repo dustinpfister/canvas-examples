@@ -26,6 +26,8 @@ var state = {
     framesPerSec: 20
 };
 
+var can = canvasObjects();
+
 // basic app loop
 var loop = function(){
     var now = new Date(),
@@ -34,10 +36,8 @@ var loop = function(){
     // draw
     draw.background(state.ctx, state.canvas);
 
-
-    canvasObjects[0].draw(state.ctx, 100, 100, 128, 128);
-    // just step frame
-    canvasObjects[0].step(-1);
+    can.draw(state.ctx, 100, 100, 128, 128);
+    can.step(-1);
 
 
     draw.ffType(state.ctx, state.ff);
