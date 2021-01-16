@@ -526,7 +526,11 @@ var draw = (function(){
             ctx.strokeStyle='gray';
             ctx.arc(0, 0, 5, 0, Math.PI * 2);
             ctx.stroke();
-            
+            // draw max dist circle
+            ctx.beginPath();
+            ctx.strokeStyle='gray';
+            ctx.arc(0, 0, navCir.r * warp.maxDistPer, 0, Math.PI * 2);
+            ctx.stroke();
             // draw circles for ship and warp point
             ctx.beginPath();
             ctx.strokeStyle='blue';
