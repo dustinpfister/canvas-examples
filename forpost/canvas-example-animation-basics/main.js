@@ -16,17 +16,10 @@ var state = {
     ver: '0.5.0',
     canvas: canvasObj.canvas,
     ctx: canvasObj.ctx,
-    ff: forFrame.create({
-        type: 'points',
-        maxFrame: 50,
-        width: canvasObj.canvas.width,
-        height: canvasObj.canvas.height
-    }),
     lt: new Date(),
+    can: canvasObjects(),
     framesPerSec: 20
 };
-
-var can = canvasObjects();
 
 // basic app loop
 var loop = function(){
@@ -35,17 +28,11 @@ var loop = function(){
     requestAnimationFrame(loop);
     // draw
     draw.background(state.ctx, state.canvas);
-
-    can.draw(state.ctx, 100, 100, 128, 128);
-    can.step(-1);
-
-
-    //draw.ffType(state.ctx, state.ff);
-    //draw.ffInfo(state.ctx, state.ff, 10, 10);
+    state.can.draw(state.ctx, 100, 100, 128, 128);
     draw.ver(state.ctx, state.canvas, state);
 
-    // update by secs
-    //forFrame.update(state.ff, secs, state.framesPerSec);
+    // update
+    state.can.step(-1);
     state.lt = now;
 };
 loop();
