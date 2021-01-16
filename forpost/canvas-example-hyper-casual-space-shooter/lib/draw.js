@@ -521,6 +521,13 @@ var draw = (function(){
             
             ctx.save();
             ctx.translate(navCir.x, navCir.y);
+            // draw home point
+            ctx.beginPath();
+            ctx.strokeStyle='gray';
+            ctx.arc(0, 0, 5, 0, Math.PI * 2);
+            ctx.stroke();
+            
+            // draw circles for ship and warp point
             ctx.beginPath();
             ctx.strokeStyle='blue';
             ctx.arc(navCir.shipCir.x, navCir.shipCir.y, navCir.shipCir.r, 0, Math.PI * 2);
