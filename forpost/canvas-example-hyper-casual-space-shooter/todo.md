@@ -22,12 +22,13 @@ Now that the very core of the game seems to be togeather I think it would be a g
 * (done) add a set home button in warp mode
 * (done) have and display a warp.distFromHome prop in warp mode
 * (done) warping from one location to another should cost energy
+* (done) There should be a warp.maxDist prop that will cap the distance of a warp
+* (done) warp.maxDist should apply to DISTANCE FROM HOME
+* (done) display home location and max warp range in warp mode
 
-* There should be a warp.maxDist prop that will cap the distance of a warp
-* warp.maxDist should apply to DISTANCE FROM HOME
-* display home location and max warp range in warp mode
+* when the warp point is pulled out of range it should snap to max range, not back to home
+
 * the energy cost of a warp should be effected by distance
-
 * have a WARP-DIST-MIN, WARP-DIST-MAX, WARP-COST-MIN, and WARP-COST-MAX const values
 * WARP-COST-MIN and WARP-COST-MAX should be relative to ENERGY-MAX const, and MAP-MAX-DIST
 
