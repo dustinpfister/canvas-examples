@@ -18,7 +18,7 @@ var state = {
     ctx: canvasObj.ctx,
     lt: new Date(),
     can: canvasObjects('boxGroup'),
-    framesPerSec: 15,
+    framesPerSec: 18,
     secs: 0
 };
 
@@ -33,7 +33,7 @@ var loop = function(){
 
         // draw
         draw.background(state.ctx, state.canvas);
-        state.can.draw(state.ctx, 120, 40, 200, 200);
+        state.can.draw(state.ctx, 120, 40, 64, 64);
         draw.ver(state.ctx, state.canvas, state);
 
         // update
