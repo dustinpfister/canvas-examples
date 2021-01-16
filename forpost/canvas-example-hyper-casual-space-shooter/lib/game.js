@@ -1298,7 +1298,7 @@ var gameMod = (function(){
                 warpY: 0,
                 dist: 0,                          // the distance of the warp (from current map pos to warp pos)
                 distFromHome: 0,                  // dist from home location ( map pos 0,0 )
-                maxDist: MAP_MAX_DIST * 0.1,      // the max distance the ship can warp from home
+                maxDist: MAP_MAX_DIST * 0.25,      // the max distance the ship can warp from home
                 maxDistPer: MAP_MAX_DIST * 0.25 / MAP_MAX_DIST,
                 navCir: {                         // the circle to set/disp current warpX, warpY, and dist
                     x: 160,

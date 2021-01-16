@@ -274,7 +274,6 @@ var inputModes = {
                 gameMod.updateWarpObject(state.game);
         },
         pointerMove: function(state, pointer, e){
-            //console.log('warp pointer move');
             var game = state.game,
             pos = pointer.pos,
             navCir = game.warp.navCir,
@@ -284,6 +283,11 @@ var inputModes = {
             if(d < navCir.r){
                 warpCir.x = pos.x - navCir.x;
                 warpCir.y = pos.y - navCir.y;
+                gameMod.updateWarpObject(state.game);
+                if(game.warp.distFromHome > game.warp.maxDist){
+                    warpCir.x = 0;
+                    warpCir.y = 0;
+                }
             }
         },
         pointerUp: function(state, pointer, e){
