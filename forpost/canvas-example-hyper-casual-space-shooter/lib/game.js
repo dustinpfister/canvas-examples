@@ -1242,7 +1242,28 @@ var gameMod = (function(){
         methods to be used by project features outside of this module
     **********/
 
+    // the public api to be returned at the end of this module
     var api = {};
+
+    // set a warp point relative to warp.navCir.r -+
+    api.setWarpPoint = function(game, x, y){
+            
+            var navCir = game.warp.navCir,
+            shipCir = navCir.shipCir,
+            warpCir = navCir.warpCir,
+            d = utils.distance(x, y, navCir.x, navCir.y);
+            if(d < navCir.r){
+                warpCir.x = x - navCir.x;
+                warpCir.y = y - navCir.y;
+                gameMod.updateWarpObject(state.game);
+                // if warp dist goes over maxDist
+                if(game.warp.distFromHome > game.warp.maxDist){
+                    var a = utils.angleTo(0,0, warpCir.x, warpCir.y) + Math.PI;
+                    warpCir.x = Math.cos(a) * game.warp.maxDistPer * navCir.r;
+                    warpCir.y = Math.sin(a) * game.warp.maxDistPer * navCir.r;
+                }
+            }
+    };
 
     // set map movment values and wrap or clamp anything that might go out of range
     api.setMapMovement = function(game, degree, pps){

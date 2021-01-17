@@ -274,23 +274,7 @@ var inputModes = {
                 gameMod.updateWarpObject(state.game);
         },
         pointerMove: function(state, pointer, e){
-            var game = state.game,
-            pos = pointer.pos,
-            navCir = game.warp.navCir,
-            shipCir = navCir.shipCir,
-            warpCir = navCir.warpCir,
-            d = utils.distance(pos.x, pos.y, navCir.x, navCir.y);
-            if(d < navCir.r){
-                warpCir.x = pos.x - navCir.x;
-                warpCir.y = pos.y - navCir.y;
-                gameMod.updateWarpObject(state.game);
-                // if warp dist goes over maxDist
-                if(game.warp.distFromHome > game.warp.maxDist){
-                    var a = utils.angleTo(0,0, warpCir.x, warpCir.y) + Math.PI;
-                    warpCir.x = Math.cos(a) * game.warp.maxDistPer * navCir.r;
-                    warpCir.y = Math.sin(a) * game.warp.maxDistPer * navCir.r;
-                }
-            }
+            gameMod.setWarpPoint(state.game, pointer.pos.x, pointer.pos.y);
         },
         pointerUp: function(state, pointer, e){
             gameMod.checkButtons(state.game, pointer.pos, e);
