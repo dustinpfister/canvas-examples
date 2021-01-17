@@ -1244,6 +1244,160 @@ var gameMod = (function(){
 
     var api = {};
 
+    // set map movment values and wrap or clamp anything that might go out of range
+    api.setMapMovement = function(game, degree, pps){
+        game.map.radian = utils.wrapRadian(Math.PI / 180 * degree);
+        // clamp PPS
+        game.map.pps = pps;
+        game.map.pps = game.map.pps < 0 ? 0 : game.map.pps;
+        game.map.pps = game.map.pps > game.map.maxPPS ? game.map.maxPPS : game.map.pps;
+    };
+
+    // main update method
+    api.update = function(game, secs, state){
+        // clamp secs between 0 and GAME_UPDATE_MAX_SECS const
+        secs = secs > GAME_UPDATE_MAX_SECS ? GAME_UPDATE_MAX_SECS : secs;
+        secs = secs < 0 ? 0 : secs;
+        // call update method for current game mode
+        updateModes[game.mode](game, secs, state);
+        // call allAfter update method
+        updateModes['allAfter'](game, secs, state);
+    };
+
+    // check current mode and page of buttons
+    api.checkButtons = function(game, pos, e){
+        var buttons_mode = game.buttons[game.mode],
+        i;
+        if(buttons_mode){
+            i = Object.keys(buttons_mode[game.buttons.currentPage]).length;
+            while(i--){
+                button = buttons_mode[game.buttons.currentPage][i];
+                if(buttonCheck(button, pos)){
+                    button.onClick(game, button, e);
+                    break;
+                }
+            }
+        }
+    };
+
+    // loop pointers
+    api.loopPointers = function(game){
+        game.pointerIndex += 1;
+        game.pointerIndex = utils.mod(game.pointerIndex, MAP_POINTERS.length);
+    };
+
+    // update the current warp object
+    api.updateWarpObject = function(game){
+        var warp = game.warp,
+        navCir = warp.navCir,
+        map = game.map,
+        shipCir = navCir.shipCir,
+        warpCir = navCir.warpCir;
+        // update shipCir
+        shipCir.x = Math.cos(map.aToOrigin + Math.PI) * navCir.r * map.per;
+        shipCir.y = Math.sin(map.aToOrigin + Math.PI) * navCir.r * map.per;
+        // update dist
+        warp.dist = utils.distance(warpCir.x, warpCir.y, shipCir.x, shipCir.y);
+        warp.dist = warp.dist / warp.navCir.r * MAP_MAX_DIST;
+        // set warpTo
+        var a = utils.angleTo(warpCir.x, warpCir.y, 0, 0),
+        d = utils.distance(0,0, warpCir.x, warpCir.y);
+        warp.warpX = Math.cos(a) * MAP_MAX_DIST * (d / navCir.r);
+        warp.warpY = Math.sin(a) * MAP_MAX_DIST * (d / navCir.r);
+        warp.distFromHome = utils.distance(0, 0, warp.warpX, warp.warpY);
+    };
+
+    // make update buttons public
+    api.updateButtons = updateButtons;
+
+    // update modes use in main public gameMod.update public method
+    var updateModes = {
+        space: function(game, secs, state){
+            if(game.map.dist <= BASE_DIST){
+                // set all shots and blocks to inactive state
+                poolMod.setActiveStateForAll(game.shots, false);
+                poolMod.setActiveStateForAll(game.shots, false);
+                game.buttons.currentPage = 'main';
+                game.mode = 'base';
+            }
+            // update map, blocks, shots, ETA
+            updateMap(game, secs);
+            updateBlocks(game, secs, state);
+            updateShots(game, secs, state);
+            updateETA(game);
+        },
+        base: function(game, secs, state){
+            // switch modes based on map.dist
+            if(game.map.dist > BASE_DIST){
+                game.buttons.currentPage= 'main';
+                game.mode = 'space';
+            }
+            // update map, blocks, shots
+            updateMap(game, secs);
+        },
+        warp: function(game, secs, state){
+            updateMap(game, secs);
+        },
+        allAfter: function(game, secs, state){
+            // move baseObject
+            game.baseObj.x = game.map.x * -1;
+            game.baseObj.y = game.map.y * -1;
+            // energy
+            updateEnergy(game, secs);
+            // autoHeal ship
+            if(game.ship.hp.current < game.ship.hp.max && game.ship.energy.current > ENERGY_AUTOHEAL_COST * secs){
+                game.ship.energy.current -= ENERGY_AUTOHEAL_COST * secs;
+                autoHealObject(game.ship, secs);
+            }
+            // update money per hour
+            var mph = game.moneyPerHour,
+            len = mph.blockValues.length;
+            if(len > mph.maxValues){
+                mph.blockValues.splice(0, len - mph.maxValues);
+            }
+            // purge out over time
+            mph.secs += secs;
+            //if(mph.secs >= mph.purgeOutAfter){
+            if(mph.secs >= mph.startPurgeOutAfter && !mph.purgeOut){
+                mph.purgeOut = true;
+            }
+            if(mph.secs >= mph.purgeOutAfter && mph.purgeOut){
+                if(mph.blockValues.length >= 1){
+                    mph.blockValues.splice(0, 1);
+                }
+                mph.secs = 0;
+            }
+            // if block values array has at least one value
+            if(mph.blockValues.length >= 1){
+                var now = new Date(),
+                t = now - mph.blockValues[0].date,
+                hours = t / 1000 / 60 / 60;
+                mph.money = 0;
+                mph.blockValues.forEach(function(bv){
+                    mph.money += bv.money;
+                });
+                mph.current = mph.money / hours;
+                mph.ETMUnit = 'H';
+                mph.ETM = (mph.target - game.money) / mph.current;
+                mph.ETM = mph.ETM < 0 ? 0 : mph.ETM;
+                mph.ETM = mph.ETM > 999 ? 999 : mph.ETM;
+                // if ETM < 1 switch to minutes
+                if(mph.ETM < 1){
+                    mph.ETMUnit = 'M';
+                    mph.ETM = mph.ETM * 60;
+                }
+            }else{
+                mph.ETM = 0;
+                mph.current = 0;
+                mph.money = 0;
+            }
+            var lowest = getLowestUpgrade(game);
+            if(lowest){
+                mph.target = lowest.cost;
+            }
+        }
+    };
+
     // public create method
     api.create = function(opt){
         opt = opt || {};
@@ -1347,159 +1501,6 @@ var gameMod = (function(){
 
         return game;
     };
-
-    // set map movment values and wrap or clamp anything that might go out of range
-    api.setMapMovement = function(game, degree, pps){
-        game.map.radian = utils.wrapRadian(Math.PI / 180 * degree);
-        // clamp PPS
-        game.map.pps = pps;
-        game.map.pps = game.map.pps < 0 ? 0 : game.map.pps;
-        game.map.pps = game.map.pps > game.map.maxPPS ? game.map.maxPPS : game.map.pps;
-    };
-
-    var updateModes = {
-        space: function(game, secs, state){
-            if(game.map.dist <= BASE_DIST){
-                // set all shots and blocks to inactive state
-                poolMod.setActiveStateForAll(game.shots, false);
-                poolMod.setActiveStateForAll(game.shots, false);
-                game.buttons.currentPage = 'main';
-                game.mode = 'base';
-            }
-            // update map, blocks, shots, ETA
-            updateMap(game, secs);
-            updateBlocks(game, secs, state);
-            updateShots(game, secs, state);
-            updateETA(game);
-        },
-        base: function(game, secs, state){
-            // switch modes based on map.dist
-            if(game.map.dist > BASE_DIST){
-                game.buttons.currentPage= 'main';
-                game.mode = 'space';
-            }
-            // update map, blocks, shots
-            updateMap(game, secs);
-        },
-        warp: function(game, secs, state){
-            updateMap(game, secs);
-        },
-        allAfter: function(game, secs, state){
-            // move baseObject
-            game.baseObj.x = game.map.x * -1;
-            game.baseObj.y = game.map.y * -1;
-            // energy
-            updateEnergy(game, secs);
-            // autoHeal ship
-            if(game.ship.hp.current < game.ship.hp.max && game.ship.energy.current > ENERGY_AUTOHEAL_COST * secs){
-                game.ship.energy.current -= ENERGY_AUTOHEAL_COST * secs;
-                autoHealObject(game.ship, secs);
-            }
-            // update money per hour
-            var mph = game.moneyPerHour,
-            len = mph.blockValues.length;
-            if(len > mph.maxValues){
-                mph.blockValues.splice(0, len - mph.maxValues);
-            }
-            // purge out over time
-            mph.secs += secs;
-            //if(mph.secs >= mph.purgeOutAfter){
-            if(mph.secs >= mph.startPurgeOutAfter && !mph.purgeOut){
-                mph.purgeOut = true;
-            }
-            if(mph.secs >= mph.purgeOutAfter && mph.purgeOut){
-                if(mph.blockValues.length >= 1){
-                    mph.blockValues.splice(0, 1);
-                }
-                mph.secs = 0;
-            }
-            // if block values array has at least one value
-            if(mph.blockValues.length >= 1){
-                var now = new Date(),
-                t = now - mph.blockValues[0].date,
-                hours = t / 1000 / 60 / 60;
-                mph.money = 0;
-                mph.blockValues.forEach(function(bv){
-                    mph.money += bv.money;
-                });
-                mph.current = mph.money / hours;
-                mph.ETMUnit = 'H';
-                mph.ETM = (mph.target - game.money) / mph.current;
-                mph.ETM = mph.ETM < 0 ? 0 : mph.ETM;
-                mph.ETM = mph.ETM > 999 ? 999 : mph.ETM;
-                // if ETM < 1 switch to minutes
-                if(mph.ETM < 1){
-                    mph.ETMUnit = 'M';
-                    mph.ETM = mph.ETM * 60;
-                }
-            }else{
-                mph.ETM = 0;
-                mph.current = 0;
-                mph.money = 0;
-            }
-            var lowest = getLowestUpgrade(game);
-            if(lowest){
-                mph.target = lowest.cost;
-            }
-        }
-    };
-
-    // main update method
-    api.update = function(game, secs, state){
-        // clamp secs between 0 and GAME_UPDATE_MAX_SECS const
-        secs = secs > GAME_UPDATE_MAX_SECS ? GAME_UPDATE_MAX_SECS : secs;
-        secs = secs < 0 ? 0 : secs;
-        // call update method for current game mode
-        updateModes[game.mode](game, secs, state);
-        // call allAfter update method
-        updateModes['allAfter'](game, secs, state);
-    };
-
-    // check current mode and page of buttons
-    api.checkButtons = function(game, pos, e){
-        var buttons_mode = game.buttons[game.mode],
-        i;
-        if(buttons_mode){
-            i = Object.keys(buttons_mode[game.buttons.currentPage]).length;
-            while(i--){
-                button = buttons_mode[game.buttons.currentPage][i];
-                if(buttonCheck(button, pos)){
-                    button.onClick(game, button, e);
-                    break;
-                }
-            }
-        }
-    };
-
-    // loop pointers
-    api.loopPointers = function(game){
-        game.pointerIndex += 1;
-        game.pointerIndex = utils.mod(game.pointerIndex, MAP_POINTERS.length);
-    };
-
-    // update the current warp object
-    api.updateWarpObject = function(game){
-        var warp = game.warp,
-        navCir = warp.navCir,
-        map = game.map,
-        shipCir = navCir.shipCir,
-        warpCir = navCir.warpCir;
-        // update shipCir
-        shipCir.x = Math.cos(map.aToOrigin + Math.PI) * navCir.r * map.per;
-        shipCir.y = Math.sin(map.aToOrigin + Math.PI) * navCir.r * map.per;
-        // update dist
-        warp.dist = utils.distance(warpCir.x, warpCir.y, shipCir.x, shipCir.y);
-        warp.dist = warp.dist / warp.navCir.r * MAP_MAX_DIST;
-        // set warpTo
-        var a = utils.angleTo(warpCir.x, warpCir.y, 0, 0),
-        d = utils.distance(0,0, warpCir.x, warpCir.y);
-        warp.warpX = Math.cos(a) * MAP_MAX_DIST * (d / navCir.r);
-        warp.warpY = Math.sin(a) * MAP_MAX_DIST * (d / navCir.r);
-        warp.distFromHome = utils.distance(0, 0, warp.warpX, warp.warpY);
-    };
-
-    // make update buttons public
-    api.updateButtons = updateButtons;
 
     // return the Public API
     return api;
