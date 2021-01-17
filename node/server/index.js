@@ -19,7 +19,8 @@ app.get('/', [
     (req, res)=>{
         res.render('index', {
             dir_root: app.get('dir_root'),
-            dir_forpost: app.get('dir_forpost')
+            dir_forpost: app.get('dir_forpost'),
+            for_post_list: res.for_post_list
         });
     }
 ]);

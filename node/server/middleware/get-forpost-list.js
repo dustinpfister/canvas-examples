@@ -1,5 +1,5 @@
 
 module.exports = (req, res, next) => {
-    console.log('so far so good');
+    res.for_post_list = ['foo'];
     next();
 };
