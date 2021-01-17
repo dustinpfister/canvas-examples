@@ -1,9 +1,14 @@
-const express = require('express');
+const express = require('express'),
+path = require('path');
 
 let app = express();
 
+// view is ejs
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'ejs');
+
 app.get('/', (req, res)=>{
-    res.send('foo');
+    res.render('index', {});
 });
 
 let port = process.argv[2] || 8080;
