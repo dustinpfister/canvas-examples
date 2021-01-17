@@ -1,0 +1,27 @@
+{
+  "name": "canvas-examples",
+  "version": "0.0.0",
+  "description": "canvas examples",
+  "main": "./node/server/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dustinpfister/canvas-examples.git"
+  },
+  "keywords": [
+    "canvas",
+    "examples"
+  ],
+  "author": "Dustin Pfister",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/dustinpfister/canvas-examples/issues"
+  },
+  "homepage": "https://github.com/dustinpfister/canvas-examples#readme",
+  "dependencies": {
+    "ejs": "^3.1.5",
+    "express": "^4.17.1"
+  }
+}
