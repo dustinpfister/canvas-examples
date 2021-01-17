@@ -3,8 +3,11 @@ path = require('path');
 
 let app = express();
 
+// set paths
+app.set('dir_views', path.join(__dirname, 'views'));
+
 // view is ejs
-app.set('views', path.join(__dirname, 'views'));
+app.set('views', app.get('dir_views'));
 app.set('view engine', 'ejs');
 
 app.get('/', (req, res)=>{
