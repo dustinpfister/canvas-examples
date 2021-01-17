@@ -14,6 +14,11 @@ app.set('dir_forpost', path.resolve(app.get('dir_root'), 'forpost'));
 app.set('views', app.get('dir_views'));
 app.set('view engine', 'ejs');
 
+// set up forpost folder as a public folder
+//app.use('/js', express.static(app.get('dir_forpost') ) )
+app.use('/js', express.static( app.get('dir_forpost'), {index: false, extensions: ['js'], immutable: true, maxAge: 0 } )  );
+
+
 app.get('/', [
     require( path.join(app.get('dir_middleware'), 'get-forpost-list.js') ),
     (req, res)=>{
