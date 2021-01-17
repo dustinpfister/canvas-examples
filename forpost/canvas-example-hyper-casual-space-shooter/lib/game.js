@@ -1247,7 +1247,6 @@ var gameMod = (function(){
 
     // set a warp point relative to warp.navCir.r -+
     api.setWarpPoint = function(game, x, y){
-            
             var navCir = game.warp.navCir,
             shipCir = navCir.shipCir,
             warpCir = navCir.warpCir,
@@ -1508,10 +1507,6 @@ var gameMod = (function(){
             upgrade.id = upDef.id;
             upgrade.levelIndex = upgradeIndices[upgrade.id] || 0;
             upgrade.levelObj = upgrade.levelObjArray[upgrade.levelIndex];
-            if(upgrade.id == 's1'){
-                console.log(upgrade.levelIndex);
-                console.log(upgrade.levelObjArray[upgrade.levelIndex]);
-            }
             upgrade.applyToState(game, upgrade.levelObj, upgrade);
             return upgrade;
         });
