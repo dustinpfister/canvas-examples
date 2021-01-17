@@ -284,9 +284,11 @@ var inputModes = {
                 warpCir.x = pos.x - navCir.x;
                 warpCir.y = pos.y - navCir.y;
                 gameMod.updateWarpObject(state.game);
+                // if warp dist goes over maxDist
                 if(game.warp.distFromHome > game.warp.maxDist){
-                    warpCir.x = 0;
-                    warpCir.y = 0;
+                    var a = utils.angleTo(0,0, warpCir.x, warpCir.y) + Math.PI;
+                    warpCir.x = Math.cos(a) * game.warp.maxDistPer * navCir.r;
+                    warpCir.y = Math.sin(a) * game.warp.maxDistPer * navCir.r;
                 }
             }
         },
@@ -365,7 +367,6 @@ var loop = function () {
     game = state.game,
     map = game.map,
     input = state.input,
-    //speedPer = map.pps / map.maxPPS,
     ppsBar = input.pointer.ppsBar,
     secs = t / 1000;
 
