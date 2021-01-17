@@ -4,14 +4,18 @@ path = require('path');
 let app = express();
 
 // set paths
+app.set('dir_server', __dirname);
 app.set('dir_views', path.join(__dirname, 'views'));
+app.set('dir_root', path.resolve(__dirname, '../..'));
 
 // view is ejs
 app.set('views', app.get('dir_views'));
 app.set('view engine', 'ejs');
 
 app.get('/', (req, res)=>{
-    res.render('index', {});
+    res.render('index', {
+        dir_root: app.get('dir_root')
+    });
 });
 
 let port = process.argv[2] || 8080;
