@@ -26,9 +26,7 @@ Now that the very core of the game seems to be togeather I think it would be a g
 * (done) warp.maxDist should apply to DISTANCE FROM HOME
 * (done) display home location and max warp range in warp mode
 * (done) when the warp point is pulled out of range it should snap to max range, not back to home
-
-* move code worked out for warp pointer input method should be pulled inot helper/public method in game.js
-
+* (done) move code worked out for warp pointer input method should be pulled inot helper/public method in game.js
 
 * the energy cost of a warp should be effected by distance
 * have a WARP-DIST-MIN, WARP-DIST-MAX, WARP-COST-MIN, and WARP-COST-MAX const values
