@@ -25,6 +25,16 @@ app.get('/', [
     }
 ]);
 
+// current version of a canvas example
+app.get('/current/:exampleName', [
+    require( path.join(app.get('dir_middleware'), 'get-current-data.js') ),
+    (req, res)=>{
+        res.render('current', {
+            exampleName: req.params.exampleName
+        });
+    }
+]);
+
 let port = process.argv[2] || 8080;
 app.listen(port, () => {
     console.log('server started on port: ' + port);
