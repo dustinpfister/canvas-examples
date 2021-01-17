@@ -1345,30 +1345,6 @@ var gameMod = (function(){
 
         game.ETA = createETA(game, 0, 0);
 
-
-
-        // buy starting upgrades
-/*
-        var upgrade = getUpgradeById(game, 'e-burn');
-        buyUpgrade(game, upgrade);
-        buyUpgrade(game, upgrade);
-        buyUpgrade(game, upgrade);
-
-        var upgrade = getUpgradeById(game, 'e-acid');
-        buyUpgrade(game, upgrade);
-        buyUpgrade(game, upgrade);
-        buyUpgrade(game, upgrade);
-*/
-        // log upgrades
-/*
-        console.log(game.upgrades.map(function(upgrade){
-            return upgrade.levelObjArray.map(function(levelObj){
-               //var lvNext = utils.xp.byLevel(levelObj.l + 1, upgrade.opt);
-               //return lvNext.l;
-               return levelObj.xp;
-            });
-        }));
-*/
         return game;
     };
 
