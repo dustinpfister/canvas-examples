@@ -1,8 +1,8 @@
 
 ## 0.1.0 - view current working build
-* start a current.ejs file in views
-* start a /current path in index.js
-* start a get-current-data.js middileware
+* (done) start a current.ejs file in views
+* (done) start a /current path in index.js
+* (done) start a get-current-data.js middileware
 * get-current-data.js will look for a build folder for a given canvas example
 * the files.txt file in the build folder will be used to render script tags in current.ejs
 

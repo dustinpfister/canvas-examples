@@ -30,7 +30,8 @@ app.get('/current/:exampleName', [
     require( path.join(app.get('dir_middleware'), 'get-current-data.js') ),
     (req, res)=>{
         res.render('current', {
-            exampleName: req.params.exampleName
+            exampleName: req.params.exampleName,
+            current: res.current
         });
     }
 ]);
