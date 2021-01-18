@@ -4,6 +4,11 @@
 <h1>current</h1>
 <p><%= exampleName %></p>
 <p><%= current.success %></p>
-<p><%= current.javaScriptFiles %></p>
+
+<div id="canvas-app"></div>
+
+<% current.javaScriptFiles.forEach(function(url){ %>
+    <p><%= url %></p>
+<% }); %>
 
 <%- include('_part/bottom') %>

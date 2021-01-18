@@ -1,5 +1,6 @@
 const fs = require('fs'),
-path = require('path');
+path = require('path'),
+url = require('url');
 
 module.exports = (req, res, next) => {
 
@@ -15,7 +16,8 @@ module.exports = (req, res, next) => {
             res.current = {
                 success: true,
                 javaScriptFiles: files.toString().split('\n').map((relPath)=>{
-                    return path.resolve(dir_canvas_example, 'build', relPath);
+                    //return path.resolve(dir_canvas_example, 'build', relPath);
+                    return url.resolve('http://localhost:8020/foo/bar/baz/', '..');
                 })
             };
         }
