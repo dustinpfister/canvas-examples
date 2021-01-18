@@ -1,7 +1,12 @@
 
-## 0.2.0 - Better main index
+## 0.3.0 - Canvas CSS started
+* start some CSS that will apply to canvas elements
+* use media queries to set canvas size
+
+## 0.2.0 - Better main index and site style
 * (done) have links to the current version of each canvas example at main index
-* Start some site wide css in head.ejs
+* (done) Start some site wide css in head.ejs
+* (done - 01-18-2021)
 
 ## 0.1.0 - view current working build
 * (done) start a current.ejs file in views
