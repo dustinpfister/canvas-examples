@@ -1,6 +1,9 @@
 <!-- site wide head element -->
 <head>
   <title><%- (function(){ try{ return title }catch(e){ return 'canvas examples' } }()); %></title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
   <style>
 body {
   margin: 0px;
@@ -12,14 +15,25 @@ body {
 /* canvas element */
 
 
+
 @media (max-width: 399px) {
+  #canvas-app {
+    margin: -10px;
+    width: 260px;
+    height: 195px;
+  }
   .canvas_example {
-    width: 288px;
-    height: 216px;
+    width: 260px;
+    height: 195px;
   }
 }
 
 @media (min-width: 400px) and (max-width: 799px) {
+  #canvas-app {
+    margin: 0px;
+    width: 320px;
+    height: 240px;
+  }
   .canvas_example {
     width: 320px;
     height: 240px;
@@ -27,6 +41,11 @@ body {
 }
 
 @media (min-width: 800px){
+  #canvas-app {
+    margin: 0px;
+    width: 640px;
+    height: 480px;
+  }
   .canvas_example {
     width: 640px;
     height: 480px;
