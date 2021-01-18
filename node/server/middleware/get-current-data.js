@@ -3,8 +3,8 @@ path = require('path');
 
 module.exports = (req, res, next) => {
 
-    var files = path.join( req.app.get('dir_forpost'), req.params.exampleName, 'build/files.txt');
-    fs.readFile(files, (e, files)=>{
+    var dir_canvas_example = path.join( req.app.get('dir_forpost'), req.params.exampleName);
+    fs.readFile(path.join(dir_canvas_example, 'build/files.txt'), (e, files)=>{
 
         if(e){
             res.current = {
@@ -14,7 +14,9 @@ module.exports = (req, res, next) => {
         }else{
             res.current = {
                 success: true,
-                filesTXT: files
+                filesTXT: files.toString().split('\n').map((relPath)=>{
+                    return path.resolve(dir_canvas_example, 'build', relPath);
+                })
             };
         }
 
