@@ -2,7 +2,7 @@
 <head>
   <title><%- (function(){ try{ return title }catch(e){ return 'canvas examples' } }()); %></title>
   <style>
-body{
+body {
   margin: 0px;
   padding: 0px;
   background:#1a1a1a;
@@ -11,28 +11,46 @@ body{
 
 /* canvas element */
 
-canvas{
-   width:640px;
-   height:480px;
+
+@media (max-width: 399px) {
+  .canvas_example {
+    width: 288px;
+    height: 216px;
+  }
 }
 
-.warp_main{
+@media (min-width: 400px) and (max-width: 799px) {
+  .canvas_example {
+    width: 320px;
+    height: 240px;
+  }
+}
+
+@media (min-width: 800px){
+  .canvas_example {
+    width: 640px;
+    height: 480px;
+  }
+}
+
+
+.warp_main {
   margin: 0px;
   padding: 10px;
 }
-.warp_header{
+.warp_header {
   margin-bottom:10px;
   background:#0f0f0f;
   height:200px;
 }
-.warp_content{
+.warp_content {
   padding: 10px;
   margin: 0px;
   background:#0f0f0f;
 }
 
-a:link{color:lime;}
-a:visited{color:green;}
-a:hover{color:white;}
+a:link {color:lime;}
+a:visited {color:green;}
+a:hover {color:white;}
   </style>
 </head>
