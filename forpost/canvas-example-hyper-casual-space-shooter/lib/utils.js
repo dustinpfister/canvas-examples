@@ -1,5 +1,35 @@
 var utils = {};
 
+// create a canvas element
+utils.createCanvas = function(opt){
+    opt = opt || {};
+    opt.container = opt.container || document.getElementById('canvas-app') || document.body;
+    opt.canvas = document.createElement('canvas');
+    opt.canvas.className = 'canvas_example';
+    opt.ctx = opt.canvas.getContext('2d');
+    opt.container.appendChild(opt.canvas);
+    opt.canvas.width = opt.width === undefined ? 320 : opt.width;
+    opt.canvas.height = opt.height === undefined ? 240 : opt.height;
+    opt.ctx.translate(0.5, 0.5);
+    return opt;
+};
+
+// return a canvas realtive point from the given Mouse or Touch event Object
+utils.getCanvasRelative = function (e) {
+    var canvas = e.target,
+    bx = canvas.getBoundingClientRect();
+    var pos = {
+        x: (e.changedTouches ? e.changedTouches[0].clientX : e.clientX) - bx.left,
+        y: (e.changedTouches ? e.changedTouches[0].clientY : e.clientY) - bx.top,
+        bx: bx
+    };
+    // ajust for native canvas matrix size
+    pos.x = Math.floor((pos.x / canvas.scrollWidth) * canvas.width);
+    pos.y = Math.floor((pos.y / canvas.scrollHeight) * canvas.height);
+    return pos;
+};
+
+
 // format number as money
 // https://stackoverflow.com/questions/149055/how-to-format-numbers-as-currency-string
 utils.format_money = function(number){
@@ -16,21 +46,6 @@ utils.format_money = function(number){
 // mathematical modulo
 utils.mod = function(x, m) {
     return (x % m + m) % m;
-};
-
-// return a canvas realtive point from the given Mouse or Touch event Object
-utils.getCanvasRelative = function (e) {
-    var canvas = e.target,
-    bx = canvas.getBoundingClientRect();
-    var pos = {
-        x: (e.changedTouches ? e.changedTouches[0].clientX : e.clientX) - bx.left,
-        y: (e.changedTouches ? e.changedTouches[0].clientY : e.clientY) - bx.top,
-        bx: bx
-    };
-    // ajust for native canvas matrix size
-    pos.x = Math.floor((pos.x / canvas.scrollWidth) * canvas.width);
-    pos.y = Math.floor((pos.y / canvas.scrollHeight) * canvas.height);
-    return pos;
 };
 
 // get a distance between two points
