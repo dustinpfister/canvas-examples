@@ -7,7 +7,7 @@
 
 <div id="canvas-app" style="width:640px;height:480px;background:gray;"></div>
 
-<% current.javaScriptFiles.forEach(function(url){ %>
+<% (current.javaScriptFiles || []).forEach(function(url){ %>
     <script src="<%= url %>" ></script>
 <% }); %>
 
