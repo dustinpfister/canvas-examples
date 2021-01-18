@@ -17,7 +17,7 @@ module.exports = (req, res, next) => {
                 success: true,
                 javaScriptFiles: files.toString().split('\n').map((relPath)=>{
                     //return path.resolve(dir_canvas_example, 'build', relPath);
-                    return url.resolve('http://localhost:8020/foo/bar/baz/', '..');
+                    return url.resolve(req.protocol + '://' + req.headers.host +'/foo/bar/baz/', '..');
                 })
             };
         }
