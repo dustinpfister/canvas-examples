@@ -22,11 +22,15 @@ utils.mod = function(x, m) {
 utils.getCanvasRelative = function (e) {
     var canvas = e.target,
     bx = canvas.getBoundingClientRect();
-    return {
+    var pos = {
         x: (e.changedTouches ? e.changedTouches[0].clientX : e.clientX) - bx.left,
         y: (e.changedTouches ? e.changedTouches[0].clientY : e.clientY) - bx.top,
         bx: bx
     };
+    // ajust for native canvas matrix size
+    pos.x = Math.floor((pos.x / canvas.scrollWidth) * canvas.width);
+    pos.y = Math.floor((pos.y / canvas.scrollHeight) * canvas.height);
+    return pos;
 };
 
 // get a distance between two points
