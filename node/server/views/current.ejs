@@ -8,7 +8,7 @@
 <div id="canvas-app"></div>
 
 <% current.javaScriptFiles.forEach(function(url){ %>
-    <p><%= url %></p>
+    <script src="<%= url %>" ></script>
 <% }); %>
 
 <%- include('_part/bottom') %>
