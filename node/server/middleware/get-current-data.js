@@ -9,12 +9,12 @@ module.exports = (req, res, next) => {
         if(e){
             res.current = {
                 success: false,
-                filesTXT: ''
+                javaScriptFiles: ''
             };
         }else{
             res.current = {
                 success: true,
-                filesTXT: files.toString().split('\n').map((relPath)=>{
+                javaScriptFiles: files.toString().split('\n').map((relPath)=>{
                     return path.resolve(dir_canvas_example, 'build', relPath);
                 })
             };
