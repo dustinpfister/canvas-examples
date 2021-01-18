@@ -4,7 +4,9 @@
 
 <body>
 
+<div class="warp_main">
 <%- include('_part/header') %>
+<div class="warp_content">
 
 <h1><%= exampleName %>, Current Version </h1>
 <p>build folder: <%= current.success %></p>
@@ -16,6 +18,9 @@
 <% (current.javaScriptFiles || []).forEach(function(url){ %>
     <script src="<%= url %>" ></script>
 <% }); %>
+
+</div>
+</div>
 </body>
 
 </html>
