@@ -1,6 +1,7 @@
 
 ## 0.2.0 - Better main index
-* have links to the current version of each canvas example at main index
+* (done) have links to the current version of each canvas example at main index
+* Start some site wide css in head.ejs
 
 ## 0.1.0 - view current working build
 * (done) start a current.ejs file in views
