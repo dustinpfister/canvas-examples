@@ -1,14 +1,20 @@
 <%- include('_part/top') %>
 <%- include('_part/head') %> 
 
-<h1>current</h1>
-<p><%= exampleName %></p>
-<p><%= current.success %></p>
+<body>
 
+<%- include('_part/header') %>
+
+<h1><%= exampleName %>, Current Version </h1>
+<p>build folder: <%= current.success %></p>
+
+<!-- Main canvas example container -->
 <div id="canvas-app" style="width:640px;height:480px;background:gray;"></div>
 
+<!-- working script tags for canvas example -->
 <% (current.javaScriptFiles || []).forEach(function(url){ %>
     <script src="<%= url %>" ></script>
 <% }); %>
+</body>
 
 <%- include('_part/bottom') %>

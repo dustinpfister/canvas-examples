@@ -3,11 +3,13 @@
 
 <body>
 
+<%- include('_part/header') %>
+
 <h1>canvas examples</h1>
+
+<!-- Main canvas example list -->
 <% (for_post_list || []).forEach(function(exampleName){  %>
-
     <a href="/current/<%= exampleName %>" ><%= exampleName %></a></br>
-
 <% }); %>
 
 </body>
