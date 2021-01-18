@@ -27,6 +27,9 @@ Now that the very core of the game seems to be togeather I think it would be a g
 * (done) display home location and max warp range in warp mode
 * (done) when the warp point is pulled out of range it should snap to max range, not back to home
 * (done) move code worked out for warp pointer input method should be pulled inot helper/public method in game.js
+* (done) ajust pos returned by utils.getCanvasRelative to work with new system for scalling a canvas element
+* (done) assign a canvas_example className to the main canvas element
+
 
 * the energy cost of a warp should be effected by distance
 * have a WARP-DIST-MIN, WARP-DIST-MAX, WARP-COST-MIN, and WARP-COST-MAX const values

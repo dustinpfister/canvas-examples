@@ -6,6 +6,7 @@ var createCanvas = function(opt){
     opt = opt || {};
     opt.container = opt.container || document.getElementById('canvas-app') || document.body;
     opt.canvas = document.createElement('canvas');
+    opt.canvas.className = 'canvas_example';
     opt.ctx = opt.canvas.getContext('2d');
     opt.container.appendChild(opt.canvas);
     opt.canvas.width = opt.width === undefined ? 320 : opt.width;
