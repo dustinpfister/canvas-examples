@@ -1,7 +1,7 @@
 
 ## 0.3.0 - Canvas CSS started
-* start some CSS that will apply to canvas elements
-* use media queries to set canvas size
+* (done) start some CSS that will apply to canvas elements
+* (done) use media queries to set canvas size
 
 ## 0.2.0 - Better main index and site style
 * (done) have links to the current version of each canvas example at main index
