@@ -17,7 +17,7 @@ var state = {
     canvas: canvasObj.canvas,
     ctx: canvasObj.ctx,
     lt: new Date(),
-    can: canvasObjects('boxGroup'),
+    can: canvasObjects('tri'),
     framesPerSec: 18,
     secs: 0
 };

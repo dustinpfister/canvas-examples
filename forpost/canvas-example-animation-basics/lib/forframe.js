@@ -35,7 +35,9 @@ var forFrame = (function(){
                 model.y = utils.log1(utils.bias(frame, maxFrame), 1, 16) * ff.height - 24;
                 model.r = Math.PI / 180 * 360 * 2 * per;
                 return model;
-            }
+            },
+            // default ffDraw
+            function(){}
         },
         // points type
         points: {
@@ -64,6 +66,11 @@ var forFrame = (function(){
                     i += 1;
                 }
                 return ff.model;
+            },
+            // default ffDraw
+            function(ff, ctx, canvas){
+               ctx.beginPath();
+               ff.model
             }
         }
     };

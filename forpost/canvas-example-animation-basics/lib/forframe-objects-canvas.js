@@ -6,7 +6,6 @@ var canvasObjects = (function(){
     // very basic box example
     objects.box = {
         ff: forFrame.create({
-            type: 'points',
             maxFrame: 30,
             width: 64,
             height: 64,
@@ -29,9 +28,9 @@ var canvasObjects = (function(){
         backFill: '#004f00'
     };
 
+    // box group
     objects.boxGroup = {
         ff: forFrame.create({
-            type: 'points',
             maxFrame: 6,
             width: 64,
             height: 64,
@@ -64,6 +63,41 @@ var canvasObjects = (function(){
             });
         },
         backFill: false
+    };
+
+    objects.tri = {
+        ff: forFrame.create({
+            type: 'points',
+            maxFrame: 6,
+            width: 32,
+            height: 32,
+            forFrame: function(ff, model, frame, maxFrame, per){
+                var points = model.points = [];
+                points[0] = {
+                    x: 32,
+                    y: 16 
+                };
+                points[1] = {
+                    x: 0,
+                    y: 32 
+                };
+                points[2] = {
+                    x: 0,
+                    y: 0 
+                };
+                return model;
+            }
+        })
+/*
+        draw: function(ff, ctx, canvas){
+            var box = ff.model;
+            ctx.fillStyle='white';
+            ff.model.forEach(function(box){
+                ctx.fillRect(box.x, box.y, box.w, box.h);
+            });
+        },
+        backFill: false
+*/
     };
 
     return function(key){
