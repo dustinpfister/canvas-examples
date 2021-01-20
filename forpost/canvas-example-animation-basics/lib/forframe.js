@@ -37,7 +37,7 @@ var forFrame = (function(){
                 return model;
             },
             // default ffDraw
-            function(){}
+            draw: function(){}
         },
         // points type
         points: {
@@ -68,9 +68,18 @@ var forFrame = (function(){
                 return ff.model;
             },
             // default ffDraw
-            function(ff, ctx, canvas){
+            draw: function(ff, ctx, canvas){
                ctx.beginPath();
-               ff.model
+               ctx.strokeStyle = 'white';
+               ff.model.points.forEach(function(point, i){
+                   if(i === 0){
+                       ctx.moveTo(point.x, point.y);
+                   }else{
+                       ctx.lineTo(point.x, point.y);
+                   }
+               });
+               ctx.closePath();
+               ctx.stroke();
             }
         }
     };
@@ -160,7 +169,7 @@ var forFrame = (function(){
         canvas.width = ff.width * ff.maxFrame;
         canvas.height = ff.height;
 
-        ffDraw = ffDraw || function(){};
+        ffDraw = ffDraw || FF_TYPES[ff.type].draw || function(){};
         
         if(fill){
             ctx.fillStyle=fill;

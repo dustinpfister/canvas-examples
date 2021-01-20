@@ -74,36 +74,30 @@ var canvasObjects = (function(){
             forFrame: function(ff, model, frame, maxFrame, per){
                 var points = model.points = [];
                 points[0] = {
-                    x: 32,
+                    x: 22,
                     y: 16 
                 };
                 points[1] = {
-                    x: 0,
-                    y: 32 
+                    x: 10,
+                    y: 22 
                 };
                 points[2] = {
-                    x: 0,
-                    y: 0 
+                    x: 10,
+                    y: 10 
                 };
                 return model;
             }
-        })
-/*
-        draw: function(ff, ctx, canvas){
-            var box = ff.model;
-            ctx.fillStyle='white';
-            ff.model.forEach(function(box){
-                ctx.fillRect(box.x, box.y, box.w, box.h);
-            });
-        },
+        }),
         backFill: false
-*/
     };
 
     return function(key){
         key = key || 'box'
         var obj = objects[key];
-        return forFrame.createCanvas(obj.ff, obj.draw, obj.backFill);
+        console.log(obj);
+        var can = forFrame.createCanvas(obj.ff, obj.draw, obj.backFill);
+        console.log(can);
+        return can;
     };
 
 }());
