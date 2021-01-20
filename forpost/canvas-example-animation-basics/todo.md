@@ -1,11 +1,17 @@
 # canvas-example-animation-basics todo
 
+## 0.6.0 - ship and shot disp objects
+* have another collection of disp objects that will be shots that come off from the other display objects that use 'tri' as a skin
+* make a 0.6.0 pkg folder
+
 ## 0.5.0 - Some better example options of forFrame features
 * (done) start a /lib/forframe-objects-canvas.js file
 * (done) make the first box example the first object created and returned with forframe-objects-canvas.js
 * (done) max a boxGroup example in forframe-objects-canvas.js
-* (done) start a rotating triangle example
-* finish rotating triangle example
+* (done) start a rotating triangle example called 'tri'
+* (done) finish rotating triangle example called 'tri'
+* In main.js have a collection of disp objects with x, y, w, h, and heading props
+* use 'tri' to skin collection of disp objects in main, setting the current frame based on heading
 * make a 0.5.0 pkg folder
 
 ## 0.4.0 - new forFrame.createCanvas feature
