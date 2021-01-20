@@ -68,23 +68,22 @@ var canvasObjects = (function(){
     objects.tri = {
         ff: forFrame.create({
             type: 'points',
-            maxFrame: 6,
+            maxFrame: 45,
             width: 32,
             height: 32,
             forFrame: function(ff, model, frame, maxFrame, per){
                 var points = model.points = [];
-                points[0] = {
-                    x: 22,
-                    y: 16 
-                };
-                points[1] = {
-                    x: 10,
-                    y: 22 
-                };
-                points[2] = {
-                    x: 10,
-                    y: 10 
-                };
+                var i = 0,
+                radius = 15,
+                radian = 0;
+                while(i < 3){
+                    radian = Math.PI * 2 / 3 * i + Math.PI * 2 * ff.per;
+                    points.push({
+                        x: ff.width / 2 + Math.cos(radian) * radius,
+                        y: ff.height / 2 + Math.sin(radian) * radius
+                    });
+                    i += 1;
+                }
                 return model;
             }
         }),

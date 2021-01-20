@@ -4,7 +4,8 @@
 * (done) start a /lib/forframe-objects-canvas.js file
 * (done) make the first box example the first object created and returned with forframe-objects-canvas.js
 * (done) max a boxGroup example in forframe-objects-canvas.js
-* make a rotating triangle example
+* (done) start a rotating triangle example
+* finish rotating triangle example
 * make a 0.5.0 pkg folder
 
 ## 0.4.0 - new forFrame.createCanvas feature

@@ -18,7 +18,7 @@ var state = {
     ctx: canvasObj.ctx,
     lt: new Date(),
     can: canvasObjects('tri'),
-    framesPerSec: 18,
+    framesPerSec: 1,
     secs: 0
 };
 
