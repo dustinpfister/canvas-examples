@@ -9,9 +9,20 @@ var state = {
     sheets:{
         tri: canvasObjects('tri')
     },
+    ships: {},
     framesPerSec: 1,
     secs: 0
 };
+
+state.ships = poolMod.create({
+    count: 3,
+    spawn: function(obj, pool, state, opt){
+    },
+    update: function(obj, pool, state, secs){
+    }
+});
+
+console.log(state.ships);
 
 // basic app loop
 var loop = function(){
