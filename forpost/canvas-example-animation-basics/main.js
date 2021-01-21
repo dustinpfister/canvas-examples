@@ -17,7 +17,9 @@ var state = {
     canvas: canvasObj.canvas,
     ctx: canvasObj.ctx,
     lt: new Date(),
-    can: canvasObjects('tri'),
+    sheets:{
+        tri: canvasObjects('tri')
+    },
     framesPerSec: 1,
     secs: 0
 };
@@ -33,11 +35,11 @@ var loop = function(){
 
         // draw
         draw.background(state.ctx, state.canvas);
-        state.can.draw(state.ctx, 120, 40, 64, 64);
+        state.sheets.tri.draw(state.ctx, 120, 40, 64, 64);
         draw.ver(state.ctx, state.canvas, state);
 
         // update
-        state.can.step(1);
+        state.sheets.tri.step(1);
         state.secs = utils.mod(state.secs, 1 / state.framesPerSec);
     }
     state.lt = now;
