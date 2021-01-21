@@ -1,17 +1,6 @@
-// create canvas helper
-var createCanvas = function(opt){
-    opt = opt || {};
-    opt.container = opt.container || document.getElementById('canvas-app') || document.body;
-    opt.canvas = document.createElement('canvas');
-    opt.ctx = opt.canvas.getContext('2d');
-    opt.container.appendChild(opt.canvas);
-    opt.canvas.width = opt.width === undefined ? 440 : opt.width;
-    opt.canvas.height = opt.height === undefined ? 280 : opt.height;
-    opt.ctx.translate(0.5, 0.5);
-    return opt;
-};
+
 // state object
-var canvasObj = createCanvas();
+var canvasObj = utils.createCanvas();
 var state = {
     ver: '0.5.0',
     canvas: canvasObj.canvas,
