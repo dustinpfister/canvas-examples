@@ -84,6 +84,13 @@ var poolMod = (function () {
             obj.active = bool;
         }
     };
+    // get all objects with the gieven activeState
+    api.getAllActive = function(pool, activeState){
+        activeState = activeState === undefined ? true : activeState;
+        return pool.objects.filter(function(object){
+            return object.active === activeState;
+        });
+    };
     // move the given object by its current heading and pps
     api.moveByPPS = function (obj, secs) {
         obj.x += Math.cos(obj.heading) * obj.pps * secs;

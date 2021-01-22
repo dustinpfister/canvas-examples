@@ -27,7 +27,11 @@ state.ships = poolMod.create({
     }
 });
 
-console.log(state.ships);
+poolMod.spawn(state.ships, state, {});
+
+
+
+console.log( poolMod.getAllActive(state.ships, true) );
 
 // basic app loop
 var loop = function(){
@@ -40,11 +44,15 @@ var loop = function(){
 
         // draw
         draw.background(state.ctx, state.canvas);
+
+        state.sheets.tri.set(0);
         state.sheets.tri.draw(state.ctx, 120, 40, 64, 64);
+
+
         draw.ver(state.ctx, state.canvas, state);
 
         // update
-        state.sheets.tri.step(1);
+
         state.secs = utils.mod(state.secs, 1 / state.framesPerSec);
     }
     state.lt = now;
