@@ -1,5 +1,7 @@
 var utils = {};
 
+utils.pi2 = Math.PI * 2;
+
 // create a canvas element
 utils.createCanvas = function(opt){
     opt = opt || {};
