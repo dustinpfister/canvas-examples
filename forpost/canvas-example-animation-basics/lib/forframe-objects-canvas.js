@@ -87,14 +87,16 @@ var canvasObjects = (function(){
                 return model;
             }
         }),
-        backFill: 'rgba(0,255,0,0.1)'
+        backFill: false,
+        stroke: 'lime',
+        fill: 'rgba(255,255,255,0.5)'
     };
 
     return function(key){
         key = key || 'box'
         var obj = objects[key];
         console.log(obj);
-        var can = forFrame.createCanvas(obj.ff, obj.draw, obj.backFill, 'lime', 'white');
+        var can = forFrame.createCanvas(obj.ff, obj.draw, obj.backFill, obj.stroke, obj.fill);
         console.log(can);
         return can;
     };
