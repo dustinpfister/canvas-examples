@@ -7,7 +7,8 @@ var state = {
     ctx: canvasObj.ctx,
     lt: new Date(),
     sheets:{
-        tri: canvasObjects('tri')
+        tri: canvasObjects('tri'),
+        boxGroup: canvasObjects('boxGroup')
     },
     ships: {},
     framesPerSec: 20,
@@ -22,6 +23,7 @@ state.ships = poolMod.create({
         obj.heading = utils.pi2 * Math.random();
         obj.pps = 16 + 128 * Math.random();
         obj.lifespan = 5;
+        obj.sheetName = Object.keys(state.sheets)[1];
     },
     update: function(obj, pool, state, secs){
         // have a frame index value to use with the sheet to skin the object
@@ -44,8 +46,8 @@ var loop = function(){
 
         var ships = poolMod.getAllActive(state.ships, true);
         ships.forEach(function(ship){
-            state.sheets.tri.set(ship.frameIndex);
-            state.sheets.tri.draw(state.ctx, ship.x - 16, ship.y - 16, ship.w, ship.h);
+            state.sheets[ship.sheetName].set(ship.frameIndex);
+            state.sheets[ship.sheetName].draw(state.ctx, ship.x - 16, ship.y - 16, ship.w, ship.h);
         });
 
         draw.ver(state.ctx, state.canvas, state);

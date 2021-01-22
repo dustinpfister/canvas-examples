@@ -31,7 +31,7 @@ var canvasObjects = (function(){
     // box group
     objects.boxGroup = {
         ff: forFrame.create({
-            maxFrame: 6,
+            maxFrame: 20,
             width: 64,
             height: 64,
             forFrame: function(ff, model, frame, maxFrame, per){
