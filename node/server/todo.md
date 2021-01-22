@@ -2,6 +2,8 @@
 ## 0.3.0 - Canvas CSS started
 * (done) start some CSS that will apply to canvas elements
 * (done) use media queries to set canvas size
+* (done) nice basic nav bar started
+* (done - 01-22-2021)
 
 ## 0.2.0 - Better main index and site style
 * (done) have links to the current version of each canvas example at main index
