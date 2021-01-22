@@ -10,8 +10,8 @@
 * (done) max a boxGroup example in forframe-objects-canvas.js
 * (done) start a rotating triangle example called 'tri'
 * (done) finish rotating triangle example called 'tri'
-* In main.js have a collection of disp objects with x, y, w, h, and heading props
-* use 'tri' to skin collection of disp objects in main, setting the current frame based on heading
+* (done) In main.js have a collection of disp objects with x, y, w, h, and heading props
+* (done) use 'tri' to skin collection of disp objects in main, setting the current frame based on heading
 * make a 0.5.0 pkg folder
 
 ## 0.4.0 - new forFrame.createCanvas feature

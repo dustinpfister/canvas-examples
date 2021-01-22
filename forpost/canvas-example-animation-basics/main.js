@@ -26,6 +26,7 @@ state.ships = poolMod.create({
     update: function(obj, pool, state, secs){
         // have a frame index value to use with the sheet to skin the object
         obj.frameIndex = Math.floor(state.sheets.tri.maxFrame * ( obj.heading / utils.pi2 ));
+        obj.heading += utils.pi2 / 360 * 90 * secs;
     }
 });
 
