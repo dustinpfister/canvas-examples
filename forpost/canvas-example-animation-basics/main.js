@@ -17,13 +17,13 @@ var state = {
 state.ships = poolMod.create({
     count: 3,
     spawn: function(obj, pool, state, opt){
-        obj.x = 0;
-        obj.y = 32;
+        obj.x = state.canvas.width / 2;
+        obj.y = state.canvas.height / 2;
         obj.lifespan = 3;
     },
     update: function(obj, pool, state, secs){
-        obj.x += 32 * secs;
-        obj.frameIndex = 0;
+        obj.pps = 32;
+        obj.frameIndex = Math.floor(state.sheets.tri.maxFrame * ( obj.heading / (Math.PI * 2) ));
     }
 });
 
@@ -46,7 +46,7 @@ var loop = function(){
         var ships = poolMod.getAllActive(state.ships, true);
         ships.forEach(function(ship){
             state.sheets.tri.set(ship.frameIndex);
-            state.sheets.tri.draw(state.ctx, ship.x, ship.y, 64, 64);
+            state.sheets.tri.draw(state.ctx, ship.x - 16, ship.y - 16, ship.w, ship.h);
         });
 
         draw.ver(state.ctx, state.canvas, state);

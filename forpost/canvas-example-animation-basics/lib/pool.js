@@ -65,8 +65,15 @@ var poolMod = (function () {
             obj = pool.objects[i];
             if (obj.active) {
                 pool.update.call(pool, obj, pool, state, secs);
+
+                // always update lifespan
                 obj.lifespan -= secs;
                 obj.lifespan = obj.lifespan < 0 ? 0 : obj.lifespan;
+
+                // always update position based on current obj.pps
+                obj.x += Math.cos(obj.heading) * obj.pps * secs;
+                obj.y += Math.sin(obj.heading) * obj.pps * secs;
+
                 if (obj.lifespan === 0) {
                     obj.active = false;
                     pool.purge.call(pool, obj, pool, state);
