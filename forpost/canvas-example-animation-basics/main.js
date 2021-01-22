@@ -15,15 +15,16 @@ var state = {
 };
 
 state.ships = poolMod.create({
-    count: 3,
+    count: 20,
     spawn: function(obj, pool, state, opt){
         obj.x = state.canvas.width / 2;
         obj.y = state.canvas.height / 2;
         obj.heading = Math.PI * 2 * Math.random();
-        obj.lifespan = 5;
+        obj.pps = 16 + 128 * Math.random();
+        obj.lifespan = 3;
     },
     update: function(obj, pool, state, secs){
-        obj.pps = 128;
+
         obj.frameIndex = Math.floor(state.sheets.tri.maxFrame * ( obj.heading / (Math.PI * 2) ));
     }
 });
