@@ -17,8 +17,13 @@ var state = {
 state.ships = poolMod.create({
     count: 3,
     spawn: function(obj, pool, state, opt){
+        obj.x = 0;
+        obj.y = 32;
+        obj.lifespan = 3;
     },
     update: function(obj, pool, state, secs){
+        obj.x += 32 * secs;
+        obj.frameIndex = 0;
     }
 });
 
