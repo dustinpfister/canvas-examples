@@ -10,7 +10,7 @@ var state = {
         tri: canvasObjects('tri')
     },
     ships: {},
-    framesPerSec: 1,
+    framesPerSec: 20,
     secs: 0
 };
 
@@ -26,8 +26,6 @@ state.ships = poolMod.create({
         obj.frameIndex = 0;
     }
 });
-
-poolMod.spawn(state.ships, state, {});
 
 
 
@@ -45,15 +43,19 @@ var loop = function(){
         // draw
         draw.background(state.ctx, state.canvas);
 
-        state.sheets.tri.set(0);
-        state.sheets.tri.draw(state.ctx, 120, 40, 64, 64);
-
+        var ships = poolMod.getAllActive(state.ships, true);
+        ships.forEach(function(ship){
+            state.sheets.tri.set(ship.frameIndex);
+            state.sheets.tri.draw(state.ctx, ship.x, ship.y, 64, 64);
+        });
 
         draw.ver(state.ctx, state.canvas, state);
 
         // update
-
-        state.secs = utils.mod(state.secs, 1 / state.framesPerSec);
+        poolMod.spawn(state.ships, state, {});
+        poolMod.update(state.ships, state.secs, state);
+        state.secs = 0;
+        //state.secs = utils.mod(state.secs, 1 / state.framesPerSec);
     }
     state.lt = now;
 };
