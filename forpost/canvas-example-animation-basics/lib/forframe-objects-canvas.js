@@ -68,7 +68,7 @@ var canvasObjects = (function(){
     objects.tri = {
         ff: forFrame.create({
             type: 'points',
-            maxFrame: 45,
+            maxFrame: 8,
             width: 32,
             height: 32,
             forFrame: function(ff, model, frame, maxFrame, per){

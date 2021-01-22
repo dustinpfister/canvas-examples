@@ -15,13 +15,13 @@ var state = {
 };
 
 state.ships = poolMod.create({
-    count: 20,
+    count: 50,
     spawn: function(obj, pool, state, opt){
         obj.x = state.canvas.width / 2;
         obj.y = state.canvas.height / 2;
         obj.heading = utils.pi2 * Math.random();
         obj.pps = 16 + 128 * Math.random();
-        obj.lifespan = 3;
+        obj.lifespan = 5;
     },
     update: function(obj, pool, state, secs){
         // have a frame index value to use with the sheet to skin the object
