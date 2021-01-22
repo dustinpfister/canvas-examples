@@ -68,9 +68,9 @@ var forFrame = (function(){
                 return ff.model;
             },
             // default ffDraw
-            draw: function(ff, ctx, canvas){
+            draw: function(ff, ctx, canvas, stroke, fill){
                ctx.beginPath();
-               ctx.strokeStyle = 'white';
+               ctx.strokeStyle = stroke || 'white';
                ff.model.points.forEach(function(point, i){
                    if(i === 0){
                        ctx.moveTo(point.x, point.y);
@@ -80,6 +80,10 @@ var forFrame = (function(){
                });
                ctx.closePath();
                ctx.stroke();
+               if(fill){
+                   ctx.fillStyle = fill;
+                   ctx.fill();
+               }
             }
         }
     };
@@ -162,7 +166,7 @@ var forFrame = (function(){
     *********************/
 
     // create and return a canvas based on the given ff
-    api.createCanvas = function(ff, ffDraw, fill){
+    api.createCanvas = function(ff, ffDraw, backFill, stroke, fill){
 
         var canvas = document.createElement('canvas'),
         ctx = canvas.getContext('2d');
@@ -171,15 +175,15 @@ var forFrame = (function(){
 
         ffDraw = ffDraw || FF_TYPES[ff.type].draw || function(){};
         
-        if(fill){
-            ctx.fillStyle=fill;
+        if(backFill){
+            ctx.fillStyle=backFill;
             ctx.fillRect(0,0,canvas.width, canvas.height);
         }
 
         ff.frame = 0;
         while(ff.frame < ff.maxFrame){
             setFrame(ff, ff.frame);
-            ffDraw.apply(ff, [ff, ctx, canvas]);
+            ffDraw.apply(ff, [ff, ctx, canvas, stroke, fill]);
             ctx.translate(ff.width, 0);
             ff.frame += 1;
         }
