@@ -1,5 +1,8 @@
 # canvas-example-animation-basics todo
 
+## 0.x.0 - 2d canvas sheets
+* make it so that a canvas sheet can have two dims
+
 ## 0.6.0 - ship and shot disp objects
 * have another collection of disp objects that will be shots that come off from the other display objects that use 'tri' as a skin
 * make a 0.6.0 pkg folder
@@ -12,7 +15,7 @@
 * (done) finish rotating triangle example called 'tri'
 * (done) In main.js have a collection of disp objects with x, y, w, h, and heading props
 * (done) use 'tri' to skin collection of disp objects in main, setting the current frame based on heading
-* make a 0.5.0 pkg folder
+* (done) make a 0.5.0 pkg folder
 
 ## 0.4.0 - new forFrame.createCanvas feature
 * (done) start a forFrame.createCanvas function that can be used to create and return a canvas element
