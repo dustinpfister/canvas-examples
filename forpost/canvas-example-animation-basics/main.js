@@ -23,7 +23,8 @@ state.ships = poolMod.create({
         obj.heading = utils.pi2 * Math.random();
         obj.pps = 16 + 128 * Math.random();
         obj.lifespan = 5;
-        obj.sheetName = Object.keys(state.sheets)[1];
+        var keys = Object.keys(state.sheets);
+        obj.sheetName = keys[ Math.floor(Math.random() * keys.length) ];
     },
     update: function(obj, pool, state, secs){
         // have a frame index value to use with the sheet to skin the object
