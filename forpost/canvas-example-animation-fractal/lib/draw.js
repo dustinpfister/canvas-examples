@@ -10,13 +10,22 @@ draw.bx = function (ctx, bx) {
 };
 draw.bxArr = function (ctx, ani) {
     var i = 0,
-    len = ani.bxArr.length;
-    ctx.save();
+    len = ani.bxArr.length,
+    box;
+
     while (i < len) {
-        draw.bx(ctx, ani.bxArr[i]);
+        box = ani.bxArr[i];
+        ctx.save();
+        ctx.translate(box.x + box.w / 2, box.y + box.h / 2);
+        draw.bx(ctx, {
+            x: box.w / 2 * -1,
+            y: box.h / 2 * -1,
+            w: box.w,
+            h: box.h
+        });
+        ctx.restore();
         i += 1;
     }
-    ctx.restore();
 };
 draw.back = function (ctx, canvas) {
     ctx.fillStyle = 'black';
