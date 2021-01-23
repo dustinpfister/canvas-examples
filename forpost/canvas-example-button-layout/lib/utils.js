@@ -11,7 +11,6 @@ utils.mkButtonLayout = function (opt) {
         var pos = utils.getCanvasRelative(e),
         i = opt.buttons.length,
         b;
-        e.preventDefault();
         while (i--) {
             b = opt.buttons[i];
             if (utils.boundingBox(pos.x, pos.y, 1, 1, b.x, b.y, b.w, b.h)) {
@@ -28,11 +27,7 @@ utils.mkButtonLayout = function (opt) {
         }
         return false;
     };
-    blObj.attachTo.addEventListener('click', function(e){
-         e.preventDefault();
-         blObj.handler(e);
-         return false;
-    });
+    blObj.attachTo.addEventListener('click', blObj.handler);
     return blObj;
 };
 
@@ -67,6 +62,8 @@ utils.getCanvasRelative = function (e) {
     // ajust for native canvas matrix size
     pos.x = Math.floor((pos.x / canvas.scrollWidth) * canvas.width);
     pos.y = Math.floor((pos.y / canvas.scrollHeight) * canvas.height);
+    // prevent default
+    e.preventDefault();
     return pos;
 };
 
