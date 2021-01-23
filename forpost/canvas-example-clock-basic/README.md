@@ -4,7 +4,7 @@ This canvas example is of a basic clock using a canvas element and a little java
 
 ## /lib folder
 
-The lib folder contains the clock.js file that can be used to create a clock object, and a draw.js file that is used to redner the state of that object to a canvas element.
+The lib folder contains the clock.js file that can be used to create a clock object, and a draw.js file that is used to redner the state of that object to a canvas element. It also contains a utils.js file with some common functions I use in many other canvas examples.
 
 ## main.js, and index.html
 
