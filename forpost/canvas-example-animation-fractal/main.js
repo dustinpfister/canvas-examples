@@ -1,13 +1,27 @@
-var container = document.getElementById('canvas-app'),
-canvas = document.createElement('canvas'),
-ctx = canvas.getContext('2d');
-canvas.width = 320;
-canvas.height = 240;
-ctx.translate(0.5, 0.5);
-container.appendChild(canvas);
+var utils = {};
+
+utils.pi2 = Math.PI * 2;
+
+// create a canvas element object
+utils.createCanvas = function(opt){
+    opt = opt || {};
+    opt.container = opt.container || document.getElementById('canvas-app') || document.body;
+    opt.canvas = document.createElement('canvas');
+    opt.canvas.className = 'canvas_example';
+    opt.ctx = opt.canvas.getContext('2d');
+    opt.container.appendChild(opt.canvas);
+    opt.canvas.width = opt.width === undefined ? 320 : opt.width;
+    opt.canvas.height = opt.height === undefined ? 240 : opt.height;
+    opt.ctx.translate(0.5, 0.5);
+    return opt;
+};
+
+var canvasObj = utils.createCanvas(),
+canvas = canvasObj.canvas,
+ctx = canvasObj.ctx;
 
 var opt = {
-    ver: '0.0.0',
+    ver: '0.1.0',
     forFrame: function (api, f, mf) {
         var bxArr = api.ani.bxArr = [];
         var i = 0,
