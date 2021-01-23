@@ -4,8 +4,8 @@
 * make it so that a canvas sheet can have two dims
 
 ## 0.6.0 - ship and shot disp objects
-* have another collection of disp objects that will be shots that come off from the other display objects that use 'tri' as a skin
-* make a 0.6.0 pkg folder
+* (done) use more than one animation
+* (done) make a 0.6.0 pkg folder
 
 ## 0.5.0 - Some better example options of forFrame features
 * (done) start a /lib/forframe-objects-canvas.js file
