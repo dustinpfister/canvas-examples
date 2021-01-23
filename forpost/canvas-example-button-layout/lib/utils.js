@@ -1,42 +1,19 @@
-var u = {};
+var utils = {};
 
-u.mod = function (x, m) {
-    return (x % m + m) % m;
-};
-
-u.getCanvasRelative = function (e) {
-    var canvas = e.target,
-    bx = canvas.getBoundingClientRect();
-    var x = (e.changedTouches ? e.changedTouches[0].clientX : e.clientX) - bx.left,
-    y = (e.changedTouches ? e.changedTouches[0].clientY : e.clientY) - bx.top;
-    return {
-        x: x,
-        y: y,
-        bx: bx
-    };
-};
-
-u.boundingBox = function (x1, y1, w1, h1, x2, y2, w2, h2) {
-    return !(
-        (y1 + h1) < (y2) ||
-        y1 > (y2 + h2) ||
-        (x1 + w1) < x2 ||
-        x1 > (x2 + w2));
-};
-
-u.mkButtonLayout = function (opt) {
+// make a button layout
+utils.mkButtonLayout = function (opt) {
     var blObj = {};
     opt = opt || {};
     blObj.buttons = opt.buttons || [];
     blObj.attachTo = opt.attachTo || window;
     blObj.handler = function (e) {
-        var pos = u.getCanvasRelative(e),
+        var pos = utils.getCanvasRelative(e),
         i = opt.buttons.length,
         b;
         e.preventDefault();
         while (i--) {
             b = opt.buttons[i];
-            if (u.boundingBox(pos.x, pos.y, 1, 1, b.x, b.y, b.w, b.h)) {
+            if (utils.boundingBox(pos.x, pos.y, 1, 1, b.x, b.y, b.w, b.h)) {
                 if (b.onAction) {
                     b.onAction.call({
                         opt: opt,
@@ -51,4 +28,42 @@ u.mkButtonLayout = function (opt) {
     };
     blObj.attachTo.addEventListener('click', blObj.handler);
     return blObj;
+};
+
+// create a canvas element
+utils.createCanvas = function(opt){
+    opt = opt || {};
+    opt.container = opt.container || document.getElementById('canvas-app') || document.body;
+    opt.canvas = document.createElement('canvas');
+    opt.canvas.className = 'canvas_example';
+    opt.ctx = opt.canvas.getContext('2d');
+    opt.container.appendChild(opt.canvas);
+    opt.canvas.width = opt.width === undefined ? 320 : opt.width;
+    opt.canvas.height = opt.height === undefined ? 240 : opt.height;
+    opt.ctx.translate(0.5, 0.5);
+    return opt;
+};
+
+utils.mod = function (x, m) {
+    return (x % m + m) % m;
+};
+
+utils.getCanvasRelative = function (e) {
+    var canvas = e.target,
+    bx = canvas.getBoundingClientRect();
+    var x = (e.changedTouches ? e.changedTouches[0].clientX : e.clientX) - bx.left,
+    y = (e.changedTouches ? e.changedTouches[0].clientY : e.clientY) - bx.top;
+    return {
+        x: x,
+        y: y,
+        bx: bx
+    };
+};
+
+utils.boundingBox = function (x1, y1, w1, h1, x2, y2, w2, h2) {
+    return !(
+        (y1 + h1) < (y2) ||
+        y1 > (y2 + h2) ||
+        (x1 + w1) < x2 ||
+        x1 > (x2 + w2));
 };

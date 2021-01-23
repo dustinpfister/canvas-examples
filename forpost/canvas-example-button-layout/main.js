@@ -6,7 +6,7 @@ canvas.width = 320;
 canvas.height = 240;
 
 var state = {
-    ver: '0.0.0',
+    ver: '0.1.0',
     i: 0,
     iMax: 16,
     cx: canvas.width / 2,
@@ -15,11 +15,11 @@ var state = {
 };
 
 var wrapIndex = function (state) {
-    state.i = u.mod(state.i, state.iMax);
+    state.i = utils.mod(state.i, state.iMax);
 };
 
 // create button layout
-var blObj = u.mkButtonLayout({
+var blObj = utils.mkButtonLayout({
         attachTo: canvas,
         buttons: [{
                 x: canvas.width / 2 - 48,
