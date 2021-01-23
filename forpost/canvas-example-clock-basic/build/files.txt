@@ -1,3 +1,4 @@
+../lib/utils.js
 ../lib/clock.js
 ../lib/draw.js
 ../main.js
