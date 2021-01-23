@@ -7,6 +7,7 @@ utils.mkButtonLayout = function (opt) {
     blObj.buttons = opt.buttons || [];
     blObj.attachTo = opt.attachTo || window;
     blObj.handler = function (e) {
+        e.preventDefault();
         var pos = utils.getCanvasRelative(e),
         i = opt.buttons.length,
         b;
@@ -44,21 +45,25 @@ utils.createCanvas = function(opt){
     return opt;
 };
 
+utils.getCanvasRelative = function (e) {
+    var canvas = e.target,
+    bx = canvas.getBoundingClientRect(),
+    pos = {
+        x: (e.changedTouches ? e.changedTouches[0].clientX : e.clientX) - bx.left,
+        y: (e.changedTouches ? e.changedTouches[0].clientY : e.clientY) - bx.top,
+        bx: bx
+    };
+    // ajust for native canvas matrix size
+    pos.x = Math.floor((pos.x / canvas.scrollWidth) * canvas.width);
+    pos.y = Math.floor((pos.y / canvas.scrollHeight) * canvas.height);
+    return pos;
+};
+
 utils.mod = function (x, m) {
     return (x % m + m) % m;
 };
 
-utils.getCanvasRelative = function (e) {
-    var canvas = e.target,
-    bx = canvas.getBoundingClientRect();
-    var x = (e.changedTouches ? e.changedTouches[0].clientX : e.clientX) - bx.left,
-    y = (e.changedTouches ? e.changedTouches[0].clientY : e.clientY) - bx.top;
-    return {
-        x: x,
-        y: y,
-        bx: bx
-    };
-};
+
 
 utils.boundingBox = function (x1, y1, w1, h1, x2, y2, w2, h2) {
     return !(
