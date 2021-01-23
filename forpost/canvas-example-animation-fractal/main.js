@@ -8,8 +8,8 @@ var opt = {
         var bxArr = api.ani.bxArr = [];
         var i = 0,
         per,
-        bxCount = 10,
-        maxSize = canvas.width;
+        bxCount = 8,
+        maxSize = canvas.width * 1.5;
         while (i < bxCount) {
             // figure out the percent for the current box
             per = api.per + 1 / bxCount * i;
@@ -20,6 +20,7 @@ var opt = {
             bx.h = maxSize * per;
             bx.x = canvas.width / 2 - (bx.w / 2);
             bx.y = canvas.height / 2 - (bx.h / 2);
+            bx.radian = Math.PI / 180 * 45;
             bx.per = bx.w / maxSize;
             bxArr.push(bx);
             i += 1;

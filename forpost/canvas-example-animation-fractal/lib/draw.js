@@ -12,11 +12,11 @@ draw.bxArr = function (ctx, ani) {
     var i = 0,
     len = ani.bxArr.length,
     box;
-
     while (i < len) {
         box = ani.bxArr[i];
         ctx.save();
         ctx.translate(box.x + box.w / 2, box.y + box.h / 2);
+        ctx.rotate(box.radian);
         draw.bx(ctx, {
             x: box.w / 2 * -1,
             y: box.h / 2 * -1,
