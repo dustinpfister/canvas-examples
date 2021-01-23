@@ -1,9 +1,8 @@
 // DRAW
 var draw = {};
 draw.bx = function (ctx, bx) {
-    ctx.strokeStyle = 'rgba(0,255,0,0.5)';
-    ctx.globalAlpha = 0.05 + bx.per * 0.95;
-    ctx.lineWidth = 3;
+    ctx.strokeStyle = 'rgba(0,255,0,' + bx.per.toFixed(2) + ')';
+    ctx.lineWidth = 6;
     ctx.beginPath();
     ctx.rect(bx.x, bx.y, bx.w, bx.h);
     ctx.stroke();
@@ -21,7 +20,8 @@ draw.bxArr = function (ctx, ani) {
             x: box.w / 2 * -1,
             y: box.h / 2 * -1,
             w: box.w,
-            h: box.h
+            h: box.h,
+            per: 1 - box.per
         });
         ctx.restore();
         i += 1;
