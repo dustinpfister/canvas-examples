@@ -21,7 +21,7 @@ var opt = {
             bx.h = maxSize * per;
             bx.x = canvas.width / 2 - (bx.w / 2);
             bx.y = canvas.height / 2 - (bx.h / 2);
-            bx.radian = Math.PI / 180 * 90 * per;
+            bx.radian = Math.PI / 180 * (-90 + 180 * api.bias) * per;
             bx.per = bx.w / maxSize;
             bxArr.push(bx);
             i += 1;
