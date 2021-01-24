@@ -3,31 +3,6 @@ var canvasObjects = (function(){
 
     var objects = {};
 
-    // very basic box example
-    objects.box = {
-        ff: forFrame.create({
-            maxFrame: 30,
-            width: 64,
-            height: 64,
-            forFrame: function(ff, model, frame, maxFrame, per){
-                var size = 8,
-                halfSize = size / 2;
-                return {
-                    x: (ff.width - size) * ff.per,
-                    y: ff.height / 2 - halfSize,
-                    w: size,
-                    h: size
-                };
-            }
-        }),
-        draw: function(ff, ctx, canvas){
-            var box = ff.model;
-            ctx.fillStyle='white';
-            ctx.fillRect(box.x, box.y, box.w, box.h);
-        },
-        backFill: '#004f00'
-    };
-
     // box group
     objects.boxGroup = {
         ff: forFrame.create({
