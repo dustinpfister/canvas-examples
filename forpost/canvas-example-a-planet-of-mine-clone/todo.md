@@ -23,8 +23,8 @@ If I am going to put a lot of time into this one I should maybe break things dow
 * workers harvest resources on land tiles by way of actionRate rather than rotation rate
 
 ## 0.1.0 - use new createCanvas method
-* use the new createCanvas method
-* make a 0.1.0 folder
+* (done) use the new createCanvas method
+* (done 1-24-21) make a 0.1.0 folder
 
 ## 0.0.0 - The very basic idea working very poorly
 * (done) main solar.ticks solar object property
