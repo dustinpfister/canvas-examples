@@ -24,7 +24,7 @@ state.ships = poolMod.create({
         obj.heading = utils.pi2 * Math.random();
         obj.pps = 16 + 128 * Math.random();
         obj.lifespan = 5;
-        var keys = ['gridLines']; //['tri', 'boxGroup']; //Object.keys(state.sheets);
+        var keys = ['tri', 'boxGroup']; //Object.keys(state.sheets);
         obj.sheetName = keys[ Math.floor(Math.random() * keys.length) ];
     },
     update: function(obj, pool, state, secs){
@@ -44,7 +44,7 @@ var loop = function(){
     if(state.secs >= 1 / state.framesPerSec){
 
         // draw
-        draw.background(state.ctx, state.canvas);
+        draw.background(state.ctx, state.canvas, state.sheets.gridLines);
 
         var ships = poolMod.getAllActive(state.ships, true);
         ships.forEach(function(ship){

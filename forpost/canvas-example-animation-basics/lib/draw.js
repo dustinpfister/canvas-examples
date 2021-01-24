@@ -1,9 +1,13 @@
 var draw = {};
 
 // BACKGROUND
-draw.background = function(ctx, canvas){
-    ctx.fillStyle='black';
-    ctx.fillRect(0,0,canvas.width, canvas.height);
+draw.background = function(ctx, canvas, canvasObj){
+    if(canvasObj){
+        canvasObj.draw(ctx, -1, -1, canvas.width + 1, canvas.height + 1);
+    }else{
+        ctx.fillStyle='black';
+        ctx.fillRect(0,0,canvas.width, canvas.height);
+    }
 };
 
 // INFO
