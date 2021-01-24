@@ -17,22 +17,6 @@ var Machine = (function () {
         return Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2));
     };
 
-    // PARSE arguments
-
-    // Parse a container argument
-    var parseContainer = function (container) {
-        // if object assume element that is to be used as the container
-        if (typeof container === 'object' && container != null) {
-            return container;
-        }
-        // if string assume id
-        if (typeof container === 'string') {
-            return document.getElementById(container);
-        }
-        // if we get this far return document.body
-        return document.body;
-    };
-
     // CANVAS
     // attach a canvas event
     var attachCanvasEvent = function (sm, DOMType, smType) {
@@ -97,7 +81,7 @@ var Machine = (function () {
             draw: {},
             states: {},
             canvas: null,
-            container: parseContainer(container),
+            container: null,
             ctx: null,
             load: function (stateObj) {
                 // just reference the object for now as long as
@@ -123,7 +107,6 @@ var Machine = (function () {
         sm.canvas = canvasObj.canvas;
         sm.ctx = canvasObj.ctx;
         sm.container = canvasObj.container;
-
         attachAllCanvasEvents(sm);
 
         // main loop
