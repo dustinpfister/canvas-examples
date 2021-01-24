@@ -4,21 +4,17 @@ var Machine = (function () {
     // attach a canvas event
     var attachCanvasEvent = function (sm, DOMType, smType) {
         sm.canvas.addEventListener(DOMType, function (e) {
-
             var stateObj = sm.states[sm.currentState],
             pt = {}, // pointer API
             handler,
             mode;
             pt.pos = utils.getCanvasRelative(e);
-
             pt.overlap = function (x, y, w, h) {
                 return utils.boundingBox(pt.pos.x, pt.pos.y, 1, 1, x, y, w, h);
             };
-
             pt.distance = function (x, y) {
                 return utils.distance(pt.pos.x, pt.pos.y, x, y);
             };
-
             // prevent default
             e.preventDefault();
             // call top level if there
@@ -53,7 +49,6 @@ var Machine = (function () {
 
     // create a new state machine
     var api = function (container, w, h) {
-
         // state machine Object
         var sm = {
             ver: '0.1.0',
@@ -83,7 +78,6 @@ var Machine = (function () {
                 loop();
             }
         };
-
         // create canvas and attach event handlers
         //createCanvas(sm, w, h);
         var canvasObj = utils.createCanvas();
@@ -91,17 +85,14 @@ var Machine = (function () {
         sm.ctx = canvasObj.ctx;
         sm.container = canvasObj.container;
         attachAllCanvasEvents(sm);
-
         // main loop
         var loop = function () {
             requestAnimationFrame(loop);
             var stateObj = sm.states[sm.currentState] || {};
-
             // call top level tick
             if (stateObj.tick) {
                 stateObj.tick(sm);
             }
-
             // call mode tick
             if (stateObj.modes && sm.currentMode) {
                 var mode = stateObj.modes[sm.currentMode];
@@ -109,19 +100,13 @@ var Machine = (function () {
                     mode.tick(sm);
                 };
             }
-
         };
-
         return sm;
-
     };
-
     // append tools so they can be used outside of the module if need be
     api.boundingBox = utils.boundingBox;
     api.distance = utils.distance;
-
     // return the public API
     return api;
-
 }
     ());
