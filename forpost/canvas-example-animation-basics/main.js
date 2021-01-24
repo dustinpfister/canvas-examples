@@ -1,3 +1,5 @@
+var LIFESPAN = 7;
+
 // state object
 var canvasObj = utils.createCanvas();
 var state = {
@@ -16,13 +18,13 @@ var state = {
 };
 // 'ship' objects
 state.ships = poolMod.create({
-    count: 50,
+    count: 100,
     spawn: function(obj, pool, state, opt){
         obj.x = state.canvas.width / 2;
         obj.y = state.canvas.height / 2;
         obj.heading = utils.pi2 * Math.random();
         obj.pps = 16 + 128 * Math.random();
-        obj.lifespan = 5;
+        obj.lifespan = LIFESPAN;
         var keys = ['tri', 'boxGroup']; //Object.keys(state.sheets);
         obj.sheetName = keys[ Math.floor(Math.random() * keys.length) ];
     },
@@ -44,7 +46,7 @@ var loop = function(){
         draw.background(state.ctx, state.canvas, state.sheets.gridLines);
         var ships = poolMod.getAllActive(state.ships, true);
         ships.forEach(function(ship){
-            state.ctx.globalAlpha = ship.lifespan / 5;
+            state.ctx.globalAlpha = ship.lifespan / LIFESPAN;
             state.sheets[ship.sheetName].set(ship.frameIndex);
             state.sheets[ship.sheetName].draw(state.ctx, ship.x - 16, ship.y - 16, ship.w, ship.h);
         });

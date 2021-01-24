@@ -7,9 +7,10 @@
 * (done) use new CreateCanvas utils method
 * (done) remove basic box example
 * (done) new basic gridLines background option
+* (done) global alpha effect for ship objects
 * make a 0.7.0 pkg folder
 
-## 0.6.0 - ship and shot disp objects
+## 0.6.0 - ship disp objects
 * (done) use more than one animation
 * (done) make a 0.6.0 pkg folder
 
