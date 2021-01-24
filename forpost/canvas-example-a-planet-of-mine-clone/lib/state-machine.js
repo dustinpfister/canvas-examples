@@ -115,7 +115,7 @@ var Machine = (function () {
 
         // state machine Object
         var sm = {
-            ver: '0.0.0',
+            ver: '0.1.0',
             currentState: null,
             currentMode: null,
             game: {},
@@ -144,7 +144,12 @@ var Machine = (function () {
         };
 
         // create canvas and attach event handlers
-        createCanvas(sm, w, h);
+        //createCanvas(sm, w, h);
+        var canvasObj = utils.createCanvas();
+        sm.canvas = canvasObj.canvas;
+        sm.ctx = canvasObj.ctx;
+        sm.container = canvasObj.container;
+
         attachAllCanvasEvents(sm);
 
         // main loop

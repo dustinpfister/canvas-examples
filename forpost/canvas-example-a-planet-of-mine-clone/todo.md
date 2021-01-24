@@ -2,16 +2,15 @@
 
 If I am going to put a lot of time into this one I should maybe break things down into version numbers
 
-## 0.3.0 - Build menu
+## 0.x.0 - Build menu
 * have a working build menu for all current items in the world item database
 
-## 0.2.0 - resources break down
+## 0.x.0 - resources break down
 * more than one type of solid resource ['stone', 'coal']
 * gather liquid resources
 * more than one type of liquid resource ['oil', 'water']
 
-
-## 0.1.0 - Gathering raspberries, and worker food requirements
+## 0.x.0 - Gathering raspberries, and worker food requirements
 * two resources that are gathered from land items ['wood', 'raspberries']
 * can gather wood resource from trees land item
 * can gather raspberries resource from berry bushes
@@ -23,7 +22,11 @@ If I am going to put a lot of time into this one I should maybe break things dow
 * separate tickRate for each land tile called an actionRate defaults to say 3 (s actions ticks per rotation tick)
 * workers harvest resources on land tiles by way of actionRate rather than rotation rate
 
-## (done) 0.0.0 - The very basic idea working very poorly
+## 0.1.0 - use new createCanvas method
+* use the new createCanvas method
+* make a 0.1.0 folder
+
+## 0.0.0 - The very basic idea working very poorly
 * (done) main solar.ticks solar object property
 * (done) have a tickRate for a world object called a rotationRate that defaults to 1 (same as solar rate)
 * (done) new exp value for the solar object
