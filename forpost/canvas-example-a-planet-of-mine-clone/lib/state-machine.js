@@ -1,22 +1,5 @@
 var Machine = (function () {
 
-    // TOOLS
-
-    // find out if the given to sets of
-    // box areas overlap or not
-    var boundingBox = function (x1, y1, w1, h1, x2, y2, w2, h2) {
-        return !(
-            (y1 + h1) < y2 ||
-            y1 > (y2 + h2) ||
-            (x1 + w1) < x2 ||
-            x1 > (x2 + w2));
-    };
-
-    // standard distance formula
-    var distance = function (x1, y1, x2, y2) {
-        return Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2));
-    };
-
     // CANVAS
     // attach a canvas event
     var attachCanvasEvent = function (sm, DOMType, smType) {
@@ -29,11 +12,11 @@ var Machine = (function () {
             pt.pos = utils.getCanvasRelative(e);
 
             pt.overlap = function (x, y, w, h) {
-                return boundingBox(pt.pos.x, pt.pos.y, 1, 1, x, y, w, h);
+                return utils.boundingBox(pt.pos.x, pt.pos.y, 1, 1, x, y, w, h);
             };
 
             pt.distance = function (x, y) {
-                return distance(pt.pos.x, pt.pos.y, x, y);
+                return utils.distance(pt.pos.x, pt.pos.y, x, y);
             };
 
             // prevent default
@@ -134,8 +117,8 @@ var Machine = (function () {
     };
 
     // append tools so they can be used outside of the module if need be
-    api.boundingBox = boundingBox;
-    api.distance = distance;
+    api.boundingBox = utils.boundingBox;
+    api.distance = utils.distance;
 
     // return the public API
     return api;
