@@ -24,7 +24,7 @@ state.ships = poolMod.create({
         obj.heading = utils.pi2 * Math.random();
         obj.pps = 16 + 128 * Math.random();
         obj.lifespan = 5;
-        var keys = ['tri', 'boxGroup']; //Object.keys(state.sheets);
+        var keys = ['gridLines']; //['tri', 'boxGroup']; //Object.keys(state.sheets);
         obj.sheetName = keys[ Math.floor(Math.random() * keys.length) ];
     },
     update: function(obj, pool, state, secs){

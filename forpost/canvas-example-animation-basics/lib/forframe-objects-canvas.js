@@ -75,9 +75,16 @@ var canvasObjects = (function(){
             width: 64,
             height: 64,
             forFrame: function(ff, model, frame, maxFrame, per){
-                var lines = [
-                    {sx: 32, sy: 0, ex: 32, ey: 64}
-                ];
+                var lines = [],
+                size = ff.width / 4,
+                xOff = (size * per) %  size;
+                var i = 0;
+                while(i < 4){
+                    lines.push(
+                        {sx: xOff + size * i, sy: 0, ex:  xOff + size * i, ey: 64}
+                    );
+                    i += 1
+                }
                 return lines;
             }
         }),
@@ -91,7 +98,7 @@ var canvasObjects = (function(){
                 ctx.stroke();
             });
         },
-        backFill: false
+        backFill: 'blue'
     };
 
     return function(key){
