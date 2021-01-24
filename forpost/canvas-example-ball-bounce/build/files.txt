@@ -1,2 +1,3 @@
-../balls.js
+../lib/utils.js
+../lib/balls.js
 ../main.js

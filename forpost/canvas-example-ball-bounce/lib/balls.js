@@ -39,7 +39,7 @@ b.createBallCollection = function (opt) {
         i += 1;
     }
     return {
-        ver: '0.0.0',
+        ver: '0.1.0',
         balls: balls
     };
 };
