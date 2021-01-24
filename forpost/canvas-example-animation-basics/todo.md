@@ -3,6 +3,9 @@
 ## 0.x.0 - 2d canvas sheets
 * make it so that a canvas sheet can have two dims
 
+## 0.7.0 - new CreateCanvas utils method
+* use new CreateCanvas utils method
+
 ## 0.6.0 - ship and shot disp objects
 * (done) use more than one animation
 * (done) make a 0.6.0 pkg folder
