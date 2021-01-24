@@ -8,7 +8,7 @@
 * (done) remove basic box example
 * (done) new basic gridLines background option
 * (done) global alpha effect for ship objects
-* make a 0.7.0 pkg folder
+* (done) make a 0.7.0 pkg folder
 
 ## 0.6.0 - ship disp objects
 * (done) use more than one animation
