@@ -1,4 +1,3 @@
-
 // state object
 var canvasObj = utils.createCanvas();
 var state = {
@@ -15,7 +14,7 @@ var state = {
     framesPerSec: 20,
     secs: 0
 };
-
+// 'ship' objects
 state.ships = poolMod.create({
     count: 50,
     spawn: function(obj, pool, state, opt){
@@ -39,13 +38,10 @@ var loop = function(){
     var now = new Date(),
     secs = (now - state.lt) / 1000;
     requestAnimationFrame(loop);
-
     state.secs += secs;
     if(state.secs >= 1 / state.framesPerSec){
-
         // draw
         draw.background(state.ctx, state.canvas, state.sheets.gridLines);
-
         var ships = poolMod.getAllActive(state.ships, true);
         ships.forEach(function(ship){
             state.ctx.globalAlpha = ship.lifespan / 5;
@@ -53,15 +49,12 @@ var loop = function(){
             state.sheets[ship.sheetName].draw(state.ctx, ship.x - 16, ship.y - 16, ship.w, ship.h);
         });
         state.ctx.globalAlpha = 1;
-
         draw.ver(state.ctx, state.canvas, state);
-
         // update
         poolMod.spawn(state.ships, state, {});
         poolMod.update(state.ships, state.secs, state);
         state.sheets.gridLines.step();
         state.secs = 0;
-        //state.secs = utils.mod(state.secs, 1 / state.framesPerSec);
     }
     state.lt = now;
 };
