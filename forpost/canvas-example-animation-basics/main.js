@@ -57,6 +57,7 @@ var loop = function(){
         // update
         poolMod.spawn(state.ships, state, {});
         poolMod.update(state.ships, state.secs, state);
+        state.sheets.gridLines.step();
         state.secs = 0;
         //state.secs = utils.mod(state.secs, 1 / state.framesPerSec);
     }
