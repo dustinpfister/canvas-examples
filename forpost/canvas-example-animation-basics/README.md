@@ -1,6 +1,8 @@
 # canvas-example-animation-basics
 
-This is the source code that I worked out for my post on the [basics of canvas animation](https://dustinpfister.github.io/2019/10/10/canvas-example-animation-basics/).
+This is the source code that I worked out for my post on the [basics of canvas animation](https://dustinpfister.github.io/2019/10/10/canvas-example-animation-basics/). The goal here is to work out some of the very basics when it comes to animations and canvas elements.
+
+Another thing that I wanted to work out is a way to create a simple yet effective way to create sprite sheets with javaScript code.
 
 ## forFrame.create(opt)
 
