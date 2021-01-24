@@ -5,7 +5,8 @@
 
 ## 0.7.0 - new CreateCanvas utils method, and animated background
 * (done) use new CreateCanvas utils method
-* remove basic box example
+* (done) remove basic box example
+* (done) new basic gridLines background option
 * make a 0.7.0 pkg folder
 
 ## 0.6.0 - ship and shot disp objects

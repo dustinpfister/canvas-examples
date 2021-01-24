@@ -48,9 +48,11 @@ var loop = function(){
 
         var ships = poolMod.getAllActive(state.ships, true);
         ships.forEach(function(ship){
+            state.ctx.globalAlpha = ship.lifespan / 5;
             state.sheets[ship.sheetName].set(ship.frameIndex);
             state.sheets[ship.sheetName].draw(state.ctx, ship.x - 16, ship.y - 16, ship.w, ship.h);
         });
+        state.ctx.globalAlpha = 1;
 
         draw.ver(state.ctx, state.canvas, state);
 
