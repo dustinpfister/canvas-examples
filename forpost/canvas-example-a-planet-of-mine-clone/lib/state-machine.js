@@ -34,32 +34,6 @@ var Machine = (function () {
     };
 
     // CANVAS
-
-    // create a canvas for the given state machine
-    var createCanvas = function (sm, w, h) {
-        sm.canvas = document.createElement('canvas');
-        sm.ctx = sm.canvas.getContext('2d');
-        sm.container.appendChild(sm.canvas);
-        sm.canvas.width = w || 320;
-        sm.canvas.height = h || 240;
-        // fill black for starters
-        sm.ctx.fillStyle = 'black';
-        sm.ctx.fillRect(0, 0, sm.canvas.width, sm.canvas.height);
-    };
-
-    // get canvas relative point
-    var getCanvasRelative = function (e) {
-        var canvas = e.target,
-        bx = canvas.getBoundingClientRect();
-        var x = (e.changedTouches ? e.changedTouches[0].clientX : e.clientX) - bx.left,
-        y = (e.changedTouches ? e.changedTouches[0].clientY : e.clientY) - bx.top;
-        return {
-            x: x,
-            y: y,
-            bx: bx
-        };
-    };
-
     // attach a canvas event
     var attachCanvasEvent = function (sm, DOMType, smType) {
         sm.canvas.addEventListener(DOMType, function (e) {
