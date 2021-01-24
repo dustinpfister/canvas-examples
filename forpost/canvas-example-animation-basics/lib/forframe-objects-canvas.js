@@ -71,15 +71,15 @@ var canvasObjects = (function(){
     // box group
     objects.gridLines = {
         ff: forFrame.create({
-            maxFrame: 20,
-            width: 128,
-            height: 128,
+            maxFrame: 16,
+            width: 256,
+            height: 256,
             forFrame: function(ff, model, frame, maxFrame, per){
                 var lines = [],
-                size = ff.width / 4,
+                size = ff.width / 8,
                 xOff = (size * per) %  size;
                 var i = 0;
-                while(i < 4){
+                while(i < 8){
                     lines.push(
                         {sx: xOff + size * i, sy: 0, ex:  xOff + size * i, ey: ff.height},
                         {sx: 0, sy: size * i, ex: ff.width, ey: size * i}
@@ -92,7 +92,7 @@ var canvasObjects = (function(){
         }),
         draw: function(ff, ctx, canvas){
             var box = ff.model;
-            ctx.strokeStyle='white';
+            ctx.strokeStyle='rgba(255,255,255,0.2)';
             ctx.lineWidth = 3;
             ff.model.forEach(function(line){
                 ctx.beginPath();
@@ -101,7 +101,7 @@ var canvasObjects = (function(){
                 ctx.stroke();
             });
         },
-        backFill: 'blue'
+        backFill: 'black'
     };
 
     return function(key){
