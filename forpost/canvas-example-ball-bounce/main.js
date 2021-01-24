@@ -31,22 +31,9 @@ var drawBallCollection = function (ctx, canvas, ballCollection) {
     ctx.fillText('v' + ballCollection.ver, 10, canvas.height - 15);
 };
 
-/*
-// create and append canvas element, and get 2d context
-var canvas = document.createElement('canvas'),
-ctx = canvas.getContext('2d'),
-container = document.getElementById('canvas-app') || document.body;
-container.appendChild(canvas);
-// set width and height
-canvas.width = 320;
-canvas.height = 240;
-ctx.translate(0.5, 0.5);
-*/
-
 var canvasObj = utils.createCanvas();
 var canvas = canvasObj.canvas;
 var ctx = canvasObj.ctx;
-
 
 // create ball collection
 var ballCollection = b.createBallCollection({
