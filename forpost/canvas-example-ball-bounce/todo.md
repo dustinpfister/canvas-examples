@@ -1,10 +1,10 @@
 ## canvas-example-ball-bounce todo list
 
 ## 0.1.0 - lib folder, utils.js, and createCanvas
-* start a lib folder
-* start a lib/utils.js
-* start a lib/draw.js
-* make a 0.1.0 pkg folder
+* (done) start a lib folder
+* (done) start a lib/utils.js
+* (done) start a lib/draw.js
+* (done 1-24-21) make a 0.1.0 pkg folder
 
 ## 0.0.0 - Basic idea working
 * (done) just have a basic balls.js module that can be used to create bouncing balls
