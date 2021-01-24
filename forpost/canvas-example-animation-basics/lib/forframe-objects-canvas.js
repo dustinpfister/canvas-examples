@@ -40,6 +40,7 @@ var canvasObjects = (function(){
         backFill: false
     };
 
+    // basic 'ship' triangle
     objects.tri = {
         ff: forFrame.create({
             type: 'points',
@@ -65,6 +66,32 @@ var canvasObjects = (function(){
         backFill: false,
         stroke: 'lime',
         fill: 'rgba(255,255,255,0.5)'
+    };
+
+    // box group
+    objects.gridLines = {
+        ff: forFrame.create({
+            maxFrame: 20,
+            width: 64,
+            height: 64,
+            forFrame: function(ff, model, frame, maxFrame, per){
+                var lines = [
+                    {sx: 32, sy: 0, ex: 32, ey: 64}
+                ];
+                return lines;
+            }
+        }),
+        draw: function(ff, ctx, canvas){
+            var box = ff.model;
+            ctx.strokeStyle='white';
+            ff.model.forEach(function(line){
+                ctx.beginPath();
+                ctx.moveTo(line.sx, line.sy)
+                ctx.lineTo(line.ex, line.ey);
+                ctx.stroke();
+            });
+        },
+        backFill: false
     };
 
     return function(key){

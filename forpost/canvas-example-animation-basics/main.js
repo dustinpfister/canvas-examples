@@ -8,7 +8,8 @@ var state = {
     lt: new Date(),
     sheets:{
         tri: canvasObjects('tri'),
-        boxGroup: canvasObjects('boxGroup')
+        boxGroup: canvasObjects('boxGroup'),
+        gridLines: canvasObjects('gridLines')
     },
     ships: {},
     framesPerSec: 20,
@@ -23,7 +24,7 @@ state.ships = poolMod.create({
         obj.heading = utils.pi2 * Math.random();
         obj.pps = 16 + 128 * Math.random();
         obj.lifespan = 5;
-        var keys = Object.keys(state.sheets);
+        var keys = ['tri', 'boxGroup']; //Object.keys(state.sheets);
         obj.sheetName = keys[ Math.floor(Math.random() * keys.length) ];
     },
     update: function(obj, pool, state, secs){
