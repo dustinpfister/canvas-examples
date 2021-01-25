@@ -34,8 +34,8 @@ draw.hourMarks = function(canvas, ctx, clock){
         ctx.save();
         ctx.translate(cx, cy);
         ctx.rotate(radian);
-        ctx.moveTo(10, 0);
-        ctx.lineTo(50, 0);
+        ctx.moveTo((canvas.height - 50) / 3, 0);
+        ctx.lineTo((canvas.height - 50) / 2, 0);
         ctx.stroke();
         ctx.restore();
         i += 1;
