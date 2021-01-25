@@ -22,22 +22,29 @@ draw.clockText = function (canvas, ctx, clock) {
     ctx.strokeText(clock.timeText, canvas.width / 2, canvas.height / 2 + 20);
 };
 
+var drawMark = function(canvas, ctx, i, style, lineWidth){
+    var radian = Math.PI * 2 / 12 * i,
+    cx = canvas.width / 2,
+    cy = canvas.height / 2;
+    ctx.save();
+    ctx.translate(cx, cy);
+    ctx.rotate(radian);
+    ctx.beginPath();
+    ctx.moveTo((canvas.height - 50) / 3, 0);
+    ctx.lineTo((canvas.height - 50) / 2, 0);
+    ctx.strokeStyle = style;
+    ctx.lineWidth = lineWidth;
+    ctx.stroke();
+    ctx.restore();
+};
+
 draw.hourMarks = function(canvas, ctx, clock){
     var i = 0,
     len = 12,
-    radian,
-    cx = canvas.width / 2,
-    cy = canvas.height / 2;
-    ctx.strokeStyle = 'blue';
+    radian;
     while(i < len){
-        radian = Math.PI * 2 / len * i;
-        ctx.save();
-        ctx.translate(cx, cy);
-        ctx.rotate(radian);
-        ctx.moveTo((canvas.height - 50) / 3, 0);
-        ctx.lineTo((canvas.height - 50) / 2, 0);
-        ctx.stroke();
-        ctx.restore();
+        drawMark(canvas, ctx, i, 'white', 4);
+        drawMark(canvas, ctx, i, 'black', 2);
         i += 1;
     }
 };
