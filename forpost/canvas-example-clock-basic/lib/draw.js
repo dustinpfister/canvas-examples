@@ -22,7 +22,7 @@ draw.clockText = function (canvas, ctx, clock) {
     ctx.strokeText(clock.timeText, canvas.width / 2, canvas.height / 2 + 20);
 };
 
-var drawMark = function(canvas, ctx, i, style, lineWidth){
+draw.mark = function(canvas, ctx, i, style, lineWidth){
     var radian = Math.PI * 2 / 12 * i,
     cx = canvas.width / 2,
     cy = canvas.height / 2;
@@ -43,8 +43,8 @@ draw.hourMarks = function(canvas, ctx, clock){
     len = 12,
     radian;
     while(i < len){
-        drawMark(canvas, ctx, i, 'white', 4);
-        drawMark(canvas, ctx, i, 'black', 2);
+        draw.mark(canvas, ctx, i, 'white', 4);
+        draw.mark(canvas, ctx, i, 'black', 2);
         i += 1;
     }
 };
