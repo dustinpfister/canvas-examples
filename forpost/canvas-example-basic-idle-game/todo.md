@@ -1,10 +1,9 @@
 # todo list for canvas-example-basic-idle-game
 
-* loading state from local storage
-
+## 0.1.0 - Uisng new createCanvas method
+* make a 0.1.0 folder
 
 ## 0.0.0 - basic idea
-
 * (done) make clicking an upgrade button work
 * (done) cost of upgrade displayed in button label
 * (done) public method to buy an upgrade from outside the game module
