@@ -1,9 +1,9 @@
 var clockMod = (function () {
 
     var getTimeText = function (clock) {
-        return u.pad(clock.now.getHours()) + ' : ' +
-        u.pad(clock.now.getMinutes()) + ' : ' +
-        u.pad(clock.now.getSeconds());
+        return utils.pad(clock.now.getHours()) + ' : ' +
+        utils.pad(clock.now.getMinutes()) + ' : ' +
+        utils.pad(clock.now.getSeconds());
     };
 
     var getDayStart = function (clock) {
@@ -60,7 +60,7 @@ var clockMod = (function () {
             if (part.active) {
                 part.x += Math.cos(part.heading) * part.pps * secs;
                 part.y += Math.sin(part.heading) * part.pps * secs;
-                if (u.distance(part.x, part.y, 0, 0) >= clock.faceRadius) {
+                if (utils.distance(part.x, part.y, 0, 0) >= clock.faceRadius) {
                     part.x = 0;
                     part.y = 0;
                     setPart(clock, part);
@@ -80,7 +80,7 @@ var clockMod = (function () {
     return {
         create: function (now) {
             var clock = {};
-            clock.ver = '0.0.0';
+            clock.ver = '0.1.0';
             clock.now = now || new Date(0);
             setClockPropsToNow(clock);
             clock.pool = createPool(clock, 240);

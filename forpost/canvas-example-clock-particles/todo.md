@@ -2,6 +2,9 @@
 
 * particles change color based on the time of year
 
+## 0.1.0 - Uisng new createCanvas method
+* make a 0.1.0 folder
+
 ## 0.0.0 - the basic idea
 * (done) particles increase in speed as we progress threw the current week
 * (done) distance transparency effect for particles

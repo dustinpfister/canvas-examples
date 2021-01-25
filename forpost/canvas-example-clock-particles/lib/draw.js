@@ -32,7 +32,7 @@ draw.pool = function (canvas, ctx, clock) {
     ctx.translate(canvas.width / 2, canvas.height / 2);
     while (i--) {
         part = clock.pool[i];
-        d = u.distance(part.x, part.y, 0, 0) / clock.faceRadius;
+        d = utils.distance(part.x, part.y, 0, 0) / clock.faceRadius;
         if (part.active) {
             ctx.beginPath();
             ctx.arc(part.x, part.y, 5, 0, Math.PI * 2);
