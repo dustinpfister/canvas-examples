@@ -40,7 +40,7 @@ var blOptions = {
     attachTo: canvas,
     buttons: buttons
 };
-var blObj = u.mkButtonLayout(blOptions);
+var blObj = utils.mkButtonLayout(blOptions);
 
 var loop = function () {
     requestAnimationFrame(loop);

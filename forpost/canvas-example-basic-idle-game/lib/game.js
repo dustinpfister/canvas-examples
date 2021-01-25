@@ -85,7 +85,7 @@ var game = (function () {
     // create and return a new game save state with the given upgradeData
     var createNewState = function (upgradeData) {
         return {
-            ver: '0.0.0',
+            ver: '0.1.0',
             money: 0,
             tickRate: 3000,
             lastTick: new Date(),
