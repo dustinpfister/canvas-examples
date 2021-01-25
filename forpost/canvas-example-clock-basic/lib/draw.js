@@ -1,9 +1,7 @@
 var draw = {};
 
 draw.clear = function (canvas, ctx) {
-
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-
 };
 
 // draw a clock to a canvas
@@ -24,6 +22,26 @@ draw.clockText = function (canvas, ctx, clock) {
     ctx.strokeText(clock.timeText, canvas.width / 2, canvas.height / 2 + 20);
 };
 
+draw.hourMarks = function(canvas, ctx, clock){
+    var i = 0,
+    len = 12,
+    radian,
+    cx = canvas.width / 2,
+    cy = canvas.height / 2;
+    ctx.strokeStyle = 'blue';
+    while(i < len){
+        radian = Math.PI * 2 / len * i;
+        ctx.save();
+        ctx.translate(cx, cy);
+        ctx.rotate(radian);
+        ctx.moveTo(10, 0);
+        ctx.lineTo(50, 0);
+        ctx.stroke();
+        ctx.restore();
+        i += 1;
+    }
+};
+
 draw.hands = function (canvas, ctx, clock) {
     ctx.strokeStyle = 'rgba(0,0,0,0.5)';
     'secPer,minPer,hourPer,AMPMPer'.split(',').forEach(function (perName, i) {
@@ -40,13 +58,11 @@ draw.hands = function (canvas, ctx, clock) {
 };
 
 draw.info = function (ctx, canvas, clock) {
-
     ctx.fillStyle = 'grey';
     ctx.textBaseline = 'top';
     ctx.font = '10px courier';
     ctx.textAlign = 'left';
     ctx.fillText('v' + clock.ver, 10, 10);
-
 };
 
 // draw day circle

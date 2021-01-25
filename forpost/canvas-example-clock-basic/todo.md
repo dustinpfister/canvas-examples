@@ -2,7 +2,7 @@
 
 ## 0.2.0 - Hour Marks
 * (done) use new utils.createCanvas method that will fix problem with seleting text
-* hour marks along clock face
+* (done) hour marks along clock face
 * make a 0.2.0 pkg folder
 
 ## 0.1.0 - Use new canvas_example div
