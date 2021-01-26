@@ -1,13 +1,13 @@
-var util = {};
+var utils = {};
 
-util.TAU = Math.PI * 2;
-util.EPS = 1e-15;
+utils.TAU = Math.PI * 2;
+utils.EPS = 1e-15;
 
-util.mod = function mod(x, m) {
+utils.mod = function mod(x, m) {
     return (x % m + m) % m;
 };
 
-util.boundingBox = function (x1, y1, w1, h1, x2, y2, w2, h2) {
+utils.boundingBox = function (x1, y1, w1, h1, x2, y2, w2, h2) {
     return !(
         (y1 + h1) < (y2) ||
         y1 > (y2 + h2) ||
@@ -15,23 +15,47 @@ util.boundingBox = function (x1, y1, w1, h1, x2, y2, w2, h2) {
         x1 > (x2 + w2));
 };
 
-util.distance = function (x1, y1, x2, y2) {
+utils.distance = function (x1, y1, x2, y2) {
     return Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2));
 };
 
 // normalize angle method
-util.angleNormalize = function (a, scale) {
-    return util.mod(a, scale || util.TAU);
+utils.angleNormalize = function (a, scale) {
+    return utils.mod(a, scale || utils.TAU);
 };
 
-util.getCanvasRelative = function (e) {
+// create a canvas element
+utils.createCanvas = function(opt){
+    opt = opt || {};
+    opt.container = opt.container || document.getElementById('canvas-app') || document.body;
+    opt.canvas = document.createElement('canvas');
+    opt.ctx = opt.canvas.getContext('2d');
+    // assign the 'canvas_example' className
+    opt.canvas.className = 'canvas_example';
+    // set native width
+    opt.canvas.width = opt.width === undefined ? 320 : opt.width;
+    opt.canvas.height = opt.height === undefined ? 240 : opt.height;
+    // translate by 0.5, 0.5
+    opt.ctx.translate(0.5, 0.5);
+    // disable default action for onselectstart
+    opt.canvas.onselectstart = function () { return false; }
+    // append canvas to container
+    opt.container.appendChild(opt.canvas);
+    return opt;
+};
+
+utils.getCanvasRelative = function (e) {
     var canvas = e.target,
-    bx = canvas.getBoundingClientRect();
-    var x = (e.changedTouches ? e.changedTouches[0].clientX : e.clientX) - bx.left,
-    y = (e.changedTouches ? e.changedTouches[0].clientY : e.clientY) - bx.top;
-    return {
-        x: x,
-        y: y,
+    bx = canvas.getBoundingClientRect(),
+    pos = {
+        x: (e.changedTouches ? e.changedTouches[0].clientX : e.clientX) - bx.left,
+        y: (e.changedTouches ? e.changedTouches[0].clientY : e.clientY) - bx.top,
         bx: bx
     };
+    // ajust for native canvas matrix size
+    pos.x = Math.floor((pos.x / canvas.scrollWidth) * canvas.width);
+    pos.y = Math.floor((pos.y / canvas.scrollHeight) * canvas.height);
+    // prevent default
+    e.preventDefault();
+    return pos;
 };

@@ -63,7 +63,7 @@ var breakout = (function () {
         bl;
         while (i--) {
             bl = blocks[i];
-            if (util.boundingBox(ball.x, ball.y, 1, 1, bl.x, bl.y, bl.w, bl.h)) {
+            if (utils.boundingBox(ball.x, ball.y, 1, 1, bl.x, bl.y, bl.w, bl.h)) {
                 state.score += bl.points;
                 blocks.splice(i, 1);
                 if (blocks.length === 0) {
@@ -91,10 +91,10 @@ var breakout = (function () {
 
     // check if a ball has hit the paddle and change ball heading if it did.
     var ballPaddleHitCheck = function (ball, paddle) {
-        if (util.boundingBox(ball.x, ball.y, 1, 1, paddle.x, paddle.y, paddle.w, paddle.h)) {
+        if (utils.boundingBox(ball.x, ball.y, 1, 1, paddle.x, paddle.y, paddle.w, paddle.h)) {
             ball.heading = Math.PI * 1.5;
             ball.y = paddle.y;
-            var d = util.distance(ball.x, ball.y, paddle.x + paddle.w / 2, paddle.y),
+            var d = utils.distance(ball.x, ball.y, paddle.x + paddle.w / 2, paddle.y),
             per = d / (paddle.w / 2),
             dir = ball.x < paddle.x + paddle.w / 2 ? -1 : 1,
             a = Math.PI / 4 * per * dir;
@@ -163,7 +163,7 @@ var breakout = (function () {
             // hit the paddle?
             ballPaddleHitCheck(ball, state.paddle);
             // make sure ball heading is normalized
-            ball.heading = util.angleNormalize(ball.heading);
+            ball.heading = utils.angleNormalize(ball.heading);
             i += 1;
         }
     };
@@ -208,7 +208,7 @@ var breakout = (function () {
 
     var createPointerHandler = function (state, type) {
         return function (e) {
-            var pos = state.input.pos = util.getCanvasRelative(e);
+            var pos = state.input.pos = utils.getCanvasRelative(e);
             e.preventDefault();
             pointerHandlers[type](state, e, pos);
         };
@@ -226,7 +226,7 @@ var breakout = (function () {
 
         // create the state object
         var state = {
-            ver: '0.1.1',
+            ver: '0.1.2',
             score: 0,
             input: {
                 pointerDown: false,

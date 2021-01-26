@@ -1,5 +1,5 @@
 /*
-   canvas-example-game-beach
+   canvas-example-game-breakout
    Copyright 2020 by Dustin Pfister
    https://raw.githubusercontent.com/dustinpfister/canvas-examples/master/LICENSE
  
