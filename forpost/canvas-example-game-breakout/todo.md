@@ -12,12 +12,12 @@
 
 ## 0.1.1 - Fix canvas undefined bug
 * (done) fix bug canvas undefined bug when paddle hits a wall
-* (done) make new pkg_0_1_1.html file
+* (done) make new 0.1.1 folder
 
 ## 0.1.0 - basic idea working
 * (done) add pointer (mouse + touch) support
 * (done) add FPS Capping
-* (done) make a pkg_0_1_0.html
+* (done) make a pkg-0-1-0.html
 
 ## 0.0.0 - basic idea working
 * (done) git hit detection working for paddle
@@ -25,4 +25,4 @@
 * (done) git hit detection working for blocks
 * (done) re spawn blocks when all are gone
 * (done) score added on each block hit, and displayed in canvas
-* make a pkg_0_0_0.html
+* (done) make a pkg-0-0-0.html
