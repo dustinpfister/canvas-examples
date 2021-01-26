@@ -11,8 +11,8 @@
 * make a new pkg_0_2_0.html
 
 ## 0.1.2 - utils.createCanvas, and utils.getCanvasRelative
-* use utils.createCanvas, and utils.getCanvasRelative
-* (done) make new 0.1.2 folder
+* (done) use utils.createCanvas, and utils.getCanvasRelative
+* (done - 01-26-21) make new 0.1.2 folder
 
 ## 0.1.1 - Fix canvas undefined bug
 * (done) fix bug canvas undefined bug when paddle hits a wall
