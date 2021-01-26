@@ -13,7 +13,7 @@ var game = (function () {
     // SPAWN 'Constants'
     var SPAWN = {
         rate: 0.5, // spawn rate in secs
-        playerMax: 5, // max player units
+        playerMax: 10, // max player units
         enemyMax: 10,
         shotMax: 100,
         blastMax: 50
