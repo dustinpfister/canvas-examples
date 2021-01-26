@@ -340,7 +340,7 @@ var game = (function () {
         opt = opt || {};
         opt.areaData = opt.areaData || '';
         var state = {
-            ver: '0.4.0',
+            ver: '0.5.0',
             cells: createCells(opt.areaData),
             lt: new Date(),
             spawnSecs: 0,
