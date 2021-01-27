@@ -1,5 +1,8 @@
 # todo list for canvas-example-grid-gradient
 
+## 0.1.1 - using create canvas method
+* (done - 01/27/2021)
+
 ## 0.1.0 - new system for canvas size
 
 ## 0.0.0 - The core idea working
