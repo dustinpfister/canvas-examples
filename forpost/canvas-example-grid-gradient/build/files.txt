@@ -1,0 +1,7 @@
+../libs/utils.js
+../libs/gradient.js
+../plugins/init_rand.js
+../plugins/init_rgb.js
+../plugins/updater_radius_change.js
+../libs/draw.js
+../libs/main.js
