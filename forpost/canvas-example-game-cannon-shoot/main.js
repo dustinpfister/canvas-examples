@@ -1,14 +1,11 @@
 // MAIN
-var canvas = document.createElement('canvas'),
-ctx = canvas.getContext('2d'),
-container = document.getElementById('canvas-app') || document.body;
-container.appendChild(canvas);
-canvas.width = 320;
-canvas.height = 240;
-ctx.translate(0.5, 0.5);
+
+var canvasObj = utils.createCanvas(),
+canvas = canvasObj.canvas,
+ctx = canvasObj.ctx;
 
 var state = game.createNewState({
-        ver: '0.0.0',
+        ver: '0.0.1',
         canvas: canvas
     });
 
