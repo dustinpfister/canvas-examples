@@ -1,13 +1,17 @@
 ## Canvas Example game cannon shoot todo list
 
-
+## 0.x.0 -
 * min and max angles for cannon
 * do not move cannon when clicking/moving in button area
 * fire button does not fire when releasing in fire button area from outside of fire button area
 * better shot power loss expression that reduces by way of a curve rather than linear reduction over time
 
-## 0.0.0 - Basic idea working
+## 0.0.1 - create canvas
+* add and use the utils.createCanvas method
+* add and use the new utils.getCanvasRelative method
+* make a 0.0.1 pkg folder
 
+## 0.0.0 - Basic idea working
 * (done) get basic structure together
 * (done) add bounding box to utils object
 * (done) add distance method to utils
@@ -30,5 +34,5 @@
 * (done) shot power loss is based on something like pps of the shot
 * (done) cannon power set by distance from bottom left of canvas
 * (done) add touch events
-* display ver in canvas
-* make a pkg/pkg-0-0-0.html
+* (done) display ver in canvas
+* (done) make a 0.0.0 pkg folder
