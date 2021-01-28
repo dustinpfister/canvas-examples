@@ -1,14 +1,3 @@
-// create a canvas
-/*
-var canvas = document.createElement('canvas'),
-ctx = canvas.getContext('2d'),
-container = document.getElementById('canvas-app') || document.body;
-container.appendChild(canvas);
-canvas.width = 320;
-canvas.height = 240;
-ctx.translate(0.5, 0.5);
-*/
-
 var canvasObj = utils.createCanvas(),
 canvas = canvasObj.canvas,
 ctx = canvasObj.ctx;
@@ -17,7 +6,9 @@ ctx = canvasObj.ctx;
 var bird = game.newBird();
 
 // INPUT
-canvas.addEventListener('click', function () {
+canvas.addEventListener('click', function (e) {
+    var pos = utils.getCanvasRelative(e);
+    console.log(pos.x, pos.y);
     game.flap(bird);
 });
 
