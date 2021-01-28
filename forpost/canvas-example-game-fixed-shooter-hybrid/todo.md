@@ -12,8 +12,8 @@ this canvas example will just be a simple fixed shooter hybrid game like Centipe
 * new pkg.html for 0.2.0
 
 ## 0.1.1 - create canvas
-* use new create canvas, and get canvas relative methods
-* make a 0.1.1 pkg folder
+* (done) use new create canvas, and get canvas relative methods
+* (done - 01/28/21) make a 0.1.1 pkg folder
 
 ## 0.1.0 - pointer events
 * (done) have kill count on screen
