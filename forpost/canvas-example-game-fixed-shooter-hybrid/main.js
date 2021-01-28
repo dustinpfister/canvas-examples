@@ -1,10 +1,3 @@
-/*
-var container = document.getElementById('canvas-app'),
-canvas = document.createElement('canvas');
-canvas.width = 320;
-canvas.height = 240;
-container.appendChild(canvas);
-*/
 var canvasObj = utils.createCanvas(),
 canvas = canvasObj.canvas,
 ctx = canvasObj.ctx;
