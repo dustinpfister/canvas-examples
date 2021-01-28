@@ -58,7 +58,7 @@ var game = (function () {
     // create and return a new bird ( game object )
     api.newBird = function () {
         return {
-            ver: '0.0.0',
+            ver: '0.0.1',
             x: 32,
             y: 0,
             size: 32,

@@ -1,3 +1,4 @@
+../utils.js
 ../game.js
 ../draw.js
 ../main.js
