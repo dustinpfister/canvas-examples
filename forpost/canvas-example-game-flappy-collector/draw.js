@@ -2,7 +2,7 @@
 var draw = {};
 
 // draw the background
-draw.background = function (ctx) {
+draw.background = function (canvas, ctx) {
     ctx.fillStyle = 'black';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 };
@@ -27,4 +27,11 @@ draw.berries = function (bird, ctx) {
     bird.berries.forEach(function (berry) {
         ctx.fillRect(berry.x, berry.y, berry.size, berry.size);
     });
+};
+
+draw.ver = function (bird, canvas, ctx) {
+    ctx.fillStyle = 'white';
+    ctx.textBaseline = 'top';
+    ctx.font = '10px arial';
+    ctx.fillText('v' + bird.ver, 5, canvas.height - 10);
 };
