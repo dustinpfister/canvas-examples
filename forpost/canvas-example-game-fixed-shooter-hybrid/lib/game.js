@@ -133,7 +133,7 @@ var game = (function () {
         var state = {
             canvas: opt.canvas,
             ctx: opt.canvas.getContext('2d'),
-            ver: '0.1.0', // !!! update this to reflect todo list in repo
+            ver: '0.1.1',
             board: {
                 x: 16,
                 y: 16,
