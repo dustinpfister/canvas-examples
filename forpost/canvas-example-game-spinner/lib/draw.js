@@ -56,7 +56,7 @@ var draw = (function () {
         section = spin.currentSection;
         ctx.fillStyle = 'white';
         ctx.textBaseline = 'top';
-        ctx.fillText('radian: ' + spin.radian, x, y + 20);
+        ctx.fillText('radian: ' + spin.radian.toFixed(2), x, y + 20);
         ctx.fillText('section: ' + section, x, y + 30);
     };
 

@@ -1,9 +1,9 @@
-var canvas = document.createElement('canvas'),
-ctx = canvas.getContext('2d'),
-container = document.getElementById('canvas-app') || document.body;
-container.appendChild(canvas);
-canvas.width = 640;
-canvas.height = 480;
+var canvasObj = utils.createCanvas({
+  width: 320,
+  height: 240
+}),
+canvas = canvasObj.canvas,
+ctx = canvasObj.ctx;
 
 var spin = spinner.create({
         cx: canvas.width / 2,
@@ -27,7 +27,5 @@ var loop = function () {
 loop();
 
 canvas.addEventListener('mousedown', function (e) {
-
     spinner.startSpin(spin);
-
 });
