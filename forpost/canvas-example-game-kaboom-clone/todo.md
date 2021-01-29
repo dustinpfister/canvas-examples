@@ -26,6 +26,6 @@
 * (done) can move player object with keyboard events
 * (done) pauseTime state property (0 - no pause, > 0 is pause time, -1 is set pause)
 * (done) pauseMessage property
-* use new utils.createCanvas, and utils.getCanvasRealtive methods
-* draw ver number to canvas
-* make a pkg 0.0.0 folder
+* (done) use new utils.createCanvas, and utils.getCanvasRealtive methods
+* (done) draw ver number to canvas
+* (done - 01/29/20201) make a pkg 0.0.0 folder
