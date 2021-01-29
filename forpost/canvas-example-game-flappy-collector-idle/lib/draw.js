@@ -50,3 +50,10 @@ draw.autoTimeProgressBar = function (bird, ctx, canvas) {
         ctx.fillRect(0, canvas.height - 10, canvas.width * per, 10);
     }
 };
+
+draw.ver = function (bird, canvas, ctx) {
+    ctx.fillStyle = 'white';
+    ctx.textBaseline = 'top';
+    ctx.font = '10px arial';
+    ctx.fillText('v' + bird.ver, 5, canvas.height - 10);
+};
