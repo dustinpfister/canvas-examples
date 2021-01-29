@@ -30,7 +30,7 @@ state.boxes = poolMod.create({
         obj.secs += secs;
         if(obj.secs >= 0.25){
             obj.frameIndex += 1;
-            obj.frameIndex %= 2;
+            obj.frameIndex %= 3;
             obj.secs %= 0.25
         }
     }
