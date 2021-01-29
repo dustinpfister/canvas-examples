@@ -1,11 +1,8 @@
-# canvas-example-animation-pixmap todo
+# canvas-example-animation-pixmaps
 
-## 0.0.0 - basic idea started
-* start with a copy of the source code for canvas-animation-basics 0.7.0
-* start a pixmaps folder
-* start a pixmaps.js file that will use forframe.js to create pixmap animations
-* I will want a pixmapMod.load method that wuill be called for each js file in the pixmaps folder
-* I will need a pixmapMod.create method that will create and return a pixmaps object using all loaded plugins in the pixmaps folder
+The idea here is to come up with a standard for animations in the form of a collection of arrays that contain pixle color index data
+
+## 1 - pixmap plugins
 
 ```
 pixmapMod.load({

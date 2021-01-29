@@ -19,9 +19,8 @@ var pixmaps = pixmapMod.create();
 console.log(pixmaps);
 draw.background(state.ctx, state.canvas);
 
-//state.ctx.drawImage(pixmaps.box_basics.canvas, 20, 20)
 pixmaps.box_basics.set(0);
-pixmaps.box_basics.draw(state.ctx, 32, 32, 8, 8);
+pixmaps.box_basics.draw(state.ctx, 32, 32, 64, 64);
 draw.ver(state.ctx, state.canvas, state);
 
 // basic app loop

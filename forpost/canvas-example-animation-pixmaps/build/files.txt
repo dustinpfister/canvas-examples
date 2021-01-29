@@ -1,6 +1,7 @@
 ../lib/utils.js
 ../lib/pool.js
 ../lib/forframe.js
-../lib/forframe-objects-canvas.js
+../lib/pixmaps.js
+../pixmaps/basic-box.js
 ../lib/draw.js
 ../main.js
