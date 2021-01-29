@@ -1,7 +1,9 @@
 # canvas-example-animation-pixmap todo
 
 ## 0.1.0 - skin disp objects
-
+* (done) have a pool of display objects
+* (done) skin display objects with pixmaps
+* (done) be able to use more than one animation from a pixmap
 * make a pkg 0.1.0 folder
 
 ## 0.0.0 - basic idea started
