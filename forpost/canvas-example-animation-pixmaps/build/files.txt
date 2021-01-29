@@ -3,5 +3,6 @@
 ../lib/forframe.js
 ../lib/pixmaps.js
 ../pixmaps/basic-box.js
+../pixmaps/mr-sun.js
 ../lib/draw.js
 ../main.js
