@@ -1,7 +1,7 @@
 
 var canvas = document.createElement('canvas'),
 ctx = canvas.getContext('2d');
-document.getElementById('gamearea').appendChild(canvas);
+document.getElementById('canvas-app').appendChild(canvas);
 canvas.width = 640;
 canvas.height = 480;
 
