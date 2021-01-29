@@ -60,6 +60,14 @@ var draw = (function () {
         ctx.fillText('section: ' + section, x, y + 30);
     };
 
+    api.ver = function (ctx, canvas, spin) {
+        ctx.fillStyle = 'white';
+        ctx.textBaseline = 'top';
+        ctx.font = '10px arial';
+        ctx.textAlign = 'left';
+        ctx.fillText('v' + spin.ver, 5, canvas.height - 15);
+    };
+
     return api;
 
 }

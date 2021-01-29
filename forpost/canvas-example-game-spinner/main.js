@@ -21,6 +21,7 @@ var loop = function () {
     draw.sections(ctx, spin);
     draw.arrow(ctx, spin);
     draw.info(ctx, spin);
+    draw.ver(ctx, canvas, spin);
     lt = now;
 };
 loop();

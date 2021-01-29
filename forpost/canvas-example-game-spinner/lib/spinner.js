@@ -15,6 +15,7 @@ var spinner = (function () {
         create: function (opt) {
             opt = opt || {};
             var spin = {
+                ver: '0.0.0',
                 cx: opt.cx === undefined ? 0 : opt.cx,
                 cy: opt.cy === undefined ? 0 : opt.cy,
                 RPS: {
