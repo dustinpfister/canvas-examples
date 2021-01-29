@@ -16,15 +16,17 @@ var state = {
 };
 
 state.boxes = poolMod.create({
-    count: 20,
+    count: 5,
+    w: 64,
+    h: 64,
     spawn: function(obj, pool, state, opt){
         obj.x = state.canvas.width / 2 - obj.w / 2;
         obj.y = state.canvas.height / 2- obj.h / 2;
         obj.heading = utils.pi2 * Math.random();
-        obj.pps = 16 + 128 * Math.random();
+        obj.pps = 16 + 32 * Math.random();
         obj.lifespan = 1 + 3 * Math.random();
-        obj.pixmapKey = 'box_basics';
-        obj.aniKey = ['box1', 'box2'][Math.floor(Math.random() * 2)];
+        obj.pixmapKey = 'mr_sun'; //'box_basics';
+        obj.aniKey = 'sun_happy'; //['box1', 'box2'][Math.floor(Math.random() * 2)];
         obj.frameIndex = 0;
         obj.secs = 0;
     },
