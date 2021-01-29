@@ -27,4 +27,5 @@
 * (done) pauseTime state property (0 - no pause, > 0 is pause time, -1 is set pause)
 * (done) pauseMessage property
 * use new utils.createCanvas, and utils.getCanvasRealtive methods
+* draw ver number to canvas
 * make a pkg 0.0.0 folder

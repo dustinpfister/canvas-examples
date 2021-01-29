@@ -81,3 +81,11 @@ draw.debug = function (ctx, state) {
         ', inputAI: ' + state.player.inputAI +
         ', pps: ' + state.player.pps + ' }', 10, 40);
 };
+
+draw.ver = function (ctx, canvas, state) {
+    ctx.fillStyle = 'white';
+    ctx.textBaseline = 'top';
+    ctx.font = '10px arial';
+    ctx.textAlign = 'left';
+    ctx.fillText('v' + state.ver, 5, canvas.height - 10);
+};

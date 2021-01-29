@@ -186,6 +186,7 @@ var kaboom = (function () {
     var createState = function (level) {
         level = level || 1;
         var state = {
+            ver: '0.0.0',
             lt: new Date(),
             //pause: false,
             gameOver: false,

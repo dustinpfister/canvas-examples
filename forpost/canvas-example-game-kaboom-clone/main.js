@@ -47,6 +47,7 @@ var loop = function () {
     draw.score(ctx, state);
     draw.ui(ctx, state);
     draw.pauseOverlay(ctx, canvas, state);
+    draw.ver(ctx, canvas, state);
     draw.debug(ctx, state);
 };
 
