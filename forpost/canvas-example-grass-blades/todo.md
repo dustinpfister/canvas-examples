@@ -8,6 +8,11 @@
 * have it so that clicking/touching the canvas creates objects that are used to influence the blades
 * the objects in the top layer have gras blades coming off of them from a single point outward
 
+## 0.0.1 - create canvas
+* start a utils.js
+* add and use utils.createCanvas
+* make a 0.0.1 folder
+
 ## 0.0.0 - Basic idea
 * (done) Basic idea of grass blades working
 * (done) make a pkg_0_0_0.html
