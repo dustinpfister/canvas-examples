@@ -6,7 +6,7 @@ var Grass = (function () {
         create: function (opt) {
             opt = opt || {};
             return {
-                ver: '0.0.0',
+                ver: '0.0.1',
                 maxBlades: opt.maxBlades || 10,
                 spawnRate: opt.spawnRate || 300,
                 canvas: opt.canvas || {
