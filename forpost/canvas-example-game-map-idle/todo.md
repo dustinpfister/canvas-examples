@@ -1,16 +1,11 @@
 ## Canvas Example game map idle
 
-## main.js
-<!-- *************************************** -->
 * get touch support working
 * have building state display a building menu
 * the building menu can be used to delete a building
 * use localStorage to save and load state
 * do something with window.devicePixelRatio
 
-
-### map.js
-<!-- *************************************** -->
 * status bar displays current tick progress
 * make it so building a building debits money
 * have a building cell index
@@ -20,23 +15,10 @@
 * do something with the worth value of cells.
 * do something with the type property of a cell or loose it.
 
-
-## pm.js
-<!-- *************************************** -->
 * get touch support working
-
-
-## utils.js
-<!-- *************************************** -->
-
-
-
-## draw.js
-<!-- *************************************** -->
-
 * sprite sheets and draw image calls
 
-## done
+## 0.0.0 - basic idea working
 <!-- *************************************** -->
 * (done) map starts out centered
 * (done) have offset values as map.offset.x rather than map.xOffset
@@ -88,3 +70,6 @@
 * (done) buildOptions removed from grid state
 * (done) hard coded buildOptions value in createBuilding method
 * (done) buildOptions given as argument when used from the outside
+* use new createCanvas and getCanvasRealtive methods
+* display version number
+* (done - 01/29/21) create a 0.0.0 pkg folder
