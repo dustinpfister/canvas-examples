@@ -1,0 +1,3 @@
+../lib/game.js
+../lib/draw.js
+../main.js
