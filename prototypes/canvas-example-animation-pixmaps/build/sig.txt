@@ -1,0 +1,3 @@
+/*
+   canvas-example-animation-pixmaps by Dustin Pfister
+*/
