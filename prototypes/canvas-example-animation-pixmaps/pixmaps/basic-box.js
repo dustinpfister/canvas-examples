@@ -1,11 +1,12 @@
 pixmapMod.load({
     name: 'box_basics',  // animation set name
     palettes: [
-        [false, 'black']
+        [false, 'black'],
+        ['lime', 'black']
     ],
     ani:{ // the collection of animations
         box1: {  // the first animation called 'box1'
-            paletteIndex: 0,
+            paletteIndex: 1,
             w: 8,
             h: 8,
             data: [

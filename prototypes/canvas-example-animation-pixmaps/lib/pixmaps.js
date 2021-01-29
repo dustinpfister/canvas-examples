@@ -12,7 +12,7 @@ var pixmapMod = (function(){
     };
 
     // create and return a forFrame ff object for pixmaps
-    var createFF = function(maxFrame, w, h, pixdata){
+    var createFF = function(maxFrame, w, h, pixdata, pallette){
         var size = w * h;
         return forFrame.create({
             maxFrame: maxFrame,
@@ -20,6 +20,7 @@ var pixmapMod = (function(){
             height: h,
             forFrame: function(ff, model, frame, maxFrame, per){
                 return {
+                   pallette: pallette,
                    pixdata: pixdata.slice(ff.frame * size, ff.frame * size + size)
                 };
             }
@@ -28,12 +29,15 @@ var pixmapMod = (function(){
 
     // FF draw for pixmaps
     var ffDraw = function(ff, ctx, canvas){
-        var colors = ['black', 'white'];
-            ff.model.pixdata.forEach(function(colorIndex, pxIndex){
-            ctx.fillStyle = colors[colorIndex];
+        //var colors = ['black', 'white'];
+        var colors = ff.model.pallette;
+        ff.model.pixdata.forEach(function(colorIndex, pxIndex){
             var x = pxIndex % ff.width,
             y = Math.floor(pxIndex / ff.width);
-            ctx.fillRect(x, y, 1, 1);
+            if(typeof colors[colorIndex] === 'string'){
+                ctx.fillStyle = colors[colorIndex];
+                ctx.fillRect(x, y, 1, 1);
+            }
         });
     };
 
@@ -47,7 +51,8 @@ var pixmapMod = (function(){
             ani = plug.ani['box1'],
             frameSize = ani.w * ani.h,
             maxFrame = ani.data.length / frameSize,
-            ff = createFF(maxFrame, ani.w, ani.h, ani.data);
+            palette = plug.palettes[ani.paletteIndex],
+            ff = createFF(maxFrame, ani.w, ani.h, ani.data, palette);
             pixmaps[key] = {
                 ffCanvas : forFrame.createCanvas(ff, ffDraw)
             };
