@@ -24,6 +24,8 @@ var pixmapMod = (function(){
     };
 
     var ffDraw = function(ff, ctx, canvas){
+        ctx.fillStyle = 'black';
+        ctx.fillRect(0,0, ff.width, ff.height);
     };
 
     // create a collection of forFrame.js canvas objects

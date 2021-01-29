@@ -2,8 +2,8 @@ var LIFESPAN = 7;
 
 // state object
 var canvasObj = utils.createCanvas({
-    width: 640,
-    height: 480
+    width: 320,
+    height: 240
 });
 var state = {
     ver: '0.0.0',
@@ -17,8 +17,13 @@ var state = {
 var pixmaps = pixmapMod.create();
 
 console.log(pixmaps);
+draw.background(state.ctx, state.canvas);
+
+state.ctx.drawImage(pixmaps.box_basics.ffCanvas.canvas, 20, 20)
+draw.ver(state.ctx, state.canvas, state);
 
 // basic app loop
+/*
 var loop = function(){
     var now = new Date(),
     secs = (now - state.lt) / 1000;
@@ -32,4 +37,5 @@ var loop = function(){
     }
     state.lt = now;
 };
-loop();
+*/
+//loop();
