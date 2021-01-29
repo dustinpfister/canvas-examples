@@ -23,6 +23,8 @@ state.boxes = poolMod.create({
         obj.heading = utils.pi2 * Math.random();
         obj.pps = 16 + 128 * Math.random();
         obj.lifespan = 1 + 3 * Math.random();
+        obj.pixmapKey = 'box_basics';
+        obj.aniKey = ['box1', 'box2'][Math.floor(Math.random() * 2)];
         obj.frameIndex = 0;
         obj.secs = 0;
     },
@@ -47,8 +49,8 @@ var loop = function(){
         draw.background(state.ctx, state.canvas);
         state.boxes.objects.forEach(function(box){
             if(box.active){
-                state.pixmaps.box_basics['box2'].set(box.frameIndex);
-                state.pixmaps.box_basics['box2'].draw(state.ctx, box.x, box.y, box.w, box.h);
+                state.pixmaps[box.pixmapKey][box.aniKey].set(box.frameIndex);
+                state.pixmaps[box.pixmapKey][box.aniKey].draw(state.ctx, box.x, box.y, box.w, box.h);
             }
         });
         draw.ver(state.ctx, state.canvas, state);
