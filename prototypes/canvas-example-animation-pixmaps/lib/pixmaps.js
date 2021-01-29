@@ -11,6 +11,7 @@ var pixmapMod = (function(){
         console.log(plugins);
     };
 
+    // create and return a forFrame ff object for pixmaps
     var createFF = function(maxFrame, w, h, pixdata){
         var size = w * h;
         return forFrame.create({
@@ -18,14 +19,17 @@ var pixmapMod = (function(){
             width: w,
             height: h,
             forFrame: function(ff, model, frame, maxFrame, per){
-                return pixdata.slice(ff.frame * size, ff.frame * size + size);
+                return {
+                   pixdata: pixdata.slice(ff.frame * size, ff.frame * size + size)
+                };
             }
         });
     };
 
+    // FF draw for pixmaps
     var ffDraw = function(ff, ctx, canvas){
         var colors = ['black', 'white'];
-            ff.model.forEach(function(colorIndex, pxIndex){
+            ff.model.pixdata.forEach(function(colorIndex, pxIndex){
             ctx.fillStyle = colors[colorIndex];
             var x = pxIndex % ff.width,
             y = Math.floor(pxIndex / ff.width);
