@@ -48,13 +48,16 @@ var pixmapMod = (function(){
     api.create = function(opt){
         var pixmaps = {};
         Object.keys(plugins).forEach(function(key){
-            var plug = plugins[key],
-            ani = plug.ani['box1'],
-            frameSize = ani.w * ani.h,
-            maxFrame = ani.data.length / frameSize,
-            palette = plug.palettes[ani.paletteIndex],
-            ff = createFF(maxFrame, ani.w, ani.h, ani.data, palette);
-            pixmaps[key] = forFrame.createCanvas(ff, ffDraw);
+            var plug = plugins[key];
+            pixmaps[key] = {};
+            Object.keys(plug.ani).forEach(function(aniKey){
+                var ani = plug.ani[aniKey],
+                frameSize = ani.w * ani.h,
+                maxFrame = ani.data.length / frameSize,
+                palette = plug.palettes[ani.paletteIndex],
+                ff = createFF(maxFrame, ani.w, ani.h, ani.data, palette);
+                pixmaps[key][aniKey] = forFrame.createCanvas(ff, ffDraw);
+            });
         });
         return pixmaps;
     };

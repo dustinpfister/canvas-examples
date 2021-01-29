@@ -47,8 +47,8 @@ var loop = function(){
         draw.background(state.ctx, state.canvas);
         state.boxes.objects.forEach(function(box){
             if(box.active){
-                state.pixmaps.box_basics.set(box.frameIndex);
-                state.pixmaps.box_basics.draw(state.ctx, box.x, box.y, box.w, box.h);
+                state.pixmaps.box_basics['box2'].set(box.frameIndex);
+                state.pixmaps.box_basics['box2'].draw(state.ctx, box.x, box.y, box.w, box.h);
             }
         });
         draw.ver(state.ctx, state.canvas, state);
