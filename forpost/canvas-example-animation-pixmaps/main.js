@@ -11,9 +11,24 @@ var state = {
     canvas: canvasObj.canvas,
     ctx: canvasObj.ctx,
     lt: new Date(),
-    framesPerSec: 2,
+    framesPerSec: 20,
     secs: 1
 };
+
+state.boxes = poolMod.create({
+    count: 5,
+    spawn: function(obj, pool, state, opt){
+        obj.x = state.canvas.width / 2 - obj.w / 2;
+        obj.y = state.canvas.height / 2- obj.h / 2;
+        obj.heading = utils.pi2 * Math.random();
+        obj.pps = 16 + 128 * Math.random();
+        obj.lifespan = 3;
+        obj.frameIndex = 0;
+    },
+    update: function(obj, pool, state, secs){
+
+    }
+});
 
 // basic app loop
 var loop = function(){
@@ -24,9 +39,18 @@ var loop = function(){
     if(state.secs >= 1 / state.framesPerSec){
         // draw
         draw.background(state.ctx, state.canvas);
-        state.pixmaps.box_basics.step(1);
-        state.pixmaps.box_basics.draw(state.ctx, 32, 32, 64, 64);
+        state.boxes.objects.forEach(function(box){
+            if(box.active){
+                state.pixmaps.box_basics.set(0);
+                state.pixmaps.box_basics.draw(state.ctx, box.x, box.y, box.w, box.h);
+            }
+        });
         draw.ver(state.ctx, state.canvas, state);
+
+        // update
+        poolMod.spawn(state.boxes, state, {});
+        poolMod.update(state.boxes, state.secs, state);
+
         state.secs = 0;
     }
     state.lt = now;
