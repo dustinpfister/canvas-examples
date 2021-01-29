@@ -1,5 +1,5 @@
 pixmapMod.load({
-    name: 'box-basics',  // animation set name
+    name: 'box_basics',  // animation set name
     palettes: [
         [false, 'black']
     ],

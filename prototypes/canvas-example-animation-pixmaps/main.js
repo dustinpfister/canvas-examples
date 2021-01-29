@@ -14,6 +14,9 @@ var state = {
     secs: 0
 };
 
+var pixmaps = pixmapMod.create();
+
+console.log(pixmaps);
 
 // basic app loop
 var loop = function(){
