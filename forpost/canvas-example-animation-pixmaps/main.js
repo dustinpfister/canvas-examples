@@ -6,25 +6,16 @@ var canvasObj = utils.createCanvas({
     height: 240
 });
 var state = {
-    ver: '0.0.0',
+    ver: '0.1.0',
+    pixmaps: pixmapMod.create(),
     canvas: canvasObj.canvas,
     ctx: canvasObj.ctx,
     lt: new Date(),
-    framesPerSec: 20,
-    secs: 0
+    framesPerSec: 2,
+    secs: 1
 };
 
-var pixmaps = pixmapMod.create();
-
-console.log(pixmaps);
-draw.background(state.ctx, state.canvas);
-
-pixmaps.box_basics.set(0);
-pixmaps.box_basics.draw(state.ctx, 32, 32, 64, 64);
-draw.ver(state.ctx, state.canvas, state);
-
 // basic app loop
-/*
 var loop = function(){
     var now = new Date(),
     secs = (now - state.lt) / 1000;
@@ -33,10 +24,12 @@ var loop = function(){
     if(state.secs >= 1 / state.framesPerSec){
         // draw
         draw.background(state.ctx, state.canvas);
+        state.pixmaps.box_basics.step(1);
+        state.pixmaps.box_basics.draw(state.ctx, 32, 32, 64, 64);
         draw.ver(state.ctx, state.canvas, state);
         state.secs = 0;
     }
     state.lt = now;
 };
-*/
-//loop();
+
+loop();
