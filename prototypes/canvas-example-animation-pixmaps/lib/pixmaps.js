@@ -24,8 +24,13 @@ var pixmapMod = (function(){
     };
 
     var ffDraw = function(ff, ctx, canvas){
-        ctx.fillStyle = 'black';
-        ctx.fillRect(0,0, ff.width, ff.height);
+        var colors = ['black', 'white'];
+            ff.model.forEach(function(colorIndex, pxIndex){
+            ctx.fillStyle = colors[colorIndex];
+            var x = pxIndex % ff.width,
+            y = Math.floor(pxIndex / ff.width);
+            ctx.fillRect(x, y, 1, 1);
+        });
     };
 
     // create a collection of forFrame.js canvas objects
