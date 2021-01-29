@@ -39,7 +39,7 @@ pixmapMod.load({
             ]
         },
         box2: {  // the first animation called 'box1'
-            paletteIndex: 0,
+            paletteIndex: 1,
             w: 8,
             h: 8,
             data: [

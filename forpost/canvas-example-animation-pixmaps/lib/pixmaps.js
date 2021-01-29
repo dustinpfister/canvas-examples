@@ -1,16 +1,12 @@
 var pixmapMod = (function(){
-
     var api = {};
-
     var plugins = {};
-
     api.load = function(plug){
         var key = plug.name || 'pix_' + Object.keys(plugins).length;
         // just ref it in for now as long as that works okay
         plugins[key] = plug;
         console.log(plugins);
     };
-
     // create and return a forFrame ff object for pixmaps
     var createFF = function(maxFrame, w, h, pixdata, pallette){
         var size = w * h;
@@ -26,7 +22,6 @@ var pixmapMod = (function(){
             }
         });
     };
-
     // FF draw for pixmaps
     var ffDraw = function(ff, ctx, canvas){
         //var colors = ['black', 'white'];
@@ -41,7 +36,6 @@ var pixmapMod = (function(){
             }
         });
     };
-
     // create a collection of forFrame.js canvas objects
     // based off of what is loaded into the pixmaps object 
     // with pixmapMod.load
@@ -61,7 +55,6 @@ var pixmapMod = (function(){
         });
         return pixmaps;
     };
-
     // return the public api;
     return api;
 
