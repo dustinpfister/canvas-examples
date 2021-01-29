@@ -135,6 +135,13 @@ var draw = (function () {
             ctx.beginPath();
             ctx.arc(x, y, 10, 0, Math.PI * 2);
             ctx.stroke();
+        },
+        ver : function (ctx, canvas, states) {
+            ctx.fillStyle = 'white';
+            ctx.textBaseline = 'top';
+            ctx.font = '10px arial';
+            ctx.textAlign = 'left';
+            ctx.fillText('v' + states.ver, canvas.width - 35, 5);
         }
 
     }

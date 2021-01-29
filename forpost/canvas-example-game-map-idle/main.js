@@ -28,7 +28,7 @@ var buildMenu = {
 
 // STATE
 var states = {
-
+    ver: '0.0.0',
     currentState: 'init',
 
     grid: map.createGridObject(50, 25),
@@ -42,6 +42,7 @@ var states = {
             draw.background(ctx, canvas); // background
             draw.map(states.grid, ctx, canvas); // the map
             draw.stateDebugInfo(ctx, states.currentState, states.grid, states);
+            draw.ver(ctx, canvas, states);
         }
     },
 
