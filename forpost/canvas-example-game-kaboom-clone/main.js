@@ -1,9 +1,10 @@
 
-var canvas = document.createElement('canvas'),
-ctx = canvas.getContext('2d');
-document.getElementById('canvas-app').appendChild(canvas);
-canvas.width = 640;
-canvas.height = 480;
+var canvasObj = utils.createCanvas({
+  width: 640,
+  height: 480
+}),
+canvas = canvasObj.canvas,
+ctx = canvasObj.ctx;
 
 var state = kaboom.createState(1);
 
