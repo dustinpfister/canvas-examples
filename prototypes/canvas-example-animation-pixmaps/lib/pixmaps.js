@@ -53,9 +53,7 @@ var pixmapMod = (function(){
             maxFrame = ani.data.length / frameSize,
             palette = plug.palettes[ani.paletteIndex],
             ff = createFF(maxFrame, ani.w, ani.h, ani.data, palette);
-            pixmaps[key] = {
-                ffCanvas : forFrame.createCanvas(ff, ffDraw)
-            };
+            pixmaps[key] = forFrame.createCanvas(ff, ffDraw);
         });
         return pixmaps;
     };
