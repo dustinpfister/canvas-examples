@@ -31,6 +31,7 @@ var pixmapMod = (function(){
     var ffDraw = function(ff, ctx, canvas){
         //var colors = ['black', 'white'];
         var colors = ff.model.pallette;
+        ctx.imageSmoothingEnabled = false;
         ff.model.pixdata.forEach(function(colorIndex, pxIndex){
             var x = pxIndex % ff.width,
             y = Math.floor(pxIndex / ff.width);
