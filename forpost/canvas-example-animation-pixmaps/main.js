@@ -16,17 +16,23 @@ var state = {
 };
 
 state.boxes = poolMod.create({
-    count: 5,
+    count: 20,
     spawn: function(obj, pool, state, opt){
         obj.x = state.canvas.width / 2 - obj.w / 2;
         obj.y = state.canvas.height / 2- obj.h / 2;
         obj.heading = utils.pi2 * Math.random();
         obj.pps = 16 + 128 * Math.random();
-        obj.lifespan = 3;
+        obj.lifespan = 1 + 3 * Math.random();
         obj.frameIndex = 0;
+        obj.secs = 0;
     },
     update: function(obj, pool, state, secs){
-
+        obj.secs += secs;
+        if(obj.secs >= 0.25){
+            obj.frameIndex += 1;
+            obj.frameIndex %= 2;
+            obj.secs %= 0.25
+        }
     }
 });
 
@@ -41,16 +47,14 @@ var loop = function(){
         draw.background(state.ctx, state.canvas);
         state.boxes.objects.forEach(function(box){
             if(box.active){
-                state.pixmaps.box_basics.set(0);
+                state.pixmaps.box_basics.set(box.frameIndex);
                 state.pixmaps.box_basics.draw(state.ctx, box.x, box.y, box.w, box.h);
             }
         });
         draw.ver(state.ctx, state.canvas, state);
-
         // update
         poolMod.spawn(state.boxes, state, {});
         poolMod.update(state.boxes, state.secs, state);
-
         state.secs = 0;
     }
     state.lt = now;
