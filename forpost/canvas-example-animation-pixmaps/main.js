@@ -6,7 +6,7 @@ var canvasObj = utils.createCanvas({
     height: 240
 });
 var state = {
-    ver: '0.2.0',
+    ver: '0.3.0',
     pixmaps: pixmapMod.create(),
     canvas: canvasObj.canvas,
     ctx: canvasObj.ctx,
