@@ -2,9 +2,9 @@ dynaMod.load({
     name: 'gridlines',
     // the ff object
     ffOpt: {
-        maxFrame: 32,
-        width: 256,
-        height: 256,
+        maxFrame: 16,
+        width: 32,
+        height: 32,
         forFrame: function(ff, opt){
 
             var lines = [],
@@ -18,8 +18,8 @@ dynaMod.load({
             i = 0;
             
             return {
-              offX: Math.cos(Math.PI * 0.75) * (32 * ff.per),
-              offY: Math.sin(Math.PI * 0.75) * (32 * ff.per)
+              cx: 100 + (Math.cos(Math.PI * 0.75) * 32) * ff.per,
+              cy: 100 + (Math.sin(Math.PI * 0.75) * 32) * ff.per
             };
         }
     },
@@ -32,7 +32,7 @@ dynaMod.load({
         while(y < 20){
             var x = 0;
             while(x < 20){
-                ctx.strokeRect(32 * x + box.offX, 32 * y + box.offY, 32, 32);
+                ctx.strokeRect(box.cx - (32 * 20 / 2) + 32 * x, box.cy - (32 * 20 / 2) + 32 * y, 32, 32);
                 x += 1;
             }
             y += 1;
