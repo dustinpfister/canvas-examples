@@ -5,22 +5,32 @@ dynaMod.load({
         maxFrame: 16,
         width: 256,
         height: 256,
-        forFrame: function(ff, options){
+        forFrame: function(ff, opt){
 
             var lines = [],
-            divs = options.divs || 8,
-            size = ff.width / divs,
+            divs = opt.divs || 8,
+            sx = opt.sx === undefined ? 0 : opt.sx,
+            sy = opt.sy === undefined ? 0 : opt.sy,
+            w = opt.w === undefined ? 32 : opt.w,
+            h = opt.h === undefined ? 32 : opt.h,
+            size = w / divs,
             xOff = (size * ff.per) %  size;
             var i = 0;
 
             while(i < divs){
                 lines.push(
-                    {sx: xOff + size * i, sy: 0, ex:  xOff + size * i, ey: ff.height},
-                    {sx: 0, sy: size * i, ex: ff.width, ey: size * i}
+                    {sx: sx + xOff + size * i, 
+                     sy: sy, 
+                     ex:  sx + xOff + size * i, 
+                     ey: sy + h},
+                    {sx: sx, 
+                     sy: sy + size * i, 
+                     ex: sx + w, 
+                     ey: sy + size * i}
                 );
                 i += 1
             }
-            lines.push({sx: 0, sy: ff.height, ex: ff.width, ey: ff.height});
+            lines.push({sx: sx, sy: sy + h, ex: sx + w, ey: sy + h});
             return lines;
         }
     },

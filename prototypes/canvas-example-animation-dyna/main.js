@@ -18,7 +18,7 @@ var dynas = dynaMod.create();
 
 draw.background(state.ctx, state.canvas);
 
-dynas.gridlines.set(8, {divs: 4});
+dynas.gridlines.set(2, {divs: 4, sx: 10, sy: 10, w: 100, h: 100});
 dynas.gridlines.draw(state.ctx);
 
 draw.ver(state.ctx, state.canvas, state);

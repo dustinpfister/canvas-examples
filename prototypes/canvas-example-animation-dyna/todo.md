@@ -5,4 +5,7 @@
 * (done) start a dyna.js file
 * (done) start a /dyna/gridlines.js file
 
+* can set an sx and sy value for grid lines
+* default options for gridlines
+
 * make a pkg 0.0.0 folder
