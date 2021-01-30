@@ -26,15 +26,16 @@ state.boxes = poolMod.create({
         obj.pps = 16 + 32 * Math.random();
         obj.lifespan = 1 + 3 * Math.random();
         obj.pixmapKey = 'mr_sun'; //'box_basics';
-        obj.aniKey = 'sun_happy'; //['box1', 'box2'][Math.floor(Math.random() * 2)];
+        obj.aniKey = 'sun_mad'; //['box1', 'box2'][Math.floor(Math.random() * 2)];
         obj.frameIndex = 0;
+        obj.maxFrame = 1;
         obj.secs = 0;
     },
     update: function(obj, pool, state, secs){
         obj.secs += secs;
         if(obj.secs >= 0.25){
             obj.frameIndex += 1;
-            obj.frameIndex %= 3;
+            obj.frameIndex %= obj.maxFrame;
             obj.secs %= 0.25
         }
     }
