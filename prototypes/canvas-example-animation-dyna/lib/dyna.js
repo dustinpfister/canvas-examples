@@ -6,19 +6,17 @@ var dynaMod = (function(){
         var key = plug.name || 'dyna_' + Object.keys(plugins).length;
         // just ref it in for now as long as that works okay
         plugins[key] = plug;
-        console.log(plugins);
     };
-/*
-    api.create = function(opt){
+
+    api.create = function(){
         var dynas = {};
+
         Object.keys(plugins).forEach(function(key){
             var plug = plugins[key];
-            dynas[key] = 
+            var dyna = dynas[key] = {};
+            dyna.ff = forFrame.create(plug.ffOpt);
         });
         return dynas;
-    };
-*/
-    api.create = function(dynaName, frame, options){
     };
     // return the public api;
     return api;

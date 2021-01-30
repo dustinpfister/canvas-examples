@@ -14,19 +14,18 @@ var state = {
     secs: 1
 };
 
-state.maxDist = state.canvas.width * 0.75;
+var dynas = dynaMod.create();
 
+console.log(dynas)
+
+
+/*
 state.boxes = poolMod.create({
     count: 30,
     w: 64,
     h: 64,
     spawn: function(obj, pool, state, opt){
-        var radian = utils.pi2 * Math.random();
-        obj.x = state.canvas.width / 2 + Math.cos(radian) * state.maxDist - obj.w / 2;
-        obj.y = state.canvas.height / 2 + Math.sin(radian) * state.maxDist - obj.h / 2;
-        obj.heading = radian + Math.PI;
-        obj.pps = 64;
-        obj.lifespan = 1;
+
 
     },
     update: function(obj, pool, state, secs){
@@ -59,3 +58,4 @@ var loop = function(){
 };
 
 loop();
+*/

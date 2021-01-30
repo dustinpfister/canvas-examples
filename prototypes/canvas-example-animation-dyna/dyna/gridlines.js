@@ -1,7 +1,7 @@
 dynaMod.load({
     name: 'gridlines',
     // the ff object
-    ff: forFrame.create({
+    ffOpt: {
         maxFrame: 16,
         width: 256,
         height: 256,
@@ -21,7 +21,7 @@ dynaMod.load({
             lines.push({sx: 0, sy: ff.height, ex: ff.width, ey: ff.height});
             return lines;
         }
-    }),
+    },
     // the draw method
     draw: function(ff, ctx, canvas){
         var box = ff.model;
