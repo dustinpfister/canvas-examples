@@ -6,6 +6,9 @@ dynaMod.load({
         width: 256,
         height: 256,
         forFrame: function(ff, options){
+
+            console.log(options.div);
+
             var lines = [],
             divs = options.divs || 8,
             size = ff.width / divs,

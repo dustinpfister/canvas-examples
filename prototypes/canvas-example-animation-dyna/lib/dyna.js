@@ -16,7 +16,7 @@ var dynaMod = (function(){
             var dyna = dynas[key] = {};
             dyna.ff = forFrame.create(plug.ffOpt);
             dyna.set = function(frame, argu){
-                forFrame.set(dyna.ff, argu);
+                forFrame.set(dyna.ff, frame, [argu] || [{}]);
             };
             dyna.draw = function(ctx){
                 plug.draw(dyna.ff, ctx);
