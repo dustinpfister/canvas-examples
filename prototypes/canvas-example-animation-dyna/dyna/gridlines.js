@@ -7,13 +7,12 @@ dynaMod.load({
         height: 256,
         forFrame: function(ff, options){
 
-            console.log(options.div);
-
             var lines = [],
             divs = options.divs || 8,
             size = ff.width / divs,
             xOff = (size * ff.per) %  size;
             var i = 0;
+
             while(i < divs){
                 lines.push(
                     {sx: xOff + size * i, sy: 0, ex:  xOff + size * i, ey: ff.height},
