@@ -1,5 +1,15 @@
 # canvas-example-animation-pixmap todo
 
+## 0.x.0 - new forframe folder
+* start a forframe/gridlines.js file
+* gridlines returns a special object like what is returned by forFrame.createCanvas but with a new set method
+* this new set method will take not just a frame index, but also a set of additional arguments for heading, and grid size.
+
+## 0.3.0 - More than one pixmap file used to skin display object
+* start another pixmap that is an animations of world sections.
+* have a maxFrame prop of a display object that will change depeding on the pixmap ani used
+* make a pkg 0.3.0 folder
+
 ## 0.2.0 - mr_sun pixmap file started
 * (done) start a mr_sun pixmap file
 * (done) have one animation of mr sun thus far
