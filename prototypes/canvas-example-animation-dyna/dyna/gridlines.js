@@ -1,4 +1,5 @@
 dynaMod.push({
+    name: 'gridlines',
     // the ff object
     ff: forFrame.create({
         maxFrame: 16,
@@ -6,10 +7,11 @@ dynaMod.push({
         height: 256,
         forFrame: function(ff, options){
             var lines = [],
-            size = ff.width / options.divs,
+            divs = options.divs || 8,
+            size = ff.width / divs,
             xOff = (size * ff.per) %  size;
             var i = 0;
-            while(i < options.divs){
+            while(i < divs){
                 lines.push(
                     {sx: xOff + size * i, sy: 0, ex:  xOff + size * i, ey: ff.height},
                     {sx: 0, sy: size * i, ex: ff.width, ey: size * i}
