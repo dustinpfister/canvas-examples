@@ -8,6 +8,7 @@ var dynaMod = (function(){
         plugins[key] = plug;
         console.log(plugins);
     };
+/*
     api.create = function(opt){
         var dynas = {};
         Object.keys(plugins).forEach(function(key){
@@ -16,6 +17,7 @@ var dynaMod = (function(){
         });
         return dynas;
     };
+*/
     api.create = function(dynaName, frame, options){
     };
     // return the public api;

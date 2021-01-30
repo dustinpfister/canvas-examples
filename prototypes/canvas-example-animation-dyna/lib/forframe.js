@@ -22,10 +22,8 @@ var forFrame = (function(){
         ff.frame = utils.mod(ff.frame, ff.maxFrame);
         ff.per = ff.frame / ff.maxFrame;
         ff.bias = 1 - Math.abs(0.5 - ff.per) / 0.5;
-        // call beforeCall for the current type
         ff.model = {};
         ff.model = ff.forFrame.apply(ff, [ff].concat(argu));
-        //ff.model = ff.forFrame(ff);
         return ff;
     };
 

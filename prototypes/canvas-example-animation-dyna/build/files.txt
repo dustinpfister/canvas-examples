@@ -1,5 +1,7 @@
 ../lib/utils.js
 ../lib/pool.js
 ../lib/forframe.js
+../lib/dyna.js
+../dyna/gridlines.js
 ../lib/draw.js
 ../main.js

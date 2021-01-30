@@ -1,4 +1,4 @@
-dynaMod.push({
+dynaMod.load({
     name: 'gridlines',
     // the ff object
     ff: forFrame.create({
