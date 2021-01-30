@@ -16,15 +16,15 @@ var state = {
 };
 
 state.boxes = poolMod.create({
-    count: 5,
+    count: 30,
     w: 64,
     h: 64,
     spawn: function(obj, pool, state, opt){
         var radian = utils.pi2 * Math.random();
         //obj.x = state.canvas.width / 2 - obj.w / 2;
         //obj.y = state.canvas.height / 2- obj.h / 2;
-        obj.x = state.canvas.width / 2 + Math.cos(radian) * (state.canvas.width * 0.75);
-        obj.y = state.canvas.height / 2 + Math.sin(radian) * (state.canvas.width * 0.75);
+        obj.x = state.canvas.width / 2 + Math.cos(radian) * (state.canvas.width * 0.75) - obj.w / 2;
+        obj.y = state.canvas.height / 2 + Math.sin(radian) * (state.canvas.width * 0.75) - obj.h / 2;
         //obj.heading = utils.pi2 * Math.random();
         obj.heading = radian + Math.PI;
         obj.pps = 16 + 32 * Math.random();
@@ -33,14 +33,19 @@ state.boxes = poolMod.create({
         obj.frameIndex = 0;
         obj.ani = state.pixmaps[obj.pixmapKey][obj.aniKey];
         obj.secs = 0;
-        obj.lifespan = 1 + 3 * Math.random();
+        obj.lifespan = 1;
     },
     update: function(obj, pool, state, secs){
         obj.secs += secs;
+        obj.lifespan = 1;
         if(obj.secs >= 0.25){
             obj.frameIndex += 1;
             obj.frameIndex %= obj.ani.maxFrame;
             obj.secs %= 0.25
+        }
+        var dist = utils.distance(obj.x + obj.w / 2, obj.y + obj.h / 2, state.canvas.width / 2, state.canvas.height / 2);
+        if(dist >= state.canvas.width * 0.75){
+           obj.lifespan = 0;
         }
     }
 });

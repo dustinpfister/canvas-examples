@@ -12,7 +12,7 @@
 * start another pixmap that is an animations of world sections.
 * use world sections pixmaps for some disp objects
 
-* have new disp objects start outside of canvas, and move accross to the other side
+* (done) have new disp objects start outside of canvas, and move accross to the other side
 * make it so that box.lifespan sets to 1 on each update, have it set to zero only when the disp object goes out of bounds
 
 * make a pkg 0.3.0 folder
