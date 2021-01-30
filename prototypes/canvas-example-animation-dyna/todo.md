@@ -7,7 +7,8 @@
 
 * (done) can set an sx and sy value for grid lines
 * (done) have a looping animation of gridlines
-* can set heading for gridlines
+* (done) can set heading for gridlines
 
+* work out whole new system for drawing grid lines
 
 * make a pkg 0.0.0 folder
