@@ -16,24 +16,13 @@ var state = {
 
 var dynas = dynaMod.create();
 
-draw.background(state.ctx, state.canvas);
-
-dynas.gridlines.set(2, {divs: 4, sx: 10, sy: 10, w: 100, h: 100});
-dynas.gridlines.draw(state.ctx);
-
-draw.ver(state.ctx, state.canvas, state);
-
-/*
 state.boxes = poolMod.create({
     count: 30,
     w: 64,
     h: 64,
     spawn: function(obj, pool, state, opt){
-
-
     },
     update: function(obj, pool, state, secs){
-
     }
 });
 
@@ -45,8 +34,13 @@ var loop = function(){
     state.secs += secs;
     state.secs = state.secs > 0.5 ? 0.5 : state.secs;
     if(state.secs >= 1 / state.framesPerSec){
+        // set gridlines
+        dynas.gridlines.set(dynas.gridlines.ff.frame + 1, {divs: 4, sx: -32, sy: -32, w: 100, h: 100, heading: 1});
         // draw
         draw.background(state.ctx, state.canvas);
+        dynas.gridlines.draw(state.ctx);
+        draw.ver(state.ctx, state.canvas, state);
+/*
         state.boxes.objects.forEach(function(box){
             if(box.active){
 
@@ -54,12 +48,12 @@ var loop = function(){
         });
         draw.ver(state.ctx, state.canvas, state);
         // update
-        //poolMod.spawn(state.boxes, state, {});
-        //poolMod.update(state.boxes, state.secs, state);
+        poolMod.spawn(state.boxes, state, {});
+        poolMod.update(state.boxes, state.secs, state);
+*/
         state.secs = 0;
     }
     state.lt = now;
 };
 
 loop();
-*/
