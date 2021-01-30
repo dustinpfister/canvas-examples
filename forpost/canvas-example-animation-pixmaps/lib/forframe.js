@@ -1,5 +1,9 @@
 var forFrame = (function(){
 
+    /********** **********
+        CONSTANTS 
+    *********************/
+
     var DEFAULT_MAX_FRAME = 50,
     DEFAULT_FRAME = 0,
     DEFAULT_WIDTH = 320,
@@ -7,8 +11,9 @@ var forFrame = (function(){
     FORFRAME_BUILT_IN = function(){},
     FFDRAW_BUILT_IN = function(){};
 
-    // Public API
-    var api = {};
+    /********** **********
+        HELPERS
+    *********************/
 
     // set frame helper
     var setFrame = function(ff, frame){
@@ -25,9 +30,11 @@ var forFrame = (function(){
     };
 
     /********** **********
-        CREATE an ff object 
+        FF object 
     *********************/
 
+    // Public API
+    var api = {};
     // create a plain ff object
     api.create = function(opt){
         opt = opt || {};
@@ -45,11 +52,6 @@ var forFrame = (function(){
         ff = setFrame(ff, ff.frame);
         return ff;
     };
-
-    /********** **********
-        UPDATE an ff object 
-    *********************/
-
     // STEP an ff object with a given amount of frames
     // as such STEPFRAMES needs to be a whole number
     api.step = function(ff, stepFrames){
@@ -72,24 +74,20 @@ var forFrame = (function(){
     };
 
     /********** **********
-        CANVAS
+        CANVAS OBJECTS
     *********************/
 
-    // create and return a canvas based on the given ff
+    // create and return a canvas based object on the given ff
     api.createCanvas = function(ff, ffDraw, backFill, stroke, fill){
-
         var canvas = document.createElement('canvas'),
         ctx = canvas.getContext('2d');
         canvas.width = ff.width * ff.maxFrame;
         canvas.height = ff.height;
-
         ffDraw = ffDraw || FFDRAW_BUILT_IN;
-        
         if(backFill){
             ctx.fillStyle=backFill;
             ctx.fillRect(0,0,canvas.width, canvas.height);
         }
-
         ff.frame = 0;
         while(ff.frame < ff.maxFrame){
             setFrame(ff, ff.frame);
@@ -97,7 +95,6 @@ var forFrame = (function(){
             ctx.translate(ff.width, 0);
             ff.frame += 1;
         }
-
         return {
             canvas: canvas,
             ctx: ctx,
