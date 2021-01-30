@@ -5,11 +5,15 @@
 * use world sections pixmaps for some disp objects
 
 ## 0.4.0 - new forframe folder
+* (done) remove FF types from forframe.js
+
+
+
+
 * start a forframe/gridlines.js file
 * gridlines returns a special object like what is returned by forFrame.createCanvas but with a new set method
 * this new set method will take not just a frame index, but also a set of additional arguments for heading, and grid size.
-
-## 0.4.0 - remove FF types from forframe.js
+* start a pkg 0.4.0 folder
 
 ## 0.3.0 - More than one animation used
 * (done) have a maxFrame prop of a display object that will change depending on the pixmap ani used
