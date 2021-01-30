@@ -15,6 +15,12 @@ var dynaMod = (function(){
             var plug = plugins[key];
             var dyna = dynas[key] = {};
             dyna.ff = forFrame.create(plug.ffOpt);
+            dyna.set = function(frame, argu){
+                forFrame.set(dyna.ff, argu);
+            };
+            dyna.draw = function(ctx){
+                plug.draw(dyna.ff, ctx);
+            };
         });
         return dynas;
     };

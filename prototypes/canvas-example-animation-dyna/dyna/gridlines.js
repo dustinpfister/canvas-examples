@@ -23,7 +23,9 @@ dynaMod.load({
         }
     },
     // the draw method
-    draw: function(ff, ctx, canvas){
+    draw: function(ff, ctx){
+        console.log(ff);
+
         var box = ff.model;
         ctx.strokeStyle='rgba(255,255,255,0.2)';
         ctx.lineWidth = 3;
@@ -33,5 +35,6 @@ dynaMod.load({
             ctx.lineTo(line.ex, line.ey);
             ctx.stroke();
         });
+
     }
 });
