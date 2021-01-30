@@ -33,6 +33,7 @@ state.boxes = poolMod.create({
         obj.ani = state.pixmaps[obj.pixmapKey][obj.aniKey];
         obj.secs = 0;
         obj.lifespan = 1;
+        obj.alpha = 1;
     },
     update: function(obj, pool, state, secs){
         obj.secs += secs;
@@ -43,6 +44,7 @@ state.boxes = poolMod.create({
             obj.secs %= 0.25
         }
         var dist = utils.distance(obj.x + obj.w / 2, obj.y + obj.h / 2, state.canvas.width / 2, state.canvas.height / 2);
+        obj.alpha = (1 - dist / state.maxDist).toFixed(2);
         if(dist >= state.maxDist){
            obj.lifespan = 0;
         }
@@ -62,9 +64,11 @@ var loop = function(){
         state.boxes.objects.forEach(function(box){
             if(box.active){
                 box.ani.set(box.frameIndex);
+                state.ctx.globalAlpha = box.alpha;
                 box.ani.draw(state.ctx, box.x, box.y, box.w, box.h);
             }
         });
+        state.ctx.globalAlpha = 1;
         draw.ver(state.ctx, state.canvas, state);
         // update
         poolMod.spawn(state.boxes, state, {});
