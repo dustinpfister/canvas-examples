@@ -15,16 +15,18 @@ var state = {
     secs: 1
 };
 
+state.maxDist = state.canvas.width * 0.75;
+
 state.boxes = poolMod.create({
     count: 30,
     w: 64,
     h: 64,
     spawn: function(obj, pool, state, opt){
         var radian = utils.pi2 * Math.random();
-        obj.x = state.canvas.width / 2 + Math.cos(radian) * (state.canvas.width * 0.75) - obj.w / 2;
-        obj.y = state.canvas.height / 2 + Math.sin(radian) * (state.canvas.width * 0.75) - obj.h / 2;
+        obj.x = state.canvas.width / 2 + Math.cos(radian) * state.maxDist - obj.w / 2;
+        obj.y = state.canvas.height / 2 + Math.sin(radian) * state.maxDist - obj.h / 2;
         obj.heading = radian + Math.PI;
-        obj.pps = 16 + 32 * Math.random();
+        obj.pps = 64; //16 + 32 * Math.random();
         obj.pixmapKey = 'mr_sun'; //'box_basics';
         obj.aniKey = ['sun_happy', 'sun_mad'][Math.floor(Math.random() * 2)];
         obj.frameIndex = 0;
@@ -41,7 +43,7 @@ state.boxes = poolMod.create({
             obj.secs %= 0.25
         }
         var dist = utils.distance(obj.x + obj.w / 2, obj.y + obj.h / 2, state.canvas.width / 2, state.canvas.height / 2);
-        if(dist >= state.canvas.width * 0.75){
+        if(dist >= state.maxDist){
            obj.lifespan = 0;
         }
     }
