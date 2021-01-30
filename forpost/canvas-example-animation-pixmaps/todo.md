@@ -1,8 +1,8 @@
 # canvas-example-animation-pixmap todo
 
 ## 0.2.0 - mr_sun pixmap file started
-* start a mr_sun pixmap file
-* have one animation of mr sun thus far
+* (done) start a mr_sun pixmap file
+* (done) have one animation of mr sun thus far
 * make a pkg 0.2.0 folder
 
 ## 0.1.0 - skin disp objects
