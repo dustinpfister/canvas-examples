@@ -21,11 +21,8 @@ state.boxes = poolMod.create({
     h: 64,
     spawn: function(obj, pool, state, opt){
         var radian = utils.pi2 * Math.random();
-        //obj.x = state.canvas.width / 2 - obj.w / 2;
-        //obj.y = state.canvas.height / 2- obj.h / 2;
         obj.x = state.canvas.width / 2 + Math.cos(radian) * (state.canvas.width * 0.75) - obj.w / 2;
         obj.y = state.canvas.height / 2 + Math.sin(radian) * (state.canvas.width * 0.75) - obj.h / 2;
-        //obj.heading = utils.pi2 * Math.random();
         obj.heading = radian + Math.PI;
         obj.pps = 16 + 32 * Math.random();
         obj.pixmapKey = 'mr_sun'; //'box_basics';
@@ -56,6 +53,7 @@ var loop = function(){
     secs = (now - state.lt) / 1000;
     requestAnimationFrame(loop);
     state.secs += secs;
+    state.secs = state.secs > 0.5 ? 0.5 : state.secs;
     if(state.secs >= 1 / state.framesPerSec){
         // draw
         draw.background(state.ctx, state.canvas);
