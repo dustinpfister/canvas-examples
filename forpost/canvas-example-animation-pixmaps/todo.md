@@ -9,13 +9,15 @@
 * gridlines returns a special object like what is returned by forFrame.createCanvas but with a new set method
 * this new set method will take not just a frame index, but also a set of additional arguments for heading, and grid size.
 
+## 0.4.0 - remove FF types from forframe.js
+
 ## 0.3.0 - More than one animation used
 * (done) have a maxFrame prop of a display object that will change depending on the pixmap ani used
 * (done) more than one animation for mr_sun pixmap file
 * (done) have new disp objects start outside of canvas, and move accross to the other side
 * (done) make it so that box.lifespan sets to 1 on each update, have it set to zero only when the disp object goes out of bounds
 * (done) alpha effect
-* make a pkg 0.3.0 folder
+* (done) make a pkg 0.3.0 folder
 
 ## 0.2.0 - mr_sun pixmap file started
 * (done) start a mr_sun pixmap file

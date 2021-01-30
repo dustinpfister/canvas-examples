@@ -3,91 +3,11 @@ var forFrame = (function(){
     var DEFAULT_MAX_FRAME = 50,
     DEFAULT_FRAME = 0,
     DEFAULT_WIDTH = 320,
-    DEFAULT_HEIGHT = 240;
+    DEFAULT_HEIGHT = 240,
+    FORFRAME_BUILT_IN = function(){},
+    FFDRAW_BUILT_IN = function(){};
 
-    var FF_TYPES = {
-        // plain generic type
-        plain: {
-            // this will be called just once when the ff object is created
-            // so this method would be a good place to define a custom api
-            create: function(ff){
-                return ff;
-            },
-            // this will be called before forFrame is called
-            // here a default starting model can be define for the type
-            beforeCall: function(ff){
-                return {
-                    points:[],
-                    x: 0,
-                    y:0,
-                    w : 32,
-                    h : 32,
-                    r : 0,
-                    fillStyle: 'red'
-                };
-            },
-            forframe_arguments: function(ff){
-                return [ff.model, ff.frame, ff.maxFrame, ff.per];
-            },
-            // a default forFrame function if none is given
-            default_forframe: function(ff, model, frame, maxFrame, per){
-                model.x = 24 + ( ff.width - 48 ) * per;
-                model.y = utils.log1(utils.bias(frame, maxFrame), 1, 16) * ff.height - 24;
-                model.r = Math.PI / 180 * 360 * 2 * per;
-                return model;
-            },
-            // default ffDraw
-            draw: function(){}
-        },
-        // points type
-        points: {
-            create: function(ff){
-               return ff;
-            },
-            // starting points model
-            beforeCall: function(ff){
-               return {
-                   points: []
-               };
-            },
-            forframe_arguments: function(ff){
-                return [ff.model, ff.model.points, ff.per];
-            },
-            default_forframe: function(ff, model, points){
-                var len = 50,
-                i = 0,
-                pointPer;
-                while(i < len){
-                    pointPer = i / len;
-                    points.push({
-                       x: ff.width * pointPer,
-                       y: ff.height * 0.75 - utils.log1(i, len, 8) * (ff.height * 0.25) * ff.bias
-                    });
-                    i += 1;
-                }
-                return ff.model;
-            },
-            // default ffDraw
-            draw: function(ff, ctx, canvas, stroke, fill){
-               ctx.beginPath();
-               ctx.strokeStyle = stroke || 'white';
-               ff.model.points.forEach(function(point, i){
-                   if(i === 0){
-                       ctx.moveTo(point.x, point.y);
-                   }else{
-                       ctx.lineTo(point.x, point.y);
-                   }
-               });
-               ctx.closePath();
-               ctx.stroke();
-               if(fill){
-                   ctx.fillStyle = fill;
-                   ctx.fill();
-               }
-            }
-        }
-    };
-
+    // Public API
     var api = {};
 
     // set frame helper
@@ -97,8 +17,8 @@ var forFrame = (function(){
         ff.per = ff.frame / ff.maxFrame;
         ff.bias = 1 - Math.abs(0.5 - ff.per) / 0.5;
         // call beforeCall for the current type
-        ff.model = FF_TYPES[ff.type].beforeCall(ff);
-        var argu = FF_TYPES[ff.type].forframe_arguments(ff);
+        ff.model = {}; //FF_TYPES[ff.type].beforeCall(ff);
+        var argu = [ff.model, ff.model.points, ff.per];  //FF_TYPES[ff.type].forframe_arguments(ff);
         ff.model = ff.forFrame.apply(ff, [ff].concat(argu));
         //ff.model = ff.forFrame(ff);
         return ff;
@@ -120,20 +40,10 @@ var forFrame = (function(){
             model: {},
             per: 0,
             secs: 0
-            //forFrame: opt.forFrame || FORFRAME_BUILT_IN
         };
-        ff = FF_TYPES[ff.type].create(ff);
-        ff.forFrame = opt.forFrame || FF_TYPES[ff.type].default_forframe;
+        ff.forFrame = opt.forFrame || FORFRAME_BUILT_IN; 
         ff = setFrame(ff, ff.frame);
         return ff;
-    };
-
-    // create and return a points type ff object
-    api.createPoints = function(opt){
-        opt = opt || {};
-        // this will be set to points no matter what if U am to have a public method like this
-        opt.type = 'points'; 
-        return api.create(opt);
     };
 
     /********** **********
@@ -173,7 +83,7 @@ var forFrame = (function(){
         canvas.width = ff.width * ff.maxFrame;
         canvas.height = ff.height;
 
-        ffDraw = ffDraw || FF_TYPES[ff.type].draw || function(){};
+        ffDraw = ffDraw || FFDRAW_BUILT_IN;
         
         if(backFill){
             ctx.fillStyle=backFill;
