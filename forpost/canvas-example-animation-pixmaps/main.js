@@ -20,16 +20,20 @@ state.boxes = poolMod.create({
     w: 64,
     h: 64,
     spawn: function(obj, pool, state, opt){
-        obj.x = state.canvas.width / 2 - obj.w / 2;
-        obj.y = state.canvas.height / 2- obj.h / 2;
-        obj.heading = utils.pi2 * Math.random();
+        var radian = utils.pi2 * Math.random();
+        //obj.x = state.canvas.width / 2 - obj.w / 2;
+        //obj.y = state.canvas.height / 2- obj.h / 2;
+        obj.x = state.canvas.width / 2 + Math.cos(radian) * (state.canvas.width * 0.75);
+        obj.y = state.canvas.height / 2 + Math.sin(radian) * (state.canvas.width * 0.75);
+        //obj.heading = utils.pi2 * Math.random();
+        obj.heading = radian + Math.PI;
         obj.pps = 16 + 32 * Math.random();
-        obj.lifespan = 1 + 3 * Math.random();
         obj.pixmapKey = 'mr_sun'; //'box_basics';
         obj.aniKey = ['sun_happy', 'sun_mad'][Math.floor(Math.random() * 2)];
         obj.frameIndex = 0;
         obj.ani = state.pixmaps[obj.pixmapKey][obj.aniKey];
         obj.secs = 0;
+        obj.lifespan = 1 + 3 * Math.random();
     },
     update: function(obj, pool, state, secs){
         obj.secs += secs;
