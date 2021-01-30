@@ -16,14 +16,14 @@ var forFrame = (function(){
     *********************/
 
     // set frame helper
-    var setFrame = function(ff, frame){
+    var setFrame = function(ff, frame, argu){
+        argu = argu || [ff.model, ff.model.points, ff.per];
         ff.frame = frame;
         ff.frame = utils.mod(ff.frame, ff.maxFrame);
         ff.per = ff.frame / ff.maxFrame;
         ff.bias = 1 - Math.abs(0.5 - ff.per) / 0.5;
         // call beforeCall for the current type
-        ff.model = {}; //FF_TYPES[ff.type].beforeCall(ff);
-        var argu = [ff.model, ff.model.points, ff.per];  //FF_TYPES[ff.type].forframe_arguments(ff);
+        ff.model = {};
         ff.model = ff.forFrame.apply(ff, [ff].concat(argu));
         //ff.model = ff.forFrame(ff);
         return ff;
@@ -52,6 +52,8 @@ var forFrame = (function(){
         ff = setFrame(ff, ff.frame);
         return ff;
     };
+    // make setFrame public
+    api.set = setFrame;
     // STEP an ff object with a given amount of frames
     // as such STEPFRAMES needs to be a whole number
     api.step = function(ff, stepFrames){

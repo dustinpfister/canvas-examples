@@ -12,11 +12,11 @@ var dynaMod = (function(){
         var dynas = {};
         Object.keys(plugins).forEach(function(key){
             var plug = plugins[key];
-            dynas[key] = forFrame.create()
+            dynas[key] = 
         });
         return dynas;
     };
-    api.set = function(dyna, frame, options){
+    api.create = function(dynaName, frame, options){
     };
     // return the public api;
     return api;
