@@ -35,10 +35,10 @@ var loop = function(){
     state.secs = state.secs > 0.5 ? 0.5 : state.secs;
     if(state.secs >= 1 / state.framesPerSec){
         // set gridlines
-        dynas.gridlines.set(dynas.gridlines.ff.frame + 1, {divs: 4, sx: -32, sy: -32, w: 100, h: 100, heading: 1});
+        //dynas.gridlines.set(dynas.gridlines.ff.frame + 1, {divs: 4, sx: -32, sy: -32, w: 100, h: 100, heading: 1});
         // draw
         draw.background(state.ctx, state.canvas);
-        dynas.gridlines.draw(state.ctx);
+        //dynas.gridlines.draw(state.ctx);
         draw.ver(state.ctx, state.canvas, state);
 /*
         state.boxes.objects.forEach(function(box){
