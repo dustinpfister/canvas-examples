@@ -152,10 +152,14 @@
 * (done) on 'onInStart' event
 * (done) onClick events set frame.state to the 'out' state
 
+
+* use new create canvas method
+
 * use new button system to have animated button for the main game states options button
 * the game state options button will move out, stop, and switch to options state by way of new 'onOutEnd' event
 
-* make a pkg_0_22_0.html file
+
+* make a pkg-0-22-0.html file
 
 ## 0.21.0 - game.levelObj used to unlock weapons and sills
 * (done) All weapons aside from 'blaster' have a w.locked = true at game level 1
