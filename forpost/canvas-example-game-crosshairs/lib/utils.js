@@ -30,6 +30,8 @@ utils.createCanvas = function(opt){
     opt.ctx.translate(0.5, 0.5);
     // disable default action for onselectstart
     opt.canvas.onselectstart = function () { return false; }
+    //opt.canvas.style.imageRendering = 'pixelated';
+    //opt.ctx.imageSmoothingEnabled = false;
     // append canvas to container
     opt.container.appendChild(opt.canvas);
     return opt;
