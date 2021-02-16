@@ -1,5 +1,11 @@
 (function () {
 
+
+    var canvasObj = utils.createCanvas();
+    var canvas = canvasObj.canvas;
+    var ctx = canvasObj.ctx;
+
+/*
     var canvas = document.createElement('canvas'),
     ctx = canvas.getContext('2d'),
     container = document.getElementById('canvas-app') || document.body;
@@ -7,6 +13,8 @@
     canvas.width = 320;
     canvas.height = 240;
     ctx.translate(0.5, 0.5);
+*/
+
 
     var sm = {
         ver: '0.2.0',

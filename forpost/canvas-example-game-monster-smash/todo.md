@@ -20,7 +20,7 @@
 * (done) enemy units have a sight prop that is the radius that the unit can see
 * (done) if the player object is in sight of the enemy it will move to it
 * (done) if the player object is not in sight of the enemy it will move at random
-* make a pkg_0_2_0.html
+* make a 0.2.0 pkg folder
 
 ## 0.1.0 - enemy unit pool
 * (done) have a monsters object pool in game.js
@@ -28,7 +28,7 @@
 * (done) a monster at the same cell as player results in instance kill of monster (for now)
 * (done) monsters move with player moves
 * (done) monsters spawn back in based on map setting
-* (done) make a pkg_0_1_0.html
+* (done) make a pkg-0-1-0.html
 
 ## 0.0.0 - starting modules together, and player object movement
 * (done) have a basic map.js module that creates a map object of cells that can be formed into a grid
@@ -41,4 +41,4 @@
 * (done) new map get cell methods
 * (done) gameMod update method started
 * (done) move the player object with pointer events
-* (done) make a pkg_0_0_0.html
+* (done) make a pkg-0-0-0.html
