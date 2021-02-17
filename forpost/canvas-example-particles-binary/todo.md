@@ -6,6 +6,7 @@
 * after a period of time a 'combined type' will explode
 
 ## 0.1.0 - update methods for particles
+* have an array of update methods for particles
 
 ## 0.0.0 - Basic idea working
 * (done) make an update pool function and pull logic from public update method into it

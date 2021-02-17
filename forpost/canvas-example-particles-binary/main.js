@@ -3,7 +3,7 @@ var canvasObj = u.createCanvas(),
 canvas = canvasObj.canvas,
 ctx = canvasObj.ctx;
 var state = paricles.create({
-        ver: '0.0.0',
+        ver: '0.1.0',
         canvas: canvas,
         ctx: ctx
     });

@@ -4,7 +4,16 @@ var paricles = (function () {
     var DEFAULT_POOL_SIZE = 160,
     PARTICLE_MIN_RADIUS = 8,
     PARTICLE_MAX_RADIUS = 64,
-    PARTICLE_MAX_LIFE = 3000;
+    PARTICLE_MAX_LIFE = 3000,
+
+    PARTICLE_UPDATE_METHODS = {
+        noop: function(part, pool, secs){
+        },
+        fixed_heading_change: function(part, state, secs){
+            var degreesPerSec = 45;
+            part.heading += Math.PI / 180 * degreesPerSec * secs;
+        }
+    };
 
     // random reading
     var randomHeading = function (min, max) {
@@ -18,6 +27,7 @@ var paricles = (function () {
     var Particle = function () {
         this.x = -1;
         this.y = -1;
+        this.updateKey = 'fixed_heading_change'; // the method to use in PARTICLE_UPDATE_METHODS
         this.heading = 0;
         this.bits = '00'; // [0,0] inactive, [1,0] // blue, [0,1] red, [1,1] // explode
         this.pps = 32; // pixels per second
@@ -102,10 +112,16 @@ var paricles = (function () {
         while (i--) {
             part = state.pool[i];
             if (part.bits === '10' || part.bits === '01') {
+                if(PARTICLE_UPDATE_METHODS[part.updateKey]){
+                    PARTICLE_UPDATE_METHODS[part.updateKey](part, state, secs);
+                }
+                // move by current heading, pps
                 part.x += Math.cos(part.heading) * part.pps * secs;
                 part.y += Math.sin(part.heading) * part.pps * secs;
+                // apply bounds
                 part.x = u.mod(part.x, state.canvas.width);
                 part.y = u.mod(part.y, state.canvas.height);
+                // check if the part hit a type it combines with
                 partHitCheck(state, part);
             }
             if (part.bits === '11') {
