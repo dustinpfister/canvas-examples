@@ -6,7 +6,8 @@
 * after a period of time a 'combined type' will explode
 
 ## 0.1.0 - update methods for particles
-* have an array of update methods for particles
+* (done) have an array of update methods for particles
+* (done - 02/17/2021) make a pkg 0.1.0 folder
 
 ## 0.0.0 - Basic idea working
 * (done) make an update pool function and pull logic from public update method into it
@@ -30,4 +31,4 @@
 * (done) draw a particles.js state object in main.js
 * (done) use create canvas method
 * (done) display version number
-* (done) make a 0.0.0 pkg folder
+* (done - 02/17/2021) make a 0.0.0 pkg folder
