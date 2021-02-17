@@ -1,17 +1,18 @@
 
 var paricles = (function () {
 
-    var DEFAULT_POOL_SIZE = 160,
-    PARTICLE_MIN_RADIUS = 8,
+    var DEFAULT_POOL_SIZE = 100,
+    PARTICLE_MIN_RADIUS = 6,
     PARTICLE_MAX_RADIUS = 64,
     PARTICLE_MAX_LIFE = 3000,
 
     PARTICLE_UPDATE_METHODS = {
+        // no nothing (go by initial values only for heading, and pps)
         noop: function(part, pool, secs){
         },
+        // use whatever the part.degreesPerSecond value is to change heading
         fixed_heading_change: function(part, state, secs){
-            var degreesPerSec = 45;
-            part.heading += Math.PI / 180 * degreesPerSec * secs;
+            part.heading += Math.PI / 180 * part.degreesPerSecond * secs;
         }
     };
 
@@ -27,6 +28,7 @@ var paricles = (function () {
     var Particle = function () {
         this.x = -1;
         this.y = -1;
+        this.degreesPerSecond = -90 + 180 * Math.random();
         this.updateKey = 'fixed_heading_change'; // the method to use in PARTICLE_UPDATE_METHODS
         this.heading = 0;
         this.bits = '00'; // [0,0] inactive, [1,0] // blue, [0,1] red, [1,1] // explode
