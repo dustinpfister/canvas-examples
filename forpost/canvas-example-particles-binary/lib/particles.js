@@ -126,6 +126,7 @@ var paricles = (function () {
         create: function (opt) {
             opt = opt || {};
             state = {
+                ver: opt.ver || '',
                 canvas: opt.canvas || null,
                 ctx: opt.ctx || null,
                 pool: createPool(),

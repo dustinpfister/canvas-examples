@@ -44,7 +44,17 @@ var draw = (function () {
         },
 
         // draw debug info
-        debug: function (state) {}
+        debug: function (state) {},
+
+        ver: function(state){
+            var ctx = state.ctx;
+            ctx.fillStyle = 'rgba(255,255,255,0.2)';
+            ctx.font = '8px arial';
+            ctx.textBaseline = 'top';
+            ctx.textAlign = 'left';
+            ctx.fillText('v' + state.ver, 3, state.canvas.height - 13);
+        }
+
     }
 
 }
