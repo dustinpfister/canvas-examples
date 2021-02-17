@@ -1,4 +1,7 @@
-## Canvas Example Particles Binary todo list
+# Canvas Example Particles Binary todo list
+
+
+## 0.0.0 - Basic idea working
 
 * (done) make an update pool function and pull logic from public update method into it
 * (done) stand alone spawn method
@@ -19,3 +22,6 @@
 * (done) use particles.js in main.js to create, and update the state object.
 * (done) draw.pariclePool method in draw.js
 * (done) draw a particles.js state object in main.js
+* (done) use create canvas method
+* display version number
+* make a 0.0.0 pkg folder
