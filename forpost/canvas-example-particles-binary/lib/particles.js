@@ -12,7 +12,15 @@ var paricles = (function () {
         },
         // use whatever the part.degreesPerSecond value is to change heading
         fixed_heading_change: function(part, state, secs){
+            part.degreesPerSecond = u.mod(part.degreesPerSecond + 90, 180) - 90;
             part.heading += Math.PI / 180 * part.degreesPerSecond * secs;
+        },
+        // 
+        DPS_change: function(part, state, secs){
+            var roll = Math.random();
+            var dir = roll < 0.5 ? -1 : 1;
+            part.degreesPerSecond += 360 * secs * dir;
+            this.fixed_heading_change(part, state, secs)
         }
     };
 
@@ -29,7 +37,7 @@ var paricles = (function () {
         this.x = -1;
         this.y = -1;
         this.degreesPerSecond = -90 + 180 * Math.random();
-        this.updateKey = 'fixed_heading_change'; // the method to use in PARTICLE_UPDATE_METHODS
+        this.updateKey = 'DPS_change'; // the method to use in PARTICLE_UPDATE_METHODS
         this.heading = 0;
         this.bits = '00'; // [0,0] inactive, [1,0] // blue, [0,1] red, [1,1] // explode
         this.pps = 32; // pixels per second
@@ -115,7 +123,7 @@ var paricles = (function () {
             part = state.pool[i];
             if (part.bits === '10' || part.bits === '01') {
                 if(PARTICLE_UPDATE_METHODS[part.updateKey]){
-                    PARTICLE_UPDATE_METHODS[part.updateKey](part, state, secs);
+                    PARTICLE_UPDATE_METHODS[part.updateKey].call(PARTICLE_UPDATE_METHODS, part, state, secs);
                 }
                 // move by current heading, pps
                 part.x += Math.cos(part.heading) * part.pps * secs;
