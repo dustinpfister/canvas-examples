@@ -1,5 +1,5 @@
 /*
-   canvas-example-game-monster-smash
+   canvas-example-grid-game-monster-smash
    Copyright 2020 by Dustin Pfister
    https://raw.githubusercontent.com/dustinpfister/canvas-examples/master/LICENSE
  
