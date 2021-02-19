@@ -9,7 +9,12 @@
             cellWidth: 9
         })
     };
-	
+
+    var canvasObj = utils.createCanvas();
+    var canvas = canvasObj.canvas;
+    var ctx = canvasObj.ctx;
+
+/*	
     // create and append canvas element, and get 2d context
     var canvas = document.createElement('canvas'),
     ctx = canvas.getContext('2d'),
@@ -18,6 +23,7 @@
     // set width and height
     canvas.width = 320;
     canvas.height = 240;
+*/
     // single event handler
     canvas.addEventListener('click', function (e) {
         var bx = e.target.getBoundingClientRect(),
