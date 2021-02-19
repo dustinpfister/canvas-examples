@@ -1,11 +1,8 @@
 // SETUP CANVAS
 (function () {
-
-
     var canvasObj = utils.createCanvas();
     var canvas = canvasObj.canvas;
     var ctx = canvasObj.ctx;
-
     var state = {
         ver: '0.0.0',
         canvas: canvas,
@@ -17,7 +14,6 @@
             cellWidth: 9
         })
     };
-
     // single event handler
     canvas.addEventListener('click', function (e) {
         var pos = utils.getCanvasRelative(e);
