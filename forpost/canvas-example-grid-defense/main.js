@@ -26,10 +26,14 @@
 */
     // single event handler
     canvas.addEventListener('click', function (e) {
+/*
         var bx = e.target.getBoundingClientRect(),
         x = e.clientX - bx.left,
         y = e.clientY - bx.top;
-        var cell = state.grid.getCellFromPoint(x, y);
+*/
+
+        var pos = utils.getCanvasRelative(e);
+        var cell = state.grid.getCellFromPoint(pos.x, pos.y);
         if (cell.enemy) {
             state.grid.kills += 1;
             cell.enemy = false;
