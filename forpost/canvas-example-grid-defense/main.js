@@ -1,7 +1,15 @@
 // SETUP CANVAS
 (function () {
 
+
+    var canvasObj = utils.createCanvas();
+    var canvas = canvasObj.canvas;
+    var ctx = canvasObj.ctx;
+
     var state = {
+        ver: '0.0.0',
+        canvas: canvas,
+        ctx: ctx,
         grid: new UnitGrid({
             xOffset: 15,
             yOffset: 25,
@@ -9,10 +17,6 @@
             cellWidth: 9
         })
     };
-
-    var canvasObj = utils.createCanvas();
-    var canvas = canvasObj.canvas;
-    var ctx = canvasObj.ctx;
 
     // single event handler
     canvas.addEventListener('click', function (e) {
@@ -32,6 +36,7 @@
         draw.cls(ctx, canvas);
         draw.gridCellLines(state.grid, ctx);
         draw.disp(state, ctx);
+        draw.ver(state, ctx);
     };
     loop();
 }

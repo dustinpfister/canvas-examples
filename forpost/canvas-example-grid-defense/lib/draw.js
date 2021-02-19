@@ -37,3 +37,10 @@ draw.disp = function (state, ctx) {
     ctx.font = '10px arial';
     ctx.fillText('hits: ' + grid.hits + '; kills: ' + grid.kills, 10, 10);
 };
+// draw version number
+draw.ver = function (state, ctx) {
+    ctx.fillStyle = 'white';
+    ctx.textBaseline = 'top';
+    ctx.font = '10px arial';
+    ctx.fillText('v' + state.ver, 5, state.canvas.height - 15);
+};
