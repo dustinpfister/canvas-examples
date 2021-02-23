@@ -23,7 +23,7 @@
 * land_base 'fert proprty should be done away with as it is to vague'
 * land_base 'fertup event' should be removed as it is outdated
 
-## 0.0.1 - The Basic idea working
+## 0.0.0 - The Basic idea working
 * (done) add support for ticks
 * (done) crude draw module improvement that shows status of fert land property
 * (done) add support for events
@@ -31,3 +31,6 @@
 * (done) draw.worldCells draw module method started
 * (done) world.js should have a plug-in system
 * (done) have a plug-in folder for world.js and one starting plugin
+* display 0.0.0
+* use new create canvas method
+* make a pkg 0.0.0 folder

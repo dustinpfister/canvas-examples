@@ -1,13 +1,14 @@
 // MAIN
-var canvas = document.createElement('canvas'),
-ctx = canvas.getContext('2d'),
-container = document.getElementById('gamearea') || document.body;
-container.appendChild(canvas);
-canvas.width = 640;
-canvas.height = 480;
-ctx.translate(0.5, 0.5);
+var canvasObj = u.createCanvas({
+    width: 640,
+    height: 480
+}),
+canvas = canvasObj.canvas,
+ctx = canvasObj.ctx;
 
 var state = world.create();
+state.ver = '0.0.0';
+state.canvas = canvas;
 
 var loop = function () {
     requestAnimationFrame(loop);
@@ -17,6 +18,7 @@ var loop = function () {
     draw.back(ctx, canvas);
     draw.worldCells(ctx, state);
     draw.infoBar(ctx, state);
+    draw.ver(ctx, state);
 
 };
 

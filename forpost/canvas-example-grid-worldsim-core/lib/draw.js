@@ -34,6 +34,13 @@ var draw = (function () {
             ctx.fillStyle = 'white';
             ctx.textBaseline = 'top';
             ctx.fillText('year: ' + state.year, 10, 10);
+        },
+
+        ver: function(ctx, state){
+            ctx.fillStyle = 'white';
+            ctx.textBaseline = 'top';
+            ctx.font = '10px arial';
+            ctx.fillText('v' + state.ver, 5, state.canvas.height - 15);
         }
 
     }
