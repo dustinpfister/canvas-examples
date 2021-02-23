@@ -1,0 +1,3 @@
+../lib/utils.js
+../lib/img.js
+../main.js
