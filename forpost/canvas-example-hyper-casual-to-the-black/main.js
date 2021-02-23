@@ -1,14 +1,12 @@
 // create canvas
-var canvas = document.createElement('canvas'),
-ctx = canvas.getContext('2d'),
-container = document.getElementById('canvas-app') || document.body;
-container.appendChild(canvas);
-canvas.width = 320;
-canvas.height = 240;
-ctx.translate(0.5, 0.5);
+
+var canvasObj = utils.createCanvas(),
+canvas = canvasObj.canvas,
+ctx = canvasObj.ctx;
+
 // main state object
 var state = {
-    ver: '0.2.0',
+    ver: '0.2.1',
     lt: new Date(),
     pointerDown: false,
     pointerPos: {},
@@ -43,17 +41,6 @@ var loop = function () {
 };
 loop();
 // events
-var getCanvasRelative = function (e) {
-    var canvas = e.target,
-    bx = canvas.getBoundingClientRect();
-    var x = (e.changedTouches ? e.changedTouches[0].clientX : e.clientX) - bx.left,
-    y = (e.changedTouches ? e.changedTouches[0].clientY : e.clientY) - bx.top;
-    return {
-        x: x,
-        y: y,
-        bx: bx
-    };
-};
 var setInputs = function (pos) {
     if (pos.x < canvas.width / 2) {
         state.game.input.left = true;
@@ -64,12 +51,12 @@ var setInputs = function (pos) {
     }
 };
 var onPointerStart = function (e) {
-    var pos = state.pointerPos = getCanvasRelative(e);
+    var pos = state.pointerPos = utils.getCanvasRelative(e);
     state.pointerDown = true;
     setInputs(pos);
 };
 var onPointerMove = function (e) {
-    var pos = state.pointerPos = getCanvasRelative(e);
+    var pos = state.pointerPos = utils.getCanvasRelative(e);
     if (state.pointerDown) {
         setInputs(pos);
     }

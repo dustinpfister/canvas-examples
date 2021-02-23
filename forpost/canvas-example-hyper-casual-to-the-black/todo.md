@@ -6,6 +6,10 @@
 ## 0.x.0 - auto play
 * add a simple auto play feature for this that will take over after a period of inactivity
 
+## 0.2.1 - utils.createCanvas
+* use utils.createCanvas
+* make a pkg 0.2.1 folder
+
 ## 0.2.0 - power ups I
 * (done) Add an object pool for power ups
 * (done) power ups will start at the top of the canvas and move down to where the player ship is
@@ -14,7 +18,7 @@
 * (done) power ups should never spawn over the ships current location
 * (done) have a 'boost' starting power up that will increase pps for a fixed amount of time
 * (done) make it so 'boost' power ups can be stacked to to a stack max
-* create a pkg_0_2_0.html
+* (done) create a pkg 0.2.0
 
 ## 0.1.0 - game.startTime, distance object, player movement
 * (done) have a game.startTime property that is the time that the player started playing
