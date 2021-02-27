@@ -22,7 +22,7 @@ utils.createCanvas = function(opt){
 };
 
 utils.isMouse = function (e) {
-    return (e.type === 'mousedown' || e.type === 'mouseup' || e.type == 'mousemove');
+    return (e.type === 'mousedown' || e.type === 'mouseup' || e.type == 'mousemove' || e.type == 'mouseout');
 }
 
 utils.getCanvasRelativeArray = function (e) {

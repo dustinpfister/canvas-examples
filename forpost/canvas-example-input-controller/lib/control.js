@@ -69,6 +69,7 @@ var controlMod = (function () {
     var setPointerHandler = function (input, DOMType, type) {
         console.log(input.canvas);
         input.canvas.addEventListener(DOMType, function (e) {
+console.log(DOMType);
             var pos = utils.getCanvasRelativeArray(e);
             e.preventDefault();
             handlers[type](pos, input, e);
@@ -89,6 +90,7 @@ var controlMod = (function () {
         setPointerHandler(input, 'mousedown', 'pointerStart');
         setPointerHandler(input, 'mousemove', 'pointerMove');
         setPointerHandler(input, 'mouseup', 'pointerEnd');
+        setPointerHandler(input, 'mouseout', 'pointerEnd');
         // touch
         setPointerHandler(input, 'touchstart', 'pointerStart');
         setPointerHandler(input, 'touchmove', 'pointerMove');
