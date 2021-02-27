@@ -19,6 +19,7 @@
 ## 0.3.0 - Units attack each other
 * (done) createBaseUnitObject helper method that contains values like HP, weapon, ect
 * (done) all units start with max hp of 100 for now
+* (done) use new createCanvas method
 * start a gameMode.update method
 * enemy units attack player units in range and the same goes for player units
 * when a unit gets hit it will loose hp
