@@ -21,9 +21,9 @@ utils.createCanvas = function(opt){
     return opt;
 };
 
-utils.isMouse = function (e) {
-    return (e.type === 'mousedown' || e.type === 'mouseup' || e.type == 'mousemove' || e.type == 'mouseout');
-}
+utils.isMouse = function (e) {;
+    return e.type.substr(0,5) === 'mouse';
+};
 
 utils.getCanvasRelativeArray = function (e) {
     var canvas = e.target,
