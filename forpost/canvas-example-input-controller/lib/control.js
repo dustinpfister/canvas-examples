@@ -11,11 +11,10 @@ var controlMod = (function () {
 
     var createInputState = function (canvas, win) {
         var input = {
-            ver: '0.0.0',
+            ver: '0.0.1',
             canvas: canvas,
             win: win,
             pointerDown: false,
-            keys: {},
             pos: [],
             keys: fill(255, false),
             userHanders: {
