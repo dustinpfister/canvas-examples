@@ -1,8 +1,8 @@
 # canvas-example-input-controller todo
 
 ### 0.0.1 - Fix bugs
-* remove keys object in main state object
-* fix spelling mistake with input.userHanders to input.userHandlers
+* (done) remove keys object in main state object
+* (done) fix spelling mistake with input.userHanders to input.userHandlers
 * make a pkg 0.0.1 folder
 
 ### 0.0.0 - Basic idea working
