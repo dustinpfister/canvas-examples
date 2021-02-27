@@ -1,6 +1,12 @@
 
+/*
 var canvas = document.getElementById('the-canvas'),
 ctx = canvas.getContext('2d');
+*/
+
+var canvasObj = utils.createCanvas(),
+canvas = canvasObj.canvas,
+ctx = canvasObj.ctx;
 
 var input = controlMod(canvas);
 
