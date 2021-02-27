@@ -1,16 +1,13 @@
 // CANVAS
-var canvas = document.createElement('canvas'),
-ctx = canvas.getContext('2d'),
-container = document.getElementById('canvas-app') || document.body;
-container.appendChild(canvas);
+var canvasObj = utils.createCanvas({
+   width: 320,
+   height: 240
+}),
+canvas = canvasObj.canvas,
+ctx = canvasObj.ctx;
 
 // scale
 var ratio = window.devicePixelRatio || 1;
-canvas.width = 320 * ratio;
-canvas.height = 120 * ratio;
-
-console.log(ratio);
-console.log(window.innerWidth);
 
 // CREATE GRID
 var grid = g.createGridObject(12, 8);
@@ -42,13 +39,17 @@ loop();
 
 // EVENTS
 canvas.addEventListener('mousedown', function (e) {
+/*
     var canvas = e.target,
     bx = canvas.getBoundingClientRect(),
     x = e.clientX - bx.left,
     y = e.clientY - bx.top;
+*/
+    var pos = utils.getCanvasRelative(e);
+
     e.preventDefault();
     mousedown = true;
-    var cell = g.getCellFromCanvasPoint(grid, x / ratio, y / ratio);
+    var cell = g.getCellFromCanvasPoint(grid, pos.x / ratio, pos.y / ratio);
     if (cell.i === grid.selectedCellIndex) {
         grid.selectedCellIndex = -1;
     } else {
