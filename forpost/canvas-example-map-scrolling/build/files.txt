@@ -1,6 +1,4 @@
 ../lib/utils.js
-../lib/pool.js
 ../lib/map.js
-../lib/game.js
-../lib/draw.js
+../lib/draw_map.js
 ../main.js
