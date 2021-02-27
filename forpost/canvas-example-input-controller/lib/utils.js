@@ -21,6 +21,10 @@ utils.createCanvas = function(opt){
     return opt;
 };
 
+utils.isMouse = function (e) {
+    return (e.type === 'mousedown' || e.type === 'mouseup' || e.type == 'mousemove');
+}
+/*
 utils.getCanvasRelative = function (e) {
     var canvas = e.target,
     bx = canvas.getBoundingClientRect(),
@@ -36,24 +40,26 @@ utils.getCanvasRelative = function (e) {
     e.preventDefault();
     return pos;
 };
-
-utils.isMouse = function (e) {
-    return (e.type === 'mousedown' || e.type === 'mouseup' || e.type == 'mousemove');
-}
-
+*/
 utils.getCanvasRelativeArray = function (e) {
     var canvas = e.target,
     bx = canvas.getBoundingClientRect(),
+    pos,
     arr = [];
     // mouse event
     if (utils.isMouse(e)) {
-        return [{
-                x: e.clientX - bx.left,
-                y: e.clientY - bx.top,
-                bx: bx,
-                e: e,
-                touch: {}
-            }
+        pos = {
+            x: e.clientX - bx.left,
+            y: e.clientY - bx.top,
+            bx: bx,
+            e: e,
+            touch: {}
+        };
+        // ajust for native canvas matrix size
+        pos.x = Math.floor((pos.x / canvas.scrollWidth) * canvas.width);
+        pos.y = Math.floor((pos.y / canvas.scrollHeight) * canvas.height);
+        return [
+            pos
         ];
     }
     // touch
@@ -61,13 +67,17 @@ utils.getCanvasRelativeArray = function (e) {
     touch;
     while (i < e.targetTouches.length) {
         touch = e.targetTouches[i];
-        arr.push({
+        pos = {
             x: touch.clientX - bx.left,
             y: touch.clientY - bx.top,
             touch: touch,
             e: e,
             bx: bx
-        });
+        };
+        // ajust for native canvas matrix size
+        pos.x = Math.floor((pos.x / canvas.scrollWidth) * canvas.width);
+        pos.y = Math.floor((pos.y / canvas.scrollHeight) * canvas.height);
+        arr.push(pos);
         i += 1;
     }
     return arr;

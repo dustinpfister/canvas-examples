@@ -1,5 +1,6 @@
 var controlMod = (function () {
 
+/*
     // is mouse helper
     var isMouse = function (e) {
         return (e.type === 'mousedown' || e.type === 'mouseup' || e.type == 'mousemove');
@@ -38,6 +39,8 @@ var controlMod = (function () {
         }
         return arr;
     };
+*/
+
 
     // fill an array
     var fill = function (count, val) {
@@ -88,7 +91,7 @@ var controlMod = (function () {
             callUserHanders(input, 'pointerMove', pos, e);
         },
         pointerEnd: function (pos, input, e) {
-            if (isMouse(e)) {
+            if (utils.isMouse(e)) {
                 input.pointerDown = false;
                 input.pos = [];
             } else {
