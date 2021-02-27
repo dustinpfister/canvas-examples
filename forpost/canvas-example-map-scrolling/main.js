@@ -34,19 +34,18 @@ var loop = function () {
     ctx.fillRect(0, 0, canvas.width, canvas.height);
     // draw map
     drawMap(grid, ctx, canvas, ratio);
+    // draw ver
+    ctx.fillStyle = 'red';
+    ctx.textBaseline = 'top';
+    ctx.textAlign = 'left';
+    ctx.font = '10px arial';
+    ctx.fillText('v' + grid.ver, 5, canvas.height - 15);
 };
 loop();
 
 // EVENTS
 canvas.addEventListener('mousedown', function (e) {
-/*
-    var canvas = e.target,
-    bx = canvas.getBoundingClientRect(),
-    x = e.clientX - bx.left,
-    y = e.clientY - bx.top;
-*/
     var pos = utils.getCanvasRelative(e);
-
     e.preventDefault();
     mousedown = true;
     var cell = g.getCellFromCanvasPoint(grid, pos.x / ratio, pos.y / ratio);

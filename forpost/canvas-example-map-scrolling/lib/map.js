@@ -22,7 +22,9 @@ g.createGridObject = function (w, h) {
             width: w,
             height: h
         });
-    return g.createClearCellGrid(a);
+    var grid = g.createClearCellGrid(a);
+    grid.ver = '0.0.0';
+    return grid;
 };
 
 // create a new grid object with blank cells by passing a given grid Object
