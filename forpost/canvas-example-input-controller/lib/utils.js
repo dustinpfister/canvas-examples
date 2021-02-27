@@ -36,3 +36,39 @@ utils.getCanvasRelative = function (e) {
     e.preventDefault();
     return pos;
 };
+
+utils.isMouse = function (e) {
+    return (e.type === 'mousedown' || e.type === 'mouseup' || e.type == 'mousemove');
+}
+
+utils.getCanvasRelativeArray = function (e) {
+    var canvas = e.target,
+    bx = canvas.getBoundingClientRect(),
+    arr = [];
+    // mouse event
+    if (utils.isMouse(e)) {
+        return [{
+                x: e.clientX - bx.left,
+                y: e.clientY - bx.top,
+                bx: bx,
+                e: e,
+                touch: {}
+            }
+        ];
+    }
+    // touch
+    var i = 0,
+    touch;
+    while (i < e.targetTouches.length) {
+        touch = e.targetTouches[i];
+        arr.push({
+            x: touch.clientX - bx.left,
+            y: touch.clientY - bx.top,
+            touch: touch,
+            e: e,
+            bx: bx
+        });
+        i += 1;
+    }
+    return arr;
+};

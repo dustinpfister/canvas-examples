@@ -107,7 +107,7 @@ var controlMod = (function () {
     var setPointerHandler = function (input, DOMType, type) {
         console.log(input.canvas);
         input.canvas.addEventListener(DOMType, function (e) {
-            var pos = getCanvasRelativeArray(e);
+            var pos = utils.getCanvasRelativeArray(e);
             e.preventDefault();
             handlers[type](pos, input, e);
         });

@@ -4,7 +4,10 @@ var canvas = document.getElementById('the-canvas'),
 ctx = canvas.getContext('2d');
 */
 
-var canvasObj = utils.createCanvas(),
+var canvasObj = utils.createCanvas({
+   width: 640,
+   height: 480
+}),
 canvas = canvasObj.canvas,
 ctx = canvasObj.ctx;
 
