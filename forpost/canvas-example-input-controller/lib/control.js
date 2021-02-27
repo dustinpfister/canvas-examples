@@ -1,47 +1,5 @@
 var controlMod = (function () {
 
-/*
-    // is mouse helper
-    var isMouse = function (e) {
-        return (e.type === 'mousedown' || e.type === 'mouseup' || e.type == 'mousemove');
-    }
-
-    // get am array of point objects relative to the canvas
-    // rather than the window object
-    var getCanvasRelativeArray = function (e) {
-        var canvas = e.target,
-        bx = canvas.getBoundingClientRect(),
-        arr = [];
-        // mouse event
-        if (isMouse(e)) {
-            return [{
-                    x: e.clientX - bx.left,
-                    y: e.clientY - bx.top,
-                    bx: bx,
-                    e: e,
-                    touch: {}
-                }
-            ];
-        }
-        // touch
-        var i = 0,
-        touch;
-        while (i < e.targetTouches.length) {
-            touch = e.targetTouches[i];
-            arr.push({
-                x: touch.clientX - bx.left,
-                y: touch.clientY - bx.top,
-                touch: touch,
-                e: e,
-                bx: bx
-            });
-            i += 1;
-        }
-        return arr;
-    };
-*/
-
-
     // fill an array
     var fill = function (count, val) {
         return Array.apply(0, {
