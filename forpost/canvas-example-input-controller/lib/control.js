@@ -95,6 +95,7 @@ console.log(DOMType);
         setPointerHandler(input, 'touchstart', 'pointerStart');
         setPointerHandler(input, 'touchmove', 'pointerMove');
         setPointerHandler(input, 'touchend', 'pointerEnd');
+        setPointerHandler(input, 'touchcancel', 'pointerEnd');
         // keyboard
         setKeyHandler(input, 'keydown');
         setKeyHandler(input, 'keyup');
