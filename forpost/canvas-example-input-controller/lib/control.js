@@ -17,7 +17,7 @@ var controlMod = (function () {
             pointerDown: false,
             pos: [],
             keys: fill(255, false),
-            userHanders: {
+            userHandlers: {
                 pointerStart: [],
                 pointerMove: [],
                 pointerEnd: [],
@@ -28,8 +28,8 @@ var controlMod = (function () {
         return input;
     };
 
-    var callUserHanders = function (input, type, a, e) {
-        input.userHanders[type].forEach(function (userHandler) {
+    var calluserHandlers = function (input, type, a, e) {
+        input.userHandlers[type].forEach(function (userHandler) {
             userHandler.call(input, a, input, e);
         });
     };
@@ -39,14 +39,14 @@ var controlMod = (function () {
         pointerStart: function (pos, input, e) {
             input.pointerDown = true;
             input.pos = pos;
-            callUserHanders(input, 'pointerStart', pos, e);
+            calluserHandlers(input, 'pointerStart', pos, e);
         },
         pointerMove: function (pos, input, e) {
             // update pos only if pointer is down
             if (input.pointerDown) {
                 input.pos = pos;
             }
-            callUserHanders(input, 'pointerMove', pos, e);
+            calluserHandlers(input, 'pointerMove', pos, e);
         },
         pointerEnd: function (pos, input, e) {
             if (utils.isMouse(e)) {
@@ -60,7 +60,7 @@ var controlMod = (function () {
                     input.pos = pos;
                 }
             }
-            callUserHanders(input, 'pointerEnd', pos, e);
+            calluserHandlers(input, 'pointerEnd', pos, e);
         }
     };
 
@@ -79,7 +79,7 @@ console.log(DOMType);
     var setKeyHandler = function (input, DOMType) {
         input.win.addEventListener(DOMType, function (e) {
             input.keys[e.keyCode] = e.type === 'keydown';
-            callUserHanders(input, DOMType, input.keys, e);
+            calluserHandlers(input, DOMType, input.keys, e);
         });
     };
 
@@ -103,7 +103,7 @@ console.log(DOMType);
 
     // add a hander
     api.add = function (input, type, hander) {
-        input.userHanders[type].push(hander);
+        input.userHandlers[type].push(hander);
     };
 
     return api;
