@@ -24,6 +24,7 @@ var loop = function () {
     requestAnimationFrame(loop);
     draw.back(ctx, canvas);
     draw.debugInput(ctx, input);
+    draw.ver(ctx, input);
 };
 
 loop();

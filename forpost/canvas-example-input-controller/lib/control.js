@@ -11,6 +11,7 @@ var controlMod = (function () {
 
     var createInputState = function (canvas, win) {
         var input = {
+            ver: '0.0.0',
             canvas: canvas,
             win: win,
             pointerDown: false,

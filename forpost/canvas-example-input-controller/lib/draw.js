@@ -21,3 +21,11 @@ draw.debugInput = function (ctx, input) {
     ctx.fillText('input.keys[83] (s): ' + input.keys[83], 10, 100);
     ctx.fillText('input.keys[68] (d): ' + input.keys[68], 10, 120);
 };
+draw.ver = function(ctx, input){
+    var canvas = input.canvas;
+    // draw ver
+    ctx.fillStyle = 'white';
+    ctx.textBaseline = 'top';
+    ctx.font = '10px arial';
+    ctx.fillText('v' + input.ver, 5, canvas.height - 15);
+}
