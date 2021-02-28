@@ -11,6 +11,8 @@
 * (done) Make checkBounds a public methods of poolMod
 * (done) have a boundingBox public method of poolMod for now
 * (done) start a utils.js, add bounding box to it, and have poolMod.boundingBox use that rather than the internal boundingBox helper
+* add createCanvas method to utils.js and use it to create the canvas
+
 * add a 'particles' pool that will be used to create objects that will be used each time a 'box' object is purged.
 * when a 'box' object becomes inactive (purged), 4 'particle' objects shoot out from the point where it happened
 * when a 'box' object becomes active (spawn), 4 'particle' objects will come to the point where it will spawn, and the spaen of the box will happen when they come together.
