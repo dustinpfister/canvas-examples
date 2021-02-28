@@ -41,6 +41,14 @@ draw.turretInfo = function (turret, ctx, canvas) {
     ctx.fillText('turret RPS: ' + turret.rps, 5, 45);
 };
 
+draw.ver = function (turret, ctx, canvas) {
+    ctx.fillStyle = 'white';
+    ctx.textBaseline = 'top';
+    ctx.textAlign = 'left';
+    ctx.font = '10px arial';
+    ctx.fillText('v' + turret.ver, 5, canvas.height - 15);
+};
+
 draw.enemies = function (game, ctx, canvas) {
     ctx.fillStyle = 'red';
     game.enemies.forEach(function (enemy) {

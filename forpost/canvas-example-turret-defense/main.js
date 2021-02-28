@@ -14,6 +14,7 @@ var loop = function () {
     draw.enemies(game, ctx, canvas);
     draw.turretInfo(game, ctx, canvas);
     draw.turretShots(game, ctx, canvas);
+    draw.ver(game, ctx, canvas);
 };
 loop();
 

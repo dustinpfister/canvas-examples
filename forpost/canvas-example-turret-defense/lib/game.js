@@ -161,6 +161,7 @@ var td = (function () {
     // the game object
     api.createGameObject = function () {
         return {
+            ver: '0.0.0',
             cx: canvas.width / 2,
             cy: canvas.height / 2,
             heading: 0,
