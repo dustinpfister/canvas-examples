@@ -1,10 +1,6 @@
-
-var container = document.getElementById('canvas-app'),
-canvas = document.createElement('canvas'),
-ctx = canvas.getContext('2d');
-canvas.width = 320;
-canvas.height = 240;
-container.appendChild(canvas);
+var canvasObj = utils.createCanvas(),
+canvas = canvasObj.canvas,
+ctx = canvasObj.ctx;
 
 // create a state with pool
 var state = {
