@@ -44,6 +44,7 @@ var Machine = (function () {
         var canvasObj = utils.createCanvas();
         // state machine Object
         var sm = {
+            ver: '0.0.0',
             currentState: null,
             currentMode: null,
             game: {},

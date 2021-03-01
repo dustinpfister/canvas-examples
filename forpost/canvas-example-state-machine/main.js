@@ -29,12 +29,17 @@ sm.load({
         }
 
         ctx.fillStyle = 'black';
+        ctx.textBaseline = 'top';
         ctx.fillRect(0, 0, sm.canvas.width, sm.canvas.height);
 
         ctx.fillStyle = 'white';
         ctx.fillText('manual: ' + g.manual.toFixed(2), 10, 20);
         ctx.fillText('auto: ' + g.auto.toFixed(2), 10, 30);
         ctx.fillText('pos: ' + g.pos.x.toFixed(2) + ', ' + g.pos.y.toFixed(2), 10, 40);
+
+        // ver
+        ctx.font = '10px arial';
+        ctx.fillText('v' + sm.ver, 5, sm.canvas.height - 15 );
 
     },
     userPointer: {
