@@ -1,5 +1,5 @@
 /*
-   canvas-example-turret-defense
+   canvas-example-state-machine
    Copyright 2020 by Dustin Pfister
    https://raw.githubusercontent.com/dustinpfister/canvas-examples/master/LICENSE
  
