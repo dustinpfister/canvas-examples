@@ -11,6 +11,7 @@ sm.load({
         g.auto = 0;
         g.autoTickRate = 3000;
         g.perAutoTick = 1;
+        g.pos = {x:0,y:0};
         g.lt = new Date();
 
     },
@@ -33,12 +34,15 @@ sm.load({
         ctx.fillStyle = 'white';
         ctx.fillText('manual: ' + g.manual.toFixed(2), 10, 20);
         ctx.fillText('auto: ' + g.auto.toFixed(2), 10, 30);
+        ctx.fillText('pos: ' + g.pos.x.toFixed(2) + ', ' + g.pos.y.toFixed(2), 10, 40);
 
     },
     userPointer: {
         start: function (pt, sm, e) {
-            console.log(e.type, pt.x, pt.y);
-            sm.game.manual += sm.game.perManual;
+            var g = sm.game;
+            g.manual += sm.game.perManual;
+            g.pos.x = pt.x;
+            g.pos.y = pt.y;
         }
     }
 });

@@ -34,6 +34,7 @@ var Machine = (function () {
     };
 */
     // get canvas relative point
+/*
     var getCanvasRelative = function (e) {
         var canvas = e.target,
         bx = canvas.getBoundingClientRect();
@@ -45,11 +46,12 @@ var Machine = (function () {
             bx: bx
         };
     };
+*/
 
     // attach a canvas event
     var attachCanvasEvent = function (sm, DOMType, smType) {
         sm.canvas.addEventListener(DOMType, function (e) {
-            var pos = getCanvasRelative(e),
+            var pos = utils.getCanvasRelative(e),
             stateObj = sm.states[sm.currentState],
             handler,
             mode;
