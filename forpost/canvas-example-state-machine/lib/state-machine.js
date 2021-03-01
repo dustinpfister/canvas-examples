@@ -3,6 +3,7 @@ var Machine = (function () {
     // PARSE arguments
 
     // Parse a container argument
+/*
     var parseContainer = function (container) {
         // if object assume element that is to be used as the container
         if (typeof container === 'object' && container != null) {
@@ -15,11 +16,13 @@ var Machine = (function () {
         // if we get this far return document.body
         return document.body;
     };
-
+*/
     // CANVAS
 
     // create a canvas for the given state machine
+/*
     var createCanvas = function (sm, w, h) {
+
         sm.canvas = document.createElement('canvas');
         sm.ctx = sm.canvas.getContext('2d');
         sm.container.appendChild(sm.canvas);
@@ -29,7 +32,7 @@ var Machine = (function () {
         sm.ctx.fillStyle = 'black';
         sm.ctx.fillRect(0, 0, sm.canvas.width, sm.canvas.height);
     };
-
+*/
     // get canvas relative point
     var getCanvasRelative = function (e) {
         var canvas = e.target,
@@ -85,6 +88,9 @@ var Machine = (function () {
     // create a new state machine
     return function (container, w, h) {
 
+
+        var canvasObj = utils.createCanvas();
+
         // state machine Object
         var sm = {
             currentState: null,
@@ -92,9 +98,9 @@ var Machine = (function () {
             game: {},
             draw: {},
             states: {},
-            canvas: null,
-            container: parseContainer(container),
-            ctx: null,
+            canvas: canvasObj.canvas,
+            container: canvasObj.container,  //parseContainer(container),
+            ctx: canvasObj.ctx,
             load: function (stateObj) {
                 // just reference the object for now as long as
                 // that works okay
@@ -113,8 +119,9 @@ var Machine = (function () {
             }
         };
 
+
         // create canvas and attach event handlers
-        createCanvas(sm, w, h);
+        //createCanvas(sm, w, h);
         attachAllCanvasEvents(sm);
 
         // main loop
