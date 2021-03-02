@@ -2,6 +2,16 @@ var draw = (function(){
 
     var api = {};
 
+    var strokeDirHelper = function(ctx, obj, dir){
+        ctx.beginPath();
+        ctx.moveTo(obj.x, obj.y);
+        ctx.lineTo(
+            obj.x + Math.cos(dir) * obj.r1,
+            obj.y + Math.sin(dir) * obj.r1
+        );
+        ctx.stroke();
+    };
+
     api.background = function (ctx, canvas) {
         ctx.fillStyle = 'black';
         ctx.fillRect(0, 0, canvas.width, canvas.height);
@@ -18,13 +28,12 @@ var draw = (function(){
         api.points(ctx, obj.points, 0, 0);
         ctx.restore();
 
-        ctx.beginPath();
-        ctx.moveTo(obj.x, obj.y);
-        ctx.lineTo(
-            obj.x + Math.cos(obj.facing) * obj.r1,
-            obj.y + Math.sin(obj.facing) * obj.r1
-        );
-        ctx.stroke();
+        ctx.strokeStyle = 'red';
+        strokeDirHelper(ctx, obj, obj.heading);
+
+        ctx.strokeStyle = 'blue';
+        strokeDirHelper(ctx, obj, obj.facing);
+
     };
 
     api.points = function (ctx, points, cx, cy) {

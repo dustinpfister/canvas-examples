@@ -11,7 +11,7 @@
 * (done) have two obj radians one for heading and one for facing
 * (done) change facing without changing heading
 * (done) have a draw.star method
-* have an IIFE for draw.js
+* (done) have an IIFE for draw.js
 
 * draw lines that show the current headings and facings
 * draw info in small print for each star
