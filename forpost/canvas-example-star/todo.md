@@ -4,7 +4,8 @@
 * (done) have a radius object that contains a current radius value, as well as direction, and rate of change values
 * (done) have a pool of objects for x,y, two radius objects for inner and outer radius, heading, hcps, and pps.
 * (done) at least ten objects in the pool
-* objects are wrapped around the canvas
+* (done) objects are wrapped around the canvas
+* alpha trans effect
 * must have a ver value that will be displayed in the canvas
 * make use of the utils.createCanvas method
 * make a pkg 0.0.0 folder
