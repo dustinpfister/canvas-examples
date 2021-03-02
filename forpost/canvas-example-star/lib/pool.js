@@ -58,6 +58,7 @@ var pool = (function(){
     api.createState = function (opt) {
         opt = opt || {};
         var state = {
+            ver: '0.0.0',
             maxDist: opt.maxDist || 50,
             canvas: opt.canvas,
             pool: []

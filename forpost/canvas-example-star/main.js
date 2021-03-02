@@ -22,6 +22,7 @@ var loop = function () {
     state.pool.forEach(function(obj){
         draw.star(ctx, obj);
     });
+    draw.ver(ctx, state);
     pool.update(state, secs);
     lt = now;
 };

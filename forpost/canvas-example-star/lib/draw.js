@@ -71,6 +71,13 @@ var draw = (function(){
         ctx.fill();
         ctx.restore();
     };
+    api.ver = function(ctx, state){
+        ctx.fillStyle = 'white';
+        ctx.font = '10px arial';
+        ctx.textBaseline = 'top';
+        ctx.textAlign = 'left';
+        ctx.fillText('v' + state.ver, 5, state.canvas.height - 15);
+    };
     // return public api
     return api;
 }());
