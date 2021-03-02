@@ -8,7 +8,7 @@ ctx = canvasObj.ctx;
 
 var state = pool.createState({
     count: 15,
-    maxDist: 150,
+    maxDist: 250,
     canvas: canvas
 }),
 lt = new Date();
