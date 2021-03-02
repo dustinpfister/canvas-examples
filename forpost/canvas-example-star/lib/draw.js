@@ -35,7 +35,7 @@ var draw = (function(){
     };
     // draw a star
     api.star = function(ctx, obj){
-        ctx.fillStyle = 'green';
+        ctx.fillStyle = obj.color || 'green';
         ctx.strokeStyle = 'white';
         ctx.lineWidth = 6;
         ctx.save();

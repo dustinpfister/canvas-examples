@@ -3,6 +3,10 @@ var pool = (function(){
 
     var api = {};
 
+    var colors = ['blue', 'red', 'white', 'green', 'lime', 'orange']
+    var setColor = function(state, obj){
+        obj.color = colors[Math.floor(Math.random() * colors.length)];
+    };
 
     var setAlpha = function(state, obj){
         obj.alpha = 1 - obj.d / state.maxDist;
@@ -58,9 +62,9 @@ var pool = (function(){
             canvas: opt.canvas,
             pool: []
         };
-        var i = 0;
+        var i = 0, star;
         while (i < 10) {
-            state.pool.push({
+            star = {
                 x: Math.random() * canvas.width,
                 y: Math.random() * canvas.height,
                 pointCount: 5 + Math.round(5 * Math.random()),
@@ -70,8 +74,11 @@ var pool = (function(){
                 facing: 0,
                 pps: 32,
                 alpha: 1,
+                color: 'blue',
                 points: []
-            });
+            };
+            setColor(state, star);
+            state.pool.push(star);
             pool.update(state, 0);
             i += 1;
         }
