@@ -5,10 +5,10 @@ var bounds = function(state, obj){
     var cx = state.canvas.width / 2,
     cy = state.canvas.height / 2;
     var d = utils.distance(obj.x, obj.y, cx, cy);
-    if(d > 100){
+    if(d > state.maxDist){
         var a = Math.atan(cy - obj.y, cx - obj.x);
-        obj.x = cx + Math.cos(a) * 90;
-        obj.y = cy + Math.sin(a) * 90;
+        obj.x = cx + Math.cos(a) * ( state.maxDist - 10 );
+        obj.y = cy + Math.sin(a) * ( state.maxDist - 10 );
     }
 };
 
@@ -33,11 +33,12 @@ pool.update = function (state, secs) {
 pool.createState = function (opt) {
     opt = opt || {};
     var state = {
+        maxDist: opt.maxDist || 50,
         canvas: opt.canvas,
         pool: []
     };
     var i = 0;
-    while (i < 1) {
+    while (i < 10) {
         state.pool.push({
             x: Math.random() * canvas.width,
             y: Math.random() * canvas.height,
