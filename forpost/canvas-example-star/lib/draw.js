@@ -3,7 +3,6 @@ var draw = {};
 draw.background = function (ctx, canvas) {
     ctx.fillStyle = 'black';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
-    ctx.strokeStyle = 'white';
 };
 
 draw.points = function (ctx, points, cx, cy) {

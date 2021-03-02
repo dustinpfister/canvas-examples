@@ -3,6 +3,11 @@ var pool = (function(){
 
     var api = {};
 
+
+    var setAlpha = function(state, obj){
+        obj.alpha = 1 - obj.d / state.maxDist;
+    };
+
     var setDistance = function(state, obj){
         var cx = state.canvas.width / 2,
         cy = state.canvas.height / 2;
@@ -32,8 +37,9 @@ var pool = (function(){
             // move by heading and pps
             obj.x += Math.cos(obj.heading) * obj.pps * secs;
             obj.y += Math.sin(obj.heading) * obj.pps * secs;
-            setDistance(state, obj);
-            bounds(state, obj);
+            setDistance(state, obj); // set distance
+            bounds(state, obj);      // do a bounds check
+            setAlpha(state, obj);     // set the alpha value
             obj.points = starMod.create1({
                 pointCount: obj.pointCount,
                 radius: obj.r1,
@@ -60,6 +66,7 @@ var pool = (function(){
                 r2: 10 + Math.round(10 * Math.random()),
                 heading: Math.PI * 2 * Math.random(),
                 pps: 32,
+                alpha: 1,
                 points: []
             });
             pool.update(state, 0);

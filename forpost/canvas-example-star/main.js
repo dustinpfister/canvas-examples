@@ -1,13 +1,13 @@
 var canvasObj = utils.createCanvas({
-    width: 640,
-    height: 480
+    width: 320,
+    height: 240
 }),
 canvas = canvasObj.canvas,
 ctx = canvasObj.ctx;
 
 
 var state = pool.createState({
-    maxDist: 50, //200,
+    maxDist: 150,
     canvas: canvas
 }),
 lt = new Date();
@@ -20,8 +20,11 @@ var loop = function () {
     draw.background(ctx, canvas);
     state.pool.forEach(function(obj){
         ctx.fillStyle = 'green';
+        ctx.strokeStyle = 'white';
         ctx.lineWidth = 3;
+        ctx.globalAlpha = obj.alpha;
         draw.points(ctx, obj.points, obj.x, obj.y);
+        ctx.globalAlpha = 1;
     });
     pool.update(state, secs);
     lt = now;
