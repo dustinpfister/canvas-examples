@@ -2,13 +2,16 @@ var draw = (function(){
 
     var api = {};
 
-    var strokeDirHelper = function(ctx, obj, dir){
+    var strokeDirHelper = function(ctx, obj, dir, radiusBegin, radiusEnd){
+        radiusBegin = radiusBegin === undefined ? obj.r2 : radiusBegin;
+        radiusEnd = radiusEnd === undefined ? obj.r1 : radiusEnd;
         ctx.beginPath();
-        ctx.moveTo(obj.x, obj.y);
+        ctx.moveTo(
+            obj.x + Math.cos(dir) * radiusBegin, 
+            obj.y + Math.sin(dir) * radiusBegin);
         ctx.lineTo(
-            obj.x + Math.cos(dir) * obj.r1,
-            obj.y + Math.sin(dir) * obj.r1
-        );
+            obj.x + Math.cos(dir) * radiusEnd,
+            obj.y + Math.sin(dir) * radiusEnd);
         ctx.stroke();
     };
 
@@ -20,7 +23,7 @@ var draw = (function(){
     api.star = function(ctx, obj){
         ctx.fillStyle = 'green';
         ctx.strokeStyle = 'white';
-        ctx.lineWidth = 3;
+        ctx.lineWidth = 6;
         ctx.save();
         ctx.globalAlpha = obj.alpha;
         ctx.translate(obj.x, obj.y);
@@ -28,11 +31,10 @@ var draw = (function(){
         api.points(ctx, obj.points, 0, 0);
         ctx.restore();
 
-        ctx.strokeStyle = 'red';
-        strokeDirHelper(ctx, obj, obj.heading);
-
-        ctx.strokeStyle = 'blue';
-        strokeDirHelper(ctx, obj, obj.facing);
+        ctx.lineWidth = 2;
+        ctx.strokeStyle = 'rgba(255,255,255,0.4)';
+        strokeDirHelper(ctx, obj, obj.heading, obj.r1 * 0.5, obj.r1);
+        strokeDirHelper(ctx, obj, obj.facing, 0, obj.r1 * 0.5);
 
     };
 
