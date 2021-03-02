@@ -45,7 +45,7 @@ var pool = (function(){
             bounds(state, obj);      // do a bounds check
             setAlpha(state, obj);     // set the alpha value
             obj.facing += Math.PI / 4 * secs;
-            obj.facing %= Math.PI * 2;
+            obj.facing = utils.mod(obj.facing, Math.PI * 2);
             obj.points = starMod.create1({
                 pointCount: obj.pointCount,
                 radius: obj.r1,

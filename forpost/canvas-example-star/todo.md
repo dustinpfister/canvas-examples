@@ -15,7 +15,9 @@
 * (done) draw lines that show the current headings and facings
 * (done) draw info in small print for each star
 * (done) more than one fill color
-* random pps
+* (done) random pps
+
+* random delta facing rates in both directions
 
 * must have a ver value that will be displayed in the canvas
 * make use of the utils.createCanvas method
