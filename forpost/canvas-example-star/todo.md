@@ -1,5 +1,9 @@
 # todo list for canvas-example-star
 
+## 0.1.0 - Gradiant background
+* add a gradiant background
+* make a pkg 0.1.0 folder
+
 ## 0.0.0 - First release of new star app
 * (done) have a radius object that contains a current radius value, as well as direction, and rate of change values
 * (done) have a pool of objects for x,y, two radius objects for inner and outer radius, heading, hcps, and pps.
@@ -17,7 +21,6 @@
 * (done) more than one fill color
 * (done) random pps
 * (done) random delta facing rates in both directions
-
-* must have a ver value that will be displayed in the canvas
-* make use of the utils.createCanvas method
-* make a pkg 0.0.0 folder
+* (done) must have a ver value that will be displayed in the canvas
+* (done) make use of the utils.createCanvas method
+* (done - 03/02/2021) make a pkg 0.0.0 folder
