@@ -62,8 +62,9 @@ var pool = (function(){
             canvas: opt.canvas,
             pool: []
         };
-        var i = 0, star;
-        while (i < 10) {
+        var i = 0, star,
+        len = opt.count || 10;
+        while (i < len) {
             star = {
                 x: Math.random() * canvas.width,
                 y: Math.random() * canvas.height,

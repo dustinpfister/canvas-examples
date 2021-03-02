@@ -38,8 +38,8 @@ var draw = (function(){
         ctx.fillStyle = obj.color || 'green';
         ctx.strokeStyle = 'white';
         ctx.lineWidth = 6;
-        ctx.save();
         ctx.globalAlpha = obj.alpha;
+        ctx.save();
         ctx.translate(obj.x, obj.y);
         ctx.rotate(obj.facing);
         api.points(ctx, obj.points, 0, 0);
@@ -49,6 +49,7 @@ var draw = (function(){
         ctx.strokeStyle = 'rgba(255,255,255,0.4)';
         strokeDirHelper(ctx, obj, obj.heading, obj.r1 * 0.5, obj.r1);
         strokeDirHelper(ctx, obj, obj.facing, 0, obj.r1 * 0.5);
+        ctx.globalAlpha = 1;
         drawStarInfo(ctx, obj);
     };
     // draw points
