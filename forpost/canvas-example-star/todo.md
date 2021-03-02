@@ -10,8 +10,7 @@
 * (done) alpha trans effect
 * (done) have two obj radians one for heading and one for facing
 * (done) change facing without changing heading
-
-* have a draw.star method
+* (done) have a draw.star method
 * have an IIFE for draw.js
 
 * draw lines that show the current headings and facings
