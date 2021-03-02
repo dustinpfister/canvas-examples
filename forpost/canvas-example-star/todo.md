@@ -8,11 +8,12 @@
 * (done) have an IIFE in pool.js
 * (done) have a setDistance helper in pool.js
 * (done) alpha trans effect
-* have two obj radians one for heading and one for facing
-* change facing without changing heading
-* draw a lines that show the current headings and facings
+* (done) have two obj radians one for heading and one for facing
+* (done) change facing without changing heading
+* draw lines that show the current headings and facings
 * draw info in small print for each star
 * more than one fill color
+* have a draw.star method
 
 * must have a ver value that will be displayed in the canvas
 * make use of the utils.createCanvas method
