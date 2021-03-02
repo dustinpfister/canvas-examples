@@ -1,6 +1,6 @@
 var canvasObj = utils.createCanvas({
-    width: 320,
-    height: 240
+    width: 640,
+    height: 480
 }),
 canvas = canvasObj.canvas,
 ctx = canvasObj.ctx;

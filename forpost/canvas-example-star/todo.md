@@ -12,8 +12,7 @@
 * (done) change facing without changing heading
 * (done) have a draw.star method
 * (done) have an IIFE for draw.js
-
-* draw lines that show the current headings and facings
+* (done) draw lines that show the current headings and facings
 * draw info in small print for each star
 * more than one fill color
 
