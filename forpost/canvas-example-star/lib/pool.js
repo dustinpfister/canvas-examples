@@ -40,6 +40,8 @@ var pool = (function(){
             setDistance(state, obj); // set distance
             bounds(state, obj);      // do a bounds check
             setAlpha(state, obj);     // set the alpha value
+            obj.facing += Math.PI / 4 * secs;
+            obj.facing %= Math.PI * 2;
             obj.points = starMod.create1({
                 pointCount: obj.pointCount,
                 radius: obj.r1,
@@ -65,6 +67,7 @@ var pool = (function(){
                 r1: 30 + Math.round(20 * Math.random()),
                 r2: 10 + Math.round(10 * Math.random()),
                 heading: Math.PI * 2 * Math.random(),
+                facing: 0,
                 pps: 32,
                 alpha: 1,
                 points: []

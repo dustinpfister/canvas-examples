@@ -23,7 +23,11 @@ var loop = function () {
         ctx.strokeStyle = 'white';
         ctx.lineWidth = 3;
         ctx.globalAlpha = obj.alpha;
-        draw.points(ctx, obj.points, obj.x, obj.y);
+        ctx.save();
+        ctx.translate(obj.x, obj.y);
+        ctx.rotate(obj.facing)
+        draw.points(ctx, obj.points, 0, 0);
+        ctx.restore();
         ctx.globalAlpha = 1;
     });
     pool.update(state, secs);
