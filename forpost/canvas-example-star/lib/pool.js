@@ -2,10 +2,13 @@
 var pool = {};
 
 var bounds = function(state, obj){
-    var d = utils.distance(obj.x, obj.y, state.canvas.width / 2, state.canvas.height / 2);
+    var cx = state.canvas.width / 2,
+    cy = state.canvas.height / 2;
+    var d = utils.distance(obj.x, obj.y, cx, cy);
     if(d > 100){
-        obj.x = state.canvas.width / 2;
-        obj.y = state.canvas.height / 2;
+        var a = Math.atan(cy - obj.y, cx - obj.x);
+        obj.x = cx + Math.cos(a) * 90;
+        obj.y = cy + Math.sin(a) * 90;
     }
 };
 
@@ -34,7 +37,7 @@ pool.createState = function (opt) {
         pool: []
     };
     var i = 0;
-    while (i < 10) {
+    while (i < 1) {
         state.pool.push({
             x: Math.random() * canvas.width,
             y: Math.random() * canvas.height,
