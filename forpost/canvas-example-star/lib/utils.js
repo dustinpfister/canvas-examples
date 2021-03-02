@@ -1,5 +1,9 @@
 var utils = {};
 
+utils.distance = function (x1, y1, x2, y2) {
+    return Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2));
+};
+
 utils.createCanvas = function(opt){
     opt = opt || {};
     opt.container = opt.container || document.getElementById('canvas-app') || document.body;

@@ -1,12 +1,8 @@
 
 var pool = {};
 
-var distance = function (x1, y1, x2, y2) {
-    return Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2));
-};
-
 var bounds = function(state, obj){
-    var d = distance(obj.x, obj.y, state.canvas.width / 2, state.canvas.height / 2);
+    var d = utils.distance(obj.x, obj.y, state.canvas.width / 2, state.canvas.height / 2);
     if(d > 100){
         obj.x = state.canvas.width / 2;
         obj.y = state.canvas.height / 2;
