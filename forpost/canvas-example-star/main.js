@@ -3,7 +3,9 @@ canvas = canvasObj.canvas,
 ctx = canvasObj.ctx;
 
 
-var state = pool.createState(),
+var state = pool.createState({
+    canvas: canvas
+}),
 lt = new Date();
 
 var loop = function () {
