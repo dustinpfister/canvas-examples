@@ -73,7 +73,7 @@ var pool = (function(){
                 r2: 10 + Math.round(10 * Math.random()),
                 heading: Math.PI * 2 * Math.random(),
                 facing: 0,
-                pps: 32,
+                pps: 16 + 64 * Math.random(),
                 alpha: 1,
                 color: 'blue',
                 points: []

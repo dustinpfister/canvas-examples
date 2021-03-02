@@ -13,8 +13,9 @@
 * (done) have a draw.star method
 * (done) have an IIFE for draw.js
 * (done) draw lines that show the current headings and facings
-* draw info in small print for each star
-* more than one fill color
+* (done) draw info in small print for each star
+* (done) more than one fill color
+* random pps
 
 * must have a ver value that will be displayed in the canvas
 * make use of the utils.createCanvas method
