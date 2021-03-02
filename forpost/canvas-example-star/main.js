@@ -1,10 +1,13 @@
-var canvasObj = utils.createCanvas(),
+var canvasObj = utils.createCanvas({
+    width: 640,
+    height: 480
+}),
 canvas = canvasObj.canvas,
 ctx = canvasObj.ctx;
 
 
 var state = pool.createState({
-    maxDist: 200,
+    maxDist: 50, //200,
     canvas: canvas
 }),
 lt = new Date();

@@ -3,6 +3,12 @@ var pool = (function(){
 
     var api = {};
 
+    var setDistance = function(state, obj){
+        var cx = state.canvas.width / 2,
+        cy = state.canvas.height / 2;
+        obj.d = utils.distance(obj.x, obj.y, cx, cy);
+    };
+
     // appy bounds
     var bounds = function(state, obj){
         var cx = state.canvas.width / 2,
@@ -11,7 +17,8 @@ var pool = (function(){
             var a = Math.atan(cy - obj.y, cx - obj.x);
             obj.x = cx + Math.cos(a) * ( state.maxDist - 10 );
             obj.y = cy + Math.sin(a) * ( state.maxDist - 10 );
-            obj.d = utils.distance(obj.x, obj.y, cx, cy);
+            //obj.d = utils.distance(obj.x, obj.y, cx, cy);
+            setDistance(state, obj);
         }
     };
 
@@ -25,7 +32,7 @@ var pool = (function(){
             // move by heading and pps
             obj.x += Math.cos(obj.heading) * obj.pps * secs;
             obj.y += Math.sin(obj.heading) * obj.pps * secs;
-            obj.d = utils.distance(obj.x, obj.y, cx, cy);
+            setDistance(state, obj);
             bounds(state, obj);
             obj.points = starMod.create1({
                 pointCount: obj.pointCount,
