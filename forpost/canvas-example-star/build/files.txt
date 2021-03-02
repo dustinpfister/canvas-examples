@@ -1,3 +1,4 @@
+../lib/utils.js
 ../lib/star.js
 ../lib/pool.js
 ../lib/draw.js
