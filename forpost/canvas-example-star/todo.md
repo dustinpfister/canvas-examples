@@ -10,10 +10,13 @@
 * (done) alpha trans effect
 * (done) have two obj radians one for heading and one for facing
 * (done) change facing without changing heading
+
+* have a draw.star method
+* have an IIFE for draw.js
+
 * draw lines that show the current headings and facings
 * draw info in small print for each star
 * more than one fill color
-* have a draw.star method
 
 * must have a ver value that will be displayed in the canvas
 * make use of the utils.createCanvas method

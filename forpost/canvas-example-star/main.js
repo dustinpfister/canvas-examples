@@ -19,25 +19,7 @@ var loop = function () {
     requestAnimationFrame(loop);
     draw.background(ctx, canvas);
     state.pool.forEach(function(obj){
-
-        ctx.fillStyle = 'green';
-        ctx.strokeStyle = 'white';
-        ctx.lineWidth = 3;
-        ctx.save();
-        ctx.globalAlpha = obj.alpha;
-        ctx.translate(obj.x, obj.y);
-        ctx.rotate(obj.facing);
-        draw.points(ctx, obj.points, 0, 0);
-        ctx.restore();
-
-        ctx.beginPath();
-        ctx.moveTo(obj.x, obj.y);
-        ctx.lineTo(
-            obj.x + Math.cos(obj.facing) * obj.r1,
-            obj.y + Math.sin(obj.facing) * obj.r1
-        );
-        ctx.stroke();
-
+        draw.star(ctx, obj);
     });
     pool.update(state, secs);
     lt = now;
