@@ -1,5 +1,6 @@
 // STATE
 var ptl = {
+    ver: '0.0.0',
     sec_current: 0,
     sec_target: 4,
     sec_total: 100,
@@ -97,6 +98,12 @@ var drawPTL = function (ptl, ctx, canvas) {
     ctx.font = '10px arial';
     ctx.fillText('sec_current ' + ptl.sec_current.toFixed(2), 10, 10);
     ctx.fillText('inrange ' + ptl.inRange, 10, 20);
+
+    ctx.fillStyle = 'white';
+    ctx.textBaseline = 'top';
+    ctx.font='10px arial';
+    ctx.textAlign = 'left';
+    ctx.fillText('v' + ptl.ver, 5, canvas.height - 15);
 
 };
 
