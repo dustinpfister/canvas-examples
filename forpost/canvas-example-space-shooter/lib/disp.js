@@ -54,7 +54,7 @@ Disp.prototype.moveObj = function (t) {
 };
 // distance
 Disp.prototype.distance = function (disp2) {
-    return Math.sqrt(Math.pow(this.x - disp2.x, 2) + Math.pow(this.y - disp2.y, 2));
+    return utils.distance(this.x, this.y, disp2.x, disp2.y);
 };
 
 
