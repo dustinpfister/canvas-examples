@@ -55,6 +55,7 @@ var States = (function () {
     };
     // PUBLIC API
     return {
+        ver: '0.0.0',
         canvas: canvas,
         ctx: ctx,
         win: false,

@@ -10,6 +10,13 @@ var draw = (function () {
         // clear
         ctx.fillRect(0, 0, canvas.width, canvas.height);
     };
+    var ver = function () {
+        ctx.fillStyle = 'white';
+        ctx.textBaseline = 'top';
+        ctx.font='10px arial';
+        ctx.textAlign = 'left';
+        ctx.fillText('v' + States.ver, 5, canvas.height - 15);
+    };
     var states = {
         none: function () {},
         game: function () {
@@ -33,6 +40,7 @@ var draw = (function () {
         cls();
         var drawState = states[States.current] || states['none'];
         drawState();
+        ver()
     };
 }
     ());
