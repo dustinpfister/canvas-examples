@@ -1,12 +1,13 @@
 var States = (function () {
 
     var lt = new Date(),
-    container = document.getElementById('canvas-app')
-    canvas = document.createElement('canvas'),
-    ctx = canvas.getContext('2d');
-    container.appendChild(canvas);
-    canvas.width = 320;
-    canvas.height = 240;
+    canvasObj = utils.createCanvas({
+        width: 320,
+        height: 240
+    }),
+    canvas = canvasObj.canvas,
+    ctx = canvasObj.ctx;
+
     // HELPERS
     // make enemies
     var makeEnemies = function (level, canvas) {
