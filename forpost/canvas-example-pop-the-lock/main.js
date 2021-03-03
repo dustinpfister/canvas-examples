@@ -103,13 +103,12 @@ var drawPTL = function (ptl, ctx, canvas) {
 // SETUP CANVAS
 (function () {
     // create and append canvas element, and get 2d context
-    var canvas = document.createElement('canvas'),
-    ctx = canvas.getContext('2d'),
-    container = document.getElementById('canvas-app') || document.body;
-    container.appendChild(canvas);
-    // set width and height
-    canvas.width = 320;
-    canvas.height = 240;
+    var canvasObj = utils.createCanvas({
+        width: 320,
+        height: 240
+    });
+    var canvas = canvasObj.canvas;
+    var ctx = canvasObj.ctx;
 
     canvas.addEventListener('click', ptl.click);
 
