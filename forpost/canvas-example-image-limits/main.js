@@ -1,11 +1,3 @@
-/*
-var canvas = document.getElementById('the-canvas'),
-ctx = canvas.getContext('2d'),
-inputStr = document.getElementById('img-str');
-
-canvas.width = 320;
-canvas.height = 320;
-*/
 
 var canvasObj = utils.createCanvas(),
 canvas = canvasObj.canvas,
@@ -17,8 +9,6 @@ inputStr.setAttribute('id', 'img-str');
 inputStr.setAttribute('type', 'text');
 canvasObj.container.appendChild(inputStr);
 
-//var inputStr = document.getElementById('img-str');
-
 var w = 4, h = 4,
 colorDepth = 2,
 str = IMG.stringFromIndex(38505, colorDepth, w * h),
@@ -28,12 +18,6 @@ IMG.draw(canvas, matrix);
 
 // update by clicking canvas
 canvas.addEventListener('click', function (e) {
-/*
-    var bx = e.target.getBoundingClientRect(),
-    size = canvas.width / w,
-    x = Math.floor((e.clientX - bx.left) / size),
-    y = Math.floor((e.clientY - bx.top) / size),
-*/
     var pos = utils.getCanvasRelative(e),
     size = canvas.width / w,
     x = Math.floor(pos.x / size),
