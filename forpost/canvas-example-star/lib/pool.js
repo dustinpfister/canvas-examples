@@ -2,7 +2,9 @@
 var pool = (function(){
 
     var STAR_SIZE_MIN = 5,
-    STAR_SIZE_MAX = 150;
+    STAR_SIZE_MAX = 150,
+    STAR_PPS_MIN = 64,
+    STAR_PPS_MAX = 200;
 
     var api = {};
 
@@ -90,7 +92,7 @@ var pool = (function(){
                 heading: Math.PI * 2 * Math.random(),
                 facing: 0,
                 facingDelta: -1 + 2 * Math.random(),
-                pps: 16 + 64 * Math.random(),
+                pps: STAR_PPS_MIN + (STAR_PPS_MAX - STAR_PPS_MIN) * Math.random(),
                 alpha: 1,
                 color: 'blue',
                 points: []
