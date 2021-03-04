@@ -66,6 +66,7 @@ var pool = (function(){
         opt = opt || {};
         var state = {
             ver: '0.1.0',
+            debugMode: false,
             count: opt.count || 5,
             starPPSMax: opt.starPPSMax || 64,
             starPPSMin: opt.starPPSMin || 32,

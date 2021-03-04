@@ -43,7 +43,7 @@ var draw = (function(){
         ctx.fillRect(0, 0, canvas.width, canvas.height);
     };
     // draw a star
-    api.star = function(ctx, obj){
+    api.star = function(ctx, obj, state){
         ctx.fillStyle = obj.color || 'green';
         ctx.strokeStyle = 'black';
         ctx.lineWidth = 6;
@@ -59,7 +59,9 @@ var draw = (function(){
         strokeDirHelper(ctx, obj, obj.heading, obj.r1 * 0.5, obj.r1);
         strokeDirHelper(ctx, obj, obj.facing, 0, obj.r1 * 0.5);
         ctx.globalAlpha = 1;
-        //drawStarInfo(ctx, obj);
+        if(state.debugMode){
+            drawStarInfo(ctx, obj);
+        }
     };
     // draw points
     api.points = function (ctx, points, cx, cy) {

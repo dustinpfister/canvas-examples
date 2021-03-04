@@ -33,11 +33,15 @@
         requestAnimationFrame(loop);
         draw.background(ctx, canvas, state.background);
         state.pool.forEach(function(obj){
-            draw.star(ctx, obj);
+            draw.star(ctx, obj, state);
         });
         draw.ver(ctx, state);
         pool.update(state, secs);
         lt = now;
     };
     loop();
+    // click event
+    state.canvas.addEventListener('click', function(e){
+        state.debugMode = !state.debugMode;
+    });
 }());
