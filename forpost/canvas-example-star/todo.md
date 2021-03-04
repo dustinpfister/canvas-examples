@@ -14,6 +14,7 @@
 * (done) add a gradiant background
 * (done) have varaible star size based on distance from the center using a setSize helper in pool.js
 * have CONSTANS for stars in pool.js
+* clicking the canvas just toggles a debug mode
 * make a pkg 0.1.0 folder
 
 ## 0.0.0 - First release of new star app
