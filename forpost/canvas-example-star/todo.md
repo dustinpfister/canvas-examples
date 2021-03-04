@@ -16,10 +16,12 @@
 
 ## 0.2.0 - Select a star
 * (done) create a getObjectAtPos public method for pool.js
-* state.selected property added that will be a ref to a selcted star, or null
-* make use of user pointer events to select a single star setting state.selected to a refernce of that disp object
-* clicking the background results in no star being slected setting state.selected back to null
-* display info only for a selected star for now at least
+* (done) state.selected property added that will be a ref to a selcted star, or null
+* (done) make use of user pointer events to select a single star setting state.selected to a refernce of that disp object
+* (done) clicking the background results in no star being slected setting state.selected back to null
+* (done) display info only for a selected star for now at least
+* make it so that a star will not update when selected
+
 * turn debug mode on and off by clicking near version number for now
 * debug more shows state values, and the values of the current seleted star if any
 * make a pkg 0.2.0 folder

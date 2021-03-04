@@ -37,6 +37,12 @@ var pool = (function(){
         }
     };
     // update a state object
+    var willUpdate = function(state, obj){
+        if(state.selected){
+            return !(state.selected.i === obj.i);
+        }
+        return true;
+    };
     api.update = function (state, secs) {
         var i = state.pool.length,
         cx = state.canvas.width / 2,
@@ -44,21 +50,23 @@ var pool = (function(){
         obj;
         while (i--) {
             obj = state.pool[i];
-            // move by heading and pps
-            obj.x += Math.cos(obj.heading) * obj.pps * secs;
-            obj.y += Math.sin(obj.heading) * obj.pps * secs;
-            setDistance(state, obj); // set distance
-            bounds(state, obj);      // do a bounds check
-            setAlpha(state, obj);    // set the alpha value
-            setSize(state, obj);     // set the size
-            obj.facing += obj.facingDelta * secs;
-            obj.facing = utils.mod(obj.facing, Math.PI * 2);
-            obj.points = starMod.create1({
-                pointCount: obj.pointCount,
-                radius: obj.r1,
-                radiusInner: obj.r2,
-                radianAjust: obj.heading
-            });
+            if(willUpdate(state, obj)){
+                // move by heading and pps
+                obj.x += Math.cos(obj.heading) * obj.pps * secs;
+                obj.y += Math.sin(obj.heading) * obj.pps * secs;
+                setDistance(state, obj); // set distance
+                bounds(state, obj);      // do a bounds check
+                setAlpha(state, obj);    // set the alpha value
+                setSize(state, obj);     // set the size
+                obj.facing += obj.facingDelta * secs;
+                obj.facing = utils.mod(obj.facing, Math.PI * 2);
+                obj.points = starMod.create1({
+                    pointCount: obj.pointCount,
+                    radius: obj.r1,
+                    radiusInner: obj.r2,
+                    radianAjust: obj.heading
+                });
+            }
         }
     };
     // create a state object
