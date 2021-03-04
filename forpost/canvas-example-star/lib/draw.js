@@ -1,5 +1,4 @@
 var draw = (function(){
-
     // draw direction helper
     var strokeDirHelper = function(ctx, obj, dir, radiusBegin, radiusEnd){
         radiusBegin = radiusBegin === undefined ? obj.r2 : radiusBegin;
@@ -15,7 +14,7 @@ var draw = (function(){
     };
     // draw star info
     var drawStarInfo = function(ctx, obj){
-        ctx.fillStyle = 'rgba(128,128,128,0.2)';
+        ctx.fillStyle = 'rgba(0,0,0,0.5)';
         ctx.font = '10px arial';
         ctx.textBaseline = 'top';
         ctx.textAlign = 'left';
@@ -27,14 +26,25 @@ var draw = (function(){
     // start public api
     var api = {};
     // draw background
-    api.background = function (ctx, canvas) {
-        ctx.fillStyle = 'black';
+    api.createBackground = function(ctx, canvas){
+        var gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+        // Add color stops
+        gradient.addColorStop(0, 'red');
+        gradient.addColorStop(0.2, 'orange');
+        gradient.addColorStop(0.4, 'yellow');
+        gradient.addColorStop(0.6, 'blue');
+        gradient.addColorStop(0.8, 'cyan');
+        gradient.addColorStop(1, 'lime');
+        return gradient;
+    };
+    api.background = function (ctx, canvas, style) {
+        ctx.fillStyle = style || 'black';
         ctx.fillRect(0, 0, canvas.width, canvas.height);
     };
     // draw a star
     api.star = function(ctx, obj){
         ctx.fillStyle = obj.color || 'green';
-        ctx.strokeStyle = 'white';
+        ctx.strokeStyle = 'black';
         ctx.lineWidth = 6;
         ctx.globalAlpha = obj.alpha;
         ctx.save();
