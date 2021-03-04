@@ -14,6 +14,8 @@
         //count: 15,
         starSizeMax: STAR_SIZE_MAX,
         starSizeMin: STAR_SIZE_MIN,
+        starPPSMax: 200,
+        starPPSMin: 100,
         maxDist: canvas.width / 2,
         canvas: canvas
     }),

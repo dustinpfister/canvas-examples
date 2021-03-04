@@ -71,6 +71,8 @@ var pool = (function(){
         opt = opt || {};
         var state = {
             ver: '0.1.0',
+            starPPSMax: opt.starPPSMax || 64,
+            starPPSMin: opt.starPPSMin || 32,
             starSizeMax: opt.starSizeMax || 20,
             starSizeMin: opt.starSizeMin || 10,
             maxDist: opt.maxDist || 50,
@@ -89,7 +91,7 @@ var pool = (function(){
                 heading: Math.PI * 2 * Math.random(),
                 facing: 0,
                 facingDelta: -1 + 2 * Math.random(),
-                pps: STAR_PPS_MIN + (STAR_PPS_MAX - STAR_PPS_MIN) * Math.random(),
+                pps: state.starPPSMin + (state.starPPSMax - state.starPPSMin) * Math.random(),
                 alpha: 1,
                 color: 'blue',
                 points: []
