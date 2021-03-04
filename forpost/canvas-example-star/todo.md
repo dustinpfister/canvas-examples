@@ -1,11 +1,19 @@
 # todo list for canvas-example-star
 
-## 0.x.0 - create2 fixed and method prop
-* fix problem with create2 method where it can not render stars with an even number of points
 
 ## 0.x.0 - Mutate a star
 * when a star is selcted make it so a simple ui pops up for it
 * this ui can be used to change star values
+
+## 0.x.0 - More advanced movement
+* work out more than one update method for changing the heading of a star
+
+## 0.x.0 - create2 fixed, method prop, new create methods
+* fix problem with create2 method where it can not render stars with an even number of points
+* update draw points method to work with an array of arrays of points so that it will work well with create1, and create2
+* have an object method prop for object pool objects that will be the create method to use for a display object
+* have a create3 method that also creates a star, but can be given an array of angles and distances to offet each point in the star
+* have a create4 method that wil just create a plain polygon, or circle for that matter if yuo set the number of sides high enough.
 
 ## 0.2.0 - Select a star
 * make use of user pointer events to select a single star
