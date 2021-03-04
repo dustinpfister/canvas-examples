@@ -1,7 +1,8 @@
 # todo list for canvas-example-star
 
-## 0.1.0 - Gradiant background
+## 0.1.0 - Gradiant background, and star size
 * add a gradiant background
+* have varaible star size based on distance from the center
 * make a pkg 0.1.0 folder
 
 ## 0.0.0 - First release of new star app

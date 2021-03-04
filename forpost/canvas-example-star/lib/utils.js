@@ -7,6 +7,9 @@ utils.distance = function (x1, y1, x2, y2) {
 utils.mod = function (x, m) {
     return (x % m + m) % m;
 };
+utils.radianToDegree = function(radian){
+    return Math.floor(radian / (Math.PI * 2) * 360);
+};
 // create a canvas
 utils.createCanvas = function(opt){
     opt = opt || {};

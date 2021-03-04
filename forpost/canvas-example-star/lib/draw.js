@@ -1,7 +1,5 @@
 var draw = (function(){
-    var radianToDegree = function(radian){
-        return Math.floor(radian / (Math.PI * 2) * 360);
-    };
+
     // draw direction helper
     var strokeDirHelper = function(ctx, obj, dir, radiusBegin, radiusEnd){
         radiusBegin = radiusBegin === undefined ? obj.r2 : radiusBegin;
@@ -23,8 +21,8 @@ var draw = (function(){
         ctx.textAlign = 'left';
         ctx.fillText('pos: ' + Math.floor(obj.x) + ', ' + Math.floor(obj.y), obj.x + 10, obj.y + 10);
         ctx.fillText('pps: ' + Math.floor(obj.pps), obj.x + 10, obj.y + 20);
-        ctx.fillText('heading: ' + radianToDegree(obj.heading), obj.x + 10, obj.y + 30);
-        ctx.fillText('facing: ' + radianToDegree(obj.facing), obj.x + 10, obj.y + 40);
+        ctx.fillText('heading: ' + utils.radianToDegree(obj.heading), obj.x + 10, obj.y + 30);
+        ctx.fillText('facing: ' + utils.radianToDegree(obj.facing), obj.x + 10, obj.y + 40);
     };
     // start public api
     var api = {};
