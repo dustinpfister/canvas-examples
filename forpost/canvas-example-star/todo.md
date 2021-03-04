@@ -1,6 +1,5 @@
 # todo list for canvas-example-star
 
-
 ## 0.x.0 - Mutate a star
 * when a star is selcted make it so a simple ui pops up for it
 * this ui can be used to change star values
@@ -16,9 +15,13 @@
 * have a create4 method that wil just create a plain polygon, or circle for that matter if yuo set the number of sides high enough.
 
 ## 0.2.0 - Select a star
-* make use of user pointer events to select a single star
-* clicking the background results in no star being slected
-* display info only for a selected star
+* create a getStarAtPos public method for pool.js
+* state.selcted property added that will be a ref to a selcted star, or null
+* make use of user pointer events to select a single star setting state.selected to a refernce of that disp object
+* clicking the background results in no star being slected setting state.selected back to null
+* display info only for a selected star for now at least
+* turn debug mode on and off by clicking near version number for now
+* debug more shows state values, and the values of the current seleted star if any
 * make a pkg 0.2.0 folder
 
 ## 0.1.0 - Gradiant background, star size

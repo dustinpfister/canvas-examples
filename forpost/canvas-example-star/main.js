@@ -14,6 +14,7 @@
     ctx = canvasObj.ctx;
     // main state object
     var state = pool.createState({
+        ver: '0.2.0',
         count: STAR_COUNT,
         starSizeMax: STAR_SIZE_MAX,
         starSizeMin: STAR_SIZE_MIN,
@@ -42,6 +43,7 @@
     loop();
     // click event
     state.canvas.addEventListener('click', function(e){
+        var pos = utils.getCanvasRealtive(e);
         state.debugMode = !state.debugMode;
     });
 }());

@@ -65,7 +65,7 @@ var pool = (function(){
     api.createState = function (opt) {
         opt = opt || {};
         var state = {
-            ver: '0.1.0',
+            ver: opt.ver || '0.0.0',
             debugMode: false,
             count: opt.count || 5,
             starPPSMax: opt.starPPSMax || 64,
