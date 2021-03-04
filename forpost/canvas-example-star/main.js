@@ -1,6 +1,9 @@
 (function(){
     // CONSTANTS
-    var STAR_SIZE_MIN = 37.5,
+    var STAR_COUNT = 20,
+    STAR_PPS_MIN = 64,
+    STAR_PPS_MAX = 200,
+    STAR_SIZE_MIN = 37.5,
     STAR_SIZE_MAX = 150;
     // create canvas
     var canvasObj = utils.createCanvas({
@@ -11,11 +14,11 @@
     ctx = canvasObj.ctx;
     // main state object
     var state = pool.createState({
-        //count: 15,
+        count: STAR_COUNT,
         starSizeMax: STAR_SIZE_MAX,
         starSizeMin: STAR_SIZE_MIN,
-        starPPSMax: 200,
-        starPPSMin: 100,
+        starPPSMax: STAR_PPS_MAX,
+        starPPSMin: STAR_PPS_MIN,
         maxDist: canvas.width / 2,
         canvas: canvas
     }),

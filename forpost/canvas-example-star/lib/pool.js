@@ -1,8 +1,5 @@
 
 var pool = (function(){
-    var STAR_COUNT = 20,
-    STAR_PPS_MIN = 64,
-    STAR_PPS_MAX = 200;
     // public API
     var api = {};
     // set color
@@ -71,6 +68,7 @@ var pool = (function(){
         opt = opt || {};
         var state = {
             ver: '0.1.0',
+            count: opt.count || 5,
             starPPSMax: opt.starPPSMax || 64,
             starPPSMin: opt.starPPSMin || 32,
             starSizeMax: opt.starSizeMax || 20,
@@ -80,11 +78,11 @@ var pool = (function(){
             pool: []
         };
         var i = 0, star,
-        len = opt.count || STAR_COUNT;
+        len = state.count;
         while (i < len) {
             star = {
-                x: Math.random() * state.canvas.width,
-                y: Math.random() * state.canvas.height,
+                x: state.canvas.width / 2, // Math.random() * state.canvas.width,
+                y: state.canvas.height / 2, // Math.random() * state.canvas.height,
                 pointCount: 5 + Math.round(5 * Math.random()),
                 r1: state.starSizeMax,
                 r2: state.starSizeMin,
