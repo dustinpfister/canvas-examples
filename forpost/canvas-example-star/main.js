@@ -1,4 +1,4 @@
-
+(function(){
 // create canvas
 var canvasObj = utils.createCanvas({
     width: 640,
@@ -30,3 +30,4 @@ var loop = function () {
     lt = now;
 };
 loop();
+}());

@@ -13,7 +13,12 @@
 ## 0.1.0 - Gradiant background, star size
 * (done) add a gradiant background
 * (done) have varaible star size based on distance from the center using a setSize helper in pool.js
-* have CONSTANS for stars in pool.js
+* (done) have CONSTANS for stars in pool.js
+
+* improve the list of options for the pool create method
+* wrap main.js into an iife
+* move constants from pool.js to main.js
+
 * clicking the canvas just toggles a debug mode
 * make a pkg 0.1.0 folder
 

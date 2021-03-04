@@ -1,36 +1,33 @@
 
 var pool = (function(){
-
     var STAR_COUNT = 60,
     STAR_SIZE_MIN = 5,
     STAR_SIZE_MAX = 150,
     STAR_PPS_MIN = 64,
     STAR_PPS_MAX = 200;
-
+    // public API
     var api = {};
-
+    // set color
     var colors = ['blue', 'red', 'white', 'green', 'lime', 'orange']
     var setColor = function(state, obj){
         obj.color = colors[Math.floor(Math.random() * colors.length)];
     };
-
+    // set alpha
     var setAlpha = function(state, obj){
         obj.alpha = 1 - obj.d / state.maxDist;
     };
-
+    // set the distance between a star and the center
     var setDistance = function(state, obj){
         var cx = state.canvas.width / 2,
         cy = state.canvas.height / 2;
         obj.d = utils.distance(obj.x, obj.y, cx, cy);
     };
-
+    // set the size of a star
     var setSize = function(state, obj){
         var per = 1 - obj.d / state.maxDist,
         maxDelta = STAR_SIZE_MAX - STAR_SIZE_MIN,
         delta1 = maxDelta * 0.25 + maxDelta * 0.75 * per,
         delta2 = maxDelta * 0.25 * per;
-        //obj.r1 = 10 + 60 * per;
-        //obj.r2 = 5 + 20 * per;
         obj.r1 = STAR_SIZE_MIN + delta1 * per;
         obj.r2 = STAR_SIZE_MIN + delta2 * per;
     };
@@ -43,7 +40,6 @@ var pool = (function(){
             var a = Math.atan(cy - obj.y, cx - obj.x);
             obj.x = cx + Math.cos(a) * ( state.maxDist - 10 );
             obj.y = cy + Math.sin(a) * ( state.maxDist - 10 );
-            //obj.d = utils.distance(obj.x, obj.y, cx, cy);
             setDistance(state, obj);
         }
     };
@@ -85,8 +81,8 @@ var pool = (function(){
         len = opt.count || STAR_COUNT;
         while (i < len) {
             star = {
-                x: Math.random() * canvas.width,
-                y: Math.random() * canvas.height,
+                x: Math.random() * state.canvas.width,
+                y: Math.random() * state.canvas.height,
                 pointCount: 5 + Math.round(5 * Math.random()),
                 r1: STAR_SIZE_MAX,
                 r2: STAR_SIZE_MIN,
