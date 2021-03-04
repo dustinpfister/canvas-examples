@@ -1,3 +1,4 @@
+
 // create canvas
 var canvasObj = utils.createCanvas({
     width: 640,
@@ -7,7 +8,7 @@ canvas = canvasObj.canvas,
 ctx = canvasObj.ctx;
 // main state object
 var state = pool.createState({
-    count: 15,
+    //count: 15,
     maxDist: canvas.width / 2,
     canvas: canvas
 }),

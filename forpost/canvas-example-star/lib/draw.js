@@ -59,7 +59,7 @@ var draw = (function(){
         strokeDirHelper(ctx, obj, obj.heading, obj.r1 * 0.5, obj.r1);
         strokeDirHelper(ctx, obj, obj.facing, 0, obj.r1 * 0.5);
         ctx.globalAlpha = 1;
-        drawStarInfo(ctx, obj);
+        //drawStarInfo(ctx, obj);
     };
     // draw points
     api.points = function (ctx, points, cx, cy) {

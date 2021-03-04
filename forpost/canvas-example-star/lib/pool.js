@@ -1,7 +1,8 @@
 
 var pool = (function(){
 
-    var STAR_SIZE_MIN = 5,
+    var STAR_COUNT = 60,
+    STAR_SIZE_MIN = 5,
     STAR_SIZE_MAX = 150,
     STAR_PPS_MIN = 64,
     STAR_PPS_MAX = 200;
@@ -81,7 +82,7 @@ var pool = (function(){
             pool: []
         };
         var i = 0, star,
-        len = opt.count || 10;
+        len = opt.count || STAR_COUNT;
         while (i < len) {
             star = {
                 x: Math.random() * canvas.width,
