@@ -1,8 +1,6 @@
 
 var pool = (function(){
     var STAR_COUNT = 20,
-    STAR_SIZE_MIN = 5,
-    STAR_SIZE_MAX = 150,
     STAR_PPS_MIN = 64,
     STAR_PPS_MAX = 200;
     // public API
@@ -25,11 +23,11 @@ var pool = (function(){
     // set the size of a star
     var setSize = function(state, obj){
         var per = 1 - obj.d / state.maxDist,
-        maxDelta = STAR_SIZE_MAX - STAR_SIZE_MIN,
+        maxDelta = state.starSizeMax - state.starSizeMin,
         delta1 = maxDelta * 0.25 + maxDelta * 0.75 * per,
         delta2 = maxDelta * 0.25 * per;
-        obj.r1 = STAR_SIZE_MIN + delta1 * per;
-        obj.r2 = STAR_SIZE_MIN + delta2 * per;
+        obj.r1 = state.starSizeMin + delta1 * per;
+        obj.r2 = state.starSizeMin + delta2 * per;
     };
 
     // appy bounds
@@ -73,6 +71,8 @@ var pool = (function(){
         opt = opt || {};
         var state = {
             ver: '0.1.0',
+            starSizeMax: opt.starSizeMax || 20,
+            starSizeMin: opt.starSizeMin || 10,
             maxDist: opt.maxDist || 50,
             canvas: opt.canvas,
             pool: []
@@ -84,8 +84,8 @@ var pool = (function(){
                 x: Math.random() * state.canvas.width,
                 y: Math.random() * state.canvas.height,
                 pointCount: 5 + Math.round(5 * Math.random()),
-                r1: STAR_SIZE_MAX,
-                r2: STAR_SIZE_MIN,
+                r1: state.starSizeMax,
+                r2: state.starSizeMin,
                 heading: Math.PI * 2 * Math.random(),
                 facing: 0,
                 facingDelta: -1 + 2 * Math.random(),
