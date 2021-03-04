@@ -20,8 +20,8 @@
 * (done) improve the list of options for the pool create method
 * (done) wrap main.js into an iife
 * (done) move constants from pool.js to main.js
-* clicking the canvas just toggles a debug mode
-* make a pkg 0.1.0 folder
+* (done) clicking the canvas just toggles a debug mode
+* (done - 03/04/2021) make a pkg 0.1.0 folder
 
 ## 0.0.0 - First release of new star app
 * (done) have a radius object that contains a current radius value, as well as direction, and rate of change values
