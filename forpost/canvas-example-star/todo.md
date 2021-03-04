@@ -1,8 +1,9 @@
 # todo list for canvas-example-star
 
-## 0.1.0 - Gradiant background, star size
+## 0.1.0 - Gradiant background, star size, user position
 * (done) add a gradiant background
-* have varaible star size based on distance from the center
+* (done) have varaible star size based on distance from the center using a setSize helper in pool.js
+* make use of user pointer events to select a single star
 * make a pkg 0.1.0 folder
 
 ## 0.0.0 - First release of new star app

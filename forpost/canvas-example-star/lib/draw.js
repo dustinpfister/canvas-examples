@@ -37,6 +37,7 @@ var draw = (function(){
         gradient.addColorStop(1, 'lime');
         return gradient;
     };
+    // create a background
     api.background = function (ctx, canvas, style) {
         ctx.fillStyle = style || 'black';
         ctx.fillRect(0, 0, canvas.width, canvas.height);

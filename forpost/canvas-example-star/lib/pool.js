@@ -18,6 +18,12 @@ var pool = (function(){
         obj.d = utils.distance(obj.x, obj.y, cx, cy);
     };
 
+    var setSize = function(state, obj){
+        var per = 1 - obj.d / state.maxDist;
+        obj.r1 = 10 + 60 * per;
+        obj.r2 = 5 + 20 * per;
+    };
+
     // appy bounds
     var bounds = function(state, obj){
         var cx = state.canvas.width / 2,
@@ -43,7 +49,8 @@ var pool = (function(){
             obj.y += Math.sin(obj.heading) * obj.pps * secs;
             setDistance(state, obj); // set distance
             bounds(state, obj);      // do a bounds check
-            setAlpha(state, obj);     // set the alpha value
+            setAlpha(state, obj);    // set the alpha value
+            setSize(state, obj);     // set the size
             obj.facing += obj.facingDelta * secs;
             obj.facing = utils.mod(obj.facing, Math.PI * 2);
             obj.points = starMod.create1({

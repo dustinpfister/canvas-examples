@@ -7,6 +7,7 @@ utils.distance = function (x1, y1, x2, y2) {
 utils.mod = function (x, m) {
     return (x % m + m) % m;
 };
+// radian to degree helper
 utils.radianToDegree = function(radian){
     return Math.floor(radian / (Math.PI * 2) * 360);
 };
