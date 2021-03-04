@@ -1,6 +1,6 @@
 
 var pool = (function(){
-    var STAR_COUNT = 60,
+    var STAR_COUNT = 20,
     STAR_SIZE_MIN = 5,
     STAR_SIZE_MAX = 150,
     STAR_PPS_MIN = 64,

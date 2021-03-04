@@ -1,5 +1,8 @@
 # todo list for canvas-example-star
 
+## 0.x.0 - create2 fixed and method prop
+* fix problem with create2 method where it can not render stars with an even number of points
+
 ## 0.x.0 - Mutate a star
 * when a star is selcted make it so a simple ui pops up for it
 * this ui can be used to change star values
