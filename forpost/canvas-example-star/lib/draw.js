@@ -80,8 +80,9 @@ var draw = (function(){
         ctx.fill();
         ctx.restore();
     };
+    // draw version number
     api.ver = function(ctx, state){
-        ctx.fillStyle = 'white';
+        ctx.fillStyle = 'black';
         ctx.font = '10px arial';
         ctx.textBaseline = 'top';
         ctx.textAlign = 'left';

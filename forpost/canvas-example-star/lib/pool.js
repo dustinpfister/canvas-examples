@@ -1,4 +1,3 @@
-
 var pool = (function(){
     // public API
     var api = {};
@@ -26,7 +25,6 @@ var pool = (function(){
         obj.r1 = state.starSizeMin + delta1 * per;
         obj.r2 = state.starSizeMin + delta2 * per;
     };
-
     // appy bounds
     var bounds = function(state, obj){
         var cx = state.canvas.width / 2,
@@ -38,7 +36,7 @@ var pool = (function(){
             setDistance(state, obj);
         }
     };
-
+    // update a state object
     api.update = function (state, secs) {
         var i = state.pool.length,
         cx = state.canvas.width / 2,
@@ -63,7 +61,7 @@ var pool = (function(){
             });
         }
     };
-
+    // create a state object
     api.createState = function (opt) {
         opt = opt || {};
         var state = {
@@ -81,9 +79,9 @@ var pool = (function(){
         len = state.count;
         while (i < len) {
             star = {
-                x: state.canvas.width / 2, // Math.random() * state.canvas.width,
-                y: state.canvas.height / 2, // Math.random() * state.canvas.height,
-                pointCount: 5 + Math.round(5 * Math.random()),
+                x: state.canvas.width / 2,
+                y: state.canvas.height / 2,
+                pointCount: 5 + Math.round(15 * Math.random()),
                 r1: state.starSizeMax,
                 r2: state.starSizeMin,
                 heading: Math.PI * 2 * Math.random(),
@@ -101,7 +99,6 @@ var pool = (function(){
         }
         return state;
     };
-
+    // return the public api
     return api;
-
 }());

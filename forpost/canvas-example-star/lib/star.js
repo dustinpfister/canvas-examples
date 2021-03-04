@@ -1,5 +1,4 @@
 var starMod = (function () {
-
     // get a point with a given radian, radius, and origin point
     var getPoint = function (radian, radius, ox, oy) {
         return {
@@ -7,7 +6,6 @@ var starMod = (function () {
             y: Math.sin(radian) * radius + oy
         };
     };
-
     // parse options
     var parseOptions = function (opt) {
         opt = opt || {};
@@ -20,7 +18,6 @@ var starMod = (function () {
         opt.pointSkip = opt.pointSkip || 2;
         return opt;
     };
-
     // public API
     return {
         // create a star points array by pointCount, and inner and outer radius
@@ -56,6 +53,5 @@ var starMod = (function () {
             return points;
         }
     }
-
 }
     ());
