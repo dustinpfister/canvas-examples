@@ -1,18 +1,20 @@
+// create canvas
 var canvasObj = utils.createCanvas({
     width: 640,
     height: 480
 }),
 canvas = canvasObj.canvas,
 ctx = canvasObj.ctx;
+// main state object
 var state = pool.createState({
     count: 15,
     maxDist: 250,
     canvas: canvas
 }),
 lt = new Date();
-
+// background
 state.background = draw.createBackground(ctx, canvas)
-
+// main app loop
 var loop = function () {
     var now = new Date(),
     t = now - lt,
