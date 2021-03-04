@@ -80,8 +80,8 @@ var pool = (function(){
         len = state.count;
         while (i < len) {
             star = {
-                x: state.canvas.width / 2,
-                y: state.canvas.height / 2,
+                x: state.canvas.width * Math.random(),
+                y: state.canvas.height * Math.random(),
                 pointCount: 5 + Math.round(15 * Math.random()),
                 r1: state.starSizeMax,
                 r2: state.starSizeMin,
@@ -99,6 +99,18 @@ var pool = (function(){
             i += 1;
         }
         return state;
+    };
+    // get an object at pos or flase if nothing
+    api.getObjectAtPos = function(state, x, y){
+        var i = state.pool.length,
+        obj;
+        while(i--){
+            obj = state.pool[i];
+            if(utils.distance(x,y,obj.x,obj.y) <= obj.r1){
+                return obj
+            }
+        }
+        return false;
     };
     // return the public api
     return api;

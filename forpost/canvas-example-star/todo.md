@@ -15,7 +15,7 @@
 * have a create4 method that wil just create a plain polygon, or circle for that matter if yuo set the number of sides high enough.
 
 ## 0.2.0 - Select a star
-* create a getStarAtPos public method for pool.js
+* create a getObjectAtPos public method for pool.js
 * state.selcted property added that will be a ref to a selcted star, or null
 * make use of user pointer events to select a single star setting state.selected to a refernce of that disp object
 * clicking the background results in no star being slected setting state.selected back to null
