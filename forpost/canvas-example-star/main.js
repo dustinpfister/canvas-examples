@@ -43,7 +43,13 @@
     loop();
     // click event
     state.canvas.addEventListener('click', function(e){
-        var pos = utils.getCanvasRealtive(e);
-        state.debugMode = !state.debugMode;
+        var pos = utils.getCanvasRelative(e),
+        obj = pool.getObjectAtPos(state, pos.x, pos.y);
+        if(obj){
+            state.selected = obj;
+        }else{
+            state.selected = null;
+        }
+        //state.debugMode = !state.debugMode;
     });
 }());

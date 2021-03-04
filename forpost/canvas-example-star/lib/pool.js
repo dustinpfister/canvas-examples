@@ -74,12 +74,14 @@ var pool = (function(){
             starSizeMin: opt.starSizeMin || 10,
             maxDist: opt.maxDist || 50,
             canvas: opt.canvas,
-            pool: []
+            pool: [],
+            selected: null // ref to a selected object or null
         };
         var i = 0, star,
         len = state.count;
         while (i < len) {
             star = {
+                i, i,
                 x: state.canvas.width * Math.random(),
                 y: state.canvas.height * Math.random(),
                 pointCount: 5 + Math.round(15 * Math.random()),

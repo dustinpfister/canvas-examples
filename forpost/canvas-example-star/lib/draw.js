@@ -59,8 +59,8 @@ var draw = (function(){
         strokeDirHelper(ctx, obj, obj.heading, obj.r1 * 0.5, obj.r1);
         strokeDirHelper(ctx, obj, obj.facing, 0, obj.r1 * 0.5);
         ctx.globalAlpha = 1;
-        if(state.debugMode){
-            drawStarInfo(ctx, obj);
+        if(state.selected){
+            drawStarInfo(ctx, state.selected);
         }
     };
     // draw points
