@@ -1,9 +1,19 @@
 # todo list for canvas-example-star
 
-## 0.1.0 - Gradiant background, star size, user position
+## 0.x.0 - Mutate a star
+* when a star is selcted make it so a simple ui pops up for it
+* this ui can be used to change star values
+
+## 0.2.0 - Select a star
+* make use of user pointer events to select a single star
+* clicking the background results in no star being slected
+* display info only for a selected star
+* make a pkg 0.2.0 folder
+
+## 0.1.0 - Gradiant background, star size
 * (done) add a gradiant background
 * (done) have varaible star size based on distance from the center using a setSize helper in pool.js
-* make use of user pointer events to select a single star
+* have CONSTANS for stars in pool.js
 * make a pkg 0.1.0 folder
 
 ## 0.0.0 - First release of new star app
