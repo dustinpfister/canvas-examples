@@ -13,10 +13,14 @@
         currentState: 'game',
         setState: function(sm, key){
             sm.currentState = key;
+            sm.states[sm.currentState].init(sm);
         },
         states: {
             mainMenu: {},
             game: {
+               init: function(sm){
+                   sm.game = gameMod.create();
+               },
                update: function(sm){
                    gameMod.update(sm.game);
                    if(sm.game.hp <= 0){
@@ -36,9 +40,15 @@
                }
             },
             gameOver: {
+                init: function(sm){},
                 update: function(sm){},
-                onClick: function(sm, pos, e){},
-                draw: function(sm, ctx, canvas){}
+                onClick: function(sm, pos, e){
+                    sm.setState(sm, 'game');
+                },
+                draw: function(sm, ctx, canvas){
+                    ctx.fillStyle = 'white';
+                    ctx.fillText('Game Over click to try again', 10, 10);
+                }
             }
         }
     };

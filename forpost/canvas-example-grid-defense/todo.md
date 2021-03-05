@@ -14,10 +14,9 @@
 * (done) Have a main sm object
 * (done) have a sm.game prop
 * (done) start a game.js file
-* Have player hp and maxHp in 'game' state
-* When player hp <=0 enter 'gameOver' state
-* Have a 'mainMenu' state that can be used to start a new game
-
+* (done) Have player hp and maxHp in 'game' state
+* (done) When player hp <=0 enter 'gameOver' state
+* (done) Have a 'gameOver' state that can be used to start a new game
 * Make a pkg 0.1.0 folder
 
 ## 0.0.0 - Basic idea working

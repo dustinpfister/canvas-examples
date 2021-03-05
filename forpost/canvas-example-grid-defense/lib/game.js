@@ -3,7 +3,7 @@ var gameMod = (function () {
 
     api.create = function(){
         var game = {
-            hp: 10,
+            hp: 5,
             hpMax: 100,
             grid: new UnitGrid({
                 xOffset: 15,
