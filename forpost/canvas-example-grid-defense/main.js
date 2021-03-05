@@ -3,39 +3,53 @@
     var canvasObj = utils.createCanvas();
     var canvas = canvasObj.canvas;
     var ctx = canvasObj.ctx;
-    var state = {
+
+    // State Machine
+    var sm = {
         ver: '0.1.0',
         canvas: canvas,
         ctx: ctx,
-/*
-        grid: new UnitGrid({
-            xOffset: 15,
-            yOffset: 25,
-            cellSize: 32,
-            cellWidth: 9
-        })
-        */
-        game: gameMod.create()
+        game: gameMod.create(),
+        currentState: 'game',
+        states: {
+            mainMenu: {},
+            game: {
+               update: function(sm){
+                   sm.game.grid.update();
+               },
+               onClick: function(sm, pos, e){
+                   var cell = sm.game.grid.getCellFromPoint(pos.x, pos.y);
+                   if (cell.enemy) {
+                       sm.game.grid.kills += 1;
+                       cell.enemy = false;
+                   }
+               },
+               draw: function(sm, ctx, canvas){
+                   draw.gridCellLines(sm.game.grid, ctx);
+                   draw.disp(sm.game, ctx);
+               }
+            },
+            gameOver: {}
+        }
     };
+
     // single event handler
     canvas.addEventListener('click', function (e) {
         var pos = utils.getCanvasRelative(e);
-        var cell = state.game.grid.getCellFromPoint(pos.x, pos.y);
-        if (cell.enemy) {
-            state.game.grid.kills += 1;
-            cell.enemy = false;
-        }
+        sm.states[sm.currentState].onClick(sm, pos, e);
     });
+
     // app loop
     var loop = function () {
         requestAnimationFrame(loop);
-        // update
-        state.game.grid.update();
+
+        // call update method for current state
+        sm.states[sm.currentState].update(sm);
+
         // draw
-        draw.cls(ctx, canvas);
-        draw.gridCellLines(state.game.grid, ctx);
-        draw.disp(state.game, ctx);
-        draw.ver(state, ctx);
+        draw.cls(sm.ctx, sm.canvas);
+        sm.states[sm.currentState].draw(sm, sm.ctx, sm.canvas);
+        draw.ver(sm, sm.ctx);
     };
     loop();
 }
