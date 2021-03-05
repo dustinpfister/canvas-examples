@@ -11,11 +11,17 @@
         ctx: ctx,
         game: gameMod.create(),
         currentState: 'game',
+        setState: function(sm, key){
+            sm.currentState = key;
+        },
         states: {
             mainMenu: {},
             game: {
                update: function(sm){
-                   gameMod.update(sm.game)
+                   gameMod.update(sm.game);
+                   if(sm.game.hp <= 0){
+                       sm.setState(sm, 'gameOver');
+                   }
                },
                onClick: function(sm, pos, e){
                    var cell = sm.game.grid.getCellFromPoint(pos.x, pos.y);
@@ -29,7 +35,11 @@
                    draw.disp(sm.game, ctx);
                }
             },
-            gameOver: {}
+            gameOver: {
+                update: function(sm){},
+                onClick: function(sm, pos, e){},
+                draw: function(sm, ctx, canvas){}
+            }
         }
     };
 
