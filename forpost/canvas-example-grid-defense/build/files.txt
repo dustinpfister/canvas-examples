@@ -1,5 +1,6 @@
 ../lib/utils.js
 ../lib/grid.js
 ../lib/grid_unit.js
+../lib/game.js
 ../lib/draw.js
 ../main.js

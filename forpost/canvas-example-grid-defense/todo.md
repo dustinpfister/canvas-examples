@@ -12,6 +12,8 @@
 
 ## 0.1.0 - States and game over
 * Have a main sm object
+* have a sm.game prop
+* start a game.js file
 * Have player hp and maxHp in game state
 * When player hp <=0 enter game over state
 * Have a main menu state that can be used to start a new game
