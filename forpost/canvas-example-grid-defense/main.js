@@ -1,6 +1,9 @@
 // SETUP CANVAS
 (function () {
-    var canvasObj = utils.createCanvas();
+    var canvasObj = utils.createCanvas({
+        width: 320,
+        height: 240
+    });
     var canvas = canvasObj.canvas;
     var ctx = canvasObj.ctx;
 
