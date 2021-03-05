@@ -1,7 +1,10 @@
 var gameMod = (function () {
     var api = {};
+
     api.create = function(){
         var game = {
+            hp: 100,
+            hpMax: 100,
             grid: new UnitGrid({
                 xOffset: 15,
                 yOffset: 25,
@@ -11,6 +14,16 @@ var gameMod = (function () {
         };
         return game;
     };
+
+    api.update = function(game){
+        var grid = game.grid;
+        grid.update();
+        if(grid.hits > 0){
+            game.hp -= grid.hits;
+            grid.hits = 0;
+        }
+    };
+
     return api;
 }
     ());

@@ -30,12 +30,12 @@ draw.gridCellLines = function (grid, ctx) {
     }
 };
 // draw display
-draw.disp = function (state, ctx) {
-    var grid = state.grid;
+draw.disp = function (game, ctx) {
+    var grid = game.grid;
     ctx.fillStyle = draw.textFill;
     ctx.textBaseline = 'top';
     ctx.font = '10px arial';
-    ctx.fillText('hits: ' + grid.hits + '; kills: ' + grid.kills, 10, 10);
+    ctx.fillText('hp: ' + game.hp + '/' + game.hpMax + '; kills: ' + grid.kills, 10, 10);
 };
 // draw version number
 draw.ver = function (state, ctx) {

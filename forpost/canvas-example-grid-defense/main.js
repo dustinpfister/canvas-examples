@@ -15,7 +15,7 @@
             mainMenu: {},
             game: {
                update: function(sm){
-                   sm.game.grid.update();
+                   gameMod.update(sm.game)
                },
                onClick: function(sm, pos, e){
                    var cell = sm.game.grid.getCellFromPoint(pos.x, pos.y);
