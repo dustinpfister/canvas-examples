@@ -2,7 +2,7 @@ var canvasObj = utils.createCanvas({ width: 640, height: 480}),
 canvas = canvasObj.canvas,
 ctx = canvasObj.ctx;
 
-var pm = PM.newPM({
+var pm = PM.create({
         distMin: 32,
         distMax: 128,
         maxPPS: 512
