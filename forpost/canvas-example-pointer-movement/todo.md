@@ -9,6 +9,9 @@
 ## 0.0.1 - new utils lib and create canvas
 * (done) add a utils.js with a create canvas method
 * (done) use create canvas and utils get canvas relative methods
+* (done) use utils.distance in pm.js
+* removed if that was not needed in pm.updatePM
+* use utils.mod in pm.js
 * make a pkg 0.0.1 folder
 
 ## 0.0.0 - basic idea working

@@ -32,9 +32,9 @@ var PM = (function () {
         pm.dist = 0;
         pm.PPS = 0;
         pm.angle = 0;
-        if (pm.cp.x >= 0 && pm.cp.y >= 0) {
-            pm.dist = utils.distance(pm.sp.x, pm.sp.y, pm.cp.x, pm.cp.y);
-        }
+
+        pm.dist = utils.distance(pm.sp.x, pm.sp.y, pm.cp.x, pm.cp.y);
+
         if (pm.down && pm.dist >= 5) {
             var per = pm.dist / 64;
             per = per > 1 ? 1 : per;
