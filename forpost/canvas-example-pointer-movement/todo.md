@@ -18,7 +18,7 @@
 * (done) display debug into near the PM in draw.js
 * (done) only draw additional parts of pm if pm.PPS > 0
 * (done) use utils.mod in pm.js with pm.angle to get radians
-* make a pkg 0.0.1 folder
+* make a pkg 0.1.0 folder
 
 ## 0.0.0 - basic idea working
 * (done) Just get the basic idea working
