@@ -3,7 +3,7 @@ var PM = (function () {
     var distance = function (x1, y1, x2, y2) {
         return Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2));
     };
-
+/*
     // get canvas relative point
     var getCanvasRelative = function (e) {
         var canvas = e.target,
@@ -14,14 +14,14 @@ var PM = (function () {
             bx: bx
         };
     };
-
+*/
     var api = {};
 
     // new Pointer Movement State Object
     api.newPM = function (opt) {
         opt = opt || {};
         return {
-            ver: '0.0.0',
+            ver: '0.0.1',
             down: false,
             angle: 0,
             dist: 0,
@@ -64,7 +64,7 @@ var PM = (function () {
 
     // when a pointer action starts
     api.onPointerStart = function (pm, e) {
-        var pos = getCanvasRelative(e);
+        var pos = utils.getCanvasRelative(e);
         pm.down = true;
         pm.sp = {
             x: pos.x,
@@ -74,7 +74,7 @@ var PM = (function () {
 
     // when a pointer action moves
     api.onPointerMove = function (pm, e) {
-        var pos = getCanvasRelative(e);
+        var pos = utils.getCanvasRelative(e);
         pm.cp = {
             x: pos.x,
             y: pos.y
@@ -83,7 +83,7 @@ var PM = (function () {
 
     // when a pointer actions ends
     api.onPointerEnd = function (pm, e) {
-        var pos = getCanvasRelative(e);
+        var pos = utils.getCanvasRelative(e);
         pm.down = false;
         pm.sp = {
             x: -1,
