@@ -33,6 +33,7 @@ var PM = (function () {
         pm.PPS = 0;
         pm.angle = 0;
 
+        // set pm.dist
         pm.dist = utils.distance(pm.sp.x, pm.sp.y, pm.cp.x, pm.cp.y);
 
         if (pm.down && pm.dist >= 5) {
@@ -59,6 +60,10 @@ var PM = (function () {
             x: pos.x,
             y: pos.y
         };
+        pm.cp = {
+            x: pos.x,
+            y: pos.y
+        };
     };
 
     // when a pointer action moves
@@ -75,12 +80,12 @@ var PM = (function () {
         var pos = utils.getCanvasRelative(e);
         pm.down = false;
         pm.sp = {
-            x: -1,
-            y: -1
+            x: 0,
+            y: 0
         };
         pm.cp = {
-            x: -1,
-            y: -1
+            x: 0,
+            y: 0
         };
     };
 

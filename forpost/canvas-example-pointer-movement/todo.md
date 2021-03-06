@@ -10,7 +10,9 @@
 * (done) add a utils.js with a create canvas method
 * (done) use create canvas and utils get canvas relative methods
 * (done) use utils.distance in pm.js
-* removed if that was not needed in pm.updatePM
+* (done) removed if that was not needed in pm.updatePM
+* (done) have cp the same as sp when a pinter event starts
+* have a pm.minDist and pm.maxDist
 * use utils.mod in pm.js
 * make a pkg 0.0.1 folder
 
