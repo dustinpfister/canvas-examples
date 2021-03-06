@@ -1,5 +1,4 @@
 var draw = {};
-
 draw.background = function (pm, ctx, canvas) {
     ctx.fillStyle = 'black';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
@@ -36,38 +35,36 @@ draw.navCircle = function (pm, ctx, canvas) {
         cy = pm.sp.y,
         x,
         y,
-        min = 64,
+        radius = pm.distMax,
         per = 0,
         a = pm.angle;
         ctx.strokeStyle = 'white';
         ctx.lineWidth = 3;
         // draw circle
         ctx.beginPath();
-        ctx.arc(cx, cy, min / 2, 0, Math.PI * 2);
+        ctx.arc(cx, cy, radius / 2, 0, Math.PI * 2);
         ctx.stroke();
         // draw direction line
-        x = Math.cos(a) * min + cx;
-        y = Math.sin(a) * min + cy;
+        x = Math.cos(a) * radius + cx;
+        y = Math.sin(a) * radius + cy;
         ctx.beginPath();
         ctx.moveTo(cx, cy);
         ctx.lineTo(x, y);
         ctx.stroke();
         // draw PPS circle
         per = pm.PPS / pm.maxPPS;
-        x = Math.cos(a) * min * per + cx;
-        y = Math.sin(a) * min * per + cy;
+        x = Math.cos(a) * radius * per + cx;
+        y = Math.sin(a) * radius * per + cy;
         ctx.beginPath();
         ctx.arc(x, y, 10, 0, Math.PI * 2);
         ctx.stroke();
     }
 };
-
 draw.debugInfo = function (pm, pt, ctx, canvas) {
     ctx.fillStyle = 'white';
     ctx.fillText('pos: ' + Math.floor(pt.x) + ', ' + Math.floor(pt.y), 10, 10);
     ctx.fillText('PPS: ' + pm.PPS.toFixed(2) + '/' + pm.maxPPS, 10, 20);
 };
-
 draw.ver = function (ctx, pm) {
     ctx.fillStyle = 'white';
     ctx.font = '10px courier';

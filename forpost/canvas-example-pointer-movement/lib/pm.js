@@ -14,8 +14,8 @@ var PM = (function () {
             down: false,
             angle: 0,
             dist: 0,
-            distMin: 5,
-            distMax: 64,
+            distMin: opt.distMin === undefined ? 16 : opt.distMin,
+            distMax: opt.distMax || 64,
             PPS: 0,
             maxPPS: opt.maxPPS === undefined ? 128 : opt.maxPPS,
             sp: { // start point
