@@ -62,7 +62,7 @@ var draw = (function(){
         ctx.textAlign = 'left';
         ctx.font = '10px arial';
         ctx.fillText('PPS: ' + Math.round(pm.PPS) + ' / ' + pm.maxPPS, x, y);
-        ctx.fillText('A: ' + pm.angle.toFixed(2), x, y + 12);
+        ctx.fillText('A: ' + utils.radianToScale(pm.angle).toFixed(2), x, y + 12);
     };
 
     // draw a navigation circle when moving the map
