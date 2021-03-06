@@ -8,7 +8,7 @@
 
 ## 0.0.1 - new utils lib and create canvas
 * (done) add a utils.js with a create canvas method
-* use create canvas and utils get canvas relative methods
+* (done) use create canvas and utils get canvas relative methods
 * make a pkg 0.0.1 folder
 
 ## 0.0.0 - basic idea working

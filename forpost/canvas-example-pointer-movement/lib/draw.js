@@ -11,7 +11,7 @@ draw.PTGridlines = function (pt, ctx, canvas) {
     y;
     ctx.strokeStyle = 'gray';
     ctx.lineWidth = 1;
-    while (cellX < 13) {
+    while (cellX < 26) {
         x = cellX * 32 - pt.x % 32;
         ctx.beginPath();
         ctx.moveTo(x, 0);
@@ -19,7 +19,7 @@ draw.PTGridlines = function (pt, ctx, canvas) {
         ctx.stroke();
         cellX += 1;
     }
-    while (cellY < 10) {
+    while (cellY < 20) {
         y = cellY * 32 - pt.y % 32;
         ctx.beginPath();
         ctx.moveTo(0, y);
