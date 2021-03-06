@@ -7,6 +7,9 @@
 * public methods like pm.onPointerEnd will create and return an event handler
 * add keyboard support
 
+## 0.x.0 - Update method takes a secs argument
+* the pm.update method should take a secs argument
+
 ## 0.x.0 - Fine Grain control
 * current function of pm can be a 'fineGrain' mode
 * start a new '8dir' mode that will lock angle to 8 directions
