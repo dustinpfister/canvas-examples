@@ -2,9 +2,16 @@
 
 ## 0.x.0 - autoMove
 * start a autoMove script that will use the pm to move around when there is no user input
-* use e.preventDefault() in event handlers
-* Math.log style control between min and maxPPS
-* create a pkg_0_1_0.html
+
+## 0.x.0 - Fix handlers, keyboard events
+* public methods like pm.onPointerEnd will create and return an event handler
+* add keyboard support
+
+## 0.x.0 - Fine Grain control
+* current function of pm can be a 'fineGrain' mode
+* start a new '8dir' mode that will lock angle to 8 directions
+* start a new '360dir' mode that will lock angle to 360 directions
+* start a 'xDir' mode that will make use of an option pm.dirCount prop that can be set and changed
 
 ## 0.1.0 - new utils lib, create canvas, various improvements
 * (done) add a utils.js with a create canvas method
@@ -18,7 +25,7 @@
 * (done) display debug into near the PM in draw.js
 * (done) only draw additional parts of pm if pm.PPS > 0
 * (done) use utils.mod in pm.js with pm.angle to get radians
-* make a pkg 0.1.0 folder
+* (done - 03/06/2021 ) make a pkg 0.1.0 folder
 
 ## 0.0.0 - basic idea working
 * (done) Just get the basic idea working
