@@ -1,9 +1,12 @@
-var draw = {};
-draw.background = function (pm, ctx, canvas) {
+var draw = (function(){
+
+var api = {};
+
+api.background = function (pm, ctx, canvas) {
     ctx.fillStyle = 'black';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 };
-draw.PTGridlines = function (pt, ctx, canvas) {
+api.PTGridlines = function (pt, ctx, canvas) {
     var cellX = -1,
     cellY = -1,
     x,
@@ -29,7 +32,7 @@ draw.PTGridlines = function (pt, ctx, canvas) {
 };
 
 // draw a navigation circle when moving the map
-draw.navCircle = function (pm, ctx, canvas) {
+api.navCircle = function (pm, ctx, canvas) {
     if (pm.down) {
         var cx = pm.sp.x,
         cy = pm.sp.y,
@@ -60,15 +63,19 @@ draw.navCircle = function (pm, ctx, canvas) {
         ctx.stroke();
     }
 };
-draw.debugInfo = function (pm, pt, ctx, canvas) {
+api.debugInfo = function (pm, pt, ctx, canvas) {
     ctx.fillStyle = 'white';
     ctx.fillText('pos: ' + Math.floor(pt.x) + ', ' + Math.floor(pt.y), 10, 10);
     ctx.fillText('PPS: ' + pm.PPS.toFixed(2) + '/' + pm.maxPPS, 10, 20);
 };
-draw.ver = function (ctx, pm) {
+api.ver = function (ctx, pm) {
     ctx.fillStyle = 'white';
     ctx.font = '10px courier';
     ctx.textBaseline = 'top';
     ctx.textAlign = 'left';
     ctx.fillText('v' + pm.ver, 5, canvas.height - 15);
 };
+
+return api;
+
+}());

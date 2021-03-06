@@ -12,7 +12,14 @@
 * (done) use utils.distance in pm.js
 * (done) removed if that was not needed in pm.updatePM
 * (done) have cp the same as sp when a pinter event starts
-* (done) have a pm.minDist and pm.maxDist
+* (done) have a pm.minDist and pm.maxDist, and have options for them
+* (done) use 640 * 480 res
+
+* have an IIFE for draw.js
+* display debug into near the PM in draw.js
+
+* only draw additional parts of pm if pm.PPS > 0
+
 * use utils.mod in pm.js
 * make a pkg 0.0.1 folder
 
