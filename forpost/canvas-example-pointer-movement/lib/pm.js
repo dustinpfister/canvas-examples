@@ -38,7 +38,7 @@ var PM = (function () {
             per = per > 1 ? 1 : per;
             per = per < 0 ? 0 : per;
             pm.PPS = per * pm.maxPPS;
-            pm.angle = Math.atan2(pm.cp.y - pm.sp.y, pm.cp.x - pm.sp.x);
+            pm.angle = utils.mod(Math.atan2(pm.cp.y - pm.sp.y, pm.cp.x - pm.sp.x), Math.PI * 2);
         }
     };
 
