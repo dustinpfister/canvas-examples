@@ -3,7 +3,9 @@ canvas = canvasObj.canvas,
 ctx = canvasObj.ctx;
 
 var pm = PM.newPM({
-        maxPPS: 256
+        distMin: 32,
+        distMax: 128,
+        maxPPS: 512
     });
 
 // a point
