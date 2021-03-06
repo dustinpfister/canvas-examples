@@ -6,7 +6,7 @@
 * Math.log style control between min and maxPPS
 * create a pkg_0_1_0.html
 
-## 0.0.1 - new utils lib and create canvas
+## 0.1.0 - new utils lib, create canvas, various improvements
 * (done) add a utils.js with a create canvas method
 * (done) use create canvas and utils get canvas relative methods
 * (done) use utils.distance in pm.js
@@ -14,13 +14,10 @@
 * (done) have cp the same as sp when a pinter event starts
 * (done) have a pm.minDist and pm.maxDist, and have options for them
 * (done) use 640 * 480 res
-
-* have an IIFE for draw.js
-* display debug into near the PM in draw.js
-
-* only draw additional parts of pm if pm.PPS > 0
-
-* use utils.mod in pm.js
+* (done) have an IIFE for draw.js
+* (done) display debug into near the PM in draw.js
+* (done) only draw additional parts of pm if pm.PPS > 0
+* (done) use utils.mod in pm.js with pm.angle to get radians
 * make a pkg 0.0.1 folder
 
 ## 0.0.0 - basic idea working

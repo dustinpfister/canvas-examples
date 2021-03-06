@@ -35,6 +35,7 @@ var draw = (function(){
             ctx.beginPath();
             ctx.arc(pm.sp.x, pm.sp.y, pm.distMax / 2, 0, Math.PI * 2);
             ctx.stroke();
+            ctx.fill();
     };
     var draw_pm_dir_line = function(pm, ctx){
             var x = Math.cos(pm.angle) * pm.distMax + pm.sp.x,
@@ -68,11 +69,14 @@ var draw = (function(){
     api.navCircle = function (pm, ctx, canvas) {
         if (pm.down) {
             ctx.strokeStyle = 'white';
+            ctx.fillStyle = 'rgba(0,255,0,0.4)';
             ctx.lineWidth = 3;
             draw_pm_circle(pm, ctx);
-            draw_pm_dir_line(pm, ctx);
-            draw_pm_pps_circle(pm, ctx);
-            draw_pm_info(pm, ctx);
+            if(pm.PPS > 0){
+                draw_pm_dir_line(pm, ctx);
+                draw_pm_pps_circle(pm, ctx);
+                draw_pm_info(pm, ctx);
+            }
 
         }
     };

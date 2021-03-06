@@ -6,7 +6,7 @@ var PM = (function () {
     api.create = function (opt) {
         opt = opt || {};
         return {
-            ver: '0.0.1',
+            ver: '0.1.0',
             down: false,
             angle: 0,
             dist: 0,
