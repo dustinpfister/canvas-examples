@@ -14,6 +14,8 @@ var PM = (function () {
             down: false,
             angle: 0,
             dist: 0,
+            distMin: 5,
+            distMax: 64,
             PPS: 0,
             maxPPS: opt.maxPPS === undefined ? 128 : opt.maxPPS,
             sp: { // start point
@@ -32,12 +34,11 @@ var PM = (function () {
         pm.dist = 0;
         pm.PPS = 0;
         pm.angle = 0;
-
         // set pm.dist
         pm.dist = utils.distance(pm.sp.x, pm.sp.y, pm.cp.x, pm.cp.y);
-
-        if (pm.down && pm.dist >= 5) {
-            var per = pm.dist / 64;
+        // set pps and angle if dist is greater than min and pointer is down
+        if (pm.down && pm.dist >= pm.distMin) {
+            var per = (pm.dist - pm.distMin) / pm.distMax;
             per = per > 1 ? 1 : per;
             per = per < 0 ? 0 : per;
             pm.PPS = per * pm.maxPPS;
