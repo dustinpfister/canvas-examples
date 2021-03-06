@@ -31,13 +31,12 @@ var draw = (function(){
         }
     };
 
-    var draw_pm_circle = function(pm, ctx, canvas){
+    var draw_pm_circle = function(pm, ctx){
             ctx.beginPath();
             ctx.arc(pm.sp.x, pm.sp.y, pm.distMax / 2, 0, Math.PI * 2);
             ctx.stroke();
     };
-
-    var draw_pm_dir_line = function(pm, ctx, canvas){
+    var draw_pm_dir_line = function(pm, ctx){
             var x = Math.cos(pm.angle) * pm.distMax + pm.sp.x,
             y = Math.sin(pm.angle) * pm.distMax + pm.sp.y;
             ctx.beginPath();
@@ -45,8 +44,7 @@ var draw = (function(){
             ctx.lineTo(x, y);
             ctx.stroke();
     };
-
-    var draw_pm_pps_circle = function(pm, ctx, canvas){
+    var draw_pm_pps_circle = function(pm, ctx){
              // draw PPS circle
             var per = pm.PPS / pm.maxPPS,
             x = Math.cos(pm.angle) * pm.distMax * per + pm.sp.x;
@@ -55,22 +53,36 @@ var draw = (function(){
             ctx.arc(x, y, 10, 0, Math.PI * 2);
             ctx.stroke();
     };
+    var draw_pm_info = function(pm, ctx){
+        var x = pm.sp.x + pm.distMax * 0.6,
+        y = pm.sp.y + 10;
+        ctx.fillStyle = 'lime';
+        ctx.textBaseline = 'top';
+        ctx.textAlign = 'left';
+        ctx.font = '10px arial';
+        ctx.fillText('PPS: ' + Math.round(pm.PPS) + ' / ' + pm.maxPPS, x, y);
+        ctx.fillText('A: ' + pm.angle.toFixed(2), x, y + 12);
+    };
 
     // draw a navigation circle when moving the map
     api.navCircle = function (pm, ctx, canvas) {
         if (pm.down) {
             ctx.strokeStyle = 'white';
             ctx.lineWidth = 3;
-            draw_pm_circle(pm, ctx, canvas);
-            draw_pm_dir_line(pm, ctx, canvas);
-            draw_pm_pps_circle(pm, ctx, canvas);
+            draw_pm_circle(pm, ctx);
+            draw_pm_dir_line(pm, ctx);
+            draw_pm_pps_circle(pm, ctx);
+            draw_pm_info(pm, ctx);
 
         }
     };
     api.debugInfo = function (pm, pt, ctx, canvas) {
-        ctx.fillStyle = 'white';
+        ctx.fillStyle = 'lime';
+        ctx.textBaseline = 'top';
+        ctx.textAlign = 'left';
+        ctx.font = '20px arial';
         ctx.fillText('pos: ' + Math.floor(pt.x) + ', ' + Math.floor(pt.y), 10, 10);
-        ctx.fillText('PPS: ' + pm.PPS.toFixed(2) + '/' + pm.maxPPS, 10, 20);
+        //ctx.fillText('PPS: ' + pm.PPS.toFixed(2) + '/' + pm.maxPPS, 10, 20);
     };
     api.ver = function (ctx, pm) {
         ctx.fillStyle = 'white';
