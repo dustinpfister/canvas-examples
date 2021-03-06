@@ -26,7 +26,7 @@ var PM = (function () {
     };
 
     // update the pm based on startPoint, and currentPoint
-    api.updatePM = function (pm) {
+    api.update = function (pm) {
         pm.dist = 0;
         pm.PPS = 0;
         pm.angle = 0;
