@@ -1,9 +1,9 @@
 var PM = (function () {
-
+/*
     var distance = function (x1, y1, x2, y2) {
         return Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2));
     };
-
+*/
     var api = {};
 
     // new Pointer Movement State Object
@@ -33,7 +33,7 @@ var PM = (function () {
         pm.PPS = 0;
         pm.angle = 0;
         if (pm.cp.x >= 0 && pm.cp.y >= 0) {
-            pm.dist = distance(pm.sp.x, pm.sp.y, pm.cp.x, pm.cp.y);
+            pm.dist = utils.distance(pm.sp.x, pm.sp.y, pm.cp.x, pm.cp.y);
         }
         if (pm.down && pm.dist >= 5) {
             var per = pm.dist / 64;
