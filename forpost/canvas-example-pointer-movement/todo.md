@@ -3,18 +3,18 @@
 ## 0.x.0 - autoMove
 * start a autoMove script that will use the pm to move around when there is no user input
 
-## 0.x.0 - Fix handlers, keyboard events
-* public methods like pm.onPointerEnd will create and return an event handler
+## 0.x.0 - Select map location and finite map
+
+## 0.x.0 - keyboard support
 * add keyboard support
 
-## 0.x.0 - Update method takes a secs argument
-* the pm.update method should take a secs argument
-
 ## 0.x.0 - Fine Grain control
-* current function of pm can be a 'fineGrain' mode
+* current function of pm can be a 'fine'  or fine grain mode
 * start a new '8dir' mode that will lock angle to 8 directions
 * start a new '360dir' mode that will lock angle to 360 directions
 * start a 'xDir' mode that will make use of an option pm.dirCount prop that can be set and changed
+* public methods like pm.onPointerEnd will create and return an event handler
+* make a pkg 0.2.0 folder
 
 ## 0.1.0 - new utils lib, create canvas, various improvements
 * (done) add a utils.js with a create canvas method

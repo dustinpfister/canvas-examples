@@ -6,7 +6,8 @@ var PM = (function () {
     api.create = function (opt) {
         opt = opt || {};
         return {
-            ver: '0.1.0',
+            ver: '0.2.0',
+            mode: opt.mode || 'fine',
             down: false,
             angle: 0,
             dist: 0,
@@ -26,6 +27,10 @@ var PM = (function () {
         };
     };
 
+    var lockToDirs = function(radian, dirs){
+
+    };
+
     // update the pm based on startPoint, and currentPoint
     api.update = function (pm) {
         pm.dist = 0;
@@ -39,7 +44,10 @@ var PM = (function () {
             pm.per = pm.per > 1 ? 1 : pm.per;
             pm.per = pm.per < 0 ? 0 : pm.per;
             pm.PPS = pm.per * pm.maxPPS;
-            pm.angle = utils.mod(Math.atan2(pm.cp.y - pm.sp.y, pm.cp.x - pm.sp.x), Math.PI * 2);
+            var radian = utils.mod(Math.atan2(pm.cp.y - pm.sp.y, pm.cp.x - pm.sp.x), utils.TAU);
+            var dir = Math.round(radian / utils.TAU * 4);
+  
+            pm.angle = utils.mod(utils.TAU / 4 * dir, utils.TAU);
         }
     };
 
