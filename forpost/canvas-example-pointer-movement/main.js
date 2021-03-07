@@ -39,3 +39,6 @@ canvas.addEventListener('mouseup', PM.onPointerEnd(pm) );
 canvas.addEventListener('touchstart', PM.onPointerStart(pm) );
 canvas.addEventListener('touchmove', PM.onPointerMove(pm) );
 canvas.addEventListener('touchend', PM.onPointerEnd(pm) );
+// mouse out and touch cancel will also fire an end pointer event
+canvas.addEventListener('mouseout', PM.onPointerEnd(pm) );
+canvas.addEventListener('touchcancel', PM.onPointerEnd(pm) );
