@@ -9,6 +9,7 @@ var PM = (function () {
         opt = opt || {};
         return {
             ver: '0.2.0',
+            secs: 0,
             mode: opt.mode || 'dir1440',
             modeIndex: 0,
             modesList: opt.modesList || DEFAULT_MODESLIST,
@@ -46,7 +47,7 @@ var PM = (function () {
     };
 
     // update the pm based on startPoint, and currentPoint
-    api.update = function (pm) {
+    api.update = function (pm, secs) {
         pm.dist = 0;
         pm.PPS = 0;
         pm.angle = 0;
@@ -64,8 +65,12 @@ var PM = (function () {
             pm.angle = radian;
             applyMode(pm, radian);
         }else{
-            pm.modeIndex += 1;
-            pm.modeIndex = utils.mod(pm.modeIndex, pm.modesList.length);
+            pm.secs += secs;
+            if(pm.secs >= 2){
+                pm.modeIndex += 1;
+                pm.modeIndex = utils.mod(pm.modeIndex, pm.modesList.length);
+                pm.secs = 0;
+            }
         }
     };
 
@@ -81,6 +86,7 @@ var PM = (function () {
         return function(e){
             var pos = utils.getCanvasRelative(e);
             pm.down = true;
+            pm.secs = 0;
             pm.sp = {
                 x: pos.x,
                 y: pos.y
@@ -108,6 +114,7 @@ var PM = (function () {
         return function(e){
             var pos = utils.getCanvasRelative(e);
             pm.down = false;
+            pm.secs = 0;
             pm.sp = {
                 x: 0,
                 y: 0

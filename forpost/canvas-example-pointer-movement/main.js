@@ -20,7 +20,7 @@ var loop = function () {
     t = now - lt,
     secs = t / 1000;
     requestAnimationFrame(loop);
-    PM.update(pm);
+    PM.update(pm, secs);
 
     PM.stepPointByPM(pm, pt, secs);
 
