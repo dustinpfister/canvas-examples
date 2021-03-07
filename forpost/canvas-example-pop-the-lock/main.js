@@ -8,13 +8,19 @@
     var canvas = canvasObj.canvas;
     var ctx = canvasObj.ctx;
 
-    canvas.addEventListener('click', ptl.click);
+    var game = gameMod.create();
 
-    ptl.randomTarget();
+    //canvas.addEventListener('click', ptl.click);
+
+    canvas.addEventListener('click', function(){
+        ptl.click(game);
+    });
+
+    ptl.randomTarget(game);
 
     var loop = function () {
         requestAnimationFrame(loop);
-        ptl.tick();
+        ptl.tick(game);
         drawPTL(ptl, ctx, canvas);
     };
     loop();
