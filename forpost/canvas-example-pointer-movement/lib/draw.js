@@ -7,23 +7,24 @@ var draw = (function(){
         ctx.fillRect(0, 0, canvas.width, canvas.height);
     };
     // draw point grid lines
-    api.PTGridlines = function (pt, ctx, canvas) {
+    api.PTGridlines = function (pt, ctx, canvas, cellSize) {
         var cellX = -1,
         cellY = -1,
         x,
         y;
+        cellSize = cellSize === undefined ? 256: cellSize;
         ctx.strokeStyle = 'gray';
         ctx.lineWidth = 1;
-        while (cellX < Math.ceil(canvas.width / 32) + 1 ) {
-            x = cellX * 32 - pt.x % 32;
+        while (cellX < Math.ceil(canvas.width / cellSize) + 1 ) {
+            x = cellX * cellSize - pt.x % cellSize;
             ctx.beginPath();
             ctx.moveTo(x, 0);
             ctx.lineTo(x, canvas.height);
             ctx.stroke();
             cellX += 1;
         }
-        while (cellY < Math.ceil(canvas.height / 32) + 1 ) {
-            y = cellY * 32 - pt.y % 32;
+        while (cellY < Math.ceil(canvas.height / cellSize) + 1 ) {
+            y = cellY * cellSize - pt.y % cellSize;
             ctx.beginPath();
             ctx.moveTo(0, y);
             ctx.lineTo(canvas.width, y);

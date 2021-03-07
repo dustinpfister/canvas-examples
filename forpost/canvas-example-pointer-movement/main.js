@@ -27,7 +27,7 @@ var loop = function () {
     PM.stepPointByPM(pm, pt, secs);
 
     draw.background(pm, ctx, canvas, 'black');
-    draw.PTGridlines(pt, ctx, canvas);
+    draw.PTGridlines(pt, ctx, canvas, 128);
     draw.navCircle(pm, ctx, canvas);
     draw.debugInfo(pm, pt, ctx, canvas);
     draw.ver(ctx, pm);
