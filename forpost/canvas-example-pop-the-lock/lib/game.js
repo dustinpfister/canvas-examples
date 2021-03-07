@@ -34,12 +34,6 @@ var ptl = {
     tick_last: new Date(),
     inRange: false,
     score: 0,
-    // wrap a sec value
-    wrapSec: function (sec) {
-
-        return utils.mod(sec, this.sec_total);
-
-    },
     // get in range boolean
     getInRange: function () {
         return this.sec_current >= this.sec_target - this.sec_margin && this.sec_current <= this.sec_target + this.sec_margin;

@@ -22,8 +22,8 @@ var drawPTL = function (ptl, ctx, canvas) {
     ctx.strokeStyle = 'red';
     ctx.beginPath();
     ctx.arc(canvas.width / 2, canvas.height / 2, 100,
-        ptl.wrapSec(ptl.sec_target - ptl.sec_margin) / ptl.sec_total * Math.PI * 2,
-        ptl.wrapSec(ptl.sec_target + ptl.sec_margin) / ptl.sec_total * Math.PI * 2);
+        utils.mod(ptl.sec_target - ptl.sec_margin, ptl.sec_total) / ptl.sec_total * Math.PI * 2,
+        utils.mod(ptl.sec_target + ptl.sec_margin, ptl.sec_total) / ptl.sec_total * Math.PI * 2);
     ctx.stroke();
 
     // draw current
