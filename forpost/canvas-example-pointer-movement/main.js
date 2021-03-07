@@ -3,6 +3,8 @@ canvas = canvasObj.canvas,
 ctx = canvasObj.ctx;
 
 var pm = PM.create({
+        modesList:['fine', 'dir16'],
+        longDownTime: 1,
         distMin: 32,
         distMax: 128,
         maxPPS: 512
