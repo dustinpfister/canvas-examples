@@ -7,7 +7,7 @@ var PM = (function () {
         opt = opt || {};
         return {
             ver: '0.2.0',
-            mode: opt.mode || 'fine',
+            mode: opt.mode || 'dir1440',
             down: false,
             angle: 0,
             dist: 0,
@@ -32,6 +32,15 @@ var PM = (function () {
         return utils.mod(utils.TAU / dirCount * dir, utils.TAU);
     };
 
+    var applyMode = function(pm, radian){
+        if(pm.mode.substr(0, 3) === 'dir'){
+            var dirCount = Number(pm.mode.substr(3, pm.mode.length));
+            dirCount = String(dirCount) === 'NaN' ? 360 : dirCount;
+            dirCount = dirCount <= 0 ? 360 : dirCount;
+            pm.angle = lockToDirs(radian, dirCount);
+        }
+    };
+
     // update the pm based on startPoint, and currentPoint
     api.update = function (pm) {
         pm.dist = 0;
@@ -46,9 +55,9 @@ var PM = (function () {
             pm.per = pm.per < 0 ? 0 : pm.per;
             pm.PPS = pm.per * pm.maxPPS;
             var radian = utils.mod(Math.atan2(pm.cp.y - pm.sp.y, pm.cp.x - pm.sp.x), utils.TAU);
-
-  
-            pm.angle = lockToDirs(radian, 16)
+            // default to radian for 'fine' mode
+            pm.angle = radian;
+            applyMode(pm, radian);
         }
     };
 
