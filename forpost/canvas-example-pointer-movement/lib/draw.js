@@ -30,7 +30,7 @@ var draw = (function(){
             cellY += 1;
         }
     };
-
+    // draw a main pm circle
     var draw_pm_circle = function(pm, ctx, per){
             per = per === undefined ? 1 : per;
             ctx.beginPath();
@@ -46,8 +46,8 @@ var draw = (function(){
             ctx.lineTo(x, y);
             ctx.stroke();
     };
+    // draw PPS circle
     var draw_pm_pps_circle = function(pm, ctx){
-             // draw PPS circle
             var per = pm.PPS / pm.maxPPS,
             x = Math.cos(pm.angle) * pm.distMax * per + pm.sp.x;
             y = Math.sin(pm.angle) * pm.distMax * per + pm.sp.y;
@@ -79,8 +79,11 @@ var draw = (function(){
                 draw_pm_dir_line(pm, ctx);
                 draw_pm_pps_circle(pm, ctx);
             }else{
+                // else waiting for the long down
+                ctx.fillStyle = 'rgba(0,255,255,0.1)';
+                draw_pm_circle(pm, ctx, 1);
                 ctx.fillStyle = 'rgba(0,255,255,0.4)';
-                draw_pm_circle(pm, ctx, 0.5);
+                draw_pm_circle(pm, ctx, pm.secs / pm.longDownTime);
             }
             draw_pm_info(pm, ctx);
         }
