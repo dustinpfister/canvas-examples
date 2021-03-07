@@ -33,21 +33,9 @@ var loop = function () {
 };
 loop();
 
-canvas.addEventListener('mousedown', function (e) {
-    PM.onPointerStart(pm, e);
-});
-canvas.addEventListener('mousemove', function (e) {
-    PM.onPointerMove(pm, e);
-});
-canvas.addEventListener('mouseup', function (e) {
-    PM.onPointerEnd(pm, e);
-});
-canvas.addEventListener('touchstart', function (e) {
-    PM.onPointerStart(pm, e);
-});
-canvas.addEventListener('touchmove', function (e) {
-    PM.onPointerMove(pm, e);
-});
-canvas.addEventListener('touchend', function (e) {
-    PM.onPointerEnd(pm, e);
-});
+canvas.addEventListener('mousedown', PM.onPointerStart(pm) );
+canvas.addEventListener('mousemove', PM.onPointerMove(pm) );
+canvas.addEventListener('mouseup', PM.onPointerEnd(pm) );
+canvas.addEventListener('touchstart', PM.onPointerStart(pm) );
+canvas.addEventListener('touchmove', PM.onPointerMove(pm) );
+canvas.addEventListener('touchend', PM.onPointerEnd(pm) );

@@ -55,7 +55,7 @@ var PM = (function () {
             pm.per = pm.per < 0 ? 0 : pm.per;
             pm.PPS = pm.per * pm.maxPPS;
             var radian = utils.mod(Math.atan2(pm.cp.y - pm.sp.y, pm.cp.x - pm.sp.x), utils.TAU);
-            // default to radian for 'fine' mode
+            // default to radian for 'fine' mode (or any mode other than dirN)
             pm.angle = radian;
             applyMode(pm, radian);
         }
@@ -69,39 +69,45 @@ var PM = (function () {
     };
 
     // when a pointer action starts
-    api.onPointerStart = function (pm, e) {
-        var pos = utils.getCanvasRelative(e);
-        pm.down = true;
-        pm.sp = {
-            x: pos.x,
-            y: pos.y
-        };
-        pm.cp = {
-            x: pos.x,
-            y: pos.y
+    api.onPointerStart = function (pm) {
+        return function(e){
+            var pos = utils.getCanvasRelative(e);
+            pm.down = true;
+            pm.sp = {
+                x: pos.x,
+                y: pos.y
+            };
+            pm.cp = {
+                x: pos.x,
+                y: pos.y
+            };
         };
     };
 
     // when a pointer action moves
-    api.onPointerMove = function (pm, e) {
-        var pos = utils.getCanvasRelative(e);
-        pm.cp = {
-            x: pos.x,
-            y: pos.y
+    api.onPointerMove = function (pm) {
+        return function(e){
+            var pos = utils.getCanvasRelative(e);
+            pm.cp = {
+                x: pos.x,
+                y: pos.y
+            };
         };
     };
 
     // when a pointer actions ends
-    api.onPointerEnd = function (pm, e) {
-        var pos = utils.getCanvasRelative(e);
-        pm.down = false;
-        pm.sp = {
-            x: 0,
-            y: 0
-        };
-        pm.cp = {
-            x: 0,
-            y: 0
+    api.onPointerEnd = function (pm) {
+        return function(e){
+            var pos = utils.getCanvasRelative(e);
+            pm.down = false;
+            pm.sp = {
+                x: 0,
+                y: 0
+            };
+            pm.cp = {
+                x: 0,
+                y: 0
+            };
         };
     };
 

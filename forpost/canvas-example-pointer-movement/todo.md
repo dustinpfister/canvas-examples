@@ -8,11 +8,9 @@
 ## 0.x.0 - keyboard support
 * add keyboard support
 
-## 0.x.0 - Fine Grain control
-* current function of pm can be a 'fine'  or fine grain mode
-* start a new 'dir8' mode that will lock angle to 8 directions
-* start a new 'dir360' mode that will lock angle to 360 directions
-* start a 'dirX' mode that will make use of an option pm.dirCount prop that can be set and changed
+## 0.x.0 - Fine Grain control and Event handlers returned by pm module
+* (done) current function of pm can be a 'fine'  or fine grain mode
+* (done) start a 'dirX' mode that will make use of an option pm.dirCount prop that can be set and changed
 * public methods like pm.onPointerEnd will create and return an event handler
 * make a pkg 0.2.0 folder
 
