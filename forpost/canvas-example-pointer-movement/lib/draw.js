@@ -2,7 +2,7 @@ var draw = (function(){
     // public api
     var api = {};
     // draw background
-    api.background = function (pm, ctx, canvas. style) {
+    api.background = function (pm, ctx, canvas, style) {
         ctx.fillStyle = style || 'black';
         ctx.fillRect(0, 0, canvas.width, canvas.height);
     };
@@ -14,7 +14,7 @@ var draw = (function(){
         y;
         ctx.strokeStyle = 'gray';
         ctx.lineWidth = 1;
-        while (cellX < 26) {
+        while (cellX < Math.ceil(canvas.width / 32) + 1 ) {
             x = cellX * 32 - pt.x % 32;
             ctx.beginPath();
             ctx.moveTo(x, 0);
@@ -22,7 +22,7 @@ var draw = (function(){
             ctx.stroke();
             cellX += 1;
         }
-        while (cellY < 20) {
+        while (cellY < Math.ceil(canvas.height / 32) + 1 ) {
             y = cellY * 32 - pt.y % 32;
             ctx.beginPath();
             ctx.moveTo(0, y);

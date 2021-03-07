@@ -3,10 +3,18 @@
 ## 0.x.0 - autoMove
 * start a autoMove script that will use the pm to move around when there is no user input
 
-## 0.x.0 - Select map location and finite map
-
 ## 0.x.0 - keyboard support
 * add keyboard support
+
+## 0.x.0 - Make an object pool part of the stack
+* add an object pool as part of the stack
+* when pm menu is on have objects move from pm.sx,pm.sy to locations around the pm circle
+* clicking on one of these objects will not cancel pm menu mode
+
+## 0.x.0 - Select map location and finite map
+* have a finite map to move around in
+* can select a cell
+* can unselect a cell
 
 ## 0.x.0 - pm menu, and hold option
 * long click/touch to enter 'pm menu'
