@@ -8,11 +8,19 @@
 ## 0.x.0 - keyboard support
 * add keyboard support
 
+## 0.x.0 - pm menu
+* long click/touch to enter 'pm menu'
+* pm menu canb be used to set mode from a list of options
+* pm menu can be used to set hold on and off
+* pm menu can be used to set pps
+* pm menu can be used to set ajust maxDist
+
 ## 0.x.0 - Fine Grain control and Event handlers returned by pm module
 * (done) current function of pm can be a 'fine'  or fine grain mode
 * (done) start a 'dirX' mode that will make use of an option pm.dirCount prop that can be set and changed
 * (done) public methods like pm.onPointerEnd will create and return an event handler
-* display mode
+* (done) display mode
+* long click/touch to step a list of modes
 * make a pkg 0.2.0 folder
 
 ## 0.1.0 - new utils lib, create canvas, various improvements

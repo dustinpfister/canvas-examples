@@ -76,9 +76,8 @@ var draw = (function(){
             if(pm.PPS > 0){
                 draw_pm_dir_line(pm, ctx);
                 draw_pm_pps_circle(pm, ctx);
-                draw_pm_info(pm, ctx);
             }
-
+            draw_pm_info(pm, ctx);
         }
     };
     api.debugInfo = function (pm, pt, ctx, canvas) {

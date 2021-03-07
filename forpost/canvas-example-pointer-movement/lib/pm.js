@@ -1,5 +1,7 @@
 var PM = (function () {
 
+    var DEFAULT_MODESLIST = 'dir360,dir8,dir4,dir1440,fine'.split(',');
+
     var api = {};
 
     // new Pointer Movement State Object
@@ -8,6 +10,8 @@ var PM = (function () {
         return {
             ver: '0.2.0',
             mode: opt.mode || 'dir1440',
+            modeIndex: 0,
+            modesList: opt.modesList || DEFAULT_MODESLIST,
             down: false,
             angle: 0,
             dist: 0,
@@ -46,6 +50,7 @@ var PM = (function () {
         pm.dist = 0;
         pm.PPS = 0;
         pm.angle = 0;
+        pm.mode = pm.modesList[pm.modeIndex];
         // set pm.dist
         pm.dist = utils.distance(pm.sp.x, pm.sp.y, pm.cp.x, pm.cp.y);
         // set pps and angle if dist is greater than min and pointer is down
@@ -58,6 +63,9 @@ var PM = (function () {
             // default to radian for 'fine' mode (or any mode other than dirN)
             pm.angle = radian;
             applyMode(pm, radian);
+        }else{
+            pm.modeIndex += 1;
+            pm.modeIndex = utils.mod(pm.modeIndex, pm.modesList.length);
         }
     };
 
