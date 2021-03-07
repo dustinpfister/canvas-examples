@@ -13,8 +13,8 @@ var draw = (function(){
         x,
         y;
         cellSize = cellSize === undefined ? 256: cellSize;
-        ctx.strokeStyle = 'gray';
-        ctx.lineWidth = 1;
+        ctx.strokeStyle = '#282828';
+        ctx.lineWidth = 3;
         while (cellX < Math.ceil(canvas.width / cellSize) + 1 ) {
             x = cellX * cellSize - pt.x % cellSize;
             ctx.beginPath();
