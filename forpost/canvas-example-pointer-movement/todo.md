@@ -31,6 +31,7 @@
 * (done) long click/touch to step a list of modes
 * (done) long down time option
 * (done) display progress of long down when drawing pm
+* (done) do not draw long down progress rigth away
 * make a pkg 0.2.0 folder
 
 ## 0.1.0 - new utils lib, create canvas, various improvements
