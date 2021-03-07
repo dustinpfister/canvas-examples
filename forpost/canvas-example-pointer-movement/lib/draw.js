@@ -31,9 +31,10 @@ var draw = (function(){
         }
     };
 
-    var draw_pm_circle = function(pm, ctx){
+    var draw_pm_circle = function(pm, ctx, per){
+            per = per === undefined ? 1 : per;
             ctx.beginPath();
-            ctx.arc(pm.sp.x, pm.sp.y, pm.distMax / 2, 0, Math.PI * 2);
+            ctx.arc(pm.sp.x, pm.sp.y, (pm.distMax / 2) * per, 0, Math.PI * 2);
             ctx.stroke();
             ctx.fill();
     };
@@ -70,12 +71,16 @@ var draw = (function(){
     api.navCircle = function (pm, ctx, canvas) {
         if (pm.down) {
             ctx.strokeStyle = 'white';
-            ctx.fillStyle = 'rgba(0,255,0,0.4)';
             ctx.lineWidth = 3;
-            draw_pm_circle(pm, ctx);
+
             if(pm.PPS > 0){
+                ctx.fillStyle = 'rgba(0,255,0,0.4)';
+                draw_pm_circle(pm, ctx, 1);
                 draw_pm_dir_line(pm, ctx);
                 draw_pm_pps_circle(pm, ctx);
+            }else{
+                ctx.fillStyle = 'rgba(0,255,255,0.4)';
+                draw_pm_circle(pm, ctx, 0.5);
             }
             draw_pm_info(pm, ctx);
         }
