@@ -1,24 +1,15 @@
 // SETUP CANVAS
-(function () {
+(function(){
     // create and append canvas element, and get 2d context
     var canvasObj = utils.createCanvas({
         width: 320,
         height: 240
-    });
-    var canvas = canvasObj.canvas;
-    var ctx = canvasObj.ctx;
-
+    }),
+    canvas = canvasObj.canvas,
+    ctx = canvasObj.ctx;
+    // create game state
     var game = gameMod.create();
-
-    //canvas.addEventListener('click', ptl.click);
-
-    //canvas.addEventListener('click', function(){
-    //    ptl.click(game);
-    //});
-canvas.addEventListener('click', gameMod.click(game) );
-
-    //ptl.randomTarget(game);
-
+    // loop
     var loop = function () {
         requestAnimationFrame(loop);
         //ptl.tick(game);
@@ -26,6 +17,6 @@ canvas.addEventListener('click', gameMod.click(game) );
         drawPTL(game, ctx, canvas);
     };
     loop();
-
-}
-    ());
+    // attach event hanlder
+    canvas.addEventListener('click', gameMod.click(game) );
+}());
