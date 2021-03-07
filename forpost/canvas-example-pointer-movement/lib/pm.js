@@ -57,6 +57,7 @@ var PM = (function () {
         pm.dist = utils.distance(pm.sp.x, pm.sp.y, pm.cp.x, pm.cp.y);
         // set pps and angle if dist is greater than min and pointer is down
         if (pm.down && pm.dist >= pm.distMin) {
+            pm.secs = 0;
             pm.per = (pm.dist - pm.distMin) / pm.distMax;
             pm.per = pm.per > 1 ? 1 : pm.per;
             pm.per = pm.per < 0 ? 0 : pm.per;
