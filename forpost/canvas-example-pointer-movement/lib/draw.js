@@ -97,7 +97,7 @@ var draw = (function(){
         //ctx.fillText('PPS: ' + pm.PPS.toFixed(2) + '/' + pm.maxPPS, 10, 20);
     };
     api.ver = function (ctx, pm) {
-        ctx.fillStyle = 'white';
+        ctx.fillStyle = 'lime';
         ctx.font = '10px courier';
         ctx.textBaseline = 'top';
         ctx.textAlign = 'left';
