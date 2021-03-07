@@ -16,31 +16,27 @@ var gameMod = (function(){
             sec_target: 4,
             sec_total: 100,
             sec_margin: 4,
-            tick_dir: -1,
-            tick_rate: 30,
-            tick_last: new Date(),
+
+            dir: -1,
+            degPerSecond: 20,
             inRange: false,
             score: 0
         };
         randomTarget(game);
         return game;
     };
-    // tick method
-    api.tick = function (game) {
-        var time = new Date() - game.tick_last,
-        ticks = time / game.tick_rate;
-        game.sec_current += ticks * game.tick_dir;
-        game.sec_current = utils.mod(game.sec_current, game.sec_total); //game.wrapSec(game.sec_current);
+    // update
+    api.update = function(game, secs){
+        game.sec_current +=  game.degPerSecond * secs * game.dir; 
+        game.sec_current = utils.mod(game.sec_current, game.sec_total); 
         game.inRange = getInRange(game);
-        game.tick_last = new Date();
     };
     // create click handler
     api.click = function (game) {
         return function(e){
             game.score += game.inRange ? 1 : -1;
             if (game.inRange) {
-                game.tick_dir = game.tick_dir === 1 ? -1 : 1;
-                //game.randomTarget();
+                game.dir = game.dir === 1 ? -1 : 1;
                 randomTarget(game);
             }
         };
