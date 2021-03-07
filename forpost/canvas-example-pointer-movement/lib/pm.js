@@ -10,6 +10,7 @@ var PM = (function () {
         return {
             ver: '0.2.0',
             secs: 0,
+            longDownTime: opt.longDownTime || 3,
             mode: opt.mode || 'dir1440',
             modeIndex: 0,
             modesList: opt.modesList || DEFAULT_MODESLIST,
@@ -66,7 +67,7 @@ var PM = (function () {
             applyMode(pm, radian);
         }else{
             pm.secs += secs;
-            if(pm.secs >= 2){
+            if(pm.secs >= pm.longDownTime){
                 pm.modeIndex += 1;
                 pm.modeIndex = utils.mod(pm.modeIndex, pm.modesList.length);
                 pm.secs = 0;
