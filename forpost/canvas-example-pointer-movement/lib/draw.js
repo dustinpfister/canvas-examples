@@ -61,8 +61,9 @@ var draw = (function(){
         ctx.textBaseline = 'top';
         ctx.textAlign = 'left';
         ctx.font = '10px arial';
-        ctx.fillText('PPS: ' + Math.round(pm.PPS) + ' / ' + pm.maxPPS + ' ('+Math.round(pm.per*100)+'%)', x, y);
-        ctx.fillText('A: ' + utils.radianToScale(pm.angle).toFixed(2), x, y + 12);
+        ctx.fillText('mode: ' + pm.mode, x, y);
+        ctx.fillText('PPS: ' + Math.round(pm.PPS) + ' / ' + pm.maxPPS + ' ('+Math.round(pm.per*100)+'%)', x, y + 12);
+        ctx.fillText('A: ' + utils.radianToScale(pm.angle).toFixed(2), x, y + 24);
     };
 
     // draw a navigation circle when moving the map

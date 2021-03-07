@@ -11,7 +11,8 @@
 ## 0.x.0 - Fine Grain control and Event handlers returned by pm module
 * (done) current function of pm can be a 'fine'  or fine grain mode
 * (done) start a 'dirX' mode that will make use of an option pm.dirCount prop that can be set and changed
-* public methods like pm.onPointerEnd will create and return an event handler
+* (done) public methods like pm.onPointerEnd will create and return an event handler
+* display mode
 * make a pkg 0.2.0 folder
 
 ## 0.1.0 - new utils lib, create canvas, various improvements
