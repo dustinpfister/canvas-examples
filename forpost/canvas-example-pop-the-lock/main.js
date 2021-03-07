@@ -14,7 +14,9 @@
         requestAnimationFrame(loop);
         //ptl.tick(game);
         gameMod.tick(game);
-        drawPTL(game, ctx, canvas);
+        draw.background(ctx, canvas, '#0a0a0a');
+        draw.PTL(ctx, canvas, game);
+        draw.ver(ctx, canvas, game);
     };
     loop();
     // attach event hanlder
