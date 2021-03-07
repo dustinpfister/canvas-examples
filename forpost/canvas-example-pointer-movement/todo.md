@@ -16,7 +16,10 @@
 * can select a cell
 * can unselect a cell
 
+## 0.x.0 - fine grain control of PPS also
+
 ## 0.x.0 - pm menu, and hold option
+* removed unneeded pm.dist = 0 in update
 * long click/touch to enter 'pm menu'
 * pm menu canb be used to set mode from a list of options
 * pm menu can be used to set hold on and off
@@ -32,7 +35,7 @@
 * (done) long down time option
 * (done) display progress of long down when drawing pm
 * (done) do not draw long down progress rigth away
-* make a pkg 0.2.0 folder
+* (done - 03/07/2021 ) make a pkg 0.2.0 folder
 
 ## 0.1.0 - new utils lib, create canvas, various improvements
 * (done) add a utils.js with a create canvas method
