@@ -5,7 +5,7 @@ ctx = canvasObj.ctx;
 // create a pm object
 var pm = PM.create({
         modesList:'dir32,dir16,dir12,dir8,dir4,dir360,dir1440,fine'.split(','),
-        longDownTime: 1,
+        longDownTime: 2,
         distMin: 32,
         distMax: 128,
         maxPPS: 512

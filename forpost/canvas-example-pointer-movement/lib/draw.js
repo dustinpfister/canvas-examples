@@ -80,14 +80,20 @@ var draw = (function(){
                 draw_pm_circle(pm, ctx, 1);
                 draw_pm_dir_line(pm, ctx);
                 draw_pm_pps_circle(pm, ctx);
+                draw_pm_info(pm, ctx);
             }else{
                 // else waiting for the long down
-                ctx.fillStyle = 'rgba(0,255,255,0.1)';
-                draw_pm_circle(pm, ctx, 1);
-                ctx.fillStyle = 'rgba(0,255,255,0.4)';
-                draw_pm_circle(pm, ctx, pm.secs / pm.longDownTime);
+                var per = pm.secs / pm.longDownTime;
+                ctx.globalAlpha = per;
+                if(per >= 0.25){
+                    ctx.fillStyle = 'rgba(0,255,255,0.1)';
+                    draw_pm_circle(pm, ctx, 1);
+                    ctx.fillStyle = 'rgba(0,255,255,0.4)';
+                    draw_pm_circle(pm, ctx, (per - 0.25) / 0.75);
+                    draw_pm_info(pm, ctx);
+                }
             }
-            draw_pm_info(pm, ctx);
+            ctx.globalAlpha = 1;
         }
     };
     // draw debug info
