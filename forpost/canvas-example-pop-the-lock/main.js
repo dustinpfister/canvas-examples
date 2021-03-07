@@ -12,16 +12,18 @@
 
     //canvas.addEventListener('click', ptl.click);
 
-    canvas.addEventListener('click', function(){
-        ptl.click(game);
-    });
+    //canvas.addEventListener('click', function(){
+    //    ptl.click(game);
+    //});
+canvas.addEventListener('click', gameMod.click(game) );
 
-    ptl.randomTarget(game);
+    //ptl.randomTarget(game);
 
     var loop = function () {
         requestAnimationFrame(loop);
-        ptl.tick(game);
-        drawPTL(ptl, ctx, canvas);
+        //ptl.tick(game);
+        gameMod.tick(game);
+        drawPTL(game, ctx, canvas);
     };
     loop();
 
