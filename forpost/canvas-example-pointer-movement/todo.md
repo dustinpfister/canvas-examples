@@ -10,9 +10,9 @@
 
 ## 0.x.0 - Fine Grain control
 * current function of pm can be a 'fine'  or fine grain mode
-* start a new '8dir' mode that will lock angle to 8 directions
-* start a new '360dir' mode that will lock angle to 360 directions
-* start a 'xDir' mode that will make use of an option pm.dirCount prop that can be set and changed
+* start a new 'dir8' mode that will lock angle to 8 directions
+* start a new 'dir360' mode that will lock angle to 360 directions
+* start a 'dirX' mode that will make use of an option pm.dirCount prop that can be set and changed
 * public methods like pm.onPointerEnd will create and return an event handler
 * make a pkg 0.2.0 folder
 

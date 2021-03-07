@@ -27,8 +27,9 @@ var PM = (function () {
         };
     };
 
-    var lockToDirs = function(radian, dirs){
-
+    var lockToDirs = function(radian, dirCount){
+        var dir = Math.round(radian / utils.TAU * dirCount);
+        return utils.mod(utils.TAU / dirCount * dir, utils.TAU);
     };
 
     // update the pm based on startPoint, and currentPoint
@@ -45,9 +46,9 @@ var PM = (function () {
             pm.per = pm.per < 0 ? 0 : pm.per;
             pm.PPS = pm.per * pm.maxPPS;
             var radian = utils.mod(Math.atan2(pm.cp.y - pm.sp.y, pm.cp.x - pm.sp.x), utils.TAU);
-            var dir = Math.round(radian / utils.TAU * 4);
+
   
-            pm.angle = utils.mod(utils.TAU / 4 * dir, utils.TAU);
+            pm.angle = lockToDirs(radian, 16)
         }
     };
 
