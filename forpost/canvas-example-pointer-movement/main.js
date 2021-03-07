@@ -1,21 +1,21 @@
+// create a canvas
 var canvasObj = utils.createCanvas({ width: 640, height: 480}),
 canvas = canvasObj.canvas,
 ctx = canvasObj.ctx;
-
+// create a pm object
 var pm = PM.create({
-        modesList:['fine', 'dir32', 'dir16', 'dir12','dir8', 'dir4', 'dir360', 'dir1440'],
+        modesList:'dir32,dir16,dir12,dir8,dir4,dir360,dir1440,fine'.split(','),
         longDownTime: 1,
         distMin: 32,
         distMax: 128,
         maxPPS: 512
     });
-
 // a point
 var pt = {
     x: 0,
     y: 0
 };
-
+// loop
 var lt = new Date();
 var loop = function () {
     var now = new Date(),

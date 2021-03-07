@@ -1,9 +1,21 @@
 var PM = (function () {
-
-    var DEFAULT_MODESLIST = 'dir360,dir8,dir4,dir1440,fine'.split(',');
-
+    // HELPERS
+    // lock angle to dirs helper
+    var lockToDirs = function(radian, dirCount){
+        var dir = Math.round(radian / utils.TAU * dirCount);
+        return utils.mod(utils.TAU / dirCount * dir, utils.TAU);
+    };
+    // apply the current mode to angle
+    var applyMode = function(pm, radian){
+        if(pm.mode.substr(0, 3) === 'dir'){
+            var dirCount = Number(pm.mode.substr(3, pm.mode.length));
+            dirCount = String(dirCount) === 'NaN' ? 360 : dirCount;
+            dirCount = dirCount <= 0 ? 360 : dirCount;
+            pm.angle = lockToDirs(radian, dirCount);
+        }
+    };
+    // PUBLIC API
     var api = {};
-
     // new Pointer Movement State Object
     api.create = function (opt) {
         opt = opt || {};
@@ -13,7 +25,7 @@ var PM = (function () {
             longDownTime: opt.longDownTime || 3,
             mode: opt.mode || 'dir1440',
             modeIndex: 0,
-            modesList: opt.modesList || DEFAULT_MODESLIST,
+            modesList: opt.modesList || 'dir360,dir8,dir4,dir1440,fine'.split(','),
             down: false,
             angle: 0,
             dist: 0,
@@ -23,30 +35,15 @@ var PM = (function () {
             PPS: 0,
             maxPPS: opt.maxPPS === undefined ? 128 : opt.maxPPS,
             sp: { // start point
-                x: -1,
-                y: -1
+                x: 0,
+                y: 0
             },
             cp: { // current point
-                x: -1,
-                y: -1
+                x: 0,
+                y: 0
             }
         };
     };
-
-    var lockToDirs = function(radian, dirCount){
-        var dir = Math.round(radian / utils.TAU * dirCount);
-        return utils.mod(utils.TAU / dirCount * dir, utils.TAU);
-    };
-
-    var applyMode = function(pm, radian){
-        if(pm.mode.substr(0, 3) === 'dir'){
-            var dirCount = Number(pm.mode.substr(3, pm.mode.length));
-            dirCount = String(dirCount) === 'NaN' ? 360 : dirCount;
-            dirCount = dirCount <= 0 ? 360 : dirCount;
-            pm.angle = lockToDirs(radian, dirCount);
-        }
-    };
-
     // update the pm based on startPoint, and currentPoint
     api.update = function (pm, secs) {
         pm.dist = 0;
@@ -76,14 +73,12 @@ var PM = (function () {
             }
         }
     };
-
     // step a point by the current values of the pm
     api.stepPointByPM = function (pm, pt, secs) {
         secs = secs === undefined ? 1 : secs;
         pt.x += Math.cos(pm.angle) * pm.PPS * secs;
         pt.y += Math.sin(pm.angle) * pm.PPS * secs;
     };
-
     // when a pointer action starts
     api.onPointerStart = function (pm) {
         return function(e){
@@ -100,7 +95,6 @@ var PM = (function () {
             };
         };
     };
-
     // when a pointer action moves
     api.onPointerMove = function (pm) {
         return function(e){
@@ -111,7 +105,6 @@ var PM = (function () {
             };
         };
     };
-
     // when a pointer actions ends
     api.onPointerEnd = function (pm) {
         return function(e){
@@ -128,8 +121,7 @@ var PM = (function () {
             };
         };
     };
-
+    // return the public API
     return api;
-
 }
     ());
