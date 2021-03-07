@@ -68,7 +68,8 @@ var PM = (function () {
             applyMode(pm, radian);
         }else{
             pm.secs += secs;
-            if(pm.secs >= pm.longDownTime){
+            pm.secs = pm.secs >= pm.longDownTime ? pm.longDownTime: pm.secs;
+            if(pm.secs == pm.longDownTime){
                 pm.modeIndex += 1;
                 pm.modeIndex = utils.mod(pm.modeIndex, pm.modesList.length);
                 pm.secs = 0;
