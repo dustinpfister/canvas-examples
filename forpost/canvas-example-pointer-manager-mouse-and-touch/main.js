@@ -6,9 +6,11 @@ var sm = {
     currentState: 'init',
     canvas: canvas,
     ctx: ctx,
+    backgroundStyle:'gray',
     model: {
         x: canvas.width / 2,
-        y: canvas.height / 2
+        y: canvas.height / 2,
+        r: 10
     },
     init: {
         tick: function (model, sm) {
@@ -18,12 +20,11 @@ var sm = {
     },
     demo: {
         tick: function (model, sm) {
-            ctx.fillStyle = 'black';
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-            ctx.strokeStyle = 'white';
-            ctx.beginPath();
-            ctx.arc(model.x, model.y, 5, 0, Math.PI * 2);
-            ctx.stroke();
+
+            draw.background(sm.ctx, sm.canvas, sm);
+
+            draw.pointerObj(sm.ctx, sm.canvas, sm.model);
+
         },
         pointer: {
             start: function (pos, sm, e) {
