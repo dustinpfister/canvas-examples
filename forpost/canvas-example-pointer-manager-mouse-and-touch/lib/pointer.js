@@ -1,23 +1,8 @@
 var PMMT = (function () {
-
-    // get canvas relative point
-    var getCanvasRelative = function (e) {
-        var canvas = e.target,
-        bx = canvas.getBoundingClientRect();
-        var x = (e.changedTouches ? e.changedTouches[0].clientX : e.clientX) - bx.left,
-        y = (e.changedTouches ? e.changedTouches[0].clientY : e.clientY) - bx.top;
-        return {
-            x: x,
-            y: y,
-            bx: bx
-        };
-    };
-
     // out of canvas
     var outOfCanvas = function (sm, pos) {
         return pos.x < 0 || pos.x >= sm.canvas.width || pos.y < 0 || pos.y >= sm.canvas.height;
     };
-
     // get a pointer object if the state has one else return false
     var getPointer = function (sm) {
         var stateObj = sm[sm.currentState] || {};
@@ -26,13 +11,12 @@ var PMMT = (function () {
         }
         return false;
     };
-
     // attach pointer events
     var attachPointerEvent = function (sm, domType, smType) {
         // attach a hander of the given domType to the canvas
         sm.canvas.addEventListener(domType, function (e) {
             // get position and state
-            var pos = getCanvasRelative(e),
+            var pos = utils.getCanvasRelative(e),
             pointer = getPointer(sm),
             hander,
             endHander;
@@ -59,7 +43,6 @@ var PMMT = (function () {
             }
         });
     };
-
     // single attachment method for a state manager
     return function (sm) {
         // mouse events
@@ -72,8 +55,6 @@ var PMMT = (function () {
         attachPointerEvent(sm, 'touchmove', 'move');
         attachPointerEvent(sm, 'touchend', 'end');
         attachPointerEvent(sm, 'touchcancel', 'end');
-
     };
-
 }
     ());

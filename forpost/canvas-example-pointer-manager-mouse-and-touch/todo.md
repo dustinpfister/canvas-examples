@@ -1,10 +1,14 @@
 # canvas-example-pointer-manager-mouse-and-touch todo list
 
+## 0.1.0 - multi touch
+* make use of a getCanvasRelativeArray method
+* make a pkg 0.1.0 folder
+
 ## 0.0.1 - Utils.js, and create canvas
-* Use create canvas method
-* Use getCanvasRealtiveArray method
+* (done) Use create canvas method
+* (done) Use getCanvasRealtive utils method method
 * display version number
-* make a pkg 0.0.1
+* make a pkg 0.0.1 folder
 
 ## 0.0.0 - Basic idea working
 * (done) just have the basic idea working

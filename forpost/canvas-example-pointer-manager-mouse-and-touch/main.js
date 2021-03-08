@@ -1,7 +1,7 @@
 var canvasObj = utils.createCanvas(),
 canvas = canvasObj.canvas,
 ctx = canvasObj.ctx;
-
+// state machine object
 var sm = {
     currentState: 'init',
     canvas: canvas,
@@ -45,8 +45,7 @@ var sm = {
         }
     }
 };
-
-
+// main app loop
 var loop = function () {
     requestAnimationFrame(loop);
     sm[sm.currentState].tick(sm.model, sm);
