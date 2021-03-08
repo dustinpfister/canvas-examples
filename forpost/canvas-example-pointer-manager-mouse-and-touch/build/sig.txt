@@ -1,0 +1,7 @@
+/*
+   canvas-example-pointer-manager-mouse-and-touch
+   Copyright 2020 by Dustin Pfister
+   https://raw.githubusercontent.com/dustinpfister/canvas-examples/master/LICENSE
+ 
+   https://github.com/dustinpfister/canvas-examples
+*/
