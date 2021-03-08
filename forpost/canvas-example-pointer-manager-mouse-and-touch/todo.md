@@ -7,8 +7,8 @@
 ## 0.0.1 - Utils.js, and create canvas
 * (done) Use create canvas method
 * (done) Use getCanvasRealtive utils method method
-* display version number
-* make a pkg 0.0.1 folder
+* (done) display version number
+* (done - 03/08/2021) make a pkg 0.0.1 folder
 
 ## 0.0.0 - Basic idea working
 * (done) just have the basic idea working
