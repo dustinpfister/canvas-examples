@@ -1,12 +1,25 @@
 
-## 0.1.0 - states, ./lib/game.js, and ./lib/draw.js
+## 0.x.0 - game modes, starting with freePlay and endurance modes
+* have a 'freePlay' mode that is the game as it is now
+* start an 'endurance' mode where the object is to get the score as high as you can
+* can loose in endurance mode
+* when you loose enter game over state
+* in game over state you can play again or return to title
+
+## 0.2.0 - Object Pool, and buttons
+* start an object pool lib that will just be used for buttons and UI
+* Have a title state in main.js
+* have a start game button in title state
+* have a back button in game state
+* make a pkg 0.2.0 folder
+
+## 0.1.0 - sm started, ./lib/game.js, and ./lib/draw.js
 * (done) start a game.js file
 * (done) start a draw.js file
 * (done) create a new gameMod.update to replace gameMod.tick
-* start a state machine in main.js
-* Have a title state
-* have a game state
-* make a pkg 0.1.0 folder
+* (done) start a state machine in main.js
+* (done) have a game state
+* (done - 03/07/2021) make a pkg 0.1.0 folder
 
 ## 0.0.0 - Basic idea
 * (done) Basic idea working
