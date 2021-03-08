@@ -13,6 +13,6 @@
 ## 03/07/21 to 03/13/21
 * (done) update pointer-manager-mouse-and-touch to v0.0.1
 * (done) update percent-math-log to v0.1.1
+* (done) finish game-crosshairs v0.22.0
 * update particles-search-destroy-and-spawn with new create canvas method
 * pop-the-lock at v0.3.0+
-* finish game-crosshairs v0.22.0

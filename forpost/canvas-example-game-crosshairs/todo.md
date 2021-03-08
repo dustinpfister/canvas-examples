@@ -156,8 +156,7 @@
 * (done) the game state options button will move out, stop, and switch to options state by way of new 'onOutEnd' event
 * (done) make all game state buttons go out with options click
 * (done) see about using button system to move crossharis in and out
-* set button state for collection method in buttons.js
-
+* (done) set button state for collection method in buttons.js
 * make a pkg 0.22.0 folder
 
 ## 0.21.0 - game.levelObj used to unlock weapons and sills
