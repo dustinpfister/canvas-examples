@@ -1,35 +1,3 @@
-var utils = {};
-utils.logPer = function (per, a, b) {
-    a = a === undefined ? 2 : a;
-    b = b === undefined ? a : b;
-    per = per < 0 ? 0 : per;
-    per = per > 1 ? 1 : per;
-    return Math.log((1 + a - 2) + per) / Math.log(b);
-};
-utils.createLogPerPoints = function (a, b, sx, sy, w, h, len) {
-    var points = [],
-    i = 0,
-    x,
-    y,
-    per,
-    logPer;
-    while (i < len) {
-        per = i / len;
-        logPer = utils.logPer(per, a, b);
-        x = sx + w / (len - 1) * i;
-        y = sy + h - logPer * h;
-        points.push({
-            x: x,
-            y: y,
-            per: per,
-            logPer: logPer,
-            perY: sy + h - h * per
-        });
-        i += 1;
-    }
-    return points;
-};
-
 var draw = {};
 draw.back = function (ctx, canvas) {
     ctx.fillStyle = 'black';
@@ -91,7 +59,7 @@ var demo = {};
 
 demo.createState = function (canvas) {
     var state = {
-        ver: '0.1.0',
+        ver: '0.1.1',
         canvas: canvas,
         points: [],
         a: 2.2,
@@ -164,13 +132,9 @@ demo.moveBox = function (box, state, secs) {
 };
 
 
-var canvas = document.createElement('canvas'),
-ctx = canvas.getContext('2d'),
-container = document.getElementById('canvas-app') || document.body;
-container.appendChild(canvas);
-canvas.width = 320;
-canvas.height = 240;
-ctx.translate(0.5, 0.5);
+var canvasObj = utils.createCanvas(),
+canvas = canvasObj.canvas,
+ctx = canvasObj.ctx;
 
 var state = demo.createState(canvas);
 var loop = function () {
