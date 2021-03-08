@@ -3,6 +3,7 @@ canvas = canvasObj.canvas,
 ctx = canvasObj.ctx;
 // state machine object
 var sm = {
+    ver: '0.0.1',
     currentState: 'init',
     canvas: canvas,
     ctx: ctx,
@@ -22,8 +23,8 @@ var sm = {
         tick: function (model, sm) {
 
             draw.background(sm.ctx, sm.canvas, sm);
-
             draw.pointerObj(sm.ctx, sm.canvas, sm.model);
+            draw.ver(sm.ctx, sm.canvas, sm);
 
         },
         pointer: {
