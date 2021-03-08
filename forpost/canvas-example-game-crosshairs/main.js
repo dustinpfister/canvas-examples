@@ -148,7 +148,7 @@
                 }),
                 changeWeapon: buttonMod.create({
                     label: 'Next Weapon',
-                    fixed: true, // first type that will not trigger animation when clicked
+                    fixed: true, // fixed button that will not trigger animation when clicked
                     fontSize: 8,
                     x: 280,
                     y: 210,
@@ -159,17 +159,13 @@
                         console.log(sm.game.weaponIndex);
                     },
                     onFrame: function(button, sm, frame){
-                        //console.log(button.label, frame.current);
-                        //console.log(frame);
-                        button.x = button.hx + 100 - 100 * frame.per; // + 100 * frame.per;
+                        button.x = button.hx + 100 - 100 * frame.per; 
                     },
                     onInStart: function(button, sm){
-                        //console.log(button.label, 'in start');
                         button.x = button.hx + 100;
                     },
                     onInEnd: function(button, sm){
                         button.x = button.hx;
-                        console.log('in end');
                     },
                     onOutStart: function(button, sm){
                         button.x = button.hx;
@@ -177,12 +173,11 @@
                     },
                     onOutEnd: function(button, sm){
                         button.x = button.hx + 100;
-                        console.log('out end');
-                        //sm.currentState = 'options';
                     }
                 }),
                 autoPlay: buttonMod.create({
                     label: 'Auto Play',
+                    fixed: true,
                     type: 'toggle',
                     fontSize: 8,
                     x: 25,
@@ -198,6 +193,21 @@
                     },
                     onInactive: function (button, sm) {
                         sm.game.autoPlay.enabled = button.bool;
+                    },
+                    onFrame: function(button, sm, frame){
+                        button.x = button.hx - 64 + 64 * frame.per;
+                    },
+                    onInStart: function(button, sm){
+                        button.x = button.hx - 100;
+                    },
+                    onInEnd: function(button, sm){
+                        button.x = button.hx;
+                    },
+                    onOutStart: function(button, sm){
+                        button.x = button.hx;
+                    },
+                    onOutEnd: function(button, sm){
+                        button.x = button.hx - 100;
                     }
                 })
             },
