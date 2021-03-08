@@ -1,7 +1,9 @@
 # todo list for canvas-example-percent-math-log
 
 ## 0.1.1 - create canvas
-* use the create canvas method
+* start a lib/utils.js
+* start a lib/draw.js
+* (done) use the create canvas method
 * make a pkg 0.1.1 folder
 
 ## 0.1.0 - single logPer line, per line, and moving boxes
