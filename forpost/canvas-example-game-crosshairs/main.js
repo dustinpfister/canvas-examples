@@ -126,12 +126,15 @@
                     },
                     onFrame: function(button, sm, frame){
                         button.x = button.hx - 64 + 64 * frame.per;
+                        sm.game.cross.center.y = sm.canvas.height / 2 * -1 + sm.canvas.height * frame.per;
                     },
                     onInStart: function(button, sm){
                         button.x = button.hx - 100;
+                        sm.game.cross.center.y = 50;
                     },
                     onInEnd: function(button, sm){
                         button.x = button.hx;
+                        sm.game.cross.center.y = sm.canvas.height / 2;
                     },
                     onOutStart: function(button, sm){
                         button.x = button.hx;
@@ -143,6 +146,7 @@
                     },
                     onOutEnd: function(button, sm){
                         button.x = button.hx - 100;
+                        sm.game.cross.center.y = sm.canvas.height * -1;
                         sm.currentState = 'options';
                     }
                 }),
