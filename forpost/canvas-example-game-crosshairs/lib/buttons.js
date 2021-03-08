@@ -123,7 +123,7 @@ var buttonMod = (function () {
                 button.onInEnd(button, gameAPI);
             }
         }
-        // if button state is 'in'
+        // if button state is 'out'
         if(fr.state === 'out'){
             if(fr.current === fr.max){
                 button.onOutStart(button, gameAPI);
@@ -133,7 +133,7 @@ var buttonMod = (function () {
             fr.per = fr.current / fr.max;
             button.onFrame(button, gameAPI, fr);
             if(fr.current === 0){
-                fr.state = 'rest';
+                fr.state = 'in';
                 button.onOutEnd(button, gameAPI);
             }
             

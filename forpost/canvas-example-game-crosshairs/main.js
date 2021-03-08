@@ -136,14 +136,15 @@
                     },
                     onInEnd: function(button, sm){
                         button.x = button.hx;
-                        //console.log(button.label, 'in end');
+                        console.log('in end');
                     },
                     onOutStart: function(button, sm){
-                        //button.x = button.hx - 100;
+                        button.x = button.hx;
                         console.log(button.label, 'out start');
                     },
                     onOutEnd: function(button, sm){
-                        button.x = button.hx;
+                        button.x = button.hx - 100;
+                        console.log('out end');
                         sm.currentState = 'options';
                     }
                 }),
