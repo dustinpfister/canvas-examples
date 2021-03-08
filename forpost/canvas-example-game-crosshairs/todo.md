@@ -157,6 +157,7 @@
 * (done) make all game state buttons go out with options click
 
 * see about using button system to move crossharis in and out
+* set button state for collection method in buttons.js
 
 * make a pkg 0.22.0 folder
 

@@ -148,6 +148,7 @@
                 }),
                 changeWeapon: buttonMod.create({
                     label: 'Next Weapon',
+                    fixed: true, // first type that will not trigger animation when clicked
                     fontSize: 8,
                     x: 280,
                     y: 210,
@@ -155,6 +156,7 @@
                     onClick: function (button, sm) {
                         sm.game.weaponIndex += 1;
                         sm.game.weaponIndex %= sm.game.highWeaponIndex + 1;
+                        console.log(sm.game.weaponIndex);
                     },
                     onFrame: function(button, sm, frame){
                         //console.log(button.label, frame.current);

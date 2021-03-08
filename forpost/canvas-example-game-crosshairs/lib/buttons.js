@@ -60,6 +60,7 @@ var buttonMod = (function () {
     api.create = function (opt) {
             opt = opt || {};
             var button = {
+                fixed : opt.fixed === undefined ? false: opt.fixed,
                 hx: opt.x === undefined ? 0 : opt.x, // home x and y
                 hy: opt.y === undefined ? 0 : opt.y,
                 r: opt.r === undefined ? 16 : opt.r,
@@ -100,8 +101,10 @@ var buttonMod = (function () {
                     beforeOnClick[button.type](button, gameAPI, point);
                     button.onClick(button, gameAPI, point);
                     afterOnClick[button.type](button, gameAPI, point);
-                    button.frame.state = 'out';
-                    button.frame.current = button.frame.max;
+                    if(!button.fixed){
+                        button.frame.state = 'out';
+                        button.frame.current = button.frame.max;
+                    }
                 }
             }
     };
