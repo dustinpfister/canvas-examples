@@ -123,21 +123,15 @@
                     y: 200,
                     r: 10,
                     onClick: function (button, sm) {
-                        //sm.currentState = 'options';
-
                     },
                     onFrame: function(button, sm, frame){
-                        //console.log(button.label, frame.current);
-                        //console.log(frame);
-                        button.x = button.hx - 64 + 64 * frame.per; // + 100 * frame.per;
+                        button.x = button.hx - 64 + 64 * frame.per;
                     },
                     onInStart: function(button, sm){
-                        //console.log(button.label, 'in start');
                         button.x = button.hx - 100;
                     },
                     onInEnd: function(button, sm){
                         button.x = button.hx;
-                        //console.log('in end');
                     },
                     onOutStart: function(button, sm){
                         button.x = button.hx;
@@ -146,11 +140,9 @@
                             var button = sm.states.game.buttons[key];
                             button.frame.state = 'out';
                         });
-                        console.log(button.label, 'out start');
                     },
                     onOutEnd: function(button, sm){
                         button.x = button.hx - 100;
-                        //console.log('out end');
                         sm.currentState = 'options';
                     }
                 }),
