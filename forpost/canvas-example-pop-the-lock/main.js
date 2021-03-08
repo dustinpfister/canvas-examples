@@ -7,23 +7,40 @@
     }),
     canvas = canvasObj.canvas,
     ctx = canvasObj.ctx;
-    // create game state
-    var game = gameMod.create();
-    var lt = new Date();
-    // loop
+    // STATE MACHINE
+    var sm = {
+        game : gameMod.create(),
+        lt : new Date(),
+        currentState: 'game',
+        states: {}
+    };
+    // GAME STATE
+    sm.states.game = {
+        update: function(sm, secs){
+            gameMod.update(sm.game, secs);
+        },
+        draw: function(sm, ctx, canvas){
+            draw.PTL(ctx, canvas, sm.game);
+        },
+        click: function(sm, pos, e){
+            gameMod.click(sm.game);
+        }
+    };
+    // LOOP
     var loop = function () {
         var now = new Date(),
-        secs = (now - lt) / 1000;
+        secs = (now - sm.lt) / 1000;
         requestAnimationFrame(loop);
-        //ptl.tick(game);
-        //gameMod.tick(game);
-        gameMod.update(game, secs);
+        sm.states[sm.currentState].update(sm, secs);
         draw.background(ctx, canvas, '#0a0a0a');
-        draw.PTL(ctx, canvas, game);
-        draw.ver(ctx, canvas, game);
-        lt = now;
+        sm.states[sm.currentState].draw(sm, ctx, canvas);
+        draw.ver(ctx, canvas, sm.game);
+        sm.lt = now;
     };
     loop();
     // attach event hanlder
-    canvas.addEventListener('click', gameMod.click(game) );
+    canvas.addEventListener('click', function(e){
+        var pos = utils.getCanvasRelative(e);
+        sm.states[sm.currentState].click(sm, pos, e);
+    });
 }());

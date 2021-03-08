@@ -34,13 +34,13 @@ var gameMod = (function(){
     };
     // create click handler
     api.click = function (game) {
-        return function(e){
+        //return function(e){
             game.score += game.inRange ? 1 : -1;
             if (game.inRange) {
                 game.dir = game.dir === 1 ? -1 : 1;
                 randomTarget(game);
             }
-        };
+        //};
     };
     // return public api
     return api;
