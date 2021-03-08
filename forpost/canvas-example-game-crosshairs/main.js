@@ -8,16 +8,6 @@
     var canvas = canvasObj.canvas;
     var ctx = canvasObj.ctx;
 
-/*
-    var canvas = document.createElement('canvas'),
-    ctx = canvas.getContext('2d'),
-    container = document.getElementById('canvas-app') || document.body;
-    container.appendChild(canvas);
-    canvas.width = 320;
-    canvas.height = 240;
-    ctx.translate(0.5, 0.5);
-*/
-
     // save string helpers
     var saveStateString = function (sm) {
         localStorage.setItem('game-crosshairs-save-0', gameMod.createSaveString(sm.game));
@@ -26,19 +16,6 @@
         //return 'v1.0.1.0-0-0-0-.';
         return localStorage.getItem('game-crosshairs-save-0') //'v0.epz.'
     };
-
-/*
-    // get a canvas relative point
-    var getCanvasRelative = function (e) {
-        var canvas = e.target,
-        bx = canvas.getBoundingClientRect();
-        return {
-            x: (e.changedTouches ? e.changedTouches[0].clientX : e.clientX) - bx.left,
-            y: (e.changedTouches ? e.changedTouches[0].clientY : e.clientY) - bx.top,
-            bx: bx
-        };
-    };
-*/
 
     var states = {
 
