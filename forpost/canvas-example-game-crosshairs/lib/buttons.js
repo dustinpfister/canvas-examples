@@ -142,13 +142,11 @@ var buttonMod = (function () {
 
     // update a button collection
     api.updateCollection = function(collection, secs, gameAPI){
-
         var keys = Object.keys(collection),
         i = keys.length;
         while (i--) {
             api.update(collection[keys[i]], secs, gameAPI);
         }
-
     };
 
     return api;

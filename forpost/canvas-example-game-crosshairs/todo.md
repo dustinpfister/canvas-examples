@@ -152,12 +152,13 @@
 * (done) on 'onInStart' event
 * (done) onClick events set frame.state to the 'out' state
 * (done) use new create canvas method
+* (done) use new button system to have animated button for the main game states options button
+* (done) the game state options button will move out, stop, and switch to options state by way of new 'onOutEnd' event
 
-* use new button system to have animated button for the main game states options button
-* the game state options button will move out, stop, and switch to options state by way of new 'onOutEnd' event
+* make a game state buttons go out with options click
+* see about using system to move crossharis
 
-
-* make a pkg-0-22-0.html file
+* make a pkg 0.22.0 folder
 
 ## 0.21.0 - game.levelObj used to unlock weapons and sills
 * (done) All weapons aside from 'blaster' have a w.locked = true at game level 1
@@ -168,7 +169,7 @@
 * (done) game.highWeaponIndex used in nextWeapon button
 * (done) all skills aside from blaster locked at game level 1
 * (done) as game level goes up, weapons and skills unlock
-* make a pkg_0_21_0.html
+* (done) make a pkg-0-21-0.html
 
 ## 0.20.0 - save states I
 * (done) have support for more than one version of a save string, so the very first field of the save should be a value that indicates what method to use to load the save

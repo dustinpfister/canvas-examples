@@ -124,6 +124,7 @@
                     r: 10,
                     onClick: function (button, sm) {
                         //sm.currentState = 'options';
+
                     },
                     onFrame: function(button, sm, frame){
                         //console.log(button.label, frame.current);
@@ -136,15 +137,20 @@
                     },
                     onInEnd: function(button, sm){
                         button.x = button.hx;
-                        console.log('in end');
+                        //console.log('in end');
                     },
                     onOutStart: function(button, sm){
                         button.x = button.hx;
+                        // set out state for all
+                        Object.keys(sm.states.game.buttons).forEach(function(key){
+                            var button = sm.states.game.buttons[key];
+                            button.frame.state = 'out';
+                        });
                         console.log(button.label, 'out start');
                     },
                     onOutEnd: function(button, sm){
                         button.x = button.hx - 100;
-                        console.log('out end');
+                        //console.log('out end');
                         sm.currentState = 'options';
                     }
                 }),
@@ -157,6 +163,28 @@
                     onClick: function (button, sm) {
                         sm.game.weaponIndex += 1;
                         sm.game.weaponIndex %= sm.game.highWeaponIndex + 1;
+                    },
+                    onFrame: function(button, sm, frame){
+                        //console.log(button.label, frame.current);
+                        //console.log(frame);
+                        button.x = button.hx + 100 - 100 * frame.per; // + 100 * frame.per;
+                    },
+                    onInStart: function(button, sm){
+                        //console.log(button.label, 'in start');
+                        button.x = button.hx + 100;
+                    },
+                    onInEnd: function(button, sm){
+                        button.x = button.hx;
+                        console.log('in end');
+                    },
+                    onOutStart: function(button, sm){
+                        button.x = button.hx;
+                        console.log(button.label, 'out start');
+                    },
+                    onOutEnd: function(button, sm){
+                        button.x = button.hx + 100;
+                        console.log('out end');
+                        //sm.currentState = 'options';
                     }
                 }),
                 autoPlay: buttonMod.create({
@@ -318,6 +346,7 @@
         debugMode: 'none',
         currentState: 'init',
         game: {},
+        states: states,
         input: {
             pointerDown: false,
             pos: {
