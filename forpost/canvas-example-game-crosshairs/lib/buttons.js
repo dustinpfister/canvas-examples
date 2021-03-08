@@ -60,8 +60,8 @@ var buttonMod = (function () {
     api.create = function (opt) {
             opt = opt || {};
             var button = {
-                x: opt.x === undefined ? 0 : opt.x,
-                y: opt.y === undefined ? 0 : opt.y,
+                hx: opt.x === undefined ? 0 : opt.x, // home x and y
+                hy: opt.y === undefined ? 0 : opt.y,
                 r: opt.r === undefined ? 16 : opt.r,
                 label: opt.label || '',
                 info: opt.info || '',
@@ -70,8 +70,9 @@ var buttonMod = (function () {
                 frame: {
                     state: 'in',
                     current: 0,
-                    max: opt.maxFrame || 30,
-                    FPS: 24
+                    max: opt.maxFrame || 12,
+                    FPS: 24,
+                    per: 0
                 },
                 onClick: opt.onClick || function () {},
                 onFrame: opt.onFrame || function () {},
@@ -80,6 +81,8 @@ var buttonMod = (function () {
                 onInStart: opt.onInStart || function () {},
                 onInEnd: opt.onInEnd || function () {}
             };
+            button.x = button.hx;
+            button.y = button.hy;
             setupType(button, opt);
             return button;
     };
@@ -113,6 +116,7 @@ var buttonMod = (function () {
             }
             fr.current += fr.FPS * secs;
             fr.current = fr.current > fr.max ? fr.max: fr.current;
+            fr.per = fr.current / fr.max;
             button.onFrame(button, gameAPI, fr);
             if(fr.current === fr.max){
                 fr.state = 'rest';
@@ -126,6 +130,7 @@ var buttonMod = (function () {
             }
             fr.current -= fr.FPS * secs;
             fr.current = fr.current < 0 ? 0: fr.current;
+            fr.per = fr.current / fr.max;
             button.onFrame(button, gameAPI, fr);
             if(fr.current === 0){
                 fr.state = 'rest';

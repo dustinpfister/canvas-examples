@@ -151,9 +151,7 @@
 * (done) a 'onOutStart' event
 * (done) on 'onInStart' event
 * (done) onClick events set frame.state to the 'out' state
-
-
-* use new create canvas method
+* (done) use new create canvas method
 
 * use new button system to have animated button for the main game states options button
 * the game state options button will move out, stop, and switch to options state by way of new 'onOutEnd' event

@@ -127,18 +127,23 @@
                     },
                     onFrame: function(button, sm, frame){
                         //console.log(button.label, frame.current);
+                        //console.log(frame);
+                        button.x = button.hx - 64 + 64 * frame.per; // + 100 * frame.per;
                     },
                     onInStart: function(button, sm){
                         //console.log(button.label, 'in start');
+                        button.x = button.hx - 100;
                     },
                     onInEnd: function(button, sm){
+                        button.x = button.hx;
                         //console.log(button.label, 'in end');
                     },
                     onOutStart: function(button, sm){
-                        //console.log(button.label, 'out start');
+                        //button.x = button.hx - 100;
+                        console.log(button.label, 'out start');
                     },
                     onOutEnd: function(button, sm){
-                        //console.log(button.label, 'out end');
+                        button.x = button.hx;
                         sm.currentState = 'options';
                     }
                 }),
