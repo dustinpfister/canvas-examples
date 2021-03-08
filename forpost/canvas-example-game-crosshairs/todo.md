@@ -155,8 +155,7 @@
 * (done) use new button system to have animated button for the main game states options button
 * (done) the game state options button will move out, stop, and switch to options state by way of new 'onOutEnd' event
 * (done) make all game state buttons go out with options click
-
-* see about using button system to move crossharis in and out
+* (done) see about using button system to move crossharis in and out
 * set button state for collection method in buttons.js
 
 * make a pkg 0.22.0 folder

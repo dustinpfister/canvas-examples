@@ -152,6 +152,13 @@ var buttonMod = (function () {
         }
     };
 
+    api.setStateForAll = function(collection, state){
+        Object.keys(collection).forEach(function(key){
+            var button = collection[key];
+            button.frame.state = state;
+        });
+    };
+
     return api;
 
 }

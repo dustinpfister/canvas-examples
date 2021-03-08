@@ -139,10 +139,7 @@
                     onOutStart: function(button, sm){
                         button.x = button.hx;
                         // set out state for all
-                        Object.keys(sm.states.game.buttons).forEach(function(key){
-                            var button = sm.states.game.buttons[key];
-                            button.frame.state = 'out';
-                        });
+                        buttonMod.setStateForAll(sm.states.game.buttons, 'out');
                     },
                     onOutEnd: function(button, sm){
                         button.x = button.hx - 100;
