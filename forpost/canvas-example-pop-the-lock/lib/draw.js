@@ -12,8 +12,8 @@ var draw = (function(){
         ctx.strokeStyle = 'red';
         ctx.beginPath();
         ctx.arc(canvas.width / 2, canvas.height / 2, 100,
-            utils.mod(game.sec_target - game.sec_margin, game.sec_total) / game.sec_total * Math.PI * 2,
-            utils.mod(game.sec_target + game.sec_margin, game.sec_total) / game.sec_total * Math.PI * 2);
+            utils.mod(game.deg.target - game.deg.margin, game.deg.total) / game.deg.total * Math.PI * 2,
+            utils.mod(game.deg.target + game.deg.margin, game.deg.total) / game.deg.total * Math.PI * 2);
         ctx.stroke();
     };
     // info
@@ -23,14 +23,14 @@ var draw = (function(){
         ctx.textAlign = 'left';
         ctx.globalAlpha = 0.35;
         ctx.font = '10px arial';
-        ctx.fillText('sec_current ' + game.sec_current.toFixed(2), 10, 10);
+        ctx.fillText('deg.current ' + game.deg.current.toFixed(2), 10, 10);
         ctx.fillText('inrange ' + game.inRange, 10, 20);
     };
     // draw current position
     var current_pos = function(ctx, canvas, game){
         ctx.strokeStyle = 'blue';
         ctx.beginPath();
-        var r = game.sec_current / game.sec_total * Math.PI * 2,
+        var r = game.deg.current / game.deg.total * Math.PI * 2,
         x = Math.cos(r) * 100 + canvas.width / 2,
         y = Math.sin(r) * 100 + canvas.height / 2;
         ctx.arc(x, y, 10, 0, Math.PI * 2);

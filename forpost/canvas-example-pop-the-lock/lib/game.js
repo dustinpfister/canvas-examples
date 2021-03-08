@@ -1,10 +1,10 @@
 var gameMod = (function(){
     // helpers
     var getInRange = function (game) {
-        return game.sec_current >= game.sec_target - game.sec_margin && game.sec_current <= game.sec_target + game.sec_margin;
+        return game.deg.current >= game.deg.target - game.deg.margin && game.deg.current <= game.deg.target + game.deg.margin;
     };
     var randomTarget = function (game) {
-        game.sec_target = Math.floor(Math.random() * (game.sec_total - game.sec_margin * 2)) + game.sec_margin;
+        game.deg.target = Math.floor(Math.random() * (game.deg.total - game.deg.margin * 2)) + game.deg.margin;
     };
     // public API
     var api = {};
@@ -12,13 +12,14 @@ var gameMod = (function(){
     api.create = function(){
         var game = {
             ver: '0.1.0',
-            sec_current: 0,
-            sec_target: 4,
-            sec_total: 100,
-            sec_margin: 4,
-
+            deg: {
+               perSec: 40,
+               current: 0,
+               target: 4,
+               total: 100,
+               margin: 4
+            },
             dir: -1,
-            degPerSecond: 20,
             inRange: false,
             score: 0
         };
@@ -27,8 +28,8 @@ var gameMod = (function(){
     };
     // update
     api.update = function(game, secs){
-        game.sec_current +=  game.degPerSecond * secs * game.dir; 
-        game.sec_current = utils.mod(game.sec_current, game.sec_total); 
+        game.deg.current +=  game.deg.perSec * secs * game.dir; 
+        game.deg.current = utils.mod(game.deg.current, game.deg.total); 
         game.inRange = getInRange(game);
     };
     // create click handler
