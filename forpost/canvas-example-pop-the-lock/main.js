@@ -7,12 +7,26 @@
     }),
     canvas = canvasObj.canvas,
     ctx = canvasObj.ctx;
+    // BUTTON OBJECT POOL
+    var buttonPool = poolMod.create
     // STATE MACHINE
     var sm = {
         game : gameMod.create(),
         lt : new Date(),
-        currentState: 'game',
-        states: {}
+        currentState: 'title',
+        states: {},
+        buttons: buttonPool
+    };
+    // GAME TITLE
+    sm.states.title = {
+        update: function(sm, secs){
+        },
+        draw: function(sm, ctx, canvas){
+            draw.titleText(ctx, canvas, sm);
+        },
+        click: function(sm, pos, e){
+            sm.currentState = 'game';
+        }
     };
     // GAME STATE
     sm.states.game = {

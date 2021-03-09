@@ -60,6 +60,13 @@ var draw = (function(){
         score(ctx, canvas, game);
         info(ctx, canvas, game);
     };
+    api.titleText = function(ctx, canvas){
+        ctx.fillStyle = 'white';
+        ctx.textBaseline = 'middle';
+        ctx.font='30px arial';
+        ctx.textAlign = 'center';
+        ctx.fillText('Pop The Lock', canvas.width / 2, canvas.height / 2 - 50);
+    };
     // version
     api.ver = function(ctx, canvas, game){
         ctx.fillStyle = 'white';
