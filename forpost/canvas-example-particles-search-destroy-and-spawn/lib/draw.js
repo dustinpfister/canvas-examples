@@ -69,9 +69,17 @@ var draw = (function () {
                 drawPartAttackRange(part);
                 i += 1;
             }
+        },
+
+        ver: function(ctx, canvas, state){
+            ctx.fillStyle = 'gray';
+            ctx.font = '10px arial';
+            ctx.textBaseline = 'top';
+            ctx.textAlign = 'left';
+            ctx.fillText('v' + state.ver, 5, canvas.height - 15);
         }
 
-    }
+    };
 
 }
     ());

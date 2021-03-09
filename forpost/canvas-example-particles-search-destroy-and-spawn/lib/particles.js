@@ -108,6 +108,7 @@ var paricles = (function () {
     return {
         create: function (opt) {
             var state = {
+                ver: opt.ver || '',
                 canvas: opt.canvas,
                 ctx: opt.ctx,
                 lt: new Date(),
