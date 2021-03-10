@@ -5,10 +5,11 @@
 
 ## 0.x.0 - game modes, starting with freePlay and endurance modes
 * have a 'freePlay' mode that is the game as it is now
-* start an 'endurance' mode where the object is to get the score as high as you can
+* start an 'endurance' mode where the object is to get the score as high as you can before loosing
 * can loose in endurance mode
 * when you loose enter game over state
 * in game over state you can play again or return to title
+* have an out animation for buttons that change current state
 
 ## 0.2.0 - Object Pool, and buttons
 * (done) start an object pool lib that will just be used for buttons
@@ -20,7 +21,7 @@
 * (done) have a trans method for a state object
 * (done) make a poolMod.moveByFramePerObj method
 * (done) have moving buttons that start at an out position, and move to a home position
-* animate the quit button in game state.
+* (done) animate the quit button in game state.
 * make a pkg 0.2.0 folder
 
 ## 0.1.0 - sm started, ./lib/game.js, and ./lib/draw.js

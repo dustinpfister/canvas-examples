@@ -28,10 +28,10 @@
                     sx: obj.data.sx || 0,
                     sy: obj.data.sy || 0,
                     dist: obj.data.dist || 0,
-                    heading: 0,
+                    heading: obj.data.heading || 0,
                     frame: Math.round(sm.trans.secs / sm.trans.secsTotal * 50),
                     frameMax: 50,
-                    rev: false
+                    rev: obj.data.rev || false
                 };
                 poolMod.moveByFramePerObj(obj, fp);
             }
@@ -57,6 +57,7 @@
     var changeState = function (sm, stateKey) {
         sm.currentState = stateKey;
         sm.trans.active = true;
+        sm.trans.inState = true;
         sm.trans.secs = 0;
         sm.states[sm.currentState].init(sm);
     };
@@ -67,7 +68,7 @@
                 sm.trans.secs = sm.trans.secs > sm.trans.secsTotal ? sm.trans.secsTotal : sm.trans.secs;
                 if (sm.trans.secs === sm.trans.secsTotal) {
                     sm.trans.active = false;
-                    sm.trans.inState = !sm.trans.inState;
+                    sm.trans.inState = false;
                 }
             }
             sm.states[sm.currentState].trans(sm, secs);
@@ -85,15 +86,12 @@
             poolMod.spawn(sm.buttons, sm, {
                 action: 'set_state_game',
                 disp: 'New Game',
-                // home x an y where the button will be displayed
-                //hx: sm.canvas.width / 2 - 64,
-                //hy: sm.canvas.height / 2,
-                // start x and y where the button will start when state starts
-                // and also where it will go when a state change happens
-                sx: -128,
+                // start x and y where the button should start
+                sx: -150,
                 sy: sm.canvas.height / 2,
-                dist: 230,
-                heading: 0
+                dist: 250, // distance and heading from start location
+                heading: 0,
+                rev: false
             });
         },
         trans: function (sm, secs) {
@@ -123,13 +121,18 @@
             poolMod.spawn(sm.buttons, sm, {
                 action: 'set_state_title',
                 disp: 'Quit',
-                hx: sm.canvas.width - 32,
-                hy: 0,
+                sx: sm.canvas.width + 32,
+                sy: 0,
+                dist: 64,
+                heading: Math.PI,
+                rev: false,
                 w: 32,
                 h: 32
             });
         },
-        trans: function (sm, secs) {},
+        trans: function (sm, secs) {
+            poolMod.update(sm.buttons, secs, sm);
+        },
         update: function (sm, secs) {
             gameMod.update(sm.game, secs);
         },
