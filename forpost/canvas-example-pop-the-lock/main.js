@@ -23,6 +23,7 @@
         },
         update: function(obj, pool, state, secs){
             obj.lifespan = 1;
+            poolMod.moveByPPS(obj, secs);
         }
     });
 
@@ -59,6 +60,7 @@
                     sm.trans.inState = !sm.trans.inState;
                 }
             }
+            sm.states[sm.currentState].trans(sm, secs);
         }else{
             sm.states[sm.currentState].update(sm, secs);
         }
@@ -83,6 +85,7 @@
             });
         },
         trans: function(sm, secs){
+            poolMod.update(sm.buttons, secs, sm);
         },
         update: function(sm, secs){
         },
