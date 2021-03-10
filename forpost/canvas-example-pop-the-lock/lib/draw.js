@@ -60,6 +60,7 @@ var draw = (function(){
         score(ctx, canvas, game);
         info(ctx, canvas, game);
     };
+    // draw title text
     api.titleText = function(ctx, canvas){
         ctx.fillStyle = 'white';
         ctx.textBaseline = 'middle';
@@ -68,34 +69,35 @@ var draw = (function(){
         ctx.fillText('Pop The Lock', canvas.width / 2, canvas.height / 2 - 50);
     };
     // version
-    api.ver = function(ctx, canvas, game){
+    api.ver = function(ctx, canvas, sm){
         ctx.fillStyle = 'white';
         ctx.textBaseline = 'top';
         ctx.font='10px arial';
         ctx.textAlign = 'left';
-        ctx.fillText('v' + game.ver, 5, canvas.height - 15);
+        ctx.fillText('v' + sm.ver, 5, canvas.height - 15);
     };
-api.pool = function (ctx, pool) {
-    var i = pool.objects.length,
-    obj;
-    ctx.fillStyle = 'white';
-    ctx.strokeStyle = 'black';
-    ctx.lineWidth = 3;
-    while (i--) {
-        obj = pool.objects[i];
-        if (obj.active) {
-            ctx.save();
-            ctx.fillStyle = obj.data.fill || 'white';
-            ctx.globalAlpha = obj.data.alpha || 1;
-            ctx.translate(obj.x, obj.y);
-            ctx.beginPath();
-            ctx.rect(0, 0, obj.w, obj.h);
-            ctx.fill();
-            ctx.stroke();
-            ctx.restore();
+    // draw object pool
+    api.pool = function (ctx, pool) {
+        var i = pool.objects.length,
+        obj;
+        ctx.fillStyle = 'white';
+        ctx.strokeStyle = 'black';
+        ctx.lineWidth = 3;
+        while (i--) {
+            obj = pool.objects[i];
+            if (obj.active) {
+                ctx.save();
+                ctx.fillStyle = obj.data.fill || 'white';
+                ctx.globalAlpha = obj.data.alpha || 1;
+                ctx.translate(obj.x, obj.y);
+                ctx.beginPath();
+                ctx.rect(0, 0, obj.w, obj.h);
+                ctx.fill();
+                ctx.stroke();
+                ctx.restore();
+            }
         }
-    }
-};
+    };
     // return public API
     return api;
 }());

@@ -27,9 +27,10 @@
 
     // STATE MACHINE
     var sm = {
+        ver: '0.2.0',
         canvas: canvas,
         ctx: ctx,
-        game : gameMod.create(),
+        game : {},
         lt : new Date(),
         currentState: 'title',
         states: {},
@@ -69,6 +70,7 @@
     // GAME STATE
     sm.states.game = {
         init: function(sm){
+            sm.game = gameMod.create();
         },
         update: function(sm, secs){
             gameMod.update(sm.game, secs);
@@ -90,7 +92,7 @@
         sm.states[sm.currentState].update(sm, secs);
         draw.background(ctx, canvas, '#0a0a0a');
         sm.states[sm.currentState].draw(sm, ctx, canvas);
-        draw.ver(ctx, canvas, sm.game);
+        draw.ver(ctx, canvas, sm);
         sm.lt = now;
     };
     loop();

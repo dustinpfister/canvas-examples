@@ -11,7 +11,6 @@ var gameMod = (function(){
     // create method
     api.create = function(){
         var game = {
-            ver: '0.2.0',
             deg: {
                perSec: 40,
                current: 0,
