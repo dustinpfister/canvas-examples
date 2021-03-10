@@ -1,17 +1,28 @@
 ## canvas-example-object-pool
 
-### 0.6.0 - poolMod.wrap and poolMod.clamp methods
+### 0.x.0 - poolMod.wrap and poolMod.clamp methods
 * have a poolMod.clamp method that will clamp display objects to the boundaries of a canvas element
 * have a poolMod.wrap method that will cause a display object to wrap around the boundaries of the canvas element, that is that if a display object goes off one side it will then end up coming back around again from th other side
 * make chances to the example that demo the use of these methods by having to kinds of box object, one that is clamped to the canvas, and another that wraps around it.
 * make the two types of display objects two different set colors so they can clearly be identified from each other
 * have a onBoundsHit pool method that will fire each time a display object of the pool hits the bounderies of the canvas
 
-### 0.5.0 - Particles pool
+### 0.x.0 - Particles pool
 * add a 'particles' pool that will be used to create objects that will be used each time a 'box' object is purged.
 * when a 'box' object becomes inactive (purged), 4 'particle' objects shoot out from the point where it happened
 * when a 'box' object becomes active (spawn), 4 'particle' objects will come to the point where it will spawn, and the spaen of the box will happen when they come together.
 * a set of four 'particle' objects can move in relation to values in a nested object in the pool.data object of the partilces pool object
+* make a pkg 0.5.0 folder
+
+### 0.x.0 - obj.cx, and obj.cy
+* have an obj.cx, and obj.cy props of a display object that will always be the center point
+
+## 0.x.0 - pool.maxSecs prop
+* have a pool.maxSecs prop that will be used to cap the secs value used in update
+
+### 0.5.0 - Click Objects
+* add the getObjectAt method to pools from pop-the-lock
+* a user can click an object and doing so will destroy it
 * make a pkg 0.5.0 folder
 
 ### 0.4.0 - create canvas
@@ -20,7 +31,6 @@
 * (done) start a utils.js, add bounding box to it, and have poolMod.boundingBox use that rather than the internal boundingBox helper
 * (done) add createCanvas method to utils.js and use it to create the canvas
 * make a 0.4.0 pkg folder
-
 
 ### 0.3.0 - hit points and shots
 * (done) have a 'shot' pool that will be a pool of objects that will hit 'box' pool objects
