@@ -34,15 +34,34 @@
         game : {},
         lt : new Date(),
         currentState: 'title',
+        trans:{
+           active: true,
+           inState: true,
+           secs: 0,
+           secsTotal: 3
+        },
         states: {},
         buttons: buttonPool
     };
     var changeState = function(sm, stateKey){
         sm.currentState = stateKey;
+        sm.trans.active = true;
+        sm.trans.secs = 0;
         sm.states[sm.currentState].init(sm);
     };
     var updateState = function(sm, secs){
-        sm.states[sm.currentState].update(sm, secs);
+        if(sm.trans.active){
+            if(sm.trans.secs < sm.trans.secsTotal){
+                sm.trans.secs += secs;
+                sm.trans.secs = sm.trans.secs > sm.trans.secsTotal ? sm.trans.secsTotal: sm.trans.secs;
+                if(sm.trans.secs === sm.trans.secsTotal){
+                    sm.trans.active = false;
+                    sm.trans.inState = !sm.trans.inState;
+                }
+            }
+        }else{
+            sm.states[sm.currentState].update(sm, secs);
+        }
     };
 
     // TITLE STATE
@@ -62,6 +81,8 @@
                 sx: -128,
                 sy: sm.canvas.height / 2
             });
+        },
+        trans: function(sm, secs){
         },
         update: function(sm, secs){
         },
@@ -92,6 +113,8 @@
                 hy: 0,
                 w:32, h:32
             });
+        },
+        trans: function(sm, secs){
         },
         update: function(sm, secs){
             gameMod.update(sm.game, secs);
