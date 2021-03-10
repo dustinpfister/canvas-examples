@@ -1,5 +1,7 @@
-// SETUP CANVAS
+
 (function(){
+
+    // SETUP CANVAS
     // create and append canvas element, and get 2d context
     var canvasObj = utils.createCanvas({
         width: 320,
@@ -7,8 +9,17 @@
     }),
     canvas = canvasObj.canvas,
     ctx = canvasObj.ctx;
+
     // BUTTON OBJECT POOL
-    var buttonPool = poolMod.create();
+    var buttonPool = poolMod.create({
+        spawn: function(obj, pool, sm, opt){
+            console.log('opt')
+        },
+        update: function(obj, pool, state, secs){
+            obj.lifespan = 1;
+        }
+    });
+
     // STATE MACHINE
     var sm = {
         game : gameMod.create(),
@@ -21,25 +32,29 @@
         sm.currentState = stateKey;
         sm.states[sm.currentState].init(sm);
     };
-    // GAME TITLE
+
+    // TITLE STATE
     sm.states.title = {
         init: function(sm){
             // set all button object to inactive
             poolMod.setActiveStateForAll(sm.buttons, false);
+            // spawn object for new Game button
+            poolMod.spawn(sm.buttons, sm, 'newgame');
         },
         update: function(sm, secs){
         },
         draw: function(sm, ctx, canvas){
             draw.titleText(ctx, canvas, sm);
+            draw.pool(ctx, sm.buttons);
         },
         click: function(sm, pos, e){
-            //sm.currentState = 'game';
-            changeState(sm, 'game');
+            //changeState(sm, 'game');
         }
     };
+
     // GAME STATE
     sm.states.game = {
-        init: function(){
+        init: function(sm){
         },
         update: function(sm, secs){
             gameMod.update(sm.game, secs);
@@ -51,7 +66,9 @@
             gameMod.click(sm.game);
         }
     };
+
     // LOOP
+    changeState(sm, 'title');
     var loop = function () {
         var now = new Date(),
         secs = (now - sm.lt) / 1000;
@@ -63,9 +80,11 @@
         sm.lt = now;
     };
     loop();
-    // attach event hanlder
+
+    // EVENTS
     canvas.addEventListener('click', function(e){
         var pos = utils.getCanvasRelative(e);
         sm.states[sm.currentState].click(sm, pos, e);
     });
+
 }());
