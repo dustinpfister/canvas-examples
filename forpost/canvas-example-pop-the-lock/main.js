@@ -13,7 +13,9 @@
     // BUTTON OBJECT POOL
     var buttonPool = poolMod.create({
         spawn: function(obj, pool, sm, opt){
-            console.log('opt')
+            console.log(opt);
+            obj.x = opt.hx;
+            obj.y = opt.hy;
         },
         update: function(obj, pool, state, secs){
             obj.lifespan = 1;
@@ -39,7 +41,11 @@
             // set all button object to inactive
             poolMod.setActiveStateForAll(sm.buttons, false);
             // spawn object for new Game button
-            poolMod.spawn(sm.buttons, sm, 'newgame');
+            poolMod.spawn(sm.buttons, sm, {
+                action:'set_state_game',
+                hx: 32,
+                hy: 32
+            });
         },
         update: function(sm, secs){
         },
@@ -49,6 +55,7 @@
         },
         click: function(sm, pos, e){
             //changeState(sm, 'game');
+            console.log( poolMod.getObjectAt(sm.buttons, pos.x, pos.y) );
         }
     };
 

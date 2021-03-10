@@ -84,6 +84,19 @@ var poolMod = (function () {
             obj.active = bool;
         }
     };
+    // get an active object at the given position, or return false if nothing is there
+    api.getObjectAt = function(pool, x, y){
+        var i = pool.objects.length, obj;
+        while(i--){
+            obj = pool.objects[i];
+            if(obj.active){
+                if(api.boundingBox(obj, { x: x, y: y ,w: 1,h: 1})){
+                    return obj;
+                }
+            }
+        }
+        return false;
+    };
     // move the given object by its current heading and pps
     api.moveByPPS = function (obj, secs) {
         obj.x += Math.cos(obj.heading) * obj.pps * secs;
@@ -101,6 +114,7 @@ var poolMod = (function () {
     api.boundingBox = function (a, b) {
         return utils.boundingBox(a.x, a.y, a.w, a.h, b.x, b.y, b.w, b.h);
     };
+
     // return public method
     return api;
 }
