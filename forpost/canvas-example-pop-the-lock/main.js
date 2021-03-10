@@ -14,8 +14,11 @@
     var buttonPool = poolMod.create({
         spawn: function(obj, pool, sm, opt){
             console.log(opt);
+            // just ref opt for the data object
+            obj.data = opt;
             obj.x = opt.hx;
             obj.y = opt.hy;
+            obj.w = 128;
         },
         update: function(obj, pool, state, secs){
             obj.lifespan = 1;
@@ -24,6 +27,8 @@
 
     // STATE MACHINE
     var sm = {
+        canvas: canvas,
+        ctx: ctx,
         game : gameMod.create(),
         lt : new Date(),
         currentState: 'title',
@@ -43,8 +48,8 @@
             // spawn object for new Game button
             poolMod.spawn(sm.buttons, sm, {
                 action:'set_state_game',
-                hx: 128,
-                hy: 128
+                hx: sm.canvas.width / 2 - 64,
+                hy: sm.canvas.height / 2
             });
         },
         update: function(sm, secs){
@@ -54,8 +59,10 @@
             draw.pool(ctx, sm.buttons);
         },
         click: function(sm, pos, e){
-            //changeState(sm, 'game');
-            console.log( poolMod.getObjectAt(sm.buttons, pos.x, pos.y) );
+            var obj = poolMod.getObjectAt(sm.buttons, pos.x, pos.y);
+            if(obj){
+                changeState(sm, 'game');
+            }
         }
     };
 

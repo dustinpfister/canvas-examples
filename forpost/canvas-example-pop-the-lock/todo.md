@@ -13,7 +13,7 @@
 ## 0.2.0 - Object Pool, and buttons
 * (done) start an object pool lib that will just be used for buttons
 * (done) Have a title state in main.js
-* have a start game button in title state
+* (done) have a start game button in title state
 * have a back button in game state
 * make a pkg 0.2.0 folder
 
