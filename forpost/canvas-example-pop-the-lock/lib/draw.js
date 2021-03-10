@@ -94,6 +94,13 @@ var draw = (function(){
                 ctx.rect(0, 0, obj.w, obj.h);
                 ctx.fill();
                 ctx.stroke();
+                if(obj.data.disp){
+                   ctx.fillStyle = 'black';
+                   ctx.textBaseline = 'middle';
+                   ctx.font = '10px arial';
+                   ctx.textAlign = 'center';
+                   ctx.fillText(obj.data.disp, obj.w / 2, obj.h / 2);
+                }
                 ctx.restore();
             }
         }

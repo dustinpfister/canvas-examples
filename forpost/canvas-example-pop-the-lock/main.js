@@ -50,6 +50,7 @@
             // spawn object for new Game button
             poolMod.spawn(sm.buttons, sm, {
                 action:'set_state_game',
+                disp: 'New Game',
                 hx: sm.canvas.width / 2 - 64,
                 hy: sm.canvas.height / 2
             });
@@ -78,6 +79,7 @@
             // spawn object for new Game button
             poolMod.spawn(sm.buttons, sm, {
                 action:'set_state_title',
+                disp: 'Quit',
                 hx: sm.canvas.width - 32,
                 hy: 0,
                 w:32, h:32
