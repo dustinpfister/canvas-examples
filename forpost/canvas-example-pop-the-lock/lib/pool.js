@@ -102,6 +102,8 @@ var poolMod = (function () {
         obj.x += Math.cos(obj.heading) * obj.pps * secs;
         obj.y += Math.sin(obj.heading) * obj.pps * secs;
     };
+    api.moveByFramePer = function(obj, framePer){
+    };
     // check bounds for the given display object and canvas and return true if the object
     // is out of bounds and false if it is not.
     api.checkBounds = function (obj, canvas) {
