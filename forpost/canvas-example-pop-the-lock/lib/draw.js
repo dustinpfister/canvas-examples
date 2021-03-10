@@ -89,7 +89,7 @@ api.pool = function (ctx, pool) {
             ctx.globalAlpha = obj.data.alpha || 1;
             ctx.translate(obj.x, obj.y);
             ctx.beginPath();
-            ctx.rect(obj.w / 2 * -1, obj.h / 2 * -1, obj.w, obj.h);
+            ctx.rect(0, 0, obj.w, obj.h);
             ctx.fill();
             ctx.stroke();
             ctx.restore();

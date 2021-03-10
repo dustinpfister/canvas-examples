@@ -43,8 +43,8 @@
             // spawn object for new Game button
             poolMod.spawn(sm.buttons, sm, {
                 action:'set_state_game',
-                hx: 32,
-                hy: 32
+                hx: 128,
+                hy: 128
             });
         },
         update: function(sm, secs){

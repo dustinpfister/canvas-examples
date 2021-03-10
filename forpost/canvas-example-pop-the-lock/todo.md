@@ -1,4 +1,8 @@
 
+## 0.x.0 - Address isshue with cx in pool.js
+* have a obj.cx and obj.cy prop in pool.js that will be the center point of a display object
+* make all changes needed in pool.js, main.js, and draw.js
+
 ## 0.x.0 - game modes, starting with freePlay and endurance modes
 * have a 'freePlay' mode that is the game as it is now
 * start an 'endurance' mode where the object is to get the score as high as you can
