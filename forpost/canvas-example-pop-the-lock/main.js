@@ -8,7 +8,7 @@
     canvas = canvasObj.canvas,
     ctx = canvasObj.ctx;
     // BUTTON OBJECT POOL
-    var buttonPool = poolMod.create
+    var buttonPool = poolMod.create();
     // STATE MACHINE
     var sm = {
         game : gameMod.create(),
@@ -17,19 +17,30 @@
         states: {},
         buttons: buttonPool
     };
+    var changeState = function(sm, stateKey){
+        sm.currentState = stateKey;
+        sm.states[sm.currentState].init(sm);
+    };
     // GAME TITLE
     sm.states.title = {
+        init: function(sm){
+            // set all button object to inactive
+            poolMod.setActiveStateForAll(sm.buttons, false);
+        },
         update: function(sm, secs){
         },
         draw: function(sm, ctx, canvas){
             draw.titleText(ctx, canvas, sm);
         },
         click: function(sm, pos, e){
-            sm.currentState = 'game';
+            //sm.currentState = 'game';
+            changeState(sm, 'game');
         }
     };
     // GAME STATE
     sm.states.game = {
+        init: function(){
+        },
         update: function(sm, secs){
             gameMod.update(sm.game, secs);
         },
