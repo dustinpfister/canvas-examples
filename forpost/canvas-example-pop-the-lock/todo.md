@@ -22,7 +22,7 @@
 * (done) make a poolMod.moveByFramePerObj method
 * (done) have moving buttons that start at an out position, and move to a home position
 * (done) animate the quit button in game state.
-* make a pkg 0.2.0 folder
+* (done - 03/10/2021) make a pkg 0.2.0 folder
 
 ## 0.1.0 - sm started, ./lib/game.js, and ./lib/draw.js
 * (done) start a game.js file
@@ -35,4 +35,4 @@
 ## 0.0.0 - Basic idea
 * (done) Basic idea working
 * (done) display ver
-* (done - 03/03/2021) make a 0.0.0 pkg folder
+* (done - 2019/11/26) make a 0.0.0 pkg folder
