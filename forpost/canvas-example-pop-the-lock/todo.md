@@ -18,8 +18,9 @@
 * (done) have labels on buttons
 * (done) have a main update state method
 * (done) have a trans method for a state object
-* make a poolMod.moveByFramePerObj method
-* have moving buttons that start at an out position, and move to and from a home position
+* (done) make a poolMod.moveByFramePerObj method
+* (done) have moving buttons that start at an out position, and move to a home position
+* animate the quit button in game state.
 * make a pkg 0.2.0 folder
 
 ## 0.1.0 - sm started, ./lib/game.js, and ./lib/draw.js
