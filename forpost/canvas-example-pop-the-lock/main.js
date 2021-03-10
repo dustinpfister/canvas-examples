@@ -91,7 +91,12 @@
             draw.pool(ctx, sm.buttons);
         },
         click: function(sm, pos, e){
-            gameMod.click(sm.game);
+            var obj = poolMod.getObjectAt(sm.buttons, pos.x, pos.y);
+            if(obj){
+                changeState(sm, 'title');
+            }else{
+                gameMod.click(sm.game);
+            }
         }
     };
 
