@@ -18,7 +18,8 @@
             obj.data = opt;
             obj.x = opt.hx;
             obj.y = opt.hy;
-            obj.w = 128;
+            obj.w = opt.w || 128;
+            obj.h = opt.h || 32;
         },
         update: function(obj, pool, state, secs){
             obj.lifespan = 1;
@@ -70,13 +71,24 @@
     // GAME STATE
     sm.states.game = {
         init: function(sm){
+            // create a new game object
             sm.game = gameMod.create();
+            // set all button object to inactive
+            poolMod.setActiveStateForAll(sm.buttons, false);
+            // spawn object for new Game button
+            poolMod.spawn(sm.buttons, sm, {
+                action:'set_state_title',
+                hx: sm.canvas.width - 32,
+                hy: 0,
+                w:32, h:32
+            });
         },
         update: function(sm, secs){
             gameMod.update(sm.game, secs);
         },
         draw: function(sm, ctx, canvas){
             draw.PTL(ctx, canvas, sm.game);
+            draw.pool(ctx, sm.buttons);
         },
         click: function(sm, pos, e){
             gameMod.click(sm.game);
