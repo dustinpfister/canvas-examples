@@ -18,7 +18,7 @@
 * (done) have labels on buttons
 * (done) have a main update state method
 * (done) have a trans method for a state object
-* make a poolMod.moveByFramePer method
+* make a poolMod.moveByFramePerObj method
 * have moving buttons that start at an out position, and move to and from a home position
 * make a pkg 0.2.0 folder
 

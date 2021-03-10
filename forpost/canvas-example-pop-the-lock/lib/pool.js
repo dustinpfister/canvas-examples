@@ -85,12 +85,18 @@ var poolMod = (function () {
         }
     };
     // get an active object at the given position, or return false if nothing is there
-    api.getObjectAt = function(pool, x, y){
-        var i = pool.objects.length, obj;
-        while(i--){
+    api.getObjectAt = function (pool, x, y) {
+        var i = pool.objects.length,
+        obj;
+        while (i--) {
             obj = pool.objects[i];
-            if(obj.active){
-                if(api.boundingBox(obj, { x: x, y: y ,w: 1,h: 1})){
+            if (obj.active) {
+                if (api.boundingBox(obj, {
+                        x: x,
+                        y: y,
+                        w: 1,
+                        h: 1
+                    })) {
                     return obj;
                 }
             }
@@ -102,7 +108,25 @@ var poolMod = (function () {
         obj.x += Math.cos(obj.heading) * obj.pps * secs;
         obj.y += Math.sin(obj.heading) * obj.pps * secs;
     };
-    api.moveByFramePer = function(obj, framePer){
+    // move my frame percent object
+    /*
+{
+    sx: -100,
+    sy: 0,
+    dist: 100,
+    heading: 0,
+    frame: 0,
+    frameMax: 50,
+    rev: false
+    }
+     */
+    api.moveByFramePerObj = function (obj, fp) {
+        var per = fp.frame / fp.frameMax;
+        per = per > 1 ? 1 : per;
+        per = per < 0 ? 0 : per;
+        per = fp.rev ? 1 - per : per;
+        obj.x = fp.sx + Math.cos(fp.heading) * fp.dist * per;
+        obj.y = fp.sy + Math.sin(fp.heading) * fp.dist * per;
     };
     // check bounds for the given display object and canvas and return true if the object
     // is out of bounds and false if it is not.
