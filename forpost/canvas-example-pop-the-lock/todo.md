@@ -15,8 +15,10 @@
 * (done) Have a title state in main.js
 * (done) have a start game button in title state
 * (done) have a back button in game state
+* (done) have labels on buttons
+* have a main update state method
+* have a trans method for a state object
 * have moving buttons that start at an out position, and move to and from a home position
-* have labels on buttons
 * make a pkg 0.2.0 folder
 
 ## 0.1.0 - sm started, ./lib/game.js, and ./lib/draw.js

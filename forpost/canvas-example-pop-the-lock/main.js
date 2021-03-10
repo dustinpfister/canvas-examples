@@ -41,6 +41,9 @@
         sm.currentState = stateKey;
         sm.states[sm.currentState].init(sm);
     };
+    var updateState = function(sm, secs){
+        sm.states[sm.currentState].update(sm, secs);
+    };
 
     // TITLE STATE
     sm.states.title = {
@@ -51,8 +54,13 @@
             poolMod.spawn(sm.buttons, sm, {
                 action:'set_state_game',
                 disp: 'New Game',
+                // home x an y where the button will be displayed
                 hx: sm.canvas.width / 2 - 64,
-                hy: sm.canvas.height / 2
+                hy: sm.canvas.height / 2,
+                // start x and y where the button will start when state starts
+                // and also where it will go when a state change happens
+                sx: -128,
+                sy: sm.canvas.height / 2
             });
         },
         update: function(sm, secs){
@@ -108,7 +116,9 @@
         var now = new Date(),
         secs = (now - sm.lt) / 1000;
         requestAnimationFrame(loop);
-        sm.states[sm.currentState].update(sm, secs);
+
+        updateState(sm, secs);
+
         draw.background(ctx, canvas, '#0a0a0a');
         sm.states[sm.currentState].draw(sm, ctx, canvas);
         draw.ver(ctx, canvas, sm);
