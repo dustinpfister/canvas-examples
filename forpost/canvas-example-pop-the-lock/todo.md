@@ -9,6 +9,8 @@
 * can loose in endurance mode
 * when you loose enter game over state
 * in game over state you can play again or return to title
+
+## 0.3.0 - Out Animation
 * have an out animation for buttons that change current state
 
 ## 0.2.0 - Object Pool, and buttons

@@ -21,9 +21,8 @@
                 obj.w = opt.w || 128;
                 obj.h = opt.h || 32;
             },
+            // update the button
             update: function (obj, pool, sm, secs) {
-                obj.lifespan = 1;
-                //poolMod.moveByPPS(obj, secs);
                 var fp = {
                     sx: obj.data.sx || 0,
                     sy: obj.data.sy || 0,
@@ -31,15 +30,16 @@
                     heading: obj.data.heading || 0,
                     frame: Math.round(sm.trans.secs / sm.trans.secsTotal * 50),
                     frameMax: 50,
-                    rev: obj.data.rev || false
+                    rev: !sm.trans.inState // use trans instate bool to ser rev
                 };
                 poolMod.moveByFramePerObj(obj, fp);
+                obj.lifespan = 1;
             }
         });
 
     // STATE MACHINE
     var sm = {
-        ver: '0.2.0',
+        ver: '0.3.0',
         canvas: canvas,
         ctx: ctx,
         game: {},
@@ -61,6 +61,7 @@
         sm.trans.secs = 0;
         sm.states[sm.currentState].init(sm);
     };
+    // update state by calling trans or update method
     var updateState = function (sm, secs) {
         if (sm.trans.active) {
             if (sm.trans.secs < sm.trans.secsTotal) {
@@ -68,7 +69,6 @@
                 sm.trans.secs = sm.trans.secs > sm.trans.secsTotal ? sm.trans.secsTotal : sm.trans.secs;
                 if (sm.trans.secs === sm.trans.secsTotal) {
                     sm.trans.active = false;
-                    sm.trans.inState = false;
                 }
             }
             sm.states[sm.currentState].trans(sm, secs);
