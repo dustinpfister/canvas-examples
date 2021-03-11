@@ -26,7 +26,8 @@ var draw = (function(){
         ctx.fillText('deg.current ' + game.deg.current.toFixed(2), 10, 10);
         ctx.fillText('deg.target ' + game.deg.target, 10, 20);
         ctx.fillText('deg.distance ' + game.deg.distance.toFixed(2), 10, 30);
-        ctx.fillText('inrange ' + game.inRange, 10, 40);
+        ctx.fillText('trip up count: ' + game.tripUp.count, 10, 40);
+        ctx.fillText('inrange ' + game.inRange, 10, 50);
     };
     // draw current position
     var current_pos = function(ctx, canvas, game){
