@@ -13,6 +13,8 @@
 * (done) add an additional argument to getTarget that allows for a number from 0 to 1 that sets the range from deg.current
 * (done) pull normalizeHalf and shortestDistance angle methods from game.js into utils.js
 * (done) have a degOrigin argument for getTarget helper 
+* (done) new random trip up get target method and object
+* tripUp.chance, and tripUp.countRange props
 
 * have a 'freePlay' mode that is the game as it is now
 * start an 'endurance' mode where the object is to get the score as high as you can before loosing

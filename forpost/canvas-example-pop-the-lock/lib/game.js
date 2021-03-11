@@ -34,6 +34,14 @@ var gameMod = (function(){
         var deltaDeg = game.tripUp.degMin + (game.tripUp.degMax - game.tripUp.degMin) * Math.random();
         return getTargetFrom(game, game.deg.current + deltaDeg * game.dir);
     };
+    // create and return a new target
+    var newTarget = function(game){
+        if(game.tripUp.count > 0){
+            game.tripUp.count -= 1;
+            return getTargetRandomTripUp(game);
+        }
+        return getTargetRandom(game);
+    };
     // public API
     var api = {};
     // CREATE and return a main game object
@@ -48,6 +56,9 @@ var gameMod = (function(){
                distance: 0   // should be the shortest distance in 'degrees' from target
             },
             tripUp: {
+               count: 5,
+               chance: 0.25,
+               countRange: [3, 10],
                degMin: 15,
                degMax: 25
             },
@@ -56,7 +67,8 @@ var gameMod = (function(){
             inRange: false,  // true if the current degree is in range of the target degree
             score: 0         // player score
         };
-        game.deg.target = getTargetRandomTripUp(game);
+        game.deg.target = newTarget(game);
+        //game.deg.target = getTargetRandomTripUp(game);
         //game.deg.target = getTargetFrom(game, 75, 12, 1);
         //game.deg.taregt = getTarget(game, game.deg.current, 0, 0);
         game.deg.distance = getDistanceFromTarget(game);
@@ -75,8 +87,9 @@ var gameMod = (function(){
         game.score += game.inRange ? 1 : -1;
         if (game.inRange) {
             game.dir = game.dir === 1 ? -1 : 1;
+            game.deg.target = newTarget(game);
             //game.deg.target = getTargetRandom(game);
-            game.deg.target = getTargetRandomTripUp(game);
+            //game.deg.target = getTargetRandomTripUp(game);
         }
     };
     // return public api
