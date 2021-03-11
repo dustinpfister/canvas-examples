@@ -41,30 +41,30 @@ var gameMod = (function(){
     };
     // public API
     var api = {};
-    // create method
+    // CREATE and return a main game object
     api.create = function(){
-        var game = {
-            deg: {
+        var game = {         // THE MAIN GAME OBJECT
+            deg: {           // 'degree' object
                perSec: 20,   // degrees per second
-               current: 25,   // the current 'degree'
+               current: 25,  // the current 'degree'
                target: 0,    // the target 'degree'
                total: 100,   // total number of 'degrees'
                margin: 4,    // the margin of 'degrees' +- from target that will still count as in range
                distance: 0   // should be the shortest distance in 'degrees' from target
             },
-            dir: -1,
-            inRange: false,
-            score: 0
+            range: 0.5,      // a number (0-1) that will set the range in which a new target can be
+            dir: -1,         // the direction in which the current degree will change
+            inRange: false,  // true if the current degree is in range of the target degree
+            score: 0         // player score
         };
-        game.deg.target = getTargetRandom(game, 0.5);
+        game.deg.target = getTargetRandom(game, game.range);
         game.deg.distance = getDistanceFromTarget(game);
         game.inRange = getInRange(game);
-        //randomTarget(game);
         return game;
     };
     // update
     api.update = function(game, secs){
-        //game.deg.current +=  game.deg.perSec * secs * game.dir; 
+        game.deg.current +=  game.deg.perSec * secs * game.dir; 
         game.deg.current = utils.mod(game.deg.current, game.deg.total);
         game.deg.distance = getDistanceFromTarget(game);
         game.inRange = getInRange(game);
@@ -74,7 +74,7 @@ var gameMod = (function(){
         game.score += game.inRange ? 1 : -1;
         if (game.inRange) {
             game.dir = game.dir === 1 ? -1 : 1;
-            game.deg.target = getTargetRandom(game, 0.5);
+            game.deg.target = getTargetRandom(game, game.range);
         }
     };
     // return public api
