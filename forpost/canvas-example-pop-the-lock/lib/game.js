@@ -29,6 +29,10 @@ var gameMod = (function(){
     var getTargetRandom = function(game){
         return getTarget(game, game.deg.current, Math.random(), game.range);
     };
+    // get a random target that is a 'trip up' target
+    var getTargetRandomTripUp = function(game){
+        return getTargetFrom(game, game.deg.current + game.tripUp.degMin * game.dir);
+    };
     // public API
     var api = {};
     // CREATE and return a main game object
@@ -42,19 +46,24 @@ var gameMod = (function(){
                margin: 4,    // the margin of 'degrees' +- from target that will still count as in range
                distance: 0   // should be the shortest distance in 'degrees' from target
             },
-            range: 0.5,      // a number (0-1) that will set the range in which a new target can be
+            tripUp: {
+               degMin: 20
+            },
+            range: 0.5,      // a number (0-1) that will set the range in which a new target can be whe using getTargetRandom
             dir: -1,         // the direction in which the current degree will change
             inRange: false,  // true if the current degree is in range of the target degree
             score: 0         // player score
         };
-        game.deg.target = getTargetFrom(game, 75, 12, 1) //getTarget(game, game.deg.current, 0, 0);
+        game.deg.target = getTargetRandomTripUp(game);
+        //game.deg.target = getTargetFrom(game, 75, 12, 1);
+        //game.deg.taregt = getTarget(game, game.deg.current, 0, 0);
         game.deg.distance = getDistanceFromTarget(game);
         game.inRange = getInRange(game);
         return game;
     };
     // update
     api.update = function(game, secs){
-        //game.deg.current +=  game.deg.perSec * secs * game.dir; 
+        game.deg.current +=  game.deg.perSec * secs * game.dir; 
         game.deg.current = utils.mod(game.deg.current, game.deg.total);
         game.deg.distance = getDistanceFromTarget(game);
         game.inRange = getInRange(game);
@@ -64,7 +73,8 @@ var gameMod = (function(){
         game.score += game.inRange ? 1 : -1;
         if (game.inRange) {
             game.dir = game.dir === 1 ? -1 : 1;
-            game.deg.target = getTargetRandom(game);
+            //game.deg.target = getTargetRandom(game);
+            game.deg.target = getTargetRandomTripUp(game);
         }
     };
     // return public api
