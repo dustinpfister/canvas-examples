@@ -68,9 +68,6 @@ var gameMod = (function(){
             score: 0         // player score
         };
         game.deg.target = newTarget(game);
-        //game.deg.target = getTargetRandomTripUp(game);
-        //game.deg.target = getTargetFrom(game, 75, 12, 1);
-        //game.deg.taregt = getTarget(game, game.deg.current, 0, 0);
         game.deg.distance = getDistanceFromTarget(game);
         game.inRange = getInRange(game);
         return game;
@@ -88,8 +85,6 @@ var gameMod = (function(){
         if (game.inRange) {
             game.dir = game.dir === 1 ? -1 : 1;
             game.deg.target = newTarget(game);
-            //game.deg.target = getTargetRandom(game);
-            //game.deg.target = getTargetRandomTripUp(game);
         }
     };
     // return public api
