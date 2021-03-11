@@ -31,7 +31,8 @@ var gameMod = (function(){
     };
     // get a random target that is a 'trip up' target
     var getTargetRandomTripUp = function(game){
-        var deltaDeg = utils.randomRange(game.tripUp.degMin, game.tripUp.degMax);
+        //var deltaDeg = utils.randomRange(game.tripUp.degMin, game.tripUp.degMax);
+        var deltaDeg = utils.randomRange(game.tripUp.degRange);
         return getTargetFrom(game, game.deg.current + deltaDeg * game.dir);
     };
     // create and return a new target
@@ -53,7 +54,7 @@ var gameMod = (function(){
     api.create = function(){
         var game = {         // THE MAIN GAME OBJECT
             deg: {           // 'degree' object
-               perSec: 20,   // degrees per second
+               perSec: 30,   // degrees per second
                current: 25,  // the current 'degree'
                target: 0,    // the target 'degree'
                total: 100,   // total number of 'degrees'
@@ -62,10 +63,9 @@ var gameMod = (function(){
             },
             tripUp: {
                count: 5,
-               chance: 1,
+               chance: 0.12,
                countRange: [3, 10],
-               degMin: 15,
-               degMax: 25
+               degRange: [10, 20]
             },
             range: 0.5,      // a number (0-1) that will set the range in which a new target can be whe using getTargetRandom
             dir: -1,         // the direction in which the current degree will change
