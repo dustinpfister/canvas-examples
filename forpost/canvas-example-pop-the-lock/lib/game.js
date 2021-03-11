@@ -40,6 +40,11 @@ var gameMod = (function(){
             game.tripUp.count -= 1;
             return getTargetRandomTripUp(game);
         }
+        var roll = Math.random();
+        if(roll < game.tripUp.chance){
+            game.tripUp.count = Math.floor(game.tripUp.countRange[0] + (game.tripUp.countRange[1] - game.tripUp.countRange[0]) * Math.random());
+            return getTargetRandomTripUp(game);
+        }
         return getTargetRandom(game);
     };
     // public API
