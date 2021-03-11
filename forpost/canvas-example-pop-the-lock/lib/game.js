@@ -7,7 +7,7 @@ var gameMod = (function(){
     var getInRange = function (game) {
         return game.deg.distance <= game.deg.margin;
     };
-    // get a target function, with percent, and range arguments
+    // get a target degree, with degOrgin, percent, and range arguments
     var getTarget = function(game, degOrgin, per, rangePer){
         degOrgin = degOrgin === undefined ? game.deg.current: degOrgin;
         per = utils.mod(per === undefined ? 0 : per, 1);
@@ -17,6 +17,13 @@ var gameMod = (function(){
         homeDeg = utils.mod(degOrgin + halfDeg, game.deg.total),
         deg = homeDeg - halfRange + (halfRange * 2 * per);
         return utils.mod(Math.round(deg), game.deg.total);
+    };
+    // get a target degree from a given degOrigin (0 to deg.total) 
+    // by a margin (0 to deg.total) in a direction (1, -1)
+    var getTargetFrom = function(game, degOrgin, margin, dir){
+        margin = margin === undefined ? 0 : margin;
+        dir = dir === undefined ? 1 : dir;
+        return utils.mod(Math.round(degOrgin + margin * dir), game.deg.total);
     };
     // get a random target
     var getTargetRandom = function(game){
@@ -40,14 +47,14 @@ var gameMod = (function(){
             inRange: false,  // true if the current degree is in range of the target degree
             score: 0         // player score
         };
-        game.deg.target = getTarget(game, game.deg.current, 0, 0);
+        game.deg.target = getTargetFrom(game, 75, 12, 1) //getTarget(game, game.deg.current, 0, 0);
         game.deg.distance = getDistanceFromTarget(game);
         game.inRange = getInRange(game);
         return game;
     };
     // update
     api.update = function(game, secs){
-        game.deg.current +=  game.deg.perSec * secs * game.dir; 
+        //game.deg.current +=  game.deg.perSec * secs * game.dir; 
         game.deg.current = utils.mod(game.deg.current, game.deg.total);
         game.deg.distance = getDistanceFromTarget(game);
         game.inRange = getInRange(game);
