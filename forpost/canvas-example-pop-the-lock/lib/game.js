@@ -32,12 +32,8 @@ var gameMod = (function(){
         //return Math.floor(utils.mod(game.deg.total * per, game.deg.total));
     };
     // get a random target
-    var getTargetRandom = function(game, range){
-        return getTarget(game, Math.random(), range);
-    };
-    // set a random target
-    var randomTarget = function (game) {
-        game.deg.target = utils.mod(Math.floor(Math.random() * (game.deg.total - game.deg.margin * 2)) + game.deg.margin, game.deg.total);
+    var getTargetRandom = function(game){
+        return getTarget(game, Math.random(), game.range);
     };
     // public API
     var api = {};
@@ -57,7 +53,7 @@ var gameMod = (function(){
             inRange: false,  // true if the current degree is in range of the target degree
             score: 0         // player score
         };
-        game.deg.target = getTargetRandom(game, game.range);
+        game.deg.target = getTargetRandom(game);
         game.deg.distance = getDistanceFromTarget(game);
         game.inRange = getInRange(game);
         return game;
@@ -74,7 +70,7 @@ var gameMod = (function(){
         game.score += game.inRange ? 1 : -1;
         if (game.inRange) {
             game.dir = game.dir === 1 ? -1 : 1;
-            game.deg.target = getTargetRandom(game, game.range);
+            game.deg.target = getTargetRandom(game);
         }
     };
     // return public api
