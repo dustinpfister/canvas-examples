@@ -48,20 +48,30 @@
             active: true,
             inState: true,
             secs: 0,
-            secsTotal: 1,
-            onDone: function(sm){
-                console.log('we done');
-            }
+            secsTotal: 0.5,
+            onDone: utils.noop
         },
         states: {},
         buttons: buttonPool
     };
+    // change the current state and set up a 'in' transition for the new state
     var changeState = function (sm, stateKey) {
         sm.currentState = stateKey;
         sm.trans.active = true;
         sm.trans.inState = true;
         sm.trans.secs = 0;
         sm.states[sm.currentState].init(sm);
+    };
+    // start a 'out' transition to a state change
+    var startStateChangeTrans = function(sm, stateKey){
+        sm.trans.active = true;
+        sm.trans.inState = false;
+        sm.trans.secs = 0;
+        sm.trans.onDone = function(sm){
+            changeState(sm, stateKey);
+            sm.trans.onDone = function(){};
+            sm.trans.onDone = utils.noop;
+        };
     };
     // update state by calling trans or update method
     var updateState = function (sm, secs) {
@@ -108,13 +118,7 @@
         click: function (sm, pos, e) {
             var button = poolMod.getObjectAt(sm.buttons, pos.x, pos.y);
             if (button) {
-                sm.trans.active = true;
-                sm.trans.inState = false;
-                sm.trans.secs = 0;
-                sm.trans.onDone = function(sm){
-                    changeState(sm, 'game');
-                    sm.trans.onDone = function(){};
-                };
+                startStateChangeTrans(sm, 'game');
             }
         }
     };
@@ -152,14 +156,7 @@
         click: function (sm, pos, e) {
             var obj = poolMod.getObjectAt(sm.buttons, pos.x, pos.y);
             if (obj) {
-                //changeState(sm, 'title');
-                sm.trans.active = true;
-                sm.trans.inState = false;
-                sm.trans.secs = 0;
-                sm.trans.onDone = function(sm){
-                    changeState(sm, 'title');
-                    sm.trans.onDone = function(){};
-                };
+                startStateChangeTrans(sm, 'title');
             } else {
                 gameMod.click(sm.game);
             }
@@ -172,9 +169,7 @@
         var now = new Date(),
         secs = (now - sm.lt) / 1000;
         requestAnimationFrame(loop);
-
         updateState(sm, secs);
-
         draw.background(ctx, canvas, '#0a0a0a');
         sm.states[sm.currentState].draw(sm, ctx, canvas);
         draw.ver(ctx, canvas, sm);

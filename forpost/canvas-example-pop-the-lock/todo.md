@@ -3,15 +3,15 @@
 * have a obj.cx and obj.cy prop in pool.js that will be the center point of a display object
 * make all changes needed in pool.js, main.js, and draw.js
 
-## 0.x.0 - game modes, starting with freePlay and endurance modes
+## 0.x.0 - Save states
+
+## 0.3.0 - game modes, starting with freePlay and endurance modes
+* (done) have an out animation for buttons that change current state
 * have a 'freePlay' mode that is the game as it is now
 * start an 'endurance' mode where the object is to get the score as high as you can before loosing
 * can loose in endurance mode
 * when you loose enter game over state
 * in game over state you can play again or return to title
-
-## 0.3.0 - Out Animation
-* have an out animation for buttons that change current state
 
 ## 0.2.0 - Object Pool, and buttons
 * (done) start an object pool lib that will just be used for buttons
