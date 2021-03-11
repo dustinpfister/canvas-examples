@@ -42,7 +42,7 @@ var gameMod = (function(){
         }
         var roll = Math.random();
         if(roll < game.tripUp.chance){
-            game.tripUp.count = Math.floor(utils.randomRange(game.tripUp.countRange[0], game.tripUp.countRange[1]));
+            game.tripUp.count = Math.floor(utils.randomRange(game.tripUp.countRange));
             return getTargetRandomTripUp(game);
         }
         return getTargetRandom(game);
@@ -62,7 +62,7 @@ var gameMod = (function(){
             },
             tripUp: {
                count: 5,
-               chance: 0.25,
+               chance: 1,
                countRange: [3, 10],
                degMin: 15,
                degMax: 25

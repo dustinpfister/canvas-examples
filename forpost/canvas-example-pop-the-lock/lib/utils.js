@@ -22,8 +22,13 @@ utils.clampPer = function (per) {
     per = per < 0 ? 0 : per;
     return per;
 };
-utils.randomRange = function(nMin, nMax){
-    return nMin + (nMax - nMin) * Math.random();
+utils.randomRange = function(a, b){
+    var x = a, y = b;
+    if(typeof a === 'object'){
+        x = a[0];
+        y = a[1];
+    }
+    return x + (y - x) * Math.random();
 };
 // normalizeHalf
 utils.normalizeHalf = function(degree, scale) {
