@@ -10,8 +10,9 @@
 * (done) have a deg.distance prop in game.js that is the shortest distance from deg.target
 * (done) new getTarget helper
 * (done) new getTargetRandom helper
-* (done)  add an additional argument to getTarget that allows for a number from 0 to 1 that sets the range from deg.current
-* pull normalizeHalf and shortestDistance angle methods from game.js into utils.js
+* (done) add an additional argument to getTarget that allows for a number from 0 to 1 that sets the range from deg.current
+* (done) pull normalizeHalf and shortestDistance angle methods from game.js into utils.js
+* (done) have a degOrigin argument for getTarget helper 
 
 * have a 'freePlay' mode that is the game as it is now
 * start an 'endurance' mode where the object is to get the score as high as you can before loosing
