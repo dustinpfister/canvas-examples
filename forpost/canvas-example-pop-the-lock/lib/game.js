@@ -26,10 +26,10 @@ var gameMod = (function(){
         rangePer = utils.clampPer(rangePer === undefined ? 1 : rangePer);
         per = utils.mod(per === undefined ? 0 : per, 1);
         var halfDeg = game.deg.total / 2,
-        halfRange = halfDeg * rangePer;
-        var homeDeg = utils.mod(game.deg.current + halfDeg, game.deg.total);
-        return utils.mod(homeDeg - halfRange + (halfRange * 2 * per), game.deg.total);
-        //return Math.floor(utils.mod(game.deg.total * per, game.deg.total));
+        halfRange = halfDeg * rangePer,
+        homeDeg = utils.mod(game.deg.current + halfDeg, game.deg.total),
+        deg = utils.mod(homeDeg - halfRange + (halfRange * 2 * per), game.deg.total);
+        return Math.floor(deg);
     };
     // get a random target
     var getTargetRandom = function(game){
