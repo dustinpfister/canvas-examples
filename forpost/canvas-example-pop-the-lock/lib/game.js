@@ -23,7 +23,7 @@ var gameMod = (function(){
     };
     // get a target function, with percent, and range arguments
     var getTarget = function(game, per, rangePer){
-        rangePer = utils.mod(rangePer === undefined ? 1 : rangePer, 1);
+        rangePer = utils.clampPer(rangePer === undefined ? 1 : rangePer);
         per = utils.mod(per === undefined ? 0 : per, 1);
         var halfDeg = game.deg.total / 2,
         halfRange = halfDeg * rangePer;
@@ -32,8 +32,8 @@ var gameMod = (function(){
         //return Math.floor(utils.mod(game.deg.total * per, game.deg.total));
     };
     // get a random target
-    var getTargetRandom = function(game){
-        return getTarget(game, Math.random());
+    var getTargetRandom = function(game, range){
+        return getTarget(game, Math.random(), range);
     };
     // set a random target
     var randomTarget = function (game) {
@@ -56,8 +56,7 @@ var gameMod = (function(){
             inRange: false,
             score: 0
         };
-
-        game.deg.target = getTarget(game, Math.random(), 0.5);
+        game.deg.target = getTargetRandom(game, 0.5);
         game.deg.distance = getDistanceFromTarget(game);
         game.inRange = getInRange(game);
         //randomTarget(game);
@@ -65,7 +64,7 @@ var gameMod = (function(){
     };
     // update
     api.update = function(game, secs){
-        game.deg.current +=  game.deg.perSec * secs * game.dir; 
+        //game.deg.current +=  game.deg.perSec * secs * game.dir; 
         game.deg.current = utils.mod(game.deg.current, game.deg.total);
         game.deg.distance = getDistanceFromTarget(game);
         game.inRange = getInRange(game);
@@ -75,8 +74,7 @@ var gameMod = (function(){
         game.score += game.inRange ? 1 : -1;
         if (game.inRange) {
             game.dir = game.dir === 1 ? -1 : 1;
-            game.deg.target = getTarget(game, Math.random(), 0.99);
-            //randomTarget(game);
+            game.deg.target = getTargetRandom(game, 0.5);
         }
     };
     // return public api

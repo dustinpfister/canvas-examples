@@ -16,6 +16,12 @@ utils.boundingBox = function (x1, y1, w1, h1, x2, y2, w2, h2) {
 utils.mod = function (x, m) {
     return (x % m + m) % m;
 };
+// clamp a 0 - 1 value
+utils.clampPer = function (per) {
+    per = per > 1 ? 1 : per;
+    per = per < 0 ? 0 : per;
+    return per;
+};
 // create a canvas
 utils.createCanvas = function(opt){
     opt = opt || {};
