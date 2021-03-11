@@ -13,7 +13,6 @@
     // BUTTON OBJECT POOL
     var buttonPool = poolMod.create({
             spawn: function (obj, pool, sm, opt) {
-                console.log(opt);
                 // just ref opt for the data object
                 obj.data = opt;
                 obj.x = opt.hx;
@@ -49,7 +48,10 @@
             active: true,
             inState: true,
             secs: 0,
-            secsTotal: 1
+            secsTotal: 1,
+            onDone: function(sm){
+                console.log('we done');
+            }
         },
         states: {},
         buttons: buttonPool
@@ -69,6 +71,7 @@
                 sm.trans.secs = sm.trans.secs > sm.trans.secsTotal ? sm.trans.secsTotal : sm.trans.secs;
                 if (sm.trans.secs === sm.trans.secsTotal) {
                     sm.trans.active = false;
+                    sm.trans.onDone(sm);
                 }
             }
             sm.states[sm.currentState].trans(sm, secs);
@@ -103,9 +106,15 @@
             draw.pool(ctx, sm.buttons);
         },
         click: function (sm, pos, e) {
-            var obj = poolMod.getObjectAt(sm.buttons, pos.x, pos.y);
-            if (obj) {
-                changeState(sm, 'game');
+            var button = poolMod.getObjectAt(sm.buttons, pos.x, pos.y);
+            if (button) {
+                sm.trans.active = true;
+                sm.trans.inState = false;
+                sm.trans.secs = 0;
+                sm.trans.onDone = function(sm){
+                    changeState(sm, 'game');
+                    sm.trans.onDone = function(){};
+                };
             }
         }
     };
@@ -143,7 +152,14 @@
         click: function (sm, pos, e) {
             var obj = poolMod.getObjectAt(sm.buttons, pos.x, pos.y);
             if (obj) {
-                changeState(sm, 'title');
+                //changeState(sm, 'title');
+                sm.trans.active = true;
+                sm.trans.inState = false;
+                sm.trans.secs = 0;
+                sm.trans.onDone = function(sm){
+                    changeState(sm, 'title');
+                    sm.trans.onDone = function(){};
+                };
             } else {
                 gameMod.click(sm.game);
             }
