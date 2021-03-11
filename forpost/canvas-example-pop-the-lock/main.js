@@ -164,7 +164,7 @@
     };
 
     // LOOP
-    changeState(sm, 'title');
+    changeState(sm, 'game');
     var loop = function () {
         var now = new Date(),
         secs = (now - sm.lt) / 1000;

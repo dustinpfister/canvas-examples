@@ -24,7 +24,8 @@ var draw = (function(){
         ctx.globalAlpha = 0.35;
         ctx.font = '10px arial';
         ctx.fillText('deg.current ' + game.deg.current.toFixed(2), 10, 10);
-        ctx.fillText('inrange ' + game.inRange, 10, 20);
+        ctx.fillText('deg.distance ' + game.deg.distance.toFixed(2), 10, 20);
+        ctx.fillText('inrange ' + game.inRange, 10, 30);
     };
     // draw current position
     var current_pos = function(ctx, canvas, game){

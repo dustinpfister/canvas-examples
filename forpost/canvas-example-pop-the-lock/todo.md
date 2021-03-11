@@ -7,6 +7,8 @@
 
 ## 0.3.0 - game modes, starting with freePlay and endurance modes
 * (done) have an out animation for buttons that change current state
+* have a deg.distance prop in game.js that is the shortest distance from deg.target
+
 * have a 'freePlay' mode that is the game as it is now
 * start an 'endurance' mode where the object is to get the score as high as you can before loosing
 * can loose in endurance mode

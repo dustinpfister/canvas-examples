@@ -1,10 +1,31 @@
 var gameMod = (function(){
+
+    var normalizeHalf = function(degree, scale) {
+      var halfScale = scale / 2;
+      return utils.mod(degree + halfScale, scale) - halfScale;
+    };
+
+    var shortestDistance = function(a, b, scale) {
+      var halfScale = scale / 2,
+      diff = normalizeHalf(a - b, scale);
+      if (diff > halfScale){
+        diff = diff - scale;
+      }
+      return Math.abs(diff);
+    };
+
+    var getDistanceFromTarget = function(game){
+        return shortestDistance(game.deg.current, game.deg.target, game.deg.total);
+    };
+
     // helpers
     var getInRange = function (game) {
-        return game.deg.current >= game.deg.target - game.deg.margin && game.deg.current <= game.deg.target + game.deg.margin;
+        return game.deg.distance <= game.deg.margin;
+        //return game.deg.current >= game.deg.target - game.deg.margin && game.deg.current <= game.deg.target + game.deg.margin;
     };
+    // set a random target
     var randomTarget = function (game) {
-        game.deg.target = Math.floor(Math.random() * (game.deg.total - game.deg.margin * 2)) + game.deg.margin;
+        game.deg.target = utils.mod(Math.floor(Math.random() * (game.deg.total - game.deg.margin * 2)) + game.deg.margin, game.deg.total);
     };
     // public API
     var api = {};
@@ -13,33 +34,36 @@ var gameMod = (function(){
         var game = {
             deg: {
                perSec: 40,
-               current: 0,
-               target: 4,
-               total: 100,
-               margin: 4
+
+               current: 5,  // the current 'degree'
+               target: 0,    // the target 'degree'
+               total: 100,   // total number of 'degrees'
+               margin: 4,    // the margin of 'degrees' +- from target that will still count as in range
+               distance: 0   // should be the shortest distance in 'degrees' from target
             },
             dir: -1,
             inRange: false,
             score: 0
         };
-        randomTarget(game);
+        game.deg.distance = getDistanceFromTarget(game);
+        game.inRange = getInRange(game);
+        //randomTarget(game);
         return game;
     };
     // update
     api.update = function(game, secs){
         game.deg.current +=  game.deg.perSec * secs * game.dir; 
-        game.deg.current = utils.mod(game.deg.current, game.deg.total); 
+        game.deg.current = utils.mod(game.deg.current, game.deg.total);
+        game.deg.distance = getDistanceFromTarget(game);
         game.inRange = getInRange(game);
     };
     // create click handler
     api.click = function (game) {
-        //return function(e){
-            game.score += game.inRange ? 1 : -1;
-            if (game.inRange) {
-                game.dir = game.dir === 1 ? -1 : 1;
-                randomTarget(game);
-            }
-        //};
+        game.score += game.inRange ? 1 : -1;
+        if (game.inRange) {
+            game.dir = game.dir === 1 ? -1 : 1;
+            randomTarget(game);
+        }
     };
     // return public api
     return api;
