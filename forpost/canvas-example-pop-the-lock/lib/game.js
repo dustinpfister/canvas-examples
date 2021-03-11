@@ -31,7 +31,7 @@ var gameMod = (function(){
     };
     // get a random target that is a 'trip up' target
     var getTargetRandomTripUp = function(game){
-        var deltaDeg = game.tripUp.degMin + (game.tripUp.degMax - game.tripUp.degMin) * Math.random();
+        var deltaDeg = utils.randomRange(game.tripUp.degMin, game.tripUp.degMax);
         return getTargetFrom(game, game.deg.current + deltaDeg * game.dir);
     };
     // create and return a new target
@@ -42,7 +42,7 @@ var gameMod = (function(){
         }
         var roll = Math.random();
         if(roll < game.tripUp.chance){
-            game.tripUp.count = Math.floor(game.tripUp.countRange[0] + (game.tripUp.countRange[1] - game.tripUp.countRange[0]) * Math.random());
+            game.tripUp.count = Math.floor(utils.randomRange(game.tripUp.countRange[0], game.tripUp.countRange[1]));
             return getTargetRandomTripUp(game);
         }
         return getTargetRandom(game);
