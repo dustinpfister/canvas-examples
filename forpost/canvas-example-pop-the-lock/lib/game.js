@@ -31,7 +31,8 @@ var gameMod = (function(){
     };
     // get a random target that is a 'trip up' target
     var getTargetRandomTripUp = function(game){
-        return getTargetFrom(game, game.deg.current + game.tripUp.degMin * game.dir);
+        var deltaDeg = game.tripUp.degMin + (game.tripUp.degMax - game.tripUp.degMin) * Math.random();
+        return getTargetFrom(game, game.deg.current + deltaDeg * game.dir);
     };
     // public API
     var api = {};
@@ -47,7 +48,8 @@ var gameMod = (function(){
                distance: 0   // should be the shortest distance in 'degrees' from target
             },
             tripUp: {
-               degMin: 20
+               degMin: 15,
+               degMax: 25
             },
             range: 0.5,      // a number (0-1) that will set the range in which a new target can be whe using getTargetRandom
             dir: -1,         // the direction in which the current degree will change
