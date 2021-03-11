@@ -1,21 +1,7 @@
 var gameMod = (function(){
-    // normalizeHalf
-    var normalizeHalf = function(degree, scale) {
-      var halfScale = scale / 2;
-      return utils.mod(degree + halfScale, scale) - halfScale;
-    };
-    // shortest distance
-    var shortestDistance = function(a, b, scale) {
-      var halfScale = scale / 2,
-      diff = normalizeHalf(a - b, scale);
-      if (diff > halfScale){
-        diff = diff - scale;
-      }
-      return Math.abs(diff);
-    };
     // return the shortest distance to the target from the current position
     var getDistanceFromTarget = function(game){
-        return shortestDistance(game.deg.current, game.deg.target, game.deg.total);
+        return utils.shortestDistance(game.deg.current, game.deg.target, game.deg.total);
     };
     // helpers
     var getInRange = function (game) {

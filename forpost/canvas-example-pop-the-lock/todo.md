@@ -10,7 +10,7 @@
 * (done) have a deg.distance prop in game.js that is the shortest distance from deg.target
 * (done) new getTarget helper
 * (done) new getTargetRandom helper
-* add an additional argument to getTarget that allows for a number from 0 to 1 that sets the range from deg.current
+* (done)  add an additional argument to getTarget that allows for a number from 0 to 1 that sets the range from deg.current
 * pull normalizeHalf and shortestDistance angle methods from game.js into utils.js
 
 * have a 'freePlay' mode that is the game as it is now

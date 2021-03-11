@@ -22,6 +22,20 @@ utils.clampPer = function (per) {
     per = per < 0 ? 0 : per;
     return per;
 };
+// normalizeHalf
+utils.normalizeHalf = function(degree, scale) {
+  var halfScale = scale / 2;
+  return utils.mod(degree + halfScale, scale) - halfScale;
+};
+// shortest distance
+utils.shortestDistance = function(a, b, scale) {
+  var halfScale = scale / 2,
+  diff = utils.normalizeHalf(a - b, scale);
+  if (diff > halfScale){
+    diff = diff - scale;
+  }
+  return Math.abs(diff);
+};
 // create a canvas
 utils.createCanvas = function(opt){
     opt = opt || {};
