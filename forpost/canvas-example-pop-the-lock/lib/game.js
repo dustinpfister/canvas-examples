@@ -14,6 +14,7 @@ var gameMod = (function(){
       return Math.abs(diff);
     };
 
+    // return the shortest distance to the target from the current position
     var getDistanceFromTarget = function(game){
         return shortestDistance(game.deg.current, game.deg.target, game.deg.total);
     };
@@ -22,11 +23,16 @@ var gameMod = (function(){
     var getInRange = function (game) {
         return game.deg.distance <= game.deg.margin;
     };
+    // get a target Pure Function
     var getTarget = function(game, per){
         per = per === undefined ? 0 : per;
         per = per > 1 ? 1 : per;
         per = per < 0 ? 0 : per;
         return Math.floor(utils.mod(game.deg.total * per, game.deg.total));
+    };
+    // get a random target
+    var getTargetRandom = function(game){
+        return getTarget(game, Math.random());
     };
     // set a random target
     var randomTarget = function (game) {
@@ -50,7 +56,7 @@ var gameMod = (function(){
             score: 0
         };
 
-        game.deg.target = getTarget(game, Math.random());
+        game.deg.target = getTargetRandom(game);
         game.deg.distance = getDistanceFromTarget(game);
         game.inRange = getInRange(game);
         //randomTarget(game);
