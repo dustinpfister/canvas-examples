@@ -75,6 +75,7 @@ var draw = (function(){
         text_game_stats(ctx);
         ctx.fillText('clicks (hits/total): ' + game.clickTrack.hits + '/' + game.clickTrack.total, sx, sy + 10);
         ctx.fillText('miss count: ' + game.missTrack.count, sx, sy + 20);
+        ctx.fillText('score: ' + game.score, sx, sy + 40);
     };
     // version
     api.ver = function(ctx, canvas, sm){
