@@ -23,13 +23,10 @@
 * (done) random range utils method
 * (done) new system for tracking a missed hit of the target
 * (done) new system for tracking clicks and hits of targets
-
-* game.pause
+* (done) game.pause
 
 * have a 'freePlay' mode that is the game as it is now
-
-
-* in freePlay track total clicks, hits, and missed runs and use these values
+* in freePlay track total clicks, hits, and missed runs and use these values to set a score
 
 * start an 'endurance' mode where the object is to get the score as high as you can before loosing
 * can loose in endurance mode

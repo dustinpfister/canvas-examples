@@ -86,6 +86,16 @@ var gameMod = (function(){
         game.inRange = getInRange(game);
         return game;
     };
+    var modes = {
+        freePlay: {
+            update: function(){
+            },
+            onMiss: function(){
+            },
+            onClick: function(){
+            }
+        }
+    };
     // update
     api.update = function(game, secs){
         if(!game.pause){
