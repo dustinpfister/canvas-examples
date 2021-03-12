@@ -235,7 +235,11 @@
     loop();
 
     // EVENTS
-    canvas.addEventListener('click', function (e) {
+    canvas.addEventListener('mousedown', function (e) {
+        var pos = utils.getCanvasRelative(e);
+        sm.states[sm.currentState].click(sm, pos, e);
+    });
+    canvas.addEventListener('touchstart', function (e) {
         var pos = utils.getCanvasRelative(e);
         sm.states[sm.currentState].click(sm, pos, e);
     });

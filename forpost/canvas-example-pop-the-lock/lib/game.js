@@ -48,12 +48,56 @@ var gameMod = (function(){
         }
         return getTargetRandom(game);
     };
+    // MODES
+    var modes = {
+        freePlay: {
+            init: function(game){
+                game.deg.perSec = 100;
+            },
+            update: function(game){
+                var hitPer = game.clickTrack.hits / game.clickTrack.total,
+                missLoss = 1 - (1 / (game.missTrack.count + 1));
+                hitPer = utils.isNaN(hitPer) ? 1 : hitPer;
+                game.score = Math.floor(game.clickTrack.hits * hitPer * (1-missLoss));
+            },
+            onMiss: function(game){
+                game.missTrack.count += 1;
+            },
+            onClick: function(game){
+                if (game.inRange) {
+                    game.deg.target = newTarget(game);
+                }
+            }
+        },
+        endurance: {
+            init: function(game){
+                game.deg.perSec = 10;
+            },
+            update: function(game){
+                game.score = game.clickTrack.hits;
+            },
+            onMiss: function(game){
+                game.missTrack.count = 1;
+                game.gameOver = true;
+            },
+            onClick: function(game){
+                if (game.inRange) {
+                    game.deg.target = newTarget(game);
+                    game.level += 1;
+                    game.level = game.level > 100 ? 100 : game.level;
+                    game.deg.perSec = 10 + Math.round( 50 * (game.level / 100));
+                }else{
+                    game.gameOver = true;
+                }
+            }
+        }
+    };
     // public API
     var api = {};
     // CREATE and return a main game object
     api.create = function(){
-        var game = {         // THE MAIN GAME OBJECT
-            mode: 'endurance', //'freePlay',
+        var game = {          // THE MAIN GAME OBJECT
+            mode: 'freePlay', // current game mode such as 'endurance', or 'freePlay' (see modes object)
             level: 1,
             deg: {           // 'degree' object
                perSec: 30,   // degrees per second
@@ -85,46 +129,10 @@ var gameMod = (function(){
             score: 0         // player score
         };
         game.deg.target = newTarget(game);
+        modes[game.mode].init(game);
         game.deg.distance = getDistanceFromTarget(game);
         game.inRange = getInRange(game);
         return game;
-    };
-    var modes = {
-        freePlay: {
-            update: function(game){
-                var hitPer = game.clickTrack.hits / game.clickTrack.total,
-                missLoss = 1 - (1 / (game.missTrack.count + 1));
-                hitPer = utils.isNaN(hitPer) ? 1 : hitPer;
-                game.score = Math.floor(game.clickTrack.hits * hitPer * (1-missLoss));
-            },
-            onMiss: function(game){
-                game.missTrack.count += 1;
-            },
-            onClick: function(game){
-                if (game.inRange) {
-                    game.deg.target = newTarget(game);
-                }
-            }
-        },
-        endurance: {
-            update: function(game){
-                game.score = game.clickTrack.hits;
-            },
-            onMiss: function(game){
-                game.missTrack.count = 1;
-                game.gameOver = true;
-            },
-            onClick: function(game){
-                if (game.inRange) {
-                    game.deg.target = newTarget(game);
-                    game.level += 1;
-                    game.level = game.level > 100 ? 100 : game.level;
-                    game.deg.perSec = 10 + Math.round( 50 * (game.level / 100));
-                }else{
-                    game.gameOver = true;
-                }
-            }
-        }
     };
     // update
     api.update = function(game, secs){
