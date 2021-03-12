@@ -26,8 +26,8 @@
 * (done) game.pause
 * (done) start a 'gameOver' state
 * (done) when the quit button is pressed enter gameOver state
-
-* final stats of game are displayed in gameOver state
+* (done) final stats of game are displayed in gameOver state
+* use dra.background to draw a layer of black between gameover text and the state of PTL in background
 * There are two buttons in gameOver state one to start over (current mode), and the other to go to title
 
 * have a 'freePlay' mode that is the game as it is now

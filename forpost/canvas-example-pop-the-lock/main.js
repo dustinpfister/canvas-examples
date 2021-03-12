@@ -188,6 +188,7 @@
         },
         draw: function (sm, ctx, canvas) {
             draw.PTL(ctx, canvas, sm.game);
+            draw.background(ctx, canvas, 'rgba(0,0,0,0.8)');
             draw.text_gameover(ctx, canvas, sm);
             draw.pool(ctx, sm.buttons);
         },

@@ -5,6 +5,12 @@ var draw = (function(){
         ctx.font='30px arial';
         ctx.textAlign = 'center';
     };
+    var text_game_stats = function(ctx){
+        ctx.fillStyle = 'lime';
+        ctx.textBaseline = 'top';
+        ctx.font='10px arial';
+        ctx.textAlign = 'left';
+    };
     // draw base circle
     var baseCircle = function(ctx, canvas){
         ctx.strokeStyle = 'white';
@@ -61,9 +67,15 @@ var draw = (function(){
         ctx.fillText('Pop The Lock', canvas.width / 2, canvas.height / 2 - 50);
     };
     // draw game over text
-    api.text_gameover = function(ctx, canvas){
+    api.text_gameover = function(ctx, canvas, sm){
+        var game = sm.game,
+        sx = canvas.width / 2 - 100,
+        sy = canvas.height / 2 - 25;
         text_big_center(ctx);
         ctx.fillText('Game Over', canvas.width / 2, canvas.height / 2 - 50);
+        text_game_stats(ctx);
+        ctx.fillText('clicks (hits/total): ' + game.clickTrack.hits + '/' + game.clickTrack.total, sx, sy + 10);
+        ctx.fillText('miss count: ' + game.missTrack.count, sx, sy + 20);
     };
     // version
     api.ver = function(ctx, canvas, sm){
