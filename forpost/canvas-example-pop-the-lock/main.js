@@ -44,6 +44,7 @@
         game: {},
         lt: new Date(),
         currentState: 'title',
+        gameMode: 'freePlay',
         trans: {
             active: true,
             inState: true,
@@ -97,7 +98,7 @@
             poolMod.setActiveStateForAll(sm.buttons, false);
             // spawn object for new Game button
             poolMod.spawn(sm.buttons, sm, {
-                action: 'set_state_game',
+                action: 'start_game_freePlay',
                 disp: 'New Game',
                 sx: -150,  // start x and y where the button should start
                 sy: sm.canvas.height / 2,
@@ -117,7 +118,12 @@
         click: function (sm, pos, e) {
             var button = poolMod.getObjectAt(sm.buttons, pos.x, pos.y);
             if (button) {
-                if(button.data.action === 'set_state_game'){
+                if(button.data.action === 'start_game_freePlay'){
+                    sm.gameMode = 'freePlay';
+                    startStateChangeTrans(sm, 'game');
+                }
+                if(button.data.action === 'start_game_endurance'){
+                    sm.gameMode = 'endurance';
                     startStateChangeTrans(sm, 'game');
                 }
             }
@@ -140,7 +146,9 @@
                 h: 32
             });
             // create a new game object
-            sm.game = gameMod.create();
+            sm.game = gameMod.create({
+               mode: sm.gameMode
+            });
         },
         trans: function (sm, secs) {
             poolMod.update(sm.buttons, secs, sm);
