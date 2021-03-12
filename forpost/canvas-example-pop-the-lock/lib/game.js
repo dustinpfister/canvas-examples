@@ -90,7 +90,10 @@ var gameMod = (function(){
     var modes = {
         freePlay: {
             update: function(game){
-                game.score = game.clickTrack.hits;
+                var hitPer = game.clickTrack.hits / game.clickTrack.total,
+                missLoss = 1 - (1 / (game.missTrack.count + 1));
+                hitPer = utils.isNaN(hitPer) ? 1 : hitPer;
+                game.score = Math.floor(game.clickTrack.hits * hitPer * (1-missLoss));
             },
             onMiss: function(game){
                 game.missTrack.count += 1;
