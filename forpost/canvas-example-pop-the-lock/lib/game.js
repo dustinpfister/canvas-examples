@@ -75,7 +75,8 @@ var gameMod = (function(){
                 game.deg.target = getTargetRandom(game);
             },
             update: function(game){
-                game.score = game.clickTrack.hits;
+                var hits = game.clickTrack.hits;
+                game.score = Math.floor(hits + Math.pow(1.075, hits)) - 1;
             },
             onMiss: function(game){
                 game.missTrack.count = 1;
