@@ -50,12 +50,20 @@ var draw = (function(){
         score(ctx, canvas, game);
     };
     // draw title text
-    api.titleText = function(ctx, canvas){
+    api.text_title = function(ctx, canvas){
         ctx.fillStyle = 'white';
         ctx.textBaseline = 'middle';
         ctx.font='30px arial';
         ctx.textAlign = 'center';
         ctx.fillText('Pop The Lock', canvas.width / 2, canvas.height / 2 - 50);
+    };
+    // draw game over text
+    api.text_gameover = function(ctx, canvas){
+        ctx.fillStyle = 'white';
+        ctx.textBaseline = 'middle';
+        ctx.font='30px arial';
+        ctx.textAlign = 'center';
+        ctx.fillText('Game Over', canvas.width / 2, canvas.height / 2 - 50);
     };
     // version
     api.ver = function(ctx, canvas, sm){
@@ -95,7 +103,7 @@ var draw = (function(){
         }
     };
     // info
-    api.info = function(ctx, canvas, game){
+    api.debugInfo = function(ctx, canvas, game){
         ctx.fillStyle = 'yellow';
         ctx.textBaseline = 'top';
         ctx.textAlign = 'left';
