@@ -42,7 +42,7 @@
 * (done) game.level prop used in endurance mode
 * (done) as level goes up so does speed
 * (done) have options object for gameMod.create that allows for setting game mode
-* have New FreePlay Game and New Endurance Game buttons on title.
+* (done) have New FreePlay Game and New Endurance Game buttons on title.
 
 * score should be effected by game.level in endurence mode
 

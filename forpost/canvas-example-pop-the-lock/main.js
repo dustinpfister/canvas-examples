@@ -99,11 +99,21 @@
             // spawn object for new Game button
             poolMod.spawn(sm.buttons, sm, {
                 action: 'start_game_freePlay',
-                disp: 'New Game',
+                disp: 'New Freeplay Game',
                 sx: -150,  // start x and y where the button should start
                 sy: sm.canvas.height / 2,
                 dist: 250, // distance and heading from start location
                 heading: 0,
+                rev: false
+            });
+            // spawn object for new Game button
+            poolMod.spawn(sm.buttons, sm, {
+                action: 'start_game_endurance',
+                disp: 'New Endurance Game',
+                sx: sm.canvas.width + 150,  // start x and y where the button should start
+                sy: sm.canvas.height / 2 + 32,
+                dist: 250 + 120, // distance and heading from start location
+                heading: Math.PI,
                 rev: false
             });
         },
