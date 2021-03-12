@@ -29,6 +29,7 @@ var draw = (function(){
         ctx.fillText('trip up count: ' + game.tripUp.count, 10, 40);
         ctx.fillText('inrange ' + game.inRange, 10, 50);
         ctx.fillText('miss count: ' + game.missTrack.count, 10, 60);
+        ctx.fillText('clicks (hits/total): ' + game.clickTrack.hits + '/' + game.clickTrack.total, 10, 70);
     };
     // draw current position
     var current_pos = function(ctx, canvas, game){

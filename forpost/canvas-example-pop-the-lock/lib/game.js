@@ -65,6 +65,10 @@ var gameMod = (function(){
                 canMiss: false,
                 count: 0
             },
+            clickTrack: {
+                total: 0,     // total number of clicks
+                hits: 0       // total number of clicks that are hits
+            },
             tripUp: {        // settings for 'tripUp' mode
                count: 5,
                chance: 0.12,
@@ -98,6 +102,8 @@ var gameMod = (function(){
     // create click handler
     api.click = function (game) {
         game.score += game.inRange ? 1 : -1;
+        game.clickTrack.total += 1;
+        game.clickTrack.hits += game.inRange ? 1 : 0;
         if (game.inRange) {
             game.missTrack.canMiss = false;
             game.dir = game.dir === 1 ? -1 : 1;
