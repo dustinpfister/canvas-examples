@@ -27,6 +27,11 @@
 
 * have a 'freePlay' mode that is the game as it is now
 * in freePlay track total clicks, hits, and missed runs and use these values to set a score
+* with freePlay the player can just keep playing till they get board and press the quit button
+* start a 'gameOver' state
+* when the quit button is pressed enter gameOver state
+* final stats of game are displayed, and there are two buttons one to start over (current mode), and the other to go to title
+
 
 * start an 'endurance' mode where the object is to get the score as high as you can before loosing
 * can loose in endurance mode
