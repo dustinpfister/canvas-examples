@@ -38,13 +38,14 @@
 * (done) with freePlay the player can just keep playing till they get board and press the quit button
 * (done) start an 'endurance' mode where the object is to get the score as high as you can before loosing
 * (done) can loose in endurance mode
+* (done) when you loose my just missing a target, or clicking to soon enter game over state
 
-
-* when you loose my just missing a target, or clicking to soon enter game over state
 * game.level prop used in endurance mode
 * as level goes up so does speed
 * score should be effected by game.level
 
+* have options object for gameMod.create that allows for setting game mode
+* have New FreePlay Game and New Endurance Game buttons on title.
 
 * make a pkg 0.3.0 folder
 
