@@ -118,7 +118,9 @@
         click: function (sm, pos, e) {
             var button = poolMod.getObjectAt(sm.buttons, pos.x, pos.y);
             if (button) {
-                startStateChangeTrans(sm, 'game');
+                if(button.data.action === 'set_state_game'){
+                    startStateChangeTrans(sm, 'game');
+                }
             }
         }
     };
@@ -195,11 +197,11 @@
             draw.pool(ctx, sm.buttons);
         },
         click: function (sm, pos, e) {
-            var obj = poolMod.getObjectAt(sm.buttons, pos.x, pos.y);
-            if (obj) {
-                startStateChangeTrans(sm, 'title');
-            } else {
-                gameMod.click(sm.game);
+            var button = poolMod.getObjectAt(sm.buttons, pos.x, pos.y);
+            if (button) {
+                if(button.data.action === 'set_state_title'){
+                    startStateChangeTrans(sm, 'title');
+                }
             }
         }
     };
