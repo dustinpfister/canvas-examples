@@ -43,10 +43,8 @@
 * (done) as level goes up so does speed
 * (done) have options object for gameMod.create that allows for setting game mode
 * (done) have New FreePlay Game and New Endurance Game buttons on title.
-
-* score should be effected by game.level in endurence mode
-
-* make a pkg 0.3.0 folder
+* (done) score should be effected by game.level in endurence mode
+* (done - 03/12/2021) make a pkg 0.3.0 folder
 
 ## 0.2.0 - Object Pool, and buttons
 * (done) start an object pool lib that will just be used for buttons
