@@ -173,8 +173,19 @@
                 action: 'set_state_title',
                 disp: 'Back',
                 sx: sm.canvas.width + 32,
-                sy: sm.canvas.height / 2 - 16,
-                dist: 128,
+                sy: sm.canvas.height / 2,
+                dist: 165,
+                heading: Math.PI,
+                rev: false,
+                w: 128,
+                h: 32
+            });
+            poolMod.spawn(sm.buttons, sm, {
+                action: 'set_state_game',
+                disp: 'Play New Game',
+                sx: sm.canvas.width + 32,
+                sy: sm.canvas.height / 2 - 32,
+                dist: 165,
                 heading: Math.PI,
                 rev: false,
                 w: 128,
@@ -197,6 +208,9 @@
             if (button) {
                 if(button.data.action === 'set_state_title'){
                     startStateChangeTrans(sm, 'title');
+                }
+                if(button.data.action === 'set_state_game'){
+                    startStateChangeTrans(sm, 'game');
                 }
             }
         }

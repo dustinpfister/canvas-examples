@@ -27,19 +27,20 @@
 * (done) start a 'gameOver' state
 * (done) when the quit button is pressed enter gameOver state
 * (done) final stats of game are displayed in gameOver state
-* use dra.background to draw a layer of black between gameover text and the state of PTL in background
-* There are two buttons in gameOver state one to start over (current mode), and the other to go to title
+* (done) use draw.background to draw a layer of black between gameover text and the state of PTL in background
+* (done) There are two buttons in gameOver state one to start over (current mode), and the other to go to title
+
+* pull draw score out of draw.PTL and do not draw it in game over state
 
 * have a 'freePlay' mode that is the game as it is now
 * in freePlay track total clicks, hits, and missed runs and use these values to set a score
 * with freePlay the player can just keep playing till they get board and press the quit button
 
-
-
 * start an 'endurance' mode where the object is to get the score as high as you can before loosing
 * can loose in endurance mode
 * when you loose enter game over state
-* in game over state you can play again or return to title
+
+* make a pkg 0.3.0 folder
 
 ## 0.2.0 - Object Pool, and buttons
 * (done) start an object pool lib that will just be used for buttons

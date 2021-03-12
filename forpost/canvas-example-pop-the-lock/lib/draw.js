@@ -69,7 +69,7 @@ var draw = (function(){
     // draw game over text
     api.text_gameover = function(ctx, canvas, sm){
         var game = sm.game,
-        sx = canvas.width / 2 - 100,
+        sx = canvas.width / 2 - 120,
         sy = canvas.height / 2 - 25;
         text_big_center(ctx);
         ctx.fillText('Game Over', canvas.width / 2, canvas.height / 2 - 50);
