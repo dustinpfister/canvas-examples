@@ -75,6 +75,7 @@ var gameMod = (function(){
                countRange: [3, 10],
                degRange: [10, 20]
             },
+            pause: true,
             range: 0.5,      // a number (0-1) that will set the range in which a new target can be whe using getTargetRandom
             dir: -1,         // the direction in which the current degree will change
             inRange: false,  // true if the current degree is in range of the target degree
@@ -87,7 +88,9 @@ var gameMod = (function(){
     };
     // update
     api.update = function(game, secs){
-        game.deg.current +=  game.deg.perSec * secs * game.dir; 
+        if(!game.pause){
+            game.deg.current +=  game.deg.perSec * secs * game.dir;
+        } 
         game.deg.current = utils.mod(game.deg.current, game.deg.total);
         game.deg.distance = getDistanceFromTarget(game);
         game.inRange = getInRange(game);
@@ -101,14 +104,17 @@ var gameMod = (function(){
     };
     // create click handler
     api.click = function (game) {
-        game.score += game.inRange ? 1 : -1;
-        game.clickTrack.total += 1;
-        game.clickTrack.hits += game.inRange ? 1 : 0;
-        if (game.inRange) {
-            game.missTrack.canMiss = false;
-            game.dir = game.dir === 1 ? -1 : 1;
-            game.deg.target = newTarget(game);
+        if(!game.pause){
+            game.score += game.inRange ? 1 : -1;
+            game.clickTrack.total += 1;
+            game.clickTrack.hits += game.inRange ? 1 : 0;
+            if (game.inRange) {
+                game.missTrack.canMiss = false;
+                game.dir = game.dir === 1 ? -1 : 1;
+                game.deg.target = newTarget(game);
+            }
         }
+        game.pause = false;
     };
     // return public api
     return api;

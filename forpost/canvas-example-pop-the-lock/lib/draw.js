@@ -30,6 +30,7 @@ var draw = (function(){
         ctx.fillText('inrange ' + game.inRange, 10, 50);
         ctx.fillText('miss count: ' + game.missTrack.count, 10, 60);
         ctx.fillText('clicks (hits/total): ' + game.clickTrack.hits + '/' + game.clickTrack.total, 10, 70);
+        ctx.fillText('paused: ' + game.pause, 10, 80);
     };
     // draw current position
     var current_pos = function(ctx, canvas, game){

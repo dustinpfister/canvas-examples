@@ -3,9 +3,14 @@
 * have a obj.cx and obj.cy prop in pool.js that will be the center point of a display object
 * make all changes needed in pool.js, main.js, and draw.js
 
+## 0.x.0 - Classic Mode
+* start a classic mode that works like the original pop the lock game
+* In classic mode you start at level 1 which means you just have to hit one target and you won
+* Each time you win the level steps up by one and you need to hit that many targets to win
+
 ## 0.x.0 - Save states
 
-## 0.3.0 - game modes, starting with freePlay and endurance modes
+## 0.3.0 - Game modes, starting with freePlay and endurance modes, many improvements
 * (done) have an out animation for buttons that change current state
 * (done) have a deg.distance prop in game.js that is the shortest distance from deg.target
 * (done) new getTarget helper
@@ -16,9 +21,10 @@
 * (done) new random trip up get target method and object
 * (done) tripUp.chance, and tripUp.countRange props
 * (done) random range utils method
+* (done) new system for tracking a missed hit of the target
+* (done) new system for tracking clicks and hits of targets
 
-
-* new system for tracking a missed hit of the target
+* game.pause
 
 * have a 'freePlay' mode that is the game as it is now
 
