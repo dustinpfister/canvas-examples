@@ -16,22 +16,6 @@ var draw = (function(){
             utils.mod(game.deg.target + game.deg.margin, game.deg.total) / game.deg.total * Math.PI * 2);
         ctx.stroke();
     };
-    // info
-    var info = function(ctx, canvas, game){
-        ctx.fillStyle = 'yellow';
-        ctx.textBaseline = 'top';
-        ctx.textAlign = 'left';
-        ctx.globalAlpha = 0.35;
-        ctx.font = '10px arial';
-        ctx.fillText('deg.current ' + game.deg.current.toFixed(2), 10, 10);
-        ctx.fillText('deg.target ' + game.deg.target, 10, 20);
-        ctx.fillText('deg.distance ' + game.deg.distance.toFixed(2), 10, 30);
-        ctx.fillText('trip up count: ' + game.tripUp.count, 10, 40);
-        ctx.fillText('inrange ' + game.inRange, 10, 50);
-        ctx.fillText('miss count: ' + game.missTrack.count, 10, 60);
-        ctx.fillText('clicks (hits/total): ' + game.clickTrack.hits + '/' + game.clickTrack.total, 10, 70);
-        ctx.fillText('paused: ' + game.pause, 10, 80);
-    };
     // draw current position
     var current_pos = function(ctx, canvas, game){
         ctx.strokeStyle = 'blue';
@@ -64,7 +48,6 @@ var draw = (function(){
         targetRange(ctx, canvas, game);
         current_pos(ctx, canvas, game);
         score(ctx, canvas, game);
-        info(ctx, canvas, game);
     };
     // draw title text
     api.titleText = function(ctx, canvas){
@@ -110,6 +93,22 @@ var draw = (function(){
                 ctx.restore();
             }
         }
+    };
+    // info
+    api.info = function(ctx, canvas, game){
+        ctx.fillStyle = 'yellow';
+        ctx.textBaseline = 'top';
+        ctx.textAlign = 'left';
+        ctx.globalAlpha = 0.35;
+        ctx.font = '10px arial';
+        ctx.fillText('deg.current ' + game.deg.current.toFixed(2), 10, 10);
+        ctx.fillText('deg.target ' + game.deg.target, 10, 20);
+        ctx.fillText('deg.distance ' + game.deg.distance.toFixed(2), 10, 30);
+        ctx.fillText('trip up count: ' + game.tripUp.count, 10, 40);
+        ctx.fillText('inrange ' + game.inRange, 10, 50);
+        ctx.fillText('miss count: ' + game.missTrack.count, 10, 60);
+        ctx.fillText('clicks (hits/total): ' + game.clickTrack.hits + '/' + game.clickTrack.total, 10, 70);
+        ctx.fillText('paused: ' + game.pause, 10, 80);
     };
     // return public API
     return api;

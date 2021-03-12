@@ -154,6 +154,7 @@
         draw: function (sm, ctx, canvas) {
             draw.PTL(ctx, canvas, sm.game);
             draw.pool(ctx, sm.buttons);
+            draw.info(ctx, canvas, sm.game);
         },
         click: function (sm, pos, e) {
             var button = poolMod.getObjectAt(sm.buttons, pos.x, pos.y);
