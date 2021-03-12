@@ -61,7 +61,11 @@ var gameMod = (function(){
                margin: 4,    // the margin of 'degrees' +- from target that will still count as in range
                distance: 0   // should be the shortest distance in 'degrees' from target
             },
-            tripUp: {
+            missTrack: {
+                canMiss: false,
+                count: 0
+            },
+            tripUp: {        // settings for 'tripUp' mode
                count: 5,
                chance: 0.12,
                countRange: [3, 10],
@@ -83,11 +87,19 @@ var gameMod = (function(){
         game.deg.current = utils.mod(game.deg.current, game.deg.total);
         game.deg.distance = getDistanceFromTarget(game);
         game.inRange = getInRange(game);
+        if(game.inRange){
+            game.missTrack.canMiss = true;
+        }
+        if(game.missTrack.canMiss && !game.inRange){
+            game.missTrack.count += 1;
+            game.missTrack.canMiss = false;
+        }
     };
     // create click handler
     api.click = function (game) {
         game.score += game.inRange ? 1 : -1;
         if (game.inRange) {
+            game.missTrack.canMiss = false;
             game.dir = game.dir === 1 ? -1 : 1;
             game.deg.target = newTarget(game);
         }

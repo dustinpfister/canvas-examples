@@ -15,9 +15,16 @@
 * (done) have a degOrigin argument for getTarget helper 
 * (done) new random trip up get target method and object
 * (done) tripUp.chance, and tripUp.countRange props
-* random range utils method
+* (done) random range utils method
+
+
+* new system for tracking a missed hit of the target
 
 * have a 'freePlay' mode that is the game as it is now
+
+
+* in freePlay track total clicks, hits, and missed runs and use these values
+
 * start an 'endurance' mode where the object is to get the score as high as you can before loosing
 * can loose in endurance mode
 * when you loose enter game over state
