@@ -132,7 +132,7 @@
             poolMod.setActiveStateForAll(sm.buttons, false);
             // spawn object for new Game button
             poolMod.spawn(sm.buttons, sm, {
-                action: 'set_state_title',
+                action: 'set_state_gameover',
                 disp: 'Quit',
                 sx: sm.canvas.width + 32,
                 sy: 0,
@@ -154,9 +154,11 @@
             draw.pool(ctx, sm.buttons);
         },
         click: function (sm, pos, e) {
-            var obj = poolMod.getObjectAt(sm.buttons, pos.x, pos.y);
-            if (obj) {
-                startStateChangeTrans(sm, 'title');
+            var button = poolMod.getObjectAt(sm.buttons, pos.x, pos.y);
+            if (button) {
+                if(button.data.action === 'set_state_gameover'){
+                    startStateChangeTrans(sm, 'gameOver');
+                }
             } else {
                 gameMod.click(sm.game);
             }
