@@ -9,6 +9,9 @@
 * Each time you win the level steps up by one and you need to hit that many targets to win
 
 ## 0.x.0 - Save states
+* add save states
+* save main game state on each game over event
+* more than one theme, have new background and color themes for each game mode
 
 ## 0.3.0 - Game modes, starting with freePlay and endurance modes, many improvements
 * (done) have an out animation for buttons that change current state
@@ -40,6 +43,7 @@
 * game.level prop used in endurance mode
 * as level goes up so does speed
 * score should be effected by game.level
+
 
 * make a pkg 0.3.0 folder
 

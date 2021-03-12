@@ -128,6 +128,7 @@ var draw = (function(){
         ctx.fillText('miss count: ' + game.missTrack.count, 10, 60);
         ctx.fillText('clicks (hits/total): ' + game.clickTrack.hits + '/' + game.clickTrack.total, 10, 70);
         ctx.fillText('paused: ' + game.pause, 10, 80);
+        ctx.fillText('mode: ' + game.mode, 10, 90);
     };
     // return public API
     return api;

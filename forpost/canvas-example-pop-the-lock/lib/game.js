@@ -53,7 +53,7 @@ var gameMod = (function(){
     // CREATE and return a main game object
     api.create = function(){
         var game = {         // THE MAIN GAME OBJECT
-            mode: 'freePlay',
+            mode: 'endurance', //'freePlay',
             deg: {           // 'degree' object
                perSec: 30,   // degrees per second
                current: 25,  // the current 'degree'
@@ -76,6 +76,7 @@ var gameMod = (function(){
                countRange: [3, 10],
                degRange: [10, 20]
             },
+            gameOver: false,
             pause: true,
             range: 0.5,      // a number (0-1) that will set the range in which a new target can be whe using getTargetRandom
             dir: -1,         // the direction in which the current degree will change
@@ -103,11 +104,27 @@ var gameMod = (function(){
                     game.deg.target = newTarget(game);
                 }
             }
+        },
+        endurance: {
+            update: function(game){
+                game.score = game.clickTrack.hits;
+            },
+            onMiss: function(game){
+                game.missTrack.count = 1;
+                game.gameOver = true;
+            },
+            onClick: function(game){
+                if (game.inRange) {
+                    game.deg.target = newTarget(game);
+                }else{
+                    game.gameOver = true;
+                }
+            }
         }
     };
     // update
     api.update = function(game, secs){
-        if(!game.pause){
+        if(!game.pause && !game.gameOver){
             game.deg.current +=  game.deg.perSec * secs * game.dir;
         } 
         game.deg.current = utils.mod(game.deg.current, game.deg.total);
@@ -126,7 +143,7 @@ var gameMod = (function(){
     };
     // create click handler
     api.click = function (game) {
-        if(!game.pause){
+        if(!game.pause && !game.gameOver){
             game.clickTrack.total += 1;
             game.clickTrack.hits += game.inRange ? 1 : 0;
             if (game.inRange) {
