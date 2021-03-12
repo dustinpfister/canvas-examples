@@ -96,27 +96,28 @@ var gameMod = (function(){
     // public API
     var api = {};
     // CREATE and return a main game object
-    api.create = function(){
-        var game = {          // THE MAIN GAME OBJECT
-            mode: 'endurance', // current game mode such as 'endurance', or 'freePlay' (see modes object)
+    api.create = function(opt){
+        opt = opt || {};
+        var game = {                         // THE MAIN GAME OBJECT
+            mode: opt.mode || 'freePlay',    // current game mode such as 'endurance', or 'freePlay' (see modes object)
             level: 1,
-            deg: {           // 'degree' object
-               perSec: 30,   // degrees per second
-               current: 25,  // the current 'degree'
-               target: 0,    // the target 'degree'
-               total: 100,   // total number of 'degrees'
-               margin: 4,    // the margin of 'degrees' +- from target that will still count as in range
-               distance: 0   // should be the shortest distance in 'degrees' from target
+            deg: {                           // 'degree' object
+               perSec: 30,                   // degrees per second
+               current: 25,                  // the current 'degree'
+               target: 0,                    // the target 'degree'
+               total: 100,                   // total number of 'degrees'
+               margin: 4,                    // the margin of 'degrees' +- from target that will still count as in range
+               distance: 0                   // should be the shortest distance in 'degrees' from target
             },
-            missTrack: {
+            missTrack: {                     // Miss Tacking (missed target, not clicking to soon)
                 canMiss: false,
                 count: 0
             },
             clickTrack: {
-                total: 0,     // total number of clicks
-                hits: 0       // total number of clicks that are hits
+                total: 0,                    // total number of clicks
+                hits: 0                      // total number of clicks that are hits
             },
-            tripUp: {        // settings for 'tripUp' mode
+            tripUp: {                        // settings for 'tripUp' mode
                count: 5,
                chance: 0.12,
                countRange: [3, 10],
@@ -124,10 +125,10 @@ var gameMod = (function(){
             },
             gameOver: false,
             pause: true,
-            range: 0.5,      // a number (0-1) that will set the range in which a new target can be whe using getTargetRandom
-            dir: -1,         // the direction in which the current degree will change
-            inRange: false,  // true if the current degree is in range of the target degree
-            score: 0         // player score
+            range: 0.5,                      // a number (0-1) that will set the range in which a new target can be
+            dir: -1,                         // the direction in which the current degree will change
+            inRange: false,                  // true if the current degree is in range of the target degree
+            score: 0                         // player score
         };
         game.deg.target = newTarget(game);
         modes[game.mode].init(game);
