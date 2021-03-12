@@ -38,14 +38,6 @@ var draw = (function(){
         ctx.arc(x, y, 10, 0, Math.PI * 2);
         ctx.stroke();
     };
-    // score
-    var score = function(ctx, canvas, game){
-        ctx.fillStyle = game.score > 0 ? 'green' : 'red';
-        ctx.textBaseline = 'middle';
-        ctx.textAlign = 'center';
-        ctx.font = '25px arial';
-        ctx.fillText(game.score, canvas.width / 2, canvas.height / 2);
-    };
     // public api
     var api = {};
     // background
@@ -59,7 +51,14 @@ var draw = (function(){
         baseCircle(ctx, canvas);
         targetRange(ctx, canvas, game);
         current_pos(ctx, canvas, game);
-        score(ctx, canvas, game);
+    };
+    // score
+    api.score = function(ctx, canvas, game){
+        ctx.fillStyle = game.score > 0 ? 'green' : 'red';
+        ctx.textBaseline = 'middle';
+        ctx.textAlign = 'center';
+        ctx.font = '25px arial';
+        ctx.fillText(game.score, canvas.width / 2, canvas.height / 2);
     };
     // draw title text
     api.text_title = function(ctx, canvas){

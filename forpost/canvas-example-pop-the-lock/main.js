@@ -150,6 +150,7 @@
         },
         draw: function (sm, ctx, canvas) {
             draw.PTL(ctx, canvas, sm.game);
+            draw.score(ctx, canvas, sm.game);
             draw.pool(ctx, sm.buttons);
             draw.debugInfo(ctx, canvas, sm.game);
         },
