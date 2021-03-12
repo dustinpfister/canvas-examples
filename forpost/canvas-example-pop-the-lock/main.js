@@ -99,8 +99,7 @@
             poolMod.spawn(sm.buttons, sm, {
                 action: 'set_state_game',
                 disp: 'New Game',
-                // start x and y where the button should start
-                sx: -150,
+                sx: -150,  // start x and y where the button should start
                 sy: sm.canvas.height / 2,
                 dist: 250, // distance and heading from start location
                 heading: 0,
@@ -128,11 +127,7 @@
     // GAME STATE
     sm.states.game = {
         init: function (sm) {
-            // create a new game object
-            sm.game = gameMod.create();
-            // set all button object to inactive
             poolMod.setActiveStateForAll(sm.buttons, false);
-            // spawn object for new Game button
             poolMod.spawn(sm.buttons, sm, {
                 action: 'set_state_gameover',
                 disp: 'Quit',
@@ -144,6 +139,8 @@
                 w: 32,
                 h: 32
             });
+            // create a new game object
+            sm.game = gameMod.create();
         },
         trans: function (sm, secs) {
             poolMod.update(sm.buttons, secs, sm);
@@ -171,10 +168,7 @@
     // GAME OVER STATE
     sm.states.gameOver = {
         init: function (sm) {
-            // set all button object to inactive
             poolMod.setActiveStateForAll(sm.buttons, false);
-
-            // spawn object for new Game button
             poolMod.spawn(sm.buttons, sm, {
                 action: 'set_state_title',
                 disp: 'Back',
@@ -186,7 +180,6 @@
                 w: 128,
                 h: 32
             });
-
         },
         trans: function (sm, secs) {
             poolMod.update(sm.buttons, secs, sm);
