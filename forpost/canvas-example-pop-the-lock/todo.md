@@ -29,8 +29,7 @@
 * (done) final stats of game are displayed in gameOver state
 * (done) use draw.background to draw a layer of black between gameover text and the state of PTL in background
 * (done) There are two buttons in gameOver state one to start over (current mode), and the other to go to title
-
-* pull draw score out of draw.PTL and do not draw it in game over state
+* (done) pull draw score out of draw.PTL and do not draw it in game over state
 
 * have a 'freePlay' mode that is the game as it is now
 * in freePlay track total clicks, hits, and missed runs and use these values to set a score

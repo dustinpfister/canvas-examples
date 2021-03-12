@@ -53,6 +53,7 @@ var gameMod = (function(){
     // CREATE and return a main game object
     api.create = function(){
         var game = {         // THE MAIN GAME OBJECT
+            mode: 'freePlay',
             deg: {           // 'degree' object
                perSec: 30,   // degrees per second
                current: 25,  // the current 'degree'
@@ -90,9 +91,13 @@ var gameMod = (function(){
         freePlay: {
             update: function(){
             },
-            onMiss: function(){
+            onMiss: function(game){
+                game.missTrack.count += 1;
             },
-            onClick: function(){
+            onClick: function(game){
+                if (game.inRange) {
+                    game.deg.target = newTarget(game);
+                }
             }
         }
     };
@@ -108,21 +113,24 @@ var gameMod = (function(){
             game.missTrack.canMiss = true;
         }
         if(game.missTrack.canMiss && !game.inRange){
-            game.missTrack.count += 1;
+            // call onMiss for the current mode
+            modes[game.mode].onMiss(game);
             game.missTrack.canMiss = false;
         }
     };
     // create click handler
     api.click = function (game) {
         if(!game.pause){
-            game.score += game.inRange ? 1 : -1;
+            //game.score += game.inRange ? 1 : -1;
             game.clickTrack.total += 1;
             game.clickTrack.hits += game.inRange ? 1 : 0;
             if (game.inRange) {
                 game.missTrack.canMiss = false;
                 game.dir = game.dir === 1 ? -1 : 1;
-                game.deg.target = newTarget(game);
+                
             }
+            // call on click for the current mode
+            modes[game.mode].onClick(game);
         }
         game.pause = false;
     };
