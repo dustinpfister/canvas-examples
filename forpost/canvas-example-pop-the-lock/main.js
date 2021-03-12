@@ -163,6 +163,45 @@
         }
     };
 
+    // GAME OVER STATE
+    sm.states.gameOver = {
+        init: function (sm) {
+            // set all button object to inactive
+            poolMod.setActiveStateForAll(sm.buttons, false);
+
+            // spawn object for new Game button
+            poolMod.spawn(sm.buttons, sm, {
+                action: 'set_state_title',
+                disp: 'Back',
+                sx: sm.canvas.width + 32,
+                sy: sm.canvas.height / 2 - 16,
+                dist: 128,
+                heading: Math.PI,
+                rev: false,
+                w: 128,
+                h: 32
+            });
+
+        },
+        trans: function (sm, secs) {
+            poolMod.update(sm.buttons, secs, sm);
+        },
+        update: function (sm, secs) {
+        },
+        draw: function (sm, ctx, canvas) {
+            draw.PTL(ctx, canvas, sm.game);
+            draw.pool(ctx, sm.buttons);
+        },
+        click: function (sm, pos, e) {
+            var obj = poolMod.getObjectAt(sm.buttons, pos.x, pos.y);
+            if (obj) {
+                startStateChangeTrans(sm, 'title');
+            } else {
+                gameMod.click(sm.game);
+            }
+        }
+    };
+
     // LOOP
     changeState(sm, 'game');
     var loop = function () {
