@@ -6,14 +6,15 @@
 ## 03/21/21 to 03/27/21
 
 ## 03/14/21 to 03/20/21
-* update mr-sun with new create-canvas method
+* update mr-sun
 * update mr-sun-temp
 * update mr-sun-geo
+* object-pool at v0.5.0+
+* pop-the-lock at v0.5.0+
 
 ## 03/07/21 to 03/13/21
 * (done) update pointer-manager-mouse-and-touch to v0.0.1
 * (done) update percent-math-log to v0.1.1
 * (done) finish game-crosshairs v0.22.0
 * (done) update particles-search-destroy-and-spawn to v0.0.1+
-* object-pool example at v0.5.0+
-* pop-the-lock at v0.3.0+
+* (done) pop-the-lock at v0.3.0+
