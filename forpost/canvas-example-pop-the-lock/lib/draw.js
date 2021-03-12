@@ -129,6 +129,7 @@ var draw = (function(){
         ctx.fillText('clicks (hits/total): ' + game.clickTrack.hits + '/' + game.clickTrack.total, 10, 70);
         ctx.fillText('paused: ' + game.pause, 10, 80);
         ctx.fillText('mode: ' + game.mode, 10, 90);
+        ctx.fillText('level: ' + game.level, 10, 100);
     };
     // return public API
     return api;

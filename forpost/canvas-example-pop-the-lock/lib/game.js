@@ -54,6 +54,7 @@ var gameMod = (function(){
     api.create = function(){
         var game = {         // THE MAIN GAME OBJECT
             mode: 'endurance', //'freePlay',
+            level: 1,
             deg: {           // 'degree' object
                perSec: 30,   // degrees per second
                current: 25,  // the current 'degree'
@@ -116,6 +117,9 @@ var gameMod = (function(){
             onClick: function(game){
                 if (game.inRange) {
                     game.deg.target = newTarget(game);
+                    game.level += 1;
+                    game.level = game.level > 100 ? 100 : game.level;
+                    game.deg.perSec = 10 + Math.round( 50 * (game.level / 100));
                 }else{
                     game.gameOver = true;
                 }
