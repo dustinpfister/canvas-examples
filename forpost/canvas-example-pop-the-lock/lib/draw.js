@@ -1,4 +1,10 @@
 var draw = (function(){
+    var text_big_center = function(ctx){
+        ctx.fillStyle = 'white';
+        ctx.textBaseline = 'middle';
+        ctx.font='30px arial';
+        ctx.textAlign = 'center';
+    };
     // draw base circle
     var baseCircle = function(ctx, canvas){
         ctx.strokeStyle = 'white';
@@ -51,18 +57,12 @@ var draw = (function(){
     };
     // draw title text
     api.text_title = function(ctx, canvas){
-        ctx.fillStyle = 'white';
-        ctx.textBaseline = 'middle';
-        ctx.font='30px arial';
-        ctx.textAlign = 'center';
+        text_big_center(ctx);
         ctx.fillText('Pop The Lock', canvas.width / 2, canvas.height / 2 - 50);
     };
     // draw game over text
     api.text_gameover = function(ctx, canvas){
-        ctx.fillStyle = 'white';
-        ctx.textBaseline = 'middle';
-        ctx.font='30px arial';
-        ctx.textAlign = 'center';
+        text_big_center(ctx);
         ctx.fillText('Game Over', canvas.width / 2, canvas.height / 2 - 50);
     };
     // version
