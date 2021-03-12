@@ -30,14 +30,16 @@
 * (done) use draw.background to draw a layer of black between gameover text and the state of PTL in background
 * (done) There are two buttons in gameOver state one to start over (current mode), and the other to go to title
 * (done) pull draw score out of draw.PTL and do not draw it in game over state
-
-* have a 'freePlay' mode that is the game as it is now
-* in freePlay track total clicks, hits, and missed runs and use these values to set a score
-* with freePlay the player can just keep playing till they get board and press the quit button
+* (done) have a 'freePlay' mode that is the game as it is now
+* (done) in freePlay track total clicks, hits, and missed runs and use these values to set a score
+* (done) with freePlay the player can just keep playing till they get board and press the quit button
 
 * start an 'endurance' mode where the object is to get the score as high as you can before loosing
 * can loose in endurance mode
-* when you loose enter game over state
+* when you loose my just missing a target, or clicking to soon enter game over state
+* game.level prop used in endurance mode
+* as level goes up so does speed
+* score should be effected by game.level
 
 * make a pkg 0.3.0 folder
 
