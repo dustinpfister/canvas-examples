@@ -36,9 +36,10 @@
 * (done) have a 'freePlay' mode that is the game as it is now
 * (done) in freePlay track total clicks, hits, and missed runs and use these values to set a score
 * (done) with freePlay the player can just keep playing till they get board and press the quit button
+* (done) start an 'endurance' mode where the object is to get the score as high as you can before loosing
+* (done) can loose in endurance mode
 
-* start an 'endurance' mode where the object is to get the score as high as you can before loosing
-* can loose in endurance mode
+
 * when you loose my just missing a target, or clicking to soon enter game over state
 * game.level prop used in endurance mode
 * as level goes up so does speed

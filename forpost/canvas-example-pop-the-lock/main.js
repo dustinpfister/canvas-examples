@@ -147,6 +147,9 @@
         },
         update: function (sm, secs) {
             gameMod.update(sm.game, secs);
+            if(sm.game.gameOver){
+                startStateChangeTrans(sm, 'gameOver');
+            }
         },
         draw: function (sm, ctx, canvas) {
             draw.PTL(ctx, canvas, sm.game);
