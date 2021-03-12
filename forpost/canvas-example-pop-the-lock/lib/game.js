@@ -89,7 +89,8 @@ var gameMod = (function(){
     };
     var modes = {
         freePlay: {
-            update: function(){
+            update: function(game){
+                game.score = game.clickTrack.hits;
             },
             onMiss: function(game){
                 game.missTrack.count += 1;
@@ -117,11 +118,12 @@ var gameMod = (function(){
             modes[game.mode].onMiss(game);
             game.missTrack.canMiss = false;
         }
+        // call update method for the current mode
+        modes[game.mode].update(game);
     };
     // create click handler
     api.click = function (game) {
         if(!game.pause){
-            //game.score += game.inRange ? 1 : -1;
             game.clickTrack.total += 1;
             game.clickTrack.hits += game.inRange ? 1 : 0;
             if (game.inRange) {
