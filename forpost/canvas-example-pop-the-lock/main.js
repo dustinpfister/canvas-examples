@@ -4,8 +4,8 @@
     // SETUP CANVAS
     // create and append canvas element, and get 2d context
     var canvasObj = utils.createCanvas({
-            width: 320,
-            height: 240
+            width: 640,
+            height: 480
         }),
     canvas = canvasObj.canvas,
     ctx = canvasObj.ctx;
