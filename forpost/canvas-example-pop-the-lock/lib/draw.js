@@ -1,5 +1,7 @@
 var draw = (function(){
+
     var CIRCLE_RADIUS = 200;
+
     var text_big_center = function(ctx){
         ctx.fillStyle = 'white';
         ctx.textBaseline = 'middle';
@@ -72,7 +74,7 @@ var draw = (function(){
     // draw title text
     api.text_title = function(ctx, canvas){
         text_big_center(ctx);
-        ctx.fillText('Pop The Lock', canvas.width / 2, canvas.height / 2 - 50);
+        ctx.fillText('Pop The Lock', canvas.width / 2 - 10, canvas.height / 2 - 50);
     };
     // draw game over text
     api.text_gameover = function(ctx, canvas, sm){

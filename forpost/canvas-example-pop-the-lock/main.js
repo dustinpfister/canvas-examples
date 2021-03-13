@@ -102,9 +102,9 @@
             poolMod.spawn(sm.buttons, sm, {
                 action: 'start_game_freePlay',
                 disp: 'New Freeplay Game',
-                sx: -150,  // start x and y where the button should start
+                sx: -150,
                 sy: sm.canvas.height / 2,
-                dist: 250, // distance and heading from start location
+                dist: sm.canvas.width / 2 + 75,
                 heading: 0,
                 rev: false
             });
@@ -112,9 +112,9 @@
             poolMod.spawn(sm.buttons, sm, {
                 action: 'start_game_endurance',
                 disp: 'New Endurance Game',
-                sx: sm.canvas.width + 150,  // start x and y where the button should start
+                sx: sm.canvas.width + 150,
                 sy: sm.canvas.height / 2 + 32,
-                dist: 250 + 120, // distance and heading from start location
+                dist: sm.canvas.width / 2 + 150 + 75, 
                 heading: Math.PI,
                 rev: false
             });
