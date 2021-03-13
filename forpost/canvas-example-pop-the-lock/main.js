@@ -39,6 +39,7 @@
     // STATE MACHINE
     var sm = {
         ver: '0.4.0',
+        appName: 'canvas-example-pop-the-lock',
         canvas: canvas,
         ctx: ctx,
         game: {},
@@ -219,6 +220,7 @@
             var highScore = sm.highScores[sm.game.mode];
             if(!highScore || highScore < sm.game.score){
                 sm.highScores[sm.game.mode] = sm.game.score;
+                utils.save(sm.appName, 0, sm.highScores);
             }
         },
         trans: function (sm, secs) {
