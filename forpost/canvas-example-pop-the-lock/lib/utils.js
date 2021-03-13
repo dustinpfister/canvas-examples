@@ -84,3 +84,23 @@ utils.getCanvasRelative = function (e) {
     e.preventDefault();
     return pos;
 };
+// save a state
+utils.save = function(appName, slotID, state){
+    var key = appName + '-' + slotID;
+    var str = JSON.stringify(state);
+    localStorage.setItem(key, str);
+};
+// load a state
+utils.load = function(appName, slotID){
+    var key = appName + '-' + slotID;
+    var str = localStorage.getItem(key);
+    if(str){
+        try{
+            return JSON.parse(str);
+        }catch(e){
+            return false;
+        }
+    }
+    return false;
+};
+

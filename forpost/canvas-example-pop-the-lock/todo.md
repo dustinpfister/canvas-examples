@@ -30,7 +30,7 @@
 * add save states
 * add a sm.highScores object
 * update sm.highScores in game over state once in the init method
-* save a game state in each game over state in the init method
+* make a pkg 0.4.0 folder
 
 ## 0.3.0 - Game modes, starting with freePlay and endurance modes, many improvements
 * (done) have an out animation for buttons that change current state
