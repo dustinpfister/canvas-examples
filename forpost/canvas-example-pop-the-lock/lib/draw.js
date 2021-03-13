@@ -63,7 +63,8 @@ var draw = (function(){
         // high score for current mode
         var hs = sm.highScores[sm.game.mode];
         if(hs){
-            ctx.fillText(hs, canvas.width / 2, canvas.height / 2 + 25);
+            ctx.font = '10px courier';
+            ctx.fillText('High Score: ' + hs, canvas.width / 2, canvas.height / 2 + 25);
         }
     };
     // draw title text

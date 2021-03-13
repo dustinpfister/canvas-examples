@@ -248,6 +248,10 @@
     };
 
     // LOOP
+    var highScores = utils.load(sm.appName, '0');
+    if(highScores){
+        sm.highScores = highScores;
+    }
     changeState(sm, 'title');
     var loop = function () {
         var now = new Date(),
