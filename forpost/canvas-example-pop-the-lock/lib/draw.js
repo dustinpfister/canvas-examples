@@ -53,12 +53,18 @@ var draw = (function(){
         current_pos(ctx, canvas, game);
     };
     // score
-    api.score = function(ctx, canvas, game){
+    api.score = function(ctx, canvas, sm){
+        var game = sm.game;
         ctx.fillStyle = game.score > 0 ? 'green' : 'red';
         ctx.textBaseline = 'middle';
         ctx.textAlign = 'center';
         ctx.font = '25px arial';
         ctx.fillText(game.score, canvas.width / 2, canvas.height / 2);
+        // high score for current mode
+        var hs = sm.highScores[sm.game.mode];
+        if(hs){
+            ctx.fillText(hs, canvas.width / 2, canvas.height / 2 + 25);
+        }
     };
     // draw title text
     api.text_title = function(ctx, canvas){

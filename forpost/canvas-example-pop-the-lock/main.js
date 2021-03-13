@@ -42,6 +42,7 @@
         canvas: canvas,
         ctx: ctx,
         game: {},
+        highScores: {},
         lt: new Date(),
         currentState: 'title',
         gameMode: 'freePlay',
@@ -171,7 +172,7 @@
         },
         draw: function (sm, ctx, canvas) {
             draw.PTL(ctx, canvas, sm.game);
-            draw.score(ctx, canvas, sm.game);
+            draw.score(ctx, canvas, sm);
             draw.pool(ctx, sm.buttons);
             draw.debugInfo(ctx, canvas, sm.game);
         },
@@ -213,6 +214,12 @@
                 w: 128,
                 h: 32
             });
+
+            // update any save that might be there
+            var highScore = sm.highScores[sm.game.mode];
+            if(!highScore || highScore < sm.game.score){
+                sm.highScores[sm.game.mode] = sm.game.score;
+            }
         },
         trans: function (sm, secs) {
             poolMod.update(sm.buttons, secs, sm);
