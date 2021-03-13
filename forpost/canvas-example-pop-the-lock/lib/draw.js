@@ -1,4 +1,5 @@
 var draw = (function(){
+    var CIRCLE_RADIUS = 200;
     var text_big_center = function(ctx){
         ctx.fillStyle = 'white';
         ctx.textBaseline = 'middle';
@@ -16,14 +17,14 @@ var draw = (function(){
         ctx.strokeStyle = 'white';
         ctx.lineWidth = 3;
         ctx.beginPath();
-        ctx.arc(canvas.width / 2, canvas.height / 2, 100, 0, Math.PI * 2);
+        ctx.arc(canvas.width / 2, canvas.height / 2, CIRCLE_RADIUS, 0, Math.PI * 2);
         ctx.stroke();
     };
     // draw target range
     var targetRange = function(ctx, canvas, game){
         ctx.strokeStyle = 'red';
         ctx.beginPath();
-        ctx.arc(canvas.width / 2, canvas.height / 2, 100,
+        ctx.arc(canvas.width / 2, canvas.height / 2, CIRCLE_RADIUS,
             utils.mod(game.deg.target - game.deg.margin, game.deg.total) / game.deg.total * Math.PI * 2,
             utils.mod(game.deg.target + game.deg.margin, game.deg.total) / game.deg.total * Math.PI * 2);
         ctx.stroke();
@@ -33,8 +34,8 @@ var draw = (function(){
         ctx.strokeStyle = 'blue';
         ctx.beginPath();
         var r = game.deg.current / game.deg.total * Math.PI * 2,
-        x = Math.cos(r) * 100 + canvas.width / 2,
-        y = Math.sin(r) * 100 + canvas.height / 2;
+        x = Math.cos(r) * CIRCLE_RADIUS + canvas.width / 2,
+        y = Math.sin(r) * CIRCLE_RADIUS + canvas.height / 2;
         ctx.arc(x, y, 10, 0, Math.PI * 2);
         ctx.stroke();
     };
