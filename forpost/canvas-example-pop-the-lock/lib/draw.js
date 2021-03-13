@@ -17,7 +17,7 @@ var draw = (function(){
     // draw base circle
     var baseCircle = function(ctx, canvas){
         ctx.strokeStyle = 'white';
-        ctx.lineWidth = 3;
+        ctx.lineWidth = 6;
         ctx.beginPath();
         ctx.arc(canvas.width / 2, canvas.height / 2, CIRCLE_RADIUS, 0, Math.PI * 2);
         ctx.stroke();
@@ -26,6 +26,7 @@ var draw = (function(){
     var targetRange = function(ctx, canvas, game){
         ctx.strokeStyle = 'red';
         ctx.beginPath();
+        ctx.lineWidth = 8;
         ctx.arc(canvas.width / 2, canvas.height / 2, CIRCLE_RADIUS,
             utils.mod(game.deg.target - game.deg.margin, game.deg.total) / game.deg.total * Math.PI * 2,
             utils.mod(game.deg.target + game.deg.margin, game.deg.total) / game.deg.total * Math.PI * 2);
@@ -35,11 +36,13 @@ var draw = (function(){
     var current_pos = function(ctx, canvas, game){
         ctx.strokeStyle = 'blue';
         ctx.beginPath();
+        ctx.lineWidth = 6;
         var r = game.deg.current / game.deg.total * Math.PI * 2,
         x = Math.cos(r) * CIRCLE_RADIUS + canvas.width / 2,
         y = Math.sin(r) * CIRCLE_RADIUS + canvas.height / 2;
         ctx.arc(x, y, 10, 0, Math.PI * 2);
         ctx.stroke();
+        ctx.fill();
     };
     // public api
     var api = {};
