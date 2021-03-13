@@ -32,7 +32,7 @@
 * (done) update sm.highScores in game over state once in the init method
 * (done) load any state before starting main loop
 * (done) display high score
-* make a pkg 0.4.0 folder
+* (done - 03/13/2021) make a pkg 0.4.0 folder
 
 ## 0.3.0 - Game modes, starting with freePlay and endurance modes, many improvements
 * (done) have an out animation for buttons that change current state
