@@ -3,6 +3,8 @@
 * add a sm.money prop
 * update sm.money on each game over state once in the init method
 
+## 0.x.0 - Game Mode Settings State
+
 ## 0.x.0 - Address isshue with cx in pool.js
 * have a obj.cx and obj.cy prop in pool.js that will be the center point of a display object
 * make all changes needed in pool.js, main.js, and draw.js
@@ -12,19 +14,15 @@
 * In classic mode you start at level 1 which means you just have to hit one target and you won
 * Each time you win the level steps up by one and you need to hit that many targets to win
 
-## 0.x.0 - Sudden Death mode, and new Endurance
-* old Endurance mode should actually be called suddenDeath mode
-* new Endurance should be like suddenDeath but has an HP bar
-
-## 0.x.0 - Plugin system for game Modes
+## 0.5.0 - Plugin system, Themes, Sudden Death and new Endurance Modes
 * make freePlay mode built in
 * start a gameMod.loadMode method
 * make endurance mode external in a new /modes folder
-
-## 0.x.0 - Themes for Game modes
 * more than one theme
 * have new background and color themes for each game mode
 * flash canvas red when a miss happens
+* old Endurance mode should actually be called suddenDeath mode
+* new Endurance should be like suddenDeath but has an HP bar
 
 ## 0.4.0 - Save States
 * (done) add utils.save and utils.load methods
