@@ -1,14 +1,15 @@
 gameMod.loadMode({
     key: 'endurance',
-    init: function(game){
+    init: function(modeAPI, game){
         game.deg.perSec = 20;
-        //game.deg.target = getTargetRandom(game);
+        game.deg.current = 25;
+        game.deg.target = modeAPI.getTargetRandom(game);
     },
-    update: function(game){
+    update: function(modeAPI,game){
         var hits = game.clickTrack.hits;
         game.score = Math.floor(hits + Math.pow(1.075, hits)) - 1;
     },
-    onMiss: function(game){
+    onMiss: function(modeAPI, game){
         game.missTrack.count = 1;
         game.gameOver = true;
     },

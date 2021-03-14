@@ -89,7 +89,7 @@ var gameMod = (function(){
             score: 0                         // player score
         };
         game.deg.target = newTarget(game);
-        modes[game.mode].init(game);
+        modes[game.mode].init(modeAPI, game);
         game.deg.distance = getDistanceFromTarget(game);
         game.inRange = getInRange(game);
         return game;
@@ -107,11 +107,11 @@ var gameMod = (function(){
         }
         if(game.missTrack.canMiss && !game.inRange){
             // call onMiss for the current mode
-            modes[game.mode].onMiss(game);
+            modes[game.mode].onMiss(modeAPI,game);
             game.missTrack.canMiss = false;
         }
         // call update method for the current mode
-        modes[game.mode].update(game);
+        modes[game.mode].update(modeAPI, game);
     };
     // create click handler
     api.click = function (game) {
