@@ -1,5 +1,7 @@
 ../lib/utils.js
 ../lib/pool.js
 ../lib/game.js
+../modes/freeplay.js
+../modes/endurance.js
 ../lib/draw.js
 ../main.js

@@ -15,9 +15,10 @@
 * Each time you win the level steps up by one and you need to hit that many targets to win
 
 ## 0.5.0 - Plugin system, Themes, Sudden Death and new Endurance Modes
-* make freePlay mode built in
 * start a gameMod.loadMode method
 * make endurance mode external in a new /modes folder
+* make freePlay mode external in a new /modes folder
+
 * more than one theme
 * have new background and color themes for each game mode
 * flash canvas red when a miss happens

@@ -171,6 +171,10 @@ var gameMod = (function(){
         }
         game.pause = false;
     };
+    // load a game mode file
+    api.loadMode = function(gameMode){
+        console.log(gameMode);
+    };
     // return public api
     return api;
 }());
