@@ -2,6 +2,7 @@ gameMod.loadMode({
     key: 'endurance',
     init: function(modeAPI, game){
         game.hp.active = true;
+        game.hp.current = game.hp.max;
         game.deg.perSec = 20;
         game.deg.current = 25;
         game.deg.target = modeAPI.getTargetRandom(game);
