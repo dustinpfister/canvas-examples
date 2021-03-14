@@ -1,4 +1,9 @@
 
+## 0.x.0 - Themes
+* more than one theme
+* have new background and color themes for each game mode
+* flash canvas red when a miss happens
+
 ## 0.x.0 - Money
 * add a sm.money prop
 * update sm.money on each game over state once in the init method
@@ -14,15 +19,12 @@
 * In classic mode you start at level 1 which means you just have to hit one target and you won
 * Each time you win the level steps up by one and you need to hit that many targets to win
 
-## 0.5.0 - Plugin system, Themes, Sudden Death and new Endurance Modes
+## 0.5.0 - Plugin system, Sudden Death and new Endurance Modes
 * (done) start a gameMod.loadMode method
 * (done) make endurance mode external in a new /modes folder
 * (done) make freePlay mode external in a new /modes folder
-* can use modeAPI in init methods, and all methods in plugins for that matter
+* (done) can use modeAPI in init methods, and all methods in plugins for that matter
 
-* more than one theme
-* have new background and color themes for each game mode
-* flash canvas red when a miss happens
 * old Endurance mode should actually be called suddenDeath mode
 * new Endurance should be like suddenDeath but has an HP bar
 
