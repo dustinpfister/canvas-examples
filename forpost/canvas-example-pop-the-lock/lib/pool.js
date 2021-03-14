@@ -19,6 +19,7 @@ var poolMod = (function () {
         opt.count = opt.count || 10;
         var i = 0,
         pool = {
+            maxSecs: opt.maxSecs || 0.125,
             objects: [],
             data: opt.data || {},
             spawn: opt.spawn || function (obj, pool, state, opt) {},
@@ -61,6 +62,7 @@ var poolMod = (function () {
         var i = pool.objects.length,
         obj;
         state = state || {}; // your projects state object
+        secs = secs >= pool.maxSecs ? pool.maxSecs : secs;
         while (i--) {
             obj = pool.objects[i];
             if (obj.active) {

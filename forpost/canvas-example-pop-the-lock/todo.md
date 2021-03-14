@@ -27,6 +27,7 @@
 * Each time you win the level steps up by one and you need to hit that many targets to win
 
 ## 0.5.1 - fix bug with buttons now showing up
+* added a maxSecs prop for pool.js that should fix the problem of buttons not showing up
 
 ## 0.5.0 - Plugin system, Sudden Death and new Endurance Modes
 * (done) start a gameMod.loadMode method

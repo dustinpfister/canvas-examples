@@ -13,6 +13,7 @@
     // BUTTON OBJECT POOL
     var buttonPool = poolMod.create({
             count: 5,
+            maxSecs: 0.25,
             spawn: function (obj, pool, sm, opt) {
                 // just ref opt for the data object
                 obj.data = opt;
@@ -33,13 +34,13 @@
                     rev: !sm.trans.inState // use trans instate bool to ser rev
                 };
                 poolMod.moveByFramePerObj(obj, fp);
-                obj.lifespan = 1;
+                obj.lifespan = Infinity; // keep setting lifespan to 1
             }
         });
 
     // STATE MACHINE
     var sm = {
-        ver: '0.5.0',
+        ver: '0.5.1',
         appName: 'canvas-example-pop-the-lock',
         canvas: canvas,
         ctx: ctx,
