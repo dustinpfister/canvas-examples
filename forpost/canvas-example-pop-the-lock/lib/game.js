@@ -118,7 +118,7 @@ var gameMod = (function(){
             game.missTrack.canMiss = false;
         }
         // call update method for the current mode
-        modes[game.mode].update(modeAPI, game);
+        modes[game.mode].update(modeAPI, game, secs);
     };
     // create click handler
     api.click = function (game) {

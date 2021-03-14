@@ -33,9 +33,9 @@
 * (done) can use modeAPI in init methods, and all methods in plugins for that matter
 * (done) old Endurance mode should actually be called suddenDeath mode
 * (done) start a new system in main.js that creates buttons for all loaded modes
-
-* new Endurance should be like suddenDeath but has an HP bar
-
+* (done) new Endurance should be like suddenDeath but has an HP bar
+* (done) hp heal over time
+* make a pkg 0.5.0 folder
 
 
 ## 0.4.0 - Save States
