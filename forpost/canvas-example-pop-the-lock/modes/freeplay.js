@@ -12,9 +12,9 @@ gameMod.loadMode({
     onMiss: function(game){
         game.missTrack.count += 1;
     },
-    onClick: function(game){
+    onClick: function(modeAPI, game){
         if (game.inRange) {
-           game.deg.target = newTarget(game);
+           game.deg.target = modeAPI.newTarget(game);
         }
     }
 });

@@ -1,4 +1,7 @@
 var gameMod = (function(){
+    // MODES
+    var modeAPI = {};
+    var modes = {};
     // return the shortest distance to the target from the current position
     var getDistanceFromTarget = function(game){
         return utils.shortestDistance(game.deg.current, game.deg.target, game.deg.total);
@@ -26,7 +29,7 @@ var gameMod = (function(){
         return utils.mod(Math.round(degOrgin + margin * dir), game.deg.total);
     };
     // get a random target
-    var getTargetRandom = function(game){
+    var getTargetRandom = modeAPI.getTargetRandom = function(game){
         return getTarget(game, game.deg.current, Math.random(), game.range);
     };
     // get a random target that is a 'trip up' target
@@ -36,7 +39,7 @@ var gameMod = (function(){
         return getTargetFrom(game, game.deg.current + deltaDeg * game.dir);
     };
     // create and return a new target
-    var newTarget = function(game){
+    var newTarget = modeAPI.newTarget = function(game){
         if(game.tripUp.count > 0){
             game.tripUp.count -= 1;
             return getTargetRandomTripUp(game);
@@ -47,52 +50,6 @@ var gameMod = (function(){
             return getTargetRandomTripUp(game);
         }
         return getTargetRandom(game);
-    };
-    // MODES
-    var modes = {
-        freePlay: {
-            init: function(game){
-                game.deg.perSec = 30;
-            },
-            update: function(game){
-                var hitPer = game.clickTrack.hits / game.clickTrack.total,
-                missLoss = 1 - (1 / (game.missTrack.count + 1));
-                hitPer = utils.isNaN(hitPer) ? 1 : hitPer;
-                game.score = Math.floor(game.clickTrack.hits * hitPer * (1-missLoss));
-            },
-            onMiss: function(game){
-                game.missTrack.count += 1;
-            },
-            onClick: function(game){
-                if (game.inRange) {
-                    game.deg.target = newTarget(game);
-                }
-            }
-        },
-        endurance: {
-            init: function(game){
-                game.deg.perSec = 20;
-                game.deg.target = getTargetRandom(game);
-            },
-            update: function(game){
-                var hits = game.clickTrack.hits;
-                game.score = Math.floor(hits + Math.pow(1.075, hits)) - 1;
-            },
-            onMiss: function(game){
-                game.missTrack.count = 1;
-                game.gameOver = true;
-            },
-            onClick: function(game){
-                if (game.inRange) {
-                    game.deg.target = getTargetRandom(game); //newTarget(game);
-                    game.level += 1;
-                    game.level = game.level > 100 ? 100 : game.level;
-                    game.deg.perSec = 20 + Math.round( 80 * (game.level / 100));
-                }else{
-                    game.gameOver = true;
-                }
-            }
-        }
     };
     // public API
     var api = {};
@@ -167,13 +124,14 @@ var gameMod = (function(){
                 
             }
             // call on click for the current mode
-            modes[game.mode].onClick(game);
+            modes[game.mode].onClick(modeAPI, game);
         }
         game.pause = false;
     };
     // load a game mode file
     api.loadMode = function(gameMode){
         console.log(gameMode);
+        modes[gameMode.key] = gameMode;
     };
     // return public api
     return api;
