@@ -99,42 +99,19 @@
         init: function (sm) {
             // set all button object to inactive
             poolMod.setActiveStateForAll(sm.buttons, false);
-
+            // spawn new Game buttons
             Object.keys(gameMod.modes).forEach(function(gameModeKey, i){
-                // spawn object for new Game button
+                var bool = i % 2;
                 poolMod.spawn(sm.buttons, sm, {
                     action: 'start_game_' + gameModeKey,
                     disp: 'New ' + gameModeKey + ' Game',
-                    sx: -150,
+                    sx: bool ? sm.canvas.width + 150 : -150,
                     sy: sm.canvas.height / 2 + 32 * i,
-                    dist: sm.canvas.width / 2 + 75,
-                    heading: 0,
+                    dist: sm.canvas.width / 2 + 75 + (bool ? 150: 0),
+                    heading: Math.PI * bool,
                     rev: false
                 });
             });
-/*
-            // spawn object for new Game button
-            poolMod.spawn(sm.buttons, sm, {
-                action: 'start_game_freePlay',
-                disp: 'New Freeplay Game',
-                sx: -150,
-                sy: sm.canvas.height / 2,
-                dist: sm.canvas.width / 2 + 75,
-                heading: 0,
-                rev: false
-            });
-            // spawn object for new Game button
-            poolMod.spawn(sm.buttons, sm, {
-                action: 'start_game_endurance',
-                disp: 'New Endurance Game',
-                sx: sm.canvas.width + 150,
-                sy: sm.canvas.height / 2 + 32,
-                dist: sm.canvas.width / 2 + 150 + 75, 
-                heading: Math.PI,
-                rev: false
-            });
-*/
-
         },
         trans: function (sm, secs) {
             poolMod.update(sm.buttons, secs, sm);
