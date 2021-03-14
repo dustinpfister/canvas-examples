@@ -26,6 +26,8 @@
 * In classic mode you start at level 1 which means you just have to hit one target and you won
 * Each time you win the level steps up by one and you need to hit that many targets to win
 
+## 0.5.1 - fix bug with buttons now showing up
+
 ## 0.5.0 - Plugin system, Sudden Death and new Endurance Modes
 * (done) start a gameMod.loadMode method
 * (done) make endurance mode external in a new /modes folder
@@ -35,7 +37,7 @@
 * (done) start a new system in main.js that creates buttons for all loaded modes
 * (done) new Endurance should be like suddenDeath but has an HP bar
 * (done) hp heal over time
-* make a pkg 0.5.0 folder
+* (done - 03/14/2021) make a pkg 0.5.0 folder
 
 
 ## 0.4.0 - Save States
