@@ -78,10 +78,14 @@ var gameMod = (function(){
                 hits: 0                      // total number of clicks that are hits
             },
             tripUp: {                        // settings for 'tripUp' mode
-               count: 5,
-               chance: 0.12,
-               countRange: [3, 10],
-               degRange: [10, 20]
+                count: 5,
+                chance: 0.12,
+                countRange: [3, 10],
+                degRange: [10, 20]
+            },
+            hp: {                            // hit points
+                current: 5,
+                max: 10
             },
             gameOver: false,
             pause: true,

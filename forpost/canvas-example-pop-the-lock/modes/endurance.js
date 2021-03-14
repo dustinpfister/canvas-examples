@@ -8,10 +8,14 @@ gameMod.loadMode({
     update: function(modeAPI,game){
         var hits = game.clickTrack.hits;
         game.score = Math.floor(hits + Math.pow(1.075, hits)) - 1;
+        if(game.hp.current <= 0){
+            game.gameOver = true;
+        }
     },
     onMiss: function(modeAPI, game){
-        game.missTrack.count = 1;
-        game.gameOver = true;
+        game.missTrack.count += 1;
+        game.hp.current -= 1;
+        //game.gameOver = true;
     },
     onClick: function(modeAPI, game){
         if (game.inRange) {
@@ -20,7 +24,7 @@ gameMod.loadMode({
             game.level = game.level > 100 ? 100 : game.level;
             game.deg.perSec = 20 + Math.round( 80 * (game.level / 100));
         }else{
-            game.gameOver = true;
+            game.hp.current -= 1;
         }
     }
 });

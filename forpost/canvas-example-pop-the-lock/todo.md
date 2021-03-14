@@ -10,6 +10,13 @@
 
 ## 0.x.0 - Game Mode Settings State
 
+## 0.x.0 - Mode folders, draw.js for each mode
+* in the modes folder have a folder for each mode
+* each javaScript file for each mode such as freeplay.js can become /modes/freeplay/gamemode.js
+* each mode can have its own draw.js file, used by the main draw.js file \( /modes/freeplay/draw.js \)
+* have a README.md for each mode
+* have a todo.md for each mode
+
 ## 0.x.0 - Address isshue with cx in pool.js
 * have a obj.cx and obj.cy prop in pool.js that will be the center point of a display object
 * make all changes needed in pool.js, main.js, and draw.js
@@ -26,6 +33,7 @@
 * (done) can use modeAPI in init methods, and all methods in plugins for that matter
 * (done) old Endurance mode should actually be called suddenDeath mode
 * (done) start a new system in main.js that creates buttons for all loaded modes
+
 * new Endurance should be like suddenDeath but has an HP bar
 
 
