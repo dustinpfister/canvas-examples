@@ -12,6 +12,7 @@
 
     // BUTTON OBJECT POOL
     var buttonPool = poolMod.create({
+            count: 5,
             spawn: function (obj, pool, sm, opt) {
                 // just ref opt for the data object
                 obj.data = opt;
@@ -46,7 +47,7 @@
         highScores: {},
         lt: new Date(),
         currentState: 'title',
-        gameMode: 'freePlay',
+        gameMode: '',
         trans: {
             active: true,
             inState: true,
@@ -98,6 +99,20 @@
         init: function (sm) {
             // set all button object to inactive
             poolMod.setActiveStateForAll(sm.buttons, false);
+
+            Object.keys(gameMod.modes).forEach(function(gameModeKey, i){
+                // spawn object for new Game button
+                poolMod.spawn(sm.buttons, sm, {
+                    action: 'start_game_' + gameModeKey,
+                    disp: 'New ' + gameModeKey + ' Game',
+                    sx: -150,
+                    sy: sm.canvas.height / 2 + 32 * i,
+                    dist: sm.canvas.width / 2 + 75,
+                    heading: 0,
+                    rev: false
+                });
+            });
+/*
             // spawn object for new Game button
             poolMod.spawn(sm.buttons, sm, {
                 action: 'start_game_freePlay',
@@ -118,6 +133,8 @@
                 heading: Math.PI,
                 rev: false
             });
+*/
+
         },
         trans: function (sm, secs) {
             poolMod.update(sm.buttons, secs, sm);

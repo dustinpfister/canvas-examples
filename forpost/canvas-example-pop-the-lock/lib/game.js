@@ -53,6 +53,8 @@ var gameMod = (function(){
     };
     // public API
     var api = {};
+    // make modes public
+    api.modes = modes;
     // CREATE and return a main game object
     api.create = function(opt){
         opt = opt || {};

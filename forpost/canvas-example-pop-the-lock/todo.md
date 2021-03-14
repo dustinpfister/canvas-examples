@@ -24,9 +24,10 @@
 * (done) make endurance mode external in a new /modes folder
 * (done) make freePlay mode external in a new /modes folder
 * (done) can use modeAPI in init methods, and all methods in plugins for that matter
-
-* old Endurance mode should actually be called suddenDeath mode
+* (done) old Endurance mode should actually be called suddenDeath mode
 * new Endurance should be like suddenDeath but has an HP bar
+
+* start a new system in main.js that creates buttons for all loaded modes
 
 ## 0.4.0 - Save States
 * (done) add utils.save and utils.load methods
