@@ -1,6 +1,7 @@
 gameMod.loadMode({
     key: 'freePlay',
     init: function(modeAPI, game){
+        game.hp.active = false;
         game.deg.perSec = 30;
     },
     update: function(modeAPI, game){

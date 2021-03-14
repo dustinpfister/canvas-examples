@@ -1,6 +1,7 @@
 gameMod.loadMode({
     key: 'sudendeath',
     init: function(modeAPI, game){
+        game.hp.active = false;
         game.deg.perSec = 20;
         game.deg.current = 25;
         game.deg.target = modeAPI.getTargetRandom(game);

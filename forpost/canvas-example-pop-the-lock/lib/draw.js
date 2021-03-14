@@ -44,6 +44,15 @@ var draw = (function(){
         ctx.stroke();
         ctx.fill();
     };
+    var hpBar = function(ctx, canvas, game){
+        if(game.hp.active){
+            ctx.fillStyle = 'black';
+            ctx.fillRect(canvas.width / 2 - 50, 10, 100, 10);
+            ctx.fillStyle = 'lime';
+            var per = game.hp.current / game.hp.max;
+            ctx.fillRect(canvas.width / 2 - 50, 10, 100 * per, 10);
+        }
+    };
     // public api
     var api = {};
     // background
@@ -57,6 +66,7 @@ var draw = (function(){
         baseCircle(ctx, canvas);
         targetRange(ctx, canvas, game);
         current_pos(ctx, canvas, game);
+        hpBar(ctx, canvas, game);
     };
     // score
     api.score = function(ctx, canvas, sm){

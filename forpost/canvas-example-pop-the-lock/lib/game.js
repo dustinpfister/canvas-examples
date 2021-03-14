@@ -84,6 +84,7 @@ var gameMod = (function(){
                 degRange: [10, 20]
             },
             hp: {                            // hit points
+                active: false,
                 current: 5,
                 max: 10
             },
