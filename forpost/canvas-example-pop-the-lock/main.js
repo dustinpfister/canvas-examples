@@ -124,14 +124,12 @@
         click: function (sm, pos, e) {
             var button = poolMod.getObjectAt(sm.buttons, pos.x, pos.y);
             if (button) {
-                if(button.data.action === 'start_game_freePlay'){
-                    sm.gameMode = 'freePlay';
-                    startStateChangeTrans(sm, 'game');
-                }
-                if(button.data.action === 'start_game_endurance'){
-                    sm.gameMode = 'endurance';
-                    startStateChangeTrans(sm, 'game');
-                }
+                Object.keys(gameMod.modes).forEach(function(gameModeKey, i){
+                    if(button.data.action === 'start_game_' + gameModeKey){
+                        sm.gameMode = gameModeKey;
+                        startStateChangeTrans(sm, 'game');
+                    }
+                });
             }
         }
     };

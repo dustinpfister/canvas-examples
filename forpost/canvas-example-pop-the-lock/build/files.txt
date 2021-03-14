@@ -3,5 +3,6 @@
 ../lib/game.js
 ../modes/freeplay.js
 ../modes/endurance.js
+../modes/sudendeath.js
 ../lib/draw.js
 ../main.js
