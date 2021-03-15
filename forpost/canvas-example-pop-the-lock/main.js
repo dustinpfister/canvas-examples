@@ -103,13 +103,15 @@
             // spawn new Game buttons
             Object.keys(gameMod.modes).forEach(function(gameModeKey, i){
                 var bool = i % 2,
-                w = 200;
+                w = 250,
+                h = 64;
                 poolMod.spawn(sm.buttons, sm, {
                     action: 'start_game_' + gameModeKey,
                     disp: 'New ' + gameModeKey + ' Game',
                     sx: bool ? sm.canvas.width + w : w * -1,
-                    sy: sm.canvas.height / 2 + 32 * i,
+                    sy: sm.canvas.height / 2 + h * i,
                     w: w,
+                    h: h,
                     dist: sm.canvas.width / 2 + w / 2 + (bool ? w: 0),
                     heading: Math.PI * bool,
                     rev: false

@@ -17,7 +17,7 @@
 * have a README.md for each mode
 * have a todo.md for each mode
 
-## 0.x.0 - Address isshue with cx in pool.js
+## 0.x.0 - Address issue with cx in pool.js
 * have a obj.cx and obj.cy prop in pool.js that will be the center point of a display object
 * make all changes needed in pool.js, main.js, and draw.js
 
@@ -26,8 +26,10 @@
 * In classic mode you start at level 1 which means you just have to hit one target and you won
 * Each time you win the level steps up by one and you need to hit that many targets to win
 
-## 0.5.1 - fix bug with buttons now showing up
+## 0.5.1 - fix bug with buttons now showing up, other general fixes and changes
 * (done) added a maxSecs prop for pool.js that should fix the problem of buttons not showing up
+* (done) width and height change for title buttons.
+* make a 0.5.1 pkg folder
 
 ## 0.5.0 - Plugin system, Sudden Death and new Endurance Modes
 * (done) start a gameMod.loadMode method
