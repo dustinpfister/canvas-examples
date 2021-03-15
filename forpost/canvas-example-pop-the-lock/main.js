@@ -49,7 +49,9 @@
         lt: new Date(),
         currentState: 'title',
         gameMode: '',
-        modeSettings: {},
+        modeSettings: {
+            level: 30
+        },
         trans: {
             active: true,
             inState: true,

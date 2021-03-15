@@ -30,10 +30,9 @@
 * (done) In classic mode you start at number of targets set to the value of game.level
 * (done) start a new mode settings object
 * (done) each new level sets the total number of targets to that level
-
-* let hits be what increase speed rather than level
-* slow speed at first up to a slighly fast speed, but it is not to hard to get to the level cap of 100
-
+* (done) let hits be what increase speed rather than level
+* (done) slow speed at first up to a slighly fast speed, but it is not to hard to get to the level cap of 100
+* (done) use new target method with classic mode (use of trip ups)
 
 * on each win pause the game, reset current possition to the bottom, and create new target
 * Each time you win the level steps up by one and you need to hit that many targets to win

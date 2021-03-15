@@ -20,7 +20,7 @@ gameMod.loadMode({
     },
     onClick: function(modeAPI, game, modeSettings){
         if (game.inRange) {
-            game.deg.target = modeAPI.getTargetRandom(game);
+            game.deg.target = modeAPI.newTarget(game);
             game.targets -= 1;
             if(game.targets === 0){
                 modeSettings.level += 1;
