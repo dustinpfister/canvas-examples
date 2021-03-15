@@ -34,8 +34,8 @@
 * (done) slow speed at first up to a slighly fast speed, but it is not to hard to get to the level cap of 100
 * (done) use new target method with classic mode (use of trip ups)
 * (done) Each time you win the level steps up by one and you need to hit that many targets to win
-* display You Won message in place of Game Over when a round is won in classic mode
-* make a pkg 0.6.0
+* (done) display You Won message in place of Game Over when a round is won in classic mode
+* (done - 03/15/2021) make a pkg 0.6.0
 
 ## 0.5.1 - fix bug with buttons now showing up, other general fixes and changes
 * (done) added a maxSecs prop for pool.js that should fix the problem of buttons not showing up
