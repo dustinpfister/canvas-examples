@@ -86,11 +86,16 @@ var draw = (function(){
     api.score = function(ctx, canvas, sm){
         var game = sm.game;
         text_big_center(ctx);
-        ctx.fillText(game.score, canvas.width / 2, canvas.height / 2);
+        // score
+        ctx.fillText(game.score, canvas.width / 2, canvas.height * 0.25);
+        // late and miss counts
+        text_med_center(ctx);
+        var miss = game.clickTrack.total - game.clickTrack.hits;
+        ctx.fillText('late: ' + game.missTrack.count + ', miss: ' + miss, canvas.width / 2, canvas.height * 0.35);
         // high score for current mode
+        text_small_center(ctx);
         var hs = sm.highScores[sm.game.mode];
         if(hs){
-            text_small_center(ctx);
             ctx.fillText('High Score: ' + hs, canvas.width / 2, canvas.height * 0.65);
         }
     };

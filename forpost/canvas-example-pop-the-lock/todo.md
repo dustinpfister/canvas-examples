@@ -35,7 +35,7 @@
 * (done) larger quit button
 * (done) larger play again and back buttons in gameOver state with spacing
 * (done) larger debug text
-* draw late and miss counts in draw.score
+* (done) draw late and miss counts in draw.score
 * make a 0.5.1 pkg folder
 
 ## 0.5.0 - Plugin system, Sudden Death and new Endurance Modes
