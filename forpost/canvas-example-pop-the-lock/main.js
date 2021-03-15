@@ -227,12 +227,11 @@
         click: function (sm, pos, e) {
             var button = poolMod.getObjectAt(sm.buttons, pos.x, pos.y);
             if (button) {
-                if(button.data.action === 'set_state_title'){
-                    startStateChangeTrans(sm, 'title');
-                }
-                if(button.data.action === 'set_state_game'){
-                    startStateChangeTrans(sm, 'game');
-                }
+                ['title', 'game'].forEach(function(stateKey, i){
+                    if(button.data.action === 'set_state_' + stateKey){
+                        startStateChangeTrans(sm, stateKey);
+                    }
+                });
             }
         }
     };
