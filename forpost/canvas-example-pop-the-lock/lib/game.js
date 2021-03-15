@@ -138,7 +138,6 @@ var gameMod = (function(){
     };
     // load a game mode file
     api.loadMode = function(gameMode){
-        console.log(gameMode);
         modes[gameMode.key] = gameMode;
     };
     // return public api
