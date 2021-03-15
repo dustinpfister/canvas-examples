@@ -143,16 +143,18 @@
     sm.states.game = {
         init: function (sm) {
             poolMod.setActiveStateForAll(sm.buttons, false);
+            // Quit Button
+            var margin = 10;
             poolMod.spawn(sm.buttons, sm, {
                 action: 'set_state_gameover',
                 disp: 'Quit',
-                sx: sm.canvas.width + 32,
-                sy: 0,
-                dist: 64,
+                sx: sm.canvas.width + 80,
+                sy: margin,
+                dist: 160 + margin,
                 heading: Math.PI,
                 rev: false,
-                w: 32,
-                h: 32
+                w: 80,
+                h: 80
             });
             // create a new game object
             sm.game = gameMod.create({

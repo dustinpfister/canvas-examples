@@ -140,7 +140,7 @@ var draw = (function(){
                 if(obj.data.disp){
                    ctx.fillStyle = 'black';
                    ctx.textBaseline = 'middle';
-                   ctx.font = '10px arial';
+                   ctx.font = '20px arial';
                    ctx.textAlign = 'center';
                    ctx.fillText(obj.data.disp, obj.w / 2, obj.h / 2);
                 }
