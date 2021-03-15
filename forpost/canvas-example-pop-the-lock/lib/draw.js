@@ -1,17 +1,26 @@
 var draw = (function(){
 
     var CIRCLE_RADIUS = 200;
-    var text_title_center = function(ctx){
+    var text_base_center = function(ctx){
         ctx.fillStyle = 'white';
         ctx.textBaseline = 'middle';
-        ctx.font='75px arial';
         ctx.textAlign = 'center';
     };
+    var text_title_center = function(ctx){
+        text_base_center(ctx);
+        ctx.font='75px arial';
+    };
     var text_big_center = function(ctx){
-        ctx.fillStyle = 'white';
-        ctx.textBaseline = 'middle';
+        text_base_center(ctx);
         ctx.font='40px arial';
-        ctx.textAlign = 'center';
+    };
+    var text_med_center = function(ctx){
+        text_base_center(ctx);
+        ctx.font='20px arial';
+    };
+    var text_small_center = function(ctx){
+        text_base_center(ctx);
+        ctx.font='15px arial';
     };
     var text_game_stats = function(ctx){
         ctx.fillStyle = 'lime';
@@ -77,14 +86,12 @@ var draw = (function(){
     api.score = function(ctx, canvas, sm){
         var game = sm.game;
         text_big_center(ctx);
-
         ctx.fillText(game.score, canvas.width / 2, canvas.height / 2);
         // high score for current mode
         var hs = sm.highScores[sm.game.mode];
         if(hs){
-            ctx.fillStyle = 'white';
-            ctx.font = '10px courier';
-            ctx.fillText('High Score: ' + hs, canvas.width / 2, canvas.height / 2 + 25);
+            text_small_center(ctx);
+            ctx.fillText('High Score: ' + hs, canvas.width / 2, canvas.height * 0.65);
         }
     };
     // draw title text

@@ -31,9 +31,9 @@
 * (done) width and height change for title buttons.
 * (done) large title text
 * (done) space between buttons
+* (done) larger score text
 * larger quit button
 * larger play again and back buttons in gameOver state with spacing
-* larger score text
 * larger debug text
 * make a 0.5.1 pkg folder
 
