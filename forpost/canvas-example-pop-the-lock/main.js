@@ -192,27 +192,19 @@
     sm.states.gameOver = {
         init: function (sm) {
             poolMod.setActiveStateForAll(sm.buttons, false);
-            poolMod.spawn(sm.buttons, sm, {
-                action: 'set_state_title',
-                disp: 'Title',
-                sx: sm.canvas.width,
-                sy: sm.canvas.height * 0.75,
-                dist: 256 + 20,
-                heading: Math.PI,
-                rev: false,
-                w: 256,
-                h: 64
-            });
-            poolMod.spawn(sm.buttons, sm, {
-                action: 'set_state_game',
-                disp: 'Try Again',
-                sx: sm.canvas.width,
-                sy: sm.canvas.height * 0.75 - 64 - 20,
-                dist: 256 + 20,
-                heading: Math.PI,
-                rev: false,
-                w: 256,
-                h: 64
+            var dispText = ['Title', 'Try Again'];
+            ['title', 'game'].forEach(function(stateKey, i){
+                poolMod.spawn(sm.buttons, sm, {
+                    action: 'set_state_' + stateKey,
+                    disp: dispText[i],
+                    sx: sm.canvas.width,
+                    sy: sm.canvas.height * 0.75 - (64 + 20) * i ,
+                    dist: 256 + 20,
+                    heading: Math.PI,
+                    rev: false,
+                    w: 256,
+                    h: 64
+                });
             });
             // update any save that might be there
             var highScore = sm.highScores[sm.game.mode];
