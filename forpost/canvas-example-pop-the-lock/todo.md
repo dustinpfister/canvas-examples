@@ -33,9 +33,8 @@
 * (done) let hits be what increase speed rather than level
 * (done) slow speed at first up to a slighly fast speed, but it is not to hard to get to the level cap of 100
 * (done) use new target method with classic mode (use of trip ups)
-
-* on each win pause the game, reset current possition to the bottom, and create new target
-* Each time you win the level steps up by one and you need to hit that many targets to win
+* (done) Each time you win the level steps up by one and you need to hit that many targets to win
+* display You Won message in place of Game Over when a round is won in classic mode
 * make a pkg 0.6.0
 
 ## 0.5.1 - fix bug with buttons now showing up, other general fixes and changes
