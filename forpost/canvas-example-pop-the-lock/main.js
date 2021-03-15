@@ -212,7 +212,6 @@
                 w: 128,
                 h: 32
             });
-
             // update any save that might be there
             var highScore = sm.highScores[sm.game.mode];
             if(!highScore || highScore < sm.game.score){
