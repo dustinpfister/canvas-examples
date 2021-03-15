@@ -31,6 +31,10 @@
 * (done) width and height change for title buttons.
 * (done) large title text
 * (done) space between buttons
+* larger quit button
+* larger play again and back buttons in gameOver state with spacing
+* larger score text
+* larger debug text
 * make a 0.5.1 pkg folder
 
 ## 0.5.0 - Plugin system, Sudden Death and new Endurance Modes

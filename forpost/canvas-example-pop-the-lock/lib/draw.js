@@ -76,10 +76,8 @@ var draw = (function(){
     // score
     api.score = function(ctx, canvas, sm){
         var game = sm.game;
-        ctx.fillStyle = game.score > 0 ? 'green' : 'red';
-        ctx.textBaseline = 'middle';
-        ctx.textAlign = 'center';
-        ctx.font = '25px arial';
+        text_big_center(ctx);
+
         ctx.fillText(game.score, canvas.width / 2, canvas.height / 2);
         // high score for current mode
         var hs = sm.highScores[sm.game.mode];
