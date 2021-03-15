@@ -8,7 +8,11 @@
 * add a sm.money prop
 * update sm.money on each game over state once in the init method
 
-## 0.x.0 - Game Mode Settings State
+## 0.x.0 - Game Mode Choice and Settings State
+* have a Game Mode state to which the player enters from the title state
+* The game Mode state can be used to choose what game mode to play
+* Each mode should have settings to change things like speed, which in turn effects score when playing
+* settings will change from one game mode to another
 
 ## 0.x.0 - Mode folders, draw.js for each mode
 * in the modes folder have a folder for each mode
@@ -21,7 +25,7 @@
 * have a obj.cx and obj.cy prop in pool.js that will be the center point of a display object
 * make all changes needed in pool.js, main.js, and draw.js
 
-## 0.x.0 - Classic Mode
+## 0.6.0 - Classic Mode
 * start a classic mode that works like the original pop the lock game
 * In classic mode you start at level 1 which means you just have to hit one target and you won
 * Each time you win the level steps up by one and you need to hit that many targets to win
@@ -36,7 +40,7 @@
 * (done) larger play again and back buttons in gameOver state with spacing
 * (done) larger debug text
 * (done) draw late and miss counts in draw.score
-* make a 0.5.1 pkg folder
+* (done - 03/15/2021) make a 0.5.1 pkg folder
 
 ## 0.5.0 - Plugin system, Sudden Death and new Endurance Modes
 * (done) start a gameMod.loadMode method
