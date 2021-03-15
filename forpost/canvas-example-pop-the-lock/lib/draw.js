@@ -10,7 +10,7 @@ var draw = (function(){
     var text_big_center = function(ctx){
         ctx.fillStyle = 'white';
         ctx.textBaseline = 'middle';
-        ctx.font='30px arial';
+        ctx.font='40px arial';
         ctx.textAlign = 'center';
     };
     var text_game_stats = function(ctx){
