@@ -33,7 +33,7 @@
 * (done) space between buttons
 * (done) larger score text
 * (done) larger quit button
-* larger play again and back buttons in gameOver state with spacing
+* (done) larger play again and back buttons in gameOver state with spacing
 * larger debug text
 * dray late and miss counts in draw.score
 * make a 0.5.1 pkg folder

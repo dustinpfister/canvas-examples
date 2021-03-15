@@ -154,17 +154,17 @@ var draw = (function(){
         ctx.textBaseline = 'top';
         ctx.textAlign = 'left';
         ctx.globalAlpha = 0.35;
-        ctx.font = '10px arial';
-        ctx.fillText('deg.current ' + game.deg.current.toFixed(2), 10, 10);
-        ctx.fillText('deg.target ' + game.deg.target, 10, 20);
-        ctx.fillText('deg.distance ' + game.deg.distance.toFixed(2), 10, 30);
-        ctx.fillText('trip up count: ' + game.tripUp.count, 10, 40);
-        ctx.fillText('inrange ' + game.inRange, 10, 50);
-        ctx.fillText('miss count: ' + game.missTrack.count, 10, 60);
-        ctx.fillText('clicks (hits/total): ' + game.clickTrack.hits + '/' + game.clickTrack.total, 10, 70);
-        ctx.fillText('paused: ' + game.pause, 10, 80);
-        ctx.fillText('mode: ' + game.mode, 10, 90);
-        ctx.fillText('level: ' + game.level, 10, 100);
+        ctx.font = '20px arial';
+        ctx.fillText('deg.current ' + game.deg.current.toFixed(2), 10, 20);
+        ctx.fillText('deg.target ' + game.deg.target, 10, 40);
+        ctx.fillText('deg.distance ' + game.deg.distance.toFixed(2), 10, 60);
+        ctx.fillText('trip up count: ' + game.tripUp.count, 10, 80);
+        ctx.fillText('inrange ' + game.inRange, 10, 100);
+        ctx.fillText('miss count: ' + game.missTrack.count, 10, 120);
+        ctx.fillText('clicks (hits/total): ' + game.clickTrack.hits + '/' + game.clickTrack.total, 10, 140);
+        ctx.fillText('paused: ' + game.pause, 10, 160);
+        ctx.fillText('mode: ' + game.mode, 10, 180);
+        ctx.fillText('level: ' + game.level, 10, 200);
     };
     // return public API
     return api;
