@@ -29,6 +29,8 @@
 ## 0.5.1 - fix bug with buttons now showing up, other general fixes and changes
 * (done) added a maxSecs prop for pool.js that should fix the problem of buttons not showing up
 * (done) width and height change for title buttons.
+* (done) large title text
+* (done) space between buttons
 * make a 0.5.1 pkg folder
 
 ## 0.5.0 - Plugin system, Sudden Death and new Endurance Modes

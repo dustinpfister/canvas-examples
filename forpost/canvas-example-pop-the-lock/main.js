@@ -109,10 +109,10 @@
                     action: 'start_game_' + gameModeKey,
                     disp: 'New ' + gameModeKey + ' Game',
                     sx: bool ? sm.canvas.width + w : w * -1,
-                    sy: sm.canvas.height / 2 + h * i,
+                    sy: sm.canvas.height * 0.35 + (h + 10) * i,
                     w: w,
                     h: h,
-                    dist: sm.canvas.width / 2 + w / 2 + (bool ? w: 0),
+                    dist: sm.canvas.width * 0.5 + w / 2 + (bool ? w: 0),
                     heading: Math.PI * bool,
                     rev: false
                 });
