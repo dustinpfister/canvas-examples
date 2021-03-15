@@ -61,6 +61,7 @@ var gameMod = (function(){
         var game = {                         // THE MAIN GAME OBJECT
             mode: opt.mode || 'freePlay',    // current game mode such as 'endurance', or 'freePlay' (see modes object)
             level: 1,
+            targets: 1,
             deg: {                           // 'degree' object
                perSec: 30,                   // degrees per second
                current: 25,                  // the current 'degree'
