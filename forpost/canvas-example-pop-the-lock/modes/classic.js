@@ -2,6 +2,7 @@ gameMod.loadMode({
     key: 'classic',
     init: function(modeAPI, game, modeSettings){
         game.hp.active = false;
+        game.win = false;
         game.deg.perSec = 20;
         game.deg.current = 25;
         game.tripUp.chance = 0.1;
@@ -28,6 +29,7 @@ gameMod.loadMode({
                 modeSettings.level += 1;
                 modeSettings.level = modeSettings.level > 100 ? 100: modeSettings.level;
                 game.gameOver = true;
+                game.win = true;
             }
         }else{
             game.gameOver = true;

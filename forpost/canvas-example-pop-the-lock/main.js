@@ -50,7 +50,7 @@
         currentState: 'title',
         gameMode: '',
         modeSettings: {
-            level: 30
+            level: 5
         },
         trans: {
             active: true,

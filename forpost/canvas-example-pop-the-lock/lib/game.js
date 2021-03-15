@@ -90,6 +90,7 @@ var gameMod = (function(){
                 max: 10
             },
             gameOver: false,
+            win: false,
             pause: true,
             range: 0.5,                      // a number (0-1) that will set the range in which a new target can be
             dir: -1,                         // the direction in which the current degree will change

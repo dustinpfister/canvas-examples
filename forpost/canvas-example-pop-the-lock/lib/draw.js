@@ -121,7 +121,7 @@ var draw = (function(){
         sx = canvas.width / 2 - 120,
         sy = canvas.height / 2 - 25;
         text_big_center(ctx);
-        ctx.fillText('Game Over', canvas.width / 2, canvas.height / 2 - 50);
+        ctx.fillText(game.win ? 'You Won!' : 'Game Over', canvas.width / 2, canvas.height / 2 - 50);
         text_game_stats(ctx);
         ctx.fillText('clicks (hits/total): ' + game.clickTrack.hits + '/' + game.clickTrack.total, sx, sy + 10);
         ctx.fillText('miss count: ' + game.missTrack.count, sx, sy + 20);
