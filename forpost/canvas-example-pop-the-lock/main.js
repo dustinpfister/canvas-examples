@@ -102,13 +102,15 @@
             poolMod.setActiveStateForAll(sm.buttons, false);
             // spawn new Game buttons
             Object.keys(gameMod.modes).forEach(function(gameModeKey, i){
-                var bool = i % 2;
+                var bool = i % 2,
+                w = 200;
                 poolMod.spawn(sm.buttons, sm, {
                     action: 'start_game_' + gameModeKey,
                     disp: 'New ' + gameModeKey + ' Game',
-                    sx: bool ? sm.canvas.width + 150 : -150,
+                    sx: bool ? sm.canvas.width + w : w * -1,
                     sy: sm.canvas.height / 2 + 32 * i,
-                    dist: sm.canvas.width / 2 + 75 + (bool ? 150: 0),
+                    w: w,
+                    dist: sm.canvas.width / 2 + w / 2 + (bool ? w: 0),
                     heading: Math.PI * bool,
                     rev: false
                 });
