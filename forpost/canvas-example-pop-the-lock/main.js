@@ -194,25 +194,25 @@
             poolMod.setActiveStateForAll(sm.buttons, false);
             poolMod.spawn(sm.buttons, sm, {
                 action: 'set_state_title',
-                disp: 'Back',
-                sx: sm.canvas.width + 32,
-                sy: sm.canvas.height / 2,
-                dist: 165,
+                disp: 'Title',
+                sx: sm.canvas.width,
+                sy: sm.canvas.height * 0.75,
+                dist: 256 + 20,
                 heading: Math.PI,
                 rev: false,
-                w: 128,
-                h: 32
+                w: 256,
+                h: 64
             });
             poolMod.spawn(sm.buttons, sm, {
                 action: 'set_state_game',
-                disp: 'Play New Game',
-                sx: sm.canvas.width + 32,
-                sy: sm.canvas.height / 2 - 32,
-                dist: 165,
+                disp: 'Try Again',
+                sx: sm.canvas.width,
+                sy: sm.canvas.height * 0.75 - 64 - 20,
+                dist: 256 + 20,
                 heading: Math.PI,
                 rev: false,
-                w: 128,
-                h: 32
+                w: 256,
+                h: 64
             });
             // update any save that might be there
             var highScore = sm.highScores[sm.game.mode];

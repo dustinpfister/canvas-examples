@@ -32,7 +32,7 @@
 * (done) large title text
 * (done) space between buttons
 * (done) larger score text
-* larger quit button
+* (done) larger quit button
 * larger play again and back buttons in gameOver state with spacing
 * larger debug text
 * dray late and miss counts in draw.score
