@@ -28,7 +28,11 @@
 ## 0.6.0 - Classic Mode
 * start a classic mode that works like the original pop the lock game
 * In classic mode you start at level 1 which means you just have to hit one target and you won
+* each new level sets the total number of targets to that level
+* slow speed at first up to a slighly fast speed, but it is not to hard to get to the level cap of 100
+* on each win pause the game, reset current possition to the bottom, and create new target
 * Each time you win the level steps up by one and you need to hit that many targets to win
+* make a pkg 0.6.0
 
 ## 0.5.1 - fix bug with buttons now showing up, other general fixes and changes
 * (done) added a maxSecs prop for pool.js that should fix the problem of buttons not showing up

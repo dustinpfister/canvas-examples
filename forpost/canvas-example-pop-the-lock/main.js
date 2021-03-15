@@ -40,7 +40,7 @@
 
     // STATE MACHINE
     var sm = {
-        ver: '0.5.1',
+        ver: '0.6.0',
         appName: 'canvas-example-pop-the-lock',
         canvas: canvas,
         ctx: ctx,
