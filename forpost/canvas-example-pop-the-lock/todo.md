@@ -26,8 +26,8 @@
 * make all changes needed in pool.js, main.js, and draw.js
 
 ## 0.6.0 - Classic Mode
-* start a classic mode that works like the original pop the lock game
-* In classic mode you start at level 1 which means you just have to hit one target and you won
+* (done) start a classic mode that works like the original pop the lock game
+* (done) In classic mode you start at number of targets set to the value of game.level
 * each new level sets the total number of targets to that level
 * slow speed at first up to a slighly fast speed, but it is not to hard to get to the level cap of 100
 * on each win pause the game, reset current possition to the bottom, and create new target

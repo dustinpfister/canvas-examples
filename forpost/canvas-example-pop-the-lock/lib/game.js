@@ -97,7 +97,7 @@ var gameMod = (function(){
             score: 0                         // player score
         };
         game.deg.target = newTarget(game);
-        modes[game.mode].init(modeAPI, game);
+        modes[game.mode].init(modeAPI, game, opt.modeSettings || {});
         game.deg.distance = getDistanceFromTarget(game);
         game.inRange = getInRange(game);
         return game;

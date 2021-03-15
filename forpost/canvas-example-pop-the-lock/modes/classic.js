@@ -1,6 +1,6 @@
 gameMod.loadMode({
     key: 'classic',
-    init: function(modeAPI, game){
+    init: function(modeAPI, game, modeSettings){
         game.hp.active = false;
         game.deg.perSec = 30;
         game.deg.current = 25;
@@ -8,7 +8,7 @@ gameMod.loadMode({
         game.targets = game.level;
         game.deg.target = modeAPI.getTargetRandom(game);
     },
-    update: function(modeAPI,game){
+    update: function(modeAPI, game){
         var hits = game.clickTrack.hits;
         game.score = hits;
     },
@@ -16,7 +16,7 @@ gameMod.loadMode({
         game.missTrack.count = 1;
         game.gameOver = true;
     },
-    onClick: function(modeAPI, game){
+    onClick: function(modeAPI, game, modeSettings){
         if (game.inRange) {
             game.deg.target = modeAPI.getTargetRandom(game);
             game.targets -= 1;

@@ -49,6 +49,7 @@
         lt: new Date(),
         currentState: 'title',
         gameMode: '',
+        modeSettings: {},
         trans: {
             active: true,
             inState: true,
@@ -158,7 +159,8 @@
             });
             // create a new game object
             sm.game = gameMod.create({
-               mode: sm.gameMode
+               mode: sm.gameMode,
+               modeSettings: sm.modeSettings
             });
         },
         trans: function (sm, secs) {
@@ -183,7 +185,7 @@
                     startStateChangeTrans(sm, 'gameOver');
                 }
             } else {
-                gameMod.click(sm.game);
+                gameMod.click(sm.game, sm.modeSettings);
             }
         }
     };

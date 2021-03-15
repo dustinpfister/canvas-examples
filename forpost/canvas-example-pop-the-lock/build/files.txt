@@ -4,5 +4,6 @@
 ../modes/freeplay.js
 ../modes/endurance.js
 ../modes/sudendeath.js
+../modes/classic.js
 ../lib/draw.js
 ../main.js
