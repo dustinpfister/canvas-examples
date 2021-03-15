@@ -28,6 +28,7 @@
 ## 0.6.0 - Classic Mode
 * (done) start a classic mode that works like the original pop the lock game
 * (done) In classic mode you start at number of targets set to the value of game.level
+* (done) start a new mode settings object
 * each new level sets the total number of targets to that level
 * slow speed at first up to a slighly fast speed, but it is not to hard to get to the level cap of 100
 * on each win pause the game, reset current possition to the bottom, and create new target

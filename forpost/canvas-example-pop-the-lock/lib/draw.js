@@ -83,20 +83,31 @@ var draw = (function(){
         hpBar(ctx, canvas, game);
     };
     // score
+    var scoreModes = {
+        classic: function(ctx, canvas, sm, game){
+            text_big_center(ctx);
+            // score
+            ctx.fillText(game.targets, canvas.width / 2, canvas.height * 0.5);
+        }
+    };
     api.score = function(ctx, canvas, sm){
         var game = sm.game;
-        text_big_center(ctx);
-        // score
-        ctx.fillText(game.score, canvas.width / 2, canvas.height * 0.25);
-        // late and miss counts
-        text_med_center(ctx);
-        var miss = game.clickTrack.total - game.clickTrack.hits;
-        ctx.fillText('late: ' + game.missTrack.count + ', miss: ' + miss, canvas.width / 2, canvas.height * 0.35);
-        // high score for current mode
-        text_small_center(ctx);
-        var hs = sm.highScores[sm.game.mode];
-        if(hs){
-            ctx.fillText('High Score: ' + hs, canvas.width / 2, canvas.height * 0.65);
+        if(sm.gameMode in scoreModes){
+            scoreModes[sm.gameMode](ctx, canvas, sm, game);
+        }else{
+            text_big_center(ctx);
+            // score
+            ctx.fillText(game.score, canvas.width / 2, canvas.height * 0.25);
+            // late and miss counts
+            text_med_center(ctx);
+            var miss = game.clickTrack.total - game.clickTrack.hits;
+            ctx.fillText('late: ' + game.missTrack.count + ', miss: ' + miss, canvas.width / 2, canvas.height * 0.35);
+            // high score for current mode
+            text_small_center(ctx);
+            var hs = sm.highScores[sm.game.mode];
+            if(hs){
+                ctx.fillText('High Score: ' + hs, canvas.width / 2, canvas.height * 0.65);
+            }
         }
     };
     // draw title text
