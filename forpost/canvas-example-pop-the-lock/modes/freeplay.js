@@ -3,6 +3,7 @@ gameMod.loadMode({
     init: function(modeAPI, game){
         game.hp.active = false;
         game.deg.perSec = 30;
+        game.win = true;
     },
     update: function(modeAPI, game){
         var hitPer = game.clickTrack.hits / game.clickTrack.total,

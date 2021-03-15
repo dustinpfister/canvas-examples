@@ -2,7 +2,6 @@ gameMod.loadMode({
     key: 'classic',
     init: function(modeAPI, game, modeSettings){
         game.hp.active = false;
-        game.win = false;
         game.deg.perSec = 20;
         game.deg.current = 25;
         game.tripUp.chance = 0.1;
