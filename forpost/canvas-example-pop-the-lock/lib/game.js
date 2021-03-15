@@ -122,7 +122,7 @@ var gameMod = (function(){
         modes[game.mode].update(modeAPI, game, secs);
     };
     // create click handler
-    api.click = function (game) {
+    api.click = function (game, modeOptions) {
         if(!game.pause && !game.gameOver){
             game.clickTrack.total += 1;
             game.clickTrack.hits += game.inRange ? 1 : 0;
@@ -132,7 +132,7 @@ var gameMod = (function(){
                 
             }
             // call on click for the current mode
-            modes[game.mode].onClick(modeAPI, game);
+            modes[game.mode].onClick(modeAPI, game, modeOptions);
         }
         game.pause = false;
     };
