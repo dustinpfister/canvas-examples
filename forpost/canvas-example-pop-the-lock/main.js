@@ -221,6 +221,11 @@
                 if(button.data.action === 'start_game'){
                     startStateChangeTrans(sm, 'game');
                 }
+                if(button.data.action === 'set_mode_next'){
+                    sm.gameModeIndex += 1;
+                    sm.gameModeIndex = utils.mod(sm.gameModeIndex, Object.keys(gameMod.modes).length);
+                    startStateChangeTrans(sm, 'gameMode');
+                }
             }
         }
     };
