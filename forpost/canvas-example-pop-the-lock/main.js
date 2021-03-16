@@ -110,7 +110,18 @@
                 action: 'start_state_gameMode',
                 disp: 'Play',
                 sx: sm.canvas.width * 0.5 * -1,
-                sy: sm.canvas.height * 0.5,
+                sy: sm.canvas.height * 0.4,
+                w: 256,
+                h: 64,
+                dist: sm.canvas.width - 128,
+                heading: 0,
+                rev: false
+            });
+            poolMod.spawn(sm.buttons, sm, {
+                action: 'goto_devsite_canvas_examples',
+                disp: 'More Games',
+                sx: sm.canvas.width * 0.5 * -1,
+                sy: sm.canvas.height * 0.55,
                 w: 256,
                 h: 64,
                 dist: sm.canvas.width - 128,
@@ -128,6 +139,10 @@
             if (button) {
                 if(button.data.action === 'start_state_gameMode'){
                     startStateChangeTrans(sm, 'gameMode');
+                }
+                if(button.data.action === 'goto_devsite_canvas_examples'){
+                    console.log('to dev site');
+                    document.location.href = 'https://dustinpfister.github.io/2020/03/23/canvas-example/';
                 }
             }
         }
