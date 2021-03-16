@@ -11,7 +11,13 @@ gameMod.loadMode({
             key: 'perSecLower',
             disp: 'Start Speed',
             start: 15,
-            range: [10, 30]
+            range: [10, 25]
+        },
+        {
+            key: 'perSecHigher',
+            disp: 'End Speed',
+            start: 35,
+            range: [30, 80]
         }
     ],
     init: function(modeAPI, game, modeSettings){
@@ -21,8 +27,8 @@ gameMod.loadMode({
         game.tripUp.chance = 0.1;
         game.tripUp.degRange = [20, 30];
 
-        game.perSecLower = 20;
-        game.perSecHigher = 70
+        game.perSecLower = modeSettings.perSecLower || 20;
+        game.perSecHigher = modeSettings.perSecHigher ||70
 
         modeSettings.level = game.level = modeSettings.level || 1;
         game.targets = game.level;
@@ -31,7 +37,7 @@ gameMod.loadMode({
     update: function(modeAPI, game){
         var hits = game.clickTrack.hits;
         game.score = hits;
-        game.deg.perSec = game.perSecLower + Math.round( (game.perSecHigher - game.perSecLower) * (hits / 100));
+        game.deg.perSec = game.perSecLower + Math.round( (game.perSecHigher - game.perSecLower) * (hits / game.level));
         game.deg.perSec = game.deg.perSec > game.perSecHigher ? game.perSecHigher : game.deg.perSec;
     },
     onMiss: function(modeAPI, game){

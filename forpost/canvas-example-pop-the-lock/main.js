@@ -12,7 +12,7 @@
 
     // BUTTON OBJECT POOL
     var buttonPool = poolMod.create({
-            count: 10,
+            count: 14,
             maxSecs: 0.25,
             spawn: function (obj, pool, sm, opt) {
                 // just ref opt for the data object
