@@ -3,6 +3,10 @@
 
 ## 0.x.0 - Options State
 
+## 0.x.0 - /lib/buttons.js
+
+## 0.x.0 - /lib/statemachine.js
+
 ## 0.x.0 - Mode folders, draw.js for each mode
 * in the modes folder have a folder for each mode
 * each javaScript file for each mode such as freeplay.js can become /modes/freeplay/gamemode.js
@@ -23,7 +27,7 @@
 * add a sm.money prop
 * update sm.money on each game over state once in the init method
 
-## 0.x.0 - Game Mode Choice and ModeSettings State
+## 0.7.0 - Game Mode Choice and ModeSettings State
 * have a Game Mode state to which the player enters from the title state
 * the only button on the title state should be to enter the gameMode state ( for now )
 * The game Mode state can be used to choose what game mode to play

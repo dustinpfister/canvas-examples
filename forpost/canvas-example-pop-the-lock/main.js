@@ -103,6 +103,28 @@
         init: function (sm) {
             // set all button object to inactive
             poolMod.setActiveStateForAll(sm.buttons, false);
+        },
+        trans: function (sm, secs) {
+            poolMod.update(sm.buttons, secs, sm);
+        },
+        update: function (sm, secs) {},
+        draw: function (sm, ctx, canvas) {
+            draw.text_title(ctx, canvas, sm);
+            draw.pool(ctx, sm.buttons);
+        },
+        click: function (sm, pos, e) {
+            var button = poolMod.getObjectAt(sm.buttons, pos.x, pos.y);
+            if (button) {
+            }
+            startStateChangeTrans(sm, 'gameMode');
+        }
+    };
+
+    // GAME MODE STATE
+    sm.states.gameMode = {
+        init: function (sm) {
+            poolMod.setActiveStateForAll(sm.buttons, false);
+
             // spawn new Game buttons
             Object.keys(gameMod.modes).forEach(function(gameModeKey, i){
                 var bool = i % 2,
@@ -112,7 +134,7 @@
                     action: 'start_game_' + gameModeKey,
                     disp: 'New ' + gameModeKey + ' Game',
                     sx: bool ? sm.canvas.width + w : w * -1,
-                    sy: sm.canvas.height * 0.35 + (h + 10) * i,
+                    sy: sm.canvas.height * 0.2 + (h + 10) * i,
                     w: w,
                     h: h,
                     dist: sm.canvas.width * 0.5 + w / 2 + (bool ? w: 0),
@@ -126,7 +148,6 @@
         },
         update: function (sm, secs) {},
         draw: function (sm, ctx, canvas) {
-            draw.text_title(ctx, canvas, sm);
             draw.pool(ctx, sm.buttons);
         },
         click: function (sm, pos, e) {
