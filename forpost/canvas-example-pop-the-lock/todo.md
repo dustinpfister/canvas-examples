@@ -35,8 +35,13 @@
 
 ## 0.7.0 - Game Mode Choice and ModeSettings State
 * (done) have a Game Mode state to which the player enters from the title state
-* the only button on the title state should be to enter the gameMode state ( for now )
-* The game Mode state can be used to choose what game mode to play
+* (done) add a play button on the title state that will enter gameMode state
+* (done) add a More Games button
+* (done) The game Mode state can be used to choose what game mode to play
+
+* have next and prev buttons that can be used to change a current Game mode value
+* have a start button that will enter game mode with current settings for game mode
+
 * Each mode should have settings to change things like speed, which in turn effects score when playing
 * settings will change from one game mode to another
 * Work out new expressions for scoring in each game mode

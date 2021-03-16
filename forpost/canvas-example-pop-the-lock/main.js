@@ -114,8 +114,7 @@
                 w: 256,
                 h: 64,
                 dist: sm.canvas.width - 128,
-                heading: 0,
-                rev: false
+                heading: 0
             });
             poolMod.spawn(sm.buttons, sm, {
                 action: 'goto_devsite_canvas_examples',
@@ -125,8 +124,7 @@
                 w: 256,
                 h: 64,
                 dist: sm.canvas.width - 128,
-                heading: 0,
-                rev: false
+                heading: 0
             });
         },
         update: function (sm, secs) {},
@@ -152,8 +150,11 @@
     sm.states.gameMode = {
         init: function (sm) {
             poolMod.setActiveStateForAll(sm.buttons, false);
+            // default to whatever key 0 is for gameMode
+            sm.gameMode = Object.keys(gameMod.modes)[0];
 
             // spawn new Game buttons
+/*
             Object.keys(gameMod.modes).forEach(function(gameModeKey, i){
                 var bool = i % 2,
                 w = 250,
@@ -166,10 +167,26 @@
                     w: w,
                     h: h,
                     dist: sm.canvas.width * 0.5 + w / 2 + (bool ? w: 0),
-                    heading: Math.PI * bool,
-                    rev: false
+                    heading: Math.PI * bool
                 });
             });
+*/
+                var i = 0,
+                bool = i % 2,
+                w = 250,
+                h = 64;
+                poolMod.spawn(sm.buttons, sm, {
+                    action: 'start_game',
+                    disp: 'Start Game',
+                    sy: sm.canvas.height * 1.5,
+                    sx: sm.canvas.width * 0.75 - (w / 2),
+                    w: w,
+                    h: h,
+                    dist: sm.canvas.height * 0.70,
+                    heading: Math.PI * 1.5
+                });
+
+
         },
         trans: function (sm, secs) {
             poolMod.update(sm.buttons, secs, sm);
@@ -181,12 +198,11 @@
         click: function (sm, pos, e) {
             var button = poolMod.getObjectAt(sm.buttons, pos.x, pos.y);
             if (button) {
-                Object.keys(gameMod.modes).forEach(function(gameModeKey, i){
-                    if(button.data.action === 'start_game_' + gameModeKey){
-                        sm.gameMode = gameModeKey;
+                //Object.keys(gameMod.modes).forEach(function(gameModeKey, i){
+                    if(button.data.action === 'start_game'){
                         startStateChangeTrans(sm, 'game');
                     }
-                });
+                //});
             }
         }
     };
