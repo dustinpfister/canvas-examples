@@ -186,21 +186,21 @@
                     setting: setting,
                     disp: '+',
                     sy: sm.canvas.height * 1.5 + h * i,
-                    sx: 10 + w * 4,
+                    sx: 10 + w * 5,
                     w: w,
                     h: h,
                     dist: sm.canvas.height * 1.25 + (h / 2),
                     heading: Math.PI * 1.5
                 });
                 // setting disp
-                w = 128;
+                w = 64 * 4;
                 poolMod.spawn(sm.buttons, sm, {
                     id: 'setting_disp_' + setting.key,
                     action: '',
                     setting: setting,
                     disp: setting.disp + ' ' + sm.modeSettings[setting.key],
                     sy: sm.canvas.height * 1.5 + h * i,
-                    sx: 10 + 64 * 1.5,
+                    sx: 10 + 64 * 1,
                     w: w,
                     h: h,
                     dist: sm.canvas.height * 1.25 + (h / 2),
@@ -239,13 +239,13 @@
         },
         update: function (sm, secs) {},
         draw: function (sm, ctx, canvas) {
-            draw.pool(ctx, sm.buttons);
             ctx.fillStyle = 'white';
             ctx.textBaseline = 'top';
             ctx.textAlign = 'left';
             ctx.font='50px arial';
             ctx.fillText(sm.gameMode, 10, 10);
-            ctx.font='15px arial';
+            //ctx.font='10px arial';
+            draw.pool(ctx, sm.buttons);
         },
         click: function (sm, pos, e) {
             var button = poolMod.getObjectAt(sm.buttons, pos.x, pos.y);
@@ -267,7 +267,7 @@
                          modeProp += 1;
                          sm.modeSettings[parts[2]] = modeProp > range[1] ? range[0]: modeProp;
                          var dispButton = getButtonById(sm.buttons, 'setting_disp_' + settingObj.key);
-                         dispButton.data.disp = parts[2] + ' ' + sm.modeSettings[parts[2]];
+                         dispButton.data.disp = settingObj.disp + ' ' + sm.modeSettings[parts[2]];
                          
                     }
                     if(parts[1] === 'modesettingDown'){
@@ -277,7 +277,7 @@
                          modeProp -= 1;
                          sm.modeSettings[parts[2]] = modeProp < range[0] ? range[1]: modeProp;
                          var dispButton = getButtonById(sm.buttons, 'setting_disp_' + settingObj.key);
-                         dispButton.data.disp = parts[2] + ' ' + sm.modeSettings[parts[2]];
+                         dispButton.data.disp = settingObj.disp + ' ' + sm.modeSettings[parts[2]];
                     }
                 }
             }
