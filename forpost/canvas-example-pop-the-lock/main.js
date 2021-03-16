@@ -106,6 +106,17 @@
         },
         trans: function (sm, secs) {
             poolMod.update(sm.buttons, secs, sm);
+            poolMod.spawn(sm.buttons, sm, {
+                action: 'start_state_gameMode',
+                disp: 'Play',
+                sx: sm.canvas.width * 0.5 * -1,
+                sy: sm.canvas.height * 0.5,
+                w: 256,
+                h: 64,
+                dist: sm.canvas.width - 128,
+                heading: 0,
+                rev: false
+            });
         },
         update: function (sm, secs) {},
         draw: function (sm, ctx, canvas) {
