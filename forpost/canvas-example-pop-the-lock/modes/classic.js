@@ -4,7 +4,14 @@ gameMod.loadMode({
         {
             key: 'level',
             disp: 'Level',
+            start: 8,
             range: [1, 100]
+        },
+        {
+            key: 'perSecLower',
+            disp: 'Start Speed',
+            start: 15,
+            range: [10, 30]
         }
     ],
     init: function(modeAPI, game, modeSettings){

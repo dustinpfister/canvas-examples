@@ -12,7 +12,7 @@
 
     // BUTTON OBJECT POOL
     var buttonPool = poolMod.create({
-            count: 5,
+            count: 10,
             maxSecs: 0.25,
             spawn: function (obj, pool, sm, opt) {
                 // just ref opt for the data object
@@ -61,7 +61,7 @@
         gameModeIndex: 3,
         gameMode: '',
         modeSettings: {
-            level: 5
+            //level: 5
         },
         trans: {
             active: true,
@@ -167,12 +167,13 @@
             gameMod.modes[sm.gameMode].settings.forEach(function(setting, i){
                 var w = 64,
                 h = 64;
+                sm.modeSettings[setting.key] = sm.modeSettings[setting.key] === undefined ? setting.start: sm.modeSettings[setting.key];
                 // down button
                 poolMod.spawn(sm.buttons, sm, {
                     action: 'set_modesettingDown_' + setting.key,
                     setting: setting,
                     disp: '-',
-                    sy: sm.canvas.height * 1.5,
+                    sy: sm.canvas.height * 1.5 + h * i,
                     sx: 10,
                     w: w,
                     h: h,
@@ -184,7 +185,7 @@
                     action: 'set_modesettingUp_' + setting.key,
                     setting: setting,
                     disp: '+',
-                    sy: sm.canvas.height * 1.5,
+                    sy: sm.canvas.height * 1.5 + h * i,
                     sx: 10 + w * 4,
                     w: w,
                     h: h,
@@ -198,7 +199,7 @@
                     action: '',
                     setting: setting,
                     disp: setting.disp + ' ' + sm.modeSettings[setting.key],
-                    sy: sm.canvas.height * 1.5,
+                    sy: sm.canvas.height * 1.5 + h * i,
                     sx: 10 + 64 * 1.5,
                     w: w,
                     h: h,
