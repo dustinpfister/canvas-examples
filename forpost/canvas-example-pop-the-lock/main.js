@@ -181,6 +181,18 @@
                     dist: sm.canvas.height * 1.25 + (h / 2),
                     heading: Math.PI * 1.5
                 });
+                // up button
+                w = 128;
+                poolMod.spawn(sm.buttons, sm, {
+                    action: '',
+                    disp: setting.disp + ' ' + sm.modeSettings[setting.key],
+                    sy: sm.canvas.height * 1.5,
+                    sx: 10 + 64 * 1.5,
+                    w: w,
+                    h: h,
+                    dist: sm.canvas.height * 1.25 + (h / 2),
+                    heading: Math.PI * 1.5
+                });
             });
             // next mode button
             var w = 64,
@@ -220,6 +232,7 @@
             ctx.textAlign = 'left';
             ctx.font='50px arial';
             ctx.fillText(sm.gameMode, 10, 10);
+            ctx.font='15px arial';
         },
         click: function (sm, pos, e) {
             var button = poolMod.getObjectAt(sm.buttons, pos.x, pos.y);
