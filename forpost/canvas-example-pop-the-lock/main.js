@@ -42,6 +42,7 @@
     var sm = {
         ver: '0.7.0',
         appName: 'canvas-example-pop-the-lock',
+        debugMode: false,
         canvas: canvas,
         ctx: ctx,
         game: {},
@@ -243,7 +244,9 @@
             draw.PTL(ctx, canvas, sm.game);
             draw.score(ctx, canvas, sm);
             draw.pool(ctx, sm.buttons);
-            draw.debugInfo(ctx, canvas, sm.game);
+            if(sm.debugMode){
+                draw.debugInfo(ctx, canvas, sm.game);
+            }
         },
         click: function (sm, pos, e) {
             var button = poolMod.getObjectAt(sm.buttons, pos.x, pos.y);
