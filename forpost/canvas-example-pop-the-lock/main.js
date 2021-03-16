@@ -104,9 +104,6 @@
         init: function (sm) {
             // set all button object to inactive
             poolMod.setActiveStateForAll(sm.buttons, false);
-        },
-        trans: function (sm, secs) {
-            poolMod.update(sm.buttons, secs, sm);
             poolMod.spawn(sm.buttons, sm, {
                 action: 'start_state_gameMode',
                 disp: 'Play',
@@ -127,6 +124,9 @@
                 dist: sm.canvas.width - 128,
                 heading: 0
             });
+        },
+        trans: function (sm, secs) {
+            poolMod.update(sm.buttons, secs, sm);
         },
         update: function (sm, secs) {},
         draw: function (sm, ctx, canvas) {
