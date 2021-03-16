@@ -1,8 +1,4 @@
 
-## 0.x.0 - Game Save Manager State
-
-## 0.x.0 - Options State
-
 ## 0.x.0 - /lib/buttons.js
 
 ## 0.x.0 - /lib/statemachine.js
@@ -18,17 +14,27 @@
 * have a obj.cx and obj.cy prop in pool.js that will be the center point of a display object
 * make all changes needed in pool.js, main.js, and draw.js
 
-## 0.x.0 - Themes
+## 0.10.0 - Game Save Manager State
+* can have more than one save state
+* can create and start a new game
+* can load any save state
+* can copy a save state
+* can delete a save state
+
+## 0.9.0 - Options State
+* frame rate setting that can help to reduce cpu use, or increase prefromance
+* res setting
 * more than one theme
 * have new background and color themes for each game mode
 * flash canvas red when a miss happens
+* can turn animations on and off
 
-## 0.x.0 - Money
-* add a sm.money prop
-* update sm.money on each game over state once in the init method
+## 0.8.0 - EXP and Skill Points
+* add a sm.exp prop
+* update sm.exp on each game over state once in the init method
 
 ## 0.7.0 - Game Mode Choice and ModeSettings State
-* have a Game Mode state to which the player enters from the title state
+* (done) have a Game Mode state to which the player enters from the title state
 * the only button on the title state should be to enter the gameMode state ( for now )
 * The game Mode state can be used to choose what game mode to play
 * Each mode should have settings to change things like speed, which in turn effects score when playing
