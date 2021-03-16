@@ -1,18 +1,7 @@
 
-## 0.x.0 - Themes
-* more than one theme
-* have new background and color themes for each game mode
-* flash canvas red when a miss happens
+## 0.x.0 - Game Save Manager State
 
-## 0.x.0 - Money
-* add a sm.money prop
-* update sm.money on each game over state once in the init method
-
-## 0.x.0 - Game Mode Choice and Settings State
-* have a Game Mode state to which the player enters from the title state
-* The game Mode state can be used to choose what game mode to play
-* Each mode should have settings to change things like speed, which in turn effects score when playing
-* settings will change from one game mode to another
+## 0.x.0 - Options State
 
 ## 0.x.0 - Mode folders, draw.js for each mode
 * in the modes folder have a folder for each mode
@@ -24,6 +13,24 @@
 ## 0.x.0 - Address issue with cx in pool.js
 * have a obj.cx and obj.cy prop in pool.js that will be the center point of a display object
 * make all changes needed in pool.js, main.js, and draw.js
+
+## 0.x.0 - Themes
+* more than one theme
+* have new background and color themes for each game mode
+* flash canvas red when a miss happens
+
+## 0.x.0 - Money
+* add a sm.money prop
+* update sm.money on each game over state once in the init method
+
+## 0.x.0 - Game Mode Choice and ModeSettings State
+* have a Game Mode state to which the player enters from the title state
+* the only button on the title state should be to enter the gameMode state ( for now )
+* The game Mode state can be used to choose what game mode to play
+* Each mode should have settings to change things like speed, which in turn effects score when playing
+* settings will change from one game mode to another
+* Work out new expressions for scoring in each game mode
+* make a pkg 0.7.0 folder
 
 ## 0.6.0 - Classic Mode
 * (done) start a classic mode that works like the original pop the lock game
