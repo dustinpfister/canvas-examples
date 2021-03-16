@@ -13,6 +13,10 @@ gameMod.loadMode({
         game.deg.current = 25;
         game.tripUp.chance = 0.1;
         game.tripUp.degRange = [20, 30];
+
+        game.perSecLower = 20;
+        game.perSecHigher = 70
+
         modeSettings.level = game.level = modeSettings.level || 1;
         game.targets = game.level;
         game.deg.target = modeAPI.getTargetRandom(game);
@@ -20,8 +24,8 @@ gameMod.loadMode({
     update: function(modeAPI, game){
         var hits = game.clickTrack.hits;
         game.score = hits;
-        game.deg.perSec = 20 + Math.round( 30 * (hits / 100));
-        game.deg.perSec = game.deg.perSec > 50 ? 50 : game.deg.perSec;
+        game.deg.perSec = game.perSecLower + Math.round( (game.perSecHigher - game.perSecLower) * (hits / 100));
+        game.deg.perSec = game.deg.perSec > game.perSecHigher ? game.perSecHigher : game.deg.perSec;
     },
     onMiss: function(modeAPI, game){
         game.missTrack.count = 1;

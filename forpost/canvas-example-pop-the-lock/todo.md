@@ -44,9 +44,9 @@
 * (done) Each mode should have settings to change things like speed, which in turn effects score when playing
 * (done) classic mode should have an option to change level
 * (done) make use of range value in a mode settings object
+* (done) getButtonById buton pool helper in main
 
-* getButtonById pool mod method
-
+* speed setting for classic
 
 * settings will change from one game mode to another
 * Work out new expressions for scoring in each game mode
