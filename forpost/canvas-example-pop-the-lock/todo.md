@@ -28,6 +28,7 @@
 * have new background and color themes for each game mode
 * flash canvas red when a miss happens
 * can turn animations on and off
+* can trun debug mode on and off
 
 ## 0.8.0 - EXP and Skill Points
 * add a sm.exp prop
@@ -39,7 +40,7 @@
 * (done) add a More Games button
 * (done) The game Mode state can be used to choose what game mode to play
 
-* have next and prev buttons that can be used to change a current Game mode value
+* have next buttons that can be used to change a current Game mode value
 * have a start button that will enter game mode with current settings for game mode
 
 * Each mode should have settings to change things like speed, which in turn effects score when playing

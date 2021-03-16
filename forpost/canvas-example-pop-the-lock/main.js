@@ -209,6 +209,11 @@
         update: function (sm, secs) {},
         draw: function (sm, ctx, canvas) {
             draw.pool(ctx, sm.buttons);
+            ctx.fillStyle = 'white';
+            ctx.textBaseline = 'top';
+            ctx.textAlign = 'left';
+            ctx.font='50px arial';
+            ctx.fillText(sm.gameMode, 10, 10);
         },
         click: function (sm, pos, e) {
             var button = poolMod.getObjectAt(sm.buttons, pos.x, pos.y);
