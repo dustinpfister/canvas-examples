@@ -153,55 +153,32 @@
             poolMod.setActiveStateForAll(sm.buttons, false);
             // default to whatever key sm.gameModeIndex is for gameMode
             sm.gameMode = Object.keys(gameMod.modes)[sm.gameModeIndex];
-
-            // spawn new Game buttons
-/*
-            Object.keys(gameMod.modes).forEach(function(gameModeKey, i){
-                var bool = i % 2,
-                w = 250,
-                h = 64;
-                poolMod.spawn(sm.buttons, sm, {
-                    action: 'start_game_' + gameModeKey,
-                    disp: 'New ' + gameModeKey + ' Game',
-                    sx: bool ? sm.canvas.width + w : w * -1,
-                    sy: sm.canvas.height * 0.2 + (h + 10) * i,
-                    w: w,
-                    h: h,
-                    dist: sm.canvas.width * 0.5 + w / 2 + (bool ? w: 0),
-                    heading: Math.PI * bool
-                });
+            // next mode button
+            var w = 64,
+            h = 64;
+            poolMod.spawn(sm.buttons, sm, {
+                action: 'set_mode_next',
+                disp: 'Next',
+                sy: sm.canvas.height * 1.5,
+                sx: sm.canvas.width * 0.9 - (w / 2),
+                w: w,
+                h: h,
+                dist: sm.canvas.height * 1 + (h / 2),
+                heading: Math.PI * 1.5
             });
-*/
-
-                // next mode button
-                var w = 64,
-                h = 64;
-                poolMod.spawn(sm.buttons, sm, {
-                    action: 'set_mode_next',
-                    disp: 'Next',
-                    sy: sm.canvas.height * 1.5,
-                    sx: sm.canvas.width * 0.9 - (w / 2),
-                    w: w,
-                    h: h,
-                    dist: sm.canvas.height * 1 + (h / 2),
-                    heading: Math.PI * 1.5
-                });
-
-                // start game button
-                var w = 250,
-                h = 64;
-                poolMod.spawn(sm.buttons, sm, {
-                    action: 'start_game',
-                    disp: 'Start Game',
-                    sy: sm.canvas.height * 1.5,
-                    sx: sm.canvas.width * 0.75 - (w / 2),
-                    w: w,
-                    h: h,
-                    dist: sm.canvas.height * 0.70,
-                    heading: Math.PI * 1.5
-                });
-
-
+            // start game button
+            var w = 250,
+            h = 64;
+            poolMod.spawn(sm.buttons, sm, {
+                action: 'start_game',
+                disp: 'Start Game',
+                sy: sm.canvas.height * 1.5,
+                sx: sm.canvas.width * 0.75 - (w / 2),
+                w: w,
+                h: h,
+                dist: sm.canvas.height * 0.70,
+                heading: Math.PI * 1.5
+            });
         },
         trans: function (sm, secs) {
             poolMod.update(sm.buttons, secs, sm);
