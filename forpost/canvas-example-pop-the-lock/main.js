@@ -156,12 +156,12 @@
             sm.gameMode = Object.keys(gameMod.modes)[sm.gameModeIndex];
             // create settings buttons
             gameMod.modes[sm.gameMode].settings.forEach(function(setting, i){
-                console.log(setting);
                 var w = 64,
                 h = 64;
                 // down button
                 poolMod.spawn(sm.buttons, sm, {
                     action: 'set_modesettingDown_' + setting.key,
+                    setting: setting,
                     disp: '-',
                     sy: sm.canvas.height * 1.5,
                     sx: 10,
@@ -173,6 +173,7 @@
                 // up button
                 poolMod.spawn(sm.buttons, sm, {
                     action: 'set_modesettingUp_' + setting.key,
+setting: setting,
                     disp: '+',
                     sy: sm.canvas.height * 1.5,
                     sx: 10 + w * 4,
@@ -185,6 +186,7 @@
                 w = 128;
                 poolMod.spawn(sm.buttons, sm, {
                     action: '',
+setting: setting,
                     disp: setting.disp + ' ' + sm.modeSettings[setting.key],
                     sy: sm.canvas.height * 1.5,
                     sx: 10 + 64 * 1.5,
@@ -245,19 +247,25 @@
                     sm.gameModeIndex = utils.mod(sm.gameModeIndex, Object.keys(gameMod.modes).length);
                     startStateChangeTrans(sm, 'gameMode');
                 }
-                var parts = button.data.action.split('_'); // change_modesetting_down
+                var parts = button.data.action.split('_');
                 if(parts[0] === 'set'){
                     if(parts[1] === 'modesettingUp'){
-                         sm.modeSettings[parts[2]] += 1;
-                         console.log(parts[2], 'up');
+                         var modeProp = sm.modeSettings[parts[2]],
+                         settingObj = button.data.setting,
+                         range = settingObj.range;
+                         modeProp += 1;
+                         sm.modeSettings[parts[2]] = modeProp > range[1] ? range[0]: modeProp;
                          // better system for this is needed
-                         sm.buttons.objects[2].data.disp = parts[2] + ' ' +sm.modeSettings[parts[2]];
+                         sm.buttons.objects[2].data.disp = parts[2] + ' ' + sm.modeSettings[parts[2]];
                     }
                     if(parts[1] === 'modesettingDown'){
-                         sm.modeSettings[parts[2]] -= 1;
-                         console.log(parts[2], 'down');
+                         var modeProp = sm.modeSettings[parts[2]],
+                         settingObj = button.data.setting,
+                         range = settingObj.range;
+                         modeProp -= 1;
+                         sm.modeSettings[parts[2]] = modeProp < range[0] ? range[1]: modeProp;
                          // better system for this is needed
-                         sm.buttons.objects[2].data.disp = parts[2] + ' ' +sm.modeSettings[parts[2]];
+                         sm.buttons.objects[2].data.disp = parts[2] + ' ' + sm.modeSettings[parts[2]];
                     }
                 }
             }

@@ -4,10 +4,7 @@ gameMod.loadMode({
         {
             key: 'level',
             disp: 'Level',
-            range: [1, 100],
-            onChange: function(modeSettings, value, setting, game){
-                modeSettings.level = value;
-            }
+            range: [1, 100]
         }
     ],
     init: function(modeAPI, game, modeSettings){

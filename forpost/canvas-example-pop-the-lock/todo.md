@@ -42,8 +42,8 @@
 * (done) have next buttons that can be used to change a current Game mode value
 * (done) have a start button that will enter game mode with current settings for game mode
 * (done) Each mode should have settings to change things like speed, which in turn effects score when playing
-
-* classic mode should have an option to change level
+* (done) classic mode should have an option to change level
+* make use of range value in a mode settings object
 
 * settings will change from one game mode to another
 * Work out new expressions for scoring in each game mode
