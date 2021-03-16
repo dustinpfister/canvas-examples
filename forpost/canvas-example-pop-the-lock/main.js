@@ -161,7 +161,7 @@
                 h = 64;
                 // down button
                 poolMod.spawn(sm.buttons, sm, {
-                    action: 'change_modesetting_down_' + setting.key,
+                    action: 'set_modesettingDown_' + setting.key,
                     disp: '-',
                     sy: sm.canvas.height * 1.5,
                     sx: 10,
@@ -172,7 +172,7 @@
                 });
                 // up button
                 poolMod.spawn(sm.buttons, sm, {
-                    action: 'change_modesetting_up_' + setting.key,
+                    action: 'set_modesettingUp_' + setting.key,
                     disp: '+',
                     sy: sm.canvas.height * 1.5,
                     sx: 10 + w * 4,
@@ -244,6 +244,21 @@
                     sm.gameModeIndex += 1;
                     sm.gameModeIndex = utils.mod(sm.gameModeIndex, Object.keys(gameMod.modes).length);
                     startStateChangeTrans(sm, 'gameMode');
+                }
+                var parts = button.data.action.split('_'); // change_modesetting_down
+                if(parts[0] === 'set'){
+                    if(parts[1] === 'modesettingUp'){
+                         sm.modeSettings[parts[2]] += 1;
+                         console.log(parts[2], 'up');
+                         // better system for this is needed
+                         sm.buttons.objects[2].data.disp = parts[2] + ' ' +sm.modeSettings[parts[2]];
+                    }
+                    if(parts[1] === 'modesettingDown'){
+                         sm.modeSettings[parts[2]] -= 1;
+                         console.log(parts[2], 'down');
+                         // better system for this is needed
+                         sm.buttons.objects[2].data.disp = parts[2] + ' ' +sm.modeSettings[parts[2]];
+                    }
                 }
             }
         }
