@@ -48,6 +48,7 @@
         highScores: {},
         lt: new Date(),
         currentState: 'title',
+        gameModeIndex: 1,
         gameMode: '',
         modeSettings: {
             level: 5
@@ -150,8 +151,8 @@
     sm.states.gameMode = {
         init: function (sm) {
             poolMod.setActiveStateForAll(sm.buttons, false);
-            // default to whatever key 0 is for gameMode
-            sm.gameMode = Object.keys(gameMod.modes)[0];
+            // default to whatever key sm.gameModeIndex is for gameMode
+            sm.gameMode = Object.keys(gameMod.modes)[sm.gameModeIndex];
 
             // spawn new Game buttons
 /*
@@ -171,9 +172,23 @@
                 });
             });
 */
-                var i = 0,
-                bool = i % 2,
-                w = 250,
+
+                // next mode button
+                var w = 64,
+                h = 64;
+                poolMod.spawn(sm.buttons, sm, {
+                    action: 'set_mode_next',
+                    disp: 'Next',
+                    sy: sm.canvas.height * 1.5,
+                    sx: sm.canvas.width * 0.9 - (w / 2),
+                    w: w,
+                    h: h,
+                    dist: sm.canvas.height * 1 + (h / 2),
+                    heading: Math.PI * 1.5
+                });
+
+                // start game button
+                var w = 250,
                 h = 64;
                 poolMod.spawn(sm.buttons, sm, {
                     action: 'start_game',
@@ -198,11 +213,9 @@
         click: function (sm, pos, e) {
             var button = poolMod.getObjectAt(sm.buttons, pos.x, pos.y);
             if (button) {
-                //Object.keys(gameMod.modes).forEach(function(gameModeKey, i){
-                    if(button.data.action === 'start_game'){
-                        startStateChangeTrans(sm, 'game');
-                    }
-                //});
+                if(button.data.action === 'start_game'){
+                    startStateChangeTrans(sm, 'game');
+                }
             }
         }
     };
@@ -310,7 +323,7 @@
     if(highScores){
         sm.highScores = highScores;
     }
-    changeState(sm, 'title');
+    changeState(sm, 'gameMode');
     var loop = function () {
         var now = new Date(),
         secs = (now - sm.lt) / 1000;
