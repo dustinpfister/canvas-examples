@@ -41,9 +41,10 @@
 * (done) The game Mode state can be used to choose what game mode to play
 * (done) have next buttons that can be used to change a current Game mode value
 * (done) have a start button that will enter game mode with current settings for game mode
+* (done) Each mode should have settings to change things like speed, which in turn effects score when playing
 
-* Each mode should have settings to change things like speed, which in turn effects score when playing
 * classic mode should have an option to change level
+
 * settings will change from one game mode to another
 * Work out new expressions for scoring in each game mode
 * make a pkg 0.7.0 folder

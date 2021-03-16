@@ -49,7 +49,7 @@
         highScores: {},
         lt: new Date(),
         currentState: 'title',
-        gameModeIndex: 1,
+        gameModeIndex: 3,
         gameMode: '',
         modeSettings: {
             level: 5
@@ -154,6 +154,34 @@
             poolMod.setActiveStateForAll(sm.buttons, false);
             // default to whatever key sm.gameModeIndex is for gameMode
             sm.gameMode = Object.keys(gameMod.modes)[sm.gameModeIndex];
+            // create settings buttons
+            gameMod.modes[sm.gameMode].settings.forEach(function(setting, i){
+                console.log(setting);
+                var w = 64,
+                h = 64;
+                // down button
+                poolMod.spawn(sm.buttons, sm, {
+                    action: 'change_modesetting_down_' + setting.key,
+                    disp: '-',
+                    sy: sm.canvas.height * 1.5,
+                    sx: 10,
+                    w: w,
+                    h: h,
+                    dist: sm.canvas.height * 1.25 + (h / 2),
+                    heading: Math.PI * 1.5
+                });
+                // up button
+                poolMod.spawn(sm.buttons, sm, {
+                    action: 'change_modesetting_up_' + setting.key,
+                    disp: '+',
+                    sy: sm.canvas.height * 1.5,
+                    sx: 10 + w * 4,
+                    w: w,
+                    h: h,
+                    dist: sm.canvas.height * 1.25 + (h / 2),
+                    heading: Math.PI * 1.5
+                });
+            });
             // next mode button
             var w = 64,
             h = 64;

@@ -2,7 +2,8 @@ gameMod.loadMode({
     key: 'classic',
     settings: [
         {
-            desc: 'Level',
+            key: 'level',
+            disp: 'Level',
             range: [1, 100],
             onChange: function(modeSettings, setting, game){
                 modeSettings.level = setting;
