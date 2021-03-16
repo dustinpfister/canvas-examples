@@ -1,5 +1,6 @@
 gameMod.loadMode({
     key: 'sudendeath',
+    settings:[],
     init: function(modeAPI, game){
         game.hp.active = false;
         game.deg.perSec = 20;

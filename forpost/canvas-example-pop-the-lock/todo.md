@@ -43,6 +43,7 @@
 * (done) have a start button that will enter game mode with current settings for game mode
 
 * Each mode should have settings to change things like speed, which in turn effects score when playing
+* classic mode should have an option to change level
 * settings will change from one game mode to another
 * Work out new expressions for scoring in each game mode
 * make a pkg 0.7.0 folder

@@ -1,5 +1,14 @@
 gameMod.loadMode({
     key: 'classic',
+    settings: [
+        {
+            desc: 'Level',
+            range: [1, 100],
+            onChange: function(modeSettings, setting, game){
+                modeSettings.level = setting;
+            }
+        }
+    ],
     init: function(modeAPI, game, modeSettings){
         game.hp.active = false;
         game.deg.perSec = 20;

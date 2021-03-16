@@ -1,5 +1,6 @@
 gameMod.loadMode({
     key: 'endurance',
+    settings:[],
     init: function(modeAPI, game){
         game.hp.active = true;
         game.hp.current = game.hp.max * 0.5;
