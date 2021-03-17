@@ -101,7 +101,7 @@ var states = {
 };
 
 var sm = {
-    ver: '0.3.0',
+    ver: '0.3.1',
     canvas: canvas,
     currentState: 'game',
     ctx: ctx,
