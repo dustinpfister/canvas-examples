@@ -1,18 +1,21 @@
 
-## 0.x.0 - /lib/buttons.js
 
-## 0.x.0 - /lib/statemachine.js
-
-## 0.x.0 - Mode folders, draw.js for each mode
+## 1.x.x - Address issue with cx in pool.js
+* have a obj.cx and obj.cy prop in pool.js that will be the center point of a display object
+* make all changes needed in pool.js, main.js, and draw.js
+## 1.x.x - Next Heal bar, and Whole Number HP values in Endurance mode
+## 1.x.x - Power Up Targets in Endurance mode
+## 1.x.0 - Support for up to 10 Settings for game modes
+## 1.x.0 - Transistion Animations for things other than buttons
+## 1.x.0 - New object pool for non button display objects
+## 1.x.0 - new /lib/buttons.js
+## 1.x.0 - new /lib/statemachine.js
+## 1.x.0 - Mode folders, draw.js for each mode
 * in the modes folder have a folder for each mode
 * each javaScript file for each mode such as freeplay.js can become /modes/freeplay/gamemode.js
 * each mode can have its own draw.js file, used by the main draw.js file \( /modes/freeplay/draw.js \)
 * have a README.md for each mode
 * have a todo.md for each mode
-
-## 0.x.0 - Address issue with cx in pool.js
-* have a obj.cx and obj.cy prop in pool.js that will be the center point of a display object
-* make all changes needed in pool.js, main.js, and draw.js
 
 ## 0.10.0 - Game Save Manager State
 * can have more than one save state

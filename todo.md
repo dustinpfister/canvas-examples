@@ -2,6 +2,7 @@
 
 ## 03/28/21 to 04/03/21
 * update image-loader with new create cnavas method
+* pop-the-lock at v1.0.0+
 
 ## 03/21/21 to 03/27/21
 * pop-the-lock at at v0.10.x+
