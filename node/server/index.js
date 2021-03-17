@@ -41,7 +41,7 @@ app.get('/current/:exampleName', [
     }
 ]);
 
-let port = process.argv[2] || 8080;
+let port = process.argv[2] || 8010;
 app.listen(port, () => {
     console.log('server started on port: ' + port);
 });

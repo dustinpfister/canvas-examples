@@ -1,5 +1,30 @@
 # canvas-example-mr-sun
 
+## 0.x.0 - external images
+* have a /img folder to store sprite sheets images
+* have a /img/index.json file that will serve as a way to define into for each image
+* image files should follow this pattern: /img/0.png, /img/1.png, /img/2.png
+* index.json might look like this
+[
+    {
+        "name": "sun",
+        "frames": [0,0,32,32,32,0,32,32,64,0,32,32]
+    },
+    {
+        "name": "world-sections",
+        "frames": [0,0,32,32,32,0,32,32,64,0,32,32]
+    },
+    {
+        "name": "buttons",
+        "frames": [0,0,32,32,32,0,32,32,64,0,32,32]
+    },
+]
+there should be a way to set the values for the frames like this at least. Other features for defining what the deal is with frames and how to structure things can be done in later releases if needed.
+* have a /state-machine/states/init-load.js state that will work as an asset loader
+* images should be stored in an sm.img array where index 0 is 0.png and so forth
+* ui-sun should start when all assets are loaded
+* skin display objects with new sprite sheets uisng the new draw.sprite method
+
 ## known bugs, problems, concerns
 * the createAfter method in state-machine plugins may not be needed. A simular system to that of callPriority may work better, or a whole new system where I can set an array of dependancy plug-ins
 
@@ -35,30 +60,10 @@
 * update sm.startTrans to allow for an options that can be used to set the trans to use.
 * fix sprite.radian values for sudoSections so that they rotate from section.radian to an upward position in ui-sections.
 
-## 0.x.0 - core-spritesheets.js, extrenal images, /states/init-load.js, and /img
-* have a /img folder to store sprite sheets images
-* have a /img/index.json file that will serve as a way to define into for each image
-* image files should follow this pattern: /img/0.png, /img/1.png, /img/2.png
-* index.json might look like this
-[
-    {
-        "name": "sun",
-        "frames": [0,0,32,32,32,0,32,32,64,0,32,32]
-    },
-    {
-        "name": "world-sections",
-        "frames": [0,0,32,32,32,0,32,32,64,0,32,32]
-    },
-    {
-        "name": "buttons",
-        "frames": [0,0,32,32,32,0,32,32,64,0,32,32]
-    },
-]
-there should be a way to set the values for the frames like this at least. Other features for defining what the deal is with frames and how to structure things can be done in later releases if needed.
-* have a /state-machine/states/init-load.js state that will work as an asset loader
-* images should be stored in an sm.img array where index 0 is 0.png and so forth
-* ui-sun should start when all assets are loaded
-* skin display objects with new sprite sheets uisng the new draw.sprite method
+## 0.11.0 - core-spritesheets.js, and pixmaps
+* use new create canvas and get canvas relative methods
+* make use of pixmap solution worked out in my canvas-examples-animations-pixmaps example
+* make a pkg 0.11.0 folder
 
 ## 0.10.0 - core-utils.js, and variaus improvements
 * (done) I want to add a afterCreate method for state-machine plugins
