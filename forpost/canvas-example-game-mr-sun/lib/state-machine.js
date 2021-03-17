@@ -86,7 +86,7 @@ var stateMod = (function(){
 
     api.create = function(opt){
         opt = opt || {};
-        var can = createCanvas(opt);
+        var can = utils.createCanvas(opt);
         var sm = {
             canvas: can.canvas,
             ctx: can.ctx,
