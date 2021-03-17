@@ -14,7 +14,8 @@
 * make a pkg-0-4-0.html
 
 ## 0.3.1 - utils.CreateCanvas
-* use utils.createCanvas method
+* (done) use utils.createCanvas method
+* (done - 03/17/2021) make a pkg 0.3.1 folder
 
 ## 0.3.0 - atmo.js started, and basic water cycle
 * (done) start a atmo.js plug-in that will create an game.atmoData object
