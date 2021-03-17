@@ -53,6 +53,7 @@
 * settings for endurence mode
 * (done) settings button on game over state
 
+* make sm.modeSettings an object that contains keys for each mode;
 * Work out new expressions for scoring in each game mode
 * make a pkg 0.7.0 folder
 

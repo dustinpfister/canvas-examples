@@ -165,7 +165,8 @@
             gameMod.modes[sm.gameMode].settings.forEach(function(setting, i){
                 var w = 64,
                 h = 64;
-                sm.modeSettings[setting.key] = sm.modeSettings[setting.key] === undefined ? setting.start: sm.modeSettings[setting.key];
+                //sm.modeSettings[setting.key] = sm.modeSettings[setting.key] === undefined ? setting.start: sm.modeSettings[setting.key];
+                sm.modeSettings[setting.key] = setting.start;
                 // down button
                 poolMod.spawn(sm.buttons, sm, {
                     action: 'set_modesettingDown_' + setting.key,
