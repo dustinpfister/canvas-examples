@@ -33,8 +33,10 @@
 ## 0.8.0 - EXP and Skill Points
 * add a sm.exp prop
 * update sm.exp on each game over state once in the init method
+* Work out new expressions for scoring in each game mode
+* make sm.modeSettings an object that contains keys for each mode;
 
-## 0.7.0 - Game Mode Choice and ModeSettings State
+## 0.7.0 - Game Mode Choice and ModeSettings Object
 * (done) have a Game Mode state to which the player enters from the title state
 * (done) add a play button on the title state that will enter gameMode state
 * (done) add a More Games button
@@ -49,12 +51,12 @@
 * (done) higher speed setting for classic
 * (done) settings will change from one game mode to another
 * (done) settings for freeplay mode
-* settings for sudenDeath mode
-* settings for endurence mode
 * (done) settings button on game over state
+* (done) settings for endurence mode
 
-* make sm.modeSettings an object that contains keys for each mode;
-* Work out new expressions for scoring in each game mode
+* settings for sudenDeath mode
+* title button in gameMode state
+
 * make a pkg 0.7.0 folder
 
 ## 0.6.0 - Classic Mode

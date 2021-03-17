@@ -58,7 +58,7 @@
         highScores: {},
         lt: new Date(),
         currentState: 'title',
-        gameModeIndex: 3,
+        gameModeIndex: 0,
         gameMode: '',
         modeSettings: {},
         trans: {
@@ -388,7 +388,7 @@
     if(highScores){
         sm.highScores = highScores;
     }
-    changeState(sm, 'gameMode');
+    changeState(sm, 'title');
     var loop = function () {
         var now = new Date(),
         secs = (now - sm.lt) / 1000;

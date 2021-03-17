@@ -22,13 +22,14 @@ gameMod.loadMode({
     ],
     init: function(modeAPI, game, modeSettings){
         game.hp.active = false;
-        game.deg.perSec = 20;
+
         game.deg.current = 25;
         game.tripUp.chance = 0.1;
         game.tripUp.degRange = [20, 30];
 
         game.perSecLower = modeSettings.perSecLower || 20;
-        game.perSecHigher = modeSettings.perSecHigher ||70
+        game.perSecHigher = modeSettings.perSecHigher ||70;
+        game.deg.perSec = game.perSecLower;
 
         modeSettings.level = game.level = modeSettings.level || 1;
         game.targets = game.level;

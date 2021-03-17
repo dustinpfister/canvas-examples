@@ -18,11 +18,12 @@ gameMod.loadMode({
         game.hp.active = true;
         game.hp.current = game.hp.max * 0.5;
         game.hp.perSec = 0.8;
-        game.deg.perSec = 20;
+
         game.deg.current = 25;
 
         game.perSecLower = modeSettings.perSecLower || 20;
-        game.perSecHigher = modeSettings.perSecHigher ||85
+        game.perSecHigher = modeSettings.perSecHigher ||85;
+        game.deg.perSec = game.perSecLower;
 
         game.deg.target = modeAPI.getTargetRandom(game);
     },
