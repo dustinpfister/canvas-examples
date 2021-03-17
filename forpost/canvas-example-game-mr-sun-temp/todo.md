@@ -1,6 +1,7 @@
 # canvas-example-mr-sun-temp
 
-## 0.6.0 - 
+## 0.5.1 - Utils.createCanvas
+* use utils.createCanvas
 
 ## 0.5.0 - start a sun.js plug-in
 * (done) start a new sun.js plug-in

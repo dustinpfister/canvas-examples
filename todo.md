@@ -8,9 +8,9 @@
 * pop-the-lock at at v0.10.x+
 
 ## 03/14/21 to 03/20/21
-* update mr-sun
-* update mr-sun-temp
-* update mr-sun-geo
+* mr-sun at v0.11.0
+* update mr-sun-temp at 0.5.1
+* update mr-sun-geo at 0.3.1
 * object-pool at v0.5.0+
 * (done) pop-the-lock at v0.5.0+
 

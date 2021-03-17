@@ -13,6 +13,9 @@
 * water will not transfer from or to another section when it is to cold (0 to 50).
 * make a pkg-0-4-0.html
 
+## 0.3.1 - utils.CreateCanvas
+* use utils.createCanvas method
+
 ## 0.3.0 - atmo.js started, and basic water cycle
 * (done) start a atmo.js plug-in that will create an game.atmoData object
 * (done) create section.atmo objects for each section

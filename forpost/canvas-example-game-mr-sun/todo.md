@@ -61,7 +61,7 @@ there should be a way to set the values for the frames like this at least. Other
 * fix sprite.radian values for sudoSections so that they rotate from section.radian to an upward position in ui-sections.
 
 ## 0.11.0 - core-spritesheets.js, and pixmaps
-* use new create canvas and get canvas relative methods
+* (done) use new create canvas and get canvas relative methods
 * make use of pixmap solution worked out in my canvas-examples-animations-pixmaps example
 * make a pkg 0.11.0 folder
 
