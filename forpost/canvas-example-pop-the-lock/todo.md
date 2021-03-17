@@ -47,8 +47,12 @@
 * (done) getButtonById buton pool helper in main
 * (done) lower speed setting for classic
 * (done) higher speed setting for classic
+* (done) settings will change from one game mode to another
 
-* settings will change from one game mode to another
+* settings for freeplay mode
+* settings for sudenDeath mode
+* settings for endurence mode
+
 * Work out new expressions for scoring in each game mode
 * make a pkg 0.7.0 folder
 
