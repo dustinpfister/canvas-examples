@@ -1,9 +1,16 @@
 gameMod.loadMode({
     key: 'freePlay',
-    settings:[],
-    init: function(modeAPI, game){
+    settings:[
+        {
+            key: 'perSec',
+            disp: 'speed',
+            start: 10,
+            range: [10, 100]
+        }
+    ],
+    init: function(modeAPI, game, modeSettings){
         game.hp.active = false;
-        game.deg.perSec = 30;
+        game.deg.perSec = modeSettings.perSec || 10;
         game.win = true;
     },
     update: function(modeAPI, game){
