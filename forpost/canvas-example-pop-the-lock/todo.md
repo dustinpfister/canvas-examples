@@ -51,8 +51,7 @@
 * (done) settings for freeplay mode
 * settings for sudenDeath mode
 * settings for endurence mode
-
-* settings button on game over state
+* (done) settings button on game over state
 
 * Work out new expressions for scoring in each game mode
 * make a pkg 0.7.0 folder
