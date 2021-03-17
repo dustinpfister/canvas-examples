@@ -2,7 +2,7 @@
 
 ## 0.5.1 - Utils.createCanvas
 * (done) use utils.createCanvas method
-* make a pkg 0.5.1 folder
+* (done - 03/17/2021) make a pkg 0.5.1 folder
 
 ## 0.5.0 - start a sun.js plug-in
 * (done) start a new sun.js plug-in
