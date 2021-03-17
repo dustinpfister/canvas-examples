@@ -60,9 +60,7 @@
         currentState: 'title',
         gameModeIndex: 3,
         gameMode: '',
-        modeSettings: {
-            //level: 5
-        },
+        modeSettings: {},
         trans: {
             active: true,
             inState: true,
@@ -340,8 +338,8 @@
     sm.states.gameOver = {
         init: function (sm) {
             poolMod.setActiveStateForAll(sm.buttons, false);
-            var dispText = ['Title', 'Try Again'];
-            ['title', 'game'].forEach(function(stateKey, i){
+            var dispText = ['Title', 'Settings', 'Try Again'];
+            ['title', 'gameMode','game'].forEach(function(stateKey, i){
                 poolMod.spawn(sm.buttons, sm, {
                     action: 'set_state_' + stateKey,
                     disp: dispText[i],
@@ -375,7 +373,7 @@
         click: function (sm, pos, e) {
             var button = poolMod.getObjectAt(sm.buttons, pos.x, pos.y);
             if (button) {
-                ['title', 'game'].forEach(function(stateKey, i){
+                ['title', 'gameMode','game'].forEach(function(stateKey, i){
                     if(button.data.action === 'set_state_' + stateKey){
                         startStateChangeTrans(sm, stateKey);
                     }
