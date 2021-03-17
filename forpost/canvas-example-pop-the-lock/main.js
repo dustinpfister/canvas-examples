@@ -12,7 +12,7 @@
 
     // BUTTON OBJECT POOL
     var buttonPool = poolMod.create({
-            count: 14,
+            count: 20,
             maxSecs: 0.25,
             spawn: function (obj, pool, sm, opt) {
                 // just ref opt for the data object
@@ -232,6 +232,17 @@
                 dist: sm.canvas.height * 0.70,
                 heading: Math.PI * 1.5
             });
+            w = 125;
+            poolMod.spawn(sm.buttons, sm, {
+                action: 'start_title',
+                disp: 'Title',
+                sy: sm.canvas.height * 1.5,
+                sx: sm.canvas.width * 0.85 - (w / 2),
+                w: w,
+                h: h,
+                dist: sm.canvas.height * 1.475,
+                heading: Math.PI * 1.5
+            });
         },
         trans: function (sm, secs) {
             poolMod.update(sm.buttons, secs, sm);
@@ -251,6 +262,9 @@
             if (button) {
                 if(button.data.action === 'start_game'){
                     startStateChangeTrans(sm, 'game');
+                }
+                if(button.data.action === 'start_title'){
+                    startStateChangeTrans(sm, 'title');
                 }
                 if(button.data.action === 'set_mode_next'){
                     sm.gameModeIndex += 1;

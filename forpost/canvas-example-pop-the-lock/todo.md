@@ -53,11 +53,9 @@
 * (done) settings for freeplay mode
 * (done) settings button on game over state
 * (done) settings for endurence mode
-
-* settings for sudenDeath mode
-* title button in gameMode state
-
-* make a pkg 0.7.0 folder
+* (done) settings for sudenDeath mode
+* (done) title button in gameMode state
+* (done - 03/17/2021) make a pkg 0.7.0 folder
 
 ## 0.6.0 - Classic Mode
 * (done) start a classic mode that works like the original pop the lock game
@@ -69,7 +67,7 @@
 * (done) use new target method with classic mode (use of trip ups)
 * (done) Each time you win the level steps up by one and you need to hit that many targets to win
 * (done) display You Won message in place of Game Over when a round is won in classic mode
-* (done - 03/15/2021) make a pkg 0.6.0
+* (done - 03/16/2021) make a pkg 0.6.0
 
 ## 0.5.1 - fix bug with buttons now showing up, other general fixes and changes
 * (done) added a maxSecs prop for pool.js that should fix the problem of buttons not showing up
