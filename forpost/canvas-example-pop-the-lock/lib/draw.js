@@ -14,6 +14,11 @@ var draw = (function(){
         text_base_center(ctx);
         ctx.font='40px arial';
     };
+    var text_big_left = function(ctx){
+        text_base_center(ctx);
+        ctx.textAlign = 'left';
+        ctx.font='40px arial';
+    };
     var text_med_center = function(ctx){
         text_base_center(ctx);
         ctx.font='20px arial';
@@ -118,10 +123,10 @@ var draw = (function(){
     // draw game over text
     api.text_gameover = function(ctx, canvas, sm){
         var game = sm.game,
-        sx = canvas.width / 2 - 120,
+        sx = canvas.width * 0.25 - 120,
         sy = canvas.height / 2 - 25;
-        text_big_center(ctx);
-        ctx.fillText(game.win ? 'You Won!' : 'Game Over', canvas.width / 2, canvas.height / 2 - 50);
+        text_big_left(ctx);
+        ctx.fillText(game.win ? 'You Won!' : 'Game Over', sx, canvas.height * 0.25);
         text_game_stats(ctx);
         ctx.fillText('clicks (hits/total): ' + game.clickTrack.hits + '/' + game.clickTrack.total, sx, sy + 10);
         ctx.fillText('miss count: ' + game.missTrack.count, sx, sy + 20);
