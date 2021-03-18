@@ -43,7 +43,7 @@
 
 ## 0.7.1 - new Score System for freePlay mode
 * (done) New score system for freePlay mode where there is a base point amount for hits, that reduces over time.
-* There is a cap for the number of points gained by hiting targets
+* (done) There is a cap for the number of points gained by hiting targets in freePlay
 * A bonus part of the score is based on hits / totalTargets
 * make a 0.7.1 png folder
 

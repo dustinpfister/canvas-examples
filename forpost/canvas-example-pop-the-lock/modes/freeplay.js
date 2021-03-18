@@ -20,9 +20,8 @@ gameMod.loadMode({
         hitPer = game.clickTrack.hits / game.clickTrack.total,
         missLoss = 1 - (1 / (game.missTrack.count + 1));
         hitPer = utils.isNaN(hitPer) ? 1 : hitPer;
-
-        //game.score = Math.floor( hits * hitPer * (1 - missLoss));
-        game.score = Math.floor(game.perHitScore);
+        var bonus = Math.floor( 100 * hitPer * (1 - missLoss)) * (game.clickTrack.total < 100 ? game.clickTrack.total / 100: 1);
+        game.score =  Math.floor(game.perHitScore + bonus);
     },
     onMiss: function(modeAPI,game){
         game.missTrack.count += 1;
