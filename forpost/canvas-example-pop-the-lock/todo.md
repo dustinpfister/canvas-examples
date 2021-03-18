@@ -34,17 +34,22 @@
 ## 0.8.0 - EXP and Skill Points
 * add a sm.exp prop
 * update sm.exp on each game over state once in the init method
-* Work out new expressions for scoring in each game mode
-* make sm.modeSettings an object that contains keys for each mode;
 
-## 0.7.3 - Power Up Targets in Endurance mode
+## 0.7.3 - Power Up targets, Next Heal bar, and Whole Number HP values in Endurance mode
 * have an additional power up target that will spawn between the current position and new target
 * hiting this additional power up target is optional, no score, hp loss or anything to that effect (however a hit miss will still apply)
 * hiting the powerup will restore i hp block
-
-## 0.7.2 - Next Heal bar, and Whole Number HP values in Endurance mode
-* start a new score object to be used in all game modes.
 * start a Main README.md for pop-the-lock
+* make sm.modeSettings an object that contains keys for each mode;
+* make a pkg 0.7.3 folder
+
+## 0.7.2 - Sorce Object in all modes
+* start a new standard score object to be used in all game modes.
+* update scoring in freePlay mode
+* update scoring in sudden death mode
+* update scoring in endurance mode
+* update scoring in classic mode
+* make a pkg 0.7.2 folder
 
 ## 0.7.1 - New Score System for freePlay mode
 * (done) New score system for freePlay mode where there is a base point amount for hits, that reduces over time.
