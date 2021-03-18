@@ -4,7 +4,7 @@ gameMod.loadMode({
         {
             key: 'perSec',
             disp: 'speed',
-            start: 10,
+            start: 35,
             range: [10, 100]
         }
     ],
@@ -20,7 +20,11 @@ gameMod.loadMode({
         hitPer = utils.isNaN(hitPer) ? 1 : hitPer;
 
         //game.score = Math.floor( hits * hitPer * (1 - missLoss));
-        game.score = hits;
+        var baseHitScore = hits;
+        if(hits > 100){
+            baseHitScore = Math.floor(100 + 100 * utils.getDimPer(hits, 0.125));
+        }
+        game.score = baseHitScore;
     },
     onMiss: function(modeAPI,game){
         game.missTrack.count += 1;

@@ -4,6 +4,11 @@ utils.noop = function(){};
 utils.isNaN = function (a) {
     return String(a) === 'NaN' && typeof a != 'string';
 };
+// get diminishing returns percent value for the given number and base
+utils.getDimPer = function(n, base){
+    base = base === undefined ? 2 : base;
+    return Math.log(base - (base - 1) * 1 / (n + 1), base) / Math.log(base, base);
+};
 // distance
 utils.distance = function (x1, y1, x2, y2) {
     return Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2));
