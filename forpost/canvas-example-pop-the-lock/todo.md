@@ -37,16 +37,23 @@
 * Work out new expressions for scoring in each game mode
 * make sm.modeSettings an object that contains keys for each mode;
 
-## 0.7.3 - Next Heal bar, and Whole Number HP values in Endurance mode
+## 0.7.3 - Power Up Targets in Endurance mode
+* have an additional power up target that will spawn between the current position and new target
+* hiting this additional power up target is optional, no score, hp loss or anything to that effect (however a hit miss will still apply)
+* hiting the powerup will restore i hp block
 
-## 0.7.2 - Power Up Targets in Endurance mode
+## 0.7.2 - Next Heal bar, and Whole Number HP values in Endurance mode
 
-## 0.7.1 - new Score System for freePlay mode
+## 0.7.1 - New Score System for freePlay mode
 * (done) New score system for freePlay mode where there is a base point amount for hits, that reduces over time.
 * (done) There is a cap for the number of points gained by hiting targets in freePlay
 * (done) A bonus part of the score is based on hits / totalTargets
+
 * additional score part based on speed setting for freePlay
+
 * start a new score object to be used in all game modes.
+* start a Main README.md for pop-the-lock
+
 * make a 0.7.1 png folder
 
 ## 0.7.0 - Game Mode Choice and ModeSettings Object
