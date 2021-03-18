@@ -22,7 +22,7 @@ gameMod.loadMode({
         hitPer = utils.isNaN(hitPer) ? 1 : hitPer;
 
         //game.score = Math.floor( hits * hitPer * (1 - missLoss));
-        game.score = game.perHitScore;
+        game.score = Math.floor(game.perHitScore);
     },
     onMiss: function(modeAPI,game){
         game.missTrack.count += 1;
@@ -34,6 +34,7 @@ gameMod.loadMode({
            var perHitScoreDelta = (1 - utils.getDimPer(hits, 0.125)) * 10;
            game.perHitScore += perHitScoreDelta;
            game.perHitScore = Number( game.perHitScore.toFixed(2) );
+           game.perHitScore = game.perHitScore >= 100 ? 100: game.perHitScore;
         }
 
     }
