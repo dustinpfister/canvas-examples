@@ -14,13 +14,17 @@ gameMod.loadMode({
         game.win = true;
         game.score = 0;
         game.perHitScore = 0;
+        // base bonus effect by speed setting
+        game.baseBonus = 100 + Math.round(300  * ((modeSettings.perSec - 10) / (100 - 10)));
+        console.log( game.baseBonus );
     },
     update: function(modeAPI, game){
         var hits = game.clickTrack.hits,
-        hitPer = game.clickTrack.hits / game.clickTrack.total,
+        total = game.clickTrack.total,
+        hitPer = game.clickTrack.hits / total,
         missLoss = 1 - (1 / (game.missTrack.count + 1));
         hitPer = utils.isNaN(hitPer) ? 1 : hitPer;
-        var bonus = Math.floor( 100 * hitPer * (1 - missLoss)) * (game.clickTrack.total < 100 ? game.clickTrack.total / 100: 1);
+        var bonus = Math.floor( game.baseBonus * hitPer * (1 - missLoss)) * (total < 100 ? total / 100: 1);
         game.score =  Math.floor(game.perHitScore + bonus);
     },
     onMiss: function(modeAPI,game){

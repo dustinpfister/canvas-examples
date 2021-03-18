@@ -43,18 +43,15 @@
 * hiting the powerup will restore i hp block
 
 ## 0.7.2 - Next Heal bar, and Whole Number HP values in Endurance mode
+* start a new score object to be used in all game modes.
+* start a Main README.md for pop-the-lock
 
 ## 0.7.1 - New Score System for freePlay mode
 * (done) New score system for freePlay mode where there is a base point amount for hits, that reduces over time.
 * (done) There is a cap for the number of points gained by hiting targets in freePlay
 * (done) A bonus part of the score is based on hits / totalTargets
-
-* additional score part based on speed setting for freePlay
-
-* start a new score object to be used in all game modes.
-* start a Main README.md for pop-the-lock
-
-* make a 0.7.1 png folder
+* (done) additional score part based on speed setting for freePlay
+* (done - 03/18/2021) make a 0.7.1 pkg folder
 
 ## 0.7.0 - Game Mode Choice and ModeSettings Object
 * (done) have a Game Mode state to which the player enters from the title state
