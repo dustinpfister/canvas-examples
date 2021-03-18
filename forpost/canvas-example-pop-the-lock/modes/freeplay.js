@@ -12,6 +12,8 @@ gameMod.loadMode({
         game.hp.active = false;
         game.deg.perSec = modeSettings.perSec || 10;
         game.win = true;
+        game.score = 0;
+        game.perHitScore = 0;
     },
     update: function(modeAPI, game){
         var hits = game.clickTrack.hits,
@@ -20,11 +22,7 @@ gameMod.loadMode({
         hitPer = utils.isNaN(hitPer) ? 1 : hitPer;
 
         //game.score = Math.floor( hits * hitPer * (1 - missLoss));
-        var baseHitScore = hits;
-        if(hits > 100){
-            baseHitScore = Math.floor(100 + 100 * utils.getDimPer(hits, 0.125));
-        }
-        game.score = baseHitScore;
+        game.score = game.perHitScore;
     },
     onMiss: function(modeAPI,game){
         game.missTrack.count += 1;
@@ -32,6 +30,11 @@ gameMod.loadMode({
     onClick: function(modeAPI, game){
         if (game.inRange) {
            game.deg.target = modeAPI.newTarget(game);
+           var hits = game.clickTrack.hits;
+           var perHitScoreDelta = (1 - utils.getDimPer(hits, 0.125)) * 10;
+           game.perHitScore += perHitScoreDelta;
+           game.perHitScore = Number( game.perHitScore.toFixed(2) );
         }
+
     }
 });
