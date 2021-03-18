@@ -3,8 +3,6 @@
 ## 1.x.x - Address issue with cx in pool.js
 * have a obj.cx and obj.cy prop in pool.js that will be the center point of a display object
 * make all changes needed in pool.js, main.js, and draw.js
-## 1.x.x - Next Heal bar, and Whole Number HP values in Endurance mode
-## 1.x.x - Power Up Targets in Endurance mode
 ## 1.x.0 - Support for up to 10 Settings for game modes
 ## 1.x.0 - Transistion Animations for things other than buttons
 ## 1.x.0 - New object pool for non button display objects
@@ -38,6 +36,16 @@
 * update sm.exp on each game over state once in the init method
 * Work out new expressions for scoring in each game mode
 * make sm.modeSettings an object that contains keys for each mode;
+
+## 0.7.3 - Next Heal bar, and Whole Number HP values in Endurance mode
+
+## 0.7.2 - Power Up Targets in Endurance mode
+
+## 0.7.1 - new Score System for freePlay mode
+* New score system for freePlay mode where there is a base point amount for hits, that reduces over time.
+* There is a cap for the number of points gained by hiting targets
+* A bonus part of the score is based on hits / totalTargets
+* make a 0.7.1 png folder
 
 ## 0.7.0 - Game Mode Choice and ModeSettings Object
 * (done) have a Game Mode state to which the player enters from the title state
