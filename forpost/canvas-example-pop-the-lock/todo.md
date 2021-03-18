@@ -4,25 +4,22 @@
 * have a obj.cx and obj.cy prop in pool.js that will be the center point of a display object
 * make all changes needed in pool.js, main.js, and draw.js
 ## 1.x.0 - Support for up to 10 Settings for game modes
-## 1.x.0 - Transistion Animations for things other than buttons
-## 1.x.0 - New object pool for non button display objects
 ## 1.x.0 - new /lib/buttons.js
 ## 1.x.0 - new /lib/statemachine.js
-## 1.x.0 - Mode folders, draw.js for each mode
-* in the modes folder have a folder for each mode
-* each javaScript file for each mode such as freeplay.js can become /modes/freeplay/gamemode.js
-* each mode can have its own draw.js file, used by the main draw.js file \( /modes/freeplay/draw.js \)
-* have a README.md for each mode
-* have a todo.md for each mode
 
-## 0.10.0 - Game Save Manager State
+
+## 1.3.0 - EXP and Skill Points
+* add a sm.exp prop
+* update sm.exp on each game over state once in the init method
+
+## 1.2.0 - Game Save Manager State
 * can have more than one save state
 * can create and start a new game
 * can load any save state
 * can copy a save state
 * can delete a save state
 
-## 0.9.0 - Options State
+## 1.1.0 - Options State
 * frame rate setting that can help to reduce cpu use, or increase prefromance
 * res setting
 * more than one theme
@@ -31,15 +28,26 @@
 * can turn animations on and off
 * can trun debug mode on and off
 
-## 0.8.0 - EXP and Skill Points
-* add a sm.exp prop
-* update sm.exp on each game over state once in the init method
+## 1.0.2 - Transistion Animations for things other than buttons
+
+## 1.0.1 - New object pool for non button display objects
+
+## 1.0.0 - Draw methods in mode files
+* in the modes folder have a folder for each mode
+* each javaScript file for each mode such as freeplay.js can become /modes/freeplay/gamemode.js
+* have a README.md for each mode
+* have a todo.md for each mode
+* each mode javaScript file has a draw method
+* each mode javaScript has a background property that can be a color, or a function that will return a color, gradiant, or canvas
+* use mode backgrounds for each mode in gameMode state
+* use the game mode background in game mode
+* use game mode draw method to draw each pop the lock
+* start a Main README.md for pop-the-lock
 
 ## 0.7.3 - Power Up targets, Next Heal bar, and Whole Number HP values in Endurance mode
 * have an additional power up target that will spawn between the current position and new target
 * hiting this additional power up target is optional, no score, hp loss or anything to that effect (however a hit miss will still apply)
 * hiting the powerup will restore i hp block
-* start a Main README.md for pop-the-lock
 * make sm.modeSettings an object that contains keys for each mode;
 * make a pkg 0.7.3 folder
 
@@ -180,4 +188,4 @@
 ## 0.0.0 - Basic idea
 * (done) Basic idea working
 * (done) display ver
-* (done - 2019/11/26) make a 0.0.0 pkg folder
+* (done - 11/26/2019) make a 0.0.0 pkg folder
