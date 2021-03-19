@@ -75,8 +75,16 @@ var draw = (function(){
     // public api
     var api = {};
     // create and return a gradient
-    api.createGradient = function(ctx, canvas){
-        var gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+    api.createGradient = function(ctx, canvas, per){
+        per = per === undefined ? 0.125 : per;
+        var bigSize = Math.max.apply(null, [canvas.width, canvas.height]),
+        radius = bigSize / 2,
+        radian = Math.PI * 2 * per,
+        sx = canvas.width / 2 + Math.cos(radian) * radius,
+        sy = canvas.height / 2 + Math.sin(radian) * radius,
+        ex = canvas.width / 2 + Math.cos(radian + Math.PI) * radius,
+        ey = canvas.height / 2 + Math.sin(radian + Math.PI) * radius,
+        gradient = ctx.createLinearGradient(sx, sy, ex, ey);
         // Add color stops
         gradient.addColorStop(0, 'red');
         gradient.addColorStop(0.2, 'orange');
