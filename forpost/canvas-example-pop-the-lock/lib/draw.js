@@ -74,6 +74,19 @@ var draw = (function(){
     };
     // public api
     var api = {};
+    // create and return a gradient
+    api.createGradient = function(ctx, canvas){
+        var gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+        // Add color stops
+        gradient.addColorStop(0, 'red');
+        gradient.addColorStop(0.2, 'orange');
+        gradient.addColorStop(0.4, 'yellow');
+        gradient.addColorStop(0.6, 'blue');
+        gradient.addColorStop(0.8, 'cyan');
+        gradient.addColorStop(1, 'lime');
+        return gradient;
+    };
+    // plain background method
     api.background = function(ctx, canvas, style){
         ctx.globalAlpha = 1;
         ctx.fillStyle = style || 'black';

@@ -46,7 +46,8 @@ gameMod.loadMode({
     // not used by game.js, but used in draw.js
     background: 'gray',
     createBackground: function(sm, mode){
-        return 'blue';
+        var gradient = draw.createGradient(sm.ctx, sm.canvas);
+        return gradient;
     },
     draw: function(ctx, canvas, sm){
         draw.PTL(ctx, canvas, sm.game);
