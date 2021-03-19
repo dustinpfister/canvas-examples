@@ -11,7 +11,6 @@
     ctx = canvasObj.ctx;
 
     // BUTTON OBJECT POOL
-    //var buttonPool = poolMod.create({
     var createButtonPool = function(count){
         return poolMod.create({
             count: count || 20,
@@ -74,7 +73,7 @@
         },
         states: {},
         buttons: createButtonPool(20),
-        dispObjects: null,
+        dispObjects: createButtonPool(2),
         background: 'blue'
     };
     // change the current state and set up a 'in' transition for the new state
@@ -118,6 +117,7 @@
         init: function (sm) {
             // set all button object to inactive
             poolMod.setActiveStateForAll(sm.buttons, false);
+            poolMod.setActiveStateForAll(sm.dispObjects, false);
             // to gameMode state
             poolMod.spawn(sm.buttons, sm, {
                 action: 'start_state_gameMode',
@@ -140,17 +140,30 @@
                 dist: sm.canvas.width - 128,
                 heading: 0
             });
+            // title display Object
+            poolMod.spawn(sm.dispObjects, sm, {
+                action: '',
+                disp: 'Pop The Lock',
+                sx: sm.canvas.width * 1.5 * -1,
+                sy: 16,
+                w: 512,
+                h: 128,
+                dist: sm.canvas.width * 1.6,
+                heading: 0
+            });
             // setup a background
             sm.background = draw.createGradient(sm.ctx, sm.canvas, 0.75, [[0,'#cc0000'],[0.25,'purple'],[1,'cyan']]);
         },
         trans: function (sm, secs) {
             poolMod.update(sm.buttons, secs, sm);
+            poolMod.update(sm.dispObjects, secs, sm);
         },
         update: function (sm, secs) {},
         draw: function (sm, ctx, canvas) {
             draw.background(ctx, canvas, sm.background);
-            draw.text_title(ctx, canvas, sm);
+            //draw.text_title(ctx, canvas, sm);
             draw.pool(ctx, sm.buttons);
+            draw.pool(ctx, sm.dispObjects);
         },
         click: function (sm, pos, e) {
             var button = poolMod.getObjectAt(sm.buttons, pos.x, pos.y);
