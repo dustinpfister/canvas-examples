@@ -42,19 +42,29 @@
 * can turn animations on and off
 * can trun debug mode on and off
 
-## 1.0.5 - /states folder
+## 1.0.4 - /states folder
+* have each state object in main.js as a file in the new /states folder
+* Make a pkg 1.0.3 folder
 
-## 1.0.4 - Modes folders
+## 1.0.3 - Modes folders
 * In the modes folder have a folder for each mode
 * Each javaScript file for each mode such as freeplay.js can become /modes/freeplay/gamemode.js
 * Have a README.md for each mode
 * Have a todo.md for each mode
 
-## 1.0.3 - Pixmaps
+## 1.0.2 - Pixmaps
+* add pixmaps.js to the lib folder from canvas-example-animation-pixmaps
+* use a pixmap for the smaller circle
+* use a pixmap as a background feature of the PTL circle
+* make a pkg 1.0.2 folder
 
-## 1.0.2 - Transistion Animations for things other than buttons
-
-## 1.0.1 - New object pool for non button display objects
+## 1.0.1 - Use Object pool for things other than buttons
+* In the title state use a disp object for the title text
+* have the title text move in and out with buttons
+* In gameMode state have the current mode text be a disp object that moves with buttons
+* in game mode have the main PTL circle be a display object that will move in with buttons
+* In game over state have the game over text and score be a disp object and move in and out with buttons
+* make a pkg 1.0.1 folder
 
 ## 1.0.0 - Mode Draw methods started, and backgrounds
 * (done) Each mode javaScript file has a draw method
@@ -65,7 +75,7 @@
 * (done) Start a Main README.md for pop-the-lock
 * (done) Use game mode draw method to draw each pop the lock
 * (done) have an optional createBackground game mode method that will be called in the init method of states like gameMode.
-* Make a 1.0.0 pkg folder
+* (done - 03/19/2021) Make a 1.0.0 pkg folder
 
 ## 0.7.1 - New Score System for freePlay mode
 * (done) New score system for freePlay mode where there is a base point amount for hits, that reduces over time.
