@@ -139,12 +139,14 @@ var gameMod = (function(){
     };
     // load a game mode file
     api.loadMode = function(gameMode){
+        // props that should default to utils.noop
         ['init','update','onMiss','onClick', 'draw'].forEach(function(key){
             gameMode[key] = gameMode[key] || utils.noop;
         });
         gameMode.key = gameMode.key || 'nameMe-' + Object.keys(modes).length;
         gameMode.settings = gameMode.settings || [];
-        gameMode.background = gameMode.background || 'lime';
+        gameMode.background = gameMode.background || '#4a4a4a';
+        gameMode.createBackground = gameMode.createBackground || false;
         modes[gameMode.key] = gameMode;
         console.log(gameMode);
     };

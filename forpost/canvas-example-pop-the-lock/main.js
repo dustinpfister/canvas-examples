@@ -162,8 +162,12 @@
             poolMod.setActiveStateForAll(sm.buttons, false);
             // default to whatever key sm.gameModeIndex is for gameMode
             sm.gameMode = Object.keys(gameMod.modes)[sm.gameModeIndex];
+            var mode = gameMod.modes[sm.gameMode];
+            if(mode.createBackground){
+                mode.background = mode.createBackground(sm, mode);
+            }
             // create settings buttons
-            gameMod.modes[sm.gameMode].settings.forEach(function(setting, i){
+            mode.settings.forEach(function(setting, i){
                 var w = 64,
                 h = 64;
                 //sm.modeSettings[setting.key] = sm.modeSettings[setting.key] === undefined ? setting.start: sm.modeSettings[setting.key];
