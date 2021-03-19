@@ -46,11 +46,11 @@ gameMod.loadMode({
     // not used by game.js, but used in draw.js
     background: 'gray',
     createBackground: function(sm, mode){
-        var gradient = draw.createGradient(sm.ctx, sm.canvas);
+        var gradient = draw.createGradient(sm.ctx, sm.canvas, Math.random());
         return gradient;
     },
     draw: function(ctx, canvas, sm){
-        draw.PTL(ctx, canvas, sm.game);
+        draw.PTL(ctx, canvas, sm.game, 'black');
         draw.score(ctx, canvas, sm);
     }
 });

@@ -42,7 +42,13 @@
 * can turn animations on and off
 * can trun debug mode on and off
 
-## 1.0.4 - /states folder
+## 1.0.5 - /states folder
+
+## 1.0.4 - Modes folders
+* In the modes folder have a folder for each mode
+* Each javaScript file for each mode such as freeplay.js can become /modes/freeplay/gamemode.js
+* Have a README.md for each mode
+* Have a todo.md for each mode
 
 ## 1.0.3 - Pixmaps
 
@@ -59,12 +65,6 @@
 * (done) Start a Main README.md for pop-the-lock
 * (done) Use game mode draw method to draw each pop the lock
 * (done) have an optional createBackground game mode method that will be called in the init method of states like gameMode.
-
-* In the modes folder have a folder for each mode
-* Each javaScript file for each mode such as freeplay.js can become /modes/freeplay/gamemode.js
-* Have a README.md for each mode
-* Have a todo.md for each mode
-
 * Make a 1.0.0 pkg folder
 
 ## 0.7.1 - New Score System for freePlay mode

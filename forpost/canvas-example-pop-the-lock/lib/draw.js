@@ -34,8 +34,8 @@ var draw = (function(){
         ctx.textAlign = 'left';
     };
     // draw base circle
-    var baseCircle = function(ctx, canvas){
-        ctx.strokeStyle = 'white';
+    var baseCircle = function(ctx, canvas, style){
+        ctx.strokeStyle = style || 'white';
         ctx.lineWidth = 6;
         ctx.beginPath();
         ctx.arc(canvas.width / 2, canvas.height / 2, CIRCLE_RADIUS, 0, Math.PI * 2);
@@ -117,8 +117,8 @@ var draw = (function(){
         ctx.fillRect(0, 0, canvas.width, canvas.height);
     };
     // Pop The Lock
-    api.PTL = function (ctx, canvas, game) {
-        baseCircle(ctx, canvas);
+    api.PTL = function (ctx, canvas, game, circleStyle) {
+        baseCircle(ctx, canvas, circleStyle);
         targetRange(ctx, canvas, game);
         current_pos(ctx, canvas, game);
         hpBar(ctx, canvas, game);
