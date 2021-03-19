@@ -75,8 +75,17 @@ var draw = (function(){
     // public api
     var api = {};
     // create and return a gradient
-    api.createGradient = function(ctx, canvas, angelePer){
+    var default_stops = [
+        [0, 'red'],
+        [0.2, 'orange'],
+        [0.4, 'yellow'],
+        [0.6, 'blue'],
+        [0.8, 'cyan'],
+        [1, 'lime']
+    ];
+    api.createGradient = function(ctx, canvas, angelePer, stops){
         angelePer = angelePer === undefined ? 0.125 : angelePer;
+        stops = stops || default_stops;
         var size = Math.min.apply(null, [canvas.width, canvas.height]),
         radius = size / 2,
         radian = Math.PI * 2 * angelePer,
@@ -86,12 +95,9 @@ var draw = (function(){
         ey = canvas.height / 2 + Math.sin(radian + Math.PI) * radius,
         gradient = ctx.createLinearGradient(sx, sy, ex, ey);
         // Add color stops
-        gradient.addColorStop(0, 'red');
-        gradient.addColorStop(0.2, 'orange');
-        gradient.addColorStop(0.4, 'yellow');
-        gradient.addColorStop(0.6, 'blue');
-        gradient.addColorStop(0.8, 'cyan');
-        gradient.addColorStop(1, 'lime');
+        stops.forEach(function(st){
+            gradient.addColorStop.apply(gradient, st);
+        });
         return gradient;
     };
     // plain background method
