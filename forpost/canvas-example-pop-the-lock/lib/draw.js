@@ -177,7 +177,7 @@ var draw = (function(){
         ctx.fillText('v' + sm.ver, 5, canvas.height - 15);
     };
     // draw object pool
-    api.pool = function (ctx, pool) {
+    var drawPool = function (ctx, pool, globalDraw) {
         var i = pool.objects.length,
         obj;
         ctx.fillStyle = 'white';
@@ -187,6 +187,17 @@ var draw = (function(){
             obj = pool.objects[i];
             if (obj.active) {
                 ctx.save();
+                if(obj.data.draw){
+                    obj.data.draw(ctx, obj, i);
+                }else{
+                    globalDraw(ctx, obj, i);
+                }
+                ctx.restore();
+            }
+        }
+    };
+    api.pool = function (ctx, pool) {
+        drawPool(ctx, pool, function(ctx, obj, i){
                 ctx.fillStyle = obj.data.fill || 'white';
                 ctx.globalAlpha = obj.data.alpha || 1;
                 ctx.translate(obj.x, obj.y);
@@ -201,9 +212,7 @@ var draw = (function(){
                    ctx.textAlign = 'center';
                    ctx.fillText(obj.data.disp, obj.w / 2, obj.h / 2);
                 }
-                ctx.restore();
-            }
-        }
+        });
     };
     // info
     api.debugInfo = function(ctx, canvas, game){
