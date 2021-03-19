@@ -75,11 +75,11 @@ var draw = (function(){
     // public api
     var api = {};
     // create and return a gradient
-    api.createGradient = function(ctx, canvas, per){
-        per = per === undefined ? 0.125 : per;
-        var bigSize = Math.max.apply(null, [canvas.width, canvas.height]),
-        radius = bigSize / 2,
-        radian = Math.PI * 2 * per,
+    api.createGradient = function(ctx, canvas, angelePer){
+        angelePer = angelePer === undefined ? 0.125 : angelePer;
+        var size = Math.min.apply(null, [canvas.width, canvas.height]),
+        radius = size / 2,
+        radian = Math.PI * 2 * angelePer,
         sx = canvas.width / 2 + Math.cos(radian) * radius,
         sy = canvas.height / 2 + Math.sin(radian) * radius,
         ex = canvas.width / 2 + Math.cos(radian + Math.PI) * radius,
