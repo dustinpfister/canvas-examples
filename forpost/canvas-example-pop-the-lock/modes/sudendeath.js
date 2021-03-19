@@ -39,5 +39,9 @@ gameMod.loadMode({
         }else{
             game.gameOver = true;
         }
+    },
+    draw: function(ctx, canvas, sm){
+        draw.PTL(ctx, canvas, sm.game);
+        draw.score(ctx, canvas, sm);
     }
 });

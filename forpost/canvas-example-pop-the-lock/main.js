@@ -333,8 +333,11 @@
         },
         draw: function (sm, ctx, canvas) {
             draw.backgroundMode(ctx, canvas, sm);
-            draw.PTL(ctx, canvas, sm.game);
-            draw.score(ctx, canvas, sm);
+
+            //draw.PTL(ctx, canvas, sm.game);
+            //draw.score(ctx, canvas, sm);
+            gameMod.modes[sm.gameMode].draw(ctx, canvas, sm);
+
             draw.pool(ctx, sm.buttons);
             if(sm.debugMode){
                 draw.debugInfo(ctx, canvas, sm.game);

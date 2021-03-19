@@ -45,4 +45,8 @@ gameMod.loadMode({
     },
     // not used by game.js, but used in draw.js
     background: 'gray',
+    draw: function(ctx, canvas, sm){
+        draw.PTL(ctx, canvas, sm.game);
+        draw.score(ctx, canvas, sm);
+    }
 });

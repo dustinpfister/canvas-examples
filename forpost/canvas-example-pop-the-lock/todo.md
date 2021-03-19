@@ -63,8 +63,9 @@
 * (done) Use mode backgrounds for each mode in gameMode state
 * (done) Use the game mode background in game mode
 * (done) Start a Main README.md for pop-the-lock
-* Use game mode draw method to draw each pop the lock
 
+
+* Use game mode draw method to draw each pop the lock
 * Make a 1.0.0 pkg folder
 
 ## 0.7.1 - New Score System for freePlay mode

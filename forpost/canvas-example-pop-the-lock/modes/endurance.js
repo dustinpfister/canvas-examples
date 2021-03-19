@@ -50,5 +50,9 @@ gameMod.loadMode({
         }else{
             game.hp.current -= 1;
         }
+    },
+    draw: function(ctx, canvas, sm){
+        draw.PTL(ctx, canvas, sm.game);
+        draw.score(ctx, canvas, sm);
     }
 });
