@@ -170,9 +170,9 @@ var draw = (function(){
     };
     // version
     api.ver = function(ctx, canvas, sm){
-        ctx.fillStyle = 'white';
+        ctx.fillStyle = 'black';
         ctx.textBaseline = 'top';
-        ctx.font='10px arial';
+        ctx.font='15px arial';
         ctx.textAlign = 'left';
         ctx.fillText('v' + sm.ver, 5, canvas.height - 15);
     };

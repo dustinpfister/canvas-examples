@@ -58,8 +58,7 @@
 * (done) Use the game mode background in game mode
 * (done) Start a Main README.md for pop-the-lock
 * (done) Use game mode draw method to draw each pop the lock
-
-* have an optional createBackground game mode method that will be called in the init method of states like gameMode.
+* (done) have an optional createBackground game mode method that will be called in the init method of states like gameMode.
 
 * In the modes folder have a folder for each mode
 * Each javaScript file for each mode such as freeplay.js can become /modes/freeplay/gamemode.js

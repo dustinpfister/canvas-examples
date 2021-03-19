@@ -148,7 +148,6 @@ var gameMod = (function(){
         gameMode.background = gameMode.background || '#4a4a4a';
         gameMode.createBackground = gameMode.createBackground || false;
         modes[gameMode.key] = gameMode;
-        console.log(gameMode);
     };
     // return public api
     return api;

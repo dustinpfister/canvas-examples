@@ -69,7 +69,8 @@
             onDone: utils.noop
         },
         states: {},
-        buttons: buttonPool
+        buttons: buttonPool,
+        background: 'blue'
     };
     // change the current state and set up a 'in' transition for the new state
     var changeState = function (sm, stateKey) {
@@ -132,13 +133,14 @@
                 dist: sm.canvas.width - 128,
                 heading: 0
             });
+            sm.background = draw.createGradient(sm.ctx, sm.canvas, 0.75, [[0,'#cc0000'],[0.25,'purple'],[1,'cyan']]);
         },
         trans: function (sm, secs) {
             poolMod.update(sm.buttons, secs, sm);
         },
         update: function (sm, secs) {},
         draw: function (sm, ctx, canvas) {
-            draw.background(ctx, canvas, 'black');
+            draw.background(ctx, canvas, sm.background);
             draw.text_title(ctx, canvas, sm);
             draw.pool(ctx, sm.buttons);
         },
