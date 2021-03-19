@@ -51,6 +51,11 @@ gameMod.loadMode({
             game.hp.current -= 1;
         }
     },
+    // Draw
+    createBackground: function(sm, mode){
+        var gradient = draw.createGradient(sm.ctx, sm.canvas, 0.625, [[0,'black'],[1,'lime']]);
+        return gradient;
+    },
     draw: function(ctx, canvas, sm){
         draw.PTL(ctx, canvas, sm.game);
         draw.score(ctx, canvas, sm);
