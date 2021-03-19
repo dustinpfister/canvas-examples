@@ -61,9 +61,10 @@
 * (done) gameMod.load will fill undefined props with noop
 * (done) Each mode javaScript can have a background property that can be a color
 * (done) Use mode backgrounds for each mode in gameMode state
-* Use the game mode background in game mode
-* Use game mode draw method to draw each pop the lock
+* (done) Use the game mode background in game mode
 * (done) Start a Main README.md for pop-the-lock
+* Use game mode draw method to draw each pop the lock
+
 * Make a 1.0.0 pkg folder
 
 ## 0.7.1 - New Score System for freePlay mode

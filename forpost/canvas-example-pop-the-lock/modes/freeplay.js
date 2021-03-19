@@ -1,5 +1,7 @@
 gameMod.loadMode({
+    // each game mode should have a key
     key: 'freePlay',
+    // gameMode state settings for modeSettings object
     settings:[
         {
             key: 'perSec',
@@ -8,7 +10,7 @@ gameMod.loadMode({
             range: [10, 100]
         }
     ],
-    background: 'gray',
+    // what to do each time a new game object is created in gameMod.create
     init: function(modeAPI, game, modeSettings){
         game.hp.active = false;
         game.deg.perSec = modeSettings.perSec || 10;
@@ -40,6 +42,7 @@ gameMod.loadMode({
            game.perHitScore = Number( game.perHitScore.toFixed(2) );
            game.perHitScore = game.perHitScore >= 100 ? 100: game.perHitScore;
         }
-
-    }
+    },
+    // not used by game.js, but used in draw.js
+    background: 'gray',
 });
