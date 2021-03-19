@@ -59,8 +59,8 @@
 ## 1.0.0 - Mode Draw methods 
 * (done) Each mode javaScript file has a draw method
 * (done) gameMod.load will fill undefined props with noop
-* Each mode javaScript has a background property that can be a color, or a function that will return a color, gradiant, or canvas
-* Use mode backgrounds for each mode in gameMode state
+* (done) Each mode javaScript can have a background property that can be a color
+* (done) Use mode backgrounds for each mode in gameMode state
 * Use the game mode background in game mode
 * Use game mode draw method to draw each pop the lock
 * (done) Start a Main README.md for pop-the-lock
