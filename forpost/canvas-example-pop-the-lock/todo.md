@@ -1,12 +1,26 @@
 
 
-## 1.x.x - Address issue with cx in pool.js
+## 1.3.x - Address issue with cx in pool.js
 * have a obj.cx and obj.cy prop in pool.js that will be the center point of a display object
 * make all changes needed in pool.js, main.js, and draw.js
-## 1.x.0 - Support for up to 10 Settings for game modes
-## 1.x.0 - new /lib/buttons.js
-## 1.x.0 - new /lib/statemachine.js
+## 1.3.x - Support for up to 10 Settings for game modes
+## 1.3.x - new /lib/buttons.js
+## 1.3.x - new /lib/statemachine.js
 
+## 1.3.x - Power Up targets, Next Heal bar, and Whole Number HP values in Endurance mode
+* have an additional power up target that will spawn between the current position and new target
+* hiting this additional power up target is optional, no score, hp loss or anything to that effect (however a hit miss will still apply)
+* hiting the powerup will restore i hp block
+* make sm.modeSettings an object that contains keys for each mode;
+* make a pkg 0.7.3 folder
+
+## 1.3.1 - Score Object in all modes
+* start a new standard score object to be used in all game modes.
+* update scoring in freePlay mode
+* update scoring in sudden death mode
+* update scoring in endurance mode
+* update scoring in classic mode
+* make a pkg 0.7.2 folder
 
 ## 1.3.0 - EXP and Skill Points
 * add a sm.exp prop
@@ -28,36 +42,29 @@
 * can turn animations on and off
 * can trun debug mode on and off
 
-## 1.0.2 - Transistion Animations for things other than buttons
+## 1.0.5 - /states folder
 
-## 1.0.1 - New object pool for non button display objects
+## 1.0.4 - Pixmaps
 
-## 1.0.0 - Draw methods in mode files
-* in the modes folder have a folder for each mode
-* each javaScript file for each mode such as freeplay.js can become /modes/freeplay/gamemode.js
-* have a README.md for each mode
-* have a todo.md for each mode
-* each mode javaScript file has a draw method
-* each mode javaScript has a background property that can be a color, or a function that will return a color, gradiant, or canvas
-* use mode backgrounds for each mode in gameMode state
-* use the game mode background in game mode
-* use game mode draw method to draw each pop the lock
-* start a Main README.md for pop-the-lock
+## 1.0.3 - Transistion Animations for things other than buttons
 
-## 0.7.3 - Power Up targets, Next Heal bar, and Whole Number HP values in Endurance mode
-* have an additional power up target that will spawn between the current position and new target
-* hiting this additional power up target is optional, no score, hp loss or anything to that effect (however a hit miss will still apply)
-* hiting the powerup will restore i hp block
-* make sm.modeSettings an object that contains keys for each mode;
-* make a pkg 0.7.3 folder
+## 1.0.2 - New object pool for non button display objects
 
-## 0.7.2 - Sorce Object in all modes
-* start a new standard score object to be used in all game modes.
-* update scoring in freePlay mode
-* update scoring in sudden death mode
-* update scoring in endurance mode
-* update scoring in classic mode
-* make a pkg 0.7.2 folder
+## 1.0.1 - Mode Folders
+* In the modes folder have a folder for each mode
+* Each javaScript file for each mode such as freeplay.js can become /modes/freeplay/gamemode.js
+* Have a README.md for each mode
+* Have a todo.md for each mode
+
+## 1.0.0 - Mode Draw methods 
+* Each mode javaScript file has a draw method
+* gameMod.load will fill undefined props with noop
+* Each mode javaScript has a background property that can be a color, or a function that will return a color, gradiant, or canvas
+* Use mode backgrounds for each mode in gameMode state
+* Use the game mode background in game mode
+* Use game mode draw method to draw each pop the lock
+* Start a Main README.md for pop-the-lock
+* Make a 1.0.0 pkg folder
 
 ## 0.7.1 - New Score System for freePlay mode
 * (done) New score system for freePlay mode where there is a base point amount for hits, that reduces over time.

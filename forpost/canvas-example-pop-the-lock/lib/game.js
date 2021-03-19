@@ -139,7 +139,11 @@ var gameMod = (function(){
     };
     // load a game mode file
     api.loadMode = function(gameMode){
+        ['init','update','onMiss','onClick', 'draw'].forEach(function(key){
+            gameMode[key] = gameMode[key] || utils.noop;
+        });
         modes[gameMode.key] = gameMode;
+        console.log(gameMode);
     };
     // return public api
     return api;

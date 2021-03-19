@@ -1,6 +1,7 @@
 var utils = {};
 // no operation ref
 utils.noop = function(){};
+// is NaN method
 utils.isNaN = function (a) {
     return String(a) === 'NaN' && typeof a != 'string';
 };
@@ -13,6 +14,7 @@ utils.getDimPer = function(n, base){
 utils.distance = function (x1, y1, x2, y2) {
     return Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2));
 };
+// bounding box
 utils.boundingBox = function (x1, y1, w1, h1, x2, y2, w2, h2) {
     return !(
         (y1 + h1) < y2 ||
@@ -30,6 +32,7 @@ utils.clampPer = function (per) {
     per = per < 0 ? 0 : per;
     return per;
 };
+// get a random number between the given range
 utils.randomRange = function(a, b){
     var x = a, y = b;
     if(typeof a === 'object'){
