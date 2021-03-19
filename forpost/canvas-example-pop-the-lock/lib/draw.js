@@ -74,8 +74,13 @@ var draw = (function(){
     };
     // public api
     var api = {};
+    api.background = function(ctx, canvas, style){
+        ctx.globalAlpha = 1;
+        ctx.fillStyle = style || 'black';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+    };
     // background
-    api.background = function(ctx, canvas, sm){
+    api.backgroundMode = function(ctx, canvas, sm){
         ctx.globalAlpha = 1;
         ctx.fillStyle = 'black';
         if(sm.currentState == 'game' || sm.currentState == 'gameMode' || sm.currentState == 'gameOver'){

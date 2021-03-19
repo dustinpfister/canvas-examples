@@ -138,6 +138,7 @@
         },
         update: function (sm, secs) {},
         draw: function (sm, ctx, canvas) {
+            draw.background(ctx, canvas, 'black');
             draw.text_title(ctx, canvas, sm);
             draw.pool(ctx, sm.buttons);
         },
@@ -249,6 +250,7 @@
         },
         update: function (sm, secs) {},
         draw: function (sm, ctx, canvas) {
+            draw.backgroundMode(ctx, canvas, sm);
             ctx.fillStyle = 'white';
             ctx.textBaseline = 'top';
             ctx.textAlign = 'left';
@@ -330,6 +332,7 @@
             }
         },
         draw: function (sm, ctx, canvas) {
+            draw.backgroundMode(ctx, canvas, sm);
             draw.PTL(ctx, canvas, sm.game);
             draw.score(ctx, canvas, sm);
             draw.pool(ctx, sm.buttons);
@@ -380,8 +383,9 @@
         update: function (sm, secs) {
         },
         draw: function (sm, ctx, canvas) {
+            draw.backgroundMode(ctx, canvas, sm);
             draw.PTL(ctx, canvas, sm.game);
-            //draw.background(ctx, canvas, 'rgba(0,0,0,0.8)');
+            draw.background(ctx, canvas, 'rgba(0,0,0,0.8)');
             draw.text_gameover(ctx, canvas, sm);
             draw.pool(ctx, sm.buttons);
         },
@@ -408,9 +412,10 @@
         secs = (now - sm.lt) / 1000;
         requestAnimationFrame(loop);
         updateState(sm, secs);
-        draw.background(ctx, canvas, sm);
+
         sm.states[sm.currentState].draw(sm, ctx, canvas);
         draw.ver(ctx, canvas, sm);
+
         sm.lt = now;
     };
     loop();
