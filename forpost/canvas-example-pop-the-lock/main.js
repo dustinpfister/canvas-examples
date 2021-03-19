@@ -149,7 +149,10 @@
                 w: 512,
                 h: 128,
                 dist: sm.canvas.width * 1.6,
-                heading: 0
+                heading: 0,
+                //draw: function(ctx){
+                //    ctx.fillText('pop the lock', 32, 32);
+                //}
             });
             // setup a background
             sm.background = draw.createGradient(sm.ctx, sm.canvas, 0.75, [[0,'#cc0000'],[0.25,'purple'],[1,'cyan']]);
