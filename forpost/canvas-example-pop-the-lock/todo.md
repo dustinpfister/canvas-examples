@@ -56,7 +56,7 @@
 
 ## 1.0.1 - New object pool for non button display objects
 
-## 1.0.0 - Mode Draw methods 
+## 1.0.0 - Mode Draw methods started, and backgrounds
 * (done) Each mode javaScript file has a draw method
 * (done) gameMod.load will fill undefined props with noop
 * (done) Each mode javaScript can have a background property that can be a color

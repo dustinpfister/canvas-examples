@@ -2,8 +2,8 @@
 ../lib/pool.js
 ../lib/game.js
 ../modes/freeplay.js
-../modes/endurance.js
 ../modes/sudendeath.js
 ../modes/classic.js
+../modes/endurance.js
 ../lib/draw.js
 ../main.js
