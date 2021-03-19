@@ -75,9 +75,15 @@ var draw = (function(){
     // public api
     var api = {};
     // background
-    api.background = function(ctx, canvas, style){
+    api.background = function(ctx, canvas, sm){
         ctx.globalAlpha = 1;
-        ctx.fillStyle = style || 'black';
+        ctx.fillStyle = 'black';
+        if(sm.currentState == 'game' || sm.currentState == 'gameMode' || sm.currentState == 'gameOver'){
+            var mode = gameMod.modes[sm.gameMode];
+            if(mode){
+                ctx.fillStyle = mode.background;
+            }
+        }
         ctx.fillRect(0, 0, canvas.width, canvas.height);
     };
     // Pop The Lock
