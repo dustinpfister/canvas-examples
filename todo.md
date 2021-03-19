@@ -2,13 +2,13 @@
 
 ## 03/28/21 to 04/03/21
 * update image-loader with new create cnavas method
-* pop-the-lock at v0.8.0+
+* pop-the-lock at v0.1.3+
 
 ## 03/21/21 to 03/27/21
-* pop-the-lock at at v0.7.3+
+* pop-the-lock at at v1.2+
+* mr-sun at v0.11.0
 
 ## 03/14/21 to 03/20/21
-* mr-sun at v0.11.0
 * object-pool at v0.5.0+
 * (done) update mr-sun-temp at 0.5.1
 * (done) update mr-sun-geo at 0.3.1

@@ -59,6 +59,7 @@
 * make a pkg 1.0.2 folder
 
 ## 1.0.1 - Use Object pool for things other than buttons
+* createButtonPool helper in main
 * In the title state use a disp object for the title text
 * have the title text move in and out with buttons
 * In gameMode state have the current mode text be a disp object that moves with buttons

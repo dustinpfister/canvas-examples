@@ -11,8 +11,10 @@
     ctx = canvasObj.ctx;
 
     // BUTTON OBJECT POOL
-    var buttonPool = poolMod.create({
-            count: 20,
+    //var buttonPool = poolMod.create({
+    var createButtonPool = function(count){
+        return poolMod.create({
+            count: count || 20,
             maxSecs: 0.25,
             spawn: function (obj, pool, sm, opt) {
                 // just ref opt for the data object
@@ -37,6 +39,8 @@
                 obj.lifespan = Infinity; // keep setting lifespan to 1
             }
         });
+    };
+    // get a button by id
     var getButtonById = function(buttonPool, id){
         var result = buttonPool.objects.filter(function(button){
             return button.active && button.data.id === id;
@@ -49,7 +53,7 @@
 
     // STATE MACHINE
     var sm = {
-        ver: '1.0.0',
+        ver: '1.0.1',
         appName: 'canvas-example-pop-the-lock',
         debugMode: false,
         canvas: canvas,
@@ -69,7 +73,8 @@
             onDone: utils.noop
         },
         states: {},
-        buttons: buttonPool,
+        buttons: createButtonPool(20),
+        dispObjects: null,
         background: 'blue'
     };
     // change the current state and set up a 'in' transition for the new state
@@ -113,6 +118,7 @@
         init: function (sm) {
             // set all button object to inactive
             poolMod.setActiveStateForAll(sm.buttons, false);
+            // to gameMode state
             poolMod.spawn(sm.buttons, sm, {
                 action: 'start_state_gameMode',
                 disp: 'Play',
@@ -123,6 +129,7 @@
                 dist: sm.canvas.width - 128,
                 heading: 0
             });
+            // link to website
             poolMod.spawn(sm.buttons, sm, {
                 action: 'goto_devsite_canvas_examples',
                 disp: 'More Games',
@@ -133,6 +140,7 @@
                 dist: sm.canvas.width - 128,
                 heading: 0
             });
+            // setup a background
             sm.background = draw.createGradient(sm.ctx, sm.canvas, 0.75, [[0,'#cc0000'],[0.25,'purple'],[1,'cyan']]);
         },
         trans: function (sm, secs) {
