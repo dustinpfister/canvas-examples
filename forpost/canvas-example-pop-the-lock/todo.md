@@ -57,13 +57,13 @@
 * Have a todo.md for each mode
 
 ## 1.0.0 - Mode Draw methods 
-* Each mode javaScript file has a draw method
-* gameMod.load will fill undefined props with noop
+* (done) Each mode javaScript file has a draw method
+* (done) gameMod.load will fill undefined props with noop
 * Each mode javaScript has a background property that can be a color, or a function that will return a color, gradiant, or canvas
 * Use mode backgrounds for each mode in gameMode state
 * Use the game mode background in game mode
 * Use game mode draw method to draw each pop the lock
-* Start a Main README.md for pop-the-lock
+* (done) Start a Main README.md for pop-the-lock
 * Make a 1.0.0 pkg folder
 
 ## 0.7.1 - New Score System for freePlay mode

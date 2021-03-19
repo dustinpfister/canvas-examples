@@ -8,6 +8,7 @@ gameMod.loadMode({
             range: [10, 100]
         }
     ],
+    background: 'gray',
     init: function(modeAPI, game, modeSettings){
         game.hp.active = false;
         game.deg.perSec = modeSettings.perSec || 10;
