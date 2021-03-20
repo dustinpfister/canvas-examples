@@ -40,19 +40,19 @@
         });
     };
     // a spawn button helper
-    var spawnButton = function(sm, homePos, actionString, dispText, angle, poolKey){
+    var spawnButton = function(sm, bx, actionString, dispText, angle, poolKey){
         poolKey = poolKey === undefined ? 'buttons' : poolKey;
         angle = angle === undefined ? Math.PI * 0.5 : angle;
-        var sx = homePos.x + Math.cos(angle) * sm.canvas.width,
-        sy = homePos.y + Math.sin(angle) * sm.canvas.width;
-        poolMod.spawn(sm[poolKey], sm, {
+        var sx = bx.x + Math.cos(angle) * sm.canvas.width,
+        sy = bx.y + Math.sin(angle) * sm.canvas.width;
+        return poolMod.spawn(sm[poolKey], sm, {
             action: actionString,
             disp: dispText,
             sx: sx, //sm.canvas.width * 0.5 * -1,
             sy: sy, //sm.canvas.height * 0.4,
-            w: 256,
-            h: 64,
-            dist: utils.distance(homePos.x, homePos.y, sx, sy), //sm.canvas.width - 128,
+            w: bx.w || 256,
+            h: bx.h || 64,
+            dist: utils.distance(bx.x, bx.y, sx, sy), //sm.canvas.width - 128,
             heading: utils.mod(angle + Math.PI, Math.PI * 2)
         });
     };
@@ -188,6 +188,11 @@
     };
 
     // GAME MODE STATE
+    var spawnSettingsButton = function(sm, setting, bx, actionString, dispText, angle, poolKey){
+        var button = spawnButton(sm, bx, actionString, dispText, angle, poolKey);
+        button.data.setting = setting;
+        return button;
+    };
     sm.states.gameMode = {
         init: function (sm) {
             poolMod.setActiveStateForAll(sm.buttons, false);
@@ -199,11 +204,11 @@
             }
             // create settings buttons
             mode.settings.forEach(function(setting, i){
-                var w = 64,
-                h = 64;
-                //sm.modeSettings[setting.key] = sm.modeSettings[setting.key] === undefined ? setting.start: sm.modeSettings[setting.key];
+
+                // set modeSettings object to Settings for current game Mode
                 sm.modeSettings[setting.key] = setting.start;
                 // down button
+/*
                 poolMod.spawn(sm.buttons, sm, {
                     action: 'set_modesettingDown_' + setting.key,
                     setting: setting,
@@ -215,6 +220,14 @@
                     dist: sm.canvas.height * 1.25 + (h / 2),
                     heading: Math.PI * 1.5
                 });
+*/
+                var w = 64,
+                h = 64,
+                x = 8,
+                y = 64 + 64 * i;
+                spawnSettingsButton(sm, setting, {x: x, y: y, w: w, h : h}, 'set_modesettingDown_' + setting.key, '-');
+
+
                 // up button
                 poolMod.spawn(sm.buttons, sm, {
                     action: 'set_modesettingUp_' + setting.key,
@@ -310,6 +323,7 @@
                 }
                 var parts = button.data.action.split('_');
                 if(parts[0] === 'set'){
+                    console.log('hello');
                     if(parts[1] === 'modesettingUp'){
                          var modeProp = sm.modeSettings[parts[2]],
                          settingObj = button.data.setting,

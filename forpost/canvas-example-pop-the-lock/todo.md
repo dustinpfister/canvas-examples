@@ -63,8 +63,8 @@
 * (done) In the title state use a disp object for the title text
 * (done) get draw method for title text disp object working
 * (done) have the title text move in and out with buttons
-
-* Make a spawnButton helper in main.js
+* (done) Make a spawnButton helper in main.js
+* use spawnButton helper for all Buttons in main.js
 
 * In gameMode state have the current mode text be a disp object that moves with buttons
 * In game state have the main PTL circle be a display object that will move in with buttons
