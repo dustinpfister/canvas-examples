@@ -144,15 +144,18 @@
             poolMod.spawn(sm.dispObjects, sm, {
                 action: '',
                 disp: 'Pop The Lock',
-                sx: sm.canvas.width * 1.5 * -1,
-                sy: 16,
+                sx: sm.canvas.width * 1.7 * 1,
+                sy: 8,
                 w: 512,
-                h: 128,
+                h: 64,
                 dist: sm.canvas.width * 1.6,
-                heading: 0,
-                //draw: function(ctx){
-                //    ctx.fillText('pop the lock', 32, 32);
-                //}
+                heading: Math.PI,
+                draw: function(ctx, obj){
+                    ctx.font = '50px arial';
+                    ctx.textBaseline = 'middle	';
+                    ctx.textAlign = 'center';
+                    ctx.fillText('Pop The Lock', obj.x + obj.w / 2, obj.y + obj.h / 2);
+                }
             });
             // setup a background
             sm.background = draw.createGradient(sm.ctx, sm.canvas, 0.75, [[0,'#cc0000'],[0.25,'purple'],[1,'cyan']]);
