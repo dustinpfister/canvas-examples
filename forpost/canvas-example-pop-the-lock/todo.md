@@ -44,18 +44,26 @@
 
 ## 1.0.4 - /states folder
 * have each state object in main.js as a file in the new /states folder
-* Make a pkg 1.0.3 folder
+
+* just have an action prop for buttons that will also work as an id
+* make the start of an action string for buttons created with the spawnSettingsButton standard
+* append the key at the end in the spawnSettingsButton helper
+* just pass strings like 'up', 'down', and 'current' for the action string argument in spawnSettingsButton.
+* rename getButtonById to getButtonByAction if I am just going to have one.
+* Make a pkg 1.0.4 folder
 
 ## 1.0.3 - Modes folders
 * In the modes folder have a folder for each mode
 * Each javaScript file for each mode such as freeplay.js can become /modes/freeplay/gamemode.js
 * Have a README.md for each mode
 * Have a todo.md for each mode
+* Make a pkg 1.0.3 folder
 
 ## 1.0.2 - Pixmaps
 * add pixmaps.js to the lib folder from canvas-example-animation-pixmaps
 * use a pixmap for the smaller circle
 * use a pixmap as a background feature of the PTL circle
+* have a spawnDispObj helper
 * make a pkg 1.0.2 folder
 
 ## 1.0.1 - Use Object pool for things other than buttons
@@ -67,18 +75,10 @@
 * (done) using a new spawnSettingsButton helper in gameMode state
 * (done) use spawnButton helper for all Buttons in main.js
 * (done) setting active flag to fale for all object pools in changeState helper
-
-* In gameMode state have the current mode text be a disp object that moves with buttons
+* (done) In gameMode state have the current mode text be a disp object that moves with buttons
+* (done) In game state have the main PTL circle area be a display object that will move in with buttons
 
 * In gameOver state have the game over text and score be a disp object and move in and out with buttons
-* In game state have the main PTL circle be a display object that will move in with buttons
-
-
-* just have an action prop for buttons that will also work as an id
-* make the start of an action string for buttons created with the spawnSettingsButton standard
-* append the key at the end in the spawnSettingsButton helper
-* just pass strings like 'up', 'down', and 'current' for the action string argument in spawnSettingsButton.
-* rename getButtonById to getButtonByAction if I am just going to have one.
 
 * Make a pkg 1.0.1 folder
 

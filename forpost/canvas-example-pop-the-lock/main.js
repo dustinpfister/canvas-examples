@@ -228,7 +228,7 @@
             // back to title
             w = 125;
             spawnButton(sm, {x: canvas.width - 150, y: 32, w: w, h: h}, 'start_title', 'Title');
-            // title display Object
+            // current mode display Object
             var disp = spawnButton(sm, {x: 8, y: 8, w: 200, h: 32}, 'dispobj_currentMode', sm.gameMode, 0, 'dispObjects');
             disp.data.draw = function(ctx, obj){
                 ctx.fillStyle = 'white';
@@ -245,11 +245,6 @@
         update: function (sm, secs) {},
         draw: function (sm, ctx, canvas) {
             draw.backgroundMode(ctx, canvas, sm);
-            //ctx.fillStyle = 'white';
-            //ctx.textBaseline = 'top';
-            //ctx.textAlign = 'left';
-            //ctx.font='50px arial';
-            //ctx.fillText(sm.gameMode, 10, 10);
             draw.pool(ctx, sm.buttons);
             draw.pool(ctx, sm.dispObjects);
         },
@@ -299,6 +294,16 @@
         init: function (sm) {
             // Quit Button
             spawnButton(sm, {x: canvas.width - 72, y: 8, w: 64, h: 64}, 'set_state_gameover', 'Quit', 0);
+
+            // current mode display Object
+            var disp = spawnButton(sm, {x: 0, y: 0, w: canvas.width, h: canvas.height}, 'dispobj_ptl', sm.gameMode, 0, 'dispObjects');
+            disp.data.draw = function(ctx, obj){
+                ctx.save();
+                ctx.translate(obj.x, obj.y);
+                gameMod.modes[sm.gameMode].draw(ctx, canvas, sm);
+                ctx.restore();
+            };
+
             // create a new game object
             sm.game = gameMod.create({
                mode: sm.gameMode,
@@ -307,6 +312,7 @@
         },
         trans: function (sm, secs) {
             poolMod.update(sm.buttons, secs, sm);
+            poolMod.update(sm.dispObjects, secs, sm);
         },
         update: function (sm, secs) {
             gameMod.update(sm.game, secs);
@@ -316,8 +322,9 @@
         },
         draw: function (sm, ctx, canvas) {
             draw.backgroundMode(ctx, canvas, sm);
-            gameMod.modes[sm.gameMode].draw(ctx, canvas, sm);
+            //gameMod.modes[sm.gameMode].draw(ctx, canvas, sm);
             draw.pool(ctx, sm.buttons);
+            draw.pool(ctx, sm.dispObjects);
             if(sm.debugMode){
                 draw.debugInfo(ctx, canvas, sm.game);
             }
@@ -356,7 +363,7 @@
         },
         draw: function (sm, ctx, canvas) {
             draw.backgroundMode(ctx, canvas, sm);
-            draw.PTL(ctx, canvas, sm.game);
+            //draw.PTL(ctx, canvas, sm.game);
             draw.background(ctx, canvas, 'rgba(0,0,0,0.8)');
             draw.text_gameover(ctx, canvas, sm);
             draw.pool(ctx, sm.buttons);
