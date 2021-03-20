@@ -199,10 +199,10 @@
             if(mode.createBackground){
                 mode.background = mode.createBackground(sm, mode);
             }
+            // ref mode settings object in sm.modeSettingsCollection
+            sm.modeSettings = sm.modeSettingsCollection[sm.gameMode];
             // create settings buttons
             mode.settings.forEach(function(setting, i){
-                // set modeSettings object to Settings for current game Mode
-                sm.modeSettings[setting.key] = setting.start;
                 // down button
                 var w = 64,
                 h = 64,
@@ -304,6 +304,8 @@
                 gameMod.modes[sm.gameMode].draw(ctx, canvas, sm);
                 ctx.restore();
             };
+
+            console.log(sm.modeSettings);
 
             // create a new game object
             sm.game = gameMod.create({
