@@ -57,9 +57,9 @@
         });
     };
     // get a button by id
-    var getButtonById = function(buttonPool, id){
+    var getButtonByAction = function(buttonPool, action){
         var result = buttonPool.objects.filter(function(button){
-            return button.active && button.data.id === id;
+            return button.active && button.data.action === action;
         });
         if(result.length >= 1){
             return result[0];
@@ -211,11 +211,10 @@
                 spawnSettingsButton(sm, setting, {x: x + w * 5, y: y, w: w, h : h}, 'set_modesettingUp_' + setting.key, '+');
                 // setting disp
                 w = 64 * 4;
-                var button = spawnSettingsButton(sm, setting, 
+                spawnSettingsButton(sm, setting, 
                   {x: x + 64 * 1, y: y, w: w, h : h}, 
-                  '', 
+                  'setting_disp_' + setting.key, 
                    setting.disp + ' ' + sm.modeSettings[setting.key]);
-                button.data.id = 'setting_disp_' + setting.key;
             });
             // next mode button
             var w = 64,
@@ -264,14 +263,13 @@
                 }
                 var parts = button.data.action.split('_');
                 if(parts[0] === 'set'){
-                    console.log('hello');
                     if(parts[1] === 'modesettingUp'){
                          var modeProp = sm.modeSettings[parts[2]],
                          settingObj = button.data.setting,
                          range = settingObj.range;
                          modeProp += 1;
                          sm.modeSettings[parts[2]] = modeProp > range[1] ? range[0]: modeProp;
-                         var dispButton = getButtonById(sm.buttons, 'setting_disp_' + settingObj.key);
+                         var dispButton = getButtonByAction(sm.buttons, 'setting_disp_' + settingObj.key);
                          dispButton.data.disp = settingObj.disp + ' ' + sm.modeSettings[parts[2]];
                          
                     }
@@ -281,7 +279,7 @@
                          range = settingObj.range;
                          modeProp -= 1;
                          sm.modeSettings[parts[2]] = modeProp < range[0] ? range[1]: modeProp;
-                         var dispButton = getButtonById(sm.buttons, 'setting_disp_' + settingObj.key);
+                         var dispButton = getButtonByAction(sm.buttons, 'setting_disp_' + settingObj.key);
                          dispButton.data.disp = settingObj.disp + ' ' + sm.modeSettings[parts[2]];
                     }
                 }
