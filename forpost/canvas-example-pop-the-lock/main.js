@@ -297,18 +297,7 @@
         init: function (sm) {
             poolMod.setActiveStateForAll(sm.buttons, false);
             // Quit Button
-            var margin = 10;
-            poolMod.spawn(sm.buttons, sm, {
-                action: 'set_state_gameover',
-                disp: 'Quit',
-                sx: sm.canvas.width + 80,
-                sy: margin,
-                dist: 160 + margin,
-                heading: Math.PI,
-                rev: false,
-                w: 80,
-                h: 80
-            });
+            spawnButton(sm, {x: canvas.width - 72, y: 8, w: 64, h: 64}, 'set_state_gameover', 'Quit', 0);
             // create a new game object
             sm.game = gameMod.create({
                mode: sm.gameMode,
@@ -326,11 +315,7 @@
         },
         draw: function (sm, ctx, canvas) {
             draw.backgroundMode(ctx, canvas, sm);
-
-            //draw.PTL(ctx, canvas, sm.game);
-            //draw.score(ctx, canvas, sm);
             gameMod.modes[sm.gameMode].draw(ctx, canvas, sm);
-
             draw.pool(ctx, sm.buttons);
             if(sm.debugMode){
                 draw.debugInfo(ctx, canvas, sm.game);
