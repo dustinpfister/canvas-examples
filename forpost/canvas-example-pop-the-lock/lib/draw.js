@@ -8,7 +8,7 @@ var draw = (function(){
     };
     var text_title_center = function(ctx){
         text_base_center(ctx);
-        ctx.font='75px arial';
+        ctx.font='50px arial';
     };
     var text_big_center = function(ctx){
         text_base_center(ctx);
@@ -152,9 +152,9 @@ var draw = (function(){
         }
     };
     // draw title text
-    api.text_title = function(ctx, canvas){
+    api.text_title = function(ctx, canvas, obj){
         text_title_center(ctx);
-        ctx.fillText('Pop The Lock', canvas.width / 2, canvas.height * 0.125);
+        ctx.fillText('Pop The Lock', obj.x + obj.w / 2, obj.y + obj.h / 2 );
     };
     // draw game over text
     api.text_gameover = function(ctx, canvas, sm){

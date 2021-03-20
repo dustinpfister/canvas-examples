@@ -147,14 +147,15 @@
                 sx: sm.canvas.width * 1.7 * 1,
                 sy: 8,
                 w: 512,
-                h: 64,
+                h: 128,
                 dist: sm.canvas.width * 1.6,
                 heading: Math.PI,
                 draw: function(ctx, obj){
-                    ctx.font = '50px arial';
-                    ctx.textBaseline = 'middle	';
-                    ctx.textAlign = 'center';
-                    ctx.fillText('Pop The Lock', obj.x + obj.w / 2, obj.y + obj.h / 2);
+                    draw.text_title(ctx, sm.canvas, obj);
+                    //ctx.font = '50px arial';
+                    //ctx.textBaseline = 'middle';
+                    //ctx.textAlign = 'center';
+                    //ctx.fillText('Pop The Lock', obj.x + obj.w / 2, obj.y + obj.h / 2);
                 }
             });
             // setup a background
