@@ -66,10 +66,13 @@
 * (done) Make a spawnButton helper in main.js
 * (done) using a new spawnSettingsButton helper in gameMode state
 * (done) use spawnButton helper for all Buttons in main.js
+* (done) setting active flag to fale for all object pools in changeState helper
+
+* In gameMode state have the current mode text be a disp object that moves with buttons
 
 * In gameOver state have the game over text and score be a disp object and move in and out with buttons
 * In game state have the main PTL circle be a display object that will move in with buttons
-* In gameMode state have the current mode text be a disp object that moves with buttons
+
 
 * just have an action prop for buttons that will also work as an id
 * make the start of an action string for buttons created with the spawnSettingsButton standard

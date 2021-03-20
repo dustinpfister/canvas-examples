@@ -144,7 +144,7 @@
 
             // title display Object
             poolMod.spawn(sm.dispObjects, sm, {
-                action: '',
+                action: 'dispobj_title',
                 disp: 'Pop The Lock',
                 sx: sm.canvas.width * 1.7 * 1,
                 sy: 8,
@@ -228,19 +228,30 @@
             // back to title
             w = 125;
             spawnButton(sm, {x: canvas.width - 150, y: 32, w: w, h: h}, 'start_title', 'Title');
+            // title display Object
+            var disp = spawnButton(sm, {x: 8, y: 8, w: 200, h: 32}, 'dispobj_currentMode', sm.gameMode, 0, 'dispObjects');
+            disp.data.draw = function(ctx, obj){
+                ctx.fillStyle = 'white';
+                ctx.textBaseline = 'top';
+                ctx.textAlign = 'left';
+                ctx.font='50px arial';
+                ctx.fillText(obj.data.disp, obj.x, obj.y);
+            };
         },
         trans: function (sm, secs) {
             poolMod.update(sm.buttons, secs, sm);
+            poolMod.update(sm.dispObjects, secs, sm);
         },
         update: function (sm, secs) {},
         draw: function (sm, ctx, canvas) {
             draw.backgroundMode(ctx, canvas, sm);
-            ctx.fillStyle = 'white';
-            ctx.textBaseline = 'top';
-            ctx.textAlign = 'left';
-            ctx.font='50px arial';
-            ctx.fillText(sm.gameMode, 10, 10);
+            //ctx.fillStyle = 'white';
+            //ctx.textBaseline = 'top';
+            //ctx.textAlign = 'left';
+            //ctx.font='50px arial';
+            //ctx.fillText(sm.gameMode, 10, 10);
             draw.pool(ctx, sm.buttons);
+            draw.pool(ctx, sm.dispObjects);
         },
         click: function (sm, pos, e) {
             var button = poolMod.getObjectAt(sm.buttons, pos.x, pos.y);
