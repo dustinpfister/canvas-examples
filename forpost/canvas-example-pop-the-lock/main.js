@@ -99,6 +99,10 @@
         sm.trans.active = true;
         sm.trans.inState = true;
         sm.trans.secs = 0;
+        // reset pools
+        poolMod.setActiveStateForAll(sm.buttons, false);
+        poolMod.setActiveStateForAll(sm.dispObjects, false);
+        // call init method for the new state
         sm.states[sm.currentState].init(sm);
     };
     // start a 'out' transition to a state change
@@ -132,10 +136,7 @@
     // TITLE STATE
     sm.states.title = {
         init: function (sm) {
-            // set all button object to inactive
-            poolMod.setActiveStateForAll(sm.buttons, false);
-            poolMod.setActiveStateForAll(sm.dispObjects, false);
-            // to gameMode state
+            // Buttons
             var x = sm.canvas.width / 2 - 128,
             y = sm.canvas.height / 2;
             spawnButton(sm, {x: x, y: y - 64}, 'start_state_gameMode', 'Play');
@@ -153,10 +154,6 @@
                 heading: Math.PI,
                 draw: function(ctx, obj){
                     draw.text_title(ctx, sm.canvas, obj);
-                    //ctx.font = '50px arial';
-                    //ctx.textBaseline = 'middle';
-                    //ctx.textAlign = 'center';
-                    //ctx.fillText('Pop The Lock', obj.x + obj.w / 2, obj.y + obj.h / 2);
                 }
             });
             // setup a background
@@ -169,7 +166,6 @@
         update: function (sm, secs) {},
         draw: function (sm, ctx, canvas) {
             draw.background(ctx, canvas, sm.background);
-            //draw.text_title(ctx, canvas, sm);
             draw.pool(ctx, sm.buttons);
             draw.pool(ctx, sm.dispObjects);
         },
@@ -195,7 +191,6 @@
     };
     sm.states.gameMode = {
         init: function (sm) {
-            poolMod.setActiveStateForAll(sm.buttons, false);
             // default to whatever key sm.gameModeIndex is for gameMode
             sm.gameMode = Object.keys(gameMod.modes)[sm.gameModeIndex];
             var mode = gameMod.modes[sm.gameMode];
@@ -291,7 +286,6 @@
     // GAME STATE
     sm.states.game = {
         init: function (sm) {
-            poolMod.setActiveStateForAll(sm.buttons, false);
             // Quit Button
             spawnButton(sm, {x: canvas.width - 72, y: 8, w: 64, h: 64}, 'set_state_gameover', 'Quit', 0);
             // create a new game object
@@ -332,7 +326,6 @@
     // GAME OVER STATE
     sm.states.gameOver = {
         init: function (sm) {
-            poolMod.setActiveStateForAll(sm.buttons, false);
             var dispText = ['Try Again', 'Settings', 'Title'];
             ['game', 'gameMode', 'title'].forEach(function(stateKey, i){
             var bx = {x: canvas.width - 176, y: canvas.height * 0.25 + 70 * i, w: 168, h: 64};
