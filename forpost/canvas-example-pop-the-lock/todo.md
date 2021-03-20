@@ -64,12 +64,14 @@
 * (done) get draw method for title text disp object working
 * (done) have the title text move in and out with buttons
 * (done) Make a spawnButton helper in main.js
-* (done) use spawnButton helper for all Buttons in main.js
+
 * (done) using a new spawnSettingsButton helper in gameMode state
 
-* In gameMode state have the current mode text be a disp object that moves with buttons
-* In game state have the main PTL circle be a display object that will move in with buttons
+* use spawnButton helper for all Buttons in main.js
+
 * In gameOver state have the game over text and score be a disp object and move in and out with buttons
+* In game state have the main PTL circle be a display object that will move in with buttons
+* In gameMode state have the current mode text be a disp object that moves with buttons
 
 * just have an action prop for buttons that will also work as an id
 * make the start of an action string for buttons created with the spawnSettingsButton standard

@@ -337,8 +337,11 @@
     sm.states.gameOver = {
         init: function (sm) {
             poolMod.setActiveStateForAll(sm.buttons, false);
-            var dispText = ['Title', 'Settings', 'Try Again'];
-            ['title', 'gameMode','game'].forEach(function(stateKey, i){
+            var dispText = ['Try Again', 'Settings', 'Title'];
+            ['game', 'gameMode', 'title'].forEach(function(stateKey, i){
+            var bx = {x: canvas.width - 176, y: canvas.height * 0.25 + 70 * i, w: 168, h: 64};
+            spawnButton(sm, bx, 'set_state_' + stateKey, dispText[i], 0);
+/*
                 poolMod.spawn(sm.buttons, sm, {
                     action: 'set_state_' + stateKey,
                     disp: dispText[i],
@@ -350,6 +353,7 @@
                     w: 256,
                     h: 64
                 });
+*/
             });
             // update any save that might be there
             var highScore = sm.highScores[sm.game.mode];
