@@ -40,17 +40,20 @@
         });
     };
     // a spawn button helper
-    var spawnButton = function(sm, actionString, dispText, poolKey){
+    var spawnButton = function(sm, homePos, actionString, dispText, angle, poolKey){
         poolKey = poolKey === undefined ? 'buttons' : poolKey;
+        angle = angle === undefined ? Math.PI * 0.5 : angle;
+        var sx = homePos.x + Math.cos(angle) * sm.canvas.width,
+        sy = homePos.y + Math.sin(angle) * sm.canvas.width;
         poolMod.spawn(sm[poolKey], sm, {
             action: actionString,
             disp: dispText,
-            sx: sm.canvas.width * 0.5 * -1,
-            sy: sm.canvas.height * 0.4,
+            sx: sx, //sm.canvas.width * 0.5 * -1,
+            sy: sy, //sm.canvas.height * 0.4,
             w: 256,
             h: 64,
-            dist: sm.canvas.width - 128,
-            heading: 0
+            dist: utils.distance(homePos.x, homePos.y, sx, sy), //sm.canvas.width - 128,
+            heading: utils.mod(angle + Math.PI, Math.PI * 2)
         });
     };
     // get a button by id
@@ -82,7 +85,7 @@
             active: true,
             inState: true,
             secs: 0,
-            secsTotal: 0.5,
+            secsTotal: 0.75,
             onDone: utils.noop
         },
         states: {},
@@ -133,27 +136,11 @@
             poolMod.setActiveStateForAll(sm.buttons, false);
             poolMod.setActiveStateForAll(sm.dispObjects, false);
             // to gameMode state
-            poolMod.spawn(sm.buttons, sm, {
-                action: 'start_state_gameMode',
-                disp: 'Play',
-                sx: sm.canvas.width * 0.5 * -1,
-                sy: sm.canvas.height * 0.4,
-                w: 256,
-                h: 64,
-                dist: sm.canvas.width - 128,
-                heading: 0
-            });
-            // link to website
-            poolMod.spawn(sm.buttons, sm, {
-                action: 'goto_devsite_canvas_examples',
-                disp: 'More Games',
-                sx: sm.canvas.width * 0.5 * -1,
-                sy: sm.canvas.height * 0.55,
-                w: 256,
-                h: 64,
-                dist: sm.canvas.width - 128,
-                heading: 0
-            });
+            var x = sm.canvas.width / 2 - 128,
+            y = sm.canvas.height / 2;
+            spawnButton(sm, {x: x, y: y - 64}, 'start_state_gameMode', 'Play');
+            spawnButton(sm, {x: x, y: y + 32}, 'goto_devsite_canvas_examples', 'More Games', Math.PI);
+
             // title display Object
             poolMod.spawn(sm.dispObjects, sm, {
                 action: '',
