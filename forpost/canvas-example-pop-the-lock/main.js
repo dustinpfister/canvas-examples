@@ -80,7 +80,8 @@
         currentState: 'title',
         gameModeIndex: 0,
         gameMode: '',
-        modeSettings: {},
+        modeSettingsCollection: {},
+        modeSettings: {}, // current modeSettingsObject in modeSettingsCollection
         trans: {
             active: true,
             inState: true,
@@ -391,11 +392,26 @@
     };
 
     // LOOP
+    // high scores
     var highScores = utils.load(sm.appName, '0');
     if(highScores){
         sm.highScores = highScores;
     }
+    // mode settings collection object
+    sm.modeSettingsCollection = {};
+    Object.keys(gameMod.modes).forEach(function(modeKey){
+        var mode = gameMod.modes[modeKey],
+        settings = {};
+        mode.settings.forEach(function(settingObj){
+            settings[settingObj.key] = settingObj.start;
+        });
+        sm.modeSettingsCollection[modeKey] = settings;
+    });
+    console.log('mode settings collection');
+    console.log(sm.modeSettingsCollection);
+    // start state
     changeState(sm, 'title');
+    // the loop
     var loop = function () {
         var now = new Date(),
         secs = (now - sm.lt) / 1000;

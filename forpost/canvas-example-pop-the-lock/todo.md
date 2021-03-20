@@ -11,7 +11,7 @@
 * have an additional power up target that will spawn between the current position and new target
 * hiting this additional power up target is optional, no score, hp loss or anything to that effect (however a hit miss will still apply)
 * hiting the powerup will restore i hp block
-* make sm.modeSettings an object that contains keys for each mode;
+
 * make a pkg 0.7.3 folder
 
 ## 1.3.1 - Score Object in all modes
@@ -57,7 +57,7 @@
 * add pixmaps.js to the lib folder from canvas-example-animation-pixmaps
 * use a pixmap for the smaller circle
 * use a pixmap as a background feature of the PTL circle
-* have a spawnDispObj helper
+
 * make a pkg 1.0.2 folder
 
 ## 1.0.1 - Use Object pool for things other than buttons
@@ -74,11 +74,13 @@
 * (done) In gameOver state have the game over text and score be a disp object and move in and out with buttons
 * (done) just have an action prop for buttons that will also work as an id
 * (done) rename getButtonById to getButtonByAction if I am just going to have one.
+* (done) make the start of an action string for buttons created with the spawnSettingsButton standard
+* (done) append the key at the end in the spawnSettingsButton helper
+* (done) just pass strings like 'up', 'down', and 'current' for the action string argument in spawnSettingsButton.
 
-* make the start of an action string for buttons created with the spawnSettingsButton standard
-* append the key at the end in the spawnSettingsButton helper
-* just pass strings like 'up', 'down', and 'current' for the action string argument in spawnSettingsButton.
+* have a spawnDispObj helper
 
+* make sm.modeSettingsArray an object that contains settings for each mode;
 
 * Make a pkg 1.0.1 folder
 
