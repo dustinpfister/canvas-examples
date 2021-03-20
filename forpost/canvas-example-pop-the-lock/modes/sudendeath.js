@@ -4,13 +4,13 @@ gameMod.loadMode({
         {
             key: 'perSecLower',
             disp: 'Start Speed',
-            start: 15,
+            start: 30,
             range: [10, 40]
         },
         {
             key: 'perSecHigher',
             disp: 'End Speed',
-            start: 85,
+            start: 80,
             range: [80, 100]
         }
     ],

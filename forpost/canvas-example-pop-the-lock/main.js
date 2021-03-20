@@ -293,10 +293,11 @@
     sm.states.game = {
         init: function (sm) {
             // Quit Button
-            spawnButton(sm, {x: canvas.width - 72, y: 8, w: 64, h: 64}, 'set_state_gameover', 'Quit', 0);
+            spawnButton(sm, {x: canvas.width - 72, y: 8, w: 64, h: 64}, 'set_state_gameover', 'Quit', Math.PI);
 
-            // current mode display Object
-            var disp = spawnButton(sm, {x: 0, y: 0, w: canvas.width, h: canvas.height}, 'dispobj_ptl', sm.gameMode, 0, 'dispObjects');
+            // PTL area display Object
+            var disp = spawnButton(sm, {x: 0, y: 0, w: canvas.width, h: canvas.height}, 
+                'dispobj_ptl', sm.gameMode, Math.PI * 1.5, 'dispObjects');
             disp.data.draw = function(ctx, obj){
                 ctx.save();
                 ctx.translate(obj.x, obj.y);
@@ -322,7 +323,6 @@
         },
         draw: function (sm, ctx, canvas) {
             draw.backgroundMode(ctx, canvas, sm);
-            //gameMod.modes[sm.gameMode].draw(ctx, canvas, sm);
             draw.pool(ctx, sm.buttons);
             draw.pool(ctx, sm.dispObjects);
             if(sm.debugMode){
@@ -344,11 +344,21 @@
     // GAME OVER STATE
     sm.states.gameOver = {
         init: function (sm) {
+            // option buttons
             var dispText = ['Try Again', 'Settings', 'Title'];
             ['game', 'gameMode', 'title'].forEach(function(stateKey, i){
             var bx = {x: canvas.width - 176, y: canvas.height * 0.25 + 70 * i, w: 168, h: 64};
                 spawnButton(sm, bx, 'set_state_' + stateKey, dispText[i], 0);
             });
+            // Game Over text area display Object
+            var disp = spawnButton(sm, {x: 0, y: 0, w: canvas.width, h: canvas.height}, 
+                'dispobj_gameOver', sm.gameMode, Math.PI * 0.5, 'dispObjects');
+            disp.data.draw = function(ctx, obj){
+                ctx.save();
+                ctx.translate(obj.x, obj.y);
+                draw.text_gameover(ctx, canvas, sm);
+                ctx.restore();
+            };
             // update any save that might be there
             var highScore = sm.highScores[sm.game.mode];
             if(!highScore || highScore < sm.game.score){
@@ -358,15 +368,16 @@
         },
         trans: function (sm, secs) {
             poolMod.update(sm.buttons, secs, sm);
+            poolMod.update(sm.dispObjects, secs, sm);
         },
         update: function (sm, secs) {
         },
         draw: function (sm, ctx, canvas) {
             draw.backgroundMode(ctx, canvas, sm);
-            //draw.PTL(ctx, canvas, sm.game);
             draw.background(ctx, canvas, 'rgba(0,0,0,0.8)');
-            draw.text_gameover(ctx, canvas, sm);
+            //draw.text_gameover(ctx, canvas, sm);
             draw.pool(ctx, sm.buttons);
+            draw.pool(ctx, sm.dispObjects);
         },
         click: function (sm, pos, e) {
             var button = poolMod.getObjectAt(sm.buttons, pos.x, pos.y);
