@@ -184,7 +184,8 @@
     };
 
     // GAME MODE STATE
-    var spawnSettingsButton = function(sm, setting, bx, actionString, dispText, angle, poolKey){
+    var spawnSettingsButton = function(sm, setting, bx, actionStringPart, dispText, angle, poolKey){
+        var actionString = 'set_modesetting_' + actionStringPart + '_' + setting.key;
         var button = spawnButton(sm, bx, actionString, dispText, angle, poolKey);
         button.data.setting = setting;
         return button;
@@ -207,13 +208,13 @@
                 x = 8,
                 y = 64 + 64 * i;
                 // + / -
-                spawnSettingsButton(sm, setting, {x: x, y: y, w: w, h : h}, 'set_modesettingDown_' + setting.key, '-');
-                spawnSettingsButton(sm, setting, {x: x + w * 5, y: y, w: w, h : h}, 'set_modesettingUp_' + setting.key, '+');
+                spawnSettingsButton(sm, setting, {x: x, y: y, w: w, h : h}, 'down', '-');
+                spawnSettingsButton(sm, setting, {x: x + w * 5, y: y, w: w, h : h}, 'up', '+');
                 // setting disp
                 w = 64 * 4;
                 spawnSettingsButton(sm, setting, 
                   {x: x + 64 * 1, y: y, w: w, h : h}, 
-                  'setting_disp_' + setting.key, 
+                  'current', 
                    setting.disp + ' ' + sm.modeSettings[setting.key]);
             });
             // next mode button
@@ -263,24 +264,24 @@
                 }
                 var parts = button.data.action.split('_');
                 if(parts[0] === 'set'){
-                    if(parts[1] === 'modesettingUp'){
-                         var modeProp = sm.modeSettings[parts[2]],
+                    if(parts[2] === 'up'){
+                         var modeProp = sm.modeSettings[parts[3]],
                          settingObj = button.data.setting,
                          range = settingObj.range;
                          modeProp += 1;
-                         sm.modeSettings[parts[2]] = modeProp > range[1] ? range[0]: modeProp;
-                         var dispButton = getButtonByAction(sm.buttons, 'setting_disp_' + settingObj.key);
-                         dispButton.data.disp = settingObj.disp + ' ' + sm.modeSettings[parts[2]];
+                         sm.modeSettings[parts[3]] = modeProp > range[1] ? range[0]: modeProp;
+                         var dispButton = getButtonByAction(sm.buttons, 'set_modesetting_current_' + settingObj.key);
+                         dispButton.data.disp = settingObj.disp + ' ' + sm.modeSettings[parts[3]];
                          
                     }
-                    if(parts[1] === 'modesettingDown'){
-                         var modeProp = sm.modeSettings[parts[2]],
+                    if(parts[2] === 'down'){
+                         var modeProp = sm.modeSettings[parts[3]],
                          settingObj = button.data.setting,
                          range = settingObj.range;
                          modeProp -= 1;
-                         sm.modeSettings[parts[2]] = modeProp < range[0] ? range[1]: modeProp;
-                         var dispButton = getButtonByAction(sm.buttons, 'setting_disp_' + settingObj.key);
-                         dispButton.data.disp = settingObj.disp + ' ' + sm.modeSettings[parts[2]];
+                         sm.modeSettings[parts[3]] = modeProp < range[0] ? range[1]: modeProp;
+                         var dispButton = getButtonByAction(sm.buttons, 'set_modesetting_current_' + settingObj.key);
+                         dispButton.data.disp = settingObj.disp + ' ' + sm.modeSettings[parts[3]];
                     }
                 }
             }
