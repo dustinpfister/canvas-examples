@@ -225,40 +225,17 @@
             // next mode button
             var w = 64,
             h = 64;
-            poolMod.spawn(sm.buttons, sm, {
-                action: 'set_mode_next',
-                disp: 'Next',
-                sy: sm.canvas.height * 1.5,
-                sx: sm.canvas.width * 0.9 - (w / 2),
-                w: w,
-                h: h,
-                dist: sm.canvas.height * 1 + (h / 2),
-                heading: Math.PI * 1.5
-            });
+            spawnButton(sm, {x: canvas.width - 80, y: 200, w: w, h: h}, 'set_mode_next', 'Next');
+
             // start game button
             var w = 250,
             h = 64;
-            poolMod.spawn(sm.buttons, sm, {
-                action: 'start_game',
-                disp: 'Start Game',
-                sy: sm.canvas.height * 1.5,
-                sx: sm.canvas.width * 0.75 - (w / 2),
-                w: w,
-                h: h,
-                dist: sm.canvas.height * 0.70,
-                heading: Math.PI * 1.5
-            });
+            spawnButton(sm, {x: canvas.width - 275, y: canvas.height - 80, w: w, h: h}, 'start_game', 'Start');
+
+            // back to title
             w = 125;
-            poolMod.spawn(sm.buttons, sm, {
-                action: 'start_title',
-                disp: 'Title',
-                sy: sm.canvas.height * 1.5,
-                sx: sm.canvas.width * 0.85 - (w / 2),
-                w: w,
-                h: h,
-                dist: sm.canvas.height * 1.475,
-                heading: Math.PI * 1.5
-            });
+            spawnButton(sm, {x: canvas.width - 150, y: 32, w: w, h: h}, 'start_title', 'Title');
+
         },
         trans: function (sm, secs) {
             poolMod.update(sm.buttons, secs, sm);
