@@ -59,6 +59,7 @@
 * use a pixmap as a background feature of the PTL circle
 
 * make mode settings collection part of the save state
+* have a spawnDispObj helper
 
 * make a pkg 1.0.2 folder
 
@@ -80,12 +81,8 @@
 * (done) append the key at the end in the spawnSettingsButton helper
 * (done) just pass strings like 'up', 'down', and 'current' for the action string argument in spawnSettingsButton.
 * (done) make sm.modeSettingsCollection an object that contains settings for each mode;
-
-* setModeProp helper for gameMode state
-* have a spawnDispObj helper
-
-
-* Make a pkg 1.0.1 folder
+* (done) setModeProp helper for gameMode state
+* (done - 03/20/2021) Make a pkg 1.0.1 folder
 
 ## 1.0.0 - Mode Draw methods started, and backgrounds
 * (done) Each mode javaScript file has a draw method
