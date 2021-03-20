@@ -204,56 +204,23 @@
             }
             // create settings buttons
             mode.settings.forEach(function(setting, i){
-
                 // set modeSettings object to Settings for current game Mode
                 sm.modeSettings[setting.key] = setting.start;
                 // down button
-/*
-                poolMod.spawn(sm.buttons, sm, {
-                    action: 'set_modesettingDown_' + setting.key,
-                    setting: setting,
-                    disp: '-',
-                    sy: sm.canvas.height * 1.5 + h * i,
-                    sx: 10,
-                    w: w,
-                    h: h,
-                    dist: sm.canvas.height * 1.25 + (h / 2),
-                    heading: Math.PI * 1.5
-                });
-*/
                 var w = 64,
                 h = 64,
                 x = 8,
                 y = 64 + 64 * i;
+                // + / -
                 spawnSettingsButton(sm, setting, {x: x, y: y, w: w, h : h}, 'set_modesettingDown_' + setting.key, '-');
-
-
-                // up button
-                poolMod.spawn(sm.buttons, sm, {
-                    action: 'set_modesettingUp_' + setting.key,
-                    setting: setting,
-                    disp: '+',
-                    sy: sm.canvas.height * 1.5 + h * i,
-                    sx: 10 + w * 5,
-                    w: w,
-                    h: h,
-                    dist: sm.canvas.height * 1.25 + (h / 2),
-                    heading: Math.PI * 1.5
-                });
+                spawnSettingsButton(sm, setting, {x: x + w * 5, y: y, w: w, h : h}, 'set_modesettingUp_' + setting.key, '+');
                 // setting disp
                 w = 64 * 4;
-                poolMod.spawn(sm.buttons, sm, {
-                    id: 'setting_disp_' + setting.key,
-                    action: '',
-                    setting: setting,
-                    disp: setting.disp + ' ' + sm.modeSettings[setting.key],
-                    sy: sm.canvas.height * 1.5 + h * i,
-                    sx: 10 + 64 * 1,
-                    w: w,
-                    h: h,
-                    dist: sm.canvas.height * 1.25 + (h / 2),
-                    heading: Math.PI * 1.5
-                });
+                var button = spawnSettingsButton(sm, setting, 
+                  {x: x + 64 * 1, y: y, w: w, h : h}, 
+                  '', 
+                   setting.disp + ' ' + sm.modeSettings[setting.key]);
+                button.data.id = 'setting_disp_' + setting.key;
             });
             // next mode button
             var w = 64,
