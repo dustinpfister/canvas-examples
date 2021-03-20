@@ -226,16 +226,13 @@
             var w = 64,
             h = 64;
             spawnButton(sm, {x: canvas.width - 80, y: 200, w: w, h: h}, 'set_mode_next', 'Next');
-
             // start game button
             var w = 250,
             h = 64;
             spawnButton(sm, {x: canvas.width - 275, y: canvas.height - 80, w: w, h: h}, 'start_game', 'Start');
-
             // back to title
             w = 125;
             spawnButton(sm, {x: canvas.width - 150, y: 32, w: w, h: h}, 'start_title', 'Title');
-
         },
         trans: function (sm, secs) {
             poolMod.update(sm.buttons, secs, sm);
@@ -248,7 +245,6 @@
             ctx.textAlign = 'left';
             ctx.font='50px arial';
             ctx.fillText(sm.gameMode, 10, 10);
-            //ctx.font='10px arial';
             draw.pool(ctx, sm.buttons);
         },
         click: function (sm, pos, e) {
@@ -340,20 +336,7 @@
             var dispText = ['Try Again', 'Settings', 'Title'];
             ['game', 'gameMode', 'title'].forEach(function(stateKey, i){
             var bx = {x: canvas.width - 176, y: canvas.height * 0.25 + 70 * i, w: 168, h: 64};
-            spawnButton(sm, bx, 'set_state_' + stateKey, dispText[i], 0);
-/*
-                poolMod.spawn(sm.buttons, sm, {
-                    action: 'set_state_' + stateKey,
-                    disp: dispText[i],
-                    sx: sm.canvas.width,
-                    sy: sm.canvas.height * 0.75 - (64 + 20) * i ,
-                    dist: 256 + 20,
-                    heading: Math.PI,
-                    rev: false,
-                    w: 256,
-                    h: 64
-                });
-*/
+                spawnButton(sm, bx, 'set_state_' + stateKey, dispText[i], 0);
             });
             // update any save that might be there
             var highScore = sm.highScores[sm.game.mode];
