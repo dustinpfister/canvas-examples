@@ -61,12 +61,15 @@
 ## 1.0.1 - Use Object pool for things other than buttons
 * (done) createButtonPool helper in main
 * (done) In the title state use a disp object for the title text
-* get draw method for title text disp object working
-* have the title text move in and out with buttons
+* (done) get draw method for title text disp object working
+* (done) have the title text move in and out with buttons
+
+* Make a spawnButton helper in main.js
+
 * In gameMode state have the current mode text be a disp object that moves with buttons
-* in game mode have the main PTL circle be a display object that will move in with buttons
-* In game over state have the game over text and score be a disp object and move in and out with buttons
-* make a pkg 1.0.1 folder
+* In game state have the main PTL circle be a display object that will move in with buttons
+* In gameOver state have the game over text and score be a disp object and move in and out with buttons
+* Make a pkg 1.0.1 folder
 
 ## 1.0.0 - Mode Draw methods started, and backgrounds
 * (done) Each mode javaScript file has a draw method

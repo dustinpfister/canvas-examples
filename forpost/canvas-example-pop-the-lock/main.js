@@ -39,6 +39,20 @@
             }
         });
     };
+    // a spawn button helper
+    var spawnButton = function(sm, actionString, dispText, poolKey){
+        poolKey = poolKey === undefined ? 'buttons' : poolKey;
+        poolMod.spawn(sm[poolKey], sm, {
+            action: actionString,
+            disp: dispText,
+            sx: sm.canvas.width * 0.5 * -1,
+            sy: sm.canvas.height * 0.4,
+            w: 256,
+            h: 64,
+            dist: sm.canvas.width - 128,
+            heading: 0
+        });
+    };
     // get a button by id
     var getButtonById = function(buttonPool, id){
         var result = buttonPool.objects.filter(function(button){
