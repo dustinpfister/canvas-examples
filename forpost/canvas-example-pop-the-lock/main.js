@@ -191,6 +191,17 @@
         button.data.setting = setting;
         return button;
     };
+    // set mode prop helper
+    var setModeProp = function(sm, parts, button, dir){
+        var modeProp = sm.modeSettings[parts[3]],
+        settingObj = button.data.setting,
+        range = settingObj.range;
+        modeProp += 1 * dir;
+        sm.modeSettings[parts[3]] = modeProp > range[1] ? range[0]: modeProp;
+        sm.modeSettings[parts[3]] = modeProp < range[0] ? range[1]: modeProp;
+        var dispButton = getButtonByAction(sm.buttons, 'set_modesetting_current_' + settingObj.key);
+        dispButton.data.disp = settingObj.disp + ' ' + sm.modeSettings[parts[3]];
+    };
     sm.states.gameMode = {
         init: function (sm) {
             // default to whatever key sm.gameModeIndex is for gameMode
@@ -266,23 +277,10 @@
                 var parts = button.data.action.split('_');
                 if(parts[0] === 'set'){
                     if(parts[2] === 'up'){
-                         var modeProp = sm.modeSettings[parts[3]],
-                         settingObj = button.data.setting,
-                         range = settingObj.range;
-                         modeProp += 1;
-                         sm.modeSettings[parts[3]] = modeProp > range[1] ? range[0]: modeProp;
-                         var dispButton = getButtonByAction(sm.buttons, 'set_modesetting_current_' + settingObj.key);
-                         dispButton.data.disp = settingObj.disp + ' ' + sm.modeSettings[parts[3]];
-                         
+                        setModeProp(sm, parts, button, 1);
                     }
                     if(parts[2] === 'down'){
-                         var modeProp = sm.modeSettings[parts[3]],
-                         settingObj = button.data.setting,
-                         range = settingObj.range;
-                         modeProp -= 1;
-                         sm.modeSettings[parts[3]] = modeProp < range[0] ? range[1]: modeProp;
-                         var dispButton = getButtonByAction(sm.buttons, 'set_modesetting_current_' + settingObj.key);
-                         dispButton.data.disp = settingObj.disp + ' ' + sm.modeSettings[parts[3]];
+                        setModeProp(sm, parts, button, -1);
                     }
                 }
             }
@@ -294,7 +292,6 @@
         init: function (sm) {
             // Quit Button
             spawnButton(sm, {x: canvas.width - 72, y: 8, w: 64, h: 64}, 'set_state_gameover', 'Quit', Math.PI);
-
             // PTL area display Object
             var disp = spawnButton(sm, {x: 0, y: 0, w: canvas.width, h: canvas.height}, 
                 'dispobj_ptl', sm.gameMode, Math.PI * 1.5, 'dispObjects');
@@ -304,9 +301,6 @@
                 gameMod.modes[sm.gameMode].draw(ctx, canvas, sm);
                 ctx.restore();
             };
-
-            console.log(sm.modeSettings);
-
             // create a new game object
             sm.game = gameMod.create({
                mode: sm.gameMode,
@@ -409,8 +403,6 @@
         });
         sm.modeSettingsCollection[modeKey] = settings;
     });
-    console.log('mode settings collection');
-    console.log(sm.modeSettingsCollection);
     // start state
     changeState(sm, 'title');
     // the loop

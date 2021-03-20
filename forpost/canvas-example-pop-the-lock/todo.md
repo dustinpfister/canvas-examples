@@ -58,6 +58,8 @@
 * use a pixmap for the smaller circle
 * use a pixmap as a background feature of the PTL circle
 
+* make mode settings collection part of the save state
+
 * make a pkg 1.0.2 folder
 
 ## 1.0.1 - Use Object pool for things other than buttons
@@ -77,10 +79,11 @@
 * (done) make the start of an action string for buttons created with the spawnSettingsButton standard
 * (done) append the key at the end in the spawnSettingsButton helper
 * (done) just pass strings like 'up', 'down', and 'current' for the action string argument in spawnSettingsButton.
+* (done) make sm.modeSettingsCollection an object that contains settings for each mode;
 
+* setModeProp helper for gameMode state
 * have a spawnDispObj helper
 
-* make sm.modeSettingsArray an object that contains settings for each mode;
 
 * Make a pkg 1.0.1 folder
 
