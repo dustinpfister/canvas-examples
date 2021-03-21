@@ -69,9 +69,10 @@
 
     // STATE MACHINE
     var sm = {
-        ver: '1.0.1',
+        ver: '1.0.2',
         appName: 'canvas-example-pop-the-lock',
         debugMode: false,
+        pixmaps: pixmapMod.create(),
         canvas: canvas,
         ctx: ctx,
         game: {},
@@ -405,6 +406,7 @@
     });
     // start state
     changeState(sm, 'title');
+
     // the loop
     var loop = function () {
         var now = new Date(),

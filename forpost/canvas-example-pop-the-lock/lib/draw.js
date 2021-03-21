@@ -52,7 +52,7 @@ var draw = (function(){
         ctx.stroke();
     };
     // draw current position
-    var current_pos = function(ctx, canvas, game){
+    var current_pos = function(ctx, canvas, game, sm){
         ctx.strokeStyle = 'blue';
         ctx.beginPath();
         ctx.lineWidth = 6;
@@ -62,6 +62,15 @@ var draw = (function(){
         ctx.arc(x, y, 10, 0, Math.PI * 2);
         ctx.stroke();
         ctx.fill();
+    };
+    // draw current position
+    var current_pos_pixmap = function(ctx, canvas, game, sm){
+        var r = game.deg.current / game.deg.total * Math.PI * 2,
+        x = Math.cos(r) * CIRCLE_RADIUS + canvas.width / 2,
+        y = Math.sin(r) * CIRCLE_RADIUS + canvas.height / 2;
+        // ani test
+        var ani = sm.pixmaps['small_circle']['circle1'];
+        ani.draw(ctx, x - 16, y - 16, 32, 32);
     };
     var hpBar = function(ctx, canvas, game){
         if(game.hp.active){
@@ -121,6 +130,12 @@ var draw = (function(){
         baseCircle(ctx, canvas, circleStyle);
         targetRange(ctx, canvas, game);
         current_pos(ctx, canvas, game);
+        hpBar(ctx, canvas, game);
+    };
+    api.PTL_pixmap = function (ctx, canvas, game, sm) {
+        baseCircle(ctx, canvas);
+        targetRange(ctx, canvas, game);
+        current_pos_pixmap(ctx, canvas, game, sm);
         hpBar(ctx, canvas, game);
     };
     // score

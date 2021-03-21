@@ -1,5 +1,8 @@
 ../lib/utils.js
 ../lib/pool.js
+../lib/forframe.js
+../lib/pixmaps.js
+../pixmaps/small_circle.js
 ../lib/game.js
 ../modes/freeplay.js
 ../modes/sudendeath.js

@@ -65,7 +65,7 @@ gameMod.loadMode({
         return gradient;
     },
     draw: function(ctx, canvas, sm){
-        draw.PTL(ctx, canvas, sm.game);
+        draw.PTL_pixmap(ctx, canvas, sm.game, sm);
         draw.score(ctx, canvas, sm);
     }
 });

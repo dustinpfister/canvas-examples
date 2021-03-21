@@ -57,10 +57,8 @@
 * add pixmaps.js to the lib folder from canvas-example-animation-pixmaps
 * use a pixmap for the smaller circle
 * use a pixmap as a background feature of the PTL circle
-
 * make mode settings collection part of the save state
 * have a spawnDispObj helper
-
 * make a pkg 1.0.2 folder
 
 ## 1.0.1 - Use Object pool for things other than buttons
