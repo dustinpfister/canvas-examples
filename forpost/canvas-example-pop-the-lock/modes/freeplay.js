@@ -50,7 +50,10 @@ gameMod.loadMode({
         return gradient;
     },
     draw: function(ctx, canvas, sm){
-        draw.PTL_pixmap(ctx, sm, 'mrsun');
+        //draw.PTL_pixmap(ctx, sm, 'mrsun');
+        draw.baseCircle(ctx, sm.canvas, 'black');
+        draw.targetRange(ctx, sm.canvas, sm.game);
+        draw.current_pos_pixmap(ctx, sm, 'mrsun', 32, 1);
         draw.score(ctx, canvas, sm);
     }
 });

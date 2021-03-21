@@ -1,6 +1,7 @@
 var draw = (function(){
-
     var CIRCLE_RADIUS = 200;
+    // public api
+    var api = {};
     var text_base_center = function(ctx){
         ctx.fillStyle = 'white';
         ctx.textBaseline = 'middle';
@@ -34,7 +35,7 @@ var draw = (function(){
         ctx.textAlign = 'left';
     };
     // draw base circle
-    var baseCircle = function(ctx, canvas, style){
+    var baseCircle = api.baseCircle = function(ctx, canvas, style){
         ctx.strokeStyle = style || 'white';
         ctx.lineWidth = 6;
         ctx.beginPath();
@@ -42,7 +43,7 @@ var draw = (function(){
         ctx.stroke();
     };
     // draw target range
-    var targetRange = function(ctx, canvas, game){
+    var targetRange = api.targetRange = function(ctx, canvas, game){
         ctx.strokeStyle = 'red';
         ctx.beginPath();
         ctx.lineWidth = 8;
@@ -64,7 +65,7 @@ var draw = (function(){
         ctx.fill();
     };
     // draw current position
-    var current_pos_pixmap = function(ctx, sm, pixmapKey, size, frameIndex){
+    var current_pos_pixmap = api.current_pos_pixmap = function(ctx, sm, pixmapKey, size, frameIndex){
         var halfSize = size / 2,
         r = sm.game.deg.current / sm.game.deg.total * Math.PI * 2,
         x = Math.cos(r) * CIRCLE_RADIUS + sm.canvas.width / 2,
@@ -83,8 +84,6 @@ var draw = (function(){
             ctx.fillRect(canvas.width / 2 - 50, 10, 100 * per, 10);
         }
     };
-    // public api
-    var api = {};
     // create and return a gradient
     var default_stops = [
         [0, 'red'],
