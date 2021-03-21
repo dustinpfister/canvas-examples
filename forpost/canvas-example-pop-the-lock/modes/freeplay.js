@@ -25,9 +25,6 @@ gameMod.loadMode({
             fps: 2,
             secs: 0
         };
-        game.small_circle_frame = 0;
-        game.small_circle_fps = 2;
-        game.small_circle_secs = 0;
     },
     update: function(modeAPI, game, secs){
         var hits = game.clickTrack.hits,
@@ -37,7 +34,7 @@ gameMod.loadMode({
         hitPer = utils.isNaN(hitPer) ? 1 : hitPer;
         var bonus = Math.floor( game.baseBonus * hitPer * (1 - missLoss)) * (total < 100 ? total / 100: 1);
         game.score =  Math.floor(game.perHitScore + bonus);
-
+        // small circle animation frame update
         var cs = game.cirSmall;
         cs.secs += secs;
         if(cs.secs > 1 / cs.fps){
@@ -45,7 +42,6 @@ gameMod.loadMode({
            cs.frame = utils.mod(cs.frame, 2);
            cs.secs = utils.mod(cs.secs, 1 / cs.fps);
         }
-
     },
     onMiss: function(modeAPI,game){
         game.missTrack.count += 1;
@@ -67,10 +63,10 @@ gameMod.loadMode({
         return gradient;
     },
     draw: function(ctx, canvas, sm){
-        draw.baseCircle_pixmap(ctx, sm, 'mrsun', 0);
+        draw.baseCircle_pixmap(ctx, sm, 'mrsun', 'circle_big', 0);
         draw.baseCircle(ctx, sm.canvas, 'black');
         draw.targetRange(ctx, sm.canvas, sm.game);
-        draw.current_pos_pixmap(ctx, sm, 'mrsun', 32, sm.game.cirSmall.frame);
+        draw.current_pos_pixmap(ctx, sm, 'mrsun', 'circle_small', 32, sm.game.cirSmall.frame);
         draw.score(ctx, canvas, sm);
     }
 });
