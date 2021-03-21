@@ -69,7 +69,7 @@ var draw = (function(){
         x = Math.cos(r) * CIRCLE_RADIUS + canvas.width / 2,
         y = Math.sin(r) * CIRCLE_RADIUS + canvas.height / 2;
         // ani test
-        var ani = sm.pixmaps['small_circle']['circle2'];
+        var ani = sm.pixmaps['default']['circle_small'];
         ani.draw(ctx, x - 16, y - 16, 32, 32);
     };
     var hpBar = function(ctx, canvas, game){
@@ -125,14 +125,15 @@ var draw = (function(){
         }
         ctx.fillRect(0, 0, canvas.width, canvas.height);
     };
-    // Pop The Lock
+    // Pop The Lock ( Basic Line stroke and fill Method)
     api.PTL = function (ctx, canvas, game, circleStyle) {
         baseCircle(ctx, canvas, circleStyle);
         targetRange(ctx, canvas, game);
         current_pos(ctx, canvas, game);
         hpBar(ctx, canvas, game);
     };
-    api.PTL_pixmap = function (ctx, sm) {
+    // Pop The Lock ( Pixmap method )
+    api.PTL_pixmap = function (ctx, sm, pixmapKey) {
         baseCircle(ctx, sm.canvas);
         targetRange(ctx, sm.canvas, sm.game);
         current_pos_pixmap(ctx, sm.canvas, sm.game, sm);

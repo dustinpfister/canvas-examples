@@ -2,7 +2,7 @@
 ../lib/pool.js
 ../lib/forframe.js
 ../lib/pixmaps.js
-../pixmaps/small_circle.js
+../pixmaps/default.js
 ../lib/game.js
 ../modes/freeplay.js
 ../modes/sudendeath.js
