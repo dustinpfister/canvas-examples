@@ -132,11 +132,11 @@ var draw = (function(){
         current_pos(ctx, canvas, game);
         hpBar(ctx, canvas, game);
     };
-    api.PTL_pixmap = function (ctx, canvas, game, sm) {
-        baseCircle(ctx, canvas);
-        targetRange(ctx, canvas, game);
-        current_pos_pixmap(ctx, canvas, game, sm);
-        hpBar(ctx, canvas, game);
+    api.PTL_pixmap = function (ctx, sm) {
+        baseCircle(ctx, sm.canvas);
+        targetRange(ctx, sm.canvas, sm.game);
+        current_pos_pixmap(ctx, sm.canvas, sm.game, sm);
+        hpBar(ctx, sm.canvas, sm.game);
     };
     // score
     var scoreModes = {
