@@ -3,6 +3,7 @@
 ../lib/forframe.js
 ../lib/pixmaps.js
 ../pixmaps/default.js
+../pixmaps/mr-sun.js
 ../lib/game.js
 ../modes/freeplay.js
 ../modes/sudendeath.js
