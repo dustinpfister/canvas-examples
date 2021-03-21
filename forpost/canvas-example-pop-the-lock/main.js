@@ -73,6 +73,7 @@
         appName: 'canvas-example-pop-the-lock',
         debugMode: false,
         pixmaps: pixmapMod.create(),
+        ani_small_circle_frame: 0,
         canvas: canvas,
         ctx: ctx,
         game: {},

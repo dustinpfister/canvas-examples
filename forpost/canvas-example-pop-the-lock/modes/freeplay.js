@@ -19,7 +19,7 @@ gameMod.loadMode({
         game.perHitScore = 0;
         // base bonus effect by speed setting
         game.baseBonus = 100 + Math.round(300  * ((modeSettings.perSec - 10) / (100 - 10)));
-        console.log( game.baseBonus );
+        game.small_circle_frame = 0;
     },
     update: function(modeAPI, game){
         var hits = game.clickTrack.hits,
@@ -41,6 +41,8 @@ gameMod.loadMode({
            game.perHitScore += perHitScoreDelta;
            game.perHitScore = Number( game.perHitScore.toFixed(2) );
            game.perHitScore = game.perHitScore >= 100 ? 100: game.perHitScore;
+           game.small_circle_frame += 1;
+           game.small_circle_frame = utils.mod(game.small_circle_frame, 2);
         }
     },
     // not used by game.js, but used in draw.js
@@ -50,10 +52,9 @@ gameMod.loadMode({
         return gradient;
     },
     draw: function(ctx, canvas, sm){
-        //draw.PTL_pixmap(ctx, sm, 'mrsun');
         draw.baseCircle(ctx, sm.canvas, 'black');
         draw.targetRange(ctx, sm.canvas, sm.game);
-        draw.current_pos_pixmap(ctx, sm, 'mrsun', 32, 1);
+        draw.current_pos_pixmap(ctx, sm, 'mrsun', 32, sm.game.small_circle_frame);
         draw.score(ctx, canvas, sm);
     }
 });
