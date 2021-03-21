@@ -58,6 +58,9 @@ gameMod.loadMode({
            game.perHitScore += perHitScoreDelta;
            game.perHitScore = Number( game.perHitScore.toFixed(2) );
            game.perHitScore = game.perHitScore >= 100 ? 100: game.perHitScore;
+           game.cirBig.aniKey = 'circle_big';
+        }else{
+           game.cirBig.aniKey = 'circle_big_miss';
         }
     },
     // not used by game.js, but used in draw.js

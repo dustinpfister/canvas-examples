@@ -63,11 +63,10 @@
 * (done) current pos pixmap effected by time
 
 * background pixmap effected by miss or hit events in freeplay.js
-
-
+* small circle animation playback effected by current game.deg.dir
 * make mode settings collection part of the save state
-
 * have a spawnDispObj helper
+
 * make a pkg 1.0.2 folder
 
 ## 1.0.1 - Use Object pool for things other than buttons
