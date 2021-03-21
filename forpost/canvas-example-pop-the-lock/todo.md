@@ -61,8 +61,10 @@
 * (done) use a pixmap as a background feature of the PTL circle
 * (done) done passing secs value to update method of current game mode
 * (done) current pos pixmap effected by time
+* (done) background pixmap effected by miss or hit events in freeplay.js
 
-* background pixmap effected by miss or hit events in freeplay.js
+* frames updated over time for circle big ani
+
 * small circle animation playback effected by current game.deg.dir
 * make mode settings collection part of the save state
 * have a spawnDispObj helper
