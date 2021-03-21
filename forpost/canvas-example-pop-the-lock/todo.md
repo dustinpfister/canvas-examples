@@ -57,6 +57,7 @@
 * (done) add pixmaps.js to the lib folder from canvas-example-animation-pixmaps
 * (done) use a pixmap for the smaller circle in freePlay mode
 * (done) draw.PTL_pixmap can take a pixmap name to use for ani objects
+* can set a frame Index for current-pos-pixmap in draw.js
 
 * use a pixmap as a background feature of the PTL circle
 * make mode settings collection part of the save state
