@@ -39,7 +39,7 @@ gameMod.loadMode({
         cs.secs += secs;
         if(cs.secs > 1 / cs.fps){
            cs.frame += 1;
-           cs.frame = utils.mod(cs.frame, 2);
+           cs.frame = utils.mod(cs.frame, 4);
            cs.secs = utils.mod(cs.secs, 1 / cs.fps);
         }
     },

@@ -59,11 +59,10 @@
 * (done) draw.PTL_pixmap can take a pixmap name to use for ani objects
 * (done) can set a frame Index for current-pos-pixmap in draw.js
 * (done) use a pixmap as a background feature of the PTL circle
-
 * (done) done passing secs value to update method of current game mode
+* (done) current pos pixmap effected by time
 
-* background pixmap effected by miss or hit events
-* current pos pixmap effected by time
+* background pixmap effected by miss or hit events in freeplay.js
 
 
 * make mode settings collection part of the save state
