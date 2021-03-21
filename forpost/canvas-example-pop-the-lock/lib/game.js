@@ -116,7 +116,7 @@ var gameMod = (function(){
         }
         if(game.missTrack.canMiss && !game.inRange){
             // call onMiss for the current mode
-            modes[game.mode].onMiss(modeAPI,game);
+            modes[game.mode].onMiss(modeAPI, game, secs);
             game.missTrack.canMiss = false;
         }
         // call update method for the current mode

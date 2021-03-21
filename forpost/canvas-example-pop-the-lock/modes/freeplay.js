@@ -19,9 +19,12 @@ gameMod.loadMode({
         game.perHitScore = 0;
         // base bonus effect by speed setting
         game.baseBonus = 100 + Math.round(300  * ((modeSettings.perSec - 10) / (100 - 10)));
+        // animation stuff
         game.small_circle_frame = 0;
+        game.small_circle_fps = 2;
+        game.small_circle_secs = 0;
     },
-    update: function(modeAPI, game){
+    update: function(modeAPI, game, secs){
         var hits = game.clickTrack.hits,
         total = game.clickTrack.total,
         hitPer = game.clickTrack.hits / total,
@@ -29,6 +32,14 @@ gameMod.loadMode({
         hitPer = utils.isNaN(hitPer) ? 1 : hitPer;
         var bonus = Math.floor( game.baseBonus * hitPer * (1 - missLoss)) * (total < 100 ? total / 100: 1);
         game.score =  Math.floor(game.perHitScore + bonus);
+
+        game.small_circle_secs += secs;
+        if(game.small_circle_secs > 1 / game.small_circle_fps){
+           game.small_circle_frame += 1;
+           game.small_circle_frame = utils.mod(game.small_circle_frame, 2);
+           game.small_circle_secs = utils.mod(game.small_circle_secs, 1 / game.small_circle_fps);
+        }
+
     },
     onMiss: function(modeAPI,game){
         game.missTrack.count += 1;
@@ -41,8 +52,8 @@ gameMod.loadMode({
            game.perHitScore += perHitScoreDelta;
            game.perHitScore = Number( game.perHitScore.toFixed(2) );
            game.perHitScore = game.perHitScore >= 100 ? 100: game.perHitScore;
-           game.small_circle_frame += 1;
-           game.small_circle_frame = utils.mod(game.small_circle_frame, 2);
+           //game.small_circle_frame += 1;
+           //game.small_circle_frame = utils.mod(game.small_circle_frame, 2);
         }
     },
     // not used by game.js, but used in draw.js
