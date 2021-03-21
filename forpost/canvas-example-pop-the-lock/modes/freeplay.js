@@ -20,6 +20,11 @@ gameMod.loadMode({
         // base bonus effect by speed setting
         game.baseBonus = 100 + Math.round(300  * ((modeSettings.perSec - 10) / (100 - 10)));
         // animation stuff
+        game.cirSmall = {
+            frame: 0,
+            fps: 2,
+            secs: 0
+        };
         game.small_circle_frame = 0;
         game.small_circle_fps = 2;
         game.small_circle_secs = 0;
@@ -33,11 +38,11 @@ gameMod.loadMode({
         var bonus = Math.floor( game.baseBonus * hitPer * (1 - missLoss)) * (total < 100 ? total / 100: 1);
         game.score =  Math.floor(game.perHitScore + bonus);
 
-        game.small_circle_secs += secs;
-        if(game.small_circle_secs > 1 / game.small_circle_fps){
-           game.small_circle_frame += 1;
-           game.small_circle_frame = utils.mod(game.small_circle_frame, 2);
-           game.small_circle_secs = utils.mod(game.small_circle_secs, 1 / game.small_circle_fps);
+        game.cirSmall.secs += secs;
+        if(game.cirSmall.secs > 1 / game.cirSmall.fps){
+           game.cirSmall.frame += 1;
+           game.cirSmall.frame = utils.mod(game.cirSmall.frame, 2);
+           game.cirSmall.secs = utils.mod(game.cirSmall.secs, 1 / game.cirSmall.fps);
         }
 
     },
@@ -66,7 +71,7 @@ gameMod.loadMode({
         draw.baseCircle_pixmap(ctx, sm, 'mrsun', 0);
         draw.baseCircle(ctx, sm.canvas, 'black');
         draw.targetRange(ctx, sm.canvas, sm.game);
-        draw.current_pos_pixmap(ctx, sm, 'mrsun', 32, sm.game.small_circle_frame);
+        draw.current_pos_pixmap(ctx, sm, 'mrsun', 32, sm.game.cirSmall.frame);
         draw.score(ctx, canvas, sm);
     }
 });
