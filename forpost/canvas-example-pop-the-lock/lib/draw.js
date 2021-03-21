@@ -69,7 +69,7 @@ var draw = (function(){
         x = Math.cos(r) * CIRCLE_RADIUS + canvas.width / 2,
         y = Math.sin(r) * CIRCLE_RADIUS + canvas.height / 2;
         // ani test
-        var ani = sm.pixmaps['small_circle']['circle1'];
+        var ani = sm.pixmaps['small_circle']['circle2'];
         ani.draw(ctx, x - 16, y - 16, 32, 32);
     };
     var hpBar = function(ctx, canvas, game){
