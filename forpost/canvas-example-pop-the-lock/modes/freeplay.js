@@ -25,6 +25,10 @@ gameMod.loadMode({
             fps: 2,
             secs: 0
         };
+        game.cirBig = {
+            frame: 0,            // 0 or 1 for ani object in mr-sun.js
+            aniKey: 'circle_big' // 'circle_big', 'circle_big_miss'
+        };
     },
     update: function(modeAPI, game, secs){
         var hits = game.clickTrack.hits,
@@ -63,7 +67,7 @@ gameMod.loadMode({
         return gradient;
     },
     draw: function(ctx, canvas, sm){
-        draw.baseCircle_pixmap(ctx, sm, 'mrsun', 'circle_big', 0);
+        draw.baseCircle_pixmap(ctx, sm, 'mrsun', sm.game.cirBig.aniKey, sm.game.cirBig.frame);
         draw.baseCircle(ctx, sm.canvas, 'black');
         draw.targetRange(ctx, sm.canvas, sm.game);
         draw.current_pos_pixmap(ctx, sm, 'mrsun', 'circle_small', 32, sm.game.cirSmall.frame);
