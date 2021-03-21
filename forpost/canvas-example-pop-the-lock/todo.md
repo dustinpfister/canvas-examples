@@ -60,7 +60,9 @@
 * (done) can set a frame Index for current-pos-pixmap in draw.js
 
 * use a pixmap as a background feature of the PTL circle
+
 * make mode settings collection part of the save state
+
 * have a spawnDispObj helper
 * make a pkg 1.0.2 folder
 

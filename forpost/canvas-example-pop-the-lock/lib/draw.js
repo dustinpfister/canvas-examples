@@ -42,6 +42,15 @@ var draw = (function(){
         ctx.arc(canvas.width / 2, canvas.height / 2, CIRCLE_RADIUS, 0, Math.PI * 2);
         ctx.stroke();
     };
+    // draw base circle
+    api.baseCircle_pixmap = function(ctx, sm, pixmapKey, frameIndex){
+        var size = CIRCLE_RADIUS / 2,
+        halfSize = size / 2,
+        ani = sm.pixmaps[pixmapKey]['circle_big'];
+        ani.set(frameIndex);
+        ani.draw(ctx, sm.canvas.width / 2 - halfSize, sm.canvas.height / 2 - halfSize, size, size);
+        
+    };
     // draw target range
     var targetRange = api.targetRange = function(ctx, canvas, game){
         ctx.strokeStyle = 'red';
@@ -70,7 +79,6 @@ var draw = (function(){
         r = sm.game.deg.current / sm.game.deg.total * Math.PI * 2,
         x = Math.cos(r) * CIRCLE_RADIUS + sm.canvas.width / 2,
         y = Math.sin(r) * CIRCLE_RADIUS + sm.canvas.height / 2;
-        // ani test
         var ani = sm.pixmaps[pixmapKey]['circle_small'];
         ani.set(frameIndex);
         ani.draw(ctx, x - halfSize, y - halfSize, size, size);

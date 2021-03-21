@@ -52,6 +52,7 @@ gameMod.loadMode({
         return gradient;
     },
     draw: function(ctx, canvas, sm){
+        draw.baseCircle_pixmap(ctx, sm, 'mrsun', 0);
         draw.baseCircle(ctx, sm.canvas, 'black');
         draw.targetRange(ctx, sm.canvas, sm.game);
         draw.current_pos_pixmap(ctx, sm, 'mrsun', 32, sm.game.small_circle_frame);
