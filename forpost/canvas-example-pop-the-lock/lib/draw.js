@@ -64,12 +64,12 @@ var draw = (function(){
         ctx.fill();
     };
     // draw current position
-    var current_pos_pixmap = function(ctx, canvas, game, sm){
-        var r = game.deg.current / game.deg.total * Math.PI * 2,
-        x = Math.cos(r) * CIRCLE_RADIUS + canvas.width / 2,
-        y = Math.sin(r) * CIRCLE_RADIUS + canvas.height / 2;
+    var current_pos_pixmap = function(ctx, sm, pixmapKey){
+        var r = sm.game.deg.current / sm.game.deg.total * Math.PI * 2,
+        x = Math.cos(r) * CIRCLE_RADIUS + sm.canvas.width / 2,
+        y = Math.sin(r) * CIRCLE_RADIUS + sm.canvas.height / 2;
         // ani test
-        var ani = sm.pixmaps['default']['circle_small'];
+        var ani = sm.pixmaps[pixmapKey]['circle_small'];
         ani.draw(ctx, x - 16, y - 16, 32, 32);
     };
     var hpBar = function(ctx, canvas, game){
@@ -134,9 +134,10 @@ var draw = (function(){
     };
     // Pop The Lock ( Pixmap method )
     api.PTL_pixmap = function (ctx, sm, pixmapKey) {
+        pixmapKey = pixmapKey === undefined ? 'default' : pixmapKey;
         baseCircle(ctx, sm.canvas);
         targetRange(ctx, sm.canvas, sm.game);
-        current_pos_pixmap(ctx, sm.canvas, sm.game, sm);
+        current_pos_pixmap(ctx, sm, pixmapKey);
         hpBar(ctx, sm.canvas, sm.game);
     };
     // score
