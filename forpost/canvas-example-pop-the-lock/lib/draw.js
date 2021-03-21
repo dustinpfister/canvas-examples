@@ -64,13 +64,14 @@ var draw = (function(){
         ctx.fill();
     };
     // draw current position
-    var current_pos_pixmap = function(ctx, sm, pixmapKey){
-        var r = sm.game.deg.current / sm.game.deg.total * Math.PI * 2,
+    var current_pos_pixmap = function(ctx, sm, pixmapKey, size){
+        var halfSize = size / 2,
+        r = sm.game.deg.current / sm.game.deg.total * Math.PI * 2,
         x = Math.cos(r) * CIRCLE_RADIUS + sm.canvas.width / 2,
         y = Math.sin(r) * CIRCLE_RADIUS + sm.canvas.height / 2;
         // ani test
         var ani = sm.pixmaps[pixmapKey]['circle_small'];
-        ani.draw(ctx, x - 16, y - 16, 32, 32);
+        ani.draw(ctx, x - halfSize, y - halfSize, size, size);
     };
     var hpBar = function(ctx, canvas, game){
         if(game.hp.active){
@@ -137,7 +138,7 @@ var draw = (function(){
         pixmapKey = pixmapKey === undefined ? 'default' : pixmapKey;
         baseCircle(ctx, sm.canvas);
         targetRange(ctx, sm.canvas, sm.game);
-        current_pos_pixmap(ctx, sm, pixmapKey);
+        current_pos_pixmap(ctx, sm, pixmapKey, 64);
         hpBar(ctx, sm.canvas, sm.game);
     };
     // score

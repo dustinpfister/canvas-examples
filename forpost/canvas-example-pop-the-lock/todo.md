@@ -56,7 +56,7 @@
 ## 1.0.2 - Pixmaps
 * (done) add pixmaps.js to the lib folder from canvas-example-animation-pixmaps
 * (done) use a pixmap for the smaller circle in freePlay mode
-* draw.PTL_pixmap can take a pixmap name to use for ani objects
+* (done) draw.PTL_pixmap can take a pixmap name to use for ani objects
 
 * use a pixmap as a background feature of the PTL circle
 * make mode settings collection part of the save state
