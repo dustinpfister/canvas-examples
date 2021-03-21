@@ -38,11 +38,12 @@ gameMod.loadMode({
         var bonus = Math.floor( game.baseBonus * hitPer * (1 - missLoss)) * (total < 100 ? total / 100: 1);
         game.score =  Math.floor(game.perHitScore + bonus);
 
-        game.cirSmall.secs += secs;
-        if(game.cirSmall.secs > 1 / game.cirSmall.fps){
-           game.cirSmall.frame += 1;
-           game.cirSmall.frame = utils.mod(game.cirSmall.frame, 2);
-           game.cirSmall.secs = utils.mod(game.cirSmall.secs, 1 / game.cirSmall.fps);
+        var cs = game.cirSmall;
+        cs.secs += secs;
+        if(cs.secs > 1 / cs.fps){
+           cs.frame += 1;
+           cs.frame = utils.mod(cs.frame, 2);
+           cs.secs = utils.mod(cs.secs, 1 / cs.fps);
         }
 
     },
@@ -57,8 +58,6 @@ gameMod.loadMode({
            game.perHitScore += perHitScoreDelta;
            game.perHitScore = Number( game.perHitScore.toFixed(2) );
            game.perHitScore = game.perHitScore >= 100 ? 100: game.perHitScore;
-           //game.small_circle_frame += 1;
-           //game.small_circle_frame = utils.mod(game.small_circle_frame, 2);
         }
     },
     // not used by game.js, but used in draw.js
