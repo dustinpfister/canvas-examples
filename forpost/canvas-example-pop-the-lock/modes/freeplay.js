@@ -18,7 +18,7 @@ gameMod.loadMode({
         {
             key: 'tripUpRange',
             disp: 'Trip Up Range',
-            start: 75,
+            start: 35,
             range: [0, 100]
         }
     ],
@@ -30,9 +30,9 @@ gameMod.loadMode({
         game.deg.perSec = modeSettings.perSec || 10;
 
         // trip up settings
-        game.tripUp.count = 5;
+        game.tripUp.count = 0;
         game.tripUp.chance = (modeSettings.tripUpChance / 100) || 0;
-        var tpRangePer = (modeSettings.tripUpRange / 100);
+        var tpRangePer = 1 - (modeSettings.tripUpRange / 100);
         game.tripUp.degRange = [10 + Math.round(15 * tpRangePer), 18 + Math.round(32 * tpRangePer)];
         game.tripUp.countRange = [4, 12]
 
