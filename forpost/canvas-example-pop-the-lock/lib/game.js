@@ -42,6 +42,8 @@ var gameMod = (function(){
     var newTarget = modeAPI.newTarget = function(game){
         if(game.tripUp.count > 0){
             game.tripUp.count -= 1;
+        }
+        if(game.tripUp.count >= 1){
             return getTargetRandomTripUp(game);
         }
         var roll = Math.random();

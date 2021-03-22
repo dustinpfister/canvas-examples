@@ -12,7 +12,7 @@ gameMod.loadMode({
         {
             key: 'tripUpChance',
             disp: 'Trip Up Chance',
-            start: 12,
+            start: 0,
             range: [0, 100]
         }
     ],
@@ -26,7 +26,7 @@ gameMod.loadMode({
         // trip up settings
         game.tripUp.count = 5;
         game.tripUp.chance = (modeSettings.tripUpChance / 100) || 0;
-        game.tripUp.degRange = [25, 35];
+        game.tripUp.degRange = [15, 25];
         game.tripUp.countRange = [4, 12]
 
         game.win = true;
