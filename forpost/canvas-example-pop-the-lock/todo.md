@@ -47,7 +47,6 @@
 * Make a pkg 1.0.4 folder
 
 ## 1.0.3 - Modes folders and Mode work
-
 * In the modes folder have a folder for each mode
 * Each javaScript file for each mode such as freeplay.js can become /modes/freeplay/gamemode.js
 * Have a README.md for each mode
@@ -83,8 +82,7 @@
 * (done) freePlay mode: custom degRange and trip up count range values in init method
 * (done) freePlay mode: trip up range setting
 * (done) use default pixmap for all modes other than freePlay
-
-* make a pkg 1.0.2 folder
+* (done - 03/22/2021) make a pkg 1.0.2 folder
 
 ## 1.0.1 - Use Object pool for things other than buttons
 * (done) createButtonPool helper in main

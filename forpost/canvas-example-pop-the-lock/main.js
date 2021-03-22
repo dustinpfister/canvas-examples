@@ -71,7 +71,7 @@
 
     // STATE MACHINE
     var sm = {
-        ver: '1.0.2',
+        ver: '1.0.3',
         appName: 'canvas-example-pop-the-lock',
         debugMode: false,
         pixmaps: pixmapMod.create(),
