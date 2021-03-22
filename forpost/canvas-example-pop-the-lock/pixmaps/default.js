@@ -6,21 +6,6 @@ pixmapMod.load({
     ani:{
         circle_small: {
             paletteIndex: 0,
-            w: 8,
-            h: 8,
-            data: [
-                0,0,0,1,1,0,0,0,
-                0,0,1,2,2,1,0,0,
-                0,1,2,1,1,2,1,0,
-                1,2,1,3,3,1,2,1,
-                1,2,1,3,3,1,2,1,
-                0,1,2,1,1,2,1,0,
-                0,0,1,2,2,1,0,0,
-                0,0,0,1,1,0,0,0
-            ]
-        },
-        circle_big: {
-            paletteIndex: 0,
             w: 16,
             h: 16,
             data: [
@@ -41,6 +26,18 @@ pixmapMod.load({
                 0,0,0,0,2,2,1,1,1,1,2,2,0,0,0,0,
                 0,0,0,0,0,0,2,2,2,2,0,0,0,0,0,0
             ]
+        },
+        circle_big: {
+            paletteIndex: 0,
+            w: 1,
+            h: 1,
+            data: [0]
+        },
+        circle_big_miss: {
+            paletteIndex: 0,
+            w: 1,
+            h: 1,
+            data: [0]
         }
     }
 });

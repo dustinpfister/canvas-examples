@@ -66,7 +66,10 @@ gameMod.loadMode({
     },
     draw: function(ctx, canvas, sm){
         //draw.PTL_pixmap(ctx, sm);
-        draw.PTL(ctx, canvas, sm.game);
+        //draw.baseCircle_pixmap(ctx, sm, 'default', 'circle_big', 0);
+        draw.baseCircle(ctx, sm.canvas, 'black');
+        draw.targetRange(ctx, sm.canvas, sm.game);
+        draw.current_pos_pixmap(ctx, sm, 'default', 'circle_small', 32, 0);
         draw.score(ctx, canvas, sm);
     }
 });
