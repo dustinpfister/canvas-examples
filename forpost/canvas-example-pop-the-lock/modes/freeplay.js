@@ -26,8 +26,9 @@ gameMod.loadMode({
             secs: 0
         };
         game.cirBig = {
-            frame: 0,            // 0 or 1 for ani object in mr-sun.js
-            aniKey: 'circle_big' // 'circle_big', 'circle_big_miss'
+            frame: 0,             // 0 or 1 for ani object in mr-sun.js
+            aniKey: 'circle_big', // 'circle_big', 'circle_big_miss'
+            secs: 0               // secs to wait until setting back to frame 0
         };
     },
     update: function(modeAPI, game, secs){
@@ -46,12 +47,18 @@ gameMod.loadMode({
            cs.frame = utils.mod(cs.frame, 4);
            cs.secs = utils.mod(cs.secs, 1 / cs.fps);
         }
+        // big circle animation
+        game.cirBig.frame = 0;
+        if(game.cirBig.secs > 0){
+            game.cirBig.frame = 1;
+            game.cirBig.secs -= secs;
+        }
     },
     onMiss: function(modeAPI,game){
         game.missTrack.count += 1;
     },
     onClick: function(modeAPI, game){
-        game.cirBig.frame = 1;
+        game.cirBig.secs = 0.25;
         if (game.inRange) {
            game.deg.target = modeAPI.newTarget(game);
            var hits = game.clickTrack.hits;
