@@ -135,21 +135,6 @@ var draw = (function(){
         }
         ctx.fillRect(0, 0, canvas.width, canvas.height);
     };
-    // Pop The Lock ( Basic Line stroke and fill Method)
-    api.PTL = function (ctx, canvas, game, circleStyle) {
-        baseCircle(ctx, canvas, circleStyle);
-        targetRange(ctx, canvas, game);
-        current_pos(ctx, canvas, game);
-        hpBar(ctx, canvas, game);
-    };
-    // Pop The Lock ( Pixmap method )
-    api.PTL_pixmap = function (ctx, sm, pixmapKey) {
-        pixmapKey = pixmapKey === undefined ? 'default' : pixmapKey;
-        baseCircle(ctx, sm.canvas);
-        targetRange(ctx, sm.canvas, sm.game);
-        current_pos_pixmap(ctx, sm, pixmapKey, 'circle_small' ,32, 1);
-        hpBar(ctx, sm.canvas, sm.game);
-    };
     // score
     var scoreModes = {
         classic: function(ctx, canvas, sm, game){

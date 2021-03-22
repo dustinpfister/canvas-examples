@@ -65,7 +65,6 @@ gameMod.loadMode({
         return gradient;
     },
     draw: function(ctx, canvas, sm){
-        //draw.PTL_pixmap(ctx, sm);
         //draw.baseCircle_pixmap(ctx, sm, 'default', 'circle_big', 0);
         draw.baseCircle(ctx, sm.canvas, 'black');
         draw.targetRange(ctx, sm.canvas, sm.game);
