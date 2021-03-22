@@ -2,27 +2,30 @@ gameMod.loadMode({
     key: 'endurance',
     settings:[
         {
+            key: 'levelStart',
+            disp: 'Start Level',
+            start: 10,
+            range: [1, 100]
+        },
+        {
             key: 'perSecLower',
             disp: 'Start Speed',
             start: 15,
             range: [10, 40]
-        }/*,
-        {
-            key: 'perSecHigher',
-            disp: 'End Speed',
-            start: 85,
-            range: [80, 100]
-        }*/
+        }
     ],
     init: function(modeAPI, game, modeSettings){
         game.hp.active = true;
         game.hp.current = game.hp.max * 0.5;
         game.hp.perSec = 0.8;
-
         game.deg.current = 25;
 
+        // game level
+        game.level = 90;
+
+        // speed
         game.perSecLower = modeSettings.perSecLower || 20;
-        game.perSecHigher = 80; //modeSettings.perSecHigher ||85;
+        game.perSecHigher = 80;
         game.deg.perSec = game.perSecLower;
 
         game.deg.target = modeAPI.getTargetRandom(game);
@@ -49,7 +52,7 @@ gameMod.loadMode({
             game.level += 1;
             //game.level = game.level > 100 ? 100 : game.level;
             game.deg.perSec = game.perSecLower + Math.round( (game.perSecHigher - game.perSecLower) * (game.level / 100));
-            game.deg.perSec = game.deg.perSec > game.perSecHigher ? game.deg.perSecHigher: game.deg.perSec;
+            game.deg.perSec = game.deg.perSec > game.perSecHigher ? game.perSecHigher: game.deg.perSec;
         }else{
             game.hp.current -= 1;
         }
