@@ -52,7 +52,8 @@
             sy: sy, //sm.canvas.height * 0.4,
             w: bx.w || 256,
             h: bx.h || 64,
-            alpha: 0.6,
+            alpha: 0.4,  // alpha value for background
+            alpha2: 0.8, // alpha value for text and border
             dist: utils.distance(bx.x, bx.y, sx, sy), //sm.canvas.width - 128,
             heading: utils.mod(angle + Math.PI, Math.PI * 2)
         });
@@ -373,7 +374,6 @@
         draw: function (sm, ctx, canvas) {
             draw.backgroundMode(ctx, canvas, sm);
             draw.background(ctx, canvas, 'rgba(0,0,0,0.8)');
-            //draw.text_gameover(ctx, canvas, sm);
             draw.buttonPool(ctx, sm.buttons);
             draw.pool(ctx, sm.dispObjects);
         },

@@ -74,6 +74,8 @@
 * (done) current pos pixmap effected by time
 * (done) background pixmap effected by miss or hit events in freeplay.js
 * (done) circle-big ani set to frame 1 on click event, and then sets back to frame 0 over time in freePlay
+* (done) draw.buttonPool method
+* draw.buttonPools global draw will make use of two alpha values, one for the background and the other for text and border
 * make a pkg 1.0.2 folder
 
 ## 1.0.1 - Use Object pool for things other than buttons
