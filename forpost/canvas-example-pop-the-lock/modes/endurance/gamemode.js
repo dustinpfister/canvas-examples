@@ -21,13 +21,12 @@ gameMod.loadMode({
         game.deg.current = 25;
 
         // game level
-        game.level = 90;
+        game.level = modeSettings.levelStart || 1;
 
         // speed
         game.perSecLower = modeSettings.perSecLower || 20;
         game.perSecHigher = 80;
         game.deg.perSec = game.perSecLower;
-
         game.deg.target = modeAPI.getTargetRandom(game);
     },
     update: function(modeAPI, game, secs){
@@ -37,6 +36,9 @@ gameMod.loadMode({
             game.hp.current += game.hp.perSec * secs;
             game.hp.current = game.hp.current >= game.hp.max ? game.hp.max : game.hp.current;
         }
+        // set speed based on current level up to a cap
+        game.deg.perSec = game.perSecLower + Math.floor( (game.perSecHigher - game.perSecLower) * (game.level / 100));
+        game.deg.perSec = game.deg.perSec > game.perSecHigher ? game.perSecHigher: game.deg.perSec;
         // the game if over when the player is out of HP
         if(game.hp.current <= 0){
             game.gameOver = true;
@@ -51,8 +53,6 @@ gameMod.loadMode({
             game.deg.target = modeAPI.getTargetRandom(game);
             game.level += 1;
             //game.level = game.level > 100 ? 100 : game.level;
-            game.deg.perSec = game.perSecLower + Math.round( (game.perSecHigher - game.perSecLower) * (game.level / 100));
-            game.deg.perSec = game.deg.perSec > game.perSecHigher ? game.perSecHigher: game.deg.perSec;
         }else{
             game.hp.current -= 1;
         }
