@@ -57,7 +57,11 @@ gameMod.loadMode({
         return gradient;
     },
     draw: function(ctx, canvas, sm){
-        draw.PTL(ctx, canvas, sm.game);
+        //draw.baseCircle_pixmap(ctx, sm, 'default', 'circle_big', 0);
+        draw.baseCircle(ctx, sm.canvas, 'black');
+        draw.targetRange(ctx, sm.canvas, sm.game);
+        draw.current_pos_pixmap(ctx, sm, 'default', 'circle_small', 32, 0);
+        draw.hpBar(ctx, canvas, sm.game);
         draw.score(ctx, canvas, sm);
     }
 });

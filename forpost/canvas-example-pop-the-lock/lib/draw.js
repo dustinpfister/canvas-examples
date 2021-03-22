@@ -84,7 +84,7 @@ var draw = (function(){
         ani.set(frameIndex);
         ani.draw(ctx, x - halfSize, y - halfSize, size, size);
     };
-    var hpBar = function(ctx, canvas, game){
+    var hpBar = api.hpBar = function(ctx, canvas, game){
         if(game.hp.active){
             ctx.fillStyle = 'black';
             ctx.fillRect(canvas.width / 2 - 50, 10, 100, 10);
