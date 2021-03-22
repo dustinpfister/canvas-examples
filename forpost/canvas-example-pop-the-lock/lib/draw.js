@@ -53,7 +53,8 @@ var draw = (function(){
     };
     // draw target range
     var targetRange = api.targetRange = function(ctx, canvas, game){
-        ctx.strokeStyle = 'red';
+        // red for trip up range, and orange for all others
+        ctx.strokeStyle = game.tripUp.count > 0 ? 'red': 'orange';
         ctx.beginPath();
         ctx.lineWidth = 8;
         ctx.arc(canvas.width / 2, canvas.height / 2, CIRCLE_RADIUS,

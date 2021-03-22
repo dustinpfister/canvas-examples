@@ -79,7 +79,7 @@ var gameMod = (function(){
                 hits: 0                      // total number of clicks that are hits
             },
             tripUp: {                        // settings for 'tripUp' mode
-                count: 5,
+                count: 0,
                 chance: 0.12,
                 countRange: [3, 10],
                 degRange: [10, 20]
