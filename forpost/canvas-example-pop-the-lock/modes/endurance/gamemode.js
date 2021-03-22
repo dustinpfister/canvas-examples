@@ -4,7 +4,7 @@ gameMod.loadMode({
         {
             key: 'levelStart',
             disp: 'Start Level',
-            start: 1,
+            start: 100,
             range: [1, 100]
         },
         {
@@ -16,7 +16,7 @@ gameMod.loadMode({
         {
             key: 'dmgBase',
             disp: 'Damage Base',
-            start: 1,
+            start: 13,
             range: [1, 40]
         }
     ],
@@ -30,7 +30,7 @@ gameMod.loadMode({
         game.hp.perSec = 0.8;
         game.hp.damage = 1;
         //game.hp.perLevel = 1;
-        game.hp.damageBase = 1.05;
+        game.hp.damageBase = 1.025 + 0.075 * (modeSettings.dmgBase / 40);
 
         // game level
         game.level = modeSettings.levelStart || 1;
