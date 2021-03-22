@@ -7,7 +7,7 @@ gameMod.loadMode({
             key: 'perSec',
             disp: 'speed',
             start: 35,
-            range: [10, 100]
+            range: [10, 40]
         },
         {
             key: 'tripUpChance',
