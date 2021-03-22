@@ -5,5 +5,6 @@
 * (done) Speed should still go up with each level too, but only until a fixed internal max is reached (say about 80/100 deg/s)
 * (done) There should be a level setting
 * (done) Endurance mode should get harder becuase the hp damage will go up with each level
-* settings for damage base per level
+* (done) settings for damage base per level
 * setting for max hp
+* new score system
