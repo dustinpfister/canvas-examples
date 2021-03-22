@@ -46,11 +46,22 @@
 * have each state object in main.js as a file in the new /states folder
 * Make a pkg 1.0.4 folder
 
-## 1.0.3 - Modes folders
+## 1.0.3 - Modes folders and Mode work
+
 * In the modes folder have a folder for each mode
 * Each javaScript file for each mode such as freeplay.js can become /modes/freeplay/gamemode.js
 * Have a README.md for each mode
 * Have a todo.md for each mode
+
+* Endurance mode should get harded becuase the hp damage will go up with each tick, while speed should reach a fixed internal max
+* Endurance mode should only have a starting speed setting
+* Endurance mode should have settings for setting the starting and max damage per miss
+* Endurnace mode should have setting for max hp
+
+* small circle animation playback effected by current game.deg.dir
+* make mode settings collection part of the save state
+* have a spawnDispObj helper
+
 * Make a pkg 1.0.3 folder
 
 ## 1.0.2 - Pixmaps
@@ -62,13 +73,7 @@
 * (done) done passing secs value to update method of current game mode
 * (done) current pos pixmap effected by time
 * (done) background pixmap effected by miss or hit events in freeplay.js
-
-* circle-big ani set to frame 1 on click event, and then sets back to frame 0 over time in freePlay
-
-* small circle animation playback effected by current game.deg.dir
-* make mode settings collection part of the save state
-* have a spawnDispObj helper
-
+* (done) circle-big ani set to frame 1 on click event, and then sets back to frame 0 over time in freePlay
 * make a pkg 1.0.2 folder
 
 ## 1.0.1 - Use Object pool for things other than buttons
