@@ -5,9 +5,9 @@
 ../pixmaps/default.js
 ../pixmaps/mr-sun.js
 ../lib/game.js
-../modes/freeplay.js
-../modes/sudendeath.js
-../modes/classic.js
-../modes/endurance.js
+../modes/freeplay/gamemode.js
+../modes/sudendeath/gamemode.js
+../modes/classic/gamemode.js
+../modes/endurance/gamemode.js
 ../lib/draw.js
 ../main.js
