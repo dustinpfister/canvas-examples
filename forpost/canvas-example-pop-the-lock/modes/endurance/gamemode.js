@@ -19,7 +19,7 @@ gameMod.loadMode({
 
         // hp settings
         game.hp.active = true;
-        game.hp.max = 100;
+        game.hp.max = 1000;
         game.hp.current = game.hp.max * 0.5;
         game.hp.perSec = 0.8;
         game.hp.damage = 1;
@@ -42,7 +42,7 @@ gameMod.loadMode({
             game.hp.current = game.hp.current >= game.hp.max ? game.hp.max : game.hp.current;
         }
         // damage should go up with level
-        game.hp.damage = 1 + game.hp.perLevel * game.level;
+        game.hp.damage = 1 + game.hp.perLevel * (game.level - 1);
         // set speed based on current level up to a cap
         game.deg.perSec = game.perSecLower + Math.floor( (game.perSecHigher - game.perSecLower) * (game.level / 100));
         game.deg.perSec = game.deg.perSec > game.perSecHigher ? game.perSecHigher: game.deg.perSec;
