@@ -8,12 +8,20 @@ gameMod.loadMode({
             disp: 'speed',
             start: 35,
             range: [10, 100]
+        },
+        {
+            key: 'tripUpChance',
+            disp: 'Trip Up Chance',
+            start: 12,
+            range: [0, 100]
         }
     ],
     // what to do each time a new game object is created in gameMod.create
     init: function(modeAPI, game, modeSettings){
         game.hp.active = false;
         game.deg.perSec = modeSettings.perSec || 10;
+        game.tripUp.count = 5;
+        game.tripUp.chance = (modeSettings.tripUpChance / 100) || 0;
         game.win = true;
         game.score = 0;
         game.perHitScore = 0;

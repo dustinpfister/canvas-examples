@@ -75,7 +75,13 @@
 * (done) background pixmap effected by miss or hit events in freeplay.js
 * (done) circle-big ani set to frame 1 on click event, and then sets back to frame 0 over time in freePlay
 * (done) draw.buttonPool method
-* draw.buttonPools global draw will make use of two alpha values, one for the background and the other for text and border
+* (done) draw.buttonPools global draw will make use of two alpha values, one for the background and the other for text and border
+* (done) more than one style for target range depeding on trip up stats
+
+* freePlay mode: trip up chance setting
+
+* use default pixmap for all modes other than freePlay
+
 * make a pkg 1.0.2 folder
 
 ## 1.0.1 - Use Object pool for things other than buttons
