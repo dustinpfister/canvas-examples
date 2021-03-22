@@ -47,8 +47,8 @@
 * Make a pkg 1.0.4 folder
 
 ## 1.0.3 - Modes folders and Mode work
-* In the modes folder have a folder for each mode
-* Each javaScript file for each mode such as freeplay.js can become /modes/freeplay/gamemode.js
+* (done) In the modes folder have a folder for each mode
+* (done) Each javaScript file for each mode such as freeplay.js can become /modes/freeplay/gamemode.js
 * Have a README.md for each mode
 * Have a todo.md for each mode
 

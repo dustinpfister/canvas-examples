@@ -1,0 +1,3 @@
+# FreePlay mode
+
+The freePlay mode of pop the lock is a game mode where the player can just freely play the game without having to wory about being quick enough to click targets when they come into range. Being fast and clicking targets before it is to late, or not to soon does still matter, but only when it comes to getting a high score. There is no way to loose really, the player can just keep playing the game in this mode until they get board playing. 
