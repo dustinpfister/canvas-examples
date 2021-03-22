@@ -78,7 +78,10 @@
 * (done) draw.buttonPools global draw will make use of two alpha values, one for the background and the other for text and border
 * (done) more than one style for target range depeding on trip up stats
 * (done) fixed warp bug with settings
+
 * (done) freePlay mode: trip up chance setting
+* (done) freePlay mode: custom degRange and trip up count range values in init method
+* freePlay mode: trip up range setting
 
 * use default pixmap for all modes other than freePlay
 

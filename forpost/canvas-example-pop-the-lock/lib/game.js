@@ -82,7 +82,7 @@ var gameMod = (function(){
                 count: 0,
                 chance: 0.12,
                 countRange: [3, 10],
-                degRange: [10, 20]
+                degRange: [15, 25]
             },
             hp: {                            // hit points
                 active: false,

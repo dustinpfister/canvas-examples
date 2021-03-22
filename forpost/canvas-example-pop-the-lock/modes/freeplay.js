@@ -19,9 +19,16 @@ gameMod.loadMode({
     // what to do each time a new game object is created in gameMod.create
     init: function(modeAPI, game, modeSettings){
         game.hp.active = false;
+
+        // fixed speed set by user
         game.deg.perSec = modeSettings.perSec || 10;
+
+        // trip up settings
         game.tripUp.count = 5;
         game.tripUp.chance = (modeSettings.tripUpChance / 100) || 0;
+        game.tripUp.degRange = [25, 35];
+        game.tripUp.countRange = [4, 12]
+
         game.win = true;
         game.score = 0;
         game.perHitScore = 0;
