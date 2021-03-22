@@ -51,6 +51,7 @@ gameMod.loadMode({
         game.missTrack.count += 1;
     },
     onClick: function(modeAPI, game){
+        game.cirBig.frame = 1;
         if (game.inRange) {
            game.deg.target = modeAPI.newTarget(game);
            var hits = game.clickTrack.hits;

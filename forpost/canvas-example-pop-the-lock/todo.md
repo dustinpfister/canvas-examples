@@ -63,7 +63,7 @@
 * (done) current pos pixmap effected by time
 * (done) background pixmap effected by miss or hit events in freeplay.js
 
-* frames updated over time for circle big ani
+* circle-big ani set to frame 1 on click event, and then sets back to frame 0 over time in freePlay
 
 * small circle animation playback effected by current game.deg.dir
 * make mode settings collection part of the save state
