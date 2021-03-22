@@ -199,9 +199,12 @@
         var modeProp = sm.modeSettings[parts[3]],
         settingObj = button.data.setting,
         range = settingObj.range;
+        // step modeProp
         modeProp += 1 * dir;
-        sm.modeSettings[parts[3]] = dir === -1 && modeProp < range[0] ? range[1]: modeProp;
-        sm.modeSettings[parts[3]] = dir === 1 && modeProp > range[1] ? range[0]: modeProp;
+        // wrap modeProp
+        modeProp = dir === -1 && modeProp < range[0] ? range[1]: modeProp;
+        modeProp = dir === 1 && modeProp > range[1] ? range[0]: modeProp;
+        sm.modeSettings[parts[3]] = modeProp;
         var dispButton = getButtonByAction(sm.buttons, 'set_modesetting_current_' + settingObj.key);
         dispButton.data.disp = settingObj.disp + ' ' + sm.modeSettings[parts[3]];
     };
