@@ -30,11 +30,13 @@ gameMod.loadMode({
     update: function(modeAPI, game, secs){
         var hits = game.clickTrack.hits;
         game.score = Math.floor(hits + Math.pow(1.075, hits)) - 1;
-        if(game.hp.current <= 0){
-            game.gameOver = true;
-        }else{
+        if(!game.pause){
             game.hp.current += game.hp.perSec * secs;
             game.hp.current = game.hp.current >= game.hp.max ? game.hp.max : game.hp.current;
+        }
+        // the game if over when the player is out of HP
+        if(game.hp.current <= 0){
+            game.gameOver = true;
         }
     },
     onMiss: function(modeAPI, game){
