@@ -4,7 +4,7 @@ gameMod.loadMode({
         {
             key: 'levelStart',
             disp: 'Start Level',
-            start: 10,
+            start: 1,
             range: [1, 100]
         },
         {
@@ -12,6 +12,12 @@ gameMod.loadMode({
             disp: 'Start Speed',
             start: 15,
             range: [10, 40]
+        },
+        {
+            key: 'dmgBase',
+            disp: 'Damage Base',
+            start: 1,
+            range: [1, 40]
         }
     ],
     init: function(modeAPI, game, modeSettings){
@@ -23,7 +29,8 @@ gameMod.loadMode({
         game.hp.current = game.hp.max * 0.5;
         game.hp.perSec = 0.8;
         game.hp.damage = 1;
-        game.hp.perLevel = 1;
+        //game.hp.perLevel = 1;
+        game.hp.damageBase = 1.05;
 
         // game level
         game.level = modeSettings.levelStart || 1;
@@ -42,7 +49,8 @@ gameMod.loadMode({
             game.hp.current = game.hp.current >= game.hp.max ? game.hp.max : game.hp.current;
         }
         // damage should go up with level
-        game.hp.damage = 1 + game.hp.perLevel * (game.level - 1);
+        //game.hp.damage = 1 + game.hp.perLevel * (game.level - 1);
+        game.hp.damage = 1 + Math.pow(game.hp.damageBase, game.level - 1) - 1;
         // set speed based on current level up to a cap
         game.deg.perSec = game.perSecLower + Math.floor( (game.perSecHigher - game.perSecLower) * (game.level / 100));
         game.deg.perSec = game.deg.perSec > game.perSecHigher ? game.perSecHigher: game.deg.perSec;
