@@ -64,5 +64,10 @@ gameMod.loadMode({
         draw.current_pos_pixmap(ctx, sm, 'default', 'circle_small', 32, 0);
         draw.hpBar(ctx, canvas, sm.game);
         draw.score(ctx, canvas, sm);
+        ctx.fillStyle = 'white';
+        ctx.textAlign = 'left';
+        ctx.textBaseline = 'top';
+        ctx.fillText('level: ' + sm.game.level, 10, 10);
+        ctx.fillText('deg per sec: ' + sm.game.deg.perSec, 10, 20);
     }
 });
