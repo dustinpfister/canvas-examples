@@ -52,6 +52,7 @@
             sy: sy, //sm.canvas.height * 0.4,
             w: bx.w || 256,
             h: bx.h || 64,
+            alpha: 0.6,
             dist: utils.distance(bx.x, bx.y, sx, sy), //sm.canvas.width - 128,
             heading: utils.mod(angle + Math.PI, Math.PI * 2)
         });
