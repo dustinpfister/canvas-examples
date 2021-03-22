@@ -82,8 +82,7 @@
 * (done) freePlay mode: trip up chance setting
 * (done) freePlay mode: custom degRange and trip up count range values in init method
 * (done) freePlay mode: trip up range setting
-
-* use default pixmap for all modes other than freePlay
+* (done) use default pixmap for all modes other than freePlay
 
 * make a pkg 1.0.2 folder
 
