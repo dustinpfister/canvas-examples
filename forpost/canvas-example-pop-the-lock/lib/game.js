@@ -89,7 +89,8 @@ var gameMod = (function(){
             hp: {                            // hit points
                 active: false,
                 current: 5,
-                max: 10
+                max: 10,
+                damage: 1
             },
             gameOver: false,
             win: false,

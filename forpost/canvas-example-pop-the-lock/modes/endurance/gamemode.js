@@ -15,10 +15,15 @@ gameMod.loadMode({
         }
     ],
     init: function(modeAPI, game, modeSettings){
+        game.deg.current = 25;
+
+        // hp settings
         game.hp.active = true;
+        game.hp.max = 100;
         game.hp.current = game.hp.max * 0.5;
         game.hp.perSec = 0.8;
-        game.deg.current = 25;
+        game.hp.damage = 1;
+        game.hp.perLevel = 1;
 
         // game level
         game.level = modeSettings.levelStart || 1;
@@ -36,6 +41,8 @@ gameMod.loadMode({
             game.hp.current += game.hp.perSec * secs;
             game.hp.current = game.hp.current >= game.hp.max ? game.hp.max : game.hp.current;
         }
+        // damage should go up with level
+        game.hp.damage = 1 + game.hp.perLevel * game.level;
         // set speed based on current level up to a cap
         game.deg.perSec = game.perSecLower + Math.floor( (game.perSecHigher - game.perSecLower) * (game.level / 100));
         game.deg.perSec = game.deg.perSec > game.perSecHigher ? game.perSecHigher: game.deg.perSec;
@@ -46,7 +53,7 @@ gameMod.loadMode({
     },
     onMiss: function(modeAPI, game){
         game.missTrack.count += 1;
-        game.hp.current -= 1;
+        game.hp.current -= game.hp.damage;
     },
     onClick: function(modeAPI, game, modeSettings){
         if (game.inRange) {
@@ -54,7 +61,7 @@ gameMod.loadMode({
             game.level += 1;
             //game.level = game.level > 100 ? 100 : game.level;
         }else{
-            game.hp.current -= 1;
+            game.hp.current -= game.hp.damage;
         }
     },
     // Draw
@@ -73,6 +80,7 @@ gameMod.loadMode({
         ctx.textAlign = 'left';
         ctx.textBaseline = 'top';
         ctx.fillText('level: ' + sm.game.level, 10, 10);
-        ctx.fillText('deg per sec: ' + sm.game.deg.perSec, 10, 20);
+        ctx.fillText('deg per sec: ' + sm.game.deg.perSec, 10, 25);
+        ctx.fillText('damage: ' + sm.game.hp.damage, 10, 40);
     }
 });
