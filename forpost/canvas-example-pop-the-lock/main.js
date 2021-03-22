@@ -169,7 +169,7 @@
         update: function (sm, secs) {},
         draw: function (sm, ctx, canvas) {
             draw.background(ctx, canvas, sm.background);
-            draw.pool(ctx, sm.buttons);
+            draw.buttonPool(ctx, sm.buttons);
             draw.pool(ctx, sm.dispObjects);
         },
         click: function (sm, pos, e) {
@@ -259,7 +259,7 @@
         update: function (sm, secs) {},
         draw: function (sm, ctx, canvas) {
             draw.backgroundMode(ctx, canvas, sm);
-            draw.pool(ctx, sm.buttons);
+            draw.buttonPool(ctx, sm.buttons);
             draw.pool(ctx, sm.dispObjects);
         },
         click: function (sm, pos, e) {
@@ -321,7 +321,7 @@
         },
         draw: function (sm, ctx, canvas) {
             draw.backgroundMode(ctx, canvas, sm);
-            draw.pool(ctx, sm.buttons);
+            draw.buttonPool(ctx, sm.buttons);
             draw.pool(ctx, sm.dispObjects);
             if(sm.debugMode){
                 draw.debugInfo(ctx, canvas, sm.game);
@@ -374,7 +374,7 @@
             draw.backgroundMode(ctx, canvas, sm);
             draw.background(ctx, canvas, 'rgba(0,0,0,0.8)');
             //draw.text_gameover(ctx, canvas, sm);
-            draw.pool(ctx, sm.buttons);
+            draw.buttonPool(ctx, sm.buttons);
             draw.pool(ctx, sm.dispObjects);
         },
         click: function (sm, pos, e) {

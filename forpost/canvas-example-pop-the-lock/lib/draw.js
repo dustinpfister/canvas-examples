@@ -241,6 +241,25 @@ var draw = (function(){
             ctx.globalAlpha = 1;
         });
     };
+    api.buttonPool = function (ctx, pool) {
+        drawPool(ctx, pool, function(ctx, obj, i){
+            ctx.fillStyle = obj.data.fill || 'white';
+            ctx.globalAlpha = obj.data.alpha || 1;
+            ctx.translate(obj.x, obj.y);
+            ctx.beginPath();
+            ctx.rect(0, 0, obj.w, obj.h);
+            ctx.fill();
+            ctx.stroke();
+            if(obj.data.disp){
+               ctx.fillStyle = 'black';
+               ctx.textBaseline = 'middle';
+               ctx.font = '20px arial';
+               ctx.textAlign = 'center';
+               ctx.fillText(obj.data.disp, obj.w / 2, obj.h / 2);
+            }
+            ctx.globalAlpha = 1;
+        });
+    };
     // info
     api.debugInfo = function(ctx, canvas, game){
         ctx.fillStyle = 'yellow';
