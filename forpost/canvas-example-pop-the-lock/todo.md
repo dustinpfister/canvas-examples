@@ -49,13 +49,10 @@
 ## 1.0.3 - Modes folders and Mode work
 * (done) In the modes folder have a folder for each mode
 * (done) Each javaScript file for each mode such as freeplay.js can become /modes/freeplay/gamemode.js
-* Have a README.md for each mode
-* Have a todo.md for each mode
+* (done) Have a README.md for each mode
+* (done) a todo.md file can be in a mode folder as a way to write down some notes about what needs to get done for a mode.
 
-* Endurance mode should get harded becuase the hp damage will go up with each tick, while speed should reach a fixed internal max
-* Endurance mode should only have a starting speed setting
-* Endurance mode should have settings for setting the starting and max damage per miss
-* Endurnace mode should have setting for max hp
+* Endurance mode: compleate what is outlined for endurance mode todo.md for 1.0.3
 
 * small circle animation playback effected by current game.deg.dir
 * make mode settings collection part of the save state
