@@ -10,19 +10,19 @@ gameMod.loadMode({
         {
             key: 'perSecLower',
             disp: 'Start Speed',
-            start: 25,
+            start: 30,
             range: [10, 40]
         },
         {
             key: 'dmgBase',
             disp: 'Damage Base',
-            start: 13,
+            start: 10,
             range: [1, 40]
         },
         {
             key: 'maxHp',
             disp: 'Max HP',
-            start: 50,
+            start: 100,
             range: [0, 100]
         }
     ],
@@ -32,8 +32,8 @@ gameMod.loadMode({
         // hp settings
         game.hp.active = true;
         game.hp.max = 10 + Math.round( 990 * ( modeSettings.maxHp / 100));
-        game.hp.current = game.hp.max * 0.5;
-        game.hp.perSec = 0.8;
+        game.hp.current = game.hp.max;
+        game.hp.perSec = 10;
         game.hp.damage = 1;
         //game.hp.perLevel = 1;
         game.hp.damageBase = 1.025 + 0.075 * (modeSettings.dmgBase / 40);
@@ -46,14 +46,23 @@ gameMod.loadMode({
         game.perSecHigher = 80;
         game.deg.perSec = game.perSecLower;
         game.deg.target = modeAPI.getTargetRandom(game);
+
+        // margin
+        game.deg.margin = 5;
+
     },
     update: function(modeAPI, game, secs){
         var hits = game.clickTrack.hits;
-        game.score = Math.floor(hits + Math.pow(1.075, hits)) - 1;
+        var per = game.level / 100;
+        per = per > 1 ? 1 : per;
         if(!game.pause){
+            game.hp.perSec = 10 - 9.5 * per;
+            // heal
             game.hp.current += game.hp.perSec * secs;
             game.hp.current = game.hp.current >= game.hp.max ? game.hp.max : game.hp.current;
         }
+        // ajust margin
+        game.deg.margin = 6 - 3.5 * per;
         // damage should go up with level
         //game.hp.damage = 1 + game.hp.perLevel * (game.level - 1);
         game.hp.damage = 1 + Math.pow(game.hp.damageBase, game.level - 1) - 1;
@@ -64,6 +73,8 @@ gameMod.loadMode({
         if(game.hp.current <= 0){
             game.gameOver = true;
         }
+        // score
+        game.score = Math.floor(hits + Math.pow(1.075, hits)) - 1;
     },
     onMiss: function(modeAPI, game){
         game.missTrack.count += 1;
