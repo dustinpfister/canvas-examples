@@ -1,10 +1,7 @@
 
 (function () {
 
-//    var sm = stateMachine.create();
-
     // TITLE STATE
-    //sm.states.title = {
     stateMachine.load({
         key: 'title',
         init: function (sm) {
@@ -13,7 +10,6 @@
             y = sm.canvas.height / 2;
             stateMachine.spawnButton(sm, {x: x, y: y - 64}, 'start_state_gameMode', 'Play');
             stateMachine.spawnButton(sm, {x: x, y: y + 32}, 'goto_devsite_canvas_examples', 'More Games', Math.PI);
-
             // title display Object
             poolMod.spawn(sm.dispObjects, sm, {
                 action: 'dispobj_title',
@@ -54,6 +50,7 @@
         }
     });
 
+    (function () {
     // GAME MODE STATE
     var spawnSettingsButton = function(sm, setting, bx, actionStringPart, dispText, angle, poolKey){
         var actionString = 'set_modesetting_' + actionStringPart + '_' + setting.key;
@@ -75,7 +72,6 @@
         var dispButton = stateMachine.getButtonByAction(sm.buttons, 'set_modesetting_current_' + settingObj.key);
         dispButton.data.disp = settingObj.disp + ' ' + sm.modeSettings[parts[3]];
     };
-    //sm.states.gameMode = {
     stateMachine.load({
         key: 'gameMode',
         init: function (sm) {
@@ -161,9 +157,9 @@
             }
         }
     });
+    }());
 
     // GAME STATE
-    //sm.states.game = {
     stateMachine.load({
         key: 'game',
         init: function (sm) {
@@ -215,7 +211,6 @@
     });
 
     // GAME OVER STATE
-    //sm.states.gameOver = {
     stateMachine.load({
         key: 'gameOver',
         init: function (sm) {
