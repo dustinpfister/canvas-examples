@@ -409,9 +409,9 @@
         sm.modeSettingsCollection[modeKey] = settings;
     });
     // start state
-    //changeState(sm, 'title');
-    sm.gameModeIndex = 2;
-    changeState(sm, 'gameMode');
+    changeState(sm, 'title');
+    //sm.gameModeIndex = 2;
+    //changeState(sm, 'gameMode');
     // the loop
     var loop = function () {
         var now = new Date(),
