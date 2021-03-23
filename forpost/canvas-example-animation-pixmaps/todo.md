@@ -4,16 +4,18 @@
 * start another pixmap that is an animations of world sections.
 * use world sections pixmaps for some disp objects
 
-## 0.4.0 - new forframe folder
-* (done) remove FF types from forframe.js
-
-
-
-
+## 0.x.0 - new forframe folder
 * start a forframe/gridlines.js file
 * gridlines returns a special object like what is returned by forFrame.createCanvas but with a new set method
 * this new set method will take not just a frame index, but also a set of additional arguments for heading, and grid size.
 * start a pkg 0.4.0 folder
+
+## 0.5.0 - base64 encoding
+* start a standard where a pixmap can be in a compressed string format
+
+## 0.4.0 - Layers
+* (done) remove FF types from forframe.js
+* start new system where I define a collection of images, and then create frames with image collection index, and offset values
 
 ## 0.3.0 - More than one animation used
 * (done) have a maxFrame prop of a display object that will change depending on the pixmap ani used

@@ -46,14 +46,14 @@
 * (done) have each state object in main.js as a file in the new /states folder
 * (done) have state-machine.js in lib folder
 
-* small circle animation playback effected by current game.deg.dir
-* make mode settings collection part of the save state
-* have a spawnDispObj helper
-
 * freePlay mode: see mode todo
 * suddenDeath mode: see mode todo
 * Endurance mode: see mode todo
 * classic mode: see mode todo
+
+* small circle animation playback effected by current game.deg.dir
+* make mode settings collection part of the save state
+* have a spawnDispObj helper
 
 * Make a pkg 1.0.4 folder
 
