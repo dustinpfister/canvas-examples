@@ -41,11 +41,10 @@
 
 ## 1.0.4 - /states folder
 * (done) start with a state_machine.js file at root.
-
-* have a stateMachine.load public function
-* use stateMachine.load for each state in main.js
-* have each state object in main.js as a file in the new /states folder
-* have state-machine.js at root of /states
+* (done) have a stateMachine.load public function
+* (done) use stateMachine.load for each state in main.js
+* (done) have each state object in main.js as a file in the new /states folder
+* have state-machine.js in lib folder
 
 * small circle animation playback effected by current game.deg.dir
 * make mode settings collection part of the save state
