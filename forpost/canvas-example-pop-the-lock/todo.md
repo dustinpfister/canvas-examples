@@ -7,20 +7,17 @@
 ## 1.3.x - new /lib/buttons.js
 ## 1.3.x - new /lib/statemachine.js
 
-## 1.3.x - Power Up targets, Next Heal bar, and Whole Number HP values in Endurance mode
-* have an additional power up target that will spawn between the current position and new target
-* hiting this additional power up target is optional, no score, hp loss or anything to that effect (however a hit miss will still apply)
-* hiting the powerup will restore i hp block
-
-* make a pkg 0.7.3 folder
-
-## 1.3.1 - Score Object in all modes
+## 1.3.2 - Score Object in all modes
 * start a new standard score object to be used in all game modes.
 * update scoring in freePlay mode
 * update scoring in sudden death mode
 * update scoring in endurance mode
 * update scoring in classic mode
 * make a pkg 0.7.2 folder
+
+## 1.3.1 - Quick mode setting and display
+* click disp setting button as way to set a mode setting without having to click + or - button a whle bunch of times
+* display a progress bar for mode settings buttons
 
 ## 1.3.0 - EXP and Skill Points
 * add a sm.exp prop
@@ -48,6 +45,12 @@
 * small circle animation playback effected by current game.deg.dir
 * make mode settings collection part of the save state
 * have a spawnDispObj helper
+
+* freePlay mode: see mode todo
+* suddenDeath mode: see mode todo
+* Endurance mode: see mode todo
+* classic mode: see mode todo
+
 * Make a pkg 1.0.4 folder
 
 ## 1.0.3 - Modes folders and Mode work
@@ -55,9 +58,7 @@
 * (done) Each javaScript file for each mode such as freeplay.js can become /modes/freeplay/gamemode.js
 * (done) Have a README.md for each mode
 * (done) a todo.md file can be in a mode folder as a way to write down some notes about what needs to get done for a mode.
-
-* Endurance mode: compleate what is outlined for endurance mode todo.md for 1.0.3
-
+* (done) Endurance mode: compleate what is outlined for endurance mode todo.md for 1.0.3
 * Make a pkg 1.0.3 folder
 
 ## 1.0.2 - Pixmaps
