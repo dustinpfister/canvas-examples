@@ -9,6 +9,10 @@
 ../modes/sudendeath/gamemode.js
 ../modes/classic/gamemode.js
 ../modes/endurance/gamemode.js
+../lib/state-machine.js
+../states/state-title.js
+../states/state-game-mode.js
+../states/state-game.js
+../states/state-game-over.js
 ../lib/draw.js
 ../main.js
-../state-machine.js
