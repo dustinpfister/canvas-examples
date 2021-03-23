@@ -4,13 +4,13 @@ gameMod.loadMode({
         {
             key: 'levelStart',
             disp: 'Start Level',
-            start: 100,
+            start: 10,
             range: [1, 100]
         },
         {
             key: 'perSecLower',
             disp: 'Start Speed',
-            start: 15,
+            start: 25,
             range: [10, 40]
         },
         {
@@ -18,6 +18,12 @@ gameMod.loadMode({
             disp: 'Damage Base',
             start: 13,
             range: [1, 40]
+        },
+        {
+            key: 'maxHp',
+            disp: 'Max HP',
+            start: 50,
+            range: [0, 100]
         }
     ],
     init: function(modeAPI, game, modeSettings){
@@ -25,7 +31,7 @@ gameMod.loadMode({
 
         // hp settings
         game.hp.active = true;
-        game.hp.max = 1000;
+        game.hp.max = 10 + Math.round( 990 * ( modeSettings.maxHp / 100));
         game.hp.current = game.hp.max * 0.5;
         game.hp.perSec = 0.8;
         game.hp.damage = 1;
@@ -84,11 +90,13 @@ gameMod.loadMode({
         draw.current_pos_pixmap(ctx, sm, 'default', 'circle_small', 32, 0);
         draw.hpBar(ctx, canvas, sm.game);
         draw.score(ctx, canvas, sm);
+
         ctx.fillStyle = 'white';
         ctx.textAlign = 'left';
         ctx.textBaseline = 'top';
         ctx.fillText('level: ' + sm.game.level, 10, 10);
         ctx.fillText('deg per sec: ' + sm.game.deg.perSec, 10, 25);
         ctx.fillText('damage: ' + sm.game.hp.damage, 10, 40);
+        ctx.fillText('hp: ' + Math.ceil(sm.game.hp.current) + ' / ' + sm.game.hp.max, 10, 55);
     }
 });

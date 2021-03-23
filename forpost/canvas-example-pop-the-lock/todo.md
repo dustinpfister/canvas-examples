@@ -44,6 +44,10 @@
 
 ## 1.0.4 - /states folder
 * have each state object in main.js as a file in the new /states folder
+
+* small circle animation playback effected by current game.deg.dir
+* make mode settings collection part of the save state
+* have a spawnDispObj helper
 * Make a pkg 1.0.4 folder
 
 ## 1.0.3 - Modes folders and Mode work
@@ -53,10 +57,6 @@
 * (done) a todo.md file can be in a mode folder as a way to write down some notes about what needs to get done for a mode.
 
 * Endurance mode: compleate what is outlined for endurance mode todo.md for 1.0.3
-
-* small circle animation playback effected by current game.deg.dir
-* make mode settings collection part of the save state
-* have a spawnDispObj helper
 
 * Make a pkg 1.0.3 folder
 
