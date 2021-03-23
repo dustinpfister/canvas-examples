@@ -3,6 +3,8 @@ var stateMachine = (function () {
 
     var api = {};
 
+    var STATES = {};
+
     // STATE MACHINE
     api.create = function(){
         // create and append canvas element, and get 2d context
@@ -35,7 +37,7 @@ var stateMachine = (function () {
                 secsTotal: 0.75,
                 onDone: utils.noop
             },
-            states: {},
+            states: STATES,
             buttons: api.createButtonPool(20),
             dispObjects: api.createButtonPool(2),
             background: 'blue'
@@ -139,8 +141,10 @@ var stateMachine = (function () {
             sm.states[sm.currentState].update(sm, secs);
         }
     };
-
+    api.load = function(stateObj){
+        STATES[stateObj.key] = stateObj;
+    };
+    // return the public API
     return api;
-
 }
     ());

@@ -1,10 +1,12 @@
 
 (function () {
 
-    var sm = stateMachine.create();
+//    var sm = stateMachine.create();
 
     // TITLE STATE
-    sm.states.title = {
+    //sm.states.title = {
+    stateMachine.load({
+        key: 'title',
         init: function (sm) {
             // Buttons
             var x = sm.canvas.width / 2 - 128,
@@ -50,7 +52,7 @@
                 }
             }
         }
-    };
+    });
 
     // GAME MODE STATE
     var spawnSettingsButton = function(sm, setting, bx, actionStringPart, dispText, angle, poolKey){
@@ -73,7 +75,9 @@
         var dispButton = stateMachine.getButtonByAction(sm.buttons, 'set_modesetting_current_' + settingObj.key);
         dispButton.data.disp = settingObj.disp + ' ' + sm.modeSettings[parts[3]];
     };
-    sm.states.gameMode = {
+    //sm.states.gameMode = {
+    stateMachine.load({
+        key: 'gameMode',
         init: function (sm) {
             // default to whatever key sm.gameModeIndex is for gameMode
             sm.gameMode = Object.keys(gameMod.modes)[sm.gameModeIndex];
@@ -156,10 +160,12 @@
                 }
             }
         }
-    };
+    });
 
     // GAME STATE
-    sm.states.game = {
+    //sm.states.game = {
+    stateMachine.load({
+        key: 'game',
         init: function (sm) {
             // Quit Button
             stateMachine.spawnButton(sm, {x: sm.canvas.width - 72, y: 8, w: 64, h: 64}, 'set_state_gameover', 'Quit', Math.PI);
@@ -206,10 +212,12 @@
                 gameMod.click(sm.game, sm.modeSettings);
             }
         }
-    };
+    });
 
     // GAME OVER STATE
-    sm.states.gameOver = {
+    //sm.states.gameOver = {
+    stateMachine.load({
+        key: 'gameOver',
         init: function (sm) {
             // option buttons
             var dispText = ['Try Again', 'Settings', 'Title'];
@@ -255,7 +263,9 @@
                 });
             }
         }
-    };
+    });
+
+    var sm = stateMachine.create();
 
     // LOOP
     // high scores
