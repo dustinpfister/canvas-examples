@@ -11,3 +11,4 @@
 ../modes/endurance/gamemode.js
 ../lib/draw.js
 ../main.js
+../state-machine.js

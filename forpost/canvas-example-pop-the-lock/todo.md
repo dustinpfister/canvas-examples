@@ -40,6 +40,9 @@
 * can trun debug mode on and off
 
 ## 1.0.4 - /states folder
+
+* start with a state_machine.js file at root.
+
 * have each state object in main.js as a file in the new /states folder
 
 * small circle animation playback effected by current game.deg.dir
