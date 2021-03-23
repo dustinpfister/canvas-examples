@@ -59,7 +59,7 @@
 * (done) Have a README.md for each mode
 * (done) a todo.md file can be in a mode folder as a way to write down some notes about what needs to get done for a mode.
 * (done) Endurance mode: compleate what is outlined for endurance mode todo.md for 1.0.3
-* Make a pkg 1.0.3 folder
+* (done - 03/23/2021) Make a pkg 1.0.3 folder
 
 ## 1.0.2 - Pixmaps
 * (done) add pixmaps.js to the lib folder from canvas-example-animation-pixmaps
