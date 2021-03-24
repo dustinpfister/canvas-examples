@@ -18,9 +18,9 @@
         sm.modeSettingsCollection[modeKey] = settings;
     });
     // start state
-    stateMachine.changeState(sm, 'title');
-    //sm.gameModeIndex = 2;
-    //stateMachine.changeState(sm, 'gameMode');
+    //stateMachine.changeState(sm, 'title');
+    sm.gameModeIndex = 1;
+    stateMachine.changeState(sm, 'gameMode');
     // the loop
     var loop = function () {
         var now = new Date(),

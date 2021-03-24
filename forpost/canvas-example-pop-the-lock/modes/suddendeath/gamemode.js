@@ -26,7 +26,7 @@ gameMod.loadMode({
         game.hp.active = false;
         game.deg.current = 25;
         // level
-        game.level = 1;
+        game.level = modeSettings.levelStart || 1;
         game.levelCap = 100;
         // speed
         game.perSecLower = 20;   // modeSettings.perSecLower || 20;

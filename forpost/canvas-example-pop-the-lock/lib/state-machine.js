@@ -34,7 +34,7 @@ var stateMachine = (function () {
                 active: true,
                 inState: true,
                 secs: 0,
-                secsTotal: 0.75,
+                secsTotal: 0.5,
                 onDone: utils.noop
             },
             states: STATES,
