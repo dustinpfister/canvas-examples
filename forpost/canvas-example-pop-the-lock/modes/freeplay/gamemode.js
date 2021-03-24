@@ -5,7 +5,7 @@ gameMod.loadMode({
     settings:[
         {
             key: 'perSec',
-            disp: 'speed',
+            disp: 'Speed',
             start: 35,
             range: [10, 60]
         },

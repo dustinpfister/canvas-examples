@@ -17,6 +17,10 @@ gameMod.loadMode({
     init: function(modeAPI, game, modeSettings){
         game.hp.active = false;
         game.deg.current = 25;
+        // level
+        game.level = 1;
+        game.levelCap = 100;
+        // speed
         game.perSecLower = modeSettings.perSecLower || 20;
         game.perSecHigher = modeSettings.perSecHigher ||85;
         game.deg.perSec = game.perSecLower;
@@ -34,15 +38,16 @@ gameMod.loadMode({
         if (game.inRange) {
             game.deg.target = modeAPI.getTargetRandom(game);
             game.level += 1;
-            game.level = game.level > 100 ? 100 : game.level;
-            game.deg.perSec = game.perSecLower + Math.round( (game.perSecHigher - game.perSecLower) * (game.level / 100));
+            game.level = game.level > game.levelCap ? game.levelCap : game.level;
+            var levPer = game.level / game.levelCap;
+            game.deg.perSec = game.perSecLower + Math.round( (game.perSecHigher - game.perSecLower) * levPer);
         }else{
             game.gameOver = true;
         }
     },
     // Draw
     createBackground: function(sm, mode){
-        var gradient = draw.createGradient(sm.ctx, sm.canvas, 0.75, [[0,'black'],[1,'red']]);
+        var gradient = draw.createGradient(sm.ctx, sm.canvas, 0.75, [[0,'black'], [1,'red']]);
         return gradient;
     },
     draw: function(ctx, canvas, sm){
