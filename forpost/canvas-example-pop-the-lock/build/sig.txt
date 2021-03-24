@@ -1,7 +1,6 @@
 /*
    canvas-example-pop-the-lock
-   Copyright 2020,2021 by Dustin Pfister
+   Copyright 2019 to 2021 by Dustin Pfister
    https://raw.githubusercontent.com/dustinpfister/canvas-examples/master/LICENSE
- 
    https://github.com/dustinpfister/canvas-examples
 */

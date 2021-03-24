@@ -38,7 +38,6 @@
 * flash canvas red when a miss happens
 * can turn animations on and off
 * can trun debug mode on and off
-
 * small circle animation playback effected by current game.deg.dir
 * make mode settings collection part of the save state
 * have a spawnDispObj helper
@@ -55,7 +54,7 @@
 * (done) Endurance mode: see mode todo
 * (done) fix spelling mistake with sudden death mode
 * (done) classic mode: see mode todo
-* Make a pkg 1.0.4 folder
+* (done - 03/24/2021) Make a pkg 1.0.4 folder
 
 ## 1.0.3 - Modes folders and Mode work
 * (done) In the modes folder have a folder for each mode
