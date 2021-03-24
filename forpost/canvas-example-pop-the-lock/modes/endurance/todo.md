@@ -11,8 +11,7 @@
 # 1.0.4 - trip up and margins
 * (done) auto heal goes down with level
 * (done) ajust margins as a way to increase the difficulty
-* use trip ups in endurance mode as an additional way to increase the difficulty
-
+* (done) use trip ups in endurance mode as an additional way to increase the difficulty
 
 # 1.0.3 - Core improvements
 * (done) no autoheal on game pause

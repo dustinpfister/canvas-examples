@@ -10,6 +10,12 @@ gameMod.loadMode({
             range: [10, 60]
         },
         {
+            key: 'margin',
+            disp: 'Margin',
+            start: 4,
+            range: [0, 20]
+        },
+        {
             key: 'tripUpChance',
             disp: 'Trip Up Chance',
             start: 10,
@@ -31,7 +37,10 @@ gameMod.loadMode({
         game.perHitScore = 0;
         // fixed speed set by user
         game.deg.perSec = modeSettings.perSec || 10;
-        // trip up settings
+        // fixed margin setting set by user
+        var deg = game.deg.total * 0.125;
+        game.deg.margin = deg - modeSettings.margin / 20 * (deg - 2) || 1;
+        // user trip up settings
         game.tripUp.count = 0;
         game.tripUp.chance = (modeSettings.tripUpChance / 100) || 0;
         var tpRangePer = 1 - (modeSettings.tripUpRange / 100);

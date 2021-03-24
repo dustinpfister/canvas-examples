@@ -48,8 +48,9 @@
 
 * freePlay mode: see mode todo
 * suddenDeath mode: see mode todo
-* Endurance mode: see mode todo
+* (done) Endurance mode: see mode todo
 * classic mode: see mode todo
+
 
 * small circle animation playback effected by current game.deg.dir
 * make mode settings collection part of the save state
