@@ -19,7 +19,7 @@
     });
     // start state
     //stateMachine.changeState(sm, 'title');
-    sm.gameModeIndex = 1;
+    sm.gameModeIndex = 3;
     stateMachine.changeState(sm, 'gameMode');
     // the loop
     var loop = function () {

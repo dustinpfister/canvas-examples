@@ -6,18 +6,6 @@ gameMod.loadMode({
             disp: 'Level',
             start: 8,
             range: [1, 100]
-        },
-        {
-            key: 'perSecLower',
-            disp: 'Start Speed',
-            start: 15,
-            range: [10, 25]
-        },
-        {
-            key: 'perSecHigher',
-            disp: 'End Speed',
-            start: 35,
-            range: [30, 80]
         }
     ],
     init: function(modeAPI, game, modeSettings){
@@ -27,9 +15,9 @@ gameMod.loadMode({
         game.tripUp.chance = 0.1;
         game.tripUp.degRange = [20, 30];
 
-        game.perSecLower = modeSettings.perSecLower || 20;
-        game.perSecHigher = modeSettings.perSecHigher ||70;
-        game.deg.perSec = game.perSecLower;
+        game.perSecLower = 20;
+        game.perSecHigher = 70;
+        //game.deg.perSec = game.perSecLower;
 
         modeSettings.level = game.level = modeSettings.level || 1;
         game.targets = game.level;
@@ -70,5 +58,11 @@ gameMod.loadMode({
         draw.targetRange(ctx, sm.canvas, sm.game);
         draw.current_pos_pixmap(ctx, sm, 'default', 'circle_small', 32, 0);
         draw.score(ctx, canvas, sm);
+        // detailed info
+        ctx.fillStyle = 'white';
+        ctx.font = '10px arial';
+        ctx.textAlign = 'left';
+        ctx.textbaseline = 'top';
+        ctx.fillText('speed: ' + sm.game.deg.perSec , 10, 10);
     }
 });
