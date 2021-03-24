@@ -7,20 +7,6 @@ gameMod.loadMode({
             start: 1,
             range: [1, 100]
         }
-/*
-        {
-            key: 'perSecLower',
-            disp: 'Start Speed',
-            start: 30,
-            range: [10, 40]
-        },
-        {
-            key: 'perSecHigher',
-            disp: 'End Speed',
-            start: 80,
-            range: [80, 100]
-        }
-*/
     ],
     init: function(modeAPI, game, modeSettings){
         game.hp.active = false;
@@ -29,9 +15,9 @@ gameMod.loadMode({
         game.level = modeSettings.levelStart || 1;
         game.levelCap = 100;
         // speed
-        game.perSecLower = 20;   // modeSettings.perSecLower || 20;
-        game.perSecHigher = 80;  // modeSettings.perSecHigher ||85;
-        //game.deg.perSec = game.perSecLower;
+        game.perSecLower = 20;
+        game.perSecHigher = 80;
+        // first target
         game.deg.target = modeAPI.getTargetRandom(game);
     },
     update: function(modeAPI, game){
