@@ -45,11 +45,11 @@
 * (done) use stateMachine.load for each state in main.js
 * (done) have each state object in main.js as a file in the new /states folder
 * (done) have state-machine.js in lib folder
-
-* freePlay mode: see mode todo
+* (done) freePlay mode: see mode todo
 * suddenDeath mode: see mode todo
 * (done) Endurance mode: see mode todo
 * classic mode: see mode todo
+* fix spelling mistake with sudden death mode
 
 
 * small circle animation playback effected by current game.deg.dir

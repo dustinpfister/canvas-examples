@@ -1,5 +1,5 @@
 gameMod.loadMode({
-    key: 'sudendeath',
+    key: 'suddendeath',
     settings:[
         {
             key: 'perSecLower',

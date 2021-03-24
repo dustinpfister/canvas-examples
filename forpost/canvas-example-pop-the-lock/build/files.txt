@@ -6,7 +6,7 @@
 ../pixmaps/mr-sun.js
 ../lib/game.js
 ../modes/freeplay/gamemode.js
-../modes/sudendeath/gamemode.js
+../modes/suddendeath/gamemode.js
 ../modes/classic/gamemode.js
 ../modes/endurance/gamemode.js
 ../lib/state-machine.js
