@@ -50,6 +50,12 @@ gameMod.loadMode({
         // margin
         game.deg.margin = 5;
 
+        // trip up settings
+        game.tripUp.count = 0;
+        game.tripUp.chance = 0;
+        game.tripUp.degRange = [25, 40];
+        game.tripUp.countRange = [3, 6];
+
     },
     update: function(modeAPI, game, secs){
         var hits = game.clickTrack.hits;
@@ -61,8 +67,10 @@ gameMod.loadMode({
             game.hp.current += game.hp.perSec * secs;
             game.hp.current = game.hp.current >= game.hp.max ? game.hp.max : game.hp.current;
         }
-        // ajust margin
+        // margin goes up with level
         game.deg.margin = 6 - 3.5 * per;
+        // trip up chance goes up with level
+        game.tripUp.chance = per > 0.25 ? ( per - 0.25 ) / 0.75 * 0.75: 0;
         // damage should go up with level
         //game.hp.damage = 1 + game.hp.perLevel * (game.level - 1);
         game.hp.damage = 1 + Math.pow(game.hp.damageBase, game.level - 1) - 1;
