@@ -39,6 +39,11 @@
 * can turn animations on and off
 * can trun debug mode on and off
 
+* small circle animation playback effected by current game.deg.dir
+* make mode settings collection part of the save state
+* have a spawnDispObj helper
+
+
 ## 1.0.4 - /states folder
 * (done) start with a state_machine.js file at root.
 * (done) have a stateMachine.load public function
@@ -46,16 +51,10 @@
 * (done) have each state object in main.js as a file in the new /states folder
 * (done) have state-machine.js in lib folder
 * (done) freePlay mode: see mode todo
-* suddenDeath mode: see mode todo
+* (done) suddenDeath mode: see mode todo
 * (done) Endurance mode: see mode todo
+* (done) fix spelling mistake with sudden death mode
 * classic mode: see mode todo
-* fix spelling mistake with sudden death mode
-
-
-* small circle animation playback effected by current game.deg.dir
-* make mode settings collection part of the save state
-* have a spawnDispObj helper
-
 * Make a pkg 1.0.4 folder
 
 ## 1.0.3 - Modes folders and Mode work

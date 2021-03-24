@@ -3,4 +3,4 @@
 ## 1.x.x - new pixmap for sudsen death
 
 ## 1.0.4 - Just a start level Setting
-* just have a start level setting for now
+* (done) just have a start level setting for now
