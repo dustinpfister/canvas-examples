@@ -82,9 +82,8 @@ gameMod.loadMode({
     },
     onClick: function(modeAPI, game, modeSettings){
         if (game.inRange) {
-            game.deg.target = modeAPI.getTargetRandom(game);
+            game.deg.target = modeAPI.newTarget(game);
             game.level += 1;
-            //game.level = game.level > 100 ? 100 : game.level;
         }else{
             game.hp.current -= game.hp.damage;
         }
