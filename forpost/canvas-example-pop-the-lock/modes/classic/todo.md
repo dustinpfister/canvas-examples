@@ -1,4 +1,5 @@
 # Classic mode todo
 
 ## 1.0.4 - Just level setting
-* just a level setting for now and have start and end speeds fixed
+* (done) just a level setting for now and have start and end speeds fixed
+* perSecLower and perSecHigher should be set by level

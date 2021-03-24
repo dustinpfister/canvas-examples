@@ -9,17 +9,23 @@ gameMod.loadMode({
         }
     ],
     init: function(modeAPI, game, modeSettings){
+        // liss settings
         game.hp.active = false;
-
         game.deg.current = 25;
+
+        // level
+        modeSettings.level = game.level = modeSettings.level || 1;
+        game.levelCap = 100;
+        var levPer = game.level / game.levelCap;
+
+        // trip up settings
         game.tripUp.chance = 0.1;
         game.tripUp.degRange = [20, 30];
 
-        game.perSecLower = 20;
-        game.perSecHigher = 70;
-        //game.deg.perSec = game.perSecLower;
+        // speed range fixed on a per game basis, set by game level
+        game.perSecLower = 20 + 20 * levPer;
+        game.perSecHigher = 25 + 45 * levPer;
 
-        modeSettings.level = game.level = modeSettings.level || 1;
         game.targets = game.level;
         game.deg.target = modeAPI.getTargetRandom(game);
     },
@@ -39,7 +45,7 @@ gameMod.loadMode({
             game.targets -= 1;
             if(game.targets === 0){
                 modeSettings.level += 1;
-                modeSettings.level = modeSettings.level > 100 ? 100: modeSettings.level;
+                modeSettings.level = modeSettings.level > game.levelCap ? game.levelCap: modeSettings.level;
                 game.gameOver = true;
                 game.win = true;
             }
