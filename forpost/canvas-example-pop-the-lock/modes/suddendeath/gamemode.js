@@ -2,6 +2,13 @@ gameMod.loadMode({
     key: 'suddendeath',
     settings:[
         {
+            key: 'levelStart',
+            disp: 'Start Level',
+            start: 1,
+            range: [1, 100]
+        }
+/*
+        {
             key: 'perSecLower',
             disp: 'Start Speed',
             start: 30,
@@ -13,6 +20,7 @@ gameMod.loadMode({
             start: 80,
             range: [80, 100]
         }
+*/
     ],
     init: function(modeAPI, game, modeSettings){
         game.hp.active = false;
@@ -21,14 +29,17 @@ gameMod.loadMode({
         game.level = 1;
         game.levelCap = 100;
         // speed
-        game.perSecLower = modeSettings.perSecLower || 20;
-        game.perSecHigher = modeSettings.perSecHigher ||85;
-        game.deg.perSec = game.perSecLower;
+        game.perSecLower = 20;   // modeSettings.perSecLower || 20;
+        game.perSecHigher = 80;  // modeSettings.perSecHigher ||85;
+        //game.deg.perSec = game.perSecLower;
         game.deg.target = modeAPI.getTargetRandom(game);
     },
     update: function(modeAPI, game){
         var hits = game.clickTrack.hits;
         game.score = Math.floor(hits + Math.pow(1.075, hits)) - 1;
+        // set speed
+        var levPer = game.level / game.levelCap;
+        game.deg.perSec = game.perSecLower + Math.round( (game.perSecHigher - game.perSecLower) * levPer);
     },
     onMiss: function(modeAPI, game){
         game.missTrack.count = 1;
@@ -39,8 +50,6 @@ gameMod.loadMode({
             game.deg.target = modeAPI.getTargetRandom(game);
             game.level += 1;
             game.level = game.level > game.levelCap ? game.levelCap : game.level;
-            var levPer = game.level / game.levelCap;
-            game.deg.perSec = game.perSecLower + Math.round( (game.perSecHigher - game.perSecLower) * levPer);
         }else{
             game.gameOver = true;
         }
