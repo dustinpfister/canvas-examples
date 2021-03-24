@@ -65,10 +65,12 @@ gameMod.loadMode({
         draw.current_pos_pixmap(ctx, sm, 'default', 'circle_small', 32, 0);
         draw.score(ctx, canvas, sm);
         // detailed info
+/*
         ctx.fillStyle = 'white';
         ctx.font = '10px arial';
         ctx.textAlign = 'left';
         ctx.textbaseline = 'top';
         ctx.fillText('speed: ' + sm.game.deg.perSec , 10, 10);
+*/
     }
 });

@@ -108,7 +108,7 @@ gameMod.loadMode({
         draw.current_pos_pixmap(ctx, sm, 'default', 'circle_small', 32, 0);
         draw.hpBar(ctx, canvas, sm.game);
         draw.score(ctx, canvas, sm);
-
+/*
         ctx.fillStyle = 'white';
         ctx.textAlign = 'left';
         ctx.textBaseline = 'top';
@@ -116,5 +116,6 @@ gameMod.loadMode({
         ctx.fillText('deg per sec: ' + sm.game.deg.perSec, 10, 25);
         ctx.fillText('damage: ' + sm.game.hp.damage, 10, 40);
         ctx.fillText('hp: ' + Math.ceil(sm.game.hp.current) + ' / ' + sm.game.hp.max, 10, 55);
+*/
     }
 });

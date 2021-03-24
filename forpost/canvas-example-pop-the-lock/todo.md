@@ -54,7 +54,7 @@
 * (done) suddenDeath mode: see mode todo
 * (done) Endurance mode: see mode todo
 * (done) fix spelling mistake with sudden death mode
-* classic mode: see mode todo
+* (done) classic mode: see mode todo
 * Make a pkg 1.0.4 folder
 
 ## 1.0.3 - Modes folders and Mode work

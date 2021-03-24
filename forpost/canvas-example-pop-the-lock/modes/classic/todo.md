@@ -2,4 +2,4 @@
 
 ## 1.0.4 - Just level setting
 * (done) just a level setting for now and have start and end speeds fixed
-* perSecLower and perSecHigher should be set by level
+* (done) perSecLower and perSecHigher should be set by level
