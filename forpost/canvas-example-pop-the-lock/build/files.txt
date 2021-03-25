@@ -11,6 +11,7 @@
 ../modes/endurance/gamemode.js
 ../lib/state-machine.js
 ../states/state-title.js
+../states/state-options.js
 ../states/state-game-mode.js
 ../states/state-game.js
 ../states/state-game-over.js

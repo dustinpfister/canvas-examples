@@ -1,11 +1,8 @@
-
-
 ## 1.3.x - Address issue with cx in pool.js
 * have a obj.cx and obj.cy prop in pool.js that will be the center point of a display object
 * make all changes needed in pool.js, main.js, and draw.js
 ## 1.3.x - Support for up to 10 Settings for game modes
 ## 1.3.x - new /lib/buttons.js
-## 1.3.x - new /lib/statemachine.js
 
 ## 1.3.2 - Score Object in all modes
 * start a new standard score object to be used in all game modes.
@@ -30,7 +27,9 @@
 * can copy a save state
 * can delete a save state
 
-## 1.1.0 - Options State
+## 1.1.0 - Options State started
+* start an options state in /states
+
 * frame rate setting that can help to reduce cpu use, or increase prefromance
 * res setting
 * more than one theme
@@ -41,7 +40,6 @@
 * small circle animation playback effected by current game.deg.dir
 * make mode settings collection part of the save state
 * have a spawnDispObj helper
-
 
 ## 1.0.4 - /states folder
 * (done) start with a state_machine.js file at root.
@@ -179,7 +177,6 @@
 * (done) new Endurance should be like suddenDeath but has an HP bar
 * (done) hp heal over time
 * (done - 03/14/2021) make a pkg 0.5.0 folder
-
 
 ## 0.4.0 - Save States
 * (done) add utils.save and utils.load methods

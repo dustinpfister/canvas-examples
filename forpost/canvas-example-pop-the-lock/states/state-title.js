@@ -5,9 +5,10 @@
         init: function (sm) {
             // Buttons
             var x = sm.canvas.width / 2 - 128,
-            y = sm.canvas.height / 2;
-            stateMachine.spawnButton(sm, {x: x, y: y - 64}, 'start_state_gameMode', 'Play');
-            stateMachine.spawnButton(sm, {x: x, y: y + 32}, 'goto_devsite_canvas_examples', 'More Games', Math.PI);
+            y = sm.canvas.height * 0.3;
+            stateMachine.spawnButton(sm, {x: x, y: y}, 'start_state_gameMode', 'Play');
+            stateMachine.spawnButton(sm, {x: x, y: y + (32 + 10) * 2}, 'start_state_options', 'Options');
+            stateMachine.spawnButton(sm, {x: x, y: y + (32 + 10) * 4}, 'goto_devsite_canvas_examples', 'More Games', Math.PI);
             // title display Object
             poolMod.spawn(sm.dispObjects, sm, {
                 action: 'dispobj_title',
