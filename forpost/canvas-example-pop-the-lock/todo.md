@@ -3,6 +3,8 @@
 * make all changes needed in pool.js, main.js, and draw.js
 ## 1.3.x - Support for up to 10 Settings for game modes
 ## 1.3.x - new /lib/buttons.js
+## 1.3.x - Options state - Animations settings
+## 1.3.x - Options state - Frame Rate Display
 
 ## 1.3.2 - Score Object in all modes
 * start a new standard score object to be used in all game modes.
@@ -19,6 +21,9 @@
 ## 1.3.0 - EXP and Skill Points
 * add a sm.exp prop
 * update sm.exp on each game over state once in the init method
+* small circle animation playback effected by current game.deg.dir
+* make mode settings collection part of the save state
+* have a spawnDispObj helper
 
 ## 1.2.0 - Game Save Manager State
 * can have more than one save state
@@ -27,19 +32,10 @@
 * can copy a save state
 * can delete a save state
 
-## 1.1.0 - Options State started
-* start an options state in /states
+## 1.1.0 - Options State started and debug mode
+* (done) start an options state in /states
+* can trun debug mode on and off in options menu
 
-* frame rate setting that can help to reduce cpu use, or increase prefromance
-* res setting
-* more than one theme
-* have new background and color themes for each game mode
-* flash canvas red when a miss happens
-* can turn animations on and off
-* can trun debug mode on and off
-* small circle animation playback effected by current game.deg.dir
-* make mode settings collection part of the save state
-* have a spawnDispObj helper
 
 ## 1.0.4 - /states folder
 * (done) start with a state_machine.js file at root.

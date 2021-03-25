@@ -42,6 +42,9 @@
                 if(button.data.action === 'start_state_gameMode'){
                     stateMachine.startStateChangeTrans(sm, 'gameMode');
                 }
+                if(button.data.action === 'start_state_options'){
+                    stateMachine.startStateChangeTrans(sm, 'options');
+                }
                 if(button.data.action === 'goto_devsite_canvas_examples'){
                     document.location.href = 'https://dustinpfister.github.io/2020/03/23/canvas-example/';
                 }
