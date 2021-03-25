@@ -4,12 +4,12 @@
         key: 'options',
         init: function (sm) {
             // Buttons
-            var x = sm.canvas.width / 2 - 128,
-            y = sm.canvas.height / 2;
-            stateMachine.spawnButton(sm, {x: x, y: y - 64}, 'start_state_title', 'Title');
+            var x = sm.canvas.width * 0.87,
+            y = sm.canvas.height * 0.03;
+            stateMachine.spawnButton(sm, {x: x, y: y, w : 64}, 'start_state_title', 'Title');
 
             // setup a background
-            // sm.background = draw.createGradient(sm.ctx, sm.canvas, 0.75, [[0,'#cc0000'],[0.25,'purple'],[1,'cyan']]);
+            sm.background = draw.createGradient(sm.ctx, sm.canvas, 0.75, [[0,'#cc0000'],[0.25,'orange'],[1,'yellow']]);
         },
         trans: function (sm, secs) {
             poolMod.update(sm.buttons, secs, sm);
