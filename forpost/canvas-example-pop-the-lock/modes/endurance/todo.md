@@ -9,7 +9,7 @@
 * new score system
 
 ## 1.1.0 - custom debug text
-* create custom debug text
+* (done) create custom debug text
 
 # 1.0.4 - trip up and margins
 * (done) auto heal goes down with level

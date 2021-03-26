@@ -51,5 +51,13 @@ gameMod.loadMode({
         draw.targetRange(ctx, sm.canvas, sm.game);
         draw.current_pos_pixmap(ctx, sm, 'default', 'circle_small', 32, 0);
         draw.score(ctx, canvas, sm);
+        // debug info
+        if(sm.debugMode){
+            ctx.fillStyle = 'white';
+            ctx.font = '10px arial';
+            ctx.textAlign = 'left';
+            ctx.textbaseline = 'top';
+            ctx.fillText('level: ' + sm.game.level, 10, 10);
+        }
     }
 });
