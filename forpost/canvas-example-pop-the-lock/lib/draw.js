@@ -245,6 +245,7 @@ var draw = (function(){
         });
     };
     // info
+/*
     api.debugInfo = function(ctx, canvas, game){
         ctx.fillStyle = 'yellow';
         ctx.textBaseline = 'top';
@@ -263,6 +264,7 @@ var draw = (function(){
         ctx.fillText('mode: ' + game.mode, 10, 200);
         ctx.fillText('level: ' + game.level, 10, 220);
     };
+*/
     // return public API
     return api;
 }());

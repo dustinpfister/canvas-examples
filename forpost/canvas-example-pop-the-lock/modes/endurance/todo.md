@@ -8,6 +8,9 @@
 # 1.3.0 - get ready for exp system
 * new score system
 
+## 1.1.0 - custom debug text
+* create custom debug text
+
 # 1.0.4 - trip up and margins
 * (done) auto heal goes down with level
 * (done) ajust margins as a way to increase the difficulty
