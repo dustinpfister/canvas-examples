@@ -1,7 +1,7 @@
 
 (function () {
     var sm = stateMachine.create({
-        debugMode: true
+        debugMode: false
     });
     // LOOP
     // high scores
@@ -20,9 +20,9 @@
         sm.modeSettingsCollection[modeKey] = settings;
     });
     // start state
-    //stateMachine.changeState(sm, 'title');
-    sm.gameModeIndex = 0;
-    stateMachine.changeState(sm, 'gameMode');
+    stateMachine.changeState(sm, 'title');
+    //sm.gameModeIndex = 0;
+    //stateMachine.changeState(sm, 'gameMode');
     // the loop
     var loop = function () {
         var now = new Date(),
