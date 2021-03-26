@@ -18,6 +18,7 @@
 * make a 1.2.1 folder
 
 ## 1.2.0 - Game Save Manager State
+* start a save-manager state in /states
 * can have more than one save state
 * can create and start a new game
 * can load any save state

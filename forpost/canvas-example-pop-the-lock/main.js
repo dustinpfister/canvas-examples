@@ -1,6 +1,7 @@
 
 (function () {
     var sm = stateMachine.create({
+        ver: '1.2.0',
         debugMode: false
     });
     // LOOP

@@ -17,7 +17,7 @@ var stateMachine = (function () {
         ctx = canvasObj.ctx;
         // create state machine object
         var sm = {
-            ver: '1.1.0',
+            ver: opt.ver || '',
             appName: 'canvas-example-pop-the-lock',
             debugMode: opt.debugMode || false,
             pixmaps: pixmapMod.create(),
