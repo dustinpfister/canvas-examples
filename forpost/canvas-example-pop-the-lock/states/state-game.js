@@ -35,9 +35,6 @@
             draw.backgroundMode(ctx, canvas, sm);
             draw.buttonPool(ctx, sm.buttons);
             draw.pool(ctx, sm.dispObjects);
-            //if(sm.debugMode){
-            //    draw.debugInfo(ctx, canvas, sm.game);
-            //}
         },
         click: function (sm, pos, e) {
             var button = poolMod.getObjectAt(sm.buttons, pos.x, pos.y);

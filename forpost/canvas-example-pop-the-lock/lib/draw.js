@@ -244,27 +244,6 @@ var draw = (function(){
             ctx.globalAlpha = 1;
         });
     };
-    // info
-/*
-    api.debugInfo = function(ctx, canvas, game){
-        ctx.fillStyle = 'yellow';
-        ctx.textBaseline = 'top';
-        ctx.textAlign = 'left';
-        ctx.globalAlpha = 0.35;
-        ctx.font = '20px arial';
-        ctx.fillText('deg.current ' + game.deg.current.toFixed(2), 10, 20);
-        ctx.fillText('deg.target ' + game.deg.target, 10, 40);
-        ctx.fillText('deg.distance ' + game.deg.distance.toFixed(2), 10, 60);
-        ctx.fillText('deg.perSec ' + game.deg.perSec.toFixed(2), 10, 80);
-        ctx.fillText('trip up count: ' + game.tripUp.count, 10, 100);
-        ctx.fillText('inrange ' + game.inRange, 10, 120);
-        ctx.fillText('miss count: ' + game.missTrack.count, 10, 140);
-        ctx.fillText('clicks (hits/total): ' + game.clickTrack.hits + '/' + game.clickTrack.total, 10, 160);
-        ctx.fillText('paused: ' + game.pause, 10, 180);
-        ctx.fillText('mode: ' + game.mode, 10, 200);
-        ctx.fillText('level: ' + game.level, 10, 220);
-    };
-*/
     // return public API
     return api;
 }());

@@ -6,7 +6,8 @@ var stateMachine = (function () {
     var STATES = {};
 
     // STATE MACHINE
-    api.create = function(){
+    api.create = function(opt){
+        opt = opt || {};
         // create and append canvas element, and get 2d context
         var canvasObj = utils.createCanvas({
                 width: 640,
@@ -18,7 +19,7 @@ var stateMachine = (function () {
         var sm = {
             ver: '1.1.0',
             appName: 'canvas-example-pop-the-lock',
-            debugMode: false,
+            debugMode: opt.debugMode || false,
             pixmaps: pixmapMod.create(),
             canvas: canvas,
             ctx: ctx,

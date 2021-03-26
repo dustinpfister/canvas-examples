@@ -12,20 +12,17 @@ gameMod.loadMode({
         // liss settings
         game.hp.active = false;
         game.deg.current = 25;
-
         // level
         modeSettings.level = game.level = modeSettings.level || 1;
         game.levelCap = 100;
         var levPer = game.level / game.levelCap;
-
         // trip up settings
         game.tripUp.chance = 0.1;
         game.tripUp.degRange = [20, 30];
-
         // speed range fixed on a per game basis, set by game level
         game.perSecLower = 20 + 20 * levPer;
         game.perSecHigher = 25 + 45 * levPer;
-
+        // targets
         game.targets = game.level;
         game.deg.target = modeAPI.getTargetRandom(game);
     },
@@ -64,13 +61,13 @@ gameMod.loadMode({
         draw.targetRange(ctx, sm.canvas, sm.game);
         draw.current_pos_pixmap(ctx, sm, 'default', 'circle_small', 32, 0);
         draw.score(ctx, canvas, sm);
-        // detailed info
-/*
-        ctx.fillStyle = 'white';
-        ctx.font = '10px arial';
-        ctx.textAlign = 'left';
-        ctx.textbaseline = 'top';
-        ctx.fillText('speed: ' + sm.game.deg.perSec , 10, 10);
-*/
+        // debug info
+        if(sm.debugMode){
+            ctx.fillStyle = 'white';
+            ctx.font = '10px arial';
+            ctx.textAlign = 'left';
+            ctx.textbaseline = 'top';
+            ctx.fillText('speed: ' + sm.game.deg.perSec , 10, 20);
+        }
     }
 });
