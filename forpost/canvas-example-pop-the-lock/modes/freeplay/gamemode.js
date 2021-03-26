@@ -112,5 +112,13 @@ gameMod.loadMode({
         draw.targetRange(ctx, sm.canvas, sm.game);
         draw.current_pos_pixmap(ctx, sm, 'mrsun', 'circle_small', 32, sm.game.cirSmall.frame);
         draw.score(ctx, canvas, sm);
+        // debug info
+        if(sm.debugMode){
+            ctx.fillStyle = 'white';
+            ctx.font = '10px arial';
+            ctx.textAlign = 'left';
+            ctx.textbaseline = 'top';
+            ctx.fillText('base bonus score: ' + sm.game.baseBonus , 10, 20);
+        }
     }
 });

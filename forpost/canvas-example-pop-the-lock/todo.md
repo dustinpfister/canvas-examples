@@ -35,11 +35,13 @@
 ## 1.1.0 - Options State started and debug mode
 * (done) start an options state in /states
 * (done) can trun debug mode on and off in options menu
-* remove global debug text in draw.js
+* (done) remove global debug text in draw.js
+* (done) options object for stateMachine.create
+
 * update FreePlay mode with custom debug text
 * update suddenDeath mode with custom debug text
 * update endurance mode with custom debug text
-* update classic mode with custom debug text
+* (done) update classic mode with custom debug text
 * make a 1.1.0 pkg folder
 
 ## 1.0.4 - /states folder

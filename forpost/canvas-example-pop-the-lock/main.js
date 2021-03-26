@@ -21,7 +21,7 @@
     });
     // start state
     //stateMachine.changeState(sm, 'title');
-    sm.gameModeIndex = 3;
+    sm.gameModeIndex = 0;
     stateMachine.changeState(sm, 'gameMode');
     // the loop
     var loop = function () {
