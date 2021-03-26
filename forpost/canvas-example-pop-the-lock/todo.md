@@ -1,3 +1,22 @@
+## 1.2.3 - Quick mode setting and display
+* click disp setting button as way to set a mode setting without having to click + or - button a whle bunch of times
+* display a progress bar for mode settings buttons
+* make a pkg 1.2.3 folder
+
+## 1.2.2 - Score Object in all modes
+* start a new standard score object to be used in all game modes.
+* update scoring in freePlay mode
+* update scoring in sudden death mode
+* update scoring in endurance mode
+* update scoring in classic mode
+* make a pkg 1.2.2 folder
+
+## 1.2.1 - SpawnDispObj helper
+* have a spawnDispObj helper
+* small circle animation playback effected by current game.deg.dir
+* make mode settings collection part of the save state
+* make a 1.2.1 folder
+
 ## 1.2.0 - Game Save Manager State
 * can have more than one save state
 * can create and start a new game
