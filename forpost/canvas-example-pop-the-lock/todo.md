@@ -18,7 +18,9 @@
 * make a 1.2.1 folder
 
 ## 1.2.0 - Game Save Manager State
+* (done) can set ver in main.js
 * start a save-manager state in /states
+* have a button to save manager in title
 * can have more than one save state
 * can create and start a new game
 * can load any save state
