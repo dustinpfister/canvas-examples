@@ -28,8 +28,15 @@
 * (done) clicking a slot button will set sm.saveSlotIndex to the slot index of that save slot
 * (done) clicking a slot button will load that state if there is one
 * (done) clicking a slot button will change the background
-* display score info, or 'empty' for all slot buttons
+* (done) display score info, or 'empty' for all slot buttons
 
+* add a clear slot button
+* when clear slot button is clicked state-save will enter a 'delete mode'
+* clicking clear slot button again will cause state-save to leave 'delete mode'
+* in 'delete mode' all slot buttons will flash
+* clicking a slot button in 'delete mode' will cause that state slot to be removed
+* The SLOT_INFO element for a deleted slot will go back to 'Empty'
+* after a slot is deleted state-save will leave 'delete mode'
 * can clear a save state
 
 * make a 1.2.0 pkg folder
