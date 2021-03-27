@@ -37,9 +37,19 @@
         },
         click: function (sm, pos, e) {
             var button = poolMod.getObjectAt(sm.buttons, pos.x, pos.y);
+            var parts = button.data.action.split('_');
             if (button) {
                 if(button.data.action === 'start_state_title'){
                     stateMachine.startStateChangeTrans(sm, 'title');
+                }
+                if(parts[0] === 'set'){
+                    if(parts[1] === 'slotindex'){
+                        sm.saveSlotIndex = Number(parts[2]);
+                        var highScores = utils.load(sm.appName, sm.saveSlotIndex);
+                        if(highScores){
+                            sm.highScores = highScores;
+                        }
+                    }
                 }
             }
         }

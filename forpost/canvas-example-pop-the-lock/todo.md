@@ -12,6 +12,7 @@
 * make a pkg 1.2.2 folder
 
 ## 1.2.1 - SpawnDispObj helper
+* can copy a save state in state-save
 * have a spawnDispObj helper
 * small circle animation playback effected by current game.deg.dir
 * make mode settings collection part of the save state
@@ -23,14 +24,13 @@
 * (done) have a button to state-save in title
 * (done) have an sm.saveSlotIndex property
 * (done) have four slot buttons in state-save one for sm.saveSlotIndex values 0 - 3
-* yellow background for slot button of current slot
-* clicking a slot button will set sm.saveSlotIndex to the slot index of that save slot
+* (done) yellow background for slot button of current slot
 
-* can have more than one save state
-* can create and start a new game
-* can load any save state
-* can copy a save state
-* can delete a save state
+* clicking a slot button will set sm.saveSlotIndex to the slot index of that save slot
+* clicking a slot button will load that state if there is one
+
+* can clear a save state
+
 * make a 1.2.0 pkg folder
 
 ## 1.1.0 - Options State started and debug mode
