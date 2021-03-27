@@ -2,11 +2,12 @@
 (function () {
     var sm = stateMachine.create({
         ver: '1.2.0',
-        debugMode: false
+        debugMode: false,
+        saveSlotIndex: 1
     });
     // LOOP
     // high scores
-    var highScores = utils.load(sm.appName, '0');
+    var highScores = utils.load(sm.appName, sm.saveSlotIndex);
     if(highScores){
         sm.highScores = highScores;
     }

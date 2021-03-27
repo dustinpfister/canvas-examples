@@ -22,7 +22,7 @@
             var highScore = sm.highScores[sm.game.mode];
             if(!highScore || highScore < sm.game.score){
                 sm.highScores[sm.game.mode] = sm.game.score;
-                utils.save(sm.appName, 0, sm.highScores);
+                utils.save(sm.appName, sm.saveSlotIndex, sm.highScores);
             }
         },
         trans: function (sm, secs) {
