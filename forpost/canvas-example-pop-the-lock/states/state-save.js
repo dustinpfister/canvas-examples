@@ -20,8 +20,6 @@
                 slotIndex += 1;
             }
 
-            
-
         },
         trans: function (sm, secs) {
             poolMod.update(sm.buttons, secs, sm);

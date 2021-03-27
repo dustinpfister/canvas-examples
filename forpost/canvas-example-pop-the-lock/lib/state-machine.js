@@ -84,6 +84,7 @@ var stateMachine = (function () {
         return poolMod.spawn(sm[poolKey], sm, {
             action: actionString,
             disp: dispText,
+            fill: '#88ffff',
             sx: sx, //sm.canvas.width * 0.5 * -1,
             sy: sy, //sm.canvas.height * 0.4,
             w: bx.w || 256,

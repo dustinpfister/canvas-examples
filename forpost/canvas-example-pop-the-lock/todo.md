@@ -22,7 +22,8 @@
 * (done) start a state-save in /states
 * (done) have a button to state-save in title
 * (done) have an sm.saveSlotIndex property
-* have four slot buttons in state-save one for sm.saveSlotIndex values 0 - 3
+* (done) have four slot buttons in state-save one for sm.saveSlotIndex values 0 - 3
+* yellow background for slot button of current slot
 * clicking a slot button will set sm.saveSlotIndex to the slot index of that save slot
 
 * can have more than one save state
