@@ -111,4 +111,9 @@ utils.load = function(appName, slotID){
     }
     return false;
 };
+// delete a state
+utils.del = function(appName, slotID){
+    var key = appName + '-' + slotID;
+    localStorage.removeItem(key);
+};
 
