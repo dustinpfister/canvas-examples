@@ -12,7 +12,7 @@
         ['Empty']
     ];
 
-    var delete_mode = true,
+    var delete_mode = false,
     delete_colors = ['lime', 'blue', 'red', 'yellow', 'white'],
     delete_secs = 0,
     delete_colorIndex = 0;
@@ -105,6 +105,11 @@
             if (button) {
                 if(button.data.action === 'start_state_title'){
                     stateMachine.startStateChangeTrans(sm, 'title');
+                }
+                if(button.data.action === 'toggle_delete'){
+                    delete_mode = !delete_mode;
+                    setSlotButtonBackgrounds(sm);
+                    loadSlotInfo(sm);
                 }
                 if(parts[0] === 'set'){
                     if(parts[1] === 'slotindex'){
