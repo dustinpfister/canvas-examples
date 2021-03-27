@@ -44,11 +44,17 @@
                 }
                 if(parts[0] === 'set'){
                     if(parts[1] === 'slotindex'){
+                        var current = stateMachine.getButtonByAction(sm.buttons, 'set_slotindex_' + sm.saveSlotIndex);
+                        current.data.fill = 'red';
                         sm.saveSlotIndex = Number(parts[2]);
                         var highScores = utils.load(sm.appName, sm.saveSlotIndex);
                         if(highScores){
                             sm.highScores = highScores;
+                        }else{
+                            sm.highScores = {};
                         }
+                        current = stateMachine.getButtonByAction(sm.buttons, 'set_slotindex_' + sm.saveSlotIndex);
+                        current.data.fill = 'yellow';
                     }
                 }
             }

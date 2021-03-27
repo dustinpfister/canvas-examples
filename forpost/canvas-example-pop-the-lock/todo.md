@@ -25,9 +25,9 @@
 * (done) have an sm.saveSlotIndex property
 * (done) have four slot buttons in state-save one for sm.saveSlotIndex values 0 - 3
 * (done) yellow background for slot button of current slot
-
-* clicking a slot button will set sm.saveSlotIndex to the slot index of that save slot
-* clicking a slot button will load that state if there is one
+* (done) clicking a slot button will set sm.saveSlotIndex to the slot index of that save slot
+* (done) clicking a slot button will load that state if there is one
+* clicking a slot button will change the background
 
 * can clear a save state
 
