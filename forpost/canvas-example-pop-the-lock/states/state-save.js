@@ -52,6 +52,10 @@
             var x = sm.canvas.width * 0.55,
             y = sm.canvas.height * 0.8;
             stateMachine.spawnButton(sm, {x: x, y: y}, 'start_state_title', 'Title');
+            // delete mode
+            var x = sm.canvas.width * 0.05,
+            y = sm.canvas.height * 0.8;
+            stateMachine.spawnButton(sm, {x: x, y: y}, 'toggle_delete', 'Delete');
             // slot buttons
             var slotIndex = 0;
             y = sm.canvas.height * 0.15;
@@ -107,6 +111,7 @@
 
                         if(delete_mode){
                             utils.del(sm.appName, Number(parts[2]));
+                            delete_mode = false;
                         }else{
                             sm.saveSlotIndex = Number(parts[2]);
                             var highScores = utils.load(sm.appName, sm.saveSlotIndex);
