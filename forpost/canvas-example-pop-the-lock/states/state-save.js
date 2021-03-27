@@ -12,6 +12,8 @@
         ['Empty']
     ];
 
+    var delete_mode = false;
+
     var loadSlotInfo = function(sm){
         var slotIndex = 0;
         while(slotIndex < 4){
@@ -89,15 +91,20 @@
                 }
                 if(parts[0] === 'set'){
                     if(parts[1] === 'slotindex'){
-                        sm.saveSlotIndex = Number(parts[2]);
-                        var highScores = utils.load(sm.appName, sm.saveSlotIndex);
-                        if(highScores){
-                            sm.highScores = highScores;
+
+                        if(delete_mode){
                         }else{
-                            sm.highScores = {};
+                            sm.saveSlotIndex = Number(parts[2]);
+                            var highScores = utils.load(sm.appName, sm.saveSlotIndex);
+                            if(highScores){
+                                sm.highScores = highScores;
+                            }else{
+                                sm.highScores = {};
+                            }
                         }
-                        // update backgrounds
+                        // update backgrounds and slot info
                         setSlotButtonBackgrounds(sm);
+                        loadSlotInfo(sm);
                     }
                 }
             }
