@@ -7,8 +7,9 @@
             var x = sm.canvas.width / 2 - 128,
             y = sm.canvas.height * 0.3;
             stateMachine.spawnButton(sm, {x: x, y: y}, 'start_state_gameMode', 'Play');
-            stateMachine.spawnButton(sm, {x: x, y: y + (32 + 10) * 2}, 'start_state_options', 'Options');
-            stateMachine.spawnButton(sm, {x: x, y: y + (32 + 10) * 4}, 'goto_devsite_canvas_examples', 'More Games', Math.PI);
+            stateMachine.spawnButton(sm, {x: x, y: y + (32 + 10) * 2}, 'start_state_save', 'Save Manager');
+            stateMachine.spawnButton(sm, {x: x, y: y + (32 + 10) * 4}, 'start_state_options', 'Options');
+            stateMachine.spawnButton(sm, {x: x, y: y + (32 + 10) * 6}, 'goto_devsite_canvas_examples', 'More Games', Math.PI);
             // title display Object
             poolMod.spawn(sm.dispObjects, sm, {
                 action: 'dispobj_title',
@@ -41,6 +42,9 @@
             if (button) {
                 if(button.data.action === 'start_state_gameMode'){
                     stateMachine.startStateChangeTrans(sm, 'gameMode');
+                }
+                if(button.data.action === 'start_state_save'){
+                    stateMachine.startStateChangeTrans(sm, 'save');
                 }
                 if(button.data.action === 'start_state_options'){
                     stateMachine.startStateChangeTrans(sm, 'options');
