@@ -29,17 +29,15 @@
 * (done) clicking a slot button will load that state if there is one
 * (done) clicking a slot button will change the background
 * (done) display score info, or 'empty' for all slot buttons
-
-* add a clear slot button
-* when clear slot button is clicked state-save will enter a 'delete mode'
-* clicking clear slot button again will cause state-save to leave 'delete mode'
-* in 'delete mode' all slot buttons will flash
-* clicking a slot button in 'delete mode' will cause that state slot to be removed
-* The SLOT_INFO element for a deleted slot will go back to 'Empty'
-* after a slot is deleted state-save will leave 'delete mode'
-* can clear a save state
-
-* make a 1.2.0 pkg folder
+* (done) add a delete slot button
+* (done) when delete slot button is clicked state-save will enter a 'delete mode'
+* (done) clicking delete slot button again will cause state-save to leave 'delete mode'
+* (done) in 'delete mode' all slot buttons will flash
+* (done) clicking a slot button in 'delete mode' will cause that state slot to be removed
+* (done) The SLOT_INFO element for a deleted slot will go back to 'Empty'
+* (done) after a slot is deleted state-save will leave 'delete mode'
+* (done) can delete a save state
+* (done - 03/27/2021) make a 1.2.0 pkg folder
 
 ## 1.1.0 - Options State started and debug mode
 * (done) start an options state in /states
