@@ -12,6 +12,17 @@
         ['Empty']
     ];
 
+    var loadSlotInfo = function(sm){
+        var slotIndex = 0;
+        while(slotIndex < 4){
+            var save = utils.load(sm.appName, slotIndex);
+            if(save){
+                SLOT_INFO[slotIndex] = ['data'];
+            }
+            slotIndex += 1;
+        }
+    };
+
     // update slot button backgrounds helper
     var setSlotButtonBackgrounds = function(sm){
         var slotIndex = 0;
@@ -45,6 +56,8 @@
             }
             // update slot button backgrounds for first time
             setSlotButtonBackgrounds(sm);
+            // load slot info for first time
+            loadSlotInfo(sm);
         },
         trans: function (sm, secs) {
             poolMod.update(sm.buttons, secs, sm);
