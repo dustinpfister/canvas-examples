@@ -6,6 +6,7 @@
             // Buttons
             var x = sm.canvas.width / 2 - 128,
             y = sm.canvas.height * 0.3;
+ 
             stateMachine.spawnButton(sm, {x: x, y: y}, 'start_state_title', 'Title');
         },
         trans: function (sm, secs) {
