@@ -19,8 +19,12 @@
 
 ## 1.2.0 - Game Save Manager State
 * (done) can set ver in main.js
-* (done) start a save-manager state in /states
-* have a button to save manager in title
+* (done) start a state-save in /states
+* (done) have a button to state-save in title
+* (done) have an sm.saveSlotIndex property
+* have four slot buttons in state-save one for sm.saveSlotIndex values 0 - 3
+* clicking a slot button will set sm.saveSlotIndex to the slot index of that save slot
+
 * can have more than one save state
 * can create and start a new game
 * can load any save state
