@@ -17,7 +17,10 @@
         while(slotIndex < 4){
             var save = utils.load(sm.appName, slotIndex);
             if(save){
-                SLOT_INFO[slotIndex] = ['data'];
+                SLOT_INFO[slotIndex] = [];
+                Object.keys(save).forEach(function(key, itemIndex){
+                    SLOT_INFO[slotIndex][itemIndex] = key + ' : ' + save[key];
+                });
             }
             slotIndex += 1;
         }
