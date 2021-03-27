@@ -51,7 +51,7 @@
             var slotIndex = 0;
             y = sm.canvas.height * 0.15;
             while(slotIndex < 4){
-                var x = sm.canvas.width * (0.12 + (0.6 * (slotIndex / 3)));
+                var x = sm.canvas.width * (0.05 + (0.75 * (slotIndex / 3)));
                 stateMachine.spawnButton(sm, 
                     {x: x, y: y, w: 96, h: 96}, 
                     'set_slotindex_' + slotIndex, 'Slot ' + slotIndex);
@@ -71,10 +71,13 @@
             draw.buttonPool(ctx, sm.buttons);
             var y = sm.canvas.height * 0.4;
             SLOT_INFO.forEach(function(infoArray, slotIndex){
-                var x = sm.canvas.width * (0.12 + (0.6 * (slotIndex / 3)));
+                var x = sm.canvas.width * (0.05 + (0.75 * (slotIndex / 3)));
                 ctx.fillStyle = 'white';
-                ctx.textAlign = 'center';
-                ctx.fillText(infoArray[0], x + 48, y);
+                ctx.textAlign = 'left';
+                ctx.textAlign = '10px arial';
+                infoArray.forEach(function(info, infoIndex){
+                    ctx.fillText(info, x, y + infoIndex * 12);
+                });
             });
         },
         click: function (sm, pos, e) {
