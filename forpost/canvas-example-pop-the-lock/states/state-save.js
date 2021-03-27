@@ -12,14 +12,14 @@
         ['Empty']
     ];
 
-    var delete_mode = false;
+    var delete_mode = true;
 
     var loadSlotInfo = function(sm){
         var slotIndex = 0;
         while(slotIndex < 4){
             var save = utils.load(sm.appName, slotIndex);
+            SLOT_INFO[slotIndex] = ['Empty'];
             if(save){
-                SLOT_INFO[slotIndex] = [];
                 Object.keys(save).forEach(function(key, itemIndex){
                     SLOT_INFO[slotIndex][itemIndex] = key + ' : ' + save[key];
                 });
@@ -93,6 +93,7 @@
                     if(parts[1] === 'slotindex'){
 
                         if(delete_mode){
+                            utils.del(sm.appName, Number(parts[2]));
                         }else{
                             sm.saveSlotIndex = Number(parts[2]);
                             var highScores = utils.load(sm.appName, sm.saveSlotIndex);
