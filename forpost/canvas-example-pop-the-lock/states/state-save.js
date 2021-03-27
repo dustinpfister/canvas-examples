@@ -12,7 +12,10 @@
         ['Empty']
     ];
 
-    var delete_mode = true;
+    var delete_mode = true,
+    delete_colors = ['lime', 'blue', 'red', 'yellow', 'white'],
+    delete_secs = 0,
+    delete_colorIndex = 0;
 
     var loadSlotInfo = function(sm){
         var slotIndex = 0;
@@ -29,13 +32,13 @@
     };
 
     // update slot button backgrounds helper
-    var setSlotButtonBackgrounds = function(sm){
+    var setSlotButtonBackgrounds = function(sm, styleActive, styleInactive){
         var slotIndex = 0;
         while(slotIndex < 4){
             var current = stateMachine.getButtonByAction(sm.buttons, 'set_slotindex_' + slotIndex);
-            current.data.fill = 'red';
+            current.data.fill = styleInactive || 'red';
             if(slotIndex === sm.saveSlotIndex){
-                current.data.fill = 'yellow';
+                current.data.fill = styleActive || 'yellow';
             }
             slotIndex += 1;
         }
@@ -67,7 +70,17 @@
         trans: function (sm, secs) {
             poolMod.update(sm.buttons, secs, sm);
         },
-        update: function (sm, secs) {},
+        update: function (sm, secs) {
+            if(delete_mode){
+                delete_secs += secs;
+                if(delete_secs >= 0.1){
+                    setSlotButtonBackgrounds(sm, delete_colors[delete_colorIndex], delete_colors[delete_colorIndex]);
+                    delete_colorIndex += 1;
+                    delete_colorIndex = utils.mod(delete_colorIndex, delete_colors.length);
+                    delete_secs = 0;
+                }
+            }
+        },
         draw: function (sm, ctx, canvas) {
             draw.background(ctx, canvas, sm.background);
             draw.buttonPool(ctx, sm.buttons);
