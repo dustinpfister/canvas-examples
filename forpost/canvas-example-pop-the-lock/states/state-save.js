@@ -5,6 +5,13 @@
     // prefromed in main.js, and utils.save actions are preformed in 
     // in things like a game over state.
 
+    var SLOT_INFO = [
+        ['Empty'],
+        ['Empty'],
+        ['Empty'],
+        ['Empty']
+    ];
+
     // update slot button backgrounds helper
     var setSlotButtonBackgrounds = function(sm){
         var slotIndex = 0;
@@ -28,11 +35,11 @@
             stateMachine.spawnButton(sm, {x: x, y: y}, 'start_state_title', 'Title');
             // slot buttons
             var slotIndex = 0;
-            y = sm.canvas.height * 0.3;
+            y = sm.canvas.height * 0.15;
             while(slotIndex < 4){
                 var x = sm.canvas.width * (0.12 + (0.6 * (slotIndex / 3)));
                 stateMachine.spawnButton(sm, 
-                    {x: x, y: y, w: 96, h: 128}, 
+                    {x: x, y: y, w: 96, h: 96}, 
                     'set_slotindex_' + slotIndex, 'Slot ' + slotIndex);
                 slotIndex += 1;
             }
@@ -46,6 +53,13 @@
         draw: function (sm, ctx, canvas) {
             draw.background(ctx, canvas, sm.background);
             draw.buttonPool(ctx, sm.buttons);
+            var y = sm.canvas.height * 0.4;
+            SLOT_INFO.forEach(function(infoArray, slotIndex){
+                var x = sm.canvas.width * (0.12 + (0.6 * (slotIndex / 3)));
+                ctx.fillStyle = 'white';
+                ctx.textAlign = 'center';
+                ctx.fillText(infoArray[0], x + 48, y);
+            });
         },
         click: function (sm, pos, e) {
             var button = poolMod.getObjectAt(sm.buttons, pos.x, pos.y);

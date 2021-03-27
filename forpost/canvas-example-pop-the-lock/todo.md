@@ -27,7 +27,8 @@
 * (done) yellow background for slot button of current slot
 * (done) clicking a slot button will set sm.saveSlotIndex to the slot index of that save slot
 * (done) clicking a slot button will load that state if there is one
-* clicking a slot button will change the background
+* (done) clicking a slot button will change the background
+* display score info, or 'empty' for all slot buttons
 
 * can clear a save state
 
