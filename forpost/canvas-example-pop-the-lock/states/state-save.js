@@ -16,7 +16,13 @@
             y = sm.canvas.height * 0.3;
             while(slotIndex < 4){
                 var x = sm.canvas.width * (0.12 + (0.6 * (slotIndex / 3)));
-                stateMachine.spawnButton(sm, {x: x, y: y, w: 96, h: 128}, 'set_slotindex_' + slotIndex, 'Slot ' + slotIndex);
+                var button = stateMachine.spawnButton(sm, 
+                    {x: x, y: y, w: 96, h: 128}, 
+                    'set_slotindex_' + slotIndex, 'Slot ' + slotIndex);
+                button.data.fill = 'red';
+                if(slotIndex === sm.saveSlotIndex){
+                    button.data.fill = 'yellow';
+                }
                 slotIndex += 1;
             }
 

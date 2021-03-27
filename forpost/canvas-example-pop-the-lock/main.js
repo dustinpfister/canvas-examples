@@ -3,7 +3,7 @@
     var sm = stateMachine.create({
         ver: '1.2.0',
         debugMode: false,
-        saveSlotIndex: 1
+        saveSlotIndex: 0
     });
     // LOOP
     // high scores
