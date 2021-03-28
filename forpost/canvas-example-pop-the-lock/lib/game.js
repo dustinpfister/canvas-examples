@@ -67,6 +67,7 @@ var gameMod = (function(){
             deg: {                           // 'degree' object
                current: 25,                  // the current 'degree'
                delta: 0,                     // current delta
+               deltaTop: 0,                  // top delta recorded in update method
                perSec: 30,                   // degrees per second
                target: 0,                    // the target 'degree'
                total: 100,                   // total number of 'degrees'
@@ -112,6 +113,10 @@ var gameMod = (function(){
         game.deg.delta = 0;
         if(!game.pause && !game.gameOver){
             game.deg.delta = game.deg.perSec * secs;
+            // !!!track top deg.delta (THIS IS DONE FOR DEBUGING only and as such may be removed at some point)
+            if(game.deg.delta > game.deg.deltaTop){
+                game.deg.deltaTop = game.deg.delta;
+            }
             game.deg.current += game.deg.delta * game.dir;
         } 
         game.deg.current = utils.mod(game.deg.current, game.deg.total);

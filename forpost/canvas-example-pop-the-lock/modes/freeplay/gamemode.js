@@ -6,13 +6,13 @@ gameMod.loadMode({
         {
             key: 'perSec',
             disp: 'Speed',
-            start: 35,
-            range: [10, 60]
+            start: 80,
+            range: [10, 80]
         },
         {
             key: 'margin',
             disp: 'Margin',
-            start: 4,
+            start: 20,
             range: [0, 20]
         },
         {
@@ -39,7 +39,7 @@ gameMod.loadMode({
         game.deg.perSec = modeSettings.perSec || 10;
         // fixed margin setting set by user
         var deg = game.deg.total * 0.125;
-        game.deg.margin = deg - modeSettings.margin / 20 * (deg - 2) || 1;
+        game.deg.margin = deg - modeSettings.margin / 20 * (deg - 1) || 1;
         // user trip up settings
         game.tripUp.count = 0;
         game.tripUp.chance = (modeSettings.tripUpChance / 100) || 0;
@@ -118,7 +118,8 @@ gameMod.loadMode({
             ctx.font = '10px arial';
             ctx.textAlign = 'left';
             ctx.textbaseline = 'top';
-            ctx.fillText('deg.delta: ' + sm.game.deg.delta , 10, 20);
+            ctx.fillText('deg.delta: ' + sm.game.deg.delta.toFixed(2) , 10, 20);
+            ctx.fillText('deg.deltaTop: ' + sm.game.deg.deltaTop.toFixed(2) , 10, 30);
             ctx.fillText('base bonus score: ' + sm.game.baseBonus , 10, 50);
         }
     }
