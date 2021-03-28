@@ -67,7 +67,7 @@ var gameMod = (function(){
             delayMode: {
 				active: false,
 				secs: 0,
-				delay: 1
+				delay: 10
 			},
             deg: {                           // 'degree' object
                current: 25,                  // the current 'degree'
@@ -120,15 +120,13 @@ var gameMod = (function(){
             game.deg.delta = game.deg.perSec * secs;
 
             // one way to fix the deg.delta problem would be to cap the delta
-            //game.deg.delta = game.deg.delta >= game.deg.margin / 2 ? game.deg.margin / 2 : game.deg.delta;
+            //game.deg.delta = game.deg.delta >= game.deg.margin * 0.95 ? game.deg.margin * 0.95 : game.deg.delta;
 
             // another way to fix the deg.delta problem is to create a 'delayMode'
             if(game.delayMode.active){
-				
-				game.deg.current = game.deg.target;
-				game.deg.delta = 0;
-				
-			}
+                game.deg.current = game.deg.target;
+                game.deg.delta = 0;
+            }
 
             // !!!track top deg.delta (THIS IS DONE FOR DEBUGING only and as such may be removed at some point)
             if(game.deg.delta > game.deg.deltaTop){
@@ -143,6 +141,11 @@ var gameMod = (function(){
         if(game.inRange){
             game.missTrack.canMiss = true;
             game.delayMode.active = true;
+            game.delayMode.secs += secs;
+            if(game.delayMode.secs > game.delayMode.delay){
+                    game.delayMode.active = false;
+                    game.delayMode.secs = 0;
+            }
         }
         if(game.missTrack.canMiss && !game.inRange){
             // call onMiss for the current mode
@@ -160,9 +163,10 @@ var gameMod = (function(){
             if (game.inRange) {
                 game.missTrack.canMiss = false;
                 game.dir = game.dir === 1 ? -1 : 1;
-				game.delayMode.active = false;
                 
             }
+            // in range or not delay mode is off now
+            game.delayMode.active = false;
             // call on click for the current mode
             modes[game.mode].onClick(modeAPI, game, modeOptions);
         }

@@ -22,8 +22,8 @@
 ## 1.2.1 - Better deg.current delta handling with deg.reactTime property
 * (done) Fix bug where high scores are not reset when a save is deleted that is the current state
 * (done) Make base circle slightly thicker than range arc
-* When the deg.current value comes in range of deg.target value the game enters a kind of 'delay mode'
-* When in delay mode the deg.current value will stop at the deg.target value
+* (done) When the deg.current value comes in range of deg.target value the game enters a kind of 'delay mode'
+* (done) When in delay mode the deg.current value will stop at the deg.target value
 * However the delay will only continue for a fixed amount of time
 
 * game.missTrack should be renamed to game.lateTrack to help make things less confusing
