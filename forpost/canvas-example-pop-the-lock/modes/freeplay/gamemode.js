@@ -6,7 +6,7 @@ gameMod.loadMode({
         {
             key: 'perSec',
             disp: 'Speed',
-            start: 480,
+            start: 10,
             range: [10, 480]
         },
         {
@@ -120,6 +120,7 @@ gameMod.loadMode({
             ctx.textbaseline = 'top';
             ctx.fillText('deg.delta: ' + sm.game.deg.delta.toFixed(2) , 10, 20);
             ctx.fillText('deg.deltaTop: ' + sm.game.deg.deltaTop.toFixed(2) , 10, 30);
+            ctx.fillText('deg.totalDist: ' + sm.game.deg.distance.toFixed(2) + '/' + sm.game.deg.totalDist.toFixed(2) , 10, 40);
             ctx.fillText('base bonus score: ' + sm.game.baseBonus , 10, 50);
         }
     }

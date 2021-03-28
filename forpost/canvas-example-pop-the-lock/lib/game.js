@@ -6,6 +6,10 @@ var gameMod = (function(){
     var getDistanceFromTarget = function(game){
         return utils.shortestDistance(game.deg.current, game.deg.target, game.deg.total);
     };
+    // distance from start to target helper
+    var getDistanceFromStartToTarget = function(game){
+        return utils.shortestDistance(game.deg.start, game.deg.target, game.deg.total);
+    };
     // helpers
     var getInRange = function (game) {
         return game.deg.distance <= game.deg.margin;
@@ -38,7 +42,26 @@ var gameMod = (function(){
         var deltaDeg = utils.randomRange(game.tripUp.degRange);
         return getTargetFrom(game, game.deg.current + deltaDeg * game.dir);
     };
+    var newTarget = modeAPI.newTarget = function(game){
+        var target = getTargetRandom(game);
+        if(game.tripUp.count > 0){
+            game.tripUp.count -= 1;
+        }
+        if(game.tripUp.count >= 1){
+            target = getTargetRandomTripUp(game);
+        }
+        var roll = Math.random();
+        if(roll < game.tripUp.chance){
+            game.tripUp.count = Math.floor(utils.randomRange(game.tripUp.countRange));
+            target = getTargetRandomTripUp(game);
+        }
+        game.deg.target = target;
+        game.deg.start = game.deg.current;
+        game.deg.totalDist = getDistanceFromStartToTarget(game);
+        return target;
+    };
     // create and return a new target
+	/*
     var newTarget = modeAPI.newTarget = function(game){
         if(game.tripUp.count > 0){
             game.tripUp.count -= 1;
@@ -51,8 +74,11 @@ var gameMod = (function(){
             game.tripUp.count = Math.floor(utils.randomRange(game.tripUp.countRange));
             return getTargetRandomTripUp(game);
         }
+        game.deg.start = game.deg.current;
+        game.deg.totalDist = getDistanceFromStartToTarget(game);
         return getTargetRandom(game);
     };
+	*/
     // public API
     var api = {};
     // make modes public
@@ -71,13 +97,15 @@ var gameMod = (function(){
 			},
             deg: {                           // 'degree' object
                current: 25,                  // the current 'degree'
+               start: 25,                    // a start deg to find and store total deg distance from start to target
                delta: 0,                     // current delta
                deltaTop: 0,                  // top delta recorded in update method
                perSec: 30,                   // degrees per second
                target: 0,                    // the target 'degree'
                total: 100,                   // total number of 'degrees'
                margin: 4,                    // the margin of 'degrees' +- from target that will still count as in range
-               distance: 0                   // should be the shortest distance in 'degrees' from target
+               distance: 0,                  // should be the current distance in 'degrees' from target
+               totalDist: 0                  // should be the distance from deg.start to deg.target
             },
             missTrack: {                     // Miss Tacking (missed target, not clicking to soon)
                 canMiss: false,
@@ -110,6 +138,8 @@ var gameMod = (function(){
         game.deg.target = newTarget(game);
         modes[game.mode].init(modeAPI, game, opt.modeSettings || {});
         game.deg.distance = getDistanceFromTarget(game);
+        game.deg.start = game.deg.current;
+        game.deg.totalDist = getDistanceFromStartToTarget(game);
         game.inRange = getInRange(game);
         return game;
     };
@@ -135,12 +165,13 @@ var gameMod = (function(){
             game.deg.current += game.deg.delta * game.dir;
         } 
         game.deg.current = utils.mod(game.deg.current, game.deg.total);
+        // current distance from target
         game.deg.distance = getDistanceFromTarget(game);
         game.inRange = getInRange(game);
         // !!! miss should be renamed to late to help make things less confusing
         if(game.inRange){
             game.missTrack.canMiss = true;
-            game.delayMode.active = true;
+            //game.delayMode.active = true;
             game.delayMode.secs += secs;
             if(game.delayMode.secs > game.delayMode.delay){
                     game.delayMode.active = false;
