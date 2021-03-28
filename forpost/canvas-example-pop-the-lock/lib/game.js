@@ -130,6 +130,7 @@ var gameMod = (function(){
         game.deg.current = utils.mod(game.deg.current, game.deg.total);
         game.deg.distance = getDistanceFromTarget(game);
         game.inRange = getInRange(game);
+        // !!! miss should be renamed to late to help make things less confusing
         if(game.inRange){
             game.missTrack.canMiss = true;
         }

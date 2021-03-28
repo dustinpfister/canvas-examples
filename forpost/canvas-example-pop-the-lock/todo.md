@@ -26,6 +26,7 @@
 * When in delay mode the deg.current value will stop at the deg.target value
 * However the delay will only continue for a fixed amount of time
 
+* game.missTrack should be renamed to game.lateTrack to help make things less confusing
 
 * make a 1.2.1 folder
 
