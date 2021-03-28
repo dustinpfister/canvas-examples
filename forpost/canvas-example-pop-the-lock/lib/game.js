@@ -64,6 +64,11 @@ var gameMod = (function(){
             mode: opt.mode || 'freePlay',    // current game mode such as 'endurance', or 'freePlay' (see modes object)
             level: 1,
             targets: 1,
+            delayMode: {
+				active: false,
+				secs: 0,
+				delay: 1
+			},
             deg: {                           // 'degree' object
                current: 25,                  // the current 'degree'
                delta: 0,                     // current delta
@@ -113,6 +118,9 @@ var gameMod = (function(){
         game.deg.delta = 0;
         if(!game.pause && !game.gameOver){
             game.deg.delta = game.deg.perSec * secs;
+            // one way to fix the deg.delta problem would be to cap the delta
+            //game.deg.delta = game.deg.delta >= game.deg.margin / 2 ? game.deg.margin / 2 : game.deg.delta;
+
             // !!!track top deg.delta (THIS IS DONE FOR DEBUGING only and as such may be removed at some point)
             if(game.deg.delta > game.deg.deltaTop){
                 game.deg.deltaTop = game.deg.delta;
