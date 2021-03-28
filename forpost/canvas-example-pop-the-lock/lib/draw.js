@@ -37,7 +37,7 @@ var draw = (function(){
     // draw base circle
     var baseCircle = api.baseCircle = function(ctx, canvas, style){
         ctx.strokeStyle = style || 'white';
-        ctx.lineWidth = 6;
+        ctx.lineWidth = 10;
         ctx.beginPath();
         ctx.arc(canvas.width / 2, canvas.height / 2, CIRCLE_RADIUS, 0, Math.PI * 2);
         ctx.stroke();
@@ -56,7 +56,7 @@ var draw = (function(){
         // red for trip up range, and orange for all others
         ctx.strokeStyle = game.tripUp.count > 0 ? 'red': 'orange';
         ctx.beginPath();
-        ctx.lineWidth = 8;
+        ctx.lineWidth = 6;
         ctx.arc(canvas.width / 2, canvas.height / 2, CIRCLE_RADIUS,
             utils.mod(game.deg.target - game.deg.margin, game.deg.total) / game.deg.total * Math.PI * 2,
             utils.mod(game.deg.target + game.deg.margin, game.deg.total) / game.deg.total * Math.PI * 2);
