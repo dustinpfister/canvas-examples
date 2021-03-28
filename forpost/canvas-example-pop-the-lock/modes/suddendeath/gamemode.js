@@ -40,8 +40,8 @@ gameMod.loadMode({
         game.delayMode.delay = 1 - 0.9 * levPer;
 
     },
-    onMiss: function(modeAPI, game){
-        game.missTrack.count = 1;
+    onLate: function(modeAPI, game){
+        game.lateTrack.count = 1;
         game.gameOver = true;
     },
     onClick: function(modeAPI, game, modeSettings){

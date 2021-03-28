@@ -154,7 +154,7 @@ var draw = (function(){
             // late and miss counts
             text_med_center(ctx);
             var miss = game.clickTrack.total - game.clickTrack.hits;
-            ctx.fillText('late: ' + game.missTrack.count + ', miss: ' + miss, canvas.width / 2, canvas.height * 0.35);
+            ctx.fillText('late: ' + game.lateTrack.count + ', miss: ' + miss, canvas.width / 2, canvas.height * 0.35);
             // high score for current mode
             text_small_center(ctx);
             var hs = sm.highScores[sm.game.mode];
@@ -177,7 +177,7 @@ var draw = (function(){
         ctx.fillText(game.win ? 'You Won!' : 'Game Over', sx, canvas.height * 0.25);
         text_game_stats(ctx);
         ctx.fillText('clicks (hits/total): ' + game.clickTrack.hits + '/' + game.clickTrack.total, sx, sy + 10);
-        ctx.fillText('miss count: ' + game.missTrack.count, sx, sy + 20);
+        ctx.fillText('miss count: ' + game.lateTrack.count, sx, sy + 20);
         ctx.fillText('score: ' + game.score, sx, sy + 40);
     };
     // version

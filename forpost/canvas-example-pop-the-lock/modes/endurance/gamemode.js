@@ -92,8 +92,8 @@ gameMod.loadMode({
         // score
         game.score = Math.floor(hits + Math.pow(1.075, hits)) - 1;
     },
-    onMiss: function(modeAPI, game){
-        game.missTrack.count += 1;
+    onLate: function(modeAPI, game){
+        game.lateTrack.count += 1;
         game.hp.current -= game.hp.damage;
     },
     onClick: function(modeAPI, game, modeSettings){

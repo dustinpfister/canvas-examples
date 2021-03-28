@@ -34,8 +34,8 @@ gameMod.loadMode({
         game.deg.perSec = game.perSecLower + Math.round( (game.perSecHigher - game.perSecLower) * (hits / game.level));
         game.deg.perSec = game.deg.perSec > game.perSecHigher ? game.perSecHigher : game.deg.perSec;
     },
-    onMiss: function(modeAPI, game){
-        game.missTrack.count = 1;
+    onLate: function(modeAPI, game){
+        game.lateTrack.count = 1;
         game.gameOver = true;
     },
     onClick: function(modeAPI, game, modeSettings){

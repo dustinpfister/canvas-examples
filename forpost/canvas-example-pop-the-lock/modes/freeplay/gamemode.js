@@ -73,7 +73,7 @@ gameMod.loadMode({
         var hits = game.clickTrack.hits,
         total = game.clickTrack.total,
         hitPer = game.clickTrack.hits / total,
-        missLoss = 1 - (1 / (game.missTrack.count + 1));
+        missLoss = 1 - (1 / (game.lateTrack.count + 1));
         hitPer = utils.isNaN(hitPer) ? 1 : hitPer;
         var bonus = Math.floor( game.baseBonus * hitPer * (1 - missLoss)) * (total < 100 ? total / 100: 1);
         game.score =  Math.floor(game.perHitScore + bonus);
@@ -92,8 +92,8 @@ gameMod.loadMode({
             game.cirBig.secs -= secs;
         }
     },
-    onMiss: function(modeAPI,game){
-        game.missTrack.count += 1;
+    onLate: function(modeAPI,game){
+        game.lateTrack.count += 1;
     },
     onClick: function(modeAPI, game){
         game.cirBig.secs = 0.25;

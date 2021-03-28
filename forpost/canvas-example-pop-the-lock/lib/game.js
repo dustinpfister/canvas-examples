@@ -122,7 +122,7 @@ var gameMod = (function(){
                distance: 0,                  // should be the current distance in 'degrees' from target
                totalDist: 0                  // should be the distance from deg.start to deg.target
             },
-            missTrack: {                     // Miss Tacking (missed target, not clicking to soon)
+            lateTrack: {                     // Late Tacking (to late to click target, not clicking to soon)
                 canMiss: false,
                 count: 0
             },
@@ -198,13 +198,13 @@ var gameMod = (function(){
         game.inRange = getInRange(game);
         // !!! miss should be renamed to late to help make things less confusing
         if(game.inRange){
-            game.missTrack.canMiss = true;
+            game.lateTrack.canMiss = true;
             game.delayMode.active = true;
         }
-        if(game.missTrack.canMiss && !game.inRange){
+        if(game.lateTrack.canMiss && !game.inRange){
             // call onMiss for the current mode
-            modes[game.mode].onMiss(modeAPI, game, secs);
-            game.missTrack.canMiss = false;
+            modes[game.mode].onLate(modeAPI, game, secs);
+            game.lateTrack.canMiss = false;
             game.delayMode.secs = game.delayMode.delay;
         }
         // call update method for the current mode
@@ -216,7 +216,7 @@ var gameMod = (function(){
             game.clickTrack.total += 1;
             game.clickTrack.hits += game.inRange ? 1 : 0;
             if (game.inRange) {
-                game.missTrack.canMiss = false;
+                game.lateTrack.canMiss = false;
                 game.dir = game.dir === 1 ? -1 : 1;
                 game.delayMode.secs = game.delayMode.delay;
             }
