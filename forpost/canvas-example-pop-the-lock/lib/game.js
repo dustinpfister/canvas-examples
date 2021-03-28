@@ -106,10 +106,10 @@ var gameMod = (function(){
             level: 1,
             targets: 1,
             delayMode: {
-				active: false,
-				secs: 3,
-				delay: 3
-			},
+                active: false,
+                secs: 0,
+                delay: 0.5
+            },
             deg: {                           // 'degree' object
                current: 25,                  // the current 'degree'
                start: 25,                    // a start deg to find and store total deg distance from start to target
@@ -156,6 +156,7 @@ var gameMod = (function(){
         game.deg.start = game.deg.current;
         game.deg.totalDist = getDistanceFromStartToTarget(game);
         game.inRange = getInRange(game);
+        game.delayMode.secs = game.delayMode.delay;
         return game;
     };
     // update
@@ -204,7 +205,7 @@ var gameMod = (function(){
             // call onMiss for the current mode
             modes[game.mode].onMiss(modeAPI, game, secs);
             game.missTrack.canMiss = false;
-			game.delayMode.secs = game.delayMode.delay;
+            game.delayMode.secs = game.delayMode.delay;
         }
         // call update method for the current mode
         modes[game.mode].update(modeAPI, game, secs);

@@ -9,7 +9,7 @@ gameMod.loadMode({
         }
     ],
     init: function(modeAPI, game, modeSettings){
-        // liss settings
+        // basic settings
         game.hp.active = false;
         game.deg.current = 25;
         // level
@@ -22,9 +22,11 @@ gameMod.loadMode({
         // speed range fixed on a per game basis, set by game level
         game.perSecLower = 20 + 20 * levPer;
         game.perSecHigher = 25 + 45 * levPer;
+        // delay time
+        game.delayMode.delay = 0.5;
         // targets
         game.targets = game.level;
-        game.deg.target = modeAPI.getTargetRandom(game);
+        game.deg.target = modeAPI.newTarget(game);
     },
     update: function(modeAPI, game){
         var hits = game.clickTrack.hits;

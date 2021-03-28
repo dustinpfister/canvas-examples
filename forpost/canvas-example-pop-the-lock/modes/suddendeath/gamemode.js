@@ -17,6 +17,8 @@ gameMod.loadMode({
         // speed
         game.perSecLower = 20;
         game.perSecHigher = 80;
+        // delay mode settings
+        game.delayMode.delay = 1;
         // first target
         game.deg.target = modeAPI.getTargetRandom(game);
     },

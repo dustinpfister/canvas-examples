@@ -46,6 +46,8 @@ gameMod.loadMode({
         var tpRangePer = 1 - (modeSettings.tripUpRange / 100);
         game.tripUp.degRange = [10 + Math.round(15 * tpRangePer), 18 + Math.round(32 * tpRangePer)];
         game.tripUp.countRange = [4, 12];
+        // delay mode settings
+        game.delayMode.delay = 1;
         // base bonus effect by speed setting
         game.baseBonus = 100 + Math.round(300  * ((modeSettings.perSec - 10) / (100 - 10)));
         // animation stuff
