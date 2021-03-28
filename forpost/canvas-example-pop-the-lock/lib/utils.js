@@ -41,12 +41,12 @@ utils.randomRange = function(a, b){
     }
     return x + (y - x) * Math.random();
 };
-// normalizeHalf
+// normalizeHalf (based off angles.js)
 utils.normalizeHalf = function(degree, scale) {
   var halfScale = scale / 2;
   return utils.mod(degree + halfScale, scale) - halfScale;
 };
-// shortest distance
+// shortest distance (based off angles.js)
 utils.shortestDistance = function(a, b, scale) {
   var halfScale = scale / 2,
   diff = utils.normalizeHalf(a - b, scale);
@@ -55,6 +55,17 @@ utils.shortestDistance = function(a, b, scale) {
   }
   return Math.abs(diff);
 };
+// Check if an angle n is between a and b (based off angles.js)
+utils.between = function(n, a, b, scale) { 
+    n = mod(n, scale);
+    a = mod(a, scale);
+    b = mod(b, scale);
+    if (a < b){
+        return a <= n && n <= b;
+    }
+    return a <= n || n <= b;
+}
+
 // create a canvas
 utils.createCanvas = function(opt){
     opt = opt || {};
