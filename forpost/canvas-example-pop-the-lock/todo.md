@@ -12,7 +12,8 @@
 * make a pkg 1.2.2 folder
 
 ## 1.2.1 - SpawnDispObj helper
-* can copy a save state in state-save
+* (done) fix bug where high scores are not reset when a save is deleted that is the current state
+
 * have a spawnDispObj helper
 * small circle animation playback effected by current game.deg.dir
 * make mode settings collection part of the save state

@@ -113,18 +113,17 @@
                 }
                 if(parts[0] === 'set'){
                     if(parts[1] === 'slotindex'){
-
                         if(delete_mode){
                             utils.del(sm.appName, Number(parts[2]));
                             delete_mode = false;
                         }else{
                             sm.saveSlotIndex = Number(parts[2]);
-                            var highScores = utils.load(sm.appName, sm.saveSlotIndex);
-                            if(highScores){
-                                sm.highScores = highScores;
-                            }else{
-                                sm.highScores = {};
-                            }
+                        }
+                        var highScores = utils.load(sm.appName, sm.saveSlotIndex);
+                        if(highScores){
+                            sm.highScores = highScores;
+                        }else{
+                            sm.highScores = {};
                         }
                         // update backgrounds and slot info
                         setSlotButtonBackgrounds(sm);
