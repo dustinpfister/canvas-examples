@@ -30,26 +30,33 @@ gameMod.loadMode({
     ],
     // what to do each time a new game object is created in gameMod.create
     init: function(modeAPI, game, modeSettings){
+
         // make sure of
         game.hp.active = false;
         game.win = true;
         game.score = 0;
         game.perHitScore = 0;
+
         // fixed speed set by user
         game.deg.perSec = modeSettings.perSec || 10;
+
         // fixed margin setting set by user
         var deg = game.deg.total * 0.125;
         game.deg.margin = deg - modeSettings.margin / 20 * (deg - 1) || 1;
+
         // user trip up settings
         game.tripUp.count = 0;
         game.tripUp.chance = (modeSettings.tripUpChance / 100) || 0;
         var tpRangePer = 1 - (modeSettings.tripUpRange / 100);
         game.tripUp.degRange = [10 + Math.round(15 * tpRangePer), 18 + Math.round(32 * tpRangePer)];
         game.tripUp.countRange = [4, 12];
+
         // delay mode settings
         game.delayMode.delay = 1;
+
         // base bonus effect by speed setting
         game.baseBonus = 100 + Math.round(300  * ((modeSettings.perSec - 10) / (100 - 10)));
+
         // animation stuff
         game.cirSmall = {
             frame: 0,

@@ -70,8 +70,13 @@ gameMod.loadMode({
             game.hp.current += game.hp.perSec * secs;
             game.hp.current = game.hp.current >= game.hp.max ? game.hp.max : game.hp.current;
         }
-        // margin goes up with level
+
+        // margin goes down with level
         game.deg.margin = 6 - 3.5 * per;
+
+        // delay time goes down with level
+        game.delayMode.delay = 2 - 1.9 * per;
+
         // trip up chance goes up with level
         game.tripUp.chance = per > 0.25 ? ( per - 0.25 ) / 0.75 * 0.75: 0;
         // damage should go up with level

@@ -9,25 +9,36 @@ gameMod.loadMode({
         }
     ],
     init: function(modeAPI, game, modeSettings){
+
+        // basic settings
         game.hp.active = false;
         game.deg.current = 25;
+
         // level
         game.level = modeSettings.levelStart || 1;
         game.levelCap = 100;
+
         // speed
         game.perSecLower = 20;
         game.perSecHigher = 80;
+
         // delay mode settings
-        game.delayMode.delay = 1;
+        game.delayMode.delay = 2; // just a init value ( see update method for expression )
+
         // first target
         game.deg.target = modeAPI.getTargetRandom(game);
     },
     update: function(modeAPI, game){
         var hits = game.clickTrack.hits;
         game.score = Math.floor(hits + Math.pow(1.075, hits)) - 1;
+
         // set speed
         var levPer = game.level / game.levelCap;
         game.deg.perSec = game.perSecLower + Math.round( (game.perSecHigher - game.perSecLower) * levPer);
+
+        // reduce delay time with level
+        game.delayMode.delay = 1 - 0.9 * levPer;
+
     },
     onMiss: function(modeAPI, game){
         game.missTrack.count = 1;
