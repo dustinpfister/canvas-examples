@@ -57,14 +57,15 @@ utils.shortestDistance = function(a, b, scale) {
 };
 // Check if an angle n is between a and b (based off angles.js)
 utils.between = function(n, a, b, scale) { 
-    n = mod(n, scale);
-    a = mod(a, scale);
-    b = mod(b, scale);
+
+    n = utils.mod(n, scale);
+    a = utils.mod(a, scale);
+    b = utils.mod(b, scale);
     if (a < b){
         return a <= n && n <= b;
     }
     return a <= n || n <= b;
-}
+};
 
 // create a canvas
 utils.createCanvas = function(opt){

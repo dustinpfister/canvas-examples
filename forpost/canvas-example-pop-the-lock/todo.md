@@ -25,8 +25,8 @@
 * (done) When the deg.current value comes in range of deg.target value the game enters a kind of 'delay mode'
 * (done) When in delay mode the deg.current value will stop at the deg.target value
 * (done) However the delay will only continue for a fixed amount of time
-
-* have a deg.start and deg.totalDist props
+* (done) have a deg.start and deg.totalDist props
+* (done) Just capping deg.delta for now
 
 * game.missTrack should be renamed to game.lateTrack to help make things less confusing
 

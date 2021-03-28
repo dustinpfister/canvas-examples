@@ -4,11 +4,26 @@ var gameMod = (function(){
     var modes = {};
     // return the shortest distance to the target from the current position
     var getDistanceFromTarget = function(game){
-        return utils.shortestDistance(game.deg.current, game.deg.target, game.deg.total);
+		var dist = utils.shortestDistance(game.deg.current, game.deg.target, game.deg.total);
+		/*
+		if(!utils.between(game.deg.current, game.deg.target, game.deg.start, game.deg.total)){
+			
+			//dist = dist * -1;
+			
+			dist = game.deg.dir === -1 ? dist : dist * -1;
+			
+		}else{
+			
+			dist = game.deg.dir === -1 ? dist * -1 : dist;
+			
+		}
+		*/
+        return dist;
     };
     // distance from start to target helper
     var getDistanceFromStartToTarget = function(game){
-        return utils.shortestDistance(game.deg.start, game.deg.target, game.deg.total);
+        var dist = utils.shortestDistance(game.deg.start, game.deg.target, game.deg.total);
+        return dist;
     };
     // helpers
     var getInRange = function (game) {
@@ -92,8 +107,8 @@ var gameMod = (function(){
             targets: 1,
             delayMode: {
 				active: false,
-				secs: 0,
-				delay: 10
+				secs: 3,
+				delay: 3
 			},
             deg: {                           // 'degree' object
                current: 25,                  // the current 'degree'
@@ -147,16 +162,28 @@ var gameMod = (function(){
     api.update = function(game, secs){
         game.deg.delta = 0;
         if(!game.pause && !game.gameOver){
-            game.deg.delta = game.deg.perSec * secs;
-
-            // one way to fix the deg.delta problem would be to cap the delta
-            //game.deg.delta = game.deg.delta >= game.deg.margin * 0.95 ? game.deg.margin * 0.95 : game.deg.delta;
+            //game.deg.delta = game.deg.perSec * secs;
 
             // another way to fix the deg.delta problem is to create a 'delayMode'
             if(game.delayMode.active){
+                game.delayMode.secs -= secs;
+                if(game.delayMode.secs <= 0){
+                    game.delayMode.active = false;
+                    game.delayMode.secs = 0;
+					game.deg.delta = game.deg.perSec * secs;
+                }else{
+					
                 game.deg.current = game.deg.target;
                 game.deg.delta = 0;
-            }
+				}
+            }else{
+				game.deg.delta = game.deg.perSec * secs;
+			}
+
+
+            //!!! one way to fix the deg.delta problem would be to cap the delta
+            game.deg.delta = game.deg.delta >= game.deg.margin * 2 ? game.deg.margin * 2 * 0.95  : game.deg.delta;
+
 
             // !!!track top deg.delta (THIS IS DONE FOR DEBUGING only and as such may be removed at some point)
             if(game.deg.delta > game.deg.deltaTop){
@@ -171,17 +198,13 @@ var gameMod = (function(){
         // !!! miss should be renamed to late to help make things less confusing
         if(game.inRange){
             game.missTrack.canMiss = true;
-            //game.delayMode.active = true;
-            game.delayMode.secs += secs;
-            if(game.delayMode.secs > game.delayMode.delay){
-                    game.delayMode.active = false;
-                    game.delayMode.secs = 0;
-            }
+            game.delayMode.active = true;
         }
         if(game.missTrack.canMiss && !game.inRange){
             // call onMiss for the current mode
             modes[game.mode].onMiss(modeAPI, game, secs);
             game.missTrack.canMiss = false;
+			game.delayMode.secs = game.delayMode.delay;
         }
         // call update method for the current mode
         modes[game.mode].update(modeAPI, game, secs);
@@ -194,7 +217,7 @@ var gameMod = (function(){
             if (game.inRange) {
                 game.missTrack.canMiss = false;
                 game.dir = game.dir === 1 ? -1 : 1;
-                
+                game.delayMode.secs = game.delayMode.delay;
             }
             // in range or not delay mode is off now
             game.delayMode.active = false;
