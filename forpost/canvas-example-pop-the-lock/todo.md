@@ -19,7 +19,7 @@
 * make mode settings collection part of the save state
 * make a 1.2.2 folder
 
-## 1.2.1 - Better deg.current delta handling with deg.reactTime property
+## 1.2.1 - Better deg.current delta handling with game.delayMode property
 * (done) Fix bug where high scores are not reset when a save is deleted that is the current state
 * (done) Make base circle slightly thicker than range arc
 * (done) When the deg.current value comes in range of deg.target value the game enters a kind of 'delay mode'
@@ -27,8 +27,7 @@
 * (done) However the delay will only continue for a fixed amount of time
 * (done) have a deg.start and deg.totalDist props
 * (done) Just capping deg.delta for now
-
-* game.missTrack should be renamed to game.lateTrack to help make things less confusing
+* (done) game.missTrack should be renamed to game.lateTrack to help make things less confusing
 
 * make a 1.2.1 folder
 
