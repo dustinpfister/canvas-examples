@@ -7,12 +7,12 @@ gameMod.loadMode({
             key: 'perSec',
             disp: 'Speed',
             start: 100,
-            range: [10, 100]
+            range: [10, 400]
         },
         {
             key: 'margin',
             disp: 'Margin',
-            start: 10,
+            start: 0,
             range: [0, 20]
         },
         {
@@ -41,7 +41,7 @@ gameMod.loadMode({
         game.deg.perSec = modeSettings.perSec || 10;
 
         // fixed margin setting set by user
-        var deg = game.deg.total * 0.125;
+        var deg = game.deg.total * 0.1;
         game.deg.margin = deg - modeSettings.margin / 20 * (deg - 1) || 1;
 
         // user trip up settings
@@ -127,10 +127,11 @@ gameMod.loadMode({
             ctx.font = '10px arial';
             ctx.textAlign = 'left';
             ctx.textbaseline = 'top';
-            ctx.fillText('deg.delta: ' + sm.game.deg.delta.toFixed(2) , 10, 20);
-            ctx.fillText('deg.deltaTop: ' + sm.game.deg.deltaTop.toFixed(2) , 10, 30);
-            ctx.fillText('deg.totalDist: ' + sm.game.deg.distance.toFixed(2) + '/' + sm.game.deg.totalDist.toFixed(2) , 10, 40);
-            ctx.fillText('base bonus score: ' + sm.game.baseBonus , 10, 50);
+            ctx.fillText('deg.current: ' + sm.game.deg.current.toFixed(2) , 10, 20);
+            ctx.fillText('deg.delta: ' + sm.game.deg.delta.toFixed(2) , 10, 30);
+            ctx.fillText('deg.deltaTop: ' + sm.game.deg.deltaTop.toFixed(2) , 10, 40);
+            ctx.fillText('deg.totalDist: ' + sm.game.deg.distance.toFixed(2) + '/' + sm.game.deg.totalDist.toFixed(2) , 10, 50);
+            ctx.fillText('base bonus score: ' + sm.game.baseBonus , 10, 60);
         }
     }
 });

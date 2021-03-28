@@ -137,12 +137,13 @@ var gameMod = (function(){
             if(game.delayMode.active){
                 game.delayMode.secs -= secs;
                 if(game.delayMode.secs <= 0){
+                    // if there is still delay time remaining
                     game.delayMode.active = false;
                     game.delayMode.secs = 0;
                     game.deg.delta = game.deg.perSec * secs;
                 }else{
-                    game.deg.current = game.deg.target;
-                    game.deg.delta = 0;
+                    //game.deg.current = game.deg.target;
+                    game.deg.delta = 0; //game.deg.margin / game.delayMode.delay * secs;
                 }
             }else{
                 game.deg.delta = game.deg.perSec * secs;
@@ -156,6 +157,7 @@ var gameMod = (function(){
                 game.deg.deltaTop = game.deg.delta;
             }
             game.deg.current += game.deg.delta * game.dir;
+            game.deg.current = Math.floor(game.deg.current);
         } 
         game.deg.current = utils.mod(game.deg.current, game.deg.total);
         // current distance from target
