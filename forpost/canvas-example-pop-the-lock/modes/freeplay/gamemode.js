@@ -52,7 +52,7 @@ gameMod.loadMode({
         game.tripUp.countRange = [4, 12];
 
         // delay mode settings
-        game.delayMode.delay = 1;
+        game.delayMode.delay = 3;
 
         // base bonus effect by speed setting
         game.baseBonus = 100 + Math.round(300  * ((modeSettings.perSec - 10) / (100 - 10)));

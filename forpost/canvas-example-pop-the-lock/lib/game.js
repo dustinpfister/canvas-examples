@@ -142,7 +142,8 @@ var gameMod = (function(){
                     game.delayMode.secs = 0;
                     game.deg.delta = game.deg.perSec * secs;
                 }else{
-                    game.deg.current = game.deg.target + game.deg.margin * (game.dir * -1);
+                    var timeAjust = (game.deg.margin * 2) * ( ( game.delayMode.delay - game.delayMode.secs) / game.delayMode.delay)
+                    game.deg.current = game.deg.target + (game.deg.margin - timeAjust) * (game.dir * -1);
                     game.deg.delta = 0; //game.deg.margin / game.delayMode.delay * secs;
                 }
             }else{
