@@ -4,20 +4,7 @@ var gameMod = (function(){
     var modes = {};
     // return the shortest distance to the target from the current position
     var getDistanceFromTarget = function(game){
-		var dist = utils.shortestDistance(game.deg.current, game.deg.target, game.deg.total);
-		/*
-		if(!utils.between(game.deg.current, game.deg.target, game.deg.start, game.deg.total)){
-			
-			//dist = dist * -1;
-			
-			dist = game.deg.dir === -1 ? dist : dist * -1;
-			
-		}else{
-			
-			dist = game.deg.dir === -1 ? dist * -1 : dist;
-			
-		}
-		*/
+        var dist = utils.shortestDistance(game.deg.current, game.deg.target, game.deg.total);
         return dist;
     };
     // distance from start to target helper
@@ -53,10 +40,10 @@ var gameMod = (function(){
     };
     // get a random target that is a 'trip up' target
     var getTargetRandomTripUp = function(game){
-        //var deltaDeg = utils.randomRange(game.tripUp.degMin, game.tripUp.degMax);
         var deltaDeg = utils.randomRange(game.tripUp.degRange);
         return getTargetFrom(game, game.deg.current + deltaDeg * game.dir);
     };
+    // create and return a new target
     var newTarget = modeAPI.newTarget = function(game){
         var target = getTargetRandom(game);
         if(game.tripUp.count > 0){
@@ -75,25 +62,7 @@ var gameMod = (function(){
         game.deg.totalDist = getDistanceFromStartToTarget(game);
         return target;
     };
-    // create and return a new target
-	/*
-    var newTarget = modeAPI.newTarget = function(game){
-        if(game.tripUp.count > 0){
-            game.tripUp.count -= 1;
-        }
-        if(game.tripUp.count >= 1){
-            return getTargetRandomTripUp(game);
-        }
-        var roll = Math.random();
-        if(roll < game.tripUp.chance){
-            game.tripUp.count = Math.floor(utils.randomRange(game.tripUp.countRange));
-            return getTargetRandomTripUp(game);
-        }
-        game.deg.start = game.deg.current;
-        game.deg.totalDist = getDistanceFromStartToTarget(game);
-        return getTargetRandom(game);
-    };
-	*/
+
     // public API
     var api = {};
     // make modes public
@@ -105,7 +74,7 @@ var gameMod = (function(){
             mode: opt.mode || 'freePlay',    // current game mode such as 'endurance', or 'freePlay' (see modes object)
             level: 1,
             targets: 1,
-            delayMode: {
+            delayMode: {                     // DELAY MODE SETTINGS
                 active: false,
                 secs: 0,
                 delay: 0.5
@@ -163,28 +132,24 @@ var gameMod = (function(){
     api.update = function(game, secs){
         game.deg.delta = 0;
         if(!game.pause && !game.gameOver){
-            //game.deg.delta = game.deg.perSec * secs;
 
-            // another way to fix the deg.delta problem is to create a 'delayMode'
+            // One way to fix the deg.delta problem is to have this 'delayMode'
             if(game.delayMode.active){
                 game.delayMode.secs -= secs;
                 if(game.delayMode.secs <= 0){
                     game.delayMode.active = false;
                     game.delayMode.secs = 0;
-					game.deg.delta = game.deg.perSec * secs;
+                    game.deg.delta = game.deg.perSec * secs;
                 }else{
-					
-                game.deg.current = game.deg.target;
-                game.deg.delta = 0;
-				}
+                    game.deg.current = game.deg.target;
+                    game.deg.delta = 0;
+                }
             }else{
-				game.deg.delta = game.deg.perSec * secs;
-			}
+                game.deg.delta = game.deg.perSec * secs;
+            }
 
-
-            //!!! one way to fix the deg.delta problem would be to cap the delta
+            //  cap the delta
             game.deg.delta = game.deg.delta >= game.deg.margin * 2 ? game.deg.margin * 2 * 0.95  : game.deg.delta;
-
 
             // !!!track top deg.delta (THIS IS DONE FOR DEBUGING only and as such may be removed at some point)
             if(game.deg.delta > game.deg.deltaTop){
