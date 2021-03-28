@@ -4,6 +4,8 @@
     stateMachine.load({
         key: 'game',
         init: function (sm) {
+            // make sure gameMode string is set to what the current index is
+            sm.gameMode = Object.keys(gameMod.modes)[sm.gameModeIndex];
             // Quit Button
             stateMachine.spawnButton(sm, {x: sm.canvas.width - 72, y: 8, w: 64, h: 64}, 'set_state_gameover', 'Quit', Math.PI);
             // PTL area display Object

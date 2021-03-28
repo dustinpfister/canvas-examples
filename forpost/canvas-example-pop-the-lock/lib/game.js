@@ -65,8 +65,9 @@ var gameMod = (function(){
             level: 1,
             targets: 1,
             deg: {                           // 'degree' object
-               perSec: 30,                   // degrees per second
                current: 25,                  // the current 'degree'
+               delta: 0,                     // current delta
+               perSec: 30,                   // degrees per second
                target: 0,                    // the target 'degree'
                total: 100,                   // total number of 'degrees'
                margin: 4,                    // the margin of 'degrees' +- from target that will still count as in range
@@ -108,8 +109,10 @@ var gameMod = (function(){
     };
     // update
     api.update = function(game, secs){
+        game.deg.delta = 0;
         if(!game.pause && !game.gameOver){
-            game.deg.current +=  game.deg.perSec * secs * game.dir;
+            game.deg.delta = game.deg.perSec * secs;
+            game.deg.current += game.deg.delta * game.dir;
         } 
         game.deg.current = utils.mod(game.deg.current, game.deg.total);
         game.deg.distance = getDistanceFromTarget(game);

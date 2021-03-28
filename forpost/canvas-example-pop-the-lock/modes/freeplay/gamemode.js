@@ -118,7 +118,8 @@ gameMod.loadMode({
             ctx.font = '10px arial';
             ctx.textAlign = 'left';
             ctx.textbaseline = 'top';
-            ctx.fillText('base bonus score: ' + sm.game.baseBonus , 10, 20);
+            ctx.fillText('deg.delta: ' + sm.game.deg.delta , 10, 20);
+            ctx.fillText('base bonus score: ' + sm.game.baseBonus , 10, 50);
         }
     }
 });

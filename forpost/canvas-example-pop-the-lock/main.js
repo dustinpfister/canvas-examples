@@ -2,7 +2,7 @@
 (function () {
     var sm = stateMachine.create({
         ver: '1.2.1',
-        debugMode: false,
+        debugMode: true,
         saveSlotIndex: 0
     });
     // LOOP
@@ -22,9 +22,9 @@
         sm.modeSettingsCollection[modeKey] = settings;
     });
     // start state
-    stateMachine.changeState(sm, 'title');
-    //sm.gameModeIndex = 0;
-    //stateMachine.changeState(sm, 'gameMode');
+    //stateMachine.changeState(sm, 'title');
+    sm.gameModeIndex = 0;
+    stateMachine.changeState(sm, 'gameMode');
     // the loop
     var loop = function () {
         var now = new Date(),
