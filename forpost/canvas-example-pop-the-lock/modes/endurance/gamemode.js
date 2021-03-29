@@ -48,7 +48,7 @@ gameMod.loadMode({
         game.deg.target = modeAPI.getTargetRandom(game);
 
         // delay mode settings
-        game.delayMode.delay = 1;
+        game.delayMode.delay = 2 - 1.9 * (game.level / 100);
 
         // margin
         game.deg.margin = 5;
