@@ -23,16 +23,24 @@ gameMod.loadMode({
         game.perSecLower = 20 + 20 * levPer;
         game.perSecHigher = 25 + 45 * levPer;
         // delay time
-        game.delayMode.delay = 0.5;
+        game.delayMode.delay = 0.75 - 0.6 * levPer;
         // targets
         game.targets = game.level;
         game.deg.target = modeAPI.newTarget(game);
     },
     update: function(modeAPI, game){
-        var hits = game.clickTrack.hits;
+        var hits = game.clickTrack.hits,
+        levPer = game.level / game.levelCap;
+
+        // score
         game.score = hits;
+
+        // speed
         game.deg.perSec = game.perSecLower + Math.round( (game.perSecHigher - game.perSecLower) * (hits / game.level));
         game.deg.perSec = game.deg.perSec > game.perSecHigher ? game.perSecHigher : game.deg.perSec;
+
+        // delay time
+        game.delayMode.delay = 0.75 - 0.6 * levPer;
     },
     onLate: function(modeAPI, game){
         game.lateTrack.count = 1;
