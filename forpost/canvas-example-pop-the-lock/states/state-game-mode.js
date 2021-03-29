@@ -8,7 +8,7 @@
         return button;
     };
     // set mode prop helper
-    var setModeProp = function(sm, parts, button, dir){
+    var stepModeProp = function(sm, parts, button, dir){
         var modeProp = sm.modeSettings[parts[3]],
         settingObj = button.data.setting,
         range = settingObj.range;
@@ -91,8 +91,8 @@
                 }
                 if(parts[2] === 'current'){
                     var per = Math.floor(pos.x - button.x) / button.w,
-                    rangeDelta = button.data.setting.range[1] - button.data.setting.range[0];
-                    console.log( Math.floor(button.data.setting.range[0] + per * rangeDelta) );
+                    rangeDelta = button.data.setting.range[1] - button.data.setting.range[0],
+                    setting = Math.floor(button.data.setting.range[0] + per * rangeDelta);
                 }
                 if(button.data.action === 'set_mode_next'){
                     sm.gameModeIndex += 1;
@@ -101,10 +101,10 @@
                 }
                 if(parts[0] === 'set'){
                     if(parts[2] === 'up'){
-                        setModeProp(sm, parts, button, 1);
+                        stepModeProp(sm, parts, button, 1);
                     }
                     if(parts[2] === 'down'){
-                        setModeProp(sm, parts, button, -1);
+                        stepModeProp(sm, parts, button, -1);
                     }
                 }
             }
