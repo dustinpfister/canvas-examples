@@ -237,8 +237,8 @@ var draw = (function(){
             ctx.fill();
             if(parts[2] === 'current'){
                 ctx.beginPath();
-                ctx.fillStyle = 'lime';
-                ctx.rect(0, 0, obj.w * (sm.modeSettings[parts[3]] / 100), obj.h);
+                ctx.fillStyle = 'black';
+                ctx.rect(0, 0, obj.w * (sm.modeSettings[parts[3]] / obj.data.setting.range[1]), obj.h);
                 ctx.fill();
             }
             ctx.beginPath();
