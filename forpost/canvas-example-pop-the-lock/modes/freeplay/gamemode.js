@@ -6,13 +6,13 @@ gameMod.loadMode({
         {
             key: 'perSec',
             disp: 'Speed',
-            start: 30,
+            start: 10,
             range: [10, 100]
         },
         {
             key: 'margin',
             disp: 'Margin',
-            start: 10,
+            start: 20,
             range: [0, 20]
         },
         {
@@ -131,7 +131,8 @@ gameMod.loadMode({
             ctx.fillText('deg.delta: ' + sm.game.deg.delta.toFixed(2) , 10, 30);
             ctx.fillText('deg.deltaTop: ' + sm.game.deg.deltaTop.toFixed(2) , 10, 40);
             ctx.fillText('deg.totalDist: ' + sm.game.deg.distance.toFixed(2) + '/' + sm.game.deg.totalDist.toFixed(2) , 10, 50);
-            ctx.fillText('base bonus score: ' + sm.game.baseBonus , 10, 60);
+            ctx.fillText('game.dir: ' + sm.game.dir , 10, 60);
+            ctx.fillText('base bonus score: ' + sm.game.baseBonus , 10, 70);
         }
     }
 });

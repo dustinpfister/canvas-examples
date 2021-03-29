@@ -142,9 +142,9 @@ var gameMod = (function(){
                     game.delayMode.secs = 0;
                     game.deg.delta = game.deg.perSec * secs;
                 }else{
-                    var timeAjust = (game.deg.margin * 2) * ( ( game.delayMode.delay - game.delayMode.secs) / game.delayMode.delay)
+                    var timeAjust = (game.deg.margin * 2) * ( ( game.delayMode.delay - game.delayMode.secs) / game.delayMode.delay);
                     game.deg.current = game.deg.target + (game.deg.margin - timeAjust) * (game.dir * -1);
-                    game.deg.delta = 0; //game.deg.margin / game.delayMode.delay * secs;
+                    game.deg.delta = game.deg.margin / game.delayMode.delay * secs;
                 }
             }else{
                 game.deg.delta = game.deg.perSec * secs;
@@ -158,7 +158,7 @@ var gameMod = (function(){
                 game.deg.deltaTop = game.deg.delta;
             }
             game.deg.current += game.deg.delta * game.dir;
-            game.deg.current = Math.floor(game.deg.current);
+            //game.deg.current = Math.floor(game.deg.current);
         } 
         game.deg.current = utils.mod(game.deg.current, game.deg.total);
         // current distance from target
@@ -169,7 +169,8 @@ var gameMod = (function(){
             game.lateTrack.canMiss = true;
             game.delayMode.active = true;
         }
-        if(game.lateTrack.canMiss && !game.inRange){
+        //if(game.lateTrack.canMiss && !game.inRange && !game.delayMode.active){
+if(game.lateTrack.canMiss && !game.inRange){
             // call onMiss for the current mode
             modes[game.mode].onLate(modeAPI, game, secs);
             game.lateTrack.canMiss = false;

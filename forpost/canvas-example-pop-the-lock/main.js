@@ -2,7 +2,7 @@
 (function () {
     var sm = stateMachine.create({
         ver: '1.2.1',
-        debugMode: true,
+        debugMode: false,
         saveSlotIndex: 0
     });
     // LOOP
