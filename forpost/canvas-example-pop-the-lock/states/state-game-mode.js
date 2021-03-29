@@ -76,7 +76,7 @@
         update: function (sm, secs) {},
         draw: function (sm, ctx, canvas) {
             draw.backgroundMode(ctx, canvas, sm);
-            draw.buttonPool(ctx, sm.buttons);
+            draw.buttonPool(ctx, sm.buttons, sm);
             draw.pool(ctx, sm.dispObjects);
         },
         click: function (sm, pos, e) {
@@ -89,9 +89,9 @@
                 if(button.data.action === 'start_title'){
                     stateMachine.startStateChangeTrans(sm, 'title');
                 }
-                //if(button.data.action === 'current'){
-                    console.log(parts[2]);
-                //}
+                if(parts[2] === 'current'){
+                    console.log(button);
+                }
                 if(button.data.action === 'set_mode_next'){
                     sm.gameModeIndex += 1;
                     sm.gameModeIndex = utils.mod(sm.gameModeIndex, Object.keys(gameMod.modes).length);
