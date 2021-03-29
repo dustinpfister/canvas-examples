@@ -225,6 +225,7 @@ var draw = (function(){
     // draw button pool with a globalDraw that will draw the disp text
     // of a button in the data object
     api.buttonPool = function (ctx, pool, sm) {
+        sm = sm || {};
         drawPool(ctx, pool, function(ctx, obj, i){
             // parts array
             var parts = obj.data.action.split('_');
@@ -236,9 +237,13 @@ var draw = (function(){
             ctx.rect(0, 0, obj.w, obj.h);
             ctx.fill();
             if(parts[2] === 'current'){
+                var value = sm.modeSettings[parts[3]],
+                range = obj.data.setting.range,
+                deltaRange = range[1] - range[0],
+                per = (value - range[0]) / deltaRange;
                 ctx.beginPath();
                 ctx.fillStyle = 'black';
-                ctx.rect(0, 0, obj.w * (sm.modeSettings[parts[3]] / obj.data.setting.range[1]), obj.h);
+                ctx.rect(0, 0, obj.w * per, obj.h);
                 ctx.fill();
             }
             ctx.beginPath();
