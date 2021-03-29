@@ -26,17 +26,11 @@
         updateDisp(sm, button);
     };
     // step mode prop helper
-    var stepModeProp = function(sm, parts, button, dir){
-        var modeProp = sm.modeSettings[parts[3]],
-        settingObj = button.data.setting,
-        range = settingObj.range;
-        // step modeProp
+    var stepModeProp = function(sm, partsOld, button, dir){
+        var parts = button.data.action.split('_'),
+        modeProp = sm.modeSettings[parts[3]];
         modeProp += 1 * dir;
-        // wrap modeProp
-        modeProp = dir === -1 && modeProp < range[0] ? range[1]: modeProp;
-        modeProp = dir === 1 && modeProp > range[1] ? range[0]: modeProp;
-        sm.modeSettings[parts[3]] = modeProp;
-        updateDisp(sm, button);
+        setModeProp(sm, button, modeProp);
     };
     stateMachine.load({
         key: 'gameMode',
