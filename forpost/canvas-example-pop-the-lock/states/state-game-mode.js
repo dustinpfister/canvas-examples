@@ -7,7 +7,25 @@
         button.data.setting = setting;
         return button;
     };
-    // set mode prop helper
+    var updateDisp = function(sm, button){
+        var parts = button.data.action.split('_'),
+        settingObj = button.data.setting,
+        dispButton = stateMachine.getButtonByAction(sm.buttons, 'set_modesetting_current_' + settingObj.key);
+        dispButton.data.disp = settingObj.disp + ' ' + sm.modeSettings[parts[3]];
+    };
+    var setModeProp = function(sm, button, value){
+        var parts = button.data.action.split('_'),
+        settingObj = button.data.setting,
+        range = settingObj.range;
+        // step modeProp
+        modeProp = value;
+        // wrap modeProp
+        modeProp = modeProp < range[0] ? range[1]: modeProp;
+        modeProp = modeProp > range[1] ? range[0]: modeProp;
+        sm.modeSettings[parts[3]] = modeProp;
+        updateDisp(sm, button);
+    };
+    // step mode prop helper
     var stepModeProp = function(sm, parts, button, dir){
         var modeProp = sm.modeSettings[parts[3]],
         settingObj = button.data.setting,
@@ -18,8 +36,7 @@
         modeProp = dir === -1 && modeProp < range[0] ? range[1]: modeProp;
         modeProp = dir === 1 && modeProp > range[1] ? range[0]: modeProp;
         sm.modeSettings[parts[3]] = modeProp;
-        var dispButton = stateMachine.getButtonByAction(sm.buttons, 'set_modesetting_current_' + settingObj.key);
-        dispButton.data.disp = settingObj.disp + ' ' + sm.modeSettings[parts[3]];
+        updateDisp(sm, button);
     };
     stateMachine.load({
         key: 'gameMode',
@@ -92,7 +109,9 @@
                 if(parts[2] === 'current'){
                     var per = Math.floor(pos.x - button.x) / button.w,
                     rangeDelta = button.data.setting.range[1] - button.data.setting.range[0],
-                    setting = Math.floor(button.data.setting.range[0] + per * rangeDelta);
+                    value = Math.floor(button.data.setting.range[0] + per * rangeDelta);
+                    // set the mode prop
+                    setModeProp(sm, button, value);
                 }
                 if(button.data.action === 'set_mode_next'){
                     sm.gameModeIndex += 1;
