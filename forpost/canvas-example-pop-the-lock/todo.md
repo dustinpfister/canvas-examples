@@ -26,8 +26,7 @@
 * (done) have a deg.start and deg.totalDist props
 * (done) Just capping deg.delta for now
 * (done) game.missTrack should be renamed to game.lateTrack to help make things less confusing
-
-* make a 1.2.1 folder
+* (done - 03/29/2021) make a 1.2.1 folder
 
 ## 1.2.0 - Game Save Manager State
 * (done) can set ver in main.js

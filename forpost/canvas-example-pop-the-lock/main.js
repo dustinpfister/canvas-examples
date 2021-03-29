@@ -1,7 +1,7 @@
 
 (function () {
     var sm = stateMachine.create({
-        ver: '1.2.1',
+        ver: '1.2.2',
         debugMode: false,
         saveSlotIndex: 0
     });
