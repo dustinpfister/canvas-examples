@@ -90,7 +90,9 @@
                     stateMachine.startStateChangeTrans(sm, 'title');
                 }
                 if(parts[2] === 'current'){
-                    console.log(button);
+                    var per = Math.floor(pos.x - button.x) / button.w,
+                    rangeDelta = button.data.setting.range[1] - button.data.setting.range[0];
+                    console.log( Math.floor(button.data.setting.range[0] + per * rangeDelta) );
                 }
                 if(button.data.action === 'set_mode_next'){
                     sm.gameModeIndex += 1;
