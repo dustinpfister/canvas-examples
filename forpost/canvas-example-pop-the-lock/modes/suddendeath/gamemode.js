@@ -23,7 +23,8 @@ gameMod.loadMode({
         game.perSecHigher = 80;
 
         // delay mode settings
-        game.delayMode.delay = 2; // just a init value ( see update method for expression )
+        //game.delayMode.delay = 2;
+        game.delayMode.delay = 1 - 0.9 * (game.level / game.levelCap); 
 
         // first target
         game.deg.target = modeAPI.getTargetRandom(game);

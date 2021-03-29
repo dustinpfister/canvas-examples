@@ -139,7 +139,7 @@ var gameMod = (function(){
                 if(game.delayMode.secs <= 0){
                     // if there is still delay time remaining
                     game.delayMode.active = false;
-                    game.delayMode.secs = 0;
+                    game.delayMode.secs = game.delayMode.delay;
                     game.deg.delta = game.deg.perSec * secs;
                 }else{
                     var timeAjust = (game.deg.margin * 2) * ( ( game.delayMode.delay - game.delayMode.secs) / game.delayMode.delay);
@@ -169,8 +169,8 @@ var gameMod = (function(){
             game.lateTrack.canMiss = true;
             game.delayMode.active = true;
         }
-        //if(game.lateTrack.canMiss && !game.inRange && !game.delayMode.active){
-if(game.lateTrack.canMiss && !game.inRange){
+        if(game.lateTrack.canMiss && !game.inRange && !game.delayMode.active){
+//if(game.lateTrack.canMiss && !game.inRange){
             // call onMiss for the current mode
             modes[game.mode].onLate(modeAPI, game, secs);
             game.lateTrack.canMiss = false;
