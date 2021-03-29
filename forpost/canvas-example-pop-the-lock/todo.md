@@ -13,9 +13,9 @@
 * make a 1.2.3 pkg folder
 
 ## 1.2.2 - Quick gameMode setting and display
-* click disp setting button as way to set a mode setting without having to click + or - button a whle bunch of times
-* display a progress bar for mode settings buttons
-* make a pkg 1.2.2 folder
+* (done) click disp setting button as way to set a mode setting without having to click + or - button a whle bunch of times
+* (done) display a progress bar for mode settings buttons
+* (done - 03/29/2021) make a pkg 1.2.2 folder
 
 ## 1.2.1 - Better deg.current delta handling with game.delayMode property
 * (done) Fix bug where high scores are not reset when a save is deleted that is the current state
