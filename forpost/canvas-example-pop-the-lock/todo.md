@@ -1,9 +1,8 @@
-
-
-## 1.2.4 - Quick gameMode setting and display
-* click disp setting button as way to set a mode setting without having to click + or - button a whle bunch of times
-* display a progress bar for mode settings buttons
-* make a pkg 1.2.4 folder
+## 1.2.4 - SpawnDispObj helper
+* have a spawnDispObj helper
+* small circle animation playback effected by current game.deg.dir
+* make mode settings collection part of the save state
+* make a 1.2.2 folder
 
 ## 1.2.3 - Score Object in all modes
 * start a new standard score object to be used in all game modes.
@@ -13,11 +12,10 @@
 * update scoring in classic mode
 * make a 1.2.3 pkg folder
 
-## 1.2.2 - SpawnDispObj helper
-* have a spawnDispObj helper
-* small circle animation playback effected by current game.deg.dir
-* make mode settings collection part of the save state
-* make a 1.2.2 folder
+## 1.2.2 - Quick gameMode setting and display
+* click disp setting button as way to set a mode setting without having to click + or - button a whle bunch of times
+* display a progress bar for mode settings buttons
+* make a pkg 1.2.2 folder
 
 ## 1.2.1 - Better deg.current delta handling with game.delayMode property
 * (done) Fix bug where high scores are not reset when a save is deleted that is the current state

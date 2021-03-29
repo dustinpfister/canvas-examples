@@ -6,13 +6,13 @@ gameMod.loadMode({
         {
             key: 'perSec',
             disp: 'Speed',
-            start: 100,
-            range: [10, 400]
+            start: 30,
+            range: [10, 100]
         },
         {
             key: 'margin',
             disp: 'Margin',
-            start: 0,
+            start: 10,
             range: [0, 20]
         },
         {
