@@ -34,12 +34,11 @@
             sm.modeSettings = sm.modeSettingsCollection[sm.gameMode];
             // create settings buttons
             mode.settings.forEach(function(setting, i){
-                // down button
+                // down/up buttons
                 var w = 64,
                 h = 64,
                 x = 8,
                 y = 64 + 64 * i;
-                // + / -
                 spawnSettingsButton(sm, setting, {x: x, y: y, w: w, h : h}, 'down', '-');
                 spawnSettingsButton(sm, setting, {x: x + w * 5, y: y, w: w, h : h}, 'up', '+');
                 // setting disp
@@ -83,18 +82,21 @@
         click: function (sm, pos, e) {
             var button = poolMod.getObjectAt(sm.buttons, pos.x, pos.y);
             if (button) {
+                var parts = button.data.action.split('_');
                 if(button.data.action === 'start_game'){
                     stateMachine.startStateChangeTrans(sm, 'game');
                 }
                 if(button.data.action === 'start_title'){
                     stateMachine.startStateChangeTrans(sm, 'title');
                 }
+                //if(button.data.action === 'current'){
+                    console.log(parts[2]);
+                //}
                 if(button.data.action === 'set_mode_next'){
                     sm.gameModeIndex += 1;
                     sm.gameModeIndex = utils.mod(sm.gameModeIndex, Object.keys(gameMod.modes).length);
                     stateMachine.startStateChangeTrans(sm, 'gameMode');
                 }
-                var parts = button.data.action.split('_');
                 if(parts[0] === 'set'){
                     if(parts[2] === 'up'){
                         setModeProp(sm, parts, button, 1);

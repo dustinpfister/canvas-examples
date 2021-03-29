@@ -226,14 +226,26 @@ var draw = (function(){
     // of a button in the data object
     api.buttonPool = function (ctx, pool) {
         drawPool(ctx, pool, function(ctx, obj, i){
+            // parts array
+            var parts = obj.data.action.split('_');
+            // background
             ctx.fillStyle = obj.data.fill || 'white';
             ctx.translate(obj.x, obj.y);
             ctx.beginPath();
             ctx.globalAlpha = obj.data.alpha === undefined ? 1: obj.data.alpha;
             ctx.rect(0, 0, obj.w, obj.h);
             ctx.fill();
+            if(parts[2] === 'current'){
+                ctx.beginPath();
+                ctx.fillStyle = 'lime';
+                ctx.rect(0, 0, obj.w * 0.5, obj.h);
+                ctx.fill();
+            }
+            ctx.beginPath();
+            ctx.rect(0, 0, obj.w, obj.h);
             ctx.globalAlpha = obj.data.alpha2 === undefined ? ctx.globalAlpha: obj.data.alpha2;
             ctx.stroke();
+            // draw disp text
             if(obj.data.disp){
                ctx.fillStyle = 'black';
                ctx.textBaseline = 'middle';
