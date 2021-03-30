@@ -1,11 +1,11 @@
 (function () {
-    // TITLE STATE
+    // GAME STATE
     stateMachine.load({
-        key: 'title',
+        key: 'game',
         init: function (sm) {
             var x = sm.canvas.width / 2 - 128,
             y = sm.canvas.height * 0.3;
-            stateMachine.spawnButton(sm, {x: x, y: y}, 'start_state_game', 'Play');
+            stateMachine.spawnButton(sm, {x: x, y: y}, 'start_state_title', 'Title');
         },
         trans: function (sm, secs) {
             poolMod.update(sm.buttons, secs, sm);
@@ -17,8 +17,8 @@
         },
         click: function (sm, pos, e) {
             var button = poolMod.getObjectAt(sm.buttons, pos.x, pos.y);
-            if(button.data.action === 'start_state_game'){
-                stateMachine.startStateChangeTrans(sm, 'game');
+            if(button.data.action === 'start_state_title'){
+                stateMachine.startStateChangeTrans(sm, 'title');
             }
         }
     });
