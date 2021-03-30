@@ -1,0 +1,6 @@
+/*
+   canvas-example-massive-attack
+   Copyright 2021 by Dustin Pfister
+   https://raw.githubusercontent.com/dustinpfister/canvas-examples/master/LICENSE
+   https://github.com/dustinpfister/canvas-examples
+*/
