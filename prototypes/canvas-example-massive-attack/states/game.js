@@ -3,9 +3,9 @@
     stateMachine.load({
         key: 'game',
         init: function (sm) {
-            var x = sm.canvas.width / 2 - 128,
-            y = sm.canvas.height * 0.3;
-            stateMachine.spawnButton(sm, {x: x, y: y}, 'start_state_title', 'Title');
+            var x = sm.canvas.width * 0.87,
+            y = sm.canvas.height * 0.045;
+            stateMachine.spawnButton(sm, {x: x, y: y, w: 64}, 'start_state_title', 'Title');
         },
         trans: function (sm, secs) {
             poolMod.update(sm.buttons, secs, sm);
