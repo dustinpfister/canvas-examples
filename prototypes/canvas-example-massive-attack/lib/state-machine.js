@@ -18,7 +18,7 @@ var stateMachine = (function () {
         // create state machine object
         var sm = {
             ver: opt.ver || '',
-            appName: 'canvas-example-pop-the-lock',
+            appName: opt.appName || '',
             saveSlotIndex: opt.saveSlotIndex || 0,
             debugMode: opt.debugMode || false,
             pixmaps: pixmapMod.create(),

@@ -1,10 +1,14 @@
 
 (function () {
     var sm = stateMachine.create({
+        appName: 'canvas-example-massive-attack',
         ver: '0.0.0',
         debugMode: false,
         saveSlotIndex: 0
     });
+
+    sm.background = draw.createGradient(sm.ctx, sm.canvas, 0.75, [[0,'gray'], [0.5,'black'], [1,'#004400']]);
+
     // start state
     stateMachine.changeState(sm, 'title');
     //sm.gameModeIndex = 0;

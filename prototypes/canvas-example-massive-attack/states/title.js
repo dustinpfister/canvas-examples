@@ -10,7 +10,7 @@
         },
         update: function (sm, secs) {},
         draw: function (sm, ctx, canvas) {
-            draw.background(ctx, canvas, 'black');
+            draw.background(ctx, canvas, sm.background);
         },
         click: function (sm, pos, e) {
          
