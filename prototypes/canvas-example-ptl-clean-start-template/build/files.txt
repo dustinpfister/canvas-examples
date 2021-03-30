@@ -1,0 +1,11 @@
+../lib/utils.js
+../lib/pool.js
+../lib/forframe.js
+../lib/pixmaps.js
+../pixmaps/default.js
+../lib/game.js
+../modes/noraml/normal.js
+../lib/state-machine.js
+../states/state-title.js
+../lib/draw.js
+../main.js
