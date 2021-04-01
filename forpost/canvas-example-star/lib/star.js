@@ -35,7 +35,7 @@ var starMod = (function () {
                 points.push(pt.x, pt.y);
                 i += 1;
             }
-            return points;
+            return [points];
         },
         // create a star by point count radius and point skip
         create2: function (opt) {
@@ -44,15 +44,19 @@ var starMod = (function () {
             pt,
             r,
             rd = Math.PI * 2 / opt.pointCount * opt.pointSkip,
-            points = [[],[]];
+            even = opt.pointCount % 2 === 0 ? true: false;
+            var points = [[]];
+            if(even){
+                points = [[],[]];
+            }
             while (i < opt.pointCount) {
-
                 pt = getPoint(rd * i + opt.radianAjust, opt.radius, opt.ox, opt.oy);
                 points[0].push(pt.x, pt.y);
-
-                pt = getPoint(rd * i + Math.PI * 0.25 + opt.radianAjust, opt.radius, opt.ox, opt.oy);
-                points[1].push(pt.x, pt.y);
-
+                if(even){
+                    var a = Math.PI * 2 / opt.pointCount
+                    pt = getPoint(rd * i + a + opt.radianAjust, opt.radius, opt.ox, opt.oy);
+                    points[1].push(pt.x, pt.y);
+                }
                 i += 1;
             }
             return points;

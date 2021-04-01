@@ -61,11 +61,13 @@ var pool = (function(){
                 obj.facing += obj.facingDelta * secs;
                 obj.facing = utils.mod(obj.facing, Math.PI * 2);
                 obj.points = starMod.create2({
-                    pointCount: 8, //obj.pointCount,
+                    pointCount: 10, //obj.pointCount,
+                    pointSkip: 4,
                     radius: obj.r1,
                     radiusInner: obj.r2,
                     radianAjust: obj.heading
                 });
+                obj.points[0] = obj.points[0].concat('fill:' + obj.color);
             }
         }
     };
