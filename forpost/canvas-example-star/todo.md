@@ -18,7 +18,7 @@
 * (done) use the new draw points method from javascript-example-draw-points
 * (done) see about using new points method with an updated star.create2 method
 * (done) use both star.create1, and star.create2
-* make a pkg 0.3.0 folder
+* (done - 04/01/2021) make a pkg 0.3.0 folder
 
 ## 0.2.0 - Select a star
 * (done) create a getObjectAtPos public method for pool.js
