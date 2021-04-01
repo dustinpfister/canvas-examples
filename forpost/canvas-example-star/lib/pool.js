@@ -89,7 +89,7 @@ var pool = (function(){
         len = state.count;
         while (i < len) {
             star = {
-                i, i,
+                i: i,
                 x: state.canvas.width * Math.random(),
                 y: state.canvas.height * Math.random(),
                 pointCount: 5 + Math.round(15 * Math.random()),
