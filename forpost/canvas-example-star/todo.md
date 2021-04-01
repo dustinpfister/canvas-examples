@@ -16,7 +16,8 @@
 
 ## 0.3.0 - new Draw points method
 * (done) use the new draw points method from javascript-example-draw-points
-* see about using new points method with an updated star.create2 method
+* (done) see about using new points method with an updated star.create2 method
+* (done) use both star.create1, and star.create2
 * make a pkg 0.3.0 folder
 
 ## 0.2.0 - Select a star
