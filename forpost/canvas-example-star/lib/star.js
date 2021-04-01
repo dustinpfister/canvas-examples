@@ -44,10 +44,15 @@ var starMod = (function () {
             pt,
             r,
             rd = Math.PI * 2 / opt.pointCount * opt.pointSkip,
-            points = [];
+            points = [[],[]];
             while (i < opt.pointCount) {
+
                 pt = getPoint(rd * i + opt.radianAjust, opt.radius, opt.ox, opt.oy);
-                points.push(pt.x, pt.y);
+                points[0].push(pt.x, pt.y);
+
+                pt = getPoint(rd * i + Math.PI * 0.25 + opt.radianAjust, opt.radius, opt.ox, opt.oy);
+                points[1].push(pt.x, pt.y);
+
                 i += 1;
             }
             return points;

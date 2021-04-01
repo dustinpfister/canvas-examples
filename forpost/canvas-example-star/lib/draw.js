@@ -52,9 +52,15 @@ var draw = (function(){
         ctx.translate(obj.x, obj.y);
         ctx.rotate(obj.facing);
 
+        // create 1 with old points
         //api.points_old(ctx, obj.points, 0, 0);
 
-        api.points(ctx, [obj.points.concat('fill:' + obj.color, 'stroke:black')], 0, 0);
+        // create 1 with new points
+        //api.points(ctx, [obj.points.concat('fill:' + obj.color, 'stroke:black')], 0, 0);
+
+        // create 2 with new points
+        api.points(ctx, obj.points, 0, 0);
+
 
         ctx.restore();
         // draw dir lines for heading and facing

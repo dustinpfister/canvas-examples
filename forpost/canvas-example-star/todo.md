@@ -15,7 +15,8 @@
 * have a create4 method that wil just create a plain polygon, or circle for that matter if yuo set the number of sides high enough.
 
 ## 0.3.0 - new Draw points method
-* use the new draw points method from javascript-example-draw-points
+* (done) use the new draw points method from javascript-example-draw-points
+* see about using new points method with an updated star.create2 method
 * make a pkg 0.3.0 folder
 
 ## 0.2.0 - Select a star

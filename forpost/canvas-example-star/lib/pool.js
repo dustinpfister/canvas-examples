@@ -60,8 +60,8 @@ var pool = (function(){
                 setSize(state, obj);     // set the size
                 obj.facing += obj.facingDelta * secs;
                 obj.facing = utils.mod(obj.facing, Math.PI * 2);
-                obj.points = starMod.create1({
-                    pointCount: obj.pointCount,
+                obj.points = starMod.create2({
+                    pointCount: 8, //obj.pointCount,
                     radius: obj.r1,
                     radiusInner: obj.r2,
                     radianAjust: obj.heading
@@ -73,7 +73,7 @@ var pool = (function(){
     api.createState = function (opt) {
         opt = opt || {};
         var state = {
-            ver: opt.ver || '0.0.0',
+            ver: opt.ver || '',
             debugMode: false,
             count: opt.count || 5,
             starPPSMax: opt.starPPSMax || 64,
