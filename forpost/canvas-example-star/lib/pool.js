@@ -60,23 +60,23 @@ var pool = (function(){
                 setSize(state, obj);     // set the size
                 obj.facing += obj.facingDelta * secs;
                 obj.facing = utils.mod(obj.facing, Math.PI * 2);
-/*
-                obj.points = starMod.create1({
-                    pointCount: obj.pointCount,
-                    radius: obj.r1,
-                    radiusInner: obj.r2,
-                    radianAjust: obj.heading
-                });
-*/
 
-                obj.points = starMod.create2({
-                    pointCount: obj.pointCount,
-                    pointSkip: Math.floor(obj.pointCount / 2.25),
-                    radius: obj.r1,
-                    radiusInner: obj.r2,
-                    radianAjust: obj.heading
-                });
-
+                if(i % 2 === 0){
+                    obj.points = starMod.create1({
+                        pointCount: obj.pointCount,
+                        radius: obj.r1,
+                        radiusInner: obj.r2,
+                        radianAjust: obj.heading
+                    });
+                }else{
+                    obj.points = starMod.create2({
+                        pointCount: obj.pointCount,
+                        pointSkip: Math.floor(obj.pointCount / 2.25),
+                        radius: obj.r1,
+                        radiusInner: obj.r2,
+                        radianAjust: obj.heading
+                    });
+                }
                 obj.points[0] = obj.points[0].concat('fill:' + obj.color);
             }
         }
