@@ -51,7 +51,11 @@ var draw = (function(){
         ctx.save();
         ctx.translate(obj.x, obj.y);
         ctx.rotate(obj.facing);
-        api.points(ctx, obj.points, 0, 0);
+
+        //api.points_old(ctx, obj.points, 0, 0);
+
+        api.points(ctx, [obj.points.concat('fill:' + obj.color, 'stroke:black')], 0, 0);
+
         ctx.restore();
         // draw dir lines for heading and facing
         ctx.lineWidth = 2;
@@ -64,7 +68,7 @@ var draw = (function(){
         }
     };
     // draw points
-    api.points = function (ctx, points, cx, cy) {
+    api.points_old = function (ctx, points, cx, cy) {
         cx = cx === undefined ? 0 : cx;
         cy = cy === undefined ? 0 : cy;
         ctx.save();
@@ -80,6 +84,58 @@ var draw = (function(){
         ctx.closePath();
         ctx.stroke();
         ctx.fill();
+        ctx.restore();
+    };
+    // new draw points
+    api.points = function (ctx, points, cx, cy, opt) {
+        opt = opt || {};
+        ctx.save();
+        ctx.translate(cx, cy);
+        points.forEach(function (pointArray) {
+            var len = pointArray.length,
+            close = opt.close === undefined ? true : opt.close,
+            fill = opt.fill === undefined ? 'black' : opt.fill,
+            stroke = opt.stroke === undefined ? 'white' : opt.stroke,
+            lineWidth = opt.lineWidth === undefined ? 3 : opt.lineWidth,
+            el,
+            i = 2;
+            ctx.beginPath();
+            ctx.moveTo(pointArray[0], pointArray[1]);
+            while (i < len) {
+                el = pointArray[i];
+                if (typeof el === 'number') {
+                    ctx.lineTo(el, pointArray[i + 1]);
+                    i += 2;
+                } else {
+                    var parts = el.split(':');
+                    if (parts[0] === 'close') {
+                        close = parts[1] === 'true' ? true : false;
+                    }
+                    if (parts[0] === 'stroke') {
+                        stroke = parts[1] || false;
+                    }
+                    if (parts[0] === 'fill') {
+                        fill = parts[1] || false;
+                    }
+                    if (parts[0] === 'lineWidth') {
+                        lineWidth = parts[1] || 1;
+                    }
+                    i += 1;
+                }
+            }
+            ctx.lineWidth = lineWidth;
+            if (close) {
+                ctx.closePath();
+            }
+            if (fill) {
+                ctx.fillStyle = fill;
+                ctx.fill();
+            }
+            if (stroke) {
+                ctx.strokeStyle = stroke;
+                ctx.stroke();
+            }
+        });
         ctx.restore();
     };
     // draw version number
