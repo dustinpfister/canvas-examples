@@ -1,14 +1,13 @@
 ## todo list for canvas-examples
 
+## 04/04/21 to 04/10/21
+
 ## 03/28/21 to 04/03/21
-* update image-loader with new create cnavas method
-* pop-the-lock at v0.1.2+
-* mr-sun at v0.11.0
+* (done) pop-the-lock at v0.1.2+
+* stars at 0.3.0+
 
 ## 03/21/21 to 03/27/21
-* object-pool at v0.5.0+
-* animation-pixmap at v0.4.0+
-* pop-the-lock at v1.1+
+* (done) pop-the-lock at v1.1+
 
 ## 03/14/21 to 03/20/21
 * (done) update mr-sun-temp at 0.5.1

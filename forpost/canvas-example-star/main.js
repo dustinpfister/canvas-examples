@@ -14,7 +14,7 @@
     ctx = canvasObj.ctx;
     // main state object
     var state = pool.createState({
-        ver: '0.2.0',
+        ver: '0.3.0',
         count: STAR_COUNT,
         starSizeMax: STAR_SIZE_MAX,
         starSizeMin: STAR_SIZE_MIN,

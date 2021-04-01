@@ -14,6 +14,10 @@
 * have a create3 method that also creates a star, but can be given an array of angles and distances to offet each point in the star
 * have a create4 method that wil just create a plain polygon, or circle for that matter if yuo set the number of sides high enough.
 
+## 0.3.0 - new Draw points method
+* use the new draw points method from javascript-example-draw-points
+* make a pkg 0.3.0 folder
+
 ## 0.2.0 - Select a star
 * (done) create a getObjectAtPos public method for pool.js
 * (done) state.selected property added that will be a ref to a selcted star, or null
