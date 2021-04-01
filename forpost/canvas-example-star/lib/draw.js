@@ -44,23 +44,14 @@ var draw = (function(){
     };
     // draw a star
     api.star = function(ctx, obj, state){
-        ctx.fillStyle = obj.color || 'green';
-        ctx.strokeStyle = 'black';
         ctx.lineWidth = 6;
         ctx.globalAlpha = obj.alpha;
         ctx.save();
         ctx.translate(obj.x, obj.y);
         ctx.rotate(obj.facing);
 
-        // create 1 with old points
-        //api.points_old(ctx, obj.points, 0, 0);
-
-        // create 1 with new points
-        //api.points(ctx, [obj.points.concat('fill:' + obj.color, 'stroke:black')], 0, 0);
-
-        // create 2 with new points
+        // new draw points method works greate with new star.create1 and star.create2 (0.3.0+)
         api.points(ctx, obj.points, 0, 0);
-
 
         ctx.restore();
         // draw dir lines for heading and facing
@@ -72,25 +63,6 @@ var draw = (function(){
         if(state.selected){
             drawStarInfo(ctx, state.selected);
         }
-    };
-    // draw points
-    api.points_old = function (ctx, points, cx, cy) {
-        cx = cx === undefined ? 0 : cx;
-        cy = cy === undefined ? 0 : cy;
-        ctx.save();
-        ctx.translate(cx, cy);
-        var i = 2,
-        len = points.length;
-        ctx.beginPath();
-        ctx.moveTo(points[0], points[1]);
-        while (i < len) {
-            ctx.lineTo(points[i], points[i + 1])
-            i += 2;
-        }
-        ctx.closePath();
-        ctx.stroke();
-        ctx.fill();
-        ctx.restore();
     };
     // new draw points
     api.points = function (ctx, points, cx, cy, opt) {
