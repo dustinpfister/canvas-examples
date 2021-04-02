@@ -6,6 +6,12 @@
             var x = sm.canvas.width * 0.87,
             y = sm.canvas.height * 0.045;
             stateMachine.spawnButton(sm, {x: x, y: y, w: 64}, 'start_state_title', 'Title');
+
+            // create a new game
+            sm.game = gameMod.create({
+              sm: sm
+            });
+
         },
         trans: function (sm, secs) {
             poolMod.update(sm.buttons, secs, sm);

@@ -41,6 +41,7 @@ var waveMod = (function () {
                 spawn: spawn,
                 update: update,
                 data: {
+                    sm: opt.sm || {},
                     pps: BUTTON_BASE_PPS,
                     baseUnitCount: opt.baseUnitCount || 1,
                     currentWave: 0,
@@ -57,7 +58,7 @@ var waveMod = (function () {
             // if i is less than wave count then start the object
             // off as active
             if (i < opt.waveCount) {
-                poolMod.spawn(pool, sm, {
+                poolMod.spawn(pool, opt.sm, {
                     x: opt.x,
                     startY: opt.startY + i * BUTTON_HEIGHT
                 });

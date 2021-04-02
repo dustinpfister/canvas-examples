@@ -1,6 +1,4 @@
 
-
-
 (function () {
     var sm = stateMachine.create({
         appName: 'canvas-example-massive-attack',
