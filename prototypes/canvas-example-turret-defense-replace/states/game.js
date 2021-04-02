@@ -16,29 +16,38 @@
         trans: function (sm, secs) {
             poolMod.update(sm.buttons, secs, sm);
         },
-        update: function (sm, secs) {},
+        update: function (sm, secs) {
+
+    gameMod.update(sm, secs);
+
+},
         draw: function (sm, ctx, canvas) {
             draw.background(ctx, canvas, sm.background);
 
 
     draw.waveButtons(sm.ctx, sm.game.waveButtons.pool);
+    draw.pool(sm.ctx, sm.game.unitPool);
+    draw.debugInfo(sm.ctx, sm, 128, 32);
+
 
             draw.buttonPool(ctx, sm.buttons);
         },
         click: function (sm, pos, e) {
             var button = poolMod.getObjectAt(sm.buttons, pos.x, pos.y);
-            if(button.data.action === 'start_state_title'){
-                stateMachine.startStateChangeTrans(sm, 'title');
+            if(button){
+                if(button.data.action === 'start_state_title'){
+                    stateMachine.startStateChangeTrans(sm, 'title');
+                }
             }
 
-    // wave buttons
-    waveMod.onClick(sm, pos);
+            // wave buttons
+            waveMod.onClick(sm, pos);
 
-    // unit
-    var unit = poolMod.getObjectAt(sm.game.unitPool, pos.x, pos.y);
-    if (unit) {
-        unit.lifespan = 0;
-    }
+            // unit
+            var unit = poolMod.getObjectAt(sm.game.unitPool, pos.x, pos.y);
+            if(unit){
+                unit.lifespan = 0;
+            }
 
     // reset button
     //var bx = sm.resetButton;
