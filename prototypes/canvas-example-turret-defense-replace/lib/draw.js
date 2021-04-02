@@ -45,7 +45,7 @@ var draw = (function () {
             ctx.fillStyle = 'black';
             ctx.fillText(obj.data.waveNumber, obj.x + 5, obj.y + 5);
         },
-buttonPool: function(ctx, obj, i){
+        buttonPool: function(ctx, obj, i){
             // parts array
             var parts = obj.data.action.split('_');
             // background
@@ -86,11 +86,9 @@ buttonPool: function(ctx, obj, i){
     api.pool = function (ctx, pool) {
         drawPool(ctx, pool, globalDraw.basic);
     };
-
     api.waveButtons = function (ctx, pool) {
         drawPool(ctx, pool, globalDraw.waveButtons);
     };
-
     api.buttonPool = function (ctx, pool, sm) {
         sm = sm || {};
         drawPool(ctx, pool, globalDraw.buttonPool);
@@ -98,19 +96,7 @@ buttonPool: function(ctx, obj, i){
 
     // debug info
     api.debugInfo = function (ctx, sm, sx, sy) {
-        var waveButtonsPool = sm.game.waveButtons.pool,
-        waveButtonData = waveButtonsPool.data;
-        ctx.fillStyle = 'white';
-        ctx.font = '10px arial';
-        ctx.textBaseline = 'top';
-        ctx.textAlign = 'left';
-        ctx.fillText('currentWave: ' + waveButtonData.currentWave, sx, sy);
-        ctx.fillText('waveCount: ' + waveButtonData.waveCount, sx, sy + 20);
-        ctx.fillText('toSpawn: ' + waveButtonData.toSpawn, sx, sy + 40);
-        ctx.fillText('ActiveCount: ' + waveButtonData.activeCount, sx, sy + 60);
-        ctx.fillText('rushTo: ' + waveButtonData.rushTo, sx, sy + 80);
 
-        ctx.fillText('Unit Count: ' + sm.game.unitQueue.unitCount, sx, sy + 120);
     };
 
     api.resetButton = function (ctx, sm) {
@@ -130,7 +116,7 @@ buttonPool: function(ctx, obj, i){
         ctx.textBaseline = 'top';
         ctx.font='15px arial';
         ctx.textAlign = 'left';
-        ctx.fillText('v' + sm.ver, 5, canvas.height - 15);
+        ctx.fillText('v' + sm.ver, canvas.width - 50, canvas.height - 15);
     };
 
     return api;
