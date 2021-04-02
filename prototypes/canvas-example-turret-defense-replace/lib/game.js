@@ -7,19 +7,35 @@ var gameMod = (function () {
     // on unit spawn
     var unitSpawn = function (obj, pool, sm, opt) {
         obj.heading = Math.PI * 0.5;
-        var delta = sm.canvas.width * 0.5 * Math.random();
-        obj.x = sm.canvas.width * 0.25 + delta;
-        obj.y = 0;
+        //var delta = sm.canvas.width * 0.5 * Math.random();
+        //obj.x = sm.canvas.width * 0.25 + delta;
+        //obj.y = 0;
+
+var radian = Math.PI * 2 * Math.random(),
+radius = sm.canvas.width * 0.5;
+obj.x = sm.canvas.width * 0.5 - obj.w / 2 + Math.cos(radian) * radius;
+obj.y = sm.canvas.height * 0.5 - obj.h / 2 + Math.sin(radian) * radius;
+obj.heading = radian + Math.PI;
+
         obj.lifespan = Infinity;
     };
 
     // on unit update
     var unitUpdate = function (obj, pool, sm, secs) {
         obj.pps = UNIT_PPS;
+
+var cx = sm.canvas.width * 0.5,
+cy = sm.canvas.height * 0.5;
+if( utils.distance(obj.x + obj.w / 2, obj.y + obj.h / 2, cx, cy) <= 25 ){
+    obj.lifespan = 0;
+}
+
         poolMod.moveByPPS(obj, secs);
-        if (obj.y >= sm.canvas.height - 50) {
-            obj.lifespan = 0;
-        }
+
+
+        //if (obj.y >= sm.canvas.height - 50) {
+        //    obj.lifespan = 0;
+        //}
     };
 
     var onWaveStart = function (waveObj, sm) {

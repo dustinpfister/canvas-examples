@@ -19,8 +19,8 @@
         },
         draw: function (sm, ctx, canvas) {
             draw.background(ctx, canvas, sm.background);
-            draw.waveButtons(sm.ctx, sm.game.waveButtons.pool);
             draw.pool(sm.ctx, sm.game.unitPool);
+            draw.waveButtons(sm.ctx, sm.game.waveButtons.pool);
             draw.buttonPool(ctx, sm.buttons);
 
             var waveButtonsPool = sm.game.waveButtons.pool,
