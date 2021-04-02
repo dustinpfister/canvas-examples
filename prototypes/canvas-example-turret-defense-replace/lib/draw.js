@@ -44,7 +44,41 @@ var draw = (function () {
             globalDraw.basic(ctx, obj, i);
             ctx.fillStyle = 'black';
             ctx.fillText(obj.data.waveNumber, obj.x + 5, obj.y + 5);
-        }
+        },
+buttonPool: function(ctx, obj, i){
+            // parts array
+            var parts = obj.data.action.split('_');
+            // background
+            ctx.fillStyle = obj.data.fill || 'white';
+            ctx.translate(obj.x, obj.y);
+            ctx.beginPath();
+            ctx.globalAlpha = obj.data.alpha === undefined ? 1: obj.data.alpha;
+            ctx.rect(0, 0, obj.w, obj.h);
+            ctx.fill();
+            if(parts[2] === 'current'){
+                var value = sm.modeSettings[parts[3]],
+                range = obj.data.setting.range,
+                deltaRange = range[1] - range[0],
+                per = (value - range[0]) / deltaRange;
+                ctx.beginPath();
+                ctx.fillStyle = 'black';
+                ctx.rect(0, 0, obj.w * per, obj.h);
+                ctx.fill();
+            }
+            ctx.beginPath();
+            ctx.rect(0, 0, obj.w, obj.h);
+            ctx.globalAlpha = obj.data.alpha2 === undefined ? ctx.globalAlpha: obj.data.alpha2;
+            ctx.stroke();
+            // draw disp text
+            if(obj.data.disp){
+               ctx.fillStyle = 'black';
+               ctx.textBaseline = 'middle';
+               ctx.font = '20px arial';
+               ctx.textAlign = 'center';
+               ctx.fillText(obj.data.disp, obj.w / 2, obj.h / 2);
+            }
+            ctx.globalAlpha = 1;
+        }	
     };
 
     // basic draw pool method with a solid background fallback if there is
@@ -55,6 +89,11 @@ var draw = (function () {
 
     api.waveButtons = function (ctx, pool) {
         drawPool(ctx, pool, globalDraw.waveButtons);
+    };
+
+    api.buttonPool = function (ctx, pool, sm) {
+        sm = sm || {};
+        drawPool(ctx, pool, globalDraw.buttonPool);
     };
 
     // debug info
@@ -83,6 +122,15 @@ var draw = (function () {
         ctx.fill();
         ctx.stroke();
         ctx.globalAlpha = 1;
+    };
+
+    // version
+    api.ver = function(ctx, canvas, sm){
+        ctx.fillStyle = 'white';
+        ctx.textBaseline = 'top';
+        ctx.font='15px arial';
+        ctx.textAlign = 'left';
+        ctx.fillText('v' + sm.ver, 5, canvas.height - 15);
     };
 
     return api;

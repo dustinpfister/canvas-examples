@@ -1,5 +1,7 @@
 var utils = {};
 
+utils.noop = function(){};
+
 // mathematical modulo
 utils.mod = function (x, m) {
     return (x % m + m) % m;
