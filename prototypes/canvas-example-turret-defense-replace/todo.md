@@ -7,7 +7,7 @@
 * (done) units moving into the center of the canvas
 
 * (done) have a game.playerUnitPool
-* have a PLAYER-UNITS const in game.js
+* (done) have a PLAYER-UNITS const in game.js
 * start with a PLAYER-UNITS.manualTurret as the first player unit that is controled by manual input
 * have a single PLAYER-UNITS.manualTurret starting player unit at the center of the canvas
 

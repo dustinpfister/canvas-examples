@@ -4,9 +4,20 @@ var gameMod = (function () {
     UNIT_RELEASE_RATE_MIN = 0.25,
     UNIT_RELEASE_RATE_MAX = 3;
 
+    var PLAYER_UNITS = {};
+
+    PLAYER_UNITS.manual = {
+        spawn: function(obj, pool, sm, opt){},
+        update: function(obj, pool, sm, secs){},
+        onClick:function(){}
+    };
+
     var api = {};
 
-    var playerUnitSpawn = function (obj, pool, sm, opt) {};
+    var playerUnitSpawn = function (obj, pool, sm, opt) {
+        var type = opt.type || 'manual';
+        PLAYER_UNITS[type].spawn(obj, pool, sm, opt);
+    };
 
     var playerUnitUpdate = function (obj, pool, sm, secs) {};
 
