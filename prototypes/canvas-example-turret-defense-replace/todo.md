@@ -1,5 +1,3 @@
-
-
 ## 0.0.0 - Basic idea up and running
 * (done) copy over the wave control system from js-example-attack-wave-control-system
 * (done) copy over what was worked out for canvas-example-ptl-clean-start-template proto folder
@@ -10,12 +8,7 @@
 * (done) start with a PLAYER-UNITS.manual Turret as the first player unit that is controled by manual input
 * (done) start a gameMod.click public method
 * (done) have a single PLAYER-UNITS.manual Turret starting player unit at the center of the canvas
+* (done) have enemy unit.data.hp and unit.data.hpMax props
 
-* have it so that I can click a UNIT and when doing so that until will become the current target
-
-* have enemy unit.data.hp and unit.data.hpMax props
-* in update method of manual player unit, attack current target
-
-
-* have a playerShotsPool
-* playerShots fire from player turret to shot location
+* have a player hp bar
+* have a gameOver state
