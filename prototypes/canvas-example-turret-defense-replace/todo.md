@@ -8,8 +8,15 @@
 
 * (done) have a game.playerUnitPool
 * (done) have a PLAYER-UNITS const in game.js
-* start with a PLAYER-UNITS.manualTurret as the first player unit that is controled by manual input
-* have a single PLAYER-UNITS.manualTurret starting player unit at the center of the canvas
+* (done) start with a PLAYER-UNITS.manual Turret as the first player unit that is controled by manual input
+
+* start a gameMod.click public method
+
+
+* have a single PLAYER-UNITS.manual Turret starting player unit at the center of the canvas
+
+* have it so that I can click a UNIT and when doing so that until will become the current target
+
 
 * have a playerShotsPool
 * playerShots fire from player turret to shot location

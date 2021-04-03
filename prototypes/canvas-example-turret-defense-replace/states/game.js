@@ -51,11 +51,16 @@
             }
             // wave buttons
             waveMod.onClick(sm, pos);
+
+            gameMod.click(sm.game, pos, e, sm);
+
+/*
             // unit
             var unit = poolMod.getObjectAt(sm.game.unitPool, pos.x, pos.y);
             if(unit){
                 unit.lifespan = 0;
             }
+*/
         }
     });
 }());

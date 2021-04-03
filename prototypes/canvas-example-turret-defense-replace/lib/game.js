@@ -6,20 +6,28 @@ var gameMod = (function () {
 
     var PLAYER_UNITS = {};
 
+    // manual control turret
     PLAYER_UNITS.manual = {
-        spawn: function(obj, pool, sm, opt){},
+        spawn: function(obj, pool, sm, opt){
+            obj.heading = Math.PI * 1.5;
+            obj.data.facing = obj.heading;
+            obj.data.target = null;
+        },
         update: function(obj, pool, sm, secs){},
-        onClick:function(){}
+        onClick:function(obj, pool, sm, pos, e){}
     };
 
     var api = {};
 
     var playerUnitSpawn = function (obj, pool, sm, opt) {
         var type = opt.type || 'manual';
+        obj.data.type = type;
         PLAYER_UNITS[type].spawn(obj, pool, sm, opt);
     };
 
-    var playerUnitUpdate = function (obj, pool, sm, secs) {};
+    var playerUnitUpdate = function (obj, pool, sm, secs) {
+        PLAYER_UNITS[obj.data.type].update(obj, pool, sm, secs);
+    };
 
     // Enemy unit spawn
     var unitSpawn = function (obj, pool, sm, opt) {
@@ -76,7 +84,6 @@ var gameMod = (function () {
     };
 
     api.update = function (sm, secs) {
-
         if (sm.game.unitQueue.unitCount > 0) {
             sm.game.unitQueue.secs += secs;
             var releasePer = sm.game.unitQueue.unitCount / 30;
@@ -91,12 +98,19 @@ var gameMod = (function () {
                 sm.game.unitQueue.secs = 0;
             }
         }
-
         // update wave buttons
         waveMod.update(sm, secs);
-
         //
         poolMod.update(sm.game.unitPool, secs, sm);
+    };
+
+    api.click = function(game, pos, e, sm){
+
+        // unit
+        var unit = poolMod.getObjectAt(game.unitPool, pos.x, pos.y);
+        if(unit){
+            unit.lifespan = 0;
+        }
 
     };
 
