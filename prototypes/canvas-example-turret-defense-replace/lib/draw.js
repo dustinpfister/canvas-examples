@@ -40,6 +40,12 @@ var draw = (function () {
             ctx.stroke();
             ctx.globalAlpha = 1;
         },
+        unit: function(ctx, obj, i){
+            globalDraw.basic(ctx, obj, i);
+            ctx.fillStyle = 'lime';
+            var per = obj.data.HP / obj.data.maxHP;
+            ctx.fillRect(obj.x, obj.y, obj.w * per, 10);
+        },
         waveButtons: function (ctx, obj, i) {
             globalDraw.basic(ctx, obj, i);
             ctx.fillStyle = 'black';
@@ -85,6 +91,9 @@ var draw = (function () {
     // draw method in an disp objects data object
     api.pool = function (ctx, pool) {
         drawPool(ctx, pool, globalDraw.basic);
+    };
+    api.units = function (ctx, pool) {
+        drawPool(ctx, pool, globalDraw.unit);
     };
     api.waveButtons = function (ctx, pool) {
         drawPool(ctx, pool, globalDraw.waveButtons);

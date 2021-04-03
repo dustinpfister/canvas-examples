@@ -15,10 +15,13 @@ var gameMod = (function () {
         },
         update: function(obj, pool, sm, secs){},
         onClick:function(obj, pool, sm, pos, e){
-            console.log(pos);
             var unit = poolMod.getObjectAt(sm.game.unitPool, pos.x, pos.y);
             if(unit){
-                unit.lifespan = 0;
+                unit.data.HP -= 1;
+                if(unit.data.HP <= 0){
+                    unit.data.HP = 0;
+                    unit.lifespan = 0;
+                }
             }
         }
     };
@@ -57,6 +60,9 @@ var gameMod = (function () {
         obj.y = sm.canvas.height * 0.5 - obj.h / 2 + Math.sin(radian) * radius;
         obj.heading = radian + Math.PI;
         obj.lifespan = Infinity;
+
+        obj.data.maxHP = 10;
+        obj.data.HP = obj.data.maxHP;
     };
 
     // Enemy unit update

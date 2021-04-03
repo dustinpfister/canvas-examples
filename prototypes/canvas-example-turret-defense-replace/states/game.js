@@ -25,7 +25,7 @@
         draw: function (sm, ctx, canvas) {
             draw.background(ctx, canvas, sm.background);
 
-            draw.pool(sm.ctx, sm.game.unitPool);
+            draw.units(sm.ctx, sm.game.unitPool);
             draw.pool(sm.ctx, sm.game.playerUnitPool);
 
             draw.waveButtons(sm.ctx, sm.game.waveButtons.pool);
