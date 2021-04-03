@@ -14,7 +14,13 @@ var gameMod = (function () {
             obj.data.target = null;
         },
         update: function(obj, pool, sm, secs){},
-        onClick:function(obj, pool, sm, pos, e){}
+        onClick:function(obj, pool, sm, pos, e){
+            console.log(pos);
+            var unit = poolMod.getObjectAt(sm.game.unitPool, pos.x, pos.y);
+            if(unit){
+                unit.lifespan = 0;
+            }
+        }
     };
 
     var api = {};
@@ -121,10 +127,20 @@ var gameMod = (function () {
     api.click = function(game, pos, e, sm){
 
         // unit
-        var unit = poolMod.getObjectAt(game.unitPool, pos.x, pos.y);
-        if(unit){
-            unit.lifespan = 0;
-        }
+        //var unit = poolMod.getObjectAt(game.unitPool, pos.x, pos.y);
+        //if(unit){
+            //unit.lifespan = 0;
+
+        //}
+
+        game.playerUnitPool.objects.forEach(function(obj){
+
+            var unitProfile = PLAYER_UNITS[obj.data.type];
+
+            if(unitProfile.onClick){
+                unitProfile.onClick(obj, game.playerUnitPool, sm, pos, e);
+            }
+        });
 
     };
 
