@@ -1,3 +1,6 @@
+## 0.x.0 - game.unitQueue should be an array
+* make unitQueue an array of objects rather than a single object
+
 ## 0.0.0 - Basic idea up and running
 * (done) copy over the wave control system from js-example-attack-wave-control-system
 * (done) copy over what was worked out for canvas-example-ptl-clean-start-template proto folder
