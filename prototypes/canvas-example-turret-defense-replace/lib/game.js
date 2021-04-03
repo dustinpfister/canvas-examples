@@ -2,7 +2,8 @@ var gameMod = (function () {
 
     var UNIT_PPS = 32,
     UNIT_RELEASE_RATE_MIN = 0.25,
-    UNIT_RELEASE_RATE_MAX = 3;
+    UNIT_RELEASE_RATE_MAX = 3,
+    UNIT_HP_RANGE = [1, 10];
 
     var PLAYER_UNITS = {};
 
@@ -61,7 +62,8 @@ var gameMod = (function () {
         obj.heading = radian + Math.PI;
         obj.lifespan = Infinity;
 
-        obj.data.maxHP = 10;
+        var HPDelta = Math.round( ( UNIT_HP_RANGE[1] - UNIT_HP_RANGE[0] ) * opt.hpPer );
+        obj.data.maxHP = UNIT_HP_RANGE[0] + HPDelta;
         obj.data.HP = obj.data.maxHP;
     };
 
@@ -117,7 +119,12 @@ var gameMod = (function () {
             var releaseDelta = (UNIT_RELEASE_RATE_MAX - UNIT_RELEASE_RATE_MIN) * (1 - releasePer);
             sm.game.unit_release_rate = UNIT_RELEASE_RATE_MIN + releaseDelta;
             if (sm.game.unitQueue.secs > sm.game.unit_release_rate) {
-                var unit = poolMod.spawn(sm.game.unitPool, sm, {});
+                // SPAWN A UNIT
+                var waveData = sm.game.waveButtons.pool.data,
+                wavePer = waveData.currentWave / waveData.waveCount;
+                var unit = poolMod.spawn(sm.game.unitPool, sm, {
+                    hpPer: wavePer
+                });
                 if (unit) {
                     sm.game.unitQueue.unitCount -= 1;
                 }
