@@ -1,3 +1,9 @@
+## 0.x.0 - Player unit Grid
+* have a player unit grid that is maybe just 5 * 5
+* single manual unit at center
+* start a new auto unit
+* two auto units
+
 ## 0.x.0 - game.unitQueue should be an array
 * make unitQueue an array of objects rather than a single object
 
