@@ -1,8 +1,14 @@
 var gameMod = (function () {
+
     var UNIT_PPS = 32,
     UNIT_RELEASE_RATE_MIN = 0.25,
     UNIT_RELEASE_RATE_MAX = 3;
+
     var api = {};
+
+    var playerUnitSpawn = function (obj, pool, sm, opt) {};
+
+    var playerUnitUpdate = function (obj, pool, sm, secs) {};
 
     // Enemy unit spawn
     var unitSpawn = function (obj, pool, sm, opt) {
@@ -31,7 +37,7 @@ var gameMod = (function () {
     };
 
     api.create = function () {
-        return {
+        var game = {
             unitQueue: {
                 unitCount: 0,
                 secs: 0
@@ -42,6 +48,12 @@ var gameMod = (function () {
                 update: unitUpdate,
                 data: {}
             }),
+            playerUnitPool: poolMod.create({
+                count: 1,
+                spawn: playerUnitSpawn,
+                update: playerUnitUpdate,
+                data: {}
+            }),
             waveButtons: waveMod.create({
                 startY: 64,
                 waveCount: 99,
@@ -49,6 +61,7 @@ var gameMod = (function () {
             }),
             onWaveStart: onWaveStart
         };
+        return game;
     };
 
     api.update = function (sm, secs) {
