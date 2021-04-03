@@ -6,10 +6,15 @@
             var x = sm.canvas.width * 0.87,
             y = sm.canvas.height * 0.045;
             stateMachine.spawnButton(sm, {x: x, y: y, w: 64}, 'start_state_title', 'Title');
+
             // create a new game
             sm.game = gameMod.create({
               sm: sm
             });
+
+            // starting unit
+            poolMod.spawn(sm.game.playerUnitPool, sm, {});
+
         },
         trans: function (sm, secs) {
             poolMod.update(sm.buttons, secs, sm);
@@ -19,7 +24,10 @@
         },
         draw: function (sm, ctx, canvas) {
             draw.background(ctx, canvas, sm.background);
+
             draw.pool(sm.ctx, sm.game.unitPool);
+            draw.pool(sm.ctx, sm.game.playerUnitPool);
+
             draw.waveButtons(sm.ctx, sm.game.waveButtons.pool);
             draw.buttonPool(ctx, sm.buttons);
 

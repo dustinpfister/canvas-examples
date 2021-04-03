@@ -20,8 +20,22 @@ var gameMod = (function () {
     var api = {};
 
     var playerUnitSpawn = function (obj, pool, sm, opt) {
+        // type
         var type = opt.type || 'manual';
         obj.data.type = type;
+
+        // grid position
+        obj.data.gridIndex = opt.gridIndex || 0;
+        var size = 32,
+        halfSize = size / 2,
+        x = sm.canvas.width / 2 - halfSize,
+        y = sm.canvas.height / 2 - halfSize;
+
+        obj.x = x;
+        obj.y = y;
+        obj.data.cx = obj.x + halfSize;
+        obj.data.cy = obj.y + halfSize;
+
         PLAYER_UNITS[type].spawn(obj, pool, sm, opt);
     };
 
