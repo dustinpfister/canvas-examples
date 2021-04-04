@@ -1,4 +1,12 @@
 ../lib/utils.js
+../lib/pool.js
+../lib/waves.js
 ../lib/game.js
+../lib/forframe.js
+../lib/pixmaps.js
 ../lib/draw.js
-../main.js
+../lib/state-machine.js
+../states/title.js
+../states/game.js
+../states/game_over.js
+./main.js

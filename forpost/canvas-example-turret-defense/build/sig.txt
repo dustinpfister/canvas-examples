@@ -1,6 +1,6 @@
 /*
    canvas-example-turret-defense
-   Copyright 2020 by Dustin Pfister
+   Copyright 2020 - 2021 by Dustin Pfister
    https://raw.githubusercontent.com/dustinpfister/canvas-examples/master/LICENSE
  
    https://github.com/dustinpfister/canvas-examples
