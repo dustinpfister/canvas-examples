@@ -9,7 +9,8 @@
 
             // create a new game
             sm.game = gameMod.create({
-              sm: sm
+                waveCount: 10,
+                sm: sm
             });
 
             // starting unit
@@ -21,7 +22,7 @@
         },
         update: function (sm, secs) {
             gameMod.update(sm, secs);
-            if(sm.game.activeCount === 0){
+            if(sm.game.gameOver){
                 stateMachine.startStateChangeTrans(sm, 'gameOver');
             }
         },

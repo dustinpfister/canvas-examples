@@ -11,7 +11,7 @@
 ## 0.x.0 - game.unitQueue should be an array
 * make unitQueue an array of objects rather than a single object
 
-## 0.0.0 - Basic idea up and running
+## 0.1.0 - New basic idea for turret defense up and running
 * (done) copy over the wave control system from js-example-attack-wave-control-system
 * (done) copy over what was worked out for canvas-example-ptl-clean-start-template proto folder
 * (done) have just a title and game state for now.
@@ -27,3 +27,4 @@
 * (done) when enemy units come in range they cuase player unit damage
 * (done) trans to gameOver state when active count of player units is 0
 
+* Game over when player gets to last wave, and kills all enemy units

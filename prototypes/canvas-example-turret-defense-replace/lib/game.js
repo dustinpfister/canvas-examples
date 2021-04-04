@@ -1,6 +1,6 @@
 var gameMod = (function () {
 
-    var UNIT_PPS = 128,
+    var UNIT_PPS = 32,
     UNIT_RELEASE_RATE_MIN = 0.25,
     UNIT_RELEASE_RATE_MAX = 3,
     UNIT_HP_RANGE = [1, 10];
@@ -112,9 +112,12 @@ var gameMod = (function () {
         sm.game.unitQueue.unitCount += waveObj.data.unitCount;
     };
 
-    api.create = function () {
+    api.create = function (opt) {
+        opt = opt || {};
         var game = {
             activeCount: 0,
+            win: false,
+            gameOver: false,
             unitQueue: {
                 unitCount: 0,
                 secs: 0
@@ -133,7 +136,7 @@ var gameMod = (function () {
             }),
             waveButtons: waveMod.create({
                 startY: 64,
-                waveCount: 99,
+                waveCount: opt.waveCount || 99,
                 baseUnitCount: 10
             }),
             onWaveStart: onWaveStart
@@ -165,6 +168,10 @@ var gameMod = (function () {
         }
         // check player unit active count
         game.activeCount = poolMod.activeCount(game.playerUnitPool);
+        if(game.activeCount === 0){
+            game.win = false;
+            game.gameOver = true;
+        }
 
         // update wave buttons
         waveMod.update(sm, secs);
