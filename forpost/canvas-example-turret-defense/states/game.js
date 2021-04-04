@@ -33,6 +33,8 @@
             draw.units(sm.ctx, sm.game.unitPool);
             draw.units(sm.ctx, sm.game.playerUnitPool);
 
+draw.pool(sm.ctx,  sm.game.playerShotsPool);
+
             draw.waveButtons(sm.ctx, sm.game.waveButtons.pool);
             draw.buttonPool(ctx, sm.buttons);
 

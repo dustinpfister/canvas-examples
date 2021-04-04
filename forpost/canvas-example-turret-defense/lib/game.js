@@ -23,6 +23,13 @@ var gameMod = (function () {
         update: function(obj, pool, sm, secs){},
         onClick:function(obj, pool, sm, pos, e){
             var unit = poolMod.getObjectAt(sm.game.unitPool, pos.x, pos.y);
+
+console.log('click');
+
+poolMod.spawn(sm.game.playerShotsPool, sm, {
+    playerUnit: obj
+});
+
             if(unit){
                 unit.data.HP -= 1;
                 if(unit.data.HP <= 0){
@@ -92,10 +99,15 @@ var gameMod = (function () {
 ********** ********** **********/
 
     var playerShotSpawn = function (obj, pool, sm, opt) {
+        obj.x = opt.playerUnit.x;
+        obj.y = opt.playerUnit.y;
+        obj.heading = 0;
+        obj.pps = 256;
+        obj.lifespan = 3;
     };
 
     var playerShotUpdate = function (obj, pool, sm, secs) {
-
+        poolMod.moveByPPS(obj, secs);
     };
 
 /********** ********** **********
@@ -228,6 +240,7 @@ var gameMod = (function () {
         // units
         poolMod.update(game.unitPool, secs, sm);
         poolMod.update(game.playerUnitPool, secs, sm);
+        poolMod.update(game.playerShotsPool, secs, sm);
     };
 
 /********** ********** **********
@@ -236,11 +249,10 @@ var gameMod = (function () {
 
     api.click = function(game, pos, e, sm){
 
+        // call On Click for all player units
         game.playerUnitPool.objects.forEach(function(obj){
-
             var unitProfile = PLAYER_UNITS[obj.data.type];
-
-            if(unitProfile.onClick){
+            if(unitProfile.onClick && obj.active){
                 unitProfile.onClick(obj, game.playerUnitPool, sm, pos, e);
             }
         });
