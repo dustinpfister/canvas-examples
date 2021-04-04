@@ -17,8 +17,10 @@
         },
         click: function (sm, pos, e) {
             var button = poolMod.getObjectAt(sm.buttons, pos.x, pos.y);
-            if(button.data.action === 'start_state_game'){
-                stateMachine.startStateChangeTrans(sm, 'game');
+            if(button){
+                if(button.data.action === 'start_state_game'){
+                    stateMachine.startStateChangeTrans(sm, 'game');
+                }
             }
         }
     });
