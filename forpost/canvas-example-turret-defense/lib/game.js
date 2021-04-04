@@ -106,7 +106,7 @@ poolMod.spawn(sm.game.playerShotsPool, sm, {
         obj.y = opt.playerUnit.y;
         obj.heading = utils.getAngleToPoint(opt.pos, opt.playerUnit);
         obj.pps = 256;
-        obj.lifespan = 3;
+        obj.lifespan = Infinity;
 
         obj.data.playerUnit = opt.playerUnit;
 
@@ -126,7 +126,7 @@ poolMod.spawn(sm.game.playerShotsPool, sm, {
         });
 
         // distance from playerUnit that shot the shot
-        if(utils.distance(obj.x, obj.y, obj.data.playerUnit.x, obj.data.playerUnit.y) >= 100){
+        if(utils.distance(obj.x, obj.y, obj.data.playerUnit.x, obj.data.playerUnit.y) >= 250){
             obj.lifespan = 0;
         }
 
