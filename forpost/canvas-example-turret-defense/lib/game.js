@@ -25,9 +25,10 @@ var gameMod = (function () {
             var unit = poolMod.getObjectAt(sm.game.unitPool, pos.x, pos.y);
 
 console.log('click');
-
+// fire a shot
 poolMod.spawn(sm.game.playerShotsPool, sm, {
-    playerUnit: obj
+    playerUnit: obj,
+    pos: pos
 });
 
             if(unit){
@@ -101,7 +102,9 @@ poolMod.spawn(sm.game.playerShotsPool, sm, {
     var playerShotSpawn = function (obj, pool, sm, opt) {
         obj.x = opt.playerUnit.x;
         obj.y = opt.playerUnit.y;
-        obj.heading = 0;
+
+obj.heading = utils.getAngleToPoint(opt.pos, opt.playerUnit);
+
         obj.pps = 256;
         obj.lifespan = 3;
     };
