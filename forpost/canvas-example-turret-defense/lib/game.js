@@ -1,17 +1,15 @@
 var gameMod = (function () {
 
+    var api = {};
+
+/********** ********** **********
+  HARD CODED SETTINGS and DATA
+********** ********** **********/
+
     var UNIT_PPS = 64,
     UNIT_RELEASE_RATE_MIN = 0.25,
     UNIT_RELEASE_RATE_MAX = 3,
     UNIT_HP_RANGE = [1, 10];
-
-    // unit helpers
-    var createHPprops = function(obj, hpRange, hpPer){
-        var HPDelta = Math.round( ( hpRange[1] -hpRange[0] ) * hpPer );
-        obj.data.maxHP = hpRange[0] + HPDelta;
-        obj.data.HP = obj.data.maxHP;
-    };
-
 
     var PLAYER_UNITS = {};
 
@@ -35,7 +33,23 @@ var gameMod = (function () {
         }
     };
 
-    var api = {};
+/********** ********** **********
+  HELPERS
+********** ********** **********/
+
+    var createHPprops = function(obj, hpRange, hpPer){
+        var HPDelta = Math.round( ( hpRange[1] -hpRange[0] ) * hpPer );
+        obj.data.maxHP = hpRange[0] + HPDelta;
+        obj.data.HP = obj.data.maxHP;
+    };
+
+    var onWaveStart = function (waveObj, sm) {
+        sm.game.unitQueue.unitCount += waveObj.data.unitCount;
+    };
+
+/********** ********** **********
+  PLAYER UNITS
+********** ********** **********/
 
     var playerUnitSpawn = function (obj, pool, sm, opt) {
 
@@ -73,6 +87,21 @@ var gameMod = (function () {
         PLAYER_UNITS[obj.data.type].update(obj, pool, sm, secs);
     };
 
+/********** ********** **********
+  PLAYER SHOTS
+********** ********** **********/
+
+    var playerShotSpawn = function (obj, pool, sm, opt) {
+    };
+
+    var playerShotUpdate = function (obj, pool, sm, secs) {
+
+    };
+
+/********** ********** **********
+  ENEMY UNITS
+********** ********** **********/
+
     // Enemy unit spawn
     var unitSpawn = function (obj, pool, sm, opt) {
         var radian = Math.PI * 2 * Math.random(),
@@ -108,9 +137,9 @@ var gameMod = (function () {
         poolMod.moveByPPS(obj, secs);
     };
 
-    var onWaveStart = function (waveObj, sm) {
-        sm.game.unitQueue.unitCount += waveObj.data.unitCount;
-    };
+/********** ********** **********
+  CREATE a game object
+********** ********** **********/
 
     api.create = function (opt) {
         opt = opt || {};
@@ -134,6 +163,12 @@ var gameMod = (function () {
                 update: playerUnitUpdate,
                 data: {}
             }),
+            playerShotsPool: poolMod.create({
+                count: 50,
+                spawn: playerShotSpawn,
+                update: playerShotUpdate,
+                data: {}
+            }),
             waveButtons: waveMod.create({
                 startY: 64,
                 waveCount: opt.waveCount || 99,
@@ -143,6 +178,10 @@ var gameMod = (function () {
         };
         return game;
     };
+
+/********** ********** **********
+  UPDATE A game object
+********** ********** **********/
 
     api.update = function (sm, secs) {
         var game = sm.game;
@@ -184,14 +223,16 @@ var gameMod = (function () {
         }
         game.activeCount = activeCount;
 
-        
-
         // update wave buttons
         waveMod.update(sm, secs);
         // units
         poolMod.update(game.unitPool, secs, sm);
         poolMod.update(game.playerUnitPool, secs, sm);
     };
+
+/********** ********** **********
+  CLICK
+********** ********** **********/
 
     api.click = function(game, pos, e, sm){
 
@@ -206,6 +247,7 @@ var gameMod = (function () {
 
     };
 
+    // return the public api
     return api;
 }
     ());
