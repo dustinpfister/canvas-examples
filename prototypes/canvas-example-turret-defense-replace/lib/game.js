@@ -53,9 +53,10 @@ var gameMod = (function () {
         obj.data.cx = obj.x + halfSize;
         obj.data.cy = obj.y + halfSize;
 
-        // hp
-        //obj.
+        // create base player unit HP Object
+        createHPObject(obj, [100, 100], 1);
 
+        // call spawn method for current type
         PLAYER_UNITS[type].spawn(obj, pool, sm, opt);
     };
 

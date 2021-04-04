@@ -26,7 +26,7 @@
             draw.background(ctx, canvas, sm.background);
 
             draw.units(sm.ctx, sm.game.unitPool);
-            draw.pool(sm.ctx, sm.game.playerUnitPool);
+            draw.units(sm.ctx, sm.game.playerUnitPool);
 
             draw.waveButtons(sm.ctx, sm.game.waveButtons.pool);
             draw.buttonPool(ctx, sm.buttons);
@@ -62,13 +62,6 @@
 
             gameMod.click(sm.game, pos, e, sm);
 
-/*
-            // unit
-            var unit = poolMod.getObjectAt(sm.game.unitPool, pos.x, pos.y);
-            if(unit){
-                unit.lifespan = 0;
-            }
-*/
         }
     });
 }());
