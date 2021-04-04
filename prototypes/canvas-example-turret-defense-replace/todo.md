@@ -26,5 +26,4 @@
 * (done) have a gameOver state
 * (done) when enemy units come in range they cuase player unit damage
 * (done) trans to gameOver state when active count of player units is 0
-
 * (done) Game over when player gets to last wave, and kills all enemy units

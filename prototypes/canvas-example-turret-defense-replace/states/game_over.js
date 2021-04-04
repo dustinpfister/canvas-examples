@@ -13,7 +13,12 @@
         update: function (sm, secs) {},
         draw: function (sm, ctx, canvas) {
             draw.background(ctx, canvas, sm.background);
+
+            draw.units(sm.ctx, sm.game.unitPool);
+            draw.units(sm.ctx, sm.game.playerUnitPool);
+
             draw.buttonPool(ctx, sm.buttons);
+
             // debug info
             var sx = 40,
             sy = 32;
