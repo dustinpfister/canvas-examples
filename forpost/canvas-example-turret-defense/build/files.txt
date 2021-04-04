@@ -9,4 +9,4 @@
 ../states/title.js
 ../states/game.js
 ../states/game_over.js
-./main.js
+../main.js
