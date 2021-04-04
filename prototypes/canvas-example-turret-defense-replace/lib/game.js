@@ -137,7 +137,7 @@ var gameMod = (function () {
             waveButtons: waveMod.create({
                 startY: 64,
                 waveCount: opt.waveCount || 99,
-                baseUnitCount: 10
+                baseUnitCount: opt.baseUnitCount || 10
             }),
             onWaveStart: onWaveStart
         };
@@ -168,10 +168,13 @@ var gameMod = (function () {
         }
         // check player unit active count
         game.activeCount = poolMod.activeCount(game.playerUnitPool);
+        // game will end with a player loss if game.activeCount === 0
         if(game.activeCount === 0){
             game.win = false;
             game.gameOver = true;
         }
+
+        
 
         // update wave buttons
         waveMod.update(sm, secs);

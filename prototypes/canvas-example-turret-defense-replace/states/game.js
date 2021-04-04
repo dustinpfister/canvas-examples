@@ -9,7 +9,8 @@
 
             // create a new game
             sm.game = gameMod.create({
-                waveCount: 10,
+                waveCount: 3,
+                baseUnitCount: 2,
                 sm: sm
             });
 
