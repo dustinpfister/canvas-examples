@@ -111,6 +111,11 @@ obj.heading = utils.getAngleToPoint(opt.pos, opt.playerUnit);
 
     var playerShotUpdate = function (obj, pool, sm, secs) {
         poolMod.moveByPPS(obj, secs);
+        sm.game.unitPool.objects.forEach(function(eUnit){
+            if(poolMod.boundingBox(eUnit, obj)){
+                console.log(eUnit);
+            }
+        });
     };
 
 /********** ********** **********
