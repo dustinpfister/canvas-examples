@@ -31,6 +31,7 @@ poolMod.spawn(sm.game.playerShotsPool, sm, {
     pos: pos
 });
 
+/*
             if(unit){
                 unit.data.HP -= 1;
                 if(unit.data.HP <= 0){
@@ -38,6 +39,7 @@ poolMod.spawn(sm.game.playerShotsPool, sm, {
                     unit.lifespan = 0;
                 }
             }
+*/
         }
     };
 
@@ -114,6 +116,13 @@ obj.heading = utils.getAngleToPoint(opt.pos, opt.playerUnit);
         sm.game.unitPool.objects.forEach(function(eUnit){
             if(poolMod.boundingBox(eUnit, obj)){
                 console.log(eUnit);
+            
+                eUnit.data.HP -= 1;
+                if(eUnit.data.HP <= 0){
+                    eUnit.data.HP = 0;
+                    eUnit.lifespan = 0;
+                }
+            
             }
         });
     };
