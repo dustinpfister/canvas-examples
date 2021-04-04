@@ -1,8 +1,8 @@
 
 (function () {
     var sm = stateMachine.create({
-        appName: 'canvas-example-massive-attack',
-        ver: '0.1.0',
+        appName: 'canvas-example-turret-defense',
+        ver: '0.2.0',
         debugMode: true,
         saveSlotIndex: 0
     });

@@ -1,17 +1,9 @@
 ## canvas-example-turret-defense todo list
 
-## 0.x.0 - new enemy unit movement method
-* start a new enemy movement method where a distance is divided by a number of frames
-* the speed of a unit can then be set in terms of a frame rate, and will travel a fixed, preset distance
-
-## 0.x.0 - Player unit Grid
-* have a player unit grid that is maybe just 5 * 5
-* single manual unit at center
-* start a new auto unit
-* two auto units
-
-## 0.x.0 - game.unitQueue should be an array
-* make unitQueue an array of objects rather than a single object
+## 0.2.0 - Player shot pool
+* have a playerShotsPool
+* playerShots fire from player turret to shot location
+* make a pkg 0.2.0 folder
 
 ## 0.1.0 - New basic idea for turret defense up and running
 * (done) copy over the wave control system from js-example-attack-wave-control-system
@@ -29,6 +21,7 @@
 * (done) when enemy units come in range they cuase player unit damage
 * (done) trans to gameOver state when active count of player units is 0
 * (done) Game over when player gets to last wave, and kills all enemy units
+* (done - 04/04/2021) make a pkg 0.1.0 folder
 
 ## 0.0.0 - Basic Idea working
 * (done) get just the basic idea working
