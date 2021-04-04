@@ -59,13 +59,17 @@ var gameMod = (function () {
         obj.data.cy = obj.y + halfSize;
 
         // create base player unit HP Object
-        createHPprops(obj, [30, 30], 1);
+        createHPprops(obj, [10, 10], 1);
 
         // call spawn method for current type
         PLAYER_UNITS[type].spawn(obj, pool, sm, opt);
     };
 
     var playerUnitUpdate = function (obj, pool, sm, secs) {
+        // unit becomes inactive when HP === 0
+        if(obj.data.HP === 0){
+            obj.lifespan = 0;
+        }
         PLAYER_UNITS[obj.data.type].update(obj, pool, sm, secs);
     };
 
@@ -97,9 +101,6 @@ var gameMod = (function () {
             sm.game.playerUnitPool.objects.forEach((function(playerUnit){
                 playerUnit.data.HP -= obj.damage;
                 playerUnit.data.HP = playerUnit.data.HP < 0 ? 0 : playerUnit.data.HP;
-                if(playerUnit.data.HP === 0){
-playerUnit.lifespan = 0;
-                }
             }));
             obj.lifespan = 0;
             obj.pps = 0;
