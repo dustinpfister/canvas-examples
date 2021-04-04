@@ -6,7 +6,7 @@ var gameMod = (function () {
     UNIT_HP_RANGE = [1, 10];
 
     // unit helpers
-    var createHPObject = function(obj, hpRange, hpPer){
+    var createHPprops = function(obj, hpRange, hpPer){
         var HPDelta = Math.round( ( hpRange[1] -hpRange[0] ) * hpPer );
         obj.data.maxHP = hpRange[0] + HPDelta;
         obj.data.HP = obj.data.maxHP;
@@ -54,7 +54,7 @@ var gameMod = (function () {
         obj.data.cy = obj.y + halfSize;
 
         // create base player unit HP Object
-        createHPObject(obj, [100, 100], 1);
+        createHPprops(obj, [30, 30], 1);
 
         // call spawn method for current type
         PLAYER_UNITS[type].spawn(obj, pool, sm, opt);
@@ -74,7 +74,11 @@ var gameMod = (function () {
         obj.lifespan = Infinity;
 
         // create HP Object
-        createHPObject(obj, UNIT_HP_RANGE, opt.hpPer);
+        createHPprops(obj, UNIT_HP_RANGE, opt.hpPer);
+
+        // enemy unit damage
+        obj.damage = 1;
+
     };
 
     // Enemy unit update
@@ -84,7 +88,12 @@ var gameMod = (function () {
         obj.pps = UNIT_PPS;
         // enemy has come in range of player unit(s)
         if( utils.distance(obj.x + obj.w / 2, obj.y + obj.h / 2, cx, cy) <= 25 ){
-            
+            // apply damage to player units
+            sm.game.playerUnitPool.objects.forEach((function(playerUnit){
+                playerUnit.data.HP -= obj.damage;
+//console.log(playerUnit.data.HP);
+                playerUnit.data.HP = playerUnit.data.HP < 0 ? 0 : playerUnit.data.HP;
+            }));
             obj.lifespan = 0;
             obj.pps = 0;
         }
@@ -150,13 +159,6 @@ var gameMod = (function () {
     };
 
     api.click = function(game, pos, e, sm){
-
-        // unit
-        //var unit = poolMod.getObjectAt(game.unitPool, pos.x, pos.y);
-        //if(unit){
-            //unit.lifespan = 0;
-
-        //}
 
         game.playerUnitPool.objects.forEach(function(obj){
 
