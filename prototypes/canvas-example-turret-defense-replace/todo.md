@@ -24,5 +24,6 @@
 * (done) have enemy unit.data.hp and unit.data.hpMax props
 * (done) have a player hp bar
 * (done) have a gameOver state
+* (done) when enemy units come in range they cuase player unit damage
+* (done) trans to gameOver state when active count of player units is 0
 
-* when enemy units come in range they cuase player unit damage

@@ -142,34 +142,35 @@ var gameMod = (function () {
     };
 
     api.update = function (sm, secs) {
+        var game = sm.game;
         // UNIT Queue
-        if (sm.game.unitQueue.unitCount > 0) {
-            sm.game.unitQueue.secs += secs;
-            var releasePer = sm.game.unitQueue.unitCount / 30;
+        if (game.unitQueue.unitCount > 0) {
+            game.unitQueue.secs += secs;
+            var releasePer = game.unitQueue.unitCount / 30;
             releasePer = releasePer > 1 ? 1 : releasePer;
             var releaseDelta = (UNIT_RELEASE_RATE_MAX - UNIT_RELEASE_RATE_MIN) * (1 - releasePer);
-            sm.game.unit_release_rate = UNIT_RELEASE_RATE_MIN + releaseDelta;
-            if (sm.game.unitQueue.secs > sm.game.unit_release_rate) {
+            game.unit_release_rate = UNIT_RELEASE_RATE_MIN + releaseDelta;
+            if (game.unitQueue.secs > game.unit_release_rate) {
                 // SPAWN A UNIT
-                var waveData = sm.game.waveButtons.pool.data,
+                var waveData = game.waveButtons.pool.data,
                 wavePer = waveData.currentWave / waveData.waveCount;
-                var unit = poolMod.spawn(sm.game.unitPool, sm, {
+                var unit = poolMod.spawn(game.unitPool, sm, {
                     hpPer: wavePer
                 });
                 if (unit) {
-                    sm.game.unitQueue.unitCount -= 1;
+                    game.unitQueue.unitCount -= 1;
                 }
-                sm.game.unitQueue.secs = 0;
+                game.unitQueue.secs = 0;
             }
         }
         // check player unit active count
-        sm.game.activeCount = poolMod.activeCount(sm.game.playerUnitPool);
+        game.activeCount = poolMod.activeCount(game.playerUnitPool);
 
         // update wave buttons
         waveMod.update(sm, secs);
         // units
-        poolMod.update(sm.game.unitPool, secs, sm);
-        poolMod.update(sm.game.playerUnitPool, secs, sm);
+        poolMod.update(game.unitPool, secs, sm);
+        poolMod.update(game.playerUnitPool, secs, sm);
     };
 
     api.click = function(game, pos, e, sm){
