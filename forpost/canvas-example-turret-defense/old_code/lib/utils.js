@@ -1,28 +1,28 @@
-var utils = {};
-
-utils.noop = function(){};
+var u = {
+    defaultAngleScale: Math.PI * 2
+};
 
 // mathematical modulo
-utils.mod = function (x, m) {
+u.mod = function (x, m) {
     return (x % m + m) % m;
 };
 
-utils.normalizeHalf = function (n, scale) {
-    var c = scale || 360,
+u.normalizeHalf = function (n, scale) {
+    var c = scale || u.defaultAngleScale,
     h = c / 2;
-    return utils.mod(n + h, c) - h;
+    return u.mod(n + h, c) - h;
 };
 
 // distance
-utils.distance = function (x1, y1, x2, y2) {
+u.distance = function (x1, y1, x2, y2) {
     return Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2));
 };
 
 // the angular distance between two angles
-utils.angleDistance = function (a, b, scale) {
-    var m = scale || 360,
+u.angleDistance = function (a, b, scale) {
+    var m = scale || u.defaultAngleScale,
     h = m / 2,
-    diff = utils.normalizeHalf(a - b);
+    diff = u.normalizeHalf(a - b);
     if (diff > h) {
         diff = diff - m;
     }
@@ -30,14 +30,14 @@ utils.angleDistance = function (a, b, scale) {
 };
 
 // get the angle from one point to another
-utils.getAngleToPoint = function (pt1, pt2) {
-    return utils.normalizeHalf(Math.atan2(pt1.y - pt2.y, pt1.x - pt2.x));
+u.getAngleToPoint = function (pt1, pt2) {
+    return u.normalizeHalf(Math.atan2(pt1.y - pt2.y, pt1.x - pt2.x));
 };
 
 // get -1, 1, or 0 depending on the the state of two angles
-utils.shortestAngleDirection = function (a1, a2) {
+u.shortestAngleDirection = function (a1, a2) {
     var z = a1 - a2,
-    x = utils.normalizeHalf(z);
+    x = u.normalizeHalf(z);
     if (x < 0) {
         return -1; // Left
     }
@@ -48,17 +48,7 @@ utils.shortestAngleDirection = function (a1, a2) {
     return 0;
 };
 
-// bounding box
-utils.boundingBox = function (x1, y1, w1, h1, x2, y2, w2, h2) {
-    return !(
-        (y1 + h1) < y2 ||
-        y1 > (y2 + h2) ||
-        (x1 + w1) < x2 ||
-        x1 > (x2 + w2));
-};
-
-// create a canvas
-utils.createCanvas = function(opt){
+u.createCanvas = function(opt){
     opt = opt || {};
     opt.container = opt.container || document.getElementById('canvas-app') || document.body;
     opt.canvas = document.createElement('canvas');
@@ -78,8 +68,8 @@ utils.createCanvas = function(opt){
     opt.container.appendChild(opt.canvas);
     return opt;
 };
-// get canvas relative point
-utils.getCanvasRelative = function (e) {
+
+u.getCanvasRelative = function (e) {
     var canvas = e.target,
     bx = canvas.getBoundingClientRect(),
     pos = {

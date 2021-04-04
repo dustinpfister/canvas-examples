@@ -1,202 +1,211 @@
+var gameMod = (function () {
 
-var td = (function () {
+    var UNIT_PPS = 64,
+    UNIT_RELEASE_RATE_MIN = 0.25,
+    UNIT_RELEASE_RATE_MAX = 3,
+    UNIT_HP_RANGE = [1, 10];
 
-    // SHOTS
-
-    // hold shots
-    var holdShots = function (game) {
-        game.shots.forEach(function (shot) {
-            if (!(shot.sx === shot.x && shot.sy === shot.y)) {
-                shot.lifeSpanAjust = (new Date() - shot.shotTime) / 1000 * -1;
-                shot.sx = shot.x;
-                shot.sy = shot.y;
-            }
-            shot.shotTime = new Date();
-        });
+    // unit helpers
+    var createHPprops = function(obj, hpRange, hpPer){
+        var HPDelta = Math.round( ( hpRange[1] -hpRange[0] ) * hpPer );
+        obj.data.maxHP = hpRange[0] + HPDelta;
+        obj.data.HP = obj.data.maxHP;
     };
 
-    // spawn new shots
-    var spawnShots = function (game, secs) {
-        game.shotTime += secs;
-        var newShots = Math.floor(game.shotTime / game.shotDelay);
-        if (newShots >= 1) {
-            game.shotTime -= newShots * game.shotDelay;
-            if (game.shots.length < game.shotsMax) {
-                game.shots.push({
-                    sx: game.cx,
-                    sy: game.cy,
-                    x: game.cx,
-                    y: game.cy,
-                    heading: game.heading,
-                    dam: 1,
-                    pps: 64,
-                    hit: false,
-                    lifeSpan: 3,
-                    lifeSpanAjust: 0,
-                    shotTime: new Date()
-                });
-            }
-        }
-    };
 
-    // purge old shots
-    var purgeShotCheck = function (game, i) {
-        var now = new Date(),
-        shot = game.shots[i],
-        t = (now - shot.shotTime) / 1000;
-        if (t >= shot.lifeSpan + shot.lifeSpanAjust || shot.hit) {
-            game.shots.splice(i, 1);
-        }
-    };
+    var PLAYER_UNITS = {};
 
-    // check to see if a shot has hit an enemy
-    var shotEnemyCheck = function (game, shot) {
-        var i = game.enemies.length;
-        while (i--) {
-            var enemy = game.enemies[i];
-            if (u.distance(shot.x, shot.y, enemy.x, enemy.y) <= enemy.size) {
-                enemy.hp -= shot.dam;
-                if (enemy.hp < 0) {
-                    enemy.hp = 0;
+    // manual control turret
+    PLAYER_UNITS.manual = {
+        spawn: function(obj, pool, sm, opt){
+            obj.heading = Math.PI * 1.5;
+            obj.data.facing = obj.heading;
+            obj.data.target = null;
+        },
+        update: function(obj, pool, sm, secs){},
+        onClick:function(obj, pool, sm, pos, e){
+            var unit = poolMod.getObjectAt(sm.game.unitPool, pos.x, pos.y);
+            if(unit){
+                unit.data.HP -= 1;
+                if(unit.data.HP <= 0){
+                    unit.data.HP = 0;
+                    unit.lifespan = 0;
                 }
-                shot.hit = true;
-                break;
             }
         }
     };
 
-    // loop over all shots, move them, and make a purge check
-    var updateActiveShots = function (game) {
-        // update active shots
-        var i = game.shots.length,
-        now = new Date(),
-        shot;
-        while (i--) {
-            shot = game.shots[i];
-            t = (now - shot.shotTime) / 1000;
-            shot.x = shot.sx + Math.cos(shot.heading) * t * shot.pps;
-            shot.y = shot.sy + Math.sin(shot.heading) * t * shot.pps;
-            shotEnemyCheck(game, shot);
-            purgeShotCheck(game, i);
-        }
-    };
-
-    // Main update shots helper
-    var updateTurretShots = function (game, secs) {
-        // if the game is paused
-        if (game.paused) {
-            holdShots(game);
-        } else {
-            // the game is not paused
-            spawnShots(game, secs)
-            updateActiveShots(game);
-        }
-    };
-
-    // ENEMIES
-
-    // spawn new enemies
-    var spawnEnemies = function (game, secs) {
-        // new enemy count
-        var nec = Math.floor(game.enemyTime / game.enemyDelay);
-        if (!game.paused) {
-            game.enemyTime += secs;
-            if (nec >= 1) {
-                game.enemyTime -= nec * game.enemyDelay;
-                if (nec + game.enemies.length > game.enemiesMax) {
-                    nec = game.enemiesMax - game.enemies.length;
-                }
-                var i = nec,
-                r,
-                x,
-                y;
-                while (i--) {
-                    r = Math.random() * (Math.PI * 2);
-                    x = Math.cos(r) * 100 + game.cx;
-                    y = Math.sin(r) * 100 + game.cy;
-                    game.enemies.push({
-                        x: x,
-                        y: y,
-                        hp: 1,
-                        size: 10
-                    });
-                };
-            }
-        }
-    };
-
-    var purgeEnemies = function (game) {
-        var i = game.enemies.length;
-        while (i--) {
-            var enemy = game.enemies[i];
-            if (enemy.hp <= 0) {
-                game.enemies.splice(i, 1);
-            }
-        }
-    };
-
-    // TURRET
-
-    // set turret Radians Per Second based on enemies array
-    var setTurretRPS = function (game) {
-        game.rps = 0;
-        if (game.enemies.length > 0) {
-            // just target enemy index 0
-            var target = game.enemies[0],
-            a = u.getAngleToPoint({
-                    x: game.cx,
-                    y: game.cy
-                }, target),
-            d = u.angleDistance(game.heading, a),
-            p = 1 - d / Math.PI,
-            dir = u.shortestAngleDirection(game.heading, a);
-            game.rps = 3 * p * dir;
-        };
-    };
-
-    // PUBLIC API
-    // public api
     var api = {};
 
-    // the game object
-    api.createGameObject = function () {
-        return {
-            ver: '0.0.0',
-            cx: canvas.width / 2,
-            cy: canvas.height / 2,
-            heading: 0,
-            rps: 0, // radians per second
-            lt: new Date(), // last time game was updated
-            paused: false,
-            shots: [],
-            shotsMax: 13,
-            shotDelay: 1,
-            shotTime: 0,
-            enemies: [],
-            enemiesMax: 3,
-            enemyDelay: 1,
-            enemyTime: 0
-        };
+    var playerUnitSpawn = function (obj, pool, sm, opt) {
+
+        // lifespan set to Infinity, will be set to zero in the event that
+        // HP === 0
+        obj.lifespan = Infinity;
+
+        // type
+        var type = opt.type || 'manual';
+        obj.data.type = type;
+
+        // Position
+        obj.data.gridIndex = opt.gridIndex || 0;
+        var size = 32,
+        halfSize = size / 2,
+        x = sm.canvas.width / 2 - halfSize,
+        y = sm.canvas.height / 2 - halfSize;
+        obj.x = x;
+        obj.y = y;
+        obj.data.cx = obj.x + halfSize;
+        obj.data.cy = obj.y + halfSize;
+
+        // create base player unit HP Object
+        createHPprops(obj, [10, 10], 1);
+
+        // call spawn method for current type
+        PLAYER_UNITS[type].spawn(obj, pool, sm, opt);
     };
 
-    // update turret method
-    api.update = function (game) {
-        var now = new Date(),
-        secs = (now - game.lt) / 1000;
-        if (game.paused) {
-            game.lt = now;
-        } else {
-            game.heading += game.rps * secs;
-            game.heading %= Math.PI * 2;
-            game.lt = now;
+    var playerUnitUpdate = function (obj, pool, sm, secs) {
+        // unit becomes inactive when HP === 0
+        if(obj.data.HP === 0){
+            obj.lifespan = 0;
         }
-        setTurretRPS(game);
-        updateTurretShots(game, secs);
-        spawnEnemies(game, secs);
-        purgeEnemies(game);
+        PLAYER_UNITS[obj.data.type].update(obj, pool, sm, secs);
+    };
+
+    // Enemy unit spawn
+    var unitSpawn = function (obj, pool, sm, opt) {
+        var radian = Math.PI * 2 * Math.random(),
+        radius = sm.canvas.width * 0.5;
+        obj.x = sm.canvas.width * 0.5 - obj.w / 2 + Math.cos(radian) * radius;
+        obj.y = sm.canvas.height * 0.5 - obj.h / 2 + Math.sin(radian) * radius;
+        obj.heading = radian + Math.PI;
+        obj.lifespan = Infinity;
+
+        // create HP Object
+        createHPprops(obj, UNIT_HP_RANGE, opt.hpPer);
+
+        // enemy unit damage
+        obj.damage = 1;
+
+    };
+
+    // Enemy unit update
+    var unitUpdate = function (obj, pool, sm, secs) {
+        var cx = sm.canvas.width * 0.5,
+        cy = sm.canvas.height * 0.5;
+        obj.pps = UNIT_PPS;
+        // enemy has come in range of player unit(s)
+        if( utils.distance(obj.x + obj.w / 2, obj.y + obj.h / 2, cx, cy) <= 25 ){
+            // apply damage to player units
+            sm.game.playerUnitPool.objects.forEach((function(playerUnit){
+                playerUnit.data.HP -= obj.damage;
+                playerUnit.data.HP = playerUnit.data.HP < 0 ? 0 : playerUnit.data.HP;
+            }));
+            obj.lifespan = 0;
+            obj.pps = 0;
+        }
+        poolMod.moveByPPS(obj, secs);
+    };
+
+    var onWaveStart = function (waveObj, sm) {
+        sm.game.unitQueue.unitCount += waveObj.data.unitCount;
+    };
+
+    api.create = function (opt) {
+        opt = opt || {};
+        var game = {
+            activeCount: 0,
+            win: false,
+            gameOver: false,
+            unitQueue: {
+                unitCount: 0,
+                secs: 0
+            },
+            unitPool: poolMod.create({
+                count: 30,
+                spawn: unitSpawn,
+                update: unitUpdate,
+                data: {}
+            }),
+            playerUnitPool: poolMod.create({
+                count: 1,
+                spawn: playerUnitSpawn,
+                update: playerUnitUpdate,
+                data: {}
+            }),
+            waveButtons: waveMod.create({
+                startY: 64,
+                waveCount: opt.waveCount || 99,
+                baseUnitCount: opt.baseUnitCount || 10
+            }),
+            onWaveStart: onWaveStart
+        };
+        return game;
+    };
+
+    api.update = function (sm, secs) {
+        var game = sm.game;
+        // UNIT Queue
+        if (game.unitQueue.unitCount > 0) {
+            game.unitQueue.secs += secs;
+            var releasePer = game.unitQueue.unitCount / 30;
+            releasePer = releasePer > 1 ? 1 : releasePer;
+            var releaseDelta = (UNIT_RELEASE_RATE_MAX - UNIT_RELEASE_RATE_MIN) * (1 - releasePer);
+            game.unit_release_rate = UNIT_RELEASE_RATE_MIN + releaseDelta;
+            if (game.unitQueue.secs > game.unit_release_rate) {
+                // SPAWN A UNIT
+                var waveData = game.waveButtons.pool.data,
+                wavePer = waveData.currentWave / waveData.waveCount;
+                var unit = poolMod.spawn(game.unitPool, sm, {
+                    hpPer: wavePer
+                });
+                if (unit) {
+                    game.unitQueue.unitCount -= 1;
+                }
+                game.unitQueue.secs = 0;
+            }
+        }
+        // check player unit active count
+        // game will end with a player loss if game.activeCount === 0
+        if(poolMod.activeCount(game.playerUnitPool) === 0){
+            game.win = false;
+            game.gameOver = true;
+        }
+
+        var wbData = game.waveButtons.pool.data;
+        var over = false,
+        activeCount = poolMod.activeCount(game.unitPool);
+        if(wbData.currentWave === wbData.waveCount){
+            if(activeCount === 0 && sm.game.unitQueue.unitCount === 0){
+                game.win = true;
+                game.gameOver = true;
+            }
+        }
+        game.activeCount = activeCount;
+
+        
+
+        // update wave buttons
+        waveMod.update(sm, secs);
+        // units
+        poolMod.update(game.unitPool, secs, sm);
+        poolMod.update(game.playerUnitPool, secs, sm);
+    };
+
+    api.click = function(game, pos, e, sm){
+
+        game.playerUnitPool.objects.forEach(function(obj){
+
+            var unitProfile = PLAYER_UNITS[obj.data.type];
+
+            if(unitProfile.onClick){
+                unitProfile.onClick(obj, game.playerUnitPool, sm, pos, e);
+            }
+        });
+
     };
 
     return api;
-
 }
     ());

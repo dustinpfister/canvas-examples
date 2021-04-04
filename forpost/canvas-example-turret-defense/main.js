@@ -1,30 +1,34 @@
-var canvasObj = u.createCanvas(),
-canvas = canvasObj.canvas,
-ctx = canvasObj.ctx;
 
-var game = td.createGameObject();
+(function () {
+    var sm = stateMachine.create({
+        appName: 'canvas-example-massive-attack',
+        ver: '0.1.0',
+        debugMode: true,
+        saveSlotIndex: 0
+    });
 
-// main app loop
-var loop = function () {
-    requestAnimationFrame(loop);
-    td.update(game);
-
-    draw.background(ctx, canvas);
-    draw.turret(game, ctx, canvas);
-    draw.enemies(game, ctx, canvas);
-    draw.turretInfo(game, ctx, canvas);
-    draw.turretShots(game, ctx, canvas);
-    draw.ver(game, ctx, canvas);
-};
-loop();
-
-// focus and blur
-canvas.tabIndex = 0;
-canvas.addEventListener('focus', function () {
-    game.paused = false;
-});
-canvas.addEventListener('blur', function () {
-    game.paused = true;
-});
-canvas.focus();
-canvas.blur();
+    // start state
+    stateMachine.changeState(sm, 'title');
+    //sm.gameModeIndex = 0;
+    //stateMachine.changeState(sm, 'gameMode');
+    // the loop
+    var loop = function () {
+        var now = new Date(),
+        secs = (now - sm.lt) / 1000;
+        requestAnimationFrame(loop);
+        stateMachine.updateState(sm, secs);
+        sm.states[sm.currentState].draw(sm, sm.ctx, sm.canvas);
+        draw.ver(sm.ctx, sm.canvas, sm);
+        sm.lt = now;
+    };
+    loop();
+    // EVENTS
+    sm.canvas.addEventListener('mousedown', function (e) {
+        var pos = utils.getCanvasRelative(e);
+        sm.states[sm.currentState].click(sm, pos, e);
+    });
+    sm.canvas.addEventListener('touchstart', function (e) {
+        var pos = utils.getCanvasRelative(e);
+        sm.states[sm.currentState].click(sm, pos, e);
+    });
+}());
