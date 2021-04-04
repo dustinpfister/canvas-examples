@@ -167,12 +167,22 @@ var gameMod = (function () {
             }
         }
         // check player unit active count
-        game.activeCount = poolMod.activeCount(game.playerUnitPool);
         // game will end with a player loss if game.activeCount === 0
-        if(game.activeCount === 0){
+        if(poolMod.activeCount(game.playerUnitPool) === 0){
             game.win = false;
             game.gameOver = true;
         }
+
+        var wbData = game.waveButtons.pool.data;
+        var over = false,
+        activeCount = poolMod.activeCount(game.unitPool);
+        if(wbData.currentWave === wbData.waveCount){
+            if(activeCount === 0 && sm.game.unitQueue.unitCount === 0){
+                game.win = true;
+                game.gameOver = true;
+            }
+        }
+        game.activeCount = activeCount;
 
         
 
