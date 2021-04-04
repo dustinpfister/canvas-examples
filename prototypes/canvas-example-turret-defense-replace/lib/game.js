@@ -1,6 +1,6 @@
 var gameMod = (function () {
 
-    var UNIT_PPS = 32,
+    var UNIT_PPS = 64,
     UNIT_RELEASE_RATE_MIN = 0.25,
     UNIT_RELEASE_RATE_MAX = 3,
     UNIT_HP_RANGE = [1, 10];

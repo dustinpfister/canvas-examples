@@ -14,6 +14,17 @@
         draw: function (sm, ctx, canvas) {
             draw.background(ctx, canvas, sm.background);
             draw.buttonPool(ctx, sm.buttons);
+            // debug info
+            var sx = 40,
+            sy = 32;
+            if(sm.debugMode){
+                ctx.fillStyle = 'white';
+                ctx.font = '10px arial';
+                ctx.textBaseline = 'top';
+                ctx.textAlign = 'left';
+                ctx.fillText('gameOver?: ' + sm.game.gameOver, sx, sy);
+                ctx.fillText('Win?: ' + sm.game.win, sx, sy + 10);
+            }
         },
         click: function (sm, pos, e) {
             var button = poolMod.getObjectAt(sm.buttons, pos.x, pos.y);
