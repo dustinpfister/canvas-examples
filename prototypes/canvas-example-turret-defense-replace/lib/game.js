@@ -38,6 +38,11 @@ var gameMod = (function () {
     var api = {};
 
     var playerUnitSpawn = function (obj, pool, sm, opt) {
+
+        // lifespan set to Infinity, will be set to zero in the event that
+        // HP === 0
+        obj.lifespan = Infinity;
+
         // type
         var type = opt.type || 'manual';
         obj.data.type = type;
@@ -91,8 +96,10 @@ var gameMod = (function () {
             // apply damage to player units
             sm.game.playerUnitPool.objects.forEach((function(playerUnit){
                 playerUnit.data.HP -= obj.damage;
-//console.log(playerUnit.data.HP);
                 playerUnit.data.HP = playerUnit.data.HP < 0 ? 0 : playerUnit.data.HP;
+                if(playerUnit.data.HP === 0){
+playerUnit.lifespan = 0;
+                }
             }));
             obj.lifespan = 0;
             obj.pps = 0;
@@ -154,8 +161,9 @@ var gameMod = (function () {
         }
         // update wave buttons
         waveMod.update(sm, secs);
-        //
+        // units
         poolMod.update(sm.game.unitPool, secs, sm);
+        poolMod.update(sm.game.playerUnitPool, secs, sm);
     };
 
     api.click = function(game, pos, e, sm){
