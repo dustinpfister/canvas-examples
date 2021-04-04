@@ -114,6 +114,7 @@ var gameMod = (function () {
 
     api.create = function () {
         var game = {
+            activeCount: 0,
             unitQueue: {
                 unitCount: 0,
                 secs: 0
@@ -141,6 +142,7 @@ var gameMod = (function () {
     };
 
     api.update = function (sm, secs) {
+        // UNIT Queue
         if (sm.game.unitQueue.unitCount > 0) {
             sm.game.unitQueue.secs += secs;
             var releasePer = sm.game.unitQueue.unitCount / 30;
@@ -160,6 +162,9 @@ var gameMod = (function () {
                 sm.game.unitQueue.secs = 0;
             }
         }
+        // check player unit active count
+        sm.game.activeCount = poolMod.activeCount(sm.game.playerUnitPool);
+
         // update wave buttons
         waveMod.update(sm, secs);
         // units

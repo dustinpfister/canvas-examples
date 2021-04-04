@@ -21,6 +21,9 @@
         },
         update: function (sm, secs) {
             gameMod.update(sm, secs);
+            if(sm.game.activeCount === 0){
+                stateMachine.startStateChangeTrans(sm, 'gameOver');
+            }
         },
         draw: function (sm, ctx, canvas) {
             draw.background(ctx, canvas, sm.background);
@@ -43,9 +46,10 @@
                 ctx.fillText('currentWave: ' + waveButtonData.currentWave, sx, sy);
                 ctx.fillText('waveCount: ' + waveButtonData.waveCount, sx, sy + 10);
                 ctx.fillText('toSpawn: ' + waveButtonData.toSpawn, sx, sy + 20);
-                ctx.fillText('ActiveCount: ' + waveButtonData.activeCount, sx, sy + 30);
+                ctx.fillText('ActiveWaveButtonCount: ' + waveButtonData.activeCount, sx, sy + 30);
                 ctx.fillText('rushTo: ' + waveButtonData.rushTo, sx, sy + 40);
                 ctx.fillText('Unit Count: ' + sm.game.unitQueue.unitCount, sx, sy + 50);
+                ctx.fillText('Active Player Units: ' + sm.game.activeCount, sx, sy + 60);
             }
 
         },
