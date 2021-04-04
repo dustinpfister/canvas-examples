@@ -5,6 +5,14 @@ var gameMod = (function () {
     UNIT_RELEASE_RATE_MAX = 3,
     UNIT_HP_RANGE = [1, 10];
 
+    // unit helpers
+    var createHPObject = function(obj, hpRange, hpPer){
+        var HPDelta = Math.round( ( hpRange[1] -hpRange[0] ) * hpPer );
+        obj.data.maxHP = hpRange[0] + HPDelta;
+        obj.data.HP = obj.data.maxHP;
+    };
+
+
     var PLAYER_UNITS = {};
 
     // manual control turret
@@ -34,17 +42,19 @@ var gameMod = (function () {
         var type = opt.type || 'manual';
         obj.data.type = type;
 
-        // grid position
+        // Position
         obj.data.gridIndex = opt.gridIndex || 0;
         var size = 32,
         halfSize = size / 2,
         x = sm.canvas.width / 2 - halfSize,
         y = sm.canvas.height / 2 - halfSize;
-
         obj.x = x;
         obj.y = y;
         obj.data.cx = obj.x + halfSize;
         obj.data.cy = obj.y + halfSize;
+
+        // hp
+        //obj.
 
         PLAYER_UNITS[type].spawn(obj, pool, sm, opt);
     };
@@ -62,9 +72,8 @@ var gameMod = (function () {
         obj.heading = radian + Math.PI;
         obj.lifespan = Infinity;
 
-        var HPDelta = Math.round( ( UNIT_HP_RANGE[1] - UNIT_HP_RANGE[0] ) * opt.hpPer );
-        obj.data.maxHP = UNIT_HP_RANGE[0] + HPDelta;
-        obj.data.HP = obj.data.maxHP;
+        // create HP Object
+        createHPObject(obj, UNIT_HP_RANGE, opt.hpPer);
     };
 
     // Enemy unit update
