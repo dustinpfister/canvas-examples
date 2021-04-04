@@ -104,9 +104,9 @@ var draw = (function () {
     };
 
     // debug info
-    api.debugInfo = function (ctx, sm, sx, sy) {
+    //api.debugInfo = function (ctx, sm, sx, sy) {
 
-    };
+    //};
 
     api.resetButton = function (ctx, sm) {
         ctx.fillStyle =  'white';

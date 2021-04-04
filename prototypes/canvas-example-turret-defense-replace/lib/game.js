@@ -1,6 +1,6 @@
 var gameMod = (function () {
 
-    var UNIT_PPS = 32,
+    var UNIT_PPS = 128,
     UNIT_RELEASE_RATE_MIN = 0.25,
     UNIT_RELEASE_RATE_MAX = 3,
     UNIT_HP_RANGE = [1, 10];
@@ -82,7 +82,9 @@ var gameMod = (function () {
         var cx = sm.canvas.width * 0.5,
         cy = sm.canvas.height * 0.5;
         obj.pps = UNIT_PPS;
+        // enemy has come in range of player unit(s)
         if( utils.distance(obj.x + obj.w / 2, obj.y + obj.h / 2, cx, cy) <= 25 ){
+            
             obj.lifespan = 0;
             obj.pps = 0;
         }
