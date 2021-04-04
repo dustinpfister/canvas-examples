@@ -18,6 +18,7 @@
 * (done) start a gameMod.click public method
 * (done) have a single PLAYER-UNITS.manual Turret starting player unit at the center of the canvas
 * (done) have enemy unit.data.hp and unit.data.hpMax props
+* (done) have a player hp bar
+* (done) have a gameOver state
 
-* have a player hp bar
-* have a gameOver state
+* when enemy units come in range they cuase player unit damage
