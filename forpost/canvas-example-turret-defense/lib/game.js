@@ -23,23 +23,11 @@ var gameMod = (function () {
         update: function(obj, pool, sm, secs){},
         onClick:function(obj, pool, sm, pos, e){
             var unit = poolMod.getObjectAt(sm.game.unitPool, pos.x, pos.y);
-
-console.log('click');
-// fire a shot
-poolMod.spawn(sm.game.playerShotsPool, sm, {
-    playerUnit: obj,
-    pos: pos
-});
-
-/*
-            if(unit){
-                unit.data.HP -= 1;
-                if(unit.data.HP <= 0){
-                    unit.data.HP = 0;
-                    unit.lifespan = 0;
-                }
-            }
-*/
+            // fire a shot
+            poolMod.spawn(sm.game.playerShotsPool, sm, {
+                playerUnit: obj,
+                pos: pos
+            });
         }
     };
 
