@@ -10,7 +10,8 @@ var gameMod = (function () {
     UNIT_RELEASE_RATE_MIN = 0.25,
     UNIT_RELEASE_RATE_MAX = 3,
     UNIT_HP_RANGE = [1, 10],
-    UNIT_SPAWN_DIST = 300;
+    UNIT_SPAWN_DIST = 300,
+    SHOT_PPS = 512;
 
     var PLAYER_UNITS = {};
 
@@ -93,7 +94,7 @@ var gameMod = (function () {
 
     var playerShotSpawn = function (obj, pool, sm, opt) {
         obj.heading = utils.getAngleToPoint(opt.pos, opt.playerUnit);
-        obj.pps = 256;
+        obj.pps = SHOT_PPS;
         obj.w = 8;
         obj.h = 8;
         obj.x = opt.playerUnit.x + opt.playerUnit.w / 2 - obj.w / 2;
