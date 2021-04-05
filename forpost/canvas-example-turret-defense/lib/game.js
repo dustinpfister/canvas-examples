@@ -10,8 +10,9 @@ var gameMod = (function () {
     UNIT_RELEASE_RATE_MIN = 0.25,
     UNIT_RELEASE_RATE_MAX = 3,
     UNIT_HP_RANGE = [1, 10],
-    UNIT_SPAWN_DIST = 300,
-    SHOT_PPS = 512;
+    UNIT_SPAWN_DIST = 400,
+    SHOT_PPS = 512,
+    SHOT_MAX_DIST = 375;
 
     var PLAYER_UNITS = {};
 
@@ -120,7 +121,7 @@ var gameMod = (function () {
         });
 
         // distance from playerUnit that shot the shot
-        if(utils.distance(obj.x, obj.y, obj.data.playerUnit.x, obj.data.playerUnit.y) >= 250){
+        if(utils.distance(obj.x, obj.y, obj.data.playerUnit.x, obj.data.playerUnit.y) >= SHOT_MAX_DIST){
             obj.lifespan = 0;
         }
 
