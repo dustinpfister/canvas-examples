@@ -20,6 +20,7 @@ var gameMod = (function () {
             obj.heading = Math.PI * 1.5;
             obj.data.facing = obj.heading;
             obj.data.target = null;
+            obj.data.damage = 2;
         },
         update: function(obj, pool, sm, secs){},
         onClick:function(obj, pool, sm, pos, e){
@@ -100,6 +101,7 @@ var gameMod = (function () {
         obj.lifespan = Infinity;
 
         obj.data.playerUnit = opt.playerUnit;
+        obj.data.damage = 3;
 
     };
 
@@ -107,7 +109,7 @@ var gameMod = (function () {
         poolMod.moveByPPS(obj, secs);
         sm.game.unitPool.objects.forEach(function(eUnit){
             if(eUnit.active && poolMod.boundingBox(eUnit, obj)){
-                eUnit.data.HP -= 1;
+                eUnit.data.HP -= obj.data.damage;
                 if(eUnit.data.HP <= 0){
                     eUnit.data.HP = 0;
                     eUnit.lifespan = 0;
