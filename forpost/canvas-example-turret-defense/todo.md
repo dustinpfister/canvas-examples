@@ -1,13 +1,13 @@
 ## canvas-example-turret-defense todo list
 
+## 0.3.0 - Turret rotation speed, and pointer down event
+
 ## 0.2.0 - Player shot pool
 * (done) have a playerShotsPool
 * (done) playerShots fire from player turret to shot location
 * (done) shots will not fire when clicking a wave button
 * (done) ajust shot size and make it smaller
 * (done) fix bug where shots are hiting inactive units
-
-
 * make a pkg 0.2.0 folder
 
 ## 0.1.0 - New basic idea for turret defense up and running
