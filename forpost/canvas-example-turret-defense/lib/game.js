@@ -9,7 +9,8 @@ var gameMod = (function () {
     var UNIT_PPS = 64,
     UNIT_RELEASE_RATE_MIN = 0.25,
     UNIT_RELEASE_RATE_MAX = 3,
-    UNIT_HP_RANGE = [1, 10];
+    UNIT_HP_RANGE = [1, 10],
+    UNIT_SPAWN_DIST = 300;
 
     var PLAYER_UNITS = {};
 
@@ -129,7 +130,7 @@ var gameMod = (function () {
     // Enemy unit spawn
     var unitSpawn = function (obj, pool, sm, opt) {
         var radian = Math.PI * 2 * Math.random(),
-        radius = sm.canvas.width * 0.5;
+        radius = UNIT_SPAWN_DIST;
         obj.x = sm.canvas.width * 0.5 - obj.w / 2 + Math.cos(radian) * radius;
         obj.y = sm.canvas.height * 0.5 - obj.h / 2 + Math.sin(radian) * radius;
         obj.heading = radian + Math.PI;
