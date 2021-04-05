@@ -102,10 +102,12 @@ poolMod.spawn(sm.game.playerShotsPool, sm, {
 ********** ********** **********/
 
     var playerShotSpawn = function (obj, pool, sm, opt) {
-        obj.x = opt.playerUnit.x;
-        obj.y = opt.playerUnit.y;
         obj.heading = utils.getAngleToPoint(opt.pos, opt.playerUnit);
         obj.pps = 256;
+        obj.w = 8;
+        obj.h = 8;
+        obj.x = opt.playerUnit.x + opt.playerUnit.w / 2 - obj.w / 2;
+        obj.y = opt.playerUnit.y + opt.playerUnit.h / 2 - obj.h / 2;
         obj.lifespan = Infinity;
 
         obj.data.playerUnit = opt.playerUnit;

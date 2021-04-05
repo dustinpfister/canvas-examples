@@ -3,7 +3,9 @@
 ## 0.2.0 - Player shot pool
 * (done) have a playerShotsPool
 * (done) playerShots fire from player turret to shot location
-* shots will not fire when clicking a wave button
+* (done) shots will not fire when clicking a wave button
+
+* ajust shot size and make it smaller
 
 * make a pkg 0.2.0 folder
 
