@@ -113,8 +113,8 @@ var gameMod = (function () {
                 if(eUnit.data.HP <= 0){
                     eUnit.data.HP = 0;
                     eUnit.lifespan = 0;
-                    obj.lifespan = 0;
                 }
+                obj.lifespan = 0;
             }
         });
 
