@@ -20,7 +20,7 @@ var gameMod = (function () {
             obj.heading = Math.PI * 1.5;
             obj.data.facing = obj.heading;
             obj.data.target = null;
-            obj.data.damage = 2;
+            obj.data.damage = 1;
         },
         update: function(obj, pool, sm, secs){},
         onClick:function(obj, pool, sm, pos, e){
@@ -101,7 +101,7 @@ var gameMod = (function () {
         obj.lifespan = Infinity;
 
         obj.data.playerUnit = opt.playerUnit;
-        obj.data.damage = 3;
+        obj.data.damage = opt.playerUnit.data.damage;
 
     };
 
