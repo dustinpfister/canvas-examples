@@ -4,8 +4,9 @@
 * (done) have a playerShotsPool
 * (done) playerShots fire from player turret to shot location
 * (done) shots will not fire when clicking a wave button
+* (done) ajust shot size and make it smaller
+* (done) fix bug where shots are hiting inactive units
 
-* ajust shot size and make it smaller
 
 * make a pkg 0.2.0 folder
 

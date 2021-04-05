@@ -117,7 +117,7 @@ poolMod.spawn(sm.game.playerShotsPool, sm, {
     var playerShotUpdate = function (obj, pool, sm, secs) {
         poolMod.moveByPPS(obj, secs);
         sm.game.unitPool.objects.forEach(function(eUnit){
-            if(poolMod.boundingBox(eUnit, obj)){
+            if(eUnit.active && poolMod.boundingBox(eUnit, obj)){
                 eUnit.data.HP -= 1;
                 if(eUnit.data.HP <= 0){
                     eUnit.data.HP = 0;
