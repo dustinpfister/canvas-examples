@@ -2,7 +2,7 @@
 (function () {
     var sm = stateMachine.create({
         appName: 'canvas-example-turret-defense',
-        ver: '0.2.0',
+        ver: '0.3.0',
         debugMode: true,
         saveSlotIndex: 0
     });

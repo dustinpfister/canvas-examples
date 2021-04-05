@@ -1,6 +1,11 @@
 ## canvas-example-turret-defense todo list
 
 ## 0.3.0 - Turret rotation speed, and pointer down event
+* have a rotation speed for manual turret
+* have mousedown, touchstart, mouseup and touchend events added
+* can make use of a fire waypoint system , or just have the turret always fire when a point is down
+* have a fire rate prop for a turret
+* make a pkg 0.3.0 folder
 
 ## 0.2.0 - Player shot pool
 * (done) have a playerShotsPool
@@ -8,7 +13,7 @@
 * (done) shots will not fire when clicking a wave button
 * (done) ajust shot size and make it smaller
 * (done) fix bug where shots are hiting inactive units
-* make a pkg 0.2.0 folder
+* (done - 04/04/2021) make a pkg 0.2.0 folder
 
 ## 0.1.0 - New basic idea for turret defense up and running
 * (done) copy over the wave control system from js-example-attack-wave-control-system
