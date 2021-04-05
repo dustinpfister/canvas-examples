@@ -32,8 +32,7 @@
 
             draw.units(sm.ctx, sm.game.unitPool);
             draw.units(sm.ctx, sm.game.playerUnitPool);
-
-draw.pool(sm.ctx,  sm.game.playerShotsPool);
+            draw.pool(sm.ctx,  sm.game.playerShotsPool);
 
             draw.waveButtons(sm.ctx, sm.game.waveButtons.pool);
             draw.buttonPool(ctx, sm.buttons);
@@ -64,10 +63,9 @@ draw.pool(sm.ctx,  sm.game.playerShotsPool);
                 if(button.data.action === 'start_state_title'){
                     stateMachine.startStateChangeTrans(sm, 'title');
                 }
+            }else{
+                gameMod.click(sm.game, pos, e, sm);
             }
-
-            gameMod.click(sm.game, pos, e, sm);
-
         }
     });
 }());
