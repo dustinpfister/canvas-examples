@@ -109,7 +109,9 @@ var waveMod = (function () {
         var obj = poolMod.getObjectAt(pool, pos.x, pos.y);
         if (obj) {
             pool.data.rushTo = obj.data.waveNumber;
+            return obj;
         }
+        return false;
     }
 
     return api;

@@ -271,13 +271,19 @@ poolMod.spawn(sm.game.playerShotsPool, sm, {
 
     api.click = function(game, pos, e, sm){
 
-        // call On Click for all player units
-        game.playerUnitPool.objects.forEach(function(obj){
-            var unitProfile = PLAYER_UNITS[obj.data.type];
-            if(unitProfile.onClick && obj.active){
-                unitProfile.onClick(obj, game.playerUnitPool, sm, pos, e);
-            }
-        });
+
+        // wave buttons
+        if(!waveMod.onClick(sm, pos)){
+
+            // call On Click for all player units
+            game.playerUnitPool.objects.forEach(function(obj){
+                var unitProfile = PLAYER_UNITS[obj.data.type];
+                if(unitProfile.onClick && obj.active){
+                    unitProfile.onClick(obj, game.playerUnitPool, sm, pos, e);
+                }
+            });
+
+        }
 
     };
 

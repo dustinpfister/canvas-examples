@@ -65,8 +65,6 @@ draw.pool(sm.ctx,  sm.game.playerShotsPool);
                     stateMachine.startStateChangeTrans(sm, 'title');
                 }
             }
-            // wave buttons
-            waveMod.onClick(sm, pos);
 
             gameMod.click(sm.game, pos, e, sm);
 

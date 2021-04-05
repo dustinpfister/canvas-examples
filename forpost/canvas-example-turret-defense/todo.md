@@ -1,8 +1,10 @@
 ## canvas-example-turret-defense todo list
 
 ## 0.2.0 - Player shot pool
-* have a playerShotsPool
-* playerShots fire from player turret to shot location
+* (done) have a playerShotsPool
+* (done) playerShots fire from player turret to shot location
+* shots will not fire when clicking a wave button
+
 * make a pkg 0.2.0 folder
 
 ## 0.1.0 - New basic idea for turret defense up and running
