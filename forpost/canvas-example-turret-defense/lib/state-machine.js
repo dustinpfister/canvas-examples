@@ -5,16 +5,22 @@ var stateMachine = (function () {
 
     var STATES = {};
 
-
-    // EVENTS
-    var createPointerStart = function(){
-    };
-    var createPointerMove = function(){
-    };
-    var createPointerEnd = function(sm){
+    // Create a Pointer EVENT handler
+    var createPointerHandler = function(sm, eventType){
+        eventType = eventType || 'start';
         return function (e) {
             var pos = utils.getCanvasRelative(e);
-            sm.states[sm.currentState].click(sm, pos, e);
+            var state = sm.states[sm.currentState],
+            pointer = state.pointer;
+            if(pointer){
+                if(pointer[eventType]){
+                    pointer[eventType](sm, pos, e, state);
+                    sm.states[sm.currentState].click(sm, pos, e);
+                }
+            }
+            if(eventType === 'end' && state.click){
+                state.click(sm, pos, e, state);
+            }
         };
     };
 
@@ -58,8 +64,14 @@ var stateMachine = (function () {
             background: 'blue',
             frameRate: opt.frameRate || 30
         };
-        sm.canvas.addEventListener('mousedown', createPointerEnd(sm));
-        sm.canvas.addEventListener('touchstart', createPointerEnd(sm));
+
+        sm.canvas.addEventListener('mousedown', createPointerHandler(sm, 'start'));
+        sm.canvas.addEventListener('mousemove', createPointerHandler(sm, 'move'));
+        sm.canvas.addEventListener('mouseup', createPointerHandler(sm, 'end'));
+
+        sm.canvas.addEventListener('touchstart', createPointerHandler(sm, 'start'));
+        sm.canvas.addEventListener('touchmove', createPointerHandler(sm, 'move'));
+        sm.canvas.addEventListener('touchend', createPointerHandler(sm, 'end'));
         return sm;
     };
     // BUTTON OBJECT POOL
