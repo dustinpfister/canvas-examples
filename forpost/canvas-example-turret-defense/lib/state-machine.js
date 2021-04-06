@@ -42,7 +42,8 @@ var stateMachine = (function () {
             states: STATES,
             buttons: api.createButtonPool(20),
             dispObjects: api.createButtonPool(2),
-            background: 'blue'
+            background: 'blue',
+            frameRate: opt.frameRate || 30
         };
         return sm;
     };
