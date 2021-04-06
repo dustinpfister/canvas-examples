@@ -5,6 +5,19 @@ var stateMachine = (function () {
 
     var STATES = {};
 
+
+    // EVENTS
+    var createPointerStart = function(){
+    };
+    var createPointerMove = function(){
+    };
+    var createPointerEnd = function(sm){
+        return function (e) {
+            var pos = utils.getCanvasRelative(e);
+            sm.states[sm.currentState].click(sm, pos, e);
+        };
+    };
+
     // STATE MACHINE
     api.create = function(opt){
         opt = opt || {};
@@ -45,15 +58,8 @@ var stateMachine = (function () {
             background: 'blue',
             frameRate: opt.frameRate || 30
         };
-        // EVENTS
-        sm.canvas.addEventListener('mousedown', function (e) {
-            var pos = utils.getCanvasRelative(e);
-            sm.states[sm.currentState].click(sm, pos, e);
-        });
-        sm.canvas.addEventListener('touchstart', function (e) {
-            var pos = utils.getCanvasRelative(e);
-            sm.states[sm.currentState].click(sm, pos, e);
-        });
+        sm.canvas.addEventListener('mousedown', createPointerEnd(sm));
+        sm.canvas.addEventListener('touchstart', createPointerEnd(sm));
         return sm;
     };
     // BUTTON OBJECT POOL
