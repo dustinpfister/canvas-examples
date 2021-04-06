@@ -33,7 +33,7 @@ var gameMod = (function () {
         update: function(obj, pool, sm, secs){
             RFC_update_facing(obj.RFControl, obj.heading, true, secs);
         },
-        onClick:function(obj, pool, sm, pos, e){
+        onClick: function(obj, pool, sm, pos, e){
             var unit = poolMod.getObjectAt(sm.game.unitPool, pos.x, pos.y);
             // fire a shot
             poolMod.spawn(sm.game.playerShotsPool, sm, {
@@ -41,8 +41,15 @@ var gameMod = (function () {
                 pos: pos
             });
 
-            RFC_update_target(obj, pos.x, pos.y);
+            //RFC_update_target(obj, pos.x, pos.y);
 
+        },
+        onPointerDown: function(obj, pool, sm, pos, e){
+        },
+        onPointerMove: function(obj, pool, sm, pos, e){
+            RFC_update_target(obj, pos.x, pos.y);
+        },
+        onPointerEnd: function(obj, pool, sm, pos, e){
         }
     };
 
@@ -328,11 +335,8 @@ obj.heading = opt.playerUnit.RFControl.facing;
 ********** ********** **********/
 
     api.click = function(game, pos, e, sm){
-
-
         // wave buttons
         if(!waveMod.onClick(sm, pos)){
-
             // call On Click for all player units
             game.playerUnitPool.objects.forEach(function(obj){
                 var unitProfile = PLAYER_UNITS[obj.data.type];
@@ -340,9 +344,20 @@ obj.heading = opt.playerUnit.RFControl.facing;
                     unitProfile.onClick(obj, game.playerUnitPool, sm, pos, e);
                 }
             });
-
         }
+    };
 
+    api.onPointerDown = function(){
+    };
+    api.onPointerMove = function(game, pos, e, sm){
+        game.playerUnitPool.objects.forEach(function(obj){
+            var unitProfile = PLAYER_UNITS[obj.data.type];
+            if(unitProfile.onPointerMove && obj.active){
+                unitProfile.onPointerMove(obj, game.playerUnitPool, sm, pos, e);
+            }
+        });
+    };
+    api.onPointerUp = function(){
     };
 
     // return the public api

@@ -59,20 +59,21 @@
         click: function (sm, pos, e) {
             // check buttons
             var button = poolMod.getObjectAt(sm.buttons, pos.x, pos.y);
+            console.log('click');
             if(button){
                 if(button.data.action === 'start_state_title'){
                     stateMachine.startStateChangeTrans(sm, 'title');
                 }
-            }else{
-                //gameMod.click(sm.game, pos, e, sm);
             }
         },
         pointer: {
             start: function(sm, pos, e, state){
-gameMod.click(sm.game, pos, e, sm);
+                gameMod.click(sm.game, pos, e, sm);
+            },
+            move: function(sm, pos, e, state){
+                gameMod.onPointerMove(sm.game, pos, e, sm);
             },
             end: function(sm, pos, e, state){
-//gameMod.click(sm.game, pos, e, sm);
             }
         }
     });

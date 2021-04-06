@@ -15,7 +15,6 @@ var stateMachine = (function () {
             if(pointer){
                 if(pointer[eventType]){
                     pointer[eventType](sm, pos, e, state);
-                    sm.states[sm.currentState].click(sm, pos, e);
                 }
             }
             if(eventType === 'start'){
