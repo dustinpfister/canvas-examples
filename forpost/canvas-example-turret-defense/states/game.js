@@ -64,7 +64,15 @@
                     stateMachine.startStateChangeTrans(sm, 'title');
                 }
             }else{
-                gameMod.click(sm.game, pos, e, sm);
+                //gameMod.click(sm.game, pos, e, sm);
+            }
+        },
+        pointer: {
+            start: function(sm, pos, e, state){
+gameMod.click(sm.game, pos, e, sm);
+            },
+            end: function(sm, pos, e, state){
+//gameMod.click(sm.game, pos, e, sm);
             }
         }
     });
