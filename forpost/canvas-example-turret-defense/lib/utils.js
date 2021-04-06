@@ -32,8 +32,8 @@ utils.angleDistance = function (a, b, scale) {
 };
 
 // get the angle from one point to another
-utils.getAngleToPoint = function (pt1, pt2) {
-    return utils.normalizeHalf(Math.atan2(pt1.y - pt2.y, pt1.x - pt2.x));
+utils.getAngleToPoint = function (pt1, pt2, scale) {
+    return utils.normalizeHalf(Math.atan2(pt1.y - pt2.y, pt1.x - pt2.x), scale);
 };
 
 // get -1, 1, or 0 depending on the the state of two angles

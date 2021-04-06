@@ -31,7 +31,7 @@ var gameMod = (function () {
 
         },
         update: function(obj, pool, sm, secs){
-            RFC_update_facing(obj.RFControl, obj.heading, false, secs);
+            RFC_update_facing(obj.RFControl, obj.heading, true, secs);
         },
         onClick:function(obj, pool, sm, pos, e){
             var unit = poolMod.getObjectAt(sm.game.unitPool, pos.x, pos.y);
@@ -40,6 +40,9 @@ var gameMod = (function () {
                 playerUnit: obj,
                 pos: pos
             });
+
+RFC_update_target(obj, pos.x, pos.y);
+
         }
     };
 
@@ -47,21 +50,22 @@ var gameMod = (function () {
   Rotation and Fire Control object Helpers
 ********** ********** **********/
 
-var RFC_create = function(opt){
-    opt = opt || {};
-    return {
-        radiansPerSec: Math.PI / 180 * 80,
-        facing: 1.7,
-        target: 0,
-        fireRate: 0.125,
-        fireSecs: 0,
-        inRange: false
+    var RFC_create = function(opt){
+        opt = opt || {};
+        return {
+            radiansPerSec: Math.PI / 180 * 80,
+            facing: 1.2,
+            target: 0,
+            fireRate: 0.125,
+            fireSecs: 0,
+            inRange: false
+        };
     };
-};
 
-var RFC_update_target = function(rfc, x, y){
-    rfc.target = Math.atan2(y - rfc.y, x - rfc.x);
-};
+    var RFC_update_target = function(obj, x, y){
+        //rfc.target = Math.atan2(y - rfc.y, x - rfc.x);
+obj.RFControl.target = utils.getAngleToPoint({x: x, y: y}, obj, utils.pi2);
+    };
 
     var RFC_update_facing = function (rfc, heading, down, secs) {
         down = down || false;
@@ -146,12 +150,20 @@ var RFC_update_target = function(rfc, x, y){
 ********** ********** **********/
 
     var playerShotSpawn = function (obj, pool, sm, opt) {
-        obj.heading = utils.getAngleToPoint(opt.pos, opt.playerUnit);
+
+        // set heading to pos
+        //obj.heading = utils.getAngleToPoint(opt.pos, opt.playerUnit);
+
+// use RF control to set heading
+obj.heading = opt.playerUnit.RFControl.facing;
+
         obj.pps = SHOT_PPS;
         obj.w = 8;
         obj.h = 8;
-        obj.x = opt.playerUnit.x;// + opt.playerUnit.w / 2 - obj.w / 2;
-        obj.y = opt.playerUnit.y;// + opt.playerUnit.h / 2 - obj.h / 2;
+        //obj.x = opt.playerUnit.x + opt.playerUnit.w / 2 - obj.w / 2;
+        //obj.y = opt.playerUnit.y + opt.playerUnit.h / 2 - obj.h / 2;
+        obj.x = opt.playerUnit.x - obj.w / 2;
+        obj.y = opt.playerUnit.y - obj.h / 2; 
         obj.lifespan = Infinity;
 
         obj.data.playerUnit = opt.playerUnit;
