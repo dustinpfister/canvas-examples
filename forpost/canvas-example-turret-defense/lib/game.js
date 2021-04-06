@@ -28,11 +28,14 @@ var gameMod = (function () {
 
         },
         update: function(obj, pool, sm, secs){
-
             if(sm.pointerDown){
-                poolMod.spawn(sm.game.playerShotsPool, sm, {
-                    playerUnit: obj
-                });
+                RFC_update_fireRate(obj.RFControl, secs);
+                if(obj.RFControl.fire){
+                    poolMod.spawn(sm.game.playerShotsPool, sm, {
+                        playerUnit: obj
+                    });
+                    obj.RFControl.fire = false;
+                }
             }
             RFC_update_facing(obj.RFControl, obj.heading, sm.pointerDown, secs);
         },
@@ -54,11 +57,20 @@ var gameMod = (function () {
             radiansPerSec: Math.PI / 180 * 90,
             facing: 1.2,
             target: 0,
-            fireRate: 0.125,
+            fireRate: 0.5,
             fireSecs: 0,
-            inRange: false
+            //inRange: false,
+            fire: false
         };
     };
+
+    var RFC_update_fireRate = function(rfc, secs){
+        rfc.fireSecs += secs;
+        if(rfc.fireSecs >= rfc.fireRate){
+            rfc.fireSecs = 0;
+            rfc.fire = true;
+        }
+    } 
 
     var RFC_update_target = function(obj, x, y){
         obj.RFControl.target = utils.getAngleToPoint({x: x, y: y}, obj, utils.pi2);
