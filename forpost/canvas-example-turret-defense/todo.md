@@ -1,7 +1,7 @@
 ## canvas-example-turret-defense todo list
 
 ## 0.3.0 - Turret rotation speed, and pointer down event
-* have frame rate capping in main app loop to help keep processer use down
+* (done) have frame rate capping in main app loop to help keep processer use down
 * have a rotation speed for manual turret
 * have mousedown, touchstart, mouseup and touchend events added
 * can make use of a fire waypoint system , or just have the turret always fire when a point is down

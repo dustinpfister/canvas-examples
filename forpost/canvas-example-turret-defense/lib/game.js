@@ -20,9 +20,22 @@ var gameMod = (function () {
     PLAYER_UNITS.manual = {
         spawn: function(obj, pool, sm, opt){
             obj.heading = Math.PI * 1.5;
-            obj.data.facing = obj.heading;
-            obj.data.target = null;
             obj.data.damage = 1;
+
+
+            //obj.data.facing = obj.heading;
+            //obj.data.target = null;
+            //obj.data
+            // Rotation and Fire Control object
+            obj.RFControl = {
+                radiansPerSec: Math.PI / 180 * 270,
+                facing: 0,
+                target: 0,
+                fireRate: 0.125,
+                fireSecs: 0,
+                inRange: false
+            };
+
         },
         update: function(obj, pool, sm, secs){},
         onClick:function(obj, pool, sm, pos, e){
