@@ -59,7 +59,6 @@
         click: function (sm, pos, e) {
             // check buttons
             var button = poolMod.getObjectAt(sm.buttons, pos.x, pos.y);
-            console.log('click');
             if(button){
                 if(button.data.action === 'start_state_title'){
                     stateMachine.startStateChangeTrans(sm, 'title');

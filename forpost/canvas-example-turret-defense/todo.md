@@ -3,9 +3,8 @@
 ## 0.3.0 - Turret rotation speed, and pointer down event
 * (done) have frame rate capping in main app loop to help keep processer use down
 * (done) start adding logic worked out in js-javascript-example-rotate-and-fire
+* (done) have mousedown, touchstart, mouseup and touchend events added
 
-* have mousedown, touchstart, mouseup and touchend events added
-* can make use of a fire waypoint system , or just have the turret always fire when a point is down
 * have a fire rate prop for a turret
 * display hp bar for player unit
 * use same draw player unit method in game over state
