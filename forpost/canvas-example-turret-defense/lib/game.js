@@ -33,7 +33,7 @@ var gameMod = (function () {
         update: function(obj, pool, sm, secs){
             RFC_update_facing(obj.RFControl, obj.heading, true, secs);
         },
-        onClick: function(obj, pool, sm, pos, e){
+        onclick: function(obj, pool, sm, pos, e){
             var unit = poolMod.getObjectAt(sm.game.unitPool, pos.x, pos.y);
             // fire a shot
             poolMod.spawn(sm.game.playerShotsPool, sm, {
@@ -44,12 +44,12 @@ var gameMod = (function () {
             //RFC_update_target(obj, pos.x, pos.y);
 
         },
-        onPointerDown: function(obj, pool, sm, pos, e){
+        ondown: function(obj, pool, sm, pos, e){
         },
-        onPointerMove: function(obj, pool, sm, pos, e){
+        onmove: function(obj, pool, sm, pos, e){
             RFC_update_target(obj, pos.x, pos.y);
         },
-        onPointerEnd: function(obj, pool, sm, pos, e){
+        onend: function(obj, pool, sm, pos, e){
         }
     };
 
@@ -334,30 +334,30 @@ obj.heading = opt.playerUnit.RFControl.facing;
   CLICK
 ********** ********** **********/
 
-    api.click = function(game, pos, e, sm){
-        // wave buttons
-        if(!waveMod.onClick(sm, pos)){
-            // call On Click for all player units
-            game.playerUnitPool.objects.forEach(function(obj){
-                var unitProfile = PLAYER_UNITS[obj.data.type];
-                if(unitProfile.onClick && obj.active){
-                    unitProfile.onClick(obj, game.playerUnitPool, sm, pos, e);
-                }
-            });
-        }
-    };
-
-    api.onPointerDown = function(){
-    };
-    api.onPointerMove = function(game, pos, e, sm){
+    var unitEventCheck = function(type, game, pos, e, sm){
         game.playerUnitPool.objects.forEach(function(obj){
             var unitProfile = PLAYER_UNITS[obj.data.type];
-            if(unitProfile.onPointerMove && obj.active){
-                unitProfile.onPointerMove(obj, game.playerUnitPool, sm, pos, e);
+            if(unitProfile['on' + type] && obj.active){
+                unitProfile['on' + type](obj, game.playerUnitPool, sm, pos, e);
             }
         });
     };
-    api.onPointerUp = function(){
+
+    api.click = function(game, pos, e, sm){
+        // wave buttons
+        if(!waveMod.onClick(sm, pos)){
+            unitEventCheck('click', game, pos, e, sm);
+        }
+    };
+
+    api.onPointerDown = function(game, pos, e, sm){
+        unitEventCheck('down', game, pos, e, sm);
+    };
+    api.onPointerMove = function(game, pos, e, sm){
+        unitEventCheck('move', game, pos, e, sm);
+    };
+    api.onPointerUp = function(game, pos, e, sm){
+        unitEventCheck('end', game, pos, e, sm);
     };
 
     // return the public api
