@@ -6,7 +6,7 @@ var gameMod = (function () {
   HARD CODED SETTINGS and DATA
 ********** ********** **********/
 
-    var UNIT_PPS = 64,
+    var UNIT_PPS = 32,
     UNIT_RELEASE_RATE_MIN = 0.25,
     UNIT_RELEASE_RATE_MAX = 3,
     UNIT_HP_RANGE = [1, 10],
@@ -53,7 +53,7 @@ var gameMod = (function () {
     var RFC_create = function(opt){
         opt = opt || {};
         return {
-            radiansPerSec: Math.PI / 180 * 80,
+            radiansPerSec: Math.PI / 180 * 90,
             facing: 1.2,
             target: 0,
             fireRate: 0.125,
