@@ -23,9 +23,6 @@ var gameMod = (function () {
             obj.heading = Math.PI * 1.5;
             obj.data.damage = 1;
 
-            //obj.data.facing = obj.heading;
-            //obj.data.target = null;
-            //obj.data
             // Rotation and Fire Control object
             obj.RFControl = RFC_create();
 
@@ -34,31 +31,17 @@ var gameMod = (function () {
 
             if(sm.pointerDown){
                 poolMod.spawn(sm.game.playerShotsPool, sm, {
-                    playerUnit: obj//,
-                    //pos: pos
+                    playerUnit: obj
                 });
             }
-
             RFC_update_facing(obj.RFControl, obj.heading, sm.pointerDown, secs);
         },
-        onclick: function(obj, pool, sm, pos, e){
-            //var unit = poolMod.getObjectAt(sm.game.unitPool, pos.x, pos.y);
-            // fire a shot
-            //poolMod.spawn(sm.game.playerShotsPool, sm, {
-            //    playerUnit: obj,
-            //    pos: pos
-            //});
-
-            //RFC_update_target(obj, pos.x, pos.y);
-
-        },
-        ondown: function(obj, pool, sm, pos, e){
-        },
+        onclick: function(obj, pool, sm, pos, e){},
+        ondown: function(obj, pool, sm, pos, e){},
         onmove: function(obj, pool, sm, pos, e){
             RFC_update_target(obj, pos.x, pos.y);
         },
-        onend: function(obj, pool, sm, pos, e){
-        }
+        onend: function(obj, pool, sm, pos, e){}
     };
 
 /********** ********** **********
@@ -165,11 +148,8 @@ var gameMod = (function () {
 
     var playerShotSpawn = function (obj, pool, sm, opt) {
 
-        // set heading to pos
-        //obj.heading = utils.getAngleToPoint(opt.pos, opt.playerUnit);
-
-// use RF control to set heading
-obj.heading = opt.playerUnit.RFControl.facing;
+        // use RF control to set heading
+        obj.heading = opt.playerUnit.RFControl.facing;
 
         obj.pps = SHOT_PPS;
         obj.w = 8;
