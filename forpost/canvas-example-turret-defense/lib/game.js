@@ -96,6 +96,8 @@ var RFC_update_target = function(rfc, x, y){
         y = sm.canvas.height / 2 - halfSize;
         obj.x = x;
         obj.y = y;
+        obj.w = 32;
+        obj.h = 32;
         obj.data.cx = obj.x + halfSize;
         obj.data.cy = obj.y + halfSize;
 
@@ -123,8 +125,8 @@ var RFC_update_target = function(rfc, x, y){
         obj.pps = SHOT_PPS;
         obj.w = 8;
         obj.h = 8;
-        obj.x = opt.playerUnit.x + opt.playerUnit.w / 2 - obj.w / 2;
-        obj.y = opt.playerUnit.y + opt.playerUnit.h / 2 - obj.h / 2;
+        obj.x = opt.playerUnit.x;// + opt.playerUnit.w / 2 - obj.w / 2;
+        obj.y = opt.playerUnit.y;// + opt.playerUnit.h / 2 - obj.h / 2;
         obj.lifespan = Infinity;
 
         obj.data.playerUnit = opt.playerUnit;

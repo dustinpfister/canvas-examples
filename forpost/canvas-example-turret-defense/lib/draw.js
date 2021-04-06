@@ -46,6 +46,22 @@ var draw = (function () {
             var per = obj.data.HP / obj.data.maxHP;
             ctx.fillRect(obj.x, obj.y, obj.w * per, 10);
         },
+        playerTurret: function(ctx, turret, i){
+var RFC = turret.RFControl;
+    ctx.save();
+    ctx.translate(turret.x, turret.y);
+    ctx.fillStyle = 'yellow';
+    ctx.fillRect(turret.w * 0.5 * -1, turret.h * 0.5 * -1, turret.w, turret.h);
+    ctx.rotate(RFC.facing);
+    ctx.fillStyle = 'red';
+    ctx.strokeStyle = 'red';
+    ctx.fillRect(turret.w * 0.3 * -1, turret.h * 0.3 * -1, turret.w * 0.6, turret.h * 0.6);
+    ctx.beginPath();
+    ctx.moveTo(0, 0);
+    ctx.lineTo(turret.w, 0);
+    ctx.stroke();
+    ctx.restore();
+        },
         waveButtons: function (ctx, obj, i) {
             globalDraw.basic(ctx, obj, i);
             ctx.fillStyle = 'black';
@@ -89,11 +105,14 @@ var draw = (function () {
 
     // basic draw pool method with a solid background fallback if there is
     // draw method in an disp objects data object
-    api.pool = function (ctx, pool) {
+    api.pool = function (ctx, pool){ 
         drawPool(ctx, pool, globalDraw.basic);
     };
     api.units = function (ctx, pool) {
         drawPool(ctx, pool, globalDraw.unit);
+    };
+    api.playerUnits = function (ctx, pool){ 
+        drawPool(ctx, pool, globalDraw.playerTurret);
     };
     api.waveButtons = function (ctx, pool) {
         drawPool(ctx, pool, globalDraw.waveButtons);

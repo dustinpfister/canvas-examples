@@ -31,7 +31,7 @@
             draw.background(ctx, canvas, sm.background);
 
             draw.units(sm.ctx, sm.game.unitPool);
-            draw.units(sm.ctx, sm.game.playerUnitPool);
+            draw.playerUnits(sm.ctx, sm.game.playerUnitPool);
             draw.pool(sm.ctx,  sm.game.playerShotsPool);
 
             draw.waveButtons(sm.ctx, sm.game.waveButtons.pool);
