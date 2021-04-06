@@ -13,7 +13,9 @@ var gameMod = (function () {
     UNIT_SPAWN_DIST = 400,
     SHOT_PPS = 512,
     SHOT_MAX_DIST = 375,
-    PLAYER_UNIT_FIRE_RANGE = Math.PI / 180 * 5;
+
+    PLAYER_UNIT_FIRE_RANGE = Math.PI / 180 * 5,
+    PLATER_UNIT_FIRE_RATE = [0.125, 0.125];
 
     var PLAYER_UNITS = {};
 
@@ -57,7 +59,7 @@ var gameMod = (function () {
             radiansPerSec: Math.PI / 180 * 90,
             facing: 1.2,
             target: 0,
-            fireRate: 0.5,
+            fireRate: PLATER_UNIT_FIRE_RATE[1],
             fireSecs: 0,
             //inRange: false,
             fire: false
