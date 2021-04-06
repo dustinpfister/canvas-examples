@@ -41,7 +41,7 @@ var gameMod = (function () {
                 pos: pos
             });
 
-RFC_update_target(obj, pos.x, pos.y);
+            RFC_update_target(obj, pos.x, pos.y);
 
         }
     };
@@ -63,8 +63,7 @@ RFC_update_target(obj, pos.x, pos.y);
     };
 
     var RFC_update_target = function(obj, x, y){
-        //rfc.target = Math.atan2(y - rfc.y, x - rfc.x);
-obj.RFControl.target = utils.getAngleToPoint({x: x, y: y}, obj, utils.pi2);
+        obj.RFControl.target = utils.getAngleToPoint({x: x, y: y}, obj, utils.pi2);
     };
 
     var RFC_update_facing = function (rfc, heading, down, secs) {
