@@ -18,7 +18,11 @@ var stateMachine = (function () {
                     sm.states[sm.currentState].click(sm, pos, e);
                 }
             }
+            if(eventType === 'start'){
+               sm.pointerDown = true;
+            }
             if(eventType === 'end' && state.click){
+                sm.pointerDown = false;
                 state.click(sm, pos, e, state);
             }
         };
@@ -62,7 +66,8 @@ var stateMachine = (function () {
             buttons: api.createButtonPool(20),
             dispObjects: api.createButtonPool(2),
             background: 'blue',
-            frameRate: opt.frameRate || 30
+            frameRate: opt.frameRate || 30,
+            pointerDown: false
         };
 
         sm.canvas.addEventListener('mousedown', createPointerHandler(sm, 'start'));
@@ -72,6 +77,7 @@ var stateMachine = (function () {
         sm.canvas.addEventListener('touchstart', createPointerHandler(sm, 'start'));
         sm.canvas.addEventListener('touchmove', createPointerHandler(sm, 'move'));
         sm.canvas.addEventListener('touchend', createPointerHandler(sm, 'end'));
+
         return sm;
     };
     // BUTTON OBJECT POOL
