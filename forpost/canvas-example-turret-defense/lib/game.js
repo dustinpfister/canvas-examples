@@ -12,7 +12,8 @@ var gameMod = (function () {
     UNIT_HP_RANGE = [1, 10],
     UNIT_SPAWN_DIST = 400,
     SHOT_PPS = 512,
-    SHOT_MAX_DIST = 375;
+    SHOT_MAX_DIST = 375,
+    PLAYER_UNIT_FIRE_RANGE = Math.PI / 180 * 5;
 
     var PLAYER_UNITS = {};
 
@@ -29,7 +30,9 @@ var gameMod = (function () {
             obj.RFControl = RFC_create();
 
         },
-        update: function(obj, pool, sm, secs){},
+        update: function(obj, pool, sm, secs){
+            RFC_update_facing(obj.RFControl, obj.heading, false, secs);
+        },
         onClick:function(obj, pool, sm, pos, e){
             var unit = poolMod.getObjectAt(sm.game.unitPool, pos.x, pos.y);
             // fire a shot
@@ -41,14 +44,14 @@ var gameMod = (function () {
     };
 
 /********** ********** **********
-  Rotation and Fire Control object + Helpers
+  Rotation and Fire Control object Helpers
 ********** ********** **********/
 
 var RFC_create = function(opt){
     opt = opt || {};
     return {
-        radiansPerSec: Math.PI / 180 * 270,
-        facing: 0,
+        radiansPerSec: Math.PI / 180 * 80,
+        facing: 1.7,
         target: 0,
         fireRate: 0.125,
         fireSecs: 0,
@@ -59,6 +62,27 @@ var RFC_create = function(opt){
 var RFC_update_target = function(rfc, x, y){
     rfc.target = Math.atan2(y - rfc.y, x - rfc.x);
 };
+
+    var RFC_update_facing = function (rfc, heading, down, secs) {
+        down = down || false;
+        var toAngle = heading === undefined ? 0: heading;
+        if (down) {
+            toAngle = rfc.target;
+        }
+        var dist = utils.angleDistance(rfc.facing, toAngle, utils.pi2);
+        var dir = utils.shortestAngleDirection(toAngle, rfc.facing, utils.pi2);
+        var delta = rfc.radiansPerSec * secs;
+
+        if (delta > dist) {
+            rfc.facing = toAngle;
+        } else {
+            rfc.facing += delta * dir;
+        }
+        rfc.inRange = false;
+        if (down && dist < PLAYER_UNIT_FIRE_RANGE) {
+            rfc.inRange = true;
+        }
+    };
 
 /********** ********** **********
   HELPERS
@@ -94,6 +118,7 @@ var RFC_update_target = function(rfc, x, y){
         halfSize = size / 2,
         x = sm.canvas.width / 2 - halfSize,
         y = sm.canvas.height / 2 - halfSize;
+        obj.heading = Math.PI * 1.5;
         obj.x = x;
         obj.y = y;
         obj.w = 32;

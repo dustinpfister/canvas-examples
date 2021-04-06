@@ -1,5 +1,7 @@
 var utils = {};
 
+utils.pi2 = Math.PI * 2;
+
 utils.noop = function(){};
 
 // mathematical modulo
@@ -20,13 +22,13 @@ utils.distance = function (x1, y1, x2, y2) {
 
 // the angular distance between two angles
 utils.angleDistance = function (a, b, scale) {
-    var m = scale || 360,
+    var m = scale || Math.PI * 2,
     h = m / 2,
     diff = utils.normalizeHalf(a - b);
     if (diff > h) {
         diff = diff - m;
     }
-    return Math.abs(diff);
+    return utils.mod( Math.abs(diff), scale);
 };
 
 // get the angle from one point to another
@@ -35,9 +37,9 @@ utils.getAngleToPoint = function (pt1, pt2) {
 };
 
 // get -1, 1, or 0 depending on the the state of two angles
-utils.shortestAngleDirection = function (a1, a2) {
+utils.shortestAngleDirection = function (a1, a2, scale) {
     var z = a1 - a2,
-    x = utils.normalizeHalf(z);
+    x = utils.normalizeHalf(z, scale);
     if (x < 0) {
         return -1; // Left
     }
