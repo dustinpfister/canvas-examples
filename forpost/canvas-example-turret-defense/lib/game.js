@@ -22,19 +22,11 @@ var gameMod = (function () {
             obj.heading = Math.PI * 1.5;
             obj.data.damage = 1;
 
-
             //obj.data.facing = obj.heading;
             //obj.data.target = null;
             //obj.data
             // Rotation and Fire Control object
-            obj.RFControl = {
-                radiansPerSec: Math.PI / 180 * 270,
-                facing: 0,
-                target: 0,
-                fireRate: 0.125,
-                fireSecs: 0,
-                inRange: false
-            };
+            obj.RFControl = RFC_create();
 
         },
         update: function(obj, pool, sm, secs){},
@@ -47,6 +39,26 @@ var gameMod = (function () {
             });
         }
     };
+
+/********** ********** **********
+  Rotation and Fire Control object + Helpers
+********** ********** **********/
+
+var RFC_create = function(opt){
+    opt = opt || {};
+    return {
+        radiansPerSec: Math.PI / 180 * 270,
+        facing: 0,
+        target: 0,
+        fireRate: 0.125,
+        fireSecs: 0,
+        inRange: false
+    };
+};
+
+var RFC_update_target = function(rfc, x, y){
+    rfc.target = Math.atan2(y - rfc.y, x - rfc.x);
+};
 
 /********** ********** **********
   HELPERS
