@@ -31,7 +31,7 @@ var gameMod = (function () {
 
         },
         update: function(obj, pool, sm, secs){
-            RFC_update_facing(obj.RFControl, obj.heading, true, secs);
+            RFC_update_facing(obj.RFControl, obj.heading, sm.pointerDown, secs);
         },
         onclick: function(obj, pool, sm, pos, e){
             var unit = poolMod.getObjectAt(sm.game.unitPool, pos.x, pos.y);
@@ -354,7 +354,7 @@ obj.heading = opt.playerUnit.RFControl.facing;
         unitEventCheck('down', game, pos, e, sm);
     };
     api.onPointerMove = function(game, pos, e, sm){
-        unitEventCheck('move', game, pos, e, sm);
+            unitEventCheck('move', game, pos, e, sm);
     };
     api.onPointerUp = function(game, pos, e, sm){
         unitEventCheck('end', game, pos, e, sm);
