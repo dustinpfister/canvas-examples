@@ -31,15 +31,23 @@ var gameMod = (function () {
 
         },
         update: function(obj, pool, sm, secs){
+
+            if(sm.pointerDown){
+                poolMod.spawn(sm.game.playerShotsPool, sm, {
+                    playerUnit: obj//,
+                    //pos: pos
+                });
+            }
+
             RFC_update_facing(obj.RFControl, obj.heading, sm.pointerDown, secs);
         },
         onclick: function(obj, pool, sm, pos, e){
-            var unit = poolMod.getObjectAt(sm.game.unitPool, pos.x, pos.y);
+            //var unit = poolMod.getObjectAt(sm.game.unitPool, pos.x, pos.y);
             // fire a shot
-            poolMod.spawn(sm.game.playerShotsPool, sm, {
-                playerUnit: obj,
-                pos: pos
-            });
+            //poolMod.spawn(sm.game.playerShotsPool, sm, {
+            //    playerUnit: obj,
+            //    pos: pos
+            //});
 
             //RFC_update_target(obj, pos.x, pos.y);
 

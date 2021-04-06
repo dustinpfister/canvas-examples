@@ -9,7 +9,7 @@ var stateMachine = (function () {
     var createPointerHandler = function(sm, eventType){
         eventType = eventType || 'start';
         return function (e) {
-            var pos = utils.getCanvasRelative(e);
+            var pos = sm.pos = utils.getCanvasRelative(e);
             var state = sm.states[sm.currentState],
             pointer = state.pointer;
             if(pointer){
@@ -66,7 +66,8 @@ var stateMachine = (function () {
             dispObjects: api.createButtonPool(2),
             background: 'blue',
             frameRate: opt.frameRate || 30,
-            pointerDown: false
+            pointerDown: false,
+            pos: {}
         };
 
         sm.canvas.addEventListener('mousedown', createPointerHandler(sm, 'start'));
