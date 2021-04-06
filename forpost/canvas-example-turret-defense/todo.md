@@ -1,14 +1,16 @@
 ## canvas-example-turret-defense todo list
 
+## 0.4.0 -
+* display hp bar for player unit
+* use same draw player unit method in game over state
+* make a pkg 0.4.0 folder
+
 ## 0.3.0 - Turret rotation speed, and pointer down event
 * (done) have frame rate capping in main app loop to help keep processer use down
 * (done) start adding logic worked out in js-javascript-example-rotate-and-fire
 * (done) have mousedown, touchstart, mouseup and touchend events added
-
-* have a fire rate prop for a turret
-* display hp bar for player unit
-* use same draw player unit method in game over state
-* make a pkg 0.3.0 folder
+* (done) have a fire rate prop for a turret
+* (done - 04/06/2021) make a pkg 0.3.0 folder
 
 ## 0.2.0 - Player shot pool
 * (done) have a playerShotsPool
