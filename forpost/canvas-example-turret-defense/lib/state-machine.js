@@ -45,6 +45,15 @@ var stateMachine = (function () {
             background: 'blue',
             frameRate: opt.frameRate || 30
         };
+        // EVENTS
+        sm.canvas.addEventListener('mousedown', function (e) {
+            var pos = utils.getCanvasRelative(e);
+            sm.states[sm.currentState].click(sm, pos, e);
+        });
+        sm.canvas.addEventListener('touchstart', function (e) {
+            var pos = utils.getCanvasRelative(e);
+            sm.states[sm.currentState].click(sm, pos, e);
+        });
         return sm;
     };
     // BUTTON OBJECT POOL

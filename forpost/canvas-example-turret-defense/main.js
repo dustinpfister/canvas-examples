@@ -1,5 +1,5 @@
-
 (function () {
+    // create sm object
     var sm = stateMachine.create({
         appName: 'canvas-example-turret-defense',
         ver: '0.3.0',
@@ -12,8 +12,8 @@
     stateMachine.changeState(sm, 'title');
     //sm.gameModeIndex = 0;
     //stateMachine.changeState(sm, 'gameMode');
-    // the loop
 
+    // the loop
     var loop = function () {
         var now = new Date(),
         secs = (now - sm.lt) / 1000;
@@ -27,13 +27,5 @@
 
     };
     loop();
-    // EVENTS
-    sm.canvas.addEventListener('mousedown', function (e) {
-        var pos = utils.getCanvasRelative(e);
-        sm.states[sm.currentState].click(sm, pos, e);
-    });
-    sm.canvas.addEventListener('touchstart', function (e) {
-        var pos = utils.getCanvasRelative(e);
-        sm.states[sm.currentState].click(sm, pos, e);
-    });
+
 }());
