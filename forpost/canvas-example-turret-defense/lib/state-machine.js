@@ -182,6 +182,7 @@ var stateMachine = (function () {
     };
     // update state by calling trans or update method
     api.updateState = function (sm, secs) {
+        var state = sm.states[sm.currentState];
         if (sm.trans.active) {
             if (sm.trans.secs < sm.trans.secsTotal) {
                 sm.trans.secs += secs;
@@ -191,9 +192,9 @@ var stateMachine = (function () {
                     sm.trans.onDone(sm);
                 }
             }
-            sm.states[sm.currentState].trans.call(createThis(sm), sm, secs);
+            state.trans.call(createThis(sm), sm, secs);
         } else {
-            sm.states[sm.currentState].update.call(createThis(sm), sm, secs);
+            state.update.call(createThis(sm), sm, secs);
         }
     };
     api.load = function(stateObj){

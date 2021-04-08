@@ -2,7 +2,7 @@
 
 
 ## 0.4.0 - Start new worldmap state
-
+* (done) started a createThis helper in state-machine.js and use it for all state object methods
 
 * (done) start a new worldmap state
 * (done) go to worldmap state from title
