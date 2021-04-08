@@ -5,6 +5,18 @@ var stateMachine = (function () {
 
     var STATES = {};
 
+    // create and return what the value for 'this' should be in a
+    // state object method
+    var createThis = function(sm){
+        var state = sm.states[sm.currentState];
+        state.data = state.data || {};
+        return {
+            sm: sm,
+            state : state,
+            data: state.data
+        };
+    };
+
     // Create a Pointer EVENT handler
     var createPointerHandler = function(sm, eventType){
         eventType = eventType || 'start';
@@ -15,7 +27,7 @@ var stateMachine = (function () {
             if(pointer){
                 // call the point method of the current state if it has one
                 if(pointer[eventType]){
-                    pointer[eventType](sm, pos, e, state);
+                    pointer[eventType].call(createThis(sm), sm, pos, e, state);
                 }
             }
             if(eventType === 'start'){
@@ -25,7 +37,7 @@ var stateMachine = (function () {
                 sm.pointerDown = false;
                 if(state.click){
                     // call the click method of a state if it has one
-                    state.click(sm, pos, e, state);
+                    state.click.call(createThis(sm), sm, pos, e, state);
                 }
             }
         };
