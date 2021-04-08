@@ -105,8 +105,10 @@ var RFC = turret.RFControl;
 
     // basic draw pool method with a solid background fallback if there is
     // draw method in an disp objects data object
-    api.pool = function (ctx, pool){ 
-        drawPool(ctx, pool, globalDraw.basic);
+    api.pool = function (ctx, pool, method){
+        method = method || 'basic';
+        method = typeof method === 'string' ? globalDraw[method] : method;
+        drawPool(ctx, pool, method);
     };
     api.units = function (ctx, pool) {
         drawPool(ctx, pool, globalDraw.unit);

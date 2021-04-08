@@ -7,8 +7,9 @@
 * (done) start a new worldmap state
 * (done) go to worldmap state from title
 * (done) can go back to title from worldmap state
-* create a pool of display objects for the world map state that will serve as level buttons
 
+* create a pool of display objects for the world map state that will serve as level buttons
+* clicking a level button will cause the state-machine to switch to the game state
 
 
 * can go back to worldmap from game_over state
