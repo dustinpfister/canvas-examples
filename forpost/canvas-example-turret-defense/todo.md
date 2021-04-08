@@ -15,14 +15,10 @@
 * (done) clicking a level button will cause the state-machine to switch to the game state
 * (done) can go back to worldmap from game_over state
 * (done) display hp bar for player unit
-
-* have a callStateMethod helper in state-machine.js
-* callStateMethod helper creates a standard set of arguments for a method, and then appends additonal arguments for some state methods such as pointer methods
-```
-// something like this
-callStateMethod(pointer.start, sm, [pos, e])
-```
-* make a pkg 0.4.0 folder
+* (done) have a callStateMethod helper in state-machine.js
+* (done) callStateMethod helper creates a standard set of arguments for a method.
+* (done) callStateMethod appends additonal arguments for some state methods such as pointer methods
+* (done - 04/08/2021) make a pkg 0.4.0 folder
 
 ## 0.3.0 - Turret rotation speed, and full pointer events
 * (done) have frame rate capping in main app loop to help keep processer use down
