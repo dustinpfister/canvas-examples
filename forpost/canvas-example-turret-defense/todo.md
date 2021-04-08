@@ -1,5 +1,10 @@
 ## canvas-example-turret-defense todo list
 
+## 0.4.1 - Add more levels, fix unit positioning
+* have more than one level in worldmap state
+* fix problem with player unit positioning and rendering by making obj.x, obj.cx a pooMod standard
+* make obj.h, obj.hh, obj.w, and obj.hw a poolMod standard
+* use same draw player unit method in game over state
 
 ## 0.4.0 - Start new worldmap state
 * (done) started a createThis helper in state-machine.js and use it for all state object methods
@@ -9,16 +14,14 @@
 * (done) create a pool of display objects for the world map state that will serve as level buttons
 * (done) clicking a level button will cause the state-machine to switch to the game state
 * (done) can go back to worldmap from game_over state
+* (done) display hp bar for player unit
 
-* display hp bar for player unit
-* use same draw player unit method in game over state
 * have a callStateMethod helper in state-machine.js
 * callStateMethod helper creates a standard set of arguments for a method, and then appends additonal arguments for some state methods such as pointer methods
 ```
 // something like this
 callStateMethod('pointer.start', sm, [pos, e])
 ```
-
 * make a pkg 0.4.0 folder
 
 ## 0.3.0 - Turret rotation speed, and full pointer events
