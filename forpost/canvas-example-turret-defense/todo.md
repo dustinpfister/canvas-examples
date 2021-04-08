@@ -1,11 +1,18 @@
 ## canvas-example-turret-defense todo list
 
-## 0.4.0 -
+
+## 0.4.0 - Start new worldmap state
+
+* start a new worldmap state
+* can go back to worldmap from game_over state
+* can go back to title from worldmap state
+* create a pool of display objects for the world map state that will serve as level buttons
+
 * display hp bar for player unit
 * use same draw player unit method in game over state
 * make a pkg 0.4.0 folder
 
-## 0.3.0 - Turret rotation speed, and pointer down event
+## 0.3.0 - Turret rotation speed, and full pointer events
 * (done) have frame rate capping in main app loop to help keep processer use down
 * (done) start adding logic worked out in js-javascript-example-rotate-and-fire
 * (done) have mousedown, touchstart, mouseup and touchend events added
