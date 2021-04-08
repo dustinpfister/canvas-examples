@@ -7,10 +7,10 @@
             maxSecs: 0.25,
             spawn: function (obj, pool, sm, opt) {
                 obj.data = opt;
-                obj.x = 8;
-                obj.y = 8;
-                obj.w = 32;
-                obj.h = 32;
+                obj.x = opt.x === undefined ? 0 : opt.x;
+                obj.y = opt.y === undefined ? 0 : opt.y;
+                obj.w = 64;
+                obj.h = 64;
             },
             // update the button
             update: function (obj, pool, sm, secs) {
@@ -21,6 +21,7 @@
 
     // load WORLD MAP STATE into stateMachine
     stateMachine.load({
+
         key: 'worldmap',
 
         data: {
@@ -32,7 +33,13 @@
             y = sm.canvas.height * 0.045;
             stateMachine.spawnButton(sm, {x: x, y: y, w: 64}, 'start_state_title', 'Title');
 
-            poolMod.spawn(this.data.levelButtons);
+            // just spawn one level button for now
+            var levelButtonOptions = {
+                 x: 264,
+                 y: 225,
+                 gameOptions: {}
+            };
+            poolMod.spawn(this.data.levelButtons, sm, levelButtonOptions);
 
         },
         trans: function (sm, secs) {
@@ -50,6 +57,11 @@
                 if(button.data.action === 'start_state_title'){
                     stateMachine.startStateChangeTrans(sm, 'title');
                 }
+            }
+            // check for a level button
+            var lvButton = poolMod.getObjectAt(this.data.levelButtons, pos.x, pos.y);
+            if(lvButton){
+                console.log(lvButton.data.gameOptions);
             }
         }
     });
