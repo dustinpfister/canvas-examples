@@ -1,10 +1,14 @@
 ## todo list for canvas-examples
 
+## 04/11/21 to 04/17/21
+* turret-defense at 0.5.0+
+
 ## 04/04/21 to 04/10/21
+* (done) turret-defense at 0.3.0+
 
 ## 03/28/21 to 04/03/21
 * (done) pop-the-lock at v0.1.2+
-* stars at 0.3.0+
+* (done) stars at 0.3.0+
 
 ## 03/21/21 to 03/27/21
 * (done) pop-the-lock at v1.1+
