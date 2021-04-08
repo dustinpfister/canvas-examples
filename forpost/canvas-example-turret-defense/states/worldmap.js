@@ -1,11 +1,12 @@
 (function () {
-    // TITLE STATE
+
+    // load WORLD MAP STATE into stateMachine
     stateMachine.load({
-        key: 'title',
+        key: 'worldmap',
         init: function (sm) {
-            var x = sm.canvas.width * 0.5 - 128,
-            y = sm.canvas.height * 0.3;
-            stateMachine.spawnButton(sm, {x: x, y: y}, 'start_state_worldmap', 'Play');
+            var x = sm.canvas.width * 0.87,
+            y = sm.canvas.height * 0.045;
+            stateMachine.spawnButton(sm, {x: x, y: y, w: 64}, 'start_state_title', 'Title');
         },
         trans: function (sm, secs) {
             poolMod.update(sm.buttons, secs, sm);
@@ -18,10 +19,11 @@
         click: function (sm, pos, e) {
             var button = poolMod.getObjectAt(sm.buttons, pos.x, pos.y);
             if(button){
-                if(button.data.action === 'start_state_worldmap'){
-                    stateMachine.startStateChangeTrans(sm, 'worldmap');
+                if(button.data.action === 'start_state_title'){
+                    stateMachine.startStateChangeTrans(sm, 'title');
                 }
             }
         }
     });
+
 }());

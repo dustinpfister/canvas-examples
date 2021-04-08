@@ -7,6 +7,7 @@
 ../lib/draw.js
 ../lib/state-machine.js
 ../states/title.js
+../states/worldmap.js
 ../states/game.js
 ../states/game_over.js
 ../main.js
