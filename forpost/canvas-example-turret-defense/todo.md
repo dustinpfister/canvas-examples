@@ -12,8 +12,16 @@
 
 
 * can go back to worldmap from game_over state
+
 * display hp bar for player unit
 * use same draw player unit method in game over state
+* have a callStateMethod helper in state-machine.js
+* callStateMethod helper creates a standard set of arguments for a method, and then appends additonal arguments for some state methods such as pointer methods
+```
+// something like this
+callStateMethod('pointer.start', sm, [pos, e])
+```
+
 * make a pkg 0.4.0 folder
 
 ## 0.3.0 - Turret rotation speed, and full pointer events
