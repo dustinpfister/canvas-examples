@@ -18,7 +18,8 @@
         requestAnimationFrame(loop);
         if(secs >= 1 / sm.frameRate){
             stateMachine.updateState(sm, secs);
-            sm.states[sm.currentState].draw(sm, sm.ctx, sm.canvas);
+            var state = sm.states[sm.currentState];
+            state.draw(sm, state, state.data, sm.ctx, sm.canvas);
             draw.ver(sm.ctx, sm.canvas, sm);
             sm.lt = now;
         }

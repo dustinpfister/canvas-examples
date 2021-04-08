@@ -2,7 +2,7 @@
     // GAME STATE
     stateMachine.load({
         key: 'game',
-        init: function (sm, gameOptions) {
+        init: function (sm, state, data, gameOptions) {
             var x = sm.canvas.width * 0.87,
             y = sm.canvas.height * 0.045;
             stateMachine.spawnButton(sm, {x: x, y: y, w: 64}, 'start_state_title', 'Title');
@@ -18,16 +18,16 @@
             poolMod.spawn(sm.game.playerUnitPool, sm, {});
 
         },
-        trans: function (sm, secs) {
+        trans: function (sm, state, data, secs) {
             poolMod.update(sm.buttons, secs, sm);
         },
-        update: function (sm, secs) {
+        update: function (sm, state, data, secs) {
             gameMod.update(sm, secs);
             if(sm.game.gameOver){
                 stateMachine.startStateChangeTrans(sm, 'gameOver');
             }
         },
-        draw: function (sm, ctx, canvas) {
+        draw: function (sm, state, data, ctx, canvas) {
             draw.background(ctx, canvas, sm.background);
 
             draw.units(sm.ctx, sm.game.unitPool);
@@ -56,7 +56,7 @@
             }
 
         },
-        click: function (sm, pos, e) {
+        click: function (sm, state, data, pos, e) {
             // check buttons
             var button = poolMod.getObjectAt(sm.buttons, pos.x, pos.y);
             if(button){
@@ -66,13 +66,13 @@
             }
         },
         pointer: {
-            start: function(sm, pos, e, state){
+            start: function(sm, state, data, pos, e, state){
                 gameMod.click(sm.game, pos, e, sm);
             },
-            move: function(sm, pos, e, state){
+            move: function(sm, state, data, pos, e, state){
                 gameMod.onPointerMove(sm.game, pos, e, sm);
             },
-            end: function(sm, pos, e, state){
+            end: function(sm, state, data, pos, e, state){
             }
         }
     });

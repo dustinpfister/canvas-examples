@@ -20,7 +20,7 @@
 * callStateMethod helper creates a standard set of arguments for a method, and then appends additonal arguments for some state methods such as pointer methods
 ```
 // something like this
-callStateMethod('pointer.start', sm, [pos, e])
+callStateMethod(pointer.start, sm, [pos, e])
 ```
 * make a pkg 0.4.0 folder
 

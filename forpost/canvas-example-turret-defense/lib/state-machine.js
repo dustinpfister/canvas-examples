@@ -17,6 +17,16 @@ var stateMachine = (function () {
         };
     };
 
+    // call the given state object method in a standard way
+    var callStateMethod = function(sm, method, additionalArgs){
+       var state = sm.states[sm.currentState];
+       var thisObject = createThis(sm),
+       standardArgs = [sm, state, state.data],
+       args = standardArgs.concat(additionalArgs || []);
+       // call method for all state methods
+       method.apply(thisObject, args);
+    };
+
     // Create a Pointer EVENT handler
     var createPointerHandler = function(sm, eventType){
         eventType = eventType || 'start';
@@ -27,7 +37,8 @@ var stateMachine = (function () {
             if(pointer){
                 // call the point method of the current state if it has one
                 if(pointer[eventType]){
-                    pointer[eventType].call(createThis(sm), sm, pos, e, state);
+                    //pointer[eventType].call(createThis(sm), sm, pos, e, state);
+                    callStateMethod(sm, pointer[eventType], [pos, e]);
                 }
             }
             if(eventType === 'start'){
@@ -37,7 +48,8 @@ var stateMachine = (function () {
                 sm.pointerDown = false;
                 if(state.click){
                     // call the click method of a state if it has one
-                    state.click.call(createThis(sm), sm, pos, e, state);
+                    //state.click.call(createThis(sm), sm, pos, e, state);
+                    callStateMethod(sm, state.click, [pos, e]);
                 }
             }
         };
@@ -168,7 +180,8 @@ var stateMachine = (function () {
         //poolMod.setActiveStateForAll(sm.dispObjects, false);
         // call init method for the new state
 
-        sm.states[sm.currentState].init.call(createThis(sm), sm, initOpt);
+        //sm.states[sm.currentState].init.call(createThis(sm), sm, initOpt);
+        callStateMethod(sm, sm.states[sm.currentState].init, [initOpt]);
     };
     // start a 'out' transition to a state change
     api.startStateChangeTrans = function(sm, stateKey, initOpt){
@@ -194,9 +207,11 @@ var stateMachine = (function () {
                     sm.trans.onDone(sm);
                 }
             }
-            state.trans.call(createThis(sm), sm, secs);
+            //state.trans.call(createThis(sm), sm, secs);
+            callStateMethod(sm, state.trans, [secs]);
         } else {
-            state.update.call(createThis(sm), sm, secs);
+            //state.update.call(createThis(sm), sm, secs);
+            callStateMethod(sm, state.update, [secs]);
         }
     };
     api.load = function(stateObj){
