@@ -13,6 +13,7 @@ var stateMachine = (function () {
             var state = sm.states[sm.currentState],
             pointer = state.pointer;
             if(pointer){
+                // call the point method of the current state if it has one
                 if(pointer[eventType]){
                     pointer[eventType](sm, pos, e, state);
                 }
@@ -20,9 +21,12 @@ var stateMachine = (function () {
             if(eventType === 'start'){
                sm.pointerDown = true;
             }
-            if(eventType === 'end' && state.click){
+            if(eventType === 'end'){
                 sm.pointerDown = false;
-                state.click(sm, pos, e, state);
+                if(state.click){
+                    // call the click method of a state if it has one
+                    state.click(sm, pos, e, state);
+                }
             }
         };
     };
@@ -41,19 +45,13 @@ var stateMachine = (function () {
         var sm = {
             ver: opt.ver || '',
             appName: opt.appName || '',
-            saveSlotIndex: opt.saveSlotIndex || 0,
             debugMode: opt.debugMode || false,
-            pixmaps: pixmapMod.create(),
             canvas: canvas,
             ctx: ctx,
             game: {},
-            highScores: {},
             lt: new Date(),
             currentState: 'title',
-            gameModeIndex: 0,
-            gameMode: '',
-            modeSettingsCollection: {},
-            modeSettings: {}, // current modeSettingsObject in modeSettingsCollection
+            states: STATES,
             trans: {
                 active: true,
                 inState: true,
@@ -61,13 +59,20 @@ var stateMachine = (function () {
                 secsTotal: 0.5,
                 onDone: utils.noop
             },
-            states: STATES,
             buttons: api.createButtonPool(20),
-            dispObjects: api.createButtonPool(2),
             background: 'blue',
             frameRate: opt.frameRate || 30,
             pointerDown: false,
             pos: {}
+            // OLD PROPS FROM PTL that may be removed compleatly at some point
+            //saveSlotIndex: opt.saveSlotIndex || 0,
+            //dispObjects: api.createButtonPool(2),
+            //pixmaps: pixmapMod.create(),
+            //highScores: {},
+            //gameModeIndex: 0,
+            //gameMode: '',
+            //modeSettingsCollection: {},
+            //modeSettings: {} // current modeSettingsObject in modeSettingsCollection
         };
 
         sm.canvas.addEventListener('mousedown', createPointerHandler(sm, 'start'));
@@ -147,7 +152,7 @@ var stateMachine = (function () {
         sm.trans.secs = 0;
         // reset pools
         poolMod.setActiveStateForAll(sm.buttons, false);
-        poolMod.setActiveStateForAll(sm.dispObjects, false);
+        //poolMod.setActiveStateForAll(sm.dispObjects, false);
         // call init method for the new state
         sm.states[sm.currentState].init(sm);
     };
