@@ -166,7 +166,8 @@ var stateMachine = (function () {
         poolMod.setActiveStateForAll(sm.buttons, false);
         //poolMod.setActiveStateForAll(sm.dispObjects, false);
         // call init method for the new state
-        sm.states[sm.currentState].init(sm);
+
+        sm.states[sm.currentState].init.call(createThis(sm), sm);
     };
     // start a 'out' transition to a state change
     api.startStateChangeTrans = function(sm, stateKey){
@@ -190,9 +191,9 @@ var stateMachine = (function () {
                     sm.trans.onDone(sm);
                 }
             }
-            sm.states[sm.currentState].trans(sm, secs);
+            sm.states[sm.currentState].trans.call(createThis(sm), sm, secs);
         } else {
-            sm.states[sm.currentState].update(sm, secs);
+            sm.states[sm.currentState].update.call(createThis(sm), sm, secs);
         }
     };
     api.load = function(stateObj){
