@@ -2,13 +2,13 @@
     // GAME STATE
     stateMachine.load({
         key: 'game',
-        init: function (sm) {
+        init: function (sm, gameOptions) {
             var x = sm.canvas.width * 0.87,
             y = sm.canvas.height * 0.045;
             stateMachine.spawnButton(sm, {x: x, y: y, w: 64}, 'start_state_title', 'Title');
 
             // create a new game
-            sm.game = gameMod.create({
+            sm.game = gameMod.create(gameOptions || {
                 waveCount: 5,
                 baseUnitCount: 10,
                 sm: sm

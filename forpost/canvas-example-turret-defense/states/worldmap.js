@@ -37,7 +37,10 @@
             var levelButtonOptions = {
                  x: 264,
                  y: 225,
-                 gameOptions: {}
+                 gameOptions: {
+                     waveCount: 3,
+                     baseUnitCount: 5
+                 }
             };
             poolMod.spawn(this.data.levelButtons, sm, levelButtonOptions);
 
@@ -55,13 +58,14 @@
             var button = poolMod.getObjectAt(sm.buttons, pos.x, pos.y);
             if(button){
                 if(button.data.action === 'start_state_title'){
-                    stateMachine.startStateChangeTrans(sm, 'title');
+                    stateMachine.startStateChangeTrans(sm, 'title', {});
                 }
             }
             // check for a level button
             var lvButton = poolMod.getObjectAt(this.data.levelButtons, pos.x, pos.y);
             if(lvButton){
-                console.log(lvButton.data.gameOptions);
+                //console.log(lvButton.data.gameOptions);
+                stateMachine.startStateChangeTrans(sm, 'game', lvButton.data.gameOptions);
             }
         }
     });

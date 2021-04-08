@@ -157,7 +157,8 @@ var stateMachine = (function () {
         return false;
     };
     // change the current state and set up a 'in' transition for the new state
-    api.changeState = function (sm, stateKey) {
+    api.changeState = function (sm, stateKey, initOpt) {
+        initOpt = initOpt || {};
         sm.currentState = stateKey;
         sm.trans.active = true;
         sm.trans.inState = true;
@@ -167,15 +168,16 @@ var stateMachine = (function () {
         //poolMod.setActiveStateForAll(sm.dispObjects, false);
         // call init method for the new state
 
-        sm.states[sm.currentState].init.call(createThis(sm), sm);
+        sm.states[sm.currentState].init.call(createThis(sm), sm, initOpt);
     };
     // start a 'out' transition to a state change
-    api.startStateChangeTrans = function(sm, stateKey){
+    api.startStateChangeTrans = function(sm, stateKey, initOpt){
+        initOpt = initOpt || {};
         sm.trans.active = true;
         sm.trans.inState = false;
         sm.trans.secs = 0;
         sm.trans.onDone = function(sm){
-            api.changeState(sm, stateKey);
+            api.changeState(sm, stateKey, initOpt);
             sm.trans.onDone = function(){};
             sm.trans.onDone = utils.noop;
         };
