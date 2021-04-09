@@ -125,12 +125,13 @@ var poolMod = (function () {
     }
      */
     api.moveByFramePerObj = function (obj, fp) {
-        var per = fp.frame / fp.frameMax;
-        per = per > 1 ? 1 : per;
-        per = per < 0 ? 0 : per;
-        per = fp.rev ? 1 - per : per;
-        obj.x = fp.sx + Math.cos(fp.heading) * fp.dist * per;
-        obj.y = fp.sy + Math.sin(fp.heading) * fp.dist * per;
+        fp.per = fp.frame / fp.frameMax;
+        fp.per = fp.per > 1 ? 1 : fp.per;
+        fp.per = fp.per < 0 ? 0 : fp.per;
+        fp.per = fp.rev ? 1 - fp.per : fp.per;
+        obj.x = fp.sx + Math.cos(fp.heading) * fp.dist * fp.per;
+        obj.y = fp.sy + Math.sin(fp.heading) * fp.dist * fp.per;
+        return fp.per;
     };
     // check bounds for the given display object and canvas and return true if the object
     // is out of bounds and false if it is not.
