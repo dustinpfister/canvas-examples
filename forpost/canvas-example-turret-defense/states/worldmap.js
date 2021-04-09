@@ -24,10 +24,10 @@
         return poolMod.create({
             count: count || 10,
             maxSecs: 0.25,
-            spawn: function (obj, pool, sm, opt) {
-                obj.data = opt;
-                obj.x = opt.x === undefined ? 0 : opt.x;
-                obj.y = opt.y === undefined ? 0 : opt.y;
+            spawn: function (obj, pool, sm, levelObj) {
+                obj.data = levelObj;
+                obj.x = levelObj.x === undefined ? 0 : levelObj.x;
+                obj.y = levelObj.y === undefined ? 0 : levelObj.y;
                 obj.w = 64;
                 obj.h = 64;
             },
@@ -77,7 +77,7 @@
         draw: function (sm, state, data, ctx, canvas) {
             draw.background(ctx, canvas, sm.background);
             draw.buttonPool(ctx, sm.buttons);
-            draw.pool(ctx, this.data.levelButtons, 'basic');
+            draw.pool(ctx, data.levelButtons, 'levelButton');
         },
         click: function (sm, state, data, pos, e) {
             var button = poolMod.getObjectAt(sm.buttons, pos.x, pos.y);

@@ -40,6 +40,18 @@ var draw = (function () {
             ctx.stroke();
             ctx.globalAlpha = 1;
         },
+        levelButton: function (ctx, obj, i) {
+            globalDraw.basic(ctx, obj, i);
+            ctx.fillStyle = 'gray';
+            // level number
+            ctx.font = '15px arial';
+            ctx.fillText('' + (obj.i + 1), obj.x + 5, obj.y + 5);
+            // game options
+            ctx.font = '10px arial';
+            var gd = obj.data.gameOptions;
+            ctx.fillText('waves: ' + gd.waveCount, obj.x + 5, obj.y + 20);
+            ctx.fillText('b.u.c: ' + gd.baseUnitCount, obj.x + 5, obj.y + 30);
+        },
         unit: function(ctx, obj, i){
             globalDraw.basic(ctx, obj, i);
             ctx.fillStyle = 'lime';

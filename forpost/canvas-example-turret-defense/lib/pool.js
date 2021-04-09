@@ -3,13 +3,15 @@ var poolMod = (function () {
     var api = {};
     // get next inactive object in the given pool
     var getInactive = function (pool) {
-        var i = pool.objects.length,
+        var i = 0,
+        len = pool.objects.length,
         obj;
-        while (i--) {
+        while (i < len) {
             obj = pool.objects[i];
             if (!obj.active) {
                 return obj;
             }
+            i += 1;
         }
         return false;
     };
