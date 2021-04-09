@@ -5,7 +5,8 @@
         ver: '0.4.1',
         debugMode: true,
         saveSlotIndex: 0,
-        frameRate: 20
+        frameRate: 20,
+        transSecsTotal: 0.75
     });
 
     // start state
