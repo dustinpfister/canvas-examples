@@ -9,6 +9,11 @@
 * Have a base unit type of 'none' \( dispObj.data.type = 'none' \)
 * Have a player controled turret type \( dispObj.data.type = 'turret_manual' \)
 
+## 0.4.4 - unit positioning and rendering
+* Fix problem with player unit positioning and rendering by making obj.x, obj.cx a pooMod standard
+* Make obj.h, obj.hh, obj.w, and obj.hw a poolMod standard
+* Use same draw player unit method in game over state
+
 ## 0.4.3 - Simple level unlock
 * all levels aside from level 1 start out as locked
 * once a level is compleated the next one unlocks
@@ -16,16 +21,13 @@
 ## 0.4.2 - world map movement
 * Can scroll the map along one axis, up and down
 
-## 0.4.1 - Add more levels, labels, fix unit positioning
+## 0.4.1 - Add more levels, labels
 * (done) have a spawnLevelButton helper
-* have a LEVELS array const in worldmap.js state that will serve as the level data for now
-* use LEVELS array const to set levelButtons pool size
-* have a spawnLevels helper that will call spawnLevelButton for each levelObject in LEVELS const
+* (done) have a LEVELS array const in worldmap.js state that will serve as the level data for now
+* (done) use LEVELS array const to set levelButtons pool size
+* (done) have a spawnLevels helper that will call spawnLevelButton for each levelObject in LEVELS const
+* have labels for each level obj that display things like a level number, wave count, ect
 
-* Have more than one level in worldmap state
-* Fix problem with player unit positioning and rendering by making obj.x, obj.cx a pooMod standard
-* Make obj.h, obj.hh, obj.w, and obj.hw a poolMod standard
-* Use same draw player unit method in game over state
 * make a pkg 0.4.1 folder
 
 ## 0.4.0 - Start new worldmap state
