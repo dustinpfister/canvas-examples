@@ -17,6 +17,11 @@
 * Can scroll the map along one axis, up and down
 
 ## 0.4.1 - Add more levels, labels, fix unit positioning
+* (done) have a spawnLevelButton helper
+* have a LEVELS array const in worldmap.js state that will serve as the level data for now
+* use LEVELS array const to set levelButtons pool size
+* have a spawnLevels helper that will call spawnLevelButton for each levelObject in LEVELS const
+
 * Have more than one level in worldmap state
 * Fix problem with player unit positioning and rendering by making obj.x, obj.cx a pooMod standard
 * Make obj.h, obj.hh, obj.w, and obj.hw a poolMod standard
