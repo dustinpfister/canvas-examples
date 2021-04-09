@@ -5,6 +5,14 @@
             x: 264,
             y: 225,
             gameOptions: {
+                waveCount: 3,
+                baseUnitCount: 5
+            }
+        },
+        {
+            x: 370,
+            y: 180,
+            gameOptions: {
                 waveCount: 7,
                 baseUnitCount: 10
             }
@@ -31,16 +39,13 @@
     };
 
     var spawnLevelButton = function(sm, data, levelObj){
-        // just spawn one level button for now
-        //var levelButtonOptions = {
-        //     x: 264,
-         //    y: 225,
-         //    gameOptions: {
-         //        waveCount: 3,
-         //        baseUnitCount: 5
-         //    }
-        //};
         poolMod.spawn(data.levelButtons, sm, levelObj);
+    };
+
+    var spawnLevels = function(sm, data){
+        LEVELS.forEach(function(levelObj){
+            spawnLevelButton(sm, data, levelObj);
+        });
     };
 
 
@@ -61,7 +66,8 @@
             stateMachine.spawnButton(sm, {x: x, y: y, w: 64}, 'start_state_title', 'Title');
 
             // just spawn one level button for now
-            spawnLevelButton(sm, data, LEVELS[0]);
+            //spawnLevelButton(sm, data, LEVELS[0]);
+            spawnLevels(sm, data);
 
         },
         trans: function (sm, state, data, secs) {
