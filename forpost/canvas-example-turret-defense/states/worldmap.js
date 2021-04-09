@@ -1,6 +1,6 @@
 (function () {
 
-    // level Buttons
+    // Create a level Buttons pool
     var createLevelButtonPool = function(count){
         return poolMod.create({
             count: count || 10,
@@ -19,30 +19,38 @@
         });
     };
 
+    var spawnLevelButton = function(sm, data, levelObj){
+        // just spawn one level button for now
+        var levelButtonOptions = {
+             x: 264,
+             y: 225,
+             gameOptions: {
+                 waveCount: 3,
+                 baseUnitCount: 5
+             }
+        };
+        poolMod.spawn(data.levelButtons, sm, levelButtonOptions);
+    };
+
+
     // load WORLD MAP STATE into stateMachine
     stateMachine.load({
 
         key: 'worldmap',
 
         data: {
-            levelButtons: createLevelButtonPool()
+            levelButtons: createLevelButtonPool(5)
         },
 
-        init: function (sm, state, data) {
+        init: function (sm, state, data, initObj) {
+
+            // to title button
             var x = sm.canvas.width * 0.87,
             y = sm.canvas.height * 0.045;
             stateMachine.spawnButton(sm, {x: x, y: y, w: 64}, 'start_state_title', 'Title');
 
             // just spawn one level button for now
-            var levelButtonOptions = {
-                 x: 264,
-                 y: 225,
-                 gameOptions: {
-                     waveCount: 3,
-                     baseUnitCount: 5
-                 }
-            };
-            poolMod.spawn(this.data.levelButtons, sm, levelButtonOptions);
+            spawnLevelButton(sm, data, {});
 
         },
         trans: function (sm, state, data, secs) {

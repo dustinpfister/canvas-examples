@@ -2,7 +2,7 @@
     // create sm object
     var sm = stateMachine.create({
         appName: 'canvas-example-turret-defense',
-        ver: '0.4.0',
+        ver: '0.4.1',
         debugMode: true,
         saveSlotIndex: 0,
         frameRate: 20
