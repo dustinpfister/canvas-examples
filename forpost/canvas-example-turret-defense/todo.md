@@ -13,6 +13,7 @@
 * Fix problem with player unit positioning and rendering by making obj.x, obj.cx a pooMod standard
 * Make obj.h, obj.hh, obj.w, and obj.hw a poolMod standard
 * Use same draw player unit method in game over state
+* an alpha value should be part of the top level of a pool object
 
 ## 0.4.3 - Simple level unlock
 * all levels aside from level 1 start out as locked
@@ -30,7 +31,7 @@
 * (done) display game name in title state
 * (done) button in game state goes back to worldmap not title
 
-* draw.levelButtons method
+* (done) draw.levelButtons method
 * simple transistion effect for levelButtons
 
 * have a gameOption to set the rate at which enemy hp goes up

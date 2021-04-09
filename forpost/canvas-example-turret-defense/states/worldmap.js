@@ -50,10 +50,13 @@
             maxSecs: 0.25,
             spawn: function (obj, pool, sm, levelObj) {
                 obj.data = levelObj;
+                // !!! an alpha value should be part of the top level of a pool object
+                obj.data.alpha = 0.8;
                 obj.x = levelObj.x === undefined ? 0 : levelObj.x;
                 obj.y = levelObj.y === undefined ? 0 : levelObj.y;
                 obj.w = 64;
                 obj.h = 64;
+                
             },
             // update the button
             update: function (obj, pool, sm, secs) {
