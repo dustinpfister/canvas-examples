@@ -9,7 +9,7 @@ var gameMod = (function () {
     var UNIT_PPS = 32,
     UNIT_RELEASE_RATE_MIN = 0.25,
     UNIT_RELEASE_RATE_MAX = 3,
-    UNIT_HP_RANGE = [1, 10],
+    UNIT_HP_RANGE = [1, 10],      // default unit hp range for a game
     UNIT_SPAWN_DIST = 400,
     SHOT_PPS = 512,
     SHOT_MAX_DIST = 375,
@@ -205,6 +205,7 @@ var gameMod = (function () {
 
     // Enemy unit spawn
     var unitSpawn = function (obj, pool, sm, opt) {
+        var game = sm.game;
         var radian = Math.PI * 2 * Math.random(),
         radius = UNIT_SPAWN_DIST;
         obj.x = sm.canvas.width * 0.5 - obj.w / 2 + Math.cos(radian) * radius;
@@ -213,7 +214,7 @@ var gameMod = (function () {
         obj.lifespan = Infinity;
 
         // create HP Object
-        createHPprops(obj, UNIT_HP_RANGE, opt.hpPer);
+        createHPprops(obj, game.unitHPRange, opt.wavePer);
 
         // enemy unit damage
         obj.damage = 1;
@@ -245,6 +246,7 @@ var gameMod = (function () {
     api.create = function (opt) {
         opt = opt || {};
         var game = {
+            unitHPRange: opt.unitHPRange || UNIT_HP_RANGE,
             activeCount: 0,
             win: false,
             gameOver: false,
@@ -298,7 +300,8 @@ var gameMod = (function () {
                 var waveData = game.waveButtons.pool.data,
                 wavePer = waveData.currentWave / waveData.waveCount;
                 var unit = poolMod.spawn(game.unitPool, sm, {
-                    hpPer: wavePer
+                    wavePer: wavePer,
+                    game: game
                 });
                 if (unit) {
                     game.unitQueue.unitCount -= 1;

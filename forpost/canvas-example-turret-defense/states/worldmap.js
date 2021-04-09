@@ -6,7 +6,8 @@
             y: 225,
             gameOptions: {
                 waveCount: 3,
-                baseUnitCount: 5
+                baseUnitCount: 5,
+                unitHPRange:[1, 1]
             }
         },
         { // 2

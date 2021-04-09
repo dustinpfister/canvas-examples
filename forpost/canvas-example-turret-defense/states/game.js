@@ -8,11 +8,7 @@
             stateMachine.spawnButton(sm, {x: x, y: y, w: 64}, 'start_state_worldmap', 'Map');
 
             // create a new game
-            sm.game = gameMod.create(gameOptions || {
-                waveCount: 5,
-                baseUnitCount: 10,
-                sm: sm
-            });
+            sm.game = gameMod.create(gameOptions || {sm: sm});
 
             // starting unit
             poolMod.spawn(sm.game.playerUnitPool, sm, {});

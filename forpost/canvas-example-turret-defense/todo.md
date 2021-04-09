@@ -30,11 +30,10 @@
 * (done) have labels for each level obj that display things like a level number, wave count, ect
 * (done) display game name in title state
 * (done) button in game state goes back to worldmap not title
-
 * (done) draw.levelButtons method
-* simple transistion effect for levelButtons
+* (done) simple transistion effect for levelButtons
 
-* have a gameOption to set the rate at which enemy hp goes up
+* have a gameOption to set the hit point range
 
 * make a pkg 0.4.1 folder
 
