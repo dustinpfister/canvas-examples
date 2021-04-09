@@ -1,10 +1,27 @@
 ## canvas-example-turret-defense todo list
 
-## 0.4.1 - Add more levels, fix unit positioning
-* have more than one level in worldmap state
-* fix problem with player unit positioning and rendering by making obj.x, obj.cx a pooMod standard
-* make obj.h, obj.hh, obj.w, and obj.hw a poolMod standard
-* use same draw player unit method in game over state
+## 0.5.1 - Auto Turret Type
+* Have a player controled turret type \( dispObj.data.type = 'turret_auto' \)
+
+## 0.5.0 - Start unit grid area
+* Start a unit grid area in game state
+* Create a player unit pool object for each grid location
+* Have a base unit type of 'none' \( dispObj.data.type = 'none' \)
+* Have a player controled turret type \( dispObj.data.type = 'turret_manual' \)
+
+## 0.4.3 - Simple level unlock
+* all levels aside from level 1 start out as locked
+* once a level is compleated the next one unlocks
+
+## 0.4.2 - world map movement
+* Can scroll the map along one axis, up and down
+
+## 0.4.1 - Add more levels, labels, fix unit positioning
+* Have more than one level in worldmap state
+* Fix problem with player unit positioning and rendering by making obj.x, obj.cx a pooMod standard
+* Make obj.h, obj.hh, obj.w, and obj.hw a poolMod standard
+* Use same draw player unit method in game over state
+* make a pkg 0.4.1 folder
 
 ## 0.4.0 - Start new worldmap state
 * (done) started a createThis helper in state-machine.js and use it for all state object methods
