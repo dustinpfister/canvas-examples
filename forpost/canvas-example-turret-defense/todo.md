@@ -27,12 +27,13 @@
 * (done) use LEVELS array const to set levelButtons pool size
 * (done) have a spawnLevels helper that will call spawnLevelButton for each levelObject in LEVELS const
 * (done) have labels for each level obj that display things like a level number, wave count, ect
-
-* simple transistion effect for levelButtons
-* display game name in title state
-
+* (done) display game name in title state
 * (done) button in game state goes back to worldmap not title
 
+* draw.levelButtons method
+* simple transistion effect for levelButtons
+
+* have a gameOption to set the rate at which enemy hp goes up
 
 * make a pkg 0.4.1 folder
 

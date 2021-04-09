@@ -101,7 +101,8 @@
         draw: function (sm, state, data, ctx, canvas) {
             draw.background(ctx, canvas, sm.background);
             draw.buttonPool(ctx, sm.buttons);
-            draw.pool(ctx, data.levelButtons, 'levelButton');
+
+            draw.levelButtons(ctx, data.levelButtons);
         },
         click: function (sm, state, data, pos, e) {
             var button = poolMod.getObjectAt(sm.buttons, pos.x, pos.y);

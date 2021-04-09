@@ -126,6 +126,9 @@ var draw = (function () {
         method = typeof method === 'string' ? globalDraw[method] : method;
         drawPool(ctx, pool, method);
     };
+    api.levelButtons = function (ctx, pool){
+        drawPool(ctx, pool, globalDraw.levelButton);
+    };
     api.units = function (ctx, pool) {
         drawPool(ctx, pool, globalDraw.unit);
     };
