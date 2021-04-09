@@ -33,8 +33,7 @@
 * (done) draw.levelButtons method
 * (done) simple transistion effect for levelButtons
 * (done) have a gameOption to set the hit point range
-
-* make a pkg 0.4.1 folder
+* (done - 04/09/2021) make a pkg 0.4.1 folder
 
 ## 0.4.0 - Start new worldmap state
 * (done) started a createThis helper in state-machine.js and use it for all state object methods
