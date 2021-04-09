@@ -32,8 +32,7 @@
 * (done) button in game state goes back to worldmap not title
 * (done) draw.levelButtons method
 * (done) simple transistion effect for levelButtons
-
-* have a gameOption to set the hit point range
+* (done) have a gameOption to set the hit point range
 
 * make a pkg 0.4.1 folder
 

@@ -51,6 +51,7 @@ var draw = (function () {
             var gd = obj.data.gameOptions;
             ctx.fillText('waves: ' + gd.waveCount, obj.x + 5, obj.y + 20);
             ctx.fillText('b.u.c: ' + gd.baseUnitCount, obj.x + 5, obj.y + 30);
+            ctx.fillText('hp range: ' + gd.unitHPRange, obj.x + 5, obj.y + 40);
         },
         unit: function(ctx, obj, i){
             globalDraw.basic(ctx, obj, i);
@@ -144,11 +145,6 @@ var draw = (function () {
         sm = sm || {};
         drawPool(ctx, pool, globalDraw.buttonPool);
     };
-
-    // debug info
-    //api.debugInfo = function (ctx, sm, sx, sy) {
-
-    //};
 
     api.resetButton = function (ctx, sm) {
         ctx.fillStyle =  'white';
