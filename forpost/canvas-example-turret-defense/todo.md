@@ -29,7 +29,10 @@
 * (done) have labels for each level obj that display things like a level number, wave count, ect
 
 * simple transistion effect for levelButtons
-* button in game state goes back to worldmap not title
+* display game name in title state
+
+* (done) button in game state goes back to worldmap not title
+
 
 * make a pkg 0.4.1 folder
 

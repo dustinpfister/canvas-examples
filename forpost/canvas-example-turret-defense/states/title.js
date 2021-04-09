@@ -3,10 +3,14 @@
     stateMachine.load({
         key: 'title',
         init: function (sm, state, data) {
-            var x = sm.canvas.width * 0.5 - 128,
-            y = sm.canvas.height * 0.3;
+            var x = sm.canvas.width * 0.5,
+            y = sm.canvas.height * 0.5;
 
-            stateMachine.spawnButton(sm, {x: x, y: y}, 'start_state_worldmap', 'Play');
+            stateMachine.spawnButton(sm, {x: x - 128, y: y}, 'start_state_worldmap', 'Play');
+
+            y = sm.canvas.height * 0.1;
+            stateMachine.spawnButton(sm, {x: x - 256, y: y, w: 512, h: 128}, 'title', 'Turret Defense');
+
         },
         trans: function (sm, state, data, secs) {
 
