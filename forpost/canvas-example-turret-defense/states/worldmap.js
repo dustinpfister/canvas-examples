@@ -102,17 +102,17 @@
 
         },
         trans: function (sm, state, data, secs, per) {
-
-            var fp = {
-                sx: 0,
-                sy: 0,
-                dist: 100,
-                heading: 0,
-                frame: Math.round(sm.trans.secs / sm.trans.secsTotal * 50),
-                frameMax: 50,
-                rev: !sm.trans.inState // use trans instate bool to ser rev
-            };
             if(data.transEffect){
+                var fp = {
+                    per: 0,
+                    sx: 0,
+                    sy: 0,
+                    dist: 100,
+                    heading: 0,
+                    frame: Math.round(sm.trans.secs / sm.trans.secsTotal * 50),
+                    frameMax: 50,
+                    rev: !sm.trans.inState // use trans instate bool to ser rev
+                };
                 poolMod.moveByFramePerObj(data.transEffect.obj, fp);
                 data.transEffect.alpha = fp.per;
             }
