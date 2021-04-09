@@ -103,16 +103,9 @@
         },
         trans: function (sm, state, data, secs, per) {
             if(data.transEffect){
-                var fp = {
-                    per: 0,
-                    sx: 0,
-                    sy: 0,
-                    dist: 100,
-                    heading: 0,
-                    frame: Math.round(sm.trans.secs / sm.trans.secsTotal * 50),
-                    frameMax: 50,
-                    rev: !sm.trans.inState // use trans instate bool to ser rev
-                };
+                // use pool mod frame per to update trans effect of level butons
+                var frame = Math.round(sm.trans.secs / sm.trans.secsTotal * 50);
+                var fp = poolMod.createFramePerObj(frame, !sm.trans.inState);
                 poolMod.moveByFramePerObj(data.transEffect.obj, fp);
                 data.transEffect.alpha = fp.per;
             }

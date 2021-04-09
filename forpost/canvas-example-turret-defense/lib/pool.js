@@ -112,7 +112,19 @@ var poolMod = (function () {
         obj.x += Math.cos(obj.heading) * obj.pps * secs;
         obj.y += Math.sin(obj.heading) * obj.pps * secs;
     };
-    // move my frame percent object
+    // create a framePer object helper
+    api.createFramePerObj = function(frame, rev, sx, sy, dist, heading, maxFrame){
+        return {
+            per: 0,
+            sx: sx === undefined ? 0 : sx,
+            sy: sy === undefined ? 0 : sy,
+            dist: dist === undefined ? 100 : dist,
+            heading: heading === undefined ? heading : heading,
+            frame: frame === undefined ? 0 : frame,
+            frameMax: maxFrame === undefined ? 50 : maxFrame,
+            rev: rev === undefined ? false : rev
+        };
+    };
     /*
 {
     sx: -100,
@@ -124,6 +136,8 @@ var poolMod = (function () {
     rev: false
     }
      */
+
+    // move by frame per object
     api.moveByFramePerObj = function (obj, fp) {
         fp.per = fp.frame / fp.frameMax;
         fp.per = fp.per > 1 ? 1 : fp.per;
