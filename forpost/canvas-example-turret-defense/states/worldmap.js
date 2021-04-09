@@ -83,8 +83,10 @@
 
         data: {
             levelButtons: createLevelButtonPool(LEVELS.length),
-            levelButtonAlpha: {
-                alpha: 1
+            transEffect: {
+                alpha: 1,
+                obj:{x: 0, y: 0},
+                fp: {}
             }
         },
 
@@ -94,6 +96,16 @@
             var x = sm.canvas.width * 0.87,
             y = sm.canvas.height * 0.045;
             stateMachine.spawnButton(sm, {x: x, y: y, w: 64}, 'start_state_title', 'Title');
+
+            data.transEffect.fp = {
+                sx: 0,
+                sy: 0,
+                dist: 1,
+                heading: 0,
+                frame: Math.round(sm.trans.secs / sm.trans.secsTotal * 50),
+                frameMax: 50,
+                rev: !sm.trans.inState // use trans instate bool to ser rev
+            };
 
             // just spawn one level button for now
             //spawnLevelButton(sm, data, LEVELS[0]);
@@ -109,7 +121,7 @@
             draw.background(ctx, canvas, sm.background);
             draw.buttonPool(ctx, sm.buttons);
 
-            draw.levelButtons(ctx, data.levelButtons, data.levelButtonAlpha.alpha);
+            draw.levelButtons(ctx, data.levelButtons, data.transEffect.alpha);
         },
         click: function (sm, state, data, pos, e) {
             var button = poolMod.getObjectAt(sm.buttons, pos.x, pos.y);
