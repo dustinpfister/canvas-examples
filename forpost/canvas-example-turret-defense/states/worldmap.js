@@ -1,7 +1,7 @@
 (function () {
 
     var LEVELS = [
-        {
+        { // 1
             x: 264,
             y: 225,
             gameOptions: {
@@ -9,12 +9,36 @@
                 baseUnitCount: 5
             }
         },
-        {
+        { // 2
             x: 370,
             y: 180,
             gameOptions: {
                 waveCount: 7,
                 baseUnitCount: 10
+            }
+        },
+        { // 3
+            x: 170,
+            y: 80,
+            gameOptions: {
+                waveCount: 15,
+                baseUnitCount: 12
+            }
+        },
+        { // 4
+            x: 70,
+            y: 380,
+            gameOptions: {
+                waveCount: 18,
+                baseUnitCount: 13
+            }
+        },
+        { // 5
+            x: 430,
+            y: 360,
+            gameOptions: {
+                waveCount: 99,
+                baseUnitCount: 18
             }
         }
     ];
