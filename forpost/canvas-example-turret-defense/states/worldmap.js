@@ -15,7 +15,8 @@
             y: 180,
             gameOptions: {
                 waveCount: 7,
-                baseUnitCount: 10
+                baseUnitCount: 10,
+                unitHPRange:[2, 10]
             }
         },
         { // 3
@@ -23,7 +24,8 @@
             y: 80,
             gameOptions: {
                 waveCount: 15,
-                baseUnitCount: 12
+                baseUnitCount: 12,
+                unitHPRange:[3, 14]
             }
         },
         { // 4
@@ -31,7 +33,8 @@
             y: 380,
             gameOptions: {
                 waveCount: 18,
-                baseUnitCount: 13
+                baseUnitCount: 13,
+                unitHPRange:[5, 18]
             }
         },
         { // 5
@@ -39,7 +42,8 @@
             y: 360,
             gameOptions: {
                 waveCount: 99,
-                baseUnitCount: 18
+                baseUnitCount: 18,
+                unitHPRange:[10, 25]
             }
         }
     ];
