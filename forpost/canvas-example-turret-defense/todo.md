@@ -26,7 +26,10 @@
 * (done) have a LEVELS array const in worldmap.js state that will serve as the level data for now
 * (done) use LEVELS array const to set levelButtons pool size
 * (done) have a spawnLevels helper that will call spawnLevelButton for each levelObject in LEVELS const
-* have labels for each level obj that display things like a level number, wave count, ect
+* (done) have labels for each level obj that display things like a level number, wave count, ect
+
+* simple transistion effect for levelButtons
+* button in game state goes back to worldmap not title
 
 * make a pkg 0.4.1 folder
 

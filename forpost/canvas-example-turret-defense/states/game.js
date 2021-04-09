@@ -5,7 +5,7 @@
         init: function (sm, state, data, gameOptions) {
             var x = sm.canvas.width * 0.87,
             y = sm.canvas.height * 0.045;
-            stateMachine.spawnButton(sm, {x: x, y: y, w: 64}, 'start_state_title', 'Title');
+            stateMachine.spawnButton(sm, {x: x, y: y, w: 64}, 'start_state_worldmap', 'Map');
 
             // create a new game
             sm.game = gameMod.create(gameOptions || {
@@ -60,8 +60,8 @@
             // check buttons
             var button = poolMod.getObjectAt(sm.buttons, pos.x, pos.y);
             if(button){
-                if(button.data.action === 'start_state_title'){
-                    stateMachine.startStateChangeTrans(sm, 'title');
+                if(button.data.action === 'start_state_worldmap'){
+                    stateMachine.startStateChangeTrans(sm, 'worldmap');
                 }
             }
         },
