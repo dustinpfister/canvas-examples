@@ -82,7 +82,10 @@
         key: 'worldmap',
 
         data: {
-            levelButtons: createLevelButtonPool(LEVELS.length)
+            levelButtons: createLevelButtonPool(LEVELS.length),
+            levelButtonAlpha: {
+                alpha: 1
+            }
         },
 
         init: function (sm, state, data, initObj) {
@@ -97,15 +100,16 @@
             spawnLevels(sm, data);
 
         },
-        trans: function (sm, state, data, secs) {
+        trans: function (sm, state, data, secs, per) {
             poolMod.update(sm.buttons, secs, sm);
+            data.buttonAlpha = per;
         },
         update: function (sm, state, data, secs) {},
         draw: function (sm, state, data, ctx, canvas) {
             draw.background(ctx, canvas, sm.background);
             draw.buttonPool(ctx, sm.buttons);
 
-            draw.levelButtons(ctx, data.levelButtons);
+            draw.levelButtons(ctx, data.levelButtons, data.levelButtonAlpha.alpha);
         },
         click: function (sm, state, data, pos, e) {
             var button = poolMod.getObjectAt(sm.buttons, pos.x, pos.y);

@@ -207,10 +207,8 @@ var stateMachine = (function () {
                     sm.trans.onDone(sm);
                 }
             }
-            //state.trans.call(createThis(sm), sm, secs);
             callStateMethod(sm, state.trans, [secs]);
         } else {
-            //state.update.call(createThis(sm), sm, secs);
             callStateMethod(sm, state.update, [secs]);
         }
     };

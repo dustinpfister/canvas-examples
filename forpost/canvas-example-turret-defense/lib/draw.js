@@ -33,7 +33,7 @@ var draw = (function () {
     var globalDraw = {
         basic: function (ctx, obj, i) {
             ctx.fillStyle = obj.data.fill || 'white';
-            ctx.globalAlpha = obj.data.alpha || 1;
+            //ctx.globalAlpha = obj.data.alpha || 1;
             ctx.beginPath();
             ctx.rect(obj.x, obj.y, obj.w, obj.h);
             ctx.fill();
@@ -126,8 +126,10 @@ var draw = (function () {
         method = typeof method === 'string' ? globalDraw[method] : method;
         drawPool(ctx, pool, method);
     };
-    api.levelButtons = function (ctx, pool){
+    api.levelButtons = function (ctx, pool, alpha){
+        ctx.globalAlpha = alpha;
         drawPool(ctx, pool, globalDraw.levelButton);
+        ctx.globalAlpha = 1;
     };
     api.units = function (ctx, pool) {
         drawPool(ctx, pool, globalDraw.unit);
