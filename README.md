@@ -1,14 +1,14 @@
 # canvas-examples
 
-This is all the source code for my collection of posts on [canvas examples on my website here at github pages](](https://dustinpfister.github.io/2020/03/23/canvas-example/)). this collection is mainly games, but there are also some additional projects that are just animations, ideas of modules, frameworks, and so forth. The only common bond is that all of these use canvas elements in at least some capacity.
+This is all the source code for my collection of posts on [canvas examples on my website here at github pages](https://dustinpfister.github.io/2020/03/23/canvas-example/). This collection is mainly games, but there are also some additional projects that are just animations, ideas for modules, frameworks, and so forth. The only common bond is that all of these use canvas elements in at least some capacity, and beyond that I am also just using native javaScript by itself for each example.
 
-## Each example is a project of its own
+## Each example is a project on its own
 
-Each folder is its own independent project folder, so all of the source code needed should be located in each folder. For better or worse I have decided to just go forward with that set in mind for this collection of examples at least. The idea here then is that each folder is an independent vanilla javaScript project on its own. I might use the same code across other examples, but even then in the form of a copy that might end up getting hacked over a little. 
+Each folder is its own independent project folder, so all of the source code needed should be located in each folder for each example. This is just the way that I went forward for this collection, for better or worse. I might use the same code across other examples, but even then it would be in the form of a copy that might end up getting hacked over a little, or not. 
 
 ## Starting an example
 
-Most if not all examples should work by way of the file protocol in a web browser, in other words you can just open the main index.html of a folder in the browser without the need to serve the example locally.
+Most if not all examples should work by way of the file protocol in a web browser, in other words by just pressing ctrl + o, nafagating to the index.html file and opening it that way. However it still might be best to start some kind of sever locally, and view the examples that way. I have a nodejs script provided that can be used to do so, if you have some other options it is the forpost folder that you would want to make public and create an index for.
 
 ## The forPost, and prototype Folders
 
